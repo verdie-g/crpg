@@ -18,6 +18,11 @@ namespace Crpg.Module.GUI;
 /// </summary>
 internal class CrpgMissionMarkerVm : ViewModel
 {
+    // Color format #RRGGBBAA
+    private static readonly uint DefaultColor = Color.ConvertStringToColor("#FFFFFFFF").ToUnsignedInteger(); // White
+    private static readonly uint ClanMateColor = Color.ConvertStringToColor("#00FFFFFF").ToUnsignedInteger(); // Aqua
+    private static readonly uint FriendColor = Color.ConvertStringToColor("#FFFF00FF").ToUnsignedInteger(); // Yellow
+
     private readonly Camera _missionCamera;
     private readonly MissionMultiplayerGameModeBaseClient _gameModeClient;
     private readonly Dictionary<MissionPeer, MissionPeerMarkerTargetVM> _missionPeerMarkers;
@@ -297,35 +302,35 @@ internal class CrpgMissionMarkerVm : ViewModel
             return;
         }
 
-        BattleSideEnum battleSideEnum = GameNetwork.MyPeer.ControlledAgent?.Team.Side ?? BattleSideEnum.None;
-        List<MissionPeerMarkerTargetVM> markerList = PeerTargets.ToList();
         bool isDuel = _gameModeClient is CrpgDuelMissionMultiplayerClient;
+        BattleSideEnum myPeerSide = GameNetwork.MyPeer.ControlledAgent?.Team.Side ?? BattleSideEnum.None;
+        if (isDuel && myPeerSide == BattleSideEnum.Defender)
+        {
+            return;
+        }
+
+        List<MissionPeerMarkerTargetVM> peerTargetsToRemove = PeerTargets.ToList();
         foreach (MissionPeer missionPeer in VirtualPlayer.Peers<MissionPeer>())
         {
-            if (isDuel && battleSideEnum == BattleSideEnum.Defender)
-            {
-                break;
-            }
-
             if (missionPeer?.Team == null
                 || missionPeer.IsMine
-                || (!isDuel && missionPeer.Team.Side != battleSideEnum) // If it's not duel gamemode
+                || (!isDuel && missionPeer.Team.Side != myPeerSide) // If it's not duel gamemode
                 || (isDuel && missionPeer.Team.Side != BattleSideEnum.Defender)) // If its duel gamemode show only players which are dueling
             {
                 continue;
             }
 
-            var currentMarker = PeerTargets.FirstOrDefault(t => t.TargetPeer?.Peer.Id.Equals(missionPeer.Peer.Id) ?? false);
-            if (currentMarker != null)
+            if (BannerlordConfig.EnableDeathIcon && !missionPeer.IsControlledAgentActive)
             {
-                bool hasDeathIconMarker = AlwaysVisibleTargets
-                    .Any(t => t.TargetPeer.Peer.Id.Equals(currentMarker.TargetPeer.Peer.Id));
-                if (BannerlordConfig.EnableDeathIcon && !missionPeer.IsControlledAgentActive)
+                var peerTarget = PeerTargets.FirstOrDefault(t => t.TargetPeer.Peer.Id.Equals(missionPeer.Peer.Id));
+                if (peerTarget != null)
                 {
-                    if (!hasDeathIconMarker && currentMarker.TargetPeer?.ControlledAgent != null)
+                    bool hasDeathIconMarker = AlwaysVisibleTargets.Any(t =>
+                        t.TargetPeer.Peer.Id.Equals(peerTarget.TargetPeer.Peer.Id));
+                    if (!hasDeathIconMarker && peerTarget.TargetPeer?.ControlledAgent != null)
                     {
                         MissionAlwaysVisibleMarkerTargetVM missionAlwaysVisibleMarkerTargetVm = new(
-                            currentMarker.TargetPeer, currentMarker.WorldPosition, OnRemoveAlwaysVisibleMarker);
+                            peerTarget.TargetPeer, peerTarget.WorldPosition, OnRemoveAlwaysVisibleMarker);
                         missionAlwaysVisibleMarkerTargetVm.UpdateScreenPosition(_missionCamera);
                         AlwaysVisibleTargets.Add(missionAlwaysVisibleMarkerTargetVm);
                     }
@@ -346,18 +351,18 @@ internal class CrpgMissionMarkerVm : ViewModel
             else
             {
                 // Remove all teammates from the markerList
-                markerList.Remove(_missionPeerMarkers[missionPeer]);
+                peerTargetsToRemove.Remove(_missionPeerMarkers[missionPeer]);
             }
         }
 
         // markerList contains only old or dead teammates at this point.
         // Remove all MissionPeerMarkerTargetVM's which remain in the markerList from the final visible icons.
-        foreach (MissionPeerMarkerTargetVM item in markerList)
+        foreach (MissionPeerMarkerTargetVM peerTarget in peerTargetsToRemove)
         {
-            if (item != null)
+            if (peerTarget != null)
             {
-                PeerTargets.Remove(item);
-                _missionPeerMarkers.Remove(item.TargetPeer);
+                PeerTargets.Remove(peerTarget);
+                _missionPeerMarkers.Remove(peerTarget.TargetPeer);
             }
         }
     }
@@ -376,23 +381,19 @@ internal class CrpgMissionMarkerVm : ViewModel
     /// </summary>
     private void OverridePeerColor(MissionPeerMarkerTargetVM missionPeerMarkerTargetVm, MissionPeer missionPeer, bool missionPeerIsFriend)
     {
-        // Color format #RRGGBBAA
-        const string defaultColor = "#FFFFFFFF"; // white
-        const string clanmateColor = "#FF0000FF"; // red
-        const string friendColor = "#FFFF00FF"; // yellow
-        uint color1 = Color.ConvertStringToColor(defaultColor).ToUnsignedInteger();
-        uint color2 = Color.ConvertStringToColor(defaultColor).ToUnsignedInteger();
+        uint color1 = DefaultColor;
+        uint color2 = DefaultColor;
         if (GameNetwork.MyPeer != null)
         {
             CrpgPeer myCrpgPeer = GameNetwork.MyPeer.GetComponent<CrpgPeer>();
             CrpgPeer? crpgPeer = missionPeer.GetNetworkPeer().GetComponent<CrpgPeer>() ?? null;
             if (myCrpgPeer?.Clan != null && crpgPeer?.Clan != null && crpgPeer.Clan.Id == myCrpgPeer.Clan.Id)
             {
-                color2 = Color.ConvertStringToColor(clanmateColor).ToUnsignedInteger();
+                color2 = ClanMateColor;
             }
             else if (missionPeerIsFriend)
             {
-                color2 = Color.ConvertStringToColor(friendColor).ToUnsignedInteger();
+                color2 = FriendColor;
             }
         }
 
