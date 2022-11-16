@@ -11,8 +11,10 @@ internal class CrpgConstants
     public float[] ExperienceMultiplierForGenerationCoefs { get; set; } = Array.Empty<float>();
     public float[] RespecializeExperiencePenaltyCoefs { get; set; } = Array.Empty<float>();
     public int MinimumRetirementLevel { get; set; }
-    public float ExperienceGainPerSecond { get; set; }
-    public float GoldGainPerSecond { get; set; }
+    public float BaseExperienceGainPerSecond { get; set; }
+    public float MultipliedExperienceGainPerSecond { get; set; }
+    public float BaseGoldGainPerSecond { get; set; }
+    public float MultipliedGoldGainPerSecond { get; set; }
     public float ItemRepairCostPerSecond { get; set; }
     public float ItemBreakChance { get; set; }
     public float[] ItemSellCostCoefs { get; set; } = Array.Empty<float>();
