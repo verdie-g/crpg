@@ -153,20 +153,8 @@ using (IServiceScope scope = app.Services.CreateScope())
     }
 }
 
-try
-{
-    await app.RunAsync();
-    return 0;
-}
-catch (Exception ex)
-{
-    logger.LogCritical(ex, "Application terminated unexpectedly");
-    return 1;
-}
-finally
-{
-    LoggerFactory.Dispose();
-}
+await app.RunAsync();
+return 0;
 
 static AuthorizationPolicy BuildRolePolicy(params Role[] roles) =>
     new AuthorizationPolicyBuilder()
