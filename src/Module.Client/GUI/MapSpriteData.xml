@@ -17,7 +17,7 @@
   <SpriteCategories>
     <SpriteCategory>
       <Name>ui_mploading</Name>
-      <SpriteSheetCount>63</SpriteSheetCount>
+      <SpriteSheetCount>69</SpriteSheetCount>
       <SpriteSheetSize ID="1" Width="3840" Height="1935" />
       <SpriteSheetSize ID="2" Width="3840" Height="1935" />
       <SpriteSheetSize ID="3" Width="3383" Height="1902" />
@@ -81,6 +81,12 @@
       <SpriteSheetSize ID="61" Width="1920" Height="1080" />
       <SpriteSheetSize ID="62" Width="1920" Height="1080" />
       <SpriteSheetSize ID="63" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="64" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="65" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="66" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="67" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="68" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="69" Width="1920" Height="1080" />
     </SpriteCategory>
   </SpriteCategories>
   <SpriteParts>
@@ -660,6 +666,60 @@
       <SheetY>0</SheetY>
       <CategoryName>ui_mploading</CategoryName>
     </SpritePart>
+    <SpritePart>
+      <SheetID>64</SheetID>
+      <Name>crpg_battle_skyfall</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>65</SheetID>
+      <Name>crpg_battle_tavernbrawl</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>66</SheetID>
+      <Name>crpg_battle_fallenaqueduct</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>67</SheetID>
+      <Name>crpg_battle_moig</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>68</SheetID>
+      <Name>crpg_siege_neuenburg</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>69</SheetID>
+      <Name>crpg_siege_motteandbailey</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
   </SpriteParts>
   <Sprites>
     <GenericSprite>
@@ -913,6 +973,30 @@
     <GenericSprite>
       <Name>crpg_battle_stonehenge</Name>
       <SpritePartName>crpg_battle_stonehenge</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_skyfall</Name>
+      <SpritePartName>crpg_battle_skyfall</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_tavernbrawl</Name>
+      <SpritePartName>crpg_battle_tavernbrawl</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_fallenaqueduct</Name>
+      <SpritePartName>crpg_battle_fallenaqueduct</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_moig</Name>
+      <SpritePartName>crpg_battle_moig</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_siege_neuenburg</Name>
+      <SpritePartName>crpg_siege_neuenburg</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_siege_motteandbailey</Name>
+      <SpritePartName>crpg_siege_motteandbailey</SpritePartName>
     </GenericSprite>
   </Sprites>
 </SpriteData>
