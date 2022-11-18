@@ -137,6 +137,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new KickInactiveBehavior(inactiveTimeLimit: 45, warmupComponent, notificationsComponent),
                     new MapVoteComponent(),
                     new ChatCommandsComponent(chatBox, crpgClient),
+                    new PlayerStatsComponent(),
 #else
                     new MultiplayerRoundComponent(),
                     new MultiplayerAchievementComponent(),

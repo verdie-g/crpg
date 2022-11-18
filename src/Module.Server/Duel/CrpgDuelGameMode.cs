@@ -107,6 +107,7 @@ internal class CrpgDuelGameMode : MissionBasedMultiplayerGameMode
                     new EquipmentControllerLeaveLogic(),
                     new CrpgUserManagerServer(crpgClient),
                     new ChatCommandsComponent(chatBox, crpgClient),
+                    new PlayerStatsComponent(),
 #else
                     new MultiplayerAchievementComponent(),
                     new MissionMatchHistoryComponent(),
