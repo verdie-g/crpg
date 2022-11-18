@@ -71,9 +71,9 @@ public class BuyItemCommandTest : TestBase
     }
 
     [Theory]
-    public async Task BannerItem(bool isDonor)
+    public async Task BannerItem(bool isDonor, Role role)
     {
-        var user = ArrangeDb.Users.Add(new User { Gold = 100, IsDonor = isDonor });
+        var user = ArrangeDb.Users.Add(new User { Gold = 100, Role = role, IsDonor = isDonor });
         var item = ArrangeDb.Items.Add(new Item { Type = ItemType.Banner, Price = 100 });
         await ArrangeDb.SaveChangesAsync();
 
@@ -84,12 +84,13 @@ public class BuyItemCommandTest : TestBase
             UserId = user.Entity.Id,
         }, CancellationToken.None);
 
-        if (isDonor)
+        if (isDonor || role == Role.Admin)
         {
             Assert.IsNull(result.Errors);
         }
         else
         {
+            Assert.IsNotNull(result.Errors);
             Assert.AreEqual(ErrorCode.ItemNotBuyable, result.Errors![0].Code);
         }
     }

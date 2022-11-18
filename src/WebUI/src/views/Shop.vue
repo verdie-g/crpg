@@ -115,6 +115,7 @@ import ItemType from '@/models/item-type';
 import { filterItemsByType, itemTypeToStr } from '@/services/item-service';
 import Culture from '@/models/culture';
 import UserItem from '@/models/user-item';
+import Role from '@/models/role';
 
 @Component({
   components: { ShopFilterForm: ShopFiltersForm, ItemProperties },
@@ -138,7 +139,7 @@ export default class Shop extends Vue {
   }
 
   get isUserDonor(): boolean {
-    return userModule.user == null ? false : userModule.user.isDonor;
+    return userModule.user == null ? false : (userModule.user.isDonor || userModule.user.role == Role.Admin);
   }
 
   get currentPage(): number {

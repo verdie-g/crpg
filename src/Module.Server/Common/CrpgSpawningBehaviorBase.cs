@@ -349,6 +349,7 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
         [CrpgItemSlot.Weapon1] = EquipmentIndex.Weapon1,
         [CrpgItemSlot.Weapon2] = EquipmentIndex.Weapon2,
         [CrpgItemSlot.Weapon3] = EquipmentIndex.Weapon3,
+        [CrpgItemSlot.WeaponExtra] = EquipmentIndex.ExtraWeaponSlot,
     };
 
 #pragma warning disable SA1202 // Suppress the static warning.

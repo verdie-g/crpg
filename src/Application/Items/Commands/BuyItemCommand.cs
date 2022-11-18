@@ -4,6 +4,7 @@ using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Items.Models;
 using Crpg.Domain.Entities.Items;
+using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using LoggerFactory = Crpg.Logging.LoggerFactory;
@@ -45,7 +46,7 @@ public record BuyItemCommand : IMediatorRequest<UserItemViewModel>
                 return new(CommonErrors.UserNotFound(req.UserId));
             }
 
-            if (item.Type == ItemType.Banner && !user.IsDonor)
+            if (item.Type == ItemType.Banner && !user.IsDonor && user.Role != Role.Admin)
             {
                 return new(CommonErrors.ItemNotBuyable(req.ItemId));
             }

@@ -103,6 +103,13 @@
               alt="Fourth Weapon"
             />
           </div>
+          <div class="box item-box" @click="openReplaceItemModal(itemSlot.WeaponExtra)">
+            <img
+              v-if="userItemsBySlot[itemSlot.WeaponExtra]"
+              :src="userItemImage(userItemsBySlot[itemSlot.WeaponExtra])"
+              alt="Banner"
+            />
+          </div>
         </div>
       </div>
 
