@@ -1,0 +1,16 @@
+[Unit]
+Description=cRPG Game Server
+
+[Service]
+WorkingDirectory={{ crpg_game_server_path }}
+ExecStart=wine DedicatedCustomServer.Starter.exe /dedicatedcustomserverconfigfile ../../%i.txt /DisableErrorReporting /dedicatedcustomserverauthtoken {{ bannerlord_token }}
+Restart=always
+RestartSec=5
+KillSignal=SIGINT
+User={{ crpg_game_server_user }}
+Environment=CRPG_ENV=Production
+Environment=CRPG_SERVICE={{ crpg_game_server_service_name }}
+Environment=CRPG_INSTANCE=%i
+
+[Install]
+WantedBy=multi-user.target

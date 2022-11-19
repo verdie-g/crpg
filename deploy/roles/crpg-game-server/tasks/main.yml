@@ -6,15 +6,25 @@
 
 - name: add non-free apt repository
   apt_repository:
-      repo: deb http://deb.debian.org/debian bullseye main contrib non-free
-      state: present
+    repo: deb http://deb.debian.org/debian bullseye main contrib non-free
+    state: present
 
 - name: allow installation of i386 libraries
   command: dpkg --add-architecture i386
 
+- name: accept Steam license agreement
+  debconf:
+    name: steam
+    question: steam/question
+    value: I AGREE
+    vtype: select
+
 - name: install steamcmd
   apt:
-      pkg:
-          - lib32gcc-s1
-          - steamcmd
-      update_cache: yes
+    name:
+      - lib32gcc-s1
+      - steamcmd
+    update_cache: yes
+
+- name: install/update Bannerlord
+  command: "/usr/games/steamcmd +force_install_dir {{ crpg_game_server_path }} +app_update 1863440 +exit"

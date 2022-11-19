@@ -1,2 +1,5 @@
 ---
+
 crpg_game_server_user: crpg
+crpg_game_server_service_name: crpg-game-server
+crpg_game_server_path: /usr/games/bannerlord
