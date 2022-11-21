@@ -70,10 +70,12 @@ internal class KickInactiveBehavior : MissionBehavior
                 MovementFlags = agent.MovementFlags,
                 MovementInputVector = agent.MovementInputVector,
                 LookDirection = agent.LookDirection,
+                IsUsingGameObject = agent.IsUsingGameObject,
                 Warned = false,
             };
 
-            if (lastActiveStatus.MovementFlags != newActiveStatus.MovementFlags
+            if (newActiveStatus.IsUsingGameObject
+                || lastActiveStatus.MovementFlags != newActiveStatus.MovementFlags
                 || lastActiveStatus.MovementInputVector.DistanceSquared(newActiveStatus.MovementInputVector) > 1E-05f
                 || lastActiveStatus.LookDirection.DistanceSquared(newActiveStatus.LookDirection) > 1E-05f)
             {
@@ -120,6 +122,7 @@ internal class KickInactiveBehavior : MissionBehavior
         public Agent.MovementControlFlag MovementFlags { get; set; }
         public Vec2 MovementInputVector { get; set; }
         public Vec3 LookDirection { get; set; }
+        public bool IsUsingGameObject { get; set; }
         public bool Warned { get; set; }
     }
 }
