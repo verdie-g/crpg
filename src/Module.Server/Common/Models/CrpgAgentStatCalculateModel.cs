@@ -60,24 +60,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             return crpgOrigin.Skills.GetPropertyValue(skill);
         }
 
-        // The previous check is only applied applied for the current player. For other players, the client doesn't have
-        // their skills. It was not an issue except for movement speed. The big disparity between the client and server
-        // would make some players walk but very fast as if they shat themselves. To fix that we hardcode a default
-        // athletics and strength (which is also used for speed) so it forces the game to use the run animation instead
-        // of the walk one.
-        if (skill == DefaultSkills.Athletics)
-        {
-            return 175;
-        }
-        else if (skill == CrpgSkills.Strength)
-        {
-            return 15;
-        }
-        else if (skill == DefaultSkills.OneHanded || skill == DefaultSkills.TwoHanded || skill == DefaultSkills.Polearm)
-        {
-            return 135;
-        }
-
         return base.GetEffectiveSkill(agentCharacter, agentOrigin, agentFormation, skill);
     }
 
