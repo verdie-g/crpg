@@ -1,4 +1,5 @@
-﻿using TaleWorlds.Library;
+﻿using Crpg.Module.Common.Network;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Diamond;
 using TaleWorlds.PlayerServices;
@@ -13,18 +14,15 @@ internal class KickInactiveBehavior : MissionBehavior
 {
     private readonly MissionTime _inactiveTimeLimit;
     private readonly MultiplayerWarmupComponent _warmupComponent;
-    private readonly MultiplayerGameNotificationsComponent _notificationsComponent;
     private readonly Dictionary<PlayerId, ActivityStatus> _lastActiveStatuses;
     private Timer? _checkTimer;
 
     public KickInactiveBehavior(
         float inactiveTimeLimit,
-        MultiplayerWarmupComponent warmupComponent,
-        MultiplayerGameNotificationsComponent notificationsComponent)
+        MultiplayerWarmupComponent warmupComponent)
     {
         _inactiveTimeLimit = MissionTime.Seconds(inactiveTimeLimit);
         _warmupComponent = warmupComponent;
-        _notificationsComponent = notificationsComponent;
         _lastActiveStatuses = new Dictionary<PlayerId, ActivityStatus>();
     }
 
@@ -96,9 +94,19 @@ internal class KickInactiveBehavior : MissionBehavior
                 return;
             }
 
-            if (MissionTime.Now - lastActiveStatus.LastActive > _inactiveTimeLimit - MissionTime.Seconds(15) && !lastActiveStatus.Warned)
+            const float warningTime = 15;
+            if (MissionTime.Now - lastActiveStatus.LastActive > _inactiveTimeLimit - MissionTime.Seconds(warningTime) && !lastActiveStatus.Warned)
             {
-                _notificationsComponent.PlayerIsInactive(networkPeer);
+                GameNetwork.BeginModuleEventAsServer(networkPeer);
+                GameNetwork.WriteMessage(new CrpgNotification
+                {
+                    Type = CrpgNotification.NotificationType.Notification,
+                    Message = $"You will be removed for inactivity after {warningTime} seconds!",
+                    IsMessageTextId = false,
+                    SoundEvent = string.Empty,
+                });
+                GameNetwork.EndModuleEventAsServer();
+
                 lastActiveStatus.Warned = true;
                 _lastActiveStatuses[playerId] = lastActiveStatus;
                 return;
