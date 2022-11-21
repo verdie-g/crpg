@@ -9,6 +9,7 @@ using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Clans;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Parties;
+using Crpg.Domain.Entities.Restrictions;
 using Crpg.Domain.Entities.Settlements;
 using Crpg.Domain.Entities.Users;
 using Crpg.Sdk.Abstractions;
@@ -123,6 +124,7 @@ public record SeedDataCommand : IMediatorRequest
             {
                 PlatformUserId = "76561198016876889",
                 Name = "orle",
+                Role = Role.Admin,
                 Gold = 100000,
                 Characters = new List<Character>
                     {
@@ -647,6 +649,62 @@ public record SeedDataCommand : IMediatorRequest
                 {
                     _db.Users.Add(newUser);
                 }
+            }
+
+            Restriction takeoRestriction0 = new()
+            {
+                RestrictedUserId = 1,
+                RestrictedByUserId = 2,
+                Duration = TimeSpan.FromDays(5),
+                Type = RestrictionType.Join,
+                Reason = "Reason0",
+                CreatedAt = DateTime.UtcNow,
+            };
+            Restriction takeoRestriction1 = new()
+            {
+                RestrictedUserId = 1,
+                RestrictedByUserId = 2,
+                Duration = TimeSpan.FromDays(5),
+                Type = RestrictionType.Join,
+                Reason = "Reason1",
+                CreatedAt = DateTime.UtcNow,
+            };
+            Restriction takeoRestriction2 = new()
+            {
+                RestrictedUserId = 3,
+                RestrictedByUserId = 2,
+                Duration = TimeSpan.FromDays(10),
+                Type = RestrictionType.Join,
+                Reason = "Reason2",
+                CreatedAt = DateTime.UtcNow,
+            };
+            Restriction takeoRestriction3 = new()
+            {
+                RestrictedUserId = 2,
+                RestrictedByUserId = 1,
+                Type = RestrictionType.Join,
+                Reason = "Reason3",
+                CreatedAt = DateTime.UtcNow.AddDays(-1),
+            };
+            Restriction takeoRestriction4 = new()
+            {
+                RestrictedUserId = 2,
+                RestrictedByUserId = 1,
+                Duration = TimeSpan.FromDays(10),
+                Type = RestrictionType.Join,
+                Reason = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat deserunt temporibus consectetur perferendis illo cupiditate, dignissimos fugiat commodi, quibusdam necessitatibus mollitia neque, quam voluptatibus rem quas. Libero sapiente ullam aliquid.z",
+                CreatedAt = DateTime.UtcNow,
+            };
+
+            Restriction[] newRestrictions =
+            {
+                takeoRestriction0, takeoRestriction1, takeoRestriction2, takeoRestriction3,
+                takeoRestriction4,
+            };
+
+            foreach (var newRestriction in newRestrictions)
+            {
+                _db.Restrictions.Add(newRestriction);
             }
 
             Character takeoCharacter0 = new()

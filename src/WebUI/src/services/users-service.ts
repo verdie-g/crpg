@@ -1,4 +1,7 @@
+import queryString from 'query-string';
+
 import User from '@/models/user';
+import UserPublic from '@/models/user-public';
 import Character from '@/models/character';
 import { UpdateCharacterRequest } from '@/models/update-character-request';
 import CharacterCharacteristics from '@/models/character-characteristics';
@@ -10,6 +13,26 @@ import EquippedItemId from '@/models/equipped-item-id';
 import { get, post, put, del } from './crpg-client';
 import Clan from '@/models/clan';
 import UserItem from '@/models/user-item';
+import Platform from '@/models/platform';
+
+export function getUserByUserId(id: number): Promise<UserPublic> {
+  return get(`/users/${id}`);
+}
+
+interface UserSearcyQuery {
+  platform?: Platform;
+  platformUserId?: string;
+  name?: string;
+}
+
+export function searchUser(payload: UserSearcyQuery): Promise<UserPublic[]> {
+  const query = queryString.stringify(payload, { skipEmptyString: true, skipNull: true });
+  return get(`/users?${query}`);
+}
+
+export function getUserRestrictions(id: number): Promise<Restriction[]> {
+  return get(`/users/${id}/restrictions`);
+}
 
 export function getUser(): Promise<User> {
   return get('/users/self');
@@ -100,9 +123,4 @@ export function sellUserItem(userItemId: number): Promise<UserItem> {
 
 export function getCharacters(): Promise<Character[]> {
   return get('/users/self/characters');
-}
-
-export async function getUserRestrictions(): Promise<Restriction[]> {
-  const restrictions: Restriction[] = await get('/users/self/restrictions');
-  return restrictions.map(b => ({ ...b, createdAt: new Date(b.createdAt) }));
 }

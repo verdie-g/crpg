@@ -10,7 +10,6 @@ import ItemSlot from '@/models/item-slot';
 import CharacterCharacteristics from '@/models/character-characteristics';
 import CharacterStatistics from '@/models/character-statistics';
 import CharacteristicConversion from '@/models/characteristic-conversion';
-import Restriction from '@/models/restriction';
 import Role from '@/models/role';
 import CharacterUpdate from '@/models/character-update';
 import EquippedItem from '@/models/equipped-item';
@@ -23,7 +22,6 @@ class UserModule extends VuexModule {
   userLoading = false;
   userItems: UserItem[] = [];
   clan: Clan | null = null;
-  userRestrictions: Restriction[] = [];
 
   characters: Character[] = [];
   equippedItemsByCharacterId: { [id: number]: EquippedItem[] } = {};
@@ -235,11 +233,6 @@ class UserModule extends VuexModule {
     this.clan = clan;
   }
 
-  @Mutation
-  setUserRestrictions(restrictions: Restriction[]) {
-    this.userRestrictions = restrictions;
-  }
-
   @Action({ commit: 'setUser' })
   getUser() {
     return userService.getUser();
@@ -401,11 +394,6 @@ class UserModule extends VuexModule {
   @Action({ commit: 'setUserClan' })
   getUserClan(): Promise<Clan | null> {
     return userService.getUserClan();
-  }
-
-  @Action({ commit: 'setUserRestrictions' })
-  getUserRestrictions(): Promise<Restriction[]> {
-    return userService.getUserRestrictions();
   }
 
   @Action

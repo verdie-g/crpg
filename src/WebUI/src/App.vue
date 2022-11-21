@@ -57,7 +57,7 @@
     </nav>
 
     <main class="is-flex-grow-1">
-      <router-view />
+      <router-view v-if="!isUserLoading" />
     </main>
     <!-- Display or not the footer depending on the current page -->
     <footer
@@ -116,6 +116,10 @@ export default class App extends Vue {
 
   get isModeratorOrAdmin() {
     return userModule.isModeratorOrAdmin;
+  }
+
+  get isUserLoading() {
+    return userModule.userLoading;
   }
 
   async beforeCreate() {

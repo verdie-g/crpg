@@ -1,9 +1,10 @@
+// TODO: unit
 export function timestampToTimeString(ts: number): string {
   const date = new Date(ts);
   const year = date.getFullYear() - 1970;
   const month = date.getMonth();
-  const day = date.getDate() - 1;
-  const hours = date.getHours() - 1;
+  const day = date.getUTCDate() - 1;
+  const hours = date.getUTCHours();
   const minutes = date.getMinutes();
 
   let timeStr = '';
@@ -32,4 +33,35 @@ export function timestampToTimeString(ts: number): string {
   }
 
   return timeStr;
+}
+
+function daysToMs(days: number) {
+  return days * 24 * 60 * 60 * 1000;
+}
+
+function hoursToMs(hours: number) {
+  return hours * 60 * 60 * 1000;
+}
+
+function minutesToMs(minutes: number) {
+  return minutes * 60 * 1000;
+}
+
+export interface HumanDuration {
+  days: number;
+  hours: number;
+  minutes: number;
+}
+
+export function convertHumanDurationToMs(duration: HumanDuration): number {
+  return daysToMs(duration.days) + hoursToMs(duration.hours) + minutesToMs(duration.minutes);
+}
+
+export function checkIsDateExpired(createdAt: Date, duration: number): boolean {
+  return new Date().getTime() > new Date(createdAt).getTime() + duration;
+}
+
+export function computeLeftMs(createdAt: Date, duration: number): number {
+  const result = new Date(createdAt).getTime() + duration - new Date().getTime();
+  return result < 0 ? 0 : result;
 }
