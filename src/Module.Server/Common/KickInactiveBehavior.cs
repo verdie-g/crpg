@@ -22,7 +22,7 @@ internal class KickInactiveBehavior : MissionBehavior
         MultiplayerWarmupComponent warmupComponent,
         MultiplayerGameNotificationsComponent notificationsComponent)
     {
-        _inactiveTimeLimit = MissionTime.Seconds(45);
+        _inactiveTimeLimit = MissionTime.Seconds(inactiveTimeLimit);
         _warmupComponent = warmupComponent;
         _notificationsComponent = notificationsComponent;
         _lastActiveStatuses = new Dictionary<PlayerId, ActivityStatus>();
