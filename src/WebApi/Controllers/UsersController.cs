@@ -20,11 +20,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace Crpg.WebApi.Controllers;
 
 [Authorize(Policy = UserPolicy)]
-
 public class UsersController : BaseController
 {
     /// <summary>
-    /// Search user.
+    /// Search user. <paramref name="name"/> or the pair (<paramref name="platform"/>, <paramref name="platformUserId"/>)
+    /// should be not null.
     /// </summary>
     /// <query name="name">The user name.</query>
     /// <query name="platform">The user platform.</query>
@@ -32,27 +32,37 @@ public class UsersController : BaseController
     /// <returns>Found users. A limit of 10 records.</returns>
     /// <response code="200">Ok.</response>
     /// <response code="400">Bad Request.</response>
+    [Authorize(Policy = ModeratorPolicy)]
     [HttpGet]
-    public Task<ActionResult<Result<UserPublicViewModel[]>>> SearchUsers(
+    public async Task<ActionResult<Result<UserPublicViewModel[]>>> SearchUsers(
         [FromQuery] Platform platform,
         [FromQuery] string? platformUserId,
         [FromQuery] string? name)
         {
-            if (CurrentUser.User!.Role == Role.User)
+            if (name != null)
             {
-                return ResultToActionAsync(Task.FromResult(new Result<UserPublicViewModel[]>(new Error(ErrorType.Forbidden, ErrorCode.InvalidField))));
-            }
-            else if (name != null)
-            {
-                return ResultToActionAsync(Mediator.Send(new GetUsersByNameQuery { Name = name }));
-            }
-            else if (platformUserId != null)
-            {
-                return ResultToActionAsync(Mediator.Send(new GetUserByPlatformIdQuery { Platform = platform, PlatformUserId = platformUserId }));
+                return ResultToAction(await Mediator.Send(new GetUsersByNameQuery { Name = name }));
             }
 
-            return ResultToActionAsync(Task.FromResult(new Result<UserPublicViewModel[]>(new Error(ErrorType.Validation, ErrorCode.InvalidField))));
+            if (platformUserId != null)
+            {
+                var res = await Mediator.Send(new GetUserByPlatformIdQuery
+                {
+                    Platform = platform,
+                    PlatformUserId = platformUserId,
+                });
+                return ResultToAction(res.Select(u => new[] { u }));
+            }
+
+            return ResultToAction(new Result<UserPublicViewModel[]>(new Error(ErrorType.Validation, ErrorCode.InvalidField)));
         }
+
+    /// <summary>
+    /// Gets current user information.
+    /// </summary>
+    [HttpGet("self")]
+    public Task<ActionResult<Result<UserViewModel>>> GetUser()
+        => ResultToActionAsync(Mediator.Send(new GetUserQuery { UserId = CurrentUser.User!.Id }));
 
     /// <summary>
     /// Get user by id.
@@ -62,18 +72,15 @@ public class UsersController : BaseController
     /// <response code="200">Ok.</response>
     /// <response code="400">Bad Request.</response>
     /// <response code="404">User was not found.</response>
+    [Authorize(Policy = ModeratorPolicy)]
     [HttpGet("{id}")]
     public Task<ActionResult<Result<UserPublicViewModel>>> GetUserById([FromRoute] int id)
     {
-        var resultTask = CurrentUser.User!.Role == Role.User
-            ? Task.FromResult(new Result<UserPublicViewModel>(new Error(ErrorType.Forbidden, ErrorCode.UserRoleNotMet)))
-            : Mediator.Send(new GetUserByIdQuery { UserId = id });
-
-        return ResultToActionAsync(resultTask);
+        return ResultToActionAsync(Mediator.Send(new GetUserByIdQuery { UserId = id }));
     }
 
     /// <summary>
-    /// Get all restrictions for a user by userId.
+    /// Get all restrictions for a user.
     /// </summary>
     /// <param name="id">The user id.</param>
     /// <returns>The user restrictions.</returns>
@@ -83,20 +90,14 @@ public class UsersController : BaseController
     [HttpGet("{id}/restrictions")]
     public Task<ActionResult<Result<IList<RestrictionViewModel>>>> GetUserRestrictions([FromRoute] int id)
     {
-        var userHasPermission = id == CurrentUser.User!.Id || CurrentUser.User!.Role == Role.Admin;
-        var resultTask = !userHasPermission
-            ? Task.FromResult(new Result<IList<RestrictionViewModel>>(new Error(ErrorType.Forbidden, ErrorCode.UserRoleNotMet)))
-            : Mediator.Send(new GetUserRestrictionsQuery { UserId = id });
+        if (CurrentUser.User!.Role != Role.Admin && id != CurrentUser.User!.Id)
+        {
+            var res = new Result<IList<RestrictionViewModel>>(new Error(ErrorType.Forbidden, ErrorCode.UserRoleNotMet));
+            return Task.FromResult(ResultToAction(res));
+        }
 
-        return ResultToActionAsync(resultTask);
+        return ResultToActionAsync(Mediator.Send(new GetUserRestrictionsQuery { UserId = id }));
     }
-
-    /// <summary>
-    /// Gets current user information.
-    /// </summary>
-    [HttpGet("self")]
-    public Task<ActionResult<Result<UserViewModel>>> GetUser()
-        => ResultToActionAsync(Mediator.Send(new GetUserQuery { UserId = CurrentUser.User!.Id }));
 
     /// <summary>
     /// Deletes current user.

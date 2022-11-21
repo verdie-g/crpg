@@ -21,7 +21,7 @@
         <span v-else>{{ user.name }}</span>
       </p>
       <p class="subtitle is-6">
-        <span>Id: {{ user.id }}, {{ user.platform }}: {{ user.platformUserId }}</span>
+        <span>Id: {{ user.id }}</span>
         <platform :platform="user.platform" :platformUserId="user.platformUserId" />
       </p>
     </div>

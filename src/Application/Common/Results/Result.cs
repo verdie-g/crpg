@@ -40,4 +40,14 @@ public class Result<TData> : Result where TData : class
         : base(errors)
     {
     }
+
+    public Result<TOther> Select<TOther>(Func<TData, TOther> sel) where TOther : class
+    {
+        if (Errors != null && Errors.Count != 0)
+        {
+            return new Result<TOther>(Errors);
+        }
+
+        return new Result<TOther>(sel(Data!));
+    }
 }
