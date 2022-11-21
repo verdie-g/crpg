@@ -11,6 +11,7 @@ async function trySend(method: string, path: string, body?: any): Promise<Result
     method,
     headers: {
       Authorization: `Bearer ${token}`,
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       'Content-Type': 'application/json',
     },
     body: body != null ? JSON.stringify(body) : undefined,

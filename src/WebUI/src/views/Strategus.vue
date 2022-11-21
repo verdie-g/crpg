@@ -84,6 +84,7 @@ const dialogs = {
     LControlMousePosition,
     LocatePartyControl,
     LPolyline,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     'l-marker-cluster': Vue2LeafletMarkerCluster,
     ...dialogs,
     settlement: SettlementComponent,
