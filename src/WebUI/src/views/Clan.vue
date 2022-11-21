@@ -86,7 +86,8 @@
                 class="is-clickable mt-5"
                 @click.native="kickMember(selectedMember)"
               >
-                Kick Member
+                <span v-if="selfMember.user.id === selectedMember.user.id">Leave Clan</span>
+                <span v-else>Kick Member</span>
               </b-button>
             </div>
           </div>
