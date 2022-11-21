@@ -927,7 +927,7 @@ public record SeedDataCommand : IMediatorRequest
                 }
             }
 
-            ClanMember namidakaMember = new() { User = namidaka, Clan = pecores, Role = ClanMemberRole.Leader };
+            ClanMember namidakaMember = new() { User = takeo, Clan = pecores, Role = ClanMemberRole.Leader };
             ClanMember neostralieMember = new() { User = neostralie, Clan = pecores, Role = ClanMemberRole.Officer };
             ClanMember elmarykMember = new() { User = elmaryk, Clan = pecores, Role = ClanMemberRole.Officer };
             ClanMember laHireMember = new() { User = laHire, Clan = pecores, Role = ClanMemberRole.Member };

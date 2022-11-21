@@ -48,7 +48,7 @@
         </b-table-column>
 
         <b-table-column v-slot="props">
-          <div v-if="memberKickable(props.row)" class="is-flex is-justify-content-end">
+          <div v-if="canKickMember(props.row)" class="is-flex is-justify-content-end">
             <b-tooltip position="is-top">
               <b-icon
                 icon="cog"
@@ -72,10 +72,28 @@
         <div class="card-content">
           <div class="columns is-flex-direction-column px-1">
             <div class="pt-3 pb-4">
-              <b-field label="Role">
-                <b-radio v-model="selectedMemberRole" native-value="Member">Member</b-radio>
-                <b-radio v-model="selectedMemberRole" native-value="Officer">Officer</b-radio>
-                <b-radio v-model="selectedMemberRole" native-value="Leader">Leader</b-radio>
+              <b-field label="Role" disabled>
+                <b-radio
+                  v-model="selectedMemberRole"
+                  :disabled="!canUpdateMember()"
+                  native-value="Member"
+                >
+                  Member
+                </b-radio>
+                <b-radio
+                  v-model="selectedMemberRole"
+                  :disabled="!canUpdateMember()"
+                  native-value="Officer"
+                >
+                  Officer
+                </b-radio>
+                <b-radio
+                  v-model="selectedMemberRole"
+                  :disabled="!canUpdateMember()"
+                  native-value="Leader"
+                >
+                  Leader
+                </b-radio>
               </b-field>
             </div>
 
@@ -170,7 +188,11 @@ export default class ClanComponent extends Vue {
     clanService.getClanMembers(clanId).then(m => (this.members = m));
   }
 
-  memberKickable(member: ClanMember): boolean {
+  canUpdateMember(): boolean {
+    return this.selfMember !== null && this.selfMember.role === ClanMemberRole.Leader;
+  }
+
+  canKickMember(member: ClanMember): boolean {
     if (member === null) {
       return false;
     }
