@@ -55,6 +55,9 @@
       <b-field horizontal label="KDA" class="characteristic-field">
         <b-input size="is-small" :value="getKda()" readonly />
       </b-field>
+      <b-field horizontal label="Play Time" class="characteristic-field">
+        <b-input size="is-small" :value="getPlayTime()" readonly />
+      </b-field>
     </div>
 
     <div class="characteristic-section" v-if="characteristics !== null">
@@ -498,6 +501,7 @@ import CharacteristicConversion from '@/models/characteristic-conversion';
 import CharacterUpdate from '@/models/character-update';
 import { applyPolynomialFunction } from '@/utils/math';
 import Constants from '../../../../data/constants.json';
+import { timestampToTimeString } from '@/utils/date';
 
 type CharacteristicSectionKey = keyof CharacterCharacteristics;
 type AttributeKey = keyof CharacterAttributes;
@@ -595,6 +599,15 @@ export default class CharacterCharacteristicsComponent extends Vue {
         ? '∞'
         : Math.round((100 * (statistics.kills + statistics.assists)) / statistics.deaths) / 100;
     return `${statistics.kills}/${statistics.deaths}/${statistics.assists} (${ratio})`;
+  }
+
+  getPlayTime(): string {
+    const statistics = userModule.characterStatistics(this.character.id);
+    if (statistics === null) {
+      return '';
+    }
+
+    return timestampToTimeString(statistics.playTime);
   }
 
   get relativeCurrentLevelExperience(): number {

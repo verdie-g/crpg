@@ -1,31 +1,26 @@
 // TODO: unit
 export function timestampToTimeString(ts: number): string {
-  const date = new Date(ts);
-  const year = date.getFullYear() - 1970;
-  const month = date.getMonth();
-  const day = date.getUTCDate() - 1;
-  const hours = date.getUTCHours();
-  const minutes = date.getMinutes();
+  const days = Math.floor(ts / 86400000);
+  const hours = Math.floor((ts % 86400000) / 3600000);
+  const minutes = Math.floor(((ts % 86400000) % 3600000) / 60000);
+  const seconds = Math.floor((((ts % 86400000) % 3600000) % 60000) / 1000);
 
   let timeStr = '';
-  if (year !== 0) {
-    timeStr += `${year} year${year > 1 ? 's' : ''} `;
-  }
 
-  if (month !== 0) {
-    timeStr += `${month} month${month > 1 ? 's' : ''} `;
-  }
-
-  if (day !== 0) {
-    timeStr += `${day} day${day > 1 ? 's' : ''} `;
+  if (days !== 0) {
+    timeStr += `${days}d `;
   }
 
   if (hours !== 0) {
-    timeStr += `${hours} hour${hours > 1 ? 's' : ''} `;
+    timeStr += `${hours} h `;
   }
 
   if (minutes !== 0) {
-    timeStr += `${minutes} minute${minutes > 1 ? 's' : ''} `;
+    timeStr += `${minutes} min `;
+  }
+
+  if (seconds !== 0) {
+    timeStr += `${seconds} s `;
   }
 
   if (timeStr.length > 1) {

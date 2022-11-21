@@ -714,6 +714,13 @@ public record SeedDataCommand : IMediatorRequest
                 Generation = 2,
                 Level = 23,
                 Experience = _experienceTable.GetExperienceForLevel(23),
+                Statistics = new CharacterStatistics
+                {
+                    Kills = 2,
+                    Assists = 3,
+                    Deaths = 6,
+                    PlayTime = new TimeSpan(0, 10, 50, 20),
+                },
             };
             Character takeoCharacter1 = new()
             {
@@ -721,6 +728,13 @@ public record SeedDataCommand : IMediatorRequest
                 Name = "totoalala",
                 Level = 12,
                 Experience = _experienceTable.GetExperienceForLevel(12),
+                Statistics = new CharacterStatistics
+                {
+                    Kills = 2,
+                    Assists = 3,
+                    Deaths = 6,
+                    PlayTime = new TimeSpan(365, 0, 0, 20),
+                },
             };
             Character takeoCharacter2 = new()
             {
@@ -728,6 +742,13 @@ public record SeedDataCommand : IMediatorRequest
                 Name = "Retire me",
                 Level = 31,
                 Experience = _experienceTable.GetExperienceForLevel(31) + 100,
+                Statistics = new CharacterStatistics
+                {
+                    Kills = 2,
+                    Assists = 3,
+                    Deaths = 6,
+                    PlayTime = new TimeSpan(3, 7, 0, 29),
+                },
             };
             Character falcomCharacter0 = new()
             {
