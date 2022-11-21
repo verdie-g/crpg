@@ -161,7 +161,9 @@
           type="is-warning"
           icon-left="baby"
           expanded
-          :disabled="character.skippedTheFun || character.generation > 0 || character.level > skipTheFunLevel"
+          :disabled="
+            character.skippedTheFun || character.generation > 0 || character.level > skipTheFunLevel
+          "
           @click="openSkipTheFunCharacterDialog"
         >
           Skip the fun

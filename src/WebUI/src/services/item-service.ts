@@ -115,14 +115,6 @@ const weaponTypes: ItemType[] = [
   ItemType.Bolts,
 ];
 
-const armorTypes: ItemType[] = [
-  ItemType.HeadArmor,
-  ItemType.ShoulderArmor,
-  ItemType.BodyArmor,
-  ItemType.HandArmor,
-  ItemType.LegArmor,
-];
-
 const itemTypesBySlot: Record<ItemSlot, ItemType[]> = {
   [ItemSlot.Head]: [ItemType.HeadArmor],
   [ItemSlot.Shoulder]: [ItemType.ShoulderArmor],
@@ -231,6 +223,7 @@ export function getItems(): Promise<Item[]> {
 }
 
 // Inspired by TooltipVMExtensions.UpdateTooltip.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor {
   const props: ItemDescriptor = {
     fields: [
