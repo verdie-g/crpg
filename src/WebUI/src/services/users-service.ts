@@ -85,6 +85,10 @@ export function switchCharacterAutoRepair(characterId: number, autoRepair: boole
   return put(`/users/self/characters/${characterId}/auto-repair`, { autoRepair });
 }
 
+export function activateCharacter(characterId: number, active: boolean): Promise<void> {
+  return put(`/users/self/characters/${characterId}/active`, { active });
+}
+
 export function getCharacterCharacteristics(
   characterId: number
 ): Promise<CharacterCharacteristics> {

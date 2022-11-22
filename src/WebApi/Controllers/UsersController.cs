@@ -230,6 +230,21 @@ public class UsersController : BaseController
     }
 
     /// <summary>
+    /// Activate/deactivate character.
+    /// </summary>
+    /// <param name="id">Character id.</param>
+    /// <param name="req">Activation value.</param>
+    /// <response code="204">Updated.</response>
+    /// <response code="400">Bad Request.</response>
+    [HttpPut("self/characters/{id}/active")]
+    public Task<ActionResult> ActivateCharacter([FromRoute] int id,
+        [FromBody] ActivateCharacterCommand req)
+    {
+        req = req with { CharacterId = id, UserId = CurrentUser.User!.Id };
+        return ResultToActionAsync(Mediator.Send(req));
+    }
+
+    /// <summary>
     /// Switch on/off auto-repairing for a character.
     /// </summary>
     /// <param name="id">Character id.</param>

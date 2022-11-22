@@ -54,12 +54,6 @@ public record UpdateCharacterCommand : IMediatorRequest<CharacterViewModel>
 
             if (character.Name != req.Name)
             {
-                if (await _db.Characters.AnyAsync(c => c.UserId == req.UserId && c.Name == req.Name,
-                        cancellationToken))
-                {
-                    return new(CommonErrors.CharacterNameAlreadyUsed(req.Name));
-                }
-
                 character.Name = req.Name;
             }
 

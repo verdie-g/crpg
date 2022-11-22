@@ -13,4 +13,5 @@ export default interface User {
   avatarSmall: string;
   avatarMedium: string;
   avatarFull: string;
+  activeCharacterId: number | null;
 }

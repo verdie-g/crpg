@@ -42,12 +42,18 @@ public class User : AuditableEntity
     public Uri? AvatarFull { get; set; }
 
     /// <summary>
+    /// Character the user will play in game.
+    /// </summary>
+    public int? ActiveCharacterId { get; set; }
+
+    /// <summary>
     /// Not null if the user deleted its account.
     /// </summary>
     public DateTime? DeletedAt { get; set; }
 
     public IList<UserItem> Items { get; set; } = new List<UserItem>();
     public IList<Character> Characters { get; set; } = new List<Character>();
+    public Character? ActiveCharacter { get; set; }
     public IList<Restriction> Restrictions { get; set; } = new List<Restriction>();
     public ClanMember? ClanMembership { get; set; }
     public Party? Party { get; set; }

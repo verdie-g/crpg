@@ -12,7 +12,6 @@ public enum ErrorCode
     BattleTooFar,
     CharacterGenerationRequirement,
     CharacterLevelRequirementNotMet,
-    CharacterNameAlreadyUsed,
     CharacterNotFound,
     CharacterRecentlyCreated,
     CharacteristicDecreased,

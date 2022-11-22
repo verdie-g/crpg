@@ -27,7 +27,7 @@ public record GetUserCharactersQuery : IMediatorRequest<IList<CharacterViewModel
         {
             var characters = await _db.Characters
                 .Where(c => c.UserId == req.UserId)
-                .OrderByDescending(c => c.UpdatedAt)
+                .OrderByDescending(c => c.Id == c.User!.ActiveCharacterId)
                 .ProjectTo<CharacterViewModel>(_mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
 

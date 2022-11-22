@@ -51,13 +51,12 @@ internal class CrpgHttpClient : ICrpgClient
     }
 
     public Task<CrpgResult<CrpgUser>> GetUserAsync(Platform platform, string platformUserId,
-        string userName, CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default)
     {
         Dictionary<string, string> queryParameters = new(StringComparer.Ordinal)
         {
             ["platform"] = platform.ToString(),
             ["platformUserId"] = platformUserId,
-            ["userName"] = userName,
         };
         return Get<CrpgUser>("games/users", queryParameters, cancellationToken);
     }

@@ -16,4 +16,5 @@ public record UserViewModel : IMapFrom<User>
     public Uri? AvatarSmall { get; init; }
     public Uri? AvatarMedium { get; init; }
     public Uri? AvatarFull { get; init; }
+    public int? ActiveCharacterId { get; set; }
 }

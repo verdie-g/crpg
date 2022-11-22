@@ -56,7 +56,20 @@
         <b-input size="is-small" :value="getKda()" readonly />
       </b-field>
       <b-field horizontal label="Play Time" class="characteristic-field">
-        <b-input size="is-small" :value="getPlayTime()" readonly />
+        <b-input size="is-small" :value="playTime" readonly />
+      </b-field>
+      <b-field horizontal class="characteristic-field">
+        <template v-slot:label>
+          <b-tooltip position="is-left" multilined>
+            Active
+            <template v-slot:content>
+              Switch on to use this character in game. If none of your characters was chosen as
+              active, joining a server will create a new character. Beware that you can create only
+              one character per hour. After that you will get automatically kicked by the server.
+            </template>
+          </b-tooltip>
+        </template>
+        <b-switch v-model="isCharacterActive" />
       </b-field>
     </div>
 
@@ -601,13 +614,21 @@ export default class CharacterCharacteristicsComponent extends Vue {
     return `${statistics.kills}/${statistics.deaths}/${statistics.assists} (${ratio})`;
   }
 
-  getPlayTime(): string {
+  get playTime(): string {
     const statistics = userModule.characterStatistics(this.character.id);
     if (statistics === null) {
       return '';
     }
 
     return timestampToTimeString(statistics.playTime);
+  }
+
+  get isCharacterActive(): boolean {
+    return userModule.user!.activeCharacterId === this.character.id;
+  }
+
+  set isCharacterActive(active: boolean) {
+    userModule.activateCharacter({ character: this.character, active });
   }
 
   get relativeCurrentLevelExperience(): number {

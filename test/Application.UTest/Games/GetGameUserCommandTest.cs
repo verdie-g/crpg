@@ -43,14 +43,13 @@ public class GetGameUserCommandTest : TestBase
         {
             Platform = Platform.Epic,
             PlatformUserId = "1",
-            UserName = "a",
         }, CancellationToken.None);
 
         var gameUser = result.Data!;
         Assert.NotZero(gameUser.Id);
         Assert.AreEqual(Platform.Epic, gameUser.Platform);
         Assert.AreEqual("1", gameUser.PlatformUserId);
-        Assert.AreEqual("a", gameUser.Character.Name);
+        Assert.AreEqual("Peasant", gameUser.Character.Name);
         Assert.IsNotEmpty(gameUser.Character.EquippedItems);
         Assert.IsEmpty(gameUser.Restrictions);
 
@@ -95,7 +94,6 @@ public class GetGameUserCommandTest : TestBase
         {
             Platform = user.Platform,
             PlatformUserId = user.PlatformUserId,
-            UserName = "a",
         }, CancellationToken.None);
 
         var gameUser = result.Data!;
@@ -103,7 +101,7 @@ public class GetGameUserCommandTest : TestBase
         Assert.AreEqual(user.Id, gameUser.Id);
         Assert.AreEqual(user.Platform, gameUser.Platform);
         Assert.AreEqual(user.PlatformUserId, gameUser.PlatformUserId);
-        Assert.AreEqual("a", gameUser.Character.Name);
+        Assert.AreEqual("Peasant", gameUser.Character.Name);
         Assert.IsNotEmpty(gameUser.Character.EquippedItems);
         Assert.IsEmpty(gameUser.Restrictions);
 
@@ -152,7 +150,6 @@ public class GetGameUserCommandTest : TestBase
         {
             Platform = user.Platform,
             PlatformUserId = user.PlatformUserId,
-            UserName = "a",
         }, CancellationToken.None);
 
         Assert.IsNotNull(res.Errors);
@@ -190,7 +187,6 @@ public class GetGameUserCommandTest : TestBase
         {
             Platform = user.Platform,
             PlatformUserId = user.PlatformUserId,
-            UserName = "a",
         }, CancellationToken.None);
 
         var userItems = await AssertDb.UserItems.Where(oi => oi.UserId == user.Id).ToArrayAsync();
@@ -203,18 +199,22 @@ public class GetGameUserCommandTest : TestBase
         var userService = Mock.Of<IUserService>();
         var characterService = Mock.Of<ICharacterService>();
 
+        Character user0Character = new();
         User user0 = new()
         {
             Platform = Platform.Steam,
             PlatformUserId = "1",
-            Characters = new List<Character> { new() { Name = "a" } },
+            ActiveCharacter = user0Character,
+            Characters = { user0Character },
         };
 
+        Character user1Character = new();
         User user1 = new()
         {
             Platform = Platform.Epic,
             PlatformUserId = user0.PlatformUserId, // Same platform user id but different platform
-            Characters = new List<Character> { new() { Name = "a" } },
+            ActiveCharacter = user1Character,
+            Characters = { user1Character },
         };
 
         ArrangeDb.AddRange(user0, user1);
@@ -227,30 +227,31 @@ public class GetGameUserCommandTest : TestBase
         {
             Platform = user0.Platform,
             PlatformUserId = user0.PlatformUserId,
-            UserName = user0.Characters[0].Name,
         }, CancellationToken.None);
 
         var gameUser = result.Data!;
         Assert.AreEqual(user0.Platform, gameUser.Platform);
         Assert.AreEqual(user0.PlatformUserId, gameUser.PlatformUserId);
-        Assert.AreEqual(user0.Characters[0].Name, gameUser.Character.Name);
+        Assert.AreEqual(user0Character.Id, gameUser.Character.Id);
     }
 
     [Test]
-    public async Task ShouldGetSpecifiedCharacterWhenSeveralExists()
+    public async Task ShouldGetActiveCharacterWhenSeveralExists()
     {
         var userService = Mock.Of<IUserService>();
         var characterService = Mock.Of<ICharacterService>();
 
+        Character character = new();
         User user = new()
         {
             Platform = Platform.Steam,
             PlatformUserId = "1",
+            ActiveCharacter = character,
             Characters = new List<Character>
             {
-                new() { Name = "a" },
-                new() { Name = "b" },
-                new() { Name = "c" },
+                character,
+                new(),
+                new(),
             },
         };
         ArrangeDb.Add(user);
@@ -263,11 +264,10 @@ public class GetGameUserCommandTest : TestBase
         {
             Platform = user.Platform,
             PlatformUserId = user.PlatformUserId,
-            UserName = user.Characters[1].Name,
         }, CancellationToken.None);
 
         var gameUser = result.Data!;
-        Assert.AreEqual(user.Characters[1].Id, gameUser.Character.Id);
+        Assert.AreEqual(character.Id, gameUser.Character.Id);
     }
 
     [Test]
@@ -323,7 +323,6 @@ public class GetGameUserCommandTest : TestBase
         {
             Platform = user.Platform,
             PlatformUserId = user.PlatformUserId,
-            UserName = "a",
         }, CancellationToken.None);
 
         var gamerUser = result.Data!;
@@ -382,7 +381,6 @@ public class GetGameUserCommandTest : TestBase
         {
             Platform = user.Platform,
             PlatformUserId = user.PlatformUserId,
-            UserName = "a",
         }, CancellationToken.None);
 
         var gameUser = result.Data!;

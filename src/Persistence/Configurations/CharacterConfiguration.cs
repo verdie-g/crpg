@@ -8,7 +8,6 @@ public class CharacterConfiguration : IEntityTypeConfiguration<Character>
 {
     public void Configure(EntityTypeBuilder<Character> builder)
     {
-        builder.HasIndex(c => new { c.UserId, c.Name }).HasFilter("deleted_at IS NULL").IsUnique();
         builder.HasQueryFilter(c => c.DeletedAt == null);
         builder.OwnsOne(c => c.Characteristics, ConfigureCharacterCharacteristics);
         builder.OwnsOne(c => c.Statistics, ConfigureCharacterStatistics);

@@ -49,12 +49,6 @@ internal static class CommonErrors
         Detail = $"Level {requiredLevel} is required but the character is {actualLevel}",
     };
 
-    public static Error CharacterNameAlreadyUsed(string characterName) => new(ErrorType.Validation, ErrorCode.CharacterNameAlreadyUsed)
-    {
-        Title = "Character name is already used",
-        Detail = $"Character name '{characterName}' is already used",
-    };
-
     public static Error CharacterNotFound(int characterId, int userId) => new(ErrorType.NotFound, ErrorCode.CharacterNotFound)
     {
         Title = "Character was not found",

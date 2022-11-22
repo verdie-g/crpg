@@ -7,9 +7,17 @@
             v-for="character in characters"
             v-bind:key="character.id"
             :active="selectedCharacter && character.id === selectedCharacter.id"
-            :label="`${character.name} (lvl ${character.level})`"
             @click="selectCharacter(character)"
-          />
+          >
+            <template #label>
+              {{ character.name }} (lvl {{ character.level }})
+              <b-icon
+                v-if="character.id === activeCharacterId"
+                class="is-pulled-right"
+                icon="check"
+              ></b-icon>
+            </template>
+          </b-menu-item>
         </b-menu-list>
       </b-menu>
 
@@ -52,6 +60,10 @@ export default class CharactersComponent extends Vue {
     return this.selectedCharacterId === -1
       ? null
       : this.characters.find(c => c.id === this.selectedCharacterId)!;
+  }
+
+  get activeCharacterId(): number | null {
+    return userModule.user!.activeCharacterId;
   }
 
   created(): void {

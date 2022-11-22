@@ -33,26 +33,6 @@ public class UpdateCharacterCommandTest : TestBase
     }
 
     [Test]
-    public async Task ShouldReturnErrorIfCharacterNameIsAlreadyUsed()
-    {
-        Character character1 = new() { Name = "abc" };
-        Character character2 = new() { Name = "def" };
-        User user = new() { Characters = { character1, character2 } };
-        ArrangeDb.Users.AddRange(user);
-        await ArrangeDb.SaveChangesAsync();
-
-        UpdateCharacterCommand cmd = new()
-        {
-            CharacterId = character1.Id,
-            UserId = user.Id,
-            Name = "def",
-        };
-        var result = await new UpdateCharacterCommand.Handler(ActDb, Mapper).Handle(cmd, CancellationToken.None);
-        Assert.IsNotNull(result.Errors);
-        Assert.AreEqual(ErrorCode.CharacterNameAlreadyUsed, result.Errors![0].Code);
-    }
-
-    [Test]
     public async Task CharacterNotFound()
     {
         var user = ArrangeDb.Users.Add(new User());

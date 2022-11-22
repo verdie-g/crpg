@@ -21,7 +21,6 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
 {
     public Platform Platform { get; init; }
     public string PlatformUserId { get; init; } = default!;
-    public string UserName { get; init; } = default!;
 
     internal class Handler : IMediatorRequestHandler<GetGameUserCommand, GameUserViewModel>
     {
@@ -117,16 +116,16 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
         public async Task<Result<GameUserViewModel>> Handle(GetGameUserCommand req, CancellationToken cancellationToken)
         {
             var user = await _db.Users
-                .Include(u => u.Characters.Where(c => c.Name == req.UserName).Take(1))
+                .Include(u => u.ActiveCharacter)
                 .Include(u => u.ClanMembership)
                 .FirstOrDefaultAsync(u => u.Platform == req.Platform && u.PlatformUserId == req.PlatformUserId,
                     cancellationToken);
 
             if (user == null)
             {
-                user = CreateUser(req.Platform, req.PlatformUserId, req.UserName);
+                user = CreateUser(req.Platform, req.PlatformUserId);
                 _db.Users.Add(user);
-                Logger.LogInformation("{0} joined ({1}#{2})", req.UserName, req.Platform, req.PlatformUserId);
+                Logger.LogInformation("User joined ({1}#{2})", req.Platform, req.PlatformUserId);
             }
             else
             {
@@ -141,7 +140,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
             }
 
             Character? newCharacter = null;
-            if (user.Characters.Count == 0)
+            if (user.ActiveCharacter == null)
             {
                 if (await HasRecentlyCreatedACharacter(user.Id))
                 {
@@ -150,13 +149,14 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
                 }
 
                 var itemSet = await GiveUserRandomItemSet(user);
-                newCharacter = CreateCharacter(req.UserName, itemSet);
+                newCharacter = CreateCharacter(itemSet);
                 user.Characters.Add(newCharacter);
+                user.ActiveCharacter = newCharacter;
             }
             else
             {
                 // Load items in separate query to avoid cartesian explosion if character has many items equipped.
-                await _db.Entry(user.Characters[0])
+                await _db.Entry(user.ActiveCharacter)
                     .Collection(c => c.EquippedItems)
                     .Query()
                     .Include(ei => ei.UserItem)
@@ -177,13 +177,12 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
             return new(gameUser);
         }
 
-        private User CreateUser(Platform platform, string platformUserId, string name)
+        private User CreateUser(Platform platform, string platformUserId)
         {
             User user = new()
             {
                 Platform = platform,
                 PlatformUserId = platformUserId,
-                Name = name,
             };
 
             _userService.SetDefaultValuesForUser(user);
@@ -207,11 +206,11 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
                 c.UserId == userId && _dateTime.UtcNow < c.CreatedAt + TimeSpan.FromHours(1));
         }
 
-        private Character CreateCharacter(string name, IList<EquippedItem> equippedItems)
+        private Character CreateCharacter(IList<EquippedItem> equippedItems)
         {
             Character character = new()
             {
-                Name = name,
+                Name = "Peasant",
                 EquippedItems = equippedItems,
                 Statistics = new CharacterStatistics
                 {
