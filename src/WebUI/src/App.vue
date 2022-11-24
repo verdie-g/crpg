@@ -123,8 +123,8 @@ export default class App extends Vue {
     return userModule.userLoading;
   }
 
-  registerPoll() {
-    const { stop } = useTimeoutPoll(userModule.getUser, 1000 * 60 * 2);
+  async getUser() {
+    const { stop } = await useTimeoutPoll(userModule.getUser, 1000 * 60 * 2);
     this.$once('hook:beforeDestroy', () => {
       stop();
     });
@@ -140,8 +140,7 @@ export default class App extends Vue {
         if (user.state && user.state.url) {
           this.$router.replace(user.state.url);
         }
-        await userModule.getUser();
-        this.registerPoll();
+        await this.getUser();
         return;
       }
 
@@ -150,8 +149,7 @@ export default class App extends Vue {
       try {
         const token = await signInSilent();
         if (token !== null) {
-          await userModule.getUser();
-          this.registerPoll();
+          await this.getUser();
         }
       } catch {
         // The grant is probably not valid anymore because the server was restarted.
