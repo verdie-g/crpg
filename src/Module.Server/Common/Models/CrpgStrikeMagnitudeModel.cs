@@ -1,6 +1,4 @@
-﻿using Crpg.Module.Helpers;
-using TaleWorlds.Core;
-using TaleWorlds.Library;
+﻿using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common.Models;
@@ -34,5 +32,34 @@ internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
         }
 
         return result;
+    }
+
+    public override float CalculateStrikeMagnitudeForSwing(BasicCharacterObject attackerCharacter, BasicCharacterObject attackerCaptainCharacter, float swingSpeed, float impactPoint, float weaponWeight, WeaponComponentData weaponUsageComponent, float weaponLength, float weaponInertia, float weaponCoM, float extraLinearSpeed, bool doesAttackerHaveMount)
+    {
+        float impactPointFactor;
+        if (weaponUsageComponent.WeaponClass == WeaponClass.OneHandedAxe
+        || weaponUsageComponent.WeaponClass == WeaponClass.TwoHandedAxe
+        || weaponUsageComponent.WeaponClass == WeaponClass.Mace
+        || weaponUsageComponent.WeaponClass == WeaponClass.TwoHandedMace
+        || weaponUsageComponent.WeaponClass == WeaponClass.OneHandedPolearm
+        || weaponUsageComponent.WeaponClass == WeaponClass.TwoHandedPolearm
+        || weaponUsageComponent.WeaponClass == WeaponClass.LowGripPolearm)
+        {
+            impactPointFactor = (float)Math.Pow(10f, -4f * Math.Pow(impactPoint - 0.93, 2f));
+            Console.WriteLine();
+            return 10f * (0.4f + 0.6f * impactPointFactor) * (1f + extraLinearSpeed / 20f);
+        }
+        else
+        {
+            impactPointFactor = (float)Math.Pow(10f, -4f * Math.Pow(impactPoint - 0.75, 2f));
+            Console.WriteLine("others");
+            return 10f * (0.8f + 0.2f * impactPointFactor) * (1f + extraLinearSpeed / 15f);
+            ;
+        }
+    }
+    public override float CalculateStrikeMagnitudeForThrust(BasicCharacterObject attackerCharacter, BasicCharacterObject attackerCaptainCharacter, float thrustWeaponSpeed, float weaponWeight, WeaponComponentData weaponUsageComponent, float extraLinearSpeed, bool doesAttackerHaveMount, bool isThrown = false)
+    {
+        Console.WriteLine("thrust");
+        return 10f * (1f + extraLinearSpeed / 15f);
     }
 }
