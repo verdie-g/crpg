@@ -17551,7 +17551,7 @@
     "weapons": []
   },
   {
-    "id": "crpg_mail_with_tabbard1",
+    "id": "crpg_mail_with_tabbardfive",
     "name": "Mail With Tabbard",
     "culture": "Vlandia",
     "type": "BodyArmor",
@@ -17572,7 +17572,7 @@
     "weapons": []
   },
   {
-    "id": "crpg_mail_with_tabbard2",
+    "id": "crpg_mail_with_tabbardfour",
     "name": "Mail With Tabbard",
     "culture": "Vlandia",
     "type": "BodyArmor",
@@ -17593,7 +17593,7 @@
     "weapons": []
   },
   {
-    "id": "crpg_mail_with_tabbard3",
+    "id": "crpg_mail_with_tabbardone",
     "name": "Mail With Tabbard",
     "culture": "Vlandia",
     "type": "BodyArmor",
@@ -17614,7 +17614,7 @@
     "weapons": []
   },
   {
-    "id": "crpg_mail_with_tabbard4",
+    "id": "crpg_mail_with_tabbardsix",
     "name": "Mail With Tabbard",
     "culture": "Vlandia",
     "type": "BodyArmor",
@@ -17635,7 +17635,7 @@
     "weapons": []
   },
   {
-    "id": "crpg_mail_with_tabbard5",
+    "id": "crpg_mail_with_tabbardthree",
     "name": "Mail With Tabbard",
     "culture": "Vlandia",
     "type": "BodyArmor",
@@ -17656,7 +17656,7 @@
     "weapons": []
   },
   {
-    "id": "crpg_mail_with_tabbard6",
+    "id": "crpg_mail_with_tabbardtwo",
     "name": "Mail With Tabbard",
     "culture": "Vlandia",
     "type": "BodyArmor",
