@@ -71,7 +71,7 @@ export default class CharactersComponent extends Vue {
     userModule.getCharacters().then(c => {
       this.selectedCharacterId = c.length > 0 ? c[0].id : -1;
 
-      const { stop } = useTimeoutPoll(userModule.getCharacters, 1000);
+      const { stop } = useTimeoutPoll(userModule.getCharacters, 1000 * 60 * 2);
       this.$once('hook:beforeDestroy', () => {
         stop();
       });

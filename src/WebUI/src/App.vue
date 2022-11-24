@@ -124,7 +124,7 @@ export default class App extends Vue {
   }
 
   registerPoll() {
-    const { stop } = useTimeoutPoll(userModule.getUser, 1000);
+    const { stop } = useTimeoutPoll(userModule.getUser, 1000 * 60 * 2);
     this.$once('hook:beforeDestroy', () => {
       stop();
     });
