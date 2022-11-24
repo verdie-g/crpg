@@ -206,7 +206,9 @@ export default class Shop extends Vue {
       if (this.filters.showAffordable && userModule.user?.gold && i.price > userModule.user.gold) {
         return false;
       }
-      if (!this.matchesItem(i, this.filters.searchQuery)) return false;
+      if (!this.matchesItem(i, this.filters.searchQuery)) {
+        return false;
+      }
 
       // When the user filters by a culture, Neutral items are always added in the result.
       return (
@@ -265,13 +267,17 @@ export default class Shop extends Vue {
   }
 
   matchesItem(item: Item, searchQuery: string): boolean {
-    if (searchQuery.length === 0) return true;
+    if (searchQuery.length === 0) {
+      return true;
+    }
 
     const lowerCaseSearchQuery = searchQuery.toLowerCase();
     return (
       item.name.toLowerCase().includes(lowerCaseSearchQuery) ||
       item.culture.toLowerCase().includes(lowerCaseSearchQuery) ||
-      itemTypeToStr[item.type].toLowerCase().includes(lowerCaseSearchQuery)
+      itemTypeToStr[item.type].toLowerCase().includes(lowerCaseSearchQuery) ||
+      item.flags.some(f => f.toLowerCase().toLowerCase().includes(lowerCaseSearchQuery)) ||
+      item.weapons.some(w => w.flags.some(f => f.toLowerCase().toLowerCase().includes(lowerCaseSearchQuery)))
     );
   }
 }
