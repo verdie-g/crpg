@@ -74,6 +74,20 @@ internal class ItemExporter : IDataExporter
             };
         }
 
+        List<WeaponClass> meleeClass = new()
+        {
+            WeaponClass.Dagger,
+            WeaponClass.Mace,
+            WeaponClass.TwoHandedMace,
+            WeaponClass.OneHandedSword,
+            WeaponClass.TwoHandedSword,
+            WeaponClass.OneHandedAxe,
+            WeaponClass.TwoHandedAxe,
+            WeaponClass.Pick,
+            WeaponClass.LowGripPolearm,
+            WeaponClass.OneHandedPolearm,
+            WeaponClass.TwoHandedPolearm,
+        };
         if (mbItem.WeaponComponent != null)
         {
             crpgItem.Weapons = mbItem.WeaponComponent.Weapons.Select(w => new CrpgItemWeaponComponent
@@ -88,15 +102,14 @@ internal class ItemExporter : IDataExporter
                 Handling = w.Handling,
                 BodyArmor = w.BodyArmor,
                 Flags = MbToCrpgWeaponFlags(w.WeaponFlags),
-                ThrustDamage = w.ThrustDamage,
+                ThrustDamage = meleeClass.Contains(w.WeaponClass) ? (int)(w.ThrustDamageFactor * 10f) : w.ThrustDamage,
                 ThrustDamageType = MbToCrpgDamageType(w.ThrustDamageType),
                 ThrustSpeed = w.ThrustSpeed,
-                SwingDamage = w.SwingDamage,
+                SwingDamage = meleeClass.Contains(w.WeaponClass) ? (int)(w.SwingDamageFactor * 10f) : w.SwingDamage,
                 SwingDamageType = MbToCrpgDamageType(w.SwingDamageType),
                 SwingSpeed = w.SwingSpeed,
             }).ToArray();
         }
-
         return crpgItem;
     }
 
