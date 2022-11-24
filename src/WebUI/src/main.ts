@@ -13,7 +13,6 @@ import '@fortawesome/fontawesome-free/css/all.css';
 import '@fortawesome/fontawesome-free/css/fontawesome.css';
 import 'leaflet/dist/leaflet.css';
 import '@/assets/scss/index.scss';
-import PollManager from '@/utils/poll-manager';
 
 Vue.use(Buefy, {
   defaultIconPack: 'fas',
@@ -29,11 +28,10 @@ Icon.Default.mergeOptions({
 
 Vue.config.productionTip = false;
 
+// Synchronize browser tabs: user info (gold) and characters info (exp)
 shareMutations({
   predicate: ['setUser', 'setCharacters'],
 })(store);
-
-PollManager.getInstance(1000 * 60 * 2).start();
 
 new Vue({
   router,
