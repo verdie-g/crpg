@@ -67,19 +67,19 @@ export default class CharactersComponent extends Vue {
     return userModule.user!.activeCharacterId;
   }
 
+  async created() {
+    const { stop } = await useTimeoutPoll(this.getCharacters, 1000 * 60 * 2);
+    this.$once('hook:beforeDestroy', () => {
+      stop();
+    });
+  }
+
   async getCharacters() {
     const characters = await userModule.getCharacters();
 
     if (this.selectedCharacterId != -1 && characters.length <= 0) return;
 
     this.selectedCharacterId = characters[0].id;
-  }
-
-  async created() {
-    const { stop } = await useTimeoutPoll(this.getCharacters, 1000 * 60 * 2);
-    this.$once('hook:beforeDestroy', () => {
-      stop();
-    });
   }
 
   selectCharacter(character: Character): void {

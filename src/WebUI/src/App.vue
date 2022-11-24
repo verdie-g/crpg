@@ -123,13 +123,6 @@ export default class App extends Vue {
     return userModule.userLoading;
   }
 
-  async getUser() {
-    const { stop } = await useTimeoutPoll(userModule.getUser, 1000 * 60 * 2);
-    this.$once('hook:beforeDestroy', () => {
-      stop();
-    });
-  }
-
   async beforeCreate() {
     userModule.setUserLoading(true);
     try {
@@ -160,6 +153,13 @@ export default class App extends Vue {
     } finally {
       userModule.setUserLoading(false);
     }
+  }
+
+  async getUser() {
+    const { stop } = await useTimeoutPoll(userModule.getUser, 1000 * 60 * 2);
+    this.$once('hook:beforeDestroy', () => {
+      stop();
+    });
   }
 
   signOut(): void {
