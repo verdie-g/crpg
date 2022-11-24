@@ -47,7 +47,7 @@ internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
         {
             impactPointFactor = (float)Math.Pow(10f, -4f * Math.Pow(impactPoint - 0.93, 2f));
             Console.WriteLine();
-            return 10f * (0.4f + 0.6f * impactPointFactor) * (1f + extraLinearSpeed / 20f);
+            return 10f * (0.4f + 0.6f * impactPointFactor) * (1f + extraLinearSpeed / 15f);
         }
         else
         {
