@@ -2,6 +2,7 @@
 
 namespace Crpg.Application.Common;
 
+// To synchronize with Crpg.Module.Common.CrpgConstants.
 public class Constants
 {
     public float[] WeaponProficiencyPointsForAgilityCoefs { get; set; } = Array.Empty<float>();
@@ -10,6 +11,7 @@ public class Constants
     public float[] WeaponProficiencyCostCoefs { get; set; } = Array.Empty<float>();
     public float DefaultExperienceMultiplier { get; set; }
     public float[] ExperienceMultiplierForGenerationCoefs { get; set; } = Array.Empty<float>();
+    public float MaxExperienceMultiplierForGeneration { get; set; }
     public float[] RespecializeExperiencePenaltyCoefs { get; set; } = Array.Empty<float>();
     public int MinimumRetirementLevel { get; set; }
     public float BaseExperienceGainPerSecond { get; set; }

@@ -18,14 +18,17 @@ public class RetireCharacterCommandTest : TestBase
         MinimumLevel = 1,
         MinimumRetirementLevel = 31,
         ExperienceMultiplierForGenerationCoefs = new[] { 0.03f, 1.0f },
+        MaxExperienceMultiplierForGeneration = 1.48f,
     };
 
-    [Test]
-    public async Task Basic()
+    [TestCase(2, 1.09f)]
+    [TestCase(15, 1.48f)]
+    [TestCase(16, 1.48f)]
+    public async Task Basic(int generation, float expectedExperienceMultiplier)
     {
         Character character = new()
         {
-            Generation = 2,
+            Generation = generation,
             Level = 31,
             Experience = 32000,
             ExperienceMultiplier = 1.06f,
@@ -62,10 +65,10 @@ public class RetireCharacterCommandTest : TestBase
             .Include(c => c.User)
             .Include(c => c.EquippedItems)
             .FirstAsync(c => c.Id == character.Id);
-        Assert.AreEqual(3, character.Generation);
+        Assert.AreEqual(generation + 1, character.Generation);
         Assert.AreEqual(Constants.MinimumLevel, character.Level);
         Assert.AreEqual(0, character.Experience);
-        Assert.AreEqual(1.09f, character.ExperienceMultiplier);
+        Assert.AreEqual(expectedExperienceMultiplier, character.ExperienceMultiplier);
         Assert.AreEqual(0, character.Statistics.Kills);
         Assert.AreEqual(0, character.Statistics.Deaths);
         Assert.AreEqual(0, character.Statistics.Assists);

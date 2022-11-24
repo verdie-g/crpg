@@ -1,6 +1,6 @@
 ﻿namespace Crpg.Module.Common;
 
-// Copy of Crpg.Application.Common.Constants
+// To synchronize with Crpg.Application.Common.Constants.
 internal class CrpgConstants
 {
     public float[] WeaponProficiencyPointsForAgilityCoefs { get; set; } = Array.Empty<float>();
@@ -9,6 +9,7 @@ internal class CrpgConstants
     public float[] WeaponProficiencyCostCoefs { get; set; } = Array.Empty<float>();
     public float DefaultExperienceMultiplier { get; set; }
     public float[] ExperienceMultiplierForGenerationCoefs { get; set; } = Array.Empty<float>();
+    public float MaxExperienceMultiplierForGeneration { get; set; }
     public float[] RespecializeExperiencePenaltyCoefs { get; set; } = Array.Empty<float>();
     public int MinimumRetirementLevel { get; set; }
     public float BaseExperienceGainPerSecond { get; set; }

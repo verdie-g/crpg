@@ -54,7 +54,9 @@ public record RetireCharacterCommand : IMediatorRequest<CharacterViewModel>
             character.Generation += 1;
             character.Level = _constants.MinimumLevel;
             character.Experience = 0;
-            character.ExperienceMultiplier = MathHelper.ApplyPolynomialFunction(character.Generation, _constants.ExperienceMultiplierForGenerationCoefs);
+            character.ExperienceMultiplier = Math.Min(
+                MathHelper.ApplyPolynomialFunction(character.Generation, _constants.ExperienceMultiplierForGenerationCoefs),
+                _constants.MaxExperienceMultiplierForGeneration);
             character.EquippedItems.Clear();
             character.Statistics.Kills = 0;
             character.Statistics.Deaths = 0;
