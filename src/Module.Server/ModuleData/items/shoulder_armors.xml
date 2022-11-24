@@ -478,4 +478,16 @@
     </ItemComponent>
     <Flags Civilian="true" UseTeamColor="true" />
   </Item>
+  <Item id="crpg_swadian_shoulders" name="Western Shoulder Plates" mesh="swadian_shoulders" culture="Culture.vlandia" weight="3.6" appearance="2" Type="Cape">
+		<ItemComponent>
+			<Armor body_armor="25" arm_armor="9" modifier_group="plate" material_type="Plate"/>
+		</ItemComponent>
+		<Flags/>
+	</Item>
+	<Item id="crpg_western_chain_shoulders" name="Western chain shoulders" mesh="chain_shoulders" is_merchandise="true" culture="Culture.vlandia" weight="3.6" appearance="2" Type="Cape">
+		<ItemComponent>
+			<Armor body_armor="12" modifier_group="Chainmail" material_type="Chainmail"/>
+		</ItemComponent>
+		<Flags/>
+	</Item>
 </Items>

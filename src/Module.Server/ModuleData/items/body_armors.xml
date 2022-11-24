@@ -1391,4 +1391,82 @@
     </ItemComponent>
     <Flags UseTeamColor="true" Civilian="true" />
   </Item>
+  <Item id="crpg_sa_1ChurburghTorso" name="Plate Cuirass" mesh="sa_1churburghtorso" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="30" difficulty="0" appearance="1" Type="BodyArmor">
+		<ItemComponent>
+			<Armor body_armor="64" leg_armor="20" arm_armor="25" covers_body="true" modifier_group="Plate" material_type="Plate"/>
+		</ItemComponent>
+		<Flags UseTeamColor="true"/>
+	</Item>
+	<Item id="crpg_sa_brigandine1" name="red Brigandine with armpads" mesh="sa_brigandine1" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="12" difficulty="0" appearance="3" Type="BodyArmor">
+		<ItemComponent>
+			<Armor body_armor="32" leg_armor="12" arm_armor="18" covers_body="true" modifier_group="plate" material_type="Plate"/>
+		</ItemComponent>
+		<Flags UseTeamColor="false"/>
+	</Item>
+	<Item id="crpg_sa_brigandine2" name="blue Brigandine with armpads" mesh="sa_brigandine2" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="12" difficulty="0" appearance="3" Type="BodyArmor">
+		<ItemComponent>
+			<Armor body_armor="32" leg_armor="12" arm_armor="18" covers_body="true" modifier_group="plate" material_type="Plate"/>
+		</ItemComponent>
+		<Flags UseTeamColor="false"/>
+	</Item>
+	<Item id="crpg_sa_brigandine5" name="black Brigandine with armpads" mesh="sa_brigandine5" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="12" difficulty="0" appearance="3" Type="BodyArmor">
+		<ItemComponent>
+			<Armor body_armor="32" leg_armor="12" arm_armor="18" covers_body="true" modifier_group="plate" material_type="Plate"/>
+		</ItemComponent>
+		<Flags UseTeamColor="false"/>
+	</Item>
+	<Item id="crpg_sa_brigandine3" name="blue Brigandine" mesh="sa_brigandine3" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="12" difficulty="0" appearance="3" Type="BodyArmor">
+		<ItemComponent>
+			<Armor body_armor="32" leg_armor="12" arm_armor="10" covers_body="true" modifier_group="plate" material_type="Plate"/>
+		</ItemComponent>
+		<Flags UseTeamColor="false"/>
+	</Item>
+	<Item id="crpg_sa_brigandine4" name="red Brigandine" mesh="sa_brigandine4" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="12" difficulty="0" appearance="3" Type="BodyArmor">
+		<ItemComponent>
+			<Armor body_armor="32" leg_armor="12" arm_armor="10" covers_body="true" modifier_group="plate" material_type="Plate"/>
+		</ItemComponent>
+		<Flags UseTeamColor="false"/>
+	</Item>
+	<Item id="crpg_sa_brigandine6" name="black Brigandine" mesh="sa_brigandine6" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="12" difficulty="0" appearance="3" Type="BodyArmor">
+		<ItemComponent>
+			<Armor body_armor="32" leg_armor="12" arm_armor="10" covers_body="true" modifier_group="plate" material_type="Plate"/>
+		</ItemComponent>
+		<Flags UseTeamColor="false"/>
+	</Item>
+	<Item id="crpg_mail_with_tabbard1" name="Mail With Tabbard" mesh="mail_with_tabbard1" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="29" difficulty="0" appearance="1" Type="BodyArmor">
+		<ItemComponent>
+			<Armor body_armor="36" leg_armor="15" arm_armor="20" covers_body="true" modifier_group="Chainmail" material_type="Chainmail"/>
+		</ItemComponent>
+		<Flags UseTeamColor="true"/>
+	</Item>
+	<Item id="crpg_mail_with_tabbard2" name="Mail With Tabbard" mesh="mail_with_tabbard2" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="29" difficulty="0" appearance="1" Type="BodyArmor">
+		<ItemComponent>
+			<Armor body_armor="36" leg_armor="15" arm_armor="20" covers_body="true" modifier_group="Chainmail" material_type="Chainmail"/>
+		</ItemComponent>
+		<Flags UseTeamColor="true"/>
+	</Item>
+	<Item id="crpg_mail_with_tabbard3" name="Mail With Tabbard" mesh="mail_with_tabbard3" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="29" difficulty="0" appearance="1" Type="BodyArmor">
+		<ItemComponent>
+			<Armor body_armor="36" leg_armor="15" arm_armor="20" covers_body="true" modifier_group="Chainmail" material_type="Chainmail"/>
+		</ItemComponent>
+		<Flags UseTeamColor="true"/>
+	</Item>
+	<Item id="crpg_mail_with_tabbard4" name="Mail With Tabbard" mesh="mail_with_tabbard4" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="29" difficulty="0" appearance="1" Type="BodyArmor">
+		<ItemComponent>
+			<Armor body_armor="36" leg_armor="15" arm_armor="20" covers_body="true" modifier_group="Chainmail" material_type="Chainmail"/>
+		</ItemComponent>
+		<Flags UseTeamColor="true"/>
+	</Item>
+	<Item id="crpg_mail_with_tabbard5" name="Mail With Tabbard" mesh="mail_with_tabbard5" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="29" difficulty="0" appearance="1" Type="BodyArmor">
+		<ItemComponent>
+			<Armor body_armor="36" leg_armor="15" arm_armor="20" covers_body="true" modifier_group="Chainmail" material_type="Chainmail"/>
+		</ItemComponent>
+		<Flags UseTeamColor="true"/>
+	</Item>
+	<Item id="crpg_mail_with_tabbard6" name="Mail With Tabbard" mesh="mail_with_tabbard6" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="29" difficulty="0" appearance="1" Type="BodyArmor">
+		<ItemComponent>
+			<Armor body_armor="36" leg_armor="15" arm_armor="20" covers_body="true" modifier_group="Chainmail" material_type="Chainmail"/>
+		</ItemComponent>
+		<Flags UseTeamColor="true"/>
+	</Item>
 </Items>
