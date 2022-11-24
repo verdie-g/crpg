@@ -13,6 +13,7 @@
     "@fortawesome/fontawesome-free": "^5.12.1",
     "buefy": "0.9.4",
     "leaflet": "^1.8.0",
+    "nanoevents": "^7.0.1",
     "oidc-client": "^1.10.1",
     "query-string": "^6.13.8",
     "vue": "^2.6.14",
@@ -22,7 +23,8 @@
     "vue2-leaflet": "^2.6.0",
     "vue2-leaflet-markercluster": "^3.1.0",
     "vuex": "^3.6.2",
-    "vuex-module-decorators": "^0.17.0"
+    "vuex-module-decorators": "^0.17.0",
+    "vuex-shared-mutations": "^1.0.2"
   },
   "devDependencies": {
     "@types/geojson": "^7946.0.7",

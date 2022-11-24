@@ -107,6 +107,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import userModule from '@/store/user-module';
 import User from '@/models/user';
 import { signInCallback, signOut, signInSilent } from './services/auth-service';
+import PollManager from '@/utils/poll-manager';
 
 @Component
 export default class App extends Vue {
@@ -133,6 +134,10 @@ export default class App extends Vue {
           this.$router.replace(user.state.url);
         }
         await userModule.getUser();
+        const unbind = PollManager.getInstance().on('tick', userModule.getUser);
+        this.$once('hook:beforeDestroy', () => {
+          unbind();
+        });
         return;
       }
 
@@ -142,6 +147,10 @@ export default class App extends Vue {
         const token = await signInSilent();
         if (token !== null) {
           await userModule.getUser();
+          const unbind = PollManager.getInstance().on('tick', userModule.getUser);
+          this.$once('hook:beforeDestroy', () => {
+            unbind();
+          });
         }
       } catch {
         // The grant is probably not valid anymore because the server was restarted.

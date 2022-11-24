@@ -45,6 +45,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import userModule from '@/store/user-module';
 import Character from '@/models/character';
 import CharacterComponent from '@/components/CharacterComponent.vue';
+import PollManager from '@/utils/poll-manager';
 
 @Component({
   components: { CharacterComponent },
@@ -67,7 +68,13 @@ export default class CharactersComponent extends Vue {
   }
 
   created(): void {
-    userModule.getCharacters().then(c => (this.selectedCharacterId = c.length > 0 ? c[0].id : -1));
+    userModule.getCharacters().then(c => {
+      this.selectedCharacterId = c.length > 0 ? c[0].id : -1;
+      const unbind = PollManager.getInstance().on('tick', userModule.getCharacters);
+      this.$once('hook:beforeDestroy', () => {
+        unbind();
+      });
+    });
   }
 
   selectCharacter(character: Character): void {
