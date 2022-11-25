@@ -63,7 +63,14 @@ internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
         }
     }
 
-    public override float CalculateStrikeMagnitudeForThrust(BasicCharacterObject attackerCharacter, BasicCharacterObject attackerCaptainCharacter, float thrustWeaponSpeed, float weaponWeight, WeaponComponentData weaponUsageComponent, float extraLinearSpeed, bool doesAttackerHaveMount, bool isThrown = false)
+    public override float CalculateStrikeMagnitudeForThrust
+        (BasicCharacterObject attackerCharacter,
+        BasicCharacterObject attackerCaptainCharacter,
+        float thrustWeaponSpeed, float weaponWeight,
+        WeaponComponentData weaponUsageComponent,
+        float extraLinearSpeed,
+        bool doesAttackerHaveMount,
+        bool isThrown = false)
     {
         return 10f * (1f + extraLinearSpeed / 15f);
     }
