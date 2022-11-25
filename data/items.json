@@ -6124,6 +6124,43 @@
     ]
   },
   {
+    "id": "crpg_boulder_on_a_stick",
+    "name": "Boulder on a Stick",
+    "culture": "Battania",
+    "type": "TwoHandedWeapon",
+    "price": 6647,
+    "weight": 2.7,
+    "tier": 6.559114,
+    "requirement": 0,
+    "flags": [],
+    "weapons": [
+      {
+        "class": "TwoHandedMace",
+        "itemUsage": "twohanded_axe",
+        "accuracy": 0,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 102,
+        "balance": 0.14,
+        "handling": 69,
+        "bodyArmor": 0,
+        "flags": [
+          "MeleeWeapon",
+          "NotUsableWithOneHand",
+          "TwoHandIdleOnMount",
+          "MultiplePenetration",
+          "CanKnockDown"
+        ],
+        "thrustDamage": 0,
+        "thrustDamageType": "Undefined",
+        "thrustSpeed": 87,
+        "swingDamage": 30,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 74
+      }
+    ]
+  },
+  {
     "id": "crpg_bound_adarga",
     "name": "Wooden Adarga",
     "culture": "Aserai",

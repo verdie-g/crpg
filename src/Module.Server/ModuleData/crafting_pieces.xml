@@ -5827,9 +5827,9 @@
 <Material id="Wood" count="1"/>
 </Materials>
 </CraftingPiece>
-<CraftingPiece id="crpg_bos_head" name="{=}Boulder for the Stick" tier="2" piece_type="Blade" mesh="crpg_bos_head" length="23.1" weight="2.000" full_scale="true" excluded_item_usage_features="shield:thrust">
+<CraftingPiece id="crpg_bos_head" name="{=}Boulder for the Stick" tier="2" piece_type="Blade" mesh="crpg_bos_head" length="23.1" weight="0.5" full_scale="true" excluded_item_usage_features="shield:thrust">
 <BladeData stack_amount="2" physics_material="wood_weapon" body_name="bo_mace_a">
-<Swing damage_type="Blunt" damage_factor="0.5"/>
+<Swing damage_type="Blunt" damage_factor="3.0"/>
 </BladeData>
 <Flags>
 <Flag name="CanKnockDown"/>
@@ -5839,18 +5839,7 @@
 <Material id="Wood" count="1"/>
 </Materials>
 </CraftingPiece>
-<CraftingPiece id="crpg_bos_head" name="{=}Boulder for the Stick" tier="2" piece_type="Blade" mesh="crpg_bos_head" length="20.0" weight="2.000" full_scale="true" excluded_item_usage_features="shield:thrust">
-<BladeData stack_amount="2" physics_material="wood_weapon" body_name="bo_mace_a">
-<Swing damage_type="Blunt" damage_factor="0.5"/>
-</BladeData>
-<Flags>
-<Flag name="CanKnockDown"/>
-<Flag name="CanCrushThrough"/>
-</Flags>
-<Materials>
-<Material id="Wood" count="1"/>
-</Materials>
-</CraftingPiece>
+
 <CraftingPiece id="crpg_greataxe_blade" name="{=}Great Axe Head" tier="3" piece_type="Blade" mesh="greataxe_blade" length="25.5" distance_to_next_piece="14.96" distance_to_previous_piece="2.712" weight="0.65">
 <BuildData piece_offset="-14.0"/>
 <BladeData stack_amount="0" blade_length="28.366" blade_width="28.192" physics_material="metal_weapon" body_name="bo_axe_longer_b">
