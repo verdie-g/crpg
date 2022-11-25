@@ -2,12 +2,19 @@
 
 internal static class MathHelper
 {
+    /// <summary>
+    /// Polynomial Function.
+    /// </summary>
+    /// <param name="x">The Polynomial Variable.</param>
+    /// <param name="coefficients">Coefficients are written in natural order [a,b,c] -> ax²+bx+c .</param>
+    /// <returns>A Polynomial that has x as a variable.</returns>
     public static float ApplyPolynomialFunction(float x, float[] coefficients)
     {
         float r = 0;
         for (int degree = 0; degree < coefficients.Length; degree += 1)
         {
-            r += coefficients[coefficients.Length - degree - 1] * (float)Math.Pow(x, degree);
+            int coefficientForDegreeIndex = coefficients.Length - 1 - degree;
+            r += coefficients[coefficientForDegreeIndex] * (float)Math.Pow(x, degree);
         }
 
         return r;
