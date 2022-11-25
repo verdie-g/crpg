@@ -1893,25 +1893,25 @@
       <Material id="Wood" count="1" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_western_throwing_axe_1_t1_handle" name="{=Rh3h5NIg}Hardened Short Hardwood Throwing Axe Handle" tier="4" piece_type="Handle" mesh="axe_craft_11_handle" length="60" weight="0.226">
+  <CraftingPiece id="crpg_western_throwing_axe_1_t1_handle" name="{=Rh3h5NIg}Hardened Short Hardwood Throwing Axe Handle" tier="4" piece_type="Handle" mesh="axe_craft_11_handle" length="60" weight="0.8">
     <BuildData piece_offset="7.2" next_piece_offset="4" />
     <Materials>
       <Material id="Iron3" count="1" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_northern_throwing_axe_1_t1_handle" name="{=Rh3h5NIg}Hardened Short Hardwood Throwing Axe Handle" tier="4" piece_type="Handle" mesh="axe_craft_11_handle" length="60" weight="0.226">
+  <CraftingPiece id="crpg_northern_throwing_axe_1_t1_handle" name="{=Rh3h5NIg}Hardened Short Hardwood Throwing Axe Handle" tier="4" piece_type="Handle" mesh="axe_craft_11_handle" length="60" weight="1">
     <BuildData piece_offset="7.2" next_piece_offset="4" />
     <Materials>
       <Material id="Iron3" count="1" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_southern_throwing_axe_1_t4_handle" name="{=Wkhv9ESv}Hardened Oaken Throwing Axe Handle" tier="4" piece_type="Handle" mesh="axe_craft_12_handle" length="70" weight="0.234">
+  <CraftingPiece id="crpg_southern_throwing_axe_1_t4_handle" name="{=Wkhv9ESv}Hardened Oaken Throwing Axe Handle" tier="4" piece_type="Handle" mesh="axe_craft_12_handle" length="70" weight="1">
     <BuildData piece_offset="8.175" next_piece_offset="4" />
     <Materials>
       <Material id="Wood" count="1" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_highland_throwing_axe_1_t2_handle" name="{=Wkhv9ESv}Hardened Oaken Throwing Axe Handle" tier="4" piece_type="Handle" mesh="axe_craft_12_handle" length="70" weight="0.234">
+  <CraftingPiece id="crpg_highland_throwing_axe_1_t2_handle" name="{=Wkhv9ESv}Hardened Oaken Throwing Axe Handle" tier="4" piece_type="Handle" mesh="axe_craft_12_handle" length="70" weight="1">
     <BuildData piece_offset="8.175" next_piece_offset="4" />
     <Materials>
       <Material id="Wood" count="1" />
@@ -2108,7 +2108,7 @@
   <CraftingPiece id="crpg_northern_throwing_axe_1_t1_blade" name="{=hSSk6tTn}Throwing Axe Head" tier="4" piece_type="Blade" mesh="axe_craft_13_head" distance_to_next_piece="2.7" distance_to_previous_piece="1.6" weight="0.481">
     <BuildData piece_offset="-3.2" />
     <BladeData stack_amount="4" blade_length="8.707" blade_width="16.898" physics_material="metal_weapon" body_name="bo_axe_longer_b" holster_mesh="throwing_axe_quiver_1">
-      <Swing damage_type="Cut" damage_factor="1.6275" />
+      <Swing damage_type="Cut" damage_factor="1.1" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="3" />
@@ -2121,7 +2121,7 @@
   <CraftingPiece id="crpg_western_throwing_axe_1_t1_blade" name="{=fdR6zYiP}Franziska Head" tier="4" piece_type="Blade" mesh="axe_craft_4_head" distance_to_next_piece="5.787" distance_to_previous_piece="1.483" weight="0.453" is_default="true">
     <BuildData piece_offset="-2.966" />
     <BladeData stack_amount="3" blade_length="10.566" blade_width="19.257" physics_material="metal_weapon" body_name="bo_axe_longer_b" holster_mesh="throwing_axe_quiver_1">
-      <Swing damage_type="Cut" damage_factor="1.624" />
+      <Swing damage_type="Cut" damage_factor="1.1" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="3" />
@@ -2134,7 +2134,7 @@
   <CraftingPiece id="crpg_southern_throwing_axe_1_t4_blade" name="{=fdR6zYiP}Franziska Head" tier="4" piece_type="Blade" mesh="axe_craft_4_head" distance_to_next_piece="5.787" distance_to_previous_piece="1.483" weight="0.453" is_default="true">
     <BuildData piece_offset="-2.966" />
     <BladeData stack_amount="3" blade_length="10.566" blade_width="19.257" physics_material="metal_weapon" body_name="bo_axe_longer_b" holster_mesh="throwing_axe_quiver_1">
-      <Swing damage_type="Cut" damage_factor="1.624" />
+      <Swing damage_type="Cut" damage_factor="1.125" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="3" />
@@ -2147,7 +2147,7 @@
   <CraftingPiece id="crpg_highland_throwing_axe_1_t2_blade" name="{=fdR6zYiP}Franziska Head" tier="4" piece_type="Blade" mesh="axe_craft_4_head" distance_to_next_piece="5.787" distance_to_previous_piece="1.483" weight="0.453" is_default="true">
     <BuildData piece_offset="-2.966" />
     <BladeData stack_amount="3" blade_length="10.566" blade_width="19.257" physics_material="metal_weapon" body_name="bo_axe_longer_b" holster_mesh="throwing_axe_quiver_1">
-      <Swing damage_type="Cut" damage_factor="1.624" />
+      <Swing damage_type="Cut" damage_factor="1.125" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="3" />
