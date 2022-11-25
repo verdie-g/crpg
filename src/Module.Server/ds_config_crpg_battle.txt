@@ -31,6 +31,7 @@ MapTimeLimit 8
 RoundTimeLimit 300
 WarmupTimeLimit 1
 disable_map_voting
+disable_culture_voting
 start_game
 set_automated_battle_count -1
 enable_automated_battle_switching
