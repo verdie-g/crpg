@@ -12,8 +12,6 @@ add_map_to_automated_battle_pool mp_skirmish_map_003_skinc
 add_map_to_automated_battle_pool mp_skirmish_map_009
 add_map_to_automated_battle_pool mp_skirmish_map_014
 add_map_to_automated_battle_pool mp_skirmish_map_020
-add_map_to_automated_battle_pool mp_tdm_map_001
-add_map_to_automated_battle_pool mp_tdm_map_003
 AllowPollsToKickPlayers True
 AllowPollsToChangeMaps True
 CultureTeam1 vlandia
@@ -32,6 +30,7 @@ RoundTotal 10
 MapTimeLimit 8
 RoundTimeLimit 300
 WarmupTimeLimit 1
+disable_map_voting
 start_game
 set_automated_battle_count -1
 enable_automated_battle_switching

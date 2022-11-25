@@ -116,7 +116,7 @@ internal class CrpgSiegeGameMode : MissionBasedMultiplayerGameMode
                 new CrpgRewardServer(crpgClient, _constants, warmupComponent, roundController: null),
                 new CrpgUserManagerServer(crpgClient),
                 new KickInactiveBehavior(inactiveTimeLimit: 90, warmupComponent),
-                new MapVoteComponent(),
+                new MapPoolComponent(),
                 new ChatCommandsComponent(chatBox, crpgClient),
                 new PlayerStatsComponent(),
 #else
