@@ -21,15 +21,7 @@
     </b-table-column>
 
     <b-table-column label="Status" width="80" v-slot="props">
-      <b-tag
-        v-if="checkIsDateExpired(props.row.createdAt, props.row.duration)"
-        rounded
-        type="is-primary is-light"
-      >
-        expired
-      </b-tag>
-
-      <template v-else>
+      <template v-if="!props.row.expired">
         <b-tooltip
           :label="`
               ${timestampToTimeString(
@@ -126,7 +118,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import Restriction from '@/models/restriction';
-import { timestampToTimeString, computeLeftMs, checkIsDateExpired } from '@/utils/date';
+import { timestampToTimeString, computeLeftMs } from '@/utils/date';
 import PlatformComponent from '@/components/Platform.vue';
 
 type WithName = Record<string, { name: string }>;
@@ -140,7 +132,6 @@ export default class RestrictionsTableComponent extends Vue {
 
   timestampToTimeString = timestampToTimeString;
   computeLeftMs = computeLeftMs;
-  checkIsDateExpired = checkIsDateExpired;
 
   searchByName(fieldName: string) {
     return <T extends WithName>(row: T, input: string) =>

@@ -9,4 +9,5 @@ export default interface Restriction {
   reason: string;
   restrictedByUser: UserPublic;
   createdAt: Date;
+  expired: boolean;
 }

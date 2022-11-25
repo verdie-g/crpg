@@ -14,6 +14,7 @@ import { get, post, put, del } from './crpg-client';
 import Clan from '@/models/clan';
 import UserItem from '@/models/user-item';
 import Platform from '@/models/platform';
+import { mapRestrictions } from '@/services/restriction-service';
 
 export function getUserByUserId(id: number): Promise<UserPublic> {
   return get(`/users/${id}`);
@@ -30,8 +31,9 @@ export function searchUser(payload: UserSearcyQuery): Promise<UserPublic[]> {
   return get(`/users?${query}`);
 }
 
-export function getUserRestrictions(id: number): Promise<Restriction[]> {
-  return get(`/users/${id}/restrictions`);
+export async function getUserRestrictions(id: number): Promise<Restriction[]> {
+  const restrictions: Omit<Restriction, 'expired'>[] = await get(`/users/${id}/restrictions`);
+  return mapRestrictions(restrictions);
 }
 
 export function getUser(): Promise<User> {
