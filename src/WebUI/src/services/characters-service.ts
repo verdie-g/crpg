@@ -37,9 +37,15 @@ export function computeSpeedStats({
   agility: number;
   totalEncumbrance: number;
 }): CharacterSpeedStats {
-  const AwfulScaler = 3231477.548;
-  const [a, b, c, d] = [10 / AwfulScaler, 0.00005 / AwfulScaler, 1000000 / AwfulScaler, 0];
-  const weightReductionFactor = 1 / (1 + applyPolynomialFunction(strength - 3, [a, b, c, d]));
+  const awfulScaler = 3231477.548;
+  const weightReductionPolynomialFactor = [
+    10 / awfulScaler,
+    0.00005 / awfulScaler,
+    1000000 / awfulScaler,
+    0,
+  ];
+  const weightReductionFactor =
+    1 / (1 + applyPolynomialFunction(strength - 3, weightReductionPolynomialFactor));
   const freeWeight = 2.5 * (1 + (strength - 3) / 30);
   const perceivedWeight = Math.max(totalEncumbrance - freeWeight, 0) * weightReductionFactor;
   const nakedSpeed = 0.68 + 0.00091 * (20 * athletics + 2 * agility);
