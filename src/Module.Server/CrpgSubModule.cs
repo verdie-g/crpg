@@ -38,6 +38,10 @@ internal class CrpgSubModule : MBSubModuleBase
         TaleWorlds.MountAndBlade.Module.CurrentModule.AddMultiplayerGameMode(new CrpgSiegeGameMode(_constants));
         TaleWorlds.MountAndBlade.Module.CurrentModule.AddMultiplayerGameMode(new CrpgDuelGameMode(_constants));
 
+#if CRPG_SERVER
+        CrpgServerConfiguration.Init();
+#endif
+
 #if CRPG_EXPORT
         TaleWorlds.MountAndBlade.Module.CurrentModule.AddInitialStateOption(new InitialStateOption("ExportData",
             new TextObject("Export Data"), 4578, ExportData, () => (false, null)));

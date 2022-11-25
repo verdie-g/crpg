@@ -215,9 +215,10 @@ internal class CrpgRewardServer : MissionBehavior
 
     private void SetReward(CrpgUserUpdate userUpdate, CrpgPeer crpgPeer, float durationRewarded, bool rewardMultiplierEnabled)
     {
+        float serverXpMultiplier = CrpgServerConfiguration.ServerExperienceMultiplier;
         userUpdate.Reward = new CrpgUserReward
         {
-            Experience = (int)(durationRewarded * (_constants.BaseExperienceGainPerSecond
+            Experience = (int)(serverXpMultiplier * durationRewarded * (_constants.BaseExperienceGainPerSecond
                 + crpgPeer.RewardMultiplier * _constants.MultipliedExperienceGainPerSecond)),
             Gold = (int)(durationRewarded * (_constants.BaseGoldGainPerSecond
                 + crpgPeer.RewardMultiplier * _constants.MultipliedGoldGainPerSecond)),
