@@ -5839,7 +5839,6 @@
 <Material id="Wood" count="1"/>
 </Materials>
 </CraftingPiece>
-
 <CraftingPiece id="crpg_greataxe_blade" name="{=}Great Axe Head" tier="3" piece_type="Blade" mesh="greataxe_blade" length="25.5" distance_to_next_piece="14.96" distance_to_previous_piece="2.712" weight="0.65">
 <BuildData piece_offset="-14.0"/>
 <BladeData stack_amount="0" blade_length="28.366" blade_width="28.192" physics_material="metal_weapon" body_name="bo_axe_longer_b">
