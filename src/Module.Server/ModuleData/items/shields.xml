@@ -1,78 +1,94 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Items>
-  <Item id="crpg_heavy_round_shield" name="{=hRKmfw2H}Heavy Round Shield" body_name="bo_cap_sturgia_shield_a" shield_body_name="bo_sturgia_shield_a" recalculate_body="false" mesh="sturgia_shield_a" culture="Culture.sturgia" using_tableau="true" weight="5.39" difficulty="0" appearance="0.9" Type="Shield" item_holsters="shield_round:shield_4" has_lower_holster_priority="true" holster_position_shift="0,0,0">
+  <Item id="crpg_heavy_round_shield" name="{=hRKmfw2H}Heavy Round Shield" body_name="bo_cap_sturgia_shield_a" shield_body_name="bo_sturgia_shield_a" recalculate_body="false" mesh="sturgia_shield_a" culture="Culture.sturgia" using_tableau="true" weight="10.2" difficulty="0" appearance="0.9" Type="Shield" item_holsters="shield_round:shield_4" has_lower_holster_priority="true" holster_position_shift="0,0,0">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="9" thrust_speed="86" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="86" physics_material="wood_shield" item_usage="hand_shield" position="-0.02, 0.0, 0.0" rotation="-15.0,-90.0,-10.0" weapon_length="70" center_of_mass="0, 0, 0" hit_points="250" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="5" thrust_speed="86" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="86" physics_material="wood_shield" item_usage="hand_shield" position="-0.02, 0.0, 0.0" rotation="-15.0,-90.0,-10.0" weapon_length="70" center_of_mass="0, 0, 0" hit_points="200" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" />
   </Item>
-  <Item id="crpg_leather_round_shield" name="{=WYFDXE82}Large Round Shield" body_name="bo_cap_sturgia_shield_a" shield_body_name="bo_sturgia_shield_b" recalculate_body="false" mesh="sturgia_shield_b" culture="Culture.sturgia" using_tableau="true" weight="4.83" difficulty="0" appearance="1" Type="Shield" item_holsters="shield_round:shield_4" has_lower_holster_priority="true" holster_position_shift="0,0,0.01">
+  <Item id="crpg_leather_round_shield" name="{=WYFDXE82}Large Round Shield" body_name="bo_cap_sturgia_shield_a" shield_body_name="bo_sturgia_shield_b" recalculate_body="false" mesh="sturgia_shield_b" culture="Culture.sturgia" using_tableau="true" weight="8" difficulty="0" appearance="1" Type="Shield" item_holsters="shield_round:shield_4" has_lower_holster_priority="true" holster_position_shift="0,0,0.01">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="7" thrust_speed="89" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="89" physics_material="wood_shield" item_usage="hand_shield" position="-0.02, 0.0, 0.0" rotation="-15.0,-90.0,-10.0" weapon_length="70" center_of_mass="0, 0.15, 0" hit_points="240" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="5" thrust_speed="89" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="89" physics_material="wood_shield" item_usage="hand_shield" position="-0.02, 0.0, 0.0" rotation="-15.0,-90.0,-10.0" weapon_length="70" center_of_mass="0, 0.15, 0" hit_points="200" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" />
   </Item>
-  <Item id="crpg_sturgia_old_shield_a" name="{=RddFH0BA}Iron Rimmed Large Round Shield" body_name="bo_cap_sturgia_old_shield" shield_body_name="bo_sturgia_old_shield" recalculate_body="false" mesh="sturgia_old_shield_a" culture="Culture.sturgia" using_tableau="true" weight="3.57" difficulty="0" appearance="1" Type="Shield" item_holsters="shield_round:shield_4" has_lower_holster_priority="true" holster_position_shift="0,0,0.01">
+  <Item id="crpg_sturgia_old_shield_a" name="{=RddFH0BA}Iron Rimmed Large Round Shield" body_name="bo_cap_sturgia_old_shield" shield_body_name="bo_sturgia_old_shield" recalculate_body="false" mesh="sturgia_old_shield_a" culture="Culture.sturgia" using_tableau="true" weight="8.6" difficulty="0" appearance="1" Type="Shield" item_holsters="shield_round:shield_4" has_lower_holster_priority="true" holster_position_shift="0,0,0.01">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="hand_shield" position="-0.02, 0.0, 0.0" rotation="-15.0,-90.0,-10.0" weapon_length="70" center_of_mass="0, 0, 0" hit_points="240" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="5" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="hand_shield" position="-0.02, 0.0, 0.0" rotation="-15.0,-90.0,-10.0" weapon_length="70" center_of_mass="0, 0, 0" hit_points="150" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" />
   </Item>
-  <Item id="crpg_sturgia_old_shield_b" name="{=C2IIn10Q}Simple Large Round Shield" body_name="bo_cap_sturgia_old_shield" shield_body_name="bo_sturgia_old_shield" recalculate_body="false" mesh="sturgia_old_shield_b" culture="Culture.sturgia" using_tableau="true" weight="1.96" difficulty="0" appearance="1" Type="Shield" item_holsters="shield_round:shield_4" has_lower_holster_priority="true" holster_position_shift="0,0,0.01">
+  <Item id="crpg_sturgia_old_shield_b" name="{=C2IIn10Q}Simple Large Round Shield" body_name="bo_cap_sturgia_old_shield" shield_body_name="bo_sturgia_old_shield" recalculate_body="false" mesh="sturgia_old_shield_b" culture="Culture.sturgia" using_tableau="true" weight="5.8" difficulty="0" appearance="1" Type="Shield" item_holsters="shield_round:shield_4" has_lower_holster_priority="true" holster_position_shift="0,0,0.01">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="0" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="hand_shield" position="-0.02, 0.0, 0.0" rotation="-15.0,-90.0,-10.0" weapon_length="70" center_of_mass="0, 0, 0" hit_points="140" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="0" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="hand_shield" position="-0.02, 0.0, 0.0" rotation="-15.0,-90.0,-10.0" weapon_length="70" center_of_mass="0, 0, 0" hit_points="100" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" />
   </Item>
-  <Item id="crpg_oval_shield" name="{=927d3urB}Wooden Oval Shield" body_name="bo_cap_aserai_shields_b" shield_body_name="bo_aserai_shields_b" recalculate_body="false" mesh="aserai_shields_b" culture="Culture.aserai" using_tableau="true" weight="3.696" appearance="0.7" Type="Shield" item_holsters="shield_oval:shield_4:shield_3:shield_2" has_lower_holster_priority="true" holster_position_shift="-0.04,-0.0,0">
+  <Item id="crpg_oval_shield" name="{=927d3urB}Wooden Oval Shield" body_name="bo_cap_aserai_shields_b" shield_body_name="bo_aserai_shields_b" recalculate_body="false" mesh="aserai_shields_b" culture="Culture.aserai" using_tableau="true" weight="11.6" appearance="0.7" Type="Shield" item_holsters="shield_oval:shield_4:shield_3:shield_2" has_lower_holster_priority="true" holster_position_shift="-0.04,-0.0,0">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="132" center_of_mass="0, 0.1, 0.1" hit_points="125" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="0" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="132" center_of_mass="0, 0.1, 0.1" hit_points="70" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_bound_desert_round_shield" name="{=WzAJJQjP}Desert Round Shield" using_tableau="true" body_name="bo_cap_aserai_shields_c" shield_body_name="bo_aserai_shields_d" recalculate_body="false" mesh="aserai_shields_d" culture="Culture.aserai" weight="1.644" appearance="1" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.12,-0.15,-0.025">
+  <Item id="crpg_bound_desert_round_shield" name="{=WzAJJQjP}Desert Round Shield" using_tableau="true" body_name="bo_cap_aserai_shields_c" shield_body_name="bo_aserai_shields_d" recalculate_body="false" mesh="aserai_shields_d" culture="Culture.aserai" weight="2.2" appearance="1" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.12,-0.15,-0.025">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="60" center_of_mass="-0.0, 0.1, 0.1" hit_points="122" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="60" center_of_mass="-0.0, 0.1, 0.1" hit_points="100" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_curved_round_shield" name="{=hE8s9bpP}Curved Round Shield" using_tableau="true" body_name="bo_cap_aserai_shields_e" shield_body_name="bo_aserai_shields_e" recalculate_body="false" mesh="aserai_shields_e" culture="Culture.aserai" weight="2.112" appearance="1" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.07,-0.1,-0.0">
+  <Item id="crpg_curved_round_shield" name="{=hE8s9bpP}Curved Round Shield" using_tableau="true" body_name="bo_cap_aserai_shields_e" shield_body_name="bo_aserai_shields_e" recalculate_body="false" mesh="aserai_shields_e" culture="Culture.aserai" weight="2.4" appearance="1" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.07,-0.1,-0.0">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="66" center_of_mass="-0.0, 0.1, 0.1" hit_points="145" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="66" center_of_mass="-0.0, 0.1, 0.1" hit_points="100" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_studded_round_shield" name="{=QodawBSN}Iron Round Shield" using_tableau="true" body_name="bo_cap_aserai_shields_c" shield_body_name="bo_aserai_shields_f" recalculate_body="false" mesh="aserai_shields_f" culture="Culture.aserai" weight="3.3" appearance="0.7" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,0">
+  <Item id="crpg_studded_round_shield" name="{=QodawBSN}Iron Round Shield" using_tableau="true" body_name="bo_cap_aserai_shields_c" shield_body_name="bo_aserai_shields_f" recalculate_body="false" mesh="aserai_shields_f" culture="Culture.aserai" weight="8.2" appearance="0.7" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,0">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="60" center_of_mass="-0.0, 0.1, 0.1" hit_points="260" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="5" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="60" center_of_mass="-0.0, 0.1, 0.1" hit_points="140" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_steel_round_shield" name="{=FktkkUMK}Steel Round Shield" body_name="bo_cap_aserai_shields_g" shield_body_name="bo_aserai_shields_g" recalculate_body="false" mesh="aserai_shields_g" culture="Culture.khuzait" weight="3.3" appearance="0.9" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.07,-0.05">
+  <Item id="crpg_steel_round_shield" name="{=FktkkUMK}Steel Round Shield" body_name="bo_cap_aserai_shields_g" shield_body_name="bo_aserai_shields_g" recalculate_body="false" mesh="aserai_shields_g" culture="Culture.khuzait" weight="11.2" appearance="0.9" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.07,-0.05">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="metal_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="60" center_of_mass="0.01, 0.07, 0.1" hit_points="260" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="15" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="metal_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="60" center_of_mass="0.01, 0.07, 0.1" hit_points="190" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_bound_adarga" name="{=gfQDDkEY}Wooden Adarga" using_tableau="true" body_name="bo_cap_aserai_shields_h" shield_body_name="bo_aserai_shields_h" recalculate_body="false" mesh="aserai_shields_h" culture="Culture.aserai" weight="1.62" appearance="1" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.0,0">
+  <Item id="crpg_bound_adarga" name="{=gfQDDkEY}Wooden Adarga" using_tableau="true" body_name="bo_cap_aserai_shields_h" shield_body_name="bo_aserai_shields_h" recalculate_body="false" mesh="aserai_shields_h" culture="Culture.aserai" weight="3.8" appearance="1" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.0,0">
+    <ItemComponent>
+      <Weapon weapon_class="LargeShield" body_armor="0" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="60" center_of_mass="0.0,0.05,0.05" hit_points="70" modifier_group="shield">
+        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
+  </Item>
+  <Item id="crpg_battania_targe_b" name="{=MnmUBlbL}Targe" using_tableau="true" body_name="bo_cap_battania_targe_b" shield_body_name="bo_battania_targe_b" recalculate_body="false" mesh="battania_targe_b" culture="Culture.battania" weight="3.4" appearance="1.1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0.0,0">
+    <ItemComponent>
+      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.18, -0.04, 0.00" rotation="-5.90,19.00,38.50" weapon_length="70" center_of_mass="-0.0, 0.12, 0.1" hit_points="120" modifier_group="shield">
+        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
+  </Item>
+  <Item id="crpg_large_adarga" name="{=cXesETQJ}Large Adarga" using_tableau="true" body_name="bo_cap_aserai_shields_i" shield_body_name="bo_aserai_shields_i" recalculate_body="false" mesh="aserai_shields_i" culture="Culture.aserai" weight="3" appearance="1" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.06,-0.0,0">
     <ItemComponent>
       <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="60" center_of_mass="0.0,0.05,0.05" hit_points="120" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
@@ -80,239 +96,231 @@
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_battania_targe_b" name="{=MnmUBlbL}Targe" using_tableau="true" body_name="bo_cap_battania_targe_b" shield_body_name="bo_battania_targe_b" recalculate_body="false" mesh="battania_targe_b" culture="Culture.battania" weight="2.52" appearance="1.1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0.0,0">
+  <Item id="crpg_battania_large_shield_a" name="{=przGGaVm}Bronze Reinforced Highland Large Shield" body_name="bo_cap_battania_large_shield_a" shield_body_name="bo_battania_large_shield_a" recalculate_body="false" mesh="battania_large_shield_a" culture="Culture.battania" using_tableau="true" weight="4.8" appearance="1.1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0.1,0">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.18, -0.04, 0.00" rotation="-5.90,19.00,38.50" weapon_length="70" center_of_mass="-0.0, 0.12, 0.1" hit_points="165" modifier_group="shield">
-        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
-      </Weapon>
-    </ItemComponent>
-    <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
-  </Item>
-  <Item id="crpg_large_adarga" name="{=cXesETQJ}Large Adarga" using_tableau="true" body_name="bo_cap_aserai_shields_i" shield_body_name="bo_aserai_shields_i" recalculate_body="false" mesh="aserai_shields_i" culture="Culture.aserai" weight="2.4" appearance="1" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.06,-0.0,0">
-    <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="60" center_of_mass="0.0,0.05,0.05" hit_points="185" modifier_group="shield">
-        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
-      </Weapon>
-    </ItemComponent>
-    <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
-  </Item>
-  <Item id="crpg_battania_large_shield_a" name="{=przGGaVm}Bronze Reinforced Highland Large Shield" body_name="bo_cap_battania_large_shield_a" shield_body_name="bo_battania_large_shield_a" recalculate_body="false" mesh="battania_large_shield_a" culture="Culture.battania" using_tableau="true" weight="3.22" appearance="1.1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0.1,0">
-    <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="hand_shield" position="0.05, -0.01, 0.00" rotation="-91.80,-62.90,0.00" weapon_length="70" center_of_mass="0.0,0.065,0.05" hit_points="215" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="4" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="hand_shield" position="0.05, -0.01, 0.00" rotation="-91.80,-62.90,0.00" weapon_length="70" center_of_mass="0.0,0.065,0.05" hit_points="140" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" />
   </Item>
-  <Item id="crpg_battania_large_shield_b" name="{=vsI4M5oq}Iron Reinforced Highland Large Shield" body_name="bo_cap_battania_large_shield_b" shield_body_name="bo_battania_large_shield_b" recalculate_body="false" mesh="battania_large_shield_b" culture="Culture.battania" using_tableau="true" weight="3.57" appearance="1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0.1,0">
+  <Item id="crpg_battania_large_shield_b" name="{=vsI4M5oq}Iron Reinforced Highland Large Shield" body_name="bo_cap_battania_large_shield_b" shield_body_name="bo_battania_large_shield_b" recalculate_body="false" mesh="battania_large_shield_b" culture="Culture.battania" using_tableau="true" weight="7.4" appearance="1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0.1,0">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="hand_shield" position="0.04, -0.01, 0.0" rotation="254.50,-62.10,8.70" weapon_length="70" center_of_mass="0.0,0.065,0.05" hit_points="240" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="8" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="hand_shield" position="0.04, -0.01, 0.0" rotation="254.50,-62.10,8.70" weapon_length="70" center_of_mass="0.0,0.065,0.05" hit_points="160" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" />
   </Item>
-  <Item id="crpg_battania_large_shield_c" name="{=wAcc9SX4}Highland Large Shield" body_name="bo_cap_battania_large_shield_c" shield_body_name="bo_battania_large_shield_c" recalculate_body="false" mesh="battania_large_shield_c" culture="Culture.battania" using_tableau="true" weight="2.94" appearance="0.5" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0.1,0,0">
+  <Item id="crpg_battania_large_shield_c" name="{=wAcc9SX4}Highland Large Shield" body_name="bo_cap_battania_large_shield_c" shield_body_name="bo_battania_large_shield_c" recalculate_body="false" mesh="battania_large_shield_c" culture="Culture.battania" using_tableau="true" weight="5.4" appearance="0.5" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0.1,0,0">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="hand_shield" position="0.01, 0.0, -0.01" rotation="254.50,-68.80,8.70" weapon_length="70" center_of_mass="0.0,0.065,0.05" hit_points="195" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="hand_shield" position="0.01, 0.0, -0.01" rotation="254.50,-68.80,8.70" weapon_length="70" center_of_mass="0.0,0.065,0.05" hit_points="140" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" />
   </Item>
-  <Item id="crpg_old_kite_shield" name="{=vXvuViMT}Makeshift Kite Shield" body_name="bo_cap_kite_shield_a" shield_body_name="bo_kite_shield_a" recalculate_body="false" mesh="kite_shield_a" using_tableau="true" weight="3.4" appearance="0.3" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,0,-0.025">
+  <Item id="crpg_old_kite_shield" name="{=vXvuViMT}Makeshift Kite Shield" body_name="bo_cap_kite_shield_a" shield_body_name="bo_kite_shield_a" recalculate_body="false" mesh="kite_shield_a" using_tableau="true" weight="11.7" appearance="0.3" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,0,-0.025">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="170" center_of_mass="0.0,0.05,0.05" hit_points="85" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="0" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="170" center_of_mass="0.0,0.05,0.05" hit_points="70" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_worn_kite_shield" name="{=dacwWKE2}Worn Kite Shield" shield_body_name="bo_kite_shield_b" recalculate_body="false" body_name="bo_cap_kite_shield_b" mesh="kite_shield_b" using_tableau="true" weight="3.456" difficulty="0" appearance="0.3" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,0,-0.025">
+  <Item id="crpg_worn_kite_shield" name="{=dacwWKE2}Worn Kite Shield" shield_body_name="bo_kite_shield_b" recalculate_body="false" body_name="bo_cap_kite_shield_b" mesh="kite_shield_b" using_tableau="true" weight="7.6" difficulty="0" appearance="0.3" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,0,-0.025">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="3" thrust_damage="5" thrust_damage_type="Blunt" thrust_speed="82" speed_rating="83" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="128" hit_points="90" center_of_mass="0,-0.1,0.1" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="0" thrust_damage="5" thrust_damage_type="Blunt" thrust_speed="82" speed_rating="83" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="128" hit_points="70" center_of_mass="0,-0.1,0.1" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_leather_bound_kite_shield" name="{=Ita1lG33}Leather Bound Kite Shield" body_name="bo_cap_kite_shield_c" shield_body_name="bo_kite_shield_c" recalculate_body="false" mesh="kite_shield_c" using_tableau="true" weight="3.1232" appearance="1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,0,-0.025">
+  <Item id="crpg_leather_bound_kite_shield" name="{=Ita1lG33}Leather Bound Kite Shield" body_name="bo_cap_kite_shield_c" shield_body_name="bo_kite_shield_c" recalculate_body="false" mesh="kite_shield_c" using_tableau="true" weight="8.2" appearance="1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,0,-0.025">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="128" center_of_mass="0.0,0.05,0.05" hit_points="107" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="128" center_of_mass="0.0,0.05,0.05" hit_points="100" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_stronger_reinforced_kite_shield" name="{=OM9achAa}Reinforced Oaken Kite Shield" body_name="bo_cap_kite_shield_d" shield_body_name="bo_kite_shield_d" recalculate_body="false" mesh="kite_shield_d" using_tableau="true" weight="5.888" appearance="0.7" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,0,-0.025">
+  <Item id="crpg_stronger_reinforced_kite_shield" name="{=OM9achAa}Reinforced Oaken Kite Shield" body_name="bo_cap_kite_shield_d" shield_body_name="bo_kite_shield_d" recalculate_body="false" mesh="kite_shield_d" using_tableau="true" weight="12" appearance="0.7" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,0,-0.025">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="128" center_of_mass="0.0,0.05,0.05" hit_points="215" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="3" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="128" center_of_mass="0.0,0.05,0.05" hit_points="150" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_pavise_shield" name="{=aVGSZhCN}Pavise Shield" body_name="bo_cap_kite_shield_e" shield_body_name="bo_kite_shield_e" recalculate_body="false" mesh="kite_shield_e" culture="Culture.vlandia" using_tableau="true" weight="6.962" appearance="0.7" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,-0.025">
+  <Item id="crpg_pavise_shield" name="{=aVGSZhCN}Pavise Shield" body_name="bo_cap_kite_shield_e" shield_body_name="bo_kite_shield_e" recalculate_body="false" mesh="kite_shield_e" culture="Culture.vlandia" using_tableau="true" weight="7.2" appearance="0.7" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,-0.025">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="118" center_of_mass="0.0,0.1,0.1" hit_points="280" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="80" thrust_damage_type="Blunt" speed_rating="80" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="118" center_of_mass="0.0,0.1,0.1" hit_points="130" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_old_horsemans_kite_shield" name="{=8ndLVeN0}Wooden Kite Shield" body_name="bo_cap_kite_shield_f" shield_body_name="bo_kite_shield_f" recalculate_body="false" mesh="kite_shield_f" using_tableau="true" weight="1.716" appearance="0.3" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,0.035">
+  <Item id="crpg_old_horsemans_kite_shield" name="{=8ndLVeN0}Wooden Kite Shield" body_name="bo_cap_kite_shield_f" shield_body_name="bo_kite_shield_f" recalculate_body="false" mesh="kite_shield_f" using_tableau="true" weight="4" appearance="0.3" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,0.035">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="78" center_of_mass="0.0,0.05,0.0" hit_points="95" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="0" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="78" center_of_mass="0.0,0.05,0.0" hit_points="70" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_worn_horsemans_kite_shield" name="{=7MlFqkJ8}Makeshift Horseman Kite Shield" body_name="bo_cap_kite_shield_g" shield_body_name="bo_kite_shield_g" recalculate_body="false" mesh="kite_shield_g" using_tableau="true" weight="1.7472" appearance="1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,0.035">
+  <Item id="crpg_worn_horsemans_kite_shield" name="{=7MlFqkJ8}Makeshift Horseman Kite Shield" body_name="bo_cap_kite_shield_g" shield_body_name="bo_kite_shield_g" recalculate_body="false" mesh="kite_shield_g" using_tableau="true" weight="4.4" appearance="1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,0.035">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="78" center_of_mass="0.0,0.1,0.0" hit_points="97" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="0" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="78" center_of_mass="0.0,0.1,0.0" hit_points="80" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_bound_horsemans_kite_shield" name="{=FxnFBhrF}Cavalry Kite Shield" body_name="bo_cap_kite_shield_h" shield_body_name="bo_kite_shield_h" recalculate_body="false" mesh="kite_shield_h" using_tableau="true" weight="3.6192" appearance="1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,-0.025">
+  <Item id="crpg_bound_horsemans_kite_shield" name="{=FxnFBhrF}Cavalry Kite Shield" body_name="bo_cap_kite_shield_h" shield_body_name="bo_kite_shield_h" recalculate_body="false" mesh="kite_shield_h" using_tableau="true" weight="4.6" appearance="1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,-0.025">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="8" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="94" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="78" center_of_mass="0.0,0.1,0.1" hit_points="112">
+      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="94" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="78" center_of_mass="0.0,0.1,0.1" hit_points="90">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item multiplayer_item="false" id="crpg_reinforced_horsemans_kite_shield" name="{=jqWBGBo7}Reinforced Cavalry Small Shield" body_name="bo_cap_kite_shield_j" shield_body_name="bo_kite_shield_j" recalculate_body="false" mesh="kite_shield_j" using_tableau="true" weight="2.2932" difficulty="0" appearance="0.6" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,-0.025">
+  <Item multiplayer_item="false" id="crpg_reinforced_horsemans_kite_shield" name="{=jqWBGBo7}Reinforced Cavalry Small Shield" body_name="bo_cap_kite_shield_j" shield_body_name="bo_kite_shield_j" recalculate_body="false" mesh="kite_shield_j" using_tableau="true" weight="3" difficulty="0" appearance="0.6" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,-0.025">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_damage="5" thrust_damage_type="Blunt" thrust_speed="82" speed_rating="82" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="78" hit_points="132" center_of_mass="0, 0, 0" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="1" thrust_damage="5" thrust_damage_type="Blunt" thrust_speed="82" speed_rating="82" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="78" hit_points="90" center_of_mass="0, 0, 0" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_battered_horsemans_kite_shield" name="{=jAbn05Vg}Simple Horseman Kite Shield" body_name="bo_cap_kite_shield_k" shield_body_name="bo_kite_shield_k" recalculate_body="false" mesh="kite_shield_k" using_tableau="true" weight="1.56" appearance="0.1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,-0.025">
+  <Item id="crpg_battered_horsemans_kite_shield" name="{=jAbn05Vg}Simple Horseman Kite Shield" body_name="bo_cap_kite_shield_k" shield_body_name="bo_kite_shield_k" recalculate_body="false" mesh="kite_shield_k" using_tableau="true" weight="4.5" appearance="0.1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,-0.025">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="78" center_of_mass="0.0,0.1,0.0" hit_points="85" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="0" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="78" center_of_mass="0.0,0.1,0.0" hit_points="70" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_light_horsemans_kite_shield" name="{=O3TTXEFe}Light Cavalry Kite Shield" body_name="bo_cap_kite_shield_l" shield_body_name="bo_kite_shield_l" recalculate_body="false" mesh="kite_shield_l" using_tableau="true" weight="2.0592" appearance="0.1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,0.025">
+  <Item id="crpg_light_horsemans_kite_shield" name="{=O3TTXEFe}Light Cavalry Kite Shield" body_name="bo_cap_kite_shield_l" shield_body_name="bo_kite_shield_l" recalculate_body="false" mesh="kite_shield_l" using_tableau="true" weight="3.8" appearance="0.1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,0.025">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="2" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="103" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="78" center_of_mass="0.0,0.1,0.0" hit_points="102" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="0" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="103" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="78" center_of_mass="0.0,0.1,0.0" hit_points="100" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_reinforced_flat_kite_shield" name="{=A1zFbFta}Reinforced Flat Kite Shield" body_name="bo_cap_kite_shield_p" shield_body_name="bo_kite_shield_p" recalculate_body="false" mesh="kite_shield_p" using_tableau="true" weight="3.41" appearance="0.6" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.0,0.025">
+  <Item id="crpg_reinforced_flat_kite_shield" name="{=A1zFbFta}Reinforced Flat Kite Shield" body_name="bo_cap_kite_shield_p" shield_body_name="bo_kite_shield_p" recalculate_body="false" mesh="kite_shield_p" using_tableau="true" weight="7.6" appearance="0.6" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.0,0.025">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="110" center_of_mass="0.0,0.0,0.0" hit_points="140" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="110" center_of_mass="0.0,0.0,0.0" hit_points="100" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_studded_bound_kite_shield" name="{=hytuHaoA}Studded Bound Kite Shield" body_name="bo_cap_kite_shield_r" shield_body_name="bo_kite_shield_r" recalculate_body="false" mesh="kite_shield_r" using_tableau="true" weight="5.94" appearance="1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.0,0.0">
+  <Item id="crpg_studded_bound_kite_shield" name="{=hytuHaoA}Studded Bound Kite Shield" body_name="bo_cap_kite_shield_r" shield_body_name="bo_kite_shield_r" recalculate_body="false" mesh="kite_shield_r" using_tableau="true" weight="7.4" appearance="1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.0,0.0">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="9" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="91" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="110" center_of_mass="0.0,0.0,0.05" hit_points="135" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="91" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="110" center_of_mass="0.0,0.0,0.05" hit_points="120" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_fortified_kite_shield" name="{=NFvuDpwG}Fortified Kite Shield" body_name="bo_cap_kite_shield_s" shield_body_name="bo_kite_shield_s" recalculate_body="false" mesh="kite_shield_s" using_tableau="true" weight="6.16" appearance="0.7" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.0,-0.025">
+  <Item id="crpg_fortified_kite_shield" name="{=NFvuDpwG}Fortified Kite Shield" body_name="bo_cap_kite_shield_s" shield_body_name="bo_kite_shield_s" recalculate_body="false" mesh="kite_shield_s" using_tableau="true" weight="8.8" appearance="0.7" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.0,-0.025">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="110" center_of_mass="0.0,0.0,0.1" hit_points="265" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="2" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="110" center_of_mass="0.0,0.0,0.1" hit_points="120" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_horsemans_heater_shield" name="{=LOhfAMnh}Small Cavalry Heater Shield" body_name="bo_cap_heater_shield_b" shield_body_name="bo_heater_shield_b" recalculate_body="false" mesh="heater_shield_b" culture="Culture.vlandia" using_tableau="true" weight="3.315" appearance="1" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,0.0,0.025">
+  <Item id="crpg_horsemans_heater_shield" name="{=LOhfAMnh}Small Cavalry Heater Shield" body_name="bo_cap_heater_shield_b" shield_body_name="bo_heater_shield_b" recalculate_body="false" mesh="heater_shield_b" culture="Culture.vlandia" using_tableau="true" weight="3.6" appearance="1" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,0.0,0.025">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="10" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="97" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="65" center_of_mass="0.0,0.1,0.05" hit_points="105" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="0" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="97" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="65" center_of_mass="0.0,0.1,0.05" hit_points="70" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_small_heater_shield" name="{=Ai7qIb9I}Small Heater Shield" body_name="bo_cap_heater_shield_c" shield_body_name="bo_heater_shield_c" recalculate_body="false" mesh="heater_shield_c" culture="Culture.vlandia" using_tableau="true" weight="1.96" appearance="1" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,0.0,0.025">
+  <Item id="crpg_small_heater_shield" name="{=Ai7qIb9I}Small Heater Shield" body_name="bo_cap_heater_shield_c" shield_body_name="bo_heater_shield_c" recalculate_body="false" mesh="heater_shield_c" culture="Culture.vlandia" using_tableau="true" weight="3.6" appearance="1" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,0.0,0.025">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="70" center_of_mass="0.0,0.1,0.05" hit_points="125" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="0" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="70" center_of_mass="0.0,0.1,0.05" hit_points="70" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_jousting_shield" name="{=nVAhoxcH}Knights Shield" body_name="bo_cap_heater_shield_d" shield_body_name="bo_heater_shield_d" recalculate_body="false" mesh="heater_shield_d" culture="Culture.vlandia" using_tableau="true" weight="2.826" appearance="1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,-0.0">
+  <Item id="crpg_jousting_shield" name="{=nVAhoxcH}Knights Shield" body_name="bo_cap_heater_shield_d" shield_body_name="bo_heater_shield_d" recalculate_body="false" mesh="heater_shield_d" culture="Culture.vlandia" using_tableau="true" weight="6.2" appearance="1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,-0.0">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="90" center_of_mass="0.0,0.1,0.05" hit_points="142" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="0" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="90" center_of_mass="0.0,0.1,0.05" hit_points="100" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_heater_shield_with_cutout" name="{=txgUxMYw}Heater Shield with Cutout" body_name="bo_cap_heater_shield_e" shield_body_name="bo_heater_shield_e" recalculate_body="false" mesh="heater_shield_e" culture="Culture.vlandia" using_tableau="true" weight="2.112" appearance="1" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.0,-0.0">
+  <Item id="crpg_heater_shield_with_cutout" name="{=txgUxMYw}Heater Shield with Cutout" body_name="bo_cap_heater_shield_e" shield_body_name="bo_heater_shield_e" recalculate_body="false" mesh="heater_shield_e" culture="Culture.vlandia" using_tableau="true" weight="5.4" appearance="1" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.0,-0.0">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="80" center_of_mass="0.0,0.1,0.8" hit_points="117" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="0" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="80" center_of_mass="0.0,0.1,0.8" hit_points="90" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_flat_heater_shield" name="{=ap2yulQ2}Flat Heater Shield" body_name="bo_cap_heater_shield_f" shield_body_name="bo_heater_shield_f" recalculate_body="false" mesh="heater_shield_f" culture="Culture.vlandia" using_tableau="true" weight="5.49" appearance="1" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.10,0.1,0.025">
+  <Item id="crpg_flat_heater_shield" name="{=ap2yulQ2}Flat Heater Shield" body_name="bo_cap_heater_shield_f" shield_body_name="bo_heater_shield_f" recalculate_body="false" mesh="heater_shield_f" culture="Culture.vlandia" using_tableau="true" weight="6.2" appearance="1" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.10,0.1,0.025">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="10" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="93" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="90" center_of_mass="0.0,0.1,0.05" hit_points="155" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="93" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="90" center_of_mass="0.0,0.1,0.05" hit_points="120" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_heavy_heater_shield" name="{=rF7Xm7C0}Heavy Heater Shield" body_name="bo_cap_heater_shield_g" shield_body_name="bo_heater_shield_g" recalculate_body="false" mesh="heater_shield_g" culture="Culture.vlandia" using_tableau="true" weight="10.2" appearance="0.7" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,0,0.025">
+  <Item id="crpg_heavy_heater_shield" name="{=rF7Xm7C0}Heavy Heater Shield" body_name="bo_cap_heater_shield_g" shield_body_name="bo_heater_shield_g" recalculate_body="false" mesh="heater_shield_g" culture="Culture.vlandia" using_tableau="true" weight="11.5" appearance="0.7" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,0,0.025">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="17" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="87" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="100" center_of_mass="0.0,0.05,0.05" hit_points="255" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="4" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="87" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="100" center_of_mass="0.0,0.05,0.05" hit_points="180" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_small_flat_heater_shield" name="{=iFPkhVGe}Small Flat Heater Shield" body_name="bo_cap_heater_shield_h" shield_body_name="bo_heater_shield_h" recalculate_body="false" mesh="heater_shield_h" culture="Culture.vlandia" using_tableau="true" weight="3.01" appearance="1" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.08,0,0.0">
+  <Item id="crpg_small_flat_heater_shield" name="{=iFPkhVGe}Small Flat Heater Shield" body_name="bo_cap_heater_shield_h" shield_body_name="bo_heater_shield_h" recalculate_body="false" mesh="heater_shield_h" culture="Culture.vlandia" using_tableau="true" weight="3" appearance="1" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.08,0,0.0">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="7" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="95" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="70" center_of_mass="-0.035,0.1,0.05" hit_points="110" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="0" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="95" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="70" center_of_mass="-0.035,0.1,0.05" hit_points="90" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_wide_heater_shield" name="{=OhEQUMk0}Wide Heater Shield" body_name="bo_cap_heater_shield_i" shield_body_name="bo_heater_shield_i" recalculate_body="false" mesh="heater_shield_i" culture="Culture.vlandia" using_tableau="true" weight="4.32" appearance="0.7" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,0">
+  <Item id="crpg_wide_heater_shield" name="{=OhEQUMk0}Wide Heater Shield" body_name="bo_cap_heater_shield_i" shield_body_name="bo_heater_shield_i" recalculate_body="false" mesh="heater_shield_i" culture="Culture.vlandia" using_tableau="true" weight="3.7" appearance="0.7" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,0">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="90" center_of_mass="-0.0,0.2,0.05" hit_points="225" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="90" center_of_mass="-0.0,0.2,0.05" hit_points="120" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_bracketed_heater_shield" name="{=buaIafV6}Bracketed Heater Shield" body_name="bo_cap_heater_shield_j" shield_body_name="bo_heater_shield_j" recalculate_body="false" mesh="heater_shield_j" culture="Culture.vlandia" using_tableau="true" weight="3.8" appearance="1" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.0,0">
+  <Item id="crpg_bracketed_heater_shield" name="{=buaIafV6}Bracketed Heater Shield" body_name="bo_cap_heater_shield_j" shield_body_name="bo_heater_shield_j" recalculate_body="false" mesh="heater_shield_j" culture="Culture.vlandia" using_tableau="true" weight="3.4" appearance="1" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.0,0">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="95" center_of_mass="-0.0,0.1,0.05" hit_points="185" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="0" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="95" center_of_mass="-0.0,0.1,0.05" hit_points="100" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_tall_heater_shield" name="{=Lbm7asY3}Tall Heater Shield" body_name="bo_cap_heater_shield_k" shield_body_name="bo_heater_shield_k" recalculate_body="false" mesh="heater_shield_k" culture="Culture.vlandia" using_tableau="true" weight="9.764999" appearance="0.6" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.0,0">
+  <Item id="crpg_tall_heater_shield" name="{=Lbm7asY3}Tall Heater Shield" body_name="bo_cap_heater_shield_k" shield_body_name="bo_heater_shield_k" recalculate_body="false" mesh="heater_shield_k" culture="Culture.vlandia" using_tableau="true" weight="5.8" appearance="0.6" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.0,0">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="13" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="85" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="105" center_of_mass="-0.0,0.1,0.05" hit_points="270" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="85" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="105" center_of_mass="-0.0,0.1,0.05" hit_points="120" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_adarga" name="{=QcKpipVr}Adarga" body_name="bo_cap_shield_aserai_cavalary_a" shield_body_name="bo_shield_aserai_cavalary_a" recalculate_body="false" mesh="shield_aserai_cavalary_a" culture="Culture.aserai" using_tableau="true" weight="1.38" appearance="0.1" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.0,0">
+  <Item id="crpg_adarga" name="{=QcKpipVr}Adarga" body_name="bo_cap_shield_aserai_cavalary_a" shield_body_name="bo_shield_aserai_cavalary_a" recalculate_body="false" mesh="shield_aserai_cavalary_a" culture="Culture.aserai" using_tableau="true" weight="2.2" appearance="0.1" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.0,0">
+    <ItemComponent>
+      <Weapon weapon_class="LargeShield" body_armor="0" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="60" center_of_mass="-0.0,0.0,0.05" hit_points="70" modifier_group="shield">
+        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
+  </Item>
+  <Item id="crpg_studded_adarga" name="{=0666zYUB}Studded Adarga" body_name="bo_cap_shield_aserai_cavalary_b" shield_body_name="bo_shield_aserai_cavalary_b" recalculate_body="false" mesh="shield_aserai_cavalary_b" culture="Culture.aserai" using_tableau="true" weight="2.4" appearance="1" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.0,0">
     <ItemComponent>
       <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="60" center_of_mass="-0.0,0.0,0.05" hit_points="100" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
@@ -320,169 +328,161 @@
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_studded_adarga" name="{=0666zYUB}Studded Adarga" body_name="bo_cap_shield_aserai_cavalary_b" shield_body_name="bo_shield_aserai_cavalary_b" recalculate_body="false" mesh="shield_aserai_cavalary_b" culture="Culture.aserai" using_tableau="true" weight="1.74" appearance="1" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.0,0">
+  <Item id="crpg_ornate_adarga" name="{=YRYJGzxw}Ornate Adarga" body_name="bo_cap_shield_aserai_cavalary_c" shield_body_name="bo_shield_aserai_cavalary_c" recalculate_body="false" mesh="shield_aserai_cavalary_c" culture="Culture.aserai" using_tableau="true" weight="2.8" appearance="0.7" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.0,0">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="60" center_of_mass="-0.0,0.0,0.05" hit_points="130" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="2" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="60" center_of_mass="-0.0,0.0,0.05" hit_points="120" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_ornate_adarga" name="{=YRYJGzxw}Ornate Adarga" body_name="bo_cap_shield_aserai_cavalary_c" shield_body_name="bo_shield_aserai_cavalary_c" recalculate_body="false" mesh="shield_aserai_cavalary_c" culture="Culture.aserai" using_tableau="true" weight="2.7" appearance="0.7" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.0,0">
+  <Item id="crpg_desert_oval_shield" name="{=Mb1hQRyT}Desert Oval Shield" body_name="bo_cap_shield_aserai_infantary_a" shield_body_name="bo_shield_aserai_infantary_a" recalculate_body="false" mesh="shield_aserai_infantary_a" culture="Culture.aserai" using_tableau="true" weight="5.2" appearance="1" Type="Shield" item_holsters="shield_oval:shield_4:shield_3:shield_2" has_lower_holster_priority="true" holster_position_shift="-0.04,-0.0,0">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="60" center_of_mass="-0.0,0.0,0.05" hit_points="210" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="110" center_of_mass="-0.035, 0.1, 0.1" hit_points="100" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_desert_oval_shield" name="{=Mb1hQRyT}Desert Oval Shield" body_name="bo_cap_shield_aserai_infantary_a" shield_body_name="bo_shield_aserai_infantary_a" recalculate_body="false" mesh="shield_aserai_infantary_a" culture="Culture.aserai" using_tableau="true" weight="4.07" appearance="1" Type="Shield" item_holsters="shield_oval:shield_4:shield_3:shield_2" has_lower_holster_priority="true" holster_position_shift="-0.04,-0.0,0">
+  <Item id="crpg_southern_oval_shield" name="{=8nNLS96w}Reinforced Oval Shield" body_name="bo_cap_shield_aserai_infantary_b" shield_body_name="bo_shield_aserai_infantary_b" recalculate_body="false" mesh="shield_aserai_infantary_b" culture="Culture.aserai" using_tableau="true" weight="7.4" appearance="0.8" Type="Shield" item_holsters="shield_oval:shield_4:shield_3:shield_2" has_lower_holster_priority="true" holster_position_shift="-0.04,-0.0,0">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="110" center_of_mass="-0.035, 0.1, 0.1" hit_points="170" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="110" center_of_mass="-0.035, 0.1, 0.1" hit_points="120" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_southern_oval_shield" name="{=8nNLS96w}Reinforced Oval Shield" body_name="bo_cap_shield_aserai_infantary_b" shield_body_name="bo_shield_aserai_infantary_b" recalculate_body="false" mesh="shield_aserai_infantary_b" culture="Culture.aserai" using_tableau="true" weight="4.29" appearance="0.8" Type="Shield" item_holsters="shield_oval:shield_4:shield_3:shield_2" has_lower_holster_priority="true" holster_position_shift="-0.04,-0.0,0">
+  <Item id="crpg_emirs_oval_shield" name="{=G7AEWZ6c}Decorated Oval Shield" body_name="bo_cap_shield_aserai_infantary_c" shield_body_name="bo_shield_aserai_infantary_c" recalculate_body="false" mesh="shield_aserai_infantary_c" culture="Culture.aserai" using_tableau="true" weight="7.6" appearance="0.7" Type="Shield" item_holsters="shield_oval:shield_4:shield_3:shield_2" has_lower_holster_priority="true" holster_position_shift="-0.04,-0.0,0">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="110" center_of_mass="-0.035, 0.1, 0.1" hit_points="180" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="2" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="110" center_of_mass="-0.035, 0.1, 0.1" hit_points="130" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_emirs_oval_shield" name="{=G7AEWZ6c}Decorated Oval Shield" body_name="bo_cap_shield_aserai_infantary_c" shield_body_name="bo_shield_aserai_infantary_c" recalculate_body="false" mesh="shield_aserai_infantary_c" culture="Culture.aserai" using_tableau="true" weight="4.84" appearance="0.7" Type="Shield" item_holsters="shield_oval:shield_4:shield_3:shield_2" has_lower_holster_priority="true" holster_position_shift="-0.04,-0.0,0">
+  <Item id="crpg_highland_scouts_shield" name="{=dbbwszHd}Decorated Round Shield" body_name="bo_cap_shield_battania_cavalary_a" shield_body_name="bo_shield_battania_cavalary_a" recalculate_body="false" mesh="shield_battania_cavalary_a" culture="Culture.battania" using_tableau="true" weight="3.4" appearance="0.9" Type="Shield" item_holsters="shield_round:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.05,-0.04">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="110" center_of_mass="-0.035, 0.1, 0.1" hit_points="205" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="2" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="60" center_of_mass="-0.0,0.055,0.05" hit_points="140" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_highland_scouts_shield" name="{=dbbwszHd}Decorated Round Shield" body_name="bo_cap_shield_battania_cavalary_a" shield_body_name="bo_shield_battania_cavalary_a" recalculate_body="false" mesh="shield_battania_cavalary_a" culture="Culture.battania" using_tableau="true" weight="2.58" appearance="0.9" Type="Shield" item_holsters="shield_round:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.05,-0.04">
+  <Item id="crpg_highland_riders_shield" name="{=OSHSIyhN}Highland Round Shield" body_name="bo_cap_shield_battania_cavalary_b" shield_body_name="bo_shield_battania_cavalary_b" recalculate_body="false" mesh="shield_battania_cavalary_b" culture="Culture.battania" using_tableau="true" weight="4" appearance="0.9" Type="Shield" item_holsters="shield_round:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.05,-0.04">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="60" center_of_mass="-0.0,0.055,0.05" hit_points="200" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="120" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="60" center_of_mass="-0.0,0.055,0.05" hit_points="160" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_highland_riders_shield" name="{=OSHSIyhN}Highland Round Shield" body_name="bo_cap_shield_battania_cavalary_b" shield_body_name="bo_shield_battania_cavalary_b" recalculate_body="false" mesh="shield_battania_cavalary_b" culture="Culture.battania" using_tableau="true" weight="2.82" appearance="0.9" Type="Shield" item_holsters="shield_round:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.05,-0.04">
+  <Item id="crpg_tribal_steppe_shield" name="{=pmabPgC0}Tribal Steppe Shield" body_name="bo_cap_shield_khuzait_cavalary_a" shield_body_name="bo_shield_khuzait_cavalary_a" recalculate_body="false" mesh="shield_khuzait_cavalary_a" culture="Culture.khuzait" using_tableau="true" weight="3" appearance="0.9" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.05,0.01">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="120" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="60" center_of_mass="-0.0,0.055,0.05" hit_points="220" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="60" center_of_mass="-0.0,0.075,0.05" hit_points="140" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_tribal_steppe_shield" name="{=pmabPgC0}Tribal Steppe Shield" body_name="bo_cap_shield_khuzait_cavalary_a" shield_body_name="bo_shield_khuzait_cavalary_a" recalculate_body="false" mesh="shield_khuzait_cavalary_a" culture="Culture.khuzait" using_tableau="true" weight="2.82" appearance="0.9" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.05,0.01">
+  <Item id="crpg_decorated_steppe_shield" name="{=iE9JNuZI}Round Steppe Shield" body_name="bo_cap_shield_khuzait_cavalary_b" shield_body_name="bo_shield_khuzait_cavalary_b" recalculate_body="false" mesh="shield_khuzait_cavalary_b" culture="Culture.khuzait" using_tableau="true" weight="2" appearance="0.9" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.05,0.01">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="60" center_of_mass="-0.0,0.075,0.05" hit_points="220" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="60" center_of_mass="-0.0,0.075,0.05" hit_points="100" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_decorated_steppe_shield" name="{=iE9JNuZI}Round Steppe Shield" body_name="bo_cap_shield_khuzait_cavalary_b" shield_body_name="bo_shield_khuzait_cavalary_b" recalculate_body="false" mesh="shield_khuzait_cavalary_b" culture="Culture.khuzait" using_tableau="true" weight="1.98" appearance="0.9" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.05,0.01">
+  <Item id="crpg_noyans_shield" name="{=3TAnl7hb}Decorated Eastern Shield" body_name="bo_cap_shield_khuzait_cavalary_c" shield_body_name="bo_shield_khuzait_cavalary_c" recalculate_body="false" mesh="shield_khuzait_cavalary_c" using_tableau="true" weight="3.6" appearance="0.9" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.05,0.01">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="60" center_of_mass="-0.0,0.075,0.05" hit_points="150" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="4" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="metal_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="60" center_of_mass="-0.0,0.075,0.05" hit_points="150" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_noyans_shield" name="{=3TAnl7hb}Decorated Eastern Shield" body_name="bo_cap_shield_khuzait_cavalary_c" shield_body_name="bo_shield_khuzait_cavalary_c" recalculate_body="false" mesh="shield_khuzait_cavalary_c" using_tableau="true" weight="3.06" appearance="0.9" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.05,0.01">
+  <Item id="crpg_steppe_guardian_shield" name="{=8UMQ8ocB}Eastern Cavalry Shield" body_name="bo_cap_shield_khuzait_cavalary_d" shield_body_name="bo_shield_khuzait_cavalary_d" recalculate_body="false" mesh="shield_khuzait_cavalary_d" using_tableau="true" weight="2.4" appearance="0.9" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.05,0.01">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="metal_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="60" center_of_mass="-0.0,0.075,0.05" hit_points="240" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="60" center_of_mass="-0.0,0.075,0.05" hit_points="100" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_steppe_guardian_shield" name="{=8UMQ8ocB}Eastern Cavalry Shield" body_name="bo_cap_shield_khuzait_cavalary_d" shield_body_name="bo_shield_khuzait_cavalary_d" recalculate_body="false" mesh="shield_khuzait_cavalary_d" using_tableau="true" weight="2.46" appearance="0.9" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.05,0.01">
+  <Item id="crpg_eastern_wicker_shield" name="{=pEaYQqG9}Wicker Square Shield" body_name="bo_cap_shield_khuzait_infantary_a" shield_body_name="bo_shield_khuzait_infantary_a" recalculate_body="false" mesh="shield_khuzait_infantary_a" culture="Culture.khuzait" using_tableau="true" weight="6.4" appearance="1" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,0.01">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="60" center_of_mass="-0.0,0.075,0.05" hit_points="190" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="0" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="90" center_of_mass="-0.0,0.25,0.05" hit_points="100" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_eastern_wicker_shield" name="{=pEaYQqG9}Wicker Square Shield" body_name="bo_cap_shield_khuzait_infantary_a" shield_body_name="bo_shield_khuzait_infantary_a" recalculate_body="false" mesh="shield_khuzait_infantary_a" culture="Culture.khuzait" using_tableau="true" weight="2.61" appearance="1" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,0.01">
+  <Item id="crpg_footmans_wicker_shield" name="{=1w5StEM1}Wicker Shield" body_name="bo_cap_shield_khuzait_infantary_a" shield_body_name="bo_shield_khuzait_infantary_b" recalculate_body="false" mesh="shield_khuzait_infantary_b" culture="Culture.khuzait" using_tableau="true" weight="6.8" appearance="0.7" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,0.01">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="90" center_of_mass="-0.0,0.25,0.05" hit_points="130" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="95" center_of_mass="-0.0,0.25,0.05" hit_points="140" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_footmans_wicker_shield" name="{=1w5StEM1}Wicker Shield" body_name="bo_cap_shield_khuzait_infantary_a" shield_body_name="bo_shield_khuzait_infantary_b" recalculate_body="false" mesh="shield_khuzait_infantary_b" culture="Culture.khuzait" using_tableau="true" weight="3.135" appearance="0.7" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,0.01">
+  <Item id="crpg_northern_scouts_shield" name="{=aprm5ypZ}Sturdy Cavalry Kite Shield" body_name="bo_cap_shield_sturgia_cavalary_a" shield_body_name="bo_cap_shield_sturgia_cavalary_a" recalculate_body="false" mesh="shield_sturgia_cavalary_a" culture="Culture.sturgia" using_tableau="true" weight="3.8" appearance="0.7" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,0">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="95" center_of_mass="-0.0,0.25,0.05" hit_points="150" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="101" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="78" center_of_mass="0.0,0.1,0.05" hit_points="120" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_northern_scouts_shield" name="{=aprm5ypZ}Sturdy Cavalry Kite Shield" body_name="bo_cap_shield_sturgia_cavalary_a" shield_body_name="bo_cap_shield_sturgia_cavalary_a" recalculate_body="false" mesh="shield_sturgia_cavalary_a" culture="Culture.sturgia" using_tableau="true" weight="3.744" appearance="0.7" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,0">
+  <Item id="crpg_northern_horsemans_shield" name="{=BmHJmxXz}Reinforced Cavalry Shield" body_name="bo_cap_shield_sturgia_cavalary_b" shield_body_name="bo_shield_sturgia_cavalary_b" recalculate_body="false" mesh="shield_sturgia_cavalary_b" culture="Culture.sturgia" using_tableau="true" weight="4" appearance="0.7" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,0">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="6" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="101" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="78" center_of_mass="0.0,0.1,0.05" hit_points="150" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="2" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="78" center_of_mass="0.0,0.1,0.05" hit_points="120" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_northern_horsemans_shield" name="{=BmHJmxXz}Reinforced Cavalry Shield" body_name="bo_cap_shield_sturgia_cavalary_b" shield_body_name="bo_shield_sturgia_cavalary_b" recalculate_body="false" mesh="shield_sturgia_cavalary_b" culture="Culture.sturgia" using_tableau="true" weight="2.73" appearance="0.7" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,0">
+  <Item id="crpg_viking_round_shield" name="{=z62uDlbh}Norse Round Shield" body_name="bo_cap_shield_sturgia_infantary_a" shield_body_name="bo_shield_sturgia_infantary_a" recalculate_body="false" mesh="shield_sturgia_infantary_a" culture="Culture.sturgia" using_tableau="true" weight="6" appearance="1" Type="Shield" item_holsters="shield_round:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0,0.01">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="78" center_of_mass="0.0,0.1,0.05" hit_points="160" modifier_group="shield">
-        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
-      </Weapon>
-    </ItemComponent>
-    <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
-  </Item>
-  <Item id="crpg_viking_round_shield" name="{=z62uDlbh}Norse Round Shield" body_name="bo_cap_shield_sturgia_infantary_a" shield_body_name="bo_shield_sturgia_infantary_a" recalculate_body="false" mesh="shield_sturgia_infantary_a" culture="Culture.sturgia" using_tableau="true" weight="4.27" appearance="1" Type="Shield" item_holsters="shield_round:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0,0.01">
-    <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="6" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="hand_shield" position="-0.02, 0.0, 0.0" rotation="-15.0,-90.0,-10.0" weapon_length="70" center_of_mass="0.0,0.065,0.05" hit_points="215" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="2" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="hand_shield" position="-0.02, 0.0, 0.0" rotation="-15.0,-90.0,-10.0" weapon_length="70" center_of_mass="0.0,0.065,0.05" hit_points="150" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" />
   </Item>
-  <Item id="crpg_northern_round_shield" name="{=uEcbnd5D}Round Shield" body_name="bo_cap_shield_sturgia_infantary_a" shield_body_name="bo_cap_shield_sturgia_infantary_b" recalculate_body="false" mesh="shield_sturgia_infantary_b" culture="Culture.sturgia" using_tableau="true" weight="3.01" difficulty="0" appearance="1" Type="Shield" item_holsters="shield_round:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0,0.01">
+  <Item id="crpg_northern_round_shield" name="{=uEcbnd5D}Round Shield" body_name="bo_cap_shield_sturgia_infantary_a" shield_body_name="bo_cap_shield_sturgia_infantary_b" recalculate_body="false" mesh="shield_sturgia_infantary_b" culture="Culture.sturgia" using_tableau="true" weight="3.6" difficulty="0" appearance="1" Type="Shield" item_holsters="shield_round:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0,0.01">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="5" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="87" physics_material="wood_shield" item_usage="hand_shield" position="-0.02, 0.0, 0.0" rotation="-195.0,-90.0,-10.0" weapon_length="70" center_of_mass="0.0,0.065,0.05" hit_points="140" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="87" physics_material="wood_shield" item_usage="hand_shield" position="-0.02, 0.0, 0.0" rotation="-195.0,-90.0,-10.0" weapon_length="70" center_of_mass="0.0,0.065,0.05" hit_points="100" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" />
   </Item>
-  <Item id="crpg_western_riders_kite_shield" name="{=IBXDYUZW}Horseman Kite Shield" body_name="bo_cap_shield_vlandia_cavalary_a" shield_body_name="bo_shield_vlandia_cavalary_a" recalculate_body="false" mesh="shield_vlandia_cavalary_a" culture="Culture.vlandia" using_tableau="true" weight="2.584" appearance="1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,0">
+  <Item id="crpg_western_riders_kite_shield" name="{=IBXDYUZW}Horseman Kite Shield" body_name="bo_cap_shield_vlandia_cavalary_a" shield_body_name="bo_shield_vlandia_cavalary_a" recalculate_body="false" mesh="shield_vlandia_cavalary_a" culture="Culture.vlandia" using_tableau="true" weight="6.2" appearance="1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,0">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="85" center_of_mass="0.0,0.1,0.05" hit_points="137" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="85" center_of_mass="0.0,0.1,0.05" hit_points="100" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_chivalric_kite_shield" name="{=n3sz2k5j}Knights Kite Shield" body_name="bo_cap_shield_vlandia_cavalary_c" shield_body_name="bo_shield_vlandia_cavalary_c" recalculate_body="false" mesh="shield_vlandia_cavalary_c" culture="Culture.vlandia" using_tableau="true" weight="6.38" appearance="0.9" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,0">
+  <Item id="crpg_chivalric_kite_shield" name="{=n3sz2k5j}Knights Kite Shield" body_name="bo_cap_shield_vlandia_cavalary_c" shield_body_name="bo_shield_vlandia_cavalary_c" recalculate_body="false" mesh="shield_vlandia_cavalary_c" culture="Culture.vlandia" using_tableau="true" weight="10.8" appearance="0.9" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,0">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="110" center_of_mass="0.0,0.1,0.05" hit_points="275" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="2" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="110" center_of_mass="0.0,0.1,0.05" hit_points="140" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_western_kite_shield" name="{=uqO6e6vN}Kite Shield" body_name="bo_cap_shield_vlandia_infantary_a" shield_body_name="bo_shield_vlandia_infantary_a" recalculate_body="false" mesh="shield_vlandia_infantary_a" culture="Culture.vlandia" using_tableau="true" weight="3.63" appearance="1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,0.1,0">
+  <Item id="crpg_western_kite_shield" name="{=uqO6e6vN}Kite Shield" body_name="bo_cap_shield_vlandia_infantary_a" shield_body_name="bo_shield_vlandia_infantary_a" recalculate_body="false" mesh="shield_vlandia_infantary_a" culture="Culture.vlandia" using_tableau="true" weight="6.2" appearance="1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,0.1,0">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="110" center_of_mass="-0.070,0.0,0.05" hit_points="150" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="110" center_of_mass="-0.070,0.0,0.05" hit_points="100" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_ironrim_kite_shield" name="{=WpdmIlU5}Iron Rimmed Kite Shield" body_name="bo_cap_shield_vlandia_infantary_a" shield_body_name="bo_shield_vlandia_infantary_b" recalculate_body="false" mesh="shield_vlandia_infantary_b" culture="Culture.vlandia" using_tableau="true" weight="3.3" appearance="0.7" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,0.1,0">
+  <Item id="crpg_ironrim_kite_shield" name="{=WpdmIlU5}Iron Rimmed Kite Shield" body_name="bo_cap_shield_vlandia_infantary_a" shield_body_name="bo_shield_vlandia_infantary_b" recalculate_body="false" mesh="shield_vlandia_infantary_b" culture="Culture.vlandia" using_tableau="true" weight="11.8" appearance="0.7" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,0.1,0">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="110" center_of_mass="-0.070,0.0,0.05" hit_points="135" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="5" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" weapon_length="110" center_of_mass="-0.070,0.0,0.05" hit_points="120" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>

@@ -168,4 +168,10 @@
     </ItemComponent>
     <Flags />
   </Item>
+  <Item id="crpg_sa_1ChurburghGauntlet" name="Plate Mittens" mesh="sa_1churburghgauntlet" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="2.9" difficulty="0" appearance="1" Type="HandArmor">
+		<ItemComponent>
+			<Armor body_armor="0" leg_armor="0" arm_armor="30" covers_hands="true" modifier_group="Plate" material_type="Plate"/>
+		</ItemComponent>
+		<Flags UseTeamColor="false"/>
+	</Item>
 </Items>

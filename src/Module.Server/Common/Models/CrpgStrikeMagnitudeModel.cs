@@ -1,6 +1,4 @@
-﻿using Crpg.Module.Helpers;
-using TaleWorlds.Core;
-using TaleWorlds.Library;
+﻿using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common.Models;
@@ -10,6 +8,12 @@ namespace Crpg.Module.Common.Models;
 /// </summary>
 internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
 {
+    /// <summary>
+    /// This constants was introduced to decorelate damage from the physics system.
+    /// Now damage dealts by a weapon only depends on the blade damage factor and where the blade hit the defender.
+    /// </summary>
+    public const float BladeDamageFactorToDamageRatio = 10f;
+
     private readonly CrpgConstants _constants;
 
     public CrpgStrikeMagnitudeModel(CrpgConstants constants)
@@ -34,5 +38,50 @@ internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
         }
 
         return result;
+    }
+
+    public override float CalculateStrikeMagnitudeForSwing(
+        BasicCharacterObject attackerCharacter,
+        BasicCharacterObject attackerCaptainCharacter,
+        float swingSpeed,
+        float impactPoint,
+        float weaponWeight,
+        WeaponComponentData weaponUsageComponent,
+        float weaponLength,
+        float weaponInertia,
+        float weaponCoM,
+        float extraLinearSpeed,
+        bool doesAttackerHaveMount)
+    {
+        float impactPointFactor;
+        switch (weaponUsageComponent.WeaponClass)
+        {
+            case WeaponClass.OneHandedAxe:
+            case WeaponClass.TwoHandedAxe:
+            case WeaponClass.Mace:
+            case WeaponClass.TwoHandedMace:
+            case WeaponClass.OneHandedPolearm:
+            case WeaponClass.TwoHandedPolearm:
+            case WeaponClass.LowGripPolearm:
+                impactPointFactor = (float)Math.Pow(10f, -4f * Math.Pow(impactPoint - 0.93, 2f));
+                return BladeDamageFactorToDamageRatio * (0.4f + 0.6f * impactPointFactor) * (1f + extraLinearSpeed / 15f);
+
+            default: // Weapon that do not have a wooden handle
+                impactPointFactor = (float)Math.Pow(10f, -4f * Math.Pow(impactPoint - 0.75, 2f));
+                return BladeDamageFactorToDamageRatio * (0.8f + 0.2f * impactPointFactor) * (1f + extraLinearSpeed / 15f);
+        }
+    }
+
+    public override float CalculateStrikeMagnitudeForThrust(
+        BasicCharacterObject attackerCharacter,
+        BasicCharacterObject attackerCaptainCharacter,
+        float thrustWeaponSpeed,
+        float weaponWeight,
+        WeaponComponentData weaponUsageComponent,
+        float extraLinearSpeed,
+        bool doesAttackerHaveMount,
+        bool isThrown = false)
+    {
+        return BladeDamageFactorToDamageRatio * (1f + extraLinearSpeed / 15f);
     }
 }

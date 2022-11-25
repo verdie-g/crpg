@@ -64,21 +64,10 @@
       <AvailablePiece id="crpg_battania_2hsword_2_t3_guard" />
       <AvailablePiece id="crpg_battania_2hsword_2_t3_handle" />
       <AvailablePiece id="crpg_battania_2hsword_2_t3_pommel" />
-      <AvailablePiece id="crpg_battania_2hsword_3_t3_blade" />
-      <AvailablePiece id="crpg_battania_2hsword_3_t3_guard" />
-      <AvailablePiece id="crpg_battania_2hsword_3_t3_pommel" />
-      <AvailablePiece id="crpg_battania_2hsword_4_t4_blade" />
-      <AvailablePiece id="crpg_battania_2hsword_4_t4_guard" />
-      <AvailablePiece id="crpg_battania_2hsword_4_t4_handle" />
-      <AvailablePiece id="crpg_battania_2hsword_4_t4_pommel" />
       <AvailablePiece id="crpg_battania_2hsword_5_t4_blade" />
       <AvailablePiece id="crpg_battania_2hsword_5_t4_guard" />
       <AvailablePiece id="crpg_battania_2hsword_5_t4_handle" />
       <AvailablePiece id="crpg_battania_2hsword_5_t4_pommel" />
-      <AvailablePiece id="crpg_battania_2hsword_5_t5_blade" />
-      <AvailablePiece id="crpg_battania_2hsword_5_t5_guard" />
-      <AvailablePiece id="crpg_battania_2hsword_5_t5_handle" />
-      <AvailablePiece id="crpg_battania_2hsword_5_t5_pommel" />
       <AvailablePiece id="crpg_battania_noble_sword_1_t5_blade" />
       <AvailablePiece id="crpg_battania_noble_sword_1_t5_guard" />
       <AvailablePiece id="crpg_battania_noble_sword_1_t5_handle" />
@@ -128,10 +117,6 @@
       <AvailablePiece id="crpg_celtic_dagger_pommel" />
       <AvailablePiece id="crpg_celtic_throwing_dagger_handle" />
       <AvailablePiece id="crpg_celtic_throwing_dagger_pommel" />
-      <AvailablePiece id="crpg_cleaver_2hsword_t3_blade" />
-      <AvailablePiece id="crpg_cleaver_2hsword_t3_guard" />
-      <AvailablePiece id="crpg_cleaver_2hsword_t3_handle" />
-      <AvailablePiece id="crpg_cleaver_2hsword_t3_pommel" />
       <AvailablePiece id="crpg_cleaver_sword_t3_blade" />
       <AvailablePiece id="crpg_cleaver_sword_t3_guard" />
       <AvailablePiece id="crpg_cleaver_sword_t3_handle" />
@@ -146,10 +131,6 @@
       <AvailablePiece id="crpg_desert_long_sword_t4_pommel" />
       <AvailablePiece id="crpg_desert_throwing_knife_handle" />
       <AvailablePiece id="crpg_desert_throwing_knife_pommel" />
-      <AvailablePiece id="crpg_early_retirement_2hsword_t3_blade" />
-      <AvailablePiece id="crpg_early_retirement_2hsword_t3_guard" />
-      <AvailablePiece id="crpg_early_retirement_2hsword_t3_handle" />
-      <AvailablePiece id="crpg_early_retirement_2hsword_t3_pommel" />
       <AvailablePiece id="crpg_eastern_steel_mace_t4_pommel" />
       <AvailablePiece id="crpg_empire_mace_2_t4_pommel" />
       <AvailablePiece id="crpg_empire_mace_4_t5_pommel" />
@@ -248,11 +229,6 @@
       <AvailablePiece id="crpg_narrow_sword_t3_blade" />
       <AvailablePiece id="crpg_narrow_sword_t3_guard" />
       <AvailablePiece id="crpg_narrow_sword_t3_handle" />
-      <AvailablePiece id="crpg_narrow_sword_t3_pommel" />
-      <AvailablePiece id="crpg_northern_2hsword_t4_blade" />
-      <AvailablePiece id="crpg_northern_2hsword_t4_guard" />
-      <AvailablePiece id="crpg_northern_2hsword_t4_handle" />
-      <AvailablePiece id="crpg_northern_2hsword_t4_pommel" />
       <AvailablePiece id="crpg_peasant_hammer_2_t1_pommel" />
       <AvailablePiece id="crpg_pointed_falchion_sword_t4_blade" />
       <AvailablePiece id="crpg_pointed_falchion_sword_t4_guard" />
@@ -260,14 +236,6 @@
       <AvailablePiece id="crpg_pointed_falchion_sword_t4_pommel" />
       <AvailablePiece id="crpg_pugio_handle" />
       <AvailablePiece id="crpg_pugio_pommel" />
-      <AvailablePiece id="crpg_reaper_falx_blade" />
-      <AvailablePiece id="crpg_reaper_falx_guard" />
-      <AvailablePiece id="crpg_reaper_falx_handle" />
-      <AvailablePiece id="crpg_reaper_falx_pommel" />
-      <AvailablePiece id="crpg_ridged_2hsword_t4_blade" />
-      <AvailablePiece id="crpg_ridged_2hsword_t4_guard" />
-      <AvailablePiece id="crpg_ridged_2hsword_t4_handle" />
-      <AvailablePiece id="crpg_ridged_2hsword_t4_pommel" />
       <AvailablePiece id="crpg_ridged_sabre_sword_t4_blade" />
       <AvailablePiece id="crpg_ridged_sabre_sword_t4_guard" />
       <AvailablePiece id="crpg_ridged_sabre_sword_t4_handle" />
@@ -289,10 +257,6 @@
       <AvailablePiece id="crpg_simple_sabre_sword_t2_guard" />
       <AvailablePiece id="crpg_simple_sabre_sword_t2_handle" />
       <AvailablePiece id="crpg_simple_sabre_sword_t2_pommel" />
-      <AvailablePiece id="crpg_southern_broad_2hsword_t4_blade" />
-      <AvailablePiece id="crpg_southern_broad_2hsword_t4_guard" />
-      <AvailablePiece id="crpg_southern_broad_2hsword_t4_handle" />
-      <AvailablePiece id="crpg_southern_broad_2hsword_t4_pommel" />
       <AvailablePiece id="crpg_star_falchion_sword_t3_blade" />
       <AvailablePiece id="crpg_star_falchion_sword_t3_guard" />
       <AvailablePiece id="crpg_star_falchion_sword_t3_handle" />
@@ -387,10 +351,6 @@
       <AvailablePiece id="crpg_vlandia_sword_5_t5_guard" />
       <AvailablePiece id="crpg_vlandia_sword_5_t5_handle" />
       <AvailablePiece id="crpg_vlandia_sword_5_t5_pommel" />
-      <AvailablePiece id="crpg_war_razor_2hsword_t4_blade" />
-      <AvailablePiece id="crpg_war_razor_2hsword_t4_guard" />
-      <AvailablePiece id="crpg_war_razor_2hsword_t4_handle" />
-      <AvailablePiece id="crpg_war_razor_2hsword_t4_pommel" />
       <AvailablePiece id="crpg_western_2hsword_t3_blade" />
       <AvailablePiece id="crpg_western_2hsword_t3_guard" />
       <AvailablePiece id="crpg_western_2hsword_t3_handle" />
@@ -417,9 +377,10 @@
       <WeaponFlag value="MeleeWeapon" />
     </WeaponFlags>
     <AvailablePieces>
-      <AvailablePiece id="crpg_ambassador_sword_t3_guard" />
-      <AvailablePiece id="crpg_ambassador_sword_t3_handle" />
-      <AvailablePiece id="crpg_ambassador_sword_t3_pommel" />
+      <AvailablePiece id="crpg_northern_2hsword_t4_blade" />
+      <AvailablePiece id="crpg_northern_2hsword_t4_guard" />
+      <AvailablePiece id="crpg_northern_2hsword_t4_handle" />
+      <AvailablePiece id="crpg_northern_2hsword_t4_pommel" />
       <AvailablePiece id="crpg_aserai_sword_1_t2_blade" />
       <AvailablePiece id="crpg_aserai_sword_1_t2_guard" />
       <AvailablePiece id="crpg_aserai_sword_1_t2_pommel" />
@@ -451,21 +412,10 @@
       <AvailablePiece id="crpg_battania_2hsword_2_t3_guard" />
       <AvailablePiece id="crpg_battania_2hsword_2_t3_handle" />
       <AvailablePiece id="crpg_battania_2hsword_2_t3_pommel" />
-      <AvailablePiece id="crpg_battania_2hsword_3_t3_blade" />
-      <AvailablePiece id="crpg_battania_2hsword_3_t3_guard" />
-      <AvailablePiece id="crpg_battania_2hsword_3_t3_pommel" />
-      <AvailablePiece id="crpg_battania_2hsword_4_t4_blade" />
-      <AvailablePiece id="crpg_battania_2hsword_4_t4_guard" />
-      <AvailablePiece id="crpg_battania_2hsword_4_t4_handle" />
-      <AvailablePiece id="crpg_battania_2hsword_4_t4_pommel" />
       <AvailablePiece id="crpg_battania_2hsword_5_t4_blade" />
       <AvailablePiece id="crpg_battania_2hsword_5_t4_guard" />
       <AvailablePiece id="crpg_battania_2hsword_5_t4_handle" />
       <AvailablePiece id="crpg_battania_2hsword_5_t4_pommel" />
-      <AvailablePiece id="crpg_battania_2hsword_5_t5_blade" />
-      <AvailablePiece id="crpg_battania_2hsword_5_t5_guard" />
-      <AvailablePiece id="crpg_battania_2hsword_5_t5_handle" />
-      <AvailablePiece id="crpg_battania_2hsword_5_t5_pommel" />
       <AvailablePiece id="crpg_battania_noble_sword_1_t5_pommel" />
       <AvailablePiece id="crpg_battania_noble_sword_2_t5_guard" />
       <AvailablePiece id="crpg_battania_noble_sword_2_t5_pommel" />
@@ -498,10 +448,6 @@
       <AvailablePiece id="crpg_broad_ild_sword_t3_pommel" />
       <AvailablePiece id="crpg_celtic_dagger_pommel" />
       <AvailablePiece id="crpg_celtic_throwing_dagger_pommel" />
-      <AvailablePiece id="crpg_cleaver_2hsword_t3_blade" />
-      <AvailablePiece id="crpg_cleaver_2hsword_t3_guard" />
-      <AvailablePiece id="crpg_cleaver_2hsword_t3_handle" />
-      <AvailablePiece id="crpg_cleaver_2hsword_t3_pommel" />
       <AvailablePiece id="crpg_cleaver_sword_t3_blade" />
       <AvailablePiece id="crpg_cleaver_sword_t3_guard" />
       <AvailablePiece id="crpg_cleaver_sword_t3_pommel" />
@@ -511,10 +457,6 @@
       <AvailablePiece id="crpg_desert_long_sword_t4_blade" />
       <AvailablePiece id="crpg_desert_long_sword_t4_guard" />
       <AvailablePiece id="crpg_desert_throwing_knife_pommel" />
-      <AvailablePiece id="crpg_early_retirement_2hsword_t3_blade" />
-      <AvailablePiece id="crpg_early_retirement_2hsword_t3_guard" />
-      <AvailablePiece id="crpg_early_retirement_2hsword_t3_handle" />
-      <AvailablePiece id="crpg_early_retirement_2hsword_t3_pommel" />
       <AvailablePiece id="crpg_eastern_steel_mace_t4_pommel" />
       <AvailablePiece id="crpg_empire_mace_2_t4_pommel" />
       <AvailablePiece id="crpg_empire_noble_sword_2_t5_blade" />
@@ -574,23 +516,11 @@
       <AvailablePiece id="crpg_narrow_sword_t3_guard" />
       <AvailablePiece id="crpg_narrow_sword_t3_handle" />
       <AvailablePiece id="crpg_narrow_sword_t3_pommel" />
-      <AvailablePiece id="crpg_northern_2hsword_t4_blade" />
-      <AvailablePiece id="crpg_northern_2hsword_t4_guard" />
-      <AvailablePiece id="crpg_northern_2hsword_t4_handle" />
-      <AvailablePiece id="crpg_northern_2hsword_t4_pommel" />
       <AvailablePiece id="crpg_peasant_hammer_2_t1_pommel" />
       <AvailablePiece id="crpg_pointed_falchion_sword_t4_blade" />
       <AvailablePiece id="crpg_pointed_falchion_sword_t4_guard" />
       <AvailablePiece id="crpg_pointed_falchion_sword_t4_pommel" />
       <AvailablePiece id="crpg_pugio_pommel" />
-      <AvailablePiece id="crpg_reaper_falx_blade" />
-      <AvailablePiece id="crpg_reaper_falx_guard" />
-      <AvailablePiece id="crpg_reaper_falx_handle" />
-      <AvailablePiece id="crpg_reaper_falx_pommel" />
-      <AvailablePiece id="crpg_ridged_2hsword_t4_blade" />
-      <AvailablePiece id="crpg_ridged_2hsword_t4_guard" />
-      <AvailablePiece id="crpg_ridged_2hsword_t4_handle" />
-      <AvailablePiece id="crpg_ridged_2hsword_t4_pommel" />
       <AvailablePiece id="crpg_ridged_sabre_sword_t4_blade" />
       <AvailablePiece id="crpg_ridged_sabre_sword_t4_guard" />
       <AvailablePiece id="crpg_seax_pommel" />
@@ -608,10 +538,6 @@
       <AvailablePiece id="crpg_simple_sabre_sword_t2_guard" />
       <AvailablePiece id="crpg_simple_sabre_sword_t2_handle" />
       <AvailablePiece id="crpg_simple_sabre_sword_t2_pommel" />
-      <AvailablePiece id="crpg_southern_broad_2hsword_t4_blade" />
-      <AvailablePiece id="crpg_southern_broad_2hsword_t4_guard" />
-      <AvailablePiece id="crpg_southern_broad_2hsword_t4_handle" />
-      <AvailablePiece id="crpg_southern_broad_2hsword_t4_pommel" />
       <AvailablePiece id="crpg_star_falchion_sword_t3_blade" />
       <AvailablePiece id="crpg_star_falchion_sword_t3_guard" />
       <AvailablePiece id="crpg_star_falchion_sword_t3_handle" />
@@ -666,10 +592,6 @@
       <AvailablePiece id="crpg_vlandia_sword_5_t5_blade" />
       <AvailablePiece id="crpg_vlandia_sword_5_t5_guard" />
       <AvailablePiece id="crpg_vlandia_sword_5_t5_pommel" />
-      <AvailablePiece id="crpg_war_razor_2hsword_t4_blade" />
-      <AvailablePiece id="crpg_war_razor_2hsword_t4_guard" />
-      <AvailablePiece id="crpg_war_razor_2hsword_t4_handle" />
-      <AvailablePiece id="crpg_war_razor_2hsword_t4_pommel" />
       <AvailablePiece id="crpg_western_2hsword_t3_blade" />
       <AvailablePiece id="crpg_western_2hsword_t3_guard" />
       <AvailablePiece id="crpg_western_2hsword_t3_handle" />
@@ -687,6 +609,10 @@
       <AvailablePiece id="crpg_wooden_sword_t1_blade" />
       <AvailablePiece id="crpg_wooden_sword_t1_guard" />
       <AvailablePiece id="crpg_wooden_sword_t1_pommel" />
+      <AvailablePiece id="crpg_battania_2hsword_3_t3_blade" />
+      <AvailablePiece id="crpg_battania_2hsword_3_t3_guard" />
+      <AvailablePiece id="crpg_battania_2hsword_3_t3_handle" />
+      <AvailablePiece id="crpg_battania_2hsword_3_t3_pommel" />
     </AvailablePieces>
   </WeaponDescription>
   <WeaponDescription id="crpg_OneHandedBastardSwordAlternative" weapon_class="OneHandedSword" item_usage_features="onehanded:block:swing:thrust">
@@ -694,9 +620,6 @@
       <WeaponFlag value="MeleeWeapon" />
     </WeaponFlags>
     <AvailablePieces>
-      <AvailablePiece id="crpg_ambassador_sword_t3_guard" />
-      <AvailablePiece id="crpg_ambassador_sword_t3_handle" />
-      <AvailablePiece id="crpg_ambassador_sword_t3_pommel" />
       <AvailablePiece id="crpg_aserai_sword_1_t2_blade" />
       <AvailablePiece id="crpg_aserai_sword_1_t2_guard" />
       <AvailablePiece id="crpg_aserai_sword_1_t2_pommel" />
@@ -728,21 +651,10 @@
       <AvailablePiece id="crpg_battania_2hsword_2_t3_guard" />
       <AvailablePiece id="crpg_battania_2hsword_2_t3_handle" />
       <AvailablePiece id="crpg_battania_2hsword_2_t3_pommel" />
-      <AvailablePiece id="crpg_battania_2hsword_3_t3_blade" />
-      <AvailablePiece id="crpg_battania_2hsword_3_t3_guard" />
-      <AvailablePiece id="crpg_battania_2hsword_3_t3_pommel" />
-      <AvailablePiece id="crpg_battania_2hsword_4_t4_blade" />
-      <AvailablePiece id="crpg_battania_2hsword_4_t4_guard" />
-      <AvailablePiece id="crpg_battania_2hsword_4_t4_handle" />
-      <AvailablePiece id="crpg_battania_2hsword_4_t4_pommel" />
       <AvailablePiece id="crpg_battania_2hsword_5_t4_blade" />
       <AvailablePiece id="crpg_battania_2hsword_5_t4_guard" />
       <AvailablePiece id="crpg_battania_2hsword_5_t4_handle" />
       <AvailablePiece id="crpg_battania_2hsword_5_t4_pommel" />
-      <AvailablePiece id="crpg_battania_2hsword_5_t5_blade" />
-      <AvailablePiece id="crpg_battania_2hsword_5_t5_guard" />
-      <AvailablePiece id="crpg_battania_2hsword_5_t5_handle" />
-      <AvailablePiece id="crpg_battania_2hsword_5_t5_pommel" />
       <AvailablePiece id="crpg_battania_noble_sword_1_t5_pommel" />
       <AvailablePiece id="crpg_battania_noble_sword_2_t5_guard" />
       <AvailablePiece id="crpg_battania_noble_sword_2_t5_pommel" />
@@ -775,10 +687,6 @@
       <AvailablePiece id="crpg_broad_ild_sword_t3_pommel" />
       <AvailablePiece id="crpg_celtic_dagger_pommel" />
       <AvailablePiece id="crpg_celtic_throwing_dagger_pommel" />
-      <AvailablePiece id="crpg_cleaver_2hsword_t3_blade" />
-      <AvailablePiece id="crpg_cleaver_2hsword_t3_guard" />
-      <AvailablePiece id="crpg_cleaver_2hsword_t3_handle" />
-      <AvailablePiece id="crpg_cleaver_2hsword_t3_pommel" />
       <AvailablePiece id="crpg_cleaver_sword_t3_blade" />
       <AvailablePiece id="crpg_cleaver_sword_t3_guard" />
       <AvailablePiece id="crpg_cleaver_sword_t3_pommel" />
@@ -788,10 +696,6 @@
       <AvailablePiece id="crpg_desert_long_sword_t4_blade" />
       <AvailablePiece id="crpg_desert_long_sword_t4_guard" />
       <AvailablePiece id="crpg_desert_throwing_knife_pommel" />
-      <AvailablePiece id="crpg_early_retirement_2hsword_t3_blade" />
-      <AvailablePiece id="crpg_early_retirement_2hsword_t3_guard" />
-      <AvailablePiece id="crpg_early_retirement_2hsword_t3_handle" />
-      <AvailablePiece id="crpg_early_retirement_2hsword_t3_pommel" />
       <AvailablePiece id="crpg_eastern_steel_mace_t4_pommel" />
       <AvailablePiece id="crpg_empire_mace_2_t4_pommel" />
       <AvailablePiece id="crpg_empire_noble_sword_2_t5_blade" />
@@ -851,23 +755,11 @@
       <AvailablePiece id="crpg_narrow_sword_t3_guard" />
       <AvailablePiece id="crpg_narrow_sword_t3_handle" />
       <AvailablePiece id="crpg_narrow_sword_t3_pommel" />
-      <AvailablePiece id="crpg_northern_2hsword_t4_blade" />
-      <AvailablePiece id="crpg_northern_2hsword_t4_guard" />
-      <AvailablePiece id="crpg_northern_2hsword_t4_handle" />
-      <AvailablePiece id="crpg_northern_2hsword_t4_pommel" />
       <AvailablePiece id="crpg_peasant_hammer_2_t1_pommel" />
       <AvailablePiece id="crpg_pointed_falchion_sword_t4_blade" />
       <AvailablePiece id="crpg_pointed_falchion_sword_t4_guard" />
       <AvailablePiece id="crpg_pointed_falchion_sword_t4_pommel" />
       <AvailablePiece id="crpg_pugio_pommel" />
-      <AvailablePiece id="crpg_reaper_falx_blade" />
-      <AvailablePiece id="crpg_reaper_falx_guard" />
-      <AvailablePiece id="crpg_reaper_falx_handle" />
-      <AvailablePiece id="crpg_reaper_falx_pommel" />
-      <AvailablePiece id="crpg_ridged_2hsword_t4_blade" />
-      <AvailablePiece id="crpg_ridged_2hsword_t4_guard" />
-      <AvailablePiece id="crpg_ridged_2hsword_t4_handle" />
-      <AvailablePiece id="crpg_ridged_2hsword_t4_pommel" />
       <AvailablePiece id="crpg_ridged_sabre_sword_t4_blade" />
       <AvailablePiece id="crpg_ridged_sabre_sword_t4_guard" />
       <AvailablePiece id="crpg_seax_pommel" />
@@ -885,10 +777,6 @@
       <AvailablePiece id="crpg_simple_sabre_sword_t2_guard" />
       <AvailablePiece id="crpg_simple_sabre_sword_t2_handle" />
       <AvailablePiece id="crpg_simple_sabre_sword_t2_pommel" />
-      <AvailablePiece id="crpg_southern_broad_2hsword_t4_blade" />
-      <AvailablePiece id="crpg_southern_broad_2hsword_t4_guard" />
-      <AvailablePiece id="crpg_southern_broad_2hsword_t4_handle" />
-      <AvailablePiece id="crpg_southern_broad_2hsword_t4_pommel" />
       <AvailablePiece id="crpg_star_falchion_sword_t3_blade" />
       <AvailablePiece id="crpg_star_falchion_sword_t3_guard" />
       <AvailablePiece id="crpg_star_falchion_sword_t3_handle" />
@@ -943,10 +831,6 @@
       <AvailablePiece id="crpg_vlandia_sword_5_t5_blade" />
       <AvailablePiece id="crpg_vlandia_sword_5_t5_guard" />
       <AvailablePiece id="crpg_vlandia_sword_5_t5_pommel" />
-      <AvailablePiece id="crpg_war_razor_2hsword_t4_blade" />
-      <AvailablePiece id="crpg_war_razor_2hsword_t4_guard" />
-      <AvailablePiece id="crpg_war_razor_2hsword_t4_handle" />
-      <AvailablePiece id="crpg_war_razor_2hsword_t4_pommel" />
       <AvailablePiece id="crpg_western_2hsword_t3_blade" />
       <AvailablePiece id="crpg_western_2hsword_t3_guard" />
       <AvailablePiece id="crpg_western_2hsword_t3_handle" />
@@ -972,6 +856,23 @@
       <WeaponFlag value="NotUsableWithOneHand" />
     </WeaponFlags>
     <AvailablePieces>
+      <AvailablePiece id="crpg_dawn_blade" />
+      <AvailablePiece id="crpg_dawn_guard" />
+      <AvailablePiece id="crpg_dawn_handle" />
+      <AvailablePiece id="crpg_dawn_pommel" />
+      <AvailablePiece id="crpg_winter_blade" />
+      <AvailablePiece id="crpg_winter_guard" />
+      <AvailablePiece id="crpg_winter_handle" />
+      <AvailablePiece id="crpg_winter_pommel" />
+      <AvailablePiece id="crpg_barmace_blade" />
+      <AvailablePiece id="crpg_barmace_handle" />
+      <AvailablePiece id="crpg_northern_2hsword_t4_blade" />
+      <AvailablePiece id="crpg_northern_2hsword_t4_guard" />
+      <AvailablePiece id="crpg_northern_2hsword_t4_handle" />
+      <AvailablePiece id="crpg_northern_2hsword_t4_pommel" />
+      <AvailablePiece id="crpg_desert_long_sword_t4_pommel" />
+      <AvailablePiece id="crpg_desert_long_sword_t4_handle" />
+      <AvailablePiece id="crpg_ambassador_sword_t3_blade" />
       <AvailablePiece id="crpg_ambassador_sword_t3_guard" />
       <AvailablePiece id="crpg_ambassador_sword_t3_handle" />
       <AvailablePiece id="crpg_ambassador_sword_t3_pommel" />
@@ -1007,10 +908,6 @@
       <AvailablePiece id="crpg_battania_2hsword_2_t3_guard" />
       <AvailablePiece id="crpg_battania_2hsword_2_t3_handle" />
       <AvailablePiece id="crpg_battania_2hsword_2_t3_pommel" />
-      <AvailablePiece id="crpg_battania_2hsword_3_t3_blade" />
-      <AvailablePiece id="crpg_battania_2hsword_3_t3_guard" />
-      <AvailablePiece id="crpg_battania_2hsword_3_t3_handle" />
-      <AvailablePiece id="crpg_battania_2hsword_3_t3_pommel" />
       <AvailablePiece id="crpg_battania_2hsword_4_t4_blade" />
       <AvailablePiece id="crpg_battania_2hsword_4_t4_guard" />
       <AvailablePiece id="crpg_battania_2hsword_4_t4_handle" />
@@ -1023,6 +920,10 @@
       <AvailablePiece id="crpg_battania_2hsword_5_t5_guard" />
       <AvailablePiece id="crpg_battania_2hsword_5_t5_handle" />
       <AvailablePiece id="crpg_battania_2hsword_5_t5_pommel" />
+      <AvailablePiece id="crpg_heavy_executionner_2sword_blade" />
+      <AvailablePiece id="crpg_heavy_executionner_2sword_guard" />
+      <AvailablePiece id="crpg_heavy_executionner_2sword_handle" />
+      <AvailablePiece id="crpg_heavy_executionner_2sword_pommel" />
       <AvailablePiece id="crpg_battania_noble_sword_1_t5_pommel" />
       <AvailablePiece id="crpg_battania_noble_sword_2_t5_guard" />
       <AvailablePiece id="crpg_battania_noble_sword_2_t5_pommel" />
@@ -1249,6 +1150,10 @@
       <AvailablePiece id="crpg_wooden_sword_t1_blade" />
       <AvailablePiece id="crpg_wooden_sword_t1_guard" />
       <AvailablePiece id="crpg_wooden_sword_t1_pommel" />
+      <AvailablePiece id="crpg_battania_2hsword_3_t3_blade" />
+      <AvailablePiece id="crpg_battania_2hsword_3_t3_guard" />
+      <AvailablePiece id="crpg_battania_2hsword_3_t3_handle" />
+      <AvailablePiece id="crpg_battania_2hsword_3_t3_pommel" />
     </AvailablePieces>
   </WeaponDescription>
   <WeaponDescription id="crpg_Dagger" weapon_class="Dagger" item_usage_features="onehanded:block:shield:swing:thrust">
@@ -1269,9 +1174,6 @@
       <AvailablePiece id="crpg_wooden_2hsword_t1_pommel" />
       <AvailablePiece id="crpg_wooden_sword_t1_pommel" />
       <AvailablePiece id="crpg_celtic_dagger_pommel" />
-      <AvailablePiece id="crpg_battania_2hsword_5_t5_pommel" />
-      <AvailablePiece id="crpg_battania_2hsword_4_t4_pommel" />
-      <AvailablePiece id="crpg_early_retirement_2hsword_t3_pommel" />
       <AvailablePiece id="crpg_battania_noble_sword_2_t5_pommel" />
       <AvailablePiece id="crpg_battania_sword_5_t5_pommel" />
       <AvailablePiece id="crpg_gladius_b_pommel" />
@@ -1294,9 +1196,6 @@
       <AvailablePiece id="crpg_aserai_sword_1_t2_pommel" />
       <AvailablePiece id="crpg_celtic_throwing_dagger_pommel" />
       <AvailablePiece id="crpg_peasant_hammer_2_t1_pommel" />
-      <AvailablePiece id="crpg_southern_broad_2hsword_t4_pommel" />
-      <AvailablePiece id="crpg_war_razor_2hsword_t4_pommel" />
-      <AvailablePiece id="crpg_cleaver_2hsword_t3_pommel" />
       <AvailablePiece id="crpg_broad_falchion_sword_t3_pommel" />
       <AvailablePiece id="crpg_star_falchion_sword_t3_pommel" />
       <AvailablePiece id="crpg_ambassador_sword_t3_pommel" />
@@ -1317,10 +1216,8 @@
       <AvailablePiece id="crpg_eastern_steel_mace_t4_pommel" />
       <AvailablePiece id="crpg_leafblade_throwing_knife_pommel" />
       <AvailablePiece id="crpg_vlandia_sword_1_t2_pommel" />
-      <AvailablePiece id="crpg_reaper_falx_pommel" />
       <AvailablePiece id="crpg_broad_ild_sword_t3_pommel" />
       <AvailablePiece id="crpg_winds_fury_sword_t3_pommel" />
-      <AvailablePiece id="crpg_ridged_2hsword_t4_pommel" />
       <AvailablePiece id="crpg_khuzait_sword_5_t4_pommel" />
       <AvailablePiece id="crpg_khuzait_sword_4_t4_pommel" />
       <AvailablePiece id="crpg_khuzait_sword_3_t3_pommel" />
@@ -1330,7 +1227,6 @@
       <AvailablePiece id="crpg_lowland_throwing_knife_pommel" />
       <AvailablePiece id="crpg_the_scalpel_sword_t3_pommel" />
       <AvailablePiece id="crpg_sturgia_sword_5_t5_pommel" />
-      <AvailablePiece id="crpg_northern_2hsword_t4_pommel" />
       <AvailablePiece id="crpg_tyrhung_sword_t3_pommel" />
       <AvailablePiece id="crpg_sturgia_sword_5_t4_pommel" />
       <AvailablePiece id="crpg_sturgia_sword_4_t4_pommel" />
@@ -1346,7 +1242,6 @@
       <AvailablePiece id="crpg_empire_sword_5_t4_pommel" />
       <AvailablePiece id="crpg_empire_sword_4_t4_pommel" />
       <AvailablePiece id="crpg_morningstar_mace_t3_pommel" />
-      <AvailablePiece id="crpg_battania_2hsword_3_t3_pommel" />
       <AvailablePiece id="crpg_battania_2hsword_2_t3_pommel" />
       <AvailablePiece id="crpg_empire_sword_3_t3_pommel" />
       <AvailablePiece id="crpg_empire_sword_2_t3_pommel" />
@@ -1435,9 +1330,6 @@
       <AvailablePiece id="crpg_bastard_sword_t2_pommel" />
       <AvailablePiece id="crpg_battania_2hsword_1_t2_pommel" />
       <AvailablePiece id="crpg_battania_2hsword_2_t3_pommel" />
-      <AvailablePiece id="crpg_battania_2hsword_3_t3_pommel" />
-      <AvailablePiece id="crpg_battania_2hsword_4_t4_pommel" />
-      <AvailablePiece id="crpg_battania_2hsword_5_t5_pommel" />
       <AvailablePiece id="crpg_battania_noble_sword_2_t5_handle" />
       <AvailablePiece id="crpg_battania_sword_1_t2_pommel" />
       <AvailablePiece id="crpg_battania_sword_2_t3_handle" />
@@ -1461,7 +1353,6 @@
       <AvailablePiece id="crpg_desert_throwing_knife_guard" />
       <AvailablePiece id="crpg_desert_throwing_knife_handle" />
       <AvailablePiece id="crpg_desert_throwing_knife_pommel" />
-      <AvailablePiece id="crpg_early_retirement_2hsword_t3_pommel" />
       <AvailablePiece id="crpg_empire_sword_2_t3_handle" />
       <AvailablePiece id="crpg_empire_sword_2_t3_pommel" />
       <AvailablePiece id="crpg_empire_sword_3_t3_handle" />
@@ -1507,8 +1398,6 @@
       <AvailablePiece id="crpg_pugio_guard" />
       <AvailablePiece id="crpg_pugio_handle" />
       <AvailablePiece id="crpg_pugio_pommel" />
-      <AvailablePiece id="crpg_reaper_falx_pommel" />
-      <AvailablePiece id="crpg_ridged_2hsword_t4_pommel" />
       <AvailablePiece id="crpg_seax_guard" />
       <AvailablePiece id="crpg_seax_handle" />
       <AvailablePiece id="crpg_seax_pommel" />
@@ -1578,9 +1467,6 @@
       <AvailablePiece id="crpg_wooden_sword_t1_pommel" />
       <AvailablePiece id="crpg_battania_noble_sword_3_t5_pommel" />
       <AvailablePiece id="crpg_celtic_dagger_pommel" />
-      <AvailablePiece id="crpg_battania_2hsword_5_t5_pommel" />
-      <AvailablePiece id="crpg_battania_2hsword_4_t4_pommel" />
-      <AvailablePiece id="crpg_early_retirement_2hsword_t3_pommel" />
       <AvailablePiece id="crpg_battania_noble_sword_2_t5_pommel" />
       <AvailablePiece id="crpg_battania_sword_5_t5_pommel" />
       <AvailablePiece id="crpg_gladius_b_pommel" />
@@ -1608,9 +1494,6 @@
       <AvailablePiece id="crpg_aserai_sword_1_t2_pommel" />
       <AvailablePiece id="crpg_celtic_throwing_dagger_pommel" />
       <AvailablePiece id="crpg_peasant_hammer_2_t1_pommel" />
-      <AvailablePiece id="crpg_southern_broad_2hsword_t4_pommel" />
-      <AvailablePiece id="crpg_war_razor_2hsword_t4_pommel" />
-      <AvailablePiece id="crpg_cleaver_2hsword_t3_pommel" />
       <AvailablePiece id="crpg_broad_falchion_sword_t3_pommel" />
       <AvailablePiece id="crpg_star_falchion_sword_t3_pommel" />
       <AvailablePiece id="crpg_ambassador_sword_t3_pommel" />
@@ -1632,7 +1515,6 @@
       <AvailablePiece id="crpg_eastern_steel_mace_t4_pommel" />
       <AvailablePiece id="crpg_leafblade_throwing_knife_pommel" />
       <AvailablePiece id="crpg_vlandia_sword_1_t2_pommel" />
-      <AvailablePiece id="crpg_reaper_falx_pommel" />
       <AvailablePiece id="crpg_khuzait_noble_sword_3_t5_pommel" />
       <AvailablePiece id="crpg_khuzait_noble_sword_2_t5_pommel" />
       <AvailablePiece id="crpg_khuzait_mace_4_t5_pommel" />
@@ -1652,7 +1534,6 @@
       <AvailablePiece id="crpg_empire_sword_5_t4_pommel" />
       <AvailablePiece id="crpg_empire_sword_4_t4_pommel" />
       <AvailablePiece id="crpg_morningstar_mace_t3_pommel" />
-      <AvailablePiece id="crpg_battania_2hsword_3_t3_pommel" />
       <AvailablePiece id="crpg_battania_2hsword_2_t3_pommel" />
       <AvailablePiece id="crpg_empire_sword_3_t3_pommel" />
       <AvailablePiece id="crpg_empire_sword_2_t3_pommel" />
@@ -1784,6 +1665,10 @@
       <WeaponFlag value="TwoHandIdleOnMount" />
     </WeaponFlags>
     <AvailablePieces>
+      <AvailablePiece id="crpg_greataxe_blade" />
+      <AvailablePiece id="crpg_greataxe_handle" />
+      <AvailablePiece id="crpg_long_greataxe_blade" />
+      <AvailablePiece id="crpg_long_greataxe_handle" />
       <AvailablePiece id="crpg_ambassador_sword_t3_pommel" />
       <AvailablePiece id="crpg_aserai_2haxe_1_t3_blade" />
       <AvailablePiece id="crpg_aserai_2haxe_1_t3_handle" />
@@ -1807,10 +1692,7 @@
       <AvailablePiece id="crpg_battania_2haxe_1_t2_blade" />
       <AvailablePiece id="crpg_battania_2haxe_1_t2_handle" />
       <AvailablePiece id="crpg_battania_2hsword_2_t3_pommel" />
-      <AvailablePiece id="crpg_battania_2hsword_3_t3_pommel" />
-      <AvailablePiece id="crpg_battania_2hsword_4_t4_pommel" />
       <AvailablePiece id="crpg_battania_2hsword_5_t4_pommel" />
-      <AvailablePiece id="crpg_battania_2hsword_5_t5_pommel" />
       <AvailablePiece id="crpg_battania_mace_1_t3_pommel" />
       <AvailablePiece id="crpg_battania_noble_sword_1_t5_pommel" />
       <AvailablePiece id="crpg_battania_noble_sword_2_t5_pommel" />
@@ -1836,7 +1718,6 @@
       <AvailablePiece id="crpg_dawnbreaker_sword_t3_pommel" />
       <AvailablePiece id="crpg_desert_long_sword_t4_pommel" />
       <AvailablePiece id="crpg_desert_throwing_knife_pommel" />
-      <AvailablePiece id="crpg_early_retirement_2hsword_t3_pommel" />
       <AvailablePiece id="crpg_easter_polesword_t4_pommel" />
       <AvailablePiece id="crpg_eastern_javelin_1_t2_pommel" />
       <AvailablePiece id="crpg_eastern_javelin_2_t3_pommel" />
@@ -1900,7 +1781,6 @@
       <AvailablePiece id="crpg_pointed_falchion_sword_t4_pommel" />
       <AvailablePiece id="crpg_practice_spear_t1_pommel" />
       <AvailablePiece id="crpg_pugio_pommel" />
-      <AvailablePiece id="crpg_reaper_falx_pommel" />
       <AvailablePiece id="crpg_seax_pommel" />
       <AvailablePiece id="crpg_shishpar_mace_t4_pommel" />
       <AvailablePiece id="crpg_short_sword_t3_pommel" />
@@ -1930,7 +1810,6 @@
       <AvailablePiece id="crpg_vlandia_sword_3_t4_pommel" />
       <AvailablePiece id="crpg_vlandia_sword_4_t4_pommel" />
       <AvailablePiece id="crpg_vlandia_sword_5_t5_pommel" />
-      <AvailablePiece id="crpg_war_razor_2hsword_t4_pommel" />
       <AvailablePiece id="crpg_western_2hsword_t3_pommel" />
       <AvailablePiece id="crpg_western_2hsword_t4_pommel" />
       <AvailablePiece id="crpg_western_javelin_1_t2_pommel" />
@@ -2000,25 +1879,18 @@
       <AvailablePiece id="crpg_eastern_javelin_1_t2_pommel" />
       <AvailablePiece id="crpg_northern_javelin_1_t2_pommel" />
       <AvailablePiece id="crpg_western_javelin_1_t2_pommel" />
-      <AvailablePiece id="crpg_khuzait_polearm_2_t5_pommel" />
-      <AvailablePiece id="crpg_empire_polearm_2_t5_pommel" />
-      <AvailablePiece id="crpg_vlandia_polearm_1_t5_pommel" />
       <AvailablePiece id="crpg_battania_polearm_1_t5_pommel" />
       <AvailablePiece id="crpg_easter_polesword_t4_pommel" />
-      <AvailablePiece id="crpg_khuzait_polearm_1_t4_pommel" />
-      <AvailablePiece id="crpg_empire_polearm_1_t4_pommel" />
       <AvailablePiece id="crpg_sturgia_polearm_1_t5_pommel" />
       <AvailablePiece id="crpg_billhook_polearm_t2_pommel" />
       <AvailablePiece id="crpg_eastern_spear_3_t3_pommel" />
       <AvailablePiece id="crpg_practice_spear_t1_pommel" />
       <AvailablePiece id="crpg_khuzait_lance_1_t3_guard" />
-      <AvailablePiece id="crpg_khuzait_polearm_1_t4_guard" />
       <AvailablePiece id="crpg_southern_spear_3_t3_guard" />
       <AvailablePiece id="crpg_western_spear_3_t3_guard" />
       <AvailablePiece id="crpg_western_spear_5_t4_guard" />
       <AvailablePiece id="crpg_western_spear_4_t4_guard" />
       <AvailablePiece id="crpg_northern_spear_2_t3_guard" />
-      <AvailablePiece id="crpg_empire_polearm_1_t4_guard" />
       <AvailablePiece id="crpg_generic_javelin_1_t3_guard" />
       <AvailablePiece id="crpg_northern_javelin_1_t2_guard" />
       <AvailablePiece id="crpg_khuzait_lance_3_t5_guard" />
@@ -2038,9 +1910,6 @@
       <AvailablePiece id="crpg_western_javelin_2_t3_guard" />
       <AvailablePiece id="crpg_eastern_javelin_1_t2_guard" />
       <AvailablePiece id="crpg_western_javelin_1_t2_guard" />
-      <AvailablePiece id="crpg_khuzait_polearm_2_t5_guard" />
-      <AvailablePiece id="crpg_empire_polearm_2_t5_guard" />
-      <AvailablePiece id="crpg_vlandia_polearm_1_t5_guard" />
       <AvailablePiece id="crpg_easter_polesword_t4_guard" />
       <AvailablePiece id="crpg_sturgia_polearm_1_t5_guard" />
       <AvailablePiece id="crpg_billhook_polearm_t2_guard" />
@@ -2080,12 +1949,7 @@
       <AvailablePiece id="crpg_easter_polesword_t4_handle" />
       <AvailablePiece id="crpg_northern_spear_3_t4_handle" />
       <AvailablePiece id="crpg_eastern_spear_4_t4_handle" />
-      <AvailablePiece id="crpg_khuzait_polearm_1_t4_handle" />
-      <AvailablePiece id="crpg_empire_polearm_1_t4_handle" />
       <AvailablePiece id="crpg_empire_lance_1_t3_handle" />
-      <AvailablePiece id="crpg_khuzait_polearm_2_t5_handle" />
-      <AvailablePiece id="crpg_empire_polearm_2_t5_handle" />
-      <AvailablePiece id="crpg_vlandia_polearm_1_t5_handle" />
       <AvailablePiece id="crpg_battania_polearm_1_t5_handle" />
       <AvailablePiece id="crpg_eastern_spear_5_t5_handle" />
       <AvailablePiece id="crpg_military_fork_t2_handle" />
@@ -2124,12 +1988,9 @@
       <AvailablePiece id="crpg_eastern_spear_5_t5_blade" />
       <AvailablePiece id="crpg_military_fork_t2_blade" />
       <AvailablePiece id="crpg_military_fork_pike_t3_blade" />
-      <AvailablePiece id="crpg_khuzait_polearm_2_t5_blade" />
       <AvailablePiece id="crpg_empire_lance_1_t3_blade" />
       <AvailablePiece id="crpg_easter_polesword_t4_blade" />
       <AvailablePiece id="crpg_vlandia_lance_1_t3_blade" />
-      <AvailablePiece id="crpg_khuzait_polearm_1_t4_blade" />
-      <AvailablePiece id="crpg_empire_polearm_2_t5_blade" />
       <AvailablePiece id="crpg_western_javelin_1_t2_blade" />
       <AvailablePiece id="crpg_imperial_throwing_spear_1_t4_blade" />
       <AvailablePiece id="crpg_eastern_throwing_spear_2_t4_blade" />
@@ -2153,7 +2014,6 @@
       <AvailablePiece id="crpg_highland_spear_3_t3_blade" />
       <AvailablePiece id="crpg_western_spear_4_t3_blade" />
       <AvailablePiece id="crpg_western_spear_3_t3_blade" />
-      <AvailablePiece id="crpg_empire_polearm_1_t4_blade" />
       <AvailablePiece id="crpg_empire_lance_3_t5_blade" />
       <AvailablePiece id="crpg_vlandia_pike_1_t5_blade" />
       <AvailablePiece id="crpg_vlandia_lance_3_t5_blade" />
@@ -2164,7 +2024,6 @@
       <AvailablePiece id="crpg_triangluar_spear_t3_blade" />
       <AvailablePiece id="crpg_western_javelin_2_t3_blade" />
       <AvailablePiece id="crpg_western_spear_1_t2_blade" />
-      <AvailablePiece id="crpg_vlandia_polearm_1_t5_blade" />
     </AvailablePieces>
   </WeaponDescription>
   <WeaponDescription id="crpg_OneHandedPolearm_JavelinAlternative" weapon_class="OneHandedPolearm" item_usage_features="onehanded_polearm:block:shield:thrust">
@@ -2277,6 +2136,10 @@
       <WeaponFlag value="TwoHandIdleOnMount" />
     </WeaponFlags>
     <AvailablePieces>
+      <AvailablePiece id="crpg_war_scythe_blade" />
+      <AvailablePiece id="crpg_war_scythe_handle" />
+      <AvailablePiece id="crpg_awlpike_blade" />
+      <AvailablePiece id="crpg_awlpike_handle" />
       <AvailablePiece id="crpg_eastern_javelin_3_t4_pommel" />
       <AvailablePiece id="crpg_eastern_spear_5_t5_pommel" />
       <AvailablePiece id="crpg_empire_mace_3_t4_pommel" />
@@ -2478,8 +2341,74 @@
       <AvailablePiece id="crpg_western_javelin_2_t3_blade" />
       <AvailablePiece id="crpg_western_spear_1_t2_blade" />
       <AvailablePiece id="crpg_vlandia_polearm_1_t5_blade" />
+      <AvailablePiece id="crpg_bo_staff_t1_handle" />
+      <AvailablePiece id="crpg_bo_staff_t1_pommel" />
+      <AvailablePiece id="crpg_bo_staff_t1_blade" />
+      <AvailablePiece id="crpg_bo_staff_t1_guard" />
+      
     </AvailablePieces>
   </WeaponDescription>
+    <WeaponDescription id="crpg_SpearDoubleThrust" weapon_class="TwoHandedPolearm" item_usage_features="polearm:block:long:shield:thrust">
+    <WeaponFlags>
+      <WeaponFlag value="MeleeWeapon" />
+      <WeaponFlag value="NotUsableWithOneHand" />
+      <WeaponFlag value="WideGrip" />
+      <WeaponFlag value="TwoHandIdleOnMount" />
+    </WeaponFlags>
+    <AvailablePieces>
+     <AvailablePiece id="crpg_western_spear_2_t2_blade" />
+     <AvailablePiece id="crpg_western_spear_2_t2_handle" />
+     <AvailablePiece id="crpg_western_spear_3_t3_blade" />
+     <AvailablePiece id="crpg_western_spear_3_t3_guard" />
+     <AvailablePiece id="crpg_western_spear_3_t3_handle" />
+     <AvailablePiece id="crpg_western_spear_4_t3_blade" />
+     <AvailablePiece id="crpg_western_spear_4_t3_handle" />
+     <AvailablePiece id="crpg_imperial_spear_t2_blade" />
+     <AvailablePiece id="crpg_imperial_spear_t2_handle" />
+     <AvailablePiece id="crpg_triangluar_spear_t3_blade" />
+     <AvailablePiece id="crpg_triangluar_spear_t3_handle" />
+     <AvailablePiece id="crpg_eastern_spear_3_t3_blade" />
+     <AvailablePiece id="crpg_eastern_spear_3_t3_guard" />
+     <AvailablePiece id="crpg_eastern_spear_3_t3_handle" />
+     <AvailablePiece id="crpg_eastern_spear_3_t3_pommel" />
+     <AvailablePiece id="crpg_northern_spear_1_t2_blade" />
+     <AvailablePiece id="crpg_northern_spear_1_t2_handle" />
+     <AvailablePiece id="crpg_western_spear_1_t2_blade" />
+     <AvailablePiece id="crpg_western_spear_1_t2_handle" />
+     <AvailablePiece id="crpg_southern_spear_3_t3_blade" />
+     <AvailablePiece id="crpg_southern_spear_3_t3_guard" />
+     <AvailablePiece id="crpg_southern_spear_3_t3_handle" />
+     <AvailablePiece id="crpg_eastern_spear_2_t3_blade" />
+     <AvailablePiece id="crpg_eastern_spear_2_t3_handle" />
+     <AvailablePiece id="crpg_eastern_spear_1_t2_blade" />
+     <AvailablePiece id="crpg_eastern_spear_1_t2_handle" />
+     <AvailablePiece id="crpg_southern_spear_3_t4_blade" />
+     <AvailablePiece id="crpg_southern_spear_3_t4_guard" />
+     <AvailablePiece id="crpg_southern_spear_3_t4_handle" />
+     <AvailablePiece id="crpg_southern_spear_3_t4_pommel" />
+     <AvailablePiece id="crpg_highland_spear_t2_blade" />
+     <AvailablePiece id="crpg_highland_spear_t2_guard" />
+     <AvailablePiece id="crpg_highland_spear_t2_handle" />
+     <AvailablePiece id="crpg_northern_spear_3_t4_blade" />
+     <AvailablePiece id="crpg_northern_spear_3_t4_guard" />
+     <AvailablePiece id="crpg_northern_spear_3_t4_handle" />
+     <AvailablePiece id="crpg_northern_spear_3_t4_pommel" />
+     <AvailablePiece id="crpg_eastern_spear_4_t4_blade" />
+     <AvailablePiece id="crpg_eastern_spear_4_t4_guard" />
+     <AvailablePiece id="crpg_eastern_spear_4_t4_handle" />
+     <AvailablePiece id="crpg_eastern_spear_4_t4_pommel" />
+     <AvailablePiece id="crpg_northern_spear_2_t3_blade" />
+     <AvailablePiece id="crpg_northern_spear_2_t3_guard" />
+     <AvailablePiece id="crpg_northern_spear_2_t3_handle" />
+     <AvailablePiece id="crpg_practice_spear_t1_blade" />
+     <AvailablePiece id="crpg_practice_spear_t1_guard" />
+     <AvailablePiece id="crpg_practice_spear_t1_handle" />
+     <AvailablePiece id="crpg_practice_spear_t1_pommel" />
+     <AvailablePiece id="crpg_southern_spear_4_t3_blade" />
+     <AvailablePiece id="crpg_southern_spear_4_t3_guard" />
+     <AvailablePiece id="crpg_southern_spear_4_t3_handle" />
+    </AvailablePieces>
+    </WeaponDescription>
   <WeaponDescription id="crpg_TwoHandedPolearm_Couchable" weapon_class="TwoHandedPolearm" item_usage_features="polearm:couch">
     <WeaponFlags>
       <WeaponFlag value="MeleeWeapon" />
@@ -3170,6 +3099,8 @@
       <WeaponFlag value="MeleeWeapon" />
     </WeaponFlags>
     <AvailablePieces>
+      <AvailablePiece id="crpg_vlandia_axe_2_t4_blade" />
+      <AvailablePiece id="crpg_vlandia_axe_2_t4_handle" />
       <AvailablePiece id="crpg_ambassador_sword_t3_pommel" />
       <AvailablePiece id="crpg_aserai_mace_1_t2_blade" />
       <AvailablePiece id="crpg_aserai_mace_1_t2_handle" />
@@ -3193,10 +3124,7 @@
       <AvailablePiece id="crpg_bastard_sword_t2_pommel" />
       <AvailablePiece id="crpg_battania_2hsword_1_t2_pommel" />
       <AvailablePiece id="crpg_battania_2hsword_2_t3_pommel" />
-      <AvailablePiece id="crpg_battania_2hsword_3_t3_pommel" />
-      <AvailablePiece id="crpg_battania_2hsword_4_t4_pommel" />
       <AvailablePiece id="crpg_battania_2hsword_5_t4_pommel" />
-      <AvailablePiece id="crpg_battania_2hsword_5_t5_pommel" />
       <AvailablePiece id="crpg_battania_mace_1_t2_blade" />
       <AvailablePiece id="crpg_battania_mace_1_t2_handle" />
       <AvailablePiece id="crpg_battania_mace_1_t3_blade" />
@@ -3222,12 +3150,10 @@
       <AvailablePiece id="crpg_broad_ild_sword_t3_pommel" />
       <AvailablePiece id="crpg_celtic_dagger_pommel" />
       <AvailablePiece id="crpg_celtic_throwing_dagger_pommel" />
-      <AvailablePiece id="crpg_cleaver_2hsword_t3_pommel" />
       <AvailablePiece id="crpg_cleaver_sword_t3_pommel" />
       <AvailablePiece id="crpg_dawnbreaker_sword_t3_pommel" />
       <AvailablePiece id="crpg_desert_long_sword_t4_pommel" />
       <AvailablePiece id="crpg_desert_throwing_knife_pommel" />
-      <AvailablePiece id="crpg_early_retirement_2hsword_t3_pommel" />
       <AvailablePiece id="crpg_easter_polesword_t4_pommel" />
       <AvailablePiece id="crpg_eastern_javelin_1_t2_pommel" />
       <AvailablePiece id="crpg_eastern_javelin_2_t3_pommel" />
@@ -3307,7 +3233,6 @@
       <AvailablePiece id="crpg_morningstar_mace_t3_handle" />
       <AvailablePiece id="crpg_morningstar_mace_t3_pommel" />
       <AvailablePiece id="crpg_narrow_sword_t3_pommel" />
-      <AvailablePiece id="crpg_northern_2hsword_t4_pommel" />
       <AvailablePiece id="crpg_northern_javelin_1_t2_pommel" />
       <AvailablePiece id="crpg_northern_javelin_2_t3_pommel" />
       <AvailablePiece id="crpg_northern_javelin_3_t4_pommel" />
@@ -3324,7 +3249,6 @@
       <AvailablePiece id="crpg_pointed_falchion_sword_t4_pommel" />
       <AvailablePiece id="crpg_practice_spear_t1_pommel" />
       <AvailablePiece id="crpg_pugio_pommel" />
-      <AvailablePiece id="crpg_reaper_falx_pommel" />
       <AvailablePiece id="crpg_ridged_2hsword_t4_pommel" />
       <AvailablePiece id="crpg_ridged_sabre_sword_t4_pommel" />
       <AvailablePiece id="crpg_seax_pommel" />
@@ -3335,7 +3259,6 @@
       <AvailablePiece id="crpg_short_sword_t3_pommel" />
       <AvailablePiece id="crpg_simple_back_sword_t2_pommel" />
       <AvailablePiece id="crpg_simple_sabre_sword_t2_pommel" />
-      <AvailablePiece id="crpg_southern_broad_2hsword_t4_pommel" />
       <AvailablePiece id="crpg_southern_spear_3_t4_pommel" />
       <AvailablePiece id="crpg_star_falchion_sword_t3_pommel" />
       <AvailablePiece id="crpg_steel_mace_t3_blade" />
@@ -3373,7 +3296,6 @@
       <AvailablePiece id="crpg_vlandia_sword_3_t4_pommel" />
       <AvailablePiece id="crpg_vlandia_sword_4_t4_pommel" />
       <AvailablePiece id="crpg_vlandia_sword_5_t5_pommel" />
-      <AvailablePiece id="crpg_war_razor_2hsword_t4_pommel" />
       <AvailablePiece id="crpg_western_2hsword_t3_pommel" />
       <AvailablePiece id="crpg_western_2hsword_t4_pommel" />
       <AvailablePiece id="crpg_western_javelin_1_t2_pommel" />
@@ -3394,6 +3316,16 @@
       <WeaponFlag value="TwoHandIdleOnMount" />
     </WeaponFlags>
     <AvailablePieces>
+      <AvailablePiece id="crpg_2hmorningstar_mace_t3_blade" />
+      <AvailablePiece id="crpg_2hmorningstar_mace_t3_handle" />
+      <AvailablePiece id="crpg_2hmorningstar_mace_t3_pommel" />
+      <AvailablePiece id="crpg_bos_blade" />
+      <AvailablePiece id="ccrpg_bos_handle" />
+      <AvailablePiece id="crpg_gada_blade" />
+      <AvailablePiece id="crpg_gada_handle" />      
+      <AvailablePiece id="crpg_eastern_long_steel_mace_t4_blade" />
+      <AvailablePiece id="crpg_eastern_long_steel_mace_t4_handle" />
+      <AvailablePiece id="crpg_eastern_long_steel_mace_t4_pommel" />
       <AvailablePiece id="crpg_ambassador_sword_t3_pommel" />
       <AvailablePiece id="crpg_aserai_2haxe_3_t5_handle" />
       <AvailablePiece id="crpg_aserai_noble_sword_1_t5_pommel" />
@@ -3408,10 +3340,7 @@
       <AvailablePiece id="crpg_aserai_sword_6_t4_pommel" />
       <AvailablePiece id="crpg_aserai_sword_7_t5_pommel" />
       <AvailablePiece id="crpg_battania_2hsword_2_t3_pommel" />
-      <AvailablePiece id="crpg_battania_2hsword_3_t3_pommel" />
-      <AvailablePiece id="crpg_battania_2hsword_4_t4_pommel" />
       <AvailablePiece id="crpg_battania_2hsword_5_t4_pommel" />
-      <AvailablePiece id="crpg_battania_2hsword_5_t5_pommel" />
       <AvailablePiece id="crpg_battania_mace_1_t3_pommel" />
       <AvailablePiece id="crpg_battania_noble_sword_1_t5_pommel" />
       <AvailablePiece id="crpg_battania_noble_sword_2_t5_pommel" />
@@ -3433,7 +3362,6 @@
       <AvailablePiece id="crpg_dawnbreaker_sword_t3_pommel" />
       <AvailablePiece id="crpg_desert_long_sword_t4_pommel" />
       <AvailablePiece id="crpg_desert_throwing_knife_pommel" />
-      <AvailablePiece id="crpg_early_retirement_2hsword_t3_pommel" />
       <AvailablePiece id="crpg_easter_polesword_t4_pommel" />
       <AvailablePiece id="crpg_eastern_javelin_1_t2_pommel" />
       <AvailablePiece id="crpg_eastern_javelin_2_t3_pommel" />
@@ -3500,7 +3428,6 @@
       <AvailablePiece id="crpg_practice_spear_t1_handle" />
       <AvailablePiece id="crpg_practice_spear_t1_pommel" />
       <AvailablePiece id="crpg_pugio_pommel" />
-      <AvailablePiece id="crpg_reaper_falx_pommel" />
       <AvailablePiece id="crpg_seax_pommel" />
       <AvailablePiece id="crpg_shishpar_mace_t4_pommel" />
       <AvailablePiece id="crpg_short_sword_t3_pommel" />
@@ -3523,7 +3450,6 @@
       <AvailablePiece id="crpg_vlandia_sword_3_t4_pommel" />
       <AvailablePiece id="crpg_vlandia_sword_4_t4_pommel" />
       <AvailablePiece id="crpg_vlandia_sword_5_t5_pommel" />
-      <AvailablePiece id="crpg_war_razor_2hsword_t4_pommel" />
       <AvailablePiece id="crpg_western_2hsword_t3_pommel" />
       <AvailablePiece id="crpg_western_2hsword_t4_pommel" />
       <AvailablePiece id="crpg_western_javelin_1_t2_pommel" />
@@ -3534,7 +3460,6 @@
       <AvailablePiece id="crpg_wide_leaf_spear_t4_pommel" />
       <AvailablePiece id="crpg_winds_fury_sword_t3_pommel" />
       <AvailablePiece id="crpg_wooden_2hsword_t1_pommel" />
-      <AvailablePiece id="crpg_wooden_sword_t1_pommel" />
     </AvailablePieces>
   </WeaponDescription>
 </WeaponDescriptions>
