@@ -218,6 +218,12 @@ internal class CrpgItemValueModel : ItemValueModel
                 case WeaponClass.Pick:
                     swingLengthTier = 0.4f * (float)Math.Pow(0.8f + weapon.WeaponLength * 0.01f, 2f);
                     break;
+                case WeaponClass.ThrowingAxe:
+                case WeaponClass.Javelin:
+                case WeaponClass.ThrowingKnife:
+                    swingLengthTier = 0f;
+                    thrustLengthTier = 0f;
+                    break;
                 default:
                     throw new Exception(weapon.WeaponClass.ToString() + " has no swingTierAssociated");
             }
