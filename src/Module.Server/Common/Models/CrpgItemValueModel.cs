@@ -123,7 +123,7 @@ internal class CrpgItemValueModel : ItemValueModel
             }
             else
             {
-                return CalculateTierMeleeWeapon(weaponComponent);
+                return CalculateTierMeleeWeapon(weaponComponent) * CalculateTierMeleeWeapon(weaponComponent) / 10f; // makes weapon of lower Tier Better
             }
         }
     }
@@ -247,7 +247,7 @@ internal class CrpgItemValueModel : ItemValueModel
             }
         }
 
-        return maxTier * maxTier / 10f; // makes weapon of lower Tier Better
+        return maxTier;
     }
 
     private float CalculateDamageTypeFactor(DamageTypes damageType)
