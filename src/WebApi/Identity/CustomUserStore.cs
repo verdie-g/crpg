@@ -26,11 +26,16 @@ internal class CustomUserStore : IUserLoginStore<UserViewModel>, IUserRoleStore<
     /// <summary>
     /// Returns the claims that will be available when requesting 'profile' scope.
     /// </summary>
-    public Task<IList<Claim>> GetClaimsAsync(UserViewModel user, CancellationToken cancellationToken) =>
-        Task.FromResult<IList<Claim>>(new[]
+    public Task<IList<Claim>> GetClaimsAsync(UserViewModel user, CancellationToken cancellationToken)
+    {
+        List<Claim> claims = new();
+        if (user.AvatarFull != null)
         {
-            new Claim(JwtClaimTypes.Picture, user.AvatarFull!.ToString()),
-        });
+            claims.Add(new Claim(JwtClaimTypes.Picture, user.AvatarFull!.ToString()));
+        }
+
+        return Task.FromResult<IList<Claim>>(claims);
+    }
 
     public Task<IdentityResult> CreateAsync(UserViewModel user, CancellationToken cancellationToken) => throw new NotImplementedException();
     public Task SetNormalizedUserNameAsync(UserViewModel user, string? normalizedName, CancellationToken cancellationToken) => throw new NotImplementedException();
