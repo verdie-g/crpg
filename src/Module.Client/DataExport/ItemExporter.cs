@@ -102,14 +102,15 @@ internal class ItemExporter : IDataExporter
                 Handling = w.Handling,
                 BodyArmor = w.BodyArmor,
                 Flags = MbToCrpgWeaponFlags(w.WeaponFlags),
-                ThrustDamage = meleeClass.Contains(w.WeaponClass) ? (int)(w.ThrustDamageFactor * 10f) : w.ThrustDamage,
+                ThrustDamage = meleeClass.Contains(w.WeaponClass) ? (int)(w.ThrustDamageFactor * CrpgStrikeMagnitudeModel.BladeDamageFactorToDamageRatio) : w.ThrustDamage,
                 ThrustDamageType = MbToCrpgDamageType(w.ThrustDamageType),
                 ThrustSpeed = w.ThrustSpeed,
-                SwingDamage = meleeClass.Contains(w.WeaponClass) ? (int)(w.SwingDamageFactor * 10f) : w.SwingDamage,
+                SwingDamage = meleeClass.Contains(w.WeaponClass) ? (int)(w.SwingDamageFactor * CrpgStrikeMagnitudeModel.BladeDamageFactorToDamageRatio) : w.SwingDamage,
                 SwingDamageType = MbToCrpgDamageType(w.SwingDamageType),
                 SwingSpeed = w.SwingSpeed,
             }).ToArray();
         }
+
         return crpgItem;
     }
 
