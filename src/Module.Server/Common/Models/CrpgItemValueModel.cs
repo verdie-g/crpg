@@ -214,9 +214,12 @@ internal class CrpgItemValueModel : ItemValueModel
                 case WeaponClass.TwoHandedPolearm:
                     swingLengthTier = 0.82f * (float)Math.Pow(0.8f + weapon.WeaponLength * 0.00409f, 2f);
                     break;
-                default:
+                case WeaponClass.LowGripPolearm:
+                case WeaponClass.Pick:
                     swingLengthTier = 0.4f * (float)Math.Pow(0.8f + weapon.WeaponLength * 0.01f, 2f);
                     break;
+                default:
+                    throw new Exception(weapon.WeaponClass.ToString() + " has no swingTierAssociated");
             }
 
             float swinghandlingFactor = weapon.Handling / 100f;
