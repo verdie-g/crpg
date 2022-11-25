@@ -17,7 +17,7 @@
   <SpriteCategories>
     <SpriteCategory>
       <Name>ui_mploading</Name>
-      <SpriteSheetCount>69</SpriteSheetCount>
+      <SpriteSheetCount>71</SpriteSheetCount>
       <SpriteSheetSize ID="1" Width="3840" Height="1935" />
       <SpriteSheetSize ID="2" Width="3840" Height="1935" />
       <SpriteSheetSize ID="3" Width="3383" Height="1902" />
@@ -87,6 +87,8 @@
       <SpriteSheetSize ID="67" Width="1920" Height="1080" />
       <SpriteSheetSize ID="68" Width="1920" Height="1080" />
       <SpriteSheetSize ID="69" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="70" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="71" Width="1920" Height="1080" />
     </SpriteCategory>
   </SpriteCategories>
   <SpriteParts>
@@ -720,6 +722,24 @@
       <SheetY>0</SheetY>
       <CategoryName>ui_mploading</CategoryName>
     </SpritePart>
+    <SpritePart>
+      <SheetID>70</SheetID>
+      <Name>crpg_battle_kingsroad</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>71</SheetID>
+      <Name>crpg_battle_crescentisland</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
   </SpriteParts>
   <Sprites>
     <GenericSprite>
@@ -997,6 +1017,14 @@
     <GenericSprite>
       <Name>crpg_siege_motteandbailey</Name>
       <SpritePartName>crpg_siege_motteandbailey</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_kingsroad</Name>
+      <SpritePartName>crpg_battle_kingsroad</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_crescentisland</Name>
+      <SpritePartName>crpg_battle_crescentisland</SpritePartName>
     </GenericSprite>
   </Sprites>
 </SpriteData>
