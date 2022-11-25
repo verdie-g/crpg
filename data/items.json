@@ -6128,9 +6128,9 @@
     "name": "Boulder on a Stick",
     "culture": "Battania",
     "type": "TwoHandedWeapon",
-    "price": 6647,
-    "weight": 2.7,
-    "tier": 6.559114,
+    "price": 8889,
+    "weight": 2.6,
+    "tier": 7.75025845,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -6141,8 +6141,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 102,
-        "balance": 0.14,
-        "handling": 69,
+        "balance": 0.2,
+        "handling": 70,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -6156,7 +6156,7 @@
         "thrustSpeed": 87,
         "swingDamage": 30,
         "swingDamageType": "Blunt",
-        "swingSpeed": 74
+        "swingSpeed": 75
       }
     ]
   },

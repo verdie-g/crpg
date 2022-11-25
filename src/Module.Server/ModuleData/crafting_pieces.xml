@@ -5827,7 +5827,7 @@
 <Material id="Wood" count="1"/>
 </Materials>
 </CraftingPiece>
-<CraftingPiece id="crpg_bos_head" name="{=}Boulder for the Stick" tier="2" piece_type="Blade" mesh="crpg_bos_head" length="23.1" weight="0.5" full_scale="true" excluded_item_usage_features="shield:thrust">
+<CraftingPiece id="crpg_bos_head" name="{=}Boulder for the Stick" tier="2" piece_type="Blade" mesh="crpg_bos_head" length="23.1" weight="1.4" full_scale="true" excluded_item_usage_features="shield:thrust">
 <BladeData stack_amount="2" physics_material="wood_weapon" body_name="bo_mace_a">
 <Swing damage_type="Blunt" damage_factor="3.0"/>
 </BladeData>
