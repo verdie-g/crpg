@@ -149,11 +149,11 @@ internal class CrpgItemValueModel : ItemValueModel
             };
 
             float thrustTier =
-                  (float)Math.Pow(10f * weapon.ThrustDamageFactor, 4.27f)
+                  (float)Math.Pow(CrpgStrikeMagnitudeModel.BladeDamageFactorToDamageRatio * weapon.ThrustDamageFactor, 4.27f)
                 * CalculateDamageTypeFactor(weapon.ThrustDamageType)
                 * (float)Math.Pow(weapon.ThrustSpeed * 0.1f, 2f);
             float swingTier =
-                  (float)Math.Pow(10f * weapon.SwingDamageFactor, 2.25f)
+                  (float)Math.Pow(CrpgStrikeMagnitudeModel.BladeDamageFactorToDamageRatio * weapon.SwingDamageFactor, 2.25f)
                 * CalculateDamageTypeFactor(weapon.SwingDamageType)
                 * (float)Math.Pow(weapon.SwingSpeed * 0.01f, 3f);
 
