@@ -117,11 +117,23 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
                 continue;
             }
 
-            BasicCultureObject teamCulture = team == Mission.AttackerTeam ? cultureTeam1 : cultureTeam2;
-            int numberOfBots = Mission.AttackerTeam == team ? botsTeam1 : botsTeam2;
+            BasicCultureObject teamCulture;
+            int numberOfBots;
+            if (team.Side == BattleSideEnum.Attacker)
+            {
+                teamCulture = cultureTeam1;
+                numberOfBots = MultiplayerOptions.OptionType.NumberOfBotsTeam1.GetIntValue();
+            }
+            else
+            {
+                teamCulture = cultureTeam2;
+                numberOfBots = MultiplayerOptions.OptionType.NumberOfBotsTeam2.GetIntValue();
+            }
+
+            int numberOfPlayers = GameNetwork.NetworkPeers.Count(p => p.IsSynchronized && p.GetComponent<MissionPeer>()?.Team == team);
             int botsAlive = team.ActiveAgents.Count(a => a.IsAIControlled && a.IsHuman);
 
-            for (int i = 0 + botsAlive; i < numberOfBots; i += 1)
+            for (int i = 0 + botsAlive + numberOfPlayers; i < numberOfBots; i += 1)
             {
                 MultiplayerClassDivisions.MPHeroClass botClass = MultiplayerClassDivisions
                     .GetMPHeroClasses()
