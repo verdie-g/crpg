@@ -111,7 +111,7 @@ internal class CrpgSubModule : MBSubModuleBase
     {
         IDataExporter[] exporters =
         {
-            new ItemExporter(_constants),
+            new ItemExporter(),
             // new SettlementExporter(),
         };
 
