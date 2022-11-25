@@ -8,6 +8,10 @@ namespace Crpg.Module.Common.Models;
 /// </summary>
 internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
 {
+    /// <summary>
+    /// This constants was introduced to decorelate damage from the physics system.
+    /// Now damage dealts by a weapon only depends on the blade damage factor and where the blade hit the defender.
+    /// </summary>
     public const float BladeDamageFactorToDamageRatio = 10f;
 
     private readonly CrpgConstants _constants;
