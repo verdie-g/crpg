@@ -45,7 +45,6 @@ import { Component, Vue } from 'vue-property-decorator';
 import userModule from '@/store/user-module';
 import Character from '@/models/character';
 import CharacterComponent from '@/components/CharacterComponent.vue';
-import { useTimeoutPoll } from '@/utils/useTimeoutPoll';
 
 @Component({
   components: { CharacterComponent },
@@ -67,10 +66,13 @@ export default class CharactersComponent extends Vue {
     return userModule.user!.activeCharacterId;
   }
 
-  async created() {
-    const { stop } = await useTimeoutPoll(this.getCharacters, 1000 * 60 * 2);
+  created() {
+    this.getCharacters();
+
+    const id = Symbol('getCharacters');
+    this.$pollInterval.subscribe({ id, fn: userModule.getCharacters });
     this.$once('hook:beforeDestroy', () => {
-      stop();
+      this.$pollInterval.unsubscribe(id);
     });
   }
 
@@ -78,7 +80,6 @@ export default class CharactersComponent extends Vue {
     const characters = await userModule.getCharacters();
 
     if (this.selectedCharacterId != -1 && characters.length <= 0) return;
-
     this.selectedCharacterId = characters[0].id;
   }
 

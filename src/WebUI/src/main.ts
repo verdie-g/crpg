@@ -7,7 +7,7 @@ import { Icon } from 'leaflet';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import shareMutations from 'vuex-shared-mutations';
-
+import PoolInterval from '@/libs/poll-interval';
 import 'buefy/dist/buefy.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import '@fortawesome/fontawesome-free/css/fontawesome.css';
@@ -32,6 +32,10 @@ Vue.config.productionTip = false;
 shareMutations({
   predicate: ['setUser', 'setCharacters'],
 })(store);
+
+Vue.use(PoolInterval, {
+  period: 10000,
+});
 
 new Vue({
   router,

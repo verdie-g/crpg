@@ -107,7 +107,6 @@ import { Component, Vue } from 'vue-property-decorator';
 import userModule from '@/store/user-module';
 import User from '@/models/user';
 import { signInCallback, signOut, signInSilent } from './services/auth-service';
-import { useTimeoutPoll } from '@/utils/useTimeoutPoll';
 
 @Component
 export default class App extends Vue {
@@ -156,9 +155,13 @@ export default class App extends Vue {
   }
 
   async getUser() {
-    const { stop } = await useTimeoutPoll(userModule.getUser, 1000 * 60 * 2);
+    await userModule.getUser();
+
+    const id = Symbol('getUser');
+    this.$pollInterval.subscribe({ id, fn: userModule.getUser });
+
     this.$once('hook:beforeDestroy', () => {
-      stop();
+      this.$pollInterval.unsubscribe(id);
     });
   }
 
