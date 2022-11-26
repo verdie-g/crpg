@@ -348,7 +348,7 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
         );
       }
 
-      weaponFields.push(['Handling', weapon.handling], ['Length', weapon.length]);
+      weaponFields.push(['Handling', weapon.handling], ['Reach', weapon.length]);
 
       props.modes.push({
         name: getWeaponClassShortName(weapon.class),
