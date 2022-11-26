@@ -124,7 +124,7 @@ public record SeedDataCommand : IMediatorRequest
             {
                 PlatformUserId = "76561198016876889",
                 Name = "orle",
-                Role = Role.Admin,
+                Role = Role.Moderator,
                 Gold = 100000,
                 Characters = new List<Character>
                     {
