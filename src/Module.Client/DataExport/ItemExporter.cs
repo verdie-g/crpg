@@ -35,7 +35,7 @@ internal class ItemExporter : IDataExporter
             .OrderBy(i => i.StringId)
             .ToArray();
         var crpgItems = mbItems.Select(MbToCrpgItem);
-        string itemThumbnailsPath = Path.Combine("../../Modules/cRPG/ModuleData/images");
+        string itemThumbnailsPath = Path.Combine("../../Modules/cRPG/images");
         Directory.CreateDirectory(itemThumbnailsPath);
         await GenerateItemsThumbnail(mbItems, itemThumbnailsPath);
     }
