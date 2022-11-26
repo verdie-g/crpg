@@ -810,9 +810,9 @@
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_full_helm_over_arming_coif" name="{=WYytQbvS}Full Helm over Arming Coif" mesh="vlandia_helmet_s_f" culture="Culture.vlandia" weight="2.831956" appearance="1" Type="HeadArmor">
+  <Item id="crpg_full_helm_over_arming_coif" name="{=WYytQbvS}Full Helm over Arming Coif" mesh="vlandia_helmet_s_f" culture="Culture.vlandia" weight="3.4" appearance="1" Type="HeadArmor">
     <ItemComponent>
-      <Armor head_armor="53" has_gender_variations="false" hair_cover_type="type2" beard_cover_type="all" modifier_group="plate" material_type="Plate" />
+      <Armor head_armor="52" has_gender_variations="false" hair_cover_type="type2" beard_cover_type="all" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
@@ -864,19 +864,19 @@
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_full_helm_over_mail_coif" name="{=FsDZC8Yl}Full Helm over Mail Coif" subtype="head_armor" mesh="vlandia_helmet_s_a" culture="Culture.vlandia" weight="3.209259" difficulty="0" appearance="2" Type="HeadArmor">
+  <Item id="crpg_full_helm_over_mail_coif" name="{=FsDZC8Yl}Full Helm over Mail Coif" subtype="head_armor" mesh="vlandia_helmet_s_a" culture="Culture.vlandia" weight="3.4" difficulty="0" appearance="2" Type="HeadArmor">
     <ItemComponent>
-      <Armor head_armor="52" has_gender_variations="false" hair_cover_type="all" beard_cover_type="all" modifier_group="plate" material_type="Plate" />
+      <Armor head_armor="53" has_gender_variations="false" hair_cover_type="all" beard_cover_type="all" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_full_helm_over_laced_coif" name="{=wEfZyccm}Full Helm over Laced Coif" subtype="head_armor" mesh="vlandia_helmet_s_c" culture="Culture.vlandia" weight="2.831956" difficulty="0" appearance="2" Type="HeadArmor">
+  <Item id="crpg_full_helm_over_laced_coif" name="{=wEfZyccm}Full Helm over Laced Coif" subtype="head_armor" mesh="vlandia_helmet_s_c" culture="Culture.vlandia" weight="3.35" difficulty="0" appearance="2" Type="HeadArmor">
     <ItemComponent>
       <Armor head_armor="50" has_gender_variations="false" hair_cover_type="all" beard_cover_type="all" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_full_helm_over_cloth_headwrap" name="{=SYvBTD0p}Full Helm over Cloth Headwrap" mesh="vlandia_helmet_s_d" culture="Culture.vlandia" weight="2.831956" appearance="2" Type="HeadArmor">
+  <Item id="crpg_full_helm_over_cloth_headwrap" name="{=SYvBTD0p}Full Helm over Cloth Headwrap" mesh="vlandia_helmet_s_d" culture="Culture.vlandia" weight="3.11" appearance="2" Type="HeadArmor">
     <ItemComponent>
       <Armor head_armor="49" has_gender_variations="false" hair_cover_type="all" beard_cover_type="all" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
@@ -1499,61 +1499,61 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_fluted_helm_with_faceplate" name="Fluted Helm With Faceplate" subtype="head_armor" mesh="fluted_helm_with_faceplate" culture="Culture.vlandia" weight="3.4" difficulty="0" appearance="1" Type="HeadArmor">
+  <Item id="crpg_fluted_helm_with_faceplate" name="Fluted Helm With Faceplate" subtype="head_armor" mesh="fluted_helm_with_faceplate" culture="Culture.vlandia" weight="3.2" difficulty="0" appearance="1" Type="HeadArmor">
 		<ItemComponent>
-			<Armor head_armor="45" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate"/>
+			<Armor head_armor="50" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate"/>
 		</ItemComponent>
 		<Flags Civilian="true"/>
 	</Item>
-	<Item id="crpg_great_helm_base" name="Great Helmet" subtype="head_armor" mesh="great_helm_base" culture="Culture.vlandia" weight="4.5" difficulty="0" appearance="1" Type="HeadArmor">
+	<Item id="crpg_great_helm_base" name="Great Helmet" subtype="head_armor" mesh="great_helm_base" culture="Culture.vlandia" weight="3.8" difficulty="0" appearance="1" Type="HeadArmor">
 		<ItemComponent>
 			<Armor head_armor="56" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all"/>
 		</ItemComponent>
 		<Flags UseTeamColor="true"/>
 	</Item>
-	<Item id="crpg_great_helm_brass" name="Brass Great Helmet" subtype="head_armor" mesh="great_helm_brass" culture="Culture.vlandia" weight="4" difficulty="0" appearance="1" Type="HeadArmor">
+	<Item id="crpg_great_helm_brass" name="Brass Great Helmet" subtype="head_armor" mesh="great_helm_brass" culture="Culture.vlandia" weight="3.8" difficulty="0" appearance="1" Type="HeadArmor">
 		<ItemComponent>
 			<Armor head_armor="56" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all"/>
 		</ItemComponent>
 		<Flags UseTeamColor="true"/>
 	</Item>
-	<Item id="crpg_great_helm_dark" name="Blackened Great Helmet" subtype="head_armor" mesh="great_helm_dark" culture="Culture.vlandia" weight="4" difficulty="0" appearance="1" Type="HeadArmor">
+	<Item id="crpg_great_helm_dark" name="Blackened Great Helmet" subtype="head_armor" mesh="great_helm_dark" culture="Culture.vlandia" weight="3.8" difficulty="0" appearance="1" Type="HeadArmor">
 		<ItemComponent>
 			<Armor head_armor="56" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all"/>
 		</ItemComponent>
 		<Flags UseTeamColor="true"/>
 	</Item>
-	<Item id="crpg_italio_norman_helm" name="Western Helm With Faceplate" subtype="head_armor" mesh="italio_norman_helm" culture="Culture.vlandia" weight="3.5" difficulty="0" appearance="1" Type="HeadArmor">
+	<Item id="crpg_italio_norman_helm" name="Western Helm With Faceplate" subtype="head_armor" mesh="italio_norman_helm" culture="Culture.vlandia" weight="2.74" difficulty="0" appearance="1" Type="HeadArmor">
 		<ItemComponent>
 			<Armor head_armor="45" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all"/>
 		</ItemComponent>
 		<Flags Civilian="true"/>
 	</Item>
-	<Item id="crpg_pigface_bascinet" name="Western Bascinet" subtype="head_armor" mesh="pigface_bascinet" culture="Culture.vlandia" weight="4.5" difficulty="0" appearance="1" Type="HeadArmor">
+	<Item id="crpg_pigface_bascinet" name="Western Bascinet" subtype="head_armor" mesh="pigface_bascinet" culture="Culture.vlandia" weight="4.32" difficulty="0" appearance="1" Type="HeadArmor">
 		<ItemComponent>
 			<Armor head_armor="61" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all"/>
 		</ItemComponent>
 		<Flags UseTeamColor="false"/>
 	</Item>
-	<Item id="crpg_sa_barbute1" name="Western Barbute" subtype="head_armor" mesh="sa_barbute1" culture="Culture.vlandia" weight="4" difficulty="0" appearance="1" Type="HeadArmor">
+	<Item id="crpg_sa_barbute1" name="Western Barbute" subtype="head_armor" mesh="sa_barbute1" culture="Culture.vlandia" weight="3.6" difficulty="0" appearance="1" Type="HeadArmor">
 		<ItemComponent>
 			<Armor head_armor="54" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all"/>
 		</ItemComponent>
 		<Flags UseTeamColor="false"/>
 	</Item>
-	<Item id="crpg_sugarloaf_helm4" name="Sugarloaf Greathelm" subtype="head_armor" mesh="sugarloaf_helm4" culture="Culture.vlandia" weight="4.2" difficulty="0" appearance="1" Type="HeadArmor">
+	<Item id="crpg_sugarloaf_helm4" name="Sugarloaf Greathelm" subtype="head_armor" mesh="sugarloaf_helm4" culture="Culture.vlandia" weight="3.8" difficulty="0" appearance="1" Type="HeadArmor">
 		<ItemComponent>
 			<Armor head_armor="56" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all"/>
 		</ItemComponent>
 		<Flags UseTeamColor="false"/>
 	</Item>
-	<Item id="crpg_sugarloaf_helm" name="Banded Sugarloaf Greathelm" subtype="head_armor" mesh="sugarloaf_helm" culture="Culture.vlandia" weight="4.2" difficulty="0" appearance="1" Type="HeadArmor">
+	<Item id="crpg_sugarloaf_helm" name="Banded Sugarloaf Greathelm" subtype="head_armor" mesh="sugarloaf_helm" culture="Culture.vlandia" weight="3.8" difficulty="0" appearance="1" Type="HeadArmor">
 		<ItemComponent>
 			<Armor head_armor="56" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all"/>
 		</ItemComponent>
 		<Flags UseTeamColor="true"/>
 	</Item>
-	<Item id="crpg_sa_1ChurburghHelm" name="Hounskull Bascinet" subtype="head_armor" mesh="sa_1churburghhelm" culture="Culture.vlandia" weight="4.5" difficulty="0" appearance="1" Type="HeadArmor">
+	<Item id="crpg_sa_1ChurburghHelm" name="Hounskull Bascinet" subtype="head_armor" mesh="sa_1churburghhelm" culture="Culture.vlandia" weight="4.64" difficulty="0" appearance="1" Type="HeadArmor">
 		<ItemComponent>
 			<Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all"/>
 		</ItemComponent>
