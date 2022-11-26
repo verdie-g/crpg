@@ -73,7 +73,7 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
     {
         if (attackerCharacter.IsMounted)
         {
-            return baseDamage * 0.60f; // 40% damage reduction from couched lance
+            return baseDamage * 0.20f; // 80% damage reduction from couched lance
         }
 
         return baseDamage; // Passive stance on foot
