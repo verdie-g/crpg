@@ -23,13 +23,21 @@ internal class ItemExporter : IDataExporter
             .OrderBy(i => i.StringId)
             .ToArray();
         var crpgItems = mbItems.Select(MbToCrpgItem);
-        SerializeCrpgItems(crpgItems, Path.Combine(gitRepoPath, "data"));
-        const string itemThumbnailsTempPath = "../../crpg-items";
-        string itemThumbnailsPath = Path.Combine(gitRepoPath, "src/WebUI/public/items");
-        Directory.CreateDirectory(itemThumbnailsTempPath);
-        await GenerateItemsThumbnail(mbItems, itemThumbnailsTempPath);
-        Directory.Delete(itemThumbnailsPath, recursive: true);
-        Directory.Move(itemThumbnailsTempPath, itemThumbnailsPath);
+        SerializeCrpgItems(crpgItems, Path.Combine("../../Modules/cRPG/ModuleData"));
+    }
+    public async Task ImageExport(string gitRepoPath)
+    {
+        var game = Game.CreateGame(new MultiplayerGame(), new MultiplayerGameManager());
+        game.Initialize();
+        var mbItems = game.ObjectManager.GetObjectTypeList<ItemObject>()
+            .Where(i => i.StringId.StartsWith("crpg_"))
+            .DistinctBy(i => i.StringId)
+            .OrderBy(i => i.StringId)
+            .ToArray();
+        var crpgItems = mbItems.Select(MbToCrpgItem);
+        string itemThumbnailsPath = Path.Combine("../../Modules/cRPG/ModuleData/images");
+        Directory.CreateDirectory(itemThumbnailsPath);
+        await GenerateItemsThumbnail(mbItems, itemThumbnailsPath);
     }
 
     private static CrpgItem MbToCrpgItem(ItemObject mbItem)
