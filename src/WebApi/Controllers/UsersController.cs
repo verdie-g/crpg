@@ -90,7 +90,7 @@ public class UsersController : BaseController
     [HttpGet("{id}/restrictions")]
     public Task<ActionResult<Result<IList<RestrictionViewModel>>>> GetUserRestrictions([FromRoute] int id)
     {
-        if (CurrentUser.User!.Role != Role.Admin && id != CurrentUser.User!.Id)
+        if (CurrentUser.User!.Role != Role.Admin && CurrentUser.User!.Role != Role.Moderator && id != CurrentUser.User!.Id)
         {
             var res = new Result<IList<RestrictionViewModel>>(new Error(ErrorType.Forbidden, ErrorCode.UserRoleNotMet));
             return Task.FromResult(ResultToAction(res));
