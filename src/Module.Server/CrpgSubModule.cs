@@ -47,6 +47,8 @@ internal class CrpgSubModule : MBSubModuleBase
 #if CRPG_EXPORT
         TaleWorlds.MountAndBlade.Module.CurrentModule.AddInitialStateOption(new InitialStateOption("ExportData",
             new TextObject("Export Data"), 4578, ExportData, () => (false, null)));
+        TaleWorlds.MountAndBlade.Module.CurrentModule.AddInitialStateOption(new InitialStateOption("ExportImages",
+            new TextObject("Export Thumbnails"), 4578, ExportImages, () => (false, null)));
 #endif
 
         // Uncomment to start watching UI changes.
@@ -101,29 +103,27 @@ internal class CrpgSubModule : MBSubModuleBase
         };
 
         InformationManager.DisplayMessage(new InformationMessage("Exporting data."));
-        string gitRepoPath = FindGitRepositoryRootPath();
-        Task.WhenAll(exporters.Select(e => e.Export(gitRepoPath))).ContinueWith(t =>
+        Task.WhenAll(exporters.Select(e => e.Export("lol"))).ContinueWith(t =>
         {
             InformationManager.DisplayMessage(t.IsFaulted
                 ? new InformationMessage(t.Exception!.Message)
                 : new InformationMessage("Done."));
         });
     }
-
-    private string FindGitRepositoryRootPath([CallerFilePath] string currentFilePath = default!)
+    private void ExportImages()
     {
-        var dir = Directory.GetParent(currentFilePath);
-        while (dir != null)
+        IDataExporter[] exporters =
         {
-            if (Directory.Exists(Path.Combine(dir.FullName, ".git")))
-            {
-                return dir.FullName;
-            }
+            new ItemExporter(),
+        };
 
-            dir = dir.Parent;
-        }
-
-        throw new InvalidOperationException("Could not find cRPG git repository");
+        InformationManager.DisplayMessage(new InformationMessage("Exporting Images."));
+        Task.WhenAll(exporters.Select(e => e.ImageExport("lol"))).ContinueWith(t =>
+        {
+            InformationManager.DisplayMessage(t.IsFaulted
+                ? new InformationMessage(t.Exception!.Message)
+                : new InformationMessage("Done."));
+        });
     }
 #endif
-}
+    }
