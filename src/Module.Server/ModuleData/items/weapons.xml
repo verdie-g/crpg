@@ -650,7 +650,7 @@
   <CraftedItem id="crpg_vlandia_pike_1_t5" name="{=h60wQVVX}Pike" crafting_template="crpg_Pike" culture="Culture.vlandia" modifier_group="polearm">
     <Pieces>
       <Piece id="crpg_vlandia_pike_1_t5_blade" Type="Blade" scale_factor="110" />
-      <Piece id="crpg_vlandia_pike_1_t5_handle" Type="Handle" scale_factor="220" />
+      <Piece id="crpg_vlandia_pike_1_t5_handle" Type="Handle" scale_factor="165" />
     </Pieces>
   </CraftedItem>
   <CraftedItem id="crpg_billhook_polearm_t2" name="{=Dj64aJKQ}Billhook" crafting_template="crpg_TwoHandedPolearm" culture="Culture.vlandia" modifier_group="polearm">
@@ -834,7 +834,7 @@
   </CraftedItem>
   <CraftedItem id="crpg_sturgia_sword_1_t2" name="{=Ag6dujzl}Tapered Blade" crafting_template="crpg_OneHandedSword" culture="Culture.sturgia" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_sturgia_sword_1_t2_blade" Type="Blade" scale_factor="100" />
+      <Piece id="crpg_sturgia_sword_1_t2_blade" Type="Blade" scale_factor="110" />
       <Piece id="crpg_sturgia_sword_1_t2_guard" Type="Guard" scale_factor="100" />
       <Piece id="crpg_sturgia_sword_1_t2_handle" Type="Handle" scale_factor="100" />
       <Piece id="crpg_sturgia_sword_1_t2_pommel" Type="Pommel" scale_factor="100" />
@@ -930,7 +930,7 @@
   </CraftedItem>
   <CraftedItem id="crpg_sturgia_sword_2_t3" name="{=FQHaFsyQ}Backsword" crafting_template="crpg_OneHandedSword" culture="Culture.sturgia" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_sturgia_sword_2_t3_blade" Type="Blade" scale_factor="100" />
+      <Piece id="crpg_sturgia_sword_2_t3_blade" Type="Blade" scale_factor="118" />
       <Piece id="crpg_sturgia_sword_2_t3_guard" Type="Guard" scale_factor="100" />
       <Piece id="crpg_sturgia_sword_2_t3_handle" Type="Handle" scale_factor="100" />
       <Piece id="crpg_sturgia_sword_2_t3_pommel" Type="Pommel" scale_factor="100" />
@@ -938,7 +938,7 @@
   </CraftedItem>
   <CraftedItem id="crpg_sturgia_sword_3_t3" name="{=MRIdGqhA}Pointy Warsword" crafting_template="crpg_OneHandedSword" culture="Culture.sturgia" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_sturgia_sword_3_t3_blade" Type="Blade" scale_factor="100" />
+      <Piece id="crpg_sturgia_sword_3_t3_blade" Type="Blade" scale_factor="110" />
       <Piece id="crpg_sturgia_sword_3_t3_guard" Type="Guard" scale_factor="100" />
       <Piece id="crpg_sturgia_sword_3_t3_handle" Type="Handle" scale_factor="100" />
       <Piece id="crpg_sturgia_sword_3_t3_pommel" Type="Pommel" scale_factor="100" />
@@ -1290,7 +1290,7 @@
   </CraftedItem>
   <CraftedItem id="crpg_sturgia_noble_sword_1_t5" name="{=lXwaLAYP}Thamaskene Steel Warsword" crafting_template="crpg_OneHandedSword" is_merchandise="false" culture="Culture.sturgia" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_sturgia_noble_sword_1_t5_blade" Type="Blade" scale_factor="100" />
+      <Piece id="crpg_sturgia_noble_sword_1_t5_blade" Type="Blade" scale_factor="148" />
       <Piece id="crpg_sturgia_noble_sword_1_t5_guard" Type="Guard" scale_factor="100" />
       <Piece id="crpg_sturgia_noble_sword_1_t5_handle" Type="Handle" scale_factor="100" />
       <Piece id="crpg_sturgia_noble_sword_1_t5_pommel" Type="Pommel" scale_factor="100" />
@@ -1298,7 +1298,7 @@
   </CraftedItem>
   <CraftedItem id="crpg_sturgia_noble_sword_2_t5" name="{=4wQRk3f5}Decorated Long Warsword" crafting_template="crpg_OneHandedSword" is_merchandise="false" culture="Culture.sturgia" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_sturgia_noble_sword_2_t5_blade" Type="Blade" scale_factor="100" />
+      <Piece id="crpg_sturgia_noble_sword_2_t5_blade" Type="Blade" scale_factor="138" />
       <Piece id="crpg_sturgia_noble_sword_2_t5_guard" Type="Guard" scale_factor="100" />
       <Piece id="crpg_sturgia_noble_sword_2_t5_handle" Type="Handle" scale_factor="100" />
       <Piece id="crpg_sturgia_noble_sword_2_t5_pommel" Type="Pommel" scale_factor="100" />
