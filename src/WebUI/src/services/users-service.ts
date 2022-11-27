@@ -7,7 +7,7 @@ import { UpdateCharacterRequest } from '@/models/update-character-request';
 import CharacterCharacteristics from '@/models/character-characteristics';
 import CharacterStatistics from '@/models/character-statistics';
 import CharacteristicConversion from '@/models/characteristic-conversion';
-import Restriction from '@/models/restriction';
+import Restriction, { RestrictionWithActive } from '@/models/restriction';
 import EquippedItem from '@/models/equipped-item';
 import EquippedItemId from '@/models/equipped-item-id';
 import { get, post, put, del } from './crpg-client';
@@ -31,8 +31,8 @@ export function searchUser(payload: UserSearcyQuery): Promise<UserPublic[]> {
   return get(`/users?${query}`);
 }
 
-export async function getUserRestrictions(id: number): Promise<Restriction[]> {
-  const restrictions: Omit<Restriction, 'expired'>[] = await get(`/users/${id}/restrictions`);
+export async function getUserRestrictions(id: number): Promise<RestrictionWithActive[]> {
+  const restrictions: Restriction[] = await get(`/users/${id}/restrictions`);
   return mapRestrictions(restrictions);
 }
 

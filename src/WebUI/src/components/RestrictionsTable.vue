@@ -21,17 +21,18 @@
     </b-table-column>
 
     <b-table-column label="Status" width="80" v-slot="props">
-      <template v-if="!props.row.expired">
-        <b-tooltip
-          :label="`
+      <b-tooltip
+        v-if="props.row.active"
+        :label="`
               ${timestampToTimeString(
                 computeLeftMs(props.row.createdAt, props.row.duration)
               )} left `"
-          type="is-primary is-light"
-        >
-          <b-tag rounded type="is-success">active</b-tag>
-        </b-tooltip>
-      </template>
+        type="is-primary is-light"
+      >
+        <b-tag rounded type="is-success">active</b-tag>
+      </b-tooltip>
+
+      <b-tag v-else rounded type="is-Light">non active</b-tag>
     </b-table-column>
 
     <b-table-column
@@ -117,7 +118,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import Restriction from '@/models/restriction';
+import { RestrictionWithActive } from '@/models/restriction';
 import { timestampToTimeString, computeLeftMs } from '@/utils/date';
 import PlatformComponent from '@/components/Platform.vue';
 
@@ -127,7 +128,7 @@ type WithName = Record<string, { name: string }>;
   components: { Platform: PlatformComponent },
 })
 export default class RestrictionsTableComponent extends Vue {
-  @Prop({ type: Array, default: () => [] }) readonly data: Restriction[];
+  @Prop({ type: Array, default: () => [] }) readonly data: RestrictionWithActive[];
   @Prop({ type: Array, default: () => [] }) readonly hiddenCols: Array<string>;
 
   timestampToTimeString = timestampToTimeString;

@@ -1,35 +1,30 @@
 import { get, post } from '@/services/crpg-client';
-import Restriction from '@/models/restriction';
+import Restriction, { RestrictionWithActive } from '@/models/restriction';
 import RestrictionCreation from '@/models/restriction-creation';
 import { checkIsDateExpired } from '@/utils/date';
 
-export function mapRestrictions(restrictions: Omit<Restriction, 'expired'>[]): Restriction[] {
-  const isAborted = (currentRestricion: Omit<Restriction, 'expired'>): boolean => {
-    return restrictions.some(
-      restriction =>
-        currentRestricion.restrictedUser!.id === restriction.restrictedUser!.id &&
-        currentRestricion.id !== restriction.id &&
-        currentRestricion.type === restriction.type &&
-        new Date(currentRestricion.createdAt).getTime() < new Date(restriction.createdAt).getTime()
+export function mapRestrictions(restrictions: Restriction[]): RestrictionWithActive[] {
+  const checkIsRestrictionActive = (currentRestricion: Restriction): boolean => {
+    const { id, type, createdAt, restrictedUser } = currentRestricion;
+    return !restrictions.some(
+      r =>
+        restrictedUser!.id === r.restrictedUser!.id && // groupBy user - there may be restrisctions for other users on the list (/admin page)
+        type === r.type &&
+        id !== r.id &&
+        new Date(createdAt).getTime() < new Date(r.createdAt).getTime() // check whether the the current restriction is NOT the newest
     );
   };
 
-  return restrictions.map(restriction => {
-    let expired = checkIsDateExpired(restriction.createdAt, restriction.duration);
-
-    if (!expired) {
-      expired = isAborted(restriction);
-    }
-
+  return restrictions.map(r => {
     return {
-      ...restriction,
-      expired,
+      ...r,
+      active: !checkIsDateExpired(r.createdAt, r.duration) && checkIsRestrictionActive(r),
     };
   });
 }
 
-export async function getRestrictions(): Promise<Restriction[]> {
-  const restrictions: Omit<Restriction, 'expired'>[] = await get('/restrictions');
+export async function getRestrictions(): Promise<RestrictionWithActive[]> {
+  const restrictions: Restriction[] = await get('/restrictions');
   return mapRestrictions(restrictions);
 }
 
