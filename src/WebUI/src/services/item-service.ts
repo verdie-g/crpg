@@ -113,6 +113,7 @@ const weaponTypes: ItemType[] = [
   ItemType.Thrown,
   ItemType.Arrows,
   ItemType.Bolts,
+  ItemType.Banner,
 ];
 
 const itemTypesBySlot: Record<ItemSlot, ItemType[]> = {
@@ -370,6 +371,24 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
 
 export function filterUserItemsFittingInSlot(items: UserItem[], slot: ItemSlot): UserItem[] {
   return items.filter(i => itemTypesBySlot[slot].includes(i.baseItem.type));
+}
+
+// In filterUserItemsFittingInSlot we allow the user to chose any weapon for any weapon slot but actually if the weapon
+// has the DropOnWeaponChange or DropOnAnyAction it should be moved to the WeaponExtra slot. See method TaleWorlds.Core.Equipment.IsItemFitsToSlot.
+export function overrideSelectedSlot(userItem: UserItem, slot: ItemSlot): ItemSlot {
+  const item = userItem.baseItem;
+  if (!weaponTypes.includes(item.type)) {
+    return slot;
+  }
+
+  if (
+    item.flags.includes(ItemFlags.DropOnWeaponChange) ||
+    item.flags.includes(ItemFlags.DropOnAnyAction)
+  ) {
+    return ItemSlot.WeaponExtra;
+  }
+
+  return slot;
 }
 
 export function filterItemsByType(

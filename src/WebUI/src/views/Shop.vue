@@ -277,7 +277,9 @@ export default class Shop extends Vue {
       item.culture.toLowerCase().includes(lowerCaseSearchQuery) ||
       itemTypeToStr[item.type].toLowerCase().includes(lowerCaseSearchQuery) ||
       item.flags.some(f => f.toLowerCase().toLowerCase().includes(lowerCaseSearchQuery)) ||
-      item.weapons.some(w => w.flags.some(f => f.toLowerCase().toLowerCase().includes(lowerCaseSearchQuery)))
+      item.weapons.some(w =>
+        w.flags.some(f => f.toLowerCase().toLowerCase().includes(lowerCaseSearchQuery))
+      )
     );
   }
 }

@@ -357,7 +357,11 @@ import ItemProperties from '@/components/ItemProperties.vue';
 import userModule from '@/store/user-module';
 import Character from '@/models/character';
 import ItemSlot from '@/models/item-slot';
-import { filterUserItemsFittingInSlot, computeSalePrice } from '@/services/item-service';
+import {
+  filterUserItemsFittingInSlot,
+  computeSalePrice,
+  overrideSelectedSlot,
+} from '@/services/item-service';
 import { NotificationType, notify } from '@/services/notifications-service';
 import CharacterStatsComponent from '@/components/CharacterStatsComponent.vue';
 import CharacterOverallItemsStatsComponent from '@/components/CharacterOverallItemsStatsComponent.vue';
@@ -543,9 +547,10 @@ export default class CharacterComponent extends Vue {
   }
 
   confirmItemSelection(): void {
+    const slot = overrideSelectedSlot(this.selectedUserItem!, this.userItemToReplaceSlot!);
     userModule.replaceItem({
       character: this.character,
-      slot: this.userItemToReplaceSlot!,
+      slot,
       userItem: this.selectedUserItem!,
     });
     this.isReplaceItemModalActive = false;
