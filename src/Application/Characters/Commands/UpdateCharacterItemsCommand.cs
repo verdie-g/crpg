@@ -98,7 +98,14 @@ public record UpdateCharacterItemsCommand : IMediatorRequest<IList<EquippedItemV
                     return new(CommonErrors.UserItemNotFound(newEquippedItem.UserItemId.Value));
                 }
 
-                if (!ItemSlotsByType[userItem.BaseItem!.Type].Contains(newEquippedItem.Slot))
+                if ((userItem.BaseItem!.Flags & (ItemFlags.DropOnAnyAction | ItemFlags.DropOnWeaponChange)) != 0)
+                {
+                    if (newEquippedItem.Slot != ItemSlot.WeaponExtra)
+                    {
+                        return new(CommonErrors.ItemBadSlot(userItem.BaseItemId, newEquippedItem.Slot));
+                    }
+                }
+                else if (!ItemSlotsByType[userItem.BaseItem!.Type].Contains(newEquippedItem.Slot))
                 {
                     return new(CommonErrors.ItemBadSlot(userItem.BaseItemId, newEquippedItem.Slot));
                 }

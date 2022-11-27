@@ -301,4 +301,38 @@ public class UpdateCharacterItemsCommandTest : TestBase
         var result = await handler.Handle(cmd, CancellationToken.None);
         Assert.AreEqual(ErrorCode.ItemBadSlot, result.Errors![0].Code);
     }
+
+    [TestCase(ItemFlags.DropOnAnyAction)]
+    [TestCase(ItemFlags.DropOnWeaponChange)]
+    [TestCase(ItemFlags.DropOnWeaponChange | ItemFlags.DropOnAnyAction)]
+    public async Task DropOnWeaponChangeItemOnWeaponSlot(ItemFlags itemFlags)
+    {
+        Character character = new();
+        UserItem userItem = new()
+        {
+            BaseItem = new Item
+            {
+                Type = ItemType.Banner,
+                Flags = itemFlags,
+            },
+        };
+        User user = new()
+        {
+            Items = { userItem },
+            Characters = { character },
+        };
+        ArrangeDb.Users.Add(user);
+        await ArrangeDb.SaveChangesAsync();
+
+        UpdateCharacterItemsCommand.Handler handler = new(ActDb, Mapper);
+        UpdateCharacterItemsCommand cmd = new()
+        {
+            CharacterId = character.Id,
+            UserId = user.Id,
+            Items = new List<EquippedItemIdViewModel> { new() { UserItemId = userItem.Id, Slot = ItemSlot.Weapon0 } },
+        };
+
+        var result = await handler.Handle(cmd, CancellationToken.None);
+        Assert.AreEqual(ErrorCode.ItemBadSlot, result.Errors![0].Code);
+    }
 }
