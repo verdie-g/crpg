@@ -78,7 +78,11 @@
         </div>
 
         <div class="level-item">
-          <a href="https://www.reddit.com/r/CRPG_Bannerlord" target="_blank" title="Join our Reddit community">
+          <a
+            href="https://www.reddit.com/r/CRPG_Bannerlord"
+            target="_blank"
+            title="Join our Reddit community"
+          >
             <b-icon icon="reddit" pack="fab" size="is-large" aria-label="cRPG Reddit" />
           </a>
         </div>
