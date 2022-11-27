@@ -1732,11 +1732,14 @@ public record SeedDataCommand : IMediatorRequest
         {
             if (dbItemsByMbId.TryGetValue(item.Id, out Item? dbItem))
             {
-                // replace item in context
-                _db.Entry(dbItem).State = EntityState.Detached;
-
-                item.Id = dbItem.Id;
-                _db.Items.Update(item);
+                var dbItemEntry = _db.Entry(dbItem);
+                dbItemEntry.CurrentValues.SetValues(item);
+                // Explicitly modify owned entities because it seems like SetValues is not working for them.
+                dbItem.Armor = item.Armor;
+                dbItem.Mount = item.Mount;
+                dbItem.PrimaryWeapon = item.PrimaryWeapon;
+                dbItem.SecondaryWeapon = item.SecondaryWeapon;
+                dbItem.TertiaryWeapon = item.TertiaryWeapon;
             }
             else
             {
