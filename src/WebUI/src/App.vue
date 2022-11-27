@@ -78,6 +78,12 @@
         </div>
 
         <div class="level-item">
+          <a href="https://www.reddit.com/r/CRPG_Bannerlord" target="_blank" title="Join our Reddit community">
+            <b-icon icon="reddit" pack="fab" size="is-large" aria-label="cRPG Reddit" />
+          </a>
+        </div>
+
+        <div class="level-item">
           <a href="https://www.moddb.com/mods/crpg" target="_blank" title="See the mod on Moddb">
             <b-icon icon="wrench" size="is-large" aria-label="cRPG Moddb" />
           </a>
