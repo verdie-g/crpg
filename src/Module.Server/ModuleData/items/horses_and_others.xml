@@ -320,7 +320,7 @@
   </Item>
   <Item id="crpg_mount_maneuverable_10" name="Bo'orchu" mesh="horse_brown" item_category="noble_horse" culture="Culture.khuzait" subtype="horse" weight="300" difficulty="30" appearance="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="85" speed="44" charge_damage="4" body_length="90" is_mountable="true" extra_health="-12" skeleton_scale="khuzait_horse">
+      <Horse monster="Monster.horse" maneuver="85" speed="44" charge_damage="4" body_length="95" is_mountable="true" extra_health="-12" skeleton_scale="khuzait_horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -338,7 +338,7 @@
   </Item>
   <Item id="crpg_mount_maneuverable_9" name="Genghis" mesh="horse_brown" item_category="noble_horse" culture="Culture.khuzait" subtype="horse" weight="300" difficulty="30" appearance="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="83" speed="43" charge_damage="3" body_length="90" is_mountable="true" extra_health="-16" skeleton_scale="khuzait_horse">
+      <Horse monster="Monster.horse" maneuver="83" speed="43" charge_damage="3" body_length="95" is_mountable="true" extra_health="-16" skeleton_scale="khuzait_horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -356,7 +356,7 @@
   </Item>
   <Item id="crpg_mount_maneuverable_8" name="Padisha" mesh="horse_brown" item_category="noble_horse" culture="Culture.khuzait" subtype="horse" weight="300" difficulty="30" appearance="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="81" speed="42" charge_damage="3" body_length="90" is_mountable="true" extra_health="-21" skeleton_scale="khuzait_horse">
+      <Horse monster="Monster.horse" maneuver="81" speed="42" charge_damage="3" body_length="95" is_mountable="true" extra_health="-21" skeleton_scale="khuzait_horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -374,7 +374,7 @@
   </Item>
   <Item id="crpg_mount_maneuverable_7" name="Kubilai" mesh="horse_brown" item_category="noble_horse" culture="Culture.khuzait" subtype="horse" weight="300" difficulty="30" appearance="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="79" speed="41" charge_damage="2" body_length="90" is_mountable="true" extra_health="-26" skeleton_scale="khuzait_horse">
+      <Horse monster="Monster.horse" maneuver="79" speed="41" charge_damage="2" body_length="95" is_mountable="true" extra_health="-26" skeleton_scale="khuzait_horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -392,7 +392,7 @@
   </Item>
   <Item id="crpg_mount_maneuverable_6" name="Darkhan" mesh="horse_brown" item_category="noble_horse" culture="Culture.khuzait" subtype="horse" weight="300" difficulty="30" appearance="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="77" speed="39" charge_damage="2" body_length="90" is_mountable="true" extra_health="-34" skeleton_scale="khuzait_horse">
+      <Horse monster="Monster.horse" maneuver="77" speed="39" charge_damage="2" body_length="95" is_mountable="true" extra_health="-34" skeleton_scale="khuzait_horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -410,7 +410,7 @@
   </Item>
   <Item id="crpg_mount_maneuverable_5" name="Danishmend" mesh="horse_brown" item_category="noble_horse" culture="Culture.khuzait" subtype="horse" weight="300" difficulty="30" appearance="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="74" speed="38" charge_damage="2" body_length="90" is_mountable="true" extra_health="-40" skeleton_scale="khuzait_horse">
+      <Horse monster="Monster.horse" maneuver="74" speed="38" charge_damage="2" body_length="95" is_mountable="true" extra_health="-40" skeleton_scale="khuzait_horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
