@@ -4,6 +4,10 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import { Icon } from 'leaflet';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import shareMutations from 'vuex-shared-mutations';
+import PoolInterval from '@/libs/poll-interval';
 import 'buefy/dist/buefy.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import '@fortawesome/fontawesome-free/css/fontawesome.css';
@@ -23,6 +27,15 @@ Icon.Default.mergeOptions({
 });
 
 Vue.config.productionTip = false;
+
+// Synchronize browser tabs: user info (gold) and characters info (exp)
+shareMutations({
+  predicate: ['setUser', 'setCharacters'],
+})(store);
+
+Vue.use(PoolInterval, {
+  period: 1000 * 60 * 2,
+});
 
 new Vue({
   router,

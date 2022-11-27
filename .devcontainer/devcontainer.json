@@ -7,9 +7,9 @@
         "args": {
             // Update 'VARIANT' to pick a .NET Core version: 3.1, 6.0
             // Append -bullseye or -focal to pin to an OS version.
-            "VARIANT": "6.0-focal",
+            "VARIANT": "7.0-bullseye", // https://mcr.microsoft.com/v2/vscode/devcontainers/dotnet/tags/list
             // Options
-            "NODE_VERSION": "lts/*"
+            "NODE_VERSION": "lts/*" // https://mcr.microsoft.com/v2/vscode/devcontainers/typescript-node/tags/list
         }
     },
     // Configure tool-specific properties.

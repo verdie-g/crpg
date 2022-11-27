@@ -138,7 +138,7 @@ export default class App extends Vue {
         if (user.state && user.state.url) {
           this.$router.replace(user.state.url);
         }
-        await userModule.getUser();
+        await this.getUser();
         return;
       }
 
@@ -147,7 +147,7 @@ export default class App extends Vue {
       try {
         const token = await signInSilent();
         if (token !== null) {
-          await userModule.getUser();
+          await this.getUser();
         }
       } catch {
         // The grant is probably not valid anymore because the server was restarted.
@@ -158,6 +158,17 @@ export default class App extends Vue {
     } finally {
       userModule.setUserLoading(false);
     }
+  }
+
+  async getUser() {
+    await userModule.getUser();
+
+    const id = Symbol('getUser');
+    this.$pollInterval.subscribe({ id, fn: userModule.getUser });
+
+    this.$once('hook:beforeDestroy', () => {
+      this.$pollInterval.unsubscribe(id);
+    });
   }
 
   signOut(): void {
