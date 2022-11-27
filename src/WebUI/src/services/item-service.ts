@@ -196,8 +196,15 @@ function getDamageFields(weaponComponent: ItemWeaponComponent): [string, any][] 
   return fields;
 }
 
-function getWeaponClassShortName(weaponClass: WeaponClass): string {
-  switch (itemTypeByWeaponClass[weaponClass]) {
+function getWeaponModeName(weaponComponent: ItemWeaponComponent): string {
+  switch (weaponComponent.itemUsage) {
+    case 'polearm_couch':
+      return 'Couch';
+    case 'polearm_bracing':
+      return 'Brace';
+  }
+
+  switch (itemTypeByWeaponClass[weaponComponent.class]) {
     case ItemType.OneHandedWeapon:
       return '1H';
     case ItemType.TwoHandedWeapon:
@@ -322,7 +329,7 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
       ];
 
       props.modes.push({
-        name: getWeaponClassShortName(weapon.class),
+        name: getWeaponModeName(weapon),
         fields: weaponFields,
         flags: getWeaponFlags(weapon.flags),
       });
@@ -351,7 +358,7 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
       weaponFields.push(['Handling', weapon.handling], ['Length', weapon.length]);
 
       props.modes.push({
-        name: getWeaponClassShortName(weapon.class),
+        name: getWeaponModeName(weapon),
         fields: weaponFields,
         flags: getWeaponFlags(weapon.flags),
       });
