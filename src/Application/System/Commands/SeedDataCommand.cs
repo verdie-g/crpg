@@ -85,15 +85,6 @@ public record SeedDataCommand : IMediatorRequest
                 PlatformUserId = "76561197979511363",
                 Name = "Namidaka",
                 Gold = 100000,
-                Characters = new List<Character>
-                    {
-                        new Character
-                        {
-                        Name = "namichar",
-                        Level = 10,
-                        Experience = 146457,
-                        },
-                    },
                 AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/70/703178fb540263bd30d5b84562b1167985603273.jpg"),
                 AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/70/703178fb540263bd30d5b84562b1167985603273_medium.jpg"),
                 AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/70/703178fb540263bd30d5b84562b1167985603273_full.jpg"),
@@ -103,8 +94,6 @@ public record SeedDataCommand : IMediatorRequest
                 PlatformUserId = "76561198011271387",
                 Name = "Thradok Odai",
                 Gold = 100000,
-                Characters = new List<Character>
-                    { new Character { Name = "Thradok Odai" } },
                 AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/70/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb.jpg"),
                 AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/70/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_medium.jpg"),
                 AvatarFull = new Uri("https://avatars.cloudflare.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg"),
@@ -114,8 +103,6 @@ public record SeedDataCommand : IMediatorRequest
                 PlatformUserId = "76561197998594278",
                 Name = "Kinngrimm",
                 Gold = 100000,
-                Characters = new List<Character>
-                { new Character { Name = "kinnchar" } },
                 AvatarSmall = new Uri("https://avatars.cloudflare.steamstatic.com/ed4f240198b8ad5ceebe4fad0160f13c1e0c3a1f.jpg"),
                 AvatarMedium = new Uri("https://avatars.cloudflare.steamstatic.com/ed4f240198b8ad5ceebe4fad0160f13c1e0c3a1f_medium.jpg"),
                 AvatarFull = new Uri("https://avatars.cloudflare.steamstatic.com/ed4f240198b8ad5ceebe4fad0160f13c1e0c3a1f_full.jpg"),
@@ -126,28 +113,6 @@ public record SeedDataCommand : IMediatorRequest
                 Name = "orle",
                 Role = Role.Moderator,
                 Gold = 100000,
-                Characters = new List<Character>
-                    {
-                        new Character
-                        {
-                        Name = "orlechar",
-                        Level = 23,
-                        Experience = _experienceTable.GetExperienceForLevel(23) + 200000,
-                        Characteristics = new CharacterCharacteristics
-                            {
-                                Attributes = new CharacterAttributes
-                                { Points = 100 },
-                                Skills = new CharacterSkills
-                                { Points = 100 },
-                            },
-                        },
-                        new Character
-                        {
-                        Name = "orlechar2",
-                        Level = 2,
-                        Experience = _experienceTable.GetExperienceForLevel(2) + 999,
-                        },
-                    },
                 AvatarSmall = new Uri("https://avatars.akamai.steamstatic.com/d51d5155b1a564421c0b3fd5fb7eed7c4474e73d.jpg"),
                 AvatarMedium = new Uri("https://avatars.akamai.steamstatic.com/d51d5155b1a564421c0b3fd5fb7eed7c4474e73d_medium.jpg"),
                 AvatarFull = new Uri("https://avatars.akamai.steamstatic.com/d51d5155b1a564421c0b3fd5fb7eed7c4474e73d_full.jpg"),
@@ -632,7 +597,7 @@ public record SeedDataCommand : IMediatorRequest
                 ecko, neostralie, zorguy, azuma, elmaryk, namidaka, laHire, manik, ajroselle, skrael, bedo, lambic,
                 sanasar, vlad007, canp0g, shark, noobAmphetamine, mundete, aroyFalconer, insanitoid, scarface,
                 xDem, disorot, ace, sagar, greenShadow, hannibaru, drexx, xarosh, tipsyToby, localAlpha, alex,
-                kedrynFuel, luqero, ilya, eztli, telesto, kypak, devoidDragon, krog, thradok,
+                kedrynFuel, luqero, ilya, eztli, telesto, kypak, devoidDragon, krog, thradok, kinngrimm,
             };
 
             var existingUsers = await _db.Users.ToDictionaryAsync(u => (u.Platform, u.PlatformUserId));
@@ -653,8 +618,8 @@ public record SeedDataCommand : IMediatorRequest
 
             Restriction takeoRestriction0 = new()
             {
-                RestrictedUserId = 1,
-                RestrictedByUserId = 2,
+                RestrictedUser = takeo,
+                RestrictedByUser = orle,
                 Duration = TimeSpan.FromDays(5),
                 Type = RestrictionType.Join,
                 Reason = "Reason0",
@@ -662,34 +627,35 @@ public record SeedDataCommand : IMediatorRequest
             };
             Restriction takeoRestriction1 = new()
             {
-                RestrictedUserId = 1,
-                RestrictedByUserId = 2,
+                RestrictedUser = takeo,
+                RestrictedByUser = orle,
                 Duration = TimeSpan.FromDays(5),
                 Type = RestrictionType.Join,
                 Reason = "Reason1",
                 CreatedAt = DateTime.UtcNow,
             };
-            Restriction takeoRestriction2 = new()
+            Restriction baronCyborgRestriction0 = new()
             {
-                RestrictedUserId = 3,
-                RestrictedByUserId = 2,
+                RestrictedUser = baronCyborg,
+                RestrictedByUser = orle,
                 Duration = TimeSpan.FromDays(10),
                 Type = RestrictionType.Join,
                 Reason = "Reason2",
                 CreatedAt = DateTime.UtcNow,
             };
-            Restriction takeoRestriction3 = new()
+            Restriction orleRestriction0 = new()
             {
-                RestrictedUserId = 2,
-                RestrictedByUserId = 1,
+                RestrictedUser = orle,
+                RestrictedByUser = takeo,
+                Duration = TimeSpan.Zero,
                 Type = RestrictionType.Join,
                 Reason = "Reason3",
                 CreatedAt = DateTime.UtcNow.AddDays(-1),
             };
-            Restriction takeoRestriction4 = new()
+            Restriction orleRestriction1 = new()
             {
-                RestrictedUserId = 2,
-                RestrictedByUserId = 1,
+                RestrictedUser = orle,
+                RestrictedByUser = takeo,
                 Duration = TimeSpan.FromDays(10),
                 Type = RestrictionType.Join,
                 Reason = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat deserunt temporibus consectetur perferendis illo cupiditate, dignissimos fugiat commodi, quibusdam necessitatibus mollitia neque, quam voluptatibus rem quas. Libero sapiente ullam aliquid.z",
@@ -698,14 +664,11 @@ public record SeedDataCommand : IMediatorRequest
 
             Restriction[] newRestrictions =
             {
-                takeoRestriction0, takeoRestriction1, takeoRestriction2, takeoRestriction3,
-                takeoRestriction4,
+                takeoRestriction0, takeoRestriction1, baronCyborgRestriction0, orleRestriction0, orleRestriction1,
             };
 
-            foreach (var newRestriction in newRestrictions)
-            {
-                _db.Restrictions.Add(newRestriction);
-            }
+            _db.Restrictions.RemoveRange(await _db.Restrictions.ToArrayAsync());
+            _db.Restrictions.AddRange(newRestrictions);
 
             Character takeoCharacter0 = new()
             {
@@ -750,6 +713,32 @@ public record SeedDataCommand : IMediatorRequest
                     PlayTime = new TimeSpan(3, 7, 0, 29),
                 },
             };
+            Character namidakaCharacter0 = new()
+            {
+                User = namidaka,
+                Name = "namichar",
+                Level = 10,
+                Experience = 146457,
+            };
+            Character orleCharacter0 = new()
+            {
+                User = orle,
+                Name = "Orle Soldier",
+                Level = 23,
+                Experience = _experienceTable.GetExperienceForLevel(23) + 200000,
+                Characteristics = new CharacterCharacteristics
+                {
+                    Attributes = new CharacterAttributes { Points = 100 },
+                    Skills = new CharacterSkills { Points = 100 },
+                },
+            };
+            Character orleCharacter1 = new()
+            {
+                User = orle,
+                Name = "Orle Peasant",
+                Level = 2,
+                Experience = _experienceTable.GetExperienceForLevel(2) + 999,
+            };
             Character falcomCharacter0 = new()
             {
                 User = falcom,
@@ -773,8 +762,8 @@ public record SeedDataCommand : IMediatorRequest
 
             Character[] newCharacters =
             {
-                takeoCharacter0, takeoCharacter1, takeoCharacter2, falcomCharacter0, victorhh888Character0,
-                sellkaCharacter0, krogCharacter0,
+                takeoCharacter0, takeoCharacter1, takeoCharacter2, namidakaCharacter0, orleCharacter0, orleCharacter1,
+                falcomCharacter0, victorhh888Character0, sellkaCharacter0, krogCharacter0,
             };
 
             var existingCharacters = await _db.Characters.ToDictionaryAsync(c => c.Name);
