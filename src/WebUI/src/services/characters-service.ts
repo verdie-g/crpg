@@ -39,7 +39,7 @@ export function computeSpeedStats({
 }): CharacterSpeedStats {
   const awfulScaler = 3231477.548;
   const weightReductionPolynomialFactor = [
-    10 / awfulScaler,
+    30 / awfulScaler,
     0.00005 / awfulScaler,
     1000000 / awfulScaler,
     0,
