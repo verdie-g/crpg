@@ -1218,7 +1218,7 @@
   </CraftedItem>
   <CraftedItem id="crpg_empire_noble_sword_2_t5" name="{=Rcc0JW6H}Thamaskene Steel Spatha" crafting_template="crpg_OneHandedSword" is_merchandise="false" culture="Culture.empire" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_empire_noble_sword_2_t5_blade" Type="Blade" scale_factor="100" />
+      <Piece id="crpg_empire_noble_sword_2_t5_blade" Type="Blade" scale_factor="96" />
       <Piece id="crpg_empire_noble_sword_2_t5_guard" Type="Guard" scale_factor="102" />
       <Piece id="crpg_empire_noble_sword_2_t5_handle" Type="Handle" scale_factor="100" />
       <Piece id="crpg_empire_noble_sword_2_t5_pommel" Type="Pommel" scale_factor="100" />
@@ -1242,7 +1242,7 @@
   </CraftedItem>
   <CraftedItem id="crpg_aserai_noble_sword_2_t5" name="{=93OHSnEV}Decorated Long Scimitar" crafting_template="crpg_OneHandedSword" is_merchandise="false" culture="Culture.aserai" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_aserai_noble_sword_2_t5_blade" Type="Blade" scale_factor="97" />
+      <Piece id="crpg_aserai_noble_sword_2_t5_blade" Type="Blade" scale_factor="99" />
       <Piece id="crpg_aserai_noble_sword_2_t5_guard" Type="Guard" scale_factor="100" />
       <Piece id="crpg_aserai_noble_sword_2_t5_handle" Type="Handle" scale_factor="100" />
       <Piece id="crpg_aserai_noble_sword_2_t5_pommel" Type="Pommel" scale_factor="100" />
@@ -1250,7 +1250,7 @@
   </CraftedItem>
   <CraftedItem id="crpg_aserai_noble_sword_3_t5" name="{=bohbzGjg}Decorated Scimitar with Wide Grip" crafting_template="crpg_OneHandedSword" is_merchandise="false" culture="Culture.aserai" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_aserai_noble_sword_3_t5_blade" Type="Blade" scale_factor="112" />
+      <Piece id="crpg_aserai_noble_sword_3_t5_blade" Type="Blade" scale_factor="105" />
       <Piece id="crpg_aserai_noble_sword_3_t5_guard" Type="Guard" scale_factor="100" />
       <Piece id="crpg_aserai_noble_sword_3_t5_handle" Type="Handle" scale_factor="100" />
       <Piece id="crpg_aserai_noble_sword_3_t5_pommel" Type="Pommel" scale_factor="100" />
@@ -1258,7 +1258,7 @@
   </CraftedItem>
   <CraftedItem id="crpg_aserai_noble_sword_4_t5" name="{=0lNp3f76}Engraved Angular Kaskara" crafting_template="crpg_OneHandedSword" is_merchandise="false" culture="Culture.aserai" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_aserai_noble_sword_4_t5_blade" Type="Blade" scale_factor="105" />
+      <Piece id="crpg_aserai_noble_sword_4_t5_blade" Type="Blade" scale_factor="114" />
       <Piece id="crpg_aserai_noble_sword_4_t5_guard" Type="Guard" scale_factor="100" />
       <Piece id="crpg_aserai_noble_sword_4_t5_handle" Type="Handle" scale_factor="100" />
       <Piece id="crpg_aserai_noble_sword_4_t5_pommel" Type="Pommel" scale_factor="100" />
@@ -1306,7 +1306,7 @@
   </CraftedItem>
   <CraftedItem id="crpg_sturgia_noble_sword_3_t5" name="{=QA5zGCKf}Decorated Fullered Sword" crafting_template="crpg_OneHandedSword" is_merchandise="false" culture="Culture.sturgia" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_sturgia_noble_sword_3_t5_blade" Type="Blade" scale_factor="100" />
+      <Piece id="crpg_sturgia_noble_sword_3_t5_blade" Type="Blade" scale_factor="145" />
       <Piece id="crpg_sturgia_noble_sword_3_t5_guard" Type="Guard" scale_factor="100" />
       <Piece id="crpg_sturgia_noble_sword_3_t5_handle" Type="Handle" scale_factor="100" />
       <Piece id="crpg_sturgia_noble_sword_3_t5_pommel" Type="Pommel" scale_factor="100" />
@@ -1845,7 +1845,15 @@
     </ItemComponent>
     <Flags ForceAttachOffHandPrimaryItemBone="true" />
   </Item>
-  <Item id="crpg_crossbow_a" name="{=LAEaH3zB}Simple Light Crossbow" body_name="bo_cross_bow_heavy" mesh="crossbow_a" culture="Culture.empire" weight="1.2" appearance="0.8" difficulty="0" Type="Crossbow" AmmoOffset="0.0, 0.02131, 0.24650" item_holsters="crossbow_back:bow_hip:mace_right_hip:bow_hip_2" holster_position_shift="0.02,0,-0.4">
+  <Item id="crpg_strong_tribal_long_bow" name="Strong Tribal Long Bow" body_name="bo_composite_longbow_g" mesh="longbow_i" culture="Culture.aserai" weight="0.9" difficulty="70" appearance="0.1" Type="Bow" item_holsters="bow_back:bow_back_2:bow_hip:bow_hip_2">
+    <ItemComponent>
+      <Weapon weapon_class="Bow" ammo_class="Arrow" ammo_limit="1" thrust_speed="76" speed_rating="86" missile_speed="103" weapon_length="116" accuracy="96" thrust_damage="19" thrust_damage_type="Pierce" item_usage="long_bow" physics_material="wood_weapon" center_of_mass="0.15,0,0" modifier_group="bow">
+        <WeaponFlags RangedWeapon="true" HasString="true" StringHeldByHand="true" NotUsableWithOneHand="true" TwoHandIdleOnMount="true" AutoReload="true" UnloadWhenSheathed="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags ForceAttachOffHandPrimaryItemBone="true" />
+  </Item>
+  <Item id="crpg_crossbow_a" name="{=LAEaH3zB}Simple Light Crossbow" body_name="bo_cross_bow_heavy" mesh="crossbow_a" culture="Culture.empire" weight="1" appearance="0.8" difficulty="0" Type="Crossbow" AmmoOffset="0.0, 0.02131, 0.24650" item_holsters="crossbow_back:bow_hip:mace_right_hip:bow_hip_2" holster_position_shift="0.02,0,-0.4">
     <ItemComponent>
       <Weapon weapon_class="Crossbow" ammo_class="Bolt" missile_speed="88" accuracy="86" thrust_damage="22" thrust_speed="95" speed_rating="70" weapon_length="90" ammo_limit="1" thrust_damage_type="Pierce" item_usage="crossbow_light" reload_phase_count="2" physics_material="wood_weapon" center_of_mass="0,0,0.4" modifier_group="crossbow">
         <WeaponFlags RangedWeapon="true" HasString="true" NotUsableWithOneHand="true" TwoHandIdleOnMount="true" />
@@ -1876,7 +1884,7 @@
   </Item>
   <Item id="crpg_crossbow_d" name="{=CPI0wkaZ}Knight's Heavy Arbalest" body_name="bo_composite_crossbows" mesh="crossbow_d" culture="Culture.empire" weight="5.0" appearance="0.6" Type="Crossbow" difficulty="40" AmmoOffset="0.0, 0.02131, 0.22975" item_holsters="crossbow_back:bow_hip:mace_right_hip:bow_hip_2" holster_position_shift="0.02,0,-0.4">
     <ItemComponent>
-      <Weapon weapon_class="Crossbow" ammo_class="Bolt" ammo_limit="1" thrust_speed="84" speed_rating="58" missile_speed="125" weapon_length="100" accuracy="99" thrust_damage="57" thrust_damage_type="Pierce" item_usage="crossbow" reload_phase_count="2" physics_material="wood_weapon" center_of_mass="0,0,0.4" modifier_group="crossbow">
+      <Weapon weapon_class="Crossbow" ammo_class="Bolt" ammo_limit="1" thrust_speed="84" speed_rating="58" missile_speed="127" weapon_length="100" accuracy="99" thrust_damage="57" thrust_damage_type="Pierce" item_usage="crossbow" reload_phase_count="2" physics_material="wood_weapon" center_of_mass="0,0,0.4" modifier_group="crossbow">
         <WeaponFlags RangedWeapon="true" HasString="true" CantReloadOnHorseback="true" CanPenetrateShield="true" NotUsableWithOneHand="true" TwoHandIdleOnMount="true" />
       </Weapon>
     </ItemComponent>
@@ -1902,6 +1910,22 @@
     <ItemComponent>
       <Weapon weapon_class="Crossbow" ammo_class="Bolt" missile_speed="105" accuracy="97" thrust_damage="39" thrust_speed="86" speed_rating="55" weapon_length="95" ammo_limit="1" thrust_damage_type="Pierce" item_usage="crossbow_light" reload_phase_count="2" physics_material="wood_weapon" center_of_mass="0,0,0.4" modifier_group="crossbow">
         <WeaponFlags RangedWeapon="true" HasString="true" CantReloadOnHorseback="true" NotUsableWithOneHand="true" TwoHandIdleOnMount="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_crossbow_i" name="Windlass Lord's Arbalest" body_name="bo_cross_bow_heavy" mesh="crossbow_f" culture="Culture.vlandia" weight="7.5" appearance="0.8" difficulty="70" Type="Crossbow" AmmoOffset="0.0, 0.02131, 0.22975" item_holsters="crossbow_back:bow_hip:mace_right_hip:bow_hip_2" holster_position_shift="0.02,0,-0.4">
+    <ItemComponent>
+      <Weapon weapon_class="Crossbow" ammo_class="Bolt" ammo_limit="1" thrust_speed="83" speed_rating="60" missile_speed="130" weapon_length="100" accuracy="100" thrust_damage="59" thrust_damage_type="Pierce" item_usage="crossbow" reload_phase_count="2" physics_material="wood_weapon" center_of_mass="0,0,0.4" modifier_group="crossbow">
+        <WeaponFlags RangedWeapon="true" HasString="true" CantReloadOnHorseback="true" CanPenetrateShield="true" NotUsableWithOneHand="true" TwoHandIdleOnMount="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_crossbow_j" name="Windlass Knight's Arbalest" body_name="bo_composite_crossbows" mesh="crossbow_d" culture="Culture.empire" weight="7.0" appearance="0.6" Type="Crossbow" difficulty="40" AmmoOffset="0.0, 0.02131, 0.22975" item_holsters="crossbow_back:bow_hip:mace_right_hip:bow_hip_2" holster_position_shift="0.02,0,-0.4">
+    <ItemComponent>
+      <Weapon weapon_class="Crossbow" ammo_class="Bolt" ammo_limit="1" thrust_speed="84" speed_rating="68" missile_speed="125" weapon_length="100" accuracy="99" thrust_damage="52" thrust_damage_type="Pierce" item_usage="crossbow" reload_phase_count="2" physics_material="wood_weapon" center_of_mass="0,0,0.4" modifier_group="crossbow">
+        <WeaponFlags RangedWeapon="true" HasString="true" CantReloadOnHorseback="true" CanPenetrateShield="true" NotUsableWithOneHand="true" TwoHandIdleOnMount="true" />
       </Weapon>
     </ItemComponent>
     <Flags />
