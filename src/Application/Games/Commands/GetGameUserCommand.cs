@@ -125,6 +125,8 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
             {
                 user = CreateUser(req.Platform, req.PlatformUserId);
                 _db.Users.Add(user);
+
+                await _db.SaveChangesAsync(cancellationToken);
                 Logger.LogInformation("User joined ({1}#{2})", req.Platform, req.PlatformUserId);
             }
             else
@@ -139,7 +141,6 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
                     .LoadAsync(cancellationToken);
             }
 
-            Character? newCharacter = null;
             if (user.ActiveCharacter == null)
             {
                 if (await HasRecentlyCreatedACharacter(user.Id))
@@ -149,9 +150,14 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
                 }
 
                 var itemSet = await GiveUserRandomItemSet(user);
-                newCharacter = CreateCharacter(itemSet);
+                var newCharacter = CreateCharacter(itemSet);
                 user.Characters.Add(newCharacter);
                 user.ActiveCharacter = newCharacter;
+
+                // Need to save new user and new character in two times because of the circular dependency
+                // between the two (https://github.com/dotnet/efcore/issues/1699).
+                await _db.SaveChangesAsync(cancellationToken);
+                Logger.LogInformation("User '{0}' created character '{1}'", user.Id, newCharacter.Id);
             }
             else
             {
@@ -161,13 +167,6 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
                     .Query()
                     .Include(ei => ei.UserItem)
                     .LoadAsync(cancellationToken);
-            }
-
-            await _db.SaveChangesAsync(cancellationToken);
-
-            if (newCharacter != null)
-            {
-                Logger.LogInformation("User '{0}' created character '{1}'", user.Id, newCharacter.Id);
             }
 
             var gameUser = _mapper.Map<GameUserViewModel>(user);
