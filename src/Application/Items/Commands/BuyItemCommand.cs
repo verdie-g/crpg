@@ -46,7 +46,7 @@ public record BuyItemCommand : IMediatorRequest<UserItemViewModel>
                 return new(CommonErrors.UserNotFound(req.UserId));
             }
 
-            if (item.Type == ItemType.Banner && !user.IsDonor && user.Role != Role.Admin)
+            if (item.Type == ItemType.Banner && user.Role == Role.User && !user.IsDonor)
             {
                 return new(CommonErrors.ItemNotBuyable(req.ItemId));
             }

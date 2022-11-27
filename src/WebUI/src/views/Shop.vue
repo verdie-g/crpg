@@ -141,7 +141,7 @@ export default class Shop extends Vue {
   get isUserDonor(): boolean {
     return userModule.user == null
       ? false
-      : userModule.user.isDonor || userModule.user.role == Role.Admin;
+      : userModule.user.isDonor || userModule.user.role != Role.User;
   }
 
   get currentPage(): number {

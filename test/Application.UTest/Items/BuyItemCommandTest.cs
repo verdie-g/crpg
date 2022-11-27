@@ -84,7 +84,7 @@ public class BuyItemCommandTest : TestBase
             UserId = user.Entity.Id,
         }, CancellationToken.None);
 
-        if (isDonor || role == Role.Admin)
+        if (isDonor || role != Role.User)
         {
             Assert.IsNull(result.Errors);
         }
