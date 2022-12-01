@@ -34,7 +34,7 @@ shareMutations({
 })(store);
 
 Vue.use(PoolInterval, {
-  period: 1000 * 60 * 2,
+  period: 1000 * 60 * 5,
 });
 
 new Vue({
