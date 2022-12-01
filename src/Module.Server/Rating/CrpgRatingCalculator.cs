@@ -142,7 +142,7 @@ internal static class CrpgRatingCalculator
         foreach (var result in results)
         {
             var opponent = result.GetOpponent(player);
-            v += Math.Pow(G(opponent.Glicko2RatingDeviation), 2)
+            v += result.Percentage * Math.Pow(G(opponent.Glicko2RatingDeviation), 2)
                  * E(player.Glicko2Rating, opponent.Glicko2Rating, opponent.Glicko2RatingDeviation)
                  * (1.0 - E(player.Glicko2Rating, opponent.Glicko2Rating, opponent.Glicko2RatingDeviation));
         }
@@ -164,10 +164,10 @@ internal static class CrpgRatingCalculator
         foreach (var result in results)
         {
             var opponent = result.GetOpponent(player);
-            outcomeBasedRating +=
+            outcomeBasedRating += result.Percentage *
                 G(opponent.Glicko2RatingDeviation)
-                * result.GetScore(player)
-                - E(player.Glicko2Rating, opponent.Glicko2Rating, opponent.Glicko2RatingDeviation);
+                * (result.GetScore(player)
+                - E(player.Glicko2Rating, opponent.Glicko2Rating, opponent.Glicko2RatingDeviation));
         }
 
         return outcomeBasedRating;

@@ -5,16 +5,16 @@
 /// </summary>
 internal class CrpgRatingResult
 {
-    public CrpgRatingResult(CrpgRating winner, CrpgRating loser, float score)
+    public CrpgRatingResult(CrpgRating winner, CrpgRating loser, float percentage)
     {
         Winner = winner;
         Loser = loser;
-        Score = score;
+        Percentage = percentage;
     }
 
     public CrpgRating Winner { get; }
     public CrpgRating Loser { get; }
-    public float Score { get; }
+    public float Percentage { get; }
 
     /// <summary>
     /// Test whether a particular player participated in the match represented by this result.
@@ -33,7 +33,7 @@ internal class CrpgRatingResult
     {
         if (Winner == player)
         {
-            return Score;
+            return 1;
         }
 
         if (Loser == player)
