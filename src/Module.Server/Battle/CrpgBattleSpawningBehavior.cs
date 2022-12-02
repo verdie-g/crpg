@@ -104,8 +104,8 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
                 GameNetwork.BeginModuleEventAsServer(networkPeer);
                 GameNetwork.WriteMessage(new CrpgNotification
                 {
-                    Type = CrpgNotification.NotificationType.Notification,
-                    Message = "You should have at least one weapon equipped to spawn!",
+                    Type = CrpgNotification.NotificationType.Announcement,
+                    Message = "You should have at least one weapon equipped to spawn! Equip a weapon and reconnect to the server.",
                     IsMessageTextId = false,
                     SoundEvent = string.Empty,
                 });

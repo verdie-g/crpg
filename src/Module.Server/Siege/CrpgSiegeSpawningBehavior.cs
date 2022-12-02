@@ -2,18 +2,19 @@
 using Crpg.Module.Common.Network;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.Diamond;
 using TaleWorlds.PlayerServices;
 
 namespace Crpg.Module.Siege;
 
 internal class CrpgSiegeSpawningBehavior : CrpgSpawningBehaviorBase
 {
-    private readonly HashSet<PlayerId> _notifiedPlayersAboutSpawnRestriction;
+    private readonly Dictionary<PlayerId, MissionTime> _lastSpawnRestrictionNotifications;
 
     public CrpgSiegeSpawningBehavior(CrpgConstants constants)
         : base(constants)
     {
-        _notifiedPlayersAboutSpawnRestriction = new HashSet<PlayerId>();
+        _lastSpawnRestrictionNotifications = new Dictionary<PlayerId, MissionTime>();
     }
 
     public override void OnTick(float dt)
@@ -81,17 +82,27 @@ internal class CrpgSiegeSpawningBehavior : CrpgSpawningBehaviorBase
         var characterEquipment = CreateCharacterEquipment(crpgPeer.User.Character.EquippedItems);
         if (!DoesEquipmentContainWeapon(characterEquipment)) // Disallow spawning without weapons.
         {
-            if (_notifiedPlayersAboutSpawnRestriction.Add(networkPeer.VirtualPlayer.Id))
+            if (!_lastSpawnRestrictionNotifications.TryGetValue(networkPeer.VirtualPlayer.Id, out var lastNotification))
             {
                 GameNetwork.BeginModuleEventAsServer(networkPeer);
                 GameNetwork.WriteMessage(new CrpgNotification
                 {
-                    Type = CrpgNotification.NotificationType.Notification,
-                    Message = "You should have at least one weapon equipped to spawn!",
+                    Type = CrpgNotification.NotificationType.Announcement,
+                    Message = "You should have at least one weapon equipped to spawn! Equip a weapon and reconnect to the server.",
                     IsMessageTextId = false,
                     SoundEvent = string.Empty,
                 });
                 GameNetwork.EndModuleEventAsServer();
+
+                _lastSpawnRestrictionNotifications[networkPeer.VirtualPlayer.Id] = MissionTime.Now;
+            }
+            else if (lastNotification + MissionTime.Seconds(3) < MissionTime.Now)
+            {
+                const string parameterName = "DisconnectInfo";
+                var disconnectInfo = networkPeer.PlayerConnectionInfo.GetParameter<DisconnectInfo>(parameterName) ?? new DisconnectInfo();
+                disconnectInfo.Type = DisconnectType.KickedByHost;
+                networkPeer.PlayerConnectionInfo.AddParameter(parameterName, disconnectInfo);
+                GameNetwork.AddNetworkPeerToDisconnectAsServer(networkPeer);
             }
 
             return false;
