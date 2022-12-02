@@ -14,7 +14,6 @@ internal class CrpgSiegeMissionMultiplayerServer : MissionMultiplayerGameModeBas
     private const int MaxMoraleGainPerFlag = 90;
     private const int MoraleBoostOnFlagRemoval = 90;
     private const int MoraleDecayInTick = 1;
-    private const int MoraleDecayOnDefenderInTick = 6;
     private const int MoraleGainPerFlag = 1;
     private const float FlagCaptureRange = 4f;
     private const float FlagCaptureRangeSquared = FlagCaptureRange * FlagCaptureRange;
@@ -261,16 +260,15 @@ internal class CrpgSiegeMissionMultiplayerServer : MissionMultiplayerGameModeBas
             {
                 if (!teamAgentOnMasterFlag)
                 {
-                    int gain = 0;
                     foreach (var flag in AllCapturePoints)
                     {
-                        if (flag != _masterFlag && !flag.IsDeactivated)
+                        if (flag == _masterFlag)
                         {
-                            gain += 1;
+                            continue;
                         }
-                    }
 
-                    moraleGain += gain - MoraleDecayOnDefenderInTick;
+                        moraleGain -= flag.IsDeactivated ? 1 : 0;
+                    }
                 }
             }
             else
