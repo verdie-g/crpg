@@ -31,5 +31,11 @@
     <XmlNode>
       <XmlName id="Items" path="items"/>
     </XmlNode>
+    <XmlNode>
+      <XmlName id="MPCharacters" path="characters"/>
+    </XmlNode>
+    <XmlNode>
+      <XmlName id="MPClassDivisions" path="class_divisions"/>
+    </XmlNode>
   </Xmls>
 </Module>

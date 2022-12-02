@@ -44,7 +44,7 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
             }
 
             BasicCultureObject teamCulture = missionPeer.Team == Mission.AttackerTeam ? cultureTeam1 : cultureTeam2;
-            var peerClass = MultiplayerClassDivisions.GetMPHeroClasses().Skip(5).First();
+            var peerClass = MBObjectManager.Instance.GetObject<MultiplayerClassDivisions.MPHeroClass>("crpg_class_division");
             // var character = CreateCharacter(crpgPeer.User.Character, _constants);
             var characterSkills = CreateCharacterSkills(crpgPeer.User!.Character.Characteristics);
             var character = peerClass.HeroCharacter;
@@ -52,8 +52,6 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
             var characterEquipment = CreateCharacterEquipment(crpgPeer.User.Character.EquippedItems);
             bool hasMount = characterEquipment[EquipmentIndex.Horse].Item != null;
 
-            // Used to reset the selected perks for the current troop. Otherwise the player might have addional stats.
-            missionPeer.SelectedTroopIndex = -1;
             MatrixFrame spawnFrame = missionPeer.GetAmountOfAgentVisualsForPeer() > 0
                 ? missionPeer.GetAgentVisualForPeer(0).GetFrame()
                 : SpawnComponent.GetSpawnFrame(missionPeer.Team, hasMount, true);
