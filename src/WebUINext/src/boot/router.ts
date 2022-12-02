@@ -3,13 +3,16 @@ import {
   createWebHistory,
   type RouteRecordRaw,
   type RouterScrollBehavior,
-} from 'vue-router';
+  type NavigationGuard,
+} from 'vue-router/auto';
+import qs from 'qs';
 import { setupLayouts } from 'virtual:generated-layouts';
-import generatedRoutes from 'virtual:generated-pages';
-import queryString from 'query-string';
 
 import { type BootModule } from '@/types/boot-module';
-import { authRouterMiddleware } from '@/middlewares/auth';
+import { RouteMiddleware } from '@/types/vue-router';
+import { authRouterMiddleware, signInCallback, signInSilentCallback } from '@/middlewares/auth';
+import { clanIdParamValidate, clanExistValidate } from '@/middlewares/clan';
+import { characterValidate, activeCharacterRedirect } from '@/middlewares/character';
 
 const scrollBehavior: RouterScrollBehavior = (to, _from, savedPosition) => {
   if (savedPosition) {
@@ -18,43 +21,107 @@ const scrollBehavior: RouterScrollBehavior = (to, _from, savedPosition) => {
 
   // check if any matched route config has meta that requires scrolling to top
   if (to.matched.some(m => m.meta.scrollToTop)) {
-    return window.scrollTo({ top: 0, behavior: 'smooth' });
+    return { top: 0, behavior: 'smooth' };
   }
 };
 
+// TODO: FIXME: UNIT!!!!!!!!!!! to utils
+const numberCandidate = (candidate: string) => /^[+-]?\d+(\.\d+)?$/.test(candidate);
+const tryParseFloat = (str: string) => (numberCandidate(str) ? parseFloat(str) : str);
+const decoder = (str: string): string | number | boolean | null | undefined => {
+  // TODO: unit
+
+  const candidateToNumber = tryParseFloat(str);
+
+  if (typeof candidateToNumber == 'number' && !isNaN(candidateToNumber)) {
+    return candidateToNumber;
+  }
+
+  const keywords: Record<string, any> = {
+    true: true,
+    false: false,
+    null: null,
+    undefined: undefined,
+  };
+
+  if (str in keywords) {
+    return keywords[str];
+  }
+
+  return str;
+
+  // TODO: ???
+  // try {
+  //   const strWithoutPlus = str.replace(/\+/g, ' ');
+  //   return decodeURIComponent(strWithoutPlus);
+  // } catch (_e) {
+  //   return strWithoutPlus;
+  // }
+};
+
 const parseQuery = (query: string) => {
-  return queryString.parse(query, {
-    arrayFormat: 'bracket',
-    parseNumbers: true,
-    parseBooleans: true,
+  return qs.parse(query, {
+    ignoreQueryPrefix: true,
+    strictNullHandling: true,
+
+    decoder,
   });
 };
 
 const stringifyQuery = (query: Record<string, any>) => {
-  const result = queryString.stringify(query, {
-    encode: true,
-    arrayFormat: 'bracket',
-    skipEmptyString: true,
-    skipNull: true,
+  return qs.stringify(query, {
+    encode: false,
+    strictNullHandling: true,
+    arrayFormat: 'brackets',
+    skipNulls: true,
   });
+};
 
-  return result ? `?${result}` : '';
+const getRouteMiddleware = (name: RouteMiddleware) => {
+  const middlewareMap: Record<RouteMiddleware, NavigationGuard> = {
+    signInCallback: signInCallback,
+    signInSilentCallback: signInSilentCallback,
+
+    characterValidate: characterValidate,
+    activeCharacterRedirect: activeCharacterRedirect,
+
+    clanIdParamValidate: clanIdParamValidate,
+    clanExistValidate: clanExistValidate,
+  };
+
+  return middlewareMap[name];
+};
+
+// TODO: FIXME: SPECCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+const setRouteMiddleware = (routes: RouteRecordRaw[]) => {
+  routes.forEach(route => {
+    if (route.children) {
+      setRouteMiddleware(route.children);
+    }
+
+    if (route.meta?.middleware === undefined) return;
+    route.beforeEnter = getRouteMiddleware(route.meta.middleware as RouteMiddleware);
+  });
 };
 
 export const install: BootModule = app => {
-  const routes: RouteRecordRaw[] = setupLayouts(generatedRoutes);
-
   const router = createRouter({
+    extendRoutes: routes => {
+      // auto-register route guard
+      setRouteMiddleware(routes);
+
+      return setupLayouts(routes);
+    },
     history: createWebHistory(),
-    routes,
+    // routes,
     scrollBehavior,
     /* A custom parse/stringify query is needed because by default
     ?types=HeadArmor&types=ShoulderArmor is parsed correctly as ["HeadArmor", "ShoulderArmor"]
     but ?types=HeadArmor is parsed as "HeadArmor" (not an array).
-    To solve this issue query-string library adds brackets for arrays ?types[]=HeadArmor.
+    To solve this issue qs library adds brackets for arrays ?types[]=HeadArmor.
+    https://router.vuejs.org/api/interfaces/RouterOptions.html#parsequery
     */
-    // @ts-ignore // FIXME: fix
-    parseQuery,
+    parseQuery, // TODO: ts?
     stringifyQuery,
   });
 

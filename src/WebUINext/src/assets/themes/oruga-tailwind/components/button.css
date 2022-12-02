@@ -1,0 +1,188 @@
+.o-btn {
+  @apply !inline-flex select-none items-center overflow-hidden rounded-full font-bold;
+}
+
+.o-btn__wrapper {
+  @apply inline-flex w-full items-center justify-center;
+}
+
+.o-btn__label {
+  @apply flex flex-wrap items-center justify-center gap-2 text-center;
+}
+
+.o-btn__icon {
+}
+
+.o-btn__icon-left {
+}
+
+.o-btn__icon-right {
+}
+
+.o-btn--expanded {
+  @apply w-full;
+}
+
+/* SIZES */
+.o-btn--xl {
+  @apply h-13.5 min-w-36 py-4 px-4.5 text-xs;
+}
+
+.o-btn--xl .o-btn__label {
+  @apply px-1.5;
+}
+
+.o-btn--lg {
+  @apply py-3.5 px-3;
+}
+
+.o-btn--lg .o-btn__label {
+  @apply px-1.5;
+}
+
+.o-btn--sm {
+  @apply h-10.5 py-3 px-3 text-2xs;
+}
+
+.o-btn--sm .o-btn__label {
+  @apply px-1.5;
+}
+
+.o-btn--xs {
+  @apply h-9 py-2.5 px-2 text-2xs;
+}
+
+.o-btn--xs .o-btn__label {
+  @apply px-1;
+}
+
+.o-btn--2xs {
+  @apply py-1.5 px-2.5 text-2xs;
+}
+
+.o-btn--2xs .o-btn__label {
+  @apply px-1;
+}
+
+.o-btn--rounded {
+  @apply min-w-initial;
+}
+
+.o-btn--rounded.o-btn--xl {
+  @apply h-13.5 w-13.5 p-4;
+}
+
+.o-btn--rounded.o-btn--xl .o-btn__label {
+  @apply p-0;
+}
+
+.o-btn--rounded.o-btn--lg {
+  @apply p-4;
+}
+
+.o-btn--rounded.o-btn--sm {
+  @apply h-10.5 w-10.5 p-3;
+}
+
+.o-btn--rounded.o-btn--xs {
+  @apply p-2.5;
+}
+
+.o-btn--rounded.o-btn--2xs {
+  @apply p-2;
+}
+
+.o-btn--disabled {
+  @apply cursor-not-allowed;
+}
+
+/* VARIANTS */
+.o-btn--primary {
+  @apply bg-primary text-content-600;
+  @apply hover:bg-primary-hover;
+}
+
+.o-btn--primary.o-btn--disabled {
+  @apply bg-opacity-30;
+}
+
+/*  */
+.o-btn--primary.o-btn--inverted-primary {
+  @apply bg-transparent text-primary;
+  @apply hover:bg-base-300 hover:text-primary-hover;
+}
+
+.o-btn--primary.o-btn--inverted-primary.o-btn--disabled {
+  @apply text-opacity-30;
+}
+
+.o-btn--outlined-primary {
+  @apply border-2 border-border-200 bg-transparent text-primary;
+  @apply hover:border-border-300 hover:bg-transparent hover:text-primary-hover;
+}
+
+.o-btn--outlined-primary.o-btn--disabled {
+  @apply text-opacity-30;
+}
+
+/*  */
+.o-btn--secondary {
+  @apply bg-base-200 text-content-200 hover:bg-base-300 hover:text-content-100;
+}
+
+.o-btn--secondary.o-btn--disabled {
+  @apply text-content-500;
+}
+
+.o-btn--outlined-secondary {
+  @apply border-2 border-border-200 bg-transparent text-content-200 hover:border-border-300 hover:text-content-100;
+}
+
+.o-btn--outlined-secondary.o-btn--disabled {
+  @apply text-content-500;
+}
+
+.o-btn--secondary.o-btn--inverted-secondary {
+  @apply bg-transparent text-content-200;
+  @apply hover:bg-base-200 hover:text-content-100;
+}
+
+/*  */
+.o-btn--transparent {
+  @apply text-content-400;
+  @apply hover:bg-base-300 hover:text-content-100;
+}
+
+.o-btn--transparent-active {
+  @apply bg-base-300 text-content-100;
+  @apply hover:bg-base-400;
+}
+
+.o-btn--transparent.o-btn--disabled,
+.o-btn--transparent-active.o-btn--disabled {
+  @apply text-content-500;
+}
+
+/*  */
+.o-btn--danger {
+  @apply bg-status-danger text-content-100 hover:bg-opacity-80;
+}
+
+/*  */
+.o-btn--success {
+  @apply bg-status-success text-content-100 hover:bg-opacity-80;
+}
+
+.o-btn--success.o-btn--inverted-success {
+  @apply bg-transparent text-status-success;
+  @apply hover:bg-base-300 hover:text-status-success;
+}
+
+/*  */
+.o-btn--warning {
+  @apply bg-status-warning text-content-100 hover:bg-opacity-80;
+}
+
+.o-btn--warning.o-btn--disabled {
+  @apply bg-opacity-50 text-content-300;
+}

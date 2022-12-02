@@ -1,8 +1,8 @@
 import { StatusCodes } from 'http-status-codes';
-import { getToken, login } from '@/services/auth-service';
-// import { NotificationType, notify } from '@/services/notifications-service'; // TODO:
-import { sleep } from '@/utils/promise';
 import { ErrorType, type Result } from '@/models/crpg-client-result';
+import { getToken, login } from '@/services/auth-service';
+import { NotificationType, notify } from '@/services/notification-service';
+import { sleep } from '@/utils/promise';
 
 export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -19,7 +19,7 @@ async function trySend(method: string, path: string, body?: any): Promise<Result
   });
 
   if (response.status === StatusCodes.UNAUTHORIZED) {
-    // notify('Session expired', NotificationType.Warning); // TODO:
+    notify('Session expired', NotificationType.Warning);
     await sleep(1000);
     await login();
 
@@ -43,10 +43,10 @@ async function send(method: string, path: string, body?: any): Promise<any> {
   const [error] = result.errors || [];
 
   if (error?.type === ErrorType.InternalError) {
-    // notify(error.title!, NotificationType.Error); // TODO:
+    notify(error.title!, NotificationType.Danger);
     throw new Error('Server error');
   } else {
-    // notify(error.title!, NotificationType.Warning); // TODO:
+    notify(error.title!, NotificationType.Warning);
     throw new Error('Bad request');
   }
 }
@@ -59,11 +59,11 @@ export function get<T = any>(path: string): Promise<T> {
   return send('GET', path);
 }
 
-export function post(path: string, body?: any): Promise<any> {
+export function post<T = any>(path: string, body?: any): Promise<T> {
   return send('POST', path, body);
 }
 
-export function put(path: string, body?: any): Promise<any> {
+export function put<T = any>(path: string, body?: any): Promise<T> {
   return send('PUT', path, body);
 }
 

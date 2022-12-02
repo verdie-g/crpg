@@ -1,0 +1,20 @@
+[
+    {
+      "id": 6,
+      "name": "Rarity",
+      "generation": 0,
+      "level": 2,
+      "experience": 4537,
+      "forTournament": false,
+      "class": "Infantry"
+    },
+    {
+      "id": 5,
+      "name": "Fluttershy",
+      "generation": 0,
+      "level": 23,
+      "experience": 1184507,
+      "forTournament": false,
+      "class": "Infantry"
+    }
+  ]

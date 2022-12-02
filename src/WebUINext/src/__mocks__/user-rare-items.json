@@ -1,0 +1,116 @@
+[
+  {
+    "id": 1,
+    "baseItem": {
+      "id": "crpg_khuzait_noble_sword_2_t5",
+      "name": "Lion Imprinted Saber",
+      "culture": "Khuzait",
+      "type": "OneHandedWeapon",
+      "price": 7563,
+      "tier": 10.046989,
+      "requirement": 0,
+      "weight": 2.05,
+      "flags": [],
+      "armor": null,
+      "mount": null,
+      "weapons": [
+        {
+          "class": "OneHandedSword",
+          "itemUsage": "onehanded_block_shield_swing_thrust",
+          "accuracy": 0,
+          "missileSpeed": 0,
+          "stackAmount": 0,
+          "length": 99,
+          "balance": 0.6,
+          "handling": 87,
+          "bodyArmor": 5,
+          "flags": ["MeleeWeapon"],
+          "thrustDamage": 21,
+          "thrustDamageType": "Pierce",
+          "thrustSpeed": 86,
+          "swingDamage": 32,
+          "swingDamageType": "Cut",
+          "swingSpeed": 87
+        }
+      ]
+    },
+    "rank": 1,
+    "createdAt": "2023-03-17T08:10:08.4112536Z"
+  },
+  {
+    "id": 9,
+    "baseItem": {
+      "id": "crpg_aserai_noble_sword_2_t5",
+      "name": "Decorated Elite Scimitar",
+      "culture": "Aserai",
+      "type": "OneHandedWeapon",
+      "price": 7453,
+      "tier": 9.965608,
+      "requirement": 0,
+      "weight": 2.35,
+      "flags": ["Civilian"],
+      "armor": null,
+      "mount": null,
+      "weapons": [
+        {
+          "class": "OneHandedSword",
+          "itemUsage": "onehanded_block_shield_swing",
+          "accuracy": 0,
+          "missileSpeed": 0,
+          "stackAmount": 0,
+          "length": 100,
+          "balance": 0.66,
+          "handling": 86,
+          "bodyArmor": 5,
+          "flags": ["MeleeWeapon"],
+          "thrustDamage": 0,
+          "thrustDamageType": "Undefined",
+          "thrustSpeed": 84,
+          "swingDamage": 31,
+          "swingDamageType": "Cut",
+          "swingSpeed": 89
+        }
+      ]
+    },
+    "rank": 2,
+    "createdAt": "2023-03-17T18:16:08.8410869Z"
+  },
+  {
+    "id": 10,
+    "baseItem": {
+      "id": "crpg_aserai_sword_7_t5",
+      "name": "Thamaskene Steel Kaskara",
+      "culture": "Aserai",
+      "type": "OneHandedWeapon",
+      "price": 7368,
+      "tier": 9.901918,
+      "requirement": 0,
+      "weight": 1.6,
+      "flags": [],
+      "armor": null,
+      "mount": null,
+      "weapons": [
+        {
+          "class": "OneHandedSword",
+          "itemUsage": "onehanded_block_shield_swing_thrust",
+          "accuracy": 0,
+          "missileSpeed": 0,
+          "stackAmount": 0,
+          "length": 105,
+          "balance": 0.44,
+          "handling": 84,
+          "bodyArmor": 5,
+          "flags": ["MeleeWeapon"],
+          "thrustDamage": 30,
+          "thrustDamageType": "Pierce",
+          "thrustSpeed": 90,
+          "swingDamage": 32,
+          "swingDamageType": "Cut",
+          "swingSpeed": 83
+        }
+      ]
+    },
+    "rank": 3,
+    "createdAt": "2023-03-17T19:37:40.8189806Z"
+  }
+]

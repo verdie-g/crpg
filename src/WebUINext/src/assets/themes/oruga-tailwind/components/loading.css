@@ -1,0 +1,15 @@
+.o-load {
+  @apply absolute inset-0 z-30 flex items-center justify-center overflow-hidden;
+}
+
+.o-load--fullpage {
+  @apply fixed z-100;
+}
+
+.o-load__overlay {
+  @apply absolute;
+  @apply inset-0 bg-base-100 bg-opacity-50;
+}
+
+.o-load__icon {
+}

@@ -1,0 +1,62 @@
+.o-pag {
+  @apply flex items-center justify-between text-center;
+}
+
+.o-pag--simple {
+  @apply justify-start;
+}
+
+.o-pag__link {
+  @apply inline-flex items-center justify-center;
+  @apply cursor-pointer appearance-none leading-none outline-none select-none;
+  @apply rounded-full w-11 h-11;
+  @apply border border-border-200 text-content-300;
+  @apply hover:border-border-300 hover:text-content-100;
+}
+
+.o-pag__link--disabled {
+  @apply pointer-events-none opacity-50;
+}
+
+.o-pag__link--current {
+  @apply border-transparent hover:border-transparent;
+  @apply bg-base-400 text-content-100;
+  @apply hover:bg-base-300 hover:text-content-100;
+}
+
+.o-pag__previous {
+  @apply order-2;
+}
+
+.o-pag__next {
+  @apply order-3;
+}
+
+.o-pag--centered {
+  @apply justify-center;
+}
+
+.o-pag--centered .o-pag__previous {
+  @apply order-1;
+}
+
+.o-pag--centered .o-pag__next {
+  @apply order-3;
+}
+
+.o-pag--right {
+  @apply justify-center;
+}
+
+.o-pag--right .o-pag__list {
+  @apply order-2 justify-center;
+}
+
+.o-pag__list {
+  @apply flex flex-wrap items-center gap-2;
+  @apply order-1 flex-shrink flex-grow;
+  @apply m-0 list-none p-0 text-center;
+}
+
+.o-pag__info {
+}

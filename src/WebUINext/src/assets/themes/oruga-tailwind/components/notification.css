@@ -1,0 +1,73 @@
+.o-notification {
+  @apply relative rounded-full bg-base-600 px-4 py-3 text-content-600 mb-3 select-none;
+}
+
+.o-notification.o-notification--danger {
+  @apply bg-status-danger text-content-100;
+}
+
+.o-notification.o-notification--warning {
+  @apply bg-status-warning text-content-100;
+}
+
+.o-notification.o-notification--success {
+  @apply bg-status-success text-content-100;
+}
+
+.o-notification__wrapper {
+  @apply flex items-start gap-4;
+}
+
+.o-notification__content {
+  @apply flex-1;
+}
+
+.o-notification__icon {
+}
+
+.o-notification__close {
+  @apply absolute right-2 top-2 flex h-5 w-5 cursor-pointer items-center justify-center rounded-full;
+  @apply bg-base-300 bg-opacity-20 text-content-100;
+}
+
+.o-notices {
+  @apply pointer-events-none fixed inset-0 z-100 flex overflow-hidden p-6;
+}
+
+.o-notices .o-notification {
+  @apply pointer-events-none max-w-md;
+}
+
+.o-notices .o-notification--bottom,
+.o-notices .o-notification--top {
+  @apply self-center;
+}
+
+.o-notices .o-notification--bottom-right,
+.o-notices .o-notification--top-right {
+  @apply self-end;
+}
+
+.o-notices .o-notification--bottom-left,
+.o-notices .o-notification--top-left {
+  @apply self-start;
+}
+
+.o-notices--top {
+  @apply flex-col;
+}
+
+.o-notices--bottom {
+  @apply flex-col-reverse;
+}
+
+.o-notices--bottom .o-notification {
+}
+
+.o-notices--bottom .o-notification:not(:first-child) {
+  @apply mb-3;
+}
+
+.o-notices__custom-container {
+  @apply absolute;
+}

@@ -1,0 +1,63 @@
+/* https://floating-vue.starpad.dev/ */
+
+.v-popper--theme-dropdown {
+  @apply inline-block;
+}
+
+.v-popper--theme-dropdown .v-popper__arrow-inner,
+.v-popper--theme-dropdown .v-popper__arrow-outer {
+  @apply border-base-200;
+}
+
+.v-popper--theme-dropdown .v-popper__inner {
+  @apply rounded-lg border-none bg-base-200 py-1.5 shadow-none;
+}
+
+.v-popper--theme-dropdown .v-popper__inner {
+  @apply rounded-lg border-none bg-base-200 py-1.5 shadow-none;
+}
+
+.v-popper--theme-dropdown.v-popper--theme-dropdown-light .v-popper__arrow-inner,
+.v-popper--theme-dropdown.v-popper--theme-dropdown-light .v-popper__arrow-outer {
+  @apply border-base-400;
+}
+
+.v-popper--theme-dropdown.v-popper--theme-dropdown-light .v-popper__inner {
+  @apply bg-base-400;
+}
+
+/*  */
+.v-popper--theme-tooltip .v-popper__inner {
+  @apply max-w-xs rounded-lg bg-base-400 px-4 py-3.5 text-content-100;
+}
+
+.v-popper--theme-tooltip .v-popper__arrow-inner,
+.v-popper--theme-tooltip .v-popper__arrow-outer {
+  @apply border-base-400;
+}
+
+.v-popper__popper--no-positioning {
+  @apply fixed inset-0 z-50;
+}
+
+.v-popper--theme-dropdown.v-popper__popper--no-positioning .v-popper__inner {
+  @apply max-w-lg;
+  @apply rounded-3xl border border-solid border-border-200 bg-base-100 text-content-200;
+}
+
+.v-popper__popper--no-positioning .v-popper__backdrop {
+  @apply block bg-bg-main bg-opacity-30 backdrop-blur-lg;
+}
+
+.v-popper__popper--no-positioning .v-popper__wrapper {
+  @apply pointer-events-auto flex h-full w-full items-center justify-center transition-transform duration-300 ease-out;
+}
+
+.v-popper__popper--no-positioning.v-popper__popper--hidden .v-popper__wrapper {
+  @apply translate-y-1/2 transform;
+}
+
+/* TODO: */
+.v-popper--has-tooltip {
+  display: inherit;
+}

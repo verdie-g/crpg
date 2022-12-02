@@ -1,50 +1,28 @@
 import { createTestingPinia } from '@pinia/testing';
-import { mount } from '@vue/test-utils';
 import Role from '@/models/role';
-import Platform from '@/models/platform';
-import User from '@/models/user';
 import { getRoute, next } from '@/__mocks__/router';
 
 const mockedSignInSilent = vi.fn();
+const mockedSignInCallback = vi.fn();
+const mockedSignInSilentCallback = vi.fn();
+
 vi.mock('@/services/auth-service', () => {
   return {
     signInSilent: mockedSignInSilent,
+    userManager: {
+      signinCallback: mockedSignInCallback,
+      signinSilentCallback: mockedSignInSilentCallback,
+    },
   };
 });
 
 import { useUserStore } from '@/stores/user';
-import { authRouterMiddleware } from './auth';
+import { authRouterMiddleware, signInCallback, signInSilentCallback } from './auth';
 
-// need for testing with pinia-store
-mount(
-  defineComponent({
-    template: `<div></div>`,
-  }),
-  {
-    global: {
-      plugins: [createTestingPinia()],
-    },
-  }
-);
-
-const userStore = useUserStore();
+const userStore = useUserStore(createTestingPinia());
 
 beforeEach(() => {
   userStore.$reset();
-});
-
-const getUser = (user: Partial<User> = {}): User => ({
-  id: 1,
-  platform: Platform.Steam,
-  platformUserId: 123,
-  name: 'Rainbowdash',
-  gold: 300,
-  heirloomPoints: 2,
-  role: Role.User,
-  avatarSmall: '',
-  avatarMedium: '',
-  avatarFull: '',
-  ...user,
 });
 
 const from = getRoute();
@@ -98,11 +76,12 @@ describe('route requires role', () => {
   });
 
   it('!user + no token -> go to index page', async () => {
-    expect(await authRouterMiddleware(to, from, next)).toEqual({ name: 'index' });
+    expect(await authRouterMiddleware(to, from, next)).toEqual({ name: 'Root' });
   });
 
   it('user with role:User -> validation passed', async () => {
-    userStore.user = getUser({ role: Role.User });
+    // userStore.user = getUser({ role: Role.User });
+    userStore.$patch({ user: { role: Role.User } });
 
     expect(await authRouterMiddleware(to, from, next)).toEqual(true);
     expect(mockedSignInSilent).not.toBeCalled();
@@ -110,24 +89,43 @@ describe('route requires role', () => {
   });
 });
 
-describe('with Admin role', () => {
+describe('with Admin or Moderator role', () => {
   const to = getRoute({
     name: 'admin',
     path: '/admin',
     meta: {
-      roles: ['Admin'],
+      roles: ['Admin', 'Moderator'],
     },
   });
 
   it('user with role:User -> go to index page', async () => {
-    userStore.user = getUser({ role: Role.User });
+    userStore.$patch({ user: { role: Role.User } });
 
-    expect(await authRouterMiddleware(to, from, next)).toEqual({ name: 'index' });
+    expect(await authRouterMiddleware(to, from, next)).toEqual({ name: 'Root' });
   });
 
   it('user with role:Admin -> validation passed', async () => {
-    userStore.user = getUser({ role: Role.Admin });
+    userStore.$patch({ user: { role: Role.Admin } });
 
     expect(await authRouterMiddleware(to, from, next)).toEqual(true);
   });
+
+  it('user with role:Moderator -> validation passed', async () => {
+    userStore.$patch({ user: { role: Role.Moderator } });
+
+    expect(await authRouterMiddleware(to, from, next)).toEqual(true);
+  });
+});
+
+it('signInCallback', async () => {
+  const result = await signInCallback(getRoute(), getRoute(), next);
+
+  expect(mockedSignInCallback).toHaveBeenCalled();
+  expect(result).toEqual({ name: 'Characters' });
+});
+
+it('signInSilentCallback', async () => {
+  await signInSilentCallback(getRoute(), getRoute(), next);
+
+  expect(mockedSignInSilentCallback).toHaveBeenCalled();
 });

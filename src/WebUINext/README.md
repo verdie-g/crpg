@@ -34,6 +34,11 @@ Examples
 - pinia store: `stores/example.spec.ts`
 - router middleware (guard):  `middlewares/example.spec.ts`
 
+TODO:
+// mock global components `src/__test__/unit/setup.ts`
+// testing a component, it is necessary to mock compostables, ref: https://github.com/vuejs/test-utils/issues/775#issuecomment-883189164
+// testing a page with router & suspense (async setup), `src/__test__/unit/utils.ts` ref: https://github.com/vuejs/test-utils/issues/108#issuecomment-1124851726
+
 ### Tips
 
 - there are [snapshots](https://vitest.dev/guide/snapshot.html) in some tests. To update snapshot, you must run `npm run test:unit -- -u`
@@ -54,6 +59,10 @@ We don't need to write CSS styles because we use [TailwindCSS framework](https:/
 
 Is a very handy tool for working in a large team. The `tailwind.config.js`
 
+TODO: suggestions in js files (VS Code) - add comment /*@tw*/
+"tailwindCSS.experimental.classRegex": [
+    ["/\\*@tw\\*/ ([^;]*);", "'([^']*)'"]
+]
 ### Tips
 - [Tailwind config viewer](https://github.com/rogden/tailwind-config-viewer) - `npm run tailwind-config-viewer`
 - we use automatic sorting of classes provied by [prettier-plugin-tailwindcss](https://github.com/tailwindlabs/prettier-plugin-tailwindcss)
@@ -74,7 +83,7 @@ Available global components `src/boot/oruga-ui.ts`
 Playground: `/playground/oruga`
 
 ### Icon
-Just add an SVG icon as in the example: `src/assets/themes/oruga-tailwind-favoras/icons/arrow-up.ts`
+Just add an SVG icon as in the example: `src/assets/themes/oruga-tailwind/icons/arrow-up.ts`
 
 
 ### Image

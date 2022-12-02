@@ -1,0 +1,51 @@
+@import './fonts.css';
+@import 'vue-slider-component/theme/default.css';
+
+@import './components/button.css';
+@import './components/icon.css';
+@import './components/loading.css';
+
+@import './components/field.css';
+@import './components/checkbox.css';
+@import './components/radio.css';
+@import './components/input.css';
+@import './components/switch.css';
+
+@import './components/table.css';
+@import './components/tabs.css';
+
+@import './components/table.css';
+
+@import './components/pagination.css';
+
+@import './components/notification.css';
+@import './components/collapse.css';
+
+@import './components/dropdown.css';
+@import './components/slider.css';
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary) var(--primary);
+}
+
+*::-webkit-scrollbar {
+  @apply w-3.5;
+}
+
+*::-webkit-scrollbar-track {
+  @apply bg-base-300;
+}
+
+*::-webkit-scrollbar-thumb {
+  @apply rounded-lg bg-base-400 hover:bg-base-500;
+}
+
+body {
+  @apply overflow-y-scroll bg-bg-main text-xs tracking-wider text-content-200;
+}
+
+path {
+  clip-rule: evenodd;
+  fill-rule: evenodd;
+}

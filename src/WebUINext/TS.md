@@ -26,14 +26,34 @@ function getLength(obj: string | string[]) {
 }
 ```
 
-##  Type Predicate
+## Type Predicate
 
 ```ts
-
 string	    typeof s === "string"
 number	    typeof n === "number"
 boolean	    typeof b === "boolean"
 undefined	typeof undefined === "undefined"
 function    typeof f === "function"
 array Array.isArray(a)
+```
+
+## Nested Partial
+
+Use https://github.com/sindresorhus/type-fest -> PartialDeep
+
+```ts
+import { PartialDeep } from 'type-fest'
+
+interface User {
+  firstName: string;
+  address: {
+    city: string;
+  };
+}
+
+const updateUser = (payload: PartialDeep<User>) => {};
+
+updateUser({
+  address: { city: 'Ponyville' },
+});
 ```

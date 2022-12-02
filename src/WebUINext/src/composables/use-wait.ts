@@ -1,4 +1,3 @@
-import { injectStrict } from '@/utils/injectStrict';
 import { VueWaitKey } from '@/boot/wait';
 
 /*

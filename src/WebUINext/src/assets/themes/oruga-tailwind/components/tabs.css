@@ -1,0 +1,118 @@
+.o-tabs {
+}
+
+/* TODO: */
+.o-tabs * {
+  @apply transition-none;
+}
+
+.o-tabs--multiline {
+}
+
+.o-tabs__nav {
+  @apply flex flex-shrink-0 flex-grow items-center justify-start gap-2;
+  @apply m-0 select-none overflow-x-auto overflow-y-hidden;
+}
+
+.o-tabs--vertical .o-tabs__nav {
+  @apply flex-col;
+}
+
+.o-tabs__nav--default {
+}
+
+.o-tabs__nav-item-wrapper {
+}
+
+/*  */
+.o-tabs__nav-item {
+  @apply flex items-center justify-center;
+  @apply w-full cursor-pointer appearance-none leading-none outline-none;
+  @apply rounded-full py-2.5 px-4;
+}
+
+/*  */
+.o-tabs__nav-item-default {
+  @apply bg-base-200 text-content-300;
+  @apply hover:bg-base-300 hover:text-content-100;
+}
+
+.o-tabs__nav-item-default--active {
+  @apply bg-base-400 text-content-100;
+  @apply hover:bg-base-500 hover:text-content-100;
+}
+
+/*  */
+.o-tabs__nav-item-bordered-rounded {
+  @apply rounded-full px-4 py-4;
+  @apply border border-border-200 text-content-300;
+  @apply hover:border-border-300 hover:text-content-100;
+}
+
+.o-tabs__nav-item-bordered-rounded--active {
+  @apply border-transparent hover:border-transparent;
+  @apply bg-base-400 text-content-100;
+  @apply hover:bg-base-300 hover:text-content-100;
+}
+
+.o-tabs__nav--xl .o-tabs__nav-item-bordered-rounded {
+  @apply h-12 w-12;
+}
+
+/*  */
+.o-tabs__nav-item-flat-rounded {
+  @apply rounded-full px-4 py-4;
+  @apply text-content-400 hover:text-content-100;
+}
+
+.o-tabs__nav-item-flat-rounded--active {
+  @apply text-content-100;
+}
+
+/*  */
+.o-tabs__nav-item-fill-rounded {
+  @apply rounded-full px-4 py-4;
+  @apply bg-base-200 text-content-400;
+  @apply hover:text-content-100;
+}
+
+.o-tabs__nav-item-fill-rounded--active {
+  @apply bg-base-300 text-content-100;
+}
+
+/*  */
+.o-tabs__nav-item-fill-rounded-grouped {
+  @apply rounded-full px-4 py-4;
+  @apply bg-base-200 text-content-400;
+  @apply hover:text-content-100;
+}
+
+.o-tabs__nav-item-fill-rounded-grouped--active {
+  @apply gap-0 p-0;
+  @apply bg-base-300 text-content-200 hover:text-content-200;
+}
+
+.o-tabs__nav-item-fill-rounded-grouped--active > *:first-child {
+  @apply flex items-center justify-center;
+  @apply rounded-full px-4 py-4;
+}
+
+.o-tabs__nav-item-fill-rounded-grouped--active .o-tabs__nav {
+  @apply gap-0;
+}
+
+/*  */
+.o-tabs__nav-item-test {
+  @apply p-0;
+}
+
+.o-tabs__content {
+  @apply mt-8;
+}
+
+.o-tabs__content--transitioning {
+  @apply overflow-hidden;
+}
+
+.o-tab-item__content {
+}

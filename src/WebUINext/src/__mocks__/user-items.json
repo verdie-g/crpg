@@ -1,0 +1,30 @@
+[
+    {
+      "id": 1,
+      "baseItem": {
+        "id": "crpg_aserai_female_civil_hscarf",
+        "name": "Desert Headscarf",
+        "culture": "Aserai",
+        "type": "HeadArmor",
+        "price": 50,
+        "tier": 0.5438363,
+        "requirement": 0,
+        "weight": 0.04716628,
+        "flags": [
+          "UseTeamColor",
+          "Civilian"
+        ],
+        "armor": {
+          "headArmor": 3,
+          "bodyArmor": 0,
+          "armArmor": 0,
+          "legArmor": 0,
+          "materialType": "Cloth"
+        },
+        "mount": null,
+        "weapons": []
+      },
+      "rank": 0,
+      "createdAt": "2022-12-16T23:57:56.486125Z"
+    }
+  ]

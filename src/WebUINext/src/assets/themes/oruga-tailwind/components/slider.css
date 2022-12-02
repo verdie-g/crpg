@@ -1,0 +1,28 @@
+/* https://nightcatsama.github.io/vue-slider-component/ */
+
+/* TODO: */
+.vue-slider .vue-slider-rail {
+  @apply bg-border-200;
+}
+
+.vue-slider .vue-slider-process {
+  @apply bg-primary;
+}
+
+.vue-slider .vue-slider-dot {
+}
+
+.vue-slider .vue-slider-dot-handle {
+  @apply rotate-45 transform select-none rounded-sm border-2 border-bg-main bg-primary hover:bg-primary-hover;
+}
+
+.vue-slider .vue-slider-mark-label {
+  @apply text-2xs leading-none text-content-400;
+}
+
+.vue-slider .vue-slider-mark-label.vue-slider-mark-label-active {
+}
+
+.vue-slider .vue-slider-dot-tooltip-inner {
+  @apply border-base-300 bg-base-300 py-1 px-2;
+}

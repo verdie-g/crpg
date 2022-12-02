@@ -1,0 +1,51 @@
+.o-radio {
+  @apply relative inline-flex cursor-pointer items-center text-content-300;
+  @apply text-content-300 hover:text-content-100;
+}
+
+.o-radio:hover .o-radio__check {
+  @apply border-content-100;
+}
+
+.o-radio--checked {
+  @apply text-content-100;
+}
+
+.o-radio--checked:hover {
+  @apply text-content-200;
+}
+
+.o-radio--checked:hover .o-radio__check {
+  @apply border-content-200;
+}
+
+.o-radio--checked:hover .o-radio__check:after {
+  @apply bg-content-200;
+}
+
+.o-radio--disabled {
+}
+
+.o-radio__check {
+  @apply relative inline-block h-5 w-5 rounded-full p-0 align-middle;
+  @apply border-2 border-solid border-content-300;
+  @apply cursor-pointer select-none appearance-none;
+}
+
+.o-radio__check:focus-visible {
+  @apply select-none outline-none;
+}
+
+.o-radio__check--checked {
+  @apply border-content-100;
+}
+
+.o-radio__check--checked:after {
+  content: '';
+  @apply absolute top-1/2 left-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 transform rounded-full bg-content-100;
+}
+
+.o-radio__label {
+  @apply pl-2;
+}
+
