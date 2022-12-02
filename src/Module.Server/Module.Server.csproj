@@ -45,6 +45,9 @@
   <ItemGroup>
     <None Include="$(PkgLib_Harmony)\lib\net472\0Harmony.dll" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
+  </ItemGroup>
 
   <ItemGroup>
     <InternalsVisibleTo Include="$(AssemblyName).UTest" />
