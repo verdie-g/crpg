@@ -530,7 +530,7 @@ export default class CharacterCharacteristicsComponent extends Vue {
   characterUpdate: CharacterUpdate = { name: '' };
 
   updatingCharacteristics = false;
-  characteristicsDelta: CharacterCharacteristics = this.createEmptycharacteristics();
+  characteristicsDelta: CharacterCharacteristics = this.createEmptyCharacteristics();
 
   get characteristicisticConversion(): typeof CharacteristicConversion {
     return CharacteristicConversion;
@@ -570,7 +570,7 @@ export default class CharacterCharacteristicsComponent extends Vue {
     userModule.getCharacterStatistics(this.character.id);
   }
 
-  createEmptycharacteristics(): CharacterCharacteristics {
+  createEmptyCharacteristics(): CharacterCharacteristics {
     return {
       attributes: {
         points: 0,
@@ -802,7 +802,7 @@ export default class CharacterCharacteristicsComponent extends Vue {
   }
 
   reset(): void {
-    this.characteristicsDelta = this.createEmptycharacteristics();
+    this.characteristicsDelta = this.createEmptyCharacteristics();
   }
 
   commit(): void {
@@ -899,8 +899,10 @@ export default class CharacterCharacteristicsComponent extends Vue {
   }
 
   @Watch('character')
-  onCharacterChange(): void {
-    this.characteristicsDelta = this.createEmptycharacteristics();
+  onCharacterChange(newCharacter: Character): void {
+    if (newCharacter.id !== this.character.id) {
+      this.characteristicsDelta = this.createEmptyCharacteristics();
+    }
   }
 }
 </script>
