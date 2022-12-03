@@ -418,8 +418,15 @@ export function filterItemsByType(
   return filteredItems;
 }
 
-export function computeSalePrice(item: UserItem): number {
-  const salePrice = applyPolynomialFunction(item.baseItem.price, Constants.itemSellCostCoefs);
+export function computeSalePrice(userItem: UserItem): number {
+  const refundDateLimit = new Date(userItem.createdAt);
+  refundDateLimit.setHours(refundDateLimit.getHours() + 1);
+
+  // If the item was recently bought it is sold at 100% of its original price.
+  const salePrice =
+    refundDateLimit < new Date(Date.now())
+      ? applyPolynomialFunction(userItem.baseItem.price, Constants.itemSellCostCoefs)
+      : userItem.baseItem.price;
   // Floor salePrice to match behaviour of backend int typecast
   return Math.floor(salePrice);
 }

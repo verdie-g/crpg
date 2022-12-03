@@ -26,6 +26,13 @@ interface UserSearcyQuery {
   name?: string;
 }
 
+function mapUserItem(userItem: UserItem) {
+  return {
+    ...userItem,
+    createdAt: new Date(userItem.createdAt),
+  };
+}
+
 export function searchUser(payload: UserSearcyQuery): Promise<UserPublic[]> {
   const query = queryString.stringify(payload, { skipEmptyString: true, skipNull: true });
   return get(`/users?${query}`);
@@ -44,8 +51,9 @@ export function deleteUser(): Promise<void> {
   return del('/users/self');
 }
 
-export function getUserItems(): Promise<UserItem[]> {
-  return get('/users/self/items');
+export async function getUserItems(): Promise<UserItem[]> {
+  const userItems = await get('/users/self/items');
+  return userItems.map(mapUserItem);
 }
 
 export function getUserClan(): Promise<Clan | null> {
@@ -72,8 +80,12 @@ export function deleteCharacter(characterId: number): Promise<void> {
   return del(`/users/self/characters/${characterId}`);
 }
 
-export function getCharacterItems(characterId: number): Promise<EquippedItem[]> {
-  return get(`/users/self/characters/${characterId}/items`);
+export async function getCharacterItems(characterId: number): Promise<EquippedItem[]> {
+  const equippedItems: EquippedItem[] = await get(`/users/self/characters/${characterId}/items`);
+  return equippedItems.map(ei => ({
+    ...ei,
+    userItem: mapUserItem(ei.userItem),
+  }));
 }
 
 export function updateCharacterItems(
@@ -115,15 +127,17 @@ export function convertCharacterCharacteristics(
   return put(`/users/self/characters/${characterId}/characteristics/convert`, { conversion });
 }
 
-export function buyItem(itemId: string): Promise<UserItem> {
-  return post('/users/self/items', { itemId });
+export async function buyItem(itemId: string): Promise<UserItem> {
+  const userItem = await post('/users/self/items', { itemId });
+  return mapUserItem(userItem);
 }
 
-export function upgradeUserItem(userItemId: number): Promise<UserItem> {
-  return put(`/users/self/items/${userItemId}/upgrade`);
+export async function upgradeUserItem(userItemId: number): Promise<UserItem> {
+  const userItem = await put(`/users/self/items/${userItemId}/upgrade`);
+  return mapUserItem(userItem);
 }
 
-export function sellUserItem(userItemId: number): Promise<UserItem> {
+export function sellUserItem(userItemId: number): Promise<void> {
   return del(`/users/self/items/${userItemId}`);
 }
 

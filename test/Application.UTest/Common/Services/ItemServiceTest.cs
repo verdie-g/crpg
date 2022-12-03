@@ -3,6 +3,7 @@ using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
+using Crpg.Sdk.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
@@ -13,8 +14,8 @@ public class ItemServiceTest : TestBase
 {
     private static readonly Constants Constants = new() { ItemSellCostCoefs = new[] { 0.5f, 0.0f } };
 
-    [Test]
-    public async Task SellItemUnequipped()
+    [Theory]
+    public async Task SellItemUnequipped(bool recentlyBought)
     {
         User user = new()
         {
@@ -24,6 +25,7 @@ public class ItemServiceTest : TestBase
                 new()
                 {
                     BaseItem = new Item { Price = 100 },
+                    CreatedAt = recentlyBought ? new DateTime(2000, 01, 02) : new DateTime(2000, 01, 01),
                 },
             },
         };
@@ -36,7 +38,10 @@ public class ItemServiceTest : TestBase
             .Setup(m => m.ModifyItem(It.IsAny<Item>(), It.IsAny<int>()))
             .Returns(upgradedItem);
 
-        ItemService itemService = new(itemModifierServiceMock.Object, Constants);
+        Mock<IDateTime> dateTimeMock = new();
+        dateTimeMock.Setup(dt => dt.UtcNow).Returns(new DateTime(2000, 01, 02));
+
+        ItemService itemService = new(itemModifierServiceMock.Object, dateTimeMock.Object, Constants);
         var userItem = await ActDb.UserItems
             .Include(ui => ui.User)
             .Include(ui => ui.BaseItem)
@@ -48,7 +53,7 @@ public class ItemServiceTest : TestBase
         user = await AssertDb.Users
             .Include(u => u.Items)
             .FirstAsync(u => u.Id == user.Id);
-        Assert.AreEqual(75, user.Gold);
+        Assert.AreEqual(recentlyBought ? 150 : 75, user.Gold);
         Assert.False(user.Items.Any(ui => ui.Id == user.Items[0].Id));
     }
 
@@ -87,7 +92,10 @@ public class ItemServiceTest : TestBase
             .Setup(m => m.ModifyItem(It.IsAny<Item>(), It.IsAny<int>()))
             .Returns(upgradedItem);
 
-        ItemService itemService = new(itemModifierServiceMock.Object, Constants);
+        Mock<IDateTime> dateTimeMock = new();
+        dateTimeMock.Setup(dt => dt.UtcNow).Returns(new DateTime(2000, 01, 01));
+
+        ItemService itemService = new(itemModifierServiceMock.Object, dateTimeMock.Object, Constants);
         userItem = await ActDb.UserItems
             .Include(ui => ui.User)
             .Include(ui => ui.BaseItem)
