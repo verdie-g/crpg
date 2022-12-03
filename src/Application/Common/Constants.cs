@@ -29,7 +29,6 @@ public class Constants
     public int DefaultAgility { get; set; }
     public int DefaultHealthPoints { get; set; }
     public int DefaultGeneration { get; set; }
-    public bool DefaultAutoRepair { get; set; }
     public int DefaultAttributePoints { get; set; }
     public int AttributePointsPerLevel { get; set; }
     public int DefaultSkillPoints { get; set; }

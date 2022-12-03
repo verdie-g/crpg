@@ -5,5 +5,4 @@ export default interface Character {
   level: number;
   experience: number;
   skippedTheFun: boolean;
-  autoRepair: boolean;
 }

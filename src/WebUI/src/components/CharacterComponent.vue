@@ -113,19 +113,6 @@
         </div>
       </div>
 
-      <b-tooltip
-        label="Some of your items might break at the end of a round. Switch automatic repair on so you don't have to repair manually."
-        multilined
-      >
-        <div class="field">
-          <b-switch :value="character.autoRepair" @input="onAutoRepairSwitch" disabled>
-            Automatically repair damaged items
-          </b-switch>
-        </div>
-      </b-tooltip>
-
-      <br />
-
       <b-tooltip label="Respecialize character." multilined>
         <b-button
           type="is-warning"
@@ -456,10 +443,6 @@ export default class CharacterComponent extends Vue {
 
   userItemRankClass(userItem: UserItem | null): string {
     return userItem === null ? '' : `item-rank${userItem.rank}`;
-  }
-
-  onAutoRepairSwitch(autoRepair: boolean): void {
-    userModule.switchAutoRepair({ character: this.character, autoRepair });
   }
 
   openRespecializeCharacterDialog(): void {

@@ -39,7 +39,6 @@ internal class CharacterService : ICharacterService
         character.Experience = _experienceTable.GetExperienceForLevel(character.Level);
         character.ExperienceMultiplier = _constants.DefaultExperienceMultiplier;
         character.SkippedTheFun = false;
-        character.AutoRepair = _constants.DefaultAutoRepair;
         character.Rating = new CharacterRating
         {
             Value = _constants.DefaultRating,

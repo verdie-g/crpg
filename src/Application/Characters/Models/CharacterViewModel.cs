@@ -11,5 +11,4 @@ public record CharacterViewModel : IMapFrom<Character>
     public int Level { get; init; }
     public int Experience { get; init; }
     public bool SkippedTheFun { get; init; }
-    public bool AutoRepair { get; init; }
 }

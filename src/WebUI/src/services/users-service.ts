@@ -95,10 +95,6 @@ export function updateCharacterItems(
   return put(`/users/self/characters/${characterId}/items`, { items });
 }
 
-export function switchCharacterAutoRepair(characterId: number, autoRepair: boolean): Promise<void> {
-  return put(`/users/self/characters/${characterId}/auto-repair`, { autoRepair });
-}
-
 export function activateCharacter(characterId: number, active: boolean): Promise<void> {
   return put(`/users/self/characters/${characterId}/active`, { active });
 }

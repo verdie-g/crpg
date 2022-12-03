@@ -176,11 +176,6 @@ class UserModule extends VuexModule {
   }
 
   @Mutation
-  setCharacterAutoRepair({ character, autoRepair }: { character: Character; autoRepair: boolean }) {
-    character.autoRepair = autoRepair;
-  }
-
-  @Mutation
   setUserActiveCharacter(characterId: number | null) {
     this.user!.activeCharacterId = characterId;
   }
@@ -278,12 +273,6 @@ class UserModule extends VuexModule {
     return userService.updateCharacterItems(character.id, [
       { userItemId: userItem === null ? null : userItem.id, slot },
     ]);
-  }
-
-  @Action
-  switchAutoRepair({ character, autoRepair }: { character: Character; autoRepair: boolean }) {
-    this.setCharacterAutoRepair({ character, autoRepair });
-    return userService.switchCharacterAutoRepair(character.id, autoRepair);
   }
 
   @Action

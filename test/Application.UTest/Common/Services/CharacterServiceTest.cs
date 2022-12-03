@@ -21,7 +21,6 @@ public class CharacterServiceTest
         DefaultAgility = 3,
         DefaultGeneration = 1,
         DefaultExperienceMultiplier = 1.0f,
-        DefaultAutoRepair = true,
     };
 
     private static readonly ExperienceTable ExperienceTable = new(Constants);
@@ -148,6 +147,5 @@ public class CharacterServiceTest
         Assert.AreEqual(0, character.Experience);
         Assert.AreEqual(Constants.DefaultExperienceMultiplier, character.ExperienceMultiplier);
         Assert.IsFalse(character.SkippedTheFun);
-        Assert.AreEqual(Constants.DefaultAutoRepair, character.AutoRepair);
     }
 }
