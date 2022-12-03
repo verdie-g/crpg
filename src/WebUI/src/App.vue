@@ -22,6 +22,8 @@
                   <br />
                   <b-icon icon="coins" size="is-small" style="margin-right: 6px" />
                   {{ user.gold }}
+                  <b-icon icon="hammer" size="is-small" style="margin-right: 2px" />
+                  {{ user.heirloomPoints }}
                 </p>
               </div>
               <figure class="media-right">
