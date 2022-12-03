@@ -10,3 +10,7 @@ export default interface Restriction {
   restrictedByUser: UserPublic;
   createdAt: Date;
 }
+
+export interface RestrictionWithActive extends Restriction {
+  active: boolean;
+}
