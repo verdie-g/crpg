@@ -20,7 +20,7 @@ export function getUserByUserId(id: number): Promise<UserPublic> {
   return get(`/users/${id}`);
 }
 
-interface UserSearcyQuery {
+interface UserSearchQuery {
   platform?: Platform;
   platformUserId?: string;
   name?: string;
@@ -33,7 +33,7 @@ function mapUserItem(userItem: UserItem) {
   };
 }
 
-export function searchUser(payload: UserSearcyQuery): Promise<UserPublic[]> {
+export function searchUser(payload: UserSearchQuery): Promise<UserPublic[]> {
   const query = queryString.stringify(payload, { skipEmptyString: true, skipNull: true });
   return get(`/users?${query}`);
 }
@@ -45,6 +45,10 @@ export async function getUserRestrictions(id: number): Promise<RestrictionWithAc
 
 export function getUser(): Promise<User> {
   return get('/users/self');
+}
+
+export function getUserById(id: number): Promise<UserPublic> {
+  return get(`/users/${id}`);
 }
 
 export function deleteUser(): Promise<void> {

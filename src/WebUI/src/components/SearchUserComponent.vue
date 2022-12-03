@@ -51,6 +51,22 @@
             </b-field>
           </form>
         </b-tab-item>
+
+        <b-tab-item label="By Id" :value="searchModes.Id">
+          <form @submit.prevent="searchUser">
+            <b-field label="Id" grouped>
+              <b-input
+                placeholder="id"
+                required
+                v-model="searchByIdModel.id"
+                @input="clearUsers"
+              />
+              <div class="control">
+                <b-button native-type="submit" type="is-primary">Find</b-button>
+              </div>
+            </b-field>
+          </form>
+        </b-tab-item>
       </b-tabs>
 
       <template v-if="users.length">
@@ -72,6 +88,7 @@ import UserCardComponent from '@/components/UserCard.vue';
 enum SearchMode {
   Name = 'Name',
   Platform = 'Platform',
+  Id = 'Id',
 }
 
 @Component({
@@ -81,6 +98,7 @@ export default class SearchUserComponent extends Vue {
   searchModes: Record<SearchMode, SearchMode> = {
     [SearchMode.Name]: SearchMode.Name,
     [SearchMode.Platform]: SearchMode.Platform,
+    [SearchMode.Id]: SearchMode.Id,
   };
   activeSearchMode: SearchMode = SearchMode.Name;
 
@@ -99,9 +117,20 @@ export default class SearchUserComponent extends Vue {
     platformUserId: '',
   };
 
+  searchByIdModel: {
+    id: number;
+  } = {
+    id: 0,
+  };
+
   users: UserPublic[] = [];
 
   async searchUser() {
+    if (this.activeSearchMode == SearchMode.Id) {
+      this.users = [await userService.getUserById(this.searchByIdModel.id)];
+      return;
+    }
+
     const payload =
       this.activeSearchMode === SearchMode.Name
         ? {
