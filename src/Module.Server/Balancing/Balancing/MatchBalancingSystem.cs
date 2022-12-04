@@ -67,7 +67,7 @@ namespace Crpg.Module.Balancing
         public GameMatch BannerBalancing(GameMatch gameMatch)
         {
             GameMatch unbalancedBannerGameMatch = KKMakeTeamOfSimilarSizesWithBannerBalance(gameMatch);
-            unbalancedBannerGameMatch = BalanceTeamOfSimilarSizes(unbalancedBannerGameMatch);
+            unbalancedBannerGameMatch = BalanceTeamOfSimilarSizesWithBannerBalance(unbalancedBannerGameMatch);
             return unbalancedBannerGameMatch;
         }
         public GameMatch KKMakeTeamOfSimilarSizesWithBannerBalance(GameMatch gameMatch)
@@ -93,7 +93,7 @@ namespace Crpg.Module.Balancing
             return returnedGameMatch;
         }
 
-        public GameMatch BalanceTeamOfSimilarSizes(GameMatch gameMatch, double threshold = 0.03)
+        public GameMatch BalanceTeamOfSimilarSizesWithBannerBalance(GameMatch gameMatch, double threshold = 0.03)
         {
             float diff = RatingHelpers.ComputeTeamRatingDifference(gameMatch);
             for (int i = 0; i < 20; i++)
