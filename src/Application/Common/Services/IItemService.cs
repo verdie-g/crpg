@@ -8,7 +8,7 @@ namespace Crpg.Application.Common.Services;
 internal interface IItemService
 {
     /// <summary>Sells a user item. <see cref="UserItem.BaseItem"/> and <see cref="UserItem.EquippedItems"/> should be loaded.</summary>
-    void SellUserItem(ICrpgDbContext db, UserItem userItem);
+    int SellUserItem(ICrpgDbContext db, UserItem userItem);
 }
 
 internal class ItemService : IItemService
@@ -25,14 +25,17 @@ internal class ItemService : IItemService
     }
 
     /// <inheritdoc />
-    public void SellUserItem(ICrpgDbContext db, UserItem userItem)
+    public int SellUserItem(ICrpgDbContext db, UserItem userItem)
     {
         int price = _itemModifierService.ModifyItem(userItem.BaseItem!, userItem.Rank).Price;
         // If the item was recently bought it is sold at 100% of its original price.
-        userItem.User!.Gold += userItem.CreatedAt + TimeSpan.FromHours(1) < _dateTime.UtcNow
+        int sellPrice = userItem.CreatedAt + TimeSpan.FromHours(1) < _dateTime.UtcNow
             ? (int)MathHelper.ApplyPolynomialFunction(price, _constants.ItemSellCostCoefs)
             : price;
+        userItem.User!.Gold += sellPrice;
         db.EquippedItems.RemoveRange(userItem.EquippedItems);
         db.UserItems.Remove(userItem);
+
+        return sellPrice;
     }
 }

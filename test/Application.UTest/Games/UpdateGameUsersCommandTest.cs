@@ -1,4 +1,5 @@
 ﻿using Crpg.Application.Characters.Models;
+using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Games.Commands;
 using Crpg.Application.Games.Models;
@@ -239,6 +240,10 @@ public class UpdateGameUsersCommandTest : TestBase
 
         Mock<ICharacterService> characterServiceMock = new();
         Mock<IItemService> itemServiceMock = new();
+        itemServiceMock
+            .Setup(s => s.SellUserItem(It.IsAny<ICrpgDbContext>(), It.IsAny<UserItem>()))
+            .Returns(500);
+
         UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, itemServiceMock.Object);
         var result = await handler.Handle(new UpdateGameUsersCommand
         {
@@ -260,7 +265,7 @@ public class UpdateGameUsersCommandTest : TestBase
 
         var data = result.Data!;
         Assert.AreEqual(0, data.UpdateResults[0].User.Gold);
-        Assert.AreEqual(4, data.UpdateResults[0].RepairedItems.Count);
-        Assert.AreEqual(1, data.UpdateResults[0].RepairedItems.Count(i => i.Sold)); // not enough gold to repair the last one.
+        Assert.AreEqual(5, data.UpdateResults[0].RepairedItems.Count);
+        Assert.AreEqual(2, data.UpdateResults[0].RepairedItems.Count(i => i.Sold));
     }
 }

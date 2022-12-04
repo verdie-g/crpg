@@ -123,6 +123,8 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
             CancellationToken cancellationToken)
         {
             List<GameRepairedItem> repairedItems = new();
+
+            int debt = 0;
             foreach (var itemToRepair in itemsToRepair)
             {
                 if (character.User!.Gold >= itemToRepair.RepairCost)
@@ -137,24 +139,36 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
                 }
                 else
                 {
-                    var userItem = await _db.UserItems
-                        .Include(ui => ui.BaseItem)
-                        .Include(ui => ui.EquippedItems)
-                        .FirstOrDefaultAsync(ui => ui.Id == itemToRepair.UserItemId, cancellationToken);
-                    if (userItem == null)
-                    {
-                        Logger.LogWarning("Trying to sell an item that was probably already sold");
-                        continue;
-                    }
+                    debt += itemToRepair.RepairCost;
+                }
+            }
 
-                    _itemService.SellUserItem(_db, userItem);
-                    Logger.LogInformation("User '{0}' sold item '{1}' to pay their debt", character.UserId, userItem.BaseItemId);
-                    repairedItems.Add(new GameRepairedItem
-                    {
-                        ItemId = userItem.BaseItemId,
-                        RepairCost = 0,
-                        Sold = true,
-                    });
+            if (debt == 0)
+            {
+                return repairedItems;
+            }
+
+            string[] equippedItemIds = character.EquippedItems.Select(ei => ei.UserItem!.BaseItemId).ToArray();
+            await _db.Items
+                .Where(i => equippedItemIds.Contains(i.Id))
+                .LoadAsync(cancellationToken);
+
+            // Sell the recently bought items first because they might have the sell penalty immunity.
+            foreach (var ei in character.EquippedItems.OrderByDescending(ei => ei.UserItem!.CreatedAt))
+            {
+                repairedItems.Add(new GameRepairedItem
+                {
+                    ItemId = ei.UserItem!.BaseItemId,
+                    RepairCost = 0,
+                    Sold = true,
+                });
+                Logger.LogInformation("User '{0}' sold item '{1}' to pay their debt",
+                    character.UserId, ei.UserItem.BaseItemId);
+
+                debt -= _itemService.SellUserItem(_db, ei.UserItem!);
+                if (debt <= 0)
+                {
+                    break;
                 }
             }
 
