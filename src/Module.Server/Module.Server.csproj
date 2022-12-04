@@ -38,8 +38,15 @@
     <Reference Remove="$(MB_SERVER_PATH)/bin/Win64_Shipping_Server/TaleWorlds.MountAndBlade.DedicatedCustomServer.WebPanel.Views.dll" />
     <Reference Remove="$(MB_SERVER_PATH)/bin/Win64_Shipping_Server/TaleWorlds.MountAndBlade.DedicatedCustomServer.WebPanel.dll" />
   </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Lib.Harmony" Version="2.1.0" GeneratePathProperty="true" NoWarn="NU1701" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(PkgLib_Harmony)\lib\net472\0Harmony.dll" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
   <ItemGroup>
     <InternalsVisibleTo Include="$(AssemblyName).UTest" />
   </ItemGroup>
-
 </Project>

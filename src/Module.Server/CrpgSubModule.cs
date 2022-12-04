@@ -1,5 +1,4 @@
-﻿using System.Xml.Linq;
-using Crpg.Module.Battle;
+﻿using Crpg.Module.Battle;
 using Crpg.Module.Common;
 using Crpg.Module.Common.Models;
 using Crpg.Module.Duel;
@@ -9,7 +8,10 @@ using TaleWorlds.Core;
 using TaleWorlds.ModuleManager;
 using TaleWorlds.MountAndBlade;
 
-#if CRPG_CLIENT
+#if CRPG_SERVER
+using Crpg.Module.HarmonyPatches;
+#else
+using System.Xml.Linq;
 using TaleWorlds.Engine.GauntletUI;
 using TaleWorlds.TwoDimension;
 #endif
@@ -40,6 +42,7 @@ internal class CrpgSubModule : MBSubModuleBase
 
 #if CRPG_SERVER
         CrpgServerConfiguration.Init();
+        BannerlordPatches.Apply();
 #endif
 
 #if CRPG_EXPORT
