@@ -12,22 +12,26 @@ namespace Crpg.Module.Balancing;
 public class RatingHelpers
 {
 
-    public static int ComputeTeamRatingPowerMean(List<User> team, int p)
+    public static float ComputeTeamRatingPowerMean(List<User> team, float p = MatchBalancingSystem.PowerParameter)
     {
-        List<int> elos = team.Select(u => (int) u.Rating).ToList();
+        List<float> elos = team.Select(u => (float)u.Rating).ToList();
         return MathHelper.PowerMean(elos, p);
     }
-
-    public static int ComputeTeamRatingDifference(GameMatch gameMatch)
+    public static float ClanGroupsPowerSum(List<ClanGroup> clanGroups)
     {
-        return ComputeTeamRatingPowerSum(gameMatch.TeamA, 1) - ComputeTeamRatingPowerSum(gameMatch.TeamB, 1);
+        return ComputeTeamRatingPowerSum(MatchBalancingHelpers.ConvertClanGroupsToUserList(clanGroups));
+    }
+
+    public static float ComputeTeamRatingDifference(GameMatch gameMatch)
+    {
+        return ComputeTeamRatingPowerSum(gameMatch.TeamA, MatchBalancingSystem.PowerParameter) - ComputeTeamRatingPowerSum(gameMatch.TeamB, MatchBalancingSystem.PowerParameter);
     }
 
 
 
-    public static int ComputeTeamRatingPowerSum(List<User> team, int p)
+    public static float ComputeTeamRatingPowerSum(List<User> team, float p = MatchBalancingSystem.PowerParameter)
     {
-        List<int> elos = (List<int>)team.Select(u => u.Rating);
+        List<float> elos = team.Select(u => (float)u.Rating).ToList();
         return MathHelper.PowerSum(elos, p);
     }
 

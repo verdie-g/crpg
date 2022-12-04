@@ -11,12 +11,12 @@ namespace Crpg.Module.UTest.Balancing
         {
             var matchBalancer = new MatchBalancingSystem();
             GameMatch balancedGame = matchBalancer.NaiveCaptainBalancing(game1);
-            int teamAMeanRating = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamA, 1);
-            int teamBMeanRating = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamB, 1);
+            float teamAMeanRating = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamA, 1);
+            float teamBMeanRating = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamB, 1);
             double meanRatingRatio = (double)teamAMeanRating / (double)teamBMeanRating;
             Assert.AreEqual(meanRatingRatio, 1, 0.2);
-            int teamAQuadraticMeanRating = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamA, 2);
-            int teamBQuadraticMeanRating = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamB, 2);
+            float teamAQuadraticMeanRating = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamA, 2);
+            float teamBQuadraticMeanRating = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamB, 2);
             double quadraticMeanRatingRatio = (double)teamAQuadraticMeanRating / (double)teamBQuadraticMeanRating;
             Assert.AreEqual(quadraticMeanRatingRatio, 1, 0.2);
         }
@@ -25,12 +25,12 @@ namespace Crpg.Module.UTest.Balancing
         {
             var matchBalancer = new MatchBalancingSystem();
             GameMatch balancedGame = matchBalancer.KKBalancing(game1);
-            int teamAMeanRating = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamA, 1);
-            int teamBMeanRating = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamB, 1);
+            float teamAMeanRating = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamA, 1);
+            float teamBMeanRating = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamB, 1);
             double meanRatingRatio = (double)teamAMeanRating / (double)teamBMeanRating;
             Assert.AreEqual(meanRatingRatio, 1, 0.2);
-            int teamAQuadraticMeanRating = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamA, 2);
-            int teamBQuadraticMeanRating = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamB, 2);
+            float teamAQuadraticMeanRating = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamA, 2);
+            float teamBQuadraticMeanRating = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamB, 2);
             double quadraticMeanRatingRatio = (double)teamAQuadraticMeanRating / (double)teamBQuadraticMeanRating;
             Assert.AreEqual(quadraticMeanRatingRatio, 1, 0.2);
         }
@@ -38,13 +38,30 @@ namespace Crpg.Module.UTest.Balancing
         public void KKMakeTeamOfSimilarSizesShouldNotBeThatBad()
         {
             var matchBalancer = new MatchBalancingSystem();
-            GameMatch balancedGame = matchBalancer.KKMakeTeamOfSimilarSizes(game1);
-            int teamASize = balancedGame.TeamA.Count;
-            int teamBSize = balancedGame.TeamB.Count;
+            GameMatch balancedGame = matchBalancer.KKMakeTeamOfSimilarSizesWithBannerBalance(game1);
+            float teamASize = balancedGame.TeamA.Count;
+            float teamBSize = balancedGame.TeamB.Count;
             double sizeRatio = (double)teamASize / (double)teamBSize;
             Assert.AreEqual(sizeRatio, 1, 0.2);
         }
 
+        [Test]
+        public void BannerBalancing()
+        {
+            var matchBalancer = new MatchBalancingSystem();
+            GameMatch balancedGame = matchBalancer.BannerBalancing(game1);
+            float teamASize = balancedGame.TeamA.Count;
+            float teamBSize = balancedGame.TeamB.Count;
+            double sizeRatio = (double)teamASize / (double)teamBSize;
+            Assert.AreEqual(sizeRatio, 1, 0.2);
+            Console.WriteLine(sizeRatio);
+            
+            float teamAMeanRating = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamA, 1);
+            float teamBMeanRating = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamB, 1);
+            double meanRatingRatio = (double)teamAMeanRating / (double)teamBMeanRating;
+            Console.WriteLine(meanRatingRatio);
+            Assert.AreEqual(meanRatingRatio, 1, 0.2);
+        }
 
 
         private static Clan lOTR = new(){ Id = 1, Name = "LOTR" };
@@ -53,7 +70,6 @@ namespace Crpg.Module.UTest.Balancing
         private static Clan poudlard =new(){ Id = 4, Name = "Poudlard" };
         private static Clan xMen =new(){ Id = 5, Name = "X-MEN" };
         private static Clan xMenVillain =new(){ Id = 6, Name = "X-MEN Villains" };
-
         private static User arwen =new(){ Id = 1, Rating = 2000, ClanMembership = new ClanMember { UserId = 1, User = arwen, ClanId = 1, Clan = lOTR } };
         private static User frodon =new(){ Id = 2, Rating = 1600, ClanMembership = new ClanMember { UserId = 2, User = frodon, ClanId = 1, Clan = lOTR } };
         private static User sam =new(){ Id = 3, Rating = 1500, ClanMembership = new ClanMember { UserId = 3, User = sam, ClanId = 1, Clan = lOTR } };

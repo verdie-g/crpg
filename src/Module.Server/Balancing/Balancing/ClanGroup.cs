@@ -42,12 +42,12 @@ namespace Crpg.Module.Balancing
             members.Add(user);
         }
 
-        public int RatingPsum(int p)
+        public float RatingPsum(float p = MatchBalancingSystem.PowerParameter)
         {
             return RatingHelpers.ComputeTeamRatingPowerSum(members, p);
         }
 
-        public int RatingPMean(int p=1)
+        public float RatingPMean(float p = MatchBalancingSystem.PowerParameter)
         {
             return RatingHelpers.ComputeTeamRatingPowerMean(members, p);
         }

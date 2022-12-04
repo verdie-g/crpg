@@ -19,7 +19,7 @@ namespace Crpg.Module.Balancing
         /// <summary>
         /// This is a math function https://en.wikipedia.org/wiki/Generalized_mean.
         /// </summary>
-        public static int PowerMean(List<int> numbers, int p)
+        public static float PowerMean(List<float> numbers, float p)
         {
             double pSum = 0;
             foreach (int number in numbers)
@@ -33,7 +33,7 @@ namespace Crpg.Module.Balancing
         /// <summary>
         /// This is a math function https://en.wikipedia.org/wiki/Norm_(mathematics)#p-norm
         /// </summary>
-        public static int PowerSum(List<int> numbers, int p)
+        public static float PowerSum(List<float> numbers, float p)
         {
             double pSum = 0;
             foreach (int number in numbers)
@@ -43,6 +43,7 @@ namespace Crpg.Module.Balancing
 
             return (int)Math.Pow(pSum, 1d / (double)p);
         }
+
         public static bool Within(float value, float bound1 , float bound2)
         {
             if (bound1 < bound2)
