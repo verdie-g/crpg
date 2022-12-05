@@ -55,12 +55,7 @@
         <b-tab-item label="By Id" :value="searchModes.Id">
           <form @submit.prevent="searchUser">
             <b-field label="Id" grouped>
-              <b-input
-                placeholder="id"
-                required
-                v-model="searchByIdModel.id"
-                @input="clearUsers"
-              />
+              <b-input placeholder="id" required v-model="searchByIdModel.id" @input="clearUsers" />
               <div class="control">
                 <b-button native-type="submit" type="is-primary">Find</b-button>
               </div>

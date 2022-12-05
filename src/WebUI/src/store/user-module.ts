@@ -303,8 +303,8 @@ class UserModule extends VuexModule {
     this.removeCharactersItem(userItem);
     this.removeUserItem(userItem);
     const salePrice = itemService.computeSalePrice(userItem);
-    this.addGold(salePrice);
-    return salePrice;
+    this.addGold(salePrice.price);
+    return salePrice.price;
   }
 
   @Action({ commit: 'setCharacters' })

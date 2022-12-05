@@ -418,17 +418,21 @@ export function filterItemsByType(
   return filteredItems;
 }
 
-export function computeSalePrice(userItem: UserItem): number {
-  const refundDateLimit = new Date(userItem.createdAt);
-  refundDateLimit.setHours(refundDateLimit.getHours() + 1);
+export function computeSalePrice(userItem: UserItem): { price: number; graceTimeEnd: Date | null } {
+  const graceTimeEnd = new Date(userItem.createdAt);
+  graceTimeEnd.setHours(graceTimeEnd.getHours() + 1);
+
+  if (graceTimeEnd < new Date(Date.now())) {
+    return {
+      price: Math.floor(
+        applyPolynomialFunction(userItem.baseItem.price, Constants.itemSellCostCoefs)
+      ),
+      graceTimeEnd: null,
+    };
+  }
 
   // If the item was recently bought it is sold at 100% of its original price.
-  const salePrice =
-    refundDateLimit < new Date(Date.now())
-      ? applyPolynomialFunction(userItem.baseItem.price, Constants.itemSellCostCoefs)
-      : userItem.baseItem.price;
-  // Floor salePrice to match behaviour of backend int typecast
-  return Math.floor(salePrice);
+  return { price: userItem.baseItem.price, graceTimeEnd };
 }
 
 // TODO: handle upgrade items.

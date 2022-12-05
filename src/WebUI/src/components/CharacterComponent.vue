@@ -281,7 +281,10 @@
                 expanded
                 @click="showSellItemConfirmation(userItemToReplace)"
               >
-                Sell for {{ userItemToReplaceSalePrice }} gold
+                Sell for {{ userItemToReplaceSalePrice.price }} gold
+                <span v-if="userItemToReplaceSalePrice.graceTimeEnd !== null">
+                  (100% refund for the next {{ userItemToReplaceSalePrice.graceTimeEnd }})
+                </span>
               </b-button>
             </div>
           </div>
@@ -320,7 +323,7 @@
             expanded
             @click="confirmSellItem"
           >
-            Sell for {{ userItemToReplaceSalePrice }} gold
+            Sell for {{ userItemToReplaceSalePrice.price }} gold
           </b-button>
           <b-button
             size="is-medium"
@@ -356,6 +359,7 @@ import EquippedItem from '@/models/equipped-item';
 import UserItem from '@/models/user-item';
 import DisplayUserItem from '@/components/user/DisplayUserItem.vue';
 import ConfirmActionForm from '@/components/ConfirmActionForm.vue';
+import { timestampToTimeString } from '@/utils/date';
 
 @Component({
   components: {
@@ -421,12 +425,19 @@ export default class CharacterComponent extends Vue {
     return { upgradable: false, reason: 'Heirloom are disabled for now' };
   }
 
-  get userItemToReplaceSalePrice(): number {
+  get userItemToReplaceSalePrice() {
     if (this.userItemToReplace === null) {
-      return 0;
+      return { price: 0, graceTimeEnd: null };
     }
 
-    return computeSalePrice(this.userItemToReplace);
+    const salePrice = computeSalePrice(this.userItemToReplace);
+    return {
+      price: salePrice.price,
+      graceTimeEnd:
+        salePrice.graceTimeEnd === null
+          ? null
+          : timestampToTimeString(salePrice.graceTimeEnd.valueOf() - new Date().valueOf()),
+    };
   }
 
   get skipTheFunLevel(): number {
