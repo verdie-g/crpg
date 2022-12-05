@@ -29,6 +29,7 @@ internal class CrpgRewardServer : MissionBehavior
 
     private Dictionary<PlayerId, CrpgCharacterStatistics> _lastAllTotalStats = new();
     private MissionTimer? _tickTimer;
+    private bool _lastRewardDuringPrimeTime;
 
     public CrpgRewardServer(
         ICrpgClient crpgClient,
@@ -42,6 +43,7 @@ internal class CrpgRewardServer : MissionBehavior
         _roundController = roundController;
         _characterRatings = new Dictionary<PlayerId, CrpgRating>();
         _ratingResults = new CrpgRatingPeriodResults();
+        _lastRewardDuringPrimeTime = false;
     }
 
     public override MissionBehaviorType BehaviorType => MissionBehaviorType.Other;
@@ -216,6 +218,7 @@ internal class CrpgRewardServer : MissionBehavior
     private void SetReward(CrpgUserUpdate userUpdate, CrpgPeer crpgPeer, float durationRewarded, bool rewardMultiplierEnabled)
     {
         float serverXpMultiplier = CrpgServerConfiguration.ServerExperienceMultiplier;
+        serverXpMultiplier *= IsPrimeTime() ? 2 : 1;
         userUpdate.Reward = new CrpgUserReward
         {
             Experience = (int)(serverXpMultiplier * durationRewarded * (_constants.BaseExperienceGainPerSecond
@@ -238,6 +241,47 @@ internal class CrpgRewardServer : MissionBehavior
                 ? Math.Min(5, crpgPeer.RewardMultiplier + 1)
                 : 1;
         }
+    }
+
+    private bool IsPrimeTime()
+    {
+        var primeTime = CrpgServerConfiguration.ServerPrimeTime;
+        if (primeTime == null)
+        {
+            return false;
+        }
+
+        TimeSpan timeOfDay = DateTime.Now.TimeOfDay;
+        if (timeOfDay < primeTime.Item1 || primeTime.Item2 < timeOfDay)
+        {
+            if (_lastRewardDuringPrimeTime)
+            {
+                GameNetwork.BeginBroadcastModuleEvent();
+                GameNetwork.WriteMessage(new CrpgNotification
+                {
+                    Type = CrpgNotification.NotificationType.Announcement,
+                    Message = "Prime time ended!",
+                });
+                GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
+            }
+
+            _lastRewardDuringPrimeTime = false;
+            return false;
+        }
+
+        if (!_lastRewardDuringPrimeTime)
+        {
+            GameNetwork.BeginBroadcastModuleEvent();
+            GameNetwork.WriteMessage(new CrpgNotification
+            {
+                Type = CrpgNotification.NotificationType.Announcement,
+                Message = "It's prime time! Experience is multiplied by two during that time.",
+            });
+            GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
+        }
+
+        _lastRewardDuringPrimeTime = true;
+        return true;
     }
 
     private CrpgCharacterRating GetNewRating(CrpgPeer crpgPeer)

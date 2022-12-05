@@ -32,6 +32,7 @@ RoundTimeLimit 300
 WarmupTimeLimit 1
 disable_map_voting
 disable_culture_voting
+crpg_prime_time 19:00-20:00
 start_game
 set_automated_battle_count -1
 enable_automated_battle_switching
