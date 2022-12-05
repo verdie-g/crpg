@@ -22,12 +22,12 @@ namespace Crpg.Module.Balancing
         public static float PowerMean(List<float> numbers, float p)
         {
             double pSum = 0;
-            foreach (int number in numbers)
+            foreach (float number in numbers)
             {
                 pSum += Math.Pow(number, p);
             }
 
-            return (int)Math.Pow(pSum / numbers.Count, 1d / (double)p);
+            return (float)Math.Pow(pSum / (double)numbers.Count, 1d / (double)p);
         }
 
         /// <summary>
@@ -36,12 +36,12 @@ namespace Crpg.Module.Balancing
         public static float PowerSum(List<float> numbers, float p)
         {
             double pSum = 0;
-            foreach (int number in numbers)
+            foreach (float number in numbers)
             {
                 pSum += Math.Pow(number, p);
             }
 
-            return (int)Math.Pow(pSum, 1d / (double)p);
+            return (float)Math.Pow(pSum, 1d / (double)p);
         }
 
         public static bool Within(float value, float bound1 , float bound2)

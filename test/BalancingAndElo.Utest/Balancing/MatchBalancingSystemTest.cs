@@ -11,12 +11,13 @@ namespace Crpg.Module.UTest.Balancing
         {
             var matchBalancer = new MatchBalancingSystem();
             GameMatch balancedGame = matchBalancer.NaiveCaptainBalancing(game1);
-            float teamAMeanRating = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamA, 1);
-            float teamBMeanRating = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamB, 1);
+            float teamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamA, 1);
+            float teamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamB, 1);
             double meanRatingRatio = (double)teamAMeanRating / (double)teamBMeanRating;
             Assert.AreEqual(meanRatingRatio, 1, 0.2);
-            float teamAQuadraticMeanRating = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamA, 2);
-            float teamBQuadraticMeanRating = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamB, 2);
+            Console.WriteLine("balanced rating ratio = " + meanRatingRatio);
+            float teamAQuadraticMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamA, 2);
+            float teamBQuadraticMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamB, 2);
             double quadraticMeanRatingRatio = (double)teamAQuadraticMeanRating / (double)teamBQuadraticMeanRating;
             Assert.AreEqual(quadraticMeanRatingRatio, 1, 0.2);
         }
@@ -25,23 +26,29 @@ namespace Crpg.Module.UTest.Balancing
         {
             var matchBalancer = new MatchBalancingSystem();
             GameMatch balancedGame = matchBalancer.KKBalancing(game1);
-            float teamAMeanRating = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamA, 1);
-            float teamBMeanRating = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamB, 1);
+            float teamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamA, 1);
+            float teamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamB, 1);
             double meanRatingRatio = (double)teamAMeanRating / (double)teamBMeanRating;
             Assert.AreEqual(meanRatingRatio, 1, 0.2);
-            float teamAQuadraticMeanRating = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamA, 2);
-            float teamBQuadraticMeanRating = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamB, 2);
+            Console.WriteLine("balanced rating ratio = " + meanRatingRatio);
+            float teamAQuadraticMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamA, 2);
+            float teamBQuadraticMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamB, 2);
             double quadraticMeanRatingRatio = (double)teamAQuadraticMeanRating / (double)teamBQuadraticMeanRating;
             Assert.AreEqual(quadraticMeanRatingRatio, 1, 0.2);
         }
         [Test]
         public void KKMakeTeamOfSimilarSizesShouldNotBeThatBad()
         {
+
             var matchBalancer = new MatchBalancingSystem();
             GameMatch balancedGame = matchBalancer.KKMakeTeamOfSimilarSizesWithBannerBalance(game1);
             float teamASize = balancedGame.TeamA.Count;
             float teamBSize = balancedGame.TeamB.Count;
             double sizeRatio = (double)teamASize / (double)teamBSize;
+            float teamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamA, 1);
+            float teamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamB, 1);
+            double meanRatingRatio = (double)teamAMeanRating / (double)teamBMeanRating;
+            Console.WriteLine("balanced rating ratio = " + meanRatingRatio);
             Assert.AreEqual(sizeRatio, 1, 0.2);
         }
 
@@ -49,18 +56,34 @@ namespace Crpg.Module.UTest.Balancing
         public void BannerBalancing()
         {
             var matchBalancer = new MatchBalancingSystem();
+
+            float unbalancedTeamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(game1.TeamA, 1);
+            float unbalancedTeamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(game1.TeamB, 1);
+            double unbalancedMeanRatingRatio = (double)unbalancedTeamAMeanRating / (double)unbalancedTeamBMeanRating;
+            Console.WriteLine("unbalanced rating ratio = " + unbalancedMeanRatingRatio);
+
             GameMatch balancedGame = matchBalancer.BannerBalancing(game1);
             float teamASize = balancedGame.TeamA.Count;
             float teamBSize = balancedGame.TeamB.Count;
             double sizeRatio = (double)teamASize / (double)teamBSize;
             Assert.AreEqual(sizeRatio, 1, 0.2);
-            Console.WriteLine(sizeRatio);
-            
-            float teamAMeanRating = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamA, 1);
-            float teamBMeanRating = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamB, 1);
+            Console.WriteLine("balanced size ratio = " + sizeRatio);
+            float teamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamA, 1);
+            float teamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamB, 1);
             double meanRatingRatio = (double)teamAMeanRating / (double)teamBMeanRating;
-            Console.WriteLine(meanRatingRatio);
+            Console.WriteLine("balanced rating ratio = " + meanRatingRatio);
             Assert.AreEqual(meanRatingRatio, 1, 0.2);
+        }
+        [Test]
+        public void PowerMeanShouldWork()
+        {
+            List<float> floats = new()
+            {
+                0,0,5,5,10,10
+            };
+            Console.WriteLine(MathHelper.PowerMean(floats,1f));
+            Assert.AreEqual(MathHelper.PowerMean(floats, 1f), 5, 0.01);
+
         }
 
 
@@ -70,6 +93,7 @@ namespace Crpg.Module.UTest.Balancing
         private static Clan poudlard =new(){ Id = 4, Name = "Poudlard" };
         private static Clan xMen =new(){ Id = 5, Name = "X-MEN" };
         private static Clan xMenVillain =new(){ Id = 6, Name = "X-MEN Villains" };
+
         private static User arwen =new(){ Id = 1, Rating = 2000, ClanMembership = new ClanMember { UserId = 1, User = arwen, ClanId = 1, Clan = lOTR } };
         private static User frodon =new(){ Id = 2, Rating = 1600, ClanMembership = new ClanMember { UserId = 2, User = frodon, ClanId = 1, Clan = lOTR } };
         private static User sam =new(){ Id = 3, Rating = 1500, ClanMembership = new ClanMember { UserId = 3, User = sam, ClanId = 1, Clan = lOTR } };
@@ -77,7 +101,6 @@ namespace Crpg.Module.UTest.Balancing
         private static User krilin =new(){ Id = 5, Rating = 1000, ClanMembership = new ClanMember { UserId = 5, User = krilin, ClanId = 2, Clan = dBZ } };
         private static User rolandDeschain =new(){ Id = 6, Rating = 2800, ClanMembership = new ClanMember { UserId = 6, User = rolandDeschain, ClanId = 3, Clan = gilead } };
         private static User harryPotter =new(){ Id = 7, Rating = 2000, ClanMembership = new ClanMember { UserId = 7, User = harryPotter, ClanId = 4, Clan = poudlard } };
-        private static User ronWeasley = new() { Id = 7, Rating = 600, ClanMembership = new ClanMember { UserId = 7, User = ronWeasley, ClanId = 4, Clan = poudlard } };
         private static User magneto =new(){ Id = 8, Rating = 2700, ClanMembership = new ClanMember { UserId = 8, User = magneto, ClanId = 6, Clan = xMenVillain } };
         private static User profCharles =new(){ Id = 9, Rating = 2800, ClanMembership = new ClanMember { UserId = 9, User = profCharles, ClanId = 5, Clan = xMen } };
         private static User usainBolt =new(){ Id = 10, Rating = 1200 };
@@ -90,6 +113,7 @@ namespace Crpg.Module.UTest.Balancing
         private static User merlin =new(){ Id = 17, Rating = 2700 };
         private static User bob =new(){ Id = 18, Rating = 1100 };
         private static User thomas =new(){ Id = 19, Rating = 2400 };
+        private static User ronWeasley = new() { Id = 20, Rating = 600, ClanMembership = new ClanMember { UserId = 7, User = ronWeasley, ClanId = 4, Clan = poudlard } };
         private GameMatch game1 = new()
         {
             TeamA = new List<User> { },
@@ -115,6 +139,7 @@ namespace Crpg.Module.UTest.Balancing
                 merlin,
                 bob,
                 thomas,
+                ronWeasley
             },
         };
     }

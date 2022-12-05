@@ -94,16 +94,21 @@ namespace Crpg.Module.Balancing
         {
             List<ClanGroup> team = teamtoSelectFrom.ToList();
             List<ClanGroup> clanGroupsToSwap = new List<ClanGroup>();
-            float targetSizeScaling = targetSize / targetRating; // used to make the targeted vector square
+            float targetSizeScaling = targetRating / targetSize; // used to make the targeted vector square
             for (int i = 0; i < teamtoSelectFrom.Count; i++)
             {
 
                 ClanGroup bestClanGroupToAdd = team.First();
-                Vector2 clanGroupsToSwapVector = ClanGroupsRescaledVector(targetSizeScaling, clanGroupsToSwap);
                 Vector2 bestClanGroupToAddVector = ClanGroupRescaledVector(targetSizeScaling, bestClanGroupToAdd);
+                Vector2 clanGroupsToSwapVector = ClanGroupsRescaledVector(targetSizeScaling, clanGroupsToSwap);
                 Vector2 objectiveVector = new( targetSizeScaling * (targetSize + sizeOffset - clanGroupsToSwap.Sum( x => x.Size() ) ), targetRating - clanGroupsToSwap.Sum(x => x.RatingPsum() ) );
-                foreach (ClanGroup clanGroup in teamtoSelectFrom)
+                if (objectiveVector.Length() == 0f)
                 {
+                    break;
+                }
+                    foreach (ClanGroup clanGroup in teamtoSelectFrom)
+                {
+                    bestClanGroupToAddVector = ClanGroupRescaledVector(targetSizeScaling, bestClanGroupToAdd);
                     Vector2 clanGroupVector = ClanGroupRescaledVector(targetSizeScaling, clanGroup);
                     if (useAngle)
                     {
@@ -121,7 +126,6 @@ namespace Crpg.Module.Balancing
                         }
                     }
                 }
-
                 if ((clanGroupsToSwapVector + bestClanGroupToAddVector - objectiveVector).Length() < (clanGroupsToSwapVector + bestClanGroupToAddVector - -objectiveVector).Length())
                 {
                     team.Remove(bestClanGroupToAdd);
@@ -149,6 +153,10 @@ namespace Crpg.Module.Balancing
 
         public static float Vector2Angles(Vector2 v1)
         {
+            if (v1.X==0&& v1.Y==0)
+            {
+                return 0;
+            }
             return (float)Math.Atan2(v1.Y, v1.X);
         }
 

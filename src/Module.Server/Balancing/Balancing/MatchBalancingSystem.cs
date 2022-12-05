@@ -95,9 +95,10 @@ namespace Crpg.Module.Balancing
 
         public GameMatch BalanceTeamOfSimilarSizesWithBannerBalance(GameMatch gameMatch, double threshold = 0.03)
         {
-            float diff = RatingHelpers.ComputeTeamRatingDifference(gameMatch);
             for (int i = 0; i < 20; i++)
-            { 
+            {
+                float diff = RatingHelpers.ComputeTeamRatingDifference(gameMatch);
+                Console.WriteLine("i = " + i);
                 if (Math.Abs(diff / RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamA)) < threshold)
                 {
 
@@ -118,8 +119,8 @@ namespace Crpg.Module.Balancing
         {
             double diff = RatingHelpers.ComputeTeamRatingDifference(gameMatch);
             ClanGroupsGameMatch clanGroupGameMatch = MatchBalancingHelpers.ConvertGameMatchToClanGroupsGameMatchList(gameMatch);
-            List < User > weakTeam;
-            List < User > strongTeam;
+            List<User> weakTeam;
+            List<User> strongTeam;
             List<ClanGroup> weakClanGroupsTeam;
             List<ClanGroup> strongClanGroupsTeam;
             if (diff < 0)
@@ -137,13 +138,13 @@ namespace Crpg.Module.Balancing
                 strongClanGroupsTeam = clanGroupGameMatch.TeamA;
             }
 
-            weakClanGroupsTeam.OrderBy(c => c.RatingPMean());
-            strongClanGroupsTeam.OrderBy(c => c.RatingPMean());
+            weakClanGroupsTeam = weakClanGroupsTeam.OrderBy(c => c.RatingPMean()).ToList();
+            strongClanGroupsTeam = strongClanGroupsTeam.OrderBy(c => c.RatingPMean()).ToList();
             int playerCountDifference = weakClanGroupsTeam.Sum(c => c.Size()) - strongClanGroupsTeam.Sum(c => c.Size());
             ClanGroup weakClanGroupToSwap = weakClanGroupsTeam.First();
             float clanGroupToSwapTargetRating = weakClanGroupToSwap.RatingPsum() + (float)Math.Abs(diff) / 2f;
             List<ClanGroup> clanGroupstoSwap;
-            var clanGroupsToSwapUsingAngle = MatchBalancingHelpers.FindASwapUsing(clanGroupToSwapTargetRating, weakClanGroupToSwap.Size(), strongClanGroupsTeam, playerCountDifference, true);
+            var clanGroupsToSwapUsingAngle = MatchBalancingHelpers.FindASwapUsing(clanGroupToSwapTargetRating, weakClanGroupToSwap.Size(), strongClanGroupsTeam, playerCountDifference / 2, true);
             var clanGroupsToSwapUsingDistance = MatchBalancingHelpers.FindASwapUsing(clanGroupToSwapTargetRating, weakClanGroupToSwap.Size(), strongClanGroupsTeam, playerCountDifference, false);
             if (Math.Abs(RatingHelpers.ClanGroupsPowerSum(clanGroupsToSwapUsingAngle) - clanGroupToSwapTargetRating) < Math.Abs(RatingHelpers.ClanGroupsPowerSum(clanGroupsToSwapUsingDistance) - clanGroupToSwapTargetRating))
             {
@@ -154,8 +155,10 @@ namespace Crpg.Module.Balancing
                 clanGroupstoSwap = clanGroupsToSwapUsingDistance;
 
             }
-
-            float newdiff = RatingHelpers.ClanGroupsPowerSum(strongClanGroupsTeam) + 2f * weakClanGroupToSwap.RatingPsum() - 2f * RatingHelpers.ClanGroupsPowerSum(clanGroupstoSwap);
+            float a = RatingHelpers.ClanGroupsPowerSum(strongClanGroupsTeam);
+            float b = 2f * weakClanGroupToSwap.RatingPsum();
+            float c = -2f * RatingHelpers.ClanGroupsPowerSum(clanGroupstoSwap);
+            float newdiff = RatingHelpers.ClanGroupsPowerSum(strongClanGroupsTeam) + 2f * weakClanGroupToSwap.RatingPsum() - 2f * RatingHelpers.ClanGroupsPowerSum(clanGroupstoSwap) - RatingHelpers.ClanGroupsPowerSum(weakClanGroupsTeam);
 
             if (Math.Abs(newdiff) < Math.Abs(diff))
             {
