@@ -18,7 +18,6 @@ public static class DependencyInjection
         ItemModifierService itemModifierService = new(itemModifiers);
         ExperienceTable experienceTable = new(constants);
         CharacterService characterService = new(experienceTable, constants);
-        UserService userService = new(constants);
         ClanService clanService = new();
         BattleScheduler strategusBattleScheduler = new();
 
@@ -29,7 +28,7 @@ public static class DependencyInjection
             .AddSingleton<IItemModifierService>(itemModifierService)
             .AddSingleton<IExperienceTable>(experienceTable)
             .AddSingleton<ICharacterService>(characterService)
-            .AddSingleton<IUserService>(userService)
+            .AddSingleton<IUserService, UserService>()
             .AddSingleton<IItemService, ItemService>()
             .AddSingleton<IClanService>(clanService)
             .AddSingleton<IStrategusMap, StrategusMap>()
