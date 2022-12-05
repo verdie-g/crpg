@@ -52,9 +52,7 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
             var characterEquipment = CreateCharacterEquipment(crpgPeer.User.Character.EquippedItems);
             bool hasMount = characterEquipment[EquipmentIndex.Horse].Item != null;
 
-            MatrixFrame spawnFrame = missionPeer.GetAmountOfAgentVisualsForPeer() > 0
-                ? missionPeer.GetAgentVisualForPeer(0).GetFrame()
-                : SpawnComponent.GetSpawnFrame(missionPeer.Team, hasMount, true);
+            MatrixFrame spawnFrame = SpawnComponent.GetSpawnFrame(missionPeer.Team, hasMount, true);
             Vec2 initialDirection = spawnFrame.rotation.f.AsVec2.Normalized();
 
             AgentBuildData agentBuildData = new AgentBuildData(character)
