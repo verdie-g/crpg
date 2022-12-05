@@ -93,7 +93,7 @@ namespace Crpg.Module.Balancing
             return returnedGameMatch;
         }
 
-        public GameMatch BalanceTeamOfSimilarSizesWithBannerBalance(GameMatch gameMatch, double threshold = 0.03)
+        public GameMatch BalanceTeamOfSimilarSizesWithBannerBalance(GameMatch gameMatch, double threshold = 0.025)
         {
             for (int i = 0; i < 20; i++)
             {
@@ -101,7 +101,7 @@ namespace Crpg.Module.Balancing
                 Console.WriteLine("i = " + i);
                 if (Math.Abs(diff / RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamA)) < threshold)
                 {
-
+                    break;
                 }
                 else
                 {
@@ -142,27 +142,32 @@ namespace Crpg.Module.Balancing
             strongClanGroupsTeam = strongClanGroupsTeam.OrderBy(c => c.RatingPMean()).ToList();
             int playerCountDifference = weakClanGroupsTeam.Sum(c => c.Size()) - strongClanGroupsTeam.Sum(c => c.Size());
             ClanGroup weakClanGroupToSwap = weakClanGroupsTeam.First();
+            ClanGroup strongClanGroupToSwap = strongClanGroupsTeam.Last();
+            ClanGroup clanGroupstoSwap1;
+            bool swapingFromWeakTeam = playerCountDifference >= 0;
+            clanGroupstoSwap1 = swapingFromWeakTeam ? weakClanGroupToSwap : strongClanGroupToSwap;
+            List<ClanGroup> teamToSwapInto = swapingFromWeakTeam ? strongClanGroupsTeam : weakClanGroupsTeam;
             float clanGroupToSwapTargetRating = weakClanGroupToSwap.RatingPsum() + (float)Math.Abs(diff) / 2f;
-            List<ClanGroup> clanGroupstoSwap;
-            var clanGroupsToSwapUsingAngle = MatchBalancingHelpers.FindASwapUsing(clanGroupToSwapTargetRating, weakClanGroupToSwap.Size(), strongClanGroupsTeam, playerCountDifference / 2, true);
-            var clanGroupsToSwapUsingDistance = MatchBalancingHelpers.FindASwapUsing(clanGroupToSwapTargetRating, weakClanGroupToSwap.Size(), strongClanGroupsTeam, playerCountDifference, false);
+            List<ClanGroup> clanGroupstoSwap2;
+            var clanGroupsToSwapUsingAngle = MatchBalancingHelpers.FindASwapUsing(clanGroupToSwapTargetRating, weakClanGroupToSwap.Size(), teamToSwapInto, Math.Abs(playerCountDifference / 2), true);
+            var clanGroupsToSwapUsingDistance = MatchBalancingHelpers.FindASwapUsing(clanGroupToSwapTargetRating, weakClanGroupToSwap.Size(), teamToSwapInto, Math.Abs(playerCountDifference /2), false);
             if (Math.Abs(RatingHelpers.ClanGroupsPowerSum(clanGroupsToSwapUsingAngle) - clanGroupToSwapTargetRating) < Math.Abs(RatingHelpers.ClanGroupsPowerSum(clanGroupsToSwapUsingDistance) - clanGroupToSwapTargetRating))
             {
-                clanGroupstoSwap = clanGroupsToSwapUsingAngle;
+                clanGroupstoSwap2 = clanGroupsToSwapUsingAngle;
             }
             else
             {
-                clanGroupstoSwap = clanGroupsToSwapUsingDistance;
+                clanGroupstoSwap2 = clanGroupsToSwapUsingDistance;
 
             }
             float a = RatingHelpers.ClanGroupsPowerSum(strongClanGroupsTeam);
             float b = 2f * weakClanGroupToSwap.RatingPsum();
-            float c = -2f * RatingHelpers.ClanGroupsPowerSum(clanGroupstoSwap);
-            float newdiff = RatingHelpers.ClanGroupsPowerSum(strongClanGroupsTeam) + 2f * weakClanGroupToSwap.RatingPsum() - 2f * RatingHelpers.ClanGroupsPowerSum(clanGroupstoSwap) - RatingHelpers.ClanGroupsPowerSum(weakClanGroupsTeam);
+            float c = -2f * RatingHelpers.ClanGroupsPowerSum(clanGroupstoSwap2);
+            float newdiff = RatingHelpers.ClanGroupsPowerSum(strongClanGroupsTeam) + 2f * weakClanGroupToSwap.RatingPsum() - 2f * RatingHelpers.ClanGroupsPowerSum(clanGroupstoSwap2) - RatingHelpers.ClanGroupsPowerSum(weakClanGroupsTeam);
 
             if (Math.Abs(newdiff) < Math.Abs(diff))
             {
-                foreach (var clanGroup in clanGroupstoSwap)
+                foreach (var clanGroup in clanGroupstoSwap2)
                 {
                     foreach (User user in clanGroup.MemberList())
                     {
