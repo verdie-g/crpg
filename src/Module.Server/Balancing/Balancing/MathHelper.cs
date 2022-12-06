@@ -48,11 +48,11 @@ namespace Crpg.Module.Balancing
         {
             if (bound1 < bound2)
             {
-                return (value > bound1) && (value < bound2);
+                return (value >= bound1) && (value <= bound2);
             }
             else if (bound2 < bound1)
             {
-                return (value > bound2) && (value < bound1);
+                return (value >= bound2) && (value <= bound1);
             }
             else
             {

@@ -54,7 +54,7 @@ namespace Crpg.Module.UTest.Balancing
             Assert.AreEqual(sizeRatio, 1, 0.2);
         }
 
-        //[Test]
+        [Test]
         public void BannerBalancing()
         {
             var matchBalancer = new MatchBalancingSystem();
@@ -207,16 +207,16 @@ namespace Crpg.Module.UTest.Balancing
         private static User Vlexance_03 = new() { Name = "Vlexance_03", Id = 33, Rating = 1300, ClanMembership = new ClanMember { UserId = 33, User = Vlexance_03, ClanId = 9, Clan = Vlex } };
         private static User Vlexance_04 = new() { Name = "Vlexance_04", Id = 34, Rating = 1100, ClanMembership = new ClanMember { UserId = 34, User = Vlexance_04, ClanId = 9, Clan = Vlex } };
         private static User Vlexance_05 = new() { Name = "Vlexance_05", Id = 35, Rating = 300, ClanMembership = new ClanMember { UserId = 35, User = Vlexance_05, ClanId = 9, Clan = Vlex } };
-        private static User Hudax_01 = new() { Name = "Hudax_01", Id = 36, Rating = 5100, ClanMembership = new ClanMember { UserId = 36, User = Hudax_01, ClanId = 10, Clan = Hudahut } };
-        private static User Hudax_02 = new() { Name = "Hudax_02", Id = 37, Rating = 5900, ClanMembership = new ClanMember { UserId = 37, User = Hudax_02, ClanId = 10, Clan = Hudahut } };
-        private static User Hudax_03 = new() { Name = "Hudax_03", Id = 38, Rating = 5700, ClanMembership = new ClanMember { UserId = 38, User = Hudax_03, ClanId = 10, Clan = Hudahut } };
-        private static User Hudax_04 = new() { Name = "Hudax_04", Id = 39, Rating = 5500, ClanMembership = new ClanMember { UserId = 39, User = Hudax_04, ClanId = 10, Clan = Hudahut } };
-        private static User Hudax_05 = new() { Name = "Hudax_05", Id = 40, Rating = 5200, ClanMembership = new ClanMember { UserId = 40, User = Hudax_05, ClanId = 10, Clan = Hudahut } };
-        private static User Hudax_06 = new() { Name = "", Id = 36, Rating = 19000, ClanMembership = new ClanMember { UserId = 436, User = Hudax_01, ClanId = 10, Clan = Hudahut } };
-        private static User Hudax_07 = new() { Name = "", Id = 37, Rating = 17000, ClanMembership = new ClanMember { UserId = 437, User = Hudax_02, ClanId = 10, Clan = Hudahut } };
-        private static User Hudax_08 = new() { Name = "", Id = 38, Rating = 13000, ClanMembership = new ClanMember { UserId = 438, User = Hudax_03, ClanId = 10, Clan = Hudahut } };
-        private static User Hudax_09 = new() { Name = "", Id = 39, Rating = 14000, ClanMembership = new ClanMember { UserId = 439, User = Hudax_04, ClanId = 10, Clan = Hudahut } };
-        private static User Hudax_10 = new() { Name = "", Id = 40, Rating = 7000, ClanMembership = new ClanMember { UserId = 440, User = Hudax_05, ClanId = 10, Clan = Hudahut } };
+        private static User Hudax_01 = new() { Name = "Hudax_01", Id = 36, Rating = 1100, ClanMembership = new ClanMember { UserId = 36, User = Hudax_01, ClanId = 10, Clan = Hudahut } };
+        private static User Hudax_02 = new() { Name = "Hudax_02", Id = 37, Rating = 2900, ClanMembership = new ClanMember { UserId = 37, User = Hudax_02, ClanId = 10, Clan = Hudahut } };
+        private static User Hudax_03 = new() { Name = "Hudax_03", Id = 38, Rating = 1700, ClanMembership = new ClanMember { UserId = 38, User = Hudax_03, ClanId = 10, Clan = Hudahut } };
+        private static User Hudax_04 = new() { Name = "Hudax_04", Id = 39, Rating = 1500, ClanMembership = new ClanMember { UserId = 39, User = Hudax_04, ClanId = 10, Clan = Hudahut } };
+        private static User Hudax_05 = new() { Name = "Hudax_05", Id = 40, Rating = 2200, ClanMembership = new ClanMember { UserId = 40, User = Hudax_05, ClanId = 10, Clan = Hudahut } };
+        private static User Hudax_06 = new() { Name = "", Id = 36, Rating = 1900, ClanMembership = new ClanMember { UserId = 436, User = Hudax_01, ClanId = 10, Clan = Hudahut } };
+        private static User Hudax_07 = new() { Name = "", Id = 37, Rating = 1700, ClanMembership = new ClanMember { UserId = 437, User = Hudax_02, ClanId = 10, Clan = Hudahut } };
+        private static User Hudax_08 = new() { Name = "", Id = 38, Rating = 1300, ClanMembership = new ClanMember { UserId = 438, User = Hudax_03, ClanId = 10, Clan = Hudahut } };
+        private static User Hudax_09 = new() { Name = "", Id = 39, Rating = 1400, ClanMembership = new ClanMember { UserId = 439, User = Hudax_04, ClanId = 10, Clan = Hudahut } };
+        private static User Hudax_10 = new() { Name = "", Id = 40, Rating = 700, ClanMembership = new ClanMember { UserId = 440, User = Hudax_05, ClanId = 10, Clan = Hudahut } };
         private static User GerryShepherd = new() { Id = 41, Rating = 2000, ClanMembership = new ClanMember { UserId = 41, User = GerryShepherd, ClanId = 11, Clan = BlackBaronesses } };
         private static User BullyDog = new() { Id = 42, Rating = 1600, ClanMembership = new ClanMember { UserId = 42, User = BullyDog, ClanId = 11, Clan = BlackBaronesses } };
         private static User LabbyRetriever = new() { Id = 43, Rating = 1500, ClanMembership = new ClanMember { UserId = 43, User = LabbyRetriever, ClanId = 11, Clan = BlackBaronesses } };
@@ -644,18 +644,18 @@ namespace Crpg.Module.UTest.Balancing
         Waiting = new List<User>
             {
                 arwen,
-                //frodon,
-                //sam,
+                frodon,
+                sam,
                 sangoku,
-                //krilin,
+                krilin,
                 rolandDeschain,
                 harryPotter,
-                //magneto,
+                magneto,
                 profCharles,
                 usainBolt,
-                //agent007,
+                agent007,
                 spongeBob,
-                //patrick,
+                patrick,
                 madonna,
                 laraCroft,
                 jeanneDArc,
