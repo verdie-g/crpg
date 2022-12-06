@@ -403,7 +403,7 @@ namespace Crpg.Module.Balancing
         {
             foreach (ClanGroup clanGroup in clanGroups)
             {
-                string clanGroupName = clanGroup.Clan() == null ? "Solo" : clanGroup.Clan()!.Name;
+                string clanGroupName = clanGroup.Clan == null ? "Solo" : clanGroup.Clan!.Name;
                 Console.WriteLine(clanGroupName);
                 foreach (User u in clanGroup.MemberList())
                 {

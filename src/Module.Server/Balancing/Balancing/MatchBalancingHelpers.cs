@@ -27,7 +27,7 @@ namespace Crpg.Module.Balancing
                 {
                     if (isClanGroupCreated.Contains(player.ClanMembership.ClanId))
                     {
-                        clanGroups.Find(clangroup => clangroup.ClanID() == player.ClanMembership.ClanId)!.Add(player);
+                        clanGroups.Find(clangroup => clangroup.ClanID == player.ClanMembership.ClanId)!.Add(player);
                     }
                     else
                     {

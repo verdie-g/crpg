@@ -4,16 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Crpg.Module.Balancing
-{
-    public class ClanGroup
-    {
-        public int Size()
-        {
-            return members.Count();
-        }
+namespace Crpg.Module.Balancing;
 
-        public Clan? Clan()
+public class ClanGroup
+{
+    public int Size()
+    {
+        return members.Count();
+    }
+
+    public Clan? Clan
+    {
+        get
         {
             if (members.First().ClanMembership != null)
             {
@@ -24,8 +26,11 @@ namespace Crpg.Module.Balancing
                 return null;
             }
         }
+    }
 
-        public int ClanID()
+    public int ClanID
+    {
+        get
         {
             if (members.First().ClanMembership != null)
             {
@@ -36,40 +41,43 @@ namespace Crpg.Module.Balancing
                 return 0;
             }
         }
-
-        public void Add(User user)
-        {
-            members.Add(user);
-        }
-
-        public float RatingPsum(float p = MatchBalancingSystem.PowerParameter)
-        {
-            return RatingHelpers.ComputeTeamRatingPowerSum(members, p);
-        }
-
-        public float RatingPMean(float p = MatchBalancingSystem.PowerParameter)
-        {
-            return RatingHelpers.ComputeTeamRatingPowerMean(members, p);
-        }
-
-        public List<User> MemberList() { return members; }
-
-        private List<User> members = new();
     }
-    public class ClanGroupCompare : IComparer<ClanGroup>
-    {
-        // Compares by Rating
-        public int Compare(ClanGroup x, ClanGroup y)
-        {
-            if (x.RatingPMean().CompareTo(y.RatingPMean()) != 0)
-            {
-                return x.RatingPMean().CompareTo(y.RatingPMean());
-            }
 
-            else
-            {
-                return 0;
-            }
+    public void Add(User user)
+    {
+        members.Add(user);
+    }
+
+    public float RatingPsum(float p = MatchBalancingSystem.PowerParameter)
+    {
+        return RatingHelpers.ComputeTeamRatingPowerSum(members, p);
+    }
+
+    public float RatingPMean(float p = MatchBalancingSystem.PowerParameter)
+    {
+        return RatingHelpers.ComputeTeamRatingPowerMean(members, p);
+    }
+
+    public List<User> MemberList()
+    {
+        return members;
+    }
+
+    private List<User> members = new();
+}
+
+public class ClanGroupCompare : IComparer<ClanGroup>
+{
+    // Compares by Rating
+    public int Compare(ClanGroup x, ClanGroup y)
+    {
+        if (x.RatingPMean().CompareTo(y.RatingPMean()) != 0)
+        {
+            return x.RatingPMean().CompareTo(y.RatingPMean());
+        }
+        else
+        {
+            return 0;
         }
     }
 }
