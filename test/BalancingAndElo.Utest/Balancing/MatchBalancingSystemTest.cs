@@ -682,7 +682,7 @@ namespace Crpg.Module.UTest.Balancing
                 Hudax_02,
                 Hudax_03,
                 Hudax_04,
-                Hudax_05,/*
+                Hudax_05,
                 Hudax_06,
                 Hudax_07,
                 Hudax_08,
@@ -1107,7 +1107,7 @@ namespace Crpg.Module.UTest.Balancing
                 BudgereePerianth,
                 PsycheStaminate,
                 BatMitzvahQuatrefoil,
-                HoneyedSugar,*/
+                HoneyedSugar,
             },
     };
 }

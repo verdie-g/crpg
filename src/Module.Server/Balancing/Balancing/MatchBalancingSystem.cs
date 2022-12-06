@@ -268,36 +268,6 @@ namespace Crpg.Module.Balancing
                 return false;
             }
         }
-        private (ClanGroup clanGrouptoSwap1, List<ClanGroup> clanGroupsToSwap2,float clanGroupsToSwap2TargetRating) FindBestPairForSwapDoneWithBanner(List<ClanGroup> weakClanGroupsTeam, List<ClanGroup> strongClanGroupsTeam,double ratingDifference,int sizeOffset, bool usingAngle, bool swapingFromWeakTeam)
-        {
-            var teamToSwapFrom = swapingFromWeakTeam ? weakClanGroupsTeam : strongClanGroupsTeam;
-            var teamToSwapInto = swapingFromWeakTeam ? strongClanGroupsTeam : weakClanGroupsTeam;
-
-
-            ClanGroup weakClanGroupToSwap = weakClanGroupsTeam.First();
-            ClanGroup strongClanGroupToSwap = strongClanGroupsTeam.Last();
-
-            float potentialClanGroupToSwapTargetRating;
-            float bestClanGroupToSwapTargetRating = swapingFromWeakTeam ? weakClanGroupToSwap.RatingPsum() + (float)Math.Abs(ratingDifference) / 2f : strongClanGroupToSwap.RatingPsum() - (float)Math.Abs(ratingDifference) / 2f;
-
-            ClanGroup bestClanGrouptoSwap1 = swapingFromWeakTeam ? weakClanGroupToSwap : strongClanGroupToSwap;
-            List<ClanGroup> bestClanGroupToSwap2 = MatchBalancingHelpers.FindAClanGroupToSwapUsing(bestClanGroupToSwapTargetRating, bestClanGrouptoSwap1.Size(), teamToSwapInto, Math.Abs(sizeOffset), usingAngle);
-
-            foreach (ClanGroup c in teamToSwapFrom)
-            {
-                potentialClanGroupToSwapTargetRating = swapingFromWeakTeam ? c.RatingPsum() + (float)Math.Abs(ratingDifference) / 2f : c.RatingPsum() - (float)Math.Abs(ratingDifference) / 2f;
-                List<ClanGroup> potentialClanGroupToSwap2 = MatchBalancingHelpers.FindAClanGroupToSwapUsing(potentialClanGroupToSwapTargetRating, c.Size(), teamToSwapInto, Math.Abs(sizeOffset), usingAngle);
-                if (Math.Abs(RatingHelpers.ClanGroupsPowerSum(potentialClanGroupToSwap2) - potentialClanGroupToSwapTargetRating)
-                    < Math.Abs(RatingHelpers.ClanGroupsPowerSum(bestClanGroupToSwap2) - bestClanGroupToSwapTargetRating))
-                {
-                    bestClanGrouptoSwap1 = c;
-                    bestClanGroupToSwap2 = potentialClanGroupToSwap2;
-                    bestClanGroupToSwapTargetRating = potentialClanGroupToSwapTargetRating;
-                }
-            }
-
-            return (bestClanGrouptoSwap1,bestClanGroupToSwap2, bestClanGroupToSwapTargetRating);
-        }
 
         public bool SwapDoneWithoutBanner(GameMatch gameMatch)
         {
@@ -350,6 +320,37 @@ namespace Crpg.Module.Balancing
             }
 
         }
+
+        private (ClanGroup clanGrouptoSwap1, List<ClanGroup> clanGroupsToSwap2, float clanGroupsToSwap2TargetRating) FindBestPairForSwapDoneWithBanner(List<ClanGroup> weakClanGroupsTeam, List<ClanGroup> strongClanGroupsTeam, double ratingDifference, int sizeOffset, bool usingAngle, bool swapingFromWeakTeam)
+        {
+            var teamToSwapFrom = swapingFromWeakTeam ? weakClanGroupsTeam : strongClanGroupsTeam;
+            var teamToSwapInto = swapingFromWeakTeam ? strongClanGroupsTeam : weakClanGroupsTeam;
+
+            ClanGroup weakClanGroupToSwap = weakClanGroupsTeam.First();
+            ClanGroup strongClanGroupToSwap = strongClanGroupsTeam.Last();
+
+            float potentialClanGroupToSwapTargetRating;
+            float bestClanGroupToSwapTargetRating = swapingFromWeakTeam ? weakClanGroupToSwap.RatingPsum() + (float)Math.Abs(ratingDifference) / 2f : strongClanGroupToSwap.RatingPsum() - (float)Math.Abs(ratingDifference) / 2f;
+
+            ClanGroup bestClanGrouptoSwap1 = swapingFromWeakTeam ? weakClanGroupToSwap : strongClanGroupToSwap;
+            List<ClanGroup> bestClanGroupToSwap2 = MatchBalancingHelpers.FindAClanGroupToSwapUsing(bestClanGroupToSwapTargetRating, bestClanGrouptoSwap1.Size(), teamToSwapInto, Math.Abs(sizeOffset), usingAngle);
+
+            foreach (ClanGroup c in teamToSwapFrom)
+            {
+                potentialClanGroupToSwapTargetRating = swapingFromWeakTeam ? c.RatingPsum() + (float)Math.Abs(ratingDifference) / 2f : c.RatingPsum() - (float)Math.Abs(ratingDifference) / 2f;
+                List<ClanGroup> potentialClanGroupToSwap2 = MatchBalancingHelpers.FindAClanGroupToSwapUsing(potentialClanGroupToSwapTargetRating, c.Size(), teamToSwapInto, Math.Abs(sizeOffset), usingAngle);
+                if (Math.Abs(RatingHelpers.ClanGroupsPowerSum(potentialClanGroupToSwap2) - potentialClanGroupToSwapTargetRating)
+                    < Math.Abs(RatingHelpers.ClanGroupsPowerSum(bestClanGroupToSwap2) - bestClanGroupToSwapTargetRating))
+                {
+                    bestClanGrouptoSwap1 = c;
+                    bestClanGroupToSwap2 = potentialClanGroupToSwap2;
+                    bestClanGroupToSwapTargetRating = potentialClanGroupToSwapTargetRating;
+                }
+            }
+
+            return (bestClanGrouptoSwap1, bestClanGroupToSwap2, bestClanGroupToSwapTargetRating);
+        }
+
         private void MakeTeamCountCloser(GameMatch gameMatch)
         {
             Console.WriteLine("MakeTeamCountCloser LOGs");
@@ -397,19 +398,19 @@ namespace Crpg.Module.Balancing
             bool sizeDifferenceGreaterThanThreshold = Math.Abs(gameMatch.TeamA.Count - gameMatch.TeamB.Count) > 10;
             return (tooMuchSizeRatioDifference || sizeDifferenceGreaterThanThreshold);
         }
+
         private void DumpClanGroups(List<ClanGroup> clanGroups)
+        {
+            foreach (ClanGroup clanGroup in clanGroups)
             {
-            int i = 1;
-                foreach (ClanGroup clanGroup in clanGroups)
-                {
                 string clanGroupName = clanGroup.Clan() == null ? "Solo" : clanGroup.Clan()!.Name;
-                    Console.WriteLine(clanGroupName);
-                    foreach (User u in clanGroup.MemberList())
-                    {
-                        Console.WriteLine(u.Name + " : " + u.Rating);
-                    }
+                Console.WriteLine(clanGroupName);
+                foreach (User u in clanGroup.MemberList())
+                {
+                    Console.WriteLine(u.Name + " : " + u.Rating);
                 }
             }
+        }
 
         private void DumpClanGroup(ClanGroup clanGroup)
         {
@@ -426,18 +427,5 @@ namespace Crpg.Module.Balancing
                 Console.WriteLine(u.Name + " : " + u.Rating);
             }
         }
-
-        /*
-        public GameMatch BalancingWithClans(GameMatch gameMatch)
-        {
-            List<User> allUsers = new List<User> { };
-            allUsers.AddRange(gameMatch.TeamA);
-            allUsers.AddRange(gameMatch.TeamB);
-            allUsers.AddRange(gameMatch.Waiting);
-            GameMatch returnedGameMatch = new GameMatch { };
-            var clanGroups = MatchBalancingHelpers.ConvertUserListToClanGroups(allUsers);
-
-        }
-        */
     }
 }
