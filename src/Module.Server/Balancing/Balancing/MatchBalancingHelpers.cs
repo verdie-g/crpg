@@ -76,20 +76,6 @@ namespace Crpg.Module.Balancing
             return gameMatch;
         }
 
-        /* public static ClanGroup FindClanGroupByRatingBelowSizeRec(List<ClanGroup> clanGroups, double desiredLevel, double maxSize, List<string> list = new List<string>() { }; )
-         {
-             clanGroups.Sort();
-             int index = clanGroups.BinarySearch(FakeClanGroupRatedAt(desiredLevel));
-             if (clanGroups.ElementAt(~index).Size() < maxSize)
-             {
-                 return clanGroups.ElementAt(~index);
-             }
-             else if (clanGroups.ElementAt(~index-1).Size() < maxSize)
-             {
-                 return clanGroups.ElementAt(~index - 1);
-             }
-
-         }*/
         public static User FindAUserToSwap(float targetRating, List<User> teamtoSelectFrom)
         {
             List<User> team = teamtoSelectFrom;
