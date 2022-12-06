@@ -57,7 +57,14 @@ namespace Crpg.Module.Balancing
         {
             return gameMatch.TeamA.Count - gameMatch.TeamB.Count;
         }
-
+        public static int ClanGroupsSize(List<ClanGroup> clanGroups)
+        {
+            return clanGroups.Sum(c => c.Size());
+        }
+        public static float ClanGroupsRating(List<ClanGroup> clanGroups)
+        {
+            return clanGroups.Sum(c => c.RatingPsum());
+        }
         public static ClanGroupsGameMatch ConvertGameMatchToClanGroupsGameMatchList(GameMatch gameMatch)
         {
             ClanGroupsGameMatch clanGroupsGameMatch = new();
@@ -97,7 +104,7 @@ namespace Crpg.Module.Balancing
         {
             List<ClanGroup> team = teamtoSelectFrom.ToList();
             List<ClanGroup> clanGroupsToSwap = new List<ClanGroup>();
-            float targetSizeScaling = targetRating / targetSize; // used to make the targeted vector square
+            float targetSizeScaling = targetRating / (targetSize + sizeOffset); // used to make the targeted vector diagonal
             for (int i = 0; i < teamtoSelectFrom.Count; i++)
             {
 
@@ -109,6 +116,7 @@ namespace Crpg.Module.Balancing
                 {
                     break;
                 }
+
                 foreach (ClanGroup clanGroup in team)
                 {
                     bestClanGroupToAddVector = ClanGroupRescaledVector(targetSizeScaling, bestClanGroupToAdd);
@@ -223,7 +231,6 @@ namespace Crpg.Module.Balancing
             // checked this part doing the algo by hand , this witchcraft works.
             for (var i = 0; i < weights.Length - 1; i++)
             {
-                
                 var node1 = partitions.Dequeue();
                 var node2 = partitions.Dequeue();
                 var newPartition = new List<T>[numParts];

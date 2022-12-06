@@ -87,19 +87,13 @@ namespace Crpg.Module.UTest.Balancing
             float unbalancedTeamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(game1.TeamA, 1);
             float unbalancedTeamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(game1.TeamB, 1);
             double unbalancedMeanRatingRatio = (double)unbalancedTeamAMeanRating / (double)unbalancedTeamBMeanRating;
-            Console.WriteLine("unbalanced rating ratio = " + unbalancedMeanRatingRatio);
-
             GameMatch balancedGame = matchBalancer.BannerBalancingWithEdgeCases(game1);
             float teamASize = balancedGame.TeamA.Count;
             float teamBSize = balancedGame.TeamB.Count;
             double sizeRatio = (double)teamASize / (double)teamBSize;
-            //Assert.AreEqual(sizeRatio, 1, 0.2);
-            Console.WriteLine("balanced size ratio = " + sizeRatio);
             float teamARating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamA, 1);
             float teamBRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamB, 1);
             double RatingRatio = (double)teamARating / (double)teamBRating;
-            Console.WriteLine("teamASize = " + teamASize + " teamBSize = " + teamBSize);
-            Console.WriteLine("teamARating = " + teamARating + " teamBRating = " + teamBRating);
             Assert.AreEqual(RatingRatio, 1, 0.2);
         }
 
@@ -213,7 +207,7 @@ namespace Crpg.Module.UTest.Balancing
         private static User Hudax_04 = new() { Name = "Hudax_04", Id = 39, Rating = 1500, ClanMembership = new ClanMember { UserId = 39, User = Hudax_04, ClanId = 10, Clan = Hudahut } };
         private static User Hudax_05 = new() { Name = "Hudax_05", Id = 40, Rating = 2200, ClanMembership = new ClanMember { UserId = 40, User = Hudax_05, ClanId = 10, Clan = Hudahut } };
         private static User Hudax_06 = new() { Name = "", Id = 36, Rating = 1900, ClanMembership = new ClanMember { UserId = 436, User = Hudax_01, ClanId = 10, Clan = Hudahut } };
-        private static User Hudax_07 = new() { Name = "", Id = 37, Rating = 1700, ClanMembership = new ClanMember { UserId = 437, User = Hudax_02, ClanId = 10, Clan = Hudahut } };
+        private static User Hudax_07 = new() { Name = "", Id = 37, Rating = 8000, ClanMembership = new ClanMember { UserId = 437, User = Hudax_02, ClanId = 10, Clan = Hudahut } };
         private static User Hudax_08 = new() { Name = "", Id = 38, Rating = 1300, ClanMembership = new ClanMember { UserId = 438, User = Hudax_03, ClanId = 10, Clan = Hudahut } };
         private static User Hudax_09 = new() { Name = "", Id = 39, Rating = 1400, ClanMembership = new ClanMember { UserId = 439, User = Hudax_04, ClanId = 10, Clan = Hudahut } };
         private static User Hudax_10 = new() { Name = "", Id = 40, Rating = 700, ClanMembership = new ClanMember { UserId = 440, User = Hudax_05, ClanId = 10, Clan = Hudahut } };
@@ -710,7 +704,7 @@ namespace Crpg.Module.UTest.Balancing
                 BassetyHound,
                 GopherSnakeWeb,
                 AmbushSword,
-                FencingPacMan,
+                FencingPacMan,/*
                 EbonSalient,
                 CannonSnaky,
                 DarklyWine,
@@ -1107,7 +1101,7 @@ namespace Crpg.Module.UTest.Balancing
                 BudgereePerianth,
                 PsycheStaminate,
                 BatMitzvahQuatrefoil,
-                HoneyedSugar,
+                HoneyedSugar,*/
             },
     };
 }
