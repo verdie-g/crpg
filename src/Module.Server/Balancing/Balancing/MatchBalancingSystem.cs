@@ -59,17 +59,56 @@ namespace Crpg.Module.Balancing
                 elos[i] = player.Rating;
                 i++;
             }
+
             var partition = MatchBalancingHelpers.Heuristic(players, elos, 2);
             returnedGameMatch.TeamA = partition.Partition[0];
             returnedGameMatch.TeamB = partition.Partition[1];
             return returnedGameMatch;
         }
-        public GameMatch BannerBalancing(GameMatch gameMatch)
+
+        public GameMatch PureBannerBalancing(GameMatch gameMatch)
         {
             GameMatch unbalancedBannerGameMatch = KKMakeTeamOfSimilarSizesWithBannerBalance(gameMatch);
-            unbalancedBannerGameMatch = BalanceTeamOfSimilarSizesWithBannerBalance(unbalancedBannerGameMatch);
+            unbalancedBannerGameMatch = BalanceTeamOfSimilarSizes(unbalancedBannerGameMatch, true);
             return unbalancedBannerGameMatch;
         }
+
+        public GameMatch BannerBalancingWithEdgeCases(GameMatch gameMatch)
+        {
+            Console.WriteLine("BannerBalancingWithEdgeCases");
+            Console.WriteLine("--------------------------------------------");
+            Console.WriteLine("Now Making Team Of Similar Sizes with Banner");
+            GameMatch balancedBannerGameMatch = KKMakeTeamOfSimilarSizesWithBannerBalance(gameMatch);
+            Console.WriteLine("Teams are now Of Similar Sizes With Banner");
+            Console.WriteLine("Team A Count " + balancedBannerGameMatch.TeamA.Count);
+            Console.WriteLine("Team B Count " + balancedBannerGameMatch.TeamB.Count);
+            Console.WriteLine("Banner Balancing Now");
+            balancedBannerGameMatch = BalanceTeamOfSimilarSizes(balancedBannerGameMatch, true);
+            Console.WriteLine("Banner Balancing Done");
+            Console.WriteLine("Team A Count " + balancedBannerGameMatch.TeamA.Count);
+            Console.WriteLine("Team B Count " + balancedBannerGameMatch.TeamB.Count);
+            for (int i = 0; i < (balancedBannerGameMatch.TeamA.Count + balancedBannerGameMatch.TeamB.Count) / 2; i++)
+            {
+                bool tooMuchSizeRatioDifference = !MathHelper.Within(Math.Abs((balancedBannerGameMatch.TeamA.Count - balancedBannerGameMatch.TeamB.Count) / (float)gameMatch.TeamA.Count), 0.75f, 1.34f);
+                bool sizeDifferenceGreaterThanThreshold = Math.Abs(balancedBannerGameMatch.TeamA.Count - balancedBannerGameMatch.TeamB.Count) > 10;
+                bool tooMuchSizeDifference = tooMuchSizeRatioDifference || sizeDifferenceGreaterThanThreshold;
+                if (tooMuchSizeDifference)
+                {
+                    Console.WriteLine("Size Difference between the Two Teams is too big");
+                    MakeTeamCountCloser(balancedBannerGameMatch);
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            float diff = RatingHelpers.ComputeTeamRatingDifference(gameMatch);
+            bool tooMuchRatingRatioTooBad = !MathHelper.Within(Math.Abs(diff / RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamA)), 0.9f, 1.11f);
+            balancedBannerGameMatch = BalanceTeamOfSimilarSizes(balancedBannerGameMatch, false);
+            return balancedBannerGameMatch;
+        }
+
         public GameMatch KKMakeTeamOfSimilarSizesWithBannerBalance(GameMatch gameMatch)
         {
             List<User> allUsers = new();
@@ -93,21 +132,37 @@ namespace Crpg.Module.Balancing
             return returnedGameMatch;
         }
 
-        public GameMatch BalanceTeamOfSimilarSizesWithBannerBalance(GameMatch gameMatch, double threshold = 0.025)
+        public GameMatch BalanceTeamOfSimilarSizes(GameMatch gameMatch, bool bannerBalance, double threshold = 0.025)
         {
             for (int i = 0; i < 20; i++)
             {
                 float diff = RatingHelpers.ComputeTeamRatingDifference(gameMatch);
+                bool tooMuchSizeRatioDifference = !MathHelper.Within(Math.Abs((gameMatch.TeamA.Count - gameMatch.TeamB.Count) / (float)gameMatch.TeamA.Count), 0.75f, 1.34f);
+                bool sizeDifferenceGreaterThanThreshold = Math.Abs(gameMatch.TeamA.Count - gameMatch.TeamB.Count) > 10;
+                bool tooMuchSizeDifference = tooMuchSizeRatioDifference || sizeDifferenceGreaterThanThreshold;
                 Console.WriteLine("i = " + i);
-                if (Math.Abs(diff / RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamA)) < threshold)
+                if (Math.Abs(diff / RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamA)) < threshold && !tooMuchSizeDifference)
                 {
+                    Console.WriteLine("Team are of Similar Sizes and Similar Ratings");
                     break;
                 }
                 else
                 {
-                    if (!SwapDone(gameMatch))
+                    if (bannerBalance)
                     {
-                        break;
+                        if (!SwapDoneWithBanner(gameMatch))
+                        {
+                            Console.WriteLine("No More Swap With Banner Available");
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        if (!SwapDoneWithoutBanner(gameMatch))
+                        {
+                            Console.WriteLine("No More Swap Without Banner Available");
+                            break;
+                        }
                     }
                 }
             }
@@ -115,7 +170,7 @@ namespace Crpg.Module.Balancing
             return gameMatch;
         }
 
-        public bool SwapDone(GameMatch gameMatch)
+        public bool SwapDoneWithBanner(GameMatch gameMatch)
         {
             double diff = RatingHelpers.ComputeTeamRatingDifference(gameMatch);
             ClanGroupsGameMatch clanGroupGameMatch = MatchBalancingHelpers.ConvertGameMatchToClanGroupsGameMatchList(gameMatch);
@@ -140,17 +195,21 @@ namespace Crpg.Module.Balancing
 
             weakClanGroupsTeam = weakClanGroupsTeam.OrderBy(c => c.RatingPMean()).ToList();
             strongClanGroupsTeam = strongClanGroupsTeam.OrderBy(c => c.RatingPMean()).ToList();
+
             int playerCountDifference = weakClanGroupsTeam.Sum(c => c.Size()) - strongClanGroupsTeam.Sum(c => c.Size());
+            bool swapingFromWeakTeam = playerCountDifference >= 0;
             ClanGroup weakClanGroupToSwap = weakClanGroupsTeam.First();
             ClanGroup strongClanGroupToSwap = strongClanGroupsTeam.Last();
-            ClanGroup clanGroupstoSwap1;
-            bool swapingFromWeakTeam = playerCountDifference >= 0;
-            clanGroupstoSwap1 = swapingFromWeakTeam ? weakClanGroupToSwap : strongClanGroupToSwap;
-            List<ClanGroup> teamToSwapInto = swapingFromWeakTeam ? strongClanGroupsTeam : weakClanGroupsTeam;
-            float clanGroupToSwapTargetRating = weakClanGroupToSwap.RatingPsum() + (float)Math.Abs(diff) / 2f;
+
+            ClanGroup clanGrouptoSwap1;
             List<ClanGroup> clanGroupstoSwap2;
-            var clanGroupsToSwapUsingAngle = MatchBalancingHelpers.FindASwapUsing(clanGroupToSwapTargetRating, weakClanGroupToSwap.Size(), teamToSwapInto, Math.Abs(playerCountDifference / 2), true);
-            var clanGroupsToSwapUsingDistance = MatchBalancingHelpers.FindASwapUsing(clanGroupToSwapTargetRating, weakClanGroupToSwap.Size(), teamToSwapInto, Math.Abs(playerCountDifference /2), false);
+
+            clanGrouptoSwap1 = swapingFromWeakTeam ? weakClanGroupToSwap : strongClanGroupToSwap;
+            List<ClanGroup> teamClanGroupsToSwapInto = swapingFromWeakTeam ? strongClanGroupsTeam : weakClanGroupsTeam;
+
+            float clanGroupToSwapTargetRating = swapingFromWeakTeam ? weakClanGroupToSwap.RatingPsum() + (float)Math.Abs(diff) / 2f : strongClanGroupToSwap.RatingPsum() - (float)Math.Abs(diff) / 2f;
+            var clanGroupsToSwapUsingAngle = MatchBalancingHelpers.FindAClanGroupToSwapUsing(clanGroupToSwapTargetRating, clanGrouptoSwap1.Size(), teamClanGroupsToSwapInto, Math.Abs(playerCountDifference / 2), true);
+            var clanGroupsToSwapUsingDistance = MatchBalancingHelpers.FindAClanGroupToSwapUsing(clanGroupToSwapTargetRating, clanGrouptoSwap1.Size(), teamClanGroupsToSwapInto, Math.Abs(playerCountDifference / 2), false);
             if (Math.Abs(RatingHelpers.ClanGroupsPowerSum(clanGroupsToSwapUsingAngle) - clanGroupToSwapTargetRating) < Math.Abs(RatingHelpers.ClanGroupsPowerSum(clanGroupsToSwapUsingDistance) - clanGroupToSwapTargetRating))
             {
                 clanGroupstoSwap2 = clanGroupsToSwapUsingAngle;
@@ -160,10 +219,31 @@ namespace Crpg.Module.Balancing
                 clanGroupstoSwap2 = clanGroupsToSwapUsingDistance;
 
             }
-            float a = RatingHelpers.ClanGroupsPowerSum(strongClanGroupsTeam);
-            float b = 2f * weakClanGroupToSwap.RatingPsum();
-            float c = -2f * RatingHelpers.ClanGroupsPowerSum(clanGroupstoSwap2);
-            float newdiff = RatingHelpers.ClanGroupsPowerSum(strongClanGroupsTeam) + 2f * weakClanGroupToSwap.RatingPsum() - 2f * RatingHelpers.ClanGroupsPowerSum(clanGroupstoSwap2) - RatingHelpers.ClanGroupsPowerSum(weakClanGroupsTeam);
+            float a = clanGrouptoSwap1.RatingPsum();
+            float b = RatingHelpers.ClanGroupsPowerSum(clanGroupstoSwap2);
+            bool c = swapingFromWeakTeam;
+            float newdiff;
+            if (swapingFromWeakTeam)
+            {
+                newdiff = RatingHelpers.ClanGroupsPowerSum(strongClanGroupsTeam) + 2f * clanGrouptoSwap1.RatingPsum() - 2f * RatingHelpers.ClanGroupsPowerSum(clanGroupstoSwap2) - RatingHelpers.ClanGroupsPowerSum(weakClanGroupsTeam);
+            }
+            else
+            {
+                newdiff = RatingHelpers.ClanGroupsPowerSum(strongClanGroupsTeam) + 2f * RatingHelpers.ClanGroupsPowerSum(clanGroupstoSwap2) - 2f * clanGrouptoSwap1.RatingPsum() - RatingHelpers.ClanGroupsPowerSum(weakClanGroupsTeam);
+            }
+            float newdiff1 = newdiff;
+            var teamtoSwapFrom = swapingFromWeakTeam ? weakTeam : strongTeam;
+            var teamtoSwapInto = swapingFromWeakTeam ? strongTeam : weakTeam;
+            Console.WriteLine("SwapDoneWithBanner Log");
+            Console.WriteLine("swappingFromWeakTeam" + swapingFromWeakTeam);
+            Console.WriteLine("strongClanGroupsTeam");
+            DumpClanGroups(strongClanGroupsTeam);
+            Console.WriteLine("weakClanGroupsTeam");
+            DumpClanGroups(weakClanGroupsTeam);
+            Console.WriteLine("clanGrouptoSwap1");
+            DumpClanGroup(clanGrouptoSwap1);
+            Console.WriteLine("clanGroupstoSwap2");
+            DumpClanGroups(clanGroupstoSwap2);
 
             if (Math.Abs(newdiff) < Math.Abs(diff))
             {
@@ -171,17 +251,17 @@ namespace Crpg.Module.Balancing
                 {
                     foreach (User user in clanGroup.MemberList())
                     {
-                        strongTeam.Remove(user);
-                        weakTeam.Add(user);
+                        teamtoSwapInto.Remove(user);
+                        teamtoSwapFrom.Add(user);
+
                     }
 
                 }
 
-                foreach (User user in weakClanGroupToSwap.MemberList())
+                foreach (User user in clanGrouptoSwap1.MemberList())
                 {
-                    weakTeam.Remove(user);
-                    strongTeam.Add(user);
-
+                    teamtoSwapInto.Add(user);
+                    teamtoSwapFrom.Remove(user);
                 }
 
                 return true;
@@ -190,7 +270,123 @@ namespace Crpg.Module.Balancing
             {
                 return false;
             }
+        }
 
+        public bool SwapDoneWithoutBanner(GameMatch gameMatch)
+        {
+            Console.WriteLine("SwapDoneWithoutBanner");
+            double diff = RatingHelpers.ComputeTeamRatingDifference(gameMatch);
+            List<User> weakTeam;
+            List<User> strongTeam;
+            if (diff < 0)
+            {
+                weakTeam = gameMatch.TeamA;
+                strongTeam = gameMatch.TeamB;
+            }
+            else
+            {
+                weakTeam = gameMatch.TeamB;
+                strongTeam = gameMatch.TeamA;
+            }
+
+            User weakUserToSwap = weakTeam.First();
+            double targetRating = weakUserToSwap.Rating + Math.Abs(diff) / 2f;
+            User strongUserToSwap = MatchBalancingHelpers.FindAUserToSwap((float)targetRating, strongTeam);
+            foreach (var user in weakTeam)
+            {
+                targetRating = user.Rating + Math.Abs(diff) / 2f;
+                User potentialUserToSwap = MatchBalancingHelpers.FindAUserToSwap((float)targetRating, strongTeam);
+                if (Math.Abs(potentialUserToSwap.Rating - targetRating) < Math.Abs(strongUserToSwap.Rating - weakUserToSwap.Rating - Math.Abs(diff) / 2f))
+                {
+                    weakUserToSwap = user;
+                    strongUserToSwap = potentialUserToSwap;
+                }
+            }
+
+            double newdiff = RatingHelpers.ComputeTeamRatingPowerMean(strongTeam) + 2f * weakUserToSwap.Rating - 2f * strongUserToSwap.Rating - RatingHelpers.ComputeTeamRatingPowerMean(weakTeam);
+            Console.WriteLine("Strong User To Swap" + strongUserToSwap.Name + " : " + strongUserToSwap.Rating);
+            Console.WriteLine("weak User To Swap" + weakUserToSwap.Name + " : " + weakUserToSwap.Rating);
+            Console.WriteLine("New Diff " + newdiff);
+            Console.WriteLine("Old Diff" + diff);
+
+            if (Math.Abs(newdiff) < Math.Abs(diff))
+            {
+                strongTeam.Remove(strongUserToSwap);
+                strongTeam.Add(weakUserToSwap);
+                weakTeam.Add(strongUserToSwap);
+                weakTeam.Remove(weakUserToSwap);
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Weak Team");
+                DumpTeam(weakTeam);
+                Console.WriteLine("Strong Team");
+                DumpTeam(strongTeam);
+                return false;
+            }
+
+        }
+        private void MakeTeamCountCloser(GameMatch gameMatch)
+        {
+            Console.WriteLine("MakeTeamCountCloser LOGs");
+            double diff = RatingHelpers.ComputeTeamRatingDifference(gameMatch);
+            List<User> weakTeam;
+            List<User> strongTeam;
+            if (diff < 0)
+            {
+                weakTeam = gameMatch.TeamA;
+                strongTeam = gameMatch.TeamB;
+            }
+            else
+            {
+                weakTeam = gameMatch.TeamB;
+                strongTeam = gameMatch.TeamA;
+            }
+
+            if (weakTeam.Count >= strongTeam.Count)
+            {
+                User weakUser = weakTeam.OrderBy(u => u.Rating).First();
+                Console.WriteLine("Strong User To Swap" + weakUser.Name);
+                weakTeam.Remove(weakUser);
+                strongTeam.Add(weakUser);
+            }
+            else
+            {
+                User strongUser = strongTeam.OrderBy(u => u.Rating).Last();
+                Console.WriteLine("Strong User To Swap" + strongUser.Name);
+                weakTeam.Add(strongUser);
+                strongTeam.Remove(strongUser);
+            }
+        }
+        private void DumpClanGroups(List<ClanGroup> clanGroups)
+            {
+            int i = 1;
+                foreach (ClanGroup clanGroup in clanGroups)
+                {
+                string clanGroupName = clanGroup.Clan() == null ? "Solo" : clanGroup.Clan()!.Name;
+                    Console.WriteLine(clanGroupName);
+                    foreach (User u in clanGroup.MemberList())
+                    {
+                        Console.WriteLine(u.Name + " : " + u.Rating);
+                    }
+                }
+            }
+
+        private void DumpClanGroup(ClanGroup clanGroup)
+        {
+                foreach (User u in clanGroup.MemberList())
+                {
+                    Console.WriteLine(u.Name + " : " + u.Rating);
+                }
+        }
+
+        private void DumpTeam(List<User> team)
+        {
+            foreach (User u in team)
+            {
+                Console.WriteLine(u.Name + " : " + u.Rating);
+            }
         }
 
         /*

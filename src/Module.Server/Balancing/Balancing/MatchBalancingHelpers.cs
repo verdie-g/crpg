@@ -76,21 +76,38 @@ namespace Crpg.Module.Balancing
             return gameMatch;
         }
 
-       /* public static ClanGroup FindClanGroupByRatingBelowSizeRec(List<ClanGroup> clanGroups, double desiredLevel, double maxSize, List<string> list = new List<string>() { }; )
-        {
-            clanGroups.Sort();
-            int index = clanGroups.BinarySearch(FakeClanGroupRatedAt(desiredLevel));
-            if (clanGroups.ElementAt(~index).Size() < maxSize)
-            {
-                return clanGroups.ElementAt(~index);
-            }
-            else if (clanGroups.ElementAt(~index-1).Size() < maxSize)
-            {
-                return clanGroups.ElementAt(~index - 1);
-            }
+        /* public static ClanGroup FindClanGroupByRatingBelowSizeRec(List<ClanGroup> clanGroups, double desiredLevel, double maxSize, List<string> list = new List<string>() { }; )
+         {
+             clanGroups.Sort();
+             int index = clanGroups.BinarySearch(FakeClanGroupRatedAt(desiredLevel));
+             if (clanGroups.ElementAt(~index).Size() < maxSize)
+             {
+                 return clanGroups.ElementAt(~index);
+             }
+             else if (clanGroups.ElementAt(~index-1).Size() < maxSize)
+             {
+                 return clanGroups.ElementAt(~index - 1);
+             }
 
-        }*/
-        public static List<ClanGroup> FindASwapUsing(float targetRating, float targetSize, List<ClanGroup> teamtoSelectFrom, float sizeOffset, bool useAngle)
+         }*/
+        public static User FindAUserToSwap(float targetRating, List<User> teamtoSelectFrom)
+        {
+            List<User> team = teamtoSelectFrom;
+            User bestUserToSwap = team.First();
+            for (int i = 0; i < teamtoSelectFrom.Count; i++)
+            {
+                foreach (User user in team)
+                {
+                        if (Math.Abs(user.Rating - targetRating) < Math.Abs(bestUserToSwap.Rating - targetRating))
+                        {
+                        bestUserToSwap = user;
+                        }
+                }
+            }
+            return bestUserToSwap;
+        }
+
+        public static List<ClanGroup> FindAClanGroupToSwapUsing(float targetRating, float targetSize, List<ClanGroup> teamtoSelectFrom, float sizeOffset, bool useAngle)
         {
             List<ClanGroup> team = teamtoSelectFrom.ToList();
             List<ClanGroup> clanGroupsToSwap = new List<ClanGroup>();
@@ -106,7 +123,7 @@ namespace Crpg.Module.Balancing
                 {
                     break;
                 }
-                    foreach (ClanGroup clanGroup in teamtoSelectFrom)
+                foreach (ClanGroup clanGroup in team)
                 {
                     bestClanGroupToAddVector = ClanGroupRescaledVector(targetSizeScaling, bestClanGroupToAdd);
                     Vector2 clanGroupVector = ClanGroupRescaledVector(targetSizeScaling, clanGroup);
