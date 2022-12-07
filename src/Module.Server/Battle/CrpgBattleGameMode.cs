@@ -138,6 +138,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new MapPoolComponent(),
                     new ChatCommandsComponent(chatBox, crpgClient),
                     new PlayerStatsComponent(),
+                    new NotAllPlayersReadyComponent(),
 #else
                     new MultiplayerRoundComponent(),
                     new MultiplayerAchievementComponent(),
