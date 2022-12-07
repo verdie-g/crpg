@@ -76,7 +76,7 @@ internal class CrpgSubModule : MBSubModuleBase
     private CrpgConstants LoadCrpgConstants()
     {
         string path = ModuleHelper.GetModuleFullPath("cRPG") + "ModuleData/constants.json";
-        return JsonConvert.DeserializeObject<CrpgConstants>(File.ReadAllText(path));
+        return JsonConvert.DeserializeObject<CrpgConstants>(File.ReadAllText(path))!;
     }
 
     private void InitializeGameModels(IGameStarter basicGameStarter)

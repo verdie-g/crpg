@@ -20,6 +20,6 @@ internal class TimeSpanConverter : JsonConverter<TimeSpan>
             throw new JsonException("Expected integer for timespan type");
         }
 
-        return TimeSpan.FromMilliseconds((long)reader.Value);
+        return TimeSpan.FromMilliseconds((long)reader.Value!);
     }
 }

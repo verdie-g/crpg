@@ -136,7 +136,7 @@ internal class CrpgHttpClient : ICrpgClient
                 throw new Exception($"{res.StatusCode}: {json}");
             }
 
-            return JsonConvert.DeserializeObject<CrpgResult<TResponse>>(json, _serializerSettings);
+            return JsonConvert.DeserializeObject<CrpgResult<TResponse>>(json, _serializerSettings)!;
         }
 
         throw new Exception("Couldn't send request even after refreshing access token");
@@ -161,7 +161,7 @@ internal class CrpgHttpClient : ICrpgClient
             throw new Exception("Couldn't get token: " + tokenResponseBody);
         }
 
-        string accessToken = JObject.Parse(tokenResponseBody)["access_token"].ToString();
+        string accessToken = JObject.Parse(tokenResponseBody)["access_token"]!.ToString();
         _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
         Debug.Print("Access token successfully refreshed");
     }
