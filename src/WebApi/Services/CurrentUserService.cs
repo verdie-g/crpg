@@ -6,12 +6,22 @@ namespace Crpg.WebApi.Services;
 
 public class CurrentUserService : ICurrentUserService
 {
+    private static readonly ILogger Logger = Logging.LoggerFactory.CreateLogger<CurrentUserService>();
+
     public CurrentUserService(IHttpContextAccessor httpContextAccessor)
     {
-        string? idStr = httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.NameIdentifier);
-        string? roleStr = httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.Role);
+        if (httpContextAccessor.HttpContext == null)
+        {
+            Logger.Log(LogLevel.Warning, $"{nameof(IHttpContextAccessor)}.{nameof(IHttpContextAccessor.HttpContext)} returned null: {Environment.StackTrace}");
+            return;
+        }
+
+        var claimsPrincipal = httpContextAccessor.HttpContext.User;
+        string? idStr = claimsPrincipal.FindFirstValue(ClaimTypes.NameIdentifier);
+        string? roleStr = claimsPrincipal.FindFirstValue(ClaimTypes.Role);
         if (idStr == null || roleStr == null)
         {
+            Logger.Log(LogLevel.Warning, "User id or role in request was null");
             return;
         }
 
