@@ -99,6 +99,26 @@ namespace Crpg.Module.UTest.Balancing
             double RatingRatio = (double)teamARating / (double)teamBRating;
             Assert.AreEqual(RatingRatio, 1, 0.2);
         }
+        [Test]
+        public void BannerBalancingWithEdgeCaseShouldNotLoseOrAddCharacters()
+        {
+            var matchBalancer = new MatchBalancingSystem();
+
+            float unbalancedTeamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(game1.TeamA, 1);
+            float unbalancedTeamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(game1.TeamB, 1);
+            double unbalancedMeanRatingRatio = (double)unbalancedTeamAMeanRating / (double)unbalancedTeamBMeanRating;
+            GameMatch balancedGame = matchBalancer.BannerBalancingWithEdgeCases(game1);
+            List<CrpgUser> allUsersFromBalancedGame = new();
+            List<CrpgUser> allUsersFromunBalancedGame = new();
+            allUsersFromBalancedGame.AddRange(balancedGame.TeamA);
+            allUsersFromBalancedGame.AddRange(balancedGame.TeamB);
+            allUsersFromBalancedGame.AddRange(balancedGame.Waiting);
+            allUsersFromunBalancedGame.AddRange(game1.TeamA);
+            allUsersFromunBalancedGame.AddRange(game1.TeamB);
+            allUsersFromunBalancedGame.AddRange(game1.Waiting);
+            CollectionAssert.AreEqual(allUsersFromunBalancedGame.OrderBy(u => u.Character.Id), allUsersFromBalancedGame.OrderBy(u => u.Character.Id));
+
+        }
 
         [Test]
         public void BannerBalancingShouldNotSeperateCrpgClanMember()
@@ -140,33 +160,33 @@ namespace Crpg.Module.UTest.Balancing
         }
 
 
-        private static Clan lOTR = new() { Id = 1, Name = "LOTR" };
-        private static Clan dBZ = new() { Id = 2, Name = "DBZ" };
-        private static Clan gilead = new() { Id = 3, Name = "Gilead" };
-        private static Clan poudlard = new() { Id = 4, Name = "Poudlard" };
-        private static Clan xMen = new() { Id = 5, Name = "X-MEN" };
-        private static Clan xMenVillain = new() { Id = 6, Name = "X-MEN Villains" };
-        private static Clan JeanJean = new() { Id = 7, Name = "JeanJean" };
-        private static Clan Glut = new() { Id = 8, Name = "Glut" };
-        private static Clan Vlex = new() { Id = 9, Name = "Vlex" };
-        private static Clan Hudahut = new() { Id = 10, Name = "Hudahut" };
-        private static Clan BlackBaronesses = new() { Id = 11, Name = "Black Baronesses" };
-        private static Clan NavyKnights = new() { Id = 12, Name = "Navy Knights" };
-        private static Clan PurplePeasants = new() { Id = 13, Name = "Purple Peasants" };
-        private static Clan RedRitters = new() { Id = 14, Name = "Red Ritters" };
-        private static Clan LemonLevies = new() { Id = 15, Name = "Lemon Levies" };
-        private static Clan ScarletShieldmaidens = new() { Id = 16, Name = "Scarlet Shieldmaidens" };
-        private static Clan DUMPSTERS = new() { Id = 50, Name = "DUMPSTERS" };
-        private static Clan TRASHCANS = new() { Id = 51, Name = "TRASHCANS" };
-        private static Clan SCRUBS = new() { Id = 52, Name = "SCRUBS" };
-        private static Clan GARBAGE = new() { Id = 53, Name = "GARBAGE" };
-        private static Clan BASURA = new() { Id = 54, Name = "BASURA" };
-        private static Clan WASTE = new() { Id = 55, Name = "WASTE" };
-        private static Clan BADS = new() { Id = 56, Name = "BADS" };
-        private static Clan POORS = new() { Id = 57, Name = "POORS" };
-        private static Clan PEASANTRY = new() { Id = 58, Name = "PEASANTRY" };
-        private static Clan SERFS = new() { Id = 59, Name = "SERFS" };
-        private static Clan VAGABONDS = new() { Id = 60, Name = "VAGABONDS" };
+        private static CrpgClan lOTR = new() { Id = 1, Name = "LOTR" };
+        private static CrpgClan dBZ = new() { Id = 2, Name = "DBZ" };
+        private static CrpgClan gilead = new() { Id = 3, Name = "Gilead" };
+        private static CrpgClan poudlard = new() { Id = 4, Name = "Poudlard" };
+        private static CrpgClan xMen = new() { Id = 5, Name = "X-MEN" };
+        private static CrpgClan xMenVillain = new() { Id = 6, Name = "X-MEN Villains" };
+        private static CrpgClan JeanJean = new() { Id = 7, Name = "JeanJean" };
+        private static CrpgClan Glut = new() { Id = 8, Name = "Glut" };
+        private static CrpgClan Vlex = new() { Id = 9, Name = "Vlex" };
+        private static CrpgClan Hudahut = new() { Id = 10, Name = "Hudahut" };
+        private static CrpgClan BlackBaronesses = new() { Id = 11, Name = "Black Baronesses" };
+        private static CrpgClan NavyKnights = new() { Id = 12, Name = "Navy Knights" };
+        private static CrpgClan PurplePeasants = new() { Id = 13, Name = "Purple Peasants" };
+        private static CrpgClan RedRitters = new() { Id = 14, Name = "Red Ritters" };
+        private static CrpgClan LemonLevies = new() { Id = 15, Name = "Lemon Levies" };
+        private static CrpgClan ScarletShieldmaidens = new() { Id = 16, Name = "Scarlet Shieldmaidens" };
+        private static CrpgClan DUMPSTERS = new() { Id = 50, Name = "DUMPSTERS" };
+        private static CrpgClan TRASHCANS = new() { Id = 51, Name = "TRASHCANS" };
+        private static CrpgClan SCRUBS = new() { Id = 52, Name = "SCRUBS" };
+        private static CrpgClan GARBAGE = new() { Id = 53, Name = "GARBAGE" };
+        private static CrpgClan BASURA = new() { Id = 54, Name = "BASURA" };
+        private static CrpgClan WASTE = new() { Id = 55, Name = "WASTE" };
+        private static CrpgClan BADS = new() { Id = 56, Name = "BADS" };
+        private static CrpgClan POORS = new() { Id = 57, Name = "POORS" };
+        private static CrpgClan PEASANTRY = new() { Id = 58, Name = "PEASANTRY" };
+        private static CrpgClan SERFS = new() { Id = 59, Name = "SERFS" };
+        private static CrpgClan VAGABONDS = new() { Id = 60, Name = "VAGABONDS" };
 
 
         private static CrpgUser arwen = new() { Character = new CrpgCharacter{ Name = "Arwen",  Id = 1, Rating = new CrpgCharacterRating { Value = 2000 }}, ClanMembership = new CrpgClanMember {ClanId = 1} };
@@ -209,11 +229,11 @@ namespace Crpg.Module.UTest.Balancing
         private static CrpgUser Hudax_03 = new() { Character = new CrpgCharacter{ Name = "Hudax_03", Id = 38, Rating = new CrpgCharacterRating { Value = 1700 }}, ClanMembership = new CrpgClanMember { ClanId = 10} };
         private static CrpgUser Hudax_04 = new() { Character = new CrpgCharacter{ Name = "Hudax_04", Id = 39, Rating = new CrpgCharacterRating { Value = 1500 }}, ClanMembership = new CrpgClanMember { ClanId = 10} };
         private static CrpgUser Hudax_05 = new() { Character = new CrpgCharacter{ Name = "Hudax_05", Id = 40, Rating = new CrpgCharacterRating { Value = 2200 }}, ClanMembership = new CrpgClanMember { ClanId = 10} };
-        private static CrpgUser Hudax_06 = new() { Character = new CrpgCharacter{ Name = "", Id = 36, Rating = new CrpgCharacterRating { Value = 1900 }}, ClanMembership = new CrpgClanMember { ClanId = 10} };
-        private static CrpgUser Hudax_07 = new() { Character = new CrpgCharacter{ Name = "", Id = 37, Rating = new CrpgCharacterRating { Value = 8000 }}, ClanMembership = new CrpgClanMember { ClanId = 10} };
-        private static CrpgUser Hudax_08 = new() { Character = new CrpgCharacter{ Name = "", Id = 38, Rating = new CrpgCharacterRating { Value = 1300 }}, ClanMembership = new CrpgClanMember { ClanId = 10} };
-        private static CrpgUser Hudax_09 = new() { Character = new CrpgCharacter{ Name = "", Id = 39, Rating = new CrpgCharacterRating { Value = 1400 }}, ClanMembership = new CrpgClanMember { ClanId = 10} };
-        private static CrpgUser Hudax_10 = new() { Character = new CrpgCharacter{ Name = "", Id = 40, Rating = new CrpgCharacterRating { Value = 700 }}, ClanMembership = new CrpgClanMember { ClanId = 10} };
+        private static CrpgUser Hudax_06 = new() { Character = new CrpgCharacter{ Name = "", Id = 5036, Rating = new CrpgCharacterRating { Value = 1900 }}, ClanMembership = new CrpgClanMember { ClanId = 10} };
+        private static CrpgUser Hudax_07 = new() { Character = new CrpgCharacter{ Name = "", Id = 5037, Rating = new CrpgCharacterRating { Value = 8000 }}, ClanMembership = new CrpgClanMember { ClanId = 10} };
+        private static CrpgUser Hudax_08 = new() { Character = new CrpgCharacter{ Name = "", Id = 5038, Rating = new CrpgCharacterRating { Value = 1300 }}, ClanMembership = new CrpgClanMember { ClanId = 10} };
+        private static CrpgUser Hudax_09 = new() { Character = new CrpgCharacter{ Name = "", Id = 5039, Rating = new CrpgCharacterRating { Value = 1400 }}, ClanMembership = new CrpgClanMember { ClanId = 10} };
+        private static CrpgUser Hudax_10 = new() { Character = new CrpgCharacter{ Name = "", Id = 5040, Rating = new CrpgCharacterRating { Value = 700 }}, ClanMembership = new CrpgClanMember { ClanId = 10} };
         private static CrpgUser GerryShepherd = new() { Character = new CrpgCharacter{ Name = "GerryShepherd", Id = 41, Rating = new CrpgCharacterRating { Value = 2000 }}, ClanMembership = new CrpgClanMember { ClanId = 11} };
         private static CrpgUser BullyDog = new() { Character = new CrpgCharacter{ Name = "BullyDog", Id = 42, Rating = new CrpgCharacterRating { Value = 1600 }}, ClanMembership = new CrpgClanMember { ClanId = 11} };
         private static CrpgUser LabbyRetriever = new() { Character = new CrpgCharacter{ Name = "LabbyRetriever", Id = 43, Rating = new CrpgCharacterRating { Value = 1500 }}, ClanMembership = new CrpgClanMember { ClanId = 11} };
@@ -671,7 +691,7 @@ namespace Crpg.Module.UTest.Balancing
                 Glutentag_05,
                 Vlexance_01,
                 Vlexance_02,
-                Vlexance_03,/*
+                Vlexance_03,
                 Vlexance_04,
                 Vlexance_05,
                 Hudax_01,
@@ -1102,7 +1122,7 @@ namespace Crpg.Module.UTest.Balancing
                 PortFem,
                 BudgereePerianth,
                 PsycheStaminate,
-                HoneyedSugar,*/
+                HoneyedSugar,
             },
     };
 }
