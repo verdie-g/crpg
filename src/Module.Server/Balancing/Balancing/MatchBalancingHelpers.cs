@@ -88,18 +88,16 @@ namespace Crpg.Module.Balancing
 
         internal static CrpgUser FindACrpgUserToSwap(float targetRating, List<CrpgUser> teamtoSelectFrom)
         {
-            List<CrpgUser> team = teamtoSelectFrom;
-            CrpgUser bestCrpgUserToSwap = team.First();
-            for (int i = 0; i < teamtoSelectFrom.Count; i++)
+            CrpgUser bestCrpgUserToSwap = teamtoSelectFrom.First();
+
+            foreach (CrpgUser user in teamtoSelectFrom)
             {
-                foreach (CrpgUser user in team)
-                {
                         if (Math.Abs(user.Character.Rating.Value - targetRating) < Math.Abs(bestCrpgUserToSwap.Character.Rating.Value - targetRating))
                         {
                         bestCrpgUserToSwap = user;
                         }
-                }
             }
+
             return bestCrpgUserToSwap;
         }
 

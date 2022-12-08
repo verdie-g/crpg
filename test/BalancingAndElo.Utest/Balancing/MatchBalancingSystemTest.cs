@@ -100,6 +100,23 @@ namespace Crpg.Module.UTest.Balancing
             Assert.AreEqual(RatingRatio, 1, 0.2);
         }
         [Test]
+        public void BannerBalancingWithEdgeCaseShouldWorkWithOneStrongClanGroup()
+        {
+            var matchBalancer = new MatchBalancingSystem();
+
+            float unbalancedTeamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(gameWithVeryStrongClanGroup.TeamA, 1);
+            float unbalancedTeamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(gameWithVeryStrongClanGroup.TeamB, 1);
+            double unbalancedMeanRatingRatio = (double)unbalancedTeamAMeanRating / (double)unbalancedTeamBMeanRating;
+            GameMatch balancedGame = matchBalancer.BannerBalancingWithEdgeCases(gameWithVeryStrongClanGroup);
+            float teamASize = balancedGame.TeamA.Count;
+            float teamBSize = balancedGame.TeamB.Count;
+            double sizeRatio = (double)teamASize / (double)teamBSize;
+            float teamARating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamA, 1);
+            float teamBRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamB, 1);
+            double RatingRatio = (double)teamARating / (double)teamBRating;
+            Assert.AreEqual(RatingRatio, 1, 0.2);
+        }
+        [Test]
         public void BannerBalancingWithEdgeCaseShouldNotLoseOrAddCharacters()
         {
             var matchBalancer = new MatchBalancingSystem();
@@ -189,8 +206,8 @@ namespace Crpg.Module.UTest.Balancing
         private static CrpgClan VAGABONDS = new() { Id = 60, Name = "VAGABONDS" };
 
 
-        private static CrpgUser arwen = new() { Character = new CrpgCharacter{ Name = "Arwen",  Id = 1, Rating = new CrpgCharacterRating { Value = 2000 }}, ClanMembership = new CrpgClanMember {ClanId = 1} };
-        private static CrpgUser frodon = new() { Character = new CrpgCharacter { Name = "Frodon", Id = 2, Rating = new CrpgCharacterRating { Value = 1600 }}, ClanMembership = new CrpgClanMember { ClanId = 1} };
+        private static CrpgUser arwen = new() { Character = new CrpgCharacter{ Name = "Arwen",  Id = 1, Rating = new CrpgCharacterRating { Value = 20000 }}, ClanMembership = new CrpgClanMember {ClanId = 1} };
+        private static CrpgUser frodon = new() { Character = new CrpgCharacter { Name = "Frodon", Id = 2, Rating = new CrpgCharacterRating { Value = 16000 }}, ClanMembership = new CrpgClanMember { ClanId = 1} };
         private static CrpgUser sam = new() { Character = new CrpgCharacter{ Name = "Sam", Id = 3, Rating = new CrpgCharacterRating { Value = 1500 }}, ClanMembership = new CrpgClanMember { ClanId = 1} };
         private static CrpgUser sangoku = new() { Character = new CrpgCharacter{ Name = "Sangoku", Id = 4, Rating = new CrpgCharacterRating { Value = 2000 }}, ClanMembership = new CrpgClanMember { ClanId = 2} };
         private static CrpgUser krilin = new() { Character = new CrpgCharacter{ Name = "Krilin", Id = 5, Rating = new CrpgCharacterRating { Value = 1000 }}, ClanMembership = new CrpgClanMember { ClanId = 2} };
@@ -1125,5 +1142,28 @@ namespace Crpg.Module.UTest.Balancing
                 HoneyedSugar,
             },
     };
+        private GameMatch gameWithVeryStrongClanGroup = new()
+        {
+            TeamA = new List<CrpgUser> { },
+            TeamB = new List<CrpgUser> { },
+            Waiting = new List<CrpgUser>
+            {
+                arwen,
+                frodon,
+                sam,
+                sangoku,
+                krilin,
+                rolandDeschain,
+                harryPotter,
+                magneto,
+                profCharles,
+                usainBolt,
+                agent007,
+                spongeBob,
+                patrick,
+                madonna,
+                laraCroft,
+            },
+        };
 }
 }
