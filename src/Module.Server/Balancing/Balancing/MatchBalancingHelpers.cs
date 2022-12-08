@@ -5,6 +5,7 @@ using System.Numerics;
 using Crpg.Module.Balancing;
 using TaleWorlds.MountAndBlade;
 using Crpg.Module.Api.Models.Users;
+using TaleWorlds.LinQuick;
 
 namespace Crpg.Module.Balancing
 {
@@ -12,8 +13,9 @@ namespace Crpg.Module.Balancing
     {
         internal static List<ClanGroup> ConvertCrpgUserListToClanGroups(List<CrpgUser> userList)
         {
+            Dictionary<int, ClanGroup> ClanGroupCreated = new();
             List<int> isClanGroupCreated = new();
-            List<ClanGroup> clanGroups = new();
+            List<ClanGroup> clanGroups = new();  
            // List<CrpgUser> noClan = userList.Select()
 
             foreach (CrpgUser player in userList.OrderByDescending(u => u.ClanMembership?.ClanId ?? 0))
@@ -26,16 +28,16 @@ namespace Crpg.Module.Balancing
                 }
                 else
                 {
-                    if (isClanGroupCreated.Contains(player.ClanMembership.ClanId))
+                    if (ClanGroupCreated.TryGetValue(player.ClanMembership.ClanId, out ClanGroup existingClanGroup))
                     {
-                        clanGroups.Find(clangroup => clangroup.ClanId == player.ClanMembership.ClanId)!.Add(player);
+                        existingClanGroup.Add(player);
                     }
                     else
                     {
-                        ClanGroup clangroup = new(player.ClanMembership.ClanId);
-                        clangroup.Add(player);
-                        isClanGroupCreated.Add(player.ClanMembership.ClanId);
-                        clanGroups.Add(clangroup);
+                        ClanGroup clanGroup = new(player.ClanMembership.ClanId);
+                        clanGroup.Add(player);
+                        ClanGroupCreated.Add(player.ClanMembership.ClanId, clanGroup);
+                        clanGroups.Add(clanGroup);
                     }
                 }
             }
