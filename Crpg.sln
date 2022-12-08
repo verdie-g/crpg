@@ -45,7 +45,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Module.Client", "src\Module
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Launcher", "src\Launcher\Launcher.csproj", "{E95AAA36-EE18-4699-BE42-8AB86A6941F3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Module.Server.Utest", "test\BalancingAndElo.Utest\Module.Server.Utest.csproj", "{A94B9723-4400-45F1-8BF5-103C7B40FBE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Module.Server.UTest", "test\BalancingAndElo.Utest\Module.Server.UTest.csproj", "{A94B9723-4400-45F1-8BF5-103C7B40FBE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
