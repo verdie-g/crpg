@@ -639,7 +639,7 @@ namespace Crpg.Module.UTest.Balancing
             {
                 arwen,
                 frodon,
-                sam,
+                sam,/*
                 sangoku,
                 krilin,
                 rolandDeschain,
@@ -704,7 +704,7 @@ namespace Crpg.Module.UTest.Balancing
                 BassetyHound,
                 GopherSnakeWeb,
                 AmbushSword,
-                FencingPacMan,/*
+                FencingPacMan,
                 EbonSalient,
                 CannonSnaky,
                 DarklyWine,
