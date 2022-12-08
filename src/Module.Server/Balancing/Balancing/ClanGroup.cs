@@ -3,23 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Crpg.Module.Api.Models.Users;
 
 namespace Crpg.Module.Balancing;
 
-public class ClanGroup
+internal class ClanGroup
 {
-    public int Size()
+    internal int Size()
     {
         return members.Count();
     }
 
-    public Clan? Clan
+    internal int? Clan
     {
         get
         {
             if (members.First().ClanMembership != null)
             {
-                return members!.First().ClanMembership!.Clan;
+                return members!.First().ClanMembership!.ClanId;
             }
             else
             {
@@ -28,7 +29,7 @@ public class ClanGroup
         }
     }
 
-    public int ClanID
+    internal int ClanID
     {
         get
         {
@@ -43,41 +44,25 @@ public class ClanGroup
         }
     }
 
-    public void Add(User user)
+    internal void Add(CrpgUser user)
     {
         members.Add(user);
     }
 
-    public float RatingPsum(float p = MatchBalancingSystem.PowerParameter)
+    internal float RatingPsum(float p = MatchBalancingSystem.PowerParameter)
     {
         return RatingHelpers.ComputeTeamRatingPowerSum(members, p);
     }
 
-    public float RatingPMean(float p = MatchBalancingSystem.PowerParameter)
+    internal float RatingPMean(float p = MatchBalancingSystem.PowerParameter)
     {
         return RatingHelpers.ComputeTeamRatingPowerMean(members, p);
     }
 
-    public List<User> MemberList()
+    internal List<CrpgUser> MemberList()
     {
         return members;
     }
 
-    private List<User> members = new();
-}
-
-public class ClanGroupCompare : IComparer<ClanGroup>
-{
-    // Compares by Rating
-    public int Compare(ClanGroup x, ClanGroup y)
-    {
-        if (x.RatingPMean().CompareTo(y.RatingPMean()) != 0)
-        {
-            return x.RatingPMean().CompareTo(y.RatingPMean());
-        }
-        else
-        {
-            return 0;
-        }
-    }
+    private List<CrpgUser> members = new();
 }

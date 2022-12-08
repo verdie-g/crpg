@@ -4,18 +4,19 @@ using System.Linq;
 using System.Numerics;
 using Crpg.Module.Balancing;
 using TaleWorlds.MountAndBlade;
+using Crpg.Module.Api.Models.Users;
 
 namespace Crpg.Module.Balancing
 {
-    public static class MatchBalancingHelpers
+    internal static class MatchBalancingHelpers
     {
-        public static List<ClanGroup> ConvertUserListToClanGroups(List<User> userList)
+        internal static List<ClanGroup> ConvertCrpgUserListToClanGroups(List<CrpgUser> userList)
         {
             List<int> isClanGroupCreated = new();
             List<ClanGroup> clanGroups = new();
-           // List<User> noClan = userList.Select()
+           // List<CrpgUser> noClan = userList.Select()
 
-            foreach (User player in userList.OrderByDescending(u => u.ClanMembership?.ClanId ?? 0))
+            foreach (CrpgUser player in userList.OrderByDescending(u => u.ClanMembership?.ClanId ?? 0))
             {
                 if (player.ClanMembership == null)
                 {
@@ -42,9 +43,9 @@ namespace Crpg.Module.Balancing
             return clanGroups;
         }
 
-        public static List<User> ConvertClanGroupsToUserList(List<ClanGroup> clanGroups)
+        internal static List<CrpgUser> ConvertClanGroupsToCrpgUserList(List<ClanGroup> clanGroups)
         {
-            List<User> users = new();
+            List<CrpgUser> users = new();
 
             foreach (ClanGroup clanGroup in clanGroups)
             {
@@ -53,54 +54,54 @@ namespace Crpg.Module.Balancing
 
             return users;
         }
-        public static int TeamSizeDifference(GameMatch gameMatch)
+        internal static int TeamSizeDifference(GameMatch gameMatch)
         {
             return gameMatch.TeamA.Count - gameMatch.TeamB.Count;
         }
-        public static int ClanGroupsSize(List<ClanGroup> clanGroups)
+        internal static int ClanGroupsSize(List<ClanGroup> clanGroups)
         {
             return clanGroups.Sum(c => c.Size());
         }
-        public static float ClanGroupsRating(List<ClanGroup> clanGroups)
+        internal static float ClanGroupsRating(List<ClanGroup> clanGroups)
         {
             return clanGroups.Sum(c => c.RatingPsum());
         }
-        public static ClanGroupsGameMatch ConvertGameMatchToClanGroupsGameMatchList(GameMatch gameMatch)
+        internal static ClanGroupsGameMatch ConvertGameMatchToClanGroupsGameMatchList(GameMatch gameMatch)
         {
             ClanGroupsGameMatch clanGroupsGameMatch = new();
-            clanGroupsGameMatch.TeamA = ConvertUserListToClanGroups(gameMatch.TeamA);
-            clanGroupsGameMatch.TeamB = ConvertUserListToClanGroups(gameMatch.TeamB);
-            clanGroupsGameMatch.Waiting = ConvertUserListToClanGroups(gameMatch.Waiting);
+            clanGroupsGameMatch.TeamA = ConvertCrpgUserListToClanGroups(gameMatch.TeamA);
+            clanGroupsGameMatch.TeamB = ConvertCrpgUserListToClanGroups(gameMatch.TeamB);
+            clanGroupsGameMatch.Waiting = ConvertCrpgUserListToClanGroups(gameMatch.Waiting);
             return clanGroupsGameMatch;
         }
 
-        public static GameMatch ConvertClanGroupsGameMatchToGameMatchList(ClanGroupsGameMatch clanGroupsgameMatch)
+        internal static GameMatch ConvertClanGroupsGameMatchToGameMatchList(ClanGroupsGameMatch clanGroupsgameMatch)
         {
             GameMatch gameMatch = new();
-            gameMatch.TeamA = ConvertClanGroupsToUserList(clanGroupsgameMatch.TeamA);
-            gameMatch.TeamB = ConvertClanGroupsToUserList(clanGroupsgameMatch.TeamB);
-            gameMatch.Waiting = ConvertClanGroupsToUserList(clanGroupsgameMatch.Waiting);
+            gameMatch.TeamA = ConvertClanGroupsToCrpgUserList(clanGroupsgameMatch.TeamA);
+            gameMatch.TeamB = ConvertClanGroupsToCrpgUserList(clanGroupsgameMatch.TeamB);
+            gameMatch.Waiting = ConvertClanGroupsToCrpgUserList(clanGroupsgameMatch.Waiting);
             return gameMatch;
         }
 
-        public static User FindAUserToSwap(float targetRating, List<User> teamtoSelectFrom)
+        internal static CrpgUser FindACrpgUserToSwap(float targetRating, List<CrpgUser> teamtoSelectFrom)
         {
-            List<User> team = teamtoSelectFrom;
-            User bestUserToSwap = team.First();
+            List<CrpgUser> team = teamtoSelectFrom;
+            CrpgUser bestCrpgUserToSwap = team.First();
             for (int i = 0; i < teamtoSelectFrom.Count; i++)
             {
-                foreach (User user in team)
+                foreach (CrpgUser user in team)
                 {
-                        if (Math.Abs(user.Rating - targetRating) < Math.Abs(bestUserToSwap.Rating - targetRating))
+                        if (Math.Abs(user.Character.Rating.Value - targetRating) < Math.Abs(bestCrpgUserToSwap.Character.Rating.Value - targetRating))
                         {
-                        bestUserToSwap = user;
+                        bestCrpgUserToSwap = user;
                         }
                 }
             }
-            return bestUserToSwap;
+            return bestCrpgUserToSwap;
         }
 
-        public static List<ClanGroup> FindAClanGroupToSwapUsing(float targetRating, float targetSize, List<ClanGroup> teamtoSelectFrom, float sizeOffset, bool useAngle)
+        internal static List<ClanGroup> FindAClanGroupToSwapUsing(float targetRating, float targetSize, List<ClanGroup> teamtoSelectFrom, float sizeOffset, bool useAngle)
         {
             List<ClanGroup> team = teamtoSelectFrom.ToList();
             List<ClanGroup> clanGroupsToSwap = new List<ClanGroup>();
@@ -151,18 +152,18 @@ namespace Crpg.Module.Balancing
             return clanGroupsToSwap;
         }
 
-        public static Vector2 ClanGroupRescaledVector(float scaler, ClanGroup clanGroup)
+        internal static Vector2 ClanGroupRescaledVector(float scaler, ClanGroup clanGroup)
         {
             Vector2 vector = new(clanGroup.Size() * scaler, clanGroup.RatingPMean());
             return vector;
         }
-        public static Vector2 ClanGroupsRescaledVector(float scaler, List<ClanGroup> clanGroups)
+        internal static Vector2 ClanGroupsRescaledVector(float scaler, List<ClanGroup> clanGroups)
         {
             Vector2 vector = new(clanGroups.Sum(c => c.Size()) * scaler, RatingHelpers.ClanGroupsPowerSum(clanGroups));
             return vector;
         }
 
-        public static float Vector2Angles(Vector2 v1)
+        internal static float Vector2Angles(Vector2 v1)
         {
             if (v1.X==0&& v1.Y==0)
             {
@@ -181,7 +182,7 @@ namespace Crpg.Module.Balancing
         /// already sorted in descending order.</param>
         /// <returns>The partition as a <see cref="PartitioningResult{T}"/>.</returns>
 
-        public static PartitioningResult<T> Heuristic<T>(T[] elements, double[] weights, int numParts, bool preSorted = false)
+        internal static PartitioningResult<T> Heuristic<T>(T[] elements, double[] weights, int numParts, bool preSorted = false)
         {
             if (numParts <= 0)
             {
@@ -254,14 +255,14 @@ namespace Crpg.Module.Balancing
 
         private class PartitionNode<T>
         {
-            public PartitionNode(List<T>[] partition, double[] sizes)
+            internal PartitionNode(List<T>[] partition, double[] sizes)
             {
                 Partition = partition;
                 Sizes = sizes;
             }
 
-            public List<T>[] Partition { get; }
-            public double[] Sizes { get; }
+            internal List<T>[] Partition { get; }
+            internal double[] Sizes { get; }
         }
 
     }

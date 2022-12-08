@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Crpg.Module.Balancing;
 using System.Numerics;
+using Crpg.Module.Api.Models.Users;
+using Crpg.Module.Api.Models.Characters;
+using Crpg.Module.Api.Models.Clans;
 namespace Crpg.Module.Balancing;
 
 /// <summary>
@@ -22,13 +25,13 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
     public const float PowerParameter = 1f;
     public GameMatch NaiveCaptainBalancing(GameMatch gameMatch)
     {
-        List<User> allUsers = new();
-        allUsers.AddRange(gameMatch.TeamA);
-        allUsers.AddRange(gameMatch.TeamB);
-        allUsers.AddRange(gameMatch.Waiting);
+        List<CrpgUser> allCrpgUsers = new();
+        allCrpgUsers.AddRange(gameMatch.TeamA);
+        allCrpgUsers.AddRange(gameMatch.TeamB);
+        allCrpgUsers.AddRange(gameMatch.Waiting);
         GameMatch returnedGameMatch = new();
         bool teamA = true;
-        foreach (User player in allUsers.OrderByDescending(u => u.Rating))
+        foreach (CrpgUser player in allCrpgUsers.OrderByDescending(u => u.Character.Rating.Value))
         {
             if (teamA)
             {
@@ -47,18 +50,18 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
 
     public GameMatch KKBalancing(GameMatch gameMatch)
     {
-        List<User> allUsers = new();
-        allUsers.AddRange(gameMatch.TeamA);
-        allUsers.AddRange(gameMatch.TeamB);
-        allUsers.AddRange(gameMatch.Waiting);
+        List<CrpgUser> allCrpgUsers = new();
+        allCrpgUsers.AddRange(gameMatch.TeamA);
+        allCrpgUsers.AddRange(gameMatch.TeamB);
+        allCrpgUsers.AddRange(gameMatch.Waiting);
         GameMatch returnedGameMatch = new();
         int i = 0;
-        User[] players = new User[allUsers.Count];
-        double[] elos = new double[allUsers.Count];
-        foreach (User player in allUsers.OrderByDescending(u => u.Rating))
+        CrpgUser[] players = new CrpgUser[allCrpgUsers.Count];
+        double[] elos = new double[allCrpgUsers.Count];
+        foreach (CrpgUser player in allCrpgUsers.OrderByDescending(u => u.Character.Rating.Value))
         {
             players[i] = player;
-            elos[i] = player.Rating;
+            elos[i] = player.Character.Rating.Value;
             i++;
         }
 
@@ -134,11 +137,11 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
 
     public GameMatch KKMakeTeamOfSimilarSizesWithBannerBalance(GameMatch gameMatch)
     {
-        List<User> allUsers = new();
-        allUsers.AddRange(gameMatch.TeamA);
-        allUsers.AddRange(gameMatch.TeamB);
-        allUsers.AddRange(gameMatch.Waiting);
-        var clangroupList = MatchBalancingHelpers.ConvertUserListToClanGroups(allUsers);
+        List<CrpgUser> allCrpgUsers = new();
+        allCrpgUsers.AddRange(gameMatch.TeamA);
+        allCrpgUsers.AddRange(gameMatch.TeamB);
+        allCrpgUsers.AddRange(gameMatch.Waiting);
+        var clangroupList = MatchBalancingHelpers.ConvertCrpgUserListToClanGroups(allCrpgUsers);
         GameMatch returnedGameMatch = new();
         int i = 0;
         ClanGroup[] clangroupsArray = new ClanGroup[clangroupList.Count];
@@ -151,8 +154,8 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
         }
 
         var partition = MatchBalancingHelpers.Heuristic(clangroupsArray, size, 2);
-        returnedGameMatch.TeamA = MatchBalancingHelpers.ConvertClanGroupsToUserList(partition.Partition[0].ToList());
-        returnedGameMatch.TeamB = MatchBalancingHelpers.ConvertClanGroupsToUserList(partition.Partition[1].ToList());
+        returnedGameMatch.TeamA = MatchBalancingHelpers.ConvertClanGroupsToCrpgUserList(partition.Partition[0].ToList());
+        returnedGameMatch.TeamB = MatchBalancingHelpers.ConvertClanGroupsToCrpgUserList(partition.Partition[1].ToList());
         return returnedGameMatch;
     }
 
@@ -196,8 +199,8 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
     {
         double diff = RatingHelpers.ComputeTeamRatingDifference(gameMatch);
         ClanGroupsGameMatch clanGroupGameMatch = MatchBalancingHelpers.ConvertGameMatchToClanGroupsGameMatchList(gameMatch);
-        List<User> weakTeam;
-        List<User> strongTeam;
+        List<CrpgUser> weakTeam;
+        List<CrpgUser> strongTeam;
         List<ClanGroup> weakClanGroupsTeam;
         List<ClanGroup> strongClanGroupsTeam;
         if (diff < 0)
@@ -261,14 +264,14 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
         {
             foreach (var clanGroup in clanGroupstoSwap2)
             {
-                foreach (User user in clanGroup.MemberList())
+                foreach (CrpgUser user in clanGroup.MemberList())
                 {
                     teamtoSwapInto.Remove(user);
                     teamtoSwapFrom.Add(user);
                 }
             }
 
-            foreach (User user in clanGrouptoSwap1.MemberList())
+            foreach (CrpgUser user in clanGrouptoSwap1.MemberList())
             {
                 teamtoSwapInto.Add(user);
                 teamtoSwapFrom.Remove(user);
@@ -285,8 +288,8 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
     public bool SwapDoneWithoutBanner(GameMatch gameMatch)
     {
         double diff = RatingHelpers.ComputeTeamRatingDifference(gameMatch);
-        List<User> weakTeam;
-        List<User> strongTeam;
+        List<CrpgUser> weakTeam;
+        List<CrpgUser> strongTeam;
         if (diff < 0)
         {
             weakTeam = gameMatch.TeamA;
@@ -298,27 +301,27 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
             strongTeam = gameMatch.TeamA;
         }
 
-        User weakUserToSwap = weakTeam.First();
-        double targetRating = weakUserToSwap.Rating + Math.Abs(diff) / 2f;
-        User strongUserToSwap = MatchBalancingHelpers.FindAUserToSwap((float)targetRating, strongTeam);
+        CrpgUser weakCrpgUserToSwap = weakTeam.First();
+        double targetRating = weakCrpgUserToSwap.Character.Rating.Value + Math.Abs(diff) / 2f;
+        CrpgUser strongCrpgUserToSwap = MatchBalancingHelpers.FindACrpgUserToSwap((float)targetRating, strongTeam);
         foreach (var user in weakTeam)
         {
-            targetRating = user.Rating + Math.Abs(diff) / 2f;
-            User potentialUserToSwap = MatchBalancingHelpers.FindAUserToSwap((float)targetRating, strongTeam);
-            if (Math.Abs(potentialUserToSwap.Rating - targetRating) < Math.Abs(strongUserToSwap.Rating - weakUserToSwap.Rating - Math.Abs(diff) / 2f))
+            targetRating = user.Character.Rating.Value + Math.Abs(diff) / 2f;
+            CrpgUser potentialCrpgUserToSwap = MatchBalancingHelpers.FindACrpgUserToSwap((float)targetRating, strongTeam);
+            if (Math.Abs(potentialCrpgUserToSwap.Character.Rating.Value - targetRating) < Math.Abs(strongCrpgUserToSwap.Character.Rating.Value - weakCrpgUserToSwap.Character.Rating.Value - Math.Abs(diff) / 2f))
             {
-                weakUserToSwap = user;
-                strongUserToSwap = potentialUserToSwap;
+                weakCrpgUserToSwap = user;
+                strongCrpgUserToSwap = potentialCrpgUserToSwap;
             }
         }
 
-        double newdiff = RatingHelpers.ComputeTeamRatingPowerMean(strongTeam) + 2f * weakUserToSwap.Rating - 2f * strongUserToSwap.Rating - RatingHelpers.ComputeTeamRatingPowerMean(weakTeam);
+        double newdiff = RatingHelpers.ComputeTeamRatingPowerMean(strongTeam) + 2f * weakCrpgUserToSwap.Character.Rating.Value - 2f * strongCrpgUserToSwap.Character.Rating.Value - RatingHelpers.ComputeTeamRatingPowerMean(weakTeam);
         if (Math.Abs(newdiff) < Math.Abs(diff))
         {
-            strongTeam.Remove(strongUserToSwap);
-            strongTeam.Add(weakUserToSwap);
-            weakTeam.Add(strongUserToSwap);
-            weakTeam.Remove(weakUserToSwap);
+            strongTeam.Remove(strongCrpgUserToSwap);
+            strongTeam.Add(weakCrpgUserToSwap);
+            weakTeam.Add(strongCrpgUserToSwap);
+            weakTeam.Remove(weakCrpgUserToSwap);
             return true;
         }
         else
@@ -378,8 +381,8 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
     {
         Console.WriteLine("MakeTeamCountCloser LOGs");
         double diff = RatingHelpers.ComputeTeamRatingDifference(gameMatch);
-        List<User> weakTeam;
-        List<User> strongTeam;
+        List<CrpgUser> weakTeam;
+        List<CrpgUser> strongTeam;
         if (diff < 0)
         {
             weakTeam = gameMatch.TeamA;
@@ -393,17 +396,17 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
 
         if (weakTeam.Count >= strongTeam.Count)
         {
-            User weakUser = weakTeam.OrderBy(u => u.Rating).First();
-            Console.WriteLine("Strong User To Swap" + weakUser.Name);
-            weakTeam.Remove(weakUser);
-            strongTeam.Add(weakUser);
+            CrpgUser weakCrpgUser = weakTeam.OrderBy(u => u.Character.Rating.Value).First();
+            Console.WriteLine("Strong CrpgUser To Swap" + weakCrpgUser.Character.Name);
+            weakTeam.Remove(weakCrpgUser);
+            strongTeam.Add(weakCrpgUser);
         }
         else
         {
-            User strongUser = strongTeam.OrderBy(u => u.Rating).Last();
-            Console.WriteLine("Strong User To Swap" + strongUser.Name);
-            weakTeam.Add(strongUser);
-            strongTeam.Remove(strongUser);
+            CrpgUser strongCrpgUser = strongTeam.OrderBy(u => u.Character.Rating.Value).Last();
+            Console.WriteLine("Strong CrpgUser To Swap" + strongCrpgUser.Character.Name);
+            weakTeam.Add(strongCrpgUser);
+            strongTeam.Remove(strongCrpgUser);
         }
     }
 
@@ -427,28 +430,28 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
     {
         foreach (ClanGroup clanGroup in clanGroups)
         {
-            string clanGroupName = clanGroup.Clan == null ? "Solo" : clanGroup.Clan!.Name;
-            Console.WriteLine(clanGroupName);
-            foreach (User u in clanGroup.MemberList())
+            string clanGroupClanId = clanGroup.Clan == null ? "Solo" : clanGroup.Clan!.ToString();
+            Console.WriteLine(clanGroupClanId);
+            foreach (CrpgUser u in clanGroup.MemberList())
             {
-                Console.WriteLine(u.Name + " : " + u.Rating);
+                Console.WriteLine(u.Character.Name + " : " + u.Character.Rating.Value);
             }
         }
     }
 
     private void DumpClanGroup(ClanGroup clanGroup)
     {
-            foreach (User u in clanGroup.MemberList())
+            foreach (CrpgUser u in clanGroup.MemberList())
             {
-                Console.WriteLine(u.Name + " : " + u.Rating);
+                Console.WriteLine(u.Character.Name + " : " + u.Character.Rating.Value);
             }
     }
 
-    private void DumpTeam(List<User> team)
+    private void DumpTeam(List<CrpgUser> team)
     {
-        foreach (User u in team)
+        foreach (CrpgUser u in team)
         {
-            Console.WriteLine(u.Name + " : " + u.Rating);
+            Console.WriteLine(u.Character.Name + " : " + u.Character.Rating.Value);
         }
     }
 }

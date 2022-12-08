@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Crpg.Module.Api.Models.Users;
 
 namespace Crpg.Module.Balancing;
 
@@ -9,29 +10,29 @@ namespace Crpg.Module.Balancing;
 /// </summary>
 
 
-public class RatingHelpers
+internal class RatingHelpers
 {
 
-    public static float ComputeTeamRatingPowerMean(List<User> team, float p = MatchBalancingSystem.PowerParameter)
+    internal static float ComputeTeamRatingPowerMean(List<CrpgUser> team, float p = MatchBalancingSystem.PowerParameter)
     {
-        List<float> elos = team.Select(u => (float)u.Rating).ToList();
+        List<float> elos = team.Select(u => (float)u.Character.Rating.Value).ToList();
         return MathHelper.PowerMean(elos, p);
     }
-    public static float ClanGroupsPowerSum(List<ClanGroup> clanGroups)
+    internal static float ClanGroupsPowerSum(List<ClanGroup> clanGroups)
     {
-        return ComputeTeamRatingPowerSum(MatchBalancingHelpers.ConvertClanGroupsToUserList(clanGroups));
+        return ComputeTeamRatingPowerSum(MatchBalancingHelpers.ConvertClanGroupsToCrpgUserList(clanGroups));
     }
 
-    public static float ComputeTeamRatingDifference(GameMatch gameMatch)
+    internal static float ComputeTeamRatingDifference(GameMatch gameMatch)
     {
         return ComputeTeamRatingPowerSum(gameMatch.TeamA, MatchBalancingSystem.PowerParameter) - ComputeTeamRatingPowerSum(gameMatch.TeamB, MatchBalancingSystem.PowerParameter);
     }
 
 
 
-    public static float ComputeTeamRatingPowerSum(List<User> team, float p = MatchBalancingSystem.PowerParameter)
+    internal static float ComputeTeamRatingPowerSum(List<CrpgUser> team, float p = MatchBalancingSystem.PowerParameter)
     {
-        List<float> elos = team.Select(u => (float)u.Rating).ToList();
+        List<float> elos = team.Select(u => (float)u.Character.Rating.Value).ToList();
         return MathHelper.PowerSum(elos, p);
     }
 

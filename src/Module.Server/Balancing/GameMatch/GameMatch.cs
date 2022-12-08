@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using Crpg.Module.Api.Models.Users;
 
 namespace Crpg.Module.Balancing
 {
-    public class GameMatch
+    internal class GameMatch
     {
-        public List<User> TeamA { get; set; } = new List<User>();
-        public List<User> TeamB { get; set; } = new List<User>();
-        public List<User> Waiting { get; set; } = new List<User>();
+        internal List<CrpgUser> TeamA { get; set; } = new List<CrpgUser>();
+        internal List<CrpgUser> TeamB { get; set; } = new List<CrpgUser>();
+        internal List<CrpgUser> Waiting { get; set; } = new List<CrpgUser>();
     }
-    public class ClanGroupsGameMatch
+    internal class ClanGroupsGameMatch
     {
-        public List<ClanGroup> TeamA { get; set; } = new List<ClanGroup>();
-        public List<ClanGroup> TeamB { get; set; } = new List<ClanGroup>();
-        public List<ClanGroup> Waiting { get; set; } = new List<ClanGroup>();
+        internal List<ClanGroup> TeamA { get; set; } = new List<ClanGroup>();
+        internal List<ClanGroup> TeamB { get; set; } = new List<ClanGroup>();
+        internal List<ClanGroup> Waiting { get; set; } = new List<ClanGroup>();
     }
 }
