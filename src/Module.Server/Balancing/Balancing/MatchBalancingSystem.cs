@@ -430,7 +430,7 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
     {
         foreach (ClanGroup clanGroup in clanGroups)
         {
-            string clanGroupClanId = clanGroup.Clan == null ? "Solo" : clanGroup.Clan!.ToString();
+            string clanGroupClanId = clanGroup.ClanId == null ? "Solo" : clanGroup.ClanId!.ToString();
             Console.WriteLine(clanGroupClanId);
             foreach (CrpgUser u in clanGroup.MemberList())
             {

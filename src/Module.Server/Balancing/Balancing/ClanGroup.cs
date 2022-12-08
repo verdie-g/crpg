@@ -9,39 +9,15 @@ namespace Crpg.Module.Balancing;
 
 internal class ClanGroup
 {
+    public int? ClanId { get; }
+    public ClanGroup(int? clanId)
+    {
+        ClanId = clanId;
+    }
+
     internal int Size()
     {
         return members.Count();
-    }
-
-    internal int? Clan
-    {
-        get
-        {
-            if (members.First().ClanMembership != null)
-            {
-                return members!.First().ClanMembership!.ClanId;
-            }
-            else
-            {
-                return null;
-            }
-        }
-    }
-
-    internal int ClanID
-    {
-        get
-        {
-            if (members.First().ClanMembership != null)
-            {
-                return members!.First().ClanMembership!.ClanId;
-            }
-            else
-            {
-                return 0;
-            }
-        }
     }
 
     internal void Add(CrpgUser user)

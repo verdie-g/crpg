@@ -20,7 +20,7 @@ namespace Crpg.Module.Balancing
             {
                 if (player.ClanMembership == null)
                 {
-                    ClanGroup clangroup = new();
+                    ClanGroup clangroup = new(null);
                     clangroup.Add(player);
                     clanGroups.Add(clangroup);
                 }
@@ -28,11 +28,11 @@ namespace Crpg.Module.Balancing
                 {
                     if (isClanGroupCreated.Contains(player.ClanMembership.ClanId))
                     {
-                        clanGroups.Find(clangroup => clangroup.ClanID == player.ClanMembership.ClanId)!.Add(player);
+                        clanGroups.Find(clangroup => clangroup.ClanId == player.ClanMembership.ClanId)!.Add(player);
                     }
                     else
                     {
-                        ClanGroup clangroup = new();
+                        ClanGroup clangroup = new(player.ClanMembership.ClanId);
                         clangroup.Add(player);
                         isClanGroupCreated.Add(player.ClanMembership.ClanId);
                         clanGroups.Add(clangroup);
