@@ -376,7 +376,7 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
 
     private bool IsSizeDifferencetooMuch(GameMatch gameMatch, float maxSizeRatio, float maxDifference)
     {
-        bool tooMuchSizeRatioDifference = !MathHelper.Within(Math.Abs(gameMatch.TeamA.Count / (float)gameMatch.TeamB.Count), maxSizeRatio, 1f / maxSizeRatio);
+        bool tooMuchSizeRatioDifference = !MathHelper.Within(gameMatch.TeamA.Count / (float)gameMatch.TeamB.Count, maxSizeRatio, 1f / maxSizeRatio);
         bool sizeDifferenceGreaterThanThreshold = Math.Abs(gameMatch.TeamA.Count - gameMatch.TeamB.Count) > maxDifference;
         return tooMuchSizeRatioDifference || sizeDifferenceGreaterThanThreshold;
     }
