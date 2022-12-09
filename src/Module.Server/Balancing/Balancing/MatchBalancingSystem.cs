@@ -338,25 +338,25 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
         return (bestClanGrouptoSwap1, bestClanGroupToSwap2, bestClanGroupToSwapTargetRating);
     }
 
-    private bool IsRatingRatioTooBad(GameMatch gameMatch, float percentageDifference)
+    private bool IsRatingRatioAcceptable(GameMatch gameMatch, float percentageDifference)
     {
         double ratingRatio = Math.Abs(
             (RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamB)
              - RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamA))
             / RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamA));
-        return !MathHelper.Within((float)ratingRatio, 0f, percentageDifference);
+        return MathHelper.Within((float)ratingRatio, 0f, percentageDifference);
     }
 
-    private bool IsTeamSizeDifferenceTooLarge(GameMatch gameMatch, float maxSizeRatio, float maxDifference)
+    private bool IsTeamSizeDifferenceAcceptable(GameMatch gameMatch, float maxSizeRatio, float maxDifference)
     {
         bool tooMuchSizeRatioDifference = !MathHelper.Within(gameMatch.TeamA.Count / (float)gameMatch.TeamB.Count, maxSizeRatio, 1f / maxSizeRatio);
         bool sizeDifferenceGreaterThanThreshold = Math.Abs(gameMatch.TeamA.Count - gameMatch.TeamB.Count) > maxDifference;
-        return tooMuchSizeRatioDifference || sizeDifferenceGreaterThanThreshold;
+        return !tooMuchSizeRatioDifference && !sizeDifferenceGreaterThanThreshold;
     }
 
     private bool IsBalanceGoodEnough(GameMatch gameMatch, float maxSizeRatio, float maxDifference, float percentageDifference)
     {
-        return !IsTeamSizeDifferenceTooLarge(gameMatch, maxSizeRatio, maxDifference) && !IsRatingRatioTooBad(gameMatch, percentageDifference);
+        return IsTeamSizeDifferenceAcceptable(gameMatch, maxSizeRatio, maxDifference) && IsRatingRatioAcceptable(gameMatch, percentageDifference);
     }
 
 }
