@@ -129,7 +129,7 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
 
             if (bannerBalance)
             {
-                if (!SwapDoneWithBanner(gameMatch))
+                if (!FindAndSwapClanGroups(gameMatch))
                 {
                     Console.WriteLine("Made " + i + " Swaps");
                     Console.WriteLine("No More Swap With BannerGrouping Available");
@@ -138,7 +138,7 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
             }
             else
             {
-                if (!SwapDoneWithoutBanner(gameMatch))
+                if (!FindAndSwapPlayers(gameMatch))
                 {
                     Console.WriteLine("Made " + i + " Swaps");
                     Console.WriteLine("No more swap without BannerGrouping available");
@@ -150,7 +150,7 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
         return gameMatch;
     }
 
-    public bool SwapDoneWithBanner(GameMatch gameMatch)
+    public bool FindAndSwapClanGroups(GameMatch gameMatch)
     {
         double diff = RatingHelpers.ComputeTeamRatingDifference(gameMatch);
         ClanGroupsGameMatch clanGroupGameMatch = MatchBalancingHelpers.ConvertGameMatchToClanGroupsGameMatchList(gameMatch);
@@ -240,7 +240,7 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
         }
     }
 
-    public bool SwapDoneWithoutBanner(GameMatch gameMatch)
+    public bool FindAndSwapPlayers(GameMatch gameMatch)
     {
         double diff = RatingHelpers.ComputeTeamRatingDifference(gameMatch);
         List<CrpgUser> weakTeam;
