@@ -16,8 +16,8 @@ internal class RatingHelpers
 
     internal static float ComputeTeamRatingPowerMean(List<CrpgUser> team, float p = MatchBalancingSystem.PowerParameter)
     {
-        List<float> elos = team.Select(u => (float)u.Character.Rating.Value).ToList();
-        return MathHelper.PowerMean(elos, p);
+        List<float> ratings = team.Select(u => (float)u.Character.Rating.Value).ToList();
+        return MathHelper.PowerMean(ratings, p);
     }
     internal static float ClanGroupsPowerSum(List<ClanGroup> clanGroups)
     {
@@ -33,8 +33,8 @@ internal class RatingHelpers
 
     internal static float ComputeTeamRatingPowerSum(List<CrpgUser> team, float p = MatchBalancingSystem.PowerParameter)
     {
-        List<float> elos = team.Select(u => (float)u.Character.Rating.Value).ToList();
-        return MathHelper.PowerSum(elos, p);
+        List<float> ratings = team.Select(u => (float)u.Character.Rating.Value).ToList();
+        return MathHelper.PowerSum(ratings, p);
     }
 
 }
