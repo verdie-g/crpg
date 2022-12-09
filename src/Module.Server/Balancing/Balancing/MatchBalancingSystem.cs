@@ -55,25 +55,25 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
         MatchBalancingHelpers.DumpTeamsStatus(gameMatch);
         Console.WriteLine("BannerBalancingWithEdgeCases");
         Console.WriteLine("--------------------------------------------");
-        Console.WriteLine("Now Making Team Of Similar Sizes with Banner");
+        Console.WriteLine("Now splitting the clangroups between the two team");
         GameMatch balancedBannerGameMatch = KKMakeTeamOfSimilarSizesWithoutSplittingClanGroups(gameMatch);
         MatchBalancingHelpers.DumpTeamsStatus(balancedBannerGameMatch);
 
-        Console.WriteLine("Banner Balancing Now");
+        Console.WriteLine("Banner balancing now");
 
         balancedBannerGameMatch = BalanceTeamOfSimilarSizes(balancedBannerGameMatch, bannerBalance: true, 0.025f);
 
-        Console.WriteLine("Banner Balancing Done");
+        Console.WriteLine("Banner balancing done");
         MatchBalancingHelpers.DumpTeamsStatus(balancedBannerGameMatch);
 
         if (IsBalanceGoodEnough(balancedBannerGameMatch, maxSizeRatio: 0.75f, maxDifference: 10f, percentageDifference: 0.10f))
         {
-            Console.WriteLine("Balance is Acceptable");
+            Console.WriteLine("Balance is acceptable");
         }
         else
         {
             // This are failcases in case bannerbalance was not enough
-            Console.WriteLine("Unnacceptable");
+            Console.WriteLine("Balance is unnacceptable");
             balancedBannerGameMatch = BalanceTeamOfSimilarSizes(balancedBannerGameMatch, bannerBalance: false, 0.10f);
 
             if (IsBalanceGoodEnough(balancedBannerGameMatch, maxSizeRatio: 0.75f, maxDifference: 10f, percentageDifference: 0.15f))
@@ -85,9 +85,9 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
             {
                 // A few swaps were not enough. Swaps are a form of gradient descent. Sometimes there are local extremas that are not  global extremas
                 // Here we completely abandon bannerbalance by completely reshuffling the card then redoing swaps
-                Console.WriteLine("Swaps were not enough. This should Really not Happen often");
+                Console.WriteLine("Swaps were not enough. This should really not happen often");
                 MatchBalancingHelpers.DumpTeams(balancedBannerGameMatch);
-                Console.WriteLine("NaiveCaptainBalancing + Balancing Without Banner");
+                Console.WriteLine("NaiveCaptainBalancing + Balancing Without BannerGrouping");
                 balancedBannerGameMatch = NaiveCaptainBalancing(balancedBannerGameMatch);
                 balancedBannerGameMatch = BalanceTeamOfSimilarSizes(balancedBannerGameMatch, false, 0.001f);
             }
@@ -129,7 +129,7 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
             if (IsBalanceGoodEnough(gameMatch, maxSizeRatio: 0.75f, maxDifference:10f, percentageDifference: threshold))
             {
                 Console.WriteLine($"Made {i} Swaps {methodUsed}");
-                Console.WriteLine("Team are of Similar Sizes and Similar Ratings");
+                Console.WriteLine("Teams are of similar sizes and similar ratings");
                 break;
             }
             else
@@ -139,7 +139,7 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
                     if (!SwapDoneWithBanner(gameMatch))
                     {
                         Console.WriteLine("Made " + i + " Swaps");
-                        Console.WriteLine("No More Swap With Banner Available");
+                        Console.WriteLine("No More Swap With BannerGrouping Available");
                         break;
                     }
                 }
@@ -148,7 +148,7 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
                     if (!SwapDoneWithoutBanner(gameMatch))
                     {
                         Console.WriteLine("Made " + i + " Swaps");
-                        Console.WriteLine("No More Swap Without Banner Available");
+                        Console.WriteLine("No more swap without BannerGrouping available");
                         break;
                     }
                 }
@@ -367,39 +367,6 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
         }
 
         return (bestClanGrouptoSwap1, bestClanGroupToSwap2, bestClanGroupToSwapTargetRating);
-    }
-
-    private void MakeTeamCountCloser(GameMatch gameMatch)
-    {
-        Console.WriteLine("MakeTeamCountCloser LOGs");
-        double diff = RatingHelpers.ComputeTeamRatingDifference(gameMatch);
-        List<CrpgUser> weakTeam;
-        List<CrpgUser> strongTeam;
-        if (diff < 0)
-        {
-            weakTeam = gameMatch.TeamA;
-            strongTeam = gameMatch.TeamB;
-        }
-        else
-        {
-            weakTeam = gameMatch.TeamB;
-            strongTeam = gameMatch.TeamA;
-        }
-
-        if (weakTeam.Count >= strongTeam.Count)
-        {
-            CrpgUser weakCrpgUser = weakTeam.OrderBy(u => u.Character.Rating.Value).First();
-            Console.WriteLine("Strong CrpgUser To Swap" + weakCrpgUser.Character.Name);
-            weakTeam.Remove(weakCrpgUser);
-            strongTeam.Add(weakCrpgUser);
-        }
-        else
-        {
-            CrpgUser strongCrpgUser = strongTeam.OrderBy(u => u.Character.Rating.Value).Last();
-            Console.WriteLine("Strong CrpgUser To Swap" + strongCrpgUser.Character.Name);
-            weakTeam.Add(strongCrpgUser);
-            strongTeam.Remove(strongCrpgUser);
-        }
     }
 
     private bool IsRatingRatioTooBad(GameMatch gameMatch, float percentageDifference)
