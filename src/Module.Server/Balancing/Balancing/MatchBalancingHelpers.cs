@@ -15,7 +15,7 @@ namespace Crpg.Module.Balancing
         {
             Dictionary<int, ClanGroup> ClanGroupCreated = new();
             List<int> isClanGroupCreated = new();
-            List<ClanGroup> clanGroups = new();  
+            List<ClanGroup> clanGroups = new();
            // List<CrpgUser> noClan = userList.Select()
 
             foreach (CrpgUser player in userList.OrderByDescending(u => u.ClanMembership?.ClanId ?? 0))
@@ -86,19 +86,46 @@ namespace Crpg.Module.Balancing
             return gameMatch;
         }
 
-        internal static CrpgUser FindACrpgUserToSwap(float targetRating, List<CrpgUser> teamtoSelectFrom)
+        internal static List<CrpgUser> FindCrpgUsersToSwap(float targetRating, List<CrpgUser> teamtoSelectFrom, float sizeOffset)
         {
-            CrpgUser bestCrpgUserToSwap = teamtoSelectFrom.First();
-
-            foreach (CrpgUser user in teamtoSelectFrom)
+            List<CrpgUser> team = teamtoSelectFrom.ToList();
+            List<CrpgUser> usersToSwap = new List<CrpgUser>();
+            Vector2 usersToSwapVector = new(0, 0);
+            float targetSizeScaling = targetRating / (1 + sizeOffset); // used to make the targeted vector diagonal
+            for (int i = 0; i < teamtoSelectFrom.Count; i++)
             {
-                        if (Math.Abs(user.Character.Rating.Value - targetRating) < Math.Abs(bestCrpgUserToSwap.Character.Rating.Value - targetRating))
+                CrpgUser bestUserToAdd = team.First();
+                Vector2 bestUserToAddVector = new(targetSizeScaling, bestUserToAdd.Character.Rating.Value);
+                Vector2 objectiveVector = new(targetSizeScaling * (1 + sizeOffset), targetRating);
+                if (objectiveVector.Length() == 0f)
+                {
+                    break;
+                }
+
+                foreach (CrpgUser user in team)
+                {
+                    Vector2 userVector = new(targetSizeScaling, bestUserToAdd.Character.Rating.Value);
+
+                        if ((usersToSwapVector + userVector - objectiveVector).Length() < (usersToSwapVector + bestUserToAddVector - objectiveVector).Length())
                         {
-                        bestCrpgUserToSwap = user;
-                        }
+                            bestUserToAdd = user;
+                            bestUserToAddVector = new(targetSizeScaling, bestUserToAdd.Character.Rating.Value);
+                    }
+                }
+
+                if ((usersToSwapVector + bestUserToAddVector - objectiveVector).Length() < (usersToSwapVector - objectiveVector).Length())
+                {
+                    team.Remove(bestUserToAdd);
+                    usersToSwap.Add(bestUserToAdd);
+                    usersToSwapVector = new(usersToSwap.Count * targetSizeScaling, usersToSwap.Sum(u => u.Character.Rating.Value));
+                }
+                else
+                {
+                    team.Remove(bestUserToAdd);
+                }
             }
 
-            return bestCrpgUserToSwap;
+            return usersToSwap;
         }
 
         internal static List<ClanGroup> FindAClanGroupToSwapUsing(float targetRating, float targetSize, List<ClanGroup> teamtoSelectFrom, float sizeOffset, bool useAngle)
@@ -138,7 +165,7 @@ namespace Crpg.Module.Balancing
                         }
                     }
                 }
-                if ((clanGroupsToSwapVector + bestClanGroupToAddVector - objectiveVector).Length() < (clanGroupsToSwapVector + bestClanGroupToAddVector - -objectiveVector).Length())
+                if ((clanGroupsToSwapVector + bestClanGroupToAddVector - objectiveVector).Length() < (clanGroupsToSwapVector - objectiveVector).Length())
                 {
                     team.Remove(bestClanGroupToAdd);
                     clanGroupsToSwap.Add(bestClanGroupToAdd);
@@ -252,7 +279,34 @@ namespace Crpg.Module.Balancing
             var node = partitions.Dequeue();
             return new PartitioningResult<T>(node.Partition, node.Sizes);
         }
+        public static void DumpClanGroups(List<ClanGroup> clanGroups)
+        {
+            foreach (ClanGroup clanGroup in clanGroups)
+            {
+                string clanGroupClanId = clanGroup.ClanId == null ? "Solo" : clanGroup.ClanId!.ToString();
+                Console.WriteLine(clanGroupClanId);
+                foreach (CrpgUser u in clanGroup.MemberList())
+                {
+                    Console.WriteLine(u.Character.Name + " : " + u.Character.Rating.Value);
+                }
+            }
+        }
 
+        public static void DumpClanGroup(ClanGroup clanGroup)
+        {
+            foreach (CrpgUser u in clanGroup.MemberList())
+            {
+                Console.WriteLine(u.Character.Name + " : " + u.Character.Rating.Value);
+            }
+        }
+
+        public static void DumpTeam(List<CrpgUser> team)
+        {
+            foreach (CrpgUser u in team)
+            {
+                Console.WriteLine(u.Character.Name + " : " + u.Character.Rating.Value);
+            }
+        }
         private class PartitionNode<T>
         {
             internal PartitionNode(List<T>[] partition, double[] sizes)

@@ -9,36 +9,12 @@ namespace Crpg.Module.UTest.Balancing
 {
     public class MatchBalancingSystemTest
     {
-        [Test]
-        public void CaptainShouldNotBeThatBad()
+        internal GameMatch PureBannerBalancing(GameMatch gameMatch)
         {
             var matchBalancer = new MatchBalancingSystem();
-            GameMatch balancedGame = matchBalancer.NaiveCaptainBalancing(game1);
-            float teamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamA, 1);
-            float teamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamB, 1);
-            double meanRatingRatio = (double)teamAMeanRating / (double)teamBMeanRating;
-            Assert.AreEqual(meanRatingRatio, 1, 0.2);
-            Console.WriteLine("balanced rating ratio = " + meanRatingRatio);
-            float teamAQuadraticMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamA, 2);
-            float teamBQuadraticMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamB, 2);
-            double quadraticMeanRatingRatio = (double)teamAQuadraticMeanRating / (double)teamBQuadraticMeanRating;
-            Assert.AreEqual(quadraticMeanRatingRatio, 1, 0.2);
-        }
-
-        [Test]
-        public void KKbalancingRatingsShouldNotBeThatBad()
-        {
-            var matchBalancer = new MatchBalancingSystem();
-            GameMatch balancedGame = matchBalancer.KKBalancing(game1);
-            float teamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamA, 1);
-            float teamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamB, 1);
-            double meanRatingRatio = (double)teamAMeanRating / (double)teamBMeanRating;
-            Assert.AreEqual(meanRatingRatio, 1, 0.2);
-            Console.WriteLine("balanced rating ratio = " + meanRatingRatio);
-            float teamAQuadraticMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamA, 2);
-            float teamBQuadraticMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamB, 2);
-            double quadraticMeanRatingRatio = (double)teamAQuadraticMeanRating / (double)teamBQuadraticMeanRating;
-            Assert.AreEqual(quadraticMeanRatingRatio, 1, 0.2);
+            GameMatch unbalancedBannerGameMatch = matchBalancer.KKMakeTeamOfSimilarSizesWithBannerBalance(gameMatch);
+            unbalancedBannerGameMatch = matchBalancer.BalanceTeamOfSimilarSizes(unbalancedBannerGameMatch, true, 0.025f);
+            return unbalancedBannerGameMatch;
         }
 
         [Test]
@@ -67,7 +43,7 @@ namespace Crpg.Module.UTest.Balancing
             double unbalancedMeanRatingRatio = (double)unbalancedTeamAMeanRating / (double)unbalancedTeamBMeanRating;
             Console.WriteLine("unbalanced rating ratio = " + unbalancedMeanRatingRatio);
 
-            GameMatch balancedGame = matchBalancer.PureBannerBalancing(game1);
+            GameMatch balancedGame = PureBannerBalancing(game1);
             float teamASize = balancedGame.TeamA.Count;
             float teamBSize = balancedGame.TeamB.Count;
             double sizeRatio = (double)teamASize / (double)teamBSize;
@@ -99,6 +75,7 @@ namespace Crpg.Module.UTest.Balancing
             double RatingRatio = (double)teamARating / (double)teamBRating;
             Assert.AreEqual(RatingRatio, 1, 0.2);
         }
+
         [Test]
         public void BannerBalancingWithEdgeCaseShouldWorkWithOneStrongClanGroup()
         {
@@ -114,6 +91,9 @@ namespace Crpg.Module.UTest.Balancing
             float teamARating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamA, 1);
             float teamBRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamB, 1);
             double RatingRatio = (double)teamARating / (double)teamBRating;
+            MatchBalancingHelpers.DumpTeam(balancedGame.TeamA);
+            Console.WriteLine("----------------------------------");
+            MatchBalancingHelpers.DumpTeam(balancedGame.TeamB);
             Assert.AreEqual(RatingRatio, 1, 0.2);
         }
         [Test]
@@ -147,7 +127,7 @@ namespace Crpg.Module.UTest.Balancing
             double unbalancedMeanRatingRatio = (double)unbalancedTeamAMeanRating / (double)unbalancedTeamBMeanRating;
             Console.WriteLine("unbalanced rating ratio = " + unbalancedMeanRatingRatio);
 
-            GameMatch balancedGame = matchBalancer.PureBannerBalancing(game1);
+            GameMatch balancedGame = PureBannerBalancing(game1);
             foreach (CrpgUser u in game1.TeamA)
             {
                 if(u.ClanMembership != null)
@@ -205,10 +185,10 @@ namespace Crpg.Module.UTest.Balancing
         private static CrpgClan SERFS = new() { Id = 59, Name = "SERFS" };
         private static CrpgClan VAGABONDS = new() { Id = 60, Name = "VAGABONDS" };
 
-
+        private static CrpgUser aragorn = new() { Character = new CrpgCharacter { Name = "Aragorn", Id = 0, Rating = new CrpgCharacterRating { Value = 20000 } }, ClanMembership = new CrpgClanMember { ClanId = 1 } };
         private static CrpgUser arwen = new() { Character = new CrpgCharacter{ Name = "Arwen",  Id = 1, Rating = new CrpgCharacterRating { Value = 20000 }}, ClanMembership = new CrpgClanMember {ClanId = 1} };
         private static CrpgUser frodon = new() { Character = new CrpgCharacter { Name = "Frodon", Id = 2, Rating = new CrpgCharacterRating { Value = 16000 }}, ClanMembership = new CrpgClanMember { ClanId = 1} };
-        private static CrpgUser sam = new() { Character = new CrpgCharacter{ Name = "Sam", Id = 3, Rating = new CrpgCharacterRating { Value = 1500 }}, ClanMembership = new CrpgClanMember { ClanId = 1} };
+        private static CrpgUser sam = new() { Character = new CrpgCharacter{ Name = "Sam", Id = 3, Rating = new CrpgCharacterRating { Value = 15000 }}, ClanMembership = new CrpgClanMember { ClanId = 1} };
         private static CrpgUser sangoku = new() { Character = new CrpgCharacter{ Name = "Sangoku", Id = 4, Rating = new CrpgCharacterRating { Value = 2000 }}, ClanMembership = new CrpgClanMember { ClanId = 2} };
         private static CrpgUser krilin = new() { Character = new CrpgCharacter{ Name = "Krilin", Id = 5, Rating = new CrpgCharacterRating { Value = 1000 }}, ClanMembership = new CrpgClanMember { ClanId = 2} };
         private static CrpgUser rolandDeschain = new() { Character = new CrpgCharacter{ Name = "Roland Deschain", Id = 6, Rating = new CrpgCharacterRating { Value = 2800 }}, ClanMembership = new CrpgClanMember { ClanId = 3} };
@@ -1148,6 +1128,7 @@ namespace Crpg.Module.UTest.Balancing
             TeamB = new List<CrpgUser> { },
             Waiting = new List<CrpgUser>
             {
+                aragorn,
                 arwen,
                 frodon,
                 sam,
