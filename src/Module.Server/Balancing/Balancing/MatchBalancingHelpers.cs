@@ -51,7 +51,7 @@ namespace Crpg.Module.Balancing
 
             foreach (ClanGroup clanGroup in clanGroups)
             {
-                users.AddRange(clanGroup.MemberList());
+                users.AddRange(clanGroup.MemberList);
             }
 
             return users;
@@ -287,7 +287,7 @@ namespace Crpg.Module.Balancing
             {
                 string clanGroupClanId = clanGroup.ClanId == null ? "Solo" : clanGroup.ClanId!.ToString();
                 Console.WriteLine(clanGroupClanId);
-                foreach (CrpgUser u in clanGroup.MemberList())
+                foreach (CrpgUser u in clanGroup.MemberList)
                 {
                     Console.WriteLine(u.Character.Name + " : " + u.Character.Rating.Value);
                 }
@@ -296,7 +296,7 @@ namespace Crpg.Module.Balancing
 
         public static void DumpClanGroup(ClanGroup clanGroup)
         {
-            foreach (CrpgUser u in clanGroup.MemberList())
+            foreach (CrpgUser u in clanGroup.MemberList)
             {
                 Console.WriteLine(u.Character.Name + " : " + u.Character.Rating.Value);
             }

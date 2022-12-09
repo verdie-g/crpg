@@ -13,6 +13,7 @@ namespace Crpg.Module.Balancing;
 internal class ClanGroup
 {
     public int? ClanId { get; }
+    public List<CrpgUser> MemberList { get; } = new();
     public ClanGroup(int? clanId)
     {
         ClanId = clanId;
@@ -20,28 +21,21 @@ internal class ClanGroup
 
     internal int Size()
     {
-        return members.Count();
+        return MemberList.Count();
     }
 
     internal void Add(CrpgUser user)
     {
-        members.Add(user);
+        MemberList.Add(user);
     }
 
     internal float RatingPsum(float p = MatchBalancingSystem.PowerParameter)
     {
-        return RatingHelpers.ComputeTeamRatingPowerSum(members, p);
+        return RatingHelpers.ComputeTeamRatingPowerSum(MemberList, p);
     }
 
     internal float RatingPMean(float p = MatchBalancingSystem.PowerParameter)
     {
-        return RatingHelpers.ComputeTeamRatingPowerMean(members, p);
+        return RatingHelpers.ComputeTeamRatingPowerMean(MemberList, p);
     }
-
-    internal List<CrpgUser> MemberList()
-    {
-        return members;
-    }
-
-    private List<CrpgUser> members = new();
 }
