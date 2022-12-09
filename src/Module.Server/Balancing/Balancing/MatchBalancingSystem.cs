@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Crpg.Module.Balancing;
 using System.Numerics;
 using Crpg.Module.Api.Models.Users;
-using Crpg.Module.Api.Models.Characters;
-using Crpg.Module.Api.Models.Clans;
-using TaleWorlds.LinQuick;
 using Crpg.Module.Helpers;
 
 namespace Crpg.Module.Balancing;
@@ -124,31 +120,29 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
         string methodUsed = bannerBalance ? "using bannerBalance" : "without bannerBalance";
         for (int i = 0; i < MaximumNumberOfSwaps; i++)
         {
-            if (IsBalanceGoodEnough(gameMatch, maxSizeRatio: 0.75f, maxDifference:10f, percentageDifference: threshold))
+            if (IsBalanceGoodEnough(gameMatch, maxSizeRatio: 0.75f, maxDifference: 10f, percentageDifference: threshold))
             {
                 Console.WriteLine($"Made {i} Swaps {methodUsed}");
                 Console.WriteLine("Teams are of similar sizes and similar ratings");
                 break;
             }
+
+            if (bannerBalance)
+            {
+                if (!SwapDoneWithBanner(gameMatch))
+                {
+                    Console.WriteLine("Made " + i + " Swaps");
+                    Console.WriteLine("No More Swap With BannerGrouping Available");
+                    break;
+                }
+            }
             else
             {
-                if (bannerBalance)
+                if (!SwapDoneWithoutBanner(gameMatch))
                 {
-                    if (!SwapDoneWithBanner(gameMatch))
-                    {
-                        Console.WriteLine("Made " + i + " Swaps");
-                        Console.WriteLine("No More Swap With BannerGrouping Available");
-                        break;
-                    }
-                }
-                else
-                {
-                    if (!SwapDoneWithoutBanner(gameMatch))
-                    {
-                        Console.WriteLine("Made " + i + " Swaps");
-                        Console.WriteLine("No more swap without BannerGrouping available");
-                        break;
-                    }
+                    Console.WriteLine("Made " + i + " Swaps");
+                    Console.WriteLine("No more swap without BannerGrouping available");
+                    break;
                 }
             }
         }
@@ -266,11 +260,11 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
         bool swapingFromWeakTeam = playerCountDifference <= 0;
         List<CrpgUser> teamTeamToSwapFrom = swapingFromWeakTeam ? weakTeam : strongTeam;
         List<CrpgUser> teamTeamToSwapInto = swapingFromWeakTeam ? strongTeam : weakTeam;
-        CrpgUser bestCrpgUserToSwap1 = swapingFromWeakTeam? weakTeam.OrderBy(c => c.Character.Rating.Value).First() : strongTeam.OrderBy(c => c.Character.Rating.Value).Last();
+        CrpgUser bestCrpgUserToSwap1 = swapingFromWeakTeam ? weakTeam.OrderBy(c => c.Character.Rating.Value).First() : strongTeam.OrderBy(c => c.Character.Rating.Value).Last();
         float sizeOffset = Math.Abs(playerCountDifference);
         float targetSizeRescaling = (float)diff / (2f * sizeOffset);
         double targetRating = swapingFromWeakTeam ? bestCrpgUserToSwap1.Character.Rating.Value + Math.Abs(diff) / 2f : bestCrpgUserToSwap1.Character.Rating.Value - Math.Abs(diff) / 2f;
-        List<CrpgUser> bestCrpgUsersToSwap2 = MatchBalancingHelpers.FindCrpgUsersToSwap((float)targetRating, teamTeamToSwapInto, sizeOffset /2f);
+        List<CrpgUser> bestCrpgUsersToSwap2 = MatchBalancingHelpers.FindCrpgUsersToSwap((float)targetRating, teamTeamToSwapInto, sizeOffset / 2f);
         // the pair difference (strong - weak) needs to be close to TargetVector
         Vector2 targetVector = new(sizeOffset * targetSizeRescaling, (float)diff / 2f);
         Vector2 bestPairVector = new((bestCrpgUsersToSwap2.Count - 1) * targetSizeRescaling, Math.Abs(bestCrpgUserToSwap1.Character.Rating.Value - bestCrpgUsersToSwap2.Sum(u => u.Character.Rating.Value)));
@@ -292,13 +286,14 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
             : strongTeam.Sum(u => u.Character.Rating.Value) + 2f * bestCrpgUsersToSwap2.Sum(u => u.Character.Rating.Value) - 2f * bestCrpgUserToSwap1.Character.Rating.Value - weakTeam.Sum(u => u.Character.Rating.Value);
         if (Math.Abs(newdiff) < Math.Abs(diff))
         {
-            if(swapingFromWeakTeam)
+            if (swapingFromWeakTeam)
             {
                 foreach (CrpgUser user in bestCrpgUsersToSwap2)
                 {
                     weakTeam.Add(user);
                     strongTeam.Remove(user);
                 }
+
                 strongTeam.Add(bestCrpgUserToSwap1);
                 weakTeam.Remove(bestCrpgUserToSwap1);
             }
@@ -309,9 +304,11 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
                     weakTeam.Remove(user);
                     strongTeam.Add(user);
                 }
+
                 strongTeam.Remove(bestCrpgUserToSwap1);
                 weakTeam.Add(bestCrpgUserToSwap1);
             }
+
             return true;
         }
         else
@@ -339,7 +336,6 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
         float bestClanGroupToSwapTargetRating = swapingFromWeakTeam ? weakClanGroupToSwap.RatingPsum() + (float)Math.Abs(ratingDifference) / 2f : strongClanGroupToSwap.RatingPsum() - (float)Math.Abs(ratingDifference) / 2f;
         ClanGroup bestClanGrouptoSwap1 = swapingFromWeakTeam ? weakClanGroupToSwap : strongClanGroupToSwap;
         List<ClanGroup> bestClanGroupToSwap2 = MatchBalancingHelpers.FindAClanGroupToSwapUsing(bestClanGroupToSwapTargetRating, bestClanGrouptoSwap1.Size(), teamToSwapInto, Math.Abs(targetSizeOffset), usingAngle);
-
 
         Vector2 bestPairVector = new((MatchBalancingHelpers.ClanGroupsSize(bestClanGroupToSwap2) - bestClanGrouptoSwap1.Size()) * targetSizeRescaling, Math.Abs(bestClanGrouptoSwap1.RatingPsum() - MatchBalancingHelpers.ClanGroupsRating(bestClanGroupToSwap2)));
 
@@ -383,7 +379,7 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
         return tooMuchSizeRatioDifference || sizeDifferenceGreaterThanThreshold;
     }
 
-    private bool IsBalanceGoodEnough (GameMatch gameMatch, float maxSizeRatio, float maxDifference, float percentageDifference)
+    private bool IsBalanceGoodEnough(GameMatch gameMatch, float maxSizeRatio, float maxDifference, float percentageDifference)
     {
         return !IsSizeDifferencetooMuch(gameMatch, maxSizeRatio, maxDifference) && !IsRatingRatioTooBad(gameMatch, percentageDifference);
     }
