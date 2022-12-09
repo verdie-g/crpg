@@ -106,22 +106,18 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
         allCrpgUsers.AddRange(gameMatch.Waiting);
         var clangroupList = MatchBalancingHelpers.ConvertCrpgUserListToClanGroups(allCrpgUsers);
         GameMatch returnedGameMatch = new();
-        int i = 0;
-        ClanGroup[] clangroupsArray = new ClanGroup[clangroupList.Count];
-        double[] size = new double[clangroupList.Count];
-        foreach (ClanGroup clangroup in clangroupList.OrderByDescending(c => c.Size()))
+        ClanGroup[] clangroupsArray = clangroupList.ToArray();
+        double[] clangroupSize = new double[clangroupList.Count];
+        for (int i = 0; i < clangroupsArray.Length; i++)
         {
-            clangroupsArray[i] = clangroup;
-            size[i] = clangroup.Size();
-            i++;
+            clangroupSize[i] = clangroupList[i].Size();
         }
 
-        var partition = MatchBalancingHelpers.Heuristic(clangroupsArray, size, 2);
+        var partition = MatchBalancingHelpers.Heuristic(clangroupsArray, clangroupSize, 2, preSorted: false);
         returnedGameMatch.TeamA = MatchBalancingHelpers.ConvertClanGroupsToCrpgUserList(partition.Partition[0].ToList());
         returnedGameMatch.TeamB = MatchBalancingHelpers.ConvertClanGroupsToCrpgUserList(partition.Partition[1].ToList());
         return returnedGameMatch;
     }
-
     public GameMatch BalanceTeamOfSimilarSizes(GameMatch gameMatch, bool bannerBalance, float threshold)
     {
         string methodUsed = bannerBalance ? "using bannerBalance" : "without bannerBalance";
