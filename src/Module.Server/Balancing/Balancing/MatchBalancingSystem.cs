@@ -52,54 +52,52 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
 
     public GameMatch BannerBalancingWithEdgeCases(GameMatch gameMatch)
     {
+        MatchBalancingHelpers.DumpTeamsStatus(gameMatch);
         Console.WriteLine("BannerBalancingWithEdgeCases");
         Console.WriteLine("--------------------------------------------");
         Console.WriteLine("Now Making Team Of Similar Sizes with Banner");
-        GameMatch balancedBannerGameMatch = KKMakeTeamOfSimilarSizesWithBannerBalance(gameMatch);
-        Console.WriteLine("Teams are now Of Similar Sizes With Banner");
-        Console.WriteLine("Team A Count " + balancedBannerGameMatch.TeamA.Count + " Rating: " + RatingHelpers.ComputeTeamRatingPowerSum(balancedBannerGameMatch.TeamA));
-        Console.WriteLine("Team B Count " + balancedBannerGameMatch.TeamB.Count + " Rating: " + RatingHelpers.ComputeTeamRatingPowerSum(balancedBannerGameMatch.TeamB));
-        Console.WriteLine("--------------------------------------------");
+        GameMatch balancedBannerGameMatch = KKMakeTeamOfSimilarSizesWithoutSplittingClanGroups(gameMatch);
+        MatchBalancingHelpers.DumpTeamsStatus(balancedBannerGameMatch);
+
         Console.WriteLine("Banner Balancing Now");
-        balancedBannerGameMatch = BalanceTeamOfSimilarSizes(balancedBannerGameMatch, true, 0.025f);
+
+        balancedBannerGameMatch = BalanceTeamOfSimilarSizes(balancedBannerGameMatch, bannerBalance: true, 0.025f);
+
         Console.WriteLine("Banner Balancing Done");
-        Console.WriteLine("Team A Count " + balancedBannerGameMatch.TeamA.Count + " Rating: " + RatingHelpers.ComputeTeamRatingPowerSum(balancedBannerGameMatch.TeamA));
-        Console.WriteLine("Team B Count " + balancedBannerGameMatch.TeamB.Count + " Rating: " + RatingHelpers.ComputeTeamRatingPowerSum(balancedBannerGameMatch.TeamB));
-        Console.WriteLine("--------------------------------------------");
+        MatchBalancingHelpers.DumpTeamsStatus(balancedBannerGameMatch);
 
-
-
-   
-        if (IsBalanceGoodEnough(gameMatch, maxSizeRatio: 0.75f, maxDifference: 10f, percentageDifference: 0.2f))
+        if (IsBalanceGoodEnough(balancedBannerGameMatch, maxSizeRatio: 0.75f, maxDifference: 10f, percentageDifference: 0.10f))
         {
             Console.WriteLine("Balance is Acceptable");
         }
         else
         {
+            // This are failcases in case bannerbalance was not enough
             Console.WriteLine("Unnacceptable");
-            balancedBannerGameMatch = BalanceTeamOfSimilarSizes(balancedBannerGameMatch, false, 0.10f);
+            balancedBannerGameMatch = BalanceTeamOfSimilarSizes(balancedBannerGameMatch, bannerBalance: false, 0.10f);
+
+            if (IsBalanceGoodEnough(balancedBannerGameMatch, maxSizeRatio: 0.75f, maxDifference: 10f, percentageDifference: 0.15f))
+            {
+                // A few swaps solved the problem. Most of the clangroups are intact
+                Console.WriteLine("Balance is now Acceptable");
+            }
+            else
+            {
+                // A few swaps were not enough. Swaps are a form of gradient descent. Sometimes there are local extremas that are not  global extremas
+                // Here we completely abandon bannerbalance by completely reshuffling the card then redoing swaps
+                Console.WriteLine("Swaps were not enough. This should Really not Happen often");
+                MatchBalancingHelpers.DumpTeams(balancedBannerGameMatch);
+                Console.WriteLine("NaiveCaptainBalancing + Balancing Without Banner");
+                balancedBannerGameMatch = NaiveCaptainBalancing(balancedBannerGameMatch);
+                balancedBannerGameMatch = BalanceTeamOfSimilarSizes(balancedBannerGameMatch, false, 0.001f);
+            }
         }
 
-        if (IsBalanceGoodEnough(gameMatch, maxSizeRatio: 0.75f, maxDifference: 10f, percentageDifference: 0.2f))
-        {
-            Console.WriteLine("Acceptable");
-        }
-        else
-        {
-            Console.WriteLine("Swaps were not enough. This should Really not Happen often");
-            MatchBalancingHelpers.DumpTeams(balancedBannerGameMatch);
-            Console.WriteLine("NaiveCaptainBalancing + Balancing Without Banner");
-            balancedBannerGameMatch = NaiveCaptainBalancing(balancedBannerGameMatch);
-            balancedBannerGameMatch = BalanceTeamOfSimilarSizes(balancedBannerGameMatch, false, 0.01f);
-            
-        }
-        Console.WriteLine("--------------------------------------------");
-        Console.WriteLine("Team A Count " + balancedBannerGameMatch.TeamA.Count + " Rating: " + RatingHelpers.ComputeTeamRatingPowerSum(balancedBannerGameMatch.TeamA));
-        Console.WriteLine("Team B Count " + balancedBannerGameMatch.TeamB.Count + " Rating: " + RatingHelpers.ComputeTeamRatingPowerSum(balancedBannerGameMatch.TeamB));
+        MatchBalancingHelpers.DumpTeamsStatus(balancedBannerGameMatch);
         return balancedBannerGameMatch;
     }
 
-    public GameMatch KKMakeTeamOfSimilarSizesWithBannerBalance(GameMatch gameMatch)
+    public GameMatch KKMakeTeamOfSimilarSizesWithoutSplittingClanGroups(GameMatch gameMatch)
     {
         List<CrpgUser> allCrpgUsers = new();
         allCrpgUsers.AddRange(gameMatch.TeamA);

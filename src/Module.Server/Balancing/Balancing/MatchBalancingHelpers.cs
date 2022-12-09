@@ -324,6 +324,14 @@ namespace Crpg.Module.Balancing
             }
             Console.WriteLine("-----------------------");
         }
+        public static void DumpTeamsStatus(GameMatch gameMatch)
+        {
+            Console.WriteLine("--------------------------------------------");
+            Console.WriteLine($"Team A Count {gameMatch.TeamA.Count} Rating: {RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamA)}");
+            Console.WriteLine($"Team B Count {gameMatch.TeamA.Count} Rating: {RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamB)}");
+            Console.WriteLine($"Waiting Team Count {gameMatch.Waiting.Count} Rating: {RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.Waiting)}");
+            Console.WriteLine("--------------------------------------------");
+        }
         private class PartitionNode<T>
         {
             internal PartitionNode(List<T>[] partition, double[] sizes)

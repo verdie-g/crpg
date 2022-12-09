@@ -12,7 +12,7 @@ namespace Crpg.Module.UTest.Balancing
         internal GameMatch PureBannerBalancing(GameMatch gameMatch)
         {
             var matchBalancer = new MatchBalancingSystem();
-            GameMatch unbalancedBannerGameMatch = matchBalancer.KKMakeTeamOfSimilarSizesWithBannerBalance(gameMatch);
+            GameMatch unbalancedBannerGameMatch = matchBalancer.KKMakeTeamOfSimilarSizesWithoutSplittingClanGroups(gameMatch);
             unbalancedBannerGameMatch = matchBalancer.BalanceTeamOfSimilarSizes(unbalancedBannerGameMatch, true, 0.025f);
             return unbalancedBannerGameMatch;
         }
@@ -22,7 +22,7 @@ namespace Crpg.Module.UTest.Balancing
         {
 
             var matchBalancer = new MatchBalancingSystem();
-            GameMatch balancedGame = matchBalancer.KKMakeTeamOfSimilarSizesWithBannerBalance(game1);
+            GameMatch balancedGame = matchBalancer.KKMakeTeamOfSimilarSizesWithoutSplittingClanGroups(game1);
             float teamASize = balancedGame.TeamA.Count;
             float teamBSize = balancedGame.TeamB.Count;
             double sizeRatio = (double)teamASize / (double)teamBSize;
@@ -91,7 +91,6 @@ namespace Crpg.Module.UTest.Balancing
             float teamARating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamA, 1);
             float teamBRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamB, 1);
             double RatingRatio = (double)teamARating / (double)teamBRating;
-            MatchBalancingHelpers.DumpTeams(balancedGame);
             Assert.AreEqual(RatingRatio, 1, 0.2);
         }
         [Test]
