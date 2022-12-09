@@ -4,6 +4,7 @@ using NUnit.Framework;
 using Crpg.Module.Api.Models.Users;
 using Crpg.Module.Api.Models.Characters;
 using Crpg.Module.Api.Models.Clans;
+using Crpg.Module.Helpers;
 
 namespace Crpg.Module.UTest.Balancing
 {
@@ -22,15 +23,15 @@ namespace Crpg.Module.UTest.Balancing
         {
 
             var matchBalancer = new MatchBalancingSystem();
-            GameMatch balancedGame = matchBalancer.KKMakeTeamOfSimilarSizesWithoutSplittingClanGroups(game1);
+            GameMatch balancedGame = matchBalancer.KKMakeTeamOfSimilarSizesWithoutSplittingClanGroups(gameWithVeryStrongClanGroup);
             float teamASize = balancedGame.TeamA.Count;
             float teamBSize = balancedGame.TeamB.Count;
             double sizeRatio = (double)teamASize / (double)teamBSize;
             float teamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamA, 1);
             float teamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamB, 1);
             double meanRatingRatio = (double)teamAMeanRating / (double)teamBMeanRating;
-            Console.WriteLine("balanced rating ratio = " + meanRatingRatio);
-            Assert.AreEqual(sizeRatio, 1, 0.2);
+            MatchBalancingHelpers.DumpTeams(balancedGame);
+            Assert.AreEqual(sizeRatio, 0.7f, 0.3f);
         }
 
         [Test]
@@ -80,7 +81,7 @@ namespace Crpg.Module.UTest.Balancing
         public void BannerBalancingWithEdgeCaseShouldWorkWithOneStrongClanGroup()
         {
             var matchBalancer = new MatchBalancingSystem();
-
+            MatchBalancingHelpers.DumpTeams(gameWithVeryStrongClanGroup);
             float unbalancedTeamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(gameWithVeryStrongClanGroup.TeamA, 1);
             float unbalancedTeamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(gameWithVeryStrongClanGroup.TeamB, 1);
             double unbalancedMeanRatingRatio = (double)unbalancedTeamAMeanRating / (double)unbalancedTeamBMeanRating;
@@ -91,6 +92,7 @@ namespace Crpg.Module.UTest.Balancing
             float teamARating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamA, 1);
             float teamBRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamB, 1);
             double RatingRatio = (double)teamARating / (double)teamBRating;
+            MatchBalancingHelpers.DumpTeams(balancedGame);
             Assert.AreEqual(RatingRatio, 1, 0.2);
         }
         [Test]

@@ -7,6 +7,7 @@ using Crpg.Module.Api.Models.Users;
 using Crpg.Module.Api.Models.Characters;
 using Crpg.Module.Api.Models.Clans;
 using TaleWorlds.LinQuick;
+using Crpg.Module.Helpers;
 
 namespace Crpg.Module.Balancing;
 
