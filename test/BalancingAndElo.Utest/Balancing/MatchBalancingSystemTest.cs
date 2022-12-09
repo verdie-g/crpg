@@ -141,7 +141,49 @@ namespace Crpg.Module.UTest.Balancing
                 }
             }
         }
+        [Test]
+        public void BannerBalancingWithEdgeCaseShouldWorkWith0persons()
+        {
+            var matchBalancer = new MatchBalancingSystem();
 
+            float unbalancedTeamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(noManGame.TeamA, 1);
+            float unbalancedTeamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(noManGame.TeamB, 1);
+            double unbalancedMeanRatingRatio = (double)unbalancedTeamAMeanRating / (double)unbalancedTeamBMeanRating;
+            GameMatch balancedGame = matchBalancer.BannerBalancingWithEdgeCases(noManGame);
+        }
+
+        [Test]
+        public void BannerBalancingWithEdgeCaseShouldWorkWith1persons()
+        {
+            var matchBalancer = new MatchBalancingSystem();
+
+            float unbalancedTeamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(oneManGame.TeamA, 1);
+            float unbalancedTeamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(oneManGame.TeamB, 1);
+            double unbalancedMeanRatingRatio = (double)unbalancedTeamAMeanRating / (double)unbalancedTeamBMeanRating;
+            GameMatch balancedGame = matchBalancer.BannerBalancingWithEdgeCases(oneManGame);
+        }
+
+        [Test]
+        public void BannerBalancingWithEdgeCaseShouldWorkWith2persons()
+        {
+            var matchBalancer = new MatchBalancingSystem();
+
+            float unbalancedTeamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(twoManGame.TeamA, 1);
+            float unbalancedTeamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(twoManGame.TeamB, 1);
+            double unbalancedMeanRatingRatio = (double)unbalancedTeamAMeanRating / (double)unbalancedTeamBMeanRating;
+            GameMatch balancedGame = matchBalancer.BannerBalancingWithEdgeCases(twoManGame);
+        }
+
+        [Test]
+        public void BannerBalancingWithEdgeCaseShouldWorkWith3persons()
+        {
+            var matchBalancer = new MatchBalancingSystem();
+
+            float unbalancedTeamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(threeManGame.TeamA, 1);
+            float unbalancedTeamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(threeManGame.TeamB, 1);
+            double unbalancedMeanRatingRatio = (double)unbalancedTeamAMeanRating / (double)unbalancedTeamBMeanRating;
+            GameMatch balancedGame = matchBalancer.BannerBalancingWithEdgeCases(threeManGame);
+        }
 
         [Test]
         public void PowerMeanShouldWork()
@@ -1145,5 +1187,43 @@ namespace Crpg.Module.UTest.Balancing
                 laraCroft,
             },
         };
-}
+        private GameMatch noManGame = new()
+        {
+            TeamA = new List<CrpgUser> { },
+            TeamB = new List<CrpgUser> { },
+            Waiting = new List<CrpgUser>
+            {
+            },
+        };
+        private GameMatch oneManGame = new()
+        {
+            TeamA = new List<CrpgUser> { },
+            TeamB = new List<CrpgUser> { },
+            Waiting = new List<CrpgUser>
+            {
+                aragorn,
+            },
+        };
+        private GameMatch twoManGame = new()
+        {
+            TeamA = new List<CrpgUser> { },
+            TeamB = new List<CrpgUser> { },
+            Waiting = new List<CrpgUser>
+            {
+                aragorn,
+                arwen,
+            },
+        };
+        private GameMatch threeManGame = new()
+        {
+            TeamA = new List<CrpgUser> { },
+            TeamB = new List<CrpgUser> { },
+            Waiting = new List<CrpgUser>
+            {
+                aragorn,
+                arwen,
+                madonna,
+            },
+        };
+    }
 }

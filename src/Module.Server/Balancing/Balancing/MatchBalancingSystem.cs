@@ -56,6 +56,10 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
         Console.WriteLine("Now splitting the clangroups between the two team");
         GameMatch balancedBannerGameMatch = KKMakeTeamOfSimilarSizesWithoutSplittingClanGroups(gameMatch);
         MatchBalancingHelpers.DumpTeamsStatus(balancedBannerGameMatch);
+        if (PlayerCount(balancedBannerGameMatch) < 3)
+        {
+            return NaiveCaptainBalancing(balancedBannerGameMatch);
+        }
 
         Console.WriteLine("Banner balancing now");
 
@@ -361,5 +365,8 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
     {
         return IsTeamSizeDifferenceAcceptable(gameMatch, maxSizeRatio, maxDifference) && IsRatingRatioAcceptable(gameMatch, percentageDifference);
     }
-
+    int PlayerCount(GameMatch gameMatch)
+    {
+        return gameMatch.TeamA.Count + gameMatch.TeamB.Count + gameMatch.Waiting.Count;
+    }
 }
