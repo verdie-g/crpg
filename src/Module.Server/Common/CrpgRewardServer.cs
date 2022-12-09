@@ -29,7 +29,7 @@ internal class CrpgRewardServer : MissionBehavior
 
     private Dictionary<PlayerId, CrpgCharacterStatistics> _lastAllTotalStats = new();
     private MissionTimer? _tickTimer;
-    private bool _lastRewardDuringPrimeTime;
+    private bool _lastRewardDuringHappyHours;
 
     public CrpgRewardServer(
         ICrpgClient crpgClient,
@@ -43,7 +43,7 @@ internal class CrpgRewardServer : MissionBehavior
         _roundController = roundController;
         _characterRatings = new Dictionary<PlayerId, CrpgRating>();
         _ratingResults = new CrpgRatingPeriodResults();
-        _lastRewardDuringPrimeTime = false;
+        _lastRewardDuringHappyHours = false;
     }
 
     public override MissionBehaviorType BehaviorType => MissionBehaviorType.Other;
@@ -218,7 +218,7 @@ internal class CrpgRewardServer : MissionBehavior
     private void SetReward(CrpgUserUpdate userUpdate, CrpgPeer crpgPeer, float durationRewarded, bool rewardMultiplierEnabled)
     {
         float serverXpMultiplier = CrpgServerConfiguration.ServerExperienceMultiplier;
-        serverXpMultiplier *= IsPrimeTime() ? 2 : 1;
+        serverXpMultiplier *= IsHappyHour() ? 2 : 1;
         userUpdate.Reward = new CrpgUserReward
         {
             Experience = (int)(serverXpMultiplier * durationRewarded * (_constants.BaseExperienceGainPerSecond
@@ -243,18 +243,18 @@ internal class CrpgRewardServer : MissionBehavior
         }
     }
 
-    private bool IsPrimeTime()
+    private bool IsHappyHour()
     {
-        var primeTime = CrpgServerConfiguration.ServerPrimeTime;
-        if (primeTime == null)
+        var happyHours = CrpgServerConfiguration.ServerHappyHours;
+        if (happyHours == null)
         {
             return false;
         }
 
         TimeSpan timeOfDay = DateTime.Now.TimeOfDay;
-        if (timeOfDay < primeTime.Item1 || primeTime.Item2 < timeOfDay)
+        if (timeOfDay < happyHours.Item1 || happyHours.Item2 < timeOfDay)
         {
-            if (_lastRewardDuringPrimeTime)
+            if (_lastRewardDuringHappyHours)
             {
                 GameNetwork.BeginBroadcastModuleEvent();
                 GameNetwork.WriteMessage(new CrpgNotification
@@ -265,22 +265,22 @@ internal class CrpgRewardServer : MissionBehavior
                 GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
             }
 
-            _lastRewardDuringPrimeTime = false;
+            _lastRewardDuringHappyHours = false;
             return false;
         }
 
-        if (!_lastRewardDuringPrimeTime)
+        if (!_lastRewardDuringHappyHours)
         {
             GameNetwork.BeginBroadcastModuleEvent();
             GameNetwork.WriteMessage(new CrpgNotification
             {
                 Type = CrpgNotification.NotificationType.Announcement,
-                Message = "It's prime time! Experience is multiplied by two during that time.",
+                Message = "It's happy hours time! Experience is multiplied by two.",
             });
             GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
         }
 
-        _lastRewardDuringPrimeTime = true;
+        _lastRewardDuringHappyHours = true;
         return true;
     }
 

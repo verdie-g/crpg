@@ -13,7 +13,7 @@ public static class CrpgServerConfiguration
     }
 
     public static float ServerExperienceMultiplier { get; private set; } = 1.0f;
-    public static Tuple<TimeSpan, TimeSpan>? ServerPrimeTime { get; private set; }
+    public static Tuple<TimeSpan, TimeSpan>? ServerHappyHours { get; private set; }
 
     [UsedImplicitly]
     [ConsoleCommandMethod("crpg_experience_multiplier", "Sets a reward multiplier for the server.")]
@@ -31,16 +31,16 @@ public static class CrpgServerConfiguration
     }
 
     [UsedImplicitly]
-    [ConsoleCommandMethod("crpg_prime_time", "Sets the prime time local hours. Format: HH:MM-HH:MM")]
-    private static void SetServerPrimeTime(string? primeTimeStr)
+    [ConsoleCommandMethod("crpg_happy_hours", "Sets the happy local hours. Format: HH:MM-HH:MM")]
+    private static void SetServerHappyHours(string? happHoursStr)
     {
-        if (primeTimeStr == null)
+        if (happHoursStr == null)
         {
-            Debug.Print("Invalid server multiplier: null");
+            Debug.Print("Invalid happy hours: null");
             return;
         }
 
-        Match match = Regex.Match(primeTimeStr, "(\\d\\d:\\d\\d)-(\\d\\d:\\d\\d)");
+        Match match = Regex.Match(happHoursStr, "(\\d\\d:\\d\\d)-(\\d\\d:\\d\\d)");
         if (match.Groups.Count != 3
             || !TimeSpan.TryParse(match.Groups[1].Value, out var startTime)
             || startTime < TimeSpan.Zero
@@ -49,10 +49,10 @@ public static class CrpgServerConfiguration
             || endTime < TimeSpan.Zero
             || endTime > TimeSpan.FromHours(24))
         {
-            Debug.Print($"Invalid server multiplier: {primeTimeStr}");
+            Debug.Print($"Invalid happy hours: {happHoursStr}");
             return;
         }
 
-        ServerPrimeTime = Tuple.Create(startTime, endTime);
+        ServerHappyHours = Tuple.Create(startTime, endTime);
     }
 }
