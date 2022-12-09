@@ -106,8 +106,8 @@ namespace Crpg.Module.Balancing
                 {
                     Vector2 userVector = new(targetSizeScaling, bestUserToAdd.Character.Rating.Value);
 
-                        if ((usersToSwapVector + userVector - objectiveVector).Length() < (usersToSwapVector + bestUserToAddVector - objectiveVector).Length())
-                        {
+                    if ((usersToSwapVector + userVector - objectiveVector).Length() < (usersToSwapVector + bestUserToAddVector - objectiveVector).Length())
+                    {
                             bestUserToAdd = user;
                             bestUserToAddVector = new(targetSizeScaling, bestUserToAdd.Character.Rating.Value);
                     }
@@ -133,13 +133,14 @@ namespace Crpg.Module.Balancing
             List<ClanGroup> team = teamtoSelectFrom.ToList();
             List<ClanGroup> clanGroupsToSwap = new List<ClanGroup>();
             float targetSizeScaling = targetRating / (targetSize + sizeOffset); // used to make the targeted vector diagonal
+            Vector2 objectiveVector = new(targetSizeScaling * (targetSize + sizeOffset), targetRating);
             for (int i = 0; i < teamtoSelectFrom.Count; i++)
             {
 
                 ClanGroup bestClanGroupToAdd = team.First();
                 Vector2 bestClanGroupToAddVector = ClanGroupRescaledVector(targetSizeScaling, bestClanGroupToAdd);
                 Vector2 clanGroupsToSwapVector = ClanGroupsRescaledVector(targetSizeScaling, clanGroupsToSwap);
-                Vector2 objectiveVector = new( targetSizeScaling * (targetSize + sizeOffset - clanGroupsToSwap.Sum( x => x.Size() ) ), targetRating - clanGroupsToSwap.Sum(x => x.RatingPsum() ) );
+
                 if (objectiveVector.Length() == 0f)
                 {
                     break;
@@ -147,14 +148,14 @@ namespace Crpg.Module.Balancing
 
                 foreach (ClanGroup clanGroup in team)
                 {
-                    bestClanGroupToAddVector = ClanGroupRescaledVector(targetSizeScaling, bestClanGroupToAdd);
                     Vector2 clanGroupVector = ClanGroupRescaledVector(targetSizeScaling, clanGroup);
                     if (useAngle)
                     {
                         if (
-                        Math.Abs(Vector2Angles(clanGroupVector) - Vector2Angles(objectiveVector)) < Math.Abs(Vector2Angles(bestClanGroupToAddVector) - Vector2Angles(objectiveVector)))
+                        Math.Abs(Vector2Angles(clanGroupVector + clanGroupsToSwapVector) - Vector2Angles(objectiveVector)) < Math.Abs(Vector2Angles(bestClanGroupToAddVector + clanGroupsToSwapVector) - Vector2Angles(objectiveVector)))
                         {
                         bestClanGroupToAdd = clanGroup;
+                        bestClanGroupToAddVector = ClanGroupRescaledVector(targetSizeScaling, bestClanGroupToAdd);
                         }
                     }
                     else
@@ -162,6 +163,7 @@ namespace Crpg.Module.Balancing
                         if ((clanGroupsToSwapVector + clanGroupVector - objectiveVector).Length() < (clanGroupsToSwapVector + bestClanGroupToAddVector - objectiveVector).Length())
                         {
                             bestClanGroupToAdd = clanGroup;
+                            bestClanGroupToAddVector = ClanGroupRescaledVector(targetSizeScaling, bestClanGroupToAdd);
                         }
                     }
                 }
@@ -181,7 +183,7 @@ namespace Crpg.Module.Balancing
 
         internal static Vector2 ClanGroupRescaledVector(float scaler, ClanGroup clanGroup)
         {
-            Vector2 vector = new(clanGroup.Size() * scaler, clanGroup.RatingPMean());
+            Vector2 vector = new(clanGroup.Size() * scaler, clanGroup.RatingPsum());
             return vector;
         }
         internal static Vector2 ClanGroupsRescaledVector(float scaler, List<ClanGroup> clanGroups)
@@ -192,7 +194,7 @@ namespace Crpg.Module.Balancing
 
         internal static float Vector2Angles(Vector2 v1)
         {
-            if (v1.X==0&& v1.Y==0)
+            if (v1.X==0 && v1.Y==0)
             {
                 return 0;
             }
