@@ -7,6 +7,9 @@ using Crpg.Module.Api.Models.Users;
 
 namespace Crpg.Module.Balancing;
 
+/// <summary>
+/// A clanGroup contain either player(s) of the same clan, or a single player that has no clan.
+/// </summary>
 internal class ClanGroup
 {
     public int? ClanId { get; }
