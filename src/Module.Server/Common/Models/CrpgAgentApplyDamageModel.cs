@@ -36,47 +36,44 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
             finalDamage /= MathHelper.RecursivePolynomialFunctionOfDegree2(shieldSkill, _constants.DurabilityFactorForShieldRecursiveCoefs);
         }
 
-        if (!weapon.IsEmpty)
+        if (weapon.IsEmpty)
         {
-            // We want to decrease survivability of horses against melee weapon and especially against spears and pikes.
-            // By doing that we ensure that cavalry stays an archer predator while punishing cav errors like running into a wall or an obstacle
-            if (!attackInformation.IsVictimAgentHuman
-                && !attackInformation.DoesAttackerHaveMountAgent
-                && !weapon.CurrentUsageItem.IsConsumable
-                && weapon.CurrentUsageItem.IsMeleeWeapon
-                && !weapon.IsAnyConsumable())
-            {
-                if (
-                    collisionData.StrikeType == (int)StrikeType.Thrust
-                    && collisionData.DamageType == (int)DamageTypes.Pierce
-                    && weapon.CurrentUsageItem.IsPolearm)
-                {
-                    finalDamage *= 1.85f;
-                }
-                else
-                {
-                    finalDamage *= 1.4f;
-                }
-            }
+            return finalDamage;
+        }
 
-            // For bashes (with and without shield) - Not for allies cause teamdmg might reduce the "finalDamage" below zero. That will break teamhits with bashes.
-            else if (collisionData.IsAlternativeAttack && !attackInformation.IsFriendlyFire)
+        // We want to decrease survivability of horses against melee weapon and especially against spears and pikes.
+        // By doing that we ensure that cavalry stays an archer predator while punishing cav errors like running into a wall or an obstacle
+        if (!attackInformation.IsVictimAgentHuman
+            && !attackInformation.DoesAttackerHaveMountAgent
+            && !weapon.CurrentUsageItem.IsConsumable
+            && weapon.CurrentUsageItem.IsMeleeWeapon
+            && !weapon.IsAnyConsumable())
+        {
+            if (
+                collisionData.StrikeType == (int)StrikeType.Thrust
+                && collisionData.DamageType == (int)DamageTypes.Pierce
+                && weapon.CurrentUsageItem.IsPolearm)
             {
-                finalDamage = 1f;
+                finalDamage *= 1.85f;
             }
+            else
+            {
+                finalDamage *= 1.4f;
+            }
+        }
+
+        // For bashes (with and without shield) - Not for allies cause teamdmg might reduce the "finalDamage" below zero. That will break teamhits with bashes.
+        else if (collisionData.IsAlternativeAttack && !attackInformation.IsFriendlyFire)
+        {
+            finalDamage = 1f;
+        }
+
+        if (attackInformation.DoesAttackerHaveMountAgent && attackInformation.IsAttackerAgentDoingPassiveAttack)
+        {
+            finalDamage *= 0.2f; // Decrease damage from couched lance.
         }
 
         return finalDamage;
-    }
-
-    public override float CalculatePassiveAttackDamage(BasicCharacterObject attackerCharacter, in AttackCollisionData collisionData, float baseDamage)
-    {
-        if (attackerCharacter.IsMounted)
-        {
-            return baseDamage * 0.20f; // 80% damage reduction from couched lance
-        }
-
-        return baseDamage; // Passive stance on foot
     }
 
     public override void CalculateCollisionStunMultipliers(
@@ -107,7 +104,7 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
     }
 
     public override bool DecideMountRearedByBlow(
-        Agent attackerAgent,
+        Agent? attackerAgent,
         Agent victimAgent,
         in AttackCollisionData collisionData,
         WeaponComponentData? attackerWeapon,
