@@ -26,6 +26,7 @@ internal interface IMatchBalancingSystem
 internal class MatchBalancingSystem : IMatchBalancingSystem
 {
     public const float PowerParameter = 1f;
+    public const int MaximumNumberOfSwaps = 20; // upperbound to limit number of swaps. Numberofswaps is often<3
     public GameMatch NaiveCaptainBalancing(GameMatch gameMatch)
     {
         List<CrpgUser> allCrpgUsers = new();
@@ -121,7 +122,7 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
     public GameMatch BalanceTeamOfSimilarSizes(GameMatch gameMatch, bool bannerBalance, float threshold)
     {
         string methodUsed = bannerBalance ? "using bannerBalance" : "without bannerBalance";
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < MaximumNumberOfSwaps; i++)
         {
             if (IsBalanceGoodEnough(gameMatch, maxSizeRatio: 0.75f, maxDifference:10f, percentageDifference: threshold))
             {
