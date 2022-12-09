@@ -192,15 +192,14 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
         float a = clanGrouptoSwap1.RatingPsum();
         float b = RatingHelpers.ClanGroupsPowerSum(clanGroupstoSwap2);
         bool c = swapingFromWeakTeam;
-        float newdiff = swapingFromWeakTeam
+        float newTeamRatingDiff = swapingFromWeakTeam
             ? RatingHelpers.ClanGroupsPowerSum(strongClanGroupsTeam) + 2f * clanGrouptoSwap1.RatingPsum() - 2f * RatingHelpers.ClanGroupsPowerSum(clanGroupstoSwap2) - RatingHelpers.ClanGroupsPowerSum(weakClanGroupsTeam)
             : RatingHelpers.ClanGroupsPowerSum(strongClanGroupsTeam) + 2f * RatingHelpers.ClanGroupsPowerSum(clanGroupstoSwap2) - 2f * clanGrouptoSwap1.RatingPsum() - RatingHelpers.ClanGroupsPowerSum(weakClanGroupsTeam);
-        float newdiff1 = newdiff;
         (List<CrpgUser> teamToSwapFrom, List<CrpgUser> teamToSwapInto) = swapingFromWeakTeam
         ? (weakTeam, strongTeam)
         : (strongTeam, weakTeam);
 
-        if (Math.Abs(newdiff) < Math.Abs(teamRatingDiff))
+        if (Math.Abs(newTeamRatingDiff) < Math.Abs(teamRatingDiff))
         {
             foreach (var clanGroup in clanGroupstoSwap2)
             {
@@ -259,10 +258,10 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
             }
         }
 
-        float newdiff = swapingFromWeakTeam
+        float newTeamRatingDiff = swapingFromWeakTeam
             ? strongTeam.Sum(u => u.Character.Rating.Value) + 2f * bestCrpgUserToSwap1.Character.Rating.Value - 2f * bestCrpgUsersToSwap2.Sum(u => u.Character.Rating.Value) - weakTeam.Sum(u => u.Character.Rating.Value)
             : strongTeam.Sum(u => u.Character.Rating.Value) + 2f * bestCrpgUsersToSwap2.Sum(u => u.Character.Rating.Value) - 2f * bestCrpgUserToSwap1.Character.Rating.Value - weakTeam.Sum(u => u.Character.Rating.Value);
-        if (Math.Abs(newdiff) < Math.Abs(teamRatingDiff))
+        if (Math.Abs(newTeamRatingDiff) < Math.Abs(teamRatingDiff))
         {
             if (swapingFromWeakTeam)
             {
