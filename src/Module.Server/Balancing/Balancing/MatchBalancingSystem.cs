@@ -111,6 +111,7 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
         }
 
         var partition = MatchBalancingHelpers.Heuristic(clangroupsArray, clangroupSize, 2, preSorted: false);
+        // the 2 value means we're splitting clangroups into two teams
         returnedGameMatch.TeamA = MatchBalancingHelpers.JoinClanGroupsIntoUsers(partition.Partition[0].ToList());
         returnedGameMatch.TeamB = MatchBalancingHelpers.JoinClanGroupsIntoUsers(partition.Partition[1].ToList());
         return returnedGameMatch;
