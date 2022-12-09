@@ -374,7 +374,7 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
         return !MathHelper.Within((float)ratingRatio, 0f, percentageDifference);
     }
 
-    private bool IsSizeDifferencetooMuch(GameMatch gameMatch, float maxSizeRatio, float maxDifference)
+    private bool IsTeamSizeDifferenceTooLarge(GameMatch gameMatch, float maxSizeRatio, float maxDifference)
     {
         bool tooMuchSizeRatioDifference = !MathHelper.Within(gameMatch.TeamA.Count / (float)gameMatch.TeamB.Count, maxSizeRatio, 1f / maxSizeRatio);
         bool sizeDifferenceGreaterThanThreshold = Math.Abs(gameMatch.TeamA.Count - gameMatch.TeamB.Count) > maxDifference;
@@ -383,7 +383,7 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
 
     private bool IsBalanceGoodEnough(GameMatch gameMatch, float maxSizeRatio, float maxDifference, float percentageDifference)
     {
-        return !IsSizeDifferencetooMuch(gameMatch, maxSizeRatio, maxDifference) && !IsRatingRatioTooBad(gameMatch, percentageDifference);
+        return !IsTeamSizeDifferenceTooLarge(gameMatch, maxSizeRatio, maxDifference) && !IsRatingRatioTooBad(gameMatch, percentageDifference);
     }
 
 }
