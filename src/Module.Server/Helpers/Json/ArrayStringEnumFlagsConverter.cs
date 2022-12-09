@@ -10,12 +10,12 @@ internal class ArrayStringEnumFlagsConverter : JsonConverter
 {
     private static readonly ConcurrentDictionary<Type, Dictionary<string, long>> EnumValuesByType = new();
 
-    public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+    public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
     {
         long valueInt = Convert.ToInt64(value);
 
         writer.WriteStartArray();
-        foreach (var flag in GetEnumValues(value.GetType()))
+        foreach (var flag in GetEnumValues(value!.GetType()))
         {
             if ((valueInt & flag.Value) != 0)
             {
@@ -26,7 +26,7 @@ internal class ArrayStringEnumFlagsConverter : JsonConverter
         writer.WriteEndArray();
     }
 
-    public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+    public override object ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
     {
         if (reader.TokenType != JsonToken.StartArray)
         {
