@@ -54,7 +54,7 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
     public GameMatch BannerBalancingWithEdgeCases(GameMatch gameMatch)
     {
         MatchBalancingHelpers.DumpTeamsStatus(gameMatch);
-        Console.WriteLine("BannerBalancingWithEdgeCases");
+        Console.WriteLine(nameof(BannerBalancingWithEdgeCases));
         Console.WriteLine("--------------------------------------------");
         Console.WriteLine("Now splitting the clangroups between the two team");
         GameMatch balancedBannerGameMatch = KKMakeTeamOfSimilarSizesWithoutSplittingClanGroups(gameMatch);
