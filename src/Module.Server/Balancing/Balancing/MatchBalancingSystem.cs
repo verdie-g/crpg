@@ -101,13 +101,13 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
         allCrpgUsers.AddRange(gameMatch.TeamA);
         allCrpgUsers.AddRange(gameMatch.TeamB);
         allCrpgUsers.AddRange(gameMatch.Waiting);
-        var clangroupList = MatchBalancingHelpers.SplitUsersIntoClanGroups(allCrpgUsers);
+        var clangroups = MatchBalancingHelpers.SplitUsersIntoClanGroups(allCrpgUsers);
         GameMatch returnedGameMatch = new();
-        ClanGroup[] clangroupsArray = clangroupList.ToArray();
-        double[] clangroupSize = new double[clangroupList.Count];
+        ClanGroup[] clangroupsArray = clangroups.ToArray();
+        double[] clangroupSize = new double[clangroups.Count];
         for (int i = 0; i < clangroupsArray.Length; i++)
         {
-            clangroupSize[i] = clangroupList[i].Size();
+            clangroupSize[i] = clangroups[i].Size();
         }
 
         var partition = MatchBalancingHelpers.Heuristic(clangroupsArray, clangroupSize, 2, preSorted: false);
