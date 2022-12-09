@@ -101,7 +101,7 @@ internal class DonorSynchronizerWorker : BackgroundService
         Dictionary<string, string> afdianToSteamIds = new(StringComparer.Ordinal)
         {
             ["1a4e438e725f11edacfc52540025c377"] = "76561198136476759",
-            ["651ee3be726411ed9b5f52540025c377"] = "76561198835355589",
+            ["651ee3be726411ed9b5f52540025c377"] = "76561198094460089",
             ["956ba96c725f11ed846952540025c377"] = "76561198277953194",
         };
 
