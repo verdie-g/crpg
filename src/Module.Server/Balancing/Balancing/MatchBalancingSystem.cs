@@ -70,30 +70,28 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
 
 
    
-        if (IsRatingRatioTooBad(balancedBannerGameMatch, 0.2f) || IsSizeDifferencetooMuch(balancedBannerGameMatch))
+        if (IsBalanceGoodEnough(gameMatch, maxSizeRatio: 0.75f, maxDifference: 10f, percentageDifference: 0.2f))
+        {
+            Console.WriteLine("Balance is Acceptable");
+        }
+        else
         {
             Console.WriteLine("Unnacceptable");
             balancedBannerGameMatch = BalanceTeamOfSimilarSizes(balancedBannerGameMatch, false, 0.10f);
         }
-        else
+
+        if (IsBalanceGoodEnough(gameMatch, maxSizeRatio: 0.75f, maxDifference: 10f, percentageDifference: 0.2f))
         {
             Console.WriteLine("Acceptable");
         }
-        if (IsRatingRatioTooBad(balancedBannerGameMatch, 0.2f) || IsSizeDifferencetooMuch(balancedBannerGameMatch))
+        else
         {
             Console.WriteLine("Swaps were not enough. This should Really not Happen often");
-            Console.WriteLine("Horror");
-            Console.WriteLine("----------------------------------");
-            MatchBalancingHelpers.DumpTeam(balancedBannerGameMatch.TeamA);
-            Console.WriteLine("----------------------------------");
+            MatchBalancingHelpers.DumpTeams(balancedBannerGameMatch);
             Console.WriteLine("NaiveCaptainBalancing + Balancing Without Banner");
-            MatchBalancingHelpers.DumpTeam(balancedBannerGameMatch.TeamB);
             balancedBannerGameMatch = NaiveCaptainBalancing(balancedBannerGameMatch);
-            balancedBannerGameMatch = BalanceTeamOfSimilarSizes(balancedBannerGameMatch, false, 0.10f);
-        }
-        else
-        {
-            Console.WriteLine("Acceptable");
+            balancedBannerGameMatch = BalanceTeamOfSimilarSizes(balancedBannerGameMatch, false, 0.01f);
+            
         }
         Console.WriteLine("--------------------------------------------");
         Console.WriteLine("Team A Count " + balancedBannerGameMatch.TeamA.Count + " Rating: " + RatingHelpers.ComputeTeamRatingPowerSum(balancedBannerGameMatch.TeamA));
@@ -127,11 +125,12 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
 
     public GameMatch BalanceTeamOfSimilarSizes(GameMatch gameMatch, bool bannerBalance, float threshold)
     {
+        string methodUsed = bannerBalance ? "using bannerBalance" : "without bannerBalance";
         for (int i = 0; i < 20; i++)
         {
-            if (!IsSizeDifferencetooMuch(gameMatch) && !IsRatingRatioTooBad(gameMatch, threshold))
+            if (IsBalanceGoodEnough(gameMatch, maxSizeRatio: 0.75f, maxDifference:10f, percentageDifference: threshold))
             {
-                Console.WriteLine("Made " + i + " Swaps");
+                Console.WriteLine($"Made {i} Swaps {methodUsed}");
                 Console.WriteLine("Team are of Similar Sizes and Similar Ratings");
                 break;
             }
@@ -405,21 +404,25 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
         }
     }
 
-    private bool IsRatingRatioTooBad(GameMatch gameMatch, float threshold)
+    private bool IsRatingRatioTooBad(GameMatch gameMatch, float percentageDifference)
     {
         double ratingRatio = Math.Abs(
             (RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamB)
              - RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamA))
             / RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamA));
-        return !MathHelper.Within((float)ratingRatio, 0f, threshold);
+        return !MathHelper.Within((float)ratingRatio, 0f, percentageDifference);
     }
 
-    private bool IsSizeDifferencetooMuch(GameMatch gameMatch)
+    private bool IsSizeDifferencetooMuch(GameMatch gameMatch, float maxSizeRatio, float maxDifference)
     {
-        bool tooMuchSizeRatioDifference = !MathHelper.Within(Math.Abs(gameMatch.TeamA.Count / (float)gameMatch.TeamB.Count), 0.75f, 1.34f);
-        bool sizeDifferenceGreaterThanThreshold = Math.Abs(gameMatch.TeamA.Count - gameMatch.TeamB.Count) > 10;
+        bool tooMuchSizeRatioDifference = !MathHelper.Within(Math.Abs(gameMatch.TeamA.Count / (float)gameMatch.TeamB.Count), maxSizeRatio, 1f / maxSizeRatio);
+        bool sizeDifferenceGreaterThanThreshold = Math.Abs(gameMatch.TeamA.Count - gameMatch.TeamB.Count) > maxDifference;
         return tooMuchSizeRatioDifference || sizeDifferenceGreaterThanThreshold;
     }
 
+    private bool IsBalanceGoodEnough (GameMatch gameMatch, float maxSizeRatio, float maxDifference, float percentageDifference)
+    {
+        return !IsSizeDifferencetooMuch(gameMatch, maxSizeRatio, maxDifference) && !IsRatingRatioTooBad(gameMatch, percentageDifference);
+    }
 
 }

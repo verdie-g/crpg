@@ -91,9 +91,7 @@ namespace Crpg.Module.UTest.Balancing
             float teamARating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamA, 1);
             float teamBRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamB, 1);
             double RatingRatio = (double)teamARating / (double)teamBRating;
-            MatchBalancingHelpers.DumpTeam(balancedGame.TeamA);
-            Console.WriteLine("----------------------------------");
-            MatchBalancingHelpers.DumpTeam(balancedGame.TeamB);
+            MatchBalancingHelpers.DumpTeams(balancedGame);
             Assert.AreEqual(RatingRatio, 1, 0.2);
         }
         [Test]

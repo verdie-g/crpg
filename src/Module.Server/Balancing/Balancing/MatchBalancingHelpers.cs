@@ -104,7 +104,7 @@ namespace Crpg.Module.Balancing
 
                 foreach (CrpgUser user in team)
                 {
-                    Vector2 userVector = new(targetSizeScaling, bestUserToAdd.Character.Rating.Value);
+                    Vector2 userVector = new(targetSizeScaling, user.Character.Rating.Value);
 
                     if ((usersToSwapVector + userVector - objectiveVector).Length() < (usersToSwapVector + bestUserToAddVector - objectiveVector).Length())
                     {
@@ -302,12 +302,27 @@ namespace Crpg.Module.Balancing
             }
         }
 
-        public static void DumpTeam(List<CrpgUser> team)
+        public static void DumpTeams(GameMatch gameMatch)
         {
-            foreach (CrpgUser u in team)
+            Console.WriteLine("-----------------------");
+            Console.WriteLine("Team A");
+            foreach (CrpgUser u in gameMatch.TeamA)
             {
-                Console.WriteLine(u.Character.Name + " : " + u.Character.Rating.Value);
+                Console.WriteLine($"{u.Character.Name} :  {u.Character.Rating.Value}");
             }
+            Console.WriteLine("-----------------------");
+            Console.WriteLine("Team B");
+            foreach (CrpgUser u in gameMatch.TeamB)
+            {
+                Console.WriteLine($"{u.Character.Name} :  {u.Character.Rating.Value}");
+            }
+            Console.WriteLine("-----------------------");
+            Console.WriteLine("WaitingToJoin");
+            foreach (CrpgUser u in gameMatch.Waiting)
+            {
+                Console.WriteLine($"{u.Character.Name} :  {u.Character.Rating.Value}");
+            }
+            Console.WriteLine("-----------------------");
         }
         private class PartitionNode<T>
         {
