@@ -11,7 +11,7 @@ namespace Crpg.Module.Balancing
 {
     internal static class MatchBalancingHelpers
     {
-        internal static List<ClanGroup> ConvertCrpgUserListToClanGroups(List<CrpgUser> userList)
+        internal static List<ClanGroup> SplitUsersIntoClanGroups(List<CrpgUser> userList)
         {
             Dictionary<int, ClanGroup> ClanGroupCreated = new();
             List<int> isClanGroupCreated = new();
@@ -45,7 +45,7 @@ namespace Crpg.Module.Balancing
             return clanGroups;
         }
 
-        internal static List<CrpgUser> ConvertClanGroupsToCrpgUserList(List<ClanGroup> clanGroups)
+        internal static List<CrpgUser> JoinClanGroupsIntoUsers(List<ClanGroup> clanGroups)
         {
             List<CrpgUser> users = new();
 
@@ -71,18 +71,18 @@ namespace Crpg.Module.Balancing
         internal static ClanGroupsGameMatch ConvertGameMatchToClanGroupsGameMatchList(GameMatch gameMatch)
         {
             ClanGroupsGameMatch clanGroupsGameMatch = new();
-            clanGroupsGameMatch.TeamA = ConvertCrpgUserListToClanGroups(gameMatch.TeamA);
-            clanGroupsGameMatch.TeamB = ConvertCrpgUserListToClanGroups(gameMatch.TeamB);
-            clanGroupsGameMatch.Waiting = ConvertCrpgUserListToClanGroups(gameMatch.Waiting);
+            clanGroupsGameMatch.TeamA = SplitUsersIntoClanGroups(gameMatch.TeamA);
+            clanGroupsGameMatch.TeamB = SplitUsersIntoClanGroups(gameMatch.TeamB);
+            clanGroupsGameMatch.Waiting = SplitUsersIntoClanGroups(gameMatch.Waiting);
             return clanGroupsGameMatch;
         }
 
         internal static GameMatch ConvertClanGroupsGameMatchToGameMatchList(ClanGroupsGameMatch clanGroupsgameMatch)
         {
             GameMatch gameMatch = new();
-            gameMatch.TeamA = ConvertClanGroupsToCrpgUserList(clanGroupsgameMatch.TeamA);
-            gameMatch.TeamB = ConvertClanGroupsToCrpgUserList(clanGroupsgameMatch.TeamB);
-            gameMatch.Waiting = ConvertClanGroupsToCrpgUserList(clanGroupsgameMatch.Waiting);
+            gameMatch.TeamA = JoinClanGroupsIntoUsers(clanGroupsgameMatch.TeamA);
+            gameMatch.TeamB = JoinClanGroupsIntoUsers(clanGroupsgameMatch.TeamB);
+            gameMatch.Waiting = JoinClanGroupsIntoUsers(clanGroupsgameMatch.Waiting);
             return gameMatch;
         }
 

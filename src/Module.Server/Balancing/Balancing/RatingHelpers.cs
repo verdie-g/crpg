@@ -21,7 +21,7 @@ internal class RatingHelpers
     }
     internal static float ClanGroupsPowerSum(List<ClanGroup> clanGroups)
     {
-        return ComputeTeamRatingPowerSum(MatchBalancingHelpers.ConvertClanGroupsToCrpgUserList(clanGroups));
+        return ComputeTeamRatingPowerSum(MatchBalancingHelpers.JoinClanGroupsIntoUsers(clanGroups));
     }
 
     internal static float ComputeTeamRatingDifference(GameMatch gameMatch)

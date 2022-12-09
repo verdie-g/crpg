@@ -16,8 +16,8 @@ namespace Crpg.Module.UTest.Balancing
             userList.AddRange(game1.Waiting);
             userList.AddRange(game1.TeamA);
             userList.AddRange(game1.TeamB);
-            List<ClanGroup> clanGroups = MatchBalancingHelpers.ConvertCrpgUserListToClanGroups(userList);
-            List<CrpgUser> newUserList = MatchBalancingHelpers.ConvertClanGroupsToCrpgUserList(clanGroups);
+            List<ClanGroup> clanGroups = MatchBalancingHelpers.SplitUsersIntoClanGroups(userList);
+            List<CrpgUser> newUserList = MatchBalancingHelpers.JoinClanGroupsIntoUsers(clanGroups);
             CollectionAssert.AreEqual(userList.OrderBy(u => u.Character.Id), newUserList.OrderBy(u => u.Character.Id));
 
         }
