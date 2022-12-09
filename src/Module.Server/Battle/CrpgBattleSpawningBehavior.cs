@@ -101,7 +101,7 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
         {
             if (_notifiedPlayersAboutSpawnRestriction.Add(networkPeer.VirtualPlayer.Id))
             {
-                GameNetwork.BeginBroadcastModuleEvent();
+                GameNetwork.BeginModuleEventAsServer(networkPeer);
                 GameNetwork.WriteMessage(new CrpgNotification
                 {
                     Type = CrpgNotification.NotificationType.Announcement,
