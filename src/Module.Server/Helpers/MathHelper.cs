@@ -41,7 +41,7 @@ internal static class MathHelper
             pSum += Math.Pow(number, p);
         }
 
-        return (float)Math.Pow(pSum / (double)numbers.Count, 1d / (double)p);
+        return (float)Math.Pow(pSum / (double)numbers.Count, 1.0 / (double)p);
     }
 
     /// <summary>
@@ -55,7 +55,7 @@ internal static class MathHelper
             pSum += Math.Pow(number, p);
         }
 
-        return (float)Math.Pow(pSum, 1d / (double)p);
+        return (float)Math.Pow(pSum, 1.0 / (double)p);
     }
 
     public static bool Within(float value, float bound1, float bound2)
