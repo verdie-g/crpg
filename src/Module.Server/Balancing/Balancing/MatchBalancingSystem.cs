@@ -153,28 +153,11 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
 
     public bool FindAndSwapClanGroups(GameMatch gameMatch)
     {
-        double teamRatingDiff = RatingHelpers.ComputeTeamRatingDifference(gameMatch);
         ClanGroupsGameMatch clanGroupGameMatch = MatchBalancingHelpers.ConvertGameMatchToClanGroupsGameMatchList(gameMatch);
-        List<CrpgUser> weakTeam;
-        List<CrpgUser> strongTeam;
-        List<ClanGroup> weakClanGroupsTeam;
-        List<ClanGroup> strongClanGroupsTeam;
-        if (teamRatingDiff < 0)
-        {
-            weakTeam = gameMatch.TeamA;
-            strongTeam = gameMatch.TeamB;
-            weakClanGroupsTeam = clanGroupGameMatch.TeamA;
-            strongClanGroupsTeam = clanGroupGameMatch.TeamB;
-        }
-        else
-        {
-            weakTeam = gameMatch.TeamB;
-            strongTeam = gameMatch.TeamA;
-            weakClanGroupsTeam = clanGroupGameMatch.TeamB;
-            strongClanGroupsTeam = clanGroupGameMatch.TeamA;
-        }
-
-        teamRatingDiff = RatingHelpers.ComputeTeamRatingPowerSum(strongTeam) - RatingHelpers.ComputeTeamRatingPowerSum(weakTeam); // diff >0
+        (List<CrpgUser> weakTeam, List<CrpgUser> strongTeam, List<ClanGroup> weakClanGroupsTeam, List<ClanGroup> strongClanGroupsTeam) = RatingHelpers.ComputeTeamRatingDifference(gameMatch) < 0
+        ? (gameMatch.TeamA, gameMatch.TeamB, clanGroupGameMatch.TeamA, clanGroupGameMatch.TeamB)
+        : (gameMatch.TeamB, gameMatch.TeamA, clanGroupGameMatch.TeamB, clanGroupGameMatch.TeamA);
+        double teamRatingDiff = Math.Abs(RatingHelpers.ComputeTeamRatingDifference(gameMatch)); // diff >0
         weakClanGroupsTeam = weakClanGroupsTeam.OrderBy(c => c.RatingPMean()).ToList();
         strongClanGroupsTeam = strongClanGroupsTeam.OrderBy(c => c.RatingPMean()).ToList();
 
@@ -243,21 +226,11 @@ internal class MatchBalancingSystem : IMatchBalancingSystem
 
     public bool FindAndSwapPlayers(GameMatch gameMatch)
     {
-        double teamRatingDiff = RatingHelpers.ComputeTeamRatingDifference(gameMatch);
-        List<CrpgUser> weakTeam;
-        List<CrpgUser> strongTeam;
-        if (teamRatingDiff < 0)
-        {
-            weakTeam = gameMatch.TeamA;
-            strongTeam = gameMatch.TeamB;
-        }
-        else
-        {
-            weakTeam = gameMatch.TeamB;
-            strongTeam = gameMatch.TeamA;
-        }
+        (List<CrpgUser> weakTeam, List<CrpgUser> strongTeam) = RatingHelpers.ComputeTeamRatingDifference(gameMatch) < 0
+            ? (gameMatch.TeamA, gameMatch.TeamB)
+            : (gameMatch.TeamB, gameMatch.TeamA);
 
-        teamRatingDiff = Math.Abs(teamRatingDiff);
+        double teamRatingDiff = Math.Abs(RatingHelpers.ComputeTeamRatingDifference(gameMatch));
         int playerCountDifference = weakTeam.Count - strongTeam.Count;
         bool swapingFromWeakTeam = playerCountDifference <= 0;
         List<CrpgUser> teamTeamToSwapFrom = swapingFromWeakTeam ? weakTeam : strongTeam;

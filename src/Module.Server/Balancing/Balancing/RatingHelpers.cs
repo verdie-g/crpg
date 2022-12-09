@@ -24,6 +24,11 @@ internal class RatingHelpers
         return ComputeTeamRatingPowerSum(MatchBalancingHelpers.JoinClanGroupsIntoUsers(clanGroups));
     }
 
+    /// <summary>
+    /// Compute a signed Team Rating Difference.
+    /// </summary>
+    /// <param name="gameMatch">A GameMatch.</param>
+    /// <returns>Returns Team A rating - Team B rating.</returns>
     internal static float ComputeTeamRatingDifference(GameMatch gameMatch)
     {
         return ComputeTeamRatingPowerSum(gameMatch.TeamA, MatchBalancingSystem.PowerParameter) - ComputeTeamRatingPowerSum(gameMatch.TeamB, MatchBalancingSystem.PowerParameter);
