@@ -1,6 +1,7 @@
 ﻿using System.Numerics;
 using Crpg.Module.Api.Models.Users;
 using Crpg.Module.Helpers;
+using TaleWorlds.Library;
 
 namespace Crpg.Module.Balancing;
 
@@ -37,9 +38,9 @@ internal class MatchBalancingSystem
     public GameMatch BannerBalancingWithEdgeCases(GameMatch gameMatch)
     {
         MatchBalancingHelpers.DumpTeamsStatus(gameMatch);
-        Console.WriteLine(nameof(BannerBalancingWithEdgeCases));
-        Console.WriteLine("--------------------------------------------");
-        Console.WriteLine("Now splitting the clangroups between the two team");
+        Debug.Print(nameof(BannerBalancingWithEdgeCases));
+        Debug.Print("--------------------------------------------");
+        Debug.Print("Now splitting the clangroups between the two team");
         GameMatch balancedBannerGameMatch = KkMakeTeamOfSimilarSizesWithoutSplittingClanGroups(gameMatch);
         MatchBalancingHelpers.DumpTeamsStatus(balancedBannerGameMatch);
         if (PlayerCount(balancedBannerGameMatch) < 3)
@@ -47,35 +48,35 @@ internal class MatchBalancingSystem
             return NaiveCaptainBalancing(balancedBannerGameMatch);
         }
 
-        Console.WriteLine("Banner balancing now");
+        Debug.Print("Banner balancing now");
 
         balancedBannerGameMatch = BalanceTeamOfSimilarSizes(balancedBannerGameMatch, bannerBalance: true, 0.025f);
 
-        Console.WriteLine("Banner balancing done");
+        Debug.Print("Banner balancing done");
         MatchBalancingHelpers.DumpTeamsStatus(balancedBannerGameMatch);
 
         if (IsBalanceGoodEnough(balancedBannerGameMatch, maxSizeRatio: 0.75f, maxDifference: 10f, percentageDifference: 0.10f))
         {
-            Console.WriteLine("Balance is acceptable");
+            Debug.Print("Balance is acceptable");
         }
         else
         {
             // This are failcases in case bannerbalance was not enough
-            Console.WriteLine("Balance is unnacceptable");
+            Debug.Print("Balance is unnacceptable");
             balancedBannerGameMatch = BalanceTeamOfSimilarSizes(balancedBannerGameMatch, bannerBalance: false, 0.10f);
 
             if (IsBalanceGoodEnough(balancedBannerGameMatch, maxSizeRatio: 0.75f, maxDifference: 10f, percentageDifference: 0.15f))
             {
                 // A few swaps solved the problem. Most of the clangroups are intact
-                Console.WriteLine("Balance is now Acceptable");
+                Debug.Print("Balance is now Acceptable");
             }
             else
             {
                 // A few swaps were not enough. Swaps are a form of gradient descent. Sometimes there are local extremas that are not  global extremas
                 // Here we completely abandon bannerbalance by completely reshuffling the card then redoing swaps
-                Console.WriteLine("Swaps were not enough. This should really not happen often");
+                Debug.Print("Swaps were not enough. This should really not happen often");
                 MatchBalancingHelpers.DumpTeams(balancedBannerGameMatch);
-                Console.WriteLine("NaiveCaptainBalancing + Balancing Without BannerGrouping");
+                Debug.Print("NaiveCaptainBalancing + Balancing Without BannerGrouping");
                 balancedBannerGameMatch = NaiveCaptainBalancing(balancedBannerGameMatch);
                 balancedBannerGameMatch = BalanceTeamOfSimilarSizes(balancedBannerGameMatch, false, 0.001f);
             }
@@ -114,8 +115,8 @@ internal class MatchBalancingSystem
         {
             if (IsBalanceGoodEnough(gameMatch, maxSizeRatio: 0.75f, maxDifference: 10f, percentageDifference: threshold))
             {
-                Console.WriteLine($"Made {i} Swaps {methodUsed}");
-                Console.WriteLine("Teams are of similar sizes and similar ratings");
+                Debug.Print($"Made {i} Swaps {methodUsed}");
+                Debug.Print("Teams are of similar sizes and similar ratings");
                 break;
             }
 
@@ -123,8 +124,8 @@ internal class MatchBalancingSystem
             {
                 if (!FindAndSwapClanGroups(gameMatch))
                 {
-                    Console.WriteLine("Made " + i + " Swaps");
-                    Console.WriteLine("No More Swap With BannerGrouping Available");
+                    Debug.Print("Made " + i + " Swaps");
+                    Debug.Print("No More Swap With BannerGrouping Available");
                     break;
                 }
             }
@@ -132,8 +133,8 @@ internal class MatchBalancingSystem
             {
                 if (!FindAndSwapPlayers(gameMatch))
                 {
-                    Console.WriteLine("Made " + i + " Swaps");
-                    Console.WriteLine("No more swap without BannerGrouping available");
+                    Debug.Print("Made " + i + " Swaps");
+                    Debug.Print("No more swap without BannerGrouping available");
                     break;
                 }
             }

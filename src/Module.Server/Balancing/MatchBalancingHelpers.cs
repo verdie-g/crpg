@@ -291,10 +291,10 @@ internal static class MatchBalancingHelpers
         foreach (ClanGroup clanGroup in clanGroups)
         {
             string clanGroupClanId = clanGroup.ClanId == null ? "Solo" : clanGroup.ClanId!.ToString();
-            Console.WriteLine(clanGroupClanId);
+            Debug.Print(clanGroupClanId);
             foreach (CrpgUser u in clanGroup.Members)
             {
-                Console.WriteLine(u.Character.Name + " : " + u.Character.Rating.Value);
+                Debug.Print(u.Character.Name + " : " + u.Character.Rating.Value);
             }
         }
     }
@@ -303,43 +303,43 @@ internal static class MatchBalancingHelpers
     {
         foreach (CrpgUser u in clanGroup.Members)
         {
-            Console.WriteLine(u.Character.Name + " : " + u.Character.Rating.Value);
+            Debug.Print(u.Character.Name + " : " + u.Character.Rating.Value);
         }
     }
 
     public static void DumpTeams(GameMatch gameMatch)
     {
-        Console.WriteLine("-----------------------");
-        Console.WriteLine("Team A");
+        Debug.Print("-----------------------");
+        Debug.Print("Team A");
         foreach (CrpgUser u in gameMatch.TeamA)
         {
-            Console.WriteLine($"{u.Character.Name} :  {u.Character.Rating.Value}");
+            Debug.Print($"{u.Character.Name} :  {u.Character.Rating.Value}");
         }
 
-        Console.WriteLine("-----------------------");
-        Console.WriteLine("Team B");
+        Debug.Print("-----------------------");
+        Debug.Print("Team B");
         foreach (CrpgUser u in gameMatch.TeamB)
         {
-            Console.WriteLine($"{u.Character.Name} :  {u.Character.Rating.Value}");
+            Debug.Print($"{u.Character.Name} :  {u.Character.Rating.Value}");
         }
 
-        Console.WriteLine("-----------------------");
-        Console.WriteLine("WaitingToJoin");
+        Debug.Print("-----------------------");
+        Debug.Print("WaitingToJoin");
         foreach (CrpgUser u in gameMatch.Waiting)
         {
-            Console.WriteLine($"{u.Character.Name} :  {u.Character.Rating.Value}");
+            Debug.Print($"{u.Character.Name} :  {u.Character.Rating.Value}");
         }
 
-        Console.WriteLine("-----------------------");
+        Debug.Print("-----------------------");
     }
 
     public static void DumpTeamsStatus(GameMatch gameMatch)
     {
-        Console.WriteLine("--------------------------------------------");
-        Console.WriteLine($"Team A Count {gameMatch.TeamA.Count} Rating: {RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamA)}");
-        Console.WriteLine($"Team B Count {gameMatch.TeamB.Count} Rating: {RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamB)}");
-        Console.WriteLine($"Waiting Team Count {gameMatch.Waiting.Count} Rating: {RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.Waiting)}");
-        Console.WriteLine("--------------------------------------------");
+        Debug.Print("--------------------------------------------");
+        Debug.Print($"Team A Count {gameMatch.TeamA.Count} Rating: {RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamA)}");
+        Debug.Print($"Team B Count {gameMatch.TeamB.Count} Rating: {RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamB)}");
+        Debug.Print($"Waiting Team Count {gameMatch.Waiting.Count} Rating: {RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.Waiting)}");
+        Debug.Print("--------------------------------------------");
     }
 
     private class PartitionNode<T>
