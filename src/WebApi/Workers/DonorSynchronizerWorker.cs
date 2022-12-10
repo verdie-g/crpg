@@ -103,6 +103,7 @@ internal class DonorSynchronizerWorker : BackgroundService
             ["1a4e438e725f11edacfc52540025c377"] = "76561198136476759",
             ["651ee3be726411ed9b5f52540025c377"] = "76561198094460089",
             ["956ba96c725f11ed846952540025c377"] = "76561198277953194",
+            ["d4ebfc9a788611ed820252540025c377"] = "76561198140373269",
         };
 
         using HttpClient httpClient = new() { BaseAddress = new Uri("https://afdian.net/"), };
