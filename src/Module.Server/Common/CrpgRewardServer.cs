@@ -260,7 +260,7 @@ internal class CrpgRewardServer : MissionBehavior
                 GameNetwork.WriteMessage(new CrpgNotification
                 {
                     Type = CrpgNotification.NotificationType.Announcement,
-                    Message = "Prime time ended!",
+                    Message = "Happy hours ended!",
                 });
                 GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
             }
