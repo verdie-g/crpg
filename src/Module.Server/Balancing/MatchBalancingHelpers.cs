@@ -278,24 +278,22 @@ internal static class MatchBalancingHelpers
 
     private static Vector2 ClanGroupRescaledVector(float scaler, ClanGroup clanGroup)
     {
-        Vector2 vector = new(clanGroup.Size * scaler, clanGroup.RatingPsum());
-        return vector;
+        return new Vector2(clanGroup.Size * scaler, clanGroup.RatingPsum());
     }
 
     private static Vector2 ClanGroupsRescaledVector(float scaler, List<ClanGroup> clanGroups)
     {
-        Vector2 vector = new(clanGroups.Sum(c => c.Size) * scaler, RatingHelpers.ClanGroupsPowerSum(clanGroups));
-        return vector;
+        return new Vector2(clanGroups.Sum(c => c.Size) * scaler, RatingHelpers.ClanGroupsPowerSum(clanGroups));
     }
 
-    private static float Vector2Angles(Vector2 v1)
+    private static float Vector2Angles(Vector2 v)
     {
-        if (v1.X == 0 && v1.Y == 0)
+        if (v == Vector2.Zero)
         {
             return 0;
         }
 
-        return (float)Math.Atan2(v1.Y, v1.X);
+        return (float)Math.Atan2(v.Y, v.X);
     }
 
     private class PartitionNode<T>
