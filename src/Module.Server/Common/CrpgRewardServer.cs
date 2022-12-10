@@ -291,11 +291,12 @@ internal class CrpgRewardServer : MissionBehavior
             return crpgPeer.User!.Character.Rating;
         }
 
+        // Values are clamped in case there is an issue in the rating algorithm.
         return new CrpgCharacterRating
         {
-            Value = (float)rating.Glicko2Rating,
-            Deviation = (float)rating.Glicko2RatingDeviation,
-            Volatility = (float)rating.Volatility,
+            Value = MathF.Clamp(rating.Glicko2Rating, -100_000, 100_000),
+            Deviation = MathF.Clamp(rating.Glicko2RatingDeviation, -100_000, 100_000),
+            Volatility = MathF.Clamp(rating.Volatility, -100_000, 100_000),
         };
     }
 
