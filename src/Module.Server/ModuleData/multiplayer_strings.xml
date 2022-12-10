@@ -23,16 +23,19 @@
   <!-- Battle Maps -->
   <string id="str_multiplayer_scene_name.crpg_battle_abandoned" text="{=!}Abandoned" />
   <string id="str_multiplayer_scene_name.crpg_battle_acaciacitadel" text="{=!}Acacia Citadel" />
+  <string id="str_multiplayer_scene_name.crpg_battle_ancientworld" text="{=!}Ancient World" />
   <string id="str_multiplayer_scene_name.crpg_battle_auglirefortress" text="{=!}Auglire Fortress" />
   <string id="str_multiplayer_scene_name.crpg_battle_banditvalley" text="{=!}Bandit valley" />
   <string id="str_multiplayer_scene_name.crpg_battle_bazaar" text="{=!}Bazaar" />
   <string id="str_multiplayer_scene_name.crpg_battle_cabbagepatch" text="{=!}Cabbage Patch" />
   <string id="str_multiplayer_scene_name.crpg_battle_canals" text="{=!}Canals" />
   <string id="str_multiplayer_scene_name.crpg_battle_crescentisland" text="{=!}Crescent Island" />
+  <string id="str_multiplayer_scene_name.crpg_battle_darfield" text="{=!}Darfield" />
   <string id="str_multiplayer_scene_name.crpg_battle_dragonsroost" text="{=!}Dragon's Roost" />
   <string id="str_multiplayer_scene_name.crpg_battle_fallenaqueduct" text="{=!}Fallen Aqueduct" />
   <string id="str_multiplayer_scene_name.crpg_battle_ghosttown" text="{=!}Ghost Town" />
   <string id="str_multiplayer_scene_name.crpg_battle_hexenbrennen" text="{=!}Hexenbrennen" />
+  <string id="str_multiplayer_scene_name.crpg_battle_icelake" text="{=!}Ice Lake" />
   <string id="str_multiplayer_scene_name.crpg_battle_kalmara" text="{=!}Kalmara" />
   <string id="str_multiplayer_scene_name.crpg_battle_kingsroad" text="{=!}King's Road" />
   <string id="str_multiplayer_scene_name.crpg_battle_moig" text="{=!}Moig" />
@@ -47,10 +50,19 @@
   <string id="str_multiplayer_scene_name.crpg_battle_skyfall" text="{=!}Skyfall" />
   <string id="str_multiplayer_scene_name.crpg_battle_stonehenge" text="{=!}Stonehenge" />
   <string id="str_multiplayer_scene_name.crpg_battle_swampbrawl" text="{=!}Swamp Brawl"/>
+  <string id="str_multiplayer_scene_name.crpg_battle_talmberg" text="{=!}Talmberg" />
   <string id="str_multiplayer_scene_name.crpg_battle_tavernbrawl" text="{=!}Tavern Brawl" />
   <string id="str_multiplayer_scene_name.crpg_battle_vatnborg" text="{=!}Vatnborg" />
+  <string id="str_multiplayer_scene_name.crpg_battle_waterwaytojelkala" text="{=!}Water Way to Jelkala" />
 
   <!-- Siege Maps -->
+  <string id="str_multiplayer_scene_name.crpg_siege_eastcliff" text="{=!}East Cliff" />
+  <string id="str_multiplayer_scene_name.crpg_siege_hades" text="{=!}Hades" />
+  <string id="str_multiplayer_scene_name.crpg_siege_hailescastle" text="{=!}Hailes Castle" />
+  <string id="str_multiplayer_scene_name.crpg_siege_jameyyedcastle" text="{=!}Jameyyed Castle" />
   <string id="str_multiplayer_scene_name.crpg_siege_motteandbailey" text="{=!}Motte and Bailey" />
   <string id="str_multiplayer_scene_name.crpg_siege_neuenburg" text="{=!}Neuenburg" />
+  <string id="str_multiplayer_scene_name.crpg_siege_neuenburg_winter" text="{=!}Neuenburg" />
+  <string id="str_multiplayer_scene_name.crpg_siege_scarwood" text="{=!}Scarwood" />
+  <string id="str_multiplayer_scene_name.crpg_siege_wickcastle" text="{=!}Wick Castle" />
 </strings>

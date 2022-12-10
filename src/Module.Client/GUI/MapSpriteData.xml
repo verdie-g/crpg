@@ -17,7 +17,7 @@
   <SpriteCategories>
     <SpriteCategory>
       <Name>ui_mploading</Name>
-      <SpriteSheetCount>71</SpriteSheetCount>
+      <SpriteSheetCount>82</SpriteSheetCount>
       <SpriteSheetSize ID="1" Width="3840" Height="1935" />
       <SpriteSheetSize ID="2" Width="3840" Height="1935" />
       <SpriteSheetSize ID="3" Width="3383" Height="1902" />
@@ -89,6 +89,17 @@
       <SpriteSheetSize ID="69" Width="1920" Height="1080" />
       <SpriteSheetSize ID="70" Width="1920" Height="1080" />
       <SpriteSheetSize ID="71" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="72" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="73" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="74" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="75" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="76" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="77" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="78" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="79" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="80" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="81" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="82" Width="1920" Height="1080" />
     </SpriteCategory>
   </SpriteCategories>
   <SpriteParts>
@@ -740,6 +751,105 @@
       <SheetY>0</SheetY>
       <CategoryName>ui_mploading</CategoryName>
     </SpritePart>
+    <SpritePart>
+      <SheetID>72</SheetID>
+      <Name>crpg_battle_icelake</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>73</SheetID>
+      <Name>crpg_battle_talmberg</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>74</SheetID>
+      <Name>crpg_battle_ancientworld</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>75</SheetID>
+      <Name>crpg_battle_darfield</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>76</SheetID>
+      <Name>crpg_siege_jameyyedcastle</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>77</SheetID>
+      <Name>crpg_siege_wickcastle</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>78</SheetID>
+      <Name>crpg_siege_scarwood</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>79</SheetID>
+      <Name>crpg_siege_hades</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>80</SheetID>
+      <Name>crpg_battle_waterwaytojelkala</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>81</SheetID>
+      <Name>crpg_siege_hailescastle</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>82</SheetID>
+      <Name>crpg_siege_neuenburg_winter</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
   </SpriteParts>
   <Sprites>
     <GenericSprite>
@@ -1025,6 +1135,50 @@
     <GenericSprite>
       <Name>crpg_battle_crescentisland</Name>
       <SpritePartName>crpg_battle_crescentisland</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_icelake</Name>
+      <SpritePartName>crpg_battle_icelake</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_talmberg</Name>
+      <SpritePartName>crpg_battle_talmberg</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_ancientworld</Name>
+      <SpritePartName>crpg_battle_ancientworld</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_darfield</Name>
+      <SpritePartName>crpg_battle_darfield</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_siege_jameyyedcastle</Name>
+      <SpritePartName>crpg_siege_jameyyedcastle</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_siege_wickcastle</Name>
+      <SpritePartName>crpg_siege_wickcastle</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_siege_scarwood</Name>
+      <SpritePartName>crpg_siege_scarwood</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_siege_hades</Name>
+      <SpritePartName>crpg_siege_hades</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_waterwaytojelkala</Name>
+      <SpritePartName>crpg_battle_waterwaytojelkala</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_siege_hailescastle</Name>
+      <SpritePartName>crpg_siege_hailescastle</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_siege_neuenburg_winter</Name>
+      <SpritePartName>crpg_siege_neuenburg_winter</SpritePartName>
     </GenericSprite>
   </Sprites>
 </SpriteData>
