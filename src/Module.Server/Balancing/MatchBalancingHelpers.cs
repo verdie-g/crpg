@@ -8,31 +8,25 @@ internal static class MatchBalancingHelpers
 {
     public static List<ClanGroup> SplitUsersIntoClanGroups(List<CrpgUser> users)
     {
-        Dictionary<int, ClanGroup> clanGroupCreated = new();
+        Dictionary<int, ClanGroup> clanGroupsByClanId = new();
         List<ClanGroup> clanGroups = new();
 
         foreach (CrpgUser user in users.OrderByDescending(u => u.ClanMembership?.ClanId ?? 0))
         {
+            ClanGroup clanGroup;
             if (user.ClanMembership == null)
             {
-                ClanGroup clanGroup = new(null);
-                clanGroup.Add(user);
+                clanGroup = new(null);
                 clanGroups.Add(clanGroup);
             }
-            else
+            else if (!clanGroupsByClanId.TryGetValue(user.ClanMembership.ClanId, out clanGroup))
             {
-                if (clanGroupCreated.TryGetValue(user.ClanMembership.ClanId, out ClanGroup existingClanGroup))
-                {
-                    existingClanGroup.Add(user);
-                }
-                else
-                {
-                    ClanGroup clanGroup = new(user.ClanMembership.ClanId);
-                    clanGroup.Add(user);
-                    clanGroupCreated.Add(user.ClanMembership.ClanId, clanGroup);
-                    clanGroups.Add(clanGroup);
-                }
+                clanGroup = new(user.ClanMembership.ClanId);
+                clanGroups.Add(clanGroup);
+                clanGroupsByClanId[user.ClanMembership.ClanId] = clanGroup;
             }
+
+            clanGroup.Add(user);
         }
 
         return clanGroups;
