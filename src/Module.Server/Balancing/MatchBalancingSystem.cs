@@ -142,7 +142,7 @@ internal class MatchBalancingSystem
         return gameMatch;
     }
 
-    public bool FindAndSwapClanGroups(GameMatch gameMatch)
+    private bool FindAndSwapClanGroups(GameMatch gameMatch)
     {
         ClanGroupsGameMatch clanGroupGameMatch = MatchBalancingHelpers.ConvertGameMatchToClanGroupsGameMatchList(gameMatch);
         (List<CrpgUser> weakTeam, List<CrpgUser> strongTeam, List<ClanGroup> weakClanGroupsTeam, List<ClanGroup> strongClanGroupsTeam) = RatingHelpers.ComputeTeamRatingDifference(gameMatch) < 0
@@ -190,32 +190,30 @@ internal class MatchBalancingSystem
         ? (weakTeam, strongTeam)
         : (strongTeam, weakTeam);
 
-        if (Math.Abs(newTeamRatingDiff) < Math.Abs(teamRatingDiff))
-        {
-            foreach (var clanGroup in clanGroupstoSwap2)
-            {
-                foreach (CrpgUser user in clanGroup.MemberList)
-                {
-                    teamToSwapInto.Remove(user);
-                    teamToSwapFrom.Add(user);
-                }
-            }
-
-            foreach (CrpgUser user in clanGrouptoSwap1.MemberList)
-            {
-                teamToSwapInto.Add(user);
-                teamToSwapFrom.Remove(user);
-            }
-
-            return true;
-        }
-        else
+        if (Math.Abs(newTeamRatingDiff) >= Math.Abs(teamRatingDiff))
         {
             return false;
         }
+
+        foreach (var clanGroup in clanGroupstoSwap2)
+        {
+            foreach (CrpgUser user in clanGroup.MemberList)
+            {
+                teamToSwapInto.Remove(user);
+                teamToSwapFrom.Add(user);
+            }
+        }
+
+        foreach (CrpgUser user in clanGrouptoSwap1.MemberList)
+        {
+            teamToSwapInto.Add(user);
+            teamToSwapFrom.Remove(user);
+        }
+
+        return true;
     }
 
-    public bool FindAndSwapPlayers(GameMatch gameMatch)
+    private bool FindAndSwapPlayers(GameMatch gameMatch)
     {
         (List<CrpgUser> weakTeam, List<CrpgUser> strongTeam) = RatingHelpers.ComputeTeamRatingDifference(gameMatch) < 0
             ? (gameMatch.TeamA, gameMatch.TeamB)
@@ -252,37 +250,35 @@ internal class MatchBalancingSystem
         float newTeamRatingDiff = swapingFromWeakTeam
             ? strongTeam.Sum(u => u.Character.Rating.Value) + 2f * bestCrpgUserToSwap1.Character.Rating.Value - 2f * bestCrpgUsersToSwap2.Sum(u => u.Character.Rating.Value) - weakTeam.Sum(u => u.Character.Rating.Value)
             : strongTeam.Sum(u => u.Character.Rating.Value) + 2f * bestCrpgUsersToSwap2.Sum(u => u.Character.Rating.Value) - 2f * bestCrpgUserToSwap1.Character.Rating.Value - weakTeam.Sum(u => u.Character.Rating.Value);
-        if (Math.Abs(newTeamRatingDiff) < Math.Abs(teamRatingDiff))
-        {
-            if (swapingFromWeakTeam)
-            {
-                foreach (CrpgUser user in bestCrpgUsersToSwap2)
-                {
-                    weakTeam.Add(user);
-                    strongTeam.Remove(user);
-                }
-
-                strongTeam.Add(bestCrpgUserToSwap1);
-                weakTeam.Remove(bestCrpgUserToSwap1);
-            }
-            else
-            {
-                foreach (CrpgUser user in bestCrpgUsersToSwap2)
-                {
-                    weakTeam.Remove(user);
-                    strongTeam.Add(user);
-                }
-
-                strongTeam.Remove(bestCrpgUserToSwap1);
-                weakTeam.Add(bestCrpgUserToSwap1);
-            }
-
-            return true;
-        }
-        else
+        if (Math.Abs(newTeamRatingDiff) >= Math.Abs(teamRatingDiff))
         {
             return false;
         }
+
+        if (swapingFromWeakTeam)
+        {
+            foreach (CrpgUser user in bestCrpgUsersToSwap2)
+            {
+                weakTeam.Add(user);
+                strongTeam.Remove(user);
+            }
+
+            strongTeam.Add(bestCrpgUserToSwap1);
+            weakTeam.Remove(bestCrpgUserToSwap1);
+        }
+        else
+        {
+            foreach (CrpgUser user in bestCrpgUsersToSwap2)
+            {
+                weakTeam.Remove(user);
+                strongTeam.Add(user);
+            }
+
+            strongTeam.Remove(bestCrpgUserToSwap1);
+            weakTeam.Add(bestCrpgUserToSwap1);
+        }
+
+        return true;
     }
 
     // Rating Difference is positive. It has to be Strong Team - WeakTeam.
