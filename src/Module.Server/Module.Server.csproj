@@ -30,6 +30,10 @@
       <Private>False</Private>
     </Reference>
 
+    <Reference Include="$(MB_SERVER_PATH)\bin\Win64_Shipping_Server\System.Numerics.Vectors.dll">
+      <Private>False</Private>
+    </Reference>
+
     <!-- Remove native library (not .NET). -->
     <Reference Remove="$(MB_SERVER_PATH)/bin/Win64_Shipping_Server/TaleWorlds.Native.dll" />
     <!-- These libraries cause dependency conflicts. -->
@@ -42,18 +46,12 @@
   <ItemGroup>
     <PackageReference Include="Lib.Harmony" Version="2.1.0" GeneratePathProperty="true" NoWarn="NU1701" />
   </ItemGroup>
+
   <ItemGroup>
     <None Include="$(PkgLib_Harmony)\lib\net472\0Harmony.dll" CopyToOutputDirectory="PreserveNewest" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <InternalsVisibleTo Include="$(AssemblyName).UTest" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Balancing\Balancing" />
   </ItemGroup>
 </Project>
