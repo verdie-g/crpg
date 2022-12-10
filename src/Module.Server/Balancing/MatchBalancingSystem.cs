@@ -40,7 +40,7 @@ internal class MatchBalancingSystem
         MatchBalancingHelpers.DumpTeamsStatus(gameMatch);
         Debug.Print(nameof(BannerBalancingWithEdgeCases));
         Debug.Print("--------------------------------------------");
-        Debug.Print("Now splitting the clangroups between the two team");
+        Debug.Print("Now splitting the clan groups between the two team");
         GameMatch balancedBannerGameMatch = KkMakeTeamOfSimilarSizesWithoutSplittingClanGroups(gameMatch);
         MatchBalancingHelpers.DumpTeamsStatus(balancedBannerGameMatch);
         if (PlayerCount(balancedBannerGameMatch) < 3)
@@ -49,9 +49,7 @@ internal class MatchBalancingSystem
         }
 
         Debug.Print("Banner balancing now");
-
         balancedBannerGameMatch = BalanceTeamOfSimilarSizes(balancedBannerGameMatch, bannerBalance: true, 0.025f);
-
         Debug.Print("Banner balancing done");
         MatchBalancingHelpers.DumpTeamsStatus(balancedBannerGameMatch);
 
@@ -72,8 +70,8 @@ internal class MatchBalancingSystem
             }
             else
             {
-                // A few swaps were not enough. Swaps are a form of gradient descent. Sometimes there are local extremas that are not  global extremas
-                // Here we completely abandon bannerbalance by completely reshuffling the card then redoing swaps
+                // A few swaps were not enough. Swaps are a form of gradient descent. Sometimes there are local extremas that are not global extremas
+                // Here we completely abandon banner balance by completely reshuffling the card then redoing swaps
                 Debug.Print("Swaps were not enough. This should really not happen often");
                 MatchBalancingHelpers.DumpTeams(balancedBannerGameMatch);
                 Debug.Print("NaiveCaptainBalancing + Balancing Without BannerGrouping");
@@ -92,8 +90,8 @@ internal class MatchBalancingSystem
         allUsers.AddRange(gameMatch.TeamA);
         allUsers.AddRange(gameMatch.TeamB);
         allUsers.AddRange(gameMatch.Waiting);
+
         var clanGroups = MatchBalancingHelpers.SplitUsersIntoClanGroups(allUsers);
-        GameMatch returnedGameMatch = new();
         ClanGroup[] clanGroupsArray = clanGroups.ToArray();
         float[] clanGroupSizes = new float[clanGroups.Count];
         for (int i = 0; i < clanGroupsArray.Length; i++)
@@ -101,11 +99,14 @@ internal class MatchBalancingSystem
             clanGroupSizes[i] = clanGroups[i].Size;
         }
 
+        // The value 2 means we're splitting clan groups into two teams
         var partition = MatchBalancingHelpers.Heuristic(clanGroupsArray, clanGroupSizes, 2, preSorted: false);
-        // the 2 value means we're splitting clangroups into two teams
-        returnedGameMatch.TeamA = MatchBalancingHelpers.JoinClanGroupsIntoUsers(partition.Partition[0].ToList());
-        returnedGameMatch.TeamB = MatchBalancingHelpers.JoinClanGroupsIntoUsers(partition.Partition[1].ToList());
-        return returnedGameMatch;
+        return new GameMatch
+        {
+            TeamA = MatchBalancingHelpers.JoinClanGroupsIntoUsers(partition.Partition[0].ToList()),
+            TeamB = MatchBalancingHelpers.JoinClanGroupsIntoUsers(partition.Partition[1].ToList()),
+            Waiting = new List<CrpgUser>(),
+        };
     }
 
     public GameMatch BalanceTeamOfSimilarSizes(GameMatch gameMatch, bool bannerBalance, float threshold)

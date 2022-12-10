@@ -50,11 +50,6 @@ internal static class MatchBalancingHelpers
         return users;
     }
 
-    public static int TeamSizeDifference(GameMatch gameMatch)
-    {
-        return gameMatch.TeamA.Count - gameMatch.TeamB.Count;
-    }
-
     public static int ClanGroupsSize(List<ClanGroup> clanGroups)
     {
         return clanGroups.Sum(c => c.Size);
@@ -67,33 +62,21 @@ internal static class MatchBalancingHelpers
 
     public static ClanGroupsGameMatch ConvertGameMatchToClanGroupsGameMatchList(GameMatch gameMatch)
     {
-        ClanGroupsGameMatch clanGroupsGameMatch = new()
+        return new ClanGroupsGameMatch
         {
             TeamA = SplitUsersIntoClanGroups(gameMatch.TeamA),
             TeamB = SplitUsersIntoClanGroups(gameMatch.TeamB),
             Waiting = SplitUsersIntoClanGroups(gameMatch.Waiting),
         };
-        return clanGroupsGameMatch;
     }
 
-    public static GameMatch ConvertClanGroupsGameMatchToGameMatchList(ClanGroupsGameMatch clanGroupsgameMatch)
+    public static List<CrpgUser> FindCrpgUsersToSwap(float targetRating, List<CrpgUser> teamToSelectFrom, float sizeOffset)
     {
-        GameMatch gameMatch = new()
-        {
-            TeamA = JoinClanGroupsIntoUsers(clanGroupsgameMatch.TeamA),
-            TeamB = JoinClanGroupsIntoUsers(clanGroupsgameMatch.TeamB),
-            Waiting = JoinClanGroupsIntoUsers(clanGroupsgameMatch.Waiting),
-        };
-        return gameMatch;
-    }
-
-    public static List<CrpgUser> FindCrpgUsersToSwap(float targetRating, List<CrpgUser> teamtoSelectFrom, float sizeOffset)
-    {
-        List<CrpgUser> team = teamtoSelectFrom.ToList();
+        List<CrpgUser> team = teamToSelectFrom.ToList();
         List<CrpgUser> usersToSwap = new();
         Vector2 usersToSwapVector = new(0, 0);
         float targetSizeScaling = targetRating / (1 + sizeOffset); // used to make the targeted vector diagonal
-        for (int i = 0; i < teamtoSelectFrom.Count; i++)
+        for (int i = 0; i < teamToSelectFrom.Count; i++)
         {
             CrpgUser bestUserToAdd = team.First();
             Vector2 bestUserToAddVector = new(targetSizeScaling, bestUserToAdd.Character.Rating.Value);
@@ -129,13 +112,13 @@ internal static class MatchBalancingHelpers
         return usersToSwap;
     }
 
-    public static List<ClanGroup> FindAClanGroupToSwapUsing(float targetRating, float targetSize, List<ClanGroup> teamtoSelectFrom, float sizeOffset, bool useAngle)
+    public static List<ClanGroup> FindAClanGroupToSwapUsing(float targetRating, float targetSize, List<ClanGroup> teamToSelectFrom, float sizeOffset, bool useAngle)
     {
-        List<ClanGroup> team = teamtoSelectFrom.ToList();
+        List<ClanGroup> team = teamToSelectFrom.ToList();
         List<ClanGroup> clanGroupsToSwap = new();
         float targetSizeScaling = targetRating / (targetSize + sizeOffset); // used to make the targeted vector diagonal
         Vector2 objectiveVector = new(targetSizeScaling * (targetSize + sizeOffset), targetRating);
-        for (int i = 0; i < teamtoSelectFrom.Count; i++)
+        for (int i = 0; i < teamToSelectFrom.Count; i++)
         {
             ClanGroup bestClanGroupToAdd = team.First();
             Vector2 bestClanGroupToAddVector = ClanGroupRescaledVector(targetSizeScaling, bestClanGroupToAdd);
@@ -180,28 +163,6 @@ internal static class MatchBalancingHelpers
         }
 
         return clanGroupsToSwap;
-    }
-
-    public static Vector2 ClanGroupRescaledVector(float scaler, ClanGroup clanGroup)
-    {
-        Vector2 vector = new(clanGroup.Size * scaler, clanGroup.RatingPsum());
-        return vector;
-    }
-
-    public static Vector2 ClanGroupsRescaledVector(float scaler, List<ClanGroup> clanGroups)
-    {
-        Vector2 vector = new(clanGroups.Sum(c => c.Size) * scaler, RatingHelpers.ClanGroupsPowerSum(clanGroups));
-        return vector;
-    }
-
-    public static float Vector2Angles(Vector2 v1)
-    {
-        if (v1.X == 0 && v1.Y == 0)
-        {
-            return 0;
-        }
-
-        return (float)Math.Atan2(v1.Y, v1.X);
     }
 
     /// <summary>
@@ -286,27 +247,6 @@ internal static class MatchBalancingHelpers
         return new PartitioningResult<T>(node.Partition, node.Sizes);
     }
 
-    public static void DumpClanGroups(List<ClanGroup> clanGroups)
-    {
-        foreach (ClanGroup clanGroup in clanGroups)
-        {
-            string clanGroupClanId = clanGroup.ClanId == null ? "Solo" : clanGroup.ClanId!.ToString();
-            Debug.Print(clanGroupClanId);
-            foreach (CrpgUser u in clanGroup.Members)
-            {
-                Debug.Print(u.Character.Name + " : " + u.Character.Rating.Value);
-            }
-        }
-    }
-
-    public static void DumpClanGroup(ClanGroup clanGroup)
-    {
-        foreach (CrpgUser u in clanGroup.Members)
-        {
-            Debug.Print(u.Character.Name + " : " + u.Character.Rating.Value);
-        }
-    }
-
     public static void DumpTeams(GameMatch gameMatch)
     {
         Debug.Print("-----------------------");
@@ -341,6 +281,29 @@ internal static class MatchBalancingHelpers
         Debug.Print($"Waiting Team Count {gameMatch.Waiting.Count} Rating: {RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.Waiting)}");
         Debug.Print("--------------------------------------------");
     }
+
+    private static Vector2 ClanGroupRescaledVector(float scaler, ClanGroup clanGroup)
+    {
+        Vector2 vector = new(clanGroup.Size * scaler, clanGroup.RatingPsum());
+        return vector;
+    }
+
+    private static Vector2 ClanGroupsRescaledVector(float scaler, List<ClanGroup> clanGroups)
+    {
+        Vector2 vector = new(clanGroups.Sum(c => c.Size) * scaler, RatingHelpers.ClanGroupsPowerSum(clanGroups));
+        return vector;
+    }
+
+    private static float Vector2Angles(Vector2 v1)
+    {
+        if (v1.X == 0 && v1.Y == 0)
+        {
+            return 0;
+        }
+
+        return (float)Math.Atan2(v1.Y, v1.X);
+    }
+
 
     private class PartitionNode<T>
     {
