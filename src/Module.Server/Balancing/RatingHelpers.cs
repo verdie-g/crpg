@@ -28,7 +28,6 @@ internal static class RatingHelpers
 
     internal static float ComputeTeamRatingPowerSum(List<CrpgUser> team, float p = MatchBalancingSystem.PowerParameter)
     {
-        List<float> ratings = team.Select(u => u.Character.Rating.Value).ToList();
-        return MathHelper.PowerSum(ratings, p);
+        return MathHelper.PowerSumBy(team, u => u.Character.Rating.Value, p);
     }
 }

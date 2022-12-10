@@ -48,12 +48,12 @@ internal static class MathHelper
     /// <summary>
     /// This is a math function https://en.wikipedia.org/wiki/Norm_(mathematics)#p-norm
     /// </summary>
-    public static float PowerSum(List<float> numbers, float p)
+    public static float PowerSumBy<TSource>(List<TSource> source, Func<TSource, float> selector, float p)
     {
         double pSum = 0;
-        foreach (float number in numbers)
+        foreach (var el in source)
         {
-            pSum += Math.Pow(number, p);
+            pSum += Math.Pow(selector(el), p);
         }
 
         return (float)Math.Pow(pSum, 1.0 / p);
