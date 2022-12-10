@@ -58,20 +58,4 @@ internal static class MathHelper
 
         return (float)Math.Pow(pSum, 1.0 / p);
     }
-
-    public static bool Within(float value, float bound1, float bound2)
-    {
-        if (bound1 < bound2)
-        {
-            return (value >= bound1) && (value <= bound2);
-        }
-        else if (bound2 < bound1)
-        {
-            return (value >= bound2) && (value <= bound1);
-        }
-        else
-        {
-            return value == bound1;
-        }
-    }
 }
