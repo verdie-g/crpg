@@ -2,7 +2,7 @@
 <Module>
   <Name value="cRPG_Exporter"/>
   <Id value="cRPG_Exporter"/>
-  <Version value="v1.0.0.11"/>
+  <Version value="v1.0.2.11"/>
   <ModuleCategory value="Singleplayer"/>
   <DependedModules>
     <DependedModule Id="Native" DependentVersion="v1.0.3" Optional="false"/>
@@ -30,12 +30,6 @@
     </XmlNode>
     <XmlNode>
       <XmlName id="Items" path="items"/>
-    </XmlNode>
-    <XmlNode>
-      <XmlName id="MPCharacters" path="characters"/>
-    </XmlNode>
-    <XmlNode>
-      <XmlName id="MPClassDivisions" path="class_divisions"/>
     </XmlNode>
   </Xmls>
 </Module>
