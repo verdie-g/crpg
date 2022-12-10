@@ -44,7 +44,7 @@ internal static class MatchBalancingHelpers
 
         foreach (ClanGroup clanGroup in clanGroups)
         {
-            users.AddRange(clanGroup.MemberList);
+            users.AddRange(clanGroup.Members);
         }
 
         return users;
@@ -292,7 +292,7 @@ internal static class MatchBalancingHelpers
         {
             string clanGroupClanId = clanGroup.ClanId == null ? "Solo" : clanGroup.ClanId!.ToString();
             Console.WriteLine(clanGroupClanId);
-            foreach (CrpgUser u in clanGroup.MemberList)
+            foreach (CrpgUser u in clanGroup.Members)
             {
                 Console.WriteLine(u.Character.Name + " : " + u.Character.Rating.Value);
             }
@@ -301,7 +301,7 @@ internal static class MatchBalancingHelpers
 
     public static void DumpClanGroup(ClanGroup clanGroup)
     {
-        foreach (CrpgUser u in clanGroup.MemberList)
+        foreach (CrpgUser u in clanGroup.Members)
         {
             Console.WriteLine(u.Character.Name + " : " + u.Character.Rating.Value);
         }

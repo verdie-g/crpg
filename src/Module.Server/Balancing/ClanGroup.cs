@@ -13,21 +13,21 @@ internal class ClanGroup
     }
 
     public int? ClanId { get; }
-    public List<CrpgUser> MemberList { get; } = new();
-    public int Size => MemberList.Count;
+    public List<CrpgUser> Members { get; } = new();
+    public int Size => Members.Count;
 
     public void Add(CrpgUser user)
     {
-        MemberList.Add(user);
+        Members.Add(user);
     }
 
     public float RatingPsum(float p = MatchBalancingSystem.PowerParameter)
     {
-        return RatingHelpers.ComputeTeamRatingPowerSum(MemberList, p);
+        return RatingHelpers.ComputeTeamRatingPowerSum(Members, p);
     }
 
     public float RatingPMean(float p = MatchBalancingSystem.PowerParameter)
     {
-        return RatingHelpers.ComputeTeamRatingPowerMean(MemberList, p);
+        return RatingHelpers.ComputeTeamRatingPowerMean(Members, p);
     }
 }

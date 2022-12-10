@@ -188,14 +188,14 @@ internal class MatchBalancingSystem
 
         foreach (var clanGroup in clanGroupsToSwap2)
         {
-            foreach (CrpgUser user in clanGroup.MemberList)
+            foreach (CrpgUser user in clanGroup.Members)
             {
                 teamToSwapInto.Remove(user);
                 teamToSwapFrom.Add(user);
             }
         }
 
-        foreach (CrpgUser user in clanGroupToSwap1.MemberList)
+        foreach (CrpgUser user in clanGroupToSwap1.Members)
         {
             teamToSwapInto.Add(user);
             teamToSwapFrom.Remove(user);
