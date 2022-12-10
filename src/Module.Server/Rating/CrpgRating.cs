@@ -8,30 +8,30 @@
 /// </summary>
 internal class CrpgRating
 {
-    private const double DefaultRating = 1500.0;
-    private const double Multiplier = 173.7178;
+    private const float DefaultRating = 1500.0f;
+    private const float Multiplier = 173.7178f;
 
-    private double _rating;
-    private double _ratingDeviation;
+    private float _rating;
+    private float _ratingDeviation;
 
-    public CrpgRating(double rating, double deviation, double volatility)
+    public CrpgRating(float rating, float deviation, float volatility)
     {
         _rating = rating;
         _ratingDeviation = deviation;
         Volatility = volatility;
     }
 
-    public double Volatility { get; private set; }
+    public float Volatility { get; private set; }
 
     // the following variables are used to hold values temporarily whilst running calculations
-    public double WorkingRating { get; set; }
-    public double WorkingRatingDeviation { get; set; }
-    public double WorkingVolatility { get; set; }
+    public float WorkingRating { get; set; }
+    public float WorkingRatingDeviation { get; set; }
+    public float WorkingVolatility { get; set; }
 
     /// <summary>
     /// Average skill value of the player scaled down to the scale used by the algorithm's internal workings.
     /// </summary>
-    public double Glicko2Rating
+    public float Glicko2Rating
     {
         get => (_rating - DefaultRating) / Multiplier;
         private set => _rating = value * Multiplier + DefaultRating;
@@ -40,7 +40,7 @@ internal class CrpgRating
     /// <summary>
     /// Rating deviation of the player scaled down to the scale used by the algorithm's internal workings.
     /// </summary>
-    public double Glicko2RatingDeviation
+    public float Glicko2RatingDeviation
     {
         get => _ratingDeviation / Multiplier;
         private set => _ratingDeviation = value * Multiplier;
