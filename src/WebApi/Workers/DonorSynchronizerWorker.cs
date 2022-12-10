@@ -69,7 +69,7 @@ internal class DonorSynchronizerWorker : BackgroundService
         List<string> steamIds = new();
         foreach (var member in res!.Data)
         {
-            if (member.Attributes.CurrentlyEntitledAmountCents < MinPatreonAmountCentsForRewards * 0.95) // Allow a little margin.
+            if (member.Attributes.CurrentlyEntitledAmountCents < MinPatreonAmountCentsForRewards * 0.90) // Allow a little margin.
             {
                 continue;
             }
