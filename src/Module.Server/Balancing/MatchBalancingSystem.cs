@@ -333,17 +333,16 @@ internal class MatchBalancingSystem
 
     private bool IsRatingRatioAcceptable(GameMatch gameMatch, float percentageDifference)
     {
-        float ratingRatio = Math.Abs(
+        double ratingRatio = Math.Abs(
             (RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamB)
              - RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamA))
             / RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamA));
-        return ratingRatio > 0 && ratingRatio < percentageDifference;
+        return MathHelper.Within((float)ratingRatio, 0f, percentageDifference);
     }
 
     private bool IsTeamSizeDifferenceAcceptable(GameMatch gameMatch, float maxSizeRatio, float maxDifference)
     {
-        float sizeRatio = (float)gameMatch.TeamA.Count / gameMatch.TeamB.Count;
-        bool tooMuchSizeRatioDifference = sizeRatio < 1f / maxSizeRatio || sizeRatio > maxSizeRatio;
+        bool tooMuchSizeRatioDifference = !MathHelper.Within(gameMatch.TeamA.Count / (float)gameMatch.TeamB.Count, maxSizeRatio, 1f / maxSizeRatio);
         bool sizeDifferenceGreaterThanThreshold = Math.Abs(gameMatch.TeamA.Count - gameMatch.TeamB.Count) > maxDifference;
         return !tooMuchSizeRatioDifference && !sizeDifferenceGreaterThanThreshold;
     }
