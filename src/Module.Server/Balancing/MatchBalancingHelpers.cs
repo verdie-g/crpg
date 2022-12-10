@@ -1,5 +1,6 @@
 ﻿using System.Numerics;
 using Crpg.Module.Api.Models.Users;
+using TaleWorlds.Library;
 
 namespace Crpg.Module.Balancing;
 
@@ -212,7 +213,7 @@ internal static class MatchBalancingHelpers
     /// <param name="preSorted">Set to <see langword="true" /> to save time when the input weights are
     /// already sorted in descending order.</param>
     /// <returns>The partition as a <see cref="PartitioningResult{T}"/>.</returns>
-    public static PartitioningResult<T> Heuristic<T>(T[] elements, double[] weights, int numParts, bool preSorted = false)
+    public static PartitioningResult<T> Heuristic<T>(T[] elements, float[] weights, int numParts, bool preSorted = false)
     {
         if (numParts <= 0)
         {
@@ -223,7 +224,7 @@ internal static class MatchBalancingHelpers
         {
             return new PartitioningResult<T>(
                 Enumerable.Repeat(new List<T>(), numParts).ToArray(),
-                Enumerable.Repeat(0d, numParts).ToArray());
+                Enumerable.Repeat(0f, numParts).ToArray());
         }
 
         int[] indexSortingMap = Enumerable.Range(0, weights.Length).ToArray();
@@ -235,12 +236,12 @@ internal static class MatchBalancingHelpers
             indexSortingMap = indexSortingMap.Reverse().ToArray();
         }
 
-        var partitions = new PriorityQueue<PartitionNode<T>>();
+        var partitions = new PriorityQueue<float, PartitionNode<T>>();
         // iteration on weights
         for (int i = 0; i < weights.Length; i++)
         {
             // number is current weight
-            double number = weights[i];
+            float number = weights[i];
             // Initialization of the Array of List
             var thisPartition = new List<T>[numParts];
             // initialisation of each list of the array except the last one
@@ -252,22 +253,22 @@ internal static class MatchBalancingHelpers
             // last cell is a list that contains the biggest remaining element in the for loop
             thisPartition[numParts - 1] = new List<T> { elements[indexSortingMap[i]] };
             // thisSum is an array of double. The size of the Array is the number of partitions
-            double[] thisSum = new double[numParts];
+            float[] thisSum = new float[numParts];
             // Last cell of the array contains current weight
             thisSum[numParts - 1] = number;
             // this Node has the array of list associated with the array this sum.
             var thisNode = new PartitionNode<T>(thisPartition, thisSum);
             // this enqueue one partition for each element.
-            partitions.Enqueue(thisNode, -(float)number);
+            partitions.Enqueue(-number, thisNode);
         }
 
         // checked this part doing the algo by hand , this witchcraft works.
         for (int i = 0; i < weights.Length - 1; i++)
         {
-            var node1 = partitions.Dequeue();
-            var node2 = partitions.Dequeue();
+            var node1 = partitions.Dequeue().Value;
+            var node2 = partitions.Dequeue().Value;
             var newPartition = new List<T>[numParts];
-            double[] newSizes = new double[numParts];
+            float[] newSizes = new float[numParts];
             for (int k = 0; k < numParts; k++)
             {
                 newSizes[k] = node1.Sizes[k] + node2.Sizes[numParts - k - 1];
@@ -278,10 +279,10 @@ internal static class MatchBalancingHelpers
             Array.Sort(newSizes, newPartition);
             var newNode = new PartitionNode<T>(newPartition, newSizes);
             double diff = newSizes[numParts - 1] - newSizes[0];
-            partitions.Enqueue(newNode, -(float)diff);
+            partitions.Enqueue(-(float)diff, newNode);
         }
 
-        var node = partitions.Dequeue();
+        var node = partitions.Dequeue().Value;
         return new PartitioningResult<T>(node.Partition, node.Sizes);
     }
 
@@ -343,13 +344,13 @@ internal static class MatchBalancingHelpers
 
     private class PartitionNode<T>
     {
-        internal PartitionNode(List<T>[] partition, double[] sizes)
+        internal PartitionNode(List<T>[] partition, float[] sizes)
         {
             Partition = partition;
             Sizes = sizes;
         }
 
-        internal List<T>[] Partition { get; }
-        internal double[] Sizes { get; }
+        public List<T>[] Partition { get; }
+        public float[] Sizes { get; }
     }
 }

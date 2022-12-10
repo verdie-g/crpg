@@ -18,4 +18,8 @@
     <ProjectReference Include="..\..\src\Module.Server\Module.Server.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="$(MB_SERVER_PATH)\bin\Win64_Shipping_Server\TaleWorlds.Library.dll" />
+  </ItemGroup>
+
 </Project>

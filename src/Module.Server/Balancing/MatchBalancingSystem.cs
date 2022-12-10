@@ -87,20 +87,20 @@ internal class MatchBalancingSystem
 
     public GameMatch KkMakeTeamOfSimilarSizesWithoutSplittingClanGroups(GameMatch gameMatch)
     {
-        List<CrpgUser> allCrpgUsers = new();
-        allCrpgUsers.AddRange(gameMatch.TeamA);
-        allCrpgUsers.AddRange(gameMatch.TeamB);
-        allCrpgUsers.AddRange(gameMatch.Waiting);
-        var clangroups = MatchBalancingHelpers.SplitUsersIntoClanGroups(allCrpgUsers);
+        List<CrpgUser> allUsers = new();
+        allUsers.AddRange(gameMatch.TeamA);
+        allUsers.AddRange(gameMatch.TeamB);
+        allUsers.AddRange(gameMatch.Waiting);
+        var clanGroups = MatchBalancingHelpers.SplitUsersIntoClanGroups(allUsers);
         GameMatch returnedGameMatch = new();
-        ClanGroup[] clangroupsArray = clangroups.ToArray();
-        double[] clangroupSize = new double[clangroups.Count];
-        for (int i = 0; i < clangroupsArray.Length; i++)
+        ClanGroup[] clanGroupsArray = clanGroups.ToArray();
+        float[] clanGroupSizes = new float[clanGroups.Count];
+        for (int i = 0; i < clanGroupsArray.Length; i++)
         {
-            clangroupSize[i] = clangroups[i].Size;
+            clanGroupSizes[i] = clanGroups[i].Size;
         }
 
-        var partition = MatchBalancingHelpers.Heuristic(clangroupsArray, clangroupSize, 2, preSorted: false);
+        var partition = MatchBalancingHelpers.Heuristic(clanGroupsArray, clanGroupSizes, 2, preSorted: false);
         // the 2 value means we're splitting clangroups into two teams
         returnedGameMatch.TeamA = MatchBalancingHelpers.JoinClanGroupsIntoUsers(partition.Partition[0].ToList());
         returnedGameMatch.TeamB = MatchBalancingHelpers.JoinClanGroupsIntoUsers(partition.Partition[1].ToList());
