@@ -6,30 +6,30 @@ namespace Crpg.Module.Balancing;
 
 internal static class MatchBalancingHelpers
 {
-    public static List<ClanGroup> SplitUsersIntoClanGroups(List<CrpgUser> userList)
+    public static List<ClanGroup> SplitUsersIntoClanGroups(List<CrpgUser> users)
     {
         Dictionary<int, ClanGroup> clanGroupCreated = new();
         List<ClanGroup> clanGroups = new();
 
-        foreach (CrpgUser player in userList.OrderByDescending(u => u.ClanMembership?.ClanId ?? 0))
+        foreach (CrpgUser user in users.OrderByDescending(u => u.ClanMembership?.ClanId ?? 0))
         {
-            if (player.ClanMembership == null)
+            if (user.ClanMembership == null)
             {
                 ClanGroup clanGroup = new(null);
-                clanGroup.Add(player);
+                clanGroup.Add(user);
                 clanGroups.Add(clanGroup);
             }
             else
             {
-                if (clanGroupCreated.TryGetValue(player.ClanMembership.ClanId, out ClanGroup existingClanGroup))
+                if (clanGroupCreated.TryGetValue(user.ClanMembership.ClanId, out ClanGroup existingClanGroup))
                 {
-                    existingClanGroup.Add(player);
+                    existingClanGroup.Add(user);
                 }
                 else
                 {
-                    ClanGroup clanGroup = new(player.ClanMembership.ClanId);
-                    clanGroup.Add(player);
-                    clanGroupCreated.Add(player.ClanMembership.ClanId, clanGroup);
+                    ClanGroup clanGroup = new(user.ClanMembership.ClanId);
+                    clanGroup.Add(user);
+                    clanGroupCreated.Add(user.ClanMembership.ClanId, clanGroup);
                     clanGroups.Add(clanGroup);
                 }
             }
@@ -303,7 +303,6 @@ internal static class MatchBalancingHelpers
 
         return (float)Math.Atan2(v1.Y, v1.X);
     }
-
 
     private class PartitionNode<T>
     {
