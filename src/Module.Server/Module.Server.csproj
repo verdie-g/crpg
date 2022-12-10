@@ -52,4 +52,8 @@
   <ItemGroup>
     <InternalsVisibleTo Include="$(AssemblyName).UTest" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Balancing\Balancing" />
+  </ItemGroup>
 </Project>
