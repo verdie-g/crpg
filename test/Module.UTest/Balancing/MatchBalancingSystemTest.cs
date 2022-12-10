@@ -277,7 +277,7 @@ public class MatchBalancingSystemTest
     private static readonly CrpgUser InternshipPilot = new() { Character = new CrpgCharacter { Name = "InternshipPilot", Id = 1171, Rating = new CrpgCharacterRating { Value = 1423 } }, ClanMembership = new CrpgClanMember { ClanId = 50 } };
     private static readonly CrpgUser FoxSnakeMocha = new() { Character = new CrpgCharacter { Name = "FoxSnakeMocha", Id = 1172, Rating = new CrpgCharacterRating { Value = 1588 } }, ClanMembership = new CrpgClanMember { ClanId = 51 } };
     private static readonly CrpgUser BungarotoxinSnakeskin = new() { Character = new CrpgCharacter { Name = "BungarotoxinSnakeskin", Id = 1173, Rating = new CrpgCharacterRating { Value = 2260 } }, ClanMembership = new CrpgClanMember { ClanId = 51 } };
-    private static readonly CrpgUser DoubleTrail = new() { Character = new CrpgCharacter { Name = "DoubleTrail", Id = 1174, Rating = new CrpgCharacterRating { Value = 1478 } }, ClanMembership = new CrpgClanMember { ClanId = 58 } };
+    private static readonly CrpgUser FloatTrail = new() { Character = new CrpgCharacter { Name = "FloatTrail", Id = 1174, Rating = new CrpgCharacterRating { Value = 1478 } }, ClanMembership = new CrpgClanMember { ClanId = 58 } };
     private static readonly CrpgUser FalchionPoker = new() { Character = new CrpgCharacter { Name = "FalchionPoker", Id = 1175, Rating = new CrpgCharacterRating { Value = 2138 } }, ClanMembership = new CrpgClanMember { ClanId = 51 } };
     private static readonly CrpgUser BbGunScute = new() { Character = new CrpgCharacter { Name = "BbGunScute", Id = 1176, Rating = new CrpgCharacterRating { Value = 2266 } }, ClanMembership = new CrpgClanMember { ClanId = 54 } };
     private static readonly CrpgUser HognosedViper = new() { Character = new CrpgCharacter { Name = "HognosedViper", Id = 1177, Rating = new CrpgCharacterRating { Value = 2242 } }, ClanMembership = new CrpgClanMember { ClanId = 60 } };
@@ -748,7 +748,7 @@ public class MatchBalancingSystemTest
             InternshipPilot,
             FoxSnakeMocha,
             BungarotoxinSnakeskin,
-            DoubleTrail,
+            FloatTrail,
             FalchionPoker,
             BbGunScute,
             HognosedViper,
@@ -1047,10 +1047,10 @@ public class MatchBalancingSystemTest
         GameMatch balancedGame = matchBalancer.KkMakeTeamOfSimilarSizesWithoutSplittingClanGroups(GameWithVeryStrongClanGroup);
         float teamASize = balancedGame.TeamA.Count;
         float teamBSize = balancedGame.TeamB.Count;
-        double sizeRatio = teamASize / (double)teamBSize;
+        float sizeRatio = teamASize / teamBSize;
         float teamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamA, 1);
         float teamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamB, 1);
-        double meanRatingRatio = teamAMeanRating / (double)teamBMeanRating;
+        float meanRatingRatio = teamAMeanRating / teamBMeanRating;
         MatchBalancingHelpers.DumpTeams(balancedGame);
         Assert.AreEqual(sizeRatio, 0.7f, 0.3f);
     }
@@ -1060,19 +1060,19 @@ public class MatchBalancingSystemTest
     {
         float unbalancedTeamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(Game1.TeamA, 1);
         float unbalancedTeamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(Game1.TeamB, 1);
-        double unbalancedMeanRatingRatio = unbalancedTeamAMeanRating / (double)unbalancedTeamBMeanRating;
-        Console.WriteLine("unbalanced rating ratio = " + unbalancedMeanRatingRatio);
+        float unbalancedMeanRatingRatio = unbalancedTeamAMeanRating / unbalancedTeamBMeanRating;
+        Console.WriteLine($"unbalanced rating ratio = {unbalancedMeanRatingRatio}");
 
         GameMatch balancedGame = PureBannerBalancing(Game1);
         float teamASize = balancedGame.TeamA.Count;
         float teamBSize = balancedGame.TeamB.Count;
-        double sizeRatio = (double)teamASize / teamBSize;
-        Console.WriteLine("balanced size ratio = " + sizeRatio);
+        float sizeRatio = teamASize / teamBSize;
+        Console.WriteLine($"balanced size ratio = {sizeRatio}");
         float teamARating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamA, 1);
         float teamBRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamB, 1);
-        double ratingRatio = (double)teamARating / teamBRating;
-        Console.WriteLine("teamASize = " + teamASize + " teamBSize = " + teamBSize);
-        Console.WriteLine("teamARating = new CrpgCharacterRating { Value = " + teamARating + " teamBRating = new CrpgCharacterRating { Value = " + teamBRating);
+        float ratingRatio = teamARating / teamBRating;
+        Console.WriteLine($"teamASize = {teamASize} teamBSize = {teamBSize}");
+        Console.WriteLine($"teamARating = new CrpgCharacterRating {{ Value = {teamARating} teamBRating = new CrpgCharacterRating {{ Value = {teamBRating} }} }}");
         Assert.AreEqual(ratingRatio, 1, 0.2);
     }
 
@@ -1083,14 +1083,14 @@ public class MatchBalancingSystemTest
 
         float unbalancedTeamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(Game1.TeamA, 1);
         float unbalancedTeamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(Game1.TeamB, 1);
-        double unbalancedMeanRatingRatio = unbalancedTeamAMeanRating / (double)unbalancedTeamBMeanRating;
+        float unbalancedMeanRatingRatio = unbalancedTeamAMeanRating / unbalancedTeamBMeanRating;
         GameMatch balancedGame = matchBalancer.BannerBalancingWithEdgeCases(Game1);
         float teamASize = balancedGame.TeamA.Count;
         float teamBSize = balancedGame.TeamB.Count;
-        double sizeRatio = teamASize / (double)teamBSize;
+        float sizeRatio = teamASize / teamBSize;
         float teamARating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamA, 1);
         float teamBRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamB, 1);
-        double ratingRatio = (double)teamARating / (double)teamBRating;
+        float ratingRatio = teamARating / teamBRating;
         Assert.AreEqual(ratingRatio, 1, 0.2);
     }
 
@@ -1101,14 +1101,14 @@ public class MatchBalancingSystemTest
         MatchBalancingHelpers.DumpTeams(GameWithVeryStrongClanGroup);
         float unbalancedTeamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(GameWithVeryStrongClanGroup.TeamA, 1);
         float unbalancedTeamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(GameWithVeryStrongClanGroup.TeamB, 1);
-        double unbalancedMeanRatingRatio = (double)unbalancedTeamAMeanRating / (double)unbalancedTeamBMeanRating;
+        float unbalancedMeanRatingRatio = unbalancedTeamAMeanRating / unbalancedTeamBMeanRating;
         GameMatch balancedGame = matchBalancer.BannerBalancingWithEdgeCases(GameWithVeryStrongClanGroup);
         float teamASize = balancedGame.TeamA.Count;
         float teamBSize = balancedGame.TeamB.Count;
-        double sizeRatio = (double)teamASize / (double)teamBSize;
+        float sizeRatio = teamASize / teamBSize;
         float teamARating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamA, 1);
         float teamBRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamB, 1);
-        double ratingRatio = (double)teamARating / (double)teamBRating;
+        float ratingRatio = teamARating / teamBRating;
         MatchBalancingHelpers.DumpTeams(balancedGame);
         Assert.AreEqual(ratingRatio, 1, 0.2);
     }
@@ -1120,7 +1120,7 @@ public class MatchBalancingSystemTest
 
         float unbalancedTeamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(Game1.TeamA, 1);
         float unbalancedTeamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(Game1.TeamB, 1);
-        double unbalancedMeanRatingRatio = (double)unbalancedTeamAMeanRating / (double)unbalancedTeamBMeanRating;
+        float unbalancedMeanRatingRatio = unbalancedTeamAMeanRating / unbalancedTeamBMeanRating;
         GameMatch balancedGame = matchBalancer.BannerBalancingWithEdgeCases(Game1);
         List<CrpgUser> allUsersFromBalancedGame = new();
         List<CrpgUser> allUsersFromUnbalancedGame = new();
@@ -1140,8 +1140,8 @@ public class MatchBalancingSystemTest
 
         float unbalancedTeamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(Game1.TeamA, 1);
         float unbalancedTeamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(Game1.TeamB, 1);
-        double unbalancedMeanRatingRatio = (double)unbalancedTeamAMeanRating / (double)unbalancedTeamBMeanRating;
-        Console.WriteLine("unbalanced rating ratio = " + unbalancedMeanRatingRatio);
+        float unbalancedMeanRatingRatio = unbalancedTeamAMeanRating / unbalancedTeamBMeanRating;
+        Console.WriteLine($"unbalanced rating ratio = {unbalancedMeanRatingRatio}");
 
         GameMatch balancedGame = PureBannerBalancing(Game1);
         foreach (CrpgUser u in Game1.TeamA)
@@ -1168,7 +1168,7 @@ public class MatchBalancingSystemTest
 
         float unbalancedTeamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(NoManGame.TeamA, 1);
         float unbalancedTeamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(NoManGame.TeamB, 1);
-        double unbalancedMeanRatingRatio = (double)unbalancedTeamAMeanRating / unbalancedTeamBMeanRating;
+        float unbalancedMeanRatingRatio = unbalancedTeamAMeanRating / unbalancedTeamBMeanRating;
         GameMatch balancedGame = matchBalancer.BannerBalancingWithEdgeCases(NoManGame);
     }
 
