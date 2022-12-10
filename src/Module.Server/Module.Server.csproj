@@ -42,8 +42,9 @@
   <ItemGroup>
     <PackageReference Include="Lib.Harmony" Version="2.1.0" GeneratePathProperty="true" NoWarn="NU1701" />
   </ItemGroup>
+
   <ItemGroup>
-    <None Include="$(PkgLib_Harmony)\lib\net472\0Harmony.dll" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="$(PkgLib_Harmony)\lib\net472\0Harmony.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" />
   </ItemGroup>
 
   <ItemGroup>
