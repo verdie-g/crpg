@@ -144,24 +144,43 @@ internal class MatchBalancingSystem
         return gameMatch;
     }
 
+    /// <summary>
+    /// Looks for a single clan group in the team that has the least players and swaps it with a list of clan groups
+    /// from the other team. The swap is done to minimize the difference in both sizes and ratings between the twom teams.
+    /// </summary>
+    /// <returns>False if it found no suitable swaps.</returns>
     private bool FindAndSwapClanGroups(GameMatch gameMatch)
     {
-        ClanGroupsGameMatch clanGroupGameMatch = MatchBalancingHelpers.ConvertGameMatchToClanGroupsGameMatchList(gameMatch);
-        (List<CrpgUser> weakTeam, List<CrpgUser> strongTeam, List<ClanGroup> weakClanGroupsTeam, List<ClanGroup> strongClanGroupsTeam) = RatingHelpers.ComputeTeamRatingDifference(gameMatch) < 0
-        ? (gameMatch.TeamA, gameMatch.TeamB, clanGroupGameMatch.TeamA, clanGroupGameMatch.TeamB)
-        : (gameMatch.TeamB, gameMatch.TeamA, clanGroupGameMatch.TeamB, clanGroupGameMatch.TeamA);
-        double teamRatingDiff = Math.Abs(RatingHelpers.ComputeTeamRatingDifference(gameMatch)); // diff >0
-        weakClanGroupsTeam = weakClanGroupsTeam.OrderBy(c => c.RatingPMean()).ToList();
-        strongClanGroupsTeam = strongClanGroupsTeam.OrderBy(c => c.RatingPMean()).ToList();
+        ClanGroupsGameMatch clanGroupGameMatch = MatchBalancingHelpers.GroupTeamsByClan(gameMatch);
+
+        List<CrpgUser> weakTeam;
+        List<CrpgUser> strongTeam;
+        List<ClanGroup> weakClanGroupsTeam;
+        List<ClanGroup> strongClanGroupsTeam;
+        if (RatingHelpers.ComputeTeamRatingDifference(gameMatch) < 0)
+        {
+            weakTeam = gameMatch.TeamA;
+            strongTeam = gameMatch.TeamB;
+            weakClanGroupsTeam = clanGroupGameMatch.TeamA;
+            strongClanGroupsTeam = clanGroupGameMatch.TeamB;
+        }
+        else
+        {
+            weakTeam = gameMatch.TeamB;
+            strongTeam = gameMatch.TeamA;
+            weakClanGroupsTeam = clanGroupGameMatch.TeamB;
+            strongClanGroupsTeam = clanGroupGameMatch.TeamA;
+        }
 
         int userCountDifference = weakClanGroupsTeam.Sum(c => c.Size) - strongClanGroupsTeam.Sum(c => c.Size);
-        bool swapingFromWeakTeam = userCountDifference <= 0;
-
-        // we know wich team has the less users. it is is weakteam if swapingFromWeakTeam==true
+        bool swappingFromWeakTeam = userCountDifference <= 0; // We are swapping from the team with the least player.
         userCountDifference = Math.Abs(userCountDifference);
 
-        var clanGroupsToSwapUsingAngleTuple = FindBestPairForSwapDoneWithBanner(weakClanGroupsTeam, strongClanGroupsTeam, teamRatingDiff, userCountDifference / 2, true, swapingFromWeakTeam);
-        var clanGroupsToSwapUsingDistanceTuple = FindBestPairForSwapDoneWithBanner(weakClanGroupsTeam, strongClanGroupsTeam, teamRatingDiff, userCountDifference / 2, false, swapingFromWeakTeam);
+        float teamRatingDiff = Math.Abs(RatingHelpers.ComputeTeamRatingDifference(gameMatch));
+        weakClanGroupsTeam = weakClanGroupsTeam.OrderBy(c => c.RatingPMean()).ToList();
+        strongClanGroupsTeam = strongClanGroupsTeam.OrderBy(c => c.RatingPMean()).ToList();
+        var clanGroupsToSwapUsingAngleTuple = FindBestClanGroupsSwap(weakClanGroupsTeam, strongClanGroupsTeam, teamRatingDiff / 2f, userCountDifference / 2, true, swappingFromWeakTeam);
+        var clanGroupsToSwapUsingDistanceTuple = FindBestClanGroupsSwap(weakClanGroupsTeam, strongClanGroupsTeam, teamRatingDiff / 2f, userCountDifference / 2, false, swappingFromWeakTeam);
 
         ClanGroup clanGroupToSwap1;
         List<ClanGroup> clanGroupsToSwap2;
@@ -176,17 +195,17 @@ internal class MatchBalancingSystem
             clanGroupsToSwap2 = clanGroupsToSwapUsingDistanceTuple.clanGroupsToSwap2;
         }
 
-        float newTeamRatingDiff = swapingFromWeakTeam
+        float newTeamRatingDiff = swappingFromWeakTeam
             ? RatingHelpers.ClanGroupsPowerSum(strongClanGroupsTeam) - 2f * RatingHelpers.ClanGroupsPowerSum(clanGroupsToSwap2) + 2f * clanGroupToSwap1.RatingPsum() - RatingHelpers.ClanGroupsPowerSum(weakClanGroupsTeam)
             : RatingHelpers.ClanGroupsPowerSum(strongClanGroupsTeam) + 2f * RatingHelpers.ClanGroupsPowerSum(clanGroupsToSwap2) - 2f * clanGroupToSwap1.RatingPsum() - RatingHelpers.ClanGroupsPowerSum(weakClanGroupsTeam);
-        (List<CrpgUser> teamToSwapFrom, List<CrpgUser> teamToSwapInto) = swapingFromWeakTeam
-            ? (weakTeam, strongTeam)
-            : (strongTeam, weakTeam);
-
         if (Math.Abs(newTeamRatingDiff) >= Math.Abs(teamRatingDiff))
         {
             return false;
         }
+
+        (List<CrpgUser> teamToSwapFrom, List<CrpgUser> teamToSwapInto) = swappingFromWeakTeam
+            ? (weakTeam, strongTeam)
+            : (strongTeam, weakTeam);
 
         foreach (var clanGroup in clanGroupsToSwap2)
         {
@@ -199,8 +218,8 @@ internal class MatchBalancingSystem
 
         foreach (CrpgUser user in clanGroupToSwap1.Members)
         {
-            teamToSwapInto.Add(user);
             teamToSwapFrom.Remove(user);
+            teamToSwapInto.Add(user);
         }
 
         return true;
@@ -212,26 +231,40 @@ internal class MatchBalancingSystem
             ? (gameMatch.TeamA, gameMatch.TeamB)
             : (gameMatch.TeamB, gameMatch.TeamA);
 
-        double teamRatingDiff = Math.Abs(RatingHelpers.ComputeTeamRatingDifference(gameMatch));
         int userCountDifference = weakTeam.Count - strongTeam.Count;
-        bool swapingFromWeakTeam = userCountDifference <= 0;
-        (List<CrpgUser> teamToSwapFrom, List<CrpgUser> teamToSwapInto) = swapingFromWeakTeam
-        ? (weakTeam, strongTeam)
-        : (strongTeam, weakTeam);
-
-        CrpgUser bestCrpgUserToSwap1 = swapingFromWeakTeam ? weakTeam.OrderBy(c => c.Character.Rating.Value).First() : strongTeam.OrderBy(c => c.Character.Rating.Value).Last();
+        bool swappingFromWeakTeam = userCountDifference <= 0;
         float sizeOffset = Math.Abs(userCountDifference);
+
+        (List<CrpgUser> teamToSwapFrom, List<CrpgUser> teamToSwapTo) = swappingFromWeakTeam
+            ? (weakTeam, strongTeam)
+            : (strongTeam, weakTeam);
+
+        CrpgUser bestCrpgUserToSwap1 = swappingFromWeakTeam
+            ? weakTeam.OrderBy(c => c.Character.Rating.Value).First()
+            : strongTeam.OrderBy(c => c.Character.Rating.Value).Last();
+        double teamRatingDiff = Math.Abs(RatingHelpers.ComputeTeamRatingDifference(gameMatch));
+
+        double targetRating = swappingFromWeakTeam
+            ? bestCrpgUserToSwap1.Character.Rating.Value + Math.Abs(teamRatingDiff) / 2f
+            : bestCrpgUserToSwap1.Character.Rating.Value - Math.Abs(teamRatingDiff) / 2f;
+        List<CrpgUser> bestCrpgUsersToSwap2 = MatchBalancingHelpers.FindCrpgUsersToSwap((float)targetRating, teamToSwapTo, sizeOffset / 2f);
+
         float targetSizeRescaling = (float)teamRatingDiff / (2f * sizeOffset);
-        double targetRating = swapingFromWeakTeam ? bestCrpgUserToSwap1.Character.Rating.Value + Math.Abs(teamRatingDiff) / 2f : bestCrpgUserToSwap1.Character.Rating.Value - Math.Abs(teamRatingDiff) / 2f;
-        List<CrpgUser> bestCrpgUsersToSwap2 = MatchBalancingHelpers.FindCrpgUsersToSwap((float)targetRating, teamToSwapInto, sizeOffset / 2f);
         // the pair difference (strong - weak) needs to be close to TargetVector
         Vector2 targetVector = new(sizeOffset * targetSizeRescaling, (float)teamRatingDiff / 2f);
-        Vector2 bestPairVector = new((bestCrpgUsersToSwap2.Count - 1) * targetSizeRescaling, Math.Abs(bestCrpgUserToSwap1.Character.Rating.Value - bestCrpgUsersToSwap2.Sum(u => u.Character.Rating.Value)));
+        Vector2 bestPairVector = new(
+            (bestCrpgUsersToSwap2.Count - 1) * targetSizeRescaling,
+            Math.Abs(bestCrpgUserToSwap1.Character.Rating.Value - bestCrpgUsersToSwap2.Sum(u => u.Character.Rating.Value)));
+
         foreach (var user in teamToSwapFrom)
         {
-            targetRating = swapingFromWeakTeam ? user.Character.Rating.Value + Math.Abs(teamRatingDiff) / 2f : user.Character.Rating.Value - Math.Abs(teamRatingDiff) / 2f;
-            List<CrpgUser> potentialCrpgUsersToSwap = MatchBalancingHelpers.FindCrpgUsersToSwap((float)targetRating, teamToSwapInto, sizeOffset / 2f);
-            Vector2 potentialPairVector = new((potentialCrpgUsersToSwap.Count - 1) * targetSizeRescaling, Math.Abs(user.Character.Rating.Value - potentialCrpgUsersToSwap.Sum(u => u.Character.Rating.Value)));
+            targetRating = swappingFromWeakTeam
+                ? user.Character.Rating.Value + Math.Abs(teamRatingDiff) / 2f
+                : user.Character.Rating.Value - Math.Abs(teamRatingDiff) / 2f;
+            List<CrpgUser> potentialCrpgUsersToSwap = MatchBalancingHelpers.FindCrpgUsersToSwap((float)targetRating, teamToSwapTo, sizeOffset / 2f);
+            Vector2 potentialPairVector = new(
+                (potentialCrpgUsersToSwap.Count - 1) * targetSizeRescaling,
+                Math.Abs(user.Character.Rating.Value - potentialCrpgUsersToSwap.Sum(u => u.Character.Rating.Value)));
             if ((targetVector - potentialPairVector).Length() < (targetVector - bestPairVector).Length())
             {
                 bestCrpgUserToSwap1 = user;
@@ -240,15 +273,15 @@ internal class MatchBalancingSystem
             }
         }
 
-        float newTeamRatingDiff = swapingFromWeakTeam
+        float newTeamRatingDiff = swappingFromWeakTeam
             ? strongTeam.Sum(u => u.Character.Rating.Value) + 2f * bestCrpgUserToSwap1.Character.Rating.Value - 2f * bestCrpgUsersToSwap2.Sum(u => u.Character.Rating.Value) - weakTeam.Sum(u => u.Character.Rating.Value)
-            : strongTeam.Sum(u => u.Character.Rating.Value) + 2f * bestCrpgUsersToSwap2.Sum(u => u.Character.Rating.Value) - 2f * bestCrpgUserToSwap1.Character.Rating.Value - weakTeam.Sum(u => u.Character.Rating.Value);
+            : strongTeam.Sum(u => u.Character.Rating.Value) - 2f * bestCrpgUserToSwap1.Character.Rating.Value + 2f * bestCrpgUsersToSwap2.Sum(u => u.Character.Rating.Value) - weakTeam.Sum(u => u.Character.Rating.Value);
         if (Math.Abs(newTeamRatingDiff) >= Math.Abs(teamRatingDiff))
         {
             return false;
         }
 
-        if (swapingFromWeakTeam)
+        if (swappingFromWeakTeam)
         {
             foreach (CrpgUser user in bestCrpgUsersToSwap2)
             {
@@ -274,62 +307,95 @@ internal class MatchBalancingSystem
         return true;
     }
 
-    // Rating Difference is positive. It has to be Strong Team - WeakTeam.
-    private (ClanGroup clanGrouptoSwap1, List<ClanGroup> clanGroupsToSwap2, float distanceToTarget) FindBestPairForSwapDoneWithBanner(List<ClanGroup> weakClanGroupsTeam, List<ClanGroup> strongClanGroupsTeam, double ratingDifference, int targetSizeOffset, bool usingAngle, bool swapingFromWeakTeam)
+    /// <summary>
+    /// Find a clan group from the team with that has the least player and swap it with a list of clan groups from the
+    /// opposite team in order to minimize rating and size differences.
+    ///
+    /// The task at hand is complex because it requires us to balance teams while making sure both ratings and size
+    /// are similar. To do this, we convert this to geometrical problem.
+    ///
+    /// A clan group is now a vector of dimension 2 => (size, rating).
+    /// </summary>
+    /// <param name="weakClanGroupsTeam">Weak team.</param>
+    /// <param name="strongClanGroupsTeam">Strong team.</param>
+    /// <param name="halfRatingDifference">Half of the current rating absolute difference between the teams.</param>
+    /// <param name="targetSwapSizeDifference">The target size difference between the two members of the swap.</param>
+    /// <param name="usingAngle">If the angle method should be used.</param>
+    /// <param name="swappingFromWeakTeam">Has the weak team the least players.</param>
+    /// <returns>The swap to perform.</returns>
+    private (ClanGroup clanGrouptoSwap1, List<ClanGroup> clanGroupsToSwap2, float distanceToTarget) FindBestClanGroupsSwap(
+        List<ClanGroup> weakClanGroupsTeam, List<ClanGroup> strongClanGroupsTeam, float halfRatingDifference,
+        int targetSwapSizeDifference, bool usingAngle, bool swappingFromWeakTeam)
     {
-        float targetSizeRescaling = (float)ratingDifference / (2f * targetSizeOffset);
-
-        (List<ClanGroup> teamToSwapFrom, List<ClanGroup> teamToSwapInto) = swapingFromWeakTeam
+        (List<ClanGroup> teamToSwapFrom, List<ClanGroup> teamToSwapInto) = swappingFromWeakTeam
             ? (weakClanGroupsTeam, strongClanGroupsTeam)
             : (strongClanGroupsTeam, weakClanGroupsTeam);
 
-        // the pair difference (strong - weak) needs to be close to TargetVector
-        Vector2 targetVector = new(targetSizeOffset * targetSizeRescaling, (float)ratingDifference / 2f);
+        // Rescaling X dimension to the Y scale to make it as important.
+        float targetSizeRescaling = halfRatingDifference / targetSwapSizeDifference;
+        Vector2 targetVector = new(targetSwapSizeDifference * targetSizeRescaling, halfRatingDifference);
 
         ClanGroup weakClanGroupToSwap = weakClanGroupsTeam.First();
         ClanGroup strongClanGroupToSwap = strongClanGroupsTeam.Last();
 
         // Initializing a first pair to compare afterward with other pairs
-        float bestClanGroupToSwapTargetRating = swapingFromWeakTeam ? weakClanGroupToSwap.RatingPsum() + (float)Math.Abs(ratingDifference) / 2f : strongClanGroupToSwap.RatingPsum() - (float)Math.Abs(ratingDifference) / 2f;
-        ClanGroup bestClanGrouptoSwap1 = swapingFromWeakTeam ? weakClanGroupToSwap : strongClanGroupToSwap;
-        List<ClanGroup> bestClanGroupToSwap2 = MatchBalancingHelpers.FindAClanGroupToSwapUsing(bestClanGroupToSwapTargetRating, bestClanGrouptoSwap1.Size, teamToSwapInto, Math.Abs(targetSizeOffset), usingAngle);
+        float bestClanGroupToSwapTargetRating = swappingFromWeakTeam
+            ? weakClanGroupToSwap.RatingPsum() + halfRatingDifference
+            : strongClanGroupToSwap.RatingPsum() - halfRatingDifference;
+        ClanGroup bestClanGroupToSwapSource = swappingFromWeakTeam ? weakClanGroupToSwap : strongClanGroupToSwap;
+        List<ClanGroup> bestClanGroupToSwapDestination = MatchBalancingHelpers.FindAClanGroupToSwapUsing(
+            bestClanGroupToSwapTargetRating,
+            bestClanGroupToSwapSource.Size + Math.Abs(targetSwapSizeDifference),
+            teamToSwapInto,
+            usingAngle);
 
-        Vector2 bestPairVector = new((MatchBalancingHelpers.ClanGroupsSize(bestClanGroupToSwap2) - bestClanGrouptoSwap1.Size) * targetSizeRescaling, Math.Abs(bestClanGrouptoSwap1.RatingPsum() - MatchBalancingHelpers.ClanGroupsRating(bestClanGroupToSwap2)));
+        Vector2 bestSwapVector = new(
+            (MatchBalancingHelpers.ClanGroupsSize(bestClanGroupToSwapDestination) - bestClanGroupToSwapSource.Size) * targetSizeRescaling,
+            Math.Abs(bestClanGroupToSwapSource.RatingPsum() - MatchBalancingHelpers.ClanGroupsRating(bestClanGroupToSwapDestination)));
+        float distanceToTargetVector = (targetVector - bestSwapVector).Length();
 
-        foreach (ClanGroup c in teamToSwapFrom)
+        foreach (ClanGroup clanGroup in teamToSwapFrom)
         {
             // c is the potential first member of the pair (potentialClanGrouptoSwap1)
             // we compute below what's the target rating for the second member of the pair
-            float potentialClanGroupToSwapTargetRating = swapingFromWeakTeam ? c.RatingPsum() + (float)ratingDifference / 2f : c.RatingPsum() - (float)ratingDifference / 2f;
+            float potentialClanGroupToSwapTargetRating = swappingFromWeakTeam
+                ? clanGroup.RatingPsum() + halfRatingDifference
+                : clanGroup.RatingPsum() - halfRatingDifference;
             // potential second member of the pair
-            List<ClanGroup> potentialClanGroupToSwap2 = MatchBalancingHelpers.FindAClanGroupToSwapUsing(potentialClanGroupToSwapTargetRating, c.Size, teamToSwapInto, Math.Abs(targetSizeOffset), usingAngle);
-            // pair vector
-            Vector2 potentialPairVector = new((MatchBalancingHelpers.ClanGroupsSize(potentialClanGroupToSwap2) - c.Size) * targetSizeRescaling, Math.Abs(c.RatingPsum() - MatchBalancingHelpers.ClanGroupsRating(potentialClanGroupToSwap2)));
-            if ((targetVector - potentialPairVector).Length()
-                < (targetVector - bestPairVector).Length())
+            List<ClanGroup> potentialClanGroupToSwap = MatchBalancingHelpers.FindAClanGroupToSwapUsing(
+                potentialClanGroupToSwapTargetRating,
+                clanGroup.Size + Math.Abs(targetSwapSizeDifference),
+                teamToSwapInto,
+                usingAngle);
+            Vector2 potentialSwapVector = new(
+                (MatchBalancingHelpers.ClanGroupsSize(potentialClanGroupToSwap) - clanGroup.Size) * targetSizeRescaling,
+                Math.Abs(clanGroup.RatingPsum() - MatchBalancingHelpers.ClanGroupsRating(potentialClanGroupToSwap)));
+            if ((targetVector - potentialSwapVector).Length() < (targetVector - bestSwapVector).Length())
             {
-                bestClanGrouptoSwap1 = c;
-                bestClanGroupToSwap2 = potentialClanGroupToSwap2;
-                bestPairVector = potentialPairVector;
-                bestClanGroupToSwapTargetRating = (targetVector - potentialPairVector).Length();
+                bestClanGroupToSwapSource = clanGroup;
+                bestClanGroupToSwapDestination = potentialClanGroupToSwap;
+                bestSwapVector = potentialSwapVector;
+                distanceToTargetVector = (targetVector - potentialSwapVector).Length();
             }
         }
 
-        return (bestClanGrouptoSwap1, bestClanGroupToSwap2, bestClanGroupToSwapTargetRating);
+        return (bestClanGroupToSwapSource, bestClanGroupToSwapDestination, distanceToTargetVector);
     }
 
     private bool IsRatingRatioAcceptable(GameMatch gameMatch, float percentageDifference)
     {
         double ratingRatio = Math.Abs(
-            (RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamB)
-             - RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamA))
+            (RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamB) - RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamA))
             / RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamA));
         return MathHelper.Within((float)ratingRatio, 0f, percentageDifference);
     }
 
     private bool IsTeamSizeDifferenceAcceptable(GameMatch gameMatch, float maxSizeRatio, float maxDifference)
     {
-        bool tooMuchSizeRatioDifference = !MathHelper.Within(gameMatch.TeamA.Count / (float)gameMatch.TeamB.Count, maxSizeRatio, 1f / maxSizeRatio);
+        bool tooMuchSizeRatioDifference = !MathHelper.Within(
+            gameMatch.TeamA.Count / (float)gameMatch.TeamB.Count,
+            maxSizeRatio,
+            1f / maxSizeRatio);
         bool sizeDifferenceGreaterThanThreshold = Math.Abs(gameMatch.TeamA.Count - gameMatch.TeamB.Count) > maxDifference;
         return !tooMuchSizeRatioDifference && !sizeDifferenceGreaterThanThreshold;
     }
