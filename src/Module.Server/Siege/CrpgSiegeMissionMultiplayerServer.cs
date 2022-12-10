@@ -1,4 +1,5 @@
-﻿using NetworkMessages.FromServer;
+﻿using Crpg.Module.Common;
+using NetworkMessages.FromServer;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -63,9 +64,9 @@ internal class CrpgSiegeMissionMultiplayerServer : MissionMultiplayerGameModeBas
 
         foreach (FlagCapturePoint flag in AllCapturePoints)
         {
-           _flagOwners[flag.FlagIndex] = Mission.Teams.Defender;
-           flag.SetTeamColors(Mission.Teams.Defender.Color, Mission.Teams.Defender.Color2);
-           _client?.OnCapturePointOwnerChanged(flag, Mission.Teams.Defender);
+            _flagOwners[flag.FlagIndex] = Mission.Teams.Defender;
+            flag.SetTeamColors(Mission.Teams.Defender.Color, Mission.Teams.Defender.Color2);
+            _client?.OnCapturePointOwnerChanged(flag, Mission.Teams.Defender);
         }
     }
 
@@ -76,11 +77,11 @@ internal class CrpgSiegeMissionMultiplayerServer : MissionMultiplayerGameModeBas
         {
             foreach (CastleGate castleGate in Mission.MissionObjects.FindAllWithType<CastleGate>())
             {
-               castleGate.OpenDoor();
-               foreach (StandingPoint standingPoint in castleGate.StandingPoints)
-               {
-                   standingPoint.SetIsDeactivatedSynched(true);
-               }
+                castleGate.OpenDoor();
+                foreach (StandingPoint standingPoint in castleGate.StandingPoints)
+                {
+                    standingPoint.SetIsDeactivatedSynched(true);
+                }
             }
 
             _firstTickDone = true;
@@ -354,6 +355,7 @@ internal class CrpgSiegeMissionMultiplayerServer : MissionMultiplayerGameModeBas
     private void ResetFlags()
     {
         AllCapturePoints = new MBReadOnlyList<FlagCapturePoint>(Mission.MissionObjects.FindAllWithType<FlagCapturePoint>().ToList());
+        SceneChecks.ThrowOnBadFlagIndexes(AllCapturePoints);
         _flagOwners = new Team[AllCapturePoints.Count];
         _flagRemainingMoraleGains = new int[AllCapturePoints.Count];
 

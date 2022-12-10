@@ -1,4 +1,5 @@
-﻿using NetworkMessages.FromServer;
+﻿using Crpg.Module.Common;
+using NetworkMessages.FromServer;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -233,27 +234,12 @@ internal class CrpgFlagDominationMissionMultiplayer : MissionMultiplayerGameMode
     private void ResetFlags()
     {
         _flags = Mission.Current.MissionObjects.FindAllWithType<FlagCapturePoint>().ToArray();
-        ThrowOnBadFlagIndexes(_flags);
+        SceneChecks.ThrowOnBadFlagIndexes(_flags);
         _flagOwners = new Team[_flags.Length];
         _agentCountsAroundFlags = new int[_flags.Length, (int)BattleSideEnum.NumSides];
         foreach (var flag in _flags)
         {
             flag.ResetPointAsServer(FlagNeutralColor1, FlagNeutralColor2);
-        }
-    }
-
-    /// <summary>Checks the flag index are from 0 to N.</summary>
-    private void ThrowOnBadFlagIndexes(FlagCapturePoint[] flags)
-    {
-        int expectedIndex = 0;
-        foreach (var flag in flags.OrderBy(f => f.FlagIndex))
-        {
-            if (flag.FlagIndex != expectedIndex)
-            {
-                throw new Exception($"Invalid scene '{Mission.SceneName}': Flag indexes should be numbered from 0 to {flags.Length}");
-            }
-
-            expectedIndex += 1;
         }
     }
 
