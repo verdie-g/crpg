@@ -27,9 +27,10 @@ internal static class MathHelper
         float initialValue = recursiveCoeffs[0];
         float initialSpeed = recursiveCoeffs[1];
         float initialAcceleration = recursiveCoeffs[2];
-        float[] coeffs = new float[] { initialAcceleration / 2f, initialSpeed - initialAcceleration / 2f, initialValue };
+        float[] coeffs = { initialAcceleration / 2f, initialSpeed - initialAcceleration / 2f, initialValue };
         return ApplyPolynomialFunction(level, coeffs);
     }
+
     /// <summary>
     /// This is a math function https://en.wikipedia.org/wiki/Generalized_mean.
     /// </summary>
@@ -41,7 +42,7 @@ internal static class MathHelper
             pSum += Math.Pow(number, p);
         }
 
-        return (float)Math.Pow(pSum / (double)numbers.Count, 1.0 / p);
+        return (float)Math.Pow(pSum / numbers.Count, 1.0 / p);
     }
 
     /// <summary>
