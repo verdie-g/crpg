@@ -92,8 +92,10 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
             (new FlagDominationSpawnFrameBehavior(), _isSkirmish
                 ? new CrpgSkirmishSpawningBehavior(_constants, roundController)
                 : new CrpgBattleSpawningBehavior(_constants, roundController)));
+        CrpgTeamSelectComponent teamSelectComponent = new(warmupComponent, roundController);
 #else
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent, null);
+        CrpgTeamSelectComponent teamSelectComponent = new();
 #endif
         CrpgFlagDominationMissionMultiplayerClient flagDominationClient = new(_isSkirmish);
 
@@ -111,7 +113,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new MultiplayerTimerComponent(), // round timer
                     new MultiplayerMissionAgentVisualSpawnComponent(), // expose method to spawn an agent
                     new MissionLobbyEquipmentNetworkComponent(), // logic to change troop or perks
-                    new NoTeamSelectComponent(), // logic to change team, autoselect
+                    teamSelectComponent,
                     new MissionHardBorderPlacer(),
                     new MissionBoundaryPlacer(), // set walkable boundaries
                     new AgentVictoryLogic(), // AI cheering when winning round

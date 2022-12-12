@@ -204,11 +204,6 @@ internal class CrpgFlagDominationMissionMultiplayer : MissionMultiplayerGameMode
     {
     }
 
-    protected override void HandleLateNewClientAfterSynchronized(NetworkCommunicator networkPeer)
-    {
-        Mission.Current.GetMissionBehavior<MultiplayerTeamSelectComponent>().AutoAssignTeam(networkPeer);
-    }
-
     protected override void HandleNewClientAfterLoadingFinished(NetworkCommunicator networkPeer)
     {
         GameNetwork.BeginModuleEventAsServer(networkPeer);
