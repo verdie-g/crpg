@@ -35,13 +35,25 @@ internal class MatchBalancingSystem
         return returnedGameMatch;
     }
 
-    public GameMatch BannerBalancingWithEdgeCases(GameMatch gameMatch)
+    public GameMatch BannerBalancingWithEdgeCases(GameMatch gameMatch, bool IsWarmup = true)
     {
         MatchBalancingHelpers.DumpTeamsStatus(gameMatch);
         Debug.Print(nameof(BannerBalancingWithEdgeCases));
-        Debug.Print("--------------------------------------------");
-        Debug.Print("Now splitting the clan groups between the two team");
-        GameMatch balancedBannerGameMatch = KkMakeTeamOfSimilarSizesWithoutSplittingClanGroups(gameMatch);
+
+        GameMatch balancedBannerGameMatch;
+        if (IsWarmup)
+        {
+            Debug.Print("--------------------------------------------");
+            Debug.Print("Now splitting the clan groups between the two team");
+            balancedBannerGameMatch = KkMakeTeamOfSimilarSizesWithoutSplittingClanGroups(gameMatch);
+        }
+        else
+        {
+            Debug.Print("--------------------------------------------");
+            Debug.Print("moving clanmates players to their clanmates teams , and moving players isolated from their clan to the opposite team.");
+            balancedBannerGameMatch = MatchBalancingHelpers.RegroupClans(gameMatch);
+        }
+
         MatchBalancingHelpers.DumpTeamsStatus(balancedBannerGameMatch);
         if (UserCount(balancedBannerGameMatch) < 3)
         {

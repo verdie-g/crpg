@@ -1077,17 +1077,30 @@ public class MatchBalancingSystemTest
     }
 
     [Test]
-    public void BannerBalancingWithEdgeCase()
+    public void BannerBalancingWithEdgeCaseWarmup()
     {
         var matchBalancer = new MatchBalancingSystem();
 
         float unbalancedTeamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(Game1.TeamA, 1);
         float unbalancedTeamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(Game1.TeamB, 1);
         float unbalancedMeanRatingRatio = unbalancedTeamAMeanRating / unbalancedTeamBMeanRating;
-        GameMatch balancedGame = matchBalancer.BannerBalancingWithEdgeCases(Game1);
+        GameMatch balancedGame = matchBalancer.BannerBalancingWithEdgeCases(Game1, IsWarmup: true);
         float teamASize = balancedGame.TeamA.Count;
         float teamBSize = balancedGame.TeamB.Count;
         float sizeRatio = teamASize / teamBSize;
+        float teamARating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamA, 1);
+        float teamBRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamB, 1);
+        float ratingRatio = teamARating / teamBRating;
+        Assert.AreEqual(ratingRatio, 1, 0.2);
+    }
+
+    [Test]
+    public void BannerBalancingWithEdgeCaseNotWarmup()
+    {
+        var matchBalancer = new MatchBalancingSystem();
+        GameMatch balancedGame = matchBalancer.NaiveCaptainBalancing(Game1);
+        balancedGame = matchBalancer.BannerBalancingWithEdgeCases(balancedGame, IsWarmup: false);
+
         float teamARating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamA, 1);
         float teamBRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamB, 1);
         float ratingRatio = teamARating / teamBRating;
