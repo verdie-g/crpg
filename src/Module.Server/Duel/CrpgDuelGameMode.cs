@@ -89,7 +89,7 @@ internal class CrpgDuelGameMode : MissionBasedMultiplayerGameMode
                     new MultiplayerMissionAgentVisualSpawnComponent(), // expose method to spawn an agent
                     new ConsoleMatchStartEndHandler(),
                     new MissionLobbyEquipmentNetworkComponent(), // logic to change troop or perks
-                    new NoTeamSelectComponent(), // logic to change team, autoselect
+                    new MultiplayerTeamSelectComponent(),
                     new MissionHardBorderPlacer(),
                     new MissionBoundaryPlacer(), // set walkable boundaries
                     new MissionBoundaryCrossingHandler(), // kills agent out of mission boundaries
