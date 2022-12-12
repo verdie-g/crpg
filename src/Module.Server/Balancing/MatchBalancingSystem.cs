@@ -35,18 +35,22 @@ internal class MatchBalancingSystem
         return returnedGameMatch;
     }
 
-    public GameMatch BannerBalancingWithEdgeCases(GameMatch gameMatch, bool IsWarmup = true)
+    public GameMatch BannerBalancingWithEdgeCases(GameMatch gameMatch, bool firstBalance = true)
     {
         MatchBalancingHelpers.DumpTeamsStatus(gameMatch);
         Debug.Print(nameof(BannerBalancingWithEdgeCases));
 
         GameMatch balancedBannerGameMatch;
-        if (IsWarmup)
+        // This is the path we take when team were randomly assigned.
+        // we do not care of completely scrambling the teams since no round was played yet
+        if (firstBalance)
         {
             Debug.Print("--------------------------------------------");
             Debug.Print("Now splitting the clan groups between the two team");
             balancedBannerGameMatch = KkMakeTeamOfSimilarSizesWithoutSplittingClanGroups(gameMatch);
         }
+
+        // in this path , the teams already played at least one round , so we do not want to scramble the teams.
         else
         {
             Debug.Print("--------------------------------------------");

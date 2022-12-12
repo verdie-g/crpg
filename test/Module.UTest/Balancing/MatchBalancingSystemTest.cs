@@ -1084,7 +1084,7 @@ public class MatchBalancingSystemTest
         float unbalancedTeamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(Game1.TeamA, 1);
         float unbalancedTeamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(Game1.TeamB, 1);
         float unbalancedMeanRatingRatio = unbalancedTeamAMeanRating / unbalancedTeamBMeanRating;
-        GameMatch balancedGame = matchBalancer.BannerBalancingWithEdgeCases(Game1, IsWarmup: true);
+        GameMatch balancedGame = matchBalancer.BannerBalancingWithEdgeCases(Game1, firstBalance: true);
         float teamASize = balancedGame.TeamA.Count;
         float teamBSize = balancedGame.TeamB.Count;
         float sizeRatio = teamASize / teamBSize;
@@ -1099,7 +1099,7 @@ public class MatchBalancingSystemTest
     {
         var matchBalancer = new MatchBalancingSystem();
         GameMatch balancedGame = matchBalancer.NaiveCaptainBalancing(Game1);
-        balancedGame = matchBalancer.BannerBalancingWithEdgeCases(balancedGame, IsWarmup: false);
+        balancedGame = matchBalancer.BannerBalancingWithEdgeCases(balancedGame, firstBalance: false);
 
         float teamARating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamA, 1);
         float teamBRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamB, 1);
