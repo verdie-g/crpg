@@ -1,0 +1,12 @@
+﻿ServerName cRPG - Test Duel - c-rpg.eu
+GameType cRPGDuel
+GamePassword yoyo
+add_map_to_automated_battle_pool mp_duel_mode_map_004
+set_automated_battle_count 1
+disable_map_voting
+MapTimeLimit 60
+MaxNumberOfPlayers 32
+MinScoreToWinDuel 3
+start_game
+set_automated_battle_count -1
+enable_automated_battle_switching
