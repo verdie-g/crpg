@@ -27,7 +27,42 @@ internal static class MathHelper
         float initialValue = recursiveCoeffs[0];
         float initialSpeed = recursiveCoeffs[1];
         float initialAcceleration = recursiveCoeffs[2];
-        float[] coeffs = new float[] { initialAcceleration / 2f, initialSpeed - initialAcceleration / 2f, initialValue };
+        float[] coeffs = { initialAcceleration / 2f, initialSpeed - initialAcceleration / 2f, initialValue };
         return ApplyPolynomialFunction(level, coeffs);
+    }
+
+    /// <summary>
+    /// This is a math function https://en.wikipedia.org/wiki/Generalized_mean.
+    /// </summary>
+    public static float PowerMean(List<float> numbers, float p)
+    {
+        double pSum = 0;
+        foreach (float number in numbers)
+        {
+            pSum += Math.Pow(number, p);
+        }
+
+        return (float)Math.Pow(pSum / numbers.Count, 1.0 / p);
+    }
+
+    /// <summary>
+    /// This is a math function https://en.wikipedia.org/wiki/Norm_(mathematics)#p-norm
+    /// </summary>
+    public static float PowerSumBy<TSource>(List<TSource> source, Func<TSource, float> selector, float p)
+    {
+        double pSum = 0;
+        foreach (var el in source)
+        {
+            pSum += Math.Pow(selector(el), p);
+        }
+
+        return (float)Math.Pow(pSum, 1.0 / p);
+    }
+
+    public static bool Within(float value, float bound1, float bound2)
+    {
+        return bound1 < bound2
+            ? value >= bound1 && value <= bound2
+            : value >= bound2 && value <= bound1;
     }
 }

@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>Crpg.Module.UTest</RootNamespace>
+    <AssemblyName>Crpg.Module.UTest</AssemblyName>
+  </PropertyGroup>
+
+  <Import Project="../../src/Directory.Build.props" />
+
+  <ItemGroup>
+    <PackageReference Include="nunit" Version="3.13.3" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.3.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Module.Server\Module.Server.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="$(MB_SERVER_PATH)\bin\Win64_Shipping_Server\TaleWorlds.Library.dll" />
+  </ItemGroup>
+
+</Project>
