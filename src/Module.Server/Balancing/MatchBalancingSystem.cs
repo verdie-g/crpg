@@ -59,13 +59,7 @@ internal class MatchBalancingSystem
         }
 
         MatchBalancingHelpers.DumpTeamsStatus(balancedBannerGameMatch);
-        if (UserCount(balancedBannerGameMatch) < 4)
-        {
-            Debug.Print("Very low player count => naivecaptainbalancing");
-            balancedBannerGameMatch = NaiveCaptainBalancing(balancedBannerGameMatch);
-            MatchBalancingHelpers.DumpTeams(balancedBannerGameMatch);
-            return balancedBannerGameMatch;
-        }
+
 
         Debug.Print("Banner balancing now");
         balancedBannerGameMatch = BalanceTeamOfSimilarSizes(balancedBannerGameMatch, bannerBalance: true, 0.025f);
@@ -261,6 +255,7 @@ internal class MatchBalancingSystem
             : strongTeam.OrderBy(c => c.Character.Rating.Value).LastOrDefault();
         double teamRatingDiff = Math.Abs(RatingHelpers.ComputeTeamRatingDifference(gameMatch));
         float bestCrpgUserToSwap1Rating = bestCrpgUserToSwap1 != null ? bestCrpgUserToSwap1.Character.Rating.Value : 0;
+        int bestCrpgUserToSwap1Count = bestCrpgUserToSwap1 != null ? 1 : 0;
         double targetRating = swappingFromWeakTeam
             ? bestCrpgUserToSwap1Rating + Math.Abs(teamRatingDiff) / 2f
             : bestCrpgUserToSwap1Rating - Math.Abs(teamRatingDiff) / 2f;
@@ -277,7 +272,7 @@ internal class MatchBalancingSystem
             targetRating = swappingFromWeakTeam
                 ? user.Character.Rating.Value + Math.Abs(teamRatingDiff) / 2f
                 : user.Character.Rating.Value - Math.Abs(teamRatingDiff) / 2f;
-            List<CrpgUser> potentialCrpgUsersToSwap = MatchBalancingHelpers.FindCrpgUsersToSwap((float)targetRating, teamToSwapTo, sizeOffset / 2f, sizeScaler);
+            List<CrpgUser> potentialCrpgUsersToSwap = MatchBalancingHelpers.FindCrpgUsersToSwap((float)targetRating, teamToSwapTo, bestCrpgUserToSwap1Count + sizeOffset / 2f, sizeScaler);
             Vector2 potentialPairVector = new(
                 (potentialCrpgUsersToSwap.Count - 1) * sizeScaler,
                 Math.Abs(user.Character.Rating.Value - potentialCrpgUsersToSwap.Sum(u => u.Character.Rating.Value)));
@@ -289,7 +284,7 @@ internal class MatchBalancingSystem
             }
         }
 
-        if (!IsSwapValid(strongTeam, weakTeam, swappingFromWeakTeam, bestCrpgUserToSwap1 != null ? 1 : 0, bestCrpgUserToSwap1Rating, bestCrpgUsersToSwap2.Count, bestCrpgUsersToSwap2.Sum(u => u.Character.Rating.Value), sizeScaler))
+        if (!IsSwapValid(strongTeam, weakTeam, swappingFromWeakTeam, bestCrpgUserToSwap1Count, bestCrpgUserToSwap1Rating, bestCrpgUsersToSwap2.Count, bestCrpgUsersToSwap2.Sum(u => u.Character.Rating.Value), sizeScaler))
         {
             return false;
         }
@@ -437,7 +432,8 @@ internal class MatchBalancingSystem
             maxSizeRatio,
             1f / maxSizeRatio);
         bool sizeDifferenceGreaterThanThreshold = Math.Abs(gameMatch.TeamA.Count - gameMatch.TeamB.Count) > maxDifference;
-        return !tooMuchSizeRatioDifference && !sizeDifferenceGreaterThanThreshold;
+        bool differenceOfOnlyOne = MathHelper.Within(gameMatch.TeamA.Count - gameMatch.TeamB.Count, -1, 1);
+        return (!tooMuchSizeRatioDifference && !sizeDifferenceGreaterThanThreshold) || differenceOfOnlyOne;
     }
 
     private bool IsBalanceGoodEnough(GameMatch gameMatch, float maxSizeRatio, float maxDifference, float percentageDifference)

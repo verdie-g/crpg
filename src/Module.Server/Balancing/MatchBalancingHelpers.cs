@@ -198,7 +198,7 @@ internal static class MatchBalancingHelpers
         };
     }
 
-    public static List<CrpgUser> FindCrpgUsersToSwap(float targetRating, List<CrpgUser> teamToSelectFrom, float sizeOffset, float sizeScaler)
+    public static List<CrpgUser> FindCrpgUsersToSwap(float targetRating, List<CrpgUser> teamToSelectFrom, float desiredSize, float sizeScaler)
     {
         List<CrpgUser> team = teamToSelectFrom.ToList();
         List<CrpgUser> usersToSwap = new();
@@ -207,7 +207,7 @@ internal static class MatchBalancingHelpers
         {
             CrpgUser bestUserToAdd = team.First();
             Vector2 bestUserToAddVector = new(sizeScaler, bestUserToAdd.Character.Rating.Value);
-            Vector2 objectiveVector = new(sizeScaler * (1 + sizeOffset), targetRating);
+            Vector2 objectiveVector = new(sizeScaler * desiredSize, targetRating);
             if (objectiveVector.Length() == 0f)
             {
                 break;
