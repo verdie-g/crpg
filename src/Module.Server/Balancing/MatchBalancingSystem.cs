@@ -123,15 +123,14 @@ internal class MatchBalancingSystem
 
     public GameMatch BalanceTeamOfSimilarSizes(GameMatch gameMatch, bool bannerBalance, float threshold)
     {
-        string methodUsed = bannerBalance ? "using bannerBalance" : "without bannerBalance";
         // Rescaling X dimension to the Y scale to make it as important.
         float sizeScaler = (gameMatch.TeamA.Sum(u => Math.Abs(u.Character.Rating.GetWorkingRating())) +
                             gameMatch.TeamB.Sum(u => Math.Abs(u.Character.Rating.GetWorkingRating()))) / (gameMatch.TeamA.Count + gameMatch.TeamB.Count);
-        for (int i = 0; i < MaximumNumberOfSwaps; i++)
+        int i = 0;
+        for (; i < MaximumNumberOfSwaps; i++)
         {
             if (IsBalanceGoodEnough(gameMatch, maxSizeRatio: 0.75f, maxDifference: 10f, percentageDifference: threshold))
             {
-                Debug.Print($"Made {i} Swaps {methodUsed}");
                 Debug.Print("Teams are of similar sizes and similar ratings");
                 break;
             }
@@ -140,8 +139,7 @@ internal class MatchBalancingSystem
             {
                 if (!FindAndSwapClanGroups(gameMatch, sizeScaler))
                 {
-                    Debug.Print("Made " + i + " Swaps");
-                    Debug.Print("No More Swap With BannerGrouping Available");
+                    Debug.Print("No more swap with banner balance available");
                     break;
                 }
             }
@@ -149,12 +147,13 @@ internal class MatchBalancingSystem
             {
                 if (!FindAndSwapUsers(gameMatch, sizeScaler))
                 {
-                    Debug.Print("Made " + i + " Swaps");
-                    Debug.Print("No more swap without BannerGrouping available");
+                    Debug.Print("No more swap without banner balance available");
                     break;
                 }
             }
         }
+
+        Debug.Print($"Made {i} swaps '{(bannerBalance ? "using banner balance" : "without banner balance")}'");
 
         return gameMatch;
     }
