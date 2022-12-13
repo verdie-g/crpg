@@ -37,9 +37,9 @@ public class MatchBalancingSystemTest
     private static readonly CrpgClan Serfs = new() { Id = 59, Name = "SERFS" };
     private static readonly CrpgClan Vagabonds = new() { Id = 60, Name = "VAGABONDS" };
 
-    private static readonly CrpgUser Aragorn = new() { Character = new CrpgCharacter { Name = "Aragorn", Id = 0, Rating = new CrpgCharacterRating { Value = 20000 } }, ClanMembership = new CrpgClanMember { ClanId = 1 } };
-    private static readonly CrpgUser Arwen = new() { Character = new CrpgCharacter { Name = "Arwen",  Id = 1, Rating = new CrpgCharacterRating { Value = 20000 } }, ClanMembership = new CrpgClanMember { ClanId = 1 } };
-    private static readonly CrpgUser Frodon = new() { Character = new CrpgCharacter { Name = "Frodon", Id = 2, Rating = new CrpgCharacterRating { Value = 16000 } }, ClanMembership = new CrpgClanMember { ClanId = 1 } };
+    private static readonly CrpgUser Aragorn = new() { Character = new CrpgCharacter { Name = "Aragorn", Id = 0, Rating = new CrpgCharacterRating { Value = -1000 } }, ClanMembership = new CrpgClanMember { ClanId = 1 } };
+    private static readonly CrpgUser Arwen = new() { Character = new CrpgCharacter { Name = "Arwen",  Id = 1, Rating = new CrpgCharacterRating { Value = -2000 } }, ClanMembership = new CrpgClanMember { ClanId = 1 } };
+    private static readonly CrpgUser Frodon = new() { Character = new CrpgCharacter { Name = "Frodon", Id = 2, Rating = new CrpgCharacterRating { Value = 1600 } }, ClanMembership = new CrpgClanMember { ClanId = 1 } };
     private static readonly CrpgUser Sam = new() { Character = new CrpgCharacter { Name = "Sam", Id = 3, Rating = new CrpgCharacterRating { Value = 15000 } }, ClanMembership = new CrpgClanMember { ClanId = 1 } };
     private static readonly CrpgUser Sangoku = new() { Character = new CrpgCharacter { Name = "Sangoku", Id = 4, Rating = new CrpgCharacterRating { Value = 2000 } }, ClanMembership = new CrpgClanMember { ClanId = 2 } };
     private static readonly CrpgUser Krilin = new() { Character = new CrpgCharacter { Name = "Krilin", Id = 5, Rating = new CrpgCharacterRating { Value = 1000 } }, ClanMembership = new CrpgClanMember { ClanId = 2 } };
@@ -1040,6 +1040,18 @@ public class MatchBalancingSystemTest
             Madonna,
         },
     };
+    private static readonly GameMatch EmptyTeamGame = new()
+    {
+        TeamA = new List<CrpgUser>(),
+        TeamB = new List<CrpgUser>
+        {
+            Aragorn,
+            Arwen,
+            Madonna,
+            Frodon,
+        },
+        Waiting = new List<CrpgUser>(),
+    };
     [Test]
     public void KkMakeTeamOfSimilarSizesShouldNotBeThatBad()
     {
@@ -1106,7 +1118,17 @@ public class MatchBalancingSystemTest
         float ratingRatio = teamARating / teamBRating;
         Assert.AreEqual(ratingRatio, 1, 0.2);
     }
+    [Test]
+    public void BannerBalancingWithEdgeCaseNotWarmupShouldWorkWithOneTeamEmpty()
+    {
+        var matchBalancer = new MatchBalancingSystem();
+        var balancedGame = matchBalancer.BannerBalancingWithEdgeCases(EmptyTeamGame, firstBalance: false);
 
+        float teamARating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamA, 1);
+        float teamBRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamB, 1);
+        float ratingRatio = teamARating / teamBRating;
+        MatchBalancingHelpers.DumpTeams(balancedGame);
+    }
     [Test]
     public void BannerBalancingWithEdgeCaseShouldWorkWithOneStrongClanGroup()
     {

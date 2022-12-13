@@ -38,7 +38,6 @@ internal static class MatchBalancingHelpers
 
         foreach (ClanGroup c in newGameMatch.Waiting)
         {
-            (int, int) clanCounts;
             if (c.ClanId == null)
             {
                 if (teamASize < teamBSize)
@@ -55,7 +54,7 @@ internal static class MatchBalancingHelpers
                 }
             }
 
-            if (!teamCountForEachClan.TryGetValue((int)c.ClanId, out clanCounts))
+            if (!teamCountForEachClan.TryGetValue((int)c.ClanId, out (int, int) clanCounts))
             {
                 if (teamASize < teamBSize)
                 {
@@ -84,20 +83,19 @@ internal static class MatchBalancingHelpers
                 teamBSize += c.Size;
                 clanCounts = (clanCounts.Item1, clanCounts.Item2 + c.Size);
                 teamCountForEachClan[(int)c.ClanId] = clanCounts;
-            } 
+            }
         }
 
         newGameMatch.Waiting.Clear();
         var team = newGameMatch.TeamA.ToList(); // foreach does not like pulling the rug under its own feet
         foreach (ClanGroup c in team)
         {
-            (int, int) clanCounts;
             if (c.ClanId == null)
             {
                 continue;
             }
 
-            if (!teamCountForEachClan.TryGetValue((int)c.ClanId, out clanCounts))
+            if (!teamCountForEachClan.TryGetValue((int)c.ClanId, out (int, int) clanCounts))
             {
                 Debug.Print($"WARNING at this point of gameMatchRegroupClans the clan {c.ClanId} should already be in the dictionary");
                 continue;
@@ -113,7 +111,6 @@ internal static class MatchBalancingHelpers
                     newGameMatch.TeamB.Remove(clanGroupToMove);
                     newGameMatch.TeamA.Add(clanGroupToMove);
                 }
-
             }
             else
             {
@@ -188,6 +185,7 @@ internal static class MatchBalancingHelpers
             Waiting = SplitUsersIntoClanGroups(gameMatch.Waiting),
         };
     }
+
     public static GameMatch ClanGroupsGameMatchIntoGameMatch(ClanGroupsGameMatch clanGroupsGameMatch)
     {
         return new GameMatch
@@ -197,17 +195,17 @@ internal static class MatchBalancingHelpers
             Waiting = JoinClanGroupsIntoUsers(clanGroupsGameMatch.Waiting),
         };
     }
-    public static List<CrpgUser> FindCrpgUsersToSwap(float targetRating, List<CrpgUser> teamToSelectFrom, float sizeOffset)
+
+    public static List<CrpgUser> FindCrpgUsersToSwap(float targetRating, List<CrpgUser> teamToSelectFrom, float desiredSize, float sizeScaler)
     {
         List<CrpgUser> team = teamToSelectFrom.ToList();
         List<CrpgUser> usersToSwap = new();
         Vector2 usersToSwapVector = new(0, 0);
-        float targetSizeScaling = targetRating / (1 + sizeOffset); // used to make the targeted vector diagonal
         for (int i = 0; i < teamToSelectFrom.Count; i++)
         {
             CrpgUser bestUserToAdd = team.First();
-            Vector2 bestUserToAddVector = new(targetSizeScaling, bestUserToAdd.Character.Rating.Value);
-            Vector2 objectiveVector = new(targetSizeScaling * (1 + sizeOffset), targetRating);
+            Vector2 bestUserToAddVector = new(sizeScaler, bestUserToAdd.Character.Rating.GetWorkingRating());
+            Vector2 objectiveVector = new(sizeScaler * desiredSize, targetRating);
             if (objectiveVector.Length() == 0f)
             {
                 break;
@@ -215,12 +213,12 @@ internal static class MatchBalancingHelpers
 
             foreach (CrpgUser user in team)
             {
-                Vector2 userVector = new(targetSizeScaling, user.Character.Rating.Value);
+                Vector2 userVector = new(sizeScaler, user.Character.Rating.GetWorkingRating());
 
                 if ((usersToSwapVector + userVector - objectiveVector).Length() < (usersToSwapVector + bestUserToAddVector - objectiveVector).Length())
                 {
                     bestUserToAdd = user;
-                    bestUserToAddVector = new(targetSizeScaling, bestUserToAdd.Character.Rating.Value);
+                    bestUserToAddVector = new(sizeScaler, bestUserToAdd.Character.Rating.GetWorkingRating());
                 }
             }
 
@@ -228,7 +226,7 @@ internal static class MatchBalancingHelpers
             {
                 team.Remove(bestUserToAdd);
                 usersToSwap.Add(bestUserToAdd);
-                usersToSwapVector = new(usersToSwap.Count * targetSizeScaling, usersToSwap.Sum(u => u.Character.Rating.Value));
+                usersToSwapVector = new(usersToSwap.Count * sizeScaler, usersToSwap.Sum(u => u.Character.Rating.GetWorkingRating()));
             }
             else
             {
@@ -246,12 +244,11 @@ internal static class MatchBalancingHelpers
     /// <param name="targetSize">Target size for the returned clan groups.</param>
     /// <param name="teamToSelectFrom">Team to select the clan groups from.</param>
     /// <param name="useAngle">Use the angle method.</param>
-    public static List<ClanGroup> FindAClanGroupToSwapUsing(float targetRating, float targetSize,
+    public static List<ClanGroup> FindAClanGroupToSwapUsing(float targetRating, float targetSize, float sizeScaler,
         List<ClanGroup> teamToSelectFrom, bool useAngle)
     {
         // Rescaling X dimension to the Y scale to make it as important.
-        float targetSizeRescaling = targetRating / targetSize; // used to make the targeted vector diagonal
-        Vector2 objectiveVector = new(targetSizeRescaling * targetSize, targetRating);
+        Vector2 objectiveVector = new(sizeScaler * targetSize, targetRating);
         float objectiveVectorDirection = Vector2Angles(objectiveVector);
 
         List<ClanGroup> team = teamToSelectFrom.ToList();
@@ -260,8 +257,8 @@ internal static class MatchBalancingHelpers
         {
             ClanGroup bestClanGroupToAdd = team.First();
             // TODO: clan groups ratings could be computed once.
-            Vector2 bestClanGroupToAddVector = ClanGroupRescaledVector(targetSizeRescaling, bestClanGroupToAdd);
-            Vector2 clanGroupsToSwapVector = ClanGroupsRescaledVector(targetSizeRescaling, clanGroupsToSwap);
+            Vector2 bestClanGroupToAddVector = ClanGroupRescaledVector(sizeScaler, bestClanGroupToAdd);
+            Vector2 clanGroupsToSwapVector = ClanGroupsRescaledVector(sizeScaler, clanGroupsToSwap);
 
             if (objectiveVector.Length() == 0f)
             {
@@ -270,13 +267,13 @@ internal static class MatchBalancingHelpers
 
             foreach (ClanGroup clanGroup in team)
             {
-                Vector2 clanGroupVector = ClanGroupRescaledVector(targetSizeRescaling, clanGroup);
+                Vector2 clanGroupVector = ClanGroupRescaledVector(sizeScaler, clanGroup);
                 if (useAngle)
                 {
                     if (Math.Abs(Vector2Angles(clanGroupVector + clanGroupsToSwapVector) - objectiveVectorDirection) < Math.Abs(Vector2Angles(bestClanGroupToAddVector + clanGroupsToSwapVector) - objectiveVectorDirection))
                     {
                         bestClanGroupToAdd = clanGroup;
-                        bestClanGroupToAddVector = ClanGroupRescaledVector(targetSizeRescaling, bestClanGroupToAdd);
+                        bestClanGroupToAddVector = ClanGroupRescaledVector(sizeScaler, bestClanGroupToAdd);
                     }
                 }
                 else
@@ -284,7 +281,7 @@ internal static class MatchBalancingHelpers
                     if ((clanGroupsToSwapVector + clanGroupVector - objectiveVector).Length() < (clanGroupsToSwapVector + bestClanGroupToAddVector - objectiveVector).Length())
                     {
                         bestClanGroupToAdd = clanGroup;
-                        bestClanGroupToAddVector = ClanGroupRescaledVector(targetSizeRescaling, bestClanGroupToAdd);
+                        bestClanGroupToAddVector = ClanGroupRescaledVector(sizeScaler, bestClanGroupToAdd);
                     }
                 }
             }
@@ -391,21 +388,21 @@ internal static class MatchBalancingHelpers
         Debug.Print("Team A");
         foreach (CrpgUser u in gameMatch.TeamA)
         {
-            Debug.Print($"{u.Character.Name} :  {u.Character.Rating.Value}");
+            Debug.Print($"{u.Character.Name} :  {u.Character.Rating.GetWorkingRating()}");
         }
 
         Debug.Print("-----------------------");
         Debug.Print("Team B");
         foreach (CrpgUser u in gameMatch.TeamB)
         {
-            Debug.Print($"{u.Character.Name} :  {u.Character.Rating.Value}");
+            Debug.Print($"{u.Character.Name} :  {u.Character.Rating.GetWorkingRating()}");
         }
 
         Debug.Print("-----------------------");
         Debug.Print("WaitingToJoin");
         foreach (CrpgUser u in gameMatch.Waiting)
         {
-            Debug.Print($"{u.Character.Name} :  {u.Character.Rating.Value}");
+            Debug.Print($"{u.Character.Name} :  {u.Character.Rating.GetWorkingRating()}");
         }
 
         Debug.Print("-----------------------");
