@@ -249,11 +249,12 @@ internal class MatchBalancingSystem
         (List<CrpgUser> teamToSwapFrom, List<CrpgUser> teamToSwapTo) = swappingFromWeakTeam
             ? (weakTeam, strongTeam)
             : (strongTeam, weakTeam);
-
+        double teamRatingDiff = Math.Abs(RatingHelpers.ComputeTeamRatingDifference(gameMatch));
+        // here the crpgUserToSwap can be null if the the team that has the least players is empty.
         CrpgUser bestCrpgUserToSwap1 = swappingFromWeakTeam
             ? weakTeam.OrderBy(c => c.Character.Rating.Value).FirstOrDefault()
             : strongTeam.OrderBy(c => c.Character.Rating.Value).LastOrDefault();
-        double teamRatingDiff = Math.Abs(RatingHelpers.ComputeTeamRatingDifference(gameMatch));
+        // These calculation are made to account for both the case where we are swapping a user with a list of user , or swapping no one with a list of users.
         float bestCrpgUserToSwap1Rating = bestCrpgUserToSwap1 != null ? bestCrpgUserToSwap1.Character.Rating.Value : 0;
         int bestCrpgUserToSwap1Count = bestCrpgUserToSwap1 != null ? 1 : 0;
         double targetRating = swappingFromWeakTeam
@@ -297,7 +298,7 @@ internal class MatchBalancingSystem
                 strongTeam.Remove(user);
             }
 
-            // null when the team that has the least player is null
+            // null if the swap is just moving players from one team to another
             if (bestCrpgUserToSwap1 != null)
             {
                 strongTeam.Add(bestCrpgUserToSwap1);
