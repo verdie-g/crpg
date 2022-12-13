@@ -11,16 +11,15 @@ internal class CrpgRating
     private const float DefaultRating = 1500.0f;
     private const float Multiplier = 173.7178f;
 
-    private float _rating;
-    private float _ratingDeviation;
-
     public CrpgRating(float rating, float deviation, float volatility)
     {
-        _rating = rating;
-        _ratingDeviation = deviation;
+        Rating = rating;
+        RatingDeviation = deviation;
         Volatility = volatility;
     }
 
+    public float Rating { get; private set; }
+    public float RatingDeviation { get; private set; }
     public float Volatility { get; private set; }
 
     // the following variables are used to hold values temporarily whilst running calculations
@@ -33,8 +32,8 @@ internal class CrpgRating
     /// </summary>
     public float Glicko2Rating
     {
-        get => (_rating - DefaultRating) / Multiplier;
-        private set => _rating = value * Multiplier + DefaultRating;
+        get => (Rating - DefaultRating) / Multiplier;
+        private set => Rating = value * Multiplier + DefaultRating;
     }
 
     /// <summary>
@@ -42,8 +41,8 @@ internal class CrpgRating
     /// </summary>
     public float Glicko2RatingDeviation
     {
-        get => _ratingDeviation / Multiplier;
-        private set => _ratingDeviation = value * Multiplier;
+        get => RatingDeviation / Multiplier;
+        private set => RatingDeviation = value * Multiplier;
     }
 
     public void FinalizeRating()
