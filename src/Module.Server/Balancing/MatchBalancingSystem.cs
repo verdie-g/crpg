@@ -61,7 +61,7 @@ internal class MatchBalancingSystem
         MatchBalancingHelpers.DumpTeamsStatus(balancedBannerGameMatch);
         if (UserCount(balancedBannerGameMatch) < 4)
         {
-            Debug.Print("Very Low Player Count => naivecaptainbalancing");
+            Debug.Print("Very low player count => naivecaptainbalancing");
             balancedBannerGameMatch = NaiveCaptainBalancing(balancedBannerGameMatch);
             MatchBalancingHelpers.DumpTeams(balancedBannerGameMatch);
             return balancedBannerGameMatch;
@@ -216,16 +216,7 @@ internal class MatchBalancingSystem
             clanGroupsToSwap2 = clanGroupsToSwapUsingDistanceTuple.clanGroupsToSwap2;
         }
 
-        float newTeamRatingDiff = swappingFromWeakTeam
-            ? RatingHelpers.ClanGroupsPowerSum(strongClanGroupsTeam) - 2f * RatingHelpers.ClanGroupsPowerSum(clanGroupsToSwap2) + 2f * clanGroupToSwap1.RatingPsum() - RatingHelpers.ClanGroupsPowerSum(weakClanGroupsTeam)
-            : RatingHelpers.ClanGroupsPowerSum(strongClanGroupsTeam) + 2f * RatingHelpers.ClanGroupsPowerSum(clanGroupsToSwap2) - 2f * clanGroupToSwap1.RatingPsum() - RatingHelpers.ClanGroupsPowerSum(weakClanGroupsTeam);
-        float newTeamSizeDiff = swappingFromWeakTeam
-            ? strongTeam.Count - 2 * clanGroupsToSwap2.Sum(c => c.Size) + 2f * clanGroupToSwap1.Size - weakTeam.Count
-            : strongTeam.Count + 2 * clanGroupsToSwap2.Sum(c => c.Size) - 2f * clanGroupToSwap1.Size - weakTeam.Count;
-        Vector2 oldDifferenceVector = new((strongTeam.Count - weakTeam.Count) * sizeScaler,
-            strongTeam.Sum(u => u.Character.Rating.Value) - weakTeam.Sum(u => u.Character.Rating.Value));
-        Vector2 newDifferenceVector = new(newTeamSizeDiff * sizeScaler, newTeamRatingDiff);
-        if (newDifferenceVector.Length() >= oldDifferenceVector.Length())
+        if (!IsSwapValid(strongTeam, weakTeam, swappingFromWeakTeam, clanGroupToSwap1.Size, clanGroupToSwap1.RatingPsum(), clanGroupsToSwap2.Sum(c => c.Size), RatingHelpers.ClanGroupsPowerSum(clanGroupsToSwap2), sizeScaler))
         {
             return false;
         }
@@ -298,17 +289,7 @@ internal class MatchBalancingSystem
             }
         }
 
-        float newTeamRatingDiff = swappingFromWeakTeam
-            ? strongTeam.Sum(u => u.Character.Rating.Value) + 2f * bestCrpgUserToSwap1Rating - 2f * bestCrpgUsersToSwap2.Sum(u => u.Character.Rating.Value) - weakTeam.Sum(u => u.Character.Rating.Value)
-            : strongTeam.Sum(u => u.Character.Rating.Value) - 2f * bestCrpgUserToSwap1Rating + 2f * bestCrpgUsersToSwap2.Sum(u => u.Character.Rating.Value) - weakTeam.Sum(u => u.Character.Rating.Value);
-        float newTeamSizeDiff = swappingFromWeakTeam
-            ? strongTeam.Count + 2 - 2f * bestCrpgUsersToSwap2.Count - weakTeam.Count
-            : strongTeam.Count - 2 + 2f * bestCrpgUsersToSwap2.Count - weakTeam.Count;
-
-        Vector2 oldDifferenceVector = new((strongTeam.Count - weakTeam.Count) * sizeScaler,
-            strongTeam.Sum(u => u.Character.Rating.Value) - weakTeam.Sum(u => u.Character.Rating.Value));
-        Vector2 newDifferenceVector = new(newTeamSizeDiff * sizeScaler, newTeamRatingDiff);
-        if (newDifferenceVector.Length() >= oldDifferenceVector.Length())
+        if (!IsSwapValid(strongTeam, weakTeam, swappingFromWeakTeam, bestCrpgUserToSwap1 != null ? 1 : 0, bestCrpgUserToSwap1Rating, bestCrpgUsersToSwap2.Count, bestCrpgUsersToSwap2.Sum(u => u.Character.Rating.Value), sizeScaler))
         {
             return false;
         }
@@ -426,11 +407,26 @@ internal class MatchBalancingSystem
         return (bestClanGroupToSwapSource, bestClanGroupToSwapDestination, distanceToTargetVector);
     }
 
+    private bool IsSwapValid(List<CrpgUser> strongTeam, List<CrpgUser> weakTeam, bool swappingFromWeakTeam, int sourceGroupSize, float sourceGroupRating, int destinationGroupSize, float destinationGroupRating, float sizeScaler)
+    {
+        float newTeamRatingDiff = swappingFromWeakTeam
+            ? strongTeam.Sum(u => u.Character.Rating.Value) + 2f * sourceGroupRating - 2f * destinationGroupRating - weakTeam.Sum(u => u.Character.Rating.Value)
+            : strongTeam.Sum(u => u.Character.Rating.Value) - 2f * sourceGroupRating + 2f * destinationGroupRating - weakTeam.Sum(u => u.Character.Rating.Value);
+        float newTeamSizeDiff = swappingFromWeakTeam
+            ? strongTeam.Count + 2 * sourceGroupSize - 2f * destinationGroupSize - weakTeam.Count
+            : strongTeam.Count - 2 * sourceGroupSize + 2f * destinationGroupSize - weakTeam.Count;
+
+        Vector2 oldDifferenceVector = new((strongTeam.Count - weakTeam.Count) * sizeScaler,
+            strongTeam.Sum(u => u.Character.Rating.Value) - weakTeam.Sum(u => u.Character.Rating.Value));
+        Vector2 newDifferenceVector = new(newTeamSizeDiff * sizeScaler, newTeamRatingDiff);
+        return newDifferenceVector.Length() < oldDifferenceVector.Length();
+    }
+
     private bool IsRatingRatioAcceptable(GameMatch gameMatch, float percentageDifference)
     {
         double ratingRatio = Math.Abs(
             (RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamB) - RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamA))
-            / RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamA));
+            / gameMatch.TeamA.Sum(u => Math.Abs(u.Character.Rating.Value)));
         return MathHelper.Within((float)ratingRatio, 0f, percentageDifference);
     }
 
