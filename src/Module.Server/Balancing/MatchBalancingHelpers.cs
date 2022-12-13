@@ -38,7 +38,6 @@ internal static class MatchBalancingHelpers
 
         foreach (ClanGroup c in newGameMatch.Waiting)
         {
-            (int, int) clanCounts;
             if (c.ClanId == null)
             {
                 if (teamASize < teamBSize)
@@ -55,7 +54,7 @@ internal static class MatchBalancingHelpers
                 }
             }
 
-            if (!teamCountForEachClan.TryGetValue((int)c.ClanId, out clanCounts))
+            if (!teamCountForEachClan.TryGetValue((int)c.ClanId, out (int, int) clanCounts))
             {
                 if (teamASize < teamBSize)
                 {
@@ -91,13 +90,12 @@ internal static class MatchBalancingHelpers
         var team = newGameMatch.TeamA.ToList(); // foreach does not like pulling the rug under its own feet
         foreach (ClanGroup c in team)
         {
-            (int, int) clanCounts;
             if (c.ClanId == null)
             {
                 continue;
             }
 
-            if (!teamCountForEachClan.TryGetValue((int)c.ClanId, out clanCounts))
+            if (!teamCountForEachClan.TryGetValue((int)c.ClanId, out (int, int) clanCounts))
             {
                 Debug.Print($"WARNING at this point of gameMatchRegroupClans the clan {c.ClanId} should already be in the dictionary");
                 continue;
@@ -206,7 +204,7 @@ internal static class MatchBalancingHelpers
         for (int i = 0; i < teamToSelectFrom.Count; i++)
         {
             CrpgUser bestUserToAdd = team.First();
-            Vector2 bestUserToAddVector = new(sizeScaler, bestUserToAdd.Character.Rating.Value);
+            Vector2 bestUserToAddVector = new(sizeScaler, bestUserToAdd.Character.Rating.GetWorkingRating());
             Vector2 objectiveVector = new(sizeScaler * desiredSize, targetRating);
             if (objectiveVector.Length() == 0f)
             {
@@ -215,12 +213,12 @@ internal static class MatchBalancingHelpers
 
             foreach (CrpgUser user in team)
             {
-                Vector2 userVector = new(sizeScaler, user.Character.Rating.Value);
+                Vector2 userVector = new(sizeScaler, user.Character.Rating.GetWorkingRating());
 
                 if ((usersToSwapVector + userVector - objectiveVector).Length() < (usersToSwapVector + bestUserToAddVector - objectiveVector).Length())
                 {
                     bestUserToAdd = user;
-                    bestUserToAddVector = new(sizeScaler, bestUserToAdd.Character.Rating.Value);
+                    bestUserToAddVector = new(sizeScaler, bestUserToAdd.Character.Rating.GetWorkingRating());
                 }
             }
 
@@ -228,7 +226,7 @@ internal static class MatchBalancingHelpers
             {
                 team.Remove(bestUserToAdd);
                 usersToSwap.Add(bestUserToAdd);
-                usersToSwapVector = new(usersToSwap.Count * sizeScaler, usersToSwap.Sum(u => u.Character.Rating.Value));
+                usersToSwapVector = new(usersToSwap.Count * sizeScaler, usersToSwap.Sum(u => u.Character.Rating.GetWorkingRating()));
             }
             else
             {
@@ -390,21 +388,21 @@ internal static class MatchBalancingHelpers
         Debug.Print("Team A");
         foreach (CrpgUser u in gameMatch.TeamA)
         {
-            Debug.Print($"{u.Character.Name} :  {u.Character.Rating.Value}");
+            Debug.Print($"{u.Character.Name} :  {u.Character.Rating.GetWorkingRating()}");
         }
 
         Debug.Print("-----------------------");
         Debug.Print("Team B");
         foreach (CrpgUser u in gameMatch.TeamB)
         {
-            Debug.Print($"{u.Character.Name} :  {u.Character.Rating.Value}");
+            Debug.Print($"{u.Character.Name} :  {u.Character.Rating.GetWorkingRating()}");
         }
 
         Debug.Print("-----------------------");
         Debug.Print("WaitingToJoin");
         foreach (CrpgUser u in gameMatch.Waiting)
         {
-            Debug.Print($"{u.Character.Name} :  {u.Character.Rating.Value}");
+            Debug.Print($"{u.Character.Name} :  {u.Character.Rating.GetWorkingRating()}");
         }
 
         Debug.Print("-----------------------");
