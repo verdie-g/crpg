@@ -61,7 +61,7 @@ internal class MatchBalancingSystem
         MatchBalancingHelpers.DumpTeamsStatus(balancedBannerGameMatch);
         if (UserCount(balancedBannerGameMatch) < 4)
         {
-            Debug.Print("2 players or less => naivecaptainbalancing");
+            Debug.Print("Very Low Player Count => naivecaptainbalancing");
             balancedBannerGameMatch = NaiveCaptainBalancing(balancedBannerGameMatch);
             MatchBalancingHelpers.DumpTeams(balancedBannerGameMatch);
             return balancedBannerGameMatch;
