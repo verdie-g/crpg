@@ -84,7 +84,7 @@ internal static class MatchBalancingHelpers
                 teamBSize += c.Size;
                 clanCounts = (clanCounts.Item1, clanCounts.Item2 + c.Size);
                 teamCountForEachClan[(int)c.ClanId] = clanCounts;
-            } 
+            }
         }
 
         newGameMatch.Waiting.Clear();
@@ -113,7 +113,6 @@ internal static class MatchBalancingHelpers
                     newGameMatch.TeamB.Remove(clanGroupToMove);
                     newGameMatch.TeamA.Add(clanGroupToMove);
                 }
-
             }
             else
             {
@@ -188,6 +187,7 @@ internal static class MatchBalancingHelpers
             Waiting = SplitUsersIntoClanGroups(gameMatch.Waiting),
         };
     }
+
     public static GameMatch ClanGroupsGameMatchIntoGameMatch(ClanGroupsGameMatch clanGroupsGameMatch)
     {
         return new GameMatch
@@ -197,6 +197,7 @@ internal static class MatchBalancingHelpers
             Waiting = JoinClanGroupsIntoUsers(clanGroupsGameMatch.Waiting),
         };
     }
+
     public static List<CrpgUser> FindCrpgUsersToSwap(float targetRating, List<CrpgUser> teamToSelectFrom, float sizeOffset, float sizeScaler)
     {
         List<CrpgUser> team = teamToSelectFrom.ToList();

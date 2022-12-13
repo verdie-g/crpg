@@ -320,10 +320,12 @@ internal class MatchBalancingSystem
                 weakTeam.Add(user);
                 strongTeam.Remove(user);
             }
+
+            // null when the team that has the least player is null
             if (bestCrpgUserToSwap1 != null)
             {
-            strongTeam.Add(bestCrpgUserToSwap1);
-            weakTeam.Remove(bestCrpgUserToSwap1);
+                strongTeam.Add(bestCrpgUserToSwap1);
+                weakTeam.Remove(bestCrpgUserToSwap1);
             }
         }
         else
@@ -333,6 +335,8 @@ internal class MatchBalancingSystem
                 weakTeam.Remove(user);
                 strongTeam.Add(user);
             }
+
+            // null when the team that has the least player is null
             if (bestCrpgUserToSwap1 != null)
             {
                 strongTeam.Remove(bestCrpgUserToSwap1);
@@ -366,18 +370,18 @@ internal class MatchBalancingSystem
         (List<ClanGroup> teamToSwapFrom, List<ClanGroup> teamToSwapInto) = swappingFromWeakTeam
             ? (weakClanGroupsTeam, strongClanGroupsTeam)
             : (strongClanGroupsTeam, weakClanGroupsTeam);
-        ClanGroup empty = new(null);
         // Rescaling X dimension to the Y scale to make it as important.
         Vector2 targetVector = new(targetSwapSizeDifference * sizeScaler, halfRatingDifference);
-
+        // if the team that has the least players is empty , we will do the swap with an empty clangroup. Iterating on the empty clangroup will just do nothing.
+        ClanGroup empty = new(null);
         ClanGroup weakClanGroupToSwap = weakClanGroupsTeam.DefaultIfEmpty(empty).First();
         ClanGroup strongClanGroupToSwap = strongClanGroupsTeam.DefaultIfEmpty(empty).Last();
 
         // Initializing a first pair to compare afterward with other pairs
 
-            float bestClanGroupToSwapTargetRating = swappingFromWeakTeam
-            ? weakClanGroupToSwap.RatingPsum() + halfRatingDifference
-            : strongClanGroupToSwap.RatingPsum() - halfRatingDifference;
+        float bestClanGroupToSwapTargetRating = swappingFromWeakTeam
+        ? weakClanGroupToSwap.RatingPsum() + halfRatingDifference
+        : strongClanGroupToSwap.RatingPsum() - halfRatingDifference;
 
         ClanGroup bestClanGroupToSwapSource = swappingFromWeakTeam ? weakClanGroupToSwap : strongClanGroupToSwap;
 
