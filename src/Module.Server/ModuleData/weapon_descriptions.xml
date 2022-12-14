@@ -6,6 +6,7 @@
     </WeaponFlags>
     <AvailablePieces>
       <AvailablePiece id="crpg_thegn_sword_1_t2_blade" />
+      <AvailablePiece id="crpg_thegn_sword_1_t2_blade" />
       <AvailablePiece id="crpg_ambassador_sword_t3_blade" />
       <AvailablePiece id="crpg_ambassador_sword_t3_guard" />
       <AvailablePiece id="crpg_ambassador_sword_t3_handle" />
@@ -856,6 +857,14 @@
       <AvailablePiece id="crpg_decorated_great_saber_2hsword_1_t5_guard" />
       <AvailablePiece id="crpg_decorated_great_saber_1_t5_handle" />
       <AvailablePiece id="crpg_decorated_great_saber_1_t5_pommel" />    
+      <AvailablePiece id="crpg_great_thamaskene_steel_spatha_2hsword_2_t5_blade" />
+      <AvailablePiece id="crpg_great_thamaskene_steel_spatha_2hsword_2_t5_guard" />
+      <AvailablePiece id="crpg_great_thamaskene_steel_spatha_2hsword_2_t5_handle" />
+      <AvailablePiece id="crpg_great_thamaskene_steel_spatha_2hsword_2_t5_pommel" /> 
+      <AvailablePiece id="crpg_decorated_great_saber_2hsword_1_t5_blade" />
+      <AvailablePiece id="crpg_decorated_great_saber_2hsword_1_t5_guard" />
+      <AvailablePiece id="crpg_decorated_great_saber_1_t5_handle" />
+      <AvailablePiece id="crpg_decorated_great_saber_1_t5_pommel" />    
       <AvailablePiece id="crpg_dawn_blade" />
       <AvailablePiece id="crpg_dawn_guard" />
       <AvailablePiece id="crpg_dawn_handle" />
@@ -1633,6 +1642,8 @@
       <AvailablePiece id="crpg_vlandia_2haxe_1_t4_blade" />
       <AvailablePiece id="crpg_sturgia_2haxe_1_t4_handle" />
       <AvailablePiece id="crpg_bearded_axe_t3_handle" />
+      <AvailablePiece id="crpg_sturgia_2haxe_1_t4_handle" />
+      <AvailablePiece id="crpg_bearded_axe_t3_handle" />
     </AvailablePieces>
   </WeaponDescription>
   <WeaponDescription id="crpg_OneHandedBastardAxeAlternative" weapon_class="OneHandedAxe" item_usage_features="onehanded:axe">
@@ -1656,6 +1667,8 @@
       <AvailablePiece id="crpg_sturgia_2haxe_1_t4_blade" />
       <AvailablePiece id="crpg_sturgia_2haxe_2_t5_blade" />
       <AvailablePiece id="crpg_vlandia_2haxe_1_t4_blade" />
+      <AvailablePiece id="crpg_sturgia_2haxe_1_t4_handle" />
+      <AvailablePiece id="crpg_bearded_axe_t3_handle" />
       <AvailablePiece id="crpg_sturgia_2haxe_1_t4_handle" />
       <AvailablePiece id="crpg_bearded_axe_t3_handle" />
     </AvailablePieces>
@@ -1991,6 +2004,10 @@
       <AvailablePiece id="crpg_hoplite_blade_1" />
       <AvailablePiece id="crpg_hoplite_guard_1" />
       <AvailablePiece id="crpg_hoplite_pommel_1" />
+      <AvailablePiece id="crpg_hoplite_handle_2" />
+      <AvailablePiece id="crpg_hoplite_blade_2" />
+      <AvailablePiece id="crpg_hoplite_guard_2" />
+      <AvailablePiece id="crpg_hoplite_pommel_2" />
       <AvailablePiece id="crpg_iklwa_handle_1" />
       <AvailablePiece id="crpg_iklwa_blade_1" />
     </AvailablePieces>
@@ -2317,6 +2334,10 @@
       <AvailablePiece id="crpg_hoplite_blade_1" />
       <AvailablePiece id="crpg_hoplite_guard_1" />
       <AvailablePiece id="crpg_hoplite_pommel_1" />
+      <AvailablePiece id="crpg_hoplite_handle_2" />
+      <AvailablePiece id="crpg_hoplite_blade_2" />
+      <AvailablePiece id="crpg_hoplite_guard_2" />
+      <AvailablePiece id="crpg_hoplite_pommel_2" />
       <AvailablePiece id="crpg_iklwa_handle_1" />
       <AvailablePiece id="crpg_iklwa_blade_1" />
 
@@ -3066,6 +3087,8 @@
       <WeaponFlag value="MeleeWeapon" />
     </WeaponFlags>
     <AvailablePieces>
+      <AvailablePiece id="crpg_blacksmith_war_hammer_mace_t3_handle" />
+      <AvailablePiece id="crpg_blacksmith_war_hammer_1_t1_blade" />
       <AvailablePiece id="crpg_blacksmith_war_hammer_mace_t3_handle" />
       <AvailablePiece id="crpg_blacksmith_war_hammer_1_t1_blade" />
       <AvailablePiece id="crpg_vlandia_axe_2_t4_blade" />

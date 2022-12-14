@@ -21,6 +21,7 @@
     </StatsData>
     <UsablePieces>
       <UsablePiece piece_id="crpg_thegn_sword_1_t2_blade" />
+      <UsablePiece piece_id="crpg_thegn_sword_1_t2_blade" />
       <UsablePiece piece_id="crpg_ambassador_sword_t3_blade" />
       <UsablePiece piece_id="crpg_ambassador_sword_t3_guard" />
       <UsablePiece piece_id="crpg_ambassador_sword_t3_handle" />
@@ -443,6 +444,14 @@
       <StatData stat_type="Handling" max_value="200" />
     </StatsData>
     <UsablePieces>
+      <UsablePiece piece_id="crpg_great_thamaskene_steel_spatha_2hsword_2_t5_blade" />
+      <UsablePiece piece_id="crpg_great_thamaskene_steel_spatha_2hsword_2_t5_guard" />
+      <UsablePiece piece_id="crpg_great_thamaskene_steel_spatha_2hsword_2_t5_handle" />
+      <UsablePiece piece_id="crpg_great_thamaskene_steel_spatha_2hsword_2_t5_pommel" />  
+      <UsablePiece piece_id="crpg_decorated_great_saber_2hsword_1_t5_blade" />
+      <UsablePiece piece_id="crpg_decorated_great_saber_2hsword_1_t5_guard" />
+      <UsablePiece piece_id="crpg_decorated_great_saber_1_t5_handle" />
+      <UsablePiece piece_id="crpg_decorated_great_saber_1_t5_pommel" />      
       <UsablePiece piece_id="crpg_great_thamaskene_steel_spatha_2hsword_2_t5_blade" />
       <UsablePiece piece_id="crpg_great_thamaskene_steel_spatha_2hsword_2_t5_guard" />
       <UsablePiece piece_id="crpg_great_thamaskene_steel_spatha_2hsword_2_t5_handle" />
@@ -1718,6 +1727,10 @@
       <UsablePiece piece_id="crpg_hoplite_handle_1" />
       <UsablePiece piece_id="crpg_hoplite_guard_1" />
       <UsablePiece piece_id="crpg_hoplite_pommel_1" />
+      <UsablePiece piece_id="crpg_hoplite_blade_2" />
+      <UsablePiece piece_id="crpg_hoplite_handle_2" />
+      <UsablePiece piece_id="crpg_hoplite_guard_2" />
+      <UsablePiece piece_id="crpg_hoplite_pommel_2" />
       <UsablePiece piece_id="crpg_iklwa_handle_1" />
       <UsablePiece piece_id="crpg_iklwa_blade_1" />
     </UsablePieces>
@@ -2076,6 +2089,8 @@
       <StatData stat_type="Handling" max_value="200" />
     </StatsData>
     <UsablePieces>
+      <UsablePiece piece_id="crpg_blacksmith_war_hammer_mace_t3_handle" />
+      <UsablePiece piece_id="crpg_blacksmith_war_hammer_1_t1_blade" />
       <UsablePiece piece_id="crpg_blacksmith_war_hammer_mace_t3_handle" />
       <UsablePiece piece_id="crpg_blacksmith_war_hammer_1_t1_blade" />
       <UsablePiece piece_id="crpg_vlandia_axe_2_t4_blade" />
