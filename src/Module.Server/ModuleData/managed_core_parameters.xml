@@ -47,9 +47,9 @@
     <!-- damage graph related -->
     <!-- link for the function -->
     <!-- https://www.desmos.com/calculator/dnhpcqilvg -->
-    <managed_core_parameter id="SwingCombatSpeedGraphZeroProgressValue" value="0.3"/>
-    <managed_core_parameter id="SwingCombatSpeedGraphFirstMaximumPoint" value="0.15"/>
-    <managed_core_parameter id="SwingCombatSpeedGraphSecondMaximumPoint" value="0.54"/>
+    <managed_core_parameter id="SwingCombatSpeedGraphZeroProgressValue" value="0.01"/>
+    <managed_core_parameter id="SwingCombatSpeedGraphFirstMaximumPoint" value="0.25"/>
+    <managed_core_parameter id="SwingCombatSpeedGraphSecondMaximumPoint" value="0.70"/>
     <managed_core_parameter id="SwingCombatSpeedGraphOneProgressValue" value="0.01"/>
 
     <managed_core_parameter id="OverSwingCombatSpeedGraphZeroProgressValue" value="0.75"/>
