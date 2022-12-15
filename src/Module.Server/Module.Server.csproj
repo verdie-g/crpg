@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <ProcessorArchitecture>AMD64</ProcessorArchitecture> <!-- avoids architecture mismatch warnings -->
+    <ProcessorArchitecture>AMD64</ProcessorArchitecture>
+    <PlatformTarget>x64</PlatformTarget>
     <RootNamespace>Crpg.Module</RootNamespace>
     <AssemblyName>Crpg.Module</AssemblyName>
     <ModuleName>cRPG</ModuleName>
