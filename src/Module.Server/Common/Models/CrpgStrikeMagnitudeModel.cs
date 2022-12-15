@@ -1,4 +1,5 @@
 ﻿using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common.Models;
@@ -54,6 +55,7 @@ internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
         bool doesAttackerHaveMount)
     {
         float impactPointFactor;
+        float swingSpeedPercentage = swingSpeed * 4.5454545f / weaponUsageComponent.SwingSpeed;
         switch (weaponUsageComponent.WeaponClass)
         {
             case WeaponClass.OneHandedAxe:
@@ -64,11 +66,11 @@ internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
             case WeaponClass.TwoHandedPolearm:
             case WeaponClass.LowGripPolearm:
                 impactPointFactor = (float)Math.Pow(10f, -4f * Math.Pow(impactPoint - 0.93, 2f));
-                return BladeDamageFactorToDamageRatio * (0.4f + 0.6f * impactPointFactor) * (1f + extraLinearSpeed / 15f);
+                return BladeDamageFactorToDamageRatio * (0.4f + 0.6f * impactPointFactor) * (1f + extraLinearSpeed / 15f) * swingSpeedPercentage;
 
             default: // Weapon that do not have a wooden handle
                 impactPointFactor = (float)Math.Pow(10f, -4f * Math.Pow(impactPoint - 0.75, 2f));
-                return BladeDamageFactorToDamageRatio * (0.8f + 0.2f * impactPointFactor) * (1f + extraLinearSpeed / 15f);
+                return BladeDamageFactorToDamageRatio * (0.8f + 0.2f * impactPointFactor) * (1f + extraLinearSpeed / 15f) * swingSpeedPercentage;
         }
     }
 
