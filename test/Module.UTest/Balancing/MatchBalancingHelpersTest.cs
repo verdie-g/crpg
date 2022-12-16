@@ -593,6 +593,7 @@ public class MatchBalancingHelpersTest
         allUsersFromUnbalancedGame.AddRange(_game2.Waiting);
         CollectionAssert.AreEqual(allUsersFromUnbalancedGame.OrderBy(u => u.Character.Id), allUsersFromBalancedGame.OrderBy(u => u.Character.Id));
     }
+
     [Test]
     public void RegroupClansShouldRegroupPlayerByClan()
     {
@@ -609,4 +610,53 @@ public class MatchBalancingHelpersTest
         MatchBalancingHelpers.DumpTeamsStatus(balancedGame);
     }
 
+    [Test]
+    public void A()
+    {
+        GameMatch game = new()
+        {
+            TeamA = new List<CrpgUser>
+            {
+                Hudax01,
+                Hudax02,
+
+                Sangoku,
+
+                RolandDeschain,
+            },
+            TeamB = new List<CrpgUser>
+            {
+                Jean01,
+                Jean02,
+
+                Hudax03,
+
+                ProfCharles,
+
+                Jean03,
+            },
+            Waiting = new List<CrpgUser>
+            {
+                Jean04,
+
+                Krilin,
+
+                Hudax03,
+                Hudax04,
+
+                Daschyhund,
+
+                GreatieDane,
+
+                BassetyHound,
+            },
+        };
+
+        var game2 = MatchBalancingHelpers.RegroupClans(game);
+        Assert.IsEmpty(game2.Waiting);
+        Assert.IsTrue(
+            game2.TeamB.Where(u => u.ClanMembership != null).Select(u => u.ClanMembership!.ClanId)
+                .Intersect(game2.TeamB.Where(u => u.ClanMembership != null).Select(u => u.ClanMembership!.ClanId))
+                .Any());
+    }
 }

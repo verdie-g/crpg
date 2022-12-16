@@ -106,10 +106,11 @@ internal static class MatchBalancingHelpers
                 if (clanCounts.Item2 > 0)
                 {
                     var clanGroupToMove = newGameMatch.TeamB.Find(clangroup => clangroup.ClanId == c.ClanId);
-                    teamASize += clanGroupToMove.Size;
-                    teamBSize -= clanGroupToMove.Size;
-                    newGameMatch.TeamB.Remove(clanGroupToMove);
                     newGameMatch.TeamA.Add(clanGroupToMove);
+                    teamASize += clanGroupToMove.Size;
+                    newGameMatch.TeamB.Remove(clanGroupToMove);
+                    teamBSize -= clanGroupToMove.Size;
+                    teamCountForEachClan[(int)c.ClanId] = (clanCounts.Item1 + clanGroupToMove.Size, clanCounts.Item2 - clanGroupToMove.Size);
                 }
             }
             else
@@ -117,10 +118,11 @@ internal static class MatchBalancingHelpers
                 if (clanCounts.Item1 > 0)
                 {
                     var clanGroupToMove = newGameMatch.TeamA.Find(clangroup => clangroup.ClanId == c.ClanId);
-                    teamBSize += clanGroupToMove.Size;
-                    teamASize -= clanGroupToMove.Size;
                     newGameMatch.TeamA.Remove(clanGroupToMove);
+                    teamASize -= clanGroupToMove.Size;
                     newGameMatch.TeamB.Add(clanGroupToMove);
+                    teamBSize += clanGroupToMove.Size;
+                    teamCountForEachClan[(int)c.ClanId] = (clanCounts.Item1 - clanGroupToMove.Size, clanCounts.Item2 + clanGroupToMove.Size);
                 }
             }
         }
