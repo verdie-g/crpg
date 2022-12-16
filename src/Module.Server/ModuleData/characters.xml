@@ -8,11 +8,6 @@
                       weight="0.3333"
                       build="0"
                       key="00000C07000000010011111211151111000701000010000000111011000101000000500202111110000000000000000000000000000000000000000000A00000" />
-      <BodyPropertiesMax version="4"
-                         age="25"
-                         weight="0.4667"
-                         build="0.2"
-                         key="0011FC0FC03C384FFFFFFFFEFFF7EFFFFFFFFFA97EF7FEFFFFEFFFFFFFFFFFFF00037FD303FFFFFF000000000000000000000000000000000000000000C89101" />
     </face>
   </NPCCharacter>
 </MPCharacters>
