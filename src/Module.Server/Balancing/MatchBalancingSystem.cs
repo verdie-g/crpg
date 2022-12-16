@@ -55,7 +55,7 @@ internal class MatchBalancingSystem
         {
             Debug.Print("--------------------------------------------");
             Debug.Print("moving clanmates players to their clanmates teams , and moving players isolated from their clan to the opposite team.");
-            balancedBannerGameMatch = MatchBalancingHelpers.RegroupClans(gameMatch);
+            balancedBannerGameMatch = MatchBalancingHelpers.RejoinClans(gameMatch);
         }
 
         MatchBalancingHelpers.DumpTeamsStatus(balancedBannerGameMatch);

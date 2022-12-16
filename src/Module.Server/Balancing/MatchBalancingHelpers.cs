@@ -6,123 +6,123 @@ namespace Crpg.Module.Balancing;
 
 internal static class MatchBalancingHelpers
 {
-    public static GameMatch RegroupClans(GameMatch gameMatch)
+    /// <summary>
+    /// In the worse scenario, the balancer can split clans. This method rejoins them so the caller can find other
+    /// strategies to balance the teams. It's usually called after the end of the round when new players have join
+    /// the game and can help to have a balance without splitting clans.
+    /// </summary>
+    public static GameMatch RejoinClans(GameMatch gameMatch)
     {
         int teamASize = gameMatch.TeamA.Count;
         int teamBSize = gameMatch.TeamB.Count;
         var newGameMatch = GroupTeamsByClan(gameMatch);
-        Dictionary<int, (int teamAClanCount, int teamBClanCount)> teamCountForEachClan = new();
-        foreach (ClanGroup c in newGameMatch.TeamA)
-        {
-            if (c.ClanId != null)
-            {
-                teamCountForEachClan.Add((int)c.ClanId, (c.Size, 0));
-            }
-        }
 
-        foreach (ClanGroup c in newGameMatch.TeamB)
+        Dictionary<int, (int teamACount, int teamBCount)> clanMemberCounts = new();
+        foreach (ClanGroup clanGroup in newGameMatch.TeamA)
         {
-            (int, int) clanCounts;
-            if (c.ClanId == null)
+            if (clanGroup.ClanId == null)
             {
                 continue;
             }
-            else if (!teamCountForEachClan.TryGetValue((int)c.ClanId, out clanCounts))
-            {
-                teamCountForEachClan.Add((int)c.ClanId, (0, c.Size));
-            }
 
-            clanCounts = (clanCounts.Item1, c.Size);
-            teamCountForEachClan[(int)c.ClanId] = clanCounts;
+            clanMemberCounts[clanGroup.ClanId.Value] = (clanGroup.Size, 0);
         }
 
-        foreach (ClanGroup c in newGameMatch.Waiting)
+        foreach (ClanGroup clanGroup in newGameMatch.TeamB)
         {
-            if (c.ClanId == null)
+            if (clanGroup.ClanId == null)
+            {
+                continue;
+            }
+
+            clanMemberCounts.TryGetValue(clanGroup.ClanId.Value, out var clanCounts);
+            clanMemberCounts[clanGroup.ClanId.Value] = (clanCounts.teamACount, clanCounts.teamACount + 1);
+        }
+
+        foreach (ClanGroup clanGroup in newGameMatch.Waiting)
+        {
+            if (clanGroup.ClanId == null)
             {
                 if (teamASize < teamBSize)
                 {
-                    newGameMatch.TeamA.Add(c);
+                    newGameMatch.TeamA.Add(clanGroup);
                     teamASize += 1;
-                    continue;
                 }
                 else
                 {
-                    newGameMatch.TeamB.Add(c);
+                    newGameMatch.TeamB.Add(clanGroup);
                     teamBSize += 1;
-                    continue;
                 }
+
+                continue;
             }
 
-            if (!teamCountForEachClan.TryGetValue((int)c.ClanId, out (int, int) clanCounts))
+            if (!clanMemberCounts.TryGetValue(clanGroup.ClanId.Value, out var clanCounts))
             {
                 if (teamASize < teamBSize)
                 {
-                    newGameMatch.TeamA.Add(c);
-                    teamASize += c.Size;
-                    continue;
+                    newGameMatch.TeamA.Add(clanGroup);
+                    teamASize += clanGroup.Size;
                 }
                 else
                 {
-                    newGameMatch.TeamB.Add(c);
-                    teamBSize += c.Size;
-                    continue;
+                    newGameMatch.TeamB.Add(clanGroup);
+                    teamBSize += clanGroup.Size;
                 }
+
+                continue;
             }
 
-            if (clanCounts.Item1 > clanCounts.Item2)
+            if (clanCounts.teamACount > clanCounts.teamBCount)
             {
-                newGameMatch.TeamA.Add(c);
-                teamASize += c.Size;
-                clanCounts = (clanCounts.Item1 + c.Size, clanCounts.Item2);
-                teamCountForEachClan[(int)c.ClanId] = clanCounts;
+                newGameMatch.TeamA.Add(clanGroup);
+                teamASize += clanGroup.Size;
+                clanMemberCounts [clanGroup.ClanId.Value] = (clanCounts.teamACount + clanGroup.Size, clanCounts.teamBCount);
             }
             else
             {
-                newGameMatch.TeamB.Add(c);
-                teamBSize += c.Size;
-                clanCounts = (clanCounts.Item1, clanCounts.Item2 + c.Size);
-                teamCountForEachClan[(int)c.ClanId] = clanCounts;
+                newGameMatch.TeamB.Add(clanGroup);
+                teamBSize += clanGroup.Size;
+                clanMemberCounts [(int)clanGroup.ClanId] = (clanCounts.teamACount, clanCounts.teamBCount + clanGroup.Size);
             }
         }
 
         newGameMatch.Waiting.Clear();
-        var team = newGameMatch.TeamA.ToList(); // foreach does not like pulling the rug under its own feet
-        foreach (ClanGroup c in team)
+        foreach (ClanGroup clanGroup in newGameMatch.TeamA.ToArray()) // foreach does not like pulling the rug under its own feet
         {
-            if (c.ClanId == null)
+            if (clanGroup.ClanId == null)
             {
                 continue;
             }
 
-            if (!teamCountForEachClan.TryGetValue((int)c.ClanId, out (int, int) clanCounts))
+            if (!clanMemberCounts.TryGetValue(clanGroup.ClanId.Value, out var clanCounts))
             {
-                Debug.Print($"WARNING at this point of gameMatchRegroupClans the clan {c.ClanId} should already be in the dictionary");
+                Debug.Print($"WARNING at this point of gameMatchRegroupClans the clan {clanGroup.ClanId} should already be in the dictionary");
                 continue;
             }
 
-            if (clanCounts.Item1 > clanCounts.Item2)
+            if (clanCounts.teamACount > clanCounts.teamBCount)
             {
-                if (clanCounts.Item2 > 0)
+                if (clanCounts.teamBCount > 0)
                 {
-                    var clanGroupToMove = newGameMatch.TeamB.Find(clangroup => clangroup.ClanId == c.ClanId);
+                    var clanGroupToMove = newGameMatch.TeamB.Find(g => g.ClanId == clanGroup.ClanId);
                     newGameMatch.TeamA.Add(clanGroupToMove);
                     teamASize += clanGroupToMove.Size;
                     newGameMatch.TeamB.Remove(clanGroupToMove);
                     teamBSize -= clanGroupToMove.Size;
-                    teamCountForEachClan[(int)c.ClanId] = (clanCounts.Item1 + clanGroupToMove.Size, clanCounts.Item2 - clanGroupToMove.Size);
+                    clanMemberCounts [clanGroup.ClanId.Value] = (clanCounts.teamACount + clanGroupToMove.Size, clanCounts.teamBCount - clanGroupToMove.Size);
                 }
             }
             else
             {
-                if (clanCounts.Item1 > 0)
+                if (clanCounts.teamACount > 0)
                 {
-                    var clanGroupToMove = newGameMatch.TeamA.Find(clangroup => clangroup.ClanId == c.ClanId);
+                    var clanGroupToMove = newGameMatch.TeamA.Find(g => g.ClanId == clanGroup.ClanId);
                     newGameMatch.TeamA.Remove(clanGroupToMove);
                     teamASize -= clanGroupToMove.Size;
                     newGameMatch.TeamB.Add(clanGroupToMove);
                     teamBSize += clanGroupToMove.Size;
-                    teamCountForEachClan[(int)c.ClanId] = (clanCounts.Item1 - clanGroupToMove.Size, clanCounts.Item2 + clanGroupToMove.Size);
+                    clanMemberCounts [clanGroup.ClanId.Value] = (clanCounts.teamACount - clanGroupToMove.Size, clanCounts.teamBCount + clanGroupToMove.Size);
                 }
             }
         }

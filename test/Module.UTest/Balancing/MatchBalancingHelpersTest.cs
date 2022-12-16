@@ -575,14 +575,14 @@ public class MatchBalancingHelpersTest
     [Test]
     public void RegroupClansShouldEmptyWaiting()
     {
-        var game = MatchBalancingHelpers.RegroupClans(_game2);
+        var game = MatchBalancingHelpers.RejoinClans(_game2);
         Assert.IsEmpty(game.Waiting);
     }
 
     [Test]
     public void RegroupClansShouldNotLoseOrAddCharacters()
     {
-        GameMatch balancedGame = MatchBalancingHelpers.RegroupClans(_game2);
+        GameMatch balancedGame = MatchBalancingHelpers.RejoinClans(_game2);
         List<CrpgUser> allUsersFromBalancedGame = new();
         List<CrpgUser> allUsersFromUnbalancedGame = new();
         allUsersFromBalancedGame.AddRange(balancedGame.TeamA);
@@ -597,7 +597,7 @@ public class MatchBalancingHelpersTest
     [Test]
     public void RegroupClansShouldRegroupPlayerByClan()
     {
-        GameMatch balancedGame = MatchBalancingHelpers.RegroupClans(_game2);
+        GameMatch balancedGame = MatchBalancingHelpers.RejoinClans(_game2);
         List<CrpgUser> allUsersFromBalancedGame = new();
         List<CrpgUser> allUsersFromUnbalancedGame = new();
         allUsersFromBalancedGame.AddRange(balancedGame.TeamA);
@@ -652,7 +652,7 @@ public class MatchBalancingHelpersTest
             },
         };
 
-        var game2 = MatchBalancingHelpers.RegroupClans(game);
+        var game2 = MatchBalancingHelpers.RejoinClans(game);
         Assert.IsEmpty(game2.Waiting);
         Assert.IsTrue(
             game2.TeamB.Where(u => u.ClanMembership != null).Select(u => u.ClanMembership!.ClanId)
