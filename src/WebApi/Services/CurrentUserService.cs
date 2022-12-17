@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using System.Text;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Domain.Entities.Users;
 
@@ -10,18 +11,28 @@ public class CurrentUserService : ICurrentUserService
 
     public CurrentUserService(IHttpContextAccessor httpContextAccessor)
     {
-        if (httpContextAccessor.HttpContext == null)
+        var httpContext = httpContextAccessor.HttpContext;
+        if (httpContext == null)
         {
-            Logger.Log(LogLevel.Warning, $"{nameof(IHttpContextAccessor)}.{nameof(IHttpContextAccessor.HttpContext)} returned null: {Environment.StackTrace}");
             return;
         }
 
-        var claimsPrincipal = httpContextAccessor.HttpContext.User;
+        var claimsPrincipal = httpContext.User;
         string? idStr = claimsPrincipal.FindFirstValue(ClaimTypes.NameIdentifier);
         string? roleStr = claimsPrincipal.FindFirstValue(ClaimTypes.Role);
         if (idStr == null || roleStr == null)
         {
-            Logger.Log(LogLevel.Warning, "User id or role in request was null");
+            string? authorizationHeader = httpContext.Request.Headers.Authorization.FirstOrDefault();
+            if (authorizationHeader == null)
+            {
+                Logger.Log(LogLevel.Warning, "Authorization header was null ({0})", httpContext.Request.Path);
+            }
+            else
+            {
+                string decodedJwtPayload = Encoding.UTF8.GetString(Convert.FromBase64String(authorizationHeader.Split('.')[1]));
+                Logger.Log(LogLevel.Warning, "User id or role in request was null. JWT payload: {0} ({1})", decodedJwtPayload, httpContext.Request.Path);
+            }
+
             return;
         }
 
