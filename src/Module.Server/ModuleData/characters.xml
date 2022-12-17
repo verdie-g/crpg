@@ -1,8 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <MPCharacters>
   <NPCCharacter id="crpg_character"
-                name="{=}cRPG Character">
+                default_group="Cavalry"
+                level="15"
+                name="{=}cRPG Character"
+                occupation="Soldier"
+                culture="Culture.vlandia">
     <face>
+      <!--face_key value="18.16;0.3333;0;C0700000001;11111211151111;7010000100000;11101100010100;500202111110;0;0;280000" max_value="23;0.4667;0.2;11FC0FC03C384F;FFFFFFFEFFF7EFFF;FFFFFFA97EF7FEFF;FFEFFFFFFFFFFFFF;37FD303FFFFFF;0;0;309101" /-->
       <BodyProperties version="4"
                       age="23"
                       weight="0.3333"
@@ -14,5 +19,41 @@
                          build="0.2"
                          key="0011FC0FC03C384FFFFFFFFEFFF7EFFFFFFFFFA97EF7FEFFFFEFFFFFFFFFFFFF00037FD303FFFFFF000000000000000000000000000000000000000000C89101" />
     </face>
+    <skills>
+      <skill id="Riding"
+             value="0" />
+      <skill id="OneHanded"
+             value="0" />
+      <skill id="TwoHanded"
+             value="0" />
+      <skill id="Polearm"
+             value="0" />
+      <skill id="Crossbow"
+             value="0" />
+      <skill id="Bow"
+             value="0" />
+      <skill id="Throwing"
+             value="0" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Item0"
+                   id="Item.mp_western_long_spear" />
+        <equipment slot="Item1"
+                   id="Item.mp_vlandian_cavalry_mace" />
+        <equipment slot="Item2"
+                   id="Item.mp_western_riders_kite_shield" />
+        <equipment slot="Head"
+                   id="Item.mp_nasal_helmet_over_laced_coif" />
+        <equipment slot="Body"
+                   id="Item.mp_layered_leather_tunic" />
+        <equipment slot="Leg"
+                   id="Item.mp_leather_cavalier_boots" />
+        <equipment slot="Horse"
+                   id="Item.mp_vlandia_horse" />
+        <equipment slot="HorseHarness"
+                   id="Item.mp_light_harness" />
+      </EquipmentRoster>
+    </Equipments>
   </NPCCharacter>
 </MPCharacters>
