@@ -1,4 +1,5 @@
-﻿using Crpg.Module.Api;
+﻿using System.Globalization;
+using Crpg.Module.Api;
 using Crpg.Module.Api.Models;
 using Crpg.Module.Api.Models.Clans;
 using Crpg.Module.Api.Models.Restrictions;
@@ -85,13 +86,14 @@ internal class CrpgUserManagerServer : MissionNetwork
     private async Task SetCrpgComponentAsync(NetworkCommunicator networkPeer)
     {
         VirtualPlayer vp = networkPeer.VirtualPlayer;
-        if (!Enum.TryParse(vp.Id.ProvidedType.ToString(), out Platform platform) || platform != Platform.Steam)
+        if (!Enum.TryParse(vp.Id.ProvidedType.ToString(), out Platform platform)
+            || (platform != Platform.Steam && platform != Platform.Epic))
         {
             Debug.Print($"Kick player {vp.UserName} playing on {vp.Id.ProvidedType}");
             KickPeer(networkPeer, DisconnectType.KickedByHost);
         }
 
-        string platformUserId = vp.Id.Id2.ToString();
+        string platformUserId = PlayerIdToPlatformUserId(vp.Id, platform);
         string userName = vp.UserName;
 
         CrpgUser crpgUser;
@@ -139,6 +141,21 @@ internal class CrpgUserManagerServer : MissionNetwork
             RewardMultiplierByPlayerId.TryGetValue(vp.Id, out int lastMissionMultiplier)
                 ? lastMissionMultiplier
                 : 1;
+    }
+
+    private string PlayerIdToPlatformUserId(PlayerId playerId, Platform platform)
+    {
+        switch (platform)
+        {
+            case Platform.Steam:
+                return playerId.Id2.ToString(CultureInfo.InvariantCulture);
+            case Platform.Epic:
+                byte[] guidBytes = new ArraySegment<byte>(playerId.ToByteArray(), offset: 16, count: 16).ToArray();
+                return new Guid(guidBytes).ToString("N");
+            case Platform.Gog:
+            default:
+                throw new ArgumentOutOfRangeException(nameof(platform), platform, null);
+        }
     }
 
     private void KickPeer(NetworkCommunicator networkPeer, DisconnectType disconnectType)
