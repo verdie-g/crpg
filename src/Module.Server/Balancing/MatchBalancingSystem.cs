@@ -63,7 +63,6 @@ internal class MatchBalancingSystem
         if (IsBalanceGoodEnough(balancedBannerGameMatch, maxSizeRatio: 0.75f, maxDifference: 10f, percentageDifference: 0.05f))
         {
             Debug.Print("Balance was good enough. We're not balancing this round");
-            MatchBalancingHelpers.DumpTeamsStatus(balancedBannerGameMatch);
             return balancedBannerGameMatch;
         }
 
