@@ -25,6 +25,11 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
         float baseDamage)
     {
         float finalDamage = base.CalculateDamage(attackInformation, collisionData, weapon, baseDamage);
+        if (weapon.IsEmpty)
+        {
+            return finalDamage;
+        }
+
         if (collisionData.AttackBlockedWithShield && finalDamage > 0)
         {
             int shieldSkill = 0;
@@ -44,10 +49,7 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
             }
         }
 
-        if (weapon.IsEmpty)
-        {
-            return finalDamage;
-        }
+
 
         // We want to decrease survivability of horses against melee weapon and especially against spears and pikes.
         // By doing that we ensure that cavalry stays an archer predator while punishing cav errors like running into a wall or an obstacle
