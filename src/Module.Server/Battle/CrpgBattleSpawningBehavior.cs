@@ -168,7 +168,10 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
         foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
         {
             var missionPeer = networkPeer.GetComponent<MissionPeer>();
-            if (!networkPeer.IsSynchronized || missionPeer == null || missionPeer.Team.Side == BattleSideEnum.None)
+            if (!networkPeer.IsSynchronized
+                || missionPeer == null
+                || missionPeer.Team == null
+                || missionPeer.Team.Side == BattleSideEnum.None)
             {
                 continue;
             }

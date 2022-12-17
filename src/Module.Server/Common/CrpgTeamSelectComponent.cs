@@ -1,16 +1,18 @@
-﻿using Crpg.Module.Battle;
-using TaleWorlds.Core;
-using TaleWorlds.MountAndBlade;
+﻿using TaleWorlds.MountAndBlade;
 
 #if CRPG_SERVER
 using Crpg.Module.Balancing;
+using NetworkMessages.FromClient;
+using TaleWorlds.Core;
 using TaleWorlds.Library;
+using TaleWorlds.PlayerServices;
 #endif
 
 namespace Crpg.Module.Common;
 
 /// <summary>
-/// Disables team selection. Auto select is done in <see cref="CrpgFlagDominationMissionMultiplayer.HandleLateNewClientAfterSynchronized"/>.
+/// Disables team selection and randomly assign teams if the native balancer is enabled. Else use the cRPG balancer
+/// to balance teams after each round.
 /// </summary>
 internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
 {
@@ -19,11 +21,17 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
     private readonly MultiplayerRoundController _roundController;
     private readonly MatchBalancingSystem _balancer;
 
+    /// <summary>
+    /// Players waiting to be assigned to a team when the cRPG balancer is enabled.
+    /// </summary>
+    private readonly HashSet<PlayerId> _playersWaitingForTeam;
+
     public CrpgTeamSelectComponent(MultiplayerWarmupComponent warmupComponent, MultiplayerRoundController roundController)
     {
         _warmupComponent = warmupComponent;
         _roundController = roundController;
         _balancer = new MatchBalancingSystem();
+        _playersWaitingForTeam = new HashSet<PlayerId>();
     }
 #else
     public CrpgTeamSelectComponent()
@@ -34,7 +42,6 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
     public override void OnBehaviorInitialize()
     {
         base.OnBehaviorInitialize();
-        typeof(MultiplayerTeamSelectComponent).GetProperty("TeamSelectionEnabled")!.SetValue(this, false);
 
 #if CRPG_SERVER
         _warmupComponent.OnWarmupEnded += OnWarmupEnded;
@@ -48,18 +55,41 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
         _warmupComponent.OnWarmupEnded -= OnWarmupEnded;
     }
 
-    protected override void HandleLateNewClientAfterSynchronized(NetworkCommunicator networkPeer)
+    protected override void AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegistererContainer registerer)
     {
-        base.HandleLateNewClientAfterSynchronized(networkPeer);
+        registerer.Register<TeamChange>(HandleTeamChange);
+    }
 
-        if (IsNativeBalancerEnabled() || _warmupComponent.IsInWarmup)
+    private bool HandleTeamChange(NetworkCommunicator peer, TeamChange message)
+    {
+        if (IsNativeBalancerEnabled())
         {
-            AutoAssignTeam(networkPeer);
+            if (message.AutoAssign)
+            {
+                AutoAssignTeam(peer);
+            }
+            else
+            {
+                ChangeTeamServer(peer, message.Team);
+            }
         }
         else
         {
-            ChangeTeamServer(networkPeer, Mission.SpectatorTeam);
+            if (message.Team == Mission.SpectatorTeam)
+            {
+                ChangeTeamServer(peer, message.Team);
+            }
+            else if (_warmupComponent.IsInWarmup)
+            {
+                AutoAssignTeam(peer);
+            }
+            else
+            {
+                _playersWaitingForTeam.Add(peer.VirtualPlayer.Id);
+            }
         }
+
+        return true;
     }
 
     private void OnRoundEnded()
@@ -108,15 +138,22 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
                 continue;
             }
 
+            if (_playersWaitingForTeam.Contains(networkPeer.VirtualPlayer.Id))
+            {
+                gameMatch.Waiting.Add(crpgPeer.User);
+                continue;
+            }
+
             var team = missionPeer.Team?.Side switch
             {
                 BattleSideEnum.Defender => gameMatch.TeamA,
                 BattleSideEnum.Attacker => gameMatch.TeamB,
-                _ => gameMatch.Waiting,
+                _ => null,
             };
-            team.Add(crpgPeer.User);
+            team?.Add(crpgPeer.User);
         }
 
+        _playersWaitingForTeam.Clear();
         return gameMatch;
     }
 
