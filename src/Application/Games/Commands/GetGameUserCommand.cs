@@ -70,7 +70,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
                 ("crpg_khuzait_civil_coat", ItemSlot.Body),
                 ("crpg_leather_boots", ItemSlot.Leg),
                 ("crpg_peasant_pitchfork_2_t1", ItemSlot.Weapon0),
-                ("crpg_peasant_hammer_2_t1", ItemSlot.Weapon1),
+                ("crpg_peasant_maul_t1_2", ItemSlot.Weapon1),
                 ("crpg_throwing_stone", ItemSlot.Weapon2),
             },
             // battania
