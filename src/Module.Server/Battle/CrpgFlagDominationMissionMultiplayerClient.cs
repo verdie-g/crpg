@@ -122,7 +122,7 @@ internal class CrpgFlagDominationMissionMultiplayerClient : MissionMultiplayerGa
             }
         }
 
-        BattleSideEnum mySide = _missionPeer?.Team.Side ?? BattleSideEnum.None;
+        BattleSideEnum mySide = _missionPeer?.Team?.Side ?? BattleSideEnum.None;
         if (mySide == BattleSideEnum.None)
         {
             return;

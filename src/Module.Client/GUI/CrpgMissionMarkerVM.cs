@@ -303,7 +303,7 @@ internal class CrpgMissionMarkerVm : ViewModel
         }
 
         bool isDuel = _gameModeClient is CrpgDuelMissionMultiplayerClient;
-        BattleSideEnum myPeerSide = GameNetwork.MyPeer.ControlledAgent?.Team.Side ?? BattleSideEnum.None;
+        BattleSideEnum myPeerSide = GameNetwork.MyPeer.ControlledAgent?.Team?.Side ?? BattleSideEnum.None;
         if (isDuel && myPeerSide == BattleSideEnum.Defender)
         {
             return;
