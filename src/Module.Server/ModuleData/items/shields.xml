@@ -488,4 +488,12 @@
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
+  <Item id="crpg_buckler" name="{=}Buckler" body_name="bo_cap_sturgia_shield_a" shield_body_name="bo_sturgia_shield_a" recalculate_body="false" mesh="buckler" culture="Culture.sturgia" using_tableau="true" weight="4.7" difficulty="0" appearance="0.9" Type="Shield" item_holsters="shield_round:shield_4" has_lower_holster_priority="true" holster_position_shift="0,0,0">
+    <ItemComponent>
+      <Weapon weapon_class="LargeShield" body_armor="9" thrust_speed="86" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="100" physics_material="wood_shield" item_usage="hand_shield" position="-0.02, 0.0, 0.0" rotation="-15.0,-90.0,-10.0" weapon_length="35" center_of_mass="0, 0, 0" hit_points="250" modifier_group="shield">
+        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags WoodenParry="false" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" />
+  </Item>
 </Items>

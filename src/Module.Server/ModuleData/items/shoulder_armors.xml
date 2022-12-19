@@ -490,4 +490,10 @@
 		</ItemComponent>
 		<Flags/>
 	</Item>
+	<Item id="crpg_light_chain_shoulders" name="Light Chain Shoulders" mesh="rhkt_chain_a" is_merchandise="true" culture="Culture.vlandia" weight="1.05" appearance="2" Type="Cape">
+		<ItemComponent>
+			<Armor body_armor="9" modifier_group="Chainmail" material_type="Chainmail"/>
+		</ItemComponent>
+		<Flags/>
+	</Item>
 </Items>
