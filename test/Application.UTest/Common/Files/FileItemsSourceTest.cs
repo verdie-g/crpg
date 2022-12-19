@@ -108,7 +108,7 @@ public class FileItemsSourceTest
         List<string> errors = new();
         foreach (var item in items)
         {
-            if (item.Tier > 11)
+            if (item.Tier > 13.1)
             {
                 errors.Add(item.Id);
             }
