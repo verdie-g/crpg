@@ -24,13 +24,18 @@
 20. Change back the module category to Multiplayer in `SubModule.xml`
 21. Remove the folder `bin\Win64_Shipping_wEditor` in the published mod
 22. Create a file `WorkshopUpdate.xml` anywhere on your disk (e.g. Desktop) with the content
-```
+```xml
 <Tasks>
 	<GetItem>
 		<ItemId Value="2878356589"/>
 	</GetItem>
 	<UpdateItem>
 		<ModuleFolder Value="C:\PATH\TO\PUBLISHED\MODULE" />
+                <ChangeNotes Value="W.X.Y.Z" />
+		<Tags>
+                        <Tag Value="Multiplayer" />
+                        <Tag Value="vW.X.Y" />
+		</Tags>
 	</UpdateItem>
 </Tasks>
 ```
