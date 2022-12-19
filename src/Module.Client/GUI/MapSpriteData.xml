@@ -17,7 +17,7 @@
   <SpriteCategories>
     <SpriteCategory>
       <Name>ui_mploading</Name>
-      <SpriteSheetCount>82</SpriteSheetCount>
+      <SpriteSheetCount>84</SpriteSheetCount>
       <SpriteSheetSize ID="1" Width="3840" Height="1935" />
       <SpriteSheetSize ID="2" Width="3840" Height="1935" />
       <SpriteSheetSize ID="3" Width="3383" Height="1902" />
@@ -100,6 +100,8 @@
       <SpriteSheetSize ID="80" Width="1920" Height="1080" />
       <SpriteSheetSize ID="81" Width="1920" Height="1080" />
       <SpriteSheetSize ID="82" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="83" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="84" Width="1920" Height="1080" />
     </SpriteCategory>
   </SpriteCategories>
   <SpriteParts>
@@ -850,6 +852,24 @@
       <SheetY>0</SheetY>
       <CategoryName>ui_mploading</CategoryName>
     </SpritePart>
+    <SpritePart>
+      <SheetID>83</SheetID>
+      <Name>crpg_battle_azteca</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>84</SheetID>
+      <Name>crpg_siege_talmberg</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
   </SpriteParts>
   <Sprites>
     <GenericSprite>
@@ -1179,6 +1199,14 @@
     <GenericSprite>
       <Name>crpg_siege_neuenburg_winter</Name>
       <SpritePartName>crpg_siege_neuenburg_winter</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_azteca</Name>
+      <SpritePartName>crpg_battle_azteca</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_siege_talmberg</Name>
+      <SpritePartName>crpg_siege_talmberg</SpritePartName>
     </GenericSprite>
   </Sprites>
 </SpriteData>

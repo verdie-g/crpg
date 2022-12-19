@@ -25,6 +25,7 @@
   <string id="str_multiplayer_scene_name.crpg_battle_acaciacitadel" text="{=!}Acacia Citadel" />
   <string id="str_multiplayer_scene_name.crpg_battle_ancientworld" text="{=!}Ancient World" />
   <string id="str_multiplayer_scene_name.crpg_battle_auglirefortress" text="{=!}Auglire Fortress" />
+  <string id="str_multiplayer_scene_name.crpg_battle_azteca" text="{=!}Azteca" />
   <string id="str_multiplayer_scene_name.crpg_battle_banditvalley" text="{=!}Bandit valley" />
   <string id="str_multiplayer_scene_name.crpg_battle_bazaar" text="{=!}Bazaar" />
   <string id="str_multiplayer_scene_name.crpg_battle_cabbagepatch" text="{=!}Cabbage Patch" />
@@ -64,5 +65,6 @@
   <string id="str_multiplayer_scene_name.crpg_siege_neuenburg" text="{=!}Neuenburg" />
   <string id="str_multiplayer_scene_name.crpg_siege_neuenburg_winter" text="{=!}Neuenburg" />
   <string id="str_multiplayer_scene_name.crpg_siege_scarwood" text="{=!}Scarwood" />
+  <string id="str_multiplayer_scene_name.crpg_siege_talmberg" text="{=!}Talmberg" />
   <string id="str_multiplayer_scene_name.crpg_siege_wickcastle" text="{=!}Wick Castle" />
 </strings>
