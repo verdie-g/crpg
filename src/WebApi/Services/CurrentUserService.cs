@@ -29,8 +29,15 @@ public class CurrentUserService : ICurrentUserService
             }
             else
             {
-                string decodedJwtPayload = Encoding.UTF8.GetString(Convert.FromBase64String(authorizationHeader.Split('.')[1]));
-                Logger.Log(LogLevel.Warning, "User id or role in request was null. JWT payload: {0} ({1})", decodedJwtPayload, httpContext.Request.Path);
+                try
+                {
+                    string decodedJwtPayload = Encoding.UTF8.GetString(Convert.FromBase64String(authorizationHeader.Split('.')[1]));
+                    Logger.Log(LogLevel.Warning, "User id or role in request was null. JWT payload: {0} ({1})", decodedJwtPayload, httpContext.Request.Path);
+                }
+                catch (Exception e)
+                {
+                    Logger.Log(LogLevel.Warning, "User id or role in request was null. JWT: {0} ({1})", authorizationHeader, httpContext.Request.Path);
+                }
             }
 
             return;
