@@ -20,6 +20,7 @@
       <StatData stat_type="Handling" max_value="200" />
     </StatsData>
     <UsablePieces>
+      <UsablePiece piece_id="crpg_thegn_sword_1_t2_blade" />
       <UsablePiece piece_id="crpg_ambassador_sword_t3_blade" />
       <UsablePiece piece_id="crpg_ambassador_sword_t3_guard" />
       <UsablePiece piece_id="crpg_ambassador_sword_t3_handle" />
@@ -82,10 +83,6 @@
       <UsablePiece piece_id="crpg_battania_2hsword_3_t3_blade" />
       <UsablePiece piece_id="crpg_battania_2hsword_3_t3_guard" />
       <UsablePiece piece_id="crpg_battania_2hsword_3_t3_pommel" />
-      <UsablePiece piece_id="crpg_battania_2hsword_4_t4_blade" />
-      <UsablePiece piece_id="crpg_battania_2hsword_4_t4_guard" />
-      <UsablePiece piece_id="crpg_battania_2hsword_4_t4_handle" />
-      <UsablePiece piece_id="crpg_battania_2hsword_4_t4_pommel" />
       <UsablePiece piece_id="crpg_battania_2hsword_5_t4_blade" />
       <UsablePiece piece_id="crpg_battania_2hsword_5_t4_guard" />
       <UsablePiece piece_id="crpg_battania_2hsword_5_t4_handle" />
@@ -147,10 +144,6 @@
       <UsablePiece piece_id="crpg_celtic_dagger_pommel" />
       <UsablePiece piece_id="crpg_celtic_throwing_dagger_handle" />
       <UsablePiece piece_id="crpg_celtic_throwing_dagger_pommel" />
-      <UsablePiece piece_id="crpg_cleaver_2hsword_t3_blade" />
-      <UsablePiece piece_id="crpg_cleaver_2hsword_t3_guard" />
-      <UsablePiece piece_id="crpg_cleaver_2hsword_t3_handle" />
-      <UsablePiece piece_id="crpg_cleaver_2hsword_t3_pommel" />
       <UsablePiece piece_id="crpg_cleaver_sword_t3_blade" />
       <UsablePiece piece_id="crpg_cleaver_sword_t3_guard" />
       <UsablePiece piece_id="crpg_cleaver_sword_t3_handle" />
@@ -367,9 +360,6 @@
       <UsablePiece piece_id="crpg_vlandia_2hsword_1_t5_blade" />
       <UsablePiece piece_id="crpg_vlandia_2hsword_1_t5_guard" />
       <UsablePiece piece_id="crpg_vlandia_2hsword_1_t5_pommel" />
-      <UsablePiece piece_id="crpg_vlandia_2hsword_2_t5_blade" />
-      <UsablePiece piece_id="crpg_vlandia_2hsword_2_t5_guard" />
-      <UsablePiece piece_id="crpg_vlandia_2hsword_2_t5_pommel" />
       <UsablePiece piece_id="crpg_vlandia_noble_sword_1_t5_blade" />
       <UsablePiece piece_id="crpg_vlandia_noble_sword_1_t5_guard" />
       <UsablePiece piece_id="crpg_vlandia_noble_sword_1_t5_handle" />
@@ -453,6 +443,14 @@
       <StatData stat_type="Handling" max_value="200" />
     </StatsData>
     <UsablePieces>
+      <UsablePiece piece_id="crpg_great_thamaskene_steel_spatha_2hsword_2_t5_blade" />
+      <UsablePiece piece_id="crpg_great_thamaskene_steel_spatha_2hsword_2_t5_guard" />
+      <UsablePiece piece_id="crpg_great_thamaskene_steel_spatha_2hsword_2_t5_handle" />
+      <UsablePiece piece_id="crpg_great_thamaskene_steel_spatha_2hsword_2_t5_pommel" />  
+      <UsablePiece piece_id="crpg_decorated_great_saber_2hsword_1_t5_blade" />
+      <UsablePiece piece_id="crpg_decorated_great_saber_2hsword_1_t5_guard" />
+      <UsablePiece piece_id="crpg_decorated_great_saber_1_t5_handle" />
+      <UsablePiece piece_id="crpg_decorated_great_saber_1_t5_pommel" />      
       <UsablePiece piece_id="crpg_dawn_blade" />
       <UsablePiece piece_id="crpg_dawn_guard" />
       <UsablePiece piece_id="crpg_dawn_handle" />
@@ -463,6 +461,10 @@
       <UsablePiece piece_id="crpg_winter_pommel" />
       <UsablePiece piece_id="crpg_barmace_blade" />
       <UsablePiece piece_id="crpg_barmace_handle" />
+	  <UsablePiece piece_id="crpg_claymore_blade"/>
+      <UsablePiece piece_id="crpg_claymore_guard"/>
+      <UsablePiece piece_id="crpg_claymore_handle"/>
+      <UsablePiece piece_id="crpg_claymore_pommel"/>
       <UsablePiece piece_id="crpg_desert_long_sword_t4_pommel" />
       <UsablePiece piece_id="crpg_desert_long_sword_t4_handle" />
       <UsablePiece piece_id="crpg_ambassador_sword_t3_blade" />
@@ -797,7 +799,6 @@
       <UsablePiece piece_id="crpg_battania_2hsword_1_t2_pommel" />
       <UsablePiece piece_id="crpg_battania_2hsword_2_t3_pommel" />
       <UsablePiece piece_id="crpg_battania_2hsword_3_t3_pommel" />
-      <UsablePiece piece_id="crpg_battania_2hsword_4_t4_pommel" />
       <UsablePiece piece_id="crpg_battania_2hsword_5_t4_pommel" />
       <UsablePiece piece_id="crpg_battania_2hsword_5_t5_pommel" />
       <UsablePiece piece_id="crpg_battania_noble_sword_1_t5_pommel" />
@@ -823,7 +824,6 @@
       <UsablePiece piece_id="crpg_celtic_throwing_dagger_guard" />
       <UsablePiece piece_id="crpg_celtic_throwing_dagger_handle" />
       <UsablePiece piece_id="crpg_celtic_throwing_dagger_pommel" />
-      <UsablePiece piece_id="crpg_cleaver_2hsword_t3_pommel" />
       <UsablePiece piece_id="crpg_cleaver_sword_t3_handle" />
       <UsablePiece piece_id="crpg_cleaver_sword_t3_pommel" />
       <UsablePiece piece_id="crpg_dawnbreaker_sword_t3_pommel" />
@@ -916,7 +916,6 @@
       <UsablePiece piece_id="crpg_tyrhung_sword_t3_handle" />
       <UsablePiece piece_id="crpg_tyrhung_sword_t3_pommel" />
       <UsablePiece piece_id="crpg_vlandia_2hsword_1_t5_pommel" />
-      <UsablePiece piece_id="crpg_vlandia_2hsword_2_t5_pommel" />
       <UsablePiece piece_id="crpg_vlandia_sword_1_t2_handle" />
       <UsablePiece piece_id="crpg_vlandia_sword_1_t2_pommel" />
       <UsablePiece piece_id="crpg_vlandia_sword_2_t3_handle" />
@@ -964,7 +963,6 @@
       <UsablePiece piece_id="crpg_battania_2hsword_1_t2_pommel" />
       <UsablePiece piece_id="crpg_battania_2hsword_2_t3_pommel" />
       <UsablePiece piece_id="crpg_battania_2hsword_3_t3_pommel" />
-      <UsablePiece piece_id="crpg_battania_2hsword_4_t4_pommel" />
       <UsablePiece piece_id="crpg_battania_2hsword_5_t5_pommel" />
       <UsablePiece piece_id="crpg_battania_noble_sword_2_t5_handle" />
       <UsablePiece piece_id="crpg_battania_sword_1_t2_pommel" />
@@ -1100,7 +1098,6 @@
       <UsablePiece piece_id="crpg_bamboo_axe_t4_handle" />
       <UsablePiece piece_id="crpg_battania_2hsword_2_t3_pommel" />
       <UsablePiece piece_id="crpg_battania_2hsword_3_t3_pommel" />
-      <UsablePiece piece_id="crpg_battania_2hsword_4_t4_pommel" />
       <UsablePiece piece_id="crpg_battania_2hsword_5_t4_pommel" />
       <UsablePiece piece_id="crpg_battania_2hsword_5_t5_pommel" />
       <UsablePiece piece_id="crpg_battania_axe_1_t2_blade" />
@@ -1128,7 +1125,6 @@
       <UsablePiece piece_id="crpg_broad_ild_sword_t3_pommel" />
       <UsablePiece piece_id="crpg_celtic_dagger_pommel" />
       <UsablePiece piece_id="crpg_celtic_throwing_dagger_pommel" />
-      <UsablePiece piece_id="crpg_cleaver_2hsword_t3_pommel" />
       <UsablePiece piece_id="crpg_dawnbreaker_sword_t3_pommel" />
       <UsablePiece piece_id="crpg_desert_long_sword_t4_pommel" />
       <UsablePiece piece_id="crpg_desert_throwing_knife_pommel" />
@@ -1166,6 +1162,10 @@
       <UsablePiece piece_id="crpg_imperial_throwing_spear_1_t4_pommel" />
       <UsablePiece piece_id="crpg_iron_spatha_sword_t2_pommel" />
       <UsablePiece piece_id="crpg_justicier_2hsword_pommel" />
+      <UsablePiece piece_id="crpg_kama_blade"/>
+      <UsablePiece piece_id="crpg_kama_handle"/>
+	  <UsablePiece piece_id="crpg_sherpherds_head"/>
+      <UsablePiece piece_id="crpg_sherpherds_handle"/>
       <UsablePiece piece_id="crpg_kaskara_2hsword_t3_pommel" />
       <UsablePiece piece_id="crpg_khuzait_lance_3_t5_pommel" />
       <UsablePiece piece_id="crpg_khuzait_mace_1_t2_pommel" />
@@ -1230,7 +1230,6 @@
       <UsablePiece piece_id="crpg_tzkurion_axe_t3_blade" />
       <UsablePiece piece_id="crpg_tzkurion_axe_t3_handle" />
       <UsablePiece piece_id="crpg_vlandia_2hsword_1_t5_pommel" />
-      <UsablePiece piece_id="crpg_vlandia_2hsword_2_t5_pommel" />
       <UsablePiece piece_id="crpg_vlandia_axe_1_t3_blade" />
       <UsablePiece piece_id="crpg_vlandia_axe_1_t3_handle" />
       <UsablePiece piece_id="crpg_vlandia_axe_2_t4_blade" />
@@ -1309,7 +1308,6 @@
       <UsablePiece piece_id="crpg_battania_2haxe_1_t2_handle" />
       <UsablePiece piece_id="crpg_battania_2hsword_2_t3_pommel" />
       <UsablePiece piece_id="crpg_battania_2hsword_3_t3_pommel" />
-      <UsablePiece piece_id="crpg_battania_2hsword_4_t4_pommel" />
       <UsablePiece piece_id="crpg_battania_2hsword_5_t4_pommel" />
       <UsablePiece piece_id="crpg_battania_2hsword_5_t5_pommel" />
       <UsablePiece piece_id="crpg_battania_mace_1_t3_pommel" />
@@ -1333,7 +1331,6 @@
       <UsablePiece piece_id="crpg_broad_ild_sword_t3_pommel" />
       <UsablePiece piece_id="crpg_celtic_dagger_pommel" />
       <UsablePiece piece_id="crpg_celtic_throwing_dagger_pommel" />
-      <UsablePiece piece_id="crpg_cleaver_2hsword_t3_pommel" />
       <UsablePiece piece_id="crpg_dawnbreaker_sword_t3_pommel" />
       <UsablePiece piece_id="crpg_desert_long_sword_t4_pommel" />
       <UsablePiece piece_id="crpg_desert_throwing_knife_pommel" />
@@ -1421,7 +1418,6 @@
       <UsablePiece piece_id="crpg_vlandia_2haxe_1_t4_blade" />
       <UsablePiece piece_id="crpg_vlandia_2haxe_1_t4_handle" />
       <UsablePiece piece_id="crpg_vlandia_2hsword_1_t5_pommel" />
-      <UsablePiece piece_id="crpg_vlandia_2hsword_2_t5_pommel" />
       <UsablePiece piece_id="crpg_vlandia_mace_2_t4_pommel" />
       <UsablePiece piece_id="crpg_vlandia_mace_3_t5_pommel" />
       <UsablePiece piece_id="crpg_vlandia_noble_sword_2_t5_pommel" />
@@ -1714,6 +1710,20 @@
       <UsablePiece piece_id="crpg_wide_leaf_spear_t4_blade" />
       <UsablePiece piece_id="crpg_wide_leaf_spear_t4_handle" />
       <UsablePiece piece_id="crpg_wide_leaf_spear_t4_pommel" />
+      <UsablePiece piece_id="crpg_long_bardiche_head" />
+      <UsablePiece piece_id="crpg_long_bardiche_handle" />
+      <UsablePiece piece_id="crpg_long_hafted_spiked_mace_head" />
+      <UsablePiece piece_id="crpg_long_hafted_spiked_mace_handle" />
+      <UsablePiece piece_id="crpg_hoplite_blade_1" />
+      <UsablePiece piece_id="crpg_hoplite_handle_1" />
+      <UsablePiece piece_id="crpg_hoplite_guard_1" />
+      <UsablePiece piece_id="crpg_hoplite_pommel_1" />
+      <UsablePiece piece_id="crpg_hoplite_blade_2" />
+      <UsablePiece piece_id="crpg_hoplite_handle_2" />
+      <UsablePiece piece_id="crpg_hoplite_guard_2" />
+      <UsablePiece piece_id="crpg_hoplite_pommel_2" />
+      <UsablePiece piece_id="crpg_iklwa_handle_1" />
+      <UsablePiece piece_id="crpg_iklwa_blade_1" />
     </UsablePieces>
   </CraftingTemplate>
     <CraftingTemplate id="crpg_Spear4DMode" item_type="Polearm" modifier_group="polearm" item_holsters="polearm_back:polearm_back_2:polearm_back_3:polearm_back_4" default_item_holster_position_offset="0,0,-0.30" use_weapon_as_holster_mesh="true">
@@ -2070,6 +2080,8 @@
       <StatData stat_type="Handling" max_value="200" />
     </StatsData>
     <UsablePieces>
+      <UsablePiece piece_id="crpg_blacksmith_war_hammer_mace_t3_handle" />
+      <UsablePiece piece_id="crpg_blacksmith_war_hammer_1_t1_blade" />
       <UsablePiece piece_id="crpg_vlandia_axe_2_t4_blade" />
       <UsablePiece piece_id="crpg_vlandia_axe_2_t4_handle" />
       <UsablePiece piece_id="crpg_ambassador_sword_t3_pommel" />
@@ -2096,7 +2108,6 @@
       <UsablePiece piece_id="crpg_battania_2hsword_1_t2_pommel" />
       <UsablePiece piece_id="crpg_battania_2hsword_2_t3_pommel" />
       <UsablePiece piece_id="crpg_battania_2hsword_3_t3_pommel" />
-      <UsablePiece piece_id="crpg_battania_2hsword_4_t4_pommel" />
       <UsablePiece piece_id="crpg_battania_2hsword_5_t4_pommel" />
       <UsablePiece piece_id="crpg_battania_2hsword_5_t5_pommel" />
       <UsablePiece piece_id="crpg_battania_mace_1_t2_blade" />
@@ -2124,7 +2135,6 @@
       <UsablePiece piece_id="crpg_broad_ild_sword_t3_pommel" />
       <UsablePiece piece_id="crpg_celtic_dagger_pommel" />
       <UsablePiece piece_id="crpg_celtic_throwing_dagger_pommel" />
-      <UsablePiece piece_id="crpg_cleaver_2hsword_t3_pommel" />
       <UsablePiece piece_id="crpg_cleaver_sword_t3_pommel" />
       <UsablePiece piece_id="crpg_dawnbreaker_sword_t3_pommel" />
       <UsablePiece piece_id="crpg_desert_long_sword_t4_pommel" />
@@ -2256,7 +2266,6 @@
       <UsablePiece piece_id="crpg_the_scalpel_sword_t3_pommel" />
       <UsablePiece piece_id="crpg_tyrhung_sword_t3_pommel" />
       <UsablePiece piece_id="crpg_vlandia_2hsword_1_t5_pommel" />
-      <UsablePiece piece_id="crpg_vlandia_2hsword_2_t5_pommel" />
       <UsablePiece piece_id="crpg_vlandia_mace_1_t2_blade" />
       <UsablePiece piece_id="crpg_vlandia_mace_1_t2_handle" />
       <UsablePiece piece_id="crpg_vlandia_mace_2_t4_blade" />
@@ -2315,6 +2324,16 @@
       <UsablePiece piece_id="crpg_bos_handle" />
       <UsablePiece piece_id="crpg_gada_blade" />
       <UsablePiece piece_id="crpg_gada_handle" />
+	  <UsablePiece piece_id="crpg_heavy_blacksmith_hammer_head"/>
+      <UsablePiece piece_id="crpg_heavy_blacksmith_hammer_handle"/>
+      <UsablePiece piece_id="crpg_mallet_head"/>
+      <UsablePiece piece_id="crpg_mallet_handle"/>
+      <UsablePiece piece_id="crpg_shieldsplitter_head"/>
+      <UsablePiece piece_id="crpg_shieldsplitter_handle"/>
+      <UsablePiece piece_id="crpg_maul_head"/>
+      <UsablePiece piece_id="crpg_maul_handle"/>
+      <UsablePiece piece_id="crpg_long_maul_head"/>
+      <UsablePiece piece_id="crpg_long_maul_handle"/>
       <UsablePiece piece_id="crpg_eastern_long_steel_mace_t4_blade" />
       <UsablePiece piece_id="crpg_eastern_long_steel_mace_t4_handle" />
       <UsablePiece piece_id="crpg_eastern_long_steel_mace_t4_pommel" />
@@ -2333,7 +2352,6 @@
       <UsablePiece piece_id="crpg_aserai_sword_7_t5_pommel" />
       <UsablePiece piece_id="crpg_battania_2hsword_2_t3_pommel" />
       <UsablePiece piece_id="crpg_battania_2hsword_3_t3_pommel" />
-      <UsablePiece piece_id="crpg_battania_2hsword_4_t4_pommel" />
       <UsablePiece piece_id="crpg_battania_2hsword_5_t4_pommel" />
       <UsablePiece piece_id="crpg_battania_2hsword_5_t5_pommel" />
       <UsablePiece piece_id="crpg_battania_mace_1_t3_pommel" />
@@ -2353,7 +2371,6 @@
       <UsablePiece piece_id="crpg_broad_ild_sword_t3_pommel" />
       <UsablePiece piece_id="crpg_celtic_dagger_pommel" />
       <UsablePiece piece_id="crpg_celtic_throwing_dagger_pommel" />
-      <UsablePiece piece_id="crpg_cleaver_2hsword_t3_pommel" />
       <UsablePiece piece_id="crpg_dawnbreaker_sword_t3_pommel" />
       <UsablePiece piece_id="crpg_desert_long_sword_t4_pommel" />
       <UsablePiece piece_id="crpg_desert_throwing_knife_pommel" />
@@ -2437,7 +2454,6 @@
       <UsablePiece piece_id="crpg_the_scalpel_sword_t3_pommel" />
       <UsablePiece piece_id="crpg_vlandia_2haxe_1_t4_handle" />
       <UsablePiece piece_id="crpg_vlandia_2hsword_1_t5_pommel" />
-      <UsablePiece piece_id="crpg_vlandia_2hsword_2_t5_pommel" />
       <UsablePiece piece_id="crpg_vlandia_mace_2_t4_pommel" />
       <UsablePiece piece_id="crpg_vlandia_mace_3_t5_pommel" />
       <UsablePiece piece_id="crpg_vlandia_noble_sword_2_t5_pommel" />

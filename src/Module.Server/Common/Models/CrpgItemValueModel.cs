@@ -134,20 +134,32 @@ internal class CrpgItemValueModel : ItemValueModel
 
         foreach (var weapon in weaponComponent.Weapons)
         {
-            float weaponScaler = weapon.WeaponClass switch
+            float weaponSwingScaler = weapon.WeaponClass switch
             {
-                WeaponClass.OneHandedSword => 23f,
-                WeaponClass.OneHandedAxe => 24f,
-                WeaponClass.Mace => 24f,
-                WeaponClass.Dagger => 24f,
-                WeaponClass.TwoHandedSword => 26f,
-                WeaponClass.TwoHandedMace => 26f,
-                WeaponClass.TwoHandedAxe => 26f,
-                WeaponClass.TwoHandedPolearm => 27f,
-                WeaponClass.OneHandedPolearm => 27f,
+                WeaponClass.OneHandedSword => 22.5f,
+                WeaponClass.OneHandedAxe => 23.5f,
+                WeaponClass.Mace => 23.5f,
+                WeaponClass.Dagger => 27f,
+                WeaponClass.TwoHandedSword => 27.5f,
+                WeaponClass.TwoHandedMace => 27.5f,
+                WeaponClass.TwoHandedAxe => 27.5f,
+                WeaponClass.TwoHandedPolearm => 25f,
+                WeaponClass.OneHandedPolearm => 27.5f,
                 _ => float.MaxValue,
             };
-
+            float weaponThrustScaler = weapon.WeaponClass switch
+            {
+                WeaponClass.OneHandedSword => 26f,
+                WeaponClass.OneHandedAxe => 26f,
+                WeaponClass.Mace => 26f,
+                WeaponClass.Dagger => 26f,
+                WeaponClass.TwoHandedSword => 30f,
+                WeaponClass.TwoHandedMace => 30f,
+                WeaponClass.TwoHandedAxe => 30f,
+                WeaponClass.TwoHandedPolearm => 30f,
+                WeaponClass.OneHandedPolearm => 30f,
+                _ => float.MaxValue,
+            };
             float thrustTier =
                   (float)Math.Pow(CrpgStrikeMagnitudeModel.BladeDamageFactorToDamageRatio * weapon.ThrustDamageFactor, 4.27f)
                 * CalculateDamageTypeFactor(weapon.ThrustDamageType)
@@ -157,12 +169,6 @@ internal class CrpgItemValueModel : ItemValueModel
                 * CalculateDamageTypeFactor(weapon.SwingDamageType)
                 * (float)Math.Pow(weapon.SwingSpeed * 0.01f, 3f);
 
-            if (weapon.WeaponFlags.HasAnyFlag(WeaponFlags.NotUsableWithOneHand) | weapon.WeaponFlags.HasAnyFlag(WeaponFlags.NotUsableWithTwoHand))
-            {
-                swingTier *= 0.95f;
-                thrustTier *= 0.95f;
-            }
-
             if (weapon.WeaponFlags.HasAnyFlag(WeaponFlags.BonusAgainstShield))
             {
                 swingTier *= 1.1f;
@@ -170,7 +176,7 @@ internal class CrpgItemValueModel : ItemValueModel
 
             if (weapon.WeaponFlags.HasAnyFlag(WeaponFlags.CanCrushThrough))
             {
-                swingTier *= 1.1f;
+                swingTier *= 1.4f;
             }
 
             if (weapon.WeaponFlags.HasAnyFlag(WeaponFlags.CanKnockDown))
@@ -233,14 +239,14 @@ internal class CrpgItemValueModel : ItemValueModel
             swingTier =
                   0.18f
                 * (swingTier * swingLengthTier)
-                * (float)Math.Pow(swinghandlingFactor, 3f);
+                * (float)Math.Pow(swinghandlingFactor, 3f)
+                / weaponSwingScaler;
             thrustTier =
                         0.18f
                         * (thrustTier * thrustLengthTier)
-                        * (float)Math.Pow(thrustHandlingFactor, 2f) / 10000000f;
+                        * (float)Math.Pow(thrustHandlingFactor, 2f) / 10000000f
+                        / weaponThrustScaler;
             float tier = 0.8f * Math.Max(swingTier, thrustTier) + 0.2f * Math.Min(swingTier, thrustTier);
-            tier /= weaponScaler;
-
             if (tier >= maxTier)
             {
                 maxTier = tier;

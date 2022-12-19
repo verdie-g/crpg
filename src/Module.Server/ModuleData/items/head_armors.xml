@@ -1559,4 +1559,34 @@
 		</ItemComponent>
 		<Flags UseTeamColor="false"/>
 	</Item>
+	<Item id="crpg_AdamnSaxonHelm" name="Saxon Noble Helm" subtype="head_armor" mesh="adamnsaxon" culture="Culture.vlandia" weight="3.02" difficulty="0" appearance="1" Type="HeadArmor">
+		<ItemComponent>
+			<Armor head_armor="48" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+		</ItemComponent>
+		<Flags UseTeamColor="false" />
+	</Item>
+	<Item id="crpg_strawhat" name="Strawhat" subtype="head_armor" mesh="strawhat" culture="Culture.vlandia" weight="0.1" difficulty="0" appearance="1" Type="HeadArmor">
+		<ItemComponent>
+			<Armor head_armor="1" has_gender_variations="false" hair_cover_type="type1" modifier_group="cloth_unarmoured" material_type="Cloth" beard_cover_type="none"/>
+		</ItemComponent>
+		<Flags UseTeamColor="true"/>
+	</Item>
+	<Item id="crpg_felthat" name="Felthat" subtype="head_armor" mesh="felthat" culture="Culture.vlandia" weight="0.1" difficulty="0" appearance="1" Type="HeadArmor">
+		<ItemComponent>
+			<Armor head_armor="1" has_gender_variations="false" hair_cover_type="type1" modifier_group="cloth_unarmoured" material_type="Cloth" beard_cover_type="none"/>
+		</ItemComponent>
+		<Flags UseTeamColor="false"/>
+	</Item>
+	<Item id="crpg_tallottoman" name="Tall Ottoman Hat" subtype="head_armor" mesh="tallottoman" culture="Culture.vlandia" weight="0.1" difficulty="0" appearance="1" Type="HeadArmor">
+		<ItemComponent>
+			<Armor head_armor="1" has_gender_variations="false" hair_cover_type="type1" modifier_group="cloth_unarmoured" material_type="Cloth" beard_cover_type="none"/>
+		</ItemComponent>
+		<Flags UseTeamColor="false"/>
+	</Item>
+	<Item id="crpg_santa" name="Santahat" subtype="head_armor" mesh="santa_hat" culture="Culture.vlandia" weight="0.1" difficulty="0" appearance="1" Type="HeadArmor">
+		<ItemComponent>
+			<Armor head_armor="1" has_gender_variations="false" hair_cover_type="type1" modifier_group="cloth_unarmoured" material_type="Cloth" beard_cover_type="none"/>
+		</ItemComponent>
+		<Flags UseTeamColor="false"/>
+	</Item>
 </Items>
