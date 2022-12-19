@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using Crpg.Module.Duel;
+﻿using Crpg.Module.Duel;
 using NetworkMessages.FromClient;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
@@ -20,8 +19,8 @@ internal class CrpgEscapeMenu : MissionGauntletMultiplayerEscapeMenu
     private const string CrpgWebsite = "https://c-rpg.eu";
     private readonly MissionMultiplayerGameModeBaseClient _gameModeClient;
 
-    public CrpgEscapeMenu(string gamemode, MissionMultiplayerGameModeBaseClient gameModeClient)
-        : base(gamemode)
+    public CrpgEscapeMenu(string gameMode, MissionMultiplayerGameModeBaseClient gameModeClient)
+        : base(gameMode)
     {
         _gameModeClient = gameModeClient;
     }
@@ -29,10 +28,9 @@ internal class CrpgEscapeMenu : MissionGauntletMultiplayerEscapeMenu
     protected override List<EscapeMenuItemVM> GetEscapeMenuItems()
     {
         List<EscapeMenuItemVM> items = base.GetEscapeMenuItems();
-        EscapeMenuItemVM crpgWebsiteButton = new(new TextObject("Character & Shop", null),  _ =>
-        {
-            _ = ExecuteOpenCrpgWebsite();
-        }, null, () => Tuple.Create(false, TextObject.Empty), false);
+        EscapeMenuItemVM crpgWebsiteButton = new(new TextObject("Character & Shop"),
+            __ => _ = PlatformServices.Instance.ShowOverlayForWebPage(CrpgWebsite),
+            null, () => Tuple.Create(false, TextObject.Empty));
 
         if (_gameModeClient is CrpgDuelMissionMultiplayerClient)
         {
@@ -42,19 +40,6 @@ internal class CrpgEscapeMenu : MissionGauntletMultiplayerEscapeMenu
         items.Insert(items.Count - 2, crpgWebsiteButton); // -2 = Insert new button right before the 'Options' button
 
         return items;
-    }
-
-    private async Task ExecuteOpenCrpgWebsite()
-    {
-        // Try to open the website through steam. If it fails it will use the default webbrowser.
-        if (!await PlatformServices.Instance.ShowOverlayForWebPage(CrpgWebsite))
-        {
-            Process.Start(new ProcessStartInfo(CrpgWebsite)
-            {
-                UseShellExecute = true,
-            }).Dispose();
-            InformationManager.DisplayMessage(new InformationMessage("Please check your webbrowser.."));
-        }
     }
 
     private void AddDuelModeOptions(List<EscapeMenuItemVM> items)
@@ -72,23 +57,23 @@ internal class CrpgEscapeMenu : MissionGauntletMultiplayerEscapeMenu
             return;
         }
 
-        EscapeMenuItemVM preferredArenaInfButton = new(new TextObject("Arena: Infantry", null), _ =>
+        EscapeMenuItemVM preferredArenaInfButton = new(new TextObject("Arena: Infantry"), _ =>
         {
             DuelModeChangeArena(TroopType.Infantry);
             OnEscapeMenuToggled(false);
-        }, null, () => Tuple.Create(false, TextObject.Empty), false);
+        }, null, () => Tuple.Create(false, TextObject.Empty));
 
-        EscapeMenuItemVM preferredArenaArcButton = new(new TextObject("Arena: Ranged", null), _ =>
+        EscapeMenuItemVM preferredArenaArcButton = new(new TextObject("Arena: Ranged"), _ =>
         {
             DuelModeChangeArena(TroopType.Ranged);
             OnEscapeMenuToggled(false);
-        }, null, () => Tuple.Create(false, TextObject.Empty), false);
+        }, null, () => Tuple.Create(false, TextObject.Empty));
 
-        EscapeMenuItemVM preferredArenaCavButton = new(new TextObject("Arena: Cavalry", null), _ =>
+        EscapeMenuItemVM preferredArenaCavButton = new(new TextObject("Arena: Cavalry"), _ =>
         {
             DuelModeChangeArena(TroopType.Cavalry);
             OnEscapeMenuToggled(false);
-        }, null, () => Tuple.Create(false, TextObject.Empty), false);
+        }, null, () => Tuple.Create(false, TextObject.Empty));
 
         List<EscapeMenuItemVM> newButtons = new() { preferredArenaInfButton, preferredArenaArcButton, preferredArenaCavButton };
         items.InsertRange(items.Count - 2, newButtons);
@@ -97,26 +82,20 @@ internal class CrpgEscapeMenu : MissionGauntletMultiplayerEscapeMenu
     private void DuelModeChangeArena(TroopType troopType)
     {
         MissionPeer component = GameNetwork.MyPeer.GetComponent<MissionPeer>();
-        if (component == null || component.Team == null || component.Representative is not DuelMissionRepresentative)
+        if (component == null || component.Team == null || component.Representative is not DuelMissionRepresentative duelRepresentative)
         {
             return;
         }
 
         if (component.Team.IsDefender)
         {
-            InformationManager.DisplayMessage(new InformationMessage(new TextObject("{=v5EqMSlD}Can't change arena preference while in duel.", null).ToString()));
+            InformationManager.DisplayMessage(new InformationMessage(new TextObject("{=v5EqMSlD}Can't change arena preference while in duel.").ToString()));
             return;
         }
 
         GameNetwork.BeginModuleEventAsClient();
         GameNetwork.WriteMessage(new RequestChangePreferredTroopType(troopType));
         GameNetwork.EndModuleEventAsClient();
-        Action<TroopType> onMyPreferredZoneChanged = ((DuelMissionRepresentative)component.Representative).OnMyPreferredZoneChanged;
-        if (onMyPreferredZoneChanged == null)
-        {
-            return;
-        }
-
-        onMyPreferredZoneChanged(troopType);
+        duelRepresentative.OnMyPreferredZoneChanged?.Invoke(troopType);
     }
 }
