@@ -363,11 +363,14 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 {
                     float unsteadyAccuracyPenaltyScaler = MBMath.ClampFloat((equippedItem.ThrustSpeed - 89.0f) / 13.0f, 0.0f, 1f);
                     props.WeaponMaxUnsteadyAccuracyPenalty *= 3.5f * MBMath.Lerp(1.5f, 0.8f, unsteadyAccuracyPenaltyScaler);
+                    props.WeaponMaxMovementAccuracyPenalty *= 0.3f;
                     int powerThrow = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.PowerThrow);
-                    props.WeaponBestAccuracyWaitTime = 0.4f + (89.0f - equippedItem.ThrustSpeed) * 0.03f;
+                    props.WeaponBestAccuracyWaitTime = Math.Max(0.1f + (89.0f - equippedItem.ThrustSpeed) * 0.02f, 0.1f);
                     props.WeaponUnsteadyBeginTime = 1.0f + weaponSkill * 0.006f + powerThrow * powerThrow / 10f * 0.4f;
                     props.WeaponUnsteadyEndTime = 10f + props.WeaponUnsteadyBeginTime;
                     props.WeaponRotationalAccuracyPenaltyInRadians = 0.025f;
+                    props.ThrustOrRangedReadySpeedMultiplier /= 2.5f;
+                    props.ReloadSpeed *= 1.2f;
                 }
 
                 // Rest? Will not touch. It may affect other mechanics like Catapults etc...
