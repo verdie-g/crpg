@@ -1118,6 +1118,7 @@ public class MatchBalancingSystemTest
         float ratingRatio = teamARating / teamBRating;
         Assert.AreEqual(ratingRatio, 1, 0.2);
     }
+
     [Test]
     public void BannerBalancingWithEdgeCaseNotWarmupShouldWorkWithOneTeamEmpty()
     {
@@ -1129,6 +1130,7 @@ public class MatchBalancingSystemTest
         float ratingRatio = teamARating / teamBRating;
         MatchBalancingHelpers.DumpTeams(balancedGame);
     }
+
     [Test]
     public void BannerBalancingWithEdgeCaseShouldWorkWithOneStrongClanGroup()
     {

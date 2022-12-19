@@ -49,8 +49,6 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
             }
         }
 
-
-
         // We want to decrease survivability of horses against melee weapon and especially against spears and pikes.
         // By doing that we ensure that cavalry stays an archer predator while punishing cav errors like running into a wall or an obstacle
         if (!attackInformation.IsVictimAgentHuman

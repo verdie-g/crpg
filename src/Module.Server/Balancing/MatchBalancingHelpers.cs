@@ -77,13 +77,13 @@ internal static class MatchBalancingHelpers
             {
                 newGameMatch.TeamA.Add(clanGroup);
                 teamASize += clanGroup.Size;
-                clanMemberCounts [clanGroup.ClanId.Value] = (clanCounts.teamACount + clanGroup.Size, clanCounts.teamBCount);
+                clanMemberCounts[clanGroup.ClanId.Value] = (clanCounts.teamACount + clanGroup.Size, clanCounts.teamBCount);
             }
             else
             {
                 newGameMatch.TeamB.Add(clanGroup);
                 teamBSize += clanGroup.Size;
-                clanMemberCounts [(int)clanGroup.ClanId] = (clanCounts.teamACount, clanCounts.teamBCount + clanGroup.Size);
+                clanMemberCounts[(int)clanGroup.ClanId] = (clanCounts.teamACount, clanCounts.teamBCount + clanGroup.Size);
             }
         }
 
@@ -110,7 +110,7 @@ internal static class MatchBalancingHelpers
                     teamASize += clanGroupToMove.Size;
                     newGameMatch.TeamB.Remove(clanGroupToMove);
                     teamBSize -= clanGroupToMove.Size;
-                    clanMemberCounts [clanGroup.ClanId.Value] = (clanCounts.teamACount + clanGroupToMove.Size, clanCounts.teamBCount - clanGroupToMove.Size);
+                    clanMemberCounts[clanGroup.ClanId.Value] = (clanCounts.teamACount + clanGroupToMove.Size, clanCounts.teamBCount - clanGroupToMove.Size);
                 }
             }
             else
@@ -122,7 +122,7 @@ internal static class MatchBalancingHelpers
                     teamASize -= clanGroupToMove.Size;
                     newGameMatch.TeamB.Add(clanGroupToMove);
                     teamBSize += clanGroupToMove.Size;
-                    clanMemberCounts [clanGroup.ClanId.Value] = (clanCounts.teamACount - clanGroupToMove.Size, clanCounts.teamBCount + clanGroupToMove.Size);
+                    clanMemberCounts[clanGroup.ClanId.Value] = (clanCounts.teamACount - clanGroupToMove.Size, clanCounts.teamBCount + clanGroupToMove.Size);
                 }
             }
         }
@@ -244,6 +244,7 @@ internal static class MatchBalancingHelpers
     /// </summary>
     /// <param name="targetRating">Target rating for the returned clan groups.</param>
     /// <param name="targetSize">Target size for the returned clan groups.</param>
+    /// <param name="sizeScaler">Size scaler.</param>
     /// <param name="teamToSelectFrom">Team to select the clan groups from.</param>
     /// <param name="useAngle">Use the angle method.</param>
     public static List<ClanGroup> FindAClanGroupToSwapUsing(float targetRating, float targetSize, float sizeScaler,

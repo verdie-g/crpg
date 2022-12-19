@@ -46,7 +46,7 @@ internal static class MathHelper
     }
 
     /// <summary>
-    /// This is a math function https://en.wikipedia.org/wiki/Norm_(mathematics)#p-norm
+    /// This is a math function https://en.wikipedia.org/wiki/Norm_(mathematics)#p-norm.
     /// </summary>
     public static float PowerSumBy<TSource>(List<TSource> source, Func<TSource, float> selector, float p)
     {
