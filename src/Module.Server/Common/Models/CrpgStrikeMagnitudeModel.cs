@@ -84,6 +84,7 @@ internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
         bool doesAttackerHaveMount,
         bool isThrown = false)
     {
-        return BladeDamageFactorToDamageRatio * (1f + extraLinearSpeed / 15f);
+        float thrustSpeedPercentage = thrustWeaponSpeed * 11.7647057f / weaponUsageComponent.ThrustSpeed;
+        return BladeDamageFactorToDamageRatio * (1f + extraLinearSpeed / 15f) * thrustSpeedPercentage;
     }
 }
