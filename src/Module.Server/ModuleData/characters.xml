@@ -1,13 +1,99 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <MPCharacters>
-  <NPCCharacter id="crpg_character"
-                name="{=}cRPG Character">
+  <NPCCharacter id="crpg_character_khuzait"
+                name="{=}cRPG Character"
+                culture="Culture.khuzait">
     <face>
       <BodyProperties version="4"
-                      age="23"
-                      weight="0.3333"
-                      build="0"
-                      key="00000C07000000010011111211151111000701000010000000111011000101000000500202111110000000000000000000000000000000000000000000A00000" />
+                      age="34.12"
+                      weight="0.4"
+                      build="0.4568"
+                      key="00000C07000000010011111211161111000701000010000000111011000101000007600407111110000000000000000000000000000000000000000000500000" />
+      <BodyPropertiesMax version="4"
+                         age="68.79"
+                         weight="0.7253"
+                         build="0.6852"
+                         key="0011FC0FC03C384FFFFFFFFEFFFBEFFFFFFFFFA97EF7FEFFFFEFFFFFFFFFFFFF000ABFD80AFFFFFF000000000000000000000000000000000000000000C89101" />
+    </face>
+  </NPCCharacter>
+  <NPCCharacter id="crpg_character_vlandia"
+                name="{=}cRPG Character"
+                culture="Culture.vlandia">
+    <face>
+      <BodyProperties version="4"
+                      age="34.12"
+                      weight="0.4"
+                      build="0.4568"
+                      key="00000C07000000010011111211161111000701000010000000111011000101000007600407111110000000000000000000000000000000000000000000500000" />
+      <BodyPropertiesMax version="4"
+                         age="68.79"
+                         weight="0.7253"
+                         build="0.6852"
+                         key="0011FC0FC03C384FFFFFFFFEFFFBEFFFFFFFFFA97EF7FEFFFFEFFFFFFFFFFFFF000ABFD80AFFFFFF000000000000000000000000000000000000000000C89101" />
+    </face>
+  </NPCCharacter>
+  <NPCCharacter id="crpg_character_sturgia"
+                name="{=}cRPG Character"
+                culture="Culture.sturgia">
+    <face>
+      <BodyProperties version="4"
+                      age="34.12"
+                      weight="0.4"
+                      build="0.4568"
+                      key="00000C07000000010011111211161111000701000010000000111011000101000007600407111110000000000000000000000000000000000000000000500000" />
+      <BodyPropertiesMax version="4"
+                         age="68.79"
+                         weight="0.7253"
+                         build="0.6852"
+                         key="0011FC0FC03C384FFFFFFFFEFFFBEFFFFFFFFFA97EF7FEFFFFEFFFFFFFFFFFFF000ABFD80AFFFFFF000000000000000000000000000000000000000000C89101" />
+    </face>
+  </NPCCharacter>
+  <NPCCharacter id="crpg_character_aserai"
+                name="{=}cRPG Character"
+                culture="Culture.aserai">
+    <face>
+      <BodyProperties version="4"
+                      age="34.12"
+                      weight="0.4"
+                      build="0.4568"
+                      key="00000C07000000010011111211161111000701000010000000111011000101000007600407111110000000000000000000000000000000000000000000500000" />
+      <BodyPropertiesMax version="4"
+                         age="68.79"
+                         weight="0.7253"
+                         build="0.6852"
+                         key="0011FC0FC03C384FFFFFFFFEFFFBEFFFFFFFFFA97EF7FEFFFFEFFFFFFFFFFFFF000ABFD80AFFFFFF000000000000000000000000000000000000000000C89101" />
+    </face>
+  </NPCCharacter>
+  <NPCCharacter id="crpg_character_empire"
+                name="{=}cRPG Character"
+                culture="Culture.empire">
+    <face>
+      <BodyProperties version="4"
+                      age="34.12"
+                      weight="0.4"
+                      build="0.4568"
+                      key="00000C07000000010011111211161111000701000010000000111011000101000007600407111110000000000000000000000000000000000000000000500000" />
+      <BodyPropertiesMax version="4"
+                         age="68.79"
+                         weight="0.7253"
+                         build="0.6852"
+                         key="0011FC0FC03C384FFFFFFFFEFFFBEFFFFFFFFFA97EF7FEFFFFEFFFFFFFFFFFFF000ABFD80AFFFFFF000000000000000000000000000000000000000000C89101" />
+    </face>
+  </NPCCharacter>
+  <NPCCharacter id="crpg_character_battania"
+                name="{=}cRPG Character"
+                culture="Culture.battania">
+    <face>
+      <BodyProperties version="4"
+                      age="34.12"
+                      weight="0.4"
+                      build="0.4568"
+                      key="00000C07000000010011111211161111000701000010000000111011000101000007600407111110000000000000000000000000000000000000000000500000" />
+      <BodyPropertiesMax version="4"
+                         age="68.79"
+                         weight="0.7253"
+                         build="0.6852"
+                         key="0011FC0FC03C384FFFFFFFFEFFFBEFFFFFFFFFA97EF7FEFFFFEFFFFFFFFFFFFF000ABFD80AFFFFFF000000000000000000000000000000000000000000C89101" />
     </face>
   </NPCCharacter>
 </MPCharacters>
