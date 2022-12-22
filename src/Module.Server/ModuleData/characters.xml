@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <MPCharacters>
-  <NPCCharacter id="crpg_character_khuzait"
+  <NPCCharacter id="crpg_character"
                 name="{=}cRPG Character"
                 culture="Culture.khuzait">
     <face>
