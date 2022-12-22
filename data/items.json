@@ -26839,28 +26839,6 @@
     "weapons": []
   },
   {
-    "id": "crpg_stitched_leather_vest",
-    "name": "Stitched Leather Vest",
-    "culture": "Sturgia",
-    "type": "BodyArmor",
-    "price": 308,
-    "weight": 2.290499,
-    "tier": 2.53669262,
-    "requirement": 0,
-    "flags": [
-      "UseTeamColor",
-      "Civilian"
-    ],
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 12,
-      "armArmor": 3,
-      "legArmor": 5,
-      "materialType": "Leather"
-    },
-    "weapons": []
-  },
-  {
     "id": "crpg_stone_banner_t1",
     "name": "Stone Banner",
     "culture": "Neutral",
