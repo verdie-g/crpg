@@ -33,7 +33,6 @@ Server written in [.NET Core](https://dotnet.microsoft.com). Its design is inspi
 - [ASP.NET Core](https://dotnet.microsoft.com/learn/aspnet/what-is-aspnet-core) - Web-development framework
 - [Entity Framework Core](https://docs.microsoft.com/en-us/ef) - ORM
 - [PostgreSQL](https://www.postgresql.org) - Relational database
-- [Serilog](https://serilog.net) - Logger
 - [Datadog](https://www.datadoghq.com) - Monitoring
 - [Swashbuckle](https://github.com/domaindrivendev/Swashbuckle) to generate API documentation, available at /swagger
 - [StyleCop](https://github.com/DotNetAnalyzers/StyleCopAnalyzers) to enforce coding style
@@ -54,11 +53,12 @@ The UI was bootstrapped using [Vue CLI](https://cli.vuejs.org). It uses the foll
 ### VS Code .devcontainer (Docker)
 - Install VS Code extention [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 - Run the `Remote-Containers: Open Folder in Container` command from the Command Palette (F1)
-- [more info](https://code.visualstudio.com/docs/remote/containers)
+
+[More info about dev containers](https://code.visualstudio.com/docs/remote/containers).
 
 ### Web API (src/WebApi)
 
-- Download [.NET 6 SDK](https://dotnet.microsoft.com/download)
+- Download [.NET 7 SDK](https://dotnet.microsoft.com/download)
 - Download your favorite IDE: [Visual Studio](https://visualstudio.microsoft.com/vs), [Visual Studio Code](https://code.visualstudio.com), [Rider](https://www.jetbrains.com/rider)...
 - Open the solution file Crpg.sln
 - Set the `IdentityServer:Providers:Steam:ApplicationKey` in
@@ -78,14 +78,3 @@ By default, the Web API uses an in-memory database so no DBMS need to be downloa
 - Run `npm run serve` to launch the application
 
 The client relies on the server so you have to run both.
-
-### Strategus (src/Strategus)
-
-Strategus is a standalone program but if you want to share its data with the
-Web API you need to install PostgreSQL.
-
-- Download [PostgreSQL](https://www.postgresql.org/download)
-- Download the geographic extension [PostGIS](http://download.osgeo.org/postgis/windows)
-- Create a database user named `postgres` with password `root`
-- Go to `src/Persistence` and follow its [README](https://github.com/verdie-g/crpg/blob/master/src/Persistence/README.md) to create/apply migrations
-- Build and run (can be done without IDE using [dotnet cli](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-run))
