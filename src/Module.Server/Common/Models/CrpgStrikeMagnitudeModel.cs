@@ -1,6 +1,7 @@
 ﻿using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using Crpg.Module.Common.Network;
 
 namespace Crpg.Module.Common.Models;
 
@@ -66,11 +67,12 @@ internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
             case WeaponClass.TwoHandedPolearm:
             case WeaponClass.LowGripPolearm:
                 impactPointFactor = (float)Math.Pow(10f, -4f * Math.Pow(impactPoint - 0.93, 2f));
-                return BladeDamageFactorToDamageRatio * (0.4f + 0.6f * impactPointFactor) * (1f + extraLinearSpeed / 15f) * (float)Math.Pow(swingSpeedPercentage ,5f);
+                return BladeDamageFactorToDamageRatio * (0.4f + 0.6f * impactPointFactor) * (1f * (float)Math.Pow(swingSpeedPercentage, 5f) + extraLinearSpeed / 10f);
 
             default: // Weapon that do not have a wooden handle
                 impactPointFactor = (float)Math.Pow(10f, -4f * Math.Pow(impactPoint - 0.75, 2f));
-                return BladeDamageFactorToDamageRatio * (0.8f + 0.2f * impactPointFactor) * (1f + extraLinearSpeed / 15f) * (float)Math.Pow(swingSpeedPercentage, 5f);
+                return BladeDamageFactorToDamageRatio * (0.8f + 0.2f * impactPointFactor) * (1f * (float)Math.Pow(swingSpeedPercentage, 5f) + extraLinearSpeed / 10f);
+
         }
     }
 
@@ -85,6 +87,22 @@ internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
         bool isThrown = false)
     {
         float thrustSpeedPercentage = thrustWeaponSpeed * 11.7647057f / weaponUsageComponent.ThrustSpeed;
-        return BladeDamageFactorToDamageRatio * (1f + extraLinearSpeed / 15f) * thrustSpeedPercentage;
+        return BladeDamageFactorToDamageRatio * (1f * (float)Math.Pow(thrustSpeedPercentage, 8f) + extraLinearSpeed / 10f);
+
+    }
+
+    public void ServerSendServerMessageToEveryone(Color color, string message)
+    {
+        GameNetwork.BeginBroadcastModuleEvent();
+        GameNetwork.WriteMessage(new CrpgServerMessage
+        {
+            Message = message,
+            Red = color.Red,
+            Green = color.Green,
+            Blue = color.Blue,
+            Alpha = color.Alpha,
+            IsMessageTextId = false,
+        });
+        GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.IncludeUnsynchronizedClients);
     }
 }
