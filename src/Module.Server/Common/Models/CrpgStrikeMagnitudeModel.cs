@@ -1,7 +1,6 @@
 ﻿using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using Crpg.Module.Common.Network;
 
 namespace Crpg.Module.Common.Models;
 
@@ -88,21 +87,5 @@ internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
     {
         float thrustSpeedPercentage = thrustWeaponSpeed * 11.7647057f / weaponUsageComponent.ThrustSpeed;
         return BladeDamageFactorToDamageRatio * (1f * (float)Math.Pow(thrustSpeedPercentage, 8f) + extraLinearSpeed / 10f);
-
-    }
-
-    public void ServerSendServerMessageToEveryone(Color color, string message)
-    {
-        GameNetwork.BeginBroadcastModuleEvent();
-        GameNetwork.WriteMessage(new CrpgServerMessage
-        {
-            Message = message,
-            Red = color.Red,
-            Green = color.Green,
-            Blue = color.Blue,
-            Alpha = color.Alpha,
-            IsMessageTextId = false,
-        });
-        GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.IncludeUnsynchronizedClients);
     }
 }
