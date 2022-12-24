@@ -29,6 +29,8 @@
         <p>
           Join our community on
           <a href="https://discord.gg/c-rpg" target="_blank">Discord</a>
+          or on
+          <a href="https://www.reddit.com/r/CRPG_Bannerlord" target="_blank">Reddit</a>
           and download the mod on the
           <a
             href="https://steamcommunity.com/sharedfiles/filedetails/?id=2878356589"
