@@ -1,7 +1,8 @@
 using System.Security.Claims;
-using System.Text;
+using System.Text.Json;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Domain.Entities.Users;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Crpg.WebApi.Services;
 
@@ -23,21 +24,11 @@ public class CurrentUserService : ICurrentUserService
         if (idStr == null || roleStr == null)
         {
             string? authorizationHeader = httpContext.Request.Headers.Authorization.FirstOrDefault();
-            if (authorizationHeader == null)
+            if (authorizationHeader != null)
             {
-                Logger.Log(LogLevel.Warning, "Authorization header was null ({0})", httpContext.Request.Path);
-            }
-            else
-            {
-                try
-                {
-                    string decodedJwtPayload = Encoding.UTF8.GetString(Convert.FromBase64String(authorizationHeader.Split('.')[1]));
-                    Logger.Log(LogLevel.Warning, "User id or role in request was null. JWT payload: {0} ({1})", decodedJwtPayload, httpContext.Request.Path);
-                }
-                catch (Exception e)
-                {
-                    Logger.Log(LogLevel.Warning, "User id or role in request was null. JWT: {0} ({1})", authorizationHeader, httpContext.Request.Path);
-                }
+                string decodedJwtPayload = Base64UrlEncoder.Decode(authorizationHeader.Split('.')[1]);
+                string httpUser = JsonSerializer.Serialize(claimsPrincipal);
+                Logger.Log(LogLevel.Warning, "User id or role in request was null. HTTP context user: {0}. JWT payload: {1} ({2})", httpUser, decodedJwtPayload, httpContext.Request.Path);
             }
 
             return;
