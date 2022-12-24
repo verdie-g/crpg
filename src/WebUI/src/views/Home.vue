@@ -15,8 +15,20 @@
           unique character with different stats and items.
         </p>
 
+        <div class="buttons">
+          <b-button
+            size="is-large"
+            type="is-link"
+            icon-left="download"
+            tag="a"
+            href="https://steamcommunity.com/sharedfiles/filedetails/?id=2878356589"
+            target="_blank"
+          >
+            Download
+          </b-button>
         <b-button
           size="is-large"
+          type="is-link"
           icon-left="steam-symbol"
           icon-pack="fab"
           @click="onClick"
@@ -25,20 +37,13 @@
         >
           Sign in through Steam
         </b-button>
+        </div>
 
         <p>
           Join our community on
           <a href="https://discord.gg/c-rpg" target="_blank">Discord</a>
           or on
-          <a href="https://www.reddit.com/r/CRPG_Bannerlord" target="_blank">Reddit</a>
-          and download the mod on the
-          <a
-            href="https://steamcommunity.com/sharedfiles/filedetails/?id=2878356589"
-            target="_blank"
-          >
-            Steam Workshop
-          </a>
-          .
+          <a href="https://www.reddit.com/r/CRPG_Bannerlord" target="_blank">Reddit</a>.
         </p>
       </div>
     </section>
