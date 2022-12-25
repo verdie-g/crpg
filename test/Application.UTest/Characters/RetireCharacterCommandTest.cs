@@ -21,15 +21,22 @@ public class RetireCharacterCommandTest : TestBase
         MaxExperienceMultiplierForGeneration = 1.48f,
     };
 
-    [TestCase(2, 1.09f)]
-    [TestCase(15, 1.48f)]
-    [TestCase(16, 1.48f)]
-    public async Task Basic(int generation, float expectedExperienceMultiplier)
+    [TestCase(31, 0, 1, 1.03f)]
+    [TestCase(32, 0, 1, 1.03f)]
+    [TestCase(33, 0, 2, 1.03f)]
+    [TestCase(34, 0, 2, 1.03f)]
+    [TestCase(35, 0, 3, 1.03f)]
+    [TestCase(36, 0, 3, 1.03f)]
+    [TestCase(31, 2, 1, 1.09f)]
+    [TestCase(31, 2, 1, 1.09f)]
+    [TestCase(31, 15, 1, 1.48f)]
+    [TestCase(31, 16, 1, 1.48f)]
+    public async Task Basic(int level, int generation, int expectedPoints, float expectedExperienceMultiplier)
     {
         Character character = new()
         {
             Generation = generation,
-            Level = 31,
+            Level = level,
             Experience = 32000,
             ExperienceMultiplier = 1.06f,
             EquippedItems =
@@ -46,7 +53,7 @@ public class RetireCharacterCommandTest : TestBase
             },
             User = new User
             {
-                HeirloomPoints = 1,
+                HeirloomPoints = 0,
             },
         };
         ArrangeDb.Add(character);
@@ -73,7 +80,7 @@ public class RetireCharacterCommandTest : TestBase
         Assert.AreEqual(0, character.Statistics.Deaths);
         Assert.AreEqual(0, character.Statistics.Assists);
         Assert.AreEqual(TimeSpan.FromSeconds(4), character.Statistics.PlayTime);
-        Assert.AreEqual(2, character.User!.HeirloomPoints);
+        Assert.AreEqual(expectedPoints, character.User!.HeirloomPoints);
         Assert.IsEmpty(character.EquippedItems);
 
         characterServiceMock.Verify(cs => cs.ResetCharacterCharacteristics(It.IsAny<Character>(), false));

@@ -51,6 +51,13 @@ public record RetireCharacterCommand : IMediatorRequest<CharacterViewModel>
                 return new(CommonErrors.CharacterLevelRequirementNotMet(_constants.MinimumRetirementLevel, character.Level));
             }
 
+            character.User!.HeirloomPoints += character.Level switch
+            {
+                < 33 => 1,
+                < 35 => 2,
+                _ => 3,
+            };
+
             character.Generation += 1;
             character.Level = _constants.MinimumLevel;
             character.Experience = 0;
@@ -62,8 +69,6 @@ public record RetireCharacterCommand : IMediatorRequest<CharacterViewModel>
             character.Statistics.Deaths = 0;
             character.Statistics.Assists = 0;
             _characterService.ResetCharacterCharacteristics(character);
-
-            character.User!.HeirloomPoints += 1;
 
             await _db.SaveChangesAsync(cancellationToken);
 
