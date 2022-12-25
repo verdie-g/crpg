@@ -10,11 +10,7 @@
               class="is-size-7 is-size-5-desktop is-size-5-desktop has-text-danger"
             >
               You are banned for
-              {{
-                timestampToTimeString(
-                  computeLeftMs(activeJoinRestriction.createdAt, activeJoinRestriction.duration)
-                )
-              }}.
+              {{ joinRestrictionRemainingDuration }}.
               <br />
               <router-link :to="{ name: 'settings' }" class="ml-1">Read more</router-link>
             </b-navbar-item>
@@ -140,10 +136,7 @@ import { timestampToTimeString, computeLeftMs } from '@/utils/date';
 
 @Component
 export default class App extends Vue {
-  activeJoinRestriction: RestrictionWithActive | undefined = undefined;
-
-  timestampToTimeString = timestampToTimeString;
-  computeLeftMs = computeLeftMs;
+  activeJoinRestriction: RestrictionWithActive | null = null;
 
   get user(): User | null {
     return userModule.user;
@@ -155,6 +148,14 @@ export default class App extends Vue {
 
   get isUserLoading() {
     return userModule.userLoading;
+  }
+
+  get joinRestrictionRemainingDuration(): string {
+    return this.activeJoinRestriction === null
+      ? ''
+      : timestampToTimeString(
+          computeLeftMs(this.activeJoinRestriction.createdAt, this.activeJoinRestriction.duration)
+        );
   }
 
   async beforeCreate() {

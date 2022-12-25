@@ -35,6 +35,6 @@ export function restrictUser(payload: RestrictionCreation): Promise<Restriction>
 
 export function getActiveJoinRestriction(
   restrictions: RestrictionWithActive[]
-): RestrictionWithActive | undefined {
-  return restrictions.find(r => r.type === RestrictionType.Join && r.active === true);
+): RestrictionWithActive | null {
+  return restrictions.find(r => r.type === RestrictionType.Join && r.active === true) || null;
 }

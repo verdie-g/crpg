@@ -45,7 +45,7 @@ export async function getUserRestrictions(id: number): Promise<RestrictionWithAc
 
 export async function getUserActiveJoinRestriction(
   id: number
-): Promise<RestrictionWithActive | undefined> {
+): Promise<RestrictionWithActive | null> {
   const restrictions: RestrictionWithActive[] = await getUserRestrictions(id);
   return getActiveJoinRestriction(restrictions);
 }
