@@ -26,6 +26,7 @@ public record UpdateClanCommand : IMediatorRequest<ClanViewModel>
     public uint SecondaryColor { get; init; }
     public string BannerKey { get; init; } = string.Empty;
     public Region Region { get; init; }
+    public Uri? Discord { get; init; }
 
     public class Validator : AbstractValidator<UpdateClanCommand>
     {
@@ -52,6 +53,9 @@ public record UpdateClanCommand : IMediatorRequest<ClanViewModel>
                 .Matches(new Regex(constants.ClanBannerKeyRegex, RegexOptions.Compiled));
 
             RuleFor(cmd => cmd.Region).IsInEnum();
+
+            RuleFor(c => c.Discord)
+                .Must(u => u == null || u.Host == "discord.gg");
         }
     }
 
@@ -109,6 +113,7 @@ public record UpdateClanCommand : IMediatorRequest<ClanViewModel>
             clan.Name = req.Name;
             clan.BannerKey = req.BannerKey;
             clan.Region = req.Region;
+            clan.Discord = req.Discord;
 
             await _db.SaveChangesAsync(cancellationToken);
             Logger.LogInformation("User '{0}' updated clan '{1}'", req.UserId, req.ClanId);

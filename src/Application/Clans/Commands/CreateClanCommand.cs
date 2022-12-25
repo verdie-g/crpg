@@ -23,6 +23,7 @@ public record CreateClanCommand : IMediatorRequest<ClanViewModel>
     public uint SecondaryColor { get; init; }
     public string BannerKey { get; init; } = string.Empty;
     public Region Region { get; init; }
+    public Uri? Discord { get; init; }
 
     public class Validator : AbstractValidator<CreateClanCommand>
     {
@@ -49,6 +50,9 @@ public record CreateClanCommand : IMediatorRequest<ClanViewModel>
                 .Matches(new Regex(constants.ClanBannerKeyRegex, RegexOptions.Compiled));
 
             RuleFor(cmd => cmd.Region).IsInEnum();
+
+            RuleFor(c => c.Discord)
+                .Must(u => u == null || u.Host == "discord.gg");
         }
     }
 
@@ -97,6 +101,7 @@ public record CreateClanCommand : IMediatorRequest<ClanViewModel>
                 Name = req.Name,
                 BannerKey = req.BannerKey,
                 Region = req.Region,
+                Discord = req.Discord,
                 Members =
                 {
                     new ClanMember

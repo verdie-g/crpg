@@ -36,6 +36,11 @@ public class Clan : AuditableEntity
     /// </summary>
     public Region Region { get; set; }
 
+    /// <summary>
+    /// Discord url of the clan.
+    /// </summary>
+    public Uri? Discord { get; set; }
+
     public IList<ClanMember> Members { get; set; } = new List<ClanMember>();
     public IList<ClanInvitation> Invitations { get; set; } = new List<ClanInvitation>();
 }

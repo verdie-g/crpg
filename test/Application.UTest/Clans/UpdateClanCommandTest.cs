@@ -109,6 +109,7 @@ public class UpdateClanCommandTest : TestBase
             Name = "B",
             BannerKey = "789",
             Region = Region.Asia,
+            Discord = new Uri("https://discord.gg/abc"),
         };
         User user = new() { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Leader } };
         ArrangeDb.Users.AddRange(user);
@@ -124,6 +125,7 @@ public class UpdateClanCommandTest : TestBase
             Name = "D",
             BannerKey = "7890",
             Region = Region.NorthAmerica,
+            Discord = new Uri("https://discord.gg/def"),
         }, CancellationToken.None);
 
         Assert.IsNull(res.Errors);
@@ -135,5 +137,6 @@ public class UpdateClanCommandTest : TestBase
         Assert.AreEqual("D", clanVm.Name);
         Assert.AreEqual("7890", clanVm.BannerKey);
         Assert.AreEqual(Region.NorthAmerica, clanVm.Region);
+        Assert.AreEqual(new Uri("https://discord.gg/def"), clanVm.Discord);
     }
 }
