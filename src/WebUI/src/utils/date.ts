@@ -3,7 +3,7 @@ export function timestampToTimeString(ts: number): string {
   const days = Math.floor(ts / 86400000);
   const hours = Math.floor((ts % 86400000) / 3600000);
   const minutes = Math.floor(((ts % 86400000) % 3600000) / 60000);
-  const seconds = Math.floor((((ts % 86400000) % 3600000) % 60000) / 1000);
+  // const seconds = Math.floor((((ts % 86400000) % 3600000) % 60000) / 1000);
 
   let timeStr = '';
 
@@ -19,9 +19,9 @@ export function timestampToTimeString(ts: number): string {
     timeStr += `${minutes} min `;
   }
 
-  if (seconds !== 0) {
-    timeStr += `${seconds} s `;
-  }
+  // if (seconds !== 0) {
+  //   timeStr += `${seconds} s `;
+  // }
 
   if (timeStr.length > 1) {
     timeStr = timeStr.slice(0, -1); // remove extra space

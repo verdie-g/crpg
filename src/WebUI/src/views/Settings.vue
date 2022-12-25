@@ -6,6 +6,10 @@
         :data="restrictions"
         :hiddenCols="['id', 'restrictedUser', 'restrictedByUser']"
       />
+      <div v-if="activeJoinRestriction">
+        You can appeal the restriction in
+        <a href="https://discord.com/channels/279063743839862805/1034895358435799070">Discord</a>
+      </div>
     </div>
 
     <div class="section">
@@ -46,18 +50,19 @@
 import { Component, Vue } from 'vue-property-decorator';
 import userModule from '@/store/user-module';
 import User from '@/models/user';
-import Restriction from '@/models/restriction';
+import { RestrictionWithActive } from '@/models/restriction';
 import * as userService from '@/services/users-service';
 import { signOut } from '@/services/auth-service';
 import RestrictionsTable from '@/components/RestrictionsTable.vue';
 import ConfirmActionForm from '@/components/ConfirmActionForm.vue';
+import { getActiveJoinRestriction } from '@/services/restriction-service';
 
 @Component({
   components: { ConfirmActionForm, RestrictionsTable },
 })
 export default class Settings extends Vue {
   isDeleteAcountDialogActive = false;
-  restrictions: Restriction[] = [];
+  restrictions: RestrictionWithActive[] = [];
 
   get user(): User | null {
     return userModule.user;
@@ -65,6 +70,10 @@ export default class Settings extends Vue {
 
   async created() {
     this.restrictions = await userService.getUserRestrictions(this.user!.id);
+  }
+
+  get activeJoinRestriction() {
+    return getActiveJoinRestriction(this.restrictions);
   }
 
   onDeleteAccount(): void {

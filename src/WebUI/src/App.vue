@@ -11,6 +11,17 @@
           <b-navbar-item tag="router-link" :to="{ path: '/shop' }">Shop</b-navbar-item>
           <b-navbar-item tag="router-link" :to="{ path: '/clans' }">Clans</b-navbar-item>
           <!-- <b-navbar-item tag="router-link" :to="{ path: '/strategus' }">Strategus</b-navbar-item> -->
+          <template v-if="activeJoinRestriction">
+            <div class="ml-5 has-text-danger is-flex is-align-items-center">
+              You are banned for
+              {{
+                timestampToTimeString(
+                  computeLeftMs(activeJoinRestriction.createdAt, activeJoinRestriction.duration)
+                )
+              }}.
+              <router-link :to="{ name: 'settings' }" class="ml-1">Read more</router-link>
+            </div>
+          </template>
         </template>
 
         <template slot="end">
@@ -119,9 +130,17 @@ import { Component, Vue } from 'vue-property-decorator';
 import userModule from '@/store/user-module';
 import User from '@/models/user';
 import { signInCallback, signOut, signInSilent } from './services/auth-service';
+import * as userService from '@/services/users-service';
+import { RestrictionWithActive } from '@/models/restriction';
+import { timestampToTimeString, computeLeftMs } from '@/utils/date';
 
 @Component
 export default class App extends Vue {
+  activeJoinRestriction: RestrictionWithActive | undefined = undefined;
+
+  timestampToTimeString = timestampToTimeString;
+  computeLeftMs = computeLeftMs;
+
   get user(): User | null {
     return userModule.user;
   }
@@ -175,6 +194,10 @@ export default class App extends Vue {
     this.$once('hook:beforeDestroy', () => {
       this.$pollInterval.unsubscribe(id);
     });
+
+    this.activeJoinRestriction = await userService.getUserActiveJoinRestriction(
+      userModule.user!.id
+    );
   }
 
   signOut(): void {
