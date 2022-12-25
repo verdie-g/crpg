@@ -26,17 +26,6 @@
           <b-navbar-item tag="router-link" :to="{ path: '/shop' }">Shop</b-navbar-item>
           <b-navbar-item tag="router-link" :to="{ path: '/clans' }">Clans</b-navbar-item>
           <!-- <b-navbar-item tag="router-link" :to="{ path: '/strategus' }">Strategus</b-navbar-item> -->
-          <!-- <template v-if="activeJoinRestriction">
-            <div class="px-3 is-size-5 has-text-danger is-flex is-align-items-center">
-              You are banned for
-              {{
-                timestampToTimeString(
-                  computeLeftMs(activeJoinRestriction.createdAt, activeJoinRestriction.duration)
-                )
-              }}.
-              <router-link :to="{ name: 'settings' }" class="ml-1">Read more</router-link>
-            </div>
-          </template> -->
         </template>
 
         <template slot="end">
