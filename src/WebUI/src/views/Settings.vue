@@ -6,9 +6,29 @@
         :data="restrictions"
         :hiddenCols="['id', 'restrictedUser', 'restrictedByUser']"
       />
-      <div v-if="activeJoinRestriction">
-        You can appeal the restriction in
-        <a href="https://discord.com/channels/279063743839862805/1034895358435799070">Discord</a>
+      <div v-if="activeJoinRestriction" class="mt-4 content is-medium box">
+        <p>If you'd like to discuss your punishment further, please follow the below steps:</p>
+        <ol>
+          <li>
+            Join our
+            <a href="https://discord.gg/c-rpg" target="_blank">Discord</a>
+          </li>
+          <li>
+            Navigate to our
+            <a
+              href="https://discord.com/channels/279063743839862805/1034895358435799070"
+              target="_blank"
+            >
+              Modmail
+            </a>
+            channel
+          </li>
+          <li>Follow the instructions in that channel to reach out to us</li>
+        </ol>
+        <p>
+          * Please note that at this time, we do not accept appeals through any platform other than
+          Discord.
+        </p>
       </div>
     </div>
 
