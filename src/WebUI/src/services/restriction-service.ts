@@ -2,6 +2,7 @@ import { get, post } from '@/services/crpg-client';
 import Restriction, { RestrictionWithActive } from '@/models/restriction';
 import RestrictionCreation from '@/models/restriction-creation';
 import { checkIsDateExpired } from '@/utils/date';
+import RestrictionType from '@/models/restriction-type';
 
 export function mapRestrictions(restrictions: Restriction[]): RestrictionWithActive[] {
   const checkIsRestrictionActive = (currentRestricion: Restriction): boolean => {
@@ -30,4 +31,10 @@ export async function getRestrictions(): Promise<RestrictionWithActive[]> {
 
 export function restrictUser(payload: RestrictionCreation): Promise<Restriction> {
   return post('/restrictions', payload);
+}
+
+export function getActiveJoinRestriction(
+  restrictions: RestrictionWithActive[]
+): RestrictionWithActive | null {
+  return restrictions.find(r => r.type === RestrictionType.Join && r.active === true) || null;
 }

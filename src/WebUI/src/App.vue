@@ -4,6 +4,17 @@
       <b-navbar fixed-top :close-on-click="false">
         <template slot="brand">
           <b-navbar-item tag="router-link" :to="{ path: '/' }">cRPG</b-navbar-item>
+          <template v-if="activeJoinRestriction">
+            <b-navbar-item
+              tag="div"
+              class="is-size-7 is-size-5-desktop is-size-5-desktop has-text-danger"
+            >
+              You are banned for
+              {{ joinRestrictionRemainingDuration }}.
+              <br />
+              <router-link :to="{ name: 'settings' }" class="ml-1">Read more</router-link>
+            </b-navbar-item>
+          </template>
         </template>
 
         <template slot="start">
@@ -119,9 +130,14 @@ import { Component, Vue } from 'vue-property-decorator';
 import userModule from '@/store/user-module';
 import User from '@/models/user';
 import { signInCallback, signOut, signInSilent } from './services/auth-service';
+import * as userService from '@/services/users-service';
+import { RestrictionWithActive } from '@/models/restriction';
+import { timestampToTimeString, computeLeftMs } from '@/utils/date';
 
 @Component
 export default class App extends Vue {
+  activeJoinRestriction: RestrictionWithActive | null = null;
+
   get user(): User | null {
     return userModule.user;
   }
@@ -132,6 +148,14 @@ export default class App extends Vue {
 
   get isUserLoading() {
     return userModule.userLoading;
+  }
+
+  get joinRestrictionRemainingDuration(): string {
+    return this.activeJoinRestriction === null
+      ? ''
+      : timestampToTimeString(
+          computeLeftMs(this.activeJoinRestriction.createdAt, this.activeJoinRestriction.duration)
+        );
   }
 
   async beforeCreate() {
@@ -175,6 +199,10 @@ export default class App extends Vue {
     this.$once('hook:beforeDestroy', () => {
       this.$pollInterval.unsubscribe(id);
     });
+
+    this.activeJoinRestriction = await userService.getUserActiveJoinRestriction(
+      userModule.user!.id
+    );
   }
 
   signOut(): void {
