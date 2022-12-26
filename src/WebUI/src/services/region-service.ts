@@ -1,13 +1,13 @@
 import Region from '@/models/region';
 
 export const regionToStr: Record<Region, string> = {
-  [Region.Europe]: 'Europe',
-  [Region.NorthAmerica]: 'North America',
-  [Region.Asia]: 'Asia',
+  [Region.Eu]: 'Europe',
+  [Region.Na]: 'North America',
+  [Region.As]: 'Asia',
 };
 
 export const regionIcons: Record<Region, string> = {
-  [Region.Europe]: 'globe-europe',
-  [Region.NorthAmerica]: 'globe-americas',
-  [Region.Asia]: 'globe-asia',
+  [Region.Eu]: 'globe-europe',
+  [Region.Na]: 'globe-americas',
+  [Region.As]: 'globe-asia',
 };

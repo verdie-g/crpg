@@ -12,7 +12,7 @@ public partial class AddRegionToClan : Migration
             table: "clans",
             type: "region",
             nullable: false,
-            defaultValue: Region.Europe);
+            defaultValue: "europe");
     }
 
     protected override void Down(MigrationBuilder migrationBuilder)

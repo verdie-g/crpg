@@ -791,7 +791,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 4294957414,
                 Name = "Pecores",
                 BannerKey = string.Empty,
-                Region = Region.Europe,
+                Region = Region.Eu,
             };
             Clan ats = new()
             {
@@ -800,7 +800,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 4281348144,
                 Name = "Among The Shadows",
                 BannerKey = string.Empty,
-                Region = Region.NorthAmerica,
+                Region = Region.Na,
             };
             Clan legio = new()
             {
@@ -809,7 +809,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "Legio",
                 BannerKey = string.Empty,
-                Region = Region.Europe,
+                Region = Region.Eu,
             };
             Clan theGrey = new()
             {
@@ -818,7 +818,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "The Grey",
                 BannerKey = string.Empty,
-                Region = Region.Europe,
+                Region = Region.Eu,
             };
             Clan ode = new()
             {
@@ -827,7 +827,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "Ordre de l'étoile",
                 BannerKey = string.Empty,
-                Region = Region.Europe,
+                Region = Region.Eu,
             };
             Clan virginDefenders = new()
             {
@@ -836,7 +836,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "Virgin Defenders",
                 BannerKey = string.Empty,
-                Region = Region.Europe,
+                Region = Region.Eu,
             };
             Clan randomClan = new()
             {
@@ -845,7 +845,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "Random Clan",
                 BannerKey = string.Empty,
-                Region = Region.Asia,
+                Region = Region.As,
             };
             Clan abcClan = new()
             {
@@ -854,7 +854,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "ABC",
                 BannerKey = string.Empty,
-                Region = Region.Asia,
+                Region = Region.As,
             };
             Clan defClan = new()
             {
@@ -863,7 +863,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "DEF",
                 BannerKey = string.Empty,
-                Region = Region.NorthAmerica,
+                Region = Region.Na,
             };
             Clan ghiClan = new()
             {
@@ -872,7 +872,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "GHI",
                 BannerKey = string.Empty,
-                Region = Region.Europe,
+                Region = Region.Eu,
             };
             Clan jklClan = new()
             {
@@ -881,7 +881,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "JKL",
                 BannerKey = string.Empty,
-                Region = Region.Europe,
+                Region = Region.Eu,
             };
             Clan mnoClan = new()
             {
@@ -890,7 +890,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "MNO",
                 BannerKey = string.Empty,
-                Region = Region.Europe,
+                Region = Region.Eu,
             };
             Clan pqrClan = new()
             {
@@ -899,7 +899,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "Plan QR",
                 BannerKey = string.Empty,
-                Region = Region.Europe,
+                Region = Region.Eu,
             };
             Clan[] newClans =
             {
@@ -989,7 +989,7 @@ public record SeedDataCommand : IMediatorRequest
             }
 
             Task<Settlement> GetSettlementByName(string name) =>
-                _db.Settlements.FirstAsync(s => s.Name == name && s.Region == Region.Europe);
+                _db.Settlements.FirstAsync(s => s.Name == name && s.Region == Region.Eu);
             var epicrotea = await GetSettlementByName("Epicrotea");
             var mecalovea = await GetSettlementByName("Mecalovea");
             var marathea = await GetSettlementByName("Marathea");
@@ -1011,7 +1011,7 @@ public record SeedDataCommand : IMediatorRequest
 
             Party brainfartParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = brainfart,
                 Troops = 1,
                 Position = new Point(112, -88),
@@ -1019,7 +1019,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party kiwiParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = kiwi,
                 Troops = 1,
                 Position = new Point(142, -90),
@@ -1027,7 +1027,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party ikaroozParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = ikarooz,
                 Troops = 20,
                 Position = new Point(130, -102),
@@ -1035,7 +1035,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party laHireParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = laHire,
                 Troops = 20,
                 Position = new Point(135, -97),
@@ -1043,7 +1043,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party brygganParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = bryggan,
                 Troops = 1,
                 Position = new Point(131, -102),
@@ -1051,7 +1051,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party elmarykParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = elmaryk,
                 Troops = 6,
                 Position = new Point(108, -98),
@@ -1059,7 +1059,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party schumetzqParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = schumetzq,
                 Troops = 7,
                 Position = new Point(119, -105),
@@ -1067,7 +1067,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party azumaParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = azuma,
                 Troops = 121,
                 Position = new Point(106, -112),
@@ -1075,7 +1075,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party zorguyParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = zorguy,
                 Troops = 98,
                 Position = new Point(114, -114),
@@ -1083,7 +1083,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party eckoParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = ecko,
                 Troops = 55,
                 Position = new Point(117, -112),
@@ -1091,7 +1091,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party firebatParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = firebat,
                 Troops = 29,
                 Position = new Point(105, -111),
@@ -1099,7 +1099,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party laenirParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = leanir,
                 Troops = 1,
                 Position = new Point(103, -102),
@@ -1107,7 +1107,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party opsetParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = opset,
                 Troops = 1,
                 Position = new Point(113, -112),
@@ -1115,7 +1115,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party falcomParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = falcom,
                 Troops = 4,
                 Position = epicrotea.Position,
@@ -1124,7 +1124,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party victorhh888Party = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = victorhh888,
                 Troops = 9,
                 Position = epicrotea.Position,
@@ -1132,7 +1132,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party sellkaParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = sellka,
                 Troops = 3,
                 Position = dyopalis.Position,
@@ -1141,7 +1141,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party distanceParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = distance,
                 Troops = 1,
                 Position = rhotae.Position,
@@ -1150,7 +1150,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party bakhratParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = bakhrat,
                 Troops = 120,
                 Position = rhotae.Position,
@@ -1159,7 +1159,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party lancelotParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = lancelot,
                 Troops = 243,
                 Position = rhotae.Position,
@@ -1168,7 +1168,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party buddhaParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = buddha,
                 Troops = 49,
                 Position = nideon.Position,
@@ -1177,7 +1177,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party lerchParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = lerch,
                 Troops = 10,
                 Position = new Point(107, -102),
@@ -1186,7 +1186,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party tjensParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = tjens,
                 Troops = 20,
                 Position = new Point(112, -93),
@@ -1195,7 +1195,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party knitlerParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = knitler,
                 Troops = 3,
                 Position = new Point(124, -102),
@@ -1204,7 +1204,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party magnucleanParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = magnuclean,
                 Troops = 9,
                 Position = new Point(120, -88),
@@ -1213,7 +1213,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party baronCyborgParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = baronCyborg,
                 Troops = 9,
                 Position = new Point(120, -88),
@@ -1222,7 +1222,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party scarfaceParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = scarface,
                 Troops = 25,
                 Position = new Point(119, -105),
@@ -1231,7 +1231,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party neostralieParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = neostralie,
                 Troops = 1,
                 Position = new Point(128, -97),
@@ -1240,7 +1240,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party manikParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = manik,
                 Troops = 1,
                 Position = new Point(129, -102),
@@ -1249,7 +1249,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party ajroselleParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = ajroselle,
                 Troops = 1,
                 Position = new Point(130, -107),
@@ -1258,7 +1258,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party skraelParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = skrael,
                 Troops = 1,
                 Position = new Point(126, -93),
@@ -1267,7 +1267,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party bedoParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = bedo,
                 Troops = 300,
                 Position = new Point(114, -101),
@@ -1276,7 +1276,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party lambicParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = lambic,
                 Troops = 87,
                 Position = new Point(113, -98),
@@ -1285,7 +1285,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party sanasarParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = sanasar,
                 Troops = 21,
                 Position = new Point(119, -101),
@@ -1294,7 +1294,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party vlad007Party = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = vlad007,
                 Troops = 21,
                 Position = new Point(119, -101),
@@ -1303,7 +1303,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party canp0GParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = canp0g,
                 Troops = 1,
                 Position = rhesosCastle.Position,
@@ -1312,7 +1312,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party sharkParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = shark,
                 Troops = 1,
                 Position = new Point(105, -107),
@@ -1321,7 +1321,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party noobAmphetamineParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = noobAmphetamine,
                 Troops = 1,
                 Position = new Point(107, -100),
@@ -1330,7 +1330,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party mundeteParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = mundete,
                 Troops = 1,
                 Position = new Point(112, -99),
@@ -1339,7 +1339,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party aroyFalconerParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = aroyFalconer,
                 Troops = 1,
                 Position = new Point(123, -88),
@@ -1348,7 +1348,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party insanitoidParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = insanitoid,
                 Troops = 1,
                 Position = new Point(135, -98),
@@ -1357,7 +1357,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party namidakaParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = namidaka,
                 Troops = 11,
                 Position = new Point(135, -99),
@@ -1366,7 +1366,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party xDemParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = xDem,
                 Troops = 250,
                 Position = new Point(nideon.Position.X - 0.2, nideon.Position.Y - 0.2),
@@ -1375,7 +1375,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party disorotParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = disorot,
                 Troops = 89,
                 Position = new Point(nideon.Position.X + 0.2, nideon.Position.Y + 0.2),
@@ -1383,7 +1383,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party aceParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = ace,
                 Troops = 104,
                 Position = new Point(nideon.Position.X - 0.2, nideon.Position.Y + 0.2),
@@ -1391,7 +1391,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party sagarParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = sagar,
                 Troops = 300,
                 Position = new Point(nideon.Position.X + 0.2, nideon.Position.Y - 0.2),
@@ -1399,7 +1399,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party greenShadowParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = greenShadow,
                 Troops = 31,
                 Position = new Point(106.986, -110.171),
@@ -1407,7 +1407,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party hannibaruParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = hannibaru,
                 Troops = 42,
                 Position = new Point(107.109, -110.328),
@@ -1415,7 +1415,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party drexxParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = drexx,
                 Troops = 53,
                 Position = new Point(107.304, -110.203),
@@ -1423,7 +1423,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party xaroshParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = xarosh,
                 Troops = 64,
                 Position = new Point(107.210, -110.062),
@@ -1431,7 +1431,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party tipsyTobyParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = tipsyToby,
                 Troops = 75,
                 Position = new Point(107.304, -110.046),
@@ -1439,7 +1439,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party localAlphaParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = localAlpha,
                 Troops = 75,
                 Position = new Point(107.304, -110.046),
@@ -1447,7 +1447,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party alexParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = alex,
                 Troops = 86,
                 Position = new Point(107, -106),
@@ -1456,7 +1456,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party kedrynFuelParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = kedrynFuel,
                 Troops = 97,
                 Position = new Point(107, -106.2),
@@ -1465,7 +1465,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party luqeroParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = luqero,
                 Troops = 108,
                 Position = hertogea.Position,
@@ -1474,7 +1474,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party ilyaParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = ilya,
                 Troops = 119,
                 Position = hertogea.Position,
@@ -1483,7 +1483,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party eztliParty = new()
             {
-                Region = Region.Europe,
+                Region = Region.Eu,
                 User = eztli,
                 Troops = 86,
                 Position = leblenion.Position,
@@ -1519,7 +1519,7 @@ public record SeedDataCommand : IMediatorRequest
             Battle nideonBattle = new()
             {
                 Phase = BattlePhase.Preparation,
-                Region = Region.Europe,
+                Region = Region.Eu,
                 Position = nideon.Position,
                 Fighters =
                 {
@@ -1562,7 +1562,7 @@ public record SeedDataCommand : IMediatorRequest
             Battle plainBattle = new()
             {
                 Phase = BattlePhase.Preparation,
-                Region = Region.Europe,
+                Region = Region.Eu,
                 Position = new Point(107.187, -110.164),
                 Fighters =
                 {
@@ -1591,7 +1591,7 @@ public record SeedDataCommand : IMediatorRequest
             Battle hertogeaBattle = new()
             {
                 Phase = BattlePhase.Hiring,
-                Region = Region.Europe,
+                Region = Region.Eu,
                 Position = hertogea.Position,
                 Fighters =
                 {
@@ -1635,7 +1635,7 @@ public record SeedDataCommand : IMediatorRequest
             Battle leblenionBattle = new()
             {
                 Phase = BattlePhase.Hiring,
-                Region = Region.Europe,
+                Region = Region.Eu,
                 Position = leblenion.Position,
                 Fighters =
                 {
@@ -1847,7 +1847,7 @@ public record SeedDataCommand : IMediatorRequest
                         Type = settlementCreation.Type,
                         Culture = settlementCreation.Culture,
                         Region = region,
-                        Position = _strategusMap.TranslatePositionForRegion(settlementCreation.Position, Region.Europe, region),
+                        Position = _strategusMap.TranslatePositionForRegion(settlementCreation.Position, Region.Eu, region),
                         Scene = settlementCreation.Scene,
                         Troops = StrategusSettlementDefaultTroops[settlementCreation.Type],
                         OwnerId = null,

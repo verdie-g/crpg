@@ -97,14 +97,14 @@ internal class StrategusMap : IStrategusMap
         // horizontally mirrored. | EU | AN | AS |
         double x = (sourceRegion, targetRegion) switch
         {
-            (Region.Europe, Region.NorthAmerica) => 2 * _width - pos.X,
-            (Region.NorthAmerica, Region.Europe) => 2 * _width - pos.X,
+            (Region.Eu, Region.Na) => 2 * _width - pos.X,
+            (Region.Na, Region.Eu) => 2 * _width - pos.X,
 
-            (Region.Europe, Region.Asia) => 2 * _width + pos.X,
-            (Region.Asia, Region.Europe) => -2 * _width + pos.X,
+            (Region.Eu, Region.As) => 2 * _width + pos.X,
+            (Region.As, Region.Eu) => -2 * _width + pos.X,
 
-            (Region.NorthAmerica, Region.Asia) => 4 * _width - pos.X,
-            (Region.Asia, Region.NorthAmerica) => 4 * _width - pos.X,
+            (Region.Na, Region.As) => 4 * _width - pos.X,
+            (Region.As, Region.Na) => 4 * _width - pos.X,
             _ => throw new ArgumentOutOfRangeException(),
         };
 
@@ -121,6 +121,6 @@ internal class StrategusMap : IStrategusMap
         Point spawningPosition = new(
             _spawningPositionCenter.X + r * Math.Cos(theta),
             _spawningPositionCenter.Y + r * Math.Sin(theta));
-        return TranslatePositionForRegion(spawningPosition, Region.Europe, region);
+        return TranslatePositionForRegion(spawningPosition, Region.Eu, region);
     }
 }

@@ -162,15 +162,15 @@ public class SeedDataCommandTest : TestBase
 
         Assert.NotZero(settlements[0].Id);
         Assert.AreEqual("a", settlements[0].Name);
-        Assert.AreEqual(Region.Europe, settlements[0].Region);
+        Assert.AreEqual(Region.Eu, settlements[0].Region);
 
         Assert.NotZero(settlements[1].Id);
         Assert.AreEqual("a", settlements[1].Name);
-        Assert.AreEqual(Region.NorthAmerica, settlements[1].Region);
+        Assert.AreEqual(Region.Na, settlements[1].Region);
 
         Assert.NotZero(settlements[2].Id);
         Assert.AreEqual("a", settlements[2].Name);
-        Assert.AreEqual(Region.Asia, settlements[2].Region);
+        Assert.AreEqual(Region.As, settlements[2].Region);
 
         Assert.AreEqual("b", settlements[3].Name);
     }
@@ -185,7 +185,7 @@ public class SeedDataCommandTest : TestBase
                 Name = "a",
                 Type = SettlementType.Castle,
                 Culture = Culture.Aserai,
-                Region = Region.Europe,
+                Region = Region.Eu,
                 Position = new Point(1, 2),
                 Scene = "abc",
             },
@@ -194,7 +194,7 @@ public class SeedDataCommandTest : TestBase
                 Name = "a",
                 Type = SettlementType.Castle,
                 Culture = Culture.Aserai,
-                Region = Region.NorthAmerica,
+                Region = Region.Na,
                 Position = new Point(1, 2),
                 Scene = "abc",
             },
@@ -203,7 +203,7 @@ public class SeedDataCommandTest : TestBase
                 Name = "a",
                 Type = SettlementType.Castle,
                 Culture = Culture.Aserai,
-                Region = Region.Asia,
+                Region = Region.As,
                 Position = new Point(1, 2),
                 Scene = "abc",
             },
@@ -227,13 +227,13 @@ public class SeedDataCommandTest : TestBase
 
         Mock<IStrategusMap> strategusMapMock = new();
         strategusMapMock
-            .Setup(m => m.TranslatePositionForRegion(It.IsAny<Point>(), Region.Europe, Region.Europe))
+            .Setup(m => m.TranslatePositionForRegion(It.IsAny<Point>(), Region.Eu, Region.Eu))
             .Returns(new Point(3, 4));
         strategusMapMock
-            .Setup(m => m.TranslatePositionForRegion(It.IsAny<Point>(), Region.Europe, Region.NorthAmerica))
+            .Setup(m => m.TranslatePositionForRegion(It.IsAny<Point>(), Region.Eu, Region.Na))
             .Returns(new Point(4, 5));
         strategusMapMock
-            .Setup(m => m.TranslatePositionForRegion(It.IsAny<Point>(), Region.Europe, Region.Asia))
+            .Setup(m => m.TranslatePositionForRegion(It.IsAny<Point>(), Region.Eu, Region.As))
             .Returns(new Point(5, 6));
 
         SeedDataCommand.Handler handler = new(ActDb, Mock.Of<IItemsSource>(), CreateAppEnv(), CharacterService,
@@ -243,11 +243,11 @@ public class SeedDataCommandTest : TestBase
         var settlements = await AssertDb.Settlements.ToArrayAsync();
         Assert.AreEqual(Regions.Length, settlements.Length);
 
-        Assert.AreEqual(Region.Europe, settlements[0].Region);
+        Assert.AreEqual(Region.Eu, settlements[0].Region);
         Assert.AreEqual(new Point(3, 4), settlements[0].Position);
-        Assert.AreEqual(Region.NorthAmerica, settlements[1].Region);
+        Assert.AreEqual(Region.Na, settlements[1].Region);
         Assert.AreEqual(new Point(4, 5), settlements[1].Position);
-        Assert.AreEqual(Region.Asia, settlements[2].Region);
+        Assert.AreEqual(Region.As, settlements[2].Region);
         Assert.AreEqual(new Point(5, 6), settlements[2].Position);
         for (int i = 0; i < settlements.Length; i += 1)
         {

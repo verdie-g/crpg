@@ -2,7 +2,12 @@
 
 public enum Region
 {
-    Europe,
-    NorthAmerica,
-    Asia,
+    /// <summary>Europe.</summary>
+    Eu,
+
+    /// <summary>North America.</summary>
+    Na,
+
+    /// <summary>Asia.</summary>
+    As,
 }

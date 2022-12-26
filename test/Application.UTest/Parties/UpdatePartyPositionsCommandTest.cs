@@ -420,12 +420,12 @@ public class UpdatePartyPositionsCommandTest : TestBase
         Point destination = new(5, 6);
         Settlement settlement = new()
         {
-            Region = Region.NorthAmerica,
+            Region = Region.Na,
             Position = destination,
         };
         Party party = new()
         {
-            Region = Region.Europe,
+            Region = Region.Eu,
             Status = PartyStatus.MovingToAttackSettlement,
             Position = position,
             TargetedSettlement = settlement,
@@ -452,7 +452,7 @@ public class UpdatePartyPositionsCommandTest : TestBase
             .Include(b => b.Fighters).ThenInclude(f => f.Party)
             .FirstOrDefaultAsync();
         Assert.IsNotNull(battle);
-        Assert.AreEqual(Region.NorthAmerica, battle!.Region);
+        Assert.AreEqual(Region.Na, battle!.Region);
         Assert.AreEqual(BattlePhase.Preparation, battle.Phase);
         Assert.AreEqual(new Point(4, 5), battle.Position);
 

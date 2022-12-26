@@ -73,15 +73,15 @@ public class StrategusMapTest
         Assert.AreEqual(p2, p3);
     }
 
-    [TestCase(Region.Europe, Region.Europe, 4, 7)]
-    [TestCase(Region.Europe, Region.NorthAmerica, 1996, 7)]
-    [TestCase(Region.Europe, Region.Asia, 2004, 7)]
-    [TestCase(Region.NorthAmerica, Region.Europe, 1996, 7)]
-    [TestCase(Region.NorthAmerica, Region.NorthAmerica, 4, 7)]
-    [TestCase(Region.NorthAmerica, Region.Asia, 3996, 7)]
-    [TestCase(Region.Asia, Region.Europe, -1996, 7)]
-    [TestCase(Region.Asia, Region.NorthAmerica, 3996, 7)]
-    [TestCase(Region.Asia, Region.Asia, 4, 7)]
+    [TestCase(Region.Eu, Region.Eu, 4, 7)]
+    [TestCase(Region.Eu, Region.Na, 1996, 7)]
+    [TestCase(Region.Eu, Region.As, 2004, 7)]
+    [TestCase(Region.Na, Region.Eu, 1996, 7)]
+    [TestCase(Region.Na, Region.Na, 4, 7)]
+    [TestCase(Region.Na, Region.As, 3996, 7)]
+    [TestCase(Region.As, Region.Eu, -1996, 7)]
+    [TestCase(Region.As, Region.Na, 3996, 7)]
+    [TestCase(Region.As, Region.As, 4, 7)]
     public void TranslatePositionForRegionTest(Region source, Region target, double expectedX, double expectedY)
     {
         Point p1 = new(4, 7);
@@ -93,7 +93,7 @@ public class StrategusMapTest
     [Test]
     public void GetSpawnPositionShouldReturnAPointWithinTheConstantCircle()
     {
-        var spawnPosition = StrategusMap.GetSpawnPosition(Region.Europe);
+        var spawnPosition = StrategusMap.GetSpawnPosition(Region.Eu);
         Assert.That(spawnPosition.X, Is.EqualTo(Constants.StrategusSpawningPositionCenter[0]).Within(Constants.StrategusSpawningPositionRadius));
         Assert.That(spawnPosition.Y, Is.EqualTo(Constants.StrategusSpawningPositionCenter[1]).Within(Constants.StrategusSpawningPositionRadius));
     }

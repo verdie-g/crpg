@@ -173,7 +173,7 @@ export default class Clans extends Vue {
   }
 
   get selectedRegion(): Region {
-    return this.$route.query.region ? (this.$route.query.region as Region) : Region.Europe;
+    return this.$route.query.region ? (this.$route.query.region as Region) : Region.Eu;
   }
 
   set selectedRegion(region: Region) {

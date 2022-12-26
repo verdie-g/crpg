@@ -25,7 +25,7 @@ public class CreatePartyCommandTest : TestBase
         var res = await handler.Handle(new CreatePartyCommand
         {
             UserId = 1,
-            Region = Region.NorthAmerica,
+            Region = Region.Na,
         }, CancellationToken.None);
 
         Assert.IsNotNull(res.Errors);
@@ -46,7 +46,7 @@ public class CreatePartyCommandTest : TestBase
         var res = await handler.Handle(new CreatePartyCommand
         {
             UserId = user.Id,
-            Region = Region.NorthAmerica,
+            Region = Region.Na,
         }, CancellationToken.None);
 
         Assert.IsNotNull(res.Errors);
@@ -61,18 +61,18 @@ public class CreatePartyCommandTest : TestBase
         await ArrangeDb.SaveChangesAsync();
 
         Mock<IStrategusMap> strategusMapMock = new();
-        strategusMapMock.Setup(sm => sm.GetSpawnPosition(Region.NorthAmerica)).Returns(new Point(150, 50));
+        strategusMapMock.Setup(sm => sm.GetSpawnPosition(Region.Na)).Returns(new Point(150, 50));
         CreatePartyCommand.Handler handler = new(ActDb, Mapper, strategusMapMock.Object, Constants);
         var res = await handler.Handle(new CreatePartyCommand
         {
             UserId = user.Id,
-            Region = Region.NorthAmerica,
+            Region = Region.Na,
         }, CancellationToken.None);
 
         var party = res.Data!;
         Assert.IsNotNull(party);
         Assert.AreEqual(user.Id, party.Id);
-        Assert.AreEqual(Region.NorthAmerica, party.Region);
+        Assert.AreEqual(Region.Na, party.Region);
         Assert.AreEqual(0, party.Gold);
         Assert.AreEqual(1, party.Troops);
         Assert.AreEqual(new Point(150.0, 50.0), party.Position);

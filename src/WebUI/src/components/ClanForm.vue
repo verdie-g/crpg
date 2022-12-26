@@ -91,7 +91,7 @@ export default class ClanFormComponent extends Vue {
   @Prop({
     type: Object,
     default: () => ({
-      region: Region.Europe,
+      region: Region.Eu,
       name: '',
       tag: '',
       primaryColor: '#000000',
@@ -104,7 +104,7 @@ export default class ClanFormComponent extends Vue {
   formModes = ClanEditionModes;
 
   formModel: Omit<Clan, 'id'> = {
-    region: Region.Europe,
+    region: Region.Eu,
     name: '',
     tag: '',
     primaryColor: '',

@@ -66,7 +66,7 @@ public class UpdateClanCommandTest : TestBase
             SecondaryColor = 0xFF000000,
             Name = "TaleWorlds",
             BannerKey = string.Empty,
-            Region = Region.NorthAmerica,
+            Region = Region.Na,
         }, CancellationToken.None);
 
         Assert.NotNull(result.Errors);
@@ -90,7 +90,7 @@ public class UpdateClanCommandTest : TestBase
             SecondaryColor = 0xFF000000,
             Name = "TaleWorlds",
             BannerKey = string.Empty,
-            Region = Region.NorthAmerica,
+            Region = Region.Na,
         }, CancellationToken.None);
 
         Assert.NotNull(result.Errors);
@@ -108,7 +108,7 @@ public class UpdateClanCommandTest : TestBase
             SecondaryColor = 456,
             Name = "B",
             BannerKey = "789",
-            Region = Region.Asia,
+            Region = Region.As,
             Discord = new Uri("https://discord.gg/abc"),
         };
         User user = new() { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Leader } };
@@ -124,19 +124,19 @@ public class UpdateClanCommandTest : TestBase
             SecondaryColor = 4567,
             Name = "D",
             BannerKey = "7890",
-            Region = Region.NorthAmerica,
+            Region = Region.Na,
             Discord = new Uri("https://discord.gg/def"),
         }, CancellationToken.None);
 
         Assert.IsNull(res.Errors);
         var clanVm = res.Data!;
-        Assert.AreEqual(Region.NorthAmerica, clanVm.Region);
+        Assert.AreEqual(Region.Na, clanVm.Region);
         Assert.AreEqual("C", clanVm.Tag);
         Assert.AreEqual(1234, clanVm.PrimaryColor);
         Assert.AreEqual(4567, clanVm.SecondaryColor);
         Assert.AreEqual("D", clanVm.Name);
         Assert.AreEqual("7890", clanVm.BannerKey);
-        Assert.AreEqual(Region.NorthAmerica, clanVm.Region);
+        Assert.AreEqual(Region.Na, clanVm.Region);
         Assert.AreEqual(new Uri("https://discord.gg/def"), clanVm.Discord);
     }
 }

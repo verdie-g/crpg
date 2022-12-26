@@ -17,7 +17,7 @@ public class GetBattlesQueryTest : TestBase
         {
             new()
             {
-                Region = Region.NorthAmerica,
+                Region = Region.Na,
                 Phase = BattlePhase.Hiring,
                 Fighters =
                 {
@@ -49,7 +49,7 @@ public class GetBattlesQueryTest : TestBase
             },
             new()
             {
-                Region = Region.NorthAmerica,
+                Region = Region.Na,
                 Phase = BattlePhase.Live,
                 Fighters =
                 {
@@ -77,10 +77,10 @@ public class GetBattlesQueryTest : TestBase
                     },
                 },
             },
-            new() { Region = Region.NorthAmerica, Phase = BattlePhase.Preparation },
-            new() { Region = Region.Europe, Phase = BattlePhase.Hiring },
-            new() { Region = Region.Asia, Phase = BattlePhase.Live },
-            new() { Region = Region.NorthAmerica, Phase = BattlePhase.End },
+            new() { Region = Region.Na, Phase = BattlePhase.Preparation },
+            new() { Region = Region.Eu, Phase = BattlePhase.Hiring },
+            new() { Region = Region.As, Phase = BattlePhase.Live },
+            new() { Region = Region.Na, Phase = BattlePhase.End },
         };
         ArrangeDb.Battles.AddRange(battles);
         await ArrangeDb.SaveChangesAsync();
@@ -88,7 +88,7 @@ public class GetBattlesQueryTest : TestBase
         GetBattlesQuery.Handler handler = new(ActDb, Mapper);
         var res = await handler.Handle(new GetBattlesQuery
         {
-            Region = Region.NorthAmerica,
+            Region = Region.Na,
             Phases = new[] { BattlePhase.Hiring, BattlePhase.Live },
         }, CancellationToken.None);
 
@@ -97,7 +97,7 @@ public class GetBattlesQueryTest : TestBase
         var battlesVm = res.Data!;
         Assert.AreEqual(2, battlesVm.Count);
 
-        Assert.AreEqual(Region.NorthAmerica, battlesVm[0].Region);
+        Assert.AreEqual(Region.Na, battlesVm[0].Region);
         Assert.AreEqual(BattlePhase.Hiring, battlesVm[0].Phase);
         Assert.IsNotNull(battlesVm[0].Attacker);
         Assert.IsNotNull(battlesVm[0].Attacker.Party);
@@ -106,7 +106,7 @@ public class GetBattlesQueryTest : TestBase
         Assert.IsNotNull(battlesVm[0].Defender!.Party);
         Assert.AreEqual(45, battlesVm[0].DefenderTotalTroops);
 
-        Assert.AreEqual(Region.NorthAmerica, battlesVm[1].Region);
+        Assert.AreEqual(Region.Na, battlesVm[1].Region);
         Assert.AreEqual(BattlePhase.Live, battlesVm[1].Phase);
         Assert.IsNotNull(battlesVm[1].Attacker);
         Assert.IsNotNull(battlesVm[1].Attacker.Party);

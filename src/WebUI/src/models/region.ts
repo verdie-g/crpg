@@ -1,7 +1,7 @@
 export enum Region {
-  Europe = 'Europe',
-  NorthAmerica = 'NorthAmerica',
-  Asia = 'Asia',
+  Eu = 'Eu',
+  Na = 'Na',
+  As = 'As',
 }
 
 export default Region;
