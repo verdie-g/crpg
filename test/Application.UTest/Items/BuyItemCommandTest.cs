@@ -12,7 +12,7 @@ public class BuyItemCommandTest : TestBase
     [Test]
     public async Task Basic()
     {
-        Item item = new() { Id = "0", Price = 100 };
+        Item item = new() { Id = "0", Price = 100, Enabled = true };
         User user = new()
         {
             Gold = 100,
@@ -58,7 +58,7 @@ public class BuyItemCommandTest : TestBase
     [Test]
     public async Task NotFoundUser()
     {
-        var item = ArrangeDb.Items.Add(new Item { Price = 100 });
+        var item = ArrangeDb.Items.Add(new Item { Price = 100, Enabled = true });
         await ArrangeDb.SaveChangesAsync();
 
         BuyItemCommand.Handler handler = new(ActDb, Mapper);
@@ -70,11 +70,29 @@ public class BuyItemCommandTest : TestBase
         Assert.AreEqual(ErrorCode.UserNotFound, result.Errors![0].Code);
     }
 
+    [Test]
+    public async Task DisabledItem()
+    {
+        var user = ArrangeDb.Users.Add(new User { Gold = 100 });
+        var item = ArrangeDb.Items.Add(new Item { Price = 100, Enabled = false });
+        await ArrangeDb.SaveChangesAsync();
+
+        BuyItemCommand.Handler handler = new(ActDb, Mapper);
+        var result = await handler.Handle(new BuyItemCommand
+        {
+            ItemId = item.Entity.Id,
+            UserId = user.Entity.Id,
+        }, CancellationToken.None);
+
+        Assert.IsNotNull(result.Errors);
+        Assert.AreEqual(ErrorCode.ItemDisabled, result.Errors![0].Code);
+    }
+
     [Theory]
     public async Task BannerItem(bool isDonor, Role role)
     {
         var user = ArrangeDb.Users.Add(new User { Gold = 100, Role = role, IsDonor = isDonor });
-        var item = ArrangeDb.Items.Add(new Item { Type = ItemType.Banner, Price = 100 });
+        var item = ArrangeDb.Items.Add(new Item { Type = ItemType.Banner, Price = 100, Enabled = true });
         await ArrangeDb.SaveChangesAsync();
 
         BuyItemCommand.Handler handler = new(ActDb, Mapper);
@@ -99,7 +117,7 @@ public class BuyItemCommandTest : TestBase
     public async Task NotEnoughGold()
     {
         var user = ArrangeDb.Users.Add(new User { Gold = 100 });
-        var item = ArrangeDb.Items.Add(new Item { Price = 101 });
+        var item = ArrangeDb.Items.Add(new Item { Price = 101, Enabled = true });
         await ArrangeDb.SaveChangesAsync();
 
         BuyItemCommand.Handler handler = new(ActDb, Mapper);
@@ -114,7 +132,7 @@ public class BuyItemCommandTest : TestBase
     [Test]
     public async Task AlreadyOwningItem()
     {
-        Item item = new() { Price = 100 };
+        Item item = new() { Price = 100, Enabled = true };
         User user = new()
         {
             Gold = 100,

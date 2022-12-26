@@ -1732,6 +1732,8 @@ public record SeedDataCommand : IMediatorRequest
         {
             if (dbItemsByMbId.TryGetValue(item.Id, out Item? dbItem))
             {
+                item.Enabled = dbItem.Enabled; // Items seed should not overwrite the enabled flag.
+
                 var dbItemEntry = _db.Entry(dbItem);
                 dbItemEntry.CurrentValues.SetValues(item);
                 // Explicitly modify owned entities because it seems like SetValues is not working for them.
@@ -1760,6 +1762,7 @@ public record SeedDataCommand : IMediatorRequest
                 Tier = item.Tier,
                 Requirement = item.Requirement,
                 Flags = item.Flags,
+                Enabled = true,
             };
 
             if (item.Armor != null)

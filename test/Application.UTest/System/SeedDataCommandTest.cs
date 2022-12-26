@@ -44,6 +44,41 @@ public class SeedDataCommandTest : TestBase
 
         var items = await AssertDb.Items.ToArrayAsync();
         Assert.AreEqual(2, items.Length);
+        Assert.IsTrue(items.All(i => i.Enabled));
+    }
+
+    [Test]
+    public async Task ShouldModifyItem()
+    {
+        Item item = new()
+        {
+            Id = "a",
+            Type = ItemType.HeadArmor,
+            Armor = new ItemArmorComponent
+            {
+                HeadArmor = 10,
+            },
+            Enabled = false,
+        };
+        ArrangeDb.Items.Add(item);
+        await ArrangeDb.SaveChangesAsync();
+
+        Mock<IItemsSource> itemsSource = new();
+        itemsSource.Setup(s => s.LoadItems())
+            .ReturnsAsync(new[]
+            {
+                new ItemCreation { Id = "a", Type = ItemType.HeadArmor, Armor = new ItemArmorComponentViewModel { HeadArmor = 9 } },
+            });
+
+        SeedDataCommand.Handler seedDataCommandHandler = new(ActDb, itemsSource.Object, CreateAppEnv(),
+            CharacterService, ExperienceTable, StrategusMap, Mock.Of<ISettlementsSource>(),
+            ItemModifierService);
+        await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
+
+        var items = await AssertDb.Items.ToArrayAsync();
+        Assert.AreEqual(1, items.Length);
+        Assert.AreEqual(9, items[0].Armor!.HeadArmor);
+        Assert.IsFalse(items[0].Enabled, "Items seeds shouldn't enable disabled item");
     }
 
     [Test]

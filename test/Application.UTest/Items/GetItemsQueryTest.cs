@@ -17,6 +17,7 @@ public class GetItemsQueryTest : TestBase
                 Name = "toto",
                 Price = 100,
                 Type = ItemType.BodyArmor,
+                Enabled = true,
             },
             new()
             {
@@ -24,6 +25,7 @@ public class GetItemsQueryTest : TestBase
                 Name = "toto",
                 Price = 100,
                 Type = ItemType.ShoulderArmor,
+                Enabled = true,
             },
             new()
             {
@@ -31,6 +33,15 @@ public class GetItemsQueryTest : TestBase
                 Name = "tata",
                 Price = 200,
                 Type = ItemType.HandArmor,
+                Enabled = true,
+            },
+            new()
+            {
+                Id = "4",
+                Name = "titi",
+                Price = 300,
+                Type = ItemType.Bolts,
+                Enabled = false,
             },
         };
         ArrangeDb.Items.AddRange(items);

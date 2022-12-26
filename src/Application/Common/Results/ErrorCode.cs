@@ -28,6 +28,7 @@ public enum ErrorCode
     InvalidField,
     ItemAlreadyOwned,
     ItemBadSlot,
+    ItemDisabled,
     ItemNotBuyable,
     ItemNotFound,
     ItemNotOwned,
