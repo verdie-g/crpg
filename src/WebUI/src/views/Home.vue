@@ -45,6 +45,11 @@
           or on
           <a href="https://www.reddit.com/r/CRPG_Bannerlord" target="_blank">Reddit</a>.
         </p>
+
+        <p>
+          <b-icon icon="circle" size="is-small" class="mr-3 has-text-primary" />
+          {{ gameServerStats.playingCount }} online
+        </p>
       </div>
     </section>
   </div>
@@ -54,10 +59,13 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { signIn } from '@/services/auth-service';
 import userModule from '@/store/user-module';
+import { getGameServerStats } from '@/services/game-server-statistics-service';
+import { GameServerStats } from '@/models/game-server-stats';
 
 @Component
 export default class Home extends Vue {
   signingIn = false;
+  gameServerStats: GameServerStats = { playingCount: 0 };
 
   get isSignedIn(): boolean {
     return userModule.isSignedIn;
@@ -65,6 +73,10 @@ export default class Home extends Vue {
 
   get isSigningIn(): boolean {
     return userModule.userLoading || this.signingIn;
+  }
+
+  async created() {
+    this.gameServerStats = await getGameServerStats();
   }
 
   onClick(): void {
