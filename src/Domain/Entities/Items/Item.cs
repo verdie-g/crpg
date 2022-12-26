@@ -21,6 +21,12 @@ public class Item : AuditableEntity, ICloneable
     public ItemFlags Flags { get; set; }
 
     /// <summary>
+    /// True if the items can be played with. It can be false for example if the item is bugged or if it's an
+    /// event-only item.
+    /// </summary>
+    public bool Enabled { get; set; }
+
+    /// <summary>
     /// Armor component of an item. If not null, the item is an armor.
     /// </summary>
     public ItemArmorComponent? Armor { get; set; }

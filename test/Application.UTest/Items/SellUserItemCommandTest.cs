@@ -20,7 +20,7 @@ public class SellUserItemCommandTest : TestBase
             {
                 new()
                 {
-                    BaseItem = new Item { Price = 100 },
+                    BaseItem = new Item { Price = 100, Enabled = true },
                 },
             },
         };
@@ -69,5 +69,31 @@ public class SellUserItemCommandTest : TestBase
                 UserId = user.Id,
             }, CancellationToken.None);
         Assert.AreEqual(ErrorCode.UserItemNotFound, result.Errors![0].Code);
+    }
+
+    [Test]
+    public async Task ShouldReturnErrorIfItemIsNotEnabled()
+    {
+        User user = new()
+        {
+            Gold = 0,
+            Items = new List<UserItem>
+            {
+                new()
+                {
+                    BaseItem = new Item { Enabled = false },
+                },
+            },
+        };
+        ArrangeDb.Users.Add(user);
+        await ArrangeDb.SaveChangesAsync();
+
+        IItemService itemService = Mock.Of<IItemService>();
+        var result = await new SellUserItemCommand.Handler(ActDb, itemService).Handle(new SellUserItemCommand
+        {
+            UserItemId = user.Items[0].Id,
+            UserId = user.Id,
+        }, CancellationToken.None);
+        Assert.AreEqual(ErrorCode.ItemDisabled, result.Errors![0].Code);
     }
 }

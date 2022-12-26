@@ -15,30 +15,30 @@ public class UpdateCharacterItemsCommandTest : TestBase
     {
         User user = new();
 
-        UserItem headOld = new() { User = user, BaseItem = new Item { Id = "1", Type = ItemType.HeadArmor } };
-        UserItem headNew = new() { User = user, BaseItem = new Item { Id = "2", Type = ItemType.HeadArmor } };
-        UserItem shoulderOld = new() { User = user, BaseItem = new Item { Id = "3", Type = ItemType.ShoulderArmor } };
-        UserItem shoulderNew = new() { User = user, BaseItem = new Item { Id = "4", Type = ItemType.ShoulderArmor } };
-        UserItem bodyOld = new() { User = user, BaseItem = new Item { Id = "5", Type = ItemType.BodyArmor } };
-        UserItem bodyNew = new() { User = user, BaseItem = new Item { Id = "6", Type = ItemType.BodyArmor } };
-        UserItem handOld = new() { User = user, BaseItem = new Item { Id = "7", Type = ItemType.HandArmor } };
-        UserItem handNew = new() { User = user, BaseItem = new Item { Id = "8", Type = ItemType.HandArmor } };
-        UserItem legOld = new() { User = user, BaseItem = new Item { Id = "9", Type = ItemType.LegArmor } };
-        UserItem legNew = new() { User = user, BaseItem = new Item { Id = "10", Type = ItemType.LegArmor } };
-        UserItem mountHarnessOld = new() { User = user, BaseItem = new Item { Id = "11", Type = ItemType.MountHarness } };
-        UserItem mountHarnessNew = new() { User = user, BaseItem = new Item { Id = "12", Type = ItemType.MountHarness } };
-        UserItem mountOld = new() { User = user, BaseItem = new Item { Id = "13", Type = ItemType.Mount } };
-        UserItem mountNew = new() { User = user, BaseItem = new Item { Id = "14", Type = ItemType.Mount } };
-        UserItem weapon0Old = new() { User = user, BaseItem = new Item { Id = "15", Type = ItemType.Arrows } };
-        UserItem weapon0New = new() { User = user, BaseItem = new Item { Id = "16", Type = ItemType.Bolts } };
-        UserItem weapon1Old = new() { User = user, BaseItem = new Item { Id = "17", Type = ItemType.Bow } };
-        UserItem weapon1New = new() { User = user, BaseItem = new Item { Id = "18", Type = ItemType.Crossbow } };
-        UserItem weapon2Old = new() { User = user, BaseItem = new Item { Id = "19", Type = ItemType.Polearm } };
-        UserItem weapon2New = new() { User = user, BaseItem = new Item { Id = "20", Type = ItemType.Shield } };
-        UserItem weapon3Old = new() { User = user, BaseItem = new Item { Id = "21", Type = ItemType.OneHandedWeapon } };
-        UserItem weapon3New = new() { User = user, BaseItem = new Item { Id = "22", Type = ItemType.TwoHandedWeapon } };
-        UserItem weaponExtraOld = new() { User = user, BaseItem = new Item { Id = "23", Type = ItemType.Banner } };
-        UserItem weaponExtraNew = new() { User = user, BaseItem = new Item { Id = "24", Type = ItemType.Banner } };
+        UserItem headOld = new() { User = user, BaseItem = new Item { Id = "1", Type = ItemType.HeadArmor, Enabled = true } };
+        UserItem headNew = new() { User = user, BaseItem = new Item { Id = "2", Type = ItemType.HeadArmor, Enabled = true } };
+        UserItem shoulderOld = new() { User = user, BaseItem = new Item { Id = "3", Type = ItemType.ShoulderArmor, Enabled = true } };
+        UserItem shoulderNew = new() { User = user, BaseItem = new Item { Id = "4", Type = ItemType.ShoulderArmor, Enabled = true } };
+        UserItem bodyOld = new() { User = user, BaseItem = new Item { Id = "5", Type = ItemType.BodyArmor, Enabled = true } };
+        UserItem bodyNew = new() { User = user, BaseItem = new Item { Id = "6", Type = ItemType.BodyArmor, Enabled = true } };
+        UserItem handOld = new() { User = user, BaseItem = new Item { Id = "7", Type = ItemType.HandArmor, Enabled = true } };
+        UserItem handNew = new() { User = user, BaseItem = new Item { Id = "8", Type = ItemType.HandArmor, Enabled = true } };
+        UserItem legOld = new() { User = user, BaseItem = new Item { Id = "9", Type = ItemType.LegArmor, Enabled = true } };
+        UserItem legNew = new() { User = user, BaseItem = new Item { Id = "10", Type = ItemType.LegArmor, Enabled = true } };
+        UserItem mountHarnessOld = new() { User = user, BaseItem = new Item { Id = "11", Type = ItemType.MountHarness, Enabled = true } };
+        UserItem mountHarnessNew = new() { User = user, BaseItem = new Item { Id = "12", Type = ItemType.MountHarness, Enabled = true } };
+        UserItem mountOld = new() { User = user, BaseItem = new Item { Id = "13", Type = ItemType.Mount, Enabled = true } };
+        UserItem mountNew = new() { User = user, BaseItem = new Item { Id = "14", Type = ItemType.Mount, Enabled = true } };
+        UserItem weapon0Old = new() { User = user, BaseItem = new Item { Id = "15", Type = ItemType.Arrows, Enabled = true } };
+        UserItem weapon0New = new() { User = user, BaseItem = new Item { Id = "16", Type = ItemType.Bolts, Enabled = true } };
+        UserItem weapon1Old = new() { User = user, BaseItem = new Item { Id = "17", Type = ItemType.Bow, Enabled = true } };
+        UserItem weapon1New = new() { User = user, BaseItem = new Item { Id = "18", Type = ItemType.Crossbow, Enabled = true } };
+        UserItem weapon2Old = new() { User = user, BaseItem = new Item { Id = "19", Type = ItemType.Polearm, Enabled = true } };
+        UserItem weapon2New = new() { User = user, BaseItem = new Item { Id = "20", Type = ItemType.Shield, Enabled = true } };
+        UserItem weapon3Old = new() { User = user, BaseItem = new Item { Id = "21", Type = ItemType.OneHandedWeapon, Enabled = true } };
+        UserItem weapon3New = new() { User = user, BaseItem = new Item { Id = "22", Type = ItemType.TwoHandedWeapon, Enabled = true } };
+        UserItem weaponExtraOld = new() { User = user, BaseItem = new Item { Id = "23", Type = ItemType.Banner, Enabled = true } };
+        UserItem weaponExtraNew = new() { User = user, BaseItem = new Item { Id = "24", Type = ItemType.Banner, Enabled = true } };
 
         Character character = new()
         {
@@ -111,11 +111,11 @@ public class UpdateCharacterItemsCommandTest : TestBase
         User user = new();
         ArrangeDb.Users.Add(user);
 
-        UserItem headOld = new() { User = user, BaseItem = new Item { Id = "1", Type = ItemType.HeadArmor } };
-        UserItem headNew = new() { User = user, BaseItem = new Item { Id = "2", Type = ItemType.HeadArmor } };
-        UserItem bodyNew = new() { User = user, BaseItem = new Item { Id = "3", Type = ItemType.BodyArmor } };
-        UserItem handOld = new() { User = user, BaseItem = new Item { Id = "4", Type = ItemType.HandArmor } };
-        UserItem legOld = new() { User = user, BaseItem = new Item { Id = "5", Type = ItemType.LegArmor } };
+        UserItem headOld = new() { User = user, BaseItem = new Item { Id = "1", Type = ItemType.HeadArmor, Enabled = true } };
+        UserItem headNew = new() { User = user, BaseItem = new Item { Id = "2", Type = ItemType.HeadArmor, Enabled = true } };
+        UserItem bodyNew = new() { User = user, BaseItem = new Item { Id = "3", Type = ItemType.BodyArmor, Enabled = true } };
+        UserItem handOld = new() { User = user, BaseItem = new Item { Id = "4", Type = ItemType.HandArmor, Enabled = true } };
+        UserItem legOld = new() { User = user, BaseItem = new Item { Id = "5", Type = ItemType.LegArmor, Enabled = true } };
 
         Character character = new()
         {
@@ -236,9 +236,35 @@ public class UpdateCharacterItemsCommandTest : TestBase
     }
 
     [Test]
+    public async Task ItemDisabled()
+    {
+        UserItem userItem = new() { BaseItem = new Item { Type = ItemType.HeadArmor, Enabled = false } };
+        Character character = new();
+        User user = new()
+        {
+            Characters = { character },
+            Items = { userItem },
+        };
+        ArrangeDb.Characters.Add(character);
+        ArrangeDb.Users.Add(user);
+        await ArrangeDb.SaveChangesAsync();
+
+        UpdateCharacterItemsCommand.Handler handler = new(ActDb, Mapper);
+        UpdateCharacterItemsCommand cmd = new()
+        {
+            CharacterId = character.Id,
+            UserId = user.Id,
+            Items = new List<EquippedItemIdViewModel> { new() { UserItemId = userItem.Id, Slot = ItemSlot.Head } },
+        };
+
+        var result = await handler.Handle(cmd, CancellationToken.None);
+        Assert.AreEqual(ErrorCode.ItemDisabled, result.Errors![0].Code);
+    }
+
+    [Test]
     public async Task ItemNotOwned()
     {
-        UserItem userItem = new() { BaseItem = new Item { Type = ItemType.HeadArmor } };
+        UserItem userItem = new() { BaseItem = new Item { Type = ItemType.HeadArmor, Enabled = true } };
         Character character = new();
         User user = new() { Characters = { character } };
         ArrangeDb.UserItems.Add(userItem);
@@ -281,7 +307,7 @@ public class UpdateCharacterItemsCommandTest : TestBase
     public async Task WrongSlotForItemType(ItemType itemType, ItemSlot itemSlot)
     {
         Character character = new();
-        UserItem userItem = new() { BaseItem = new Item { Type = itemType } };
+        UserItem userItem = new() { BaseItem = new Item { Type = itemType, Enabled = true } };
         User user = new()
         {
             Items = { userItem },
@@ -314,6 +340,7 @@ public class UpdateCharacterItemsCommandTest : TestBase
             {
                 Type = ItemType.Banner,
                 Flags = itemFlags,
+                Enabled = true,
             },
         };
         User user = new()

@@ -1,9 +1,7 @@
-using Crpg.Application.Common;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
-using Crpg.Common.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using LoggerFactory = Crpg.Logging.LoggerFactory;
@@ -39,6 +37,11 @@ public record SellUserItemCommand : IMediatorRequest
             if (userItem == null)
             {
                 return new Result(CommonErrors.UserItemNotFound(req.UserItemId));
+            }
+
+            if (!userItem.BaseItem!.Enabled)
+            {
+                return new(CommonErrors.ItemDisabled(userItem.BaseItem.Id));
             }
 
             _itemService.SellUserItem(_db, userItem);
