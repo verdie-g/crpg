@@ -158,7 +158,7 @@ public class SeedDataCommandTest : TestBase
         await handler.Handle(new SeedDataCommand(), CancellationToken.None);
 
         var settlements = await AssertDb.Settlements.ToArrayAsync();
-        Assert.AreEqual(2 * Regions.Length, settlements.Length);
+        Assert.AreEqual(2 * (Regions.Length - 1), settlements.Length);
 
         Assert.NotZero(settlements[0].Id);
         Assert.AreEqual("a", settlements[0].Name);
@@ -235,13 +235,16 @@ public class SeedDataCommandTest : TestBase
         strategusMapMock
             .Setup(m => m.TranslatePositionForRegion(It.IsAny<Point>(), Region.Eu, Region.As))
             .Returns(new Point(5, 6));
+        strategusMapMock
+            .Setup(m => m.TranslatePositionForRegion(It.IsAny<Point>(), Region.Eu, Region.Oce))
+            .Returns(new Point(5, 6));
 
         SeedDataCommand.Handler handler = new(ActDb, Mock.Of<IItemsSource>(), CreateAppEnv(), CharacterService,
             ExperienceTable, strategusMapMock.Object, settlementsSource.Object, ItemModifierService);
         await handler.Handle(new SeedDataCommand(), CancellationToken.None);
 
         var settlements = await AssertDb.Settlements.ToArrayAsync();
-        Assert.AreEqual(Regions.Length, settlements.Length);
+        Assert.AreEqual(Regions.Length - 1, settlements.Length);
 
         Assert.AreEqual(Region.Eu, settlements[0].Region);
         Assert.AreEqual(new Point(3, 4), settlements[0].Position);

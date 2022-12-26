@@ -10,4 +10,7 @@ public enum Region
 
     /// <summary>Asia.</summary>
     As,
+
+    /// <summary>Oceania.</summary>
+    Oce,
 }
