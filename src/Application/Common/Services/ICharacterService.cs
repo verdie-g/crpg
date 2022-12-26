@@ -37,7 +37,6 @@ internal class CharacterService : ICharacterService
         character.Generation = _constants.DefaultGeneration;
         character.Level = _constants.MinimumLevel;
         character.Experience = _experienceTable.GetExperienceForLevel(character.Level);
-        character.ExperienceMultiplier = _constants.DefaultExperienceMultiplier;
         character.SkippedTheFun = false;
         character.Rating = new CharacterRating
         {
@@ -76,7 +75,7 @@ internal class CharacterService : ICharacterService
             return;
         }
 
-        character.Experience += (int)(character.ExperienceMultiplier * experience);
+        character.Experience += (int)(character.User!.ExperienceMultiplier * experience);
         int newLevel = _experienceTable.GetLevelForExperience(character.Experience);
         if (character.Level != newLevel) // if character leveled up
         {

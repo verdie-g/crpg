@@ -15,7 +15,6 @@ public class Character : AuditableEntity
     public int Generation { get; set; }
     public int Level { get; set; }
     public int Experience { get; set; }
-    public float ExperienceMultiplier { get; set; }
     public bool SkippedTheFun { get; set; }
 
     /// <summary>

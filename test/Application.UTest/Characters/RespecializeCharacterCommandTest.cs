@@ -26,7 +26,6 @@ public class RespecializeCharacterCommandTest : TestBase
             Generation = 2,
             Level = 3,
             Experience = 150,
-            ExperienceMultiplier = 1.1f,
             SkippedTheFun = false,
             EquippedItems =
             {
@@ -63,7 +62,6 @@ public class RespecializeCharacterCommandTest : TestBase
         Assert.AreEqual(2, character.Generation);
         Assert.AreEqual(2, character.Level);
         Assert.AreEqual(75, character.Experience);
-        Assert.AreEqual(1.1f, character.ExperienceMultiplier);
         Assert.AreEqual(3, character.EquippedItems.Count);
         Assert.AreEqual(0, character.Statistics.Kills);
         Assert.AreEqual(0, character.Statistics.Deaths);
@@ -80,7 +78,6 @@ public class RespecializeCharacterCommandTest : TestBase
             Generation = 0,
             Level = 3,
             Experience = 150,
-            ExperienceMultiplier = 1.1f,
             SkippedTheFun = true,
             EquippedItems =
             {
@@ -115,7 +112,6 @@ public class RespecializeCharacterCommandTest : TestBase
         Assert.AreEqual(0, character.Generation);
         Assert.AreEqual(3, character.Level);
         Assert.AreEqual(150, character.Experience);
-        Assert.AreEqual(1.1f, character.ExperienceMultiplier);
         Assert.AreEqual(3, character.EquippedItems.Count);
         Assert.AreEqual(0, character.Statistics.Kills);
         Assert.AreEqual(0, character.Statistics.Deaths);

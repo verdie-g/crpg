@@ -5,7 +5,7 @@
   "weaponProficiencyPointsForLevelCoefs": [0.1, 4.9, 52.0],
   "weaponProficiencyCostCoefs": [0.0001666, 0.0, 3.0, 0.0],
   "defaultExperienceMultiplier": 1.0,
-  "experienceMultiplierForGenerationCoefs": [0.03, 1.0],
+  "experienceMultiplierForGenerationCoefs": 0.03,
   "maxExperienceMultiplierForGeneration": 1.48,
   "respecializeExperiencePenaltyCoefs": [1, 0.0],
   "minimumRetirementLevel": 31,

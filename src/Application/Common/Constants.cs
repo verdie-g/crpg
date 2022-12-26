@@ -10,7 +10,7 @@ public class Constants
     public float[] WeaponProficiencyPointsForLevelCoefs { get; set; } = Array.Empty<float>();
     public float[] WeaponProficiencyCostCoefs { get; set; } = Array.Empty<float>();
     public float DefaultExperienceMultiplier { get; set; }
-    public float[] ExperienceMultiplierForGenerationCoefs { get; set; } = Array.Empty<float>();
+    public float ExperienceMultiplierByGeneration { get; set; }
     public float MaxExperienceMultiplierForGeneration { get; set; }
     public float[] RespecializeExperiencePenaltyCoefs { get; set; } = Array.Empty<float>();
     public int MinimumRetirementLevel { get; set; }

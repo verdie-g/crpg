@@ -13,6 +13,8 @@ public record GameUserViewModel : IMapFrom<User>
     public Platform Platform { get; init; }
     public string PlatformUserId { get; init; } = string.Empty;
     public int Gold { get; init; }
+    public int HeirloomPoints { get; set; }
+    public float ExperienceMultiplier { get; init; }
     public Role Role { get; set; }
     public GameCharacterViewModel Character { get; init; } = default!;
     public IList<RestrictionViewModel> Restrictions { get; set; } = Array.Empty<RestrictionViewModel>();

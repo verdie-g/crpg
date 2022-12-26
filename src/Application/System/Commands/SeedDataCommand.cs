@@ -75,6 +75,7 @@ public record SeedDataCommand : IMediatorRequest
                 Name = "takeo",
                 Gold = 30000,
                 HeirloomPoints = 2,
+                ExperienceMultiplier = 1.09f,
                 Role = Role.Admin,
                 AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2c/2ce4694f06523a2ffad501f5dc30ec7a8008e90e.jpg"),
                 AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2c/2ce4694f06523a2ffad501f5dc30ec7a8008e90e_full.jpg"),
@@ -689,6 +690,7 @@ public record SeedDataCommand : IMediatorRequest
             {
                 User = takeo,
                 Name = "totoalala",
+                Generation = 1,
                 Level = 12,
                 Experience = _experienceTable.GetExperienceForLevel(12),
                 Statistics = new CharacterStatistics
@@ -703,6 +705,7 @@ public record SeedDataCommand : IMediatorRequest
             {
                 User = takeo,
                 Name = "Retire me",
+                Generation = 0,
                 Level = 31,
                 Experience = _experienceTable.GetExperienceForLevel(31) + 100,
                 Statistics = new CharacterStatistics

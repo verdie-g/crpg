@@ -17,28 +17,27 @@ public class RetireCharacterCommandTest : TestBase
     {
         MinimumLevel = 1,
         MinimumRetirementLevel = 31,
-        ExperienceMultiplierForGenerationCoefs = new[] { 0.03f, 1.0f },
+        ExperienceMultiplierByGeneration = 0.03f,
         MaxExperienceMultiplierForGeneration = 1.48f,
     };
 
-    [TestCase(31, 0, 1, 1.03f)]
-    [TestCase(32, 0, 1, 1.03f)]
-    [TestCase(33, 0, 2, 1.03f)]
-    [TestCase(34, 0, 2, 1.03f)]
-    [TestCase(35, 0, 3, 1.03f)]
-    [TestCase(36, 0, 3, 1.03f)]
-    [TestCase(31, 2, 1, 1.09f)]
-    [TestCase(31, 2, 1, 1.09f)]
-    [TestCase(31, 15, 1, 1.48f)]
-    [TestCase(31, 16, 1, 1.48f)]
-    public async Task Basic(int level, int generation, int expectedPoints, float expectedExperienceMultiplier)
+    [TestCase(31, 1.00f, 1, 1.03f)]
+    [TestCase(32, 1.00f, 1, 1.03f)]
+    [TestCase(33, 1.00f, 2, 1.03f)]
+    [TestCase(34, 1.00f, 2, 1.03f)]
+    [TestCase(35, 1.00f, 3, 1.03f)]
+    [TestCase(36, 1.00f, 3, 1.03f)]
+    [TestCase(31, 1.06f, 1, 1.09f)]
+    [TestCase(31, 1.06f, 1, 1.09f)]
+    [TestCase(31, 1.45f, 1, 1.48f)]
+    [TestCase(31, 1.48f, 1, 1.48f)]
+    public async Task Basic(int level, float experienceMultiplier, int expectedPoints, float expectedExperienceMultiplier)
     {
         Character character = new()
         {
-            Generation = generation,
+            Generation = 0,
             Level = level,
             Experience = 32000,
-            ExperienceMultiplier = 1.06f,
             EquippedItems =
             {
                 new EquippedItem { Slot = ItemSlot.Head },
@@ -54,6 +53,7 @@ public class RetireCharacterCommandTest : TestBase
             User = new User
             {
                 HeirloomPoints = 0,
+                ExperienceMultiplier = experienceMultiplier,
             },
         };
         ArrangeDb.Add(character);
@@ -72,15 +72,15 @@ public class RetireCharacterCommandTest : TestBase
             .Include(c => c.User)
             .Include(c => c.EquippedItems)
             .FirstAsync(c => c.Id == character.Id);
-        Assert.AreEqual(generation + 1, character.Generation);
+        Assert.AreEqual(1, character.Generation);
         Assert.AreEqual(Constants.MinimumLevel, character.Level);
         Assert.AreEqual(0, character.Experience);
-        Assert.AreEqual(expectedExperienceMultiplier, character.ExperienceMultiplier);
         Assert.AreEqual(0, character.Statistics.Kills);
         Assert.AreEqual(0, character.Statistics.Deaths);
         Assert.AreEqual(0, character.Statistics.Assists);
         Assert.AreEqual(TimeSpan.FromSeconds(4), character.Statistics.PlayTime);
         Assert.AreEqual(expectedPoints, character.User!.HeirloomPoints);
+        Assert.AreEqual(expectedExperienceMultiplier, character.User.ExperienceMultiplier, delta: 0.001f);
         Assert.IsEmpty(character.EquippedItems);
 
         characterServiceMock.Verify(cs => cs.ResetCharacterCharacteristics(It.IsAny<Character>(), false));

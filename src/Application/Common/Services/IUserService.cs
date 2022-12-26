@@ -30,5 +30,6 @@ internal class UserService : IUserService
             : Math.Min(_constants.DefaultGold, user.Gold);
         user.Role = _constants.DefaultRole;
         user.HeirloomPoints = _constants.DefaultHeirloomPoints;
+        user.ExperienceMultiplier = _constants.DefaultExperienceMultiplier;
     }
 }

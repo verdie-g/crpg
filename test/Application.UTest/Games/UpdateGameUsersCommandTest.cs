@@ -31,13 +31,13 @@ public class UpdateGameUsersCommandTest : TestBase
             Platform = Platform.Steam,
             PlatformUserId = "1",
             Gold = 1000,
+            ExperienceMultiplier = 1.0f,
             Characters = new List<Character>
             {
                 new()
                 {
                     Name = "a",
                     Experience = 0,
-                    ExperienceMultiplier = 1.0f,
                     Level = 1,
                     EquippedItems =
                     {

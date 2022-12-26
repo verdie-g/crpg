@@ -1,6 +1,7 @@
 ﻿using Crpg.Application.Common;
 using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities.Characters;
+using Crpg.Domain.Entities.Users;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Common.Services;
@@ -20,7 +21,6 @@ public class CharacterServiceTest
         DefaultStrength = 3,
         DefaultAgility = 3,
         DefaultGeneration = 1,
-        DefaultExperienceMultiplier = 1.0f,
     };
 
     private static readonly ExperienceTable ExperienceTable = new(Constants);
@@ -29,7 +29,13 @@ public class CharacterServiceTest
     public void GiveExperienceShouldGiveExperience()
     {
         CharacterService characterService = new(ExperienceTable, Constants);
-        Character character = new() { Level = 1, Experience = 2, ExperienceMultiplier = 2f, SkippedTheFun = false };
+        Character character = new()
+        {
+            Level = 1,
+            Experience = 2,
+            SkippedTheFun = false,
+            User = new User { ExperienceMultiplier = 2f },
+        };
         characterService.GiveExperience(character, 3);
 
         Assert.AreEqual(1, character.Level);
@@ -40,7 +46,13 @@ public class CharacterServiceTest
     public void GiveExperienceShouldntGiveExperienceIfSkippedTheFun()
     {
         CharacterService characterService = new(ExperienceTable, Constants);
-        Character character = new() { Level = 1, Experience = 2, ExperienceMultiplier = 2f, SkippedTheFun = true };
+        Character character = new()
+        {
+            Level = 1,
+            Experience = 2,
+            SkippedTheFun = true,
+            User = new User { ExperienceMultiplier = 2f },
+        };
         characterService.GiveExperience(character, 3);
 
         Assert.AreEqual(1, character.Level);
@@ -51,7 +63,13 @@ public class CharacterServiceTest
     public void GiveExperienceShouldMakeCharacterLevelUpIfEnoughExperience()
     {
         CharacterService characterService = new(ExperienceTable, Constants);
-        Character character = new() { Level = 1, Experience = 2, ExperienceMultiplier = 2f, SkippedTheFun = false };
+        Character character = new()
+        {
+            Level = 1,
+            Experience = 2,
+            SkippedTheFun = false,
+            User = new User { ExperienceMultiplier = 2f },
+        };
         characterService.GiveExperience(character, 2500);
 
         Assert.AreEqual(2, character.Level);
@@ -140,12 +158,11 @@ public class CharacterServiceTest
     public void SetDefaultValuesShouldSetDefaultValues()
     {
         CharacterService characterService = new(ExperienceTable, Constants);
-        Character character = new() { Level = 2, Experience = 2, ExperienceMultiplier = 2f, SkippedTheFun = false };
+        Character character = new() { Level = 2, Experience = 2, SkippedTheFun = false };
         characterService.SetDefaultValuesForCharacter(character);
 
         Assert.AreEqual(Constants.MinimumLevel, character.Level);
         Assert.AreEqual(0, character.Experience);
-        Assert.AreEqual(Constants.DefaultExperienceMultiplier, character.ExperienceMultiplier);
         Assert.IsFalse(character.SkippedTheFun);
     }
 }

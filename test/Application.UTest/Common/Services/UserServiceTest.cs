@@ -14,6 +14,7 @@ public class UserServiceTest
         DefaultGold = 300,
         DefaultRole = Role.User,
         DefaultHeirloomPoints = 0,
+        DefaultExperienceMultiplier = 1.0f,
     };
 
     [Test]
@@ -26,6 +27,7 @@ public class UserServiceTest
         Assert.AreEqual(Constants.DefaultGold, user.Gold);
         Assert.AreEqual(Constants.DefaultRole, user.Role);
         Assert.AreEqual(Constants.DefaultHeirloomPoints, user.HeirloomPoints);
+        Assert.AreEqual(Constants.DefaultExperienceMultiplier, user.ExperienceMultiplier);
     }
 
     [Test]
