@@ -5,8 +5,7 @@ using TaleWorlds.MountAndBlade;
 namespace Crpg.Module.Common;
 
 /// <summary>
-/// Picks X maps randomly from the pool for the <see cref="MultiplayerIntermissionVotingManager"/> if map voting is
-/// enabled; otherwise shuffle once the pool and picks the maps sequentially.
+/// If voting is enabled, allow voting for the X next maps of the pool; otherwise shuffle once the pool and picks the maps sequentially.
 /// </summary>
 /// <remarks>
 /// I could not find a way to branch to game start/end so I branched to <see cref="OnEndMission"/>. It means that the
@@ -15,7 +14,7 @@ namespace Crpg.Module.Common;
 /// </remarks>
 internal class MapPoolComponent : MissionBehavior
 {
-    private const int MaxMapsToVote = 5; // Only 5 maps fit in the intermission screen.
+    private const int MaxMapsToVote = 2; // N.B: Only 5 maps fit in the intermission screen.
 
     /// <summary>The entire map pool. Needs to be static to survive the mission change.</summary>
     private static string[]? _maps;
@@ -25,54 +24,47 @@ internal class MapPoolComponent : MissionBehavior
 
     protected override void OnEndMission()
     {
-        if (MultiplayerIntermissionVotingManager.Instance.IsMapVoteEnabled)
-        {
-            OnEndMissionMapVote();
-        }
-        else
-        {
-            OnEndMissionNoMapVote();
-        }
-    }
+        bool firstMission = _maps == null; // _maps is null only when the first mission ends.
 
-    private void OnEndMissionMapVote()
-    {
-        var mapVoteItems = MultiplayerIntermissionVotingManager.Instance.MapVoteItems;
-
-        _maps ??= mapVoteItems.Keys.ToArray(); // _maps is null only when the first mission ends.
-
-        _maps.Shuffle();
-        // Remove the current map from the next map vote.
-        int currentMapIndex = Array.IndexOf(_maps, Mission.SceneName);
-        if (currentMapIndex != -1 && currentMapIndex < MaxMapsToVote && _maps.Length > MaxMapsToVote)
+        var votingManager = MultiplayerIntermissionVotingManager.Instance;
+        var mapVoteItems = votingManager.MapVoteItems;
+        if (_maps == null)
         {
-            (_maps[currentMapIndex], _maps[MaxMapsToVote]) = (_maps[MaxMapsToVote], _maps[currentMapIndex]);
-        }
-
-        mapVoteItems.Clear();
-        for (int i = 0; i < Math.Min(_maps.Length, MaxMapsToVote); i += 1)
-        {
-            mapVoteItems[_maps[i]] = 0;
-        }
-    }
-
-    private void OnEndMissionNoMapVote()
-    {
-        if (_maps == null) // _maps is null only when the first mission ends.
-        {
-            var mapVoteItems = MultiplayerIntermissionVotingManager.Instance.MapVoteItems;
             _maps = mapVoteItems.Keys.ToArray();
             mapVoteItems.Clear();
 
             _maps.Shuffle();
             // Move back the first map in first position.
-            int currentMapIndex = _maps.IndexOf(Mission.SceneName);
+            int currentMapIndex = Array.IndexOf(_maps, Mission.SceneName);
             (_maps[currentMapIndex], _maps[0]) = (_maps[0], _maps[currentMapIndex]);
-
-            Debug.Print($"Map vote is disabled. Maps will be played in this order: {string.Join(", ", _maps)}");
+            _mapsIndex = 1;
         }
 
-        _mapsIndex = (_mapsIndex + 1) % _maps.Length;
-        MultiplayerOptions.Instance.GetOptionFromOptionType(MultiplayerOptions.OptionType.Map).UpdateValue(_maps[_mapsIndex]);
+        if (votingManager.IsMapVoteEnabled)
+        {
+            if (!firstMission)
+            {
+                var lastVoteLostMaps = mapVoteItems.Keys.Where(m => m != Mission.SceneName);
+                Debug.Print($"Map {Mission.SceneName} was voted over {string.Join(",", lastVoteLostMaps)}");
+            }
+
+            mapVoteItems.Clear();
+            int maxMapsToVote = Math.Min(_mapsIndex + MaxMapsToVote, _maps.Length);
+            for (; _mapsIndex < maxMapsToVote; _mapsIndex += 1)
+            {
+                mapVoteItems[_maps[_mapsIndex]] = 0;
+            }
+
+            if (_mapsIndex >= _maps.Length)
+            {
+                _mapsIndex = 0;
+                _maps.Shuffle();
+            }
+        }
+        else
+        {
+            MultiplayerOptions.Instance.GetOptionFromOptionType(MultiplayerOptions.OptionType.Map).UpdateValue(_maps[_mapsIndex]);
+            _mapsIndex = (_mapsIndex + 1) % _maps.Length;
+        }
     }
 }

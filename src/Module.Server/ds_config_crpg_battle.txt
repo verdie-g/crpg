@@ -30,7 +30,6 @@ RoundTotal 10
 MapTimeLimit 8
 RoundTimeLimit 300
 WarmupTimeLimit 1
-disable_map_voting
 disable_culture_voting
 crpg_prime_time 19:00-20:00
 start_game
