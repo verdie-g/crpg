@@ -84,7 +84,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
         CrpgNotificationComponent notificationsComponent = new();
 
 #if CRPG_SERVER
-        CrpgHttpClient crpgClient = new();
+        ICrpgClient crpgClient = CrpgClient.Create();
         ChatBox chatBox = Game.Current.GetGameHandler<ChatBox>();
 
         MultiplayerRoundController roundController = new(); // starts/stops round, ends match

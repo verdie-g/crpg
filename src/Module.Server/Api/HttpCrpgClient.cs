@@ -18,22 +18,25 @@ namespace Crpg.Module.Api;
 /// <summary>
 /// Client for Crpg.WebApi.Controllers.GamesController.
 /// </summary>
-internal class CrpgHttpClient : ICrpgClient
+internal class HttpCrpgClient : ICrpgClient
 {
     private readonly HttpClient _httpClient;
+    private readonly string _apiKey;
     private readonly JsonSerializerSettings _serializerSettings;
 
-    public CrpgHttpClient()
+    public HttpCrpgClient(string apiUrl, string apiKey)
     {
         HttpClientHandler httpClientHandler = new() { AutomaticDecompression = DecompressionMethods.GZip };
         _httpClient = new HttpClient(httpClientHandler)
         {
-            BaseAddress = new Uri("https://api.c-rpg.eu"),
+            BaseAddress = new Uri(apiUrl),
             Timeout = TimeSpan.FromSeconds(3),
         };
         _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
-        string version = typeof(CrpgHttpClient).Assembly.GetName().Version.ToString();
+        string version = typeof(HttpCrpgClient).Assembly.GetName().Version.ToString();
         _httpClient.DefaultRequestHeaders.Add("User-Agent",  "cRPG/" + version);
+
+        _apiKey = apiKey;
 
         _serializerSettings = new JsonSerializerSettings
         {
@@ -144,14 +147,13 @@ internal class CrpgHttpClient : ICrpgClient
 
     private async Task RefreshAccessToken()
     {
-        string crpgApiKey = Environment.GetEnvironmentVariable("CRPG_API_KEY") ?? "tototo";
         Debug.Print("Refreshing access token");
         var tokenRequest = new[]
         {
             new KeyValuePair<string, string>("grant_type", "client_credentials"),
             new KeyValuePair<string, string>("scope", "game_api"),
             new KeyValuePair<string, string>("client_id", "crpg-game-server"),
-            new KeyValuePair<string, string>("client_secret", crpgApiKey),
+            new KeyValuePair<string, string>("client_secret", _apiKey),
         };
 
         var tokenResponse = await _httpClient.PostAsync("connect/token", new FormUrlEncodedContent(tokenRequest));

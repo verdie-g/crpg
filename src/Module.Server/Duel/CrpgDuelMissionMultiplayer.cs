@@ -17,10 +17,10 @@ namespace Crpg.Module.Duel;
 /// </summary>
 internal class CrpgDuelMissionMultiplayer : MissionMultiplayerDuel
 {
-    private readonly CrpgHttpClient _crpgClient;
+    private readonly ICrpgClient _crpgClient;
     private float _checkUserUpdate;
 
-    public CrpgDuelMissionMultiplayer(CrpgHttpClient crpgClient)
+    public CrpgDuelMissionMultiplayer(ICrpgClient crpgClient)
     {
         _crpgClient = crpgClient;
         _checkUserUpdate = 0;

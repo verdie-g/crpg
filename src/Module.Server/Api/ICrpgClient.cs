@@ -1,6 +1,5 @@
 ﻿using Crpg.Module.Api.Models;
 using Crpg.Module.Api.Models.Clans;
-using Crpg.Module.Api.Models.Items;
 using Crpg.Module.Api.Models.Restrictions;
 using Crpg.Module.Api.Models.Users;
 

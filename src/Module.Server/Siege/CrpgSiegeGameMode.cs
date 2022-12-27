@@ -73,7 +73,7 @@ internal class CrpgSiegeGameMode : MissionBasedMultiplayerGameMode
         MissionScoreboardComponent scoreboardComponent = new(new SiegeScoreboardData());
 
 #if CRPG_SERVER
-        CrpgHttpClient crpgClient = new();
+        ICrpgClient crpgClient = CrpgClient.Create();
         ChatBox chatBox = Game.Current.GetGameHandler<ChatBox>();
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent,
             () => (new SiegeSpawnFrameBehavior(), new CrpgSiegeSpawningBehavior(_constants)));
