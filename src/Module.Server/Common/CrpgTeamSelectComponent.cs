@@ -94,6 +94,11 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
 
     private void OnRoundEnded()
     {
+        if (_roundController.IsMatchEnding)
+        {
+            return;
+        }
+
         BalanceTeams(firstBalance: false);
     }
 
