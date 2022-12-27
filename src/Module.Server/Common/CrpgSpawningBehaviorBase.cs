@@ -295,7 +295,7 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
 
     protected bool DoesEquipmentContainWeapon(Equipment equipment)
     {
-        for (var i = EquipmentIndex.WeaponItemBeginSlot; i < EquipmentIndex.ExtraWeaponSlot; i += 1)
+        for (var i = EquipmentIndex.Weapon0; i <= EquipmentIndex.ExtraWeaponSlot; i += 1)
         {
             if (!equipment[i].IsEmpty)
             {
