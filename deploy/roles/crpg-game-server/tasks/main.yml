@@ -26,5 +26,71 @@
       - steamcmd
     update_cache: yes
 
+- name: create service
+  template:
+    src: "{{ crpg_game_server_service_name }}@.service.j2"
+    dest: "/lib/systemd/system/{{ crpg_game_server_service_name }}@.service"
+    mode: 0644
+
+- name: reload systemd
+  command: systemctl daemon-reload
+
+- name: stop game server
+  service:
+    name: "{{ crpg_game_server_service_name }}@{{ item }}"
+    state: stopped
+  loop: "{{ crpg_game_server_instance_names }}"
+
+- name: install bannerlord dependencies
+  apt:
+    name:
+      - clang
+      - ufw
+    update_cache: yes
+
 - name: install/update Bannerlord
-  command: "/usr/games/steamcmd +force_install_dir {{ crpg_game_server_path }} +app_update 1863440 +exit"
+  command: "/usr/games/steamcmd +force_install_dir {{ crpg_game_server_path }} +login {{ steam_user_name }} +app_update 1863440 -beta {{ bannerlord_beta_name }} -betapassword {{ bannerlord_beta_password }} +exit"
+  become_user: "{{ crpg_game_server_user }}"
+
+- name: make sure that MultiplayerForcedAvatars folder is present
+  file:
+    path: "{{ crpg_game_server_path }}/Modules/Native/MultiplayerForcedAvatars"
+    state: directory
+    owner: "{{ crpg_game_server_user }}"
+    group: "{{ crpg_game_server_user }}"
+
+- name: download .NET runtime
+  unarchive:
+    src: "https://dotnetcli.azureedge.net/dotnet/aspnetcore/Runtime/3.1.31/aspnetcore-runtime-3.1.31-linux-x64.tar.gz"
+    dest: "{{ crpg_game_server_bin_path | dirname }}"
+    remote_src: True
+
+# TODO: upload cRPG + config file
+
+- name: open bannerlord port
+  ufw:
+    rule: allow
+    port: "7210"
+    proto: udp
+
+- name: open ssh port
+  ufw:
+    rule: allow
+    name: OpenSSH
+
+- name: open bannerlord port
+  ufw:
+    rule: allow
+    port: "7210"
+    proto: udp
+
+- name: enable firewall
+  ufw:
+    state: enabled
+
+- name: start game server
+  service:
+    name: "{{ crpg_game_server_service_name }}@{{ item }}"
+    state: started
+    enabled: yes
+  loop: "{{ crpg_game_server_instance_names }}"

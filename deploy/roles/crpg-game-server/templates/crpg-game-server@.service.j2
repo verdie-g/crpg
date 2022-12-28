@@ -1,0 +1,17 @@
+[Unit]
+Description=cRPG Game Server
+
+[Service]
+WorkingDirectory={{ crpg_game_server_bin_path | dirname }}
+ExecStart={{ crpg_game_server_bin_path | dirname }}/dotnet {{ crpg_game_server_bin_path | basename }} /dedicatedcustomserverconfigfile ../cRPG/%i.txt /dedicatedcustomserver 7210 USER 0 /playerhosteddedicatedserver /disableerrorreporting /dedicatedcustomserverauthtoken {{ bannerlord_token }}
+Restart=always
+RestartSec=5
+KillSignal=SIGINT
+User={{ crpg_game_server_user }}
+Environment=CRPG_ENV=Production
+Environment=CRPG_REGION={{ crpg_region }}
+Environment=CRPG_SERVICE={{ crpg_game_server_service_name }}
+Environment=CRPG_INSTANCE={{ ansible_hostname }}-%i
+
+[Install]
+WantedBy=multi-user.target
