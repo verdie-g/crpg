@@ -13,11 +13,14 @@ steam_api_key: !vault |
   64393632396438306233373865346632356564656363336636613161613036383230333037373065
   6132363630623162326566653830653137383266653664366461
 
+crpg_api_domain_name: api.c-rpg.eu
+
 crpg_api_keys:
   - 4So4WREgKXKQCN0X4li7XmZxQ6yVJmSqSdJTLc8DLBg= # 01
   - sQfJPbFqc7sXihs6R4twVNmtn7FUEdasiCNO1Ap1MOA= # 02
   - 3oCLhkG30JLake3KlijfeuPKYtAPrVzpaz2MkeBjv/s= # 03
   - nG3dby/gJ9U8M2dSeccYH37We1u9ISqaQCxhTz5C5pM= # 04
+  - 5muvjeOGQB+MVGc++Bq4x5Q9s+ft1HWtTfbwpKTrKcY= # 09
   - cn8E7MsclHNqGpXZmqbMiM/j9prtk+shIdCGn2y4xn4= # takeo
   - H7Alh1BMJgHk8U691/UySEvfouF01qpDZs3GZ89SWX4= # Gotha
   - d4OUu1cSQwHmKSgSVVkmGBXlwm+58oXAO/4ZfoszWvc= # Namidaka

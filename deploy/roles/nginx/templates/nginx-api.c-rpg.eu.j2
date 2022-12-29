@@ -1,6 +1,6 @@
 server {
     listen 443 ssl http2;
-    server_name api.{{ crpg_domain_name }};
+    server_name {{ crpg_api_domain_name }};
 
     include /etc/nginx/snippets/crpg-ssl.conf;
 
