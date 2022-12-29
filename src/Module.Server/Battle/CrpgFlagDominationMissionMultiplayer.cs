@@ -399,18 +399,18 @@ internal class CrpgFlagDominationMissionMultiplayer : MissionMultiplayerGameMode
             return;
         }
 
-        var flagsToRemove = _flags.ToArray();
-        flagsToRemove.Shuffle();
-        var flagIndexesToRemove = new HashSet<int>(flagsToRemove
-            .Take(flagsToRemove.Length - 1)
-            .Select(RemoveFlag));
+        var lastFlag = GetLastFlag();
 
-        var remainingFlag = _flags.First(flag => !flagIndexesToRemove.Contains(flag.FlagIndex));
+        int[] flagIndexesToRemove = _flags
+            .Where(f => f.FlagIndex != lastFlag.FlagIndex)
+            .Select(RemoveFlag)
+            .ToArray();
+
         _wereFlagsRemoved = true;
 
-        if (flagIndexesToRemove.Count > 0) // In case there is only one flag on the map.
+        if (flagIndexesToRemove.Length > 0) // In case there is only one flag on the map.
         {
-            NotificationsComponent.FlagXRemaining(remainingFlag);
+            NotificationsComponent.FlagXRemaining(lastFlag);
 
             GameNetwork.BeginBroadcastModuleEvent();
             GameNetwork.WriteMessage(new FlagDominationFlagsRemovedMessage());
@@ -434,11 +434,43 @@ internal class CrpgFlagDominationMissionMultiplayer : MissionMultiplayerGameMode
             return 0;
         }
 
-        return Mission.Current.GetAgentsInRange(flag.Position.AsVec2, FlagCaptureRange)
+        return Mission.GetAgentsInRange(flag.Position.AsVec2, FlagCaptureRange)
             .Count<Agent>(a => a.IsHuman
                                && a.IsActive()
                                && a.Position.DistanceSquared(flag.Position) <= FlagCaptureRangeSquared
                                && a.Team.Side != flagOwner.Side);
+    }
+
+    /// <summary>Gets the last flag that should not be removed.</summary>
+    private FlagCapturePoint GetLastFlag()
+    {
+        var uncapturedFlags = _flags.Where(f => GetFlagOwner(f) == null).ToArray();
+        var defenderFlags = _flags.Where(f => GetFlagOwner(f)?.Side == BattleSideEnum.Defender).ToArray();
+        var attackerFlags = _flags.Where(f => GetFlagOwner(f)?.Side == BattleSideEnum.Attacker).ToArray();
+
+        if (uncapturedFlags.Length != 0)
+        {
+            Debug.Print("Last flag is a random uncaptured one");
+            return uncapturedFlags.GetRandomElement();
+        }
+
+        if (defenderFlags.Length == attackerFlags.Length)
+        {
+            Debug.Print("Last flag is a random one");
+            return _flags.GetRandomElement();
+        }
+
+        var dominatingTeamFlags = defenderFlags.Length > attackerFlags.Length ? defenderFlags : attackerFlags;
+
+        var contestedFlags = dominatingTeamFlags.Where(f => GetNumberOfAttackersAroundFlag(f) > 0).ToArray();
+        if (contestedFlags.Length > 0)
+        {
+            Debug.Print("Last flag is a contested one of the dominating team");
+            return contestedFlags.GetRandomElement();
+        }
+
+        Debug.Print("Last flag is a random one of the dominating team");
+        return dominatingTeamFlags.GetRandomElement();
     }
 
     private int RemoveFlag(FlagCapturePoint flag)
