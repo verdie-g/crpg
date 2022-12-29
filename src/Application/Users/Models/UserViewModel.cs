@@ -1,4 +1,5 @@
 using Crpg.Application.Common.Mappings;
+using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Users;
 
 namespace Crpg.Application.Users.Models;
@@ -13,6 +14,7 @@ public record UserViewModel : IMapFrom<User>
     public int HeirloomPoints { get; init; }
     public float ExperienceMultiplier { get; init; }
     public Role Role { get; init; }
+    public Region? Region { get; init; }
     public bool IsDonor { get; init; }
     public Uri? AvatarSmall { get; init; }
     public Uri? AvatarMedium { get; init; }

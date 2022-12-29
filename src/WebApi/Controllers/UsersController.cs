@@ -100,6 +100,20 @@ public class UsersController : BaseController
     }
 
     /// <summary>
+    /// Update the current user.
+    /// </summary>
+    /// <param name="req">The user with the updated values.</param>
+    /// <returns>The updated user.</returns>
+    /// <response code="200">Updated.</response>
+    /// <response code="400">Bad Request.</response>
+    [HttpPut("self")]
+    public Task<ActionResult<Result<UserViewModel>>> UpdateUser([FromBody] UpdateUserCommand req)
+    {
+        req = req with { UserId = CurrentUser.User!.Id };
+        return ResultToActionAsync(Mediator.Send(req));
+    }
+
+    /// <summary>
     /// Deletes current user.
     /// </summary>
     /// <response code="204">Deleted.</response>
