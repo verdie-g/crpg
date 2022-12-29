@@ -14,6 +14,7 @@ add_map_to_automated_battle_pool mp_skirmish_map_014
 add_map_to_automated_battle_pool mp_skirmish_map_020
 AllowPollsToKickPlayers True
 AllowPollsToChangeMaps True
+disable_culture_voting
 CultureTeam1 vlandia
 CultureTeam2 battania
 RoundPreparationTimeLimit 2
@@ -30,7 +31,6 @@ RoundTotal 10
 MapTimeLimit 8
 RoundTimeLimit 300
 WarmupTimeLimit 1
-disable_culture_voting
 crpg_prime_time 19:00-20:00
 start_game
 set_automated_battle_count -1
