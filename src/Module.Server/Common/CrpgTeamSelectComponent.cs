@@ -75,7 +75,7 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
         }
         else
         {
-            if (message.Team == Mission.SpectatorTeam)
+            if (message.Team == Mission.SpectatorTeam && !message.AutoAssign)
             {
                 ChangeTeamServer(peer, message.Team);
             }
