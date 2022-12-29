@@ -125,7 +125,7 @@
       </b-tooltip>
 
       <b-tooltip
-        label="Reset character to level 1 to grant a bonus multiplier and an heirloom point. (lvl > 30)"
+        label="Reset character to level 1 to grant a bonus multiplier and an heirloom point. (lvl 31+)"
         multilined
       >
         <b-button
