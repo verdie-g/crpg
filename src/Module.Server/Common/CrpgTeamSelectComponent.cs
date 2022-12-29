@@ -85,7 +85,17 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
             }
             else
             {
-                _playersWaitingForTeam.Add(peer.VirtualPlayer.Id);
+                var missionPeer = peer.GetComponent<MissionPeer>();
+                if (missionPeer is { Team: null })
+                {
+                    // If the player just connected to the server, auto-assign their team so they have a chance
+                    // to play the round.
+                    AutoAssignTeam(peer);
+                }
+                else
+                {
+                    _playersWaitingForTeam.Add(peer.VirtualPlayer.Id);
+                }
             }
         }
 
