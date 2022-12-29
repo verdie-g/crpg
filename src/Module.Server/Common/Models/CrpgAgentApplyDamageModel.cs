@@ -17,7 +17,6 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
         _constants = constants;
     }
 
-    // public override float CalculateShieldDamage only has dmg as parameter. Therefore it cannot be used to get any Skill values.
     public override float CalculateDamage(
         in AttackInformation attackInformation,
         in AttackCollisionData collisionData,
@@ -27,17 +26,15 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
         float finalDamage = base.CalculateDamage(attackInformation, collisionData, weapon, baseDamage);
         if (weapon.IsEmpty)
         {
-            return finalDamage;
+            // Increase fist damage with strength.
+            int strengthSkill = GetSkillValue(attackInformation.AttackerAgentOrigin, CrpgSkills.Strength);
+            return finalDamage * (1 + 0.03f * strengthSkill);
         }
 
+        // CalculateShieldDamage only has dmg as parameter. Therefore it cannot be used to get any Skill values.
         if (collisionData.AttackBlockedWithShield && finalDamage > 0)
         {
-            int shieldSkill = 0;
-            if (attackInformation.VictimAgentOrigin is CrpgBattleAgentOrigin crpgOrigin)
-            {
-                shieldSkill = crpgOrigin.Skills.GetPropertyValue(CrpgSkills.Shield);
-            }
-
+            int shieldSkill = GetSkillValue(attackInformation.VictimAgentOrigin, CrpgSkills.Shield);
             finalDamage /= MathHelper.RecursivePolynomialFunctionOfDegree2(shieldSkill, _constants.DurabilityFactorForShieldRecursiveCoefs);
             if (weapon.CurrentUsageItem.WeaponFlags.HasAnyFlag(WeaponFlags.BonusAgainstShield))
             {
@@ -136,5 +133,15 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
         }
 
         return false;
+    }
+
+    private int GetSkillValue(IAgentOriginBase agentOrigin, SkillObject skill)
+    {
+        if (agentOrigin is CrpgBattleAgentOrigin crpgOrigin)
+        {
+            return crpgOrigin.Skills.GetPropertyValue(skill);
+        }
+
+        return 0;
     }
 }
