@@ -46,20 +46,6 @@
     path: "{{ crpg_api_path }}"
   register: crpg_api_path_stat_result
 
-- name: Check that an old cRPG key exists
-  stat:
-    path: "{{ crpg_api_path }}/crpg.key"
-  when: crpg_api_path_stat_result.stat.exists
-  register: crpg_api_key_stat_result
-
-# Copy key if an old version of cRPG API exists and that it contains a key
-- name: Copy old cRPG key
-  copy:
-    src: "{{ crpg_api_path }}/crpg.key"
-    dest: "{{ crpg_api_path }}_new"
-    remote_src: true
-  when: crpg_api_path_stat_result.stat.exists and crpg_api_key_stat_result.stat.exists
-
 - name: Create log folder
   file:
     path: "{{ crpg_api_log_file | dirname }}"
