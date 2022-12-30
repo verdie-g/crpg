@@ -42,6 +42,7 @@
   <string id="str_multiplayer_scene_name.crpg_battle_moig" text="{=!}Moig" />
   <string id="str_multiplayer_scene_name.crpg_battle_motte" text="{=!}Motte" />
   <string id="str_multiplayer_scene_name.crpg_battle_onomasticon" text="{=!}Onomasticon" />
+  <string id="str_multiplayer_scene_name.crpg_battle_persia" text="{=!}Persia" />
   <string id="str_multiplayer_scene_name.crpg_battle_quarry" text="{=!}Quarry" />
   <string id="str_multiplayer_scene_name.crpg_battle_redwoodforest" text="{=!}Red Wood Forest" />
   <string id="str_multiplayer_scene_name.crpg_battle_sallyout" text="{=!}Sally Out" />
@@ -55,8 +56,10 @@
   <string id="str_multiplayer_scene_name.crpg_battle_tavernbrawl" text="{=!}Tavern Brawl" />
   <string id="str_multiplayer_scene_name.crpg_battle_vatnborg" text="{=!}Vatnborg" />
   <string id="str_multiplayer_scene_name.crpg_battle_waterwaytojelkala" text="{=!}Water Way to Jelkala" />
+  <string id="str_multiplayer_scene_name.crpg_battle_zemouri" text="{=!}Zemouri" />
 
   <!-- Siege Maps -->
+  <string id="str_multiplayer_scene_name.crpg_siege_acre" text="{=!}Acre" />
   <string id="str_multiplayer_scene_name.crpg_siege_eastcliff" text="{=!}East Cliff" />
   <string id="str_multiplayer_scene_name.crpg_siege_hades" text="{=!}Hades" />
   <string id="str_multiplayer_scene_name.crpg_siege_hailescastle" text="{=!}Hailes Castle" />
@@ -65,6 +68,7 @@
   <string id="str_multiplayer_scene_name.crpg_siege_neuenburg" text="{=!}Neuenburg" />
   <string id="str_multiplayer_scene_name.crpg_siege_neuenburg_winter" text="{=!}Neuenburg" />
   <string id="str_multiplayer_scene_name.crpg_siege_scarwood" text="{=!}Scarwood" />
+  <string id="str_multiplayer_scene_name.crpg_siege_stronghold" text="{=!}Stronghold" />
   <string id="str_multiplayer_scene_name.crpg_siege_talmberg" text="{=!}Talmberg" />
   <string id="str_multiplayer_scene_name.crpg_siege_wickcastle" text="{=!}Wick Castle" />
 </strings>
