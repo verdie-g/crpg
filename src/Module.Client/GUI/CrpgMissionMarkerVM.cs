@@ -55,7 +55,7 @@ internal class CrpgMissionMarkerVm : ViewModel
             _commanderInfo.OnFlagNumberChangedEvent += OnFlagNumberChangedEvent;
             _commanderInfo.OnCapturePointOwnerChangedEvent += OnCapturePointOwnerChangedEvent;
             OnFlagNumberChangedEvent();
-            if (_gameModeClient is CrpgSiegeMissionMultiplayerClient siegeClient)
+            if (_gameModeClient is CrpgSiegeClient siegeClient)
             {
                 siegeClient.OnCapturePointRemainingMoraleGainsChangedEvent += OnCapturePointRemainingMoraleGainsChanged;
             }

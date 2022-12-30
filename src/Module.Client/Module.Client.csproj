@@ -29,15 +29,16 @@
     <Compile Remove="..\Module.Server\$(BaseIntermediateOutputPath)\**;..\Module.Server\$(BaseOutputPath)\**" />
     <Compile Remove="..\Module.Server\Rating\**" />
     <Compile Remove="..\Module.Server\Api\*Client.cs" />
-    <Compile Remove="..\Module.Server\Battle\CrpgBattleMissionMultiplayer.cs" />
+    <Compile Remove="..\Module.Server\Battle\CrpgFlagDominationServer.cs" />
+    <Compile Remove="..\Module.Server\Siege\CrpgSiegeServer.cs" />
+    <Compile Remove="..\Module.Server\Duel\CrpgDuelServer.cs" />
+    <Compile Remove="..\Module.Server\Duel\CrpgDuelSpawningBehavior.cs" />
     <Compile Remove="..\Module.Server\Balancing\**\*" />
     <Compile Remove="..\Module.Server\Common\CrpgServerConfiguration.cs" />
     <Compile Remove="..\Module.Server\Common\CrpgUserManagerServer.cs" />
     <Compile Remove="..\Module.Server\Common\CrpgRewardServer.cs" />
     <Compile Remove="..\Module.Server\Common\PlayerStatsComponent.cs" />
     <Compile Remove="..\Module.Server\Common\NotAllPlayersReadyComponent.cs" />
-    <Compile Remove="..\Module.Server\Duel\CrpgDuelMissionMultiplayer.cs" />
-    <Compile Remove="..\Module.Server\Duel\CrpgDuelSpawningBehavior.cs" />
     <Compile Remove="..\Module.Server\Common\ChatCommands\**\*" />
     <Compile Remove="..\Module.Server\HarmonyPatches\**\*" />
   </ItemGroup>

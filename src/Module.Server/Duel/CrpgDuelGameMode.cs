@@ -70,7 +70,7 @@ internal class CrpgDuelGameMode : MissionBasedMultiplayerGameMode
 #if CRPG_SERVER
         ICrpgClient crpgClient = CrpgClient.Create();
         ChatBox chatBox = Game.Current.GetGameHandler<ChatBox>();
-        CrpgDuelMissionMultiplayer duelMission = new(crpgClient);
+        CrpgDuelServer duelServer = new(crpgClient);
 #endif
         CrpgDuelMissionMultiplayerClient duelClient = new();
         MissionState.OpenNew(
@@ -98,9 +98,9 @@ internal class CrpgDuelGameMode : MissionBasedMultiplayerGameMode
                     new MissionScoreboardComponent(new DuelScoreboardData()), // score board
                     new MultiplayerPreloadHelper(),
 #if CRPG_SERVER
-                    duelMission,
+                    duelServer,
                     // SpawnFrameBehaviour: where to spawn, SpawningBehaviour: when to spawn
-                    new SpawnComponent(new DuelSpawnFrameBehavior(), new CrpgDuelSpawningBehavior(_constants, duelMission)),
+                    new SpawnComponent(new DuelSpawnFrameBehavior(), new CrpgDuelSpawningBehavior(_constants, duelServer)),
                     new MultiplayerAdminComponent(), // admin UI to kick player or restart game
                     new MissionAgentPanicHandler(),
                     new AgentHumanAILogic(), // bot intelligence

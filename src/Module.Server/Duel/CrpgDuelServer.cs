@@ -15,12 +15,12 @@ namespace Crpg.Module.Duel;
 /// A lot of duel GUI elements check for the MissionMultiplayerDuel mission. Without a declared MissionMultiplayerDuel
 /// the game will just crash.
 /// </summary>
-internal class CrpgDuelMissionMultiplayer : MissionMultiplayerDuel
+internal class CrpgDuelServer : MissionMultiplayerDuel
 {
     private readonly ICrpgClient _crpgClient;
     private float _checkUserUpdate;
 
-    public CrpgDuelMissionMultiplayer(ICrpgClient crpgClient)
+    public CrpgDuelServer(ICrpgClient crpgClient)
     {
         _crpgClient = crpgClient;
         _checkUserUpdate = 0;

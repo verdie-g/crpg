@@ -8,7 +8,7 @@ using TaleWorlds.MountAndBlade.Objects;
 
 namespace Crpg.Module.Battle;
 
-internal class CrpgFlagDominationMissionMultiplayerClient : MissionMultiplayerGameModeBaseClient, ICommanderInfo
+internal class CrpgFlagDominationClient : MissionMultiplayerGameModeBaseClient, ICommanderInfo
 {
     private const int BattleFlagsRemovalTime = 120;
     private const int SkirmishFlagsRemovalTime = 120;
@@ -26,7 +26,7 @@ internal class CrpgFlagDominationMissionMultiplayerClient : MissionMultiplayerGa
     public event Action? OnFlagNumberChangedEvent;
     public event Action<FlagCapturePoint, Team?>? OnCapturePointOwnerChangedEvent;
 
-    public CrpgFlagDominationMissionMultiplayerClient(bool isSkirmish)
+    public CrpgFlagDominationClient(bool isSkirmish)
     {
         _isSkirmish = isSkirmish;
     }

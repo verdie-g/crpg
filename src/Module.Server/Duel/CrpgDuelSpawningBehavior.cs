@@ -10,14 +10,14 @@ namespace Crpg.Module.Duel;
 
 internal class CrpgDuelSpawningBehavior : CrpgSpawningBehaviorBase
 {
-    private readonly CrpgDuelMissionMultiplayer _duelMission;
+    private readonly CrpgDuelServer _duelServer;
 
-    public CrpgDuelSpawningBehavior(CrpgConstants constants, CrpgDuelMissionMultiplayer duelMission)
+    public CrpgDuelSpawningBehavior(CrpgConstants constants, CrpgDuelServer duelServer)
         : base(constants)
     {
         UpdatedPlayerPreferredArenaOnce = new HashSet<PlayerId>();
         IsSpawningEnabled = true;
-        _duelMission = duelMission;
+        _duelServer = duelServer;
     }
 
     public HashSet<PlayerId> UpdatedPlayerPreferredArenaOnce { get; private set; }
@@ -73,7 +73,7 @@ internal class CrpgDuelSpawningBehavior : CrpgSpawningBehaviorBase
         GameNetwork.EndModuleEventAsServer();
 
         // Sets the preferred arena server side.
-        List<KeyValuePair<MissionPeer, TroopType>> peersAndSelections = (List<KeyValuePair<MissionPeer, TroopType>>)ReflectionHelper.GetField(_duelMission, "_peersAndSelections");
+        List<KeyValuePair<MissionPeer, TroopType>> peersAndSelections = (List<KeyValuePair<MissionPeer, TroopType>>)ReflectionHelper.GetField(_duelServer, "_peersAndSelections");
         for (int i = 0; i < peersAndSelections.Count; i++)
         {
             if (peersAndSelections[i].Key == peer)

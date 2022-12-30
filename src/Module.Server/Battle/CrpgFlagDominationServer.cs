@@ -10,7 +10,7 @@ using Timer = TaleWorlds.Core.Timer;
 
 namespace Crpg.Module.Battle;
 
-internal class CrpgFlagDominationMissionMultiplayer : MissionMultiplayerGameModeBase
+internal class CrpgFlagDominationServer : MissionMultiplayerGameModeBase
 {
     private const uint FlagNeutralColor1 = 4284111450;
     private const uint FlagNeutralColor2 = uint.MaxValue;
@@ -22,7 +22,7 @@ internal class CrpgFlagDominationMissionMultiplayer : MissionMultiplayerGameMode
     private const float SkirmishMoraleGainOnTick = 0.00125f;
     private const float SkirmishMoraleGainMultiplierLastFlag = 2f;
 
-    private readonly CrpgFlagDominationMissionMultiplayerClient _flagDominationClient;
+    private readonly CrpgFlagDominationClient _flagDominationClient;
     private readonly bool _isSkirmish;
 
     /// <summary>A number between -1.0 and 1.0. Less than 0 means the defenders are winning. Greater than 0 for attackers.</summary>
@@ -40,7 +40,7 @@ internal class CrpgFlagDominationMissionMultiplayer : MissionMultiplayerGameMode
     public override bool AllowCustomPlayerBanners() => false;
     public override bool UseRoundController() => true;
 
-    public CrpgFlagDominationMissionMultiplayer(CrpgFlagDominationMissionMultiplayerClient flagDominationClient, bool isSkirmish)
+    public CrpgFlagDominationServer(CrpgFlagDominationClient flagDominationClient, bool isSkirmish)
     {
         _flagDominationClient = flagDominationClient;
         _isSkirmish = isSkirmish;

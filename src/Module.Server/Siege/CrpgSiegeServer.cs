@@ -9,7 +9,7 @@ using TaleWorlds.ObjectSystem;
 
 namespace Crpg.Module.Siege;
 
-internal class CrpgSiegeMissionMultiplayerServer : MissionMultiplayerGameModeBase, IAnalyticsFlagInfo
+internal class CrpgSiegeServer : MissionMultiplayerGameModeBase, IAnalyticsFlagInfo
 {
     private const float MoraleTickTimeInSeconds = 1f;
     private const int MaxMoraleGainPerFlag = 90;
@@ -19,7 +19,7 @@ internal class CrpgSiegeMissionMultiplayerServer : MissionMultiplayerGameModeBas
     private const float FlagCaptureRange = 4f;
     private const float FlagCaptureRangeSquared = FlagCaptureRange * FlagCaptureRange;
 
-    private readonly CrpgSiegeMissionMultiplayerClient _client;
+    private readonly CrpgSiegeClient _client;
     private readonly MissionScoreboardComponent _missionScoreboardComponent;
 
     private int[] _morales = Array.Empty<int>();
@@ -31,8 +31,8 @@ internal class CrpgSiegeMissionMultiplayerServer : MissionMultiplayerGameModeBas
     private float _dtSumTickFlags;
     private bool _firstTickDone;
 
-    public CrpgSiegeMissionMultiplayerServer(
-        CrpgSiegeMissionMultiplayerClient client,
+    public CrpgSiegeServer(
+        CrpgSiegeClient client,
         MissionScoreboardComponent missionScoreboardComponent)
     {
         _client = client;
@@ -209,7 +209,7 @@ internal class CrpgSiegeMissionMultiplayerServer : MissionMultiplayerGameModeBas
         int defenderMorale = MBMath.ClampInt(
             _morales[(int)BattleSideEnum.Defender] + GetMoraleGain(BattleSideEnum.Defender),
             0,
-            CrpgSiegeMissionMultiplayerClient.StartingMorale);
+            CrpgSiegeClient.StartingMorale);
         int attackerMorale = MathF.Max(_morales[(int)BattleSideEnum.Attacker] + GetMoraleGain(BattleSideEnum.Attacker), 0);
         GameNetwork.BeginBroadcastModuleEvent();
         GameNetwork.WriteMessage(new SiegeMoraleChangeMessage(attackerMorale, defenderMorale, _flagRemainingMoraleGains));
@@ -348,7 +348,7 @@ internal class CrpgSiegeMissionMultiplayerServer : MissionMultiplayerGameModeBas
         _morales = new int[(int)BattleSideEnum.NumSides];
         for (int i = 0; i < _morales.Length; i += 1)
         {
-            _morales[i] = CrpgSiegeMissionMultiplayerClient.StartingMorale;
+            _morales[i] = CrpgSiegeClient.StartingMorale;
         }
     }
 
@@ -364,7 +364,7 @@ internal class CrpgSiegeMissionMultiplayerServer : MissionMultiplayerGameModeBas
             flag.SetTeamColorsSynched(4284111450U, uint.MaxValue);
             _flagOwners[flag.FlagIndex] = null;
             _flagRemainingMoraleGains[flag.FlagIndex] = MaxMoraleGainPerFlag;
-            if (flag.GameEntity.HasTag(CrpgSiegeMissionMultiplayerClient.MasterFlagTag))
+            if (flag.GameEntity.HasTag(CrpgSiegeClient.MasterFlagTag))
             {
                 _masterFlag = flag;
             }

@@ -7,7 +7,7 @@ using TaleWorlds.MountAndBlade.Objects;
 
 namespace Crpg.Module.Siege;
 
-internal class CrpgSiegeMissionMultiplayerClient : MissionMultiplayerGameModeBaseClient, ICommanderInfo
+internal class CrpgSiegeClient : MissionMultiplayerGameModeBaseClient, ICommanderInfo
 {
     public const string MasterFlagTag = "keep_capture_point";
     public const int StartingMorale = 360;

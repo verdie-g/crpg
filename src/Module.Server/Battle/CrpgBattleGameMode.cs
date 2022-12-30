@@ -97,7 +97,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent, null);
         CrpgTeamSelectComponent teamSelectComponent = new();
 #endif
-        CrpgFlagDominationMissionMultiplayerClient flagDominationClient = new(_isSkirmish);
+        CrpgFlagDominationClient flagDominationClient = new(_isSkirmish);
 
         MissionState.OpenNew(
             Name,
@@ -128,7 +128,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     notificationsComponent,
 #if CRPG_SERVER
                     roundController,
-                    new CrpgFlagDominationMissionMultiplayer(flagDominationClient, _isSkirmish),
+                    new CrpgFlagDominationServer(flagDominationClient, _isSkirmish),
                     new CrpgRewardServer(crpgClient, _constants, warmupComponent, roundController),
                     // SpawnFrameBehaviour: where to spawn, SpawningBehaviour: when to spawn
                     new SpawnComponent(new BattleSpawnFrameBehavior(),

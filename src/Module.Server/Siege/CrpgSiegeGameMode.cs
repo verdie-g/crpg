@@ -69,7 +69,7 @@ internal class CrpgSiegeGameMode : MissionBasedMultiplayerGameMode
     public override void StartMultiplayerGame(string scene)
     {
         CrpgNotificationComponent notificationsComponent = new();
-        CrpgSiegeMissionMultiplayerClient siegeClient = new();
+        CrpgSiegeClient siegeClient = new();
         MissionScoreboardComponent scoreboardComponent = new(new SiegeScoreboardData());
 
 #if CRPG_SERVER
@@ -112,7 +112,7 @@ internal class CrpgSiegeGameMode : MissionBasedMultiplayerGameMode
                 new MissionLobbyEquipmentNetworkComponent(),
 
 #if CRPG_SERVER
-                new CrpgSiegeMissionMultiplayerServer(siegeClient, scoreboardComponent),
+                new CrpgSiegeServer(siegeClient, scoreboardComponent),
                 new CrpgRewardServer(crpgClient, _constants, warmupComponent, roundController: null),
                 new CrpgUserManagerServer(crpgClient),
                 new KickInactiveBehavior(inactiveTimeLimit: 90, warmupComponent),
