@@ -8,4 +8,9 @@ internal static class CrpgCharacterRatingExtension
     {
         return 0.0025f * (float)Math.Pow(rating.Value - 2 * rating.Deviation, 1.5f);
     }
+
+    public static float GetRegularWorkingRating(this CrpgCharacterRating rating)
+    {
+        return rating.Value - 2 * rating.Deviation;
+    }
 }
