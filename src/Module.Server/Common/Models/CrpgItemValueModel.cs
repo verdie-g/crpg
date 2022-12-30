@@ -358,9 +358,9 @@ internal class CrpgItemValueModel : ItemValueModel
                   (1.0f * weapon.MaxDataValue
                 * (1.0f + weapon.BodyArmor / 10f)
                 + 1.0f * weapon.ThrustSpeed)
-                * weapon.GetRealWeaponLength()
+                * (0.14f + weapon.GetRealWeaponLength())
                 / (6f + weaponComponent.Item.Weight)
-                / 20f
+                / 25f
                 * 10f;
     }
 
