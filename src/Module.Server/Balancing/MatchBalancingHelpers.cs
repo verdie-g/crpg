@@ -414,8 +414,8 @@ internal static class MatchBalancingHelpers
     public static void DumpTeamsStatus(GameMatch gameMatch)
     {
         Debug.Print("--------------------------------------------");
-        Debug.Print($"Team A Count {gameMatch.TeamA.Count} Rating: {RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamA)}");
-        Debug.Print($"Team B Count {gameMatch.TeamB.Count} Rating: {RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamB)}");
+        Debug.Print($"Team A Count {gameMatch.TeamA.Count} WorkingRating: {RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamA)} GlickoRating: {RatingHelpers.ComputeTeamGlickoRatingPowerSum(gameMatch.TeamB)}");
+        Debug.Print($"Team B Count {gameMatch.TeamB.Count} WorkingRating: {RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamB)} GlickoRating: {RatingHelpers.ComputeTeamGlickoRatingPowerSum(gameMatch.TeamB)}");
         Debug.Print($"Waiting Team Count {gameMatch.Waiting.Count} Rating: {RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.Waiting)}");
         Debug.Print("--------------------------------------------");
     }

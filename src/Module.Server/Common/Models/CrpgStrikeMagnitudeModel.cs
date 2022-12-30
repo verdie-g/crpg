@@ -71,7 +71,6 @@ internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
             default: // Weapon that do not have a wooden handle
                 impactPointFactor = (float)Math.Pow(10f, -4f * Math.Pow(impactPoint - 0.75, 2f));
                 return BladeDamageFactorToDamageRatio * (0.8f + 0.2f * impactPointFactor) * ((float)Math.Pow(swingSpeedPercentage, 5f) + extraLinearSpeed / 10f);
-
         }
     }
 
