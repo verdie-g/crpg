@@ -6868,43 +6868,6 @@
     "weapons": []
   },
   {
-    "id": "crpg_buckler",
-    "name": "Buckler",
-    "culture": "Sturgia",
-    "type": "Shield",
-    "price": 9115,
-    "weight": 1.0,
-    "tier": 9.928137,
-    "requirement": 0,
-    "flags": [
-      "ForceAttachOffHandPrimaryItemBone",
-      "HeldInOffHand"
-    ],
-    "weapons": [
-      {
-        "class": "LargeShield",
-        "itemUsage": "hand_shield",
-        "accuracy": 100,
-        "missileSpeed": 0,
-        "stackAmount": 200,
-        "length": 15,
-        "balance": 0.0,
-        "handling": 110,
-        "bodyArmor": 15,
-        "flags": [
-          "HasHitPoints",
-          "CanBlockRanged"
-        ],
-        "thrustDamage": 5,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 110,
-        "swingDamage": 0,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 100
-      }
-    ]
-  },
-  {
     "id": "crpg_burlap_sack_dress",
     "name": "Burlap Dress",
     "culture": "Looters",
