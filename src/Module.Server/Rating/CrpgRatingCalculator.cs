@@ -7,7 +7,7 @@ namespace Crpg.Module.Rating;
 [SuppressMessage("StyleCop.CSharp.NamingRules", "SA1312:Variable names should begin with lower-case letter", Justification = "a and A are used in the formulas")]
 internal static class CrpgRatingCalculator
 {
-    private const float Tau = 1.2f;
+    private const float Tau = 0.75f;
     private const float ConvergenceTolerance = 0.000001f;
 
     /// <summary>

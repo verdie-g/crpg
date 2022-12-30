@@ -40,7 +40,7 @@
   "shieldDefendStunMultiplierForSkillRecursiveCoefs": [0.625, 0.18, 0.07],
   "armorSetRequirementPowerMeanPValue": 4,
   "defaultRating": 1500.0,
-  "defaultRatingDeviation": 1500,
+  "defaultRatingDeviation": 350,
   "defaultRatingVolatility": 0.06,
   "defaultRole": "User",
   "defaultGold": 5000,
