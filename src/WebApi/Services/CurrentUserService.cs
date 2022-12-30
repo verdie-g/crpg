@@ -27,8 +27,8 @@ public class CurrentUserService : ICurrentUserService
             if (authorizationHeader != null)
             {
                 string decodedJwtPayload = Base64UrlEncoder.Decode(authorizationHeader.Split('.')[1]);
-                string httpUser = JsonSerializer.Serialize(claimsPrincipal);
-                Logger.Log(LogLevel.Warning, "User id or role in request was null. HTTP context user: {0}. JWT payload: {1} ({2})", httpUser, decodedJwtPayload, httpContext.Request.Path);
+                string claimsStr = JsonSerializer.Serialize(claimsPrincipal.Claims.Select(c => $"{c.Type}: {c.Value}"));
+                Logger.Log(LogLevel.Warning, "User id or role in request was null. Claims: {0}. JWT payload: {1} ({2})", claimsStr, decodedJwtPayload, httpContext.Request.Path);
             }
 
             return;
