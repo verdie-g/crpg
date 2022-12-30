@@ -1991,10 +1991,6 @@
       <AvailablePiece id="crpg_hoplite_blade_1" />
       <AvailablePiece id="crpg_hoplite_guard_1" />
       <AvailablePiece id="crpg_hoplite_pommel_1" />
-      <AvailablePiece id="crpg_hoplite_handle_2" />
-      <AvailablePiece id="crpg_hoplite_blade_2" />
-      <AvailablePiece id="crpg_hoplite_guard_2" />
-      <AvailablePiece id="crpg_hoplite_pommel_2" />
       <AvailablePiece id="crpg_iklwa_handle_1" />
       <AvailablePiece id="crpg_iklwa_blade_1" />
     </AvailablePieces>
@@ -2321,10 +2317,6 @@
       <AvailablePiece id="crpg_hoplite_blade_1" />
       <AvailablePiece id="crpg_hoplite_guard_1" />
       <AvailablePiece id="crpg_hoplite_pommel_1" />
-      <AvailablePiece id="crpg_hoplite_handle_2" />
-      <AvailablePiece id="crpg_hoplite_blade_2" />
-      <AvailablePiece id="crpg_hoplite_guard_2" />
-      <AvailablePiece id="crpg_hoplite_pommel_2" />
       <AvailablePiece id="crpg_iklwa_handle_1" />
       <AvailablePiece id="crpg_iklwa_blade_1" />
 

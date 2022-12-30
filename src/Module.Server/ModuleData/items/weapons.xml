@@ -197,15 +197,15 @@
   </CraftedItem>
   <CraftedItem id="crpg_knights_fall_mace_t3" name="{=BYPhysbH}Knight's Fall" crafting_template="crpg_Mace" is_merchandise="false">
     <Pieces>
-      <Piece id="crpg_knights_fall_mace_t3_blade" Type="Blade" />
-      <Piece id="crpg_knights_fall_mace_t3_handle" Type="Handle" />
+      <Piece id="crpg_knights_fall_mace_t3_blade" Type="Blade" scale_factor="110"/>
+      <Piece id="crpg_knights_fall_mace_t3_handle" Type="Handle" scale_factor="180" />
       <Piece id="crpg_knights_fall_mace_t3_pommel" Type="Pommel" />
     </Pieces>
   </CraftedItem>
   <CraftedItem id="crpg_judgement_mace_t3" name="{=KRuZuMFI}Judgement" crafting_template="crpg_Mace" is_merchandise="false">
     <Pieces>
       <Piece id="crpg_judgement_mace_t3_blade" Type="Blade" scale_factor="160" />
-      <Piece id="crpg_judgement_mace_t3_handle" Type="Handle" scale_factor="100" />
+      <Piece id="crpg_judgement_mace_t3_handle" Type="Handle" scale_factor="120" />
     </Pieces>
   </CraftedItem>
   <CraftedItem id="crpg_black_heart_2haxe_t3" name="{=2dJ5HB8a}Black Heart" crafting_template="crpg_TwoHandedAxe" is_merchandise="false">
@@ -310,7 +310,7 @@
       <Piece id="crpg_imperial_axe_t3_handle" Type="Handle" scale_factor="86" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_woodland_axe_t3" name="{=6q0nmVtg}Shepherd Axe" crafting_template="crpg_OneHandedAxe" culture="Culture.battania" modifier_group="axe">
+  <CraftedItem id="crpg_woodland_axe_t3" name="{=6q0nmVtg}Saxon Hooked Axe" crafting_template="crpg_OneHandedAxe" culture="Culture.battania" modifier_group="axe">
     <Pieces>
       <Piece id="crpg_woodland_axe_t3_blade" Type="Blade" scale_factor="100" />
       <Piece id="crpg_woodland_axe_t3_handle" Type="Handle" scale_factor="100" />
@@ -1074,7 +1074,7 @@
   </CraftedItem>
   <CraftedItem id="crpg_aserai_sword_5_t4" name="{=fuyj7s3F}Fine Steel Scimitar" crafting_template="crpg_OneHandedSword" culture="Culture.aserai" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_aserai_sword_5_t4_blade" Type="Blade" scale_factor="80" />
+      <Piece id="crpg_aserai_sword_5_t4_blade" Type="Blade" scale_factor="78" />
       <Piece id="crpg_aserai_sword_5_t4_guard" Type="Guard" scale_factor="98" />
       <Piece id="crpg_aserai_sword_5_t4_handle" Type="Handle" scale_factor="100" />
       <Piece id="crpg_aserai_sword_5_t4_pommel" Type="Pommel" scale_factor="100" />
@@ -1654,10 +1654,10 @@
     </Pieces>
   </CraftedItem>
 
-  <CraftedItem id="crpg_vlandia_mace_2_t4" name="{=dSTxsYsh}Fullered Cavalry Mace" crafting_template="crpg_Mace" culture="Culture.vlandia" modifier_group="mace">
+  <CraftedItem id="crpg_vlandia_mace_2_t4" name="{=dSTxsYsh}Fullered Western Mace" crafting_template="crpg_Mace" culture="Culture.vlandia" modifier_group="mace">
     <Pieces>
-      <Piece id="crpg_vlandia_mace_2_t4_blade" Type="Blade" />
-      <Piece id="crpg_vlandia_mace_2_t4_handle" Type="Handle" />
+      <Piece id="crpg_vlandia_mace_2_t4_blade" Type="Blade" scale_factor="130"/>
+      <Piece id="crpg_vlandia_mace_2_t4_handle" Type="Handle" scale_factor="160" />
       <Piece id="crpg_vlandia_mace_2_t4_pommel" Type="Pommel" />
     </Pieces>
   </CraftedItem>
@@ -1702,8 +1702,8 @@
   </CraftedItem>
   <CraftedItem id="crpg_eastern_steel_mace_t4" name="{=xYk4953c}Steel Mace" crafting_template="crpg_Mace" culture="Culture.khuzait" modifier_group="mace">
     <Pieces>
-      <Piece id="crpg_eastern_steel_mace_t4_blade" Type="Blade" />
-      <Piece id="crpg_eastern_steel_mace_t4_handle" Type="Handle" />
+      <Piece id="crpg_eastern_steel_mace_t4_blade" Type="Blade" scale_factor="105" />
+      <Piece id="crpg_eastern_steel_mace_t4_handle" Type="Handle" scale_factor="140" />
       <Piece id="crpg_eastern_steel_mace_t4_pommel" Type="Pommel" scale_factor="90" />
     </Pieces>
   </CraftedItem>
@@ -1716,15 +1716,15 @@
   </CraftedItem>
   <CraftedItem id="crpg_vlandia_mace_3_t5" name="{=rnzpyc0N}Pernach" crafting_template="crpg_Mace" culture="Culture.vlandia" modifier_group="mace">
     <Pieces>
-      <Piece id="crpg_vlandia_mace_3_t5_blade" Type="Blade" />
-      <Piece id="crpg_vlandia_mace_3_t5_handle" Type="Handle" />
-      <Piece id="crpg_vlandia_mace_3_t5_pommel" Type="Pommel" scale_factor="108" />
+      <Piece id="crpg_vlandia_mace_3_t5_blade" Type="Blade" scale_factor="120"/>
+      <Piece id="crpg_vlandia_mace_3_t5_handle" Type="Handle" scale_factor="150" />
+      <Piece id="crpg_vlandia_mace_3_t5_pommel" Type="Pommel" scale_factor="108"/>
     </Pieces>
   </CraftedItem>
   <CraftedItem id="crpg_empire_mace_4_t5" name="{=UMX05EQF}Light Royal Mace" crafting_template="crpg_Mace" culture="Culture.empire" modifier_group="mace">
     <Pieces>
-      <Piece id="crpg_empire_mace_4_t5_blade" Type="Blade" />
-      <Piece id="crpg_empire_mace_4_t5_handle" Type="Handle" />
+      <Piece id="crpg_empire_mace_4_t5_blade" Type="Blade" scale_factor="105" />
+      <Piece id="crpg_empire_mace_4_t5_handle" Type="Handle" scale_factor="130" />
       <Piece id="crpg_empire_mace_4_t5_pommel" Type="Pommel" />
     </Pieces>
   </CraftedItem>
@@ -2400,14 +2400,6 @@
       <Piece id="crpg_iklwa_handle_1" Type="Handle" scale_factor="30" />
     </Pieces>
   </CraftedItem>
-     <CraftedItem id="crpg_hoplite_spear_2" name="{=}Leonidas Wrath" crafting_template="crpg_TwoHandedPolearm" culture="Culture.vlandia" modifier_group="polearm">
-    <Pieces>
-      <Piece id="crpg_hoplite_blade_2" Type="Blade" scale_factor="90" />
-      <Piece id="crpg_hoplite_guard_2" Type="Guard" scale_factor="90" />
-      <Piece id="crpg_hoplite_handle_2" Type="Handle" scale_factor="75" />
-      <Piece id="crpg_hoplite_pommel_2" Type="Pommel" scale_factor="100" />
-    </Pieces>
-  </CraftedItem>
   <CraftedItem id="crpg_maul" name="{=}Great Maul" crafting_template="crpg_TwoHandedMace" modifier_group="cheap_weapon">
     <Pieces>
       <Piece id="crpg_maul_head" Type="Blade" scale_factor="107"/>
@@ -2460,10 +2452,10 @@
     </ItemComponent>
     <Flags />
   </Item>
-  <CraftedItem id="crpg_sherpherds" name="Sherpherd's Axe" crafting_template="crpg_OneHandedAxe" culture="Culture.sturgia" modifier_group="axe">
+  <CraftedItem id="crpg_sherpherds" name="Shepherd Axe" crafting_template="crpg_OneHandedAxe" culture="Culture.battania" modifier_group="axe">
     <Pieces>
-      <Piece id="crpg_sherpherds_head" Type="Blade" scale_factor="100" />
-      <Piece id="crpg_sherpherds_handle" Type="Handle" scale_factor="100" />
+      <Piece id="crpg_sherpherds_head" Type="Blade" scale_factor="105" />
+      <Piece id="crpg_sherpherds_handle" Type="Handle" scale_factor="144" />
     </Pieces>
   </CraftedItem>
 </Items>

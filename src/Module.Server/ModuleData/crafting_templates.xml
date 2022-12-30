@@ -1718,10 +1718,6 @@
       <UsablePiece piece_id="crpg_hoplite_handle_1" />
       <UsablePiece piece_id="crpg_hoplite_guard_1" />
       <UsablePiece piece_id="crpg_hoplite_pommel_1" />
-      <UsablePiece piece_id="crpg_hoplite_blade_2" />
-      <UsablePiece piece_id="crpg_hoplite_handle_2" />
-      <UsablePiece piece_id="crpg_hoplite_guard_2" />
-      <UsablePiece piece_id="crpg_hoplite_pommel_2" />
       <UsablePiece piece_id="crpg_iklwa_handle_1" />
       <UsablePiece piece_id="crpg_iklwa_blade_1" />
     </UsablePieces>
