@@ -34,7 +34,7 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_mount_fast_10" name="Lusitano Pureblood Courser" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
+  <Item id="crpg_mount2_fast_10" name="Lusitano Pureblood Courser" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="68" speed="55" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-10" modifier_group="horse">
         <AdditionalMeshes>
@@ -172,7 +172,7 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_mount_charger_10" name="Neapolitan Charger" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="450" difficulty="0" Type="Horse">
+  <Item id="crpg_mount2_charger_10" name="Neapolitan Charger" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="72" speed="44" charge_damage="8" body_length="105" is_mountable="true" extra_health="25" modifier_group="horse">
         <AdditionalMeshes>
@@ -316,7 +316,7 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_mount_balanced_10" name="Parthian Destrier" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="430" difficulty="0" Type="Horse">
+  <Item id="crpg_mount2_balanced_10" name="Parthian Destrier" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="78" speed="46" charge_damage="3" body_length="100" is_mountable="true" extra_health="-1" modifier_group="horse">
         <AdditionalMeshes>
@@ -460,7 +460,7 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_mount_maneuverable_10" name="Arabian Palfrey" mesh="horse_brown" item_category="noble_horse" culture="Culture.khuzait" subtype="horse" weight="300" difficulty="0" appearance="0" Type="Horse">
+  <Item id="crpg_mount2_maneuverable_10" name="Arabian Palfrey" mesh="horse_brown" item_category="noble_horse" culture="Culture.khuzait" subtype="horse" weight="300" difficulty="0" appearance="0" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="85" speed="44" charge_damage="4" body_length="95" is_mountable="true" extra_health="-12" skeleton_scale="khuzait_horse">
         <AdditionalMeshes>
@@ -568,25 +568,25 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_mule" name="Mule" mesh="mule_mesh" item_category="sumpter_horse" weight="300" Type="Horse">
+  <Item id="crpg_mule2_1" name="Mule" mesh="mule_mesh" item_category="sumpter_horse" weight="300" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.mule" maneuver="58" speed="30" charge_damage="0" body_length="92" is_mountable="true" extra_health="100" is_pack_animal="true" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-    <Item id="crpg_mule_2" name="Chadz" mesh="mule_mesh" item_category="sumpter_horse" weight="300" Type="Horse">
+    <Item id="crpg_mule2_2" name="Chadz" mesh="mule_mesh" item_category="sumpter_horse" weight="300" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.mule" maneuver="60" speed="33" charge_damage="1" body_length="92" is_mountable="true" extra_health="175" is_pack_animal="true" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_camel_11" name="Padisha" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
+  <Item id="crpg_camel2_11" name="Padisha" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.camel" maneuver="86" speed="38" charge_damage="6" body_length="110" extra_health="40" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_camel_10" name="Achaemenian War Camel" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
+  <Item id="crpg_camel2_10" name="Achaemenian War Camel" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.camel" maneuver="84" speed="35" charge_damage="5" body_length="110" extra_health="54" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
