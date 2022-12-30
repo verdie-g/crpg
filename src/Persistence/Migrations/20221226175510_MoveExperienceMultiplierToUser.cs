@@ -19,7 +19,7 @@ public partial class MoveExperienceMultiplierToUser : Migration
             nullable: false,
             defaultValue: 1f);
 
-        migrationBuilder.Sql("UPDATE users SET experience_multiplier = 1 + 0.03 * (SELECT COALESCE(SUM(c.generation), 0) FROM characters c WHERE users.id = user_id);");
+        migrationBuilder.Sql("UPDATE users SET experience_multiplier = LEAST(1.48, 1 + 0.03 * (SELECT COALESCE(SUM(c.generation), 0) FROM characters c WHERE users.id = user_id))");
     }
 
     /// <inheritdoc />
