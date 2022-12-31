@@ -7,7 +7,7 @@ namespace Crpg.Module.Battle;
 
 internal class CrpgSkirmishSpawningBehavior : CrpgSpawningBehaviorBase
 {
-    public const int MaxSpawns = 3;
+    public const int MaxSpawns = 2;
 
     private readonly MultiplayerRoundController _roundController;
     private readonly HashSet<PlayerId> _notifiedPlayersAboutSpawnRestriction;
