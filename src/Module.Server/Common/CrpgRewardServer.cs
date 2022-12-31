@@ -23,7 +23,7 @@ internal class CrpgRewardServer : MissionBehavior
     private readonly CrpgConstants _constants;
     private readonly CrpgWarmupComponent _warmupComponent;
     private readonly MultiplayerRoundController? _roundController;
-    private readonly Dictionary<PlayerId, CrpgRating> _characterRatings;
+    private readonly Dictionary<PlayerId, CrpgPlayerRating> _characterRatings;
     private readonly CrpgRatingPeriodResults _ratingResults;
     private readonly Random _random = new();
 
@@ -41,7 +41,7 @@ internal class CrpgRewardServer : MissionBehavior
         _constants = constants;
         _warmupComponent = warmupComponent;
         _roundController = roundController;
-        _characterRatings = new Dictionary<PlayerId, CrpgRating>();
+        _characterRatings = new Dictionary<PlayerId, CrpgPlayerRating>();
         _ratingResults = new CrpgRatingPeriodResults();
         _lastRewardDuringHappyHours = false;
     }
@@ -115,7 +115,7 @@ internal class CrpgRewardServer : MissionBehavior
         _ratingResults.AddResult(affectorRating, affectedRating, inflictedRatio);
     }
 
-    private bool TryGetRating(Agent agent, out CrpgRating rating)
+    private bool TryGetRating(Agent agent, out CrpgPlayerRating rating)
     {
         rating = null!;
         if (agent.MissionPeer == null)
@@ -132,7 +132,7 @@ internal class CrpgRewardServer : MissionBehavior
             }
 
             var characterRating = crpgPeer.User.Character.Rating;
-            rating = new CrpgRating(characterRating.Value, characterRating.Deviation, characterRating.Volatility);
+            rating = new CrpgPlayerRating(characterRating.Value, characterRating.Deviation, characterRating.Volatility);
             _characterRatings[agent.MissionPeer.Peer.Id] = rating;
             _ratingResults.AddParticipant(rating);
         }
