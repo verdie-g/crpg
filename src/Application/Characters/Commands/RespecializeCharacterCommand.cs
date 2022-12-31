@@ -54,9 +54,6 @@ public record RespecializeCharacterCommand : IMediatorRequest<CharacterViewModel
                 character.Level = _experienceTable.GetLevelForExperience(character.Experience);
             }
 
-            character.Statistics.Kills = 0;
-            character.Statistics.Deaths = 0;
-            character.Statistics.Assists = 0;
             _characterService.ResetCharacterCharacteristics(character, true);
 
             await _db.SaveChangesAsync(cancellationToken);

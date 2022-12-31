@@ -63,9 +63,9 @@ public class RespecializeCharacterCommandTest : TestBase
         Assert.AreEqual(2, character.Level);
         Assert.AreEqual(75, character.Experience);
         Assert.AreEqual(3, character.EquippedItems.Count);
-        Assert.AreEqual(0, character.Statistics.Kills);
-        Assert.AreEqual(0, character.Statistics.Deaths);
-        Assert.AreEqual(0, character.Statistics.Assists);
+        Assert.AreEqual(1, character.Statistics.Kills);
+        Assert.AreEqual(2, character.Statistics.Deaths);
+        Assert.AreEqual(3, character.Statistics.Assists);
         Assert.AreEqual(TimeSpan.FromSeconds(4), character.Statistics.PlayTime);
         characterServiceMock.Verify(cs => cs.ResetCharacterCharacteristics(It.IsAny<Character>(), true));
     }
@@ -113,9 +113,9 @@ public class RespecializeCharacterCommandTest : TestBase
         Assert.AreEqual(3, character.Level);
         Assert.AreEqual(150, character.Experience);
         Assert.AreEqual(3, character.EquippedItems.Count);
-        Assert.AreEqual(0, character.Statistics.Kills);
-        Assert.AreEqual(0, character.Statistics.Deaths);
-        Assert.AreEqual(0, character.Statistics.Assists);
+        Assert.AreEqual(1, character.Statistics.Kills);
+        Assert.AreEqual(2, character.Statistics.Deaths);
+        Assert.AreEqual(3, character.Statistics.Assists);
         Assert.AreEqual(TimeSpan.FromSeconds(4), character.Statistics.PlayTime);
         characterServiceMock.Verify(cs => cs.ResetCharacterCharacteristics(It.IsAny<Character>(), true));
     }
