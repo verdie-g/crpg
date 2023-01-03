@@ -55,6 +55,14 @@ internal class MapPoolComponent : MissionBehavior
                 mapVoteItems[_maps[_mapsIndex]] = 0;
             }
 
+            // Vote result is ignored is there is only one map, so we need to force it here.
+            if (mapVoteItems.Count == 1)
+            {
+                MultiplayerOptions.Instance
+                    .GetOptionFromOptionType(MultiplayerOptions.OptionType.Map)
+                    .UpdateValue(mapVoteItems.First().Key);
+            }
+
             if (_mapsIndex >= _maps.Length)
             {
                 _mapsIndex = 0;
