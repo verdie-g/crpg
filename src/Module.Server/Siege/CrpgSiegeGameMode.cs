@@ -120,6 +120,7 @@ internal class CrpgSiegeGameMode : MissionBasedMultiplayerGameMode
                 new ChatCommandsComponent(chatBox, crpgClient),
                 new PlayerStatsComponent(),
                 new NotAllPlayersReadyComponent(),
+                new DrowningBehavior(),
 #else
                 new MultiplayerAchievementComponent(),
                 new MissionMatchHistoryComponent(),
