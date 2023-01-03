@@ -42,7 +42,7 @@ internal class MapPoolComponent : MissionBehavior
 
         if (votingManager.IsMapVoteEnabled)
         {
-            if (!firstMission)
+            if (!firstMission && GameNetwork.NetworkPeers.Count() > 10)
             {
                 var lastVoteLostMaps = mapVoteItems.Keys.Where(m => m != Mission.SceneName);
                 Debug.Print($"Map {Mission.SceneName} was voted over {string.Join(",", lastVoteLostMaps)}");
