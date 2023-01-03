@@ -29,49 +29,45 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
             // aserai
             new[]
             {
-                ("crpg_head_wrapped", ItemSlot.Head),
-                ("crpg_long_desert_robe", ItemSlot.Body),
+                ("crpg_turban", ItemSlot.Head),
+                ("crpg_aserai_civil_e", ItemSlot.Body),
                 ("crpg_southern_moccasins", ItemSlot.Leg),
-                ("crpg_peasant_polearm_1_t1", ItemSlot.Weapon0),
-                ("crpg_peasant_pickaxe_1_t1", ItemSlot.Weapon1),
-                ("crpg_throwing_stone", ItemSlot.Weapon2),
+                ("crpg_peasant_hatchet_1_t1", ItemSlot.Weapon0),
+                ("crpg_throwing_stone", ItemSlot.Weapon1),
             },
             // vlandia
             new[]
             {
-                ("crpg_sackcloth_tunic", ItemSlot.Body),
-                ("crpg_strapped_shoes", ItemSlot.Leg),
-                ("crpg_peasant_pitchfork_1_t1", ItemSlot.Weapon0),
-                ("crpg_peasant_hatchet_1_t1", ItemSlot.Weapon1),
-                ("crpg_throwing_stone", ItemSlot.Weapon2),
+                ("crpg_leather_apron", ItemSlot.Body),
+                ("crpg_leather_gloves", ItemSlot.Hand),
+                ("crpg_leather_shoes", ItemSlot.Leg),
+                ("crpg_peasant_maul_t1_2", ItemSlot.Weapon0),
             },
             // empire
             new[]
             {
-                ("crpg_peasant_costume", ItemSlot.Body),
-                ("crpg_folded_town_boots", ItemSlot.Leg),
-                ("crpg_peasant_polearm_1_t1", ItemSlot.Weapon0),
-                ("crpg_peasant_sickle_1_t1", ItemSlot.Weapon1),
-                ("crpg_throwing_stone", ItemSlot.Weapon2),
+                ("crpg_pilgrim_hood", ItemSlot.Head),
+                ("crpg_tied_cloth_tunic", ItemSlot.Body),
+                ("crpg_leather_shoes", ItemSlot.Leg),
+                ("crpg_peasant_2haxe_1_t1", ItemSlot.Weapon0),
+                ("crpg_throwing_stone", ItemSlot.Weapon1),
             },
             // sturgia
             new[]
             {
                 ("crpg_scarf", ItemSlot.Shoulder),
                 ("crpg_light_tunic", ItemSlot.Body),
+                ("crpg_leather_shoes", ItemSlot.Leg),
                 ("crpg_peasant_2haxe_1_t1", ItemSlot.Weapon0),
-                ("crpg_peasant_maul_t1_2", ItemSlot.Weapon1),
-                ("crpg_throwing_stone", ItemSlot.Weapon2),
             },
             // khuzait
             new[]
             {
                 ("crpg_nomad_cap", ItemSlot.Head),
-                ("crpg_khuzait_civil_coat", ItemSlot.Body),
+                ("crpg_steppe_robe", ItemSlot.Body),
                 ("crpg_leather_boots", ItemSlot.Leg),
-                ("crpg_peasant_pitchfork_2_t1", ItemSlot.Weapon0),
-                ("crpg_peasant_maul_t1_2", ItemSlot.Weapon1),
-                ("crpg_throwing_stone", ItemSlot.Weapon2),
+                ("crpg_peasant_hatchet_1_t1", ItemSlot.Weapon0),
+                ("crpg_throwing_stone", ItemSlot.Weapon1),
             },
             // battania
             new[]
@@ -79,18 +75,16 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
                 ("crpg_baggy_trunks", ItemSlot.Body),
                 ("crpg_armwraps", ItemSlot.Hand),
                 ("crpg_ragged_boots", ItemSlot.Leg),
-                ("crpg_peasant_2haxe_1_t1", ItemSlot.Weapon0),
-                ("crpg_peasant_pickaxe_1_t1", ItemSlot.Weapon1),
-                ("crpg_throwing_stone", ItemSlot.Weapon2),
+                ("crpg_peasant_sickle_1_t1", ItemSlot.Weapon0),
+                ("crpg_throwing_stone", ItemSlot.Weapon1),
             },
             // looters
             new[]
             {
+                ("crpg_vlandia_bandit_cape_b", ItemSlot.Head),
                 ("crpg_vlandia_bandit_c", ItemSlot.Body),
                 ("crpg_rough_tied_boots", ItemSlot.Leg),
-                ("crpg_hunting_bow", ItemSlot.Weapon0),
-                ("crpg_default_arrows", ItemSlot.Weapon1),
-                ("crpg_peasant_hatchet_1_t1", ItemSlot.Weapon2),
+                ("crpg_light_mace_t3", ItemSlot.Weapon0),
             },
         };
         private static readonly ILogger Logger = LoggerFactory.CreateLogger<GetGameUserCommand>();

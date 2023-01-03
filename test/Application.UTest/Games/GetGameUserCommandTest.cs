@@ -190,7 +190,7 @@ public class GetGameUserCommandTest : TestBase
         }, CancellationToken.None);
 
         var userItems = await AssertDb.UserItems.Where(oi => oi.UserId == user.Id).ToArrayAsync();
-        Assert.AreEqual(5, userItems.Length);
+        Assert.AreEqual(4, userItems.Length);
     }
 
     [Test]
@@ -388,15 +388,24 @@ public class GetGameUserCommandTest : TestBase
     }
 
     [Test]
-    public async Task CheckDefaultItemsExist()
+    public async Task CheckDefaultItemsExistAndAreNotTooExpensive()
     {
         var items = (await new FileItemsSource().LoadItems()).ToDictionary(i => i.Id);
         foreach (var set in GetGameUserCommand.Handler.DefaultItemSets)
         {
+            int price = 0;
             foreach ((string mbId, ItemSlot slot) in set)
             {
-                Assert.IsTrue(items.ContainsKey(mbId), $"Item '{mbId}' doesn't exist");
+                if (!items.TryGetValue(mbId, out var item))
+                {
+                    Assert.IsTrue(items.ContainsKey(mbId), $"Item '{mbId}' doesn't exist");
+                    continue;
+                }
+
+                price += item.Price;
             }
+
+            Assert.Less(price, 2500);
         }
     }
 }
