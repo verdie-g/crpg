@@ -1,6 +1,7 @@
 ﻿using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.DedicatedCustomServer;
 
 namespace Crpg.Module.Common;
 
@@ -12,7 +13,7 @@ namespace Crpg.Module.Common;
 /// intermission screen when the game start, will show all maps. It's ok since usually nobody is connected when the
 /// server starts.
 /// </remarks>
-internal class MapPoolComponent : MissionBehavior
+internal class MapPoolComponent : MissionLogic
 {
     private const int MaxMapsToVote = 2; // N.B: Only 5 maps fit in the intermission screen.
 
@@ -20,7 +21,11 @@ internal class MapPoolComponent : MissionBehavior
     private static string[]? _maps;
     private static int _mapsIndex;
 
-    public override MissionBehaviorType BehaviorType => MissionBehaviorType.Other;
+    public override void OnBehaviorInitialize()
+    {
+        // Clear the map votes else it tries to send to player a packet containing all maps, which will likely overflow it.
+        MultiplayerIntermissionVotingManager.Instance.MapVoteItems.Clear();
+    }
 
     protected override void OnEndMission()
     {
@@ -30,8 +35,7 @@ internal class MapPoolComponent : MissionBehavior
         var mapVoteItems = votingManager.MapVoteItems;
         if (_maps == null)
         {
-            _maps = mapVoteItems.Keys.ToArray();
-            mapVoteItems.Clear();
+            _maps = DedicatedCustomServerSubModule.Instance.AutomatedMapPool.ToArray();
 
             _maps.Shuffle();
             // Move back the first map in first position.
