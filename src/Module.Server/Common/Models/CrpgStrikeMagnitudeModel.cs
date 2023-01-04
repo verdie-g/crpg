@@ -85,6 +85,6 @@ internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
         bool isThrown = false)
     {
         float thrustSpeedPercentage = thrustWeaponSpeed * 11.7647057f / weaponUsageComponent.ThrustSpeed;
-        return BladeDamageFactorToDamageRatio * ((float)Math.Pow(thrustSpeedPercentage, 8f) + extraLinearSpeed / 10f);
+        return BladeDamageFactorToDamageRatio * ((float)Math.Pow(thrustSpeedPercentage, 6f) + extraLinearSpeed / 10f);
     }
 }

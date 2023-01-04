@@ -150,7 +150,7 @@ static async Task UpdateCrpgAsync(string bannerlordPath)
     string? tag = File.Exists(tagPath) ? File.ReadAllText(tagPath) : null;
 
     using HttpClient httpClient = new();
-    HttpRequestMessage req = new(HttpMethod.Get, "https://pecores.fr/cRPG.zip");
+    HttpRequestMessage req = new(HttpMethod.Get, "https://c-rpg.eu/cRPG.zip");
     if (tag != null)
     {
         req.Headers.IfNoneMatch.Add(new EntityTagHeaderValue(tag));
