@@ -9,13 +9,31 @@ internal class DrowningBehavior : MissionLogic
 {
     private const float TickPeriod = 0.5f;
     private const int DamagePerTick = 5;
+    private static readonly MissionTime DelayBeforeDamage = MissionTime.Seconds(5f);
 
+    private readonly Dictionary<int, MissionTime> _underwaterAgents;
     private MissionTimer? _tickTimer;
-    private float _waterLevel = float.MinValue;
+    private float _waterLevel;
+
+    public DrowningBehavior()
+    {
+        _underwaterAgents = new Dictionary<int, MissionTime>();
+        _waterLevel = float.MinValue;
+    }
 
     public override void OnBehaviorInitialize()
     {
         _waterLevel = Mission.Scene.GetWaterLevel();
+    }
+
+    public override void OnAgentCreated(Agent agent)
+    {
+        _underwaterAgents.Remove(agent.Index);
+    }
+
+    public override void OnAgentDeleted(Agent agent)
+    {
+        _underwaterAgents.Remove(agent.Index);
     }
 
     public override void OnMissionTick(float dt)
@@ -31,16 +49,26 @@ internal class DrowningBehavior : MissionLogic
         List<Agent>? drowningAgents = null;
         foreach (var agent in Mission.Agents)
         {
-            if (!agent.IsActive())
+            if (!agent.IsActive()
+                || agent.GetChestGlobalPosition().Z > _waterLevel)
+            {
+                _underwaterAgents.Remove(agent.Index);
+                continue;
+            }
+
+            if (!_underwaterAgents.TryGetValue(agent.Index, out var underwaterSince))
+            {
+                underwaterSince = MissionTime.Now;
+                _underwaterAgents[agent.Index] = underwaterSince;
+            }
+
+            if (MissionTime.Now < underwaterSince + DelayBeforeDamage)
             {
                 continue;
             }
 
-            if (agent.GetChestGlobalPosition().Z < _waterLevel)
-            {
-                drowningAgents ??= new List<Agent>();
-                drowningAgents.Add(agent);
-            }
+            drowningAgents ??= new List<Agent>();
+            drowningAgents.Add(agent);
         }
 
         if (drowningAgents == null)
