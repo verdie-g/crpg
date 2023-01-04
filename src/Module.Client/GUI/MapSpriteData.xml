@@ -17,7 +17,7 @@
   <SpriteCategories>
     <SpriteCategory>
       <Name>ui_mploading</Name>
-      <SpriteSheetCount>89</SpriteSheetCount>
+      <SpriteSheetCount>90</SpriteSheetCount>
       <SpriteSheetSize ID="1" Width="3840" Height="1935" />
       <SpriteSheetSize ID="2" Width="3840" Height="1935" />
       <SpriteSheetSize ID="3" Width="3383" Height="1902" />
@@ -107,6 +107,7 @@
       <SpriteSheetSize ID="87" Width="1920" Height="1080" />
       <SpriteSheetSize ID="88" Width="1920" Height="1080" />
       <SpriteSheetSize ID="89" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="90" Width="1920" Height="1080" />
     </SpriteCategory>
   </SpriteCategories>
   <SpriteParts>
@@ -920,6 +921,15 @@
       <SheetY>0</SheetY>
       <CategoryName>ui_mploading</CategoryName>
     </SpritePart>
+    <SpritePart>
+      <SheetID>90</SheetID>
+      <Name>crpg_siege_skalalanding</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
   </SpriteParts>
   <Sprites>
     <GenericSprite>
@@ -1277,6 +1287,10 @@
     <GenericSprite>
       <Name>crpg_battle_zemouri</Name>
       <SpritePartName>crpg_battle_zemouri</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_siege_skalalanding</Name>
+      <SpritePartName>crpg_siege_skalalanding</SpritePartName>
     </GenericSprite>
   </Sprites>
 </SpriteData>
