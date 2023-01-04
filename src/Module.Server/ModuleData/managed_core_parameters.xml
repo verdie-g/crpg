@@ -23,7 +23,7 @@
     <managed_core_parameter id="QuadrupedalRadius" value="0.8"/>
     <!--Also used in native_paramaters.xml-->
     <managed_core_parameter id="BipedalCombatSpeedMinMultiplier" value="0.80"/>
-    <managed_core_parameter id="BipedalCombatSpeedMaxMultiplier" value="0.88"/>
+    <managed_core_parameter id="BipedalCombatSpeedMaxMultiplier" value="0.87"/>
     <managed_core_parameter id="BipedalRangedReadySpeedMultiplier" value="0.5"/>
     <managed_core_parameter id="BipedalRangedReloadSpeedMultiplier" value="0.25"/>
 
@@ -47,8 +47,8 @@
     <!-- damage graph related -->
     <!-- link for the function -->
     <!-- https://www.desmos.com/calculator/dnhpcqilvg -->
-    <managed_core_parameter id="SwingCombatSpeedGraphZeroProgressValue" value="0.01"/>
-    <managed_core_parameter id="SwingCombatSpeedGraphFirstMaximumPoint" value="0.15"/>
+    <managed_core_parameter id="SwingCombatSpeedGraphZeroProgressValue" value="0.63"/>
+    <managed_core_parameter id="SwingCombatSpeedGraphFirstMaximumPoint" value="0.1"/>
     <managed_core_parameter id="SwingCombatSpeedGraphSecondMaximumPoint" value="0.75"/>
     <managed_core_parameter id="SwingCombatSpeedGraphOneProgressValue" value="0.01"/>
 
