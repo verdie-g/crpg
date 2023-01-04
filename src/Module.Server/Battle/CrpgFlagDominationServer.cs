@@ -558,6 +558,7 @@ internal class CrpgFlagDominationServer : MissionMultiplayerGameModeBase
             }
         }
 
+        Debug.Print($"Team {RoundController.RoundWinner} won on map {Mission.SceneName} with {GameNetwork.NetworkPeers.Count()} players");
         CheerForRoundEnd(roundResult);
     }
 

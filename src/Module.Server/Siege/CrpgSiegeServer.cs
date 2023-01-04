@@ -116,6 +116,9 @@ internal class CrpgSiegeServer : MissionMultiplayerGameModeBase, IAnalyticsFlagI
 
         winnerTeam ??= Mission.Teams.Defender;
         _missionScoreboardComponent.ChangeTeamScore(winnerTeam, 1);
+
+        Debug.Print($"Team {winnerTeam} won on map {Mission.SceneName} with {GameNetwork.NetworkPeers.Count()} players");
+
         return winnerTeam;
     }
 
