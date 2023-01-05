@@ -37,41 +37,35 @@ internal class DamageZone : ScriptComponentBehavior
 #if CRPG_SERVER
     protected override void OnTick(float dt)
     {
-        _tickTimer ??= new MissionTimer(Math.Max(1f / TicksPerSecond, 0.25f));
+        _tickTimer ??= new MissionTimer(1f / TicksPerSecond);
         if (!_tickTimer.Check(reset: true))
         {
             return;
         }
 
-        var entityFrame = GameEntity.GetFrame();
+        MatrixFrame entityFrame = GameEntity.GetGlobalFrame();
         Vec3 entityOrigin = entityFrame.origin;
         Vec3 entityScale = entityFrame.GetScale();
-
-        float entityXLo = entityOrigin.x - entityScale.x / 2f;
-        float entityXHi = entityOrigin.x + entityScale.x / 2f;
-        float entityYLo = entityOrigin.y - entityScale.y / 2f;
-        float entityYHi = entityOrigin.y + entityScale.y / 2f;
-        float entityZLo = entityOrigin.z;
-        float entityZHi = entityOrigin.z + entityScale.z;
+        entityFrame.rotation.ApplyScaleLocal(new Vec3(1f / entityScale.x, 1f / entityScale.y, 1f / entityScale.z));
 
         // Killing an agent removes it from the Mission.Agents list which breaks its enumerator. So a temporary buffer
         // need to be used.
         List<Agent>? agentsToDamage = null;
-        foreach (var agent in Mission.Current.Agents)
+        foreach (var agent in Mission.Current.GetAgentsInRange(entityOrigin.AsVec2, entityScale.AsVec2.Length / 2))
         {
             if (!agent.IsActive())
             {
-                _agentsInZone.Remove(agent.Index);
+                _agentsInZone.Remove(agent.Index); // TODO: check go in, out, die, come back with same index.
                 continue;
             }
 
+            // GetAgentsInRange return agents in a circle but the damage zone is expected to be a cuboid, so double
+            // check it is effectively inside it.
             Vec3 agentPosition = agent.GetChestGlobalPosition();
-            if (agentPosition.x < entityXLo
-                || agentPosition.x > entityXHi
-                || agentPosition.y < entityYLo
-                || agentPosition.y > entityYHi
-                || agentPosition.z < entityZLo
-                || agentPosition.z > entityZHi)
+            Vec3 localAgentPosition = entityFrame.TransformToLocal(agentPosition);
+            if (MathF.Abs(localAgentPosition.x) > entityScale.x / 2f
+                || MathF.Abs(localAgentPosition.y) > entityScale.y / 2f
+                || MathF.Abs(localAgentPosition.z) > entityScale.z)
             {
                 _agentsInZone.Remove(agent.Index);
                 continue;
