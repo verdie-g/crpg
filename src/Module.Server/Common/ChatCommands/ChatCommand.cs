@@ -10,7 +10,9 @@ internal abstract class ChatCommand
     protected static readonly Color ColorSuccess = new(0f, 1f, 0f);
     protected static readonly Color ColorFatal = new(1f, 0f, 0f);
 
+#pragma warning disable SA1401 // False positive
     protected readonly ChatCommandsComponent ChatComponent;
+#pragma warning restore SA1401
 
     public string Name { get; protected set; } = string.Empty;
 

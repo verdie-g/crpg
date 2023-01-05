@@ -8,7 +8,9 @@ namespace Crpg.Module.HarmonyPatches;
 
 public class MissionNetworkComponentPatch
 {
+#pragma warning disable SA1313
     public static bool Prefix(MissionNetworkComponent __instance, NetworkCommunicator? networkPeer)
+#pragma warning restore SA1313
     {
         if (networkPeer == null)
         {
@@ -78,7 +80,7 @@ public class MissionNetworkComponentPatch
 
                     GameNetwork.BeginModuleEventAsServer(networkPeer);
                     GameNetwork.WriteMessage(new SpawnAttachedWeaponOnSpawnedWeapon(spawnedItemEntity, i,
-                            gameEntity.GetChild(i).GetFirstScriptOfType<SpawnedItemEntity>().Id.Id));
+                        gameEntity.GetChild(i).GetFirstScriptOfType<SpawnedItemEntity>().Id.Id));
                     GameNetwork.EndModuleEventAsServer();
                 }
             }

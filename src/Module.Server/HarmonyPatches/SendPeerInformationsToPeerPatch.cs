@@ -7,7 +7,9 @@ namespace Crpg.Module.HarmonyPatches;
 // From https://github.com/HornsGuy/BannerlordServerPatches/blob/master/ServerPatches/Patches/PatchMissionLobbyComponent.cs
 internal class SendPeerInformationsToPeerPatch
 {
+#pragma warning disable SA1313
     public static bool Prefix(MissionLobbyComponent __instance, NetworkCommunicator peer)
+#pragma warning restore SA1313
     {
         foreach (NetworkCommunicator disconnectedPeer in GameNetwork.NetworkPeersIncludingDisconnectedPeers)
         {

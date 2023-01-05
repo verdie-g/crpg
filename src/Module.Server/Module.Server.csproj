@@ -39,6 +39,7 @@
     <Reference Remove="$(MB_SERVER_PATH)/bin/Win64_Shipping_Server/TaleWorlds.Native.dll" />
     <!-- These libraries cause dependency conflicts. -->
     <Reference Remove="$(MB_SERVER_PATH)/bin/Win64_Shipping_Server/TaleWorlds.Starter.DotNetCore.dll" />
+    <Reference Remove="$(MB_SERVER_PATH)/bin/Win64_Shipping_Server/TaleWorlds.Starter.DotNetCore.Linux.dll" />
     <Reference Remove="$(MB_SERVER_PATH)/bin/Win64_Shipping_Server/TaleWorlds.MountAndBlade.DedicatedCustomServer.MapServer.dll" />
     <Reference Remove="$(MB_SERVER_PATH)/bin/Win64_Shipping_Server/TaleWorlds.MountAndBlade.DedicatedCustomServer.WebPanel.Views.dll" />
     <Reference Remove="$(MB_SERVER_PATH)/bin/Win64_Shipping_Server/TaleWorlds.MountAndBlade.DedicatedCustomServer.WebPanel.dll" />

@@ -30,6 +30,7 @@ internal static class RatingHelpers
     {
         return MathHelper.PowerSumBy(team, u => u.Character.Rating.GetWorkingRating(), p);
     }
+
     internal static float ComputeTeamGlickoRatingPowerSum(List<CrpgUser> team, float p = MatchBalancingSystem.PowerParameter)
     {
         return MathHelper.PowerSumBy(team, u => u.Character.Rating.GetRegularWorkingRating(), p);
