@@ -1777,6 +1777,7 @@ public record SeedDataCommand : IMediatorRequest
                     ArmArmor = item.Armor!.ArmArmor,
                     LegArmor = item.Armor!.LegArmor,
                     MaterialType = item.Armor.MaterialType,
+                    FamilyType = item.Armor.FamilyType,
                 };
             }
 
@@ -1785,10 +1786,11 @@ public record SeedDataCommand : IMediatorRequest
                 res.Mount = new ItemMountComponent
                 {
                     BodyLength = item.Mount!.BodyLength,
-                    ChargeDamage = item.Mount!.ChargeDamage,
-                    Maneuver = item.Mount!.Maneuver,
-                    Speed = item.Mount!.Speed,
-                    HitPoints = item.Mount!.HitPoints,
+                    ChargeDamage = item.Mount.ChargeDamage,
+                    Maneuver = item.Mount.Maneuver,
+                    Speed = item.Mount.Speed,
+                    HitPoints = item.Mount.HitPoints,
+                    FamilyType = item.Mount.FamilyType,
                 };
             }
 

@@ -23,6 +23,7 @@ public class ItemConfiguration : IEntityTypeConfiguration<Item>
         builder.Property(ac => ac.ArmArmor).HasColumnName("armor_arm");
         builder.Property(ac => ac.LegArmor).HasColumnName("armor_leg");
         builder.Property(ac => ac.MaterialType).HasColumnName("armor_material_type");
+        builder.Property(ac => ac.FamilyType).HasColumnName("armor_family_type");
     }
 
     private static void ConfigureItemMountComponent(OwnedNavigationBuilder<Item, ItemMountComponent> builder)
@@ -33,6 +34,7 @@ public class ItemConfiguration : IEntityTypeConfiguration<Item>
         builder.Property(mc => mc.Maneuver).HasColumnName("mount_maneuver");
         builder.Property(mc => mc.Speed).HasColumnName("mount_speed");
         builder.Property(mc => mc.HitPoints).HasColumnName("mount_hit_points");
+        builder.Property(mc => mc.FamilyType).HasColumnName("mount_family_type");
     }
 
     private static void ConfigureItemWeaponComponent(OwnedNavigationBuilder<Item, ItemWeaponComponent> builder, string prefix)

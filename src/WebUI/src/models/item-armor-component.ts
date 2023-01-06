@@ -6,4 +6,6 @@ export default interface ItemArmorComponent {
   armArmor: number;
   legArmor: number;
   materialType: ArmorMaterialType;
+
+  familyType: number;
 }

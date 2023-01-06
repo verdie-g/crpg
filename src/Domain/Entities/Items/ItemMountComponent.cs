@@ -11,6 +11,9 @@ public class ItemMountComponent : ICloneable
     public int Speed { get; set; }
     public int HitPoints { get; set; }
 
+    /// <summary>Family identifier (horse: 1, camel: 2) of the mount.</summary>
+    public int FamilyType { get; set; }
+
     public object Clone() => new ItemMountComponent
     {
         BodyLength = BodyLength,
@@ -18,5 +21,6 @@ public class ItemMountComponent : ICloneable
         Maneuver = Maneuver,
         Speed = Speed,
         HitPoints = HitPoints,
+        FamilyType = FamilyType,
     };
 }

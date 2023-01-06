@@ -56,6 +56,7 @@ internal class ItemExporter : IDataExporter
                 ArmArmor = mbItem.ArmorComponent.ArmArmor,
                 LegArmor = mbItem.ArmorComponent.LegArmor,
                 MaterialType = MbToCrpgArmorMaterialType(mbItem.ArmorComponent.MaterialType),
+                FamilyType = mbItem.ArmorComponent.FamilyType,
             };
         }
 
@@ -68,6 +69,7 @@ internal class ItemExporter : IDataExporter
                 Maneuver = mbItem.HorseComponent.Maneuver,
                 Speed = mbItem.HorseComponent.Speed,
                 HitPoints = mbItem.HorseComponent.HitPoints + mbItem.HorseComponent.HitPointBonus,
+                FamilyType = mbItem.HorseComponent.Monster.FamilyType,
             };
         }
 

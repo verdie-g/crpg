@@ -4,4 +4,5 @@ export default interface ItemMountComponent {
   maneuver: number;
   speed: number;
   hitPoints: number;
+  familyType: number;
 }

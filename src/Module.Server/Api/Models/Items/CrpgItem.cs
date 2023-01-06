@@ -76,6 +76,7 @@ internal class CrpgItemArmorComponent
     public int ArmArmor { get; set; }
     public int LegArmor { get; set; }
     public CrpgArmorMaterialType MaterialType { get; set; }
+    public int FamilyType { get; set; }
 }
 
 // Copy of Crpg.Domain.Entities.Items.ArmorMaterialType
@@ -96,6 +97,7 @@ internal class CrpgItemMountComponent
     public int Maneuver { get; set; }
     public int Speed { get; set; }
     public int HitPoints { get; set; }
+    public int FamilyType { get; set; }
 }
 
 // Copy of Crpg.Application.Items.Models.ItemMountWeaponViewModel

@@ -52,7 +52,8 @@
       "bodyArmor": 14,
       "armArmor": 7,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -71,7 +72,8 @@
       "bodyArmor": 2,
       "armArmor": 8,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -90,7 +92,8 @@
       "bodyArmor": 2,
       "armArmor": 7,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -111,7 +114,8 @@
       "bodyArmor": 1,
       "armArmor": 1,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -130,7 +134,8 @@
       "bodyArmor": 0,
       "armArmor": 5,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -149,7 +154,8 @@
       "bodyArmor": 0,
       "armArmor": 6,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -168,7 +174,8 @@
       "bodyArmor": 7,
       "armArmor": 4,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -187,7 +194,8 @@
       "bodyArmor": 0,
       "armArmor": 8,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -206,7 +214,8 @@
       "bodyArmor": 10,
       "armArmor": 5,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -225,7 +234,8 @@
       "bodyArmor": 17,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -244,7 +254,8 @@
       "bodyArmor": 0,
       "armArmor": 8,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -263,7 +274,8 @@
       "bodyArmor": 0,
       "armArmor": 10,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -284,7 +296,8 @@
       "bodyArmor": 13,
       "armArmor": 6,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -305,7 +318,8 @@
       "bodyArmor": 0,
       "armArmor": 6,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -324,7 +338,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -383,7 +398,8 @@
       "bodyArmor": 13,
       "armArmor": 3,
       "legArmor": 3,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -472,7 +488,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -494,7 +511,8 @@
       "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 6,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -513,7 +531,8 @@
       "bodyArmor": 16,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -534,7 +553,8 @@
       "bodyArmor": 0,
       "armArmor": 3,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -702,7 +722,8 @@
       "bodyArmor": 29,
       "armArmor": 8,
       "legArmor": 15,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -723,7 +744,8 @@
       "bodyArmor": 25,
       "armArmor": 13,
       "legArmor": 13,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -744,7 +766,8 @@
       "bodyArmor": 27,
       "armArmor": 13,
       "legArmor": 13,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -835,7 +858,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -856,7 +880,8 @@
       "bodyArmor": 31,
       "armArmor": 16,
       "legArmor": 16,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -877,7 +902,8 @@
       "bodyArmor": 31,
       "armArmor": 6,
       "legArmor": 16,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -898,7 +924,8 @@
       "bodyArmor": 31,
       "armArmor": 6,
       "legArmor": 6,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -919,7 +946,8 @@
       "bodyArmor": 31,
       "armArmor": 16,
       "legArmor": 6,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -941,7 +969,8 @@
       "bodyArmor": 8,
       "armArmor": 4,
       "legArmor": 4,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -963,7 +992,8 @@
       "bodyArmor": 5,
       "armArmor": 2,
       "legArmor": 3,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -985,7 +1015,8 @@
       "bodyArmor": 4,
       "armArmor": 2,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -1007,7 +1038,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -1029,7 +1061,8 @@
       "bodyArmor": 5,
       "armArmor": 2,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -1051,7 +1084,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -1073,7 +1107,8 @@
       "bodyArmor": 4,
       "armArmor": 2,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -1095,7 +1130,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -1117,7 +1153,8 @@
       "bodyArmor": 5,
       "armArmor": 2,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -1139,7 +1176,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -1161,7 +1199,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -1183,7 +1222,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -1202,7 +1242,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -1224,7 +1265,8 @@
       "bodyArmor": 5,
       "armArmor": 3,
       "legArmor": 3,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -1246,7 +1288,8 @@
       "bodyArmor": 3,
       "armArmor": 1,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -1268,7 +1311,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -1289,7 +1333,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -1310,7 +1355,8 @@
       "bodyArmor": 51,
       "armArmor": 16,
       "legArmor": 25,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -1331,7 +1377,8 @@
       "bodyArmor": 13,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -1350,7 +1397,8 @@
       "bodyArmor": 11,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -1447,7 +1495,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -1740,7 +1789,8 @@
       "bodyArmor": 25,
       "armArmor": 12,
       "legArmor": 12,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -1761,7 +1811,8 @@
       "bodyArmor": 51,
       "armArmor": 16,
       "legArmor": 16,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -1782,7 +1833,8 @@
       "bodyArmor": 35,
       "armArmor": 7,
       "legArmor": 6,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -1801,7 +1853,8 @@
       "bodyArmor": 16,
       "armArmor": 4,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -1820,7 +1873,8 @@
       "bodyArmor": 16,
       "armArmor": 8,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -1839,7 +1893,8 @@
       "bodyArmor": 8,
       "armArmor": 10,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -1858,7 +1913,8 @@
       "bodyArmor": 6,
       "armArmor": 8,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -1877,7 +1933,8 @@
       "bodyArmor": 6,
       "armArmor": 10,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -2134,7 +2191,8 @@
       "bodyArmor": 7,
       "armArmor": 2,
       "legArmor": 4,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -2156,7 +2214,8 @@
       "bodyArmor": 2,
       "armArmor": 1,
       "legArmor": 1,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -2178,7 +2237,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -2199,7 +2259,8 @@
       "bodyArmor": 7,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 1
     },
     "weapons": []
   },
@@ -2296,7 +2357,8 @@
       "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 3,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -2353,7 +2415,8 @@
       "bodyArmor": 29,
       "armArmor": 8,
       "legArmor": 10,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -2375,7 +2438,8 @@
       "bodyArmor": 4,
       "armArmor": 2,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -2397,7 +2461,8 @@
       "bodyArmor": 2,
       "armArmor": 1,
       "legArmor": 1,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -2419,7 +2484,8 @@
       "bodyArmor": 12,
       "armArmor": 0,
       "legArmor": 6,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -2441,7 +2507,8 @@
       "bodyArmor": 12,
       "armArmor": 0,
       "legArmor": 4,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -2463,7 +2530,8 @@
       "bodyArmor": 14,
       "armArmor": 3,
       "legArmor": 7,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -2485,7 +2553,8 @@
       "bodyArmor": 3,
       "armArmor": 2,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -2506,7 +2575,8 @@
       "bodyArmor": 5,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 1
     },
     "weapons": []
   },
@@ -2527,7 +2597,8 @@
       "bodyArmor": 6,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 1
     },
     "weapons": []
   },
@@ -2548,7 +2619,8 @@
       "bodyArmor": 4,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 1
     },
     "weapons": []
   },
@@ -3068,7 +3140,8 @@
       "bodyArmor": 22,
       "armArmor": 6,
       "legArmor": 6,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -3584,7 +3657,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -3606,7 +3680,8 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -3628,7 +3703,8 @@
       "bodyArmor": 10,
       "armArmor": 2,
       "legArmor": 4,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -3650,7 +3726,8 @@
       "bodyArmor": 8,
       "armArmor": 6,
       "legArmor": 4,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -3669,7 +3746,8 @@
       "bodyArmor": 6,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -3690,7 +3768,8 @@
       "bodyArmor": 2,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -3711,7 +3790,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -3732,7 +3812,8 @@
       "bodyArmor": 2,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -3751,7 +3832,8 @@
       "bodyArmor": 4,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -3770,7 +3852,8 @@
       "bodyArmor": 8,
       "armArmor": 3,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -3789,7 +3872,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -3811,7 +3895,8 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 3,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -3833,7 +3918,8 @@
       "bodyArmor": 4,
       "armArmor": 2,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -3855,7 +3941,8 @@
       "bodyArmor": 6,
       "armArmor": 2,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -3874,7 +3961,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -3893,7 +3981,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -3912,7 +4001,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -3931,7 +4021,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -3950,7 +4041,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -3969,7 +4061,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -3988,7 +4081,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -4007,7 +4101,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -4026,7 +4121,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -4048,7 +4144,8 @@
       "bodyArmor": 4,
       "armArmor": 2,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -4070,7 +4167,8 @@
       "bodyArmor": 4,
       "armArmor": 2,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -4091,7 +4189,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 6,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -4110,7 +4209,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -4131,7 +4231,8 @@
       "bodyArmor": 9,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 1
     },
     "weapons": []
   },
@@ -4152,7 +4253,8 @@
       "bodyArmor": 24,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 1
     },
     "weapons": []
   },
@@ -4173,7 +4275,8 @@
       "bodyArmor": 30,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 1
     },
     "weapons": []
   },
@@ -4308,7 +4411,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 5,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -4329,7 +4433,8 @@
       "bodyArmor": 15,
       "armArmor": 3,
       "legArmor": 5,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -4351,7 +4456,8 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 5,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -4373,7 +4479,8 @@
       "bodyArmor": 7,
       "armArmor": 0,
       "legArmor": 3,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -4396,7 +4503,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 4,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -4419,7 +4527,8 @@
       "bodyArmor": 4,
       "armArmor": 0,
       "legArmor": 9,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -4542,7 +4651,8 @@
       "bodyArmor": 53,
       "armArmor": 10,
       "legArmor": 18,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -4563,7 +4673,8 @@
       "bodyArmor": 48,
       "armArmor": 12,
       "legArmor": 22,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -4584,7 +4695,8 @@
       "bodyArmor": 0,
       "armArmor": 18,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -4745,7 +4857,8 @@
       "bodyArmor": 3,
       "armArmor": 1,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -4764,7 +4877,8 @@
       "bodyArmor": 9,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -4783,7 +4897,8 @@
       "bodyArmor": 4,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -4802,7 +4917,8 @@
       "bodyArmor": 7,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -5034,7 +5150,8 @@
       "bodyArmor": 37,
       "armArmor": 16,
       "legArmor": 18,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -5053,7 +5170,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 26,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -5072,7 +5190,8 @@
       "bodyArmor": 0,
       "armArmor": 25,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -5091,7 +5210,8 @@
       "bodyArmor": 20,
       "armArmor": 10,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -5112,7 +5232,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 6,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -5133,7 +5254,8 @@
       "bodyArmor": 31,
       "armArmor": 10,
       "legArmor": 13,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -5152,7 +5274,8 @@
       "bodyArmor": 4,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -5174,7 +5297,8 @@
       "bodyArmor": 14,
       "armArmor": 4,
       "legArmor": 6,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -5195,7 +5319,8 @@
       "bodyArmor": 28,
       "armArmor": 2,
       "legArmor": 8,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -5216,7 +5341,8 @@
       "bodyArmor": 23,
       "armArmor": 4,
       "legArmor": 4,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -5237,7 +5363,8 @@
       "bodyArmor": 32,
       "armArmor": 4,
       "legArmor": 8,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -5258,7 +5385,8 @@
       "bodyArmor": 34,
       "armArmor": 4,
       "legArmor": 8,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -5277,7 +5405,8 @@
       "bodyArmor": 6,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -5296,7 +5425,8 @@
       "bodyArmor": 7,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -5315,7 +5445,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -5334,7 +5465,8 @@
       "bodyArmor": 5,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -5353,7 +5485,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -5372,7 +5505,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -5395,7 +5529,8 @@
       "bodyArmor": 2,
       "armArmor": 1,
       "legArmor": 5,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -5416,7 +5551,8 @@
       "bodyArmor": 42,
       "armArmor": 12,
       "legArmor": 15,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -5437,7 +5573,8 @@
       "bodyArmor": 31,
       "armArmor": 3,
       "legArmor": 6,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -5610,7 +5747,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -5629,7 +5767,8 @@
       "bodyArmor": 14,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -5650,7 +5789,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 5,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -5671,7 +5811,8 @@
       "bodyArmor": 19,
       "armArmor": 3,
       "legArmor": 4,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -6225,7 +6366,8 @@
       "bodyArmor": 8,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -6502,7 +6644,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -6521,7 +6664,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -6540,7 +6684,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -6559,7 +6704,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -6578,7 +6724,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -6597,7 +6744,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -6618,7 +6766,8 @@
       "bodyArmor": 46,
       "armArmor": 14,
       "legArmor": 14,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -6637,7 +6786,8 @@
       "bodyArmor": 16,
       "armArmor": 6,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -6656,7 +6806,8 @@
       "bodyArmor": 16,
       "armArmor": 6,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -6675,7 +6826,8 @@
       "bodyArmor": 18,
       "armArmor": 4,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -6863,9 +7015,47 @@
       "bodyArmor": 28,
       "armArmor": 8,
       "legArmor": 4,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
+  },
+  {
+    "id": "crpg_buckler",
+    "name": "Buckler",
+    "culture": "Sturgia",
+    "type": "Shield",
+    "price": 9115,
+    "weight": 1.0,
+    "tier": 9.928137,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "HeldInOffHand"
+    ],
+    "weapons": [
+      {
+        "class": "LargeShield",
+        "itemUsage": "hand_shield",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 200,
+        "length": 15,
+        "balance": 0.0,
+        "handling": 110,
+        "bodyArmor": 15,
+        "flags": [
+          "HasHitPoints",
+          "CanBlockRanged"
+        ],
+        "thrustDamage": 5,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 110,
+        "swingDamage": 0,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 100
+      }
+    ]
   },
   {
     "id": "crpg_burlap_sack_dress",
@@ -6886,7 +7076,8 @@
       "bodyArmor": 2,
       "armArmor": 1,
       "legArmor": 1,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -6908,7 +7099,8 @@
       "bodyArmor": 3,
       "armArmor": 1,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -6929,7 +7121,8 @@
       "bodyArmor": 0,
       "armArmor": 4,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -6950,7 +7143,8 @@
       "chargeDamage": 2,
       "maneuver": 72,
       "speed": 30,
-      "hitPoints": 218
+      "hitPoints": 218,
+      "familyType": 2
     },
     "weapons": []
   },
@@ -6971,7 +7165,8 @@
       "chargeDamage": 2,
       "maneuver": 75,
       "speed": 31,
-      "hitPoints": 230
+      "hitPoints": 230,
+      "familyType": 2
     },
     "weapons": []
   },
@@ -6992,7 +7187,8 @@
       "chargeDamage": 4,
       "maneuver": 78,
       "speed": 32,
-      "hitPoints": 235
+      "hitPoints": 235,
+      "familyType": 2
     },
     "weapons": []
   },
@@ -7013,7 +7209,8 @@
       "chargeDamage": 5,
       "maneuver": 80,
       "speed": 33,
-      "hitPoints": 242
+      "hitPoints": 242,
+      "familyType": 2
     },
     "weapons": []
   },
@@ -7034,7 +7231,8 @@
       "chargeDamage": 5,
       "maneuver": 82,
       "speed": 34,
-      "hitPoints": 249
+      "hitPoints": 249,
+      "familyType": 2
     },
     "weapons": []
   },
@@ -7055,7 +7253,8 @@
       "bodyArmor": 6,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 2
     },
     "weapons": []
   },
@@ -7076,7 +7275,8 @@
       "bodyArmor": 6,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 2
     },
     "weapons": []
   },
@@ -7097,7 +7297,8 @@
       "chargeDamage": 5,
       "maneuver": 84,
       "speed": 35,
-      "hitPoints": 254
+      "hitPoints": 254,
+      "familyType": 2
     },
     "weapons": []
   },
@@ -7118,7 +7319,8 @@
       "chargeDamage": 6,
       "maneuver": 86,
       "speed": 38,
-      "hitPoints": 240
+      "hitPoints": 240,
+      "familyType": 2
     },
     "weapons": []
   },
@@ -7235,7 +7437,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -7256,7 +7459,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -7277,7 +7481,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -7298,7 +7503,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -7319,7 +7525,8 @@
       "bodyArmor": 38,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 1
     },
     "weapons": []
   },
@@ -7340,7 +7547,8 @@
       "bodyArmor": 33,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 1
     },
     "weapons": []
   },
@@ -7359,7 +7567,8 @@
       "bodyArmor": 15,
       "armArmor": 4,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -7556,7 +7765,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -7575,7 +7785,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -7594,7 +7805,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -7615,7 +7827,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -7637,7 +7850,8 @@
       "bodyArmor": 8,
       "armArmor": 2,
       "legArmor": 5,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -7658,7 +7872,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -7680,7 +7895,8 @@
       "bodyArmor": 2,
       "armArmor": 1,
       "legArmor": 1,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -7701,7 +7917,8 @@
       "bodyArmor": 50,
       "armArmor": 14,
       "legArmor": 16,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -8221,7 +8438,8 @@
       "bodyArmor": 13,
       "armArmor": 6,
       "legArmor": 6,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -8281,7 +8499,8 @@
       "bodyArmor": 6,
       "armArmor": 1,
       "legArmor": 3,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -8303,7 +8522,8 @@
       "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -8391,7 +8611,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -8444,7 +8665,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 20,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -8463,7 +8685,8 @@
       "bodyArmor": 0,
       "armArmor": 20,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -8484,7 +8707,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -8505,7 +8729,8 @@
       "bodyArmor": 25,
       "armArmor": 8,
       "legArmor": 8,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -8527,7 +8752,8 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 3,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -8656,7 +8882,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -8677,7 +8904,8 @@
       "bodyArmor": 7,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 1
     },
     "weapons": []
   },
@@ -8699,7 +8927,8 @@
       "bodyArmor": 2,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -8721,7 +8950,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -8740,7 +8970,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -8759,7 +8990,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -8780,7 +9012,8 @@
       "bodyArmor": 48,
       "armArmor": 14,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -8799,7 +9032,8 @@
       "bodyArmor": 5,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -8854,7 +9088,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -8914,7 +9149,8 @@
       "bodyArmor": 16,
       "armArmor": 6,
       "legArmor": 8,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -8936,7 +9172,8 @@
       "bodyArmor": 5,
       "armArmor": 1,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -8957,7 +9194,8 @@
       "bodyArmor": 25,
       "armArmor": 12,
       "legArmor": 12,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -8978,7 +9216,8 @@
       "bodyArmor": 47,
       "armArmor": 14,
       "legArmor": 23,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -9039,7 +9278,8 @@
       "bodyArmor": 5,
       "armArmor": 1,
       "legArmor": 1,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -9130,7 +9370,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -9325,7 +9566,8 @@
       "bodyArmor": 39,
       "armArmor": 7,
       "legArmor": 10,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -9346,7 +9588,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 6,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -9402,7 +9645,8 @@
       "bodyArmor": 36,
       "armArmor": 14,
       "legArmor": 14,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -9421,7 +9665,8 @@
       "bodyArmor": 0,
       "armArmor": 24,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -9442,7 +9687,8 @@
       "bodyArmor": 34,
       "armArmor": 2,
       "legArmor": 4,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -9464,7 +9710,8 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 3,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -9880,7 +10127,8 @@
       "bodyArmor": 20,
       "armArmor": 6,
       "legArmor": 10,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -9901,7 +10149,8 @@
       "bodyArmor": 18,
       "armArmor": 6,
       "legArmor": 8,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -9920,7 +10169,8 @@
       "bodyArmor": 17,
       "armArmor": 4,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -10055,7 +10305,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -10114,7 +10365,8 @@
       "bodyArmor": 0,
       "armArmor": 3,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -10135,7 +10387,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -10192,7 +10445,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -10211,7 +10465,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -10233,7 +10488,8 @@
       "bodyArmor": 3,
       "armArmor": 2,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -10252,7 +10508,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -10273,7 +10530,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -10294,7 +10552,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -10316,7 +10575,8 @@
       "bodyArmor": 7,
       "armArmor": 2,
       "legArmor": 4,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -10338,7 +10598,8 @@
       "bodyArmor": 6,
       "armArmor": 2,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -10357,7 +10618,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -10376,7 +10638,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -10397,7 +10660,8 @@
       "bodyArmor": 27,
       "armArmor": 10,
       "legArmor": 11,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -10418,7 +10682,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 5,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -10437,7 +10702,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -10654,7 +10920,8 @@
       "bodyArmor": 30,
       "armArmor": 8,
       "legArmor": 18,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -10675,7 +10942,8 @@
       "bodyArmor": 36,
       "armArmor": 8,
       "legArmor": 18,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -10694,7 +10962,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -10977,7 +11246,8 @@
       "bodyArmor": 0,
       "armArmor": 7,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -10996,7 +11266,8 @@
       "bodyArmor": 0,
       "armArmor": 8,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -11091,7 +11362,8 @@
       "bodyArmor": 4,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -11323,7 +11595,8 @@
       "bodyArmor": 15,
       "armArmor": 4,
       "legArmor": 7,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -11345,7 +11618,8 @@
       "bodyArmor": 16,
       "armArmor": 4,
       "legArmor": 8,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -11367,7 +11641,8 @@
       "bodyArmor": 16,
       "armArmor": 4,
       "legArmor": 8,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -11389,7 +11664,8 @@
       "bodyArmor": 16,
       "armArmor": 4,
       "legArmor": 8,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -11411,7 +11687,8 @@
       "bodyArmor": 16,
       "armArmor": 5,
       "legArmor": 8,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -11432,7 +11709,8 @@
       "bodyArmor": 17,
       "armArmor": 4,
       "legArmor": 8,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -11453,7 +11731,8 @@
       "bodyArmor": 18,
       "armArmor": 4,
       "legArmor": 8,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -11472,7 +11751,8 @@
       "bodyArmor": 9,
       "armArmor": 4,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -11526,7 +11806,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -11545,7 +11826,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -11567,7 +11849,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -11589,7 +11872,8 @@
       "bodyArmor": 2,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -11672,7 +11956,8 @@
       "bodyArmor": 5,
       "armArmor": 2,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -11693,7 +11978,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 4,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -11715,7 +12001,8 @@
       "bodyArmor": 2,
       "armArmor": 1,
       "legArmor": 1,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -11774,7 +12061,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -11795,7 +12083,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 4,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -11817,7 +12106,8 @@
       "bodyArmor": 4,
       "armArmor": 1,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -11948,7 +12238,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -11967,7 +12258,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -11986,7 +12278,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12005,7 +12298,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12024,7 +12318,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12043,7 +12338,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12064,7 +12360,8 @@
       "bodyArmor": 14,
       "armArmor": 3,
       "legArmor": 3,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12086,7 +12383,8 @@
       "bodyArmor": 12,
       "armArmor": 2,
       "legArmor": 5,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12107,7 +12405,8 @@
       "bodyArmor": 12,
       "armArmor": 2,
       "legArmor": 5,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12128,7 +12427,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12147,7 +12447,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12169,7 +12470,8 @@
       "bodyArmor": 2,
       "armArmor": 0,
       "legArmor": 6,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12190,7 +12492,8 @@
       "bodyArmor": 4,
       "armArmor": 2,
       "legArmor": 6,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12212,7 +12515,8 @@
       "bodyArmor": 6,
       "armArmor": 1,
       "legArmor": 1,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12234,7 +12538,8 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 3,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12255,7 +12560,8 @@
       "bodyArmor": 6,
       "armArmor": 2,
       "legArmor": 2,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12313,7 +12619,8 @@
       "bodyArmor": 18,
       "armArmor": 9,
       "legArmor": 9,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12466,7 +12773,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12485,7 +12793,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12504,7 +12813,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12525,7 +12835,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12546,7 +12857,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12567,7 +12879,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12626,7 +12939,8 @@
       "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12647,7 +12961,8 @@
       "bodyArmor": 0,
       "armArmor": 7,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12668,7 +12983,8 @@
       "bodyArmor": 0,
       "armArmor": 9,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12689,7 +13005,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12708,7 +13025,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12729,7 +13047,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12751,7 +13070,8 @@
       "bodyArmor": 3,
       "armArmor": 1,
       "legArmor": 1,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12772,7 +13092,8 @@
       "bodyArmor": 34,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 1
     },
     "weapons": []
   },
@@ -12793,7 +13114,8 @@
       "bodyArmor": 36,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 1
     },
     "weapons": []
   },
@@ -12814,7 +13136,8 @@
       "bodyArmor": 31,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 1
     },
     "weapons": []
   },
@@ -12833,7 +13156,8 @@
       "bodyArmor": 27,
       "armArmor": 12,
       "legArmor": 14,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12855,7 +13179,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12877,7 +13202,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12898,7 +13224,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12920,7 +13247,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12942,7 +13270,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12964,7 +13293,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -12986,7 +13316,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -13156,7 +13487,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -13175,7 +13507,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -13196,7 +13529,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -13217,7 +13551,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -13239,7 +13574,8 @@
       "bodyArmor": 7,
       "armArmor": 1,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -13261,7 +13597,8 @@
       "bodyArmor": 7,
       "armArmor": 1,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -13351,7 +13688,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -13373,7 +13711,8 @@
       "bodyArmor": 4,
       "armArmor": 1,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -13394,7 +13733,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 5,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -13416,7 +13756,8 @@
       "bodyArmor": 9,
       "armArmor": 2,
       "legArmor": 4,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -13437,7 +13778,8 @@
       "bodyArmor": 0,
       "armArmor": 8,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -13458,7 +13800,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 8,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -13841,7 +14184,8 @@
       "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -14205,7 +14549,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -14224,7 +14569,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -14245,7 +14591,8 @@
       "bodyArmor": 48,
       "armArmor": 14,
       "legArmor": 24,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -14266,7 +14613,8 @@
       "bodyArmor": 33,
       "armArmor": 6,
       "legArmor": 7,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -14285,7 +14633,8 @@
       "bodyArmor": 17,
       "armArmor": 9,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -14307,7 +14656,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -14326,7 +14676,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -14347,7 +14698,8 @@
       "bodyArmor": 31,
       "armArmor": 6,
       "legArmor": 6,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -14368,7 +14720,8 @@
       "bodyArmor": 31,
       "armArmor": 6,
       "legArmor": 6,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -14389,7 +14742,8 @@
       "bodyArmor": 26,
       "armArmor": 12,
       "legArmor": 12,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -14410,7 +14764,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -14432,7 +14787,8 @@
       "bodyArmor": 16,
       "armArmor": 6,
       "legArmor": 8,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -14453,7 +14809,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -14474,7 +14831,8 @@
       "bodyArmor": 5,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 1
     },
     "weapons": []
   },
@@ -14496,7 +14854,8 @@
       "bodyArmor": 8,
       "armArmor": 4,
       "legArmor": 3,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -14515,7 +14874,8 @@
       "bodyArmor": 57,
       "armArmor": 16,
       "legArmor": 20,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -14536,7 +14896,8 @@
       "bodyArmor": 45,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 1
     },
     "weapons": []
   },
@@ -14635,7 +14996,8 @@
       "bodyArmor": 7,
       "armArmor": 6,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -14783,7 +15145,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -14802,7 +15165,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -14821,7 +15185,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -14842,7 +15207,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -14861,7 +15227,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -14880,7 +15247,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -14899,7 +15267,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -14918,7 +15287,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -14937,7 +15307,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -14956,7 +15327,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -15015,7 +15387,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -15253,7 +15626,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -15274,7 +15648,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -15295,7 +15670,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -15314,7 +15690,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -15333,7 +15710,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -15352,7 +15730,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -15373,7 +15752,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -15394,7 +15774,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -15415,7 +15796,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -15434,7 +15816,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -15453,7 +15836,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -15472,7 +15856,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -15494,7 +15879,8 @@
       "bodyArmor": 8,
       "armArmor": 3,
       "legArmor": 3,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -15516,7 +15902,8 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 3,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -15538,7 +15925,8 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 3,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -15557,7 +15945,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -15578,7 +15967,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 5,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -15600,7 +15990,8 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 3,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -15622,7 +16013,8 @@
       "bodyArmor": 8,
       "armArmor": 2,
       "legArmor": 3,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -15644,7 +16036,8 @@
       "bodyArmor": 16,
       "armArmor": 2,
       "legArmor": 5,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -15881,7 +16274,8 @@
       "bodyArmor": 8,
       "armArmor": 3,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -16032,7 +16426,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -16051,7 +16446,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -16070,7 +16466,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -16262,7 +16659,8 @@
       "bodyArmor": 15,
       "armArmor": 2,
       "legArmor": 7,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -16458,7 +16856,8 @@
       "bodyArmor": 42,
       "armArmor": 3,
       "legArmor": 23,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -16512,7 +16911,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -16534,7 +16934,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -16556,7 +16957,8 @@
       "bodyArmor": 2,
       "armArmor": 1,
       "legArmor": 1,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -16577,7 +16979,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 1,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -16596,7 +16999,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 19,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -16615,7 +17019,8 @@
       "bodyArmor": 0,
       "armArmor": 23,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -16634,7 +17039,8 @@
       "bodyArmor": 18,
       "armArmor": 4,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -16655,7 +17061,8 @@
       "bodyArmor": 52,
       "armArmor": 16,
       "legArmor": 23,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -16751,7 +17158,8 @@
       "bodyArmor": 11,
       "armArmor": 2,
       "legArmor": 6,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -16773,7 +17181,8 @@
       "bodyArmor": 5,
       "armArmor": 1,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -16833,7 +17242,8 @@
       "bodyArmor": 22,
       "armArmor": 4,
       "legArmor": 4,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -16855,7 +17265,8 @@
       "bodyArmor": 4,
       "armArmor": 2,
       "legArmor": 2,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -16876,7 +17287,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 4,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -16935,7 +17347,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -16956,7 +17369,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 6,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -16978,7 +17392,8 @@
       "bodyArmor": 8,
       "armArmor": 2,
       "legArmor": 4,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -16999,7 +17414,8 @@
       "bodyArmor": 0,
       "armArmor": 4,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -17020,7 +17436,8 @@
       "bodyArmor": 24,
       "armArmor": 6,
       "legArmor": 12,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -17039,7 +17456,8 @@
       "bodyArmor": 12,
       "armArmor": 3,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -17099,7 +17517,8 @@
       "bodyArmor": 16,
       "armArmor": 6,
       "legArmor": 6,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -17120,7 +17539,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 3,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -17142,7 +17562,8 @@
       "bodyArmor": 36,
       "armArmor": 7,
       "legArmor": 6,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -17161,7 +17582,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -17180,7 +17602,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -17199,7 +17622,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -17218,7 +17642,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -17240,7 +17665,8 @@
       "bodyArmor": 12,
       "armArmor": 2,
       "legArmor": 7,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -17261,7 +17687,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -17280,7 +17707,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -17301,7 +17729,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -17320,7 +17749,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -17341,7 +17771,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -17360,7 +17791,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -17381,7 +17813,8 @@
       "bodyArmor": 34,
       "armArmor": 15,
       "legArmor": 18,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -17400,7 +17833,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -17419,7 +17853,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -17440,7 +17875,8 @@
       "bodyArmor": 4,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -17459,7 +17895,8 @@
       "bodyArmor": 9,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -17480,7 +17917,8 @@
       "bodyArmor": 6,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 1
     },
     "weapons": []
   },
@@ -17573,7 +18011,8 @@
       "bodyArmor": 2,
       "armArmor": 1,
       "legArmor": 1,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -17670,7 +18109,8 @@
       "bodyArmor": 2,
       "armArmor": 1,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -17692,7 +18132,8 @@
       "bodyArmor": 12,
       "armArmor": 2,
       "legArmor": 6,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -17791,7 +18232,8 @@
       "bodyArmor": 4,
       "armArmor": 2,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -17852,7 +18294,8 @@
       "bodyArmor": 14,
       "armArmor": 2,
       "legArmor": 7,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -17874,7 +18317,8 @@
       "bodyArmor": 2,
       "armArmor": 1,
       "legArmor": 1,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -17895,7 +18339,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -17914,7 +18359,8 @@
       "bodyArmor": 0,
       "armArmor": 24,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -18056,7 +18502,8 @@
       "bodyArmor": 40,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 1
     },
     "weapons": []
   },
@@ -18075,7 +18522,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 12,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -18094,7 +18542,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 22,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -18113,7 +18562,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -18132,7 +18582,8 @@
       "bodyArmor": 0,
       "armArmor": 20,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -18153,7 +18604,8 @@
       "bodyArmor": 25,
       "armArmor": 11,
       "legArmor": 13,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -18172,7 +18624,8 @@
       "bodyArmor": 11,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -18193,7 +18646,8 @@
       "bodyArmor": 36,
       "armArmor": 20,
       "legArmor": 15,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -18214,7 +18668,8 @@
       "bodyArmor": 36,
       "armArmor": 20,
       "legArmor": 15,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -18235,7 +18690,8 @@
       "bodyArmor": 36,
       "armArmor": 20,
       "legArmor": 15,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -18256,7 +18712,8 @@
       "bodyArmor": 36,
       "armArmor": 20,
       "legArmor": 15,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -18277,7 +18734,8 @@
       "bodyArmor": 36,
       "armArmor": 20,
       "legArmor": 15,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -18298,7 +18756,8 @@
       "bodyArmor": 36,
       "armArmor": 20,
       "legArmor": 15,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -18552,7 +19011,8 @@
       "bodyArmor": 8,
       "armArmor": 4,
       "legArmor": 4,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -18573,7 +19033,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -18711,7 +19172,8 @@
       "bodyArmor": 5,
       "armArmor": 1,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -18768,7 +19230,8 @@
       "chargeDamage": 6,
       "maneuver": 82,
       "speed": 43,
-      "hitPoints": 217
+      "hitPoints": 217,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -18789,7 +19252,8 @@
       "chargeDamage": 7,
       "maneuver": 83,
       "speed": 44,
-      "hitPoints": 220
+      "hitPoints": 220,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -18810,7 +19274,8 @@
       "chargeDamage": 1,
       "maneuver": 66,
       "speed": 40,
-      "hitPoints": 172
+      "hitPoints": 172,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -18831,7 +19296,8 @@
       "chargeDamage": 1,
       "maneuver": 70,
       "speed": 41,
-      "hitPoints": 177
+      "hitPoints": 177,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -18852,7 +19318,8 @@
       "chargeDamage": 7,
       "maneuver": 71,
       "speed": 43,
-      "hitPoints": 181
+      "hitPoints": 181,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -18873,7 +19340,8 @@
       "chargeDamage": 2,
       "maneuver": 74,
       "speed": 44,
-      "hitPoints": 190
+      "hitPoints": 190,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -18894,7 +19362,8 @@
       "chargeDamage": 3,
       "maneuver": 76,
       "speed": 45,
-      "hitPoints": 195
+      "hitPoints": 195,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -18915,7 +19384,8 @@
       "chargeDamage": 7,
       "maneuver": 75,
       "speed": 47,
-      "hitPoints": 219
+      "hitPoints": 219,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -18936,7 +19406,8 @@
       "chargeDamage": 8,
       "maneuver": 75,
       "speed": 48,
-      "hitPoints": 222
+      "hitPoints": 222,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -18957,7 +19428,8 @@
       "chargeDamage": 7,
       "maneuver": 61,
       "speed": 38,
-      "hitPoints": 188
+      "hitPoints": 188,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -18978,7 +19450,8 @@
       "chargeDamage": 6,
       "maneuver": 64,
       "speed": 40,
-      "hitPoints": 198
+      "hitPoints": 198,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -18999,7 +19472,8 @@
       "chargeDamage": 7,
       "maneuver": 66,
       "speed": 41,
-      "hitPoints": 207
+      "hitPoints": 207,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -19020,7 +19494,8 @@
       "chargeDamage": 8,
       "maneuver": 68,
       "speed": 42,
-      "hitPoints": 214
+      "hitPoints": 214,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -19041,7 +19516,8 @@
       "chargeDamage": 8,
       "maneuver": 70,
       "speed": 43,
-      "hitPoints": 220
+      "hitPoints": 220,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -19062,7 +19538,8 @@
       "chargeDamage": 4,
       "maneuver": 74,
       "speed": 51,
-      "hitPoints": 204
+      "hitPoints": 204,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -19083,7 +19560,8 @@
       "chargeDamage": 5,
       "maneuver": 75,
       "speed": 52,
-      "hitPoints": 207
+      "hitPoints": 207,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -19104,7 +19582,8 @@
       "chargeDamage": 1,
       "maneuver": 58,
       "speed": 48,
-      "hitPoints": 164
+      "hitPoints": 164,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -19125,7 +19604,8 @@
       "chargeDamage": 2,
       "maneuver": 60,
       "speed": 50,
-      "hitPoints": 169
+      "hitPoints": 169,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -19146,7 +19626,8 @@
       "chargeDamage": 2,
       "maneuver": 62,
       "speed": 52,
-      "hitPoints": 176
+      "hitPoints": 176,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -19167,7 +19648,8 @@
       "chargeDamage": 2,
       "maneuver": 64,
       "speed": 53,
-      "hitPoints": 181
+      "hitPoints": 181,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -19188,7 +19670,8 @@
       "chargeDamage": 3,
       "maneuver": 66,
       "speed": 54,
-      "hitPoints": 186
+      "hitPoints": 186,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -19209,7 +19692,8 @@
       "chargeDamage": 4,
       "maneuver": 85,
       "speed": 46,
-      "hitPoints": 195
+      "hitPoints": 195,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -19230,7 +19714,8 @@
       "chargeDamage": 5,
       "maneuver": 86,
       "speed": 46,
-      "hitPoints": 198
+      "hitPoints": 198,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -19251,7 +19736,8 @@
       "chargeDamage": 2,
       "maneuver": 74,
       "speed": 38,
-      "hitPoints": 160
+      "hitPoints": 160,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -19272,7 +19758,8 @@
       "chargeDamage": 2,
       "maneuver": 77,
       "speed": 39,
-      "hitPoints": 166
+      "hitPoints": 166,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -19293,7 +19780,8 @@
       "chargeDamage": 2,
       "maneuver": 79,
       "speed": 41,
-      "hitPoints": 174
+      "hitPoints": 174,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -19314,7 +19802,8 @@
       "chargeDamage": 3,
       "maneuver": 81,
       "speed": 42,
-      "hitPoints": 179
+      "hitPoints": 179,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -19335,7 +19824,8 @@
       "chargeDamage": 3,
       "maneuver": 83,
       "speed": 43,
-      "hitPoints": 184
+      "hitPoints": 184,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -19356,7 +19846,8 @@
       "chargeDamage": 3,
       "maneuver": 78,
       "speed": 46,
-      "hitPoints": 199
+      "hitPoints": 199,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -19377,7 +19868,8 @@
       "chargeDamage": 8,
       "maneuver": 72,
       "speed": 44,
-      "hitPoints": 225
+      "hitPoints": 225,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -19398,7 +19890,8 @@
       "chargeDamage": 3,
       "maneuver": 68,
       "speed": 55,
-      "hitPoints": 190
+      "hitPoints": 190,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -19419,7 +19912,8 @@
       "chargeDamage": 4,
       "maneuver": 85,
       "speed": 44,
-      "hitPoints": 188
+      "hitPoints": 188,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -19481,7 +19975,8 @@
       "bodyArmor": 6,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 1
     },
     "weapons": []
   },
@@ -19502,7 +19997,8 @@
       "bodyArmor": 6,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 1
     },
     "weapons": []
   },
@@ -19523,7 +20019,8 @@
       "bodyArmor": 6,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 1
     },
     "weapons": []
   },
@@ -19544,7 +20041,8 @@
       "chargeDamage": 0,
       "maneuver": 58,
       "speed": 30,
-      "hitPoints": 200
+      "hitPoints": 200,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -19565,7 +20063,8 @@
       "chargeDamage": 1,
       "maneuver": 60,
       "speed": 33,
-      "hitPoints": 275
+      "hitPoints": 275,
+      "familyType": 1
     },
     "weapons": []
   },
@@ -19586,7 +20085,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -19605,7 +20105,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -19626,7 +20127,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -19647,7 +20149,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -19666,7 +20169,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -19687,7 +20191,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -19708,7 +20213,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -19727,7 +20233,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -19746,7 +20253,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -19767,7 +20275,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -19788,7 +20297,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -19807,7 +20317,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -19826,7 +20337,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -19845,7 +20357,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -19864,7 +20377,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -19965,7 +20479,8 @@
       "bodyArmor": 8,
       "armArmor": 8,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -19984,7 +20499,8 @@
       "bodyArmor": 15,
       "armArmor": 12,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -20046,7 +20562,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -20065,7 +20582,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -20086,7 +20604,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -20107,7 +20626,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -20128,7 +20648,8 @@
       "bodyArmor": 24,
       "armArmor": 10,
       "legArmor": 10,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -20147,7 +20668,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -20168,7 +20690,8 @@
       "bodyArmor": 28,
       "armArmor": 6,
       "legArmor": 12,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -20189,7 +20712,8 @@
       "bodyArmor": 28,
       "armArmor": 2,
       "legArmor": 4,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -20210,7 +20734,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -20232,7 +20757,8 @@
       "bodyArmor": 7,
       "armArmor": 2,
       "legArmor": 3,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -20295,7 +20821,8 @@
       "bodyArmor": 11,
       "armArmor": 3,
       "legArmor": 3,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -20316,7 +20843,8 @@
       "bodyArmor": 12,
       "armArmor": 3,
       "legArmor": 4,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -20337,7 +20865,8 @@
       "bodyArmor": 30,
       "armArmor": 12,
       "legArmor": 14,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -20359,7 +20888,8 @@
       "bodyArmor": 4,
       "armArmor": 2,
       "legArmor": 3,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -20508,7 +21038,8 @@
       "bodyArmor": 0,
       "armArmor": 22,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -20529,7 +21060,8 @@
       "bodyArmor": 51,
       "armArmor": 16,
       "legArmor": 16,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -20550,7 +21082,8 @@
       "bodyArmor": 45,
       "armArmor": 6,
       "legArmor": 19,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -20572,7 +21105,8 @@
       "bodyArmor": 3,
       "armArmor": 1,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -20593,7 +21127,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -20612,7 +21147,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -20845,7 +21381,8 @@
       "bodyArmor": 26,
       "armArmor": 2,
       "legArmor": 3,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -20866,7 +21403,8 @@
       "bodyArmor": 18,
       "armArmor": 6,
       "legArmor": 9,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -20888,7 +21426,8 @@
       "bodyArmor": 9,
       "armArmor": 2,
       "legArmor": 4,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -20909,7 +21448,8 @@
       "bodyArmor": 12,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 1
     },
     "weapons": []
   },
@@ -20930,7 +21470,8 @@
       "bodyArmor": 9,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 1
     },
     "weapons": []
   },
@@ -20952,7 +21493,8 @@
       "bodyArmor": 15,
       "armArmor": 7,
       "legArmor": 7,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -20974,7 +21516,8 @@
       "bodyArmor": 16,
       "armArmor": 3,
       "legArmor": 6,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -20993,7 +21536,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 18,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -21012,7 +21556,8 @@
       "bodyArmor": 0,
       "armArmor": 18,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -21033,7 +21578,8 @@
       "bodyArmor": 24,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 1
     },
     "weapons": []
   },
@@ -21493,7 +22039,8 @@
       "bodyArmor": 6,
       "armArmor": 2,
       "legArmor": 3,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -21512,7 +22059,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -21647,7 +22195,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -21669,7 +22218,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -21688,7 +22238,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -21710,7 +22261,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -21808,7 +22360,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -21829,7 +22382,8 @@
       "bodyArmor": 14,
       "armArmor": 2,
       "legArmor": 7,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -21850,7 +22404,8 @@
       "bodyArmor": 16,
       "armArmor": 7,
       "legArmor": 7,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -21871,7 +22426,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -21890,7 +22446,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -21911,7 +22468,8 @@
       "bodyArmor": 14,
       "armArmor": 3,
       "legArmor": 4,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -21933,7 +22491,8 @@
       "bodyArmor": 16,
       "armArmor": 4,
       "legArmor": 8,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -21952,7 +22511,8 @@
       "bodyArmor": 8,
       "armArmor": 4,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -21973,7 +22533,8 @@
       "bodyArmor": 0,
       "armArmor": 9,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -21994,7 +22555,8 @@
       "bodyArmor": 15,
       "armArmor": 7,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -22013,7 +22575,8 @@
       "bodyArmor": 0,
       "armArmor": 7,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -22035,7 +22598,8 @@
       "bodyArmor": 14,
       "armArmor": 3,
       "legArmor": 7,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -22056,7 +22620,8 @@
       "bodyArmor": 16,
       "armArmor": 4,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -22075,7 +22640,8 @@
       "bodyArmor": 22,
       "armArmor": 12,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -22094,7 +22660,8 @@
       "bodyArmor": 8,
       "armArmor": 8,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -22151,7 +22718,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -22172,7 +22740,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -22191,7 +22760,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -22210,7 +22780,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -22231,7 +22802,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -22334,7 +22906,8 @@
       "bodyArmor": 4,
       "armArmor": 1,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -22798,7 +23371,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -22856,7 +23430,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -22878,7 +23453,8 @@
       "bodyArmor": 2,
       "armArmor": 1,
       "legArmor": 1,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -22899,7 +23475,8 @@
       "bodyArmor": 38,
       "armArmor": 19,
       "legArmor": 19,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -22918,7 +23495,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 22,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -22937,7 +23515,8 @@
       "bodyArmor": 0,
       "armArmor": 22,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -22956,7 +23535,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -22975,7 +23555,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -22994,7 +23575,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -23013,7 +23595,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -23067,7 +23650,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -23088,7 +23672,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -23107,7 +23692,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -23126,7 +23712,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -23145,7 +23732,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -23327,7 +23915,8 @@
       "bodyArmor": 0,
       "armArmor": 3,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -23348,7 +23937,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 5,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -23370,7 +23960,8 @@
       "bodyArmor": 3,
       "armArmor": 1,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -23424,7 +24015,8 @@
       "bodyArmor": 32,
       "armArmor": 8,
       "legArmor": 8,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -23514,7 +24106,8 @@
       "bodyArmor": 34,
       "armArmor": 12,
       "legArmor": 12,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -23609,7 +24202,8 @@
       "bodyArmor": 0,
       "armArmor": 20,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -23630,7 +24224,8 @@
       "bodyArmor": 16,
       "armArmor": 2,
       "legArmor": 5,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -23651,7 +24246,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 20,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -23670,7 +24266,8 @@
       "bodyArmor": 6,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -23723,7 +24320,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -23777,7 +24375,8 @@
       "bodyArmor": 20,
       "armArmor": 8,
       "legArmor": 10,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -23796,7 +24395,8 @@
       "bodyArmor": 16,
       "armArmor": 4,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -23817,7 +24417,8 @@
       "bodyArmor": 14,
       "armArmor": 3,
       "legArmor": 5,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -23836,7 +24437,8 @@
       "bodyArmor": 36,
       "armArmor": 8,
       "legArmor": 10,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -23857,7 +24459,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 6,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -23878,7 +24481,8 @@
       "bodyArmor": 0,
       "armArmor": 9,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -23900,7 +24504,8 @@
       "bodyArmor": 5,
       "armArmor": 1,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -23921,7 +24526,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -23940,7 +24546,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -23961,7 +24568,8 @@
       "bodyArmor": 0,
       "armArmor": 3,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -23982,7 +24590,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -24001,7 +24610,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -24020,7 +24630,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -24041,7 +24652,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -24060,7 +24672,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -24079,7 +24692,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 30,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -24098,7 +24712,8 @@
       "bodyArmor": 0,
       "armArmor": 30,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -24117,7 +24732,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -24138,7 +24754,8 @@
       "bodyArmor": 64,
       "armArmor": 25,
       "legArmor": 20,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -24157,7 +24774,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -24176,7 +24794,8 @@
       "bodyArmor": 32,
       "armArmor": 18,
       "legArmor": 12,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -24195,7 +24814,8 @@
       "bodyArmor": 32,
       "armArmor": 18,
       "legArmor": 12,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -24214,7 +24834,8 @@
       "bodyArmor": 32,
       "armArmor": 10,
       "legArmor": 12,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -24233,7 +24854,8 @@
       "bodyArmor": 32,
       "armArmor": 10,
       "legArmor": 12,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -24252,7 +24874,8 @@
       "bodyArmor": 32,
       "armArmor": 18,
       "legArmor": 12,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -24271,7 +24894,8 @@
       "bodyArmor": 32,
       "armArmor": 10,
       "legArmor": 12,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -24293,7 +24917,8 @@
       "bodyArmor": 3,
       "armArmor": 1,
       "legArmor": 1,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -24312,7 +24937,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -24333,7 +24959,8 @@
       "bodyArmor": 31,
       "armArmor": 0,
       "legArmor": 7,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -24352,7 +24979,8 @@
       "bodyArmor": 16,
       "armArmor": 8,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -24374,7 +25002,8 @@
       "bodyArmor": 2,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -24467,7 +25096,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -24486,7 +25116,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -24505,7 +25136,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -24526,7 +25158,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -24547,7 +25180,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -24566,7 +25200,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -24587,7 +25222,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -24608,7 +25244,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -24809,7 +25446,8 @@
       "bodyArmor": 14,
       "armArmor": 2,
       "legArmor": 6,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -25034,7 +25672,8 @@
       "bodyArmor": 12,
       "armArmor": 2,
       "legArmor": 5,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -25055,7 +25694,8 @@
       "bodyArmor": 18,
       "armArmor": 2,
       "legArmor": 9,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -25077,7 +25717,8 @@
       "bodyArmor": 15,
       "armArmor": 2,
       "legArmor": 7,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -25100,7 +25741,8 @@
       "bodyArmor": 11,
       "armArmor": 0,
       "legArmor": 5,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -25340,7 +25982,8 @@
       "bodyArmor": 37,
       "armArmor": 2,
       "legArmor": 8,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -25361,7 +26004,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -25380,7 +26024,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -25440,7 +26085,8 @@
       "bodyArmor": 2,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -25798,7 +26444,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -25819,7 +26466,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -25910,7 +26558,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -25929,7 +26578,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -25948,7 +26598,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -25969,7 +26620,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -26347,7 +26999,8 @@
       "bodyArmor": 6,
       "armArmor": 1,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -26443,7 +27096,8 @@
       "bodyArmor": 8,
       "armArmor": 4,
       "legArmor": 4,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -26464,7 +27118,8 @@
       "bodyArmor": 9,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 1
     },
     "weapons": []
   },
@@ -26523,7 +27178,8 @@
       "bodyArmor": 22,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 1
     },
     "weapons": []
   },
@@ -26544,7 +27200,8 @@
       "bodyArmor": 7,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 1
     },
     "weapons": []
   },
@@ -26604,7 +27261,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -26625,7 +27283,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 4,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -26644,7 +27303,8 @@
       "bodyArmor": 6,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -26665,7 +27325,8 @@
       "bodyArmor": 0,
       "armArmor": 12,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -26687,7 +27348,8 @@
       "bodyArmor": 4,
       "armArmor": 2,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -26749,7 +27411,8 @@
       "bodyArmor": 36,
       "armArmor": 14,
       "legArmor": 14,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -26768,7 +27431,8 @@
       "bodyArmor": 7,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -26790,7 +27454,8 @@
       "bodyArmor": 12,
       "armArmor": 3,
       "legArmor": 5,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -26847,7 +27512,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 5,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -26868,7 +27534,8 @@
       "bodyArmor": 0,
       "armArmor": 5,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -26887,7 +27554,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 23,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -26908,7 +27576,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 5,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -26929,7 +27598,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -26986,7 +27656,8 @@
       "bodyArmor": 9,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 1
     },
     "weapons": []
   },
@@ -27163,7 +27834,8 @@
       "bodyArmor": 11,
       "armArmor": 3,
       "legArmor": 5,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -27182,7 +27854,8 @@
       "bodyArmor": 14,
       "armArmor": 7,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -27203,7 +27876,8 @@
       "bodyArmor": 10,
       "armArmor": 2,
       "legArmor": 5,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -27224,7 +27898,8 @@
       "bodyArmor": 14,
       "armArmor": 7,
       "legArmor": 7,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -27243,7 +27918,8 @@
       "bodyArmor": 0,
       "armArmor": 11,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -27266,7 +27942,8 @@
       "bodyArmor": 8,
       "armArmor": 0,
       "legArmor": 3,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -27325,7 +28002,8 @@
       "bodyArmor": 31,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 1
     },
     "weapons": []
   },
@@ -27346,7 +28024,8 @@
       "bodyArmor": 14,
       "armArmor": 6,
       "legArmor": 7,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -27365,7 +28044,8 @@
       "bodyArmor": 0,
       "armArmor": 5,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -27648,7 +28328,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 5,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -27669,7 +28350,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 6,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -27690,7 +28372,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 4,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -27711,7 +28394,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 3,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -27732,7 +28416,8 @@
       "bodyArmor": 46,
       "armArmor": 14,
       "legArmor": 16,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -27751,7 +28436,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -27889,7 +28575,8 @@
       "bodyArmor": 2,
       "armArmor": 1,
       "legArmor": 1,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -28393,7 +29080,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -28414,7 +29102,8 @@
       "bodyArmor": 32,
       "armArmor": 15,
       "legArmor": 15,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -28435,7 +29124,8 @@
       "bodyArmor": 25,
       "armArmor": 10,
       "legArmor": 12,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -28456,7 +29146,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -28477,7 +29168,8 @@
       "bodyArmor": 49,
       "armArmor": 20,
       "legArmor": 25,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -28496,7 +29188,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -28515,7 +29208,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -28534,7 +29228,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -28553,7 +29248,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -28572,7 +29268,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -28593,7 +29290,8 @@
       "bodyArmor": 50,
       "armArmor": 7,
       "legArmor": 21,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -28614,7 +29312,8 @@
       "bodyArmor": 50,
       "armArmor": 15,
       "legArmor": 25,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -28635,7 +29334,8 @@
       "bodyArmor": 35,
       "armArmor": 2,
       "legArmor": 18,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -28654,7 +29354,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -28673,7 +29374,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -28692,7 +29394,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -28713,7 +29416,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -28732,7 +29436,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -28751,7 +29456,8 @@
       "bodyArmor": 25,
       "armArmor": 9,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -28808,7 +29514,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -28827,7 +29534,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -28849,7 +29557,8 @@
       "bodyArmor": 6,
       "armArmor": 2,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -28871,7 +29580,8 @@
       "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 1,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -29056,7 +29766,8 @@
       "bodyArmor": 5,
       "armArmor": 2,
       "legArmor": 3,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -29077,7 +29788,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -29136,7 +29848,8 @@
       "bodyArmor": 4,
       "armArmor": 1,
       "legArmor": 1,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -29158,7 +29871,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -29179,7 +29893,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -29201,7 +29916,8 @@
       "bodyArmor": 6,
       "armArmor": 1,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -29255,7 +29971,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -29518,7 +30235,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -29756,7 +30474,8 @@
       "bodyArmor": 4,
       "armArmor": 2,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -29778,7 +30497,8 @@
       "bodyArmor": 6,
       "armArmor": 2,
       "legArmor": 3,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -29800,7 +30520,8 @@
       "bodyArmor": 5,
       "armArmor": 2,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -29822,7 +30543,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -29843,7 +30565,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 9,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -29935,7 +30658,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -29954,7 +30678,8 @@
       "bodyArmor": 4,
       "armArmor": 7,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -29973,7 +30698,8 @@
       "bodyArmor": 16,
       "armArmor": 10,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -29994,7 +30720,8 @@
       "bodyArmor": 10,
       "armArmor": 8,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -30015,7 +30742,8 @@
       "bodyArmor": 5,
       "armArmor": 7,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -30034,7 +30762,8 @@
       "bodyArmor": 19,
       "armArmor": 12,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -30055,7 +30784,8 @@
       "bodyArmor": 24,
       "armArmor": 12,
       "legArmor": 13,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -30114,7 +30844,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -30133,7 +30864,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -30152,7 +30884,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -30173,7 +30906,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -30372,7 +31106,8 @@
       "bodyArmor": 14,
       "armArmor": 2,
       "legArmor": 3,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -30393,7 +31128,8 @@
       "bodyArmor": 4,
       "armArmor": 2,
       "legArmor": 1,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -30415,7 +31151,8 @@
       "bodyArmor": 1,
       "armArmor": 0,
       "legArmor": 1,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -30434,7 +31171,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -30453,7 +31191,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -30474,7 +31213,8 @@
       "bodyArmor": 28,
       "armArmor": 14,
       "legArmor": 14,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -30495,7 +31235,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -30687,7 +31428,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -31219,7 +31961,8 @@
       "bodyArmor": 2,
       "armArmor": 1,
       "legArmor": 2,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -31241,7 +31984,8 @@
       "bodyArmor": 3,
       "armArmor": 1,
       "legArmor": 1,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -31260,7 +32004,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -31279,7 +32024,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -31301,7 +32047,8 @@
       "bodyArmor": 2,
       "armArmor": 1,
       "legArmor": 1,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -31323,7 +32070,8 @@
       "bodyArmor": 2,
       "armArmor": 1,
       "legArmor": 1,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -31556,7 +32304,8 @@
       "bodyArmor": 12,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -31575,7 +32324,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -31594,7 +32344,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -31825,7 +32576,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -31884,7 +32636,8 @@
       "bodyArmor": 32,
       "armArmor": 14,
       "legArmor": 16,
-      "materialType": "Plate"
+      "materialType": "Plate",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -32337,7 +33090,8 @@
       "bodyArmor": 34,
       "armArmor": 12,
       "legArmor": 12,
-      "materialType": "Chainmail"
+      "materialType": "Chainmail",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -32520,7 +33274,8 @@
       "bodyArmor": 6,
       "armArmor": 2,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -32539,7 +33294,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -32560,7 +33316,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -32581,7 +33338,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -32907,7 +33665,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 5,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -32926,7 +33685,8 @@
       "bodyArmor": 0,
       "armArmor": 6,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -32947,7 +33707,8 @@
       "bodyArmor": 14,
       "armArmor": 4,
       "legArmor": 7,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -32966,7 +33727,8 @@
       "bodyArmor": 6,
       "armArmor": 4,
       "legArmor": 0,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -32987,7 +33749,8 @@
       "bodyArmor": 11,
       "armArmor": 3,
       "legArmor": 5,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -33009,7 +33772,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -33031,7 +33795,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -33053,7 +33818,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -33074,7 +33840,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 7,
-      "materialType": "Leather"
+      "materialType": "Leather",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -33096,7 +33863,8 @@
       "bodyArmor": 2,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   },
@@ -33117,7 +33885,8 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 4,
-      "materialType": "Cloth"
+      "materialType": "Cloth",
+      "familyType": 0
     },
     "weapons": []
   }
