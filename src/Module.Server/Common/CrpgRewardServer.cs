@@ -159,7 +159,7 @@ internal class CrpgRewardServer : MissionBehavior
         var newAllTotalStats = new Dictionary<PlayerId, CrpgCharacterStatistics>();
         List<CrpgUserUpdate> userUpdates = new();
         var networkPeers = GameNetwork.NetworkPeers.ToArray();
-        bool rewardMultiplierEnabled = networkPeers.Length > 4;
+        bool lowPopulationServer = networkPeers.Length <= 4;
         foreach (NetworkCommunicator networkPeer in networkPeers)
         {
             var missionPeer = networkPeer.GetComponent<MissionPeer>();
@@ -183,9 +183,9 @@ internal class CrpgRewardServer : MissionBehavior
             if ((_roundController != null && crpgPeer.SpawnTeamThisRound != null)
                 || (_roundController == null && missionPeer.Team != null && missionPeer.Team.Side != BattleSideEnum.None))
             {
-                SetReward(userUpdate, crpgPeer, durationRewarded, rewardMultiplierEnabled);
+                SetReward(userUpdate, crpgPeer, durationRewarded, !lowPopulationServer);
                 SetStatistics(userUpdate, networkPeer, newAllTotalStats);
-                userUpdate.BrokenItems = BreakItems(crpgPeer, durationRewarded);
+                userUpdate.BrokenItems = BreakItems(crpgPeer, durationRewarded * (lowPopulationServer ? 0.5f : 1f));
             }
 
             userUpdates.Add(userUpdate);
