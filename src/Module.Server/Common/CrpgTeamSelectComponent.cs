@@ -33,10 +33,6 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
         _balancer = new MatchBalancingSystem();
         _playersWaitingForTeam = new HashSet<PlayerId>();
     }
-#else
-    public CrpgTeamSelectComponent()
-    {
-    }
 #endif
 
     public override void OnBehaviorInitialize()

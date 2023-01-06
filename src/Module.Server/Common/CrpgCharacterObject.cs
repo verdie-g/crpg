@@ -1,9 +1,6 @@
-﻿using System.Xml;
-using Crpg.Module.Common;
-using Crpg.Module.Helpers;
+﻿using Crpg.Module.Helpers;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
-using TaleWorlds.ObjectSystem;
 
 namespace Crpg.Module.Common;
 

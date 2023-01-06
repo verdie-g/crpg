@@ -94,7 +94,7 @@ public class UpsertUserCommandTest : TestBase
 
         var dbUser = await AssertDb.Users
             .FirstAsync(u => u.Id == user.Id);
-        Assert.IsNull(dbUser!.DeletedAt);
+        Assert.IsNull(dbUser.DeletedAt);
     }
 
     [Test]

@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Crpg.Application.Clans.Commands;
+﻿using Crpg.Application.Clans.Commands;
 using Crpg.Application.Clans.Models;
 using Crpg.Application.Clans.Queries;
 using Crpg.Application.Common.Results;

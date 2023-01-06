@@ -76,7 +76,7 @@ internal class CrpgDuelGameMode : MissionBasedMultiplayerGameMode
         MissionState.OpenNew(
             Name,
             new MissionInitializerRecord(scene),
-            missionController =>
+            _ =>
                 new MissionBehavior[]
                 {
                     MissionLobbyComponent.CreateBehavior(),

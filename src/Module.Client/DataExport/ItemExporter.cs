@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-using System.Xml;
-using Crpg.Module.Api.Models;
+﻿using Crpg.Module.Api.Models;
 using Crpg.Module.Api.Models.Items;
 using Crpg.Module.Common.Models;
 using Crpg.Module.Helpers.Json;
@@ -10,7 +8,6 @@ using Newtonsoft.Json.Serialization;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View.Tableaus;
-using TaleWorlds.ObjectSystem;
 
 namespace Crpg.Module.DataExport;
 
@@ -151,7 +148,7 @@ internal class ItemExporter : IDataExporter
         var serializer = JsonSerializer.Create(new JsonSerializerSettings
         {
             NullValueHandling = NullValueHandling.Ignore,
-            Formatting = Newtonsoft.Json.Formatting.Indented,
+            Formatting = Formatting.Indented,
             ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() },
             Converters = new JsonConverter[] { new ArrayStringEnumFlagsConverter(), new StringEnumConverter() },
         });

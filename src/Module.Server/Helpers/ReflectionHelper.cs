@@ -9,8 +9,8 @@ internal static class ReflectionHelper
 {
     public static object GetField(object instance, string field) => GetFieldInfo(instance, field).GetValue(instance);
     public static void SetField(object instance, string field, object value) => GetFieldInfo(instance, field).SetValue(instance, value);
-    public static object GetProperty(object instance, string prop) => GetPropertyInfo(instance, prop)!.GetValue(instance);
-    public static void SetProperty(object instance, string prop, object value) => GetPropertyInfo(instance, prop)!.SetValue(instance, value, null);
+    public static object GetProperty(object instance, string prop) => GetPropertyInfo(instance, prop).GetValue(instance);
+    public static void SetProperty(object instance, string prop, object value) => GetPropertyInfo(instance, prop).SetValue(instance, value, null);
 
     public static object InvokeMethod(object instance, string method, object[] parameters)
     {
@@ -43,7 +43,7 @@ internal static class ReflectionHelper
         throw new ArgumentException($"Field {field} not found in {instance.GetType()}");
     }
 
-    private static PropertyInfo? GetPropertyInfo(object instance, string prop)
+    private static PropertyInfo GetPropertyInfo(object instance, string prop)
     {
         Type? t = instance.GetType();
         while (t != null)

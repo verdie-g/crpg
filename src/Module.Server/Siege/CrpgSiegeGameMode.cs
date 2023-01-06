@@ -84,7 +84,7 @@ internal class CrpgSiegeGameMode : MissionBasedMultiplayerGameMode
 
         MissionState.OpenNew(GameName,
             new MissionInitializerRecord(scene) { SceneUpgradeLevel = 3, SceneLevels = string.Empty },
-            mission => new MissionBehavior[]
+            _ => new MissionBehavior[]
             {
                 MissionLobbyComponent.CreateBehavior(),
 #if CRPG_CLIENT

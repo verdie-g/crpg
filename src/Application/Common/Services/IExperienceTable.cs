@@ -40,8 +40,6 @@ internal class ExperienceTable : IExperienceTable
     private int[] ComputeExperienceTable()
     {
         int[] table = new int[_constants.MaximumLevel - _constants.MinimumLevel + 1];
-        float a = _constants.ExperienceForLevelCoefs[0];
-        float b = _constants.ExperienceForLevelCoefs[1];
         for (int lvl = _constants.MinimumLevel; lvl <= 30; lvl += 1)
         {
             const int experienceForLevel30 = 4420824;

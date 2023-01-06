@@ -1,4 +1,3 @@
-using Crpg.Application.Common.Results;
 using Crpg.Application.Users.Queries;
 using Crpg.Domain.Entities.Users;
 using NUnit.Framework;

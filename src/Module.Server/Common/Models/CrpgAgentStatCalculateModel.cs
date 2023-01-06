@@ -1,4 +1,3 @@
-using Crpg.Module.Battle;
 using Crpg.Module.Helpers;
 using TaleWorlds.Core;
 using TaleWorlds.Library;

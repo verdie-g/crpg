@@ -1,13 +1,4 @@
-﻿using Crpg.Application.Common;
-using Crpg.Application.Common.Results;
-using Crpg.Application.Items.Commands;
-using Crpg.Domain.Entities.Characters;
-using Crpg.Domain.Entities.Items;
-using Crpg.Domain.Entities.Users;
-using Microsoft.EntityFrameworkCore;
-using NUnit.Framework;
-
-namespace Crpg.Application.UTest.Items;
+﻿namespace Crpg.Application.UTest.Items;
 
 public class UpgradeUserItemCommandTest : TestBase
 {

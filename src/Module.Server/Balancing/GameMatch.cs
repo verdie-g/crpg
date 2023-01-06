@@ -1,5 +1,4 @@
 ﻿using Crpg.Module.Api.Models.Users;
-using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Balancing;
 
