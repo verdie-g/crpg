@@ -5,14 +5,14 @@ using TaleWorlds.MountAndBlade.View.MissionViews;
 
 namespace Crpg.Module.GUI;
 
-[OverrideView(typeof(CrpgMultiplayerMarkerUIHandler))]
-internal class CrpgGauntletMultiplayerMarkerUiHandler : MissionView
+[OverrideView(typeof(CrpgMarkerUiHandler))]
+internal class CrpgGauntletMarkerUiHandler : MissionView
 {
     private readonly MissionMultiplayerGameModeBaseClient _gameModeClient;
     private GauntletLayer? _gauntletLayer;
     private CrpgMissionMarkerVm? _dataSource;
 
-    public CrpgGauntletMultiplayerMarkerUiHandler(MissionMultiplayerGameModeBaseClient gameModeClient)
+    public CrpgGauntletMarkerUiHandler(MissionMultiplayerGameModeBaseClient gameModeClient)
     {
         _gameModeClient = gameModeClient;
     }

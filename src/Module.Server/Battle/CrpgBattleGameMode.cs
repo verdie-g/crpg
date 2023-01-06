@@ -9,6 +9,7 @@ using Crpg.Module.Api;
 using Crpg.Module.Common.ChatCommands;
 #else
 using Crpg.Module.GUI;
+using Crpg.Module.GUI.HudExtension;
 using TaleWorlds.MountAndBlade.View;
 using TaleWorlds.MountAndBlade.View.MissionViews;
 #endif
@@ -63,7 +64,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
             new MissionItemContourControllerView(), // Draw contour of item on the ground when pressing ALT.
             new MissionAgentContourControllerView(),
             ViewCreator.CreateMissionKillNotificationUIHandler(),
-            ViewCreator.CreateMultiplayerMissionHUDExtensionUIHandler(),
+            new CrpgHudExtensionHandler(),
             ViewCreator.CreateMultiplayerMissionDeathCardUIHandler(),
             ViewCreator.CreateOptionsUIHandler(),
             ViewCreator.CreateMissionMainAgentEquipDropView(mission),
@@ -72,7 +73,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
             new SpectatorCameraView(),
             new CrpgAgentHud(experienceTable),
             // Draw flags but also player names when pressing ALT. (Native: CreateMissionFlagMarkerUIHandler)
-            ViewCreatorManager.CreateMissionView<CrpgMultiplayerMarkerUIHandler>(isNetwork: false, null, gameModeClient),
+            ViewCreatorManager.CreateMissionView<CrpgMarkerUiHandler>(isNetwork: false, null, gameModeClient),
         };
     }
 #endif

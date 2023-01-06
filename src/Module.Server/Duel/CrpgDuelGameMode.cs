@@ -60,7 +60,7 @@ internal class CrpgDuelGameMode : MissionBasedMultiplayerGameMode
             ViewCreator.CreateMissionFlagMarkerUIHandler(), // Draw flags but also player names when pressing ALT.
             new CrpgAgentHud(experienceTable),
             // Draw flags but also player names when pressing ALT. (Native: CreateMissionFlagMarkerUIHandler)
-            ViewCreatorManager.CreateMissionView<CrpgMultiplayerMarkerUIHandler>(isNetwork: false, null, gameModeClient),
+            ViewCreatorManager.CreateMissionView<CrpgMarkerUiHandler>(isNetwork: false, null, gameModeClient),
         };
     }
 #endif

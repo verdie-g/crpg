@@ -48,10 +48,14 @@ internal static class ReflectionHelper
         Type? t = instance.GetType();
         while (t != null)
         {
-            var f = t.GetProperty(prop, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-            if (f != null)
+            var p = t.GetProperty(prop, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            if (p != null)
             {
-                return f.DeclaringType!.GetProperty(prop, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+                p = p.DeclaringType?.GetProperty(prop, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+                if (p != null)
+                {
+                    continue;
+                }
             }
 
             t = t.BaseType;
