@@ -62,7 +62,10 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
                 .Team(missionPeer.Team)
                 .VisualsIndex(0)
                 .IsFemale(missionPeer.Peer.IsFemale)
-                .BodyProperties(GetBodyProperties(missionPeer, teamCulture))
+                // base.GetBodyProperties uses the player-defined body properties but some body properties may have been
+                // causing crashes. So here we send the body properties from the characters.xml which we know are safe.
+                // Note that what is sent here doesn't matter since it's ignored by the client.
+                .BodyProperties(character.GetBodyPropertiesMin())
                 .InitialPosition(in spawnFrame.origin)
                 .InitialDirection(in initialDirection);
 
