@@ -17,8 +17,8 @@ internal class CrpgFlagDominationServer : MissionMultiplayerGameModeBase
     private const float FlagCaptureRange = 6f;
     private const float FlagCaptureRangeSquared = FlagCaptureRange * FlagCaptureRange;
 
-    private const float BattleMoraleGainOnTick = 0.002f;
-    private const float BattleMoraleGainMultiplierLastFlag = 1.5f;
+    private const float BattleMoraleGainOnTick = 0.00175f;
+    private const float BattleMoraleGainMultiplierLastFlag = 2f;
     private const float SkirmishMoraleGainOnTick = 0.00125f;
     private const float SkirmishMoraleGainMultiplierLastFlag = 2f;
 
