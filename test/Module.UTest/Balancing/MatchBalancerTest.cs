@@ -7,8 +7,8 @@ using NUnit.Framework;
 
 namespace Crpg.Module.UTest.Balancing;
 
-public class MatchBalancingSystemTest
- {
+public class MatchBalancerTest
+{
     private static readonly CrpgClan LOtr = new() { Id = 1, Name = "LOTR" };
     private static readonly CrpgClan DBz = new() { Id = 2, Name = "DBZ" };
     private static readonly CrpgClan Gilead = new() { Id = 3, Name = "Gilead" };
@@ -1040,6 +1040,7 @@ public class MatchBalancingSystemTest
             Madonna,
         },
     };
+
     private static readonly GameMatch EmptyTeamGame = new()
     {
         TeamA = new List<CrpgUser>(),
@@ -1052,10 +1053,71 @@ public class MatchBalancingSystemTest
         },
         Waiting = new List<CrpgUser>(),
     };
+
+    private static readonly GameMatch Game2 = new()
+    {
+        TeamA = new List<CrpgUser>(),
+        TeamB = new List<CrpgUser>(),
+        Waiting = new List<CrpgUser>
+        {
+            Arwen,
+            Frodon,
+            Sam,
+            Sangoku,
+            Krilin,
+            RolandDeschain,
+            HarryPotter,
+            Magneto,
+            ProfCharles,
+            UsainBolt,
+            Agent007,
+            SpongeBob,
+            Patrick,
+            Madonna,
+            LaraCroft,
+            JeanneDArc,
+            Merlin,
+            Bob,
+            Thomas,
+        },
+    };
+
+    private readonly GameMatch Game3 = new()
+    {
+        TeamA = new List<CrpgUser>
+        {
+            Arwen,
+            Frodon,
+            Sam,
+            Sangoku,
+        },
+        TeamB = new List<CrpgUser>()
+        {
+            Krilin,
+            RolandDeschain,
+            HarryPotter,
+            Magneto,
+            ProfCharles,
+            UsainBolt,
+            Agent007,
+            SpongeBob,
+            Patrick,
+            Madonna,
+            LaraCroft,
+            JeanneDArc,
+        },
+        Waiting = new List<CrpgUser>
+        {
+            Merlin,
+            Bob,
+            Thomas,
+        },
+    };
+
     [Test]
     public void KkMakeTeamOfSimilarSizesShouldNotBeThatBad()
     {
-        var matchBalancer = new MatchBalancingSystem();
+        var matchBalancer = new MatchBalancer();
         GameMatch balancedGame = matchBalancer.KkMakeTeamOfSimilarSizesWithoutSplittingClanGroups(GameWithVeryStrongClanGroup);
         float teamASize = balancedGame.TeamA.Count;
         float teamBSize = balancedGame.TeamB.Count;
@@ -1063,7 +1125,7 @@ public class MatchBalancingSystemTest
         float teamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamA, 1);
         float teamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamB, 1);
         float meanRatingRatio = teamAMeanRating / teamBMeanRating;
-        MatchBalancingHelpers.DumpTeams(balancedGame);
+        MatchBalancer.DumpTeams(balancedGame);
         Assert.AreEqual(sizeRatio, 0.7f, 0.3f);
     }
 
@@ -1091,7 +1153,7 @@ public class MatchBalancingSystemTest
     [Test]
     public void BannerBalancingWithEdgeCaseWarmup()
     {
-        var matchBalancer = new MatchBalancingSystem();
+        var matchBalancer = new MatchBalancer();
 
         float unbalancedTeamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(Game1.TeamA, 1);
         float unbalancedTeamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(Game1.TeamB, 1);
@@ -1109,7 +1171,7 @@ public class MatchBalancingSystemTest
     [Test]
     public void BannerBalancingWithEdgeCaseNotWarmup()
     {
-        var matchBalancer = new MatchBalancingSystem();
+        var matchBalancer = new MatchBalancer();
         GameMatch balancedGame = matchBalancer.NaiveCaptainBalancing(Game1);
         balancedGame = matchBalancer.BannerBalancingWithEdgeCases(balancedGame, firstBalance: false);
 
@@ -1122,20 +1184,20 @@ public class MatchBalancingSystemTest
     [Test]
     public void BannerBalancingWithEdgeCaseNotWarmupShouldWorkWithOneTeamEmpty()
     {
-        var matchBalancer = new MatchBalancingSystem();
+        var matchBalancer = new MatchBalancer();
         var balancedGame = matchBalancer.BannerBalancingWithEdgeCases(EmptyTeamGame, firstBalance: false);
 
         float teamARating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamA, 1);
         float teamBRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamB, 1);
         float ratingRatio = teamARating / teamBRating;
-        MatchBalancingHelpers.DumpTeams(balancedGame);
+        MatchBalancer.DumpTeams(balancedGame);
     }
 
     [Test]
     public void BannerBalancingWithEdgeCaseShouldWorkWithOneStrongClanGroup()
     {
-        var matchBalancer = new MatchBalancingSystem();
-        MatchBalancingHelpers.DumpTeams(GameWithVeryStrongClanGroup);
+        var matchBalancer = new MatchBalancer();
+        MatchBalancer.DumpTeams(GameWithVeryStrongClanGroup);
         float unbalancedTeamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(GameWithVeryStrongClanGroup.TeamA, 1);
         float unbalancedTeamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(GameWithVeryStrongClanGroup.TeamB, 1);
         float unbalancedMeanRatingRatio = unbalancedTeamAMeanRating / unbalancedTeamBMeanRating;
@@ -1146,14 +1208,14 @@ public class MatchBalancingSystemTest
         float teamARating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamA, 1);
         float teamBRating = RatingHelpers.ComputeTeamRatingPowerSum(balancedGame.TeamB, 1);
         float ratingRatio = teamARating / teamBRating;
-        MatchBalancingHelpers.DumpTeams(balancedGame);
+        MatchBalancer.DumpTeams(balancedGame);
         Assert.AreEqual(ratingRatio, 1, 0.2);
     }
 
     [Test]
     public void BannerBalancingWithEdgeCaseShouldNotLoseOrAddCharacters()
     {
-        var matchBalancer = new MatchBalancingSystem();
+        var matchBalancer = new MatchBalancer();
 
         float unbalancedTeamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(Game1.TeamA, 1);
         float unbalancedTeamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(Game1.TeamB, 1);
@@ -1173,7 +1235,7 @@ public class MatchBalancingSystemTest
     [Test]
     public void BannerBalancingShouldNotSeperateCrpgClanMember()
     {
-        var matchBalancer = new MatchBalancingSystem();
+        var matchBalancer = new MatchBalancer();
 
         float unbalancedTeamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(Game1.TeamA, 1);
         float unbalancedTeamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(Game1.TeamB, 1);
@@ -1201,7 +1263,7 @@ public class MatchBalancingSystemTest
     [Test]
     public void BannerBalancingWithEdgeCaseShouldWorkWith0Persons()
     {
-        var matchBalancer = new MatchBalancingSystem();
+        var matchBalancer = new MatchBalancer();
 
         float unbalancedTeamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(NoManGame.TeamA, 1);
         float unbalancedTeamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(NoManGame.TeamB, 1);
@@ -1212,7 +1274,7 @@ public class MatchBalancingSystemTest
     [Test]
     public void BannerBalancingWithEdgeCaseShouldWorkWith1Persons()
     {
-        var matchBalancer = new MatchBalancingSystem();
+        var matchBalancer = new MatchBalancer();
 
         float unbalancedTeamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(OneManGame.TeamA, 1);
         float unbalancedTeamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(OneManGame.TeamB, 1);
@@ -1223,7 +1285,7 @@ public class MatchBalancingSystemTest
     [Test]
     public void BannerBalancingWithEdgeCaseShouldWorkWith2Persons()
     {
-        var matchBalancer = new MatchBalancingSystem();
+        var matchBalancer = new MatchBalancer();
 
         float unbalancedTeamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(TwoManGame.TeamA, 1);
         float unbalancedTeamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(TwoManGame.TeamB, 1);
@@ -1234,7 +1296,7 @@ public class MatchBalancingSystemTest
     [Test]
     public void BannerBalancingWithEdgeCaseShouldWorkWith3Persons()
     {
-        var matchBalancer = new MatchBalancingSystem();
+        var matchBalancer = new MatchBalancer();
 
         float unbalancedTeamAMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(ThreeManGame.TeamA, 1);
         float unbalancedTeamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(ThreeManGame.TeamB, 1);
@@ -1253,9 +1315,109 @@ public class MatchBalancingSystemTest
         Assert.AreEqual(MathHelper.PowerMean(floats, 1f), 5, 0.01);
     }
 
+    [Test]
+    public void ConvertingToClanGroupsThenToUserListShouldDoNothing()
+    {
+        List<CrpgUser> userList = new();
+        userList.AddRange(Game2.Waiting);
+        userList.AddRange(Game2.TeamA);
+        userList.AddRange(Game2.TeamB);
+        List<ClanGroup> clanGroups = MatchBalancer.SplitUsersIntoClanGroups(userList);
+        List<CrpgUser> newUserList = MatchBalancer.JoinClanGroupsIntoUsers(clanGroups);
+        CollectionAssert.AreEqual(userList.OrderBy(u => u.Character.Id), newUserList.OrderBy(u => u.Character.Id));
+    }
+
+    [Test]
+    public void RegroupClansShouldEmptyWaiting()
+    {
+        var game = MatchBalancer.RejoinClans(Game3);
+        Assert.IsEmpty(game.Waiting);
+    }
+
+    [Test]
+    public void RegroupClansShouldNotLoseOrAddCharacters()
+    {
+        GameMatch balancedGame = MatchBalancer.RejoinClans(Game3);
+        List<CrpgUser> allUsersFromBalancedGame = new();
+        List<CrpgUser> allUsersFromUnbalancedGame = new();
+        allUsersFromBalancedGame.AddRange(balancedGame.TeamA);
+        allUsersFromBalancedGame.AddRange(balancedGame.TeamB);
+        allUsersFromBalancedGame.AddRange(balancedGame.Waiting);
+        allUsersFromUnbalancedGame.AddRange(Game3.TeamA);
+        allUsersFromUnbalancedGame.AddRange(Game3.TeamB);
+        allUsersFromUnbalancedGame.AddRange(Game3.Waiting);
+        CollectionAssert.AreEqual(allUsersFromUnbalancedGame.OrderBy(u => u.Character.Id), allUsersFromBalancedGame.OrderBy(u => u.Character.Id));
+    }
+
+    [Test]
+    public void RegroupClansShouldRegroupPlayerByClan()
+    {
+        GameMatch balancedGame = MatchBalancer.RejoinClans(Game3);
+        List<CrpgUser> allUsersFromBalancedGame = new();
+        List<CrpgUser> allUsersFromUnbalancedGame = new();
+        allUsersFromBalancedGame.AddRange(balancedGame.TeamA);
+        allUsersFromBalancedGame.AddRange(balancedGame.TeamB);
+        allUsersFromBalancedGame.AddRange(balancedGame.Waiting);
+        List<int> teamAClanId = balancedGame.TeamA.Where(u => u.ClanMembership != null).Select(u => u.ClanMembership!.ClanId).ToList();
+        List<int> teamBClanId = balancedGame.TeamB.Where(u => u.ClanMembership != null).Select(u => u.ClanMembership!.ClanId).ToList();
+        var intersection = teamAClanId.Intersect(teamBClanId);
+        Assert.IsEmpty(intersection);
+        MatchBalancer.DumpTeamsStatus(balancedGame);
+    }
+
+    [Test]
+    public void A()
+    {
+        GameMatch game = new()
+        {
+            TeamA = new List<CrpgUser>
+            {
+                Hudax01,
+                Hudax02,
+
+                Sangoku,
+
+                RolandDeschain,
+            },
+            TeamB = new List<CrpgUser>
+            {
+                Jean01,
+                Jean02,
+
+                Hudax03,
+
+                ProfCharles,
+
+                Jean03,
+            },
+            Waiting = new List<CrpgUser>
+            {
+                Jean04,
+
+                Krilin,
+
+                Hudax03,
+                Hudax04,
+
+                Daschyhund,
+
+                GreatieDane,
+
+                BassetyHound,
+            },
+        };
+
+        var game2 = MatchBalancer.RejoinClans(game);
+        Assert.IsEmpty(game2.Waiting);
+        Assert.IsTrue(
+            game2.TeamB.Where(u => u.ClanMembership != null).Select(u => u.ClanMembership!.ClanId)
+                .Intersect(game2.TeamB.Where(u => u.ClanMembership != null).Select(u => u.ClanMembership!.ClanId))
+                .Any());
+    }
+
     private GameMatch PureBannerBalancing(GameMatch gameMatch)
     {
-        var matchBalancer = new MatchBalancingSystem();
+        var matchBalancer = new MatchBalancer();
         GameMatch unbalancedBannerGameMatch = matchBalancer.KkMakeTeamOfSimilarSizesWithoutSplittingClanGroups(gameMatch);
         unbalancedBannerGameMatch = matchBalancer.BalanceTeamOfSimilarSizes(unbalancedBannerGameMatch, true, 0.025f);
         return unbalancedBannerGameMatch;

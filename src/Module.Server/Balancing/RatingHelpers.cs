@@ -5,15 +5,10 @@ namespace Crpg.Module.Balancing;
 
 internal static class RatingHelpers
 {
-    internal static float ComputeTeamRatingPowerMean(List<CrpgUser> team, float p = MatchBalancingSystem.PowerParameter)
+    internal static float ComputeTeamRatingPowerMean(List<CrpgUser> team, float p = MatchBalancer.PowerParameter)
     {
         List<float> ratings = team.Select(u => u.Character.Rating.GetWorkingRating()).ToList();
         return MathHelper.PowerMean(ratings, p);
-    }
-
-    internal static float ClanGroupsPowerSum(List<ClanGroup> clanGroups)
-    {
-        return ComputeTeamRatingPowerSum(MatchBalancingHelpers.JoinClanGroupsIntoUsers(clanGroups));
     }
 
     /// <summary>
@@ -23,15 +18,15 @@ internal static class RatingHelpers
     /// <returns>Returns Team A rating - Team B rating.</returns>
     internal static float ComputeTeamRatingDifference(GameMatch gameMatch)
     {
-        return ComputeTeamRatingPowerSum(gameMatch.TeamA, MatchBalancingSystem.PowerParameter) - ComputeTeamRatingPowerSum(gameMatch.TeamB, MatchBalancingSystem.PowerParameter);
+        return ComputeTeamRatingPowerSum(gameMatch.TeamA, MatchBalancer.PowerParameter) - ComputeTeamRatingPowerSum(gameMatch.TeamB, MatchBalancer.PowerParameter);
     }
 
-    internal static float ComputeTeamRatingPowerSum(List<CrpgUser> team, float p = MatchBalancingSystem.PowerParameter)
+    internal static float ComputeTeamRatingPowerSum(List<CrpgUser> team, float p = MatchBalancer.PowerParameter)
     {
         return MathHelper.PowerSumBy(team, u => u.Character.Rating.GetWorkingRating(), p);
     }
 
-    internal static float ComputeTeamGlickoRatingPowerSum(List<CrpgUser> team, float p = MatchBalancingSystem.PowerParameter)
+    internal static float ComputeTeamGlickoRatingPowerSum(List<CrpgUser> team, float p = MatchBalancer.PowerParameter)
     {
         return MathHelper.PowerSumBy(team, u => u.Character.Rating.GetRegularWorkingRating(), p);
     }

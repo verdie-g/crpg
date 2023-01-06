@@ -19,7 +19,7 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
 #if CRPG_SERVER
     private readonly MultiplayerWarmupComponent _warmupComponent;
     private readonly MultiplayerRoundController _roundController;
-    private readonly MatchBalancingSystem _balancer;
+    private readonly MatchBalancer _balancer;
 
     /// <summary>
     /// Players waiting to be assigned to a team when the cRPG balancer is enabled.
@@ -30,7 +30,7 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
     {
         _warmupComponent = warmupComponent;
         _roundController = roundController;
-        _balancer = new MatchBalancingSystem();
+        _balancer = new MatchBalancer();
         _playersWaitingForTeam = new HashSet<PlayerId>();
     }
 #else
