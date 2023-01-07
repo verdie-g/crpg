@@ -448,7 +448,7 @@ internal class CrpgFlagDominationServer : MissionMultiplayerGameModeBase
         var defenderFlags = _flags.Where(f => GetFlagOwner(f)?.Side == BattleSideEnum.Defender).ToArray();
         var attackerFlags = _flags.Where(f => GetFlagOwner(f)?.Side == BattleSideEnum.Attacker).ToArray();
 
-        if (uncapturedFlags.Length != 0)
+        if (uncapturedFlags.Length == _flags.Length)
         {
             Debug.Print("Last flag is a random uncaptured one");
             return uncapturedFlags.GetRandomElement();
@@ -456,7 +456,13 @@ internal class CrpgFlagDominationServer : MissionMultiplayerGameModeBase
 
         if (defenderFlags.Length == attackerFlags.Length)
         {
-            Debug.Print("Last flag is a random one");
+            if (uncapturedFlags.Length != 0)
+            {
+                Debug.Print("Last flag is a random uncaptured one");
+                return uncapturedFlags.GetRandomElement();
+            }
+
+            Debug.Print("Last flag is a random captured one");
             return _flags.GetRandomElement();
         }
 
