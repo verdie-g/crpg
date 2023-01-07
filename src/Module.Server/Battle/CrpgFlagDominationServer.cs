@@ -12,8 +12,6 @@ namespace Crpg.Module.Battle;
 
 internal class CrpgFlagDominationServer : MissionMultiplayerGameModeBase
 {
-    private const uint FlagNeutralColor1 = 4284111450;
-    private const uint FlagNeutralColor2 = uint.MaxValue;
     private const float FlagCaptureRange = 6f;
     private const float FlagCaptureRangeSquared = FlagCaptureRange * FlagCaptureRange;
 
@@ -234,7 +232,7 @@ internal class CrpgFlagDominationServer : MissionMultiplayerGameModeBase
         _agentCountsAroundFlags = new int[_flags.Length, (int)BattleSideEnum.NumSides];
         foreach (var flag in _flags)
         {
-            flag.ResetPointAsServer(FlagNeutralColor1, FlagNeutralColor2);
+            flag.ResetPointAsServer(TeammateColorsExtensions.NEUTRAL_COLOR, TeammateColorsExtensions.NEUTRAL_COLOR2);
         }
     }
 

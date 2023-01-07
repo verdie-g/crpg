@@ -364,7 +364,7 @@ internal class CrpgSiegeServer : MissionMultiplayerGameModeBase, IAnalyticsFlagI
 
         foreach (FlagCapturePoint flag in AllCapturePoints)
         {
-            flag.SetTeamColorsSynched(4284111450U, uint.MaxValue);
+            flag.SetTeamColorsSynched(TeammateColorsExtensions.NEUTRAL_COLOR, TeammateColorsExtensions.NEUTRAL_COLOR2);
             _flagOwners[flag.FlagIndex] = null;
             _flagRemainingMoraleGains[flag.FlagIndex] = MaxMoraleGainPerFlag;
             if (flag.GameEntity.HasTag(CrpgSiegeClient.MasterFlagTag))
