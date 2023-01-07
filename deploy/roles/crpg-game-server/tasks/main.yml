@@ -49,7 +49,7 @@
     update_cache: yes
 
 - name: install/update Bannerlord
-  command: "/usr/games/steamcmd +force_install_dir {{ crpg_game_server_path }} +login {{ steam_user_name }} +app_update 1863440 -beta {{ bannerlord_beta_name }} -betapassword {{ bannerlord_beta_password }} +exit"
+  command: "/usr/games/steamcmd +force_install_dir {{ crpg_game_server_path }} +login {{ steam_user_name }} +app_update 1863440 +exit"
   become_user: "{{ crpg_game_server_user }}"
 
 - name: make sure that MultiplayerForcedAvatars folder is present
