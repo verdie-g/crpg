@@ -34,7 +34,9 @@ internal class CrpgFlagDominationClient : MissionMultiplayerGameModeBaseClient, 
     public override bool IsGameModeUsingGold => false;
     public override bool IsGameModeTactical => _flags.Length != 0;
     public override bool IsGameModeUsingRoundCountdown => true;
-    public override MissionLobbyComponent.MultiplayerGameType GameType => MissionLobbyComponent.MultiplayerGameType.Battle;
+    public override MissionLobbyComponent.MultiplayerGameType GameType => _isSkirmish
+        ? MissionLobbyComponent.MultiplayerGameType.Skirmish
+        : MissionLobbyComponent.MultiplayerGameType.Battle;
     public override bool IsGameModeUsingCasualGold => false;
     public IEnumerable<FlagCapturePoint> AllCapturePoints => _flags;
     public bool AreMoralesIndependent => false;
@@ -50,9 +52,9 @@ internal class CrpgFlagDominationClient : MissionMultiplayerGameModeBaseClient, 
 
     public override void OnRemoveBehavior()
     {
-      base.OnRemoveBehavior();
-      RoundComponent.OnPreparationEnded -= OnPreparationEnded;
-      MissionNetworkComponent.OnMyClientSynchronized -= OnMyClientSynchronized;
+        base.OnRemoveBehavior();
+        RoundComponent.OnPreparationEnded -= OnPreparationEnded;
+        MissionNetworkComponent.OnMyClientSynchronized -= OnMyClientSynchronized;
     }
 
     public override void OnGoldAmountChangedForRepresentative(MissionRepresentativeBase representative, int goldAmount)
@@ -79,7 +81,7 @@ internal class CrpgFlagDominationClient : MissionMultiplayerGameModeBaseClient, 
 
         if (_bellSoundEvent == null
             || (_remainingTimeForBellSoundToStop > 0.0
-            && MissionLobbyComponent.CurrentMultiplayerState == MissionLobbyComponent.MultiplayerGameState.Playing))
+                && MissionLobbyComponent.CurrentMultiplayerState == MissionLobbyComponent.MultiplayerGameState.Playing))
         {
             return;
         }
