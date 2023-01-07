@@ -32,7 +32,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
                 ("crpg_turban", ItemSlot.Head),
                 ("crpg_aserai_civil_e", ItemSlot.Body),
                 ("crpg_southern_moccasins", ItemSlot.Leg),
-                ("crpg_peasant_hatchet_1_t1", ItemSlot.Weapon0),
+                ("crpg_peasant_2haxe_1_t1", ItemSlot.Weapon0),
                 ("crpg_throwing_stone", ItemSlot.Weapon1),
             },
             // vlandia
@@ -75,7 +75,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
                 ("crpg_baggy_trunks", ItemSlot.Body),
                 ("crpg_armwraps", ItemSlot.Hand),
                 ("crpg_ragged_boots", ItemSlot.Leg),
-                ("crpg_peasant_sickle_1_t1", ItemSlot.Weapon0),
+                ("crpg_peasant_maul_t1", ItemSlot.Weapon0),
                 ("crpg_throwing_stone", ItemSlot.Weapon1),
             },
             // looters
