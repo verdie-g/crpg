@@ -923,7 +923,7 @@
     </SpritePart>
     <SpritePart>
       <SheetID>90</SheetID>
-      <Name>crpg_siege_skalalanding</Name>
+      <Name>crpg_battle_canyon</Name>
       <Width>1920</Width>
       <Height>1080</Height>
       <SheetX>0</SheetX>
@@ -1289,8 +1289,8 @@
       <SpritePartName>crpg_battle_zemouri</SpritePartName>
     </GenericSprite>
     <GenericSprite>
-      <Name>crpg_siege_skalalanding</Name>
-      <SpritePartName>crpg_siege_skalalanding</SpritePartName>
+      <Name>crpg_battle_canyon</Name>
+      <SpritePartName>crpg_battle_canyon</SpritePartName>
     </GenericSprite>
   </Sprites>
 </SpriteData>
