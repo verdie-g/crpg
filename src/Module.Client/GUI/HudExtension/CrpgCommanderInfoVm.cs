@@ -72,7 +72,6 @@ public class CrpgCommanderInfoVm : ViewModel
 
         if (_gameMode.RoundComponent != null)
         {
-            _gameMode.RoundComponent.OnPreparationEnded += OnPreparationEnded;
             _gameMode.RoundComponent.OnRoundStarted += OnRoundStarted;
         }
 
@@ -394,7 +393,6 @@ public class CrpgCommanderInfoVm : ViewModel
 
         Mission.Current.OnMissionReset -= OnMissionReset;
         MultiplayerMissionAgentVisualSpawnComponent missionBehavior = Mission.Current.GetMissionBehavior<MultiplayerMissionAgentVisualSpawnComponent>();
-        missionBehavior.OnMyAgentSpawnedFromVisual -= OnPreparationEnded;
         missionBehavior.OnMyAgentVisualSpawned -= OnRoundStarted;
         if (_siegeClient == null)
         {
@@ -519,6 +517,7 @@ public class CrpgCommanderInfoVm : ViewModel
 
     private void OnRoundStarted()
     {
+        ShowTacticalInfo = true;
         OnTeamChanged();
         if (!UsePowerComparer)
         {
@@ -543,12 +542,6 @@ public class CrpgCommanderInfoVm : ViewModel
         ResetCapturePointLists();
         InitCapturePoints();
         _areMoraleEventsRegistered = true;
-    }
-
-    private void OnPreparationEnded()
-    {
-        ShowTacticalInfo = true;
-        OnTeamChanged();
     }
 
     private void OnMissionReset(object sender, PropertyChangedEventArgs e)
