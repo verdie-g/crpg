@@ -4,29 +4,33 @@ using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Users;
+using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Characters;
 
-public class SkipTheFunCommandTest : TestBase
+public class SetCharacterForTournamentCommandTest : TestBase
 {
-    private static readonly Constants Constants = new() { SkipTheFunLevel = 25 };
+    private static readonly Constants Constants = new() { TournamentLevel = 30 };
 
-    [Test]
-    public async Task ShouldSkipTheFunCorrectly()
+    [Theory]
+    public async Task ShouldSetTournamentForCharacterCorrectly(bool activeCharacter)
     {
         Mock<IExperienceTable> experienceTableMock = new();
-        experienceTableMock.Setup(et => et.GetExperienceForLevel(25)).Returns(30000);
+        experienceTableMock.Setup(et => et.GetExperienceForLevel(30)).Returns(30000);
 
         Mock<ICharacterService> characterServiceMock = new();
 
+        User user = new();
         Character character = new() { Generation = 0, Level = 3, Experience = 250 };
-        ArrangeDb.Characters.Add(character);
+        user.Characters.Add(character);
+        user.ActiveCharacter = activeCharacter ? character : new Character();
+        ArrangeDb.Users.Add(user);
         await ArrangeDb.SaveChangesAsync();
 
-        SkipTheFunCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, experienceTableMock.Object, Constants);
-        var result = await handler.Handle(new SkipTheFunCommand
+        SetCharacterForTournamentCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, experienceTableMock.Object, Constants);
+        var result = await handler.Handle(new SetCharacterForTournamentCommand
         {
             CharacterId = character.Id,
             UserId = character.UserId,
@@ -35,9 +39,19 @@ public class SkipTheFunCommandTest : TestBase
         Assert.IsNull(result.Errors);
         character = AssertDb.Characters.First(c => c.Id == character.Id);
         Assert.AreEqual(0, character.Generation);
-        Assert.AreEqual(25, character.Level);
+        Assert.AreEqual(30, character.Level);
         Assert.AreEqual(30000, character.Experience);
-        Assert.IsTrue(character.SkippedTheFun);
+        Assert.IsTrue(character.ForTournament);
+
+        var userDb = await AssertDb.Users.FirstAsync(u => u.Id == user.Id);
+        if (activeCharacter)
+        {
+            Assert.IsNull(userDb.ActiveCharacterId);
+        }
+        else
+        {
+            Assert.IsNotNull(userDb.ActiveCharacterId);
+        }
 
         characterServiceMock.Verify(cs => cs.ResetCharacterCharacteristics(It.IsAny<Character>(), true), Times.Once);
     }
@@ -45,15 +59,15 @@ public class SkipTheFunCommandTest : TestBase
     [Test]
     public async Task ShouldReturnErrorIfCharacterIsGeneration1()
     {
-        Character character = new() { Generation = 1, Level = 3, Experience = 250 };
+        Character character = new() { Generation = 1, Level = 3, Experience = 250, User = new() };
         ArrangeDb.Characters.Add(character);
         await ArrangeDb.SaveChangesAsync();
 
         Mock<IExperienceTable> experienceTableMock = new();
         Mock<ICharacterService> characterServiceMock = new();
 
-        SkipTheFunCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, experienceTableMock.Object, Constants);
-        var result = await handler.Handle(new SkipTheFunCommand
+        SetCharacterForTournamentCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, experienceTableMock.Object, Constants);
+        var result = await handler.Handle(new SetCharacterForTournamentCommand
         {
             CharacterId = character.Id,
             UserId = character.UserId,
@@ -70,9 +84,9 @@ public class SkipTheFunCommandTest : TestBase
         ArrangeDb.Users.Add(user);
         await ArrangeDb.SaveChangesAsync();
 
-        SkipTheFunCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterService>(),
+        SetCharacterForTournamentCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterService>(),
             Mock.Of<IExperienceTable>(), Constants);
-        var result = await handler.Handle(new SkipTheFunCommand
+        var result = await handler.Handle(new SetCharacterForTournamentCommand
         {
             UserId = user.Id,
             CharacterId = 1,

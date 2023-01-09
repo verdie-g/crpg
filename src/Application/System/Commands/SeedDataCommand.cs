@@ -690,7 +690,7 @@ public record SeedDataCommand : IMediatorRequest
             {
                 User = takeo,
                 Name = "totoalala",
-                Generation = 1,
+                Generation = 0,
                 Level = 12,
                 Experience = _experienceTable.GetExperienceForLevel(12),
                 Statistics = new CharacterStatistics

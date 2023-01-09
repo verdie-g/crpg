@@ -297,16 +297,16 @@ public class UsersController : BaseController
         ResultToActionAsync(Mediator.Send(new RespecializeCharacterCommand { CharacterId = id, UserId = CurrentUser.User!.Id }));
 
     /// <summary>
-    /// Skip-the-fun character.
+    /// Set the character as tournament character.
     /// </summary>
     /// <param name="id">Character id.</param>
-    /// <returns>The updated character characteristics.</returns>
+    /// <returns>The updated character.</returns>
     /// <response code="200">Done.</response>
     /// <response code="400">Bad Request.</response>
-    [HttpPut("self/characters/{id}/skip-the-fun")]
-    public Task<ActionResult<Result<CharacterViewModel>>> SkipTheFunCharacter([FromRoute] int id)
+    [HttpPut("self/characters/{id}/tournament")]
+    public Task<ActionResult<Result<CharacterViewModel>>> SetCharacterForTournament([FromRoute] int id)
     {
-        return ResultToActionAsync(Mediator.Send(new SkipTheFunCommand
+        return ResultToActionAsync(Mediator.Send(new SetCharacterForTournamentCommand
         {
             CharacterId = id,
             UserId = CurrentUser.User!.Id,

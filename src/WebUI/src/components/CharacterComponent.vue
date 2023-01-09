@@ -140,20 +140,20 @@
       </b-tooltip>
 
       <b-tooltip
-        :label="`Upgrade your character to level ${skipTheFunLevel} but locks its experience permanently.`"
+        :label="`Set this character to be used in tournament ONLY. Upgrade its level to ${tournamentLevel} and locks its experience permanently.`"
         multilined
         class="mr-2"
       >
         <b-button
-          type="is-warning"
-          icon-left="baby"
+          type="is-danger"
+          icon-left="skull-crossbones"
           expanded
           :disabled="
-            character.skippedTheFun || character.generation > 0 || character.level > skipTheFunLevel
+            character.forTournament || character.generation > 0 || character.level > tournamentLevel
           "
-          @click="openSkipTheFunCharacterDialog"
+          @click="openSetCharacterForTournamentDialog"
         >
-          Skip the fun
+          Tournament
         </b-button>
       </b-tooltip>
 
@@ -440,8 +440,8 @@ export default class CharacterComponent extends Vue {
     };
   }
 
-  get skipTheFunLevel(): number {
-    return Constants.skipTheFunLevel;
+  get tournamentLevel(): number {
+    return Constants.tournamentLevel;
   }
 
   created() {
@@ -486,16 +486,16 @@ export default class CharacterComponent extends Vue {
     });
   }
 
-  openSkipTheFunCharacterDialog(): void {
+  openSetCharacterForTournamentDialog(): void {
     this.$buefy.dialog.confirm({
-      title: 'Skip-the-fun character',
-      message: `Skip-the-fun will lock your character to level ${this.skipTheFunLevel} so you won't be able to gain any experience. This action cannot be undone.`,
+      title: 'Set tournament character',
+      message: `Setting this character for tournament will make it playable only for tournaments. That is, you won't be able to join usual servers. The character level will be permanently set to ${this.tournamentLevel}. This action cannot be undone.`,
       confirmText: 'Confirm',
-      type: 'is-warning',
+      type: 'is-danger',
       hasIcon: true,
       onConfirm: () => {
-        userModule.skipTheFunCharacter(this.character);
-        notify('Character skipped-the-fun');
+        userModule.setCharacterForTournament(this.character);
+        notify('Character set for tournament');
       },
     });
   }

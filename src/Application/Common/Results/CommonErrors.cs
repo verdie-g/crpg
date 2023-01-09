@@ -37,6 +37,18 @@ internal static class CommonErrors
         Detail = $"Battle with id '{battleId}' is too far to perform the requested action",
     };
 
+    public static Error CharacterForTournament(int characterId) => new(ErrorType.Validation, ErrorCode.CharacterForTournament)
+    {
+        Title = "Character is for tournament",
+        Detail = $"Cannot perform this action on character with id '{characterId}' as it's only a character for tournaments",
+    };
+
+    public static Error CharacterForTournamentNotFound() => new(ErrorType.Validation, ErrorCode.CharacterForTournamentNotFound)
+    {
+        Title = "Character for tournament was not found",
+        Detail = "The user has not set any character for tournament",
+    };
+
     public static Error CharacterGenerationRequirement(int characterId, int userId, int req) => new(ErrorType.NotFound, ErrorCode.CharacterGenerationRequirement)
     {
         Title = "Character generation requirement not met",

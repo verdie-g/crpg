@@ -11,14 +11,14 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Characters.Commands;
 
-public record SkipTheFunCommand : IMediatorRequest<CharacterViewModel>
+public record SetCharacterForTournamentCommand : IMediatorRequest<CharacterViewModel>
 {
     public int CharacterId { get; init; }
     public int UserId { get; init; }
 
-    internal class Handler : IMediatorRequestHandler<SkipTheFunCommand, CharacterViewModel>
+    internal class Handler : IMediatorRequestHandler<SetCharacterForTournamentCommand, CharacterViewModel>
     {
-        private static readonly ILogger Logger = LoggerFactory.CreateLogger<SkipTheFunCommand>();
+        private static readonly ILogger Logger = LoggerFactory.CreateLogger<SetCharacterForTournamentCommand>();
 
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
@@ -36,10 +36,11 @@ public record SkipTheFunCommand : IMediatorRequest<CharacterViewModel>
             _constants = constants;
         }
 
-        public async Task<Result<CharacterViewModel>> Handle(SkipTheFunCommand req, CancellationToken cancellationToken)
+        public async Task<Result<CharacterViewModel>> Handle(SetCharacterForTournamentCommand req, CancellationToken cancellationToken)
         {
-            var character = await _db.Characters.FirstOrDefaultAsync(c =>
-                c.UserId == req.UserId && c.Id == req.CharacterId, cancellationToken);
+            var character = await _db.Characters
+                .Include(c => c.User)
+                .FirstOrDefaultAsync(c => c.UserId == req.UserId && c.Id == req.CharacterId, cancellationToken);
             if (character == null)
             {
                 return new Result<CharacterViewModel>(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
@@ -50,14 +51,19 @@ public record SkipTheFunCommand : IMediatorRequest<CharacterViewModel>
                 return new Result<CharacterViewModel>(CommonErrors.CharacterGenerationRequirement(req.CharacterId, req.UserId, 0));
             }
 
-            character.SkippedTheFun = true;
-            character.Level = _constants.SkipTheFunLevel;
+            character.ForTournament = true;
+            character.Level = _constants.TournamentLevel;
             character.Experience = _experienceTable.GetExperienceForLevel(character.Level);
             _characterService.ResetCharacterCharacteristics(character, respecialization: true);
 
+            if (character.User!.ActiveCharacterId == character.Id)
+            {
+                character.User!.ActiveCharacterId = null;
+            }
+
             await _db.SaveChangesAsync(cancellationToken);
 
-            Logger.LogInformation("User '{0}' skipped-the-fun character '{1}'", req.UserId, req.CharacterId);
+            Logger.LogInformation("User '{0}' set character '{1}' for tournaments", req.UserId, req.CharacterId);
             return new(_mapper.Map<CharacterViewModel>(character));
         }
     }

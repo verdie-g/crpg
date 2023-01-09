@@ -176,9 +176,17 @@ internal class CrpgRewardServer : MissionBehavior
                 CharacterId = crpgPeer.User.Character.Id,
                 Reward = new CrpgUserReward { Experience = 0, Gold = 0 },
                 Statistics = new CrpgCharacterStatistics { Kills = 0, Deaths = 0, Assists = 0, PlayTime = TimeSpan.Zero },
-                Rating = GetNewRating(crpgPeer),
+                Rating = crpgPeer.User.Character.Rating,
                 BrokenItems = Array.Empty<CrpgUserBrokenItem>(),
             };
+
+            if (CrpgServerConfiguration.IsTournament)
+            {
+                userUpdates.Add(userUpdate);
+                continue;
+            }
+
+            userUpdate.Rating = GetNewRating(crpgPeer);
 
             if ((_roundController != null && crpgPeer.SpawnTeamThisRound != null)
                 || (_roundController == null && missionPeer.Team != null && missionPeer.Team.Side != BattleSideEnum.None))

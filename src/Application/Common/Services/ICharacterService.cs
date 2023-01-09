@@ -37,7 +37,7 @@ internal class CharacterService : ICharacterService
         character.Generation = _constants.DefaultGeneration;
         character.Level = _constants.MinimumLevel;
         character.Experience = _experienceTable.GetExperienceForLevel(character.Level);
-        character.SkippedTheFun = false;
+        character.ForTournament = false;
         character.Rating = new CharacterRating
         {
             Value = _constants.DefaultRating,
@@ -70,7 +70,7 @@ internal class CharacterService : ICharacterService
 
     public void GiveExperience(Character character, int experience)
     {
-        if (character.SkippedTheFun)
+        if (character.ForTournament)
         {
             return;
         }

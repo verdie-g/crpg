@@ -27,6 +27,18 @@ public class GamesController : BaseController
         }));
 
     /// <summary>
+    /// Get tournament user.
+    /// </summary>
+    [HttpGet("tournament-users")]
+    public Task<ActionResult<Result<GameUserViewModel>>> GetTournamentUser(
+        [FromQuery] Platform platform, [FromQuery] string platformUserId) =>
+        ResultToActionAsync(Mediator.Send(new GetGameUserTournamentCommand
+        {
+            Platform = platform,
+            PlatformUserId = platformUserId,
+        }));
+
+    /// <summary>
     /// Give reward to users and break or repair items.
     /// </summary>
     [HttpPut("users")]

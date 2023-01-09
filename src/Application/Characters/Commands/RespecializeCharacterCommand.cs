@@ -46,7 +46,7 @@ public record RespecializeCharacterCommand : IMediatorRequest<CharacterViewModel
                 return new(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
             }
 
-            if (!character.SkippedTheFun)
+            if (!character.ForTournament)
             {
                 character.Experience = (int)MathHelper.ApplyPolynomialFunction(character.Experience,
                     _constants.RespecializeExperiencePenaltyCoefs);

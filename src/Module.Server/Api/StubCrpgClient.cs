@@ -30,7 +30,7 @@ internal class StubCrpgClient : ICrpgClient
                 Level = 30,
                 Experience = 0,
                 ExperienceMultiplier = 1.0f,
-                SkippedTheFun = false,
+                ForTournament = false,
                 Characteristics = new CrpgCharacterCharacteristics
                 {
                     Attributes = new CrpgCharacterAttributes
@@ -84,6 +84,11 @@ internal class StubCrpgClient : ICrpgClient
         };
 
         return Task.FromResult(new CrpgResult<CrpgUser> { Data = user });
+    }
+
+    public Task<CrpgResult<CrpgUser>> GetTournamentUserAsync(Platform platform, string platformUserId, CancellationToken cancellationToken = default)
+    {
+        return GetUserAsync(platform, platformUserId, cancellationToken);
     }
 
     public Task<CrpgResult<CrpgClan>> GetClanAsync(int clanId, CancellationToken cancellationToken = default)

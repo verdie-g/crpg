@@ -12,7 +12,7 @@ internal class CrpgCharacter
     public int Experience { get; set; }
     public float ExperienceMultiplier { get; set; }
 
-    public bool SkippedTheFun { get; set; }
+    public bool ForTournament { get; set; }
     public CrpgCharacterCharacteristics Characteristics { get; set; } = new();
     public IList<CrpgEquippedItem> EquippedItems { get; set; } = Array.Empty<CrpgEquippedItem>();
     public CrpgCharacterRating Rating { get; set; } = new();

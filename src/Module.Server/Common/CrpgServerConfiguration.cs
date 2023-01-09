@@ -14,6 +14,7 @@ public static class CrpgServerConfiguration
 
     public static float ServerExperienceMultiplier { get; private set; } = 1.0f;
     public static Tuple<TimeSpan, TimeSpan>? ServerHappyHours { get; private set; }
+    public static bool IsTournament { get; private set; }
 
     [UsedImplicitly]
     [ConsoleCommandMethod("crpg_experience_multiplier", "Sets a reward multiplier for the server.")]
@@ -54,5 +55,18 @@ public static class CrpgServerConfiguration
         }
 
         ServerHappyHours = Tuple.Create(startTime, endTime);
+    }
+
+    [UsedImplicitly]
+    [ConsoleCommandMethod("crpg_tournament", "Sets the server in tournament mode.")]
+    private static void SetServerTournamentMode(string? enableStr)
+    {
+        if (enableStr == null || !bool.TryParse(enableStr, out bool enable))
+        {
+            Debug.Print($"Invalid tournament mode: {enableStr}");
+            return;
+        }
+
+        IsTournament = enable;
     }
 }

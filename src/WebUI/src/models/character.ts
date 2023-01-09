@@ -4,5 +4,5 @@ export default interface Character {
   generation: number;
   level: number;
   experience: number;
-  skippedTheFun: boolean;
+  forTournament: boolean;
 }

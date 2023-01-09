@@ -378,8 +378,8 @@ class UserModule extends VuexModule {
   }
 
   @Action
-  async skipTheFunCharacter(character: Character): Promise<void> {
-    character = await userService.skipTheFunCharacter(character.id);
+  async setCharacterForTournament(character: Character): Promise<void> {
+    character = await userService.setCharacterForTournament(character.id);
     this.replaceCharacter(character);
     const characteristics = await userService.getCharacterCharacteristics(character.id);
     this.setCharacterCharacteristics({ characterId: character.id, characteristics });

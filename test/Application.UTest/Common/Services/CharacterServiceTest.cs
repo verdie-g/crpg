@@ -33,7 +33,7 @@ public class CharacterServiceTest
         {
             Level = 1,
             Experience = 2,
-            SkippedTheFun = false,
+            ForTournament = false,
             User = new User { ExperienceMultiplier = 2f },
         };
         characterService.GiveExperience(character, 3);
@@ -43,14 +43,14 @@ public class CharacterServiceTest
     }
 
     [Test]
-    public void GiveExperienceShouldntGiveExperienceIfSkippedTheFun()
+    public void GiveExperienceShouldntGiveExperienceIfTournamentCharacter()
     {
         CharacterService characterService = new(ExperienceTable, Constants);
         Character character = new()
         {
             Level = 1,
             Experience = 2,
-            SkippedTheFun = true,
+            ForTournament = true,
             User = new User { ExperienceMultiplier = 2f },
         };
         characterService.GiveExperience(character, 3);
@@ -67,7 +67,7 @@ public class CharacterServiceTest
         {
             Level = 1,
             Experience = 2,
-            SkippedTheFun = false,
+            ForTournament = false,
             User = new User { ExperienceMultiplier = 2f },
         };
         characterService.GiveExperience(character, 2500);
@@ -158,11 +158,11 @@ public class CharacterServiceTest
     public void SetDefaultValuesShouldSetDefaultValues()
     {
         CharacterService characterService = new(ExperienceTable, Constants);
-        Character character = new() { Level = 2, Experience = 2, SkippedTheFun = false };
+        Character character = new() { Level = 2, Experience = 2, ForTournament = false };
         characterService.SetDefaultValuesForCharacter(character);
 
         Assert.AreEqual(Constants.MinimumLevel, character.Level);
         Assert.AreEqual(0, character.Experience);
-        Assert.IsFalse(character.SkippedTheFun);
+        Assert.IsFalse(character.ForTournament);
     }
 }

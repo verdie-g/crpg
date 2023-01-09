@@ -30,6 +30,11 @@ public record ActivateCharacterCommand : IMediatorRequest
                 return new Result(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
             }
 
+            if (character.ForTournament)
+            {
+                return new Result(CommonErrors.CharacterForTournament(req.CharacterId));
+            }
+
             character.User!.ActiveCharacterId = req.Active ? character.Id : null;
 
             await _db.SaveChangesAsync(cancellationToken);

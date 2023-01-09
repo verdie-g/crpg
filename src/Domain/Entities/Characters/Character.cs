@@ -15,7 +15,11 @@ public class Character : AuditableEntity
     public int Generation { get; set; }
     public int Level { get; set; }
     public int Experience { get; set; }
-    public bool SkippedTheFun { get; set; }
+
+    /// <summary>
+    /// True if the character is used for for tournaments.
+    /// </summary>
+    public bool ForTournament { get; set; }
 
     /// <summary>
     /// Not null if the character was deleted.

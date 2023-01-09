@@ -26,7 +26,7 @@ public class RespecializeCharacterCommandTest : TestBase
             Generation = 2,
             Level = 3,
             Experience = 150,
-            SkippedTheFun = false,
+            ForTournament = false,
             EquippedItems =
             {
                 new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Head },
@@ -71,14 +71,14 @@ public class RespecializeCharacterCommandTest : TestBase
     }
 
     [Test]
-    public async Task RespecializeSkippedTheFunCharacterShouldNotChangeLevel()
+    public async Task RespecializeTournamentCharacterShouldNotChangeLevel()
     {
         Character character = new()
         {
             Generation = 0,
             Level = 3,
             Experience = 150,
-            SkippedTheFun = true,
+            ForTournament = true,
             EquippedItems =
             {
                 new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Head },

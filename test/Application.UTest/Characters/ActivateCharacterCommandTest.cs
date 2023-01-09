@@ -31,6 +31,28 @@ public class ActivateCharacterCommandTest : TestBase
     }
 
     [Test]
+    public async Task ShouldReturnErrorIfCharacterIsForTournament()
+    {
+        User user = new()
+        {
+            Characters = { new Character { ForTournament = true } },
+            ActiveCharacter = null,
+        };
+        ArrangeDb.Users.Add(user);
+        await ArrangeDb.SaveChangesAsync();
+
+        var result = await new ActivateCharacterCommand.Handler(ActDb).Handle(new ActivateCharacterCommand
+        {
+            CharacterId = user.Characters[0].Id,
+            UserId = user.Id,
+            Active = true,
+        }, CancellationToken.None);
+
+        Assert.IsNotNull(result.Errors);
+        Assert.AreEqual(ErrorCode.CharacterForTournament, result.Errors![0].Code);
+    }
+
+    [Test]
     public async Task ShouldActivateCharacterWithTrue()
     {
         User user = new()

@@ -64,6 +64,17 @@ internal class HttpCrpgClient : ICrpgClient
         return Get<CrpgUser>("games/users", queryParameters, cancellationToken);
     }
 
+    public Task<CrpgResult<CrpgUser>> GetTournamentUserAsync(Platform platform, string platformUserId,
+        CancellationToken cancellationToken = default)
+    {
+        Dictionary<string, string> queryParameters = new(StringComparer.Ordinal)
+        {
+            ["platform"] = platform.ToString(),
+            ["platformUserId"] = platformUserId,
+        };
+        return Get<CrpgUser>("games/tournament-users", queryParameters, cancellationToken);
+    }
+
     public Task<CrpgResult<CrpgClan>> GetClanAsync(int clanId, CancellationToken cancellationToken = default)
     {
         return Get<CrpgClan>("games/clans/" + clanId, null, cancellationToken);
