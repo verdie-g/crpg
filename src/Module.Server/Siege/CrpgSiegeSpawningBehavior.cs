@@ -10,6 +10,7 @@ namespace Crpg.Module.Siege;
 internal class CrpgSiegeSpawningBehavior : CrpgSpawningBehaviorBase
 {
     private readonly Dictionary<PlayerId, MissionTime> _lastSpawnRestrictionNotifications;
+    private float _timeSinceSpawnEnabled;
 
     public CrpgSiegeSpawningBehavior(CrpgConstants constants)
         : base(constants)
@@ -19,41 +20,19 @@ internal class CrpgSiegeSpawningBehavior : CrpgSpawningBehaviorBase
 
     public override void OnTick(float dt)
     {
-        if (IsSpawningEnabled && _spawnCheckTimer.Check(Mission.CurrentTime))
+        if (!IsSpawningEnabled)
         {
-            SpawnAgents();
-            SpawnBotAgents();
+            return;
         }
 
-        base.OnTick(dt);
+        SpawnAgents();
+        SpawnBotAgents();
+        _timeSinceSpawnEnabled += dt;
     }
 
     public override bool AllowEarlyAgentVisualsDespawning(MissionPeer missionPeer)
     {
         return false;
-    }
-
-    public override int GetMaximumReSpawnPeriodForPeer(MissionPeer peer)
-    {
-        if (GameMode.WarmupComponent is { IsInWarmup: true })
-        {
-            return 3;
-        }
-
-        if (peer.Team != null)
-        {
-            if (peer.Team.Side == BattleSideEnum.Attacker)
-            {
-                return MultiplayerOptions.OptionType.RespawnPeriodTeam1.GetIntValue();
-            }
-
-            if (peer.Team.Side == BattleSideEnum.Defender)
-            {
-                return MultiplayerOptions.OptionType.RespawnPeriodTeam2.GetIntValue();
-            }
-        }
-
-        return -1;
     }
 
     protected override bool IsRoundInProgress()
@@ -73,8 +52,15 @@ internal class CrpgSiegeSpawningBehavior : CrpgSpawningBehaviorBase
         if (crpgPeer?.User == null
             || crpgPeer.SpawnTeamThisRound != null
             || missionPeer == null
-            || missionPeer.HasSpawnedAgentVisuals
-            || !missionPeer.SpawnTimer.Check(Mission.CurrentTime))
+            || missionPeer.HasSpawnedAgentVisuals)
+        {
+            return false;
+        }
+
+        int respawnPeriod = missionPeer.Team.Side == BattleSideEnum.Defender
+            ? MultiplayerOptions.OptionType.RespawnPeriodTeam2.GetIntValue()
+            : MultiplayerOptions.OptionType.RespawnPeriodTeam1.GetIntValue();
+        if (_timeSinceSpawnEnabled != 0 && _timeSinceSpawnEnabled % respawnPeriod > 1)
         {
             return false;
         }

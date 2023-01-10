@@ -10,8 +10,8 @@ AllowPollsToKickPlayers True
 AllowPollsToChangeMaps True
 CultureTeam1 vlandia
 CultureTeam2 battania
-RespawnPeriodTeam1 3
-RespawnPeriodTeam2 12
+RespawnPeriodTeam1 6
+RespawnPeriodTeam2 24
 RoundPreparationTimeLimit 2
 MaxNumberOfPlayers 120
 FriendlyFireDamageMeleeFriendPercent 50
