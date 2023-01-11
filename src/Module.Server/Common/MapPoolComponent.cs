@@ -23,8 +23,11 @@ internal class MapPoolComponent : MissionLogic
 
     public override void OnBehaviorInitialize()
     {
-        // Clear the map votes else it tries to send to player a packet containing all maps, which will likely overflow it.
-        MultiplayerIntermissionVotingManager.Instance.MapVoteItems.Clear();
+        if (_maps == null)
+        {
+            // Clear the map votes else it tries to send to player a packet containing all maps, which will likely overflow it.
+            MultiplayerIntermissionVotingManager.Instance.MapVoteItems.Clear();
+        }
     }
 
     protected override void OnEndMission()
