@@ -105,8 +105,10 @@ internal class DonorSynchronizerWorker : BackgroundService
             ["0c2aed9abce611ecb6ff52540025c377"] = "76561198086189170",
             ["1a4e438e725f11edacfc52540025c377"] = "76561198136476759",
             ["2428127eb58a11ebbe6952540025c377"] = "76561198110700505",
+            ["2473cdc48e4411edaf1652540025c377"] = "76561198003871990",
             ["33af69927c2911eda57b52540025c377"] = "76561198070808451",
             ["33c9f5986f7a11ed939352540025c377"] = "76561198146307767",
+            ["4864f15290a311edaa405254001e7c00"] = "76561198060776765",
             ["651ee3be726411ed9b5f52540025c377"] = "76561198094460089",
             ["74bf9a867ac311edb57c52540025c377"] = "76561198188192042",
             ["769a7efe7ac111edb6c052540025c377"] = "76561198058883681",
@@ -137,7 +139,7 @@ internal class DonorSynchronizerWorker : BackgroundService
         List<string> steamIds = new();
         foreach (var sponsor in sponsorsRes.Data.List)
         {
-            if (sponsor.CurrentPlan == null || float.Parse(sponsor.CurrentPlan.Price) < MinAfdianAmountYuanForRewards * 0.95) // Allow a little margin.
+            if (sponsor.CurrentPlan == null || !float.TryParse(sponsor.CurrentPlan.Price, out float price) || price < MinAfdianAmountYuanForRewards * 0.95) // Allow a little margin.
             {
                 continue;
             }
