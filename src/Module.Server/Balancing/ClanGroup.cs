@@ -13,10 +13,10 @@ internal class ClanGroup
     }
 
     public int? ClanId { get; }
-    public List<CrpgUser> Members { get; } = new();
+    public List<WeightedCrpgUser> Members { get; } = new();
     public int Size => Members.Count;
 
-    public void Add(CrpgUser user)
+    public void Add(WeightedCrpgUser user)
     {
         Members.Add(user);
     }

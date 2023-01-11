@@ -130,24 +130,24 @@ internal static class MatchBalancingHelpers
         return ClanGroupsGameMatchIntoGameMatch(newGameMatch);
     }
 
-    public static List<ClanGroup> SplitUsersIntoClanGroups(List<CrpgUser> users)
+    public static List<ClanGroup> SplitUsersIntoClanGroups(List<WeightedCrpgUser> users)
     {
         Dictionary<int, ClanGroup> clanGroupsByClanId = new();
         List<ClanGroup> clanGroups = new();
 
-        foreach (CrpgUser user in users.OrderByDescending(u => u.ClanMembership?.ClanId ?? 0))
+        foreach (WeightedCrpgUser user in users.OrderByDescending(u => u.ClanId ?? 0))
         {
             ClanGroup clanGroup;
-            if (user.ClanMembership == null)
+            if (user.ClanId == null)
             {
                 clanGroup = new(null);
                 clanGroups.Add(clanGroup);
             }
-            else if (!clanGroupsByClanId.TryGetValue(user.ClanMembership.ClanId, out clanGroup))
+            else if (!clanGroupsByClanId.TryGetValue(user.ClanId.Value, out clanGroup))
             {
-                clanGroup = new(user.ClanMembership.ClanId);
+                clanGroup = new(user.ClanId);
                 clanGroups.Add(clanGroup);
-                clanGroupsByClanId[user.ClanMembership.ClanId] = clanGroup;
+                clanGroupsByClanId[user.ClanId.Value] = clanGroup;
             }
 
             clanGroup.Add(user);
@@ -156,9 +156,9 @@ internal static class MatchBalancingHelpers
         return clanGroups;
     }
 
-    public static List<CrpgUser> JoinClanGroupsIntoUsers(List<ClanGroup> clanGroups)
+    public static List<WeightedCrpgUser> JoinClanGroupsIntoUsers(List<ClanGroup> clanGroups)
     {
-        List<CrpgUser> users = new();
+        List<WeightedCrpgUser> users = new();
 
         foreach (ClanGroup clanGroup in clanGroups)
         {
@@ -198,29 +198,29 @@ internal static class MatchBalancingHelpers
         };
     }
 
-    public static List<CrpgUser> FindCrpgUsersToSwap(float targetRating, List<CrpgUser> teamToSelectFrom, float desiredSize, float sizeScaler)
+    public static List<WeightedCrpgUser> FindWeightedCrpgUsersToSwap(float targetRating, List<WeightedCrpgUser> teamToSelectFrom, float desiredSize, float sizeScaler)
     {
-        List<CrpgUser> team = teamToSelectFrom.ToList();
-        List<CrpgUser> usersToSwap = new();
+        List<WeightedCrpgUser> team = teamToSelectFrom.ToList();
+        List<WeightedCrpgUser> usersToSwap = new();
         Vector2 usersToSwapVector = new(0, 0);
         for (int i = 0; i < teamToSelectFrom.Count; i++)
         {
-            CrpgUser bestUserToAdd = team.First();
-            Vector2 bestUserToAddVector = new(sizeScaler, bestUserToAdd.Character.Rating.GetWorkingRating());
+            WeightedCrpgUser bestUserToAdd = team.First();
+            Vector2 bestUserToAddVector = new(sizeScaler, bestUserToAdd.Weight);
             Vector2 objectiveVector = new(sizeScaler * desiredSize, targetRating);
             if (objectiveVector.Length() == 0f)
             {
                 break;
             }
 
-            foreach (CrpgUser user in team)
+            foreach (WeightedCrpgUser user in team)
             {
-                Vector2 userVector = new(sizeScaler, user.Character.Rating.GetWorkingRating());
+                Vector2 userVector = new(sizeScaler, user.Weight);
 
                 if ((usersToSwapVector + userVector - objectiveVector).Length() < (usersToSwapVector + bestUserToAddVector - objectiveVector).Length())
                 {
                     bestUserToAdd = user;
-                    bestUserToAddVector = new(sizeScaler, bestUserToAdd.Character.Rating.GetWorkingRating());
+                    bestUserToAddVector = new(sizeScaler, bestUserToAdd.Weight);
                 }
             }
 
@@ -228,7 +228,7 @@ internal static class MatchBalancingHelpers
             {
                 team.Remove(bestUserToAdd);
                 usersToSwap.Add(bestUserToAdd);
-                usersToSwapVector = new(usersToSwap.Count * sizeScaler, usersToSwap.Sum(u => u.Character.Rating.GetWorkingRating()));
+                usersToSwapVector = new(usersToSwap.Count * sizeScaler, usersToSwap.Sum(u => u.Weight));
             }
             else
             {
@@ -389,23 +389,23 @@ internal static class MatchBalancingHelpers
     {
         Debug.Print("-----------------------");
         Debug.Print("Team A");
-        foreach (CrpgUser u in gameMatch.TeamA)
+        foreach (WeightedCrpgUser u in gameMatch.TeamA)
         {
-            Debug.Print($"{u.Character.Name} :  {u.Character.Rating.GetWorkingRating()}");
+            Debug.Print($"{u.User.Name} :  {u.Weight}");
         }
 
         Debug.Print("-----------------------");
         Debug.Print("Team B");
-        foreach (CrpgUser u in gameMatch.TeamB)
+        foreach (WeightedCrpgUser u in gameMatch.TeamB)
         {
-            Debug.Print($"{u.Character.Name} :  {u.Character.Rating.GetWorkingRating()}");
+            Debug.Print($"{u.User.Name} :  {u.Weight}");
         }
 
         Debug.Print("-----------------------");
         Debug.Print("WaitingToJoin");
-        foreach (CrpgUser u in gameMatch.Waiting)
+        foreach (WeightedCrpgUser u in gameMatch.Waiting)
         {
-            Debug.Print($"{u.Character.Name} :  {u.Character.Rating.GetWorkingRating()}");
+            Debug.Print($"{u.User.Name} :  {u.Weight}");
         }
 
         Debug.Print("-----------------------");

@@ -10,6 +10,7 @@ internal class CrpgUser
     public int Id { get; set; }
     public Platform Platform { get; set; }
     public string PlatformUserId { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
     public int Gold { get; set; }
     public CrpgUserRole Role { get; set; }
     public CrpgCharacter Character { get; set; } = default!;

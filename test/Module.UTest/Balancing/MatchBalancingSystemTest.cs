@@ -8,7 +8,7 @@ using NUnit.Framework;
 namespace Crpg.Module.UTest.Balancing;
 
 public class MatchBalancingSystemTest
- {
+{
     private static readonly CrpgClan LOtr = new() { Id = 1, Name = "LOTR" };
     private static readonly CrpgClan DBz = new() { Id = 2, Name = "DBZ" };
     private static readonly CrpgClan Gilead = new() { Id = 3, Name = "Gilead" };
@@ -503,11 +503,17 @@ public class MatchBalancingSystemTest
     private static readonly CrpgUser PsycheStaminate = new() { Character = new CrpgCharacter { Name = "PsycheStaminate", Id = 1397, Rating = new CrpgCharacterRating { Value = 1035 } } };
     private static readonly CrpgUser HoneyedSugar = new() { Character = new CrpgCharacter { Name = "HoneyedSugar", Id = 1399, Rating = new CrpgCharacterRating { Value = 2216 } } };
 
+    private static List<WeightedCrpgUser> WeightUsers(IEnumerable<CrpgUser> users)
+    {
+        // TODO: directly use WeightedCrpgUser instead of CrpgUser in tests and remove CrpgUser property from WeightedCrpgUser by passing needed stuff in its constructor.
+        return users.Select(u => new WeightedCrpgUser(u, u.Character.Rating.Value)).ToList();
+    }
+
     private static readonly GameMatch Game1 = new()
     {
-        TeamA = new List<CrpgUser>(),
-        TeamB = new List<CrpgUser>(),
-        Waiting = new List<CrpgUser>
+        TeamA = new List<WeightedCrpgUser>(),
+        TeamB = new List<WeightedCrpgUser>(),
+        Waiting = WeightUsers(new List<CrpgUser>
         {
             Arwen,
             Frodon,
@@ -973,14 +979,74 @@ public class MatchBalancingSystemTest
             BudgereePerianth,
             PsycheStaminate,
             HoneyedSugar,
-        },
+        }),
+    };
+
+    private static readonly GameMatch Game2 = new()
+    {
+        TeamA = WeightUsers(new List<CrpgUser>()
+        {
+            Arwen,
+            Frodon,
+            Sam,
+            Sangoku,
+        }),
+        TeamB = WeightUsers(new List<CrpgUser>()
+        {
+            Krilin,
+            RolandDeschain,
+            HarryPotter,
+            Magneto,
+            ProfCharles,
+            UsainBolt,
+            Agent007,
+            SpongeBob,
+            Patrick,
+            Madonna,
+            LaraCroft,
+            JeanneDArc,
+        }),
+        Waiting = WeightUsers(new List<CrpgUser>
+        {
+            Merlin,
+            Bob,
+            Thomas,
+        }),
+    };
+
+    private static readonly GameMatch Game3 = new()
+    {
+        TeamA = new List<WeightedCrpgUser>(),
+        TeamB = new List<WeightedCrpgUser>(),
+        Waiting = WeightUsers(new List<CrpgUser>
+        {
+            Arwen,
+            Frodon,
+            Sam,
+            Sangoku,
+            Krilin,
+            RolandDeschain,
+            HarryPotter,
+            Magneto,
+            ProfCharles,
+            UsainBolt,
+            Agent007,
+            SpongeBob,
+            Patrick,
+            Madonna,
+            LaraCroft,
+            JeanneDArc,
+            Merlin,
+            Bob,
+            Thomas,
+        }),
     };
 
     private static readonly GameMatch GameWithVeryStrongClanGroup = new()
     {
-        TeamA = new List<CrpgUser>(),
-        TeamB = new List<CrpgUser>(),
-        Waiting = new List<CrpgUser>
+        TeamA = new List<WeightedCrpgUser>(),
+        TeamB = new List<WeightedCrpgUser>(),
+        Waiting = WeightUsers(new List<CrpgUser>
         {
             Aragorn,
             Arwen,
@@ -998,60 +1064,62 @@ public class MatchBalancingSystemTest
             Patrick,
             Madonna,
             LaraCroft,
-        },
+        }),
     };
 
     private static readonly GameMatch NoManGame = new()
     {
-        TeamA = new List<CrpgUser>(),
-        TeamB = new List<CrpgUser>(),
-        Waiting = new List<CrpgUser>(),
+        TeamA = new List<WeightedCrpgUser>(),
+        TeamB = new List<WeightedCrpgUser>(),
+        Waiting = new List<WeightedCrpgUser>(),
     };
 
     private static readonly GameMatch OneManGame = new()
     {
-        TeamA = new List<CrpgUser>(),
-        TeamB = new List<CrpgUser>(),
-        Waiting = new List<CrpgUser>
+        TeamA = new List<WeightedCrpgUser>(),
+        TeamB = new List<WeightedCrpgUser>(),
+        Waiting = WeightUsers(new List<CrpgUser>
         {
             Aragorn,
-        },
+        }),
     };
 
     private static readonly GameMatch TwoManGame = new()
     {
-        TeamA = new List<CrpgUser>(),
-        TeamB = new List<CrpgUser>(),
-        Waiting = new List<CrpgUser>
+        TeamA = new List<WeightedCrpgUser>(),
+        TeamB = new List<WeightedCrpgUser>(),
+        Waiting = WeightUsers(new List<CrpgUser>
         {
             Aragorn,
             Arwen,
-        },
+        }),
     };
 
     private static readonly GameMatch ThreeManGame = new()
     {
-        TeamA = new List<CrpgUser>(),
-        TeamB = new List<CrpgUser>(),
-        Waiting = new List<CrpgUser>
+        TeamA = new List<WeightedCrpgUser>(),
+        TeamB = new List<WeightedCrpgUser>(),
+        Waiting = WeightUsers(new List<CrpgUser>
         {
             Aragorn,
             Arwen,
             Madonna,
-        },
+        }),
     };
+
     private static readonly GameMatch EmptyTeamGame = new()
     {
-        TeamA = new List<CrpgUser>(),
-        TeamB = new List<CrpgUser>
+        TeamA = new List<WeightedCrpgUser>(),
+        TeamB = WeightUsers(new List<CrpgUser>
         {
             Aragorn,
             Arwen,
             Madonna,
             Frodon,
-        },
-        Waiting = new List<CrpgUser>(),
+        }),
+        Waiting = new List<WeightedCrpgUser>(),
     };
+
     [Test]
     public void KkMakeTeamOfSimilarSizesShouldNotBeThatBad()
     {
@@ -1159,15 +1227,15 @@ public class MatchBalancingSystemTest
         float unbalancedTeamBMeanRating = RatingHelpers.ComputeTeamRatingPowerSum(Game1.TeamB, 1);
         float unbalancedMeanRatingRatio = unbalancedTeamAMeanRating / unbalancedTeamBMeanRating;
         GameMatch balancedGame = matchBalancer.BannerBalancingWithEdgeCases(Game1);
-        List<CrpgUser> allUsersFromBalancedGame = new();
-        List<CrpgUser> allUsersFromUnbalancedGame = new();
+        List<WeightedCrpgUser> allUsersFromBalancedGame = new();
+        List<WeightedCrpgUser> allUsersFromUnbalancedGame = new();
         allUsersFromBalancedGame.AddRange(balancedGame.TeamA);
         allUsersFromBalancedGame.AddRange(balancedGame.TeamB);
         allUsersFromBalancedGame.AddRange(balancedGame.Waiting);
         allUsersFromUnbalancedGame.AddRange(Game1.TeamA);
         allUsersFromUnbalancedGame.AddRange(Game1.TeamB);
         allUsersFromUnbalancedGame.AddRange(Game1.Waiting);
-        CollectionAssert.AreEqual(allUsersFromUnbalancedGame.OrderBy(u => u.Character.Id), allUsersFromBalancedGame.OrderBy(u => u.Character.Id));
+        CollectionAssert.AreEqual(allUsersFromUnbalancedGame.OrderBy(u => u.User.Id), allUsersFromBalancedGame.OrderBy(u => u.User.Id));
     }
 
     [Test]
@@ -1181,18 +1249,18 @@ public class MatchBalancingSystemTest
         Console.WriteLine($"unbalanced rating ratio = {unbalancedMeanRatingRatio}");
 
         GameMatch balancedGame = PureBannerBalancing(Game1);
-        foreach (CrpgUser u in Game1.TeamA)
+        foreach (WeightedCrpgUser u in Game1.TeamA)
         {
-            if (u.ClanMembership == null)
+            if (u.ClanId == null)
             {
                 continue;
             }
 
-            foreach (CrpgUser u2 in Game1.TeamB)
+            foreach (WeightedCrpgUser u2 in Game1.TeamB)
             {
-                if (u2.ClanMembership != null)
+                if (u2.ClanId != null)
                 {
-                    Assert.AreNotEqual(u.ClanMembership.ClanId, u2.ClanMembership.ClanId);
+                    Assert.AreNotEqual(u.ClanId, u2.ClanId);
                 }
             }
         }
@@ -1251,6 +1319,106 @@ public class MatchBalancingSystemTest
         };
         Console.WriteLine(MathHelper.PowerMean(floats, 1f));
         Assert.AreEqual(MathHelper.PowerMean(floats, 1f), 5, 0.01);
+    }
+
+    [Test]
+    public void ConvertingToClanGroupsThenToUserListShouldDoNothing()
+    {
+        List<WeightedCrpgUser> userList = new();
+        userList.AddRange(Game3.Waiting);
+        userList.AddRange(Game3.TeamA);
+        userList.AddRange(Game3.TeamB);
+        List<ClanGroup> clanGroups = MatchBalancingHelpers.SplitUsersIntoClanGroups(userList);
+        List<WeightedCrpgUser> newUserList = MatchBalancingHelpers.JoinClanGroupsIntoUsers(clanGroups);
+        CollectionAssert.AreEqual(userList.OrderBy(u => u.User.Id), newUserList.OrderBy(u => u.User.Id));
+    }
+
+    [Test]
+    public void RegroupClansShouldEmptyWaiting()
+    {
+        var game = MatchBalancingHelpers.RejoinClans(Game2);
+        Assert.IsEmpty(game.Waiting);
+    }
+
+    [Test]
+    public void RegroupClansShouldNotLoseOrAddCharacters()
+    {
+        GameMatch balancedGame = MatchBalancingHelpers.RejoinClans(Game2);
+        List<WeightedCrpgUser> allUsersFromBalancedGame = new();
+        List<WeightedCrpgUser> allUsersFromUnbalancedGame = new();
+        allUsersFromBalancedGame.AddRange(balancedGame.TeamA);
+        allUsersFromBalancedGame.AddRange(balancedGame.TeamB);
+        allUsersFromBalancedGame.AddRange(balancedGame.Waiting);
+        allUsersFromUnbalancedGame.AddRange(Game2.TeamA);
+        allUsersFromUnbalancedGame.AddRange(Game2.TeamB);
+        allUsersFromUnbalancedGame.AddRange(Game2.Waiting);
+        CollectionAssert.AreEqual(allUsersFromUnbalancedGame.OrderBy(u => u.User.Id), allUsersFromBalancedGame.OrderBy(u => u.User.Id));
+    }
+
+    [Test]
+    public void RegroupClansShouldRegroupPlayerByClan()
+    {
+        GameMatch balancedGame = MatchBalancingHelpers.RejoinClans(Game2);
+        List<WeightedCrpgUser> allUsersFromBalancedGame = new();
+        List<WeightedCrpgUser> allUsersFromUnbalancedGame = new();
+        allUsersFromBalancedGame.AddRange(balancedGame.TeamA);
+        allUsersFromBalancedGame.AddRange(balancedGame.TeamB);
+        allUsersFromBalancedGame.AddRange(balancedGame.Waiting);
+        List<int> teamAClanId = balancedGame.TeamA.Where(u => u.ClanId != null).Select(u => u.ClanId!.Value).ToList();
+        List<int> teamBClanId = balancedGame.TeamB.Where(u => u.ClanId != null).Select(u => u.ClanId!.Value).ToList();
+        var intersection = teamAClanId.Intersect(teamBClanId);
+        Assert.IsEmpty(intersection);
+        MatchBalancingHelpers.DumpTeamsStatus(balancedGame);
+    }
+
+    [Test]
+    public void A()
+    {
+        GameMatch game = new()
+        {
+            TeamA = WeightUsers(new List<CrpgUser>
+            {
+                Hudax01,
+                Hudax02,
+
+                Sangoku,
+
+                RolandDeschain,
+            }),
+            TeamB = WeightUsers(new List<CrpgUser>
+            {
+                Jean01,
+                Jean02,
+
+                Hudax03,
+
+                ProfCharles,
+
+                Jean03,
+            }),
+            Waiting = WeightUsers(new List<CrpgUser>
+            {
+                Jean04,
+
+                Krilin,
+
+                Hudax03,
+                Hudax04,
+
+                Daschyhund,
+
+                GreatieDane,
+
+                BassetyHound,
+            }),
+        };
+
+        var game2 = MatchBalancingHelpers.RejoinClans(game);
+        Assert.IsEmpty(game2.Waiting);
+        Assert.IsTrue(
+            game2.TeamB.Where(u => u.ClanId != null).Select(u => u.ClanId!.Value)
+                .Intersect(game2.TeamB.Where(u => u.ClanId != null).Select(u => u.ClanId!.Value))
+                .Any());
     }
 
     private GameMatch PureBannerBalancing(GameMatch gameMatch)
