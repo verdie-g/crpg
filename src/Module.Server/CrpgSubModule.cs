@@ -5,6 +5,7 @@ using Crpg.Module.Duel;
 using Crpg.Module.Siege;
 using Newtonsoft.Json;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TaleWorlds.ModuleManager;
 using TaleWorlds.MountAndBlade;
 
@@ -32,6 +33,8 @@ internal class CrpgSubModule : MBSubModuleBase
     protected override void OnSubModuleLoad()
     {
         base.OnSubModuleLoad();
+
+        AppDomain.CurrentDomain.UnhandledException += OnUnhandledException;
 
         _constants = LoadCrpgConstants();
         LoadSpriteSheets();
@@ -77,6 +80,11 @@ internal class CrpgSubModule : MBSubModuleBase
     {
         string path = ModuleHelper.GetModuleFullPath("cRPG") + "ModuleData/constants.json";
         return JsonConvert.DeserializeObject<CrpgConstants>(File.ReadAllText(path))!;
+    }
+
+    private void OnUnhandledException(object sender, UnhandledExceptionEventArgs args)
+    {
+        Debug.Print(args.ExceptionObject.ToString(), color: Debug.DebugColor.Red);
     }
 
     private void InitializeGameModels(IGameStarter basicGameStarter)
