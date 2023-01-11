@@ -10,7 +10,7 @@ using Crpg.Module.Common.ChatCommands.User;
 
 namespace Crpg.Module.Common.ChatCommands;
 
-internal class ChatCommandsComponent : MissionBehavior
+internal class ChatCommandsComponent : MissionLogic
 {
     public const char CommandPrefix = '!';
 
@@ -34,13 +34,12 @@ internal class ChatCommandsComponent : MissionBehavior
             new AnnouncementCommand(this),
             new MuteCommand(this, crpgClient),
             new BanCommand(this, crpgClient),
+            new MapCommand(this),
         };
 #else
         _commands = Array.Empty<ChatCommand>();
 #endif
     }
-
-    public override MissionBehaviorType BehaviorType => MissionBehaviorType.Other;
 
     public void ServerSendMessageToPlayer(NetworkCommunicator targetPlayer, Color color, string message)
     {
