@@ -20,6 +20,7 @@ internal class MapPoolComponent : MissionLogic
     /// <summary>The entire map pool. Needs to be static to survive the mission change.</summary>
     private static string[]? _maps;
     private static int _mapsIndex;
+    private string? _forcedNextMap;
 
     public override void OnBehaviorInitialize()
     {
@@ -28,6 +29,16 @@ internal class MapPoolComponent : MissionLogic
             // Clear the map votes else it tries to send to player a packet containing all maps, which will likely overflow it.
             MultiplayerIntermissionVotingManager.Instance.MapVoteItems.Clear();
         }
+    }
+
+    public void ForceNextMap(string map)
+    {
+        if (!DedicatedCustomServerSubModule.Instance.AutomatedMapPool.Contains(map))
+        {
+            return;
+        }
+
+        _forcedNextMap = map;
     }
 
     protected override void OnEndMission()
@@ -75,6 +86,11 @@ internal class MapPoolComponent : MissionLogic
                 _mapsIndex = 0;
                 _maps.Shuffle();
             }
+        }
+        else if (_forcedNextMap != null)
+        {
+            MultiplayerOptions.Instance.GetOptionFromOptionType(MultiplayerOptions.OptionType.Map).UpdateValue(_forcedNextMap);
+            _forcedNextMap = null;
         }
         else
         {

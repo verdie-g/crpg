@@ -1,13 +1,13 @@
-﻿using Crpg.Module.Api.Models.Items;
-using TaleWorlds.MountAndBlade;
-using TaleWorlds.ObjectSystem;
+﻿using TaleWorlds.MountAndBlade;
 
 #if CRPG_SERVER
+using Crpg.Module.Api.Models.Items;
 using Crpg.Module.Api.Models.Users;
 using Crpg.Module.Balancing;
 using NetworkMessages.FromClient;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
+using TaleWorlds.ObjectSystem;
 using TaleWorlds.PlayerServices;
 #endif
 
@@ -22,7 +22,7 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
 #if CRPG_SERVER
     private readonly MultiplayerWarmupComponent _warmupComponent;
     private readonly MultiplayerRoundController _roundController;
-    private readonly MatchBalancingSystem _balancer;
+    private readonly MatchBalancer _balancer;
 
     /// <summary>
     /// Players waiting to be assigned to a team when the cRPG balancer is enabled.
@@ -33,7 +33,7 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
     {
         _warmupComponent = warmupComponent;
         _roundController = roundController;
-        _balancer = new MatchBalancingSystem();
+        _balancer = new MatchBalancer();
         _playersWaitingForTeam = new HashSet<PlayerId>();
     }
 #endif

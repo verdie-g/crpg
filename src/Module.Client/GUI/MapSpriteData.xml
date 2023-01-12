@@ -17,7 +17,7 @@
   <SpriteCategories>
     <SpriteCategory>
       <Name>ui_mploading</Name>
-      <SpriteSheetCount>90</SpriteSheetCount>
+      <SpriteSheetCount>92</SpriteSheetCount>
       <SpriteSheetSize ID="1" Width="3840" Height="1935" />
       <SpriteSheetSize ID="2" Width="3840" Height="1935" />
       <SpriteSheetSize ID="3" Width="3383" Height="1902" />
@@ -108,6 +108,8 @@
       <SpriteSheetSize ID="88" Width="1920" Height="1080" />
       <SpriteSheetSize ID="89" Width="1920" Height="1080" />
       <SpriteSheetSize ID="90" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="91" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="92" Width="1920" Height="1080" />
     </SpriteCategory>
   </SpriteCategories>
   <SpriteParts>
@@ -465,15 +467,6 @@
     <SpritePart>
       <SheetID>40</SheetID>
       <Name>mp_sergeant_map_011_rw</Name>
-      <Width>1920</Width>
-      <Height>1080</Height>
-      <SheetX>0</SheetX>
-      <SheetY>0</SheetY>
-      <CategoryName>ui_mploading</CategoryName>
-    </SpritePart>
-    <SpritePart>
-      <SheetID>41</SheetID>
-      <Name>mp_tdm_map_004a_w</Name>
       <Width>1920</Width>
       <Height>1080</Height>
       <SheetX>0</SheetX>
@@ -930,6 +923,24 @@
       <SheetY>0</SheetY>
       <CategoryName>ui_mploading</CategoryName>
     </SpritePart>
+    <SpritePart>
+      <SheetID>91</SheetID>
+      <Name>crpg_battle_weirwater</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>92</SheetID>
+      <Name>crpg_battle_ruinedbattlement</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
   </SpriteParts>
   <Sprites>
     <GenericSprite>
@@ -1291,6 +1302,14 @@
     <GenericSprite>
       <Name>crpg_battle_canyon</Name>
       <SpritePartName>crpg_battle_canyon</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_weirwater</Name>
+      <SpritePartName>crpg_battle_weirwater</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_ruinedbattlement</Name>
+      <SpritePartName>crpg_battle_ruinedbattlement</SpritePartName>
     </GenericSprite>
   </Sprites>
 </SpriteData>

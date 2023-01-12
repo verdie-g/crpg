@@ -21,13 +21,13 @@ internal class ClanGroup
         Members.Add(user);
     }
 
-    public float RatingPsum(float p = MatchBalancingSystem.PowerParameter)
+    public float WeightPsum(float p = MatchBalancer.PowerParameter)
     {
-        return RatingHelpers.ComputeTeamRatingPowerSum(Members, p);
+        return WeightHelpers.ComputeTeamWeightPowerSum(Members, p);
     }
 
-    public float RatingPMean(float p = MatchBalancingSystem.PowerParameter)
+    public float WeightPMean(float p = MatchBalancer.PowerParameter)
     {
-        return RatingHelpers.ComputeTeamRatingPowerMean(Members, p);
+        return WeightHelpers.ComputeTeamWeightPowerMean(Members, p);
     }
 }

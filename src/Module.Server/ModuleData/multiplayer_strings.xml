@@ -46,6 +46,7 @@
   <string id="str_multiplayer_scene_name.crpg_battle_persia" text="{=!}Persia" />
   <string id="str_multiplayer_scene_name.crpg_battle_quarry" text="{=!}Quarry" />
   <string id="str_multiplayer_scene_name.crpg_battle_redwoodforest" text="{=!}Red Wood Forest" />
+  <string id="str_multiplayer_scene_name.crpg_battle_ruinedbattlement" text="{=!}Ruined Battlement" />
   <string id="str_multiplayer_scene_name.crpg_battle_sallyout" text="{=!}Sally Out" />
   <string id="str_multiplayer_scene_name.crpg_battle_sanctuary" text="{=!}Sanctuary" />
   <string id="str_multiplayer_scene_name.crpg_battle_sandpit" text="{=!}Sandpit" />
@@ -57,6 +58,7 @@
   <string id="str_multiplayer_scene_name.crpg_battle_tavernbrawl" text="{=!}Tavern Brawl" />
   <string id="str_multiplayer_scene_name.crpg_battle_vatnborg" text="{=!}Vatnborg" />
   <string id="str_multiplayer_scene_name.crpg_battle_waterwaytojelkala" text="{=!}Water Way to Jelkala" />
+  <string id="str_multiplayer_scene_name.crpg_battle_weirwater" text="{=!}Weir Water" />
   <string id="str_multiplayer_scene_name.crpg_battle_zemouri" text="{=!}Zemouri" />
 
   <!-- Siege Maps -->
