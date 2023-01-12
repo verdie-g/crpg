@@ -1,10 +1,13 @@
 ﻿using TaleWorlds.MountAndBlade;
 
 #if CRPG_SERVER
+using Crpg.Module.Api.Models.Items;
+using Crpg.Module.Api.Models.Users;
 using Crpg.Module.Balancing;
 using NetworkMessages.FromClient;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
+using TaleWorlds.ObjectSystem;
 using TaleWorlds.PlayerServices;
 #endif
 
@@ -19,7 +22,7 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
 #if CRPG_SERVER
     private readonly MultiplayerWarmupComponent _warmupComponent;
     private readonly MultiplayerRoundController _roundController;
-    private readonly MatchBalancingSystem _balancer;
+    private readonly MatchBalancer _balancer;
 
     /// <summary>
     /// Players waiting to be assigned to a team when the cRPG balancer is enabled.
@@ -30,7 +33,7 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
     {
         _warmupComponent = warmupComponent;
         _roundController = roundController;
-        _balancer = new MatchBalancingSystem();
+        _balancer = new MatchBalancer();
         _playersWaitingForTeam = new HashSet<PlayerId>();
     }
 #endif
@@ -151,7 +154,7 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
 
             if (_playersWaitingForTeam.Contains(networkPeer.VirtualPlayer.Id))
             {
-                gameMatch.Waiting.Add(crpgPeer.User);
+                gameMatch.Waiting.Add(WeightUser(crpgPeer.User));
                 continue;
             }
 
@@ -161,7 +164,7 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
                 BattleSideEnum.Attacker => gameMatch.TeamB,
                 _ => null,
             };
-            team?.Add(crpgPeer.User);
+            team?.Add(WeightUser(crpgPeer.User));
         }
 
         _playersWaitingForTeam.Clear();
@@ -172,43 +175,43 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
     private Dictionary<int, Team> ResolveTeamMoves(GameMatch current, GameMatch target)
     {
         Dictionary<int, BattleSideEnum> userCurrentSides = new();
-        foreach (var user in current.TeamA)
+        foreach (var wuser in current.TeamA)
         {
-            userCurrentSides[user.Id] = BattleSideEnum.Defender;
+            userCurrentSides[wuser.User.Id] = BattleSideEnum.Defender;
         }
 
-        foreach (var user in current.TeamB)
+        foreach (var wuser in current.TeamB)
         {
-            userCurrentSides[user.Id] = BattleSideEnum.Attacker;
+            userCurrentSides[wuser.User.Id] = BattleSideEnum.Attacker;
         }
 
-        foreach (var user in current.Waiting)
+        foreach (var wuser in current.Waiting)
         {
-            userCurrentSides[user.Id] = BattleSideEnum.None;
+            userCurrentSides[wuser.User.Id] = BattleSideEnum.None;
         }
 
         Dictionary<int, Team> usersToMove = new();
-        foreach (var user in target.TeamA)
+        foreach (var wuser in target.TeamA)
         {
-            if (userCurrentSides.TryGetValue(user.Id, out BattleSideEnum currentSide) && currentSide != BattleSideEnum.Defender)
+            if (userCurrentSides.TryGetValue(wuser.User.Id, out BattleSideEnum currentSide) && currentSide != BattleSideEnum.Defender)
             {
-                usersToMove[user.Id] = Mission.DefenderTeam;
+                usersToMove[wuser.User.Id] = Mission.DefenderTeam;
             }
         }
 
-        foreach (var user in target.TeamB)
+        foreach (var wuser in target.TeamB)
         {
-            if (userCurrentSides.TryGetValue(user.Id, out BattleSideEnum currentSide) && currentSide != BattleSideEnum.Attacker)
+            if (userCurrentSides.TryGetValue(wuser.User.Id, out BattleSideEnum currentSide) && currentSide != BattleSideEnum.Attacker)
             {
-                usersToMove[user.Id] = Mission.AttackerTeam;
+                usersToMove[wuser.User.Id] = Mission.AttackerTeam;
             }
         }
 
-        foreach (var user in target.Waiting)
+        foreach (var wuser in target.Waiting)
         {
-            if (userCurrentSides.TryGetValue(user.Id, out BattleSideEnum currentSide) && currentSide != BattleSideEnum.None)
+            if (userCurrentSides.TryGetValue(wuser.User.Id, out BattleSideEnum currentSide) && currentSide != BattleSideEnum.None)
             {
-                usersToMove[user.Id] = Mission.SpectatorTeam;
+                usersToMove[wuser.User.Id] = Mission.SpectatorTeam;
             }
         }
 
@@ -230,6 +233,45 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
         }
 
         return crpgNetworkPeers;
+    }
+
+    private WeightedCrpgUser WeightUser(CrpgUser user)
+    {
+        float weight = ComputeWeight(user);
+        return new WeightedCrpgUser(user, weight);
+    }
+
+    private float ComputeWeight(CrpgUser user)
+    {
+        float itemsTier = ComputeEquippedItemsTier(user.Character.EquippedItems);
+        // TODO: nami stuff here.
+        var rating = user.Character.Rating;
+        return 0.0025f * (float)Math.Pow(rating.Value - 2 * rating.Deviation, 1.5f);
+    }
+
+    private float ComputeEquippedItemsTier(IList<CrpgEquippedItem> equippedItems)
+    {
+        float tier = 0f;
+        float weaponMaxTier = 0f;
+        foreach (var ei in equippedItems)
+        {
+            var itemObject = MBObjectManager.Instance.GetObject<ItemObject>(ei.UserItem.BaseItemId);
+            if (itemObject == null)
+            {
+                continue;
+            }
+
+            if (itemObject.HasWeaponComponent)
+            {
+                weaponMaxTier = Math.Max(weaponMaxTier, itemObject.Tierf);
+            }
+            else
+            {
+                tier += itemObject.Tierf;
+            }
+        }
+
+        return tier + weaponMaxTier;
     }
 
     private bool IsNativeBalancerEnabled()

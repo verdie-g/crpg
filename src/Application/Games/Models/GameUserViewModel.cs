@@ -12,6 +12,7 @@ public record GameUserViewModel : IMapFrom<User>
     public int Id { get; init; }
     public Platform Platform { get; init; }
     public string PlatformUserId { get; init; } = string.Empty;
+    public string Name { get; init; } = string.Empty;
     public int Gold { get; init; }
     public int HeirloomPoints { get; set; }
     public float ExperienceMultiplier { get; init; }
