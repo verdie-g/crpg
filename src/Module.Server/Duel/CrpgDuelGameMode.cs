@@ -95,7 +95,7 @@ internal class CrpgDuelGameMode : MissionBasedMultiplayerGameMode
                     new MissionBoundaryCrossingHandler(), // kills agent out of mission boundaries
                     new MultiplayerPollComponent(), // poll logic to kick player, ban player, change game
                     new MissionOptionsComponent(),
-                    new MissionScoreboardComponent(new DuelScoreboardData()), // score board
+                    new CrpgScoreboardComponent(new DuelScoreboardData()), // score board
                     new MultiplayerPreloadHelper(),
 #if CRPG_SERVER
                     duelServer,
