@@ -66,7 +66,6 @@
       <SpriteSheetSize ID="46" Width="1920" Height="1080" />
       <SpriteSheetSize ID="47" Width="1920" Height="1080" />
       <SpriteSheetSize ID="48" Width="1920" Height="1080" />
-      <SpriteSheetSize ID="49" Width="1920" Height="1080" />
       <SpriteSheetSize ID="50" Width="1920" Height="1080" />
       <SpriteSheetSize ID="51" Width="1920" Height="1080" />
       <SpriteSheetSize ID="52" Width="1920" Height="1080" />
@@ -84,18 +83,13 @@
       <SpriteSheetSize ID="64" Width="1920" Height="1080" />
       <SpriteSheetSize ID="65" Width="1920" Height="1080" />
       <SpriteSheetSize ID="66" Width="1920" Height="1080" />
-      <SpriteSheetSize ID="67" Width="1920" Height="1080" />
       <SpriteSheetSize ID="68" Width="1920" Height="1080" />
       <SpriteSheetSize ID="69" Width="1920" Height="1080" />
       <SpriteSheetSize ID="70" Width="1920" Height="1080" />
-      <SpriteSheetSize ID="71" Width="1920" Height="1080" />
       <SpriteSheetSize ID="72" Width="1920" Height="1080" />
       <SpriteSheetSize ID="73" Width="1920" Height="1080" />
       <SpriteSheetSize ID="74" Width="1920" Height="1080" />
-      <SpriteSheetSize ID="75" Width="1920" Height="1080" />
       <SpriteSheetSize ID="76" Width="1920" Height="1080" />
-      <SpriteSheetSize ID="77" Width="1920" Height="1080" />
-      <SpriteSheetSize ID="78" Width="1920" Height="1080" />
       <SpriteSheetSize ID="79" Width="1920" Height="1080" />
       <SpriteSheetSize ID="80" Width="1920" Height="1080" />
       <SpriteSheetSize ID="81" Width="1920" Height="1080" />
@@ -547,15 +541,6 @@
       <CategoryName>ui_mploading</CategoryName>
     </SpritePart>
     <SpritePart>
-      <SheetID>49</SheetID>
-      <Name>crpg_battle_swampbrawl</Name>
-      <Width>1920</Width>
-      <Height>1080</Height>
-      <SheetX>0</SheetX>
-      <SheetY>0</SheetY>
-      <CategoryName>ui_mploading</CategoryName>
-    </SpritePart>
-    <SpritePart>
       <SheetID>50</SheetID>
       <Name>crpg_battle_sallyout</Name>
       <Width>1920</Width>
@@ -709,15 +694,6 @@
       <CategoryName>ui_mploading</CategoryName>
     </SpritePart>
     <SpritePart>
-      <SheetID>67</SheetID>
-      <Name>crpg_battle_moig</Name>
-      <Width>1920</Width>
-      <Height>1080</Height>
-      <SheetX>0</SheetX>
-      <SheetY>0</SheetY>
-      <CategoryName>ui_mploading</CategoryName>
-    </SpritePart>
-    <SpritePart>
       <SheetID>68</SheetID>
       <Name>crpg_siege_neuenburg</Name>
       <Width>1920</Width>
@@ -738,15 +714,6 @@
     <SpritePart>
       <SheetID>70</SheetID>
       <Name>crpg_battle_kingsroad</Name>
-      <Width>1920</Width>
-      <Height>1080</Height>
-      <SheetX>0</SheetX>
-      <SheetY>0</SheetY>
-      <CategoryName>ui_mploading</CategoryName>
-    </SpritePart>
-    <SpritePart>
-      <SheetID>71</SheetID>
-      <Name>crpg_battle_crescentisland</Name>
       <Width>1920</Width>
       <Height>1080</Height>
       <SheetX>0</SheetX>
@@ -781,35 +748,8 @@
       <CategoryName>ui_mploading</CategoryName>
     </SpritePart>
     <SpritePart>
-      <SheetID>75</SheetID>
-      <Name>crpg_battle_darfield</Name>
-      <Width>1920</Width>
-      <Height>1080</Height>
-      <SheetX>0</SheetX>
-      <SheetY>0</SheetY>
-      <CategoryName>ui_mploading</CategoryName>
-    </SpritePart>
-    <SpritePart>
       <SheetID>76</SheetID>
       <Name>crpg_siege_jameyyedcastle</Name>
-      <Width>1920</Width>
-      <Height>1080</Height>
-      <SheetX>0</SheetX>
-      <SheetY>0</SheetY>
-      <CategoryName>ui_mploading</CategoryName>
-    </SpritePart>
-    <SpritePart>
-      <SheetID>77</SheetID>
-      <Name>crpg_siege_wickcastle</Name>
-      <Width>1920</Width>
-      <Height>1080</Height>
-      <SheetX>0</SheetX>
-      <SheetY>0</SheetY>
-      <CategoryName>ui_mploading</CategoryName>
-    </SpritePart>
-    <SpritePart>
-      <SheetID>78</SheetID>
-      <Name>crpg_siege_scarwood</Name>
       <Width>1920</Width>
       <Height>1080</Height>
       <SheetX>0</SheetX>
@@ -1137,10 +1077,6 @@
       <SpritePartName>crpg_battle_vatnborg</SpritePartName>
     </GenericSprite>
     <GenericSprite>
-      <Name>crpg_battle_swampbrawl</Name>
-      <SpritePartName>crpg_battle_swampbrawl</SpritePartName>
-    </GenericSprite>
-    <GenericSprite>
       <Name>crpg_battle_sallyout</Name>
       <SpritePartName>crpg_battle_sallyout</SpritePartName>
     </GenericSprite>
@@ -1209,10 +1145,6 @@
       <SpritePartName>crpg_battle_fallenaqueduct</SpritePartName>
     </GenericSprite>
     <GenericSprite>
-      <Name>crpg_battle_moig</Name>
-      <SpritePartName>crpg_battle_moig</SpritePartName>
-    </GenericSprite>
-    <GenericSprite>
       <Name>crpg_siege_neuenburg</Name>
       <SpritePartName>crpg_siege_neuenburg</SpritePartName>
     </GenericSprite>
@@ -1223,10 +1155,6 @@
     <GenericSprite>
       <Name>crpg_battle_kingsroad</Name>
       <SpritePartName>crpg_battle_kingsroad</SpritePartName>
-    </GenericSprite>
-    <GenericSprite>
-      <Name>crpg_battle_crescentisland</Name>
-      <SpritePartName>crpg_battle_crescentisland</SpritePartName>
     </GenericSprite>
     <GenericSprite>
       <Name>crpg_battle_icelake</Name>
@@ -1241,20 +1169,8 @@
       <SpritePartName>crpg_battle_ancientworld</SpritePartName>
     </GenericSprite>
     <GenericSprite>
-      <Name>crpg_battle_darfield</Name>
-      <SpritePartName>crpg_battle_darfield</SpritePartName>
-    </GenericSprite>
-    <GenericSprite>
       <Name>crpg_siege_jameyyedcastle</Name>
       <SpritePartName>crpg_siege_jameyyedcastle</SpritePartName>
-    </GenericSprite>
-    <GenericSprite>
-      <Name>crpg_siege_wickcastle</Name>
-      <SpritePartName>crpg_siege_wickcastle</SpritePartName>
-    </GenericSprite>
-    <GenericSprite>
-      <Name>crpg_siege_scarwood</Name>
-      <SpritePartName>crpg_siege_scarwood</SpritePartName>
     </GenericSprite>
     <GenericSprite>
       <Name>crpg_siege_hades</Name>
