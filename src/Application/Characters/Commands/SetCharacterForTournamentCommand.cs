@@ -39,7 +39,7 @@ public record SetCharacterForTournamentCommand : IMediatorRequest<CharacterViewM
         public async Task<Result<CharacterViewModel>> Handle(SetCharacterForTournamentCommand req, CancellationToken cancellationToken)
         {
             var character = await _db.Characters
-                .Include(c => c.User)
+                .Include(c => c.User!.ActiveCharacter)
                 .FirstOrDefaultAsync(c => c.UserId == req.UserId && c.Id == req.CharacterId, cancellationToken);
             if (character == null)
             {
@@ -58,7 +58,7 @@ public record SetCharacterForTournamentCommand : IMediatorRequest<CharacterViewM
 
             if (character.User!.ActiveCharacterId == character.Id)
             {
-                character.User!.ActiveCharacterId = null;
+                character.User!.ActiveCharacter = null;
             }
 
             await _db.SaveChangesAsync(cancellationToken);
