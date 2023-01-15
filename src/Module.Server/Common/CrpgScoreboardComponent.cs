@@ -54,20 +54,18 @@ internal class CrpgScoreboardComponent : MissionScoreboardComponent
             score = damagedHp * 0.45f;
             affectedAgent = affectedAgent.RiderAgent;
         }
+        else if (collisionData.AttackBlockedWithShield)
+        {
+            score = collisionData.InflictedDamage * 0.2f;
+        }
 
         if (affectedAgent == null || affectorAgent == affectedAgent)
         {
             return;
         }
 
-        if (!affectorAgent.IsFriendOf(affectedAgent))
-        {
-            ReflectionHelper.SetProperty(missionPeer, nameof(missionPeer.Score), (int)(missionPeer.Score + score));
-        }
-        else
-        {
-            ReflectionHelper.SetProperty(missionPeer, nameof(missionPeer.Score), (int)(missionPeer.Score - 1.5f * score));
-        }
+        score = affectorAgent.IsFriendOf(affectedAgent) ? score * -1.5f : score;
+        ReflectionHelper.SetProperty(missionPeer, nameof(missionPeer.Score), (int)(missionPeer.Score + score));
 
         GameNetwork.BeginBroadcastModuleEvent();
         GameNetwork.WriteMessage(new KillDeathCountChange(missionPeer.GetNetworkPeer(),
