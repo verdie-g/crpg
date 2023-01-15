@@ -11,10 +11,6 @@ using TaleWorlds.MountAndBlade;
 
 #if CRPG_SERVER
 using Crpg.Module.HarmonyPatches;
-#else
-using System.Xml.Linq;
-using TaleWorlds.Engine.GauntletUI;
-using TaleWorlds.TwoDimension;
 #endif
 
 #if CRPG_EXPORT
@@ -37,7 +33,6 @@ internal class CrpgSubModule : MBSubModuleBase
         AppDomain.CurrentDomain.UnhandledException += OnUnhandledException;
 
         _constants = LoadCrpgConstants();
-        LoadSpriteSheets();
         TaleWorlds.MountAndBlade.Module.CurrentModule.AddMultiplayerGameMode(new CrpgBattleGameMode(_constants, isSkirmish: true));
         TaleWorlds.MountAndBlade.Module.CurrentModule.AddMultiplayerGameMode(new CrpgBattleGameMode(_constants, isSkirmish: false));
         TaleWorlds.MountAndBlade.Module.CurrentModule.AddMultiplayerGameMode(new CrpgSiegeGameMode(_constants));
@@ -93,27 +88,6 @@ internal class CrpgSubModule : MBSubModuleBase
         basicGameStarter.AddModel(new CrpgItemValueModel());
         basicGameStarter.AddModel(new CrpgAgentApplyDamageModel(_constants));
         basicGameStarter.AddModel(new CrpgStrikeMagnitudeModel(_constants));
-    }
-
-    /// <summary>
-    /// This method loads the sprites from the Assets folder. Doing this manually is surprising but it is done like
-    /// that in TaleWorlds.MountAndBlade.GauntletUI.GauntletUISubModule.OnSubModuleLoad.
-    /// </summary>
-    private void LoadSpriteSheets()
-    {
-#if CRPG_CLIENT
-        string guiPath = Path.Combine(ModuleHelper.GetModuleFullPath("cRPG"), "GUI");
-        foreach (string filename in Directory.GetFiles(guiPath, "*SpriteData.xml", SearchOption.AllDirectories))
-        {
-            var spriteDataDoc = XDocument.Load(filename);
-            foreach (XElement spriteCategoryNode in spriteDataDoc.Root!.Descendants("SpriteCategory"))
-            {
-                string spriteCategoryName = spriteCategoryNode.Element("Name")!.Value;
-                SpriteCategory spriteCategory = UIResourceManager.SpriteData.SpriteCategories[spriteCategoryName];
-                spriteCategory.Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
-            }
-        }
-#endif
     }
 
 #if CRPG_EXPORT

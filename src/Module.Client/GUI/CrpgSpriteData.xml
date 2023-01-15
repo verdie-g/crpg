@@ -5,6 +5,7 @@
       <Name>ui_crpg_experience_circle</Name>
       <SpriteSheetCount>1</SpriteSheetCount>
       <SpriteSheetSize ID="1" Width="128" Height="128" />
+      <AlwaysLoad />
     </SpriteCategory>
   </SpriteCategories>
   <SpriteParts>

@@ -110,6 +110,7 @@
       <SpriteSheetSize ID="90" Width="1920" Height="1080" />
       <SpriteSheetSize ID="91" Width="1920" Height="1080" />
       <SpriteSheetSize ID="92" Width="1920" Height="1080" />
+      <AlwaysLoad />
     </SpriteCategory>
   </SpriteCategories>
   <SpriteParts>
