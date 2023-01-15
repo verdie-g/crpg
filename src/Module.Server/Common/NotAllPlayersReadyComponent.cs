@@ -16,7 +16,7 @@ internal class NotAllPlayersReadyComponent : MissionLogic
 
     public override void OnMissionTick(float dt)
     {
-        _timer ??= new MissionTimer(60);
+        _timer ??= new MissionTimer(30);
         if (!_timer.Check(reset: true))
         {
             return;
