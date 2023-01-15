@@ -51,7 +51,7 @@ internal class CrpgScoreboardComponent : MissionScoreboardComponent
         float score = damagedHp;
         if (affectedAgent.IsMount)
         {
-            score = damagedHp * 0.35f;
+            score = damagedHp * 0.45f;
             affectedAgent = affectedAgent.RiderAgent;
         }
 

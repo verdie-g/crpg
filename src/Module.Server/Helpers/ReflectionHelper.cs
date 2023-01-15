@@ -54,7 +54,7 @@ internal static class ReflectionHelper
                 p = p.DeclaringType?.GetProperty(prop, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
                 if (p != null)
                 {
-                    continue;
+                    return p;
                 }
             }
 
