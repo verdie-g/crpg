@@ -7,6 +7,7 @@ using Crpg.Module.Rating;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.Diamond;
 using TaleWorlds.PlayerServices;
 
 namespace Crpg.Module.Common;
@@ -372,6 +373,11 @@ internal class CrpgRewardServer : MissionBehavior
             }
 
             crpgPeer.User = updateResult.User;
+            if (crpgPeer.User.Character.ForTournament && !CrpgServerConfiguration.IsTournament)
+            {
+                KickHelper.Kick(crpgPeer.GetNetworkPeer(), DisconnectType.KickedByHost);
+                continue;
+            }
 
             GameNetwork.BeginModuleEventAsServer(crpgPeer.GetNetworkPeer());
             GameNetwork.WriteMessage(new CrpgRewardUser

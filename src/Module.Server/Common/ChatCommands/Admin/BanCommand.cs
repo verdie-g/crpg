@@ -83,10 +83,7 @@ internal class BanCommand : AdminCommand
             return;
         }
 
-        var disconnectInfo = targetPeer.PlayerConnectionInfo.GetParameter<DisconnectInfo>("DisconnectInfo") ?? new DisconnectInfo();
-        disconnectInfo.Type = DisconnectType.BannedByPoll;
-        targetPeer.PlayerConnectionInfo.AddParameter("DisconnectInfo", disconnectInfo);
-        GameNetwork.AddNetworkPeerToDisconnectAsServer(targetPeer);
+        KickHelper.Kick(targetPeer, DisconnectType.BannedByPoll);
     }
 
     private void ExecuteBanByName(NetworkCommunicator fromPeer, object[] arguments)

@@ -87,12 +87,7 @@ internal class KickInactiveBehavior : MissionBehavior
             {
                 var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
                 Debug.Print($"Kick inactive user {crpgPeer.User!.Character.Name} ({crpgPeer.User.Platform}#{crpgPeer.User.PlatformUserId})");
-
-                const string parameterName = "DisconnectInfo";
-                var disconnectInfo = networkPeer.PlayerConnectionInfo.GetParameter<DisconnectInfo>(parameterName) ?? new DisconnectInfo();
-                disconnectInfo.Type = DisconnectType.Inactivity;
-                networkPeer.PlayerConnectionInfo.AddParameter(parameterName, disconnectInfo);
-                GameNetwork.AddNetworkPeerToDisconnectAsServer(networkPeer);
+                KickHelper.Kick(networkPeer, DisconnectType.Inactivity);
                 return;
             }
 

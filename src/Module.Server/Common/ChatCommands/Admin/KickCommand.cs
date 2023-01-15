@@ -64,9 +64,6 @@ internal class KickCommand : AdminCommand
             return;
         }
 
-        var disconnectInfo = fromPeer.PlayerConnectionInfo.GetParameter<DisconnectInfo>("DisconnectInfo") ?? new DisconnectInfo();
-        disconnectInfo.Type = DisconnectType.KickedByHost;
-        targetPeer.PlayerConnectionInfo.AddParameter("DisconnectInfo", disconnectInfo);
-        GameNetwork.AddNetworkPeerToDisconnectAsServer(targetPeer);
+        KickHelper.Kick(targetPeer, DisconnectType.Inactivity);
     }
 }

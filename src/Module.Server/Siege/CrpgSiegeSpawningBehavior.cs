@@ -84,11 +84,7 @@ internal class CrpgSiegeSpawningBehavior : CrpgSpawningBehaviorBase
             }
             else if (lastNotification + MissionTime.Seconds(3) < MissionTime.Now)
             {
-                const string parameterName = "DisconnectInfo";
-                var disconnectInfo = networkPeer.PlayerConnectionInfo.GetParameter<DisconnectInfo>(parameterName) ?? new DisconnectInfo();
-                disconnectInfo.Type = DisconnectType.KickedByHost;
-                networkPeer.PlayerConnectionInfo.AddParameter(parameterName, disconnectInfo);
-                GameNetwork.AddNetworkPeerToDisconnectAsServer(networkPeer);
+                KickHelper.Kick(networkPeer, DisconnectType.KickedByHost);
             }
 
             return false;

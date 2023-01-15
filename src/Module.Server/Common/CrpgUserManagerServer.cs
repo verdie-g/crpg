@@ -90,7 +90,7 @@ internal class CrpgUserManagerServer : MissionNetwork
             || (platform != Platform.Steam && platform != Platform.Epic))
         {
             Debug.Print($"Kick player {vp.UserName} playing on {vp.Id.ProvidedType}");
-            KickPeer(networkPeer, DisconnectType.KickedByHost);
+            KickHelper.Kick(networkPeer, DisconnectType.KickedByHost);
         }
 
         string platformUserId = PlayerIdToPlatformUserId(vp.Id, platform);
@@ -120,14 +120,14 @@ internal class CrpgUserManagerServer : MissionNetwork
         catch (Exception e)
         {
             Debug.Print($"Couldn't get user {userName} ({platform}#{platformUserId}): {e}");
-            KickPeer(networkPeer, DisconnectType.KickedByHost);
+            KickHelper.Kick(networkPeer, DisconnectType.KickedByHost);
             return;
         }
 
         if (crpgUser.Restrictions.FirstOrDefault(r => r.Type == CrpgRestrictionType.Join) != null)
         {
             Debug.Print($"Kick join restricted user {userName} ({platform}#{platformUserId})");
-            KickPeer(networkPeer, DisconnectType.BannedByPoll);
+            KickHelper.Kick(networkPeer, DisconnectType.BannedByPoll);
             return;
         }
 
@@ -158,14 +158,5 @@ internal class CrpgUserManagerServer : MissionNetwork
             default:
                 throw new ArgumentOutOfRangeException(nameof(platform), platform, null);
         }
-    }
-
-    private void KickPeer(NetworkCommunicator networkPeer, DisconnectType disconnectType)
-    {
-        const string parameterName = "DisconnectInfo";
-        var disconnectInfo = networkPeer.PlayerConnectionInfo.GetParameter<DisconnectInfo>(parameterName) ?? new DisconnectInfo();
-        disconnectInfo.Type = disconnectType;
-        networkPeer.PlayerConnectionInfo.AddParameter(parameterName, disconnectInfo);
-        GameNetwork.AddNetworkPeerToDisconnectAsServer(networkPeer);
     }
 }
