@@ -496,13 +496,13 @@ public class CrpgCommanderInfoVm : ViewModel
 
     public void OnTeamChanged()
     {
-        if (!GameNetwork.IsMyPeerReady || !ShowTacticalInfo)
+        _allyTeam = GameNetwork.MyPeer.GetComponent<MissionPeer>().Team;
+        if (_allyTeam == null)
         {
             return;
         }
 
-        _allyTeam = GameNetwork.MyPeer.GetComponent<MissionPeer>().Team;
-        if (_allyTeam == null)
+        if (!GameNetwork.IsMyPeerReady || !ShowTacticalInfo)
         {
             return;
         }
