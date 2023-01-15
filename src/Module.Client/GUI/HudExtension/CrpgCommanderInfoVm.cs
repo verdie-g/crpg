@@ -70,9 +70,10 @@ public class CrpgCommanderInfoVm : ViewModel
 
         Mission.Current.OnMissionReset += OnMissionReset;
 
-        if (_gameMode.RoundComponent != null)
+        var visualSpawnComponent = Mission.Current.GetMissionBehavior<MultiplayerMissionAgentVisualSpawnComponent>();
+        if (visualSpawnComponent != null)
         {
-            _gameMode.RoundComponent.OnRoundStarted += OnRoundStarted;
+            visualSpawnComponent.OnMyAgentSpawnedFromVisual += OnMyAgentSpawnedFromVisual;
         }
 
         OnTeamChanged();
@@ -392,14 +393,17 @@ public class CrpgCommanderInfoVm : ViewModel
         }
 
         Mission.Current.OnMissionReset -= OnMissionReset;
-        MultiplayerMissionAgentVisualSpawnComponent missionBehavior = Mission.Current.GetMissionBehavior<MultiplayerMissionAgentVisualSpawnComponent>();
-        missionBehavior.OnMyAgentVisualSpawned -= OnRoundStarted;
-        if (_siegeClient == null)
+
+        var visualSpawnComponent = Mission.Current.GetMissionBehavior<MultiplayerMissionAgentVisualSpawnComponent>();
+        if (visualSpawnComponent != null)
         {
-            return;
+            visualSpawnComponent.OnMyAgentSpawnedFromVisual -= OnMyAgentSpawnedFromVisual;
         }
 
-        _siegeClient.OnCapturePointRemainingMoraleGainsChangedEvent -= OnCapturePointRemainingMoraleGainsChanged;
+        if (_siegeClient != null)
+        {
+            _siegeClient.OnCapturePointRemainingMoraleGainsChangedEvent -= OnCapturePointRemainingMoraleGainsChanged;
+        }
     }
 
     public void Tick(float dt)
@@ -515,7 +519,7 @@ public class CrpgCommanderInfoVm : ViewModel
         }
     }
 
-    private void OnRoundStarted()
+    private void OnMyAgentSpawnedFromVisual()
     {
         ShowTacticalInfo = true;
         OnTeamChanged();
@@ -524,8 +528,8 @@ public class CrpgCommanderInfoVm : ViewModel
             return;
         }
 
-        _attackerTeamInitialMemberCount = _missionScoreboardComponent.Sides[1].Players.Count<MissionPeer>();
-        _defenderTeamInitialMemberCount = _missionScoreboardComponent.Sides[0].Players.Count<MissionPeer>();
+        _attackerTeamInitialMemberCount = _missionScoreboardComponent.Sides[(int)BattleSideEnum.Attacker].Players.Count<MissionPeer>();
+        _defenderTeamInitialMemberCount = _missionScoreboardComponent.Sides[(int)BattleSideEnum.Defender].Players.Count<MissionPeer>();
     }
 
     private void RegisterMoraleEvents()
