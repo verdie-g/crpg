@@ -243,10 +243,13 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
 
     private float ComputeWeight(CrpgUser user)
     {
-        float itemsTier = ComputeEquippedItemsTier(user.Character.EquippedItems);
-        // TODO: nami stuff here.
         var rating = user.Character.Rating;
-        return 0.0025f * (float)Math.Pow(rating.Value - 2 * rating.Deviation, 1.5f);
+        float ratingWeight = 0.0025f * (float)Math.Pow(rating.Value - 2 * rating.Deviation, 1.5f);
+
+        float itemsTier = ComputeEquippedItemsTier(user.Character.EquippedItems);
+        float itemsWeight = MathF.Lerp(valueFrom: 1f, valueTo: 2f, amount: itemsTier / 70f);
+
+        return ratingWeight * itemsWeight;
     }
 
     private float ComputeEquippedItemsTier(IList<CrpgEquippedItem> equippedItems)
