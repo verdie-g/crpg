@@ -1,5 +1,4 @@
-﻿using System.Text;
-using Crpg.Module.Api.Models.Characters;
+﻿using Crpg.Module.Api.Models.Characters;
 using Crpg.Module.Api.Models.Items;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
@@ -74,9 +73,9 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
             {
                 agentBuildData.ClothingColor1(crpgPeer.Clan.PrimaryColor);
                 agentBuildData.ClothingColor2(crpgPeer.Clan.SecondaryColor);
-                if (TryParseBanner(crpgPeer.Clan.BannerKey, out var banner))
+                if (!string.IsNullOrEmpty(crpgPeer.Clan.BannerKey))
                 {
-                    agentBuildData.Banner(banner);
+                    agentBuildData.Banner(new Banner(crpgPeer.Clan.BannerKey));
                 }
             }
             else
@@ -180,111 +179,6 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
     {
     }
 
-    protected bool TryParseBanner(string bannerKey, out Banner? banner)
-    {
-        banner = null;
-
-        if (bannerKey.Length > _constants.ClanBannerKeyMaxLength)
-        {
-            return false;
-        }
-
-        string[] array = bannerKey.Split('.');
-
-        StringBuilder fixedBannerCode = new();
-        // The maximum size of the banner is Banner.BannerFullSize. But apparently negative values do not cause crashes. Anyway added some checks with tolerance to parse the banner.
-        int maxX = 2 * Banner.BannerFullSize;
-        int minX = -2 * Banner.BannerFullSize;
-        int maxY = maxX;
-        int minY = minX;
-
-        /*
-         * Format values seperated by dots (.)
-         * Icons / Colors found inside of the banner_icons.xml
-         * --------
-         * iconId
-         * colorId
-         * colorId2
-         * sizeX
-         * sizeY
-         * posX  (total canvas size is Banner.BannerFullSize but being out of these doesn't seem to cause any issues)
-         * posY
-         * stroke (0 or 1)
-         * mirror (0 or 1)
-         * rotation (0-359)
-         */
-        for (int i = 0; i + 10 <= array.Length; i += 10)
-        {
-            if (int.TryParse(array[i], out int iconId))
-            {
-                if (!CheckIconList(iconId))
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return false;
-            }
-
-            if (!int.TryParse(array[i + 1], out int colorId1) || !BannerManager.Instance.ReadOnlyColorPalette.ContainsKey(colorId1)
-                || !int.TryParse(array[i + 2], out int colorId2) || !BannerManager.Instance.ReadOnlyColorPalette.ContainsKey(colorId2)
-                || !int.TryParse(array[i + 3], out int sizeX)
-                || !int.TryParse(array[i + 4], out int sizeY)
-                || !int.TryParse(array[i + 5], out int posX) || posX > maxX || posX < minX
-                || !int.TryParse(array[i + 6], out int posY) || posY > maxY || posY < minY
-                || !int.TryParse(array[i + 7], out int drawStroke) || drawStroke > 1 || drawStroke < 0
-                || !int.TryParse(array[i + 8], out int mirror) || mirror > 1 || mirror < 0)
-            {
-                return false;
-            }
-
-            if (!int.TryParse(array[i + 9], out int rotation))
-            {
-                return false;
-            }
-            else
-            {
-                rotation %= 360;
-                if (rotation < 0)
-                {
-                    rotation += 360;
-                }
-            }
-
-            fixedBannerCode.Append(iconId);
-            fixedBannerCode.Append(".");
-            fixedBannerCode.Append(colorId1);
-            fixedBannerCode.Append(".");
-            fixedBannerCode.Append(colorId2);
-            fixedBannerCode.Append(".");
-            fixedBannerCode.Append(sizeX);
-            fixedBannerCode.Append(".");
-            fixedBannerCode.Append(sizeY);
-            fixedBannerCode.Append(".");
-            fixedBannerCode.Append(posX);
-            fixedBannerCode.Append(".");
-            fixedBannerCode.Append(posY);
-            fixedBannerCode.Append(".");
-            fixedBannerCode.Append(drawStroke);
-            fixedBannerCode.Append(".");
-            fixedBannerCode.Append(mirror);
-            fixedBannerCode.Append(".");
-            fixedBannerCode.Append(rotation);
-            fixedBannerCode.Append(".");
-        }
-
-        if (fixedBannerCode.Length == 0)
-        {
-            return false;
-        }
-
-        fixedBannerCode.Length -= ".".Length;
-
-        banner = new Banner(fixedBannerCode.ToString());
-        return true;
-    }
-
     protected Equipment CreateCharacterEquipment(IList<CrpgEquippedItem> equippedItems)
     {
         Equipment equipment = new();
@@ -302,19 +196,6 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
         for (var i = EquipmentIndex.Weapon0; i <= EquipmentIndex.ExtraWeaponSlot; i += 1)
         {
             if (!equipment[i].IsEmpty)
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private bool CheckIconList(int id)
-    {
-        foreach (BannerIconGroup bannerIconGroup in BannerManager.Instance.BannerIconGroups)
-        {
-            if (bannerIconGroup.AllBackgrounds.ContainsKey(id) || bannerIconGroup.AllIcons.ContainsKey(id))
             {
                 return true;
             }

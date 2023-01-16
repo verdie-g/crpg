@@ -136,7 +136,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                         _isSkirmish ? new CrpgSkirmishSpawningBehavior(_constants, roundController) : new CrpgBattleSpawningBehavior(_constants, roundController)),
                     new AgentHumanAILogic(), // bot intelligence
                     new MultiplayerAdminComponent(), // admin UI to kick player or restart game
-                    new CrpgUserManagerServer(crpgClient),
+                    new CrpgUserManagerServer(crpgClient, _constants),
                     new KickInactiveBehavior(inactiveTimeLimit: 60, warmupComponent),
                     new MapPoolComponent(),
                     new ChatCommandsComponent(chatBox, crpgClient),

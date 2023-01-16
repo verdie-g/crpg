@@ -105,7 +105,7 @@ internal class CrpgDuelGameMode : MissionBasedMultiplayerGameMode
                     new MissionAgentPanicHandler(),
                     new AgentHumanAILogic(), // bot intelligence
                     new EquipmentControllerLeaveLogic(),
-                    new CrpgUserManagerServer(crpgClient),
+                    new CrpgUserManagerServer(crpgClient, _constants),
                     new ChatCommandsComponent(chatBox, crpgClient),
                     new PlayerStatsComponent(),
                     new NotAllPlayersReadyComponent(),
