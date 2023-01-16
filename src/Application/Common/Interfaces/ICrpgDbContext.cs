@@ -1,3 +1,4 @@
+using Crpg.Domain.Entities.ActivityLogs;
 using Crpg.Domain.Entities.Battles;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Clans;
@@ -31,6 +32,8 @@ public interface ICrpgDbContext
     DbSet<BattleFighterApplication> BattleFighterApplications { get; }
     DbSet<BattleMercenary> BattleMercenaries { get; }
     DbSet<BattleMercenaryApplication> BattleMercenaryApplications { get; }
+    DbSet<ActivityLog> ActivityLogs { get; set; }
+    DbSet<ActivityLogMetadata> ActivityLogMetadata { get; set; }
     EntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }

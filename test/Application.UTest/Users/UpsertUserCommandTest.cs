@@ -13,7 +13,8 @@ public class UpsertUserCommandTest : TestBase
     public async Task TestWhenUserDoesntExist()
     {
         Mock<IUserService> userServiceMock = new();
-        UpsertUserCommand.Handler handler = new(ActDb, Mapper, userServiceMock.Object);
+        Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
+        UpsertUserCommand.Handler handler = new(ActDb, Mapper, userServiceMock.Object, activityLogServiceMock.Object);
         var result = await handler.Handle(new UpsertUserCommand
         {
             PlatformUserId = "123",
@@ -48,7 +49,7 @@ public class UpsertUserCommandTest : TestBase
         await ArrangeDb.SaveChangesAsync();
 
         Mock<IUserService> userServiceMock = new();
-        UpsertUserCommand.Handler handler = new(ActDb, Mapper, userServiceMock.Object);
+        UpsertUserCommand.Handler handler = new(ActDb, Mapper, userServiceMock.Object, Mock.Of<IActivityLogService>());
         var result = await handler.Handle(new UpsertUserCommand
         {
             PlatformUserId = "13948192759205810",
@@ -86,7 +87,7 @@ public class UpsertUserCommandTest : TestBase
         await ArrangeDb.SaveChangesAsync();
 
         Mock<IUserService> userServiceMock = new();
-        UpsertUserCommand.Handler handler = new(ActDb, Mapper, userServiceMock.Object);
+        UpsertUserCommand.Handler handler = new(ActDb, Mapper, userServiceMock.Object, Mock.Of<IActivityLogService>());
         await handler.Handle(new UpsertUserCommand
         {
             PlatformUserId = "13948192759205810",

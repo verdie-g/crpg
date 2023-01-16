@@ -31,6 +31,7 @@ public static class DependencyInjection
             .AddSingleton<IUserService, UserService>()
             .AddSingleton<IItemService, ItemService>()
             .AddSingleton<IClanService>(clanService)
+            .AddSingleton<IActivityLogService, ActivityLogService>()
             .AddSingleton<IGameServerStatsService, DatadogGameServerStatsService>()
             .AddSingleton<IStrategusMap, StrategusMap>()
             .AddSingleton<IStrategusSpeedModel, StrategusSpeedModel>()

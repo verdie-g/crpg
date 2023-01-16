@@ -12,6 +12,7 @@ using Crpg.Domain.Entities.Users;
 using Crpg.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NetTopologySuite.Geometries;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -21,9 +22,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Crpg.Persistence.Migrations
 {
     [DbContext(typeof(CrpgDbContext))]
-    partial class CrpgDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230116194051_RenameActivityLogTypes")]
+    partial class RenameActivityLogTypes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

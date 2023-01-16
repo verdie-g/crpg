@@ -47,20 +47,30 @@ public record UpsertUserCommand : IMediatorRequest<UserViewModel>, IMapFrom<Stea
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
         private readonly IUserService _userService;
+        private readonly IActivityLogService _activityLogService;
 
-        public Handler(ICrpgDbContext db, IMapper mapper, IUserService userService)
+        public Handler(ICrpgDbContext db, IMapper mapper, IUserService userService, IActivityLogService activityLogService)
         {
             _db = db;
             _mapper = mapper;
             _userService = userService;
+            _activityLogService = activityLogService;
         }
 
         public async Task<Result<UserViewModel>> Handle(UpsertUserCommand request, CancellationToken cancellationToken)
         {
+            bool newUser = false;
             var user = await _db.Users
-                           .IgnoreQueryFilters()
-                           .FirstOrDefaultAsync(u => u.PlatformUserId == request.PlatformUserId, cancellationToken)
-                ?? new User { Platform = Platform.Steam, PlatformUserId = request.PlatformUserId };
+                .IgnoreQueryFilters()
+                .FirstOrDefaultAsync(u => u.PlatformUserId == request.PlatformUserId, cancellationToken);
+
+            if (user == null)
+            {
+                user = new User { Platform = Platform.Steam, PlatformUserId = request.PlatformUserId };
+                _userService.SetDefaultValuesForUser(user);
+                _db.Users.Add(user);
+                newUser = true;
+            }
 
             string oldName = user.Name;
 
@@ -71,19 +81,20 @@ public record UpsertUserCommand : IMediatorRequest<UserViewModel>, IMapFrom<Stea
             // If the user has deleted its account, recreate it.
             user.DeletedAt = null;
 
-            if (_db.Entry(user).State == EntityState.Detached)
+            if (!newUser && user.Name != oldName)
             {
-                _userService.SetDefaultValuesForUser(user);
-                _db.Users.Add(user);
-                Logger.LogInformation("{0} joined ({1}#{2})", request.Name,
-                    user.Platform, user.PlatformUserId);
-            }
-            else if (user.Name != oldName)
-            {
-                Logger.LogInformation("User '{0}' changed their name from '{1}' to '{2}'", user.Id, oldName, user.Name);
+                _db.ActivityLogs.Add(_activityLogService.CreateUserRenamedLog(user.Id, oldName, user.Name));
             }
 
             await _db.SaveChangesAsync(cancellationToken);
+
+            if (newUser)
+            {
+                Logger.LogInformation("{0} joined ({1}#{2})", request.Name, user.Platform, user.PlatformUserId);
+                _db.ActivityLogs.Add(_activityLogService.CreateUserCreatedLog(user.Id));
+                await _db.SaveChangesAsync(cancellationToken);
+            }
+
             return new(_mapper.Map<UserViewModel>(user));
         }
     }

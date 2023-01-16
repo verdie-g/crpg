@@ -2,16 +2,16 @@
 
 public enum ActivityLogType
 {
-    UserCreation,
-    UserDeletion,
-    UserServerJoin,
+    UserCreated,
+    UserDeleted,
     UserRenamed,
     ItemBought,
     ItemSold,
-    CharacterCreation,
-    CharacterDeletion,
-    CharacterRespecialization,
-    CharacterRetirement,
-    ChatMessage,
+    CharacterCreated,
+    CharacterDeleted,
+    CharacterRespecialized,
+    CharacterRetired,
+    ServerJoined,
+    ChatMessageSent,
     TeamHit,
 }
