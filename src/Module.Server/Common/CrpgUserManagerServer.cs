@@ -104,7 +104,7 @@ internal class CrpgUserManagerServer : MissionNetwork
         CrpgClan? crpgClan = null;
         try
         {
-            var userRes = CrpgServerConfiguration.IsTournament
+            var userRes = CrpgFeatureFlags.IsEnabled(CrpgFeatureFlags.FeatureTournament)
                 ? await _crpgClient.GetTournamentUserAsync(platform, platformUserId)
                 : await _crpgClient.GetUserAsync(platform, platformUserId);
             crpgUser = userRes.Data!;

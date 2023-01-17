@@ -181,7 +181,7 @@ internal class CrpgRewardServer : MissionBehavior
                 BrokenItems = Array.Empty<CrpgUserBrokenItem>(),
             };
 
-            if (CrpgServerConfiguration.IsTournament)
+            if (CrpgFeatureFlags.IsEnabled(CrpgFeatureFlags.FeatureTournament))
             {
                 userUpdates.Add(userUpdate);
                 continue;
@@ -373,7 +373,7 @@ internal class CrpgRewardServer : MissionBehavior
             }
 
             crpgPeer.User = updateResult.User;
-            if (crpgPeer.User.Character.ForTournament && !CrpgServerConfiguration.IsTournament)
+            if (crpgPeer.User.Character.ForTournament && CrpgFeatureFlags.IsEnabled(CrpgFeatureFlags.FeatureTournament))
             {
                 KickHelper.Kick(crpgPeer.GetNetworkPeer(), DisconnectType.KickedByHost);
                 continue;
