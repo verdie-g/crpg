@@ -13,5 +13,4 @@ internal class WeightedCrpgUser
     public CrpgUser User { get; }
     public int? ClanId => User.ClanMembership?.ClanId;
     public float Weight { get; }
-
 }
