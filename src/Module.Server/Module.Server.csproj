@@ -46,11 +46,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Lib.Harmony" Version="2.1.0" GeneratePathProperty="true" NoWarn="NU1701" />
+    <PackageReference Include="Lib.Harmony" Version="2.2.2" GeneratePathProperty="true" />
+    <PackageReference Include="MonoMod.Common" Version="22.6.3.1" GeneratePathProperty="true" />
+    <PackageReference Include="Mono.Cecil" Version="0.11.4" GeneratePathProperty="true" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="$(PkgLib_Harmony)\lib\net472\0Harmony.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+    <None Include="$(PkgLib_Harmony)\lib\netcoreapp3.1\0Harmony.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+    <None Include="$(PkgMonoMod_Common)\lib\netstandard2.0\MonoMod.Common.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+    <None Include="$(PkgMono_Cecil)\lib\netstandard2.0\Mono.Cecil.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" />
   </ItemGroup>
 
   <ItemGroup>
