@@ -40,6 +40,7 @@ internal class CrpgSubModule : MBSubModuleBase
 
 #if CRPG_SERVER
         CrpgServerConfiguration.Init();
+        CrpgFeatureFlags.Init();
         BannerlordPatches.Apply();
 #endif
 

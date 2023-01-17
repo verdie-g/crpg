@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using System.Text;
+using JetBrains.Annotations;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
@@ -12,6 +13,11 @@ internal static class CrpgFeatureFlags
     {
         [FeatureTournament] = false,
     };
+
+    public static void Init()
+    {
+        DedicatedServerConsoleCommandManager.AddType(typeof(CrpgFeatureFlags));
+    }
 
     public static bool IsEnabled(string feature)
     {
@@ -34,22 +40,28 @@ internal static class CrpgFeatureFlags
 
     [UsedImplicitly]
     [ConsoleCommandMethod("crpg_list_features", "Lists cRPG feature")]
-    private static void ListFeatures(string? args)
+    private static void ListFeatures()
     {
+        StringBuilder sb = new();
+        sb.AppendLine("cRPG features:");
+        int featureNameMaxLength = Features.Select(f => f.Key.Length).Max();
         foreach (var feature in Features)
         {
-            Debug.Print($"{feature.Key} {(feature.Value ? "ENABLED" : "DISABLED")}");
+            sb.AppendLine($"{feature.Key.PadRight(featureNameMaxLength)} {(feature.Value ? "ENABLED" : "DISABLED")}");
         }
+
+        Debug.Print(sb.ToString());
     }
 
     private static void EnableFeature(string? feature, bool enable)
     {
         if (feature == null || !Features.ContainsKey(feature))
         {
-            Debug.Print($"Unknown feature {feature}");
+            Debug.Print($"Unknown feature '{feature}'");
             return;
         }
 
         Features[feature] = enable;
+        Debug.Print($"Feature '{feature}' {(enable ? "enabled" : "disabled")}");
     }
 }
