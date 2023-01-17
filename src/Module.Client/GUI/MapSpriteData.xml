@@ -17,7 +17,7 @@
   <SpriteCategories>
     <SpriteCategory>
       <Name>ui_mploading</Name>
-      <SpriteSheetCount>92</SpriteSheetCount>
+      <SpriteSheetCount>94</SpriteSheetCount>
       <SpriteSheetSize ID="1" Width="3840" Height="1935" />
       <SpriteSheetSize ID="2" Width="3840" Height="1935" />
       <SpriteSheetSize ID="3" Width="3383" Height="1902" />
@@ -104,6 +104,8 @@
       <SpriteSheetSize ID="90" Width="1920" Height="1080" />
       <SpriteSheetSize ID="91" Width="1920" Height="1080" />
       <SpriteSheetSize ID="92" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="93" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="94" Width="1920" Height="1080" />
       <AlwaysLoad />
     </SpriteCategory>
   </SpriteCategories>
@@ -882,6 +884,24 @@
       <SheetY>0</SheetY>
       <CategoryName>ui_mploading</CategoryName>
     </SpritePart>
+    <SpritePart>
+      <SheetID>93</SheetID>
+      <Name>crpg_siege_silverskalitz</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>94</SheetID>
+      <Name>crpg_siege_frederiksborg</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
   </SpriteParts>
   <Sprites>
     <GenericSprite>
@@ -1227,6 +1247,14 @@
     <GenericSprite>
       <Name>crpg_battle_ruinedbattlement</Name>
       <SpritePartName>crpg_battle_ruinedbattlement</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_siege_silverskalitz</Name>
+      <SpritePartName>crpg_siege_silverskalitz</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_siege_frederiksborg</Name>
+      <SpritePartName>crpg_siege_frederiksborg</SpritePartName>
     </GenericSprite>
   </Sprites>
 </SpriteData>

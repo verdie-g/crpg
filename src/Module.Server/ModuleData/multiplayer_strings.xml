@@ -60,12 +60,14 @@
   <!-- Siege Maps -->
   <string id="str_multiplayer_scene_name.crpg_siege_acre" text="{=!}Acre" />
   <string id="str_multiplayer_scene_name.crpg_siege_eastcliff" text="{=!}East Cliff" />
+  <string id="str_multiplayer_scene_name.crpg_siege_frederiksborg" text="{=!}Frederiksborg" />
   <string id="str_multiplayer_scene_name.crpg_siege_hades" text="{=!}Hades" />
   <string id="str_multiplayer_scene_name.crpg_siege_hailescastle" text="{=!}Hailes Castle" />
   <string id="str_multiplayer_scene_name.crpg_siege_jameyyedcastle" text="{=!}Jameyyed Castle" />
   <string id="str_multiplayer_scene_name.crpg_siege_motteandbailey" text="{=!}Motte and Bailey" />
   <string id="str_multiplayer_scene_name.crpg_siege_neuenburg" text="{=!}Neuenburg" />
   <string id="str_multiplayer_scene_name.crpg_siege_neuenburg_winter" text="{=!}Neuenburg" />
+  <string id="str_multiplayer_scene_name.crpg_siege_silverskalitz" text="{=!}Silver Skalitz" />
   <string id="str_multiplayer_scene_name.crpg_siege_skalalanding" text="{=!}Skala Landing" />
   <string id="str_multiplayer_scene_name.crpg_siege_stronghold" text="{=!}Stronghold" />
   <string id="str_multiplayer_scene_name.crpg_siege_talmberg" text="{=!}Talmberg" />
