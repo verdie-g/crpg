@@ -37,7 +37,7 @@ internal class ArrayStringEnumFlagsConverter : JsonConverter
         long flags = 0;
         while (reader.Read() && reader.TokenType == JsonToken.String)
         {
-            if (enumValues.TryGetValue(reader.Value!.ToString(), out long flagVal))
+            if (enumValues.TryGetValue(reader.Value!.ToString()!, out long flagVal))
             {
                 flags |= flagVal;
             }
@@ -62,9 +62,9 @@ internal class ArrayStringEnumFlagsConverter : JsonConverter
         }
 
         enumValues = new Dictionary<string, long>();
-        foreach (object val in Enum.GetValues(enumType))
+        foreach (object? val in Enum.GetValues(enumType))
         {
-            enumValues[val.ToString()] = (long)val;
+            enumValues[val!.ToString()!] = (long)val;
         }
 
         EnumValuesByType[enumType] = enumValues;

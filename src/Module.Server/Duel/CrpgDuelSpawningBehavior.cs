@@ -73,7 +73,7 @@ internal class CrpgDuelSpawningBehavior : CrpgSpawningBehaviorBase
         GameNetwork.EndModuleEventAsServer();
 
         // Sets the preferred arena server side.
-        List<KeyValuePair<MissionPeer, TroopType>> peersAndSelections = (List<KeyValuePair<MissionPeer, TroopType>>)ReflectionHelper.GetField(_duelServer, "_peersAndSelections");
+        List<KeyValuePair<MissionPeer, TroopType>> peersAndSelections = (List<KeyValuePair<MissionPeer, TroopType>>)ReflectionHelper.GetField(_duelServer, "_peersAndSelections")!;
         for (int i = 0; i < peersAndSelections.Count; i++)
         {
             if (peersAndSelections[i].Key == peer)

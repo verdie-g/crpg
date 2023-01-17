@@ -9,6 +9,7 @@ using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Diamond;
 using TaleWorlds.PlayerServices;
+using MathF = TaleWorlds.Library.MathF;
 
 namespace Crpg.Module.Common;
 
@@ -113,10 +114,10 @@ internal class CrpgRewardServer : MissionBehavior
         }
 
         float inflictedRatio = MathF.Clamp(blow.InflictedDamage / affectedAgent.BaseHealthLimit, 0f, 1f);
-        _ratingResults.AddResult(affectorRating, affectedRating, inflictedRatio);
+        _ratingResults.AddResult(affectorRating!, affectedRating!, inflictedRatio);
     }
 
-    private bool TryGetRating(Agent agent, out CrpgPlayerRating rating)
+    private bool TryGetRating(Agent agent, out CrpgPlayerRating? rating)
     {
         rating = null!;
         if (agent.MissionPeer == null)

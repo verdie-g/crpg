@@ -26,7 +26,7 @@ internal class NotAllPlayersReadyComponent : MissionLogic
 
         var customServer = DedicatedCustomServerSubModule.Instance.DedicatedCustomGameServer;
 
-        var requestedPlayers = (List<PlayerId>)ReflectionHelper.GetField(customServer, "_requestedPlayers");
+        var requestedPlayers = (List<PlayerId>)ReflectionHelper.GetField(customServer, "_requestedPlayers")!;
         var actualRequestedPlayers = requestedPlayers.FindAll(p => actualPlayers.Contains(p));
         ReflectionHelper.SetField(customServer, "_requestedPlayers", actualRequestedPlayers);
         if (requestedPlayers.Count != actualRequestedPlayers.Count)
@@ -34,7 +34,7 @@ internal class NotAllPlayersReadyComponent : MissionLogic
             Debug.Print($"Removed {requestedPlayers.Count - actualRequestedPlayers.Count} stuck players from the requested players");
         }
 
-        var customBattlePlayers = (List<PlayerId>)ReflectionHelper.GetField(customServer, "_customBattlePlayers");
+        var customBattlePlayers = (List<PlayerId>)ReflectionHelper.GetField(customServer, "_customBattlePlayers")!;
         var actualCustomBattlePlayers = customBattlePlayers.FindAll(p => actualPlayers.Contains(p));
         ReflectionHelper.SetField(customServer, "_customBattlePlayers", actualCustomBattlePlayers);
         if (customBattlePlayers.Count != actualCustomBattlePlayers.Count)

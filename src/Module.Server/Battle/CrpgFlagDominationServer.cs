@@ -6,6 +6,7 @@ using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.MissionRepresentatives;
 using TaleWorlds.MountAndBlade.Objects;
 using TaleWorlds.ObjectSystem;
+using MathF = TaleWorlds.Library.MathF;
 using Timer = TaleWorlds.Core.Timer;
 
 namespace Crpg.Module.Battle;

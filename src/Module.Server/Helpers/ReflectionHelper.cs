@@ -7,12 +7,12 @@ namespace Crpg.Module.Helpers;
 /// </summary>
 internal static class ReflectionHelper
 {
-    public static object GetField(object instance, string field) => GetFieldInfo(instance, field).GetValue(instance);
+    public static object? GetField(object instance, string field) => GetFieldInfo(instance, field).GetValue(instance);
     public static void SetField(object instance, string field, object value) => GetFieldInfo(instance, field).SetValue(instance, value);
-    public static object GetProperty(object instance, string prop) => GetPropertyInfo(instance, prop).GetValue(instance);
+    public static object? GetProperty(object instance, string prop) => GetPropertyInfo(instance, prop).GetValue(instance);
     public static void SetProperty(object instance, string prop, object value) => GetPropertyInfo(instance, prop).SetValue(instance, value, null);
 
-    public static object InvokeMethod(object instance, string method, object[] parameters)
+    public static object? InvokeMethod(object instance, string method, object[] parameters)
     {
         return instance
             .GetType()

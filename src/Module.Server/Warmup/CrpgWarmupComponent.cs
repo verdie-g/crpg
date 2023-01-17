@@ -41,7 +41,7 @@ internal class CrpgWarmupComponent : MultiplayerWarmupComponent
             return;
         }
 
-        var warmupState = (WarmupStates)WarmupStateField.GetValue(this);
+        var warmupState = (WarmupStates)WarmupStateField.GetValue(this)!;
 
         if (_lastTickWarmupState == WarmupStates.WaitingForPlayers && warmupState == WarmupStates.InProgress)
         {

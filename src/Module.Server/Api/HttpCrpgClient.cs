@@ -33,7 +33,7 @@ internal class HttpCrpgClient : ICrpgClient
             Timeout = TimeSpan.FromSeconds(3),
         };
         _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
-        string version = typeof(HttpCrpgClient).Assembly.GetName().Version.ToString();
+        string version = typeof(HttpCrpgClient).Assembly.GetName().Version!.ToString();
         _httpClient.DefaultRequestHeaders.Add("User-Agent",  "cRPG/" + version);
 
         _apiKey = apiKey;

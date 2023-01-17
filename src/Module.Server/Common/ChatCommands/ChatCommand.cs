@@ -179,9 +179,9 @@ internal abstract class ChatCommand
     /// <summary>Parses input such as "15m". Unit supported s, m, h, d.</summary>
     private bool TryParseTimeSpan(string input, out TimeSpan timeSpan)
     {
+        timeSpan = TimeSpan.Zero;
         if (input == "0")
         {
-            timeSpan = TimeSpan.Zero;
             return false;
         }
 

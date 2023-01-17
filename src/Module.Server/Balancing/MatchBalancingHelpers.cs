@@ -104,7 +104,7 @@ internal static class MatchBalancingHelpers
             {
                 if (clanCounts.teamBCount > 0)
                 {
-                    var clanGroupToMove = newGameMatch.TeamB.Find(g => g.ClanId == clanGroup.ClanId);
+                    var clanGroupToMove = newGameMatch.TeamB.First(g => g.ClanId == clanGroup.ClanId);
                     newGameMatch.TeamA.Add(clanGroupToMove);
                     teamASize += clanGroupToMove.Size;
                     newGameMatch.TeamB.Remove(clanGroupToMove);
@@ -116,7 +116,7 @@ internal static class MatchBalancingHelpers
             {
                 if (clanCounts.teamACount > 0)
                 {
-                    var clanGroupToMove = newGameMatch.TeamA.Find(g => g.ClanId == clanGroup.ClanId);
+                    var clanGroupToMove = newGameMatch.TeamA.First(g => g.ClanId == clanGroup.ClanId);
                     newGameMatch.TeamA.Remove(clanGroupToMove);
                     teamASize -= clanGroupToMove.Size;
                     newGameMatch.TeamB.Add(clanGroupToMove);
@@ -136,7 +136,7 @@ internal static class MatchBalancingHelpers
 
         foreach (WeightedCrpgUser user in users.OrderByDescending(u => u.ClanId ?? 0))
         {
-            ClanGroup clanGroup;
+            ClanGroup? clanGroup;
             if (user.ClanId == null)
             {
                 clanGroup = new(null);
