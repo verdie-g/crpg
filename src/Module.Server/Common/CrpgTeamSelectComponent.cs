@@ -246,16 +246,16 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
         var rating = user.Character.Rating;
         float ratingWeight = 0.0025f * (float)Math.Pow(rating.Value - 2 * rating.Deviation, 1.5f);
 
-        float itemsTier = ComputeEquippedItemsTier(user.Character.EquippedItems);
-        float itemsWeight = MathF.Lerp(valueFrom: 1f, valueTo: 2f, amount: itemsTier / 70f);
+        float itemsPrice = ComputeEquippedItemsPrice(user.Character.EquippedItems);
+        float itemsWeight = 1f + itemsPrice / 50_000f;
 
         return ratingWeight * itemsWeight;
     }
 
-    private float ComputeEquippedItemsTier(IList<CrpgEquippedItem> equippedItems)
+    private float ComputeEquippedItemsPrice(IList<CrpgEquippedItem> equippedItems)
     {
-        float tier = 0f;
-        float weaponMaxTier = 0f;
+        float price = 0f;
+        float weaponMaxPrice = 0f;
         foreach (var ei in equippedItems)
         {
             var itemObject = MBObjectManager.Instance.GetObject<ItemObject>(ei.UserItem.BaseItemId);
@@ -264,17 +264,17 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
                 continue;
             }
 
-            if (itemObject.HasWeaponComponent)
+            if (itemObject.HasWeaponComponent && itemObject.Type != ItemObject.ItemTypeEnum.Shield)
             {
-                weaponMaxTier = Math.Max(weaponMaxTier, itemObject.Tierf);
+                weaponMaxPrice = Math.Max(weaponMaxPrice, itemObject.Value);
             }
             else
             {
-                tier += itemObject.Tierf;
+                price += itemObject.Value;
             }
         }
 
-        return tier + weaponMaxTier;
+        return price + weaponMaxPrice;
     }
 
     private bool IsNativeBalancerEnabled()
