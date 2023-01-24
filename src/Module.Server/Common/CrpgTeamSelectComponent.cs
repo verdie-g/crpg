@@ -252,8 +252,10 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
             float itemsPrice = ComputeEquippedItemsPrice(user.Character.EquippedItems);
             itemsWeight = 1f + itemsPrice / 50_000f;
         }
+        
+        float levelWeight = 1f + user.Character.Level / 30f;
 
-        return ratingWeight * itemsWeight;
+        return ratingWeight * itemsWeight * levelWeight;
     }
 
     private float ComputeEquippedItemsPrice(IList<CrpgEquippedItem> equippedItems)
