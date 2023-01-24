@@ -8,12 +8,10 @@ namespace Crpg.Module.Common;
 internal static class CrpgFeatureFlags
 {
     public const string FeatureTournament = "tournament";
-    public const string FeatureItemsTeamBalance = "items_team_balance";
 
     private static readonly Dictionary<string, bool> Features = new()
     {
         [FeatureTournament] = false,
-        [FeatureItemsTeamBalance] = true,
     };
 
     public static void Init()
