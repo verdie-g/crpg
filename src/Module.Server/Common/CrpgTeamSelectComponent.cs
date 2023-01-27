@@ -249,6 +249,9 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
         float itemsPrice = ComputeEquippedItemsPrice(user.Character.EquippedItems);
         float itemsWeight = 1f + itemsPrice / 50_000f;
         
+        // Ideally the rating should be elastic enough to change when the character
+        // retires but that's not the case so for now let's use the level to compute
+        // the weight.
         float levelWeight = 1f + user.Character.Level / 30f;
 
         return ratingWeight * itemsWeight * levelWeight;
