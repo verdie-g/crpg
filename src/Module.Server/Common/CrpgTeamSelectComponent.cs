@@ -245,13 +245,9 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
     {
         var rating = user.Character.Rating;
         float ratingWeight = 0.0025f * (float)Math.Pow(rating.Value - 2 * rating.Deviation, 1.5f);
-
-        float itemsWeight = 1f;
-        if (CrpgFeatureFlags.IsEnabled(CrpgFeatureFlags.FeatureItemsTeamBalance))
-        {
-            float itemsPrice = ComputeEquippedItemsPrice(user.Character.EquippedItems);
-            itemsWeight = 1f + itemsPrice / 50_000f;
-        }
+        
+        float itemsPrice = ComputeEquippedItemsPrice(user.Character.EquippedItems);
+        float itemsWeight = 1f + itemsPrice / 50_000f;
         
         float levelWeight = 1f + user.Character.Level / 30f;
 
