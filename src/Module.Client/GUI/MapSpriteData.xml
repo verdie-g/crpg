@@ -17,7 +17,7 @@
   <SpriteCategories>
     <SpriteCategory>
       <Name>ui_mploading</Name>
-      <SpriteSheetCount>94</SpriteSheetCount>
+      <SpriteSheetCount>96</SpriteSheetCount>
       <SpriteSheetSize ID="1" Width="3840" Height="1935" />
       <SpriteSheetSize ID="2" Width="3840" Height="1935" />
       <SpriteSheetSize ID="3" Width="3383" Height="1902" />
@@ -106,6 +106,8 @@
       <SpriteSheetSize ID="92" Width="1920" Height="1080" />
       <SpriteSheetSize ID="93" Width="1920" Height="1080" />
       <SpriteSheetSize ID="94" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="95" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="96" Width="1920" Height="1080" />
       <AlwaysLoad />
     </SpriteCategory>
   </SpriteCategories>
@@ -902,6 +904,24 @@
       <SheetY>0</SheetY>
       <CategoryName>ui_mploading</CategoryName>
     </SpritePart>
+    <SpritePart>
+      <SheetID>95</SheetID>
+      <Name>crpg_battle_orionarena</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>96</SheetID>
+      <Name>crpg_battle_moonlittownship</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
   </SpriteParts>
   <Sprites>
     <GenericSprite>
@@ -1255,6 +1275,14 @@
     <GenericSprite>
       <Name>crpg_siege_frederiksborg</Name>
       <SpritePartName>crpg_siege_frederiksborg</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_orionarena</Name>
+      <SpritePartName>crpg_battle_orionarena</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_moonlittownship</Name>
+      <SpritePartName>crpg_battle_moonlittownship</SpritePartName>
     </GenericSprite>
   </Sprites>
 </SpriteData>
