@@ -101,18 +101,24 @@ internal class CrpgSkirmishSpawningBehavior : CrpgSpawningBehaviorBase
         return true;
     }
 
-    protected override void OnPeerSpawned(MissionPeer component)
+    protected override void OnPeerSpawned(MissionPeer missionPeer)
     {
-        base.OnPeerSpawned(component);
-        component.SpawnCountThisRound += 1;
-        var crpgPeer = component.GetComponent<CrpgPeer>();
-        crpgPeer.SpawnTeamThisRound ??= component.Team;
+        base.OnPeerSpawned(missionPeer);
+        UpdateSpawnCount(missionPeer, missionPeer.SpawnCountThisRound + 1);
+        var crpgPeer = missionPeer.GetComponent<CrpgPeer>();
+        crpgPeer.SpawnTeamThisRound ??= missionPeer.Team;
     }
 
     private void ResetSpawnTeams()
     {
         foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
         {
+            var missionPeer = networkPeer.GetComponent<MissionPeer>();
+            if (missionPeer != null)
+            {
+                UpdateSpawnCount(missionPeer, 0);
+            }
+
             var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
             if (crpgPeer != null)
             {
@@ -121,5 +127,14 @@ internal class CrpgSkirmishSpawningBehavior : CrpgSpawningBehaviorBase
         }
 
         _notifiedPlayersAboutSpawnRestriction.Clear();
+    }
+
+    private void UpdateSpawnCount(MissionPeer missionPeer, int spawnCount)
+    {
+        missionPeer.SpawnCountThisRound = spawnCount;
+
+        GameNetwork.BeginBroadcastModuleEvent();
+        GameNetwork.WriteMessage(new UpdateRoundSpawnCount { Peer = missionPeer.GetNetworkPeer(), SpawnCount = spawnCount });
+        GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
     }
 }

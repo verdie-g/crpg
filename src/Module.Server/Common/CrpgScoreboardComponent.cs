@@ -1,4 +1,5 @@
-﻿using Crpg.Module.Helpers;
+﻿using Crpg.Module.Common.Network;
+using Crpg.Module.Helpers;
 using NetworkMessages.FromServer;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
@@ -71,5 +72,25 @@ internal class CrpgScoreboardComponent : MissionScoreboardComponent
         GameNetwork.WriteMessage(new KillDeathCountChange(missionPeer.GetNetworkPeer(),
             null, missionPeer.KillCount, missionPeer.AssistCount, missionPeer.DeathCount, missionPeer.Score));
         GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
+    }
+
+
+    protected override void AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegistererContainer registerer)
+    {
+        base.AddRemoveMessageHandlers(registerer);
+        if (GameNetwork.IsClientOrReplay)
+        {
+            // Not the best place to register to that event but heh.
+            registerer.Register<UpdateRoundSpawnCount>(OnUpdateRoundSpawnCount);
+        }
+    }
+
+    private void OnUpdateRoundSpawnCount(UpdateRoundSpawnCount message)
+    {
+        var missionPeer = message.Peer.GetComponent<MissionPeer>();
+        if (missionPeer != null)
+        {
+            missionPeer.SpawnCountThisRound = message.SpawnCount;
+        }
     }
 }
