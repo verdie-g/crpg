@@ -32,7 +32,7 @@ internal class CrpgNotificationComponent : MultiplayerGameNotificationsComponent
         // Notifcation like "Flag A and B were removed"
         if (notification.Type == CrpgNotification.NotificationType.Notification)
         {
-            MBInformationManager.AddQuickInformation(new TextObject(AddLineBreaksToText(message)), 0, null, notification.SoundEvent);
+            MBInformationManager.AddQuickInformation(new TextObject(message), 0, null, notification.SoundEvent);
         }
 
         // Red announcement like "A new update is available. Please update your client" (Lobbyscreen)
@@ -52,34 +52,5 @@ internal class CrpgNotificationComponent : MultiplayerGameNotificationsComponent
     {
         string msg = message.IsMessageTextId ? GameTexts.FindText(message.Message).ToString() : message.Message;
         InformationManager.DisplayMessage(new InformationMessage(msg, new Color(message.Red, message.Green, message.Blue, message.Alpha)));
-    }
-
-    private string AddLineBreaksToText(string text)
-    {
-        string[] words = text.Split(' ');
-        if (words.Length < 2)
-        {
-            return text;
-        }
-
-        StringBuilder result = new();
-        int currentLetterCount = 0;
-        string linebreak = "{newline}";
-        foreach (string word in words)
-        {
-            currentLetterCount += word.Length + 1; // + 1 for spaces
-            result.Append(word);
-            if (currentLetterCount > 100)
-            {
-                currentLetterCount = 0;
-                result.Append(linebreak);
-                continue;
-            }
-
-            result.Append(' ');
-        }
-
-        result.Length -= " ".Length;
-        return result.ToString();
     }
 }

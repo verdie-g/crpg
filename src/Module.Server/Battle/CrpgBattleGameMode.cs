@@ -121,7 +121,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new MissionBoundaryCrossingHandler(), // kills agent out of mission boundaries
                     new MultiplayerPollComponent(), // poll logic to kick player, ban player, change game
                     new MissionOptionsComponent(),
-                    new CrpgScoreboardComponent(new BattleScoreboardData()), // score board
+                    new CrpgScoreboardComponent(_isSkirmish ? new CrpgSkirmishScoreboardData() : new BattleScoreboardData()),
                     new MissionAgentPanicHandler(),
                     new EquipmentControllerLeaveLogic(),
                     new MultiplayerPreloadHelper(),

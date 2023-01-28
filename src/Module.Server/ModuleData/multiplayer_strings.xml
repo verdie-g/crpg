@@ -20,6 +20,9 @@
   <string id="str_multiplayer_official_game_type_explainer.cRPGDuel" text="{=*}·   Fight an opponent in single combat{newline}·   Defeat your opponent multiple times to win the duel and claim their bounty{newline}·   There is no upkeep nor gold gain." />
   <string id="str_multiplayer_game_type.cRPGDuel" text="{=*}cRPG Duel" />
 
+  <!-- Scoreboard -->
+  <string id="str_scoreboard_header.life" text="{=*}Life" />
+
   <!-- Battle Maps -->
   <string id="str_multiplayer_scene_name.crpg_battle_abandoned" text="{=!}Abandoned" />
   <string id="str_multiplayer_scene_name.crpg_battle_acaciacitadel" text="{=!}Acacia Citadel" />

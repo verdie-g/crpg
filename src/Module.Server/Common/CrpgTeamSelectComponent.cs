@@ -1,4 +1,6 @@
-﻿using TaleWorlds.MountAndBlade;
+﻿using System.Text;
+using Crpg.Module.Common.Network;
+using TaleWorlds.MountAndBlade;
 
 #if CRPG_SERVER
 using Crpg.Module.Api.Models.Items;
@@ -132,11 +134,15 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
         var crpgNetworkPeers = GetCrpgNetworkPeers();
         foreach (var userToMove in usersToMove)
         {
-            if (crpgNetworkPeers.TryGetValue(userToMove.Key, out var networkPeer))
+            if (!crpgNetworkPeers.TryGetValue(userToMove.Key, out var networkPeer))
             {
-                ChangeTeamServer(networkPeer, userToMove.Value);
+                continue;
             }
+
+            ChangeTeamServer(networkPeer, userToMove.Value);
         }
+
+        SendSwapNotification(usersToMove, crpgNetworkPeers);
     }
 
     /// <summary>Create a <see cref="GameMatch"/> object used as input for the balancing from the current teams.</summary>
@@ -171,7 +177,7 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
         return gameMatch;
     }
 
-    /// <summary>Find the difference between <see cref="GameMatch"/>es, and move the players accordingly.</summary>
+    /// <summary>Find the difference between <see cref="GameMatch"/>es, and generates the moves accordingly.</summary>
     private Dictionary<int, Team> ResolveTeamMoves(GameMatch current, GameMatch target)
     {
         Dictionary<int, BattleSideEnum> userCurrentSides = new();
@@ -233,6 +239,84 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
         }
 
         return crpgNetworkPeers;
+    }
+
+    private void SendSwapNotification(Dictionary<int, Team> usersToMove,
+        Dictionary<int, NetworkCommunicator> crpgNetworkPeers)
+    {
+        int defendersMovedToAttackers = 0;
+        int attackersMovedToDefenders = 0;
+        int attackersJoined = 0;
+        int defendersJoined = 0;
+        foreach (var userToMove in usersToMove)
+        {
+            if (!crpgNetworkPeers.TryGetValue(userToMove.Key, out var networkPeer))
+            {
+                continue;
+            }
+
+            var missionPeer = networkPeer.GetComponent<MissionPeer>();
+            if (missionPeer == null)
+            {
+                continue;
+            }
+
+            if (missionPeer.Team == Mission.DefenderTeam && userToMove.Value == Mission.AttackerTeam)
+            {
+                defendersMovedToAttackers += 1;
+            }
+            else if (missionPeer.Team == Mission.AttackerTeam && userToMove.Value == Mission.DefenderTeam)
+            {
+                attackersMovedToDefenders += 1;
+            }
+            else if (missionPeer.Team == null || missionPeer.Team == Mission.SpectatorTeam)
+            {
+                if (userToMove.Value == Mission.DefenderTeam)
+                {
+                    defendersJoined += 1;
+                }
+                else if (userToMove.Value == Mission.AttackerTeam)
+                {
+                    attackersJoined += 1;
+                }
+            }
+        }
+
+        StringBuilder notifBuilder = new();
+        if (defendersMovedToAttackers != 0)
+        {
+            notifBuilder.Append($"{defendersMovedToAttackers} player{(defendersMovedToAttackers > 1 ? "s were" : " was")} moved to the attacker team{{newline}}");
+        }
+
+        if (attackersMovedToDefenders != 0)
+        {
+            notifBuilder.Append($"{attackersMovedToDefenders} player{(attackersMovedToDefenders > 1 ? "s were" : " was")} moved to the defenders team{{newline}}");
+        }
+
+        if (defendersJoined != 0)
+        {
+            notifBuilder.Append($"{defendersJoined} new player{(defendersJoined > 1 ? "s" : string.Empty)} joined the defenders{{newline}}");
+        }
+
+        if (attackersJoined != 0)
+        {
+            notifBuilder.Append($"{attackersJoined} new player{(attackersJoined > 1 ? "s" : string.Empty)} joined the attackers{{newline}}");
+        }
+
+        if (notifBuilder.Length == 0)
+        {
+            return;
+        }
+
+        notifBuilder.Length -= "{newline}".Length;
+
+        GameNetwork.BeginBroadcastModuleEvent();
+        GameNetwork.WriteMessage(new CrpgNotification
+        {
+            Type = CrpgNotification.NotificationType.Notification,
+            Message = notifBuilder.ToString(),
+        });
+        GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
     }
 
     private WeightedCrpgUser WeightUser(CrpgUser user)
