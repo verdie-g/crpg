@@ -48,6 +48,7 @@ internal class CrpgUserManagerServer : MissionNetwork
     protected override void HandleNewClientAfterSynchronized(NetworkCommunicator networkPeer)
     {
         base.HandleNewClientAfterSynchronized(networkPeer);
+        KickWeirdBodyProperties(networkPeer);
         _ = SetCrpgComponentAsync(networkPeer);
     }
 
@@ -63,6 +64,18 @@ internal class CrpgUserManagerServer : MissionNetwork
             }
 
             RewardMultiplierByPlayerId[networkPeer.VirtualPlayer.Id] = crpgPeer.RewardMultiplier;
+        }
+    }
+
+    private void KickWeirdBodyProperties(NetworkCommunicator networkPeer)
+    {
+        var vp = networkPeer.VirtualPlayer;
+        var bodyProperties = vp.BodyProperties;
+        ulong height = (bodyProperties.KeyPart8 >> 19) & 0x3F;
+        if (height < 15 || height > 47) // Min/max height of the armory.
+        {
+            Debug.Print($"Kick player {vp.UserName} with a height of {height}");
+            KickHelper.Kick(networkPeer, DisconnectType.KickedByAntiCheat);
         }
     }
 
