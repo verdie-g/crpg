@@ -5,6 +5,7 @@ using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
+using MathF = TaleWorlds.Library.MathF;
 
 namespace Crpg.Module.Common;
 
@@ -54,6 +55,8 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
             bool firstSpawn = missionPeer.SpawnCountThisRound == 0;
             MatrixFrame spawnFrame = SpawnComponent.GetSpawnFrame(missionPeer.Team, hasMount, firstSpawn);
             Vec2 initialDirection = spawnFrame.rotation.f.AsVec2.Normalized();
+            // Randomize direction so players don't go all straight.
+            initialDirection.RotateCCW(MBRandom.RandomFloatRanged(-MathF.PI / 3f, MathF.PI / 3f));
 
             AgentBuildData agentBuildData = new AgentBuildData(character)
                 .MissionPeer(missionPeer)
