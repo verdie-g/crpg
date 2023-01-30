@@ -283,7 +283,7 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
         StringBuilder notifBuilder = new();
         if (defendersMovedToAttackers != 0)
         {
-            notifBuilder.Append($"{defendersMovedToAttackers} player{(defendersMovedToAttackers > 1 ? "s were" : " was")} moved to the attacker team{{newline}}");
+            notifBuilder.Append($"{defendersMovedToAttackers} player{(defendersMovedToAttackers > 1 ? "s were" : " was")} moved to the attackers team{{newline}}");
         }
 
         if (attackersMovedToDefenders != 0)
@@ -293,12 +293,12 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
 
         if (defendersJoined != 0)
         {
-            notifBuilder.Append($"{defendersJoined} new player{(defendersJoined > 1 ? "s" : string.Empty)} joined the defenders{{newline}}");
+            notifBuilder.Append($"{defendersJoined} new player{(defendersJoined > 1 ? "s" : string.Empty)} joined the defenders team{{newline}}");
         }
 
         if (attackersJoined != 0)
         {
-            notifBuilder.Append($"{attackersJoined} new player{(attackersJoined > 1 ? "s" : string.Empty)} joined the attackers{{newline}}");
+            notifBuilder.Append($"{attackersJoined} new player{(attackersJoined > 1 ? "s" : string.Empty)} joined the attackers team{{newline}}");
         }
 
         if (notifBuilder.Length == 0)
