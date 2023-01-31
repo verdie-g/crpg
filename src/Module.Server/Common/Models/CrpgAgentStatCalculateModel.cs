@@ -75,9 +75,9 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             WeaponClass.Bow => 1.25f,
             WeaponClass.Crossbow => 0.5f,
             WeaponClass.Stone => 1f,
-            WeaponClass.ThrowingAxe => 1.1f,
-            WeaponClass.ThrowingKnife => 1.1f,
-            WeaponClass.Javelin => 1.1f,
+            WeaponClass.ThrowingAxe => 1.2f,
+            WeaponClass.ThrowingKnife => 1.2f,
+            WeaponClass.Javelin => 1.2f,
             _ => 1f,
         };
 
