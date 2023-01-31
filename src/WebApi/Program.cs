@@ -46,6 +46,7 @@ builder.Services
     .AddApplication()
     // .AddHostedService<StrategusWorker>() Disable strategus for now.
     .AddHostedService<DonorSynchronizerWorker>()
+    .AddHostedService<ActivityLogsCleanerWorker>()
     .AddHttpContextAccessor() // Injects IHttpContextAccessor
     .AddScoped<ICurrentUserService, CurrentUserService>()
     .AddEndpointsApiExplorer()
