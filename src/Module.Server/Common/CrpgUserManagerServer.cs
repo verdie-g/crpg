@@ -48,6 +48,7 @@ internal class CrpgUserManagerServer : MissionNetwork
     protected override void HandleNewClientAfterSynchronized(NetworkCommunicator networkPeer)
     {
         base.HandleNewClientAfterSynchronized(networkPeer);
+        KickEmptyNames(networkPeer);
         KickWeirdBodyProperties(networkPeer);
         _ = SetCrpgComponentAsync(networkPeer);
     }
@@ -75,6 +76,16 @@ internal class CrpgUserManagerServer : MissionNetwork
         if (height < 15 || height > 47) // Min/max height of the armory.
         {
             Debug.Print($"Kick player {vp.UserName} with a height of {height}");
+            KickHelper.Kick(networkPeer, DisconnectType.KickedByAntiCheat);
+        }
+    }
+
+    private void KickEmptyNames(NetworkCommunicator networkPeer)
+    {
+        var vp = networkPeer.VirtualPlayer;
+        if (string.IsNullOrWhiteSpace(vp.UserName))
+        {
+            Debug.Print($"Kick player with an empty name \"{vp.UserName}\"");
             KickHelper.Kick(networkPeer, DisconnectType.KickedByAntiCheat);
         }
     }
