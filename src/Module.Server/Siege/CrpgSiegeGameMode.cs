@@ -119,6 +119,7 @@ internal class CrpgSiegeGameMode : MissionBasedMultiplayerGameMode
                 new KickInactiveBehavior(inactiveTimeLimit: 90, warmupComponent),
                 new MapPoolComponent(),
                 new ChatCommandsComponent(chatBox, crpgClient),
+                new CrpgActivityLogsBehavior(chatBox, crpgClient),
                 new PlayerStatsComponent(),
                 new NotAllPlayersReadyComponent(),
                 new DrowningBehavior(),

@@ -1,4 +1,5 @@
 using Crpg.Module.Api.Models;
+using Crpg.Module.Api.Models.ActivityLogs;
 using Crpg.Module.Api.Models.Characters;
 using Crpg.Module.Api.Models.Clans;
 using Crpg.Module.Api.Models.Items;
@@ -89,6 +90,11 @@ internal class StubCrpgClient : ICrpgClient
     public Task<CrpgResult<CrpgUser>> GetTournamentUserAsync(Platform platform, string platformUserId, CancellationToken cancellationToken = default)
     {
         return GetUserAsync(platform, platformUserId, cancellationToken);
+    }
+
+    public Task CreateActivityLogsAsync(IList<CrpgActivityLog> activityLogs, CancellationToken cancellationToken = default)
+    {
+        return Task.CompletedTask;
     }
 
     public Task<CrpgResult<CrpgClan>> GetClanAsync(int clanId, CancellationToken cancellationToken = default)

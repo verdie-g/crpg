@@ -2,6 +2,7 @@
 using System.Net.Http.Headers;
 using System.Text;
 using Crpg.Module.Api.Models;
+using Crpg.Module.Api.Models.ActivityLogs;
 using Crpg.Module.Api.Models.Clans;
 using Crpg.Module.Api.Models.Restrictions;
 using Crpg.Module.Api.Models.Users;
@@ -73,6 +74,11 @@ internal class HttpCrpgClient : ICrpgClient
             ["platformUserId"] = platformUserId,
         };
         return Get<CrpgUser>("games/tournament-users", queryParameters, cancellationToken);
+    }
+
+    public Task CreateActivityLogsAsync(IList<CrpgActivityLog> activityLogs, CancellationToken cancellationToken = default)
+    {
+        return Post<IList<CrpgActivityLog>, object>("games/activity-logs", activityLogs, cancellationToken);
     }
 
     public Task<CrpgResult<CrpgClan>> GetClanAsync(int clanId, CancellationToken cancellationToken = default)

@@ -30,6 +30,7 @@ public record CreateActivityLogsCommand : IMediatorRequest
                 Type = l.Type,
                 UserId = l.UserId,
                 Metadata = l.Metadata.Select(m => new ActivityLogMetadata(m.Key, m.Value)).ToList(),
+                CreatedAt = l.CreatedAt,
             });
 
             _db.ActivityLogs.AddRange(activityLogs);

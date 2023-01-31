@@ -1,4 +1,5 @@
 ﻿using Crpg.Module.Api.Models;
+using Crpg.Module.Api.Models.ActivityLogs;
 using Crpg.Module.Api.Models.Clans;
 using Crpg.Module.Api.Models.Restrictions;
 using Crpg.Module.Api.Models.Users;
@@ -12,6 +13,8 @@ internal interface ICrpgClient : IDisposable
 
     Task<CrpgResult<CrpgUser>> GetTournamentUserAsync(Platform platform, string platformUserId,
         CancellationToken cancellationToken = default);
+
+    Task CreateActivityLogsAsync(IList<CrpgActivityLog> activityLogs, CancellationToken cancellationToken = default);
 
     Task<CrpgResult<CrpgClan>> GetClanAsync(int clanId, CancellationToken cancellationToken = default);
 
