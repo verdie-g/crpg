@@ -61,7 +61,10 @@ public class RetireCharacterCommandTest : TestBase
 
         Mock<ICharacterService> characterServiceMock = new();
 
-        RetireCharacterCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, Constants);
+        Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
+
+        RetireCharacterCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object,
+            activityLogServiceMock.Object, Constants);
         await handler.Handle(new RetireCharacterCommand
         {
             CharacterId = character.Id,
@@ -90,7 +93,8 @@ public class RetireCharacterCommandTest : TestBase
     public async Task NotFoundIfUserDoesntExist()
     {
         var characterService = Mock.Of<ICharacterService>();
-        RetireCharacterCommand.Handler handler = new(ActDb, Mapper, characterService, Constants);
+        var activityLogService = Mock.Of<IActivityLogService>();
+        RetireCharacterCommand.Handler handler = new(ActDb, Mapper, characterService, activityLogService, Constants);
         var result = await handler.Handle(
             new RetireCharacterCommand
             {
@@ -107,7 +111,8 @@ public class RetireCharacterCommandTest : TestBase
         await ArrangeDb.SaveChangesAsync();
 
         var characterService = Mock.Of<ICharacterService>();
-        RetireCharacterCommand.Handler handler = new(ActDb, Mapper, characterService, Constants);
+        var activityLogService = Mock.Of<IActivityLogService>();
+        RetireCharacterCommand.Handler handler = new(ActDb, Mapper, characterService, activityLogService, Constants);
         var result = await handler.Handle(
             new RetireCharacterCommand
             {
@@ -129,7 +134,8 @@ public class RetireCharacterCommandTest : TestBase
         await ArrangeDb.SaveChangesAsync();
 
         var characterService = Mock.Of<ICharacterService>();
-        RetireCharacterCommand.Handler handler = new(ActDb, Mapper, characterService, Constants);
+        var activityLogService = Mock.Of<IActivityLogService>();
+        RetireCharacterCommand.Handler handler = new(ActDb, Mapper, characterService, activityLogService, Constants);
         var result = await handler.Handle(
             new RetireCharacterCommand
             {

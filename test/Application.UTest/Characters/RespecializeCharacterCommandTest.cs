@@ -49,7 +49,10 @@ public class RespecializeCharacterCommandTest : TestBase
 
         Mock<ICharacterService> characterServiceMock = new();
 
-        RespecializeCharacterCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, experienceTableMock.Object, Constants);
+        Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
+
+        RespecializeCharacterCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object,
+            experienceTableMock.Object, activityLogServiceMock.Object, Constants);
         await handler.Handle(new RespecializeCharacterCommand
         {
             CharacterId = character.Id,
@@ -98,8 +101,10 @@ public class RespecializeCharacterCommandTest : TestBase
 
         Mock<IExperienceTable> experienceTableMock = new();
         Mock<ICharacterService> characterServiceMock = new();
+        Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
 
-        RespecializeCharacterCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, experienceTableMock.Object, Constants);
+        RespecializeCharacterCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object,
+            experienceTableMock.Object, activityLogServiceMock.Object, Constants);
         await handler.Handle(new RespecializeCharacterCommand
         {
             CharacterId = character.Id,
@@ -125,7 +130,9 @@ public class RespecializeCharacterCommandTest : TestBase
     {
         var experienceTable = Mock.Of<IExperienceTable>();
         var characterService = Mock.Of<ICharacterService>();
-        RespecializeCharacterCommand.Handler handler = new(ActDb, Mapper, characterService, experienceTable, Constants);
+        var activityLogService = Mock.Of<IActivityLogService>();
+        RespecializeCharacterCommand.Handler handler = new(ActDb, Mapper, characterService, experienceTable,
+            activityLogService, Constants);
         var result = await handler.Handle(
             new RespecializeCharacterCommand
             {
@@ -144,7 +151,9 @@ public class RespecializeCharacterCommandTest : TestBase
 
         var experienceTable = Mock.Of<IExperienceTable>();
         var characterService = Mock.Of<ICharacterService>();
-        RespecializeCharacterCommand.Handler handler = new(ActDb, Mapper, characterService, experienceTable, Constants);
+        var activityLogService = Mock.Of<IActivityLogService>();
+        RespecializeCharacterCommand.Handler handler = new(ActDb, Mapper, characterService, experienceTable,
+            activityLogService, Constants);
         var result = await handler.Handle(
             new RespecializeCharacterCommand
             {

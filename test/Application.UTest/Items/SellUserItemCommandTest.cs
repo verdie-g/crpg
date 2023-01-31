@@ -28,8 +28,10 @@ public class SellUserItemCommandTest : TestBase
         await ArrangeDb.SaveChangesAsync();
 
         Mock<IItemService> itemServiceMock = new();
+        Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
 
-        await new SellUserItemCommand.Handler(ActDb, itemServiceMock.Object).Handle(new SellUserItemCommand
+        SellUserItemCommand.Handler handler = new(ActDb, itemServiceMock.Object, activityLogServiceMock.Object);
+        await handler.Handle(new SellUserItemCommand
         {
             UserItemId = user.Items[0].Id,
             UserId = user.Id,
@@ -45,12 +47,12 @@ public class SellUserItemCommandTest : TestBase
         await ArrangeDb.SaveChangesAsync();
 
         var itemService = Mock.Of<IItemService>();
-        var result = await new SellUserItemCommand.Handler(ActDb, itemService).Handle(
-            new SellUserItemCommand
-            {
-                UserItemId = 1,
-                UserId = user.Entity.Id,
-            }, CancellationToken.None);
+        SellUserItemCommand.Handler handler = new(ActDb, itemService, Mock.Of<IActivityLogService>());
+        var result = await handler.Handle(new SellUserItemCommand
+        {
+            UserItemId = 1,
+            UserId = user.Entity.Id,
+        }, CancellationToken.None);
         Assert.AreEqual(ErrorCode.UserItemNotFound, result.Errors![0].Code);
     }
 
@@ -62,12 +64,12 @@ public class SellUserItemCommandTest : TestBase
         await ArrangeDb.SaveChangesAsync();
 
         var itemService = Mock.Of<IItemService>();
-        var result = await new SellUserItemCommand.Handler(ActDb, itemService).Handle(
-            new SellUserItemCommand
-            {
-                UserItemId = 1,
-                UserId = user.Id,
-            }, CancellationToken.None);
+        SellUserItemCommand.Handler handler = new(ActDb, itemService, Mock.Of<IActivityLogService>());
+        var result = await handler.Handle(new SellUserItemCommand
+        {
+            UserItemId = 1,
+            UserId = user.Id,
+        }, CancellationToken.None);
         Assert.AreEqual(ErrorCode.UserItemNotFound, result.Errors![0].Code);
     }
 
@@ -89,7 +91,8 @@ public class SellUserItemCommandTest : TestBase
         await ArrangeDb.SaveChangesAsync();
 
         IItemService itemService = Mock.Of<IItemService>();
-        var result = await new SellUserItemCommand.Handler(ActDb, itemService).Handle(new SellUserItemCommand
+        SellUserItemCommand.Handler handler = new(ActDb, itemService, Mock.Of<IActivityLogService>());
+        var result = await handler.Handle(new SellUserItemCommand
         {
             UserItemId = user.Items[0].Id,
             UserId = user.Id,

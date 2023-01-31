@@ -23,13 +23,16 @@ public record RetireCharacterCommand : IMediatorRequest<CharacterViewModel>
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
         private readonly ICharacterService _characterService;
+        private readonly IActivityLogService _activityLogService;
         private readonly Constants _constants;
 
-        public Handler(ICrpgDbContext db, IMapper mapper, ICharacterService characterService, Constants constants)
+        public Handler(ICrpgDbContext db, IMapper mapper, ICharacterService characterService,
+            IActivityLogService activityLogService, Constants constants)
         {
             _db = db;
             _mapper = mapper;
             _characterService = characterService;
+            _activityLogService = activityLogService;
             _constants = constants;
         }
 
@@ -48,6 +51,8 @@ public record RetireCharacterCommand : IMediatorRequest<CharacterViewModel>
             {
                 return new(CommonErrors.CharacterLevelRequirementNotMet(_constants.MinimumRetirementLevel, character.Level));
             }
+
+            _db.ActivityLogs.Add(_activityLogService.CreateCharacterRetiredLog(character.UserId, character.Id, character.Level));
 
             character.User!.HeirloomPoints += character.Level switch
             {

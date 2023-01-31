@@ -35,9 +35,10 @@ public class GetGameUserCommandTest : TestBase
     {
         Mock<IUserService> userServiceMock = new();
         Mock<ICharacterService> characterServiceMock = new();
+        Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
 
         GetGameUserCommand.Handler handler = new(ActDb, Mapper, new MachineDateTime(),
-            new ThreadSafeRandom(), userServiceMock.Object, characterServiceMock.Object);
+            new ThreadSafeRandom(), userServiceMock.Object, characterServiceMock.Object, activityLogServiceMock.Object);
 
         var result = await handler.Handle(new GetGameUserCommand
         {
@@ -73,6 +74,7 @@ public class GetGameUserCommandTest : TestBase
     {
         Mock<IUserService> userServiceMock = new();
         Mock<ICharacterService> characterServiceMock = new();
+        Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
 
         User user = new()
         {
@@ -88,7 +90,7 @@ public class GetGameUserCommandTest : TestBase
         await ArrangeDb.SaveChangesAsync();
 
         GetGameUserCommand.Handler handler = new(ActDb, Mapper, new MachineDateTime(),
-            new ThreadSafeRandom(), userServiceMock.Object, characterServiceMock.Object);
+            new ThreadSafeRandom(), userServiceMock.Object, characterServiceMock.Object, activityLogServiceMock.Object);
 
         var result = await handler.Handle(new GetGameUserCommand
         {
@@ -125,6 +127,7 @@ public class GetGameUserCommandTest : TestBase
     {
         Mock<IUserService> userServiceMock = new();
         Mock<ICharacterService> characterServiceMock = new();
+        Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
 
         User user = new()
         {
@@ -144,7 +147,7 @@ public class GetGameUserCommandTest : TestBase
         await ArrangeDb.SaveChangesAsync();
 
         GetGameUserCommand.Handler handler = new(ActDb, Mapper, new MachineDateTime(),
-            new ThreadSafeRandom(), userServiceMock.Object, characterServiceMock.Object);
+            new ThreadSafeRandom(), userServiceMock.Object, characterServiceMock.Object, activityLogServiceMock.Object);
 
         var res = await handler.Handle(new GetGameUserCommand
         {
@@ -161,6 +164,7 @@ public class GetGameUserCommandTest : TestBase
     {
         var userService = Mock.Of<IUserService>();
         var characterService = Mock.Of<ICharacterService>();
+        Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
 
         User user = new()
         {
@@ -180,7 +184,7 @@ public class GetGameUserCommandTest : TestBase
         randomMock.Setup(r => r.Next(It.IsAny<int>(), It.IsAny<int>())).Returns(1);
 
         GetGameUserCommand.Handler handler = new(ActDb, Mapper,
-            new MachineDateTime(), randomMock.Object, userService, characterService);
+            new MachineDateTime(), randomMock.Object, userService, characterService, activityLogServiceMock.Object);
 
         // Handle shouldn't throw
         await handler.Handle(new GetGameUserCommand
@@ -198,6 +202,7 @@ public class GetGameUserCommandTest : TestBase
     {
         var userService = Mock.Of<IUserService>();
         var characterService = Mock.Of<ICharacterService>();
+        var activityLogService = Mock.Of<IActivityLogService>();
 
         Character user0Character = new();
         User user0 = new()
@@ -221,7 +226,7 @@ public class GetGameUserCommandTest : TestBase
         await ArrangeDb.SaveChangesAsync();
 
         GetGameUserCommand.Handler handler = new(ActDb, Mapper,
-            new MachineDateTime(), new ThreadSafeRandom(), userService, characterService);
+            new MachineDateTime(), new ThreadSafeRandom(), userService, characterService, activityLogService);
 
         var result = await handler.Handle(new GetGameUserCommand
         {
@@ -240,6 +245,7 @@ public class GetGameUserCommandTest : TestBase
     {
         var userService = Mock.Of<IUserService>();
         var characterService = Mock.Of<ICharacterService>();
+        var activityLogService = Mock.Of<IActivityLogService>();
 
         Character character = new();
         User user = new()
@@ -258,7 +264,7 @@ public class GetGameUserCommandTest : TestBase
         await ArrangeDb.SaveChangesAsync();
 
         GetGameUserCommand.Handler handler = new(ActDb, Mapper,
-            new MachineDateTime(), new ThreadSafeRandom(), userService, characterService);
+            new MachineDateTime(), new ThreadSafeRandom(), userService, characterService, activityLogService);
 
         var result = await handler.Handle(new GetGameUserCommand
         {
@@ -275,6 +281,7 @@ public class GetGameUserCommandTest : TestBase
     {
         var userService = Mock.Of<IUserService>();
         var characterService = Mock.Of<ICharacterService>();
+        Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
 
         User user = new()
         {
@@ -317,7 +324,7 @@ public class GetGameUserCommandTest : TestBase
             .Returns(new DateTime(2000, 1, 1, 12, 0, 0));
 
         GetGameUserCommand.Handler handler = new(ActDb, Mapper,
-            dateTime.Object, new ThreadSafeRandom(), userService, characterService);
+            dateTime.Object, new ThreadSafeRandom(), userService, characterService, activityLogServiceMock.Object);
 
         var result = await handler.Handle(new GetGameUserCommand
         {
@@ -334,6 +341,7 @@ public class GetGameUserCommandTest : TestBase
     {
         var userService = Mock.Of<IUserService>();
         var characterService = Mock.Of<ICharacterService>();
+        Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
 
         User user = new()
         {
@@ -375,7 +383,7 @@ public class GetGameUserCommandTest : TestBase
             .Returns(new DateTime(2000, 1, 1, 12, 0, 0));
 
         GetGameUserCommand.Handler handler = new(ActDb, Mapper,
-            dateTime.Object, new ThreadSafeRandom(), userService, characterService);
+            dateTime.Object, new ThreadSafeRandom(), userService, characterService, activityLogServiceMock.Object);
 
         var result = await handler.Handle(new GetGameUserCommand
         {

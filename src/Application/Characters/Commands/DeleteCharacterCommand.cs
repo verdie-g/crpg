@@ -1,6 +1,7 @@
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
+using Crpg.Application.Common.Services;
 using Crpg.Sdk.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -19,11 +20,13 @@ public record DeleteCharacterCommand : IMediatorRequest
 
         private readonly ICrpgDbContext _db;
         private readonly IDateTime _dateTime;
+        private readonly IActivityLogService _activityLogService;
 
-        public Handler(ICrpgDbContext db, IDateTime dateTime)
+        public Handler(ICrpgDbContext db, IDateTime dateTime, IActivityLogService activityLogService)
         {
             _db = db;
             _dateTime = dateTime;
+            _activityLogService = activityLogService;
         }
 
         public async Task<Result> Handle(DeleteCharacterCommand req, CancellationToken cancellationToken)
@@ -39,6 +42,10 @@ public record DeleteCharacterCommand : IMediatorRequest
 
             character.DeletedAt = _dateTime.UtcNow;
             _db.EquippedItems.RemoveRange(character.EquippedItems);
+
+            _db.ActivityLogs.Add(_activityLogService.CreateCharacterDeletedLog(character.UserId, character.Id,
+                character.Generation, character.Level));
+
             await _db.SaveChangesAsync(cancellationToken);
 
             Logger.LogInformation("User '{0}' deleted character '{1}'", req.UserId, req.CharacterId);

@@ -2,6 +2,7 @@ using AutoMapper;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
+using Crpg.Application.Common.Services;
 using Crpg.Application.Items.Models;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
@@ -22,11 +23,13 @@ public record BuyItemCommand : IMediatorRequest<UserItemViewModel>
 
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
+        private readonly IActivityLogService _activityLogService;
 
-        public Handler(ICrpgDbContext db, IMapper mapper)
+        public Handler(ICrpgDbContext db, IMapper mapper, IActivityLogService activityLogService)
         {
             _db = db;
             _mapper = mapper;
+            _activityLogService = activityLogService;
         }
 
         public async Task<Result<UserItemViewModel>> Handle(BuyItemCommand req, CancellationToken cancellationToken)
@@ -74,6 +77,9 @@ public record BuyItemCommand : IMediatorRequest<UserItemViewModel>
                 BaseItem = item,
             };
             user.Items.Add(userItem);
+
+            _db.ActivityLogs.Add(_activityLogService.CreateItemBoughtLog(user.Id, item.Id, item.Price));
+
             await _db.SaveChangesAsync(cancellationToken);
 
             Logger.LogInformation("User '{0}' bought item '{1}'", req.UserId, req.ItemId);

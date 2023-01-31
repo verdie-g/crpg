@@ -19,11 +19,13 @@ public record SellUserItemCommand : IMediatorRequest
 
         private readonly ICrpgDbContext _db;
         private readonly IItemService _itemService;
+        private readonly IActivityLogService _activityLogService;
 
-        public Handler(ICrpgDbContext db, IItemService itemService)
+        public Handler(ICrpgDbContext db, IItemService itemService, IActivityLogService activityLogService)
         {
             _db = db;
             _itemService = itemService;
+            _activityLogService = activityLogService;
         }
 
         public async Task<Result> Handle(SellUserItemCommand req, CancellationToken cancellationToken)
@@ -44,7 +46,10 @@ public record SellUserItemCommand : IMediatorRequest
                 return new(CommonErrors.ItemDisabled(userItem.BaseItem.Id));
             }
 
-            _itemService.SellUserItem(_db, userItem);
+            int sellPrice = _itemService.SellUserItem(_db, userItem);
+
+            _db.ActivityLogs.Add(_activityLogService.CreateItemSoldLog(userItem.UserId, userItem.BaseItemId, sellPrice));
+
             await _db.SaveChangesAsync(cancellationToken);
 
             Logger.LogInformation("User '{0}' sold item '{1}'", req.UserId, userItem.BaseItemId);

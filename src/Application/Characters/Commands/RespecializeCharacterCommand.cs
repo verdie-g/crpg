@@ -25,15 +25,17 @@ public record RespecializeCharacterCommand : IMediatorRequest<CharacterViewModel
         private readonly IMapper _mapper;
         private readonly ICharacterService _characterService;
         private readonly IExperienceTable _experienceTable;
+        private readonly IActivityLogService _activityLogService;
         private readonly Constants _constants;
 
         public Handler(ICrpgDbContext db, IMapper mapper, ICharacterService characterService,
-            IExperienceTable experienceTable, Constants constants)
+            IExperienceTable experienceTable, IActivityLogService activityLogService, Constants constants)
         {
             _db = db;
             _mapper = mapper;
             _characterService = characterService;
             _experienceTable = experienceTable;
+            _activityLogService = activityLogService;
             _constants = constants;
         }
 
@@ -54,6 +56,8 @@ public record RespecializeCharacterCommand : IMediatorRequest<CharacterViewModel
             }
 
             _characterService.ResetCharacterCharacteristics(character, true);
+
+            _db.ActivityLogs.Add(_activityLogService.CreateCharacterRespecializedLog(character.UserId, character.Id));
 
             await _db.SaveChangesAsync(cancellationToken);
 

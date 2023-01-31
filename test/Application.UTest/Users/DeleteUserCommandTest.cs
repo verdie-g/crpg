@@ -39,7 +39,8 @@ public class DeleteUserCommandTest : TestBase
         string partyItemId = user.Party.Items[0].ItemId;
 
         var userService = Mock.Of<IUserService>();
-        DeleteUserCommand.Handler handler = new(ActDb, Mock.Of<IDateTime>(), userService);
+        Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
+        DeleteUserCommand.Handler handler = new(ActDb, Mock.Of<IDateTime>(), userService, activityLogServiceMock.Object);
         await handler.Handle(new DeleteUserCommand
         {
             UserId = user.Id,
@@ -70,7 +71,7 @@ public class DeleteUserCommandTest : TestBase
     public async Task DeleteNonExistingUser()
     {
         var userService = Mock.Of<IUserService>();
-        DeleteUserCommand.Handler handler = new(ActDb, Mock.Of<IDateTime>(), userService);
+        DeleteUserCommand.Handler handler = new(ActDb, Mock.Of<IDateTime>(), userService, Mock.Of<IActivityLogService>());
         var result = await handler.Handle(new DeleteUserCommand { UserId = 1 }, CancellationToken.None);
         Assert.AreEqual(ErrorCode.UserNotFound, result.Errors![0].Code);
     }

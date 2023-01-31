@@ -24,12 +24,14 @@ public record DeleteUserCommand : IMediatorRequest
         private readonly ICrpgDbContext _db;
         private readonly IDateTime _dateTime;
         private readonly IUserService _userService;
+        private readonly IActivityLogService _activityLogService;
 
-        public Handler(ICrpgDbContext db, IDateTime dateTime, IUserService userService)
+        public Handler(ICrpgDbContext db, IDateTime dateTime, IUserService userService, IActivityLogService activityLogService)
         {
             _db = db;
             _dateTime = dateTime;
             _userService = userService;
+            _activityLogService = activityLogService;
         }
 
         public async Task<Result> Handle(DeleteUserCommand req, CancellationToken cancellationToken)
@@ -60,6 +62,8 @@ public record DeleteUserCommand : IMediatorRequest
                 _db.PartyItems.RemoveRange(user.Party!.Items);
                 _db.Parties.Remove(user.Party);
             }
+
+            _db.ActivityLogs.Add(_activityLogService.CreateUserDeletedLog(user.Id));
 
             await _db.SaveChangesAsync(cancellationToken);
             Logger.LogInformation("{0} left ({1}#{2})", name, user.Platform, user.PlatformUserId);

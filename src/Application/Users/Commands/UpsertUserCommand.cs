@@ -81,7 +81,7 @@ public record UpsertUserCommand : IMediatorRequest<UserViewModel>, IMapFrom<Stea
             // If the user has deleted its account, recreate it.
             user.DeletedAt = null;
 
-            if (!newUser && user.Name != oldName)
+            if (user.Name != oldName)
             {
                 _db.ActivityLogs.Add(_activityLogService.CreateUserRenamedLog(user.Id, oldName, user.Name));
             }

@@ -95,9 +95,11 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
         private readonly IRandom _random;
         private readonly IUserService _userService;
         private readonly ICharacterService _characterService;
+        private readonly IActivityLogService _activityLogService;
 
         public Handler(ICrpgDbContext db, IMapper mapper, IDateTime dateTime,
-            IRandom random, IUserService userService, ICharacterService characterService)
+            IRandom random, IUserService userService, ICharacterService characterService,
+            IActivityLogService activityLogService)
         {
             _db = db;
             _mapper = mapper;
@@ -105,6 +107,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
             _random = random;
             _userService = userService;
             _characterService = characterService;
+            _activityLogService = activityLogService;
         }
 
         public async Task<Result<GameUserViewModel>> Handle(GetGameUserCommand req, CancellationToken cancellationToken)
@@ -122,6 +125,9 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
 
                 await _db.SaveChangesAsync(cancellationToken);
                 Logger.LogInformation("User joined ({1}#{2})", req.Platform, req.PlatformUserId);
+
+                // No need to save here since a character will be created and a save will be needed.
+                _db.ActivityLogs.Add(_activityLogService.CreateUserCreatedLog(user.Id));
             }
             else
             {
@@ -152,6 +158,9 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
                 // between the two (https://github.com/dotnet/efcore/issues/1699).
                 await _db.SaveChangesAsync(cancellationToken);
                 Logger.LogInformation("User '{0}' created character '{1}'", user.Id, newCharacter.Id);
+
+                _db.ActivityLogs.Add(_activityLogService.CreateCharacterCreatedLog(user.Id, user.ActiveCharacter.Id));
+                await _db.SaveChangesAsync(cancellationToken);
             }
             else
             {
