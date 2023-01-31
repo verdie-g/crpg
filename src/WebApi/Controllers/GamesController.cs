@@ -1,3 +1,5 @@
+using Crpg.Application.ActivityLogs.Commands;
+using Crpg.Application.ActivityLogs.Models;
 using Crpg.Application.Clans.Models;
 using Crpg.Application.Clans.Queries;
 using Crpg.Application.Common.Results;
@@ -44,6 +46,21 @@ public class GamesController : BaseController
     [HttpPut("users")]
     public Task<ActionResult<Result<UpdateGameUsersResult>>> UpdateUsers([FromBody] UpdateGameUsersCommand cmd) =>
         ResultToActionAsync(Mediator.Send(cmd));
+
+    /// <summary>
+    /// Insert activity logs.
+    /// </summary>
+    /// <param name="activityLogs">The activity logs to insert.</param>
+    /// <response code="200">Inserted.</response>
+    /// <response code="400">Bad Request.</response>
+    [HttpPost("activity-logs")]
+    public Task<ActionResult> InsertActivityLogs([FromBody] ActivityLogViewModel[] activityLogs)
+    {
+        return ResultToActionAsync(Mediator.Send(new CreateActivityLogsCommand
+        {
+            ActivityLogs = activityLogs,
+        }, CancellationToken.None));
+    }
 
     // TODO: this endpoint is a duplicate of /clans/{id} because I could not find a good way for an endpoint to allow
     // both the user and game policies.
