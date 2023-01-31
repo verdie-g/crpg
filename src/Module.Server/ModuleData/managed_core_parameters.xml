@@ -7,12 +7,12 @@
     <!-- missile related (AirFrictionArrow and HeavyAttackMomentumMultiplier have twins in native_core_paramters)-->
     <!-- 		speed -= air_friction_constant * (speed * speed) * MISSILE_SIMULATION_DT;	//add drag -->
     <!-- AirFriction = surfaceArea * FrictionCoefficient / mass-->
-    <managed_core_parameter id="AirFrictionJavelin" value="0.002"/>
+    <managed_core_parameter id="AirFrictionJavelin" value="0.004"/>
     <managed_core_parameter id="AirFrictionArrow" value="0.003"/>
     <managed_core_parameter id="AirFrictionBallistaBolt" value="0.005"/>
     <managed_core_parameter id="AirFrictionBullet" value="0.004"/>
-    <managed_core_parameter id="AirFrictionKnife" value="0.007"/>
-    <managed_core_parameter id="AirFrictionAxe" value="0.005"/>
+    <managed_core_parameter id="AirFrictionKnife" value="0.005"/>
+    <managed_core_parameter id="AirFrictionAxe" value="0.006"/>
     <!--Increases defender stun-->
     <managed_core_parameter id="HeavyAttackMomentumMultiplier" value="1.15"/>
     <!-- combat related -->
