@@ -12,7 +12,7 @@ public class CharacterServiceTest
     {
         MinimumLevel = 1,
         MaximumLevel = 38,
-        ExperienceForLevelCoefs = new[] { 5.65f, 150000f }, // xp = lvl * 10
+        ExperienceForLevelCoefs = new[] { 2f, 0 },
         DefaultAttributePoints = 0,
         AttributePointsPerLevel = 1,
         DefaultSkillPoints = 2,
@@ -70,10 +70,10 @@ public class CharacterServiceTest
             ForTournament = false,
             User = new User { ExperienceMultiplier = 2f },
         };
-        characterService.GiveExperience(character, 2500);
+        characterService.GiveExperience(character, 6000);
 
         Assert.AreEqual(2, character.Level);
-        Assert.AreEqual(5002, character.Experience);
+        Assert.AreEqual(12002, character.Experience);
         Assert.AreEqual(1, character.Characteristics.Attributes.Points);
         Assert.AreEqual(1, character.Characteristics.Skills.Points);
         Assert.AreEqual(100, character.Characteristics.WeaponProficiencies.Points);
