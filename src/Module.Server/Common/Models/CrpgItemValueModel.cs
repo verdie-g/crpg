@@ -312,7 +312,7 @@ internal class CrpgItemValueModel : ItemValueModel
     {
         WeaponComponentData weapon = weaponComponent.Weapons.MaxBy(a => a.MaxDataValue);
         float scaler = 1600000f;
-        float bonusVsShield = weapon.WeaponFlags.HasFlag(WeaponFlags.BonusAgainstShield) ? 1.15f : 0f;
+        float bonusVsShield = weapon.WeaponFlags.HasFlag(WeaponFlags.BonusAgainstShield) ? 1.15f : 1f;
         float tier = weapon.ThrustDamage
             * weapon.ThrustDamage
             * weapon.MissileSpeed
