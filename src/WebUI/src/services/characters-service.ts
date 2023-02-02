@@ -23,7 +23,7 @@ export function getExperienceForLevel(level: number): number {
 
 function ComputeExperienceDistribution(level: number): number {
   const [a, b] = Constants.experienceForLevelCoefs;
-  return Math.pow(level - 1, a) + b * (level - 1);
+  return Math.pow(level - 1, a) + Math.pow(b, a / 2.0) * (level - 1);
 }
 
 export function computeSpeedStats({

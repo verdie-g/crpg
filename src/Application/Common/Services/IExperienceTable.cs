@@ -58,6 +58,6 @@ internal class ExperienceTable : IExperienceTable
     {
         float a = _constants.ExperienceForLevelCoefs[0];
         float b = _constants.ExperienceForLevelCoefs[1];
-        return Math.Pow(lvl - 1, a) + b * (lvl - 1);
+        return Math.Pow(lvl - 1, a) + Math.Pow(b, a / 2.0) * (lvl - 1);
     }
 }
