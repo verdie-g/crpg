@@ -40,9 +40,10 @@ public record GetActivityLogsQuery : IMediatorRequest<IList<ActivityLogViewModel
                 ? _db.ActivityLogs.Where(l => l.Id > afterId)
                 : _db.ActivityLogs;
             var activityLogs = await query
-                    .OrderByDescending(l => l.CreatedAt)
-                    .Take(req.Count)
-                    .ToArrayAsync(cancellationToken);
+                .Include(l => l.Metadata)
+                .OrderByDescending(l => l.CreatedAt)
+                .Take(req.Count)
+                .ToArrayAsync(cancellationToken);
             return new(_mapper.Map<IList<ActivityLogViewModel>>(activityLogs));
         }
     }
