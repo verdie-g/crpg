@@ -25,7 +25,7 @@ internal class CrpgScoreboardComponent : MissionScoreboardComponent
         float hitDistance,
         float shotDifficulty)
     {
-        if (!GameNetwork.IsServer || isBlocked || damagedHp <= 0.0)
+        if (!GameNetwork.IsServer)
         {
             return;
         }
@@ -58,6 +58,10 @@ internal class CrpgScoreboardComponent : MissionScoreboardComponent
         else if (collisionData.AttackBlockedWithShield)
         {
             score = collisionData.InflictedDamage * 0.2f;
+        }
+        else if (isBlocked || damagedHp <= 0.0)
+        {
+            return;
         }
 
         if (affectedAgent == null || affectorAgent == affectedAgent)
