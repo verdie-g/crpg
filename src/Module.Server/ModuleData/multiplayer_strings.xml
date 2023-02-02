@@ -39,6 +39,7 @@
   <string id="str_multiplayer_scene_name.crpg_battle_ghosttown" text="{=!}Ghost Town" />
   <string id="str_multiplayer_scene_name.crpg_battle_hexenbrennen" text="{=!}Hexenbrennen" />
   <string id="str_multiplayer_scene_name.crpg_battle_icelake" text="{=!}Ice Lake" />
+  <string id="str_multiplayer_scene_name.crpg_battle_islandvillage" text="{=!}Island Village" />
   <string id="str_multiplayer_scene_name.crpg_battle_kalmara" text="{=!}Kalmara" />
   <string id="str_multiplayer_scene_name.crpg_battle_kingsroad" text="{=!}King's Road" />
   <string id="str_multiplayer_scene_name.crpg_battle_moonlittownship" text="{=!}Moonlit Township" />
@@ -57,9 +58,11 @@
   <string id="str_multiplayer_scene_name.crpg_battle_stonehenge" text="{=!}Stonehenge" />
   <string id="str_multiplayer_scene_name.crpg_battle_talmberg" text="{=!}Talmberg" />
   <string id="str_multiplayer_scene_name.crpg_battle_tavernbrawl" text="{=!}Tavern Brawl" />
+  <string id="str_multiplayer_scene_name.crpg_battle_tolstabeach" text="{=!}Tolsta Beach" />
   <string id="str_multiplayer_scene_name.crpg_battle_vatnborg" text="{=!}Vatnborg" />
   <string id="str_multiplayer_scene_name.crpg_battle_waterwaytojelkala" text="{=!}Water Way to Jelkala" />
   <string id="str_multiplayer_scene_name.crpg_battle_weirwater" text="{=!}Weir Water" />
+  <string id="str_multiplayer_scene_name.crpg_battle_whitebridge" text="{=!}White Bridge" />
   <string id="str_multiplayer_scene_name.crpg_battle_zemouri" text="{=!}Zemouri" />
 
   <!-- Siege Maps -->

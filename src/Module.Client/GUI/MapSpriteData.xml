@@ -17,7 +17,7 @@
   <SpriteCategories>
     <SpriteCategory>
       <Name>ui_mploading</Name>
-      <SpriteSheetCount>96</SpriteSheetCount>
+      <SpriteSheetCount>99</SpriteSheetCount>
       <SpriteSheetSize ID="1" Width="3840" Height="1935" />
       <SpriteSheetSize ID="2" Width="3840" Height="1935" />
       <SpriteSheetSize ID="3" Width="3383" Height="1902" />
@@ -108,6 +108,9 @@
       <SpriteSheetSize ID="94" Width="1920" Height="1080" />
       <SpriteSheetSize ID="95" Width="1920" Height="1080" />
       <SpriteSheetSize ID="96" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="97" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="98" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="99" Width="1920" Height="1080" />
       <AlwaysLoad />
     </SpriteCategory>
   </SpriteCategories>
@@ -922,6 +925,33 @@
       <SheetY>0</SheetY>
       <CategoryName>ui_mploading</CategoryName>
     </SpritePart>
+    <SpritePart>
+      <SheetID>97</SheetID>
+      <Name>crpg_battle_tolstabeach</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>98</SheetID>
+      <Name>crpg_battle_islandvillage</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>99</SheetID>
+      <Name>crpg_battle_whitebridge</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
   </SpriteParts>
   <Sprites>
     <GenericSprite>
@@ -1283,6 +1313,18 @@
     <GenericSprite>
       <Name>crpg_battle_moonlittownship</Name>
       <SpritePartName>crpg_battle_moonlittownship</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_tolstabeach</Name>
+      <SpritePartName>crpg_battle_tolstabeach</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_islandvillage</Name>
+      <SpritePartName>crpg_battle_islandvillage</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_whitebridge</Name>
+      <SpritePartName>crpg_battle_whitebridge</SpritePartName>
     </GenericSprite>
   </Sprites>
 </SpriteData>
