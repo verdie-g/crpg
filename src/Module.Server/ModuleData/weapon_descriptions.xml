@@ -5,6 +5,10 @@
       <WeaponFlag value="MeleeWeapon" />
     </WeaponFlags>
     <AvailablePieces>
+      <AvailablePiece id="crpg_military_cleaver_t3_blade" />
+      <AvailablePiece id="crpg_military_cleaver_t2_guard" />
+      <AvailablePiece id="crpg_military_cleaver_t2_handle" />
+      <AvailablePiece id="crpg_military_cleaver_t2_pommel" />
       <AvailablePiece id="crpg_thegn_sword_1_t2_blade" />
       <AvailablePiece id="crpg_thegn_sword_1_t2_blade" />
       <AvailablePiece id="crpg_ambassador_sword_t3_blade" />
@@ -244,9 +248,6 @@
       <AvailablePiece id="crpg_ridged_sabre_sword_t4_pommel" />
       <AvailablePiece id="crpg_seax_handle" />
       <AvailablePiece id="crpg_seax_pommel" />
-      <AvailablePiece id="crpg_sentinel_2hsword_blade" />
-      <AvailablePiece id="crpg_sentinel_2hsword_guard" />
-      <AvailablePiece id="crpg_sentinel_2hsword_pommel" />
       <AvailablePiece id="crpg_short_sword_t3_blade" />
       <AvailablePiece id="crpg_short_sword_t3_guard" />
       <AvailablePiece id="crpg_short_sword_t3_handle" />
@@ -525,6 +526,7 @@
       <AvailablePiece id="crpg_seax_pommel" />
       <AvailablePiece id="crpg_sentinel_2hsword_blade" />
       <AvailablePiece id="crpg_sentinel_2hsword_guard" />
+      <AvailablePiece id="crpg_sentinel_2hsword_handle" />
       <AvailablePiece id="crpg_sentinel_2hsword_pommel" />
       <AvailablePiece id="crpg_short_sword_t3_blade" />
       <AvailablePiece id="crpg_short_sword_t3_guard" />
@@ -759,9 +761,6 @@
       <AvailablePiece id="crpg_ridged_sabre_sword_t4_blade" />
       <AvailablePiece id="crpg_ridged_sabre_sword_t4_guard" />
       <AvailablePiece id="crpg_seax_pommel" />
-      <AvailablePiece id="crpg_sentinel_2hsword_blade" />
-      <AvailablePiece id="crpg_sentinel_2hsword_guard" />
-      <AvailablePiece id="crpg_sentinel_2hsword_pommel" />
       <AvailablePiece id="crpg_short_sword_t3_blade" />
       <AvailablePiece id="crpg_short_sword_t3_guard" />
       <AvailablePiece id="crpg_short_sword_t3_pommel" />
@@ -856,15 +855,9 @@
       <AvailablePiece id="crpg_decorated_great_saber_2hsword_1_t5_blade" />
       <AvailablePiece id="crpg_decorated_great_saber_2hsword_1_t5_guard" />
       <AvailablePiece id="crpg_decorated_great_saber_1_t5_handle" />
-      <AvailablePiece id="crpg_decorated_great_saber_1_t5_pommel" />    
-      <AvailablePiece id="crpg_great_thamaskene_steel_spatha_2hsword_2_t5_blade" />
-      <AvailablePiece id="crpg_great_thamaskene_steel_spatha_2hsword_2_t5_guard" />
-      <AvailablePiece id="crpg_great_thamaskene_steel_spatha_2hsword_2_t5_handle" />
-      <AvailablePiece id="crpg_great_thamaskene_steel_spatha_2hsword_2_t5_pommel" /> 
-      <AvailablePiece id="crpg_decorated_great_saber_2hsword_1_t5_blade" />
-      <AvailablePiece id="crpg_decorated_great_saber_2hsword_1_t5_guard" />
-      <AvailablePiece id="crpg_decorated_great_saber_1_t5_handle" />
-      <AvailablePiece id="crpg_decorated_great_saber_1_t5_pommel" />    
+      <AvailablePiece id="crpg_decorated_great_saber_1_t5_pommel" />  
+      <AvailablePiece id="crpg_heavy_goedendag_head"/>
+      <AvailablePiece id="crpg_heavy_goedendag_handle"/>	  
       <AvailablePiece id="crpg_dawn_blade" />
       <AvailablePiece id="crpg_dawn_guard" />
       <AvailablePiece id="crpg_dawn_handle" />
@@ -879,6 +872,18 @@
       <AvailablePiece id="crpg_claymore_guard"/>
       <AvailablePiece id="crpg_claymore_handle"/>
       <AvailablePiece id="crpg_claymore_pommel"/>
+	  <AvailablePiece id="crpg_katana_blade_red"/>
+      <AvailablePiece id="crpg_katana_blade_blue"/>
+      <AvailablePiece id="crpg_katana_blade_green"/>
+      <AvailablePiece id="crpg_katana_blade_yellow"/>
+      <AvailablePiece id="crpg_katana_blade_black"/>
+      <AvailablePiece id="crpg_katana_guard"/>
+      <AvailablePiece id="crpg_katana_handle_red"/>
+      <AvailablePiece id="crpg_katana_handle_blue"/>
+      <AvailablePiece id="crpg_katana_handle_green"/>
+      <AvailablePiece id="crpg_katana_handle_yellow"/>
+      <AvailablePiece id="crpg_katana_handle_black"/>
+      <AvailablePiece id="crpg_katana_pommel"/>
       <AvailablePiece id="crpg_northern_2hsword_t4_blade" />
       <AvailablePiece id="crpg_northern_2hsword_t4_guard" />
       <AvailablePiece id="crpg_northern_2hsword_t4_handle" />
@@ -1046,10 +1051,6 @@
       <AvailablePiece id="crpg_narrow_sword_t3_guard" />
       <AvailablePiece id="crpg_narrow_sword_t3_handle" />
       <AvailablePiece id="crpg_narrow_sword_t3_pommel" />
-      <AvailablePiece id="crpg_northern_2hsword_t4_blade" />
-      <AvailablePiece id="crpg_northern_2hsword_t4_guard" />
-      <AvailablePiece id="crpg_northern_2hsword_t4_handle" />
-      <AvailablePiece id="crpg_northern_2hsword_t4_pommel" />
       <AvailablePiece id="crpg_peasant_hammer_2_t1_pommel" />
       <AvailablePiece id="crpg_pointed_falchion_sword_t4_blade" />
       <AvailablePiece id="crpg_pointed_falchion_sword_t4_guard" />
@@ -1244,7 +1245,6 @@
       <AvailablePiece id="crpg_sturgia_sword_4_t4_pommel" />
       <AvailablePiece id="crpg_bastard_sword_t2_pommel" />
       <AvailablePiece id="crpg_sturgia_sword_1_t2_pommel" />
-      <AvailablePiece id="crpg_sentinel_2hsword_pommel" />
       <AvailablePiece id="crpg_battania_2hsword_1_t2_pommel" />
       <AvailablePiece id="crpg_sturgia_sword_3_t3_pommel" />
       <AvailablePiece id="crpg_sturgia_sword_2_t3_pommel" />
@@ -1413,7 +1413,6 @@
       <AvailablePiece id="crpg_seax_guard" />
       <AvailablePiece id="crpg_seax_handle" />
       <AvailablePiece id="crpg_seax_pommel" />
-      <AvailablePiece id="crpg_sentinel_2hsword_pommel" />
       <AvailablePiece id="crpg_short_sword_t3_handle" />
       <AvailablePiece id="crpg_sturgia_sword_1_t2_handle" />
       <AvailablePiece id="crpg_sturgia_sword_1_t2_pommel" />
@@ -1613,6 +1612,10 @@
       <AvailablePiece id="crpg_battania_axe_3_t5_blade" />
       <AvailablePiece id="crpg_sturgia_axe_5_t5_blade" />
       <AvailablePiece id="crpg_battania_axe_1_t2_blade" />
+      <AvailablePiece id="crpg_kama_blade"/>
+      <AvailablePiece id="crpg_kama_handle"/>
+	  <AvailablePiece id="crpg_sherpherds_head"/>
+      <AvailablePiece id="crpg_sherpherds_handle"/>
       <AvailablePiece id="crpg_kama_blade"/>
       <AvailablePiece id="crpg_kama_handle"/>
 	  <AvailablePiece id="crpg_sherpherds_head"/>
@@ -2004,10 +2007,6 @@
       <AvailablePiece id="crpg_hoplite_blade_1" />
       <AvailablePiece id="crpg_hoplite_guard_1" />
       <AvailablePiece id="crpg_hoplite_pommel_1" />
-      <AvailablePiece id="crpg_hoplite_handle_2" />
-      <AvailablePiece id="crpg_hoplite_blade_2" />
-      <AvailablePiece id="crpg_hoplite_guard_2" />
-      <AvailablePiece id="crpg_hoplite_pommel_2" />
       <AvailablePiece id="crpg_iklwa_handle_1" />
       <AvailablePiece id="crpg_iklwa_blade_1" />
     </AvailablePieces>
@@ -2121,6 +2120,18 @@
       <AvailablePiece id="crpg_war_scythe_handle" />
       <AvailablePiece id="crpg_awlpike_blade" />
       <AvailablePiece id="crpg_awlpike_handle" />
+	  <AvailablePiece id="crpg_french_voulge_blade"/>
+      <AvailablePiece id="crpg_french_voulge_handle"/>
+      <AvailablePiece id="crpg_burgundian_glaive_blade"/>
+      <AvailablePiece id="crpg_burgundian_glaive_handle"/>
+      <AvailablePiece id="crpg_burgundian_axe_blade"/>
+      <AvailablePiece id="crpg_burgundian_axe_handle"/>
+      <AvailablePiece id="crpg_simple_poleaxe_blade"/>
+      <AvailablePiece id="crpg_simple_poleaxe_handle"/>
+      <AvailablePiece id="crpg_spiked_polehammer_blade"/>
+      <AvailablePiece id="crpg_spiked_polehammer_handle"/>
+      <AvailablePiece id="crpg_bec_de_corbin_handle"/>
+      <AvailablePiece id="crpg_bec_de_corbin_blade"/>
       <AvailablePiece id="crpg_eastern_javelin_3_t4_pommel" />
       <AvailablePiece id="crpg_eastern_spear_5_t5_pommel" />
       <AvailablePiece id="crpg_empire_mace_3_t4_pommel" />
@@ -2334,10 +2345,6 @@
       <AvailablePiece id="crpg_hoplite_blade_1" />
       <AvailablePiece id="crpg_hoplite_guard_1" />
       <AvailablePiece id="crpg_hoplite_pommel_1" />
-      <AvailablePiece id="crpg_hoplite_handle_2" />
-      <AvailablePiece id="crpg_hoplite_blade_2" />
-      <AvailablePiece id="crpg_hoplite_guard_2" />
-      <AvailablePiece id="crpg_hoplite_pommel_2" />
       <AvailablePiece id="crpg_iklwa_handle_1" />
       <AvailablePiece id="crpg_iklwa_blade_1" />
 
@@ -3089,8 +3096,14 @@
     <AvailablePieces>
       <AvailablePiece id="crpg_blacksmith_war_hammer_mace_t3_handle" />
       <AvailablePiece id="crpg_blacksmith_war_hammer_1_t1_blade" />
-      <AvailablePiece id="crpg_blacksmith_war_hammer_mace_t3_handle" />
-      <AvailablePiece id="crpg_blacksmith_war_hammer_1_t1_blade" />
+      <AvailablePiece id="crpg_medium_goedendag_head"/>
+      <AvailablePiece id="crpg_light_goedendag_head"/>
+      <AvailablePiece id="crpg_medium_goedendag_handle"/>
+      <AvailablePiece id="crpg_light_goedendag_handle"/>
+	  <AvailablePiece id="crpg_warhammer_head"/>
+      <AvailablePiece id="crpg_warhammer_shaft"/>
+      <AvailablePiece id="crpg_military_hammer_shaft"/>
+      <AvailablePiece id="crpg_military_hammer_head"/>
       <AvailablePiece id="crpg_vlandia_axe_2_t4_blade" />
       <AvailablePiece id="crpg_vlandia_axe_2_t4_handle" />
       <AvailablePiece id="crpg_ambassador_sword_t3_pommel" />
@@ -3244,7 +3257,6 @@
       <AvailablePiece id="crpg_ridged_2hsword_t4_pommel" />
       <AvailablePiece id="crpg_ridged_sabre_sword_t4_pommel" />
       <AvailablePiece id="crpg_seax_pommel" />
-      <AvailablePiece id="crpg_sentinel_2hsword_pommel" />
       <AvailablePiece id="crpg_shishpar_mace_t4_blade" />
       <AvailablePiece id="crpg_shishpar_mace_t4_handle" />
       <AvailablePiece id="crpg_shishpar_mace_t4_pommel" />
@@ -3313,6 +3325,17 @@
       <AvailablePiece id="crpg_2hmorningstar_mace_t3_handle" />
       <AvailablePiece id="crpg_2hmorningstar_mace_t3_pommel" />
       <AvailablePiece id="crpg_gada_blade" />
+      <AvailablePiece id="crpg_gada_handle" />
+      <AvailablePiece id="crpg_heavy_blacksmith_hammer_head"/>
+      <AvailablePiece id="crpg_heavy_blacksmith_hammer_handle"/>
+      <AvailablePiece id="crpg_mallet_head"/>
+      <AvailablePiece id="crpg_mallet_handle"/>
+      <AvailablePiece id="crpg_shieldsplitter_head"/>
+      <AvailablePiece id="crpg_shieldsplitter_handle"/>
+      <AvailablePiece id="crpg_maul_head"/>
+      <AvailablePiece id="crpg_maul_handle"/>
+      <AvailablePiece id="crpg_long_maul_head"/>
+      <AvailablePiece id="crpg_long_maul_handle"/>
       <AvailablePiece id="crpg_gada_handle" />
       <AvailablePiece id="crpg_heavy_blacksmith_hammer_head"/>
       <AvailablePiece id="crpg_heavy_blacksmith_hammer_handle"/>

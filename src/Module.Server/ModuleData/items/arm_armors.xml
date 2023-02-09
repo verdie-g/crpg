@@ -2,7 +2,7 @@
 <Items>
   <Item id="crpg_guarded_padded_vambrace" name="{=whvMZZba}Guarded Padded Vambraces" mesh="padded_vambrace_a_handguard" culture="Culture.aserai" weight="0.9793918" difficulty="0" appearance="1" Type="HandArmor">
     <ItemComponent>
-      <Armor arm_armor="9" modifier_group="cloth" material_type="Cloth" />
+      <Armor arm_armor="12" modifier_group="cloth" material_type="Cloth" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
@@ -74,19 +74,19 @@
   </Item>
   <Item id="crpg_steppe_leather_vambraces" name="{=LoUxaFeE}Leather Vambraces" mesh="khuzait_leather_armor_hand" culture="Culture.khuzait" weight="1.507872" appearance="1" Type="HandArmor">
     <ItemComponent>
-      <Armor arm_armor="12" covers_hands="false" modifier_group="leather" material_type="Leather" />
+      <Armor arm_armor="18" covers_hands="false" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
   <Item id="crpg_studded_leather_vambraces" name="{=bxa4JHlU}Studded Leather Vambraces" mesh="crossbow_armor_leather_hand_a" culture="Culture.khuzait" weight="1.323371" appearance="1" Type="HandArmor">
     <ItemComponent>
-      <Armor arm_armor="11" covers_hands="false" modifier_group="leather" material_type="Leather" />
+      <Armor arm_armor="18" covers_hands="false" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags />
   </Item>
   <Item id="crpg_studded_vambraces" name="{=8uBew3nD}Studded Vambraces" mesh="bandit_1_wristband" culture="Culture.khuzait" weight="0.4055531" difficulty="0" appearance="1" Type="HandArmor">
     <ItemComponent>
-      <Armor arm_armor="5" covers_hands="false" modifier_group="leather" material_type="Leather" />
+      <Armor arm_armor="12" covers_hands="false" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags />
   </Item>
@@ -98,11 +98,11 @@
   </Item>
   <Item id="crpg_mail_mitten" name="{=g51zVsKU}Mail Mittens" mesh="mail_mitten_c" culture="Culture.vlandia" weight="3.244425" difficulty="0" appearance="1.6" Type="HandArmor">
     <ItemComponent>
-      <Armor arm_armor="20" covers_hands="true" modifier_group="chain" material_type="Chainmail" />
+      <Armor arm_armor="18" covers_hands="true" modifier_group="chain" material_type="Chainmail" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_lordly_mail_mitten" name="{=VDMkVMxt}Heavy Mail Mittens" mesh="mail_mitten_a" culture="Culture.vlandia" weight="4.264907" appearance="3" Type="HandArmor">
+  <Item id="crpg_lordly_mail_mitten" name="{=VDMkVMxt}Plated Mail Mittens" mesh="mail_mitten_a" culture="Culture.vlandia" weight="4.264907" appearance="3" Type="HandArmor">
     <ItemComponent>
       <Armor arm_armor="24" covers_hands="true" modifier_group="chain" material_type="Chainmail" />
     </ItemComponent>
@@ -110,61 +110,61 @@
   </Item>
   <Item id="crpg_reinforced_leather_vambraces" name="{=2Ilvjlz9}Splint Vambraces" mesh="crossbow_armor_leather_hand_b" culture="Culture.vlandia" weight="3.244425" appearance="2" Type="HandArmor">
     <ItemComponent>
-      <Armor arm_armor="20" covers_hands="false" modifier_group="plate" material_type="Plate" />
+      <Armor arm_armor="18" covers_hands="false" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
   <Item id="crpg_northern_plated_gloves" name="{=G8FQ2exX}Plate Reinforced Gloves" mesh="sturgia_plate_gauntlet" culture="Culture.sturgia" weight="2.770139" appearance="2" Type="HandArmor">
     <ItemComponent>
-      <Armor arm_armor="18" covers_hands="true" modifier_group="plate" material_type="Plate" />
+      <Armor arm_armor="30" covers_hands="true" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
   <Item id="crpg_northern_brass_bracers" name="{=Xrb43Fv4}Bronze Bracers" mesh="sturgia_leather_brass_bracer" culture="Culture.sturgia" weight="3.74306" appearance="1.6" Type="HandArmor">
     <ItemComponent>
-      <Armor arm_armor="22" covers_hands="false" modifier_group="plate" material_type="Plate" />
+      <Armor arm_armor="24" covers_hands="false" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
   <Item id="crpg_woven_leather_bracers" name="{=fUmehyHq}Woven Leather Bracers" mesh="vlandia_leather_stripes_bracers" culture="Culture.empire" weight="0.5331134" appearance="1" Type="HandArmor">
     <ItemComponent>
-      <Armor arm_armor="6" covers_hands="false" modifier_group="leather" material_type="Leather" />
+      <Armor arm_armor="3" covers_hands="false" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags />
   </Item>
   <Item id="crpg_padded_mitten" name="{=J3YHMkL3}Padded Mittens" mesh="padded_vambrace_a_mitten" culture="Culture.empire" weight="0.9793918" difficulty="0" appearance="1" Type="HandArmor">
     <ItemComponent>
-      <Armor arm_armor="9" covers_hands="true" modifier_group="cloth" material_type="Cloth" />
+      <Armor arm_armor="12" covers_hands="true" modifier_group="cloth" material_type="Cloth" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
   <Item id="crpg_plated_strip_gauntlets" name="{=ulaMq9HL}Plated Striped Vambraces" mesh="empire_plated_gauntlets" culture="Culture.empire" weight="3.74306" appearance="1.3" Type="HandArmor">
     <ItemComponent>
-      <Armor arm_armor="22" covers_hands="false" modifier_group="plate" material_type="Plate" />
+      <Armor arm_armor="18" covers_hands="false" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
   <Item id="crpg_lamellar_plate_gauntlets" name="{=XGX6DbFL}Lamellar Plate Gauntlets" mesh="imperial_gauntlets" culture="Culture.empire" weight="4.001147" appearance="3" Type="HandArmor">
     <ItemComponent>
-      <Armor arm_armor="23" covers_hands="true" modifier_group="plate" material_type="Plate" />
+      <Armor arm_armor="30" covers_hands="true" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
   <Item id="crpg_decorated_imperial_gauntlets" name="{=2XEbqNQz}Decorated Imperial Gauntlets" mesh="empire_plate_armor_gauntlets" culture="Culture.empire" weight="3.244425" appearance="3" Type="HandArmor">
     <ItemComponent>
-      <Armor arm_armor="20" covers_hands="true" modifier_group="plate" material_type="Plate" />
+      <Armor arm_armor="24" covers_hands="true" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
   <Item id="crpg_leather_gloves" name="{=lIJ1EVBh}Leather Gloves" mesh="crossbow_armor_hand" culture="Culture.neutral_culture" weight="0.2901902" appearance="1" Type="HandArmor">
     <ItemComponent>
-      <Armor arm_armor="4" covers_hands="true" modifier_group="leather" material_type="Leather" />
+      <Armor arm_armor="3" covers_hands="true" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
   <Item id="crpg_padded_vambrace" name="{=MamotK0a}Padded Vambraces" mesh="padded_vambrace_a" culture="Culture.neutral_culture" weight="0.6717997" difficulty="0" appearance="1" Type="HandArmor">
     <ItemComponent>
-      <Armor arm_armor="7" modifier_group="cloth" material_type="Cloth" />
+      <Armor arm_armor="12" modifier_group="cloth" material_type="Cloth" />
     </ItemComponent>
     <Flags />
   </Item>
@@ -174,4 +174,22 @@
 		</ItemComponent>
 		<Flags UseTeamColor="false"/>
 	</Item>
+  <Item id="crpg_reinforced_mail_mitten" name="{=dPQGxmJ7}Metal Striped Mail Mittens" mesh="mail_mitten_b" culture="Culture.vlandia" weight="1.6" difficulty="0" appearance="3" Type="HandArmor">
+    <ItemComponent>
+      <Armor arm_armor="24" covers_hands="true" modifier_group="chain" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_reinforced_padded_mitten" name="{=PLtQdf23}Plated Padded Mittens" mesh="padded_vambrace_a_reinforced" culture="Culture.empire" weight="0.9" difficulty="0" appearance="2" Type="HandArmor">
+    <ItemComponent>
+      <Armor arm_armor="18" covers_hands="true" modifier_group="cloth" material_type="Cloth" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_lordly_padded_mitten" name="{=t01v8qW7}Decorated Padded Mittens" mesh="padded_vambrace_a_lordly" culture="Culture.empire" weight="1.3" difficulty="0" appearance="0.7" Type="HandArmor">
+    <ItemComponent>
+      <Armor arm_armor="18" covers_hands="true" modifier_group="cloth" material_type="Cloth" />
+    </ItemComponent>
+    <Flags />
+  </Item>
 </Items>

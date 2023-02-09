@@ -488,9 +488,17 @@
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-<Item id="crpg_buckler" name="{=}Buckler" body_name="bo_cap_crpg_buckler" shield_body_name="bo_crpg_buckler" recalculate_body="false" mesh="buckler" culture="Culture.sturgia" using_tableau="true" weight="1.0" difficulty="0" appearance="0.9" Type="Shield" item_holsters="sword_left_hip_3:sword_left_hip:sword_left_hip_2" has_lower_holster_priority="true" holster_position_shift="0,-0.05,0">
+  <Item id="crpg_long_buckler" name="{=}Oval Buckler" body_name="bo_cap_crpg_long_buckler" shield_body_name="bo_aserai_shields_g" recalculate_body="false" mesh="long_buckler" culture="Culture.sturgia" using_tableau="true" weight="1.2" difficulty="0" appearance="0.9" Type="Shield" item_holsters="sword_left_hip_3:sword_left_hip:sword_left_hip_2" has_lower_holster_priority="true" holster_position_shift="0,-0.05,0">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="15" thrust_speed="110" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="100" physics_material="metal_shield" item_usage="hand_shield" position="-0.02, 0.0, 0.0" rotation="0.0,90.0,75.0" weapon_length="15" center_of_mass="0, 0, 0" hit_points="200" modifier_group="shield">
+      <Weapon weapon_class="SmallShield" body_armor="8" thrust_speed="80" thrust_damage="10" thrust_damage_type="Blunt" speed_rating="100" physics_material="metal_shield" item_usage="hand_shield" position="0.0, 0.01, 0.0" rotation="0.0,100.0,75.0" weapon_length="24" center_of_mass="0, 0, 0" hit_points="220" modifier_group="shield">
+        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags WoodenParry="false" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" />
+  </Item>
+  <Item id="crpg_buckler" name="{=}Round Buckler" body_name="bo_cap_crpg_buckler" shield_body_name="bo_aserai_shields_g" recalculate_body="false" mesh="buckler" culture="Culture.sturgia" using_tableau="true" weight="1.0" difficulty="0" appearance="0.9" Type="Shield" item_holsters="sword_left_hip_3:sword_left_hip:sword_left_hip_2" has_lower_holster_priority="true" holster_position_shift="0,-0.05,0">
+    <ItemComponent>
+      <Weapon weapon_class="SmallShield" body_armor="8" thrust_speed="86" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="100" physics_material="metal_shield" item_usage="hand_shield" position="0.0, 0.01, 0.0" rotation="0.0,100.0,75.0" weapon_length="15" center_of_mass="0, 0, 0" hit_points="200" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
