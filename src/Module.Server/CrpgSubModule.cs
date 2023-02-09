@@ -47,6 +47,8 @@ internal class CrpgSubModule : MBSubModuleBase
 #if CRPG_EXPORT
         TaleWorlds.MountAndBlade.Module.CurrentModule.AddInitialStateOption(new InitialStateOption("ExportData",
             new TextObject("Export Data"), 4578, ExportData, () => (false, null)));
+        TaleWorlds.MountAndBlade.Module.CurrentModule.AddInitialStateOption(new InitialStateOption("RecomputeWeight",
+            new TextObject("Recompute Armors Weights"), 4578, ComputeWeight, () => (false, null)));
         TaleWorlds.MountAndBlade.Module.CurrentModule.AddInitialStateOption(new InitialStateOption("ExportImages",
             new TextObject("Export Thumbnails"), 4578, ExportImages, () => (false, null)));
 #endif
@@ -94,6 +96,23 @@ internal class CrpgSubModule : MBSubModuleBase
     }
 
 #if CRPG_EXPORT
+    private void ComputeWeight()
+    {
+        IDataExporter[] exporters =
+        {
+            new ItemExporter(),
+            // new SettlementExporter(),
+        };
+
+        InformationManager.DisplayMessage(new InformationMessage("Computing Weight."));
+        Task.WhenAll(exporters.Select(e => e.ComputeWeight("lol"))).ContinueWith(t =>
+        {
+            InformationManager.DisplayMessage(t.IsFaulted
+                ? new InformationMessage(t.Exception!.Message)
+                : new InformationMessage("Done."));
+        });
+    }
+
     private void ExportData()
     {
         IDataExporter[] exporters =

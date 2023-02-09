@@ -5,6 +5,7 @@ using Crpg.Module.Helpers.Json;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
+using TaleWorlds.CampaignSystem.Extensions;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View.Tableaus;
@@ -13,6 +14,29 @@ namespace Crpg.Module.DataExport;
 
 internal class ItemExporter : IDataExporter
 {
+    private static readonly string[] ItemFilePaths =
+    {
+        "../../Modules/cRPG/ModuleData/items/head_armors.xml",
+        "../../Modules/cRPG/ModuleData/items/shoulder_armors.xml",
+        "../../Modules/cRPG/ModuleData/items/body_armors.xml",
+        "../../Modules/cRPG/ModuleData/items/arm_armors.xml",
+        "../../Modules/cRPG/ModuleData/items/leg_armors.xml",
+    };
+    public async Task ComputeWeight(string gitRepoPath)
+    {
+        foreach (string filePath in ItemFilePaths)
+        {
+            var game = Game.CreateGame(new MultiplayerGame(), new MultiplayerGameManager());
+            game.Initialize();
+            var mbItems = game.ObjectManager.GetObjectTypeList<ItemObject>()
+                .Where(i => i.StringId.StartsWith("crpg_"))
+                .DistinctBy(i => i.StringId)
+                .OrderBy(i => i.StringId)
+                .ToArray();
+            var itemsDoc = LoadMbDocument(filePath);
+            itemsDoc.Save(Path.Combine("../../Modules/cRPG/ModuleData/items", Path.GetFileName(filePath)));
+        }
+    }
     public async Task Export(string gitRepoPath)
     {
         var game = Game.CreateGame(new MultiplayerGame(), new MultiplayerGameManager());
@@ -25,6 +49,7 @@ internal class ItemExporter : IDataExporter
         var crpgItems = mbItems.Select(MbToCrpgItem);
         SerializeCrpgItems(crpgItems, Path.Combine("../../Modules/cRPG/ModuleData"));
     }
+
     public async Task ImageExport(string gitRepoPath)
     {
         var game = Game.CreateGame(new MultiplayerGame(), new MultiplayerGameManager());
@@ -120,7 +145,86 @@ internal class ItemExporter : IDataExporter
 
         return crpgItem;
     }
+    private static XmlDocument LoadMbDocument(string filePath)
+    {
+        XmlDocument itemsDoc = new();
+        using (var r = XmlReader.Create(filePath, new XmlReaderSettings { IgnoreComments = true }))
+        {
+            itemsDoc.Load(r);
+        }
 
+        // Prefix all ids with "crpg_" to avoid conflicts with mb objects.
+        var nodes1 = itemsDoc.LastChild.ChildNodes.Cast<XmlNode>().ToArray();
+        for (int i = 0; i < nodes1.Length; i += 1)
+        {
+            var node1 = nodes1[i];
+
+            if (node1.Name == "Item")
+            {
+                // Remove the price attribute so it is recomputed using our model.
+                var valueAttr = node1.Attributes["value"];
+                if (valueAttr != null)
+                {
+                    node1.Attributes.Remove(valueAttr);
+                }
+
+                var type = (ItemObject.ItemTypeEnum)Enum.Parse(typeof(ItemObject.ItemTypeEnum), node1.Attributes!["Type"].Value);
+                if (type is ItemObject.ItemTypeEnum.HeadArmor
+                         or ItemObject.ItemTypeEnum.Cape
+                         or ItemObject.ItemTypeEnum.BodyArmor
+                         or ItemObject.ItemTypeEnum.HandArmor
+                         or ItemObject.ItemTypeEnum.LegArmor)
+                {
+                    ModifyNodeAttribute(node1, "weight",
+                        _ => ModifyArmorWeight(node1, type).ToString(CultureInfo.InvariantCulture));
+                }
+            }
+        }
+
+        return itemsDoc;
+    }
+    private static float ModifyArmorWeight(XmlNode node, ItemObject.ItemTypeEnum type)
+    {
+        XmlNode armorNode = node.SelectNodes("ItemComponent/Armor")!.Cast<XmlNode>().First();
+        float armorPower =
+            1.0f * (armorNode.Attributes["head_armor"] == null ? 0f : float.Parse(armorNode.Attributes["head_armor"].Value))
+          + 1.1f * (armorNode.Attributes["body_armor"] == null ? 0f : float.Parse(armorNode.Attributes["body_armor"].Value))
+          + 1.4f * (armorNode.Attributes["arm_armor"] == null ? 0f : float.Parse(armorNode.Attributes["arm_armor"].Value))
+          + 1.1f * (armorNode.Attributes["leg_armor"] == null ? 0f : float.Parse(armorNode.Attributes["leg_armor"].Value));
+        float bestArmorPower = type switch
+        {
+            ItemObject.ItemTypeEnum.HeadArmor => 661f,
+            ItemObject.ItemTypeEnum.Cape => 400f,
+            ItemObject.ItemTypeEnum.BodyArmor => 400f,
+            ItemObject.ItemTypeEnum.HandArmor => 400f,
+            ItemObject.ItemTypeEnum.LegArmor => 400f,
+            ItemObject.ItemTypeEnum.HorseHarness => 100f,
+            _ => throw new ArgumentOutOfRangeException(),
+        };
+        return 6 * (float)Math.Pow(armorPower, 1.5f) / bestArmorPower;
+    }
+
+    private static void ModifyNodeAttribute(
+        XmlNode node,
+        string attributeName,
+        Func<string, string> modify,
+        string? defaultValue = null)
+    {
+        var attr = node.Attributes![attributeName];
+        if (attr == null)
+        {
+            if (defaultValue == null)
+            {
+                throw new KeyNotFoundException($"Attribute '{attributeName}' was not found and no default was provided");
+            }
+
+            attr = node.OwnerDocument!.CreateAttribute(attributeName);
+            attr.Value = defaultValue;
+            node.Attributes.Append(attr);
+        }
+
+        attr.Value = modify(attr.Value);
+    }
     private static CrpgItemType MbToCrpgItemType(ItemObject.ItemTypeEnum t) => t switch
     {
         ItemObject.ItemTypeEnum.Invalid => CrpgItemType.Undefined, // To be consistent with WeaponClass.

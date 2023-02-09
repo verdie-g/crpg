@@ -12,6 +12,7 @@ internal class SettlementExporter : IDataExporter
 {
     private const string SettlementsFile = "../../Modules/SandBox/ModuleData/settlements.xml";
 
+
     public Task Export(string gitRepoPath)
     {
         List<CrpgSettlementCreation> settlements = new();
@@ -57,6 +58,50 @@ internal class SettlementExporter : IDataExporter
     }
 
     public Task ImageExport(string gitRepoPath)
+    {
+        List<CrpgSettlementCreation> settlements = new();
+
+        var settlementsDoc = XDocument.Load(SettlementsFile);
+        foreach (var settlementNode in settlementsDoc.Descendants("Settlement"))
+        {
+            if (settlementNode.Attribute("type")?.Value == "Hideout")
+            {
+                continue;
+            }
+
+            CrpgSettlementCreation settlement = new()
+            {
+                Name = settlementNode.Attribute("name")!.Value.Split('}')[1],
+                Type = GetSettlementType(settlementNode),
+                Culture = ParseCulture(settlementNode.Attribute("culture")!.Value),
+                Position = new Point
+                {
+                    Coordinates = new[]
+                    {
+                        double.Parse(settlementNode.Attribute("posX")!.Value),
+                        double.Parse(settlementNode.Attribute("posY")!.Value),
+                    },
+                },
+                Scene = GetSettlementScene(settlementNode),
+            };
+
+            settlements.Add(settlement);
+        }
+
+        var serializer = JsonSerializer.Create(new JsonSerializerSettings
+        {
+            NullValueHandling = NullValueHandling.Ignore,
+            Formatting = Formatting.Indented,
+            ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() },
+            Converters = new JsonConverter[] { new ArrayStringEnumFlagsConverter(), new StringEnumConverter() },
+        });
+
+        using StreamWriter s = new(Path.Combine(gitRepoPath, "data", "settlements.json"));
+        serializer.Serialize(s, settlements);
+        return Task.CompletedTask;
+    }
+
+    public Task ComputeWeight(string gitRepoPath)
     {
         List<CrpgSettlementCreation> settlements = new();
 

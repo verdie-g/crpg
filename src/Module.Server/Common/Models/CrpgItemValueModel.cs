@@ -70,9 +70,9 @@ internal class CrpgItemValueModel : ItemValueModel
     {
         float armorPower =
               1.2f * armorComponent.HeadArmor
-            + 1.0f * armorComponent.BodyArmor
-            + 1.0f * armorComponent.ArmArmor
-            + 0.8f * armorComponent.LegArmor;
+            + 0.95f * armorComponent.BodyArmor
+            + 1.05f * armorComponent.ArmArmor
+            + 0.55f * armorComponent.LegArmor;
         float bestArmorPower = armorComponent.Item.ItemType switch
         {
             ItemObject.ItemTypeEnum.HeadArmor => 50.05f,
@@ -236,14 +236,14 @@ internal class CrpgItemValueModel : ItemValueModel
             float swinghandlingFactor = weapon.Handling / 100f;
             float thrustHandlingFactor = weapon.Handling / 10f;
             swingTier =
-                  0.18f
+                  0.12f
                 * (swingTier * swingLengthTier)
-                * (float)Math.Pow(swinghandlingFactor, 3f)
+                * (float)Math.Pow(swinghandlingFactor, 1.4f)
                 / weaponSwingScaler;
             thrustTier =
-                        0.18f
+                        0.12f
                         * (thrustTier * thrustLengthTier)
-                        * (float)Math.Pow(thrustHandlingFactor, 2f) / 10000000f
+                        * (float)Math.Pow(thrustHandlingFactor, 1.4f) / 10000000f
                         / weaponThrustScaler;
             float tier = 0.8f * Math.Max(swingTier, thrustTier) + 0.2f * Math.Min(swingTier, thrustTier);
             if (tier >= maxTier)
