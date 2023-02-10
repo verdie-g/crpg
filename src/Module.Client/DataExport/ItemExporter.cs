@@ -1,4 +1,6 @@
-﻿using Crpg.Module.Api.Models;
+﻿using System.Globalization;
+using System.Xml;
+using Crpg.Module.Api.Models;
 using Crpg.Module.Api.Models.Items;
 using Crpg.Module.Common.Models;
 using Crpg.Module.Helpers.Json;
@@ -262,7 +264,7 @@ internal class ItemExporter : IDataExporter
         var serializer = JsonSerializer.Create(new JsonSerializerSettings
         {
             NullValueHandling = NullValueHandling.Ignore,
-            Formatting = Formatting.Indented,
+            Formatting = Newtonsoft.Json.Formatting.Indented,
             ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() },
             Converters = new JsonConverter[] { new ArrayStringEnumFlagsConverter(), new StringEnumConverter() },
         });

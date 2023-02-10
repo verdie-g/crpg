@@ -79,7 +79,7 @@ internal class CrpgItemValueModel : ItemValueModel
             ItemObject.ItemTypeEnum.Cape => 22.66f,
             ItemObject.ItemTypeEnum.BodyArmor => 51.85f,
             ItemObject.ItemTypeEnum.HandArmor => 20.38f,
-            ItemObject.ItemTypeEnum.LegArmor => 16.5f,
+            ItemObject.ItemTypeEnum.LegArmor => 11.2f,
             ItemObject.ItemTypeEnum.HorseHarness => 45f,
             _ => throw new ArgumentOutOfRangeException(),
         };
@@ -148,10 +148,10 @@ internal class CrpgItemValueModel : ItemValueModel
             };
             float weaponThrustScaler = weapon.WeaponClass switch
             {
-                WeaponClass.OneHandedSword => 26f,
-                WeaponClass.OneHandedAxe => 26f,
-                WeaponClass.Mace => 26f,
-                WeaponClass.Dagger => 26f,
+                WeaponClass.OneHandedSword => 28f,
+                WeaponClass.OneHandedAxe => 28f,
+                WeaponClass.Mace => 28f,
+                WeaponClass.Dagger => 34f,
                 WeaponClass.TwoHandedSword => 30f,
                 WeaponClass.TwoHandedMace => 30f,
                 WeaponClass.TwoHandedAxe => 30f,
