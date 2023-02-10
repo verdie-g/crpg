@@ -11,9 +11,6 @@
     "flags": [
       "CanBePickedUpFromCorpse"
     ],
-    "flags": [
-      "CanBePickedUpFromCorpse"
-    ],
     "weapons": [
       {
         "class": "TwoHandedMace",
@@ -24,13 +21,10 @@
         "length": 99,
         "balance": 0.57,
         "handling": 81,
-        "balance": 0.57,
-        "handling": 81,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
           "NotUsableWithOneHand",
-          "BonusAgainstShield",
           "BonusAgainstShield",
           "TwoHandIdleOnMount"
         ],
@@ -38,10 +32,7 @@
         "thrustDamageType": "Undefined",
         "thrustSpeed": 92,
         "swingDamage": 30,
-        "thrustSpeed": 92,
-        "swingDamage": 30,
         "swingDamageType": "Pierce",
-        "swingSpeed": 87
         "swingSpeed": 87
       }
     ]
@@ -61,8 +52,7 @@
       "bodyArmor": 22,
       "armArmor": 6,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -81,8 +71,7 @@
       "bodyArmor": 8,
       "armArmor": 5,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -125,26 +114,6 @@
     "weapons": []
   },
   {
-    "id": "crpg_a_aserai_scale_b_shoulder_e",
-    "name": "Long Sleeved Bronze Scale Shoulder Guards",
-    "culture": "Aserai",
-    "type": "ShoulderArmor",
-    "price": 9654,
-    "weight": 3.808972,
-    "tier": 9.713134,
-    "requirement": 0,
-    "flags": [],
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 25,
-      "armArmor": 9,
-      "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
-    },
-    "weapons": []
-  },
-  {
     "id": "crpg_a_battania_cloak_a",
     "name": "Simple Cape",
     "culture": "Battania",
@@ -161,8 +130,7 @@
       "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -181,8 +149,7 @@
       "bodyArmor": 12,
       "armArmor": 2,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -201,8 +168,7 @@
       "bodyArmor": 17,
       "armArmor": 4,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -221,8 +187,7 @@
       "bodyArmor": 17,
       "armArmor": 4,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -241,8 +206,7 @@
       "bodyArmor": 8,
       "armArmor": 5,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -261,8 +225,7 @@
       "bodyArmor": 8,
       "armArmor": 5,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -281,8 +244,7 @@
       "bodyArmor": 17,
       "armArmor": 4,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -301,8 +263,7 @@
       "bodyArmor": 8,
       "armArmor": 5,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -321,8 +282,7 @@
       "bodyArmor": 13,
       "armArmor": 7,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -343,8 +303,7 @@
       "bodyArmor": 13,
       "armArmor": 7,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -385,46 +344,6 @@
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Plate"
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_AdamnSaxonHelm",
-    "name": "Saxon Noble Helm",
-    "culture": "Vlandia",
-    "type": "HeadArmor",
-    "price": 14325,
-    "weight": 4.647504,
-    "tier": 9.967334,
-    "requirement": 0,
-    "flags": [],
-    "armor": {
-      "headArmor": 64,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_AdamnSaxonHelm",
-    "name": "Saxon Noble Helm",
-    "culture": "Vlandia",
-    "type": "HeadArmor",
-    "price": 5812,
-    "weight": 3.02,
-    "tier": 7.79383039,
-    "requirement": 0,
-    "flags": [],
-    "armor": {
-      "headArmor": 48,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
     },
     "weapons": []
   },
@@ -483,8 +402,7 @@
       "bodyArmor": 23,
       "armArmor": 3,
       "legArmor": 3,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -573,8 +491,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -615,8 +532,7 @@
       "bodyArmor": 18,
       "armArmor": 9,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -637,8 +553,7 @@
       "bodyArmor": 0,
       "armArmor": 12,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -891,7 +806,6 @@
   {
     "id": "crpg_aserai_axe_2_t2",
     "name": "Desert Ascia Axe",
-    "name": "Desert Ascia Axe",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
     "price": 2250,
@@ -940,8 +854,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -1091,8 +1004,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -1114,8 +1026,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -1137,8 +1048,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -1160,8 +1070,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -1183,8 +1092,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -1206,8 +1114,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -1229,8 +1136,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -1252,8 +1158,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -1275,8 +1180,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -1298,8 +1202,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -1318,8 +1221,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -1363,8 +1265,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -1386,8 +1287,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -1408,8 +1308,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -1430,8 +1329,7 @@
       "bodyArmor": 64,
       "armArmor": 25,
       "legArmor": 25,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -1471,8 +1369,7 @@
       "bodyArmor": 17,
       "armArmor": 4,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -1569,8 +1466,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -1692,7 +1588,6 @@
         "stackAmount": 0,
         "length": 87,
         "balance": 0.58,
-        "balance": 0.58,
         "handling": 88,
         "bodyArmor": 0,
         "flags": [
@@ -1701,10 +1596,8 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 93,
-        "thrustSpeed": 93,
         "swingDamage": 21,
         "swingDamageType": "Blunt",
-        "swingSpeed": 87
         "swingSpeed": 87
       }
     ]
@@ -1747,7 +1640,6 @@
   {
     "id": "crpg_aserai_noble_sword_2_t5",
     "name": "Decorated Elite Scimitar",
-    "name": "Decorated Elite Scimitar",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
     "price": 5945,
@@ -1776,7 +1668,7 @@
         "thrustSpeed": 84,
         "swingDamage": 33,
         "swingDamageType": "Cut",
-        "swingSpeed": 88
+        "swingSpeed": 89
       }
     ]
   },
@@ -1802,8 +1694,6 @@
         "length": 101,
         "balance": 0.56,
         "handling": 88,
-        "balance": 0.56,
-        "handling": 88,
         "bodyArmor": 5,
         "flags": [
           "MeleeWeapon"
@@ -1813,7 +1703,6 @@
         "thrustSpeed": 87,
         "swingDamage": 32,
         "swingDamageType": "Cut",
-        "swingSpeed": 86
         "swingSpeed": 86
       }
     ]
@@ -1931,8 +1820,7 @@
       "bodyArmor": 22,
       "armArmor": 6,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -1951,8 +1839,7 @@
       "bodyArmor": 25,
       "armArmor": 9,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -1971,8 +1858,7 @@
       "bodyArmor": 13,
       "armArmor": 7,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -1991,8 +1877,7 @@
       "bodyArmor": 13,
       "armArmor": 7,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -2011,8 +1896,7 @@
       "bodyArmor": 18,
       "armArmor": 9,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -2054,7 +1938,6 @@
   {
     "id": "crpg_aserai_sword_2_t2",
     "name": "Iron Cavalry Scimitar",
-    "name": "Iron Cavalry Scimitar",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
     "price": 3785,
@@ -2074,9 +1957,6 @@
         "length": 112,
         "balance": 0.31,
         "handling": 84,
-        "length": 112,
-        "balance": 0.31,
-        "handling": 84,
         "bodyArmor": 3,
         "flags": [
           "MeleeWeapon"
@@ -2085,10 +1965,7 @@
         "thrustDamageType": "Undefined",
         "thrustSpeed": 87,
         "swingDamage": 35,
-        "thrustSpeed": 87,
-        "swingDamage": 35,
         "swingDamageType": "Cut",
-        "swingSpeed": 79
         "swingSpeed": 79
       }
     ]
@@ -2162,7 +2039,6 @@
   {
     "id": "crpg_aserai_sword_5_t4",
     "name": "Fine Steel Scimitar",
-    "name": "Fine Steel Scimitar",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
     "price": 4694,
@@ -2190,7 +2066,6 @@
         "swingDamage": 32,
         "swingDamageType": "Cut",
         "swingSpeed": 90
-        "swingSpeed": 90
       }
     ]
   },
@@ -2214,9 +2089,6 @@
         "length": 100,
         "balance": 0.55,
         "handling": 87,
-        "length": 100,
-        "balance": 0.55,
-        "handling": 87,
         "bodyArmor": 5,
         "flags": [
           "MeleeWeapon"
@@ -2226,7 +2098,6 @@
         "thrustSpeed": 85,
         "swingDamage": 32,
         "swingDamageType": "Cut",
-        "swingSpeed": 86
         "swingSpeed": 86
       }
     ]
@@ -2251,17 +2122,13 @@
         "length": 105,
         "balance": 0.39,
         "handling": 83,
-        "balance": 0.39,
-        "handling": 83,
         "bodyArmor": 5,
         "flags": [
           "MeleeWeapon"
         ],
         "thrustDamage": 26,
-        "thrustDamage": 26,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 89,
-        "swingDamage": 29,
         "swingDamage": 29,
         "swingDamageType": "Cut",
         "swingSpeed": 81
@@ -2330,8 +2197,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -2352,8 +2218,7 @@
       "bodyArmor": 7,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 1
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -2457,7 +2322,6 @@
   {
     "id": "crpg_bamboo_axe_t4",
     "name": "Desert Battle Axe",
-    "name": "Desert Battle Axe",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
     "price": 2186,
@@ -2530,8 +2394,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -2641,8 +2504,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -2663,8 +2525,7 @@
       "bodyArmor": 5,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 1
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -2685,8 +2546,7 @@
       "bodyArmor": 6,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 1
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -2707,8 +2567,7 @@
       "bodyArmor": 4,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 1
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -3327,8 +3186,6 @@
         "length": 104,
         "balance": 0.93,
         "handling": 89,
-        "balance": 0.93,
-        "handling": 89,
         "bodyArmor": 1,
         "flags": [
           "MeleeWeapon",
@@ -3339,7 +3196,6 @@
         "thrustSpeed": 94,
         "swingDamage": 25,
         "swingDamageType": "Cut",
-        "swingSpeed": 97
         "swingSpeed": 97
       }
     ]
@@ -3366,8 +3222,6 @@
         "length": 113,
         "balance": 0.36,
         "handling": 84,
-        "balance": 0.36,
-        "handling": 84,
         "bodyArmor": 2,
         "flags": [
           "MeleeWeapon"
@@ -3378,7 +3232,6 @@
         "swingDamage": 28,
         "swingDamageType": "Cut",
         "swingSpeed": 80
-        "swingSpeed": 80
       },
       {
         "class": "TwoHandedSword",
@@ -3387,8 +3240,6 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 113,
-        "balance": 0.9,
-        "handling": 89,
         "balance": 0.9,
         "handling": 89,
         "bodyArmor": 2,
@@ -3402,7 +3253,6 @@
         "swingDamage": 28,
         "swingDamageType": "Cut",
         "swingSpeed": 97
-        "swingSpeed": 97
       },
       {
         "class": "OneHandedSword",
@@ -3411,8 +3261,6 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 113,
-        "balance": 0.36,
-        "handling": 84,
         "balance": 0.36,
         "handling": 84,
         "bodyArmor": 2,
@@ -3424,7 +3272,6 @@
         "thrustSpeed": 88,
         "swingDamage": 28,
         "swingDamageType": "Cut",
-        "swingSpeed": 80
         "swingSpeed": 80
       }
     ]
@@ -3652,8 +3499,6 @@
         "stackAmount": 0,
         "length": 82,
         "balance": 0.76,
-        "length": 82,
-        "balance": 0.76,
         "handling": 89,
         "bodyArmor": 0,
         "flags": [
@@ -3666,13 +3511,11 @@
         "swingDamage": 32,
         "swingDamageType": "Cut",
         "swingSpeed": 92
-        "swingSpeed": 92
       }
     ]
   },
   {
     "id": "crpg_battania_axe_2_t4",
-    "name": "Saxon Bearded Axe",
     "name": "Saxon Bearded Axe",
     "culture": "Battania",
     "type": "OneHandedWeapon",
@@ -3704,13 +3547,11 @@
         "swingDamage": 36,
         "swingDamageType": "Cut",
         "swingSpeed": 90
-        "swingSpeed": 90
       }
     ]
   },
   {
     "id": "crpg_battania_axe_3_t5",
-    "name": "Steel Round Axe",
     "name": "Steel Round Axe",
     "culture": "Battania",
     "type": "OneHandedWeapon",
@@ -3762,8 +3603,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -3785,8 +3625,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -3849,8 +3688,7 @@
       "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -3871,8 +3709,7 @@
       "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -3893,8 +3730,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -3915,8 +3751,7 @@
       "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -3935,8 +3770,7 @@
       "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -3955,8 +3789,7 @@
       "bodyArmor": 18,
       "armArmor": 9,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -3975,8 +3808,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -4020,8 +3852,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -4043,8 +3874,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -4063,8 +3893,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -4083,8 +3912,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -4103,8 +3931,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -4123,8 +3950,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -4143,8 +3969,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -4163,8 +3988,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -4183,8 +4007,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -4203,8 +4026,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -4223,8 +4045,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -4246,8 +4067,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -4269,8 +4089,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -4310,8 +4129,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -4332,8 +4150,7 @@
       "bodyArmor": 9,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 1
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -4354,8 +4171,7 @@
       "bodyArmor": 24,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 1
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -4376,8 +4192,7 @@
       "bodyArmor": 30,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 1
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -4672,9 +4487,6 @@
     "flags": [
       "CanBePickedUpFromCorpse"
     ],
-    "flags": [
-      "CanBePickedUpFromCorpse"
-    ],
     "weapons": [
       {
         "class": "Mace",
@@ -4685,12 +4497,8 @@
         "length": 72,
         "balance": 0.53,
         "handling": 91,
-        "balance": 0.53,
-        "handling": 91,
         "bodyArmor": 0,
         "flags": [
-          "MeleeWeapon",
-          "BonusAgainstShield"
           "MeleeWeapon",
           "BonusAgainstShield"
         ],
@@ -4699,7 +4507,6 @@
         "thrustSpeed": 87,
         "swingDamage": 24,
         "swingDamageType": "Pierce",
-        "swingSpeed": 86
         "swingSpeed": 86
       }
     ]
@@ -4796,8 +4603,7 @@
       "bodyArmor": 0,
       "armArmor": 24,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -4833,7 +4639,6 @@
         "swingDamage": 34,
         "swingDamageType": "Cut",
         "swingSpeed": 83
-        "swingSpeed": 83
       }
     ]
   },
@@ -4864,12 +4669,10 @@
           "MeleeWeapon"
         ],
         "thrustDamage": 25,
-        "thrustDamage": 25,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 86,
         "swingDamage": 30,
         "swingDamageType": "Cut",
-        "swingSpeed": 84
         "swingSpeed": 84
       }
     ]
@@ -4905,7 +4708,6 @@
         "thrustSpeed": 85,
         "swingDamage": 39,
         "swingDamageType": "Cut",
-        "swingSpeed": 79
         "swingSpeed": 79
       }
     ]
@@ -4962,8 +4764,7 @@
       "bodyArmor": 8,
       "armArmor": 5,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -4982,8 +4783,7 @@
       "bodyArmor": 17,
       "armArmor": 4,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -5002,8 +4802,7 @@
       "bodyArmor": 12,
       "armArmor": 2,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -5022,8 +4821,7 @@
       "bodyArmor": 8,
       "armArmor": 5,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -5049,8 +4847,6 @@
         "length": 100,
         "balance": 0.33,
         "handling": 83,
-        "balance": 0.33,
-        "handling": 83,
         "bodyArmor": 3,
         "flags": [
           "MeleeWeapon"
@@ -5060,7 +4856,6 @@
         "thrustSpeed": 85,
         "swingDamage": 35,
         "swingDamageType": "Cut",
-        "swingSpeed": 80
         "swingSpeed": 80
       }
     ]
@@ -5085,8 +4880,6 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 85,
-        "balance": 0.62,
-        "handling": 85,
         "balance": 0.62,
         "handling": 85,
         "bodyArmor": 2,
@@ -5123,8 +4916,6 @@
         "stackAmount": 0,
         "length": 105,
         "balance": 0.36,
-        "length": 105,
-        "balance": 0.36,
         "handling": 83,
         "bodyArmor": 1,
         "flags": [
@@ -5134,9 +4925,7 @@
         "thrustDamageType": "Pierce",
         "thrustSpeed": 85,
         "swingDamage": 35,
-        "swingDamage": 35,
         "swingDamageType": "Cut",
-        "swingSpeed": 80
         "swingSpeed": 80
       }
     ]
@@ -5204,9 +4993,7 @@
         "thrustDamageType": "Pierce",
         "thrustSpeed": 85,
         "swingDamage": 36,
-        "swingDamage": 36,
         "swingDamageType": "Cut",
-        "swingSpeed": 80
         "swingSpeed": 80
       }
     ]
@@ -5304,8 +5091,7 @@
       "bodyArmor": 0,
       "armArmor": 30,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -5324,8 +5110,7 @@
       "bodyArmor": 25,
       "armArmor": 9,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -5386,8 +5171,7 @@
       "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -5472,8 +5256,7 @@
       "bodyArmor": 38,
       "armArmor": 8,
       "legArmor": 8,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -5494,8 +5277,7 @@
       "bodyArmor": 38,
       "armArmor": 8,
       "legArmor": 8,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -5514,8 +5296,7 @@
       "bodyArmor": 17,
       "armArmor": 4,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -5534,8 +5315,7 @@
       "bodyArmor": 13,
       "armArmor": 7,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -5554,8 +5334,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -5574,8 +5353,7 @@
       "bodyArmor": 12,
       "armArmor": 2,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -5594,8 +5372,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -5614,8 +5391,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -5725,7 +5501,6 @@
   {
     "id": "crpg_battle_axe_t4",
     "name": "Shield Reaver Axe",
-    "name": "Shield Reaver Axe",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
     "price": 3402,
@@ -5794,27 +5569,6 @@
         "swingSpeed": 74
       },
       {
-        "class": "OneHandedAxe",
-        "itemUsage": "onehanded_rshield_axe",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 112,
-        "balance": 0.16,
-        "handling": 74,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon",
-          "BonusAgainstShield"
-        ],
-        "thrustDamage": 0,
-        "thrustDamageType": "Undefined",
-        "thrustSpeed": 90,
-        "swingDamage": 34,
-        "swingDamageType": "Cut",
-        "swingSpeed": 74
-      },
-      {
         "class": "TwoHandedAxe",
         "itemUsage": "twohanded_widegrip_axe",
         "accuracy": 0,
@@ -5857,27 +5611,6 @@
         "swingDamage": 34,
         "swingDamageType": "Cut",
         "swingSpeed": 74
-      },
-      {
-        "class": "OneHandedAxe",
-        "itemUsage": "onehanded_axe",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 112,
-        "balance": 0.16,
-        "handling": 74,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon",
-          "BonusAgainstShield"
-        ],
-        "thrustDamage": 0,
-        "thrustDamageType": "Undefined",
-        "thrustSpeed": 90,
-        "swingDamage": 34,
-        "swingDamageType": "Cut",
-        "swingSpeed": 74
       }
     ]
   },
@@ -5896,8 +5629,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -5916,8 +5648,7 @@
       "bodyArmor": 22,
       "armArmor": 6,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -6021,8 +5752,6 @@
         "length": 141,
         "balance": 0.42,
         "handling": 69,
-        "balance": 0.42,
-        "handling": 69,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -6036,7 +5765,6 @@
         "thrustSpeed": 93,
         "swingDamage": 45,
         "swingDamageType": "Cut",
-        "swingSpeed": 82
         "swingSpeed": 82
       }
     ]
@@ -6144,10 +5872,8 @@
           "NoBlood"
         ],
         "thrustDamage": 10,
-        "thrustDamage": 10,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 91,
-        "swingDamage": 14,
         "swingDamage": 14,
         "swingDamageType": "Blunt",
         "swingSpeed": 94
@@ -6542,42 +6268,6 @@
     ]
   },
   {
-    "id": "crpg_bolt_g",
-    "name": "Hunting Bolts",
-    "culture": "Empire",
-    "type": "Bolts",
-    "price": 428,
-    "weight": 0.2,
-    "tier": 1.49533689,
-    "requirement": 0,
-    "flags": [
-      "ForceAttachOffHandPrimaryItemBone"
-    ],
-    "weapons": [
-      {
-        "class": "Bolt",
-        "itemUsage": "",
-        "accuracy": 100,
-        "missileSpeed": 10,
-        "stackAmount": 8,
-        "length": 37,
-        "balance": 0.0,
-        "handling": 0,
-        "bodyArmor": 0,
-        "flags": [
-          "AttachAmmoToVisual",
-          "Consumable"
-        ],
-        "thrustDamage": 15,
-        "thrustDamageType": "Cut",
-        "thrustSpeed": 0,
-        "swingDamage": 0,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 0
-      }
-    ]
-  },
-  {
     "id": "crpg_bolted_leather_strips",
     "name": "Bolted Leather Strips",
     "culture": "Khuzait",
@@ -6592,8 +6282,7 @@
       "bodyArmor": 12,
       "armArmor": 2,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -6617,8 +6306,6 @@
         "length": 71,
         "balance": 0.57,
         "handling": 91,
-        "balance": 0.57,
-        "handling": 91,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon"
@@ -6627,10 +6314,7 @@
         "thrustDamageType": "Undefined",
         "thrustSpeed": 87,
         "swingDamage": 22,
-        "thrustSpeed": 87,
-        "swingDamage": 22,
         "swingDamageType": "Blunt",
-        "swingSpeed": 87
         "swingSpeed": 87
       }
     ]
@@ -6875,8 +6559,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -6895,8 +6578,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -6915,8 +6597,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -6935,8 +6616,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -6955,8 +6635,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -6975,8 +6654,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -7016,8 +6694,7 @@
       "bodyArmor": 22,
       "armArmor": 6,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -7036,8 +6713,7 @@
       "bodyArmor": 18,
       "armArmor": 9,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -7056,8 +6732,7 @@
       "bodyArmor": 17,
       "armArmor": 4,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -7081,9 +6756,6 @@
         "length": 95,
         "balance": 0.49,
         "handling": 87,
-        "length": 95,
-        "balance": 0.49,
-        "handling": 87,
         "bodyArmor": 4,
         "flags": [
           "MeleeWeapon"
@@ -7093,7 +6765,6 @@
         "thrustSpeed": 90,
         "swingDamage": 30,
         "swingDamageType": "Cut",
-        "swingSpeed": 84
         "swingSpeed": 84
       }
     ]
@@ -7115,7 +6786,6 @@
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 20,
-        "stackAmount": 20,
         "length": 97,
         "balance": 0.0,
         "handling": 0,
@@ -7123,7 +6793,6 @@
         "flags": [
           "Consumable"
         ],
-        "thrustDamage": 15,
         "thrustDamage": 15,
         "thrustDamageType": "Cut",
         "thrustSpeed": 0,
@@ -7158,7 +6827,6 @@
           "Consumable"
         ],
         "thrustDamage": 9,
-        "thrustDamage": 9,
         "thrustDamageType": "Cut",
         "thrustSpeed": 0,
         "swingDamage": 0,
@@ -7187,19 +6855,15 @@
         "length": 108,
         "balance": 0.48,
         "handling": 85,
-        "balance": 0.48,
-        "handling": 85,
         "bodyArmor": 4,
         "flags": [
           "MeleeWeapon"
         ],
         "thrustDamage": 21,
-        "thrustDamage": 21,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 87,
         "swingDamage": 31,
         "swingDamageType": "Cut",
-        "swingSpeed": 84
         "swingSpeed": 84
       }
     ]
@@ -7223,9 +6887,6 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 84,
-        "balance": 0.76,
-        "handling": 90,
         "length": 84,
         "balance": 0.76,
         "handling": 90,
@@ -7417,8 +7078,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -7439,8 +7099,7 @@
       "bodyArmor": 0,
       "armArmor": 12,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -7461,8 +7120,7 @@
       "bodyArmor": 6,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 2
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -7483,52 +7141,7 @@
       "bodyArmor": 6,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 2
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_camel2_10",
-    "name": "Achaemenian War Camel",
-    "culture": "Aserai",
-    "type": "Mount",
-    "price": 17991,
-    "weight": 520.0,
-    "tier": 9.997325,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 110,
-      "chargeDamage": 5,
-      "maneuver": 84,
-      "speed": 35,
-      "hitPoints": 254,
-      "familyType": 2
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_camel2_11",
-    "name": "Padisha",
-    "culture": "Aserai",
-    "type": "Mount",
-    "price": 21710,
-    "weight": 520.0,
-    "tier": 11.0886145,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 110,
-      "chargeDamage": 6,
-      "maneuver": 86,
-      "speed": 38,
-      "hitPoints": 240,
-      "familyType": 2
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -7645,8 +7258,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -7667,8 +7279,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -7689,8 +7300,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -7711,8 +7321,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -7733,8 +7342,7 @@
       "bodyArmor": 38,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 1
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -7755,8 +7363,7 @@
       "bodyArmor": 33,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 1
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -7775,8 +7382,7 @@
       "bodyArmor": 12,
       "armArmor": 2,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -7876,7 +7482,6 @@
   {
     "id": "crpg_cleaver_2hsword_t3",
     "name": "Harvesting Season",
-    "name": "Harvesting Season",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
     "price": 18839,
@@ -7939,7 +7544,6 @@
         "swingDamage": 35,
         "swingDamageType": "Cut",
         "swingSpeed": 79
-        "swingSpeed": 79
       }
     ]
   },
@@ -7996,8 +7600,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -8016,8 +7619,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -8036,8 +7638,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -8058,8 +7659,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -8102,8 +7702,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -8361,7 +7960,6 @@
         "itemUsage": "crossbow",
         "accuracy": 99,
         "missileSpeed": 128,
-        "missileSpeed": 128,
         "stackAmount": 1,
         "length": 100,
         "balance": 0.0,
@@ -8438,11 +8036,9 @@
         "itemUsage": "crossbow",
         "accuracy": 100,
         "missileSpeed": 130,
-        "missileSpeed": 130,
         "stackAmount": 1,
         "length": 100,
         "balance": 0.0,
-        "handling": 82,
         "handling": 82,
         "bodyArmor": 0,
         "flags": [
@@ -8455,9 +8051,7 @@
           "TwoHandIdleOnMount"
         ],
         "thrustDamage": 65,
-        "thrustDamage": 65,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 82,
         "thrustSpeed": 82,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
@@ -8517,7 +8111,6 @@
         "class": "Crossbow",
         "itemUsage": "crossbow_light",
         "accuracy": 98,
-        "accuracy": 98,
         "missileSpeed": 105,
         "stackAmount": 1,
         "length": 95,
@@ -8538,7 +8131,6 @@
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 61
-        "swingSpeed": 61
       }
     ]
   },
@@ -8558,11 +8150,9 @@
         "itemUsage": "crossbow",
         "accuracy": 100,
         "missileSpeed": 127,
-        "missileSpeed": 127,
         "stackAmount": 1,
         "length": 100,
         "balance": 0.0,
-        "handling": 82,
         "handling": 82,
         "bodyArmor": 0,
         "flags": [
@@ -8575,9 +8165,7 @@
           "TwoHandIdleOnMount"
         ],
         "thrustDamage": 60,
-        "thrustDamage": 60,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 82,
         "thrustSpeed": 82,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
@@ -8621,44 +8209,6 @@
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 68
-      }
-    ]
-  },
-  {
-    "id": "crpg_crossbow_k",
-    "name": "Templar's Light Crossbow",
-    "culture": "Vlandia",
-    "type": "Crossbow",
-    "price": 11392,
-    "weight": 3.1,
-    "tier": 7.737954,
-    "requirement": 13,
-    "flags": [],
-    "weapons": [
-      {
-        "class": "Crossbow",
-        "itemUsage": "crossbow_light",
-        "accuracy": 98,
-        "missileSpeed": 110,
-        "stackAmount": 1,
-        "length": 95,
-        "balance": 0.0,
-        "handling": 84,
-        "bodyArmor": 0,
-        "flags": [
-          "RangedWeapon",
-          "NotUsableWithOneHand",
-          "HasString",
-          "StringHeldByHand",
-          "CantReloadOnHorseback",
-          "TwoHandIdleOnMount"
-        ],
-        "thrustDamage": 40,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 84,
-        "swingDamage": 0,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 69
       }
     ]
   },
@@ -8797,8 +8347,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -8868,7 +8417,6 @@
         "swingDamage": 31,
         "swingDamageType": "Cut",
         "swingSpeed": 86
-        "swingSpeed": 86
       }
     ]
   },
@@ -8887,8 +8435,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -8960,8 +8507,7 @@
       "bodyArmor": 0,
       "armArmor": 24,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -8982,8 +8528,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -9155,8 +8700,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -9177,8 +8721,7 @@
       "bodyArmor": 7,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 1
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -9200,8 +8743,7 @@
       "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -9223,8 +8765,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -9243,8 +8784,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -9263,8 +8803,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -9304,8 +8843,7 @@
       "bodyArmor": 12,
       "armArmor": 2,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -9360,8 +8898,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -9443,8 +8980,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -9657,8 +9193,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -9949,8 +9484,7 @@
       "bodyArmor": 0,
       "armArmor": 24,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -10449,8 +9983,7 @@
       "bodyArmor": 18,
       "armArmor": 9,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -10585,8 +10118,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -10645,8 +10177,7 @@
       "bodyArmor": 0,
       "armArmor": 3,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -10667,8 +10198,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -10725,8 +10255,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -10745,8 +10274,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -10768,8 +10296,7 @@
       "bodyArmor": 3,
       "armArmor": 2,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -10788,8 +10315,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -10810,8 +10336,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -10832,8 +10357,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -10877,8 +10401,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -10897,8 +10420,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -10917,8 +10439,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -10979,8 +10500,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -11218,8 +10738,7 @@
       "bodyArmor": 52,
       "armArmor": 23,
       "legArmor": 18,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -11238,8 +10757,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -11370,8 +10888,6 @@
         "thrustDamageType": "Undefined",
         "thrustSpeed": 83,
         "swingDamage": 25,
-        "thrustSpeed": 83,
-        "swingDamage": 25,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -11397,8 +10913,6 @@
         "length": 100,
         "balance": 0.09,
         "handling": 79,
-        "balance": 0.09,
-        "handling": 79,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon"
@@ -11406,7 +10920,6 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 85,
-        "swingDamage": 29,
         "swingDamage": 29,
         "swingDamageType": "Blunt",
         "swingSpeed": 72
@@ -11473,7 +10986,7 @@
         "thrustDamage": 22,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 85,
-        "swingDamage": 32,
+        "swingDamage": 33,
         "swingDamageType": "Cut",
         "swingSpeed": 84
       }
@@ -11527,8 +11040,7 @@
       "bodyArmor": 8,
       "armArmor": 5,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -11547,8 +11059,7 @@
       "bodyArmor": 8,
       "armArmor": 5,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -11782,7 +11293,6 @@
         "swingDamage": 35,
         "swingDamageType": "Cut",
         "swingSpeed": 83
-        "swingSpeed": 83
       }
     ]
   },
@@ -11898,8 +11408,7 @@
       "bodyArmor": 28,
       "armArmor": 13,
       "legArmor": 8,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -11921,8 +11430,7 @@
       "bodyArmor": 28,
       "armArmor": 13,
       "legArmor": 8,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -11944,8 +11452,7 @@
       "bodyArmor": 28,
       "armArmor": 13,
       "legArmor": 8,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -11967,8 +11474,7 @@
       "bodyArmor": 28,
       "armArmor": 13,
       "legArmor": 8,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -12029,8 +11535,7 @@
       "bodyArmor": 13,
       "armArmor": 7,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -12056,19 +11561,15 @@
         "length": 97,
         "balance": 0.6,
         "handling": 86,
-        "balance": 0.6,
-        "handling": 86,
         "bodyArmor": 2,
         "flags": [
           "MeleeWeapon"
         ],
         "thrustDamage": 20,
-        "thrustDamage": 20,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 87,
         "swingDamage": 30,
         "swingDamageType": "Cut",
-        "swingSpeed": 87
         "swingSpeed": 87
       }
     ]
@@ -12129,8 +11630,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -12152,8 +11652,7 @@
       "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -12169,9 +11668,6 @@
     "flags": [
       "DropOnWeaponChange"
     ],
-    "flags": [
-      "DropOnWeaponChange"
-    ],
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -12180,9 +11676,7 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 554,
-        "length": 554,
         "balance": 0.0,
-        "handling": 34,
         "handling": 34,
         "bodyArmor": 0,
         "flags": [
@@ -12192,13 +11686,10 @@
           "TwoHandIdleOnMount"
         ],
         "thrustDamage": 19,
-        "thrustDamage": 19,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 86,
         "thrustSpeed": 86,
         "swingDamage": 0,
         "swingDamageType": "Undefined",
-        "swingSpeed": 21
         "swingSpeed": 21
       },
       {
@@ -12208,9 +11699,7 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 554,
-        "length": 554,
         "balance": 0.0,
-        "handling": 34,
         "handling": 34,
         "bodyArmor": 0,
         "flags": [
@@ -12220,13 +11709,10 @@
           "TwoHandIdleOnMount"
         ],
         "thrustDamage": 19,
-        "thrustDamage": 19,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 86,
         "thrustSpeed": 86,
         "swingDamage": 0,
         "swingDamageType": "Undefined",
-        "swingSpeed": 21
         "swingSpeed": 21
       }
     ]
@@ -12249,8 +11735,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -12352,8 +11837,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -12396,8 +11880,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -12566,8 +12049,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -12586,8 +12068,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -12606,8 +12087,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -12626,8 +12106,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -12646,8 +12125,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -12666,8 +12144,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -12752,8 +12229,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -12772,8 +12248,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -12881,8 +12356,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -13093,8 +12567,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -13113,8 +12586,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -13133,8 +12605,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -13155,8 +12626,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -13177,8 +12647,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -13219,26 +12688,6 @@
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Plate"
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_great_prankh_helm",
-    "name": "Round Top Great Helmet",
-    "culture": "Empire",
-    "type": "HeadArmor",
-    "price": 14325,
-    "weight": 4.647504,
-    "tier": 9.967334,
-    "requirement": 0,
-    "flags": [],
-    "armor": {
-      "headArmor": 64,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
     },
     "weapons": []
   },
@@ -13297,8 +12746,7 @@
       "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -13319,8 +12767,7 @@
       "bodyArmor": 0,
       "armArmor": 12,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -13341,8 +12788,7 @@
       "bodyArmor": 0,
       "armArmor": 12,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -13363,8 +12809,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -13383,8 +12828,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -13405,8 +12849,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -13449,8 +12892,7 @@
       "bodyArmor": 34,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 1
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -13471,8 +12913,7 @@
       "bodyArmor": 36,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 1
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -13493,8 +12934,7 @@
       "bodyArmor": 31,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 1
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -13535,8 +12975,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -13558,8 +12997,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -13580,8 +13018,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -13603,8 +13040,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -13626,8 +13062,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -13649,8 +13084,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -13672,8 +13106,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -13780,7 +13213,6 @@
   },
   {
     "id": "crpg_heavy_executionner_2sword",
-    "name": "Heavy Executioner Long Sword",
     "name": "Heavy Executioner Long Sword",
     "culture": "Battania",
     "type": "TwoHandedWeapon",
@@ -13905,8 +13337,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -13925,8 +13356,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -13947,8 +13377,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -13969,8 +13398,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -13992,8 +13420,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -14015,8 +13442,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -14106,8 +13532,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -14129,8 +13554,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -14194,8 +13618,7 @@
       "bodyArmor": 0,
       "armArmor": 18,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -14552,7 +13975,6 @@
           "AmmoBreaksOnBounceBack"
         ],
         "thrustDamage": 41,
-        "thrustDamage": 41,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 92,
         "swingDamage": 0,
@@ -14577,7 +13999,6 @@
         "thrustDamageType": "Undefined",
         "thrustSpeed": 92,
         "swingDamage": 12,
-        "swingDamage": 12,
         "swingDamageType": "Cut",
         "swingSpeed": 106
       }
@@ -14601,8 +14022,7 @@
       "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -14915,7 +14335,6 @@
   {
     "id": "crpg_imperial_axe_t3",
     "name": "Tzikourion Axe",
-    "name": "Tzikourion Axe",
     "culture": "Empire",
     "type": "OneHandedWeapon",
     "price": 881,
@@ -14967,8 +14386,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -14987,8 +14405,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -15049,8 +14466,7 @@
       "bodyArmor": 18,
       "armArmor": 9,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -15072,8 +14488,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -15092,8 +14507,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -15177,8 +14591,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -15200,8 +14613,7 @@
       "bodyArmor": 28,
       "armArmor": 13,
       "legArmor": 8,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -15222,8 +14634,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -15244,8 +14655,7 @@
       "bodyArmor": 5,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 1
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -15307,8 +14717,7 @@
       "bodyArmor": 45,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 1
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -15407,8 +14816,7 @@
       "bodyArmor": 13,
       "armArmor": 7,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -15556,8 +14964,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -15576,8 +14983,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -15596,8 +15002,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -15618,8 +15023,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -15638,8 +15042,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -15658,8 +15061,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -15678,8 +15080,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -15698,8 +15099,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -15718,8 +15118,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -15738,8 +15137,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -15798,8 +15196,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -15861,9 +15258,6 @@
         "length": 70,
         "balance": 0.17,
         "handling": 84,
-        "length": 70,
-        "balance": 0.17,
-        "handling": 84,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon"
@@ -15872,10 +15266,7 @@
         "thrustDamageType": "Undefined",
         "thrustSpeed": 82,
         "swingDamage": 30,
-        "thrustSpeed": 82,
-        "swingDamage": 30,
         "swingDamageType": "Blunt",
-        "swingSpeed": 75
         "swingSpeed": 75
       }
     ]
@@ -16234,8 +15625,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -16256,8 +15646,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -16278,8 +15667,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -16298,8 +15686,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -16318,8 +15705,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -16338,8 +15724,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -16360,8 +15745,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -16382,8 +15766,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -16404,8 +15787,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -16424,8 +15806,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -16444,8 +15825,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -16464,8 +15844,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -16550,8 +15929,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -17067,8 +16445,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -17087,8 +16464,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -17107,8 +16483,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -17175,7 +16550,6 @@
         "swingDamage": 33,
         "swingDamageType": "Cut",
         "swingSpeed": 87
-        "swingSpeed": 87
       }
     ]
   },
@@ -17199,9 +16573,6 @@
         "length": 87,
         "balance": 0.72,
         "handling": 92,
-        "length": 87,
-        "balance": 0.72,
-        "handling": 92,
         "bodyArmor": 5,
         "flags": [
           "MeleeWeapon"
@@ -17211,7 +16582,6 @@
         "thrustSpeed": 88,
         "swingDamage": 31,
         "swingDamageType": "Cut",
-        "swingSpeed": 91
         "swingSpeed": 91
       }
     ]
@@ -17329,8 +16699,6 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 99,
-        "balance": 0.58,
-        "handling": 86,
         "balance": 0.58,
         "handling": 86,
         "bodyArmor": 3,
@@ -17473,8 +16841,6 @@
         "length": 103,
         "balance": 0.54,
         "handling": 85,
-        "balance": 0.54,
-        "handling": 85,
         "bodyArmor": 3,
         "flags": [
           "MeleeWeapon"
@@ -17559,8 +16925,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -17582,8 +16947,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -17664,8 +17028,7 @@
       "bodyArmor": 0,
       "armArmor": 30,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -17684,8 +17047,7 @@
       "bodyArmor": 25,
       "armArmor": 9,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -17706,8 +17068,7 @@
       "bodyArmor": 52,
       "armArmor": 18,
       "legArmor": 23,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -17751,7 +17112,6 @@
   },
   {
     "id": "crpg_large_franziskaa_axe_t3",
-    "name": "Long Franziska Axe",
     "name": "Long Franziska Axe",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
@@ -17826,8 +17186,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -17909,8 +17268,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -17990,8 +17348,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -18055,8 +17412,7 @@
       "bodyArmor": 0,
       "armArmor": 3,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -18096,8 +17452,7 @@
       "bodyArmor": 17,
       "armArmor": 4,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -18178,8 +17533,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 3,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -18220,8 +17574,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -18240,8 +17593,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -18260,8 +17612,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -18280,8 +17631,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -18324,8 +17674,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -18344,8 +17693,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -18366,8 +17714,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -18386,8 +17733,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -18408,8 +17754,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -18428,8 +17773,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -18469,8 +17813,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -18489,8 +17832,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -18584,8 +17926,7 @@
       "bodyArmor": 6,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 1
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -18812,8 +18153,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -18934,8 +18274,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -19039,8 +18378,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -19220,8 +18558,7 @@
       "bodyArmor": 40,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 1
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -19240,8 +18577,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 12,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -19279,8 +18615,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -19299,8 +18634,7 @@
       "bodyArmor": 0,
       "armArmor": 18,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -19340,8 +18674,7 @@
       "bodyArmor": 17,
       "armArmor": 4,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -19822,8 +19155,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -19880,7 +19212,6 @@
         "length": 194,
         "balance": 0.0,
         "handling": 40,
-        "handling": 40,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -19889,13 +19220,10 @@
           "TwoHandIdleOnMount"
         ],
         "thrustDamage": 33,
-        "thrustDamage": 33,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 78,
         "thrustSpeed": 78,
         "swingDamage": 0,
         "swingDamageType": "Undefined",
-        "swingSpeed": 43
         "swingSpeed": 43
       },
       {
@@ -19907,7 +19235,6 @@
         "length": 194,
         "balance": 0.0,
         "handling": 40,
-        "handling": 40,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -19916,13 +19243,10 @@
           "TwoHandIdleOnMount"
         ],
         "thrustDamage": 33,
-        "thrustDamage": 33,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 78,
         "thrustSpeed": 78,
         "swingDamage": 0,
         "swingDamageType": "Undefined",
-        "swingSpeed": 43
         "swingSpeed": 43
       }
     ]
@@ -19945,9 +19269,7 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 150,
-        "length": 150,
         "balance": 0.0,
-        "handling": 55,
         "handling": 55,
         "bodyArmor": 0,
         "flags": [
@@ -19955,13 +19277,10 @@
           "WideGrip"
         ],
         "thrustDamage": 31,
-        "thrustDamage": 31,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 77,
         "thrustSpeed": 77,
         "swingDamage": 0,
         "swingDamageType": "Undefined",
-        "swingSpeed": 20
         "swingSpeed": 20
       },
       {
@@ -19973,9 +19292,6 @@
         "length": 150,
         "balance": 0.0,
         "handling": 52,
-        "length": 150,
-        "balance": 0.0,
-        "handling": 52,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -19984,9 +19300,7 @@
           "TwoHandIdleOnMount"
         ],
         "thrustDamage": 31,
-        "thrustDamage": 31,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 86,
         "thrustSpeed": 86,
         "swingDamage": 0,
         "swingDamageType": "Undefined",
@@ -20048,8 +19362,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -20062,9 +19375,6 @@
     "weight": 2.02,
     "tier": 7.53524,
     "requirement": 0,
-    "flags": [
-      "CanBePickedUpFromCorpse"
-    ],
     "flags": [
       "CanBePickedUpFromCorpse"
     ],
@@ -20082,15 +19392,12 @@
         "flags": [
           "MeleeWeapon",
           "BonusAgainstShield"
-          "MeleeWeapon",
-          "BonusAgainstShield"
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 86,
         "swingDamage": 28,
         "swingDamageType": "Pierce",
-        "swingSpeed": 84
         "swingSpeed": 84
       }
     ]
@@ -21838,8 +21145,8 @@
     ]
   },
   {
-    "id": "crpg_mule2_1",
-    "name": "Mule",
+    "id": "crpg_mule_load_a",
+    "name": "Mule Harness with Pack",
     "culture": "Neutral",
     "type": "MountHarness",
     "price": 1601,
@@ -21859,8 +21166,8 @@
     "weapons": []
   },
   {
-    "id": "crpg_mule2_2",
-    "name": "Chadz",
+    "id": "crpg_mule_load_b",
+    "name": "Mule Harness with Baskets",
     "culture": "Neutral",
     "type": "MountHarness",
     "price": 1601,
@@ -21959,8 +21266,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -21979,8 +21285,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -22001,8 +21306,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -22023,8 +21327,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -22043,8 +21346,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -22065,8 +21367,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -22087,8 +21388,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -22107,8 +21407,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -22127,8 +21426,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -22149,8 +21447,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -22171,8 +21468,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -22191,8 +21487,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -22211,8 +21506,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -22231,8 +21525,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -22251,8 +21544,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -22353,8 +21645,7 @@
       "bodyArmor": 13,
       "armArmor": 7,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -22392,8 +21683,7 @@
       "bodyArmor": 18,
       "armArmor": 9,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -22455,8 +21745,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -22475,8 +21764,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -22497,8 +21785,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -22519,8 +21806,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -22560,8 +21846,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -22624,8 +21909,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -22923,8 +22207,7 @@
       "bodyArmor": 0,
       "armArmor": 24,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -22988,8 +22271,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -23010,8 +22292,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -23030,8 +22311,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -23328,8 +22608,7 @@
       "bodyArmor": 12,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 1
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -23350,8 +22629,7 @@
       "bodyArmor": 9,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 1
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -23433,8 +22711,7 @@
       "bodyArmor": 0,
       "armArmor": 30,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -23455,8 +22732,7 @@
       "bodyArmor": 24,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 1
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -23869,7 +23145,6 @@
           "AmmoBreaksOnBounceBack"
         ],
         "thrustDamage": 37,
-        "thrustDamage": 37,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 92,
         "swingDamage": 0,
@@ -23936,8 +23211,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -24072,8 +23346,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -24095,8 +23368,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -24115,8 +23387,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -24138,8 +23409,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -24237,8 +23507,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -24301,8 +23570,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -24321,8 +23589,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -24384,8 +23651,7 @@
       "bodyArmor": 12,
       "armArmor": 2,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -24406,8 +23672,7 @@
       "bodyArmor": 0,
       "armArmor": 12,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -24447,8 +23712,7 @@
       "bodyArmor": 0,
       "armArmor": 12,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -24491,8 +23755,7 @@
       "bodyArmor": 13,
       "armArmor": 7,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -24511,8 +23774,7 @@
       "bodyArmor": 22,
       "armArmor": 6,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -24531,8 +23793,7 @@
       "bodyArmor": 13,
       "armArmor": 7,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -24589,8 +23850,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -24611,8 +23871,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -24631,8 +23890,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -24651,8 +23909,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -24673,8 +23930,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -24777,8 +24033,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -25025,20 +24280,16 @@
         "length": 122,
         "balance": 0.0,
         "handling": 70,
-        "handling": 70,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
           "WideGrip"
         ],
         "thrustDamage": 28,
-        "thrustDamage": 28,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 79,
         "thrustSpeed": 79,
         "swingDamage": 0,
         "swingDamageType": "Undefined",
-        "swingSpeed": 39
         "swingSpeed": 39
       },
       {
@@ -25050,8 +24301,6 @@
         "length": 122,
         "balance": 0.36,
         "handling": 68,
-        "balance": 0.36,
-        "handling": 68,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -25060,13 +24309,10 @@
           "TwoHandIdleOnMount"
         ],
         "thrustDamage": 28,
-        "thrustDamage": 28,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 87,
         "thrustSpeed": 87,
         "swingDamage": 0,
         "swingDamageType": "Undefined",
-        "swingSpeed": 80
         "swingSpeed": 80
       }
     ]
@@ -25093,20 +24339,16 @@
         "length": 132,
         "balance": 0.0,
         "handling": 75,
-        "handling": 75,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
           "WideGrip"
         ],
         "thrustDamage": 24,
-        "thrustDamage": 24,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 82,
         "thrustSpeed": 82,
         "swingDamage": 0,
         "swingDamageType": "Undefined",
-        "swingSpeed": 50
         "swingSpeed": 50
       },
       {
@@ -25118,8 +24360,6 @@
         "length": 132,
         "balance": 0.61,
         "handling": 74,
-        "balance": 0.61,
-        "handling": 74,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -25128,13 +24368,10 @@
           "TwoHandIdleOnMount"
         ],
         "thrustDamage": 24,
-        "thrustDamage": 24,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 89,
         "thrustSpeed": 89,
         "swingDamage": 0,
         "swingDamageType": "Undefined",
-        "swingSpeed": 88
         "swingSpeed": 88
       }
     ]
@@ -25331,8 +24568,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -25390,8 +24626,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -25472,8 +24707,7 @@
       "bodyArmor": 0,
       "armArmor": 18,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -25492,8 +24726,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -25512,8 +24745,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -25532,8 +24764,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -25552,8 +24783,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -25587,7 +24817,6 @@
         "swingDamage": 32,
         "swingDamageType": "Cut",
         "swingSpeed": 86
-        "swingSpeed": 86
       }
     ]
   },
@@ -25608,8 +24837,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -25630,8 +24858,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -25650,8 +24877,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -25670,8 +24896,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -25714,26 +24939,6 @@
     "weapons": []
   },
   {
-    "id": "crpg_pothelm",
-    "name": "Roundtop Full Helm",
-    "culture": "Empire",
-    "type": "HeadArmor",
-    "price": 14325,
-    "weight": 4.647504,
-    "tier": 9.967334,
-    "requirement": 0,
-    "flags": [],
-    "armor": {
-      "headArmor": 64,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
-    },
-    "weapons": []
-  },
-  {
     "id": "crpg_practice_spear_t1",
     "name": "Bludgeon Staff",
     "culture": "Neutral",
@@ -25763,7 +24968,6 @@
         "thrustDamageType": "Blunt",
         "thrustSpeed": 83,
         "swingDamage": 23,
-        "swingDamage": 23,
         "swingDamageType": "Blunt",
         "swingSpeed": 41
       },
@@ -25787,7 +24991,6 @@
         "thrustDamage": 15,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 91,
-        "swingDamage": 23,
         "swingDamage": 23,
         "swingDamageType": "Blunt",
         "swingSpeed": 81
@@ -25913,8 +25116,7 @@
       "bodyArmor": 0,
       "armArmor": 3,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -25957,8 +25159,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -26012,8 +25213,7 @@
       "bodyArmor": 38,
       "armArmor": 8,
       "legArmor": 8,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -26297,8 +25497,7 @@
       "bodyArmor": 8,
       "armArmor": 5,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -26351,8 +25550,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -26444,8 +25642,7 @@
       "bodyArmor": 18,
       "armArmor": 9,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -26527,8 +25724,7 @@
       "bodyArmor": 0,
       "armArmor": 12,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -26550,8 +25746,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -26572,8 +25767,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -26592,8 +25786,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -26614,8 +25807,7 @@
       "bodyArmor": 0,
       "armArmor": 18,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -26636,8 +25828,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -26656,8 +25847,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -26676,8 +25866,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -26698,8 +25887,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -26841,125 +26029,6 @@
     "weapons": []
   },
   {
-    "id": "crpg_rus_armour",
-    "name": "Vaegir Coat of Plates",
-    "culture": "Sturgia",
-    "type": "BodyArmor",
-    "price": 20718,
-    "weight": 17.11691,
-    "tier": 8.744833,
-    "requirement": 0,
-    "flags": [
-      "UseTeamColor"
-    ],
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 52,
-      "armArmor": 23,
-      "legArmor": 18,
-      "materialType": "Plate"
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_rus_armour1",
-    "name": "Vaegir Coat of Plates",
-    "culture": "Sturgia",
-    "type": "BodyArmor",
-    "price": 20718,
-    "weight": 17.11691,
-    "tier": 8.744833,
-    "requirement": 0,
-    "flags": [
-      "UseTeamColor"
-    ],
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 52,
-      "armArmor": 23,
-      "legArmor": 18,
-      "materialType": "Plate"
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_rus_helm_noble",
-    "name": "Vaegir Noble Helmet",
-    "culture": "Sturgia",
-    "type": "HeadArmor",
-    "price": 14325,
-    "weight": 4.647504,
-    "tier": 9.967334,
-    "requirement": 0,
-    "flags": [],
-    "armor": {
-      "headArmor": 64,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0,
-      "materialType": "Plate"
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_rus_helm_regular",
-    "name": "Vaegir Helmet",
-    "culture": "Sturgia",
-    "type": "HeadArmor",
-    "price": 14325,
-    "weight": 4.647504,
-    "tier": 9.967334,
-    "requirement": 0,
-    "flags": [],
-    "armor": {
-      "headArmor": 64,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0,
-      "materialType": "Plate"
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_rus_helm_regular2",
-    "name": "Vaegir Helmet",
-    "culture": "Sturgia",
-    "type": "HeadArmor",
-    "price": 14325,
-    "weight": 4.647504,
-    "tier": 9.967334,
-    "requirement": 0,
-    "flags": [],
-    "armor": {
-      "headArmor": 64,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0,
-      "materialType": "Plate"
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_rus_open_helm",
-    "name": "Vaegir Open Helmet",
-    "culture": "Sturgia",
-    "type": "HeadArmor",
-    "price": 7483,
-    "weight": 3.403728,
-    "tier": 8.353923,
-    "requirement": 0,
-    "flags": [],
-    "armor": {
-      "headArmor": 52,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
-    },
-    "weapons": []
-  },
-  {
     "id": "crpg_sa_1ChurburghBoots",
     "name": "Plate Boots",
     "culture": "Vlandia",
@@ -26974,8 +26043,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 30,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -26994,8 +26062,7 @@
       "bodyArmor": 0,
       "armArmor": 30,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -27014,8 +26081,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -27055,8 +26121,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -27327,8 +26392,7 @@
       "bodyArmor": 17,
       "armArmor": 4,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -27350,8 +26414,7 @@
       "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -27444,8 +26507,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -27464,8 +26526,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -27484,8 +26545,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -27506,8 +26566,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -27528,8 +26587,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -27548,8 +26606,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -27570,8 +26627,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -27592,14 +26648,12 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
   {
     "id": "crpg_sentinel_2hsword",
-    "name": "Longsword",
     "name": "Longsword",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
@@ -27885,8 +26939,6 @@
         "length": 87,
         "balance": 0.67,
         "handling": 89,
-        "balance": 0.67,
-        "handling": 89,
         "bodyArmor": 5,
         "flags": [
           "MeleeWeapon"
@@ -27932,7 +26984,6 @@
         "swingDamage": 30,
         "swingDamageType": "Cut",
         "swingSpeed": 89
-        "swingSpeed": 89
       }
     ]
   },
@@ -27948,9 +26999,6 @@
     "flags": [
       "DropOnWeaponChange"
     ],
-    "flags": [
-      "DropOnWeaponChange"
-    ],
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -27958,8 +27006,6 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 305,
-        "balance": 0.0,
         "length": 305,
         "balance": 0.0,
         "handling": 55,
@@ -27971,13 +27017,10 @@
           "TwoHandIdleOnMount"
         ],
         "thrustDamage": 14,
-        "thrustDamage": 14,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 94,
         "thrustSpeed": 94,
         "swingDamage": 0,
         "swingDamageType": "Undefined",
-        "swingSpeed": 56
         "swingSpeed": 56
       },
       {
@@ -27988,8 +27031,6 @@
         "stackAmount": 0,
         "length": 305,
         "balance": 0.0,
-        "length": 305,
-        "balance": 0.0,
         "handling": 55,
         "bodyArmor": 0,
         "flags": [
@@ -27999,9 +27040,7 @@
           "TwoHandIdleOnMount"
         ],
         "thrustDamage": 14,
-        "thrustDamage": 14,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 94,
         "thrustSpeed": 94,
         "swingDamage": 0,
         "swingDamageType": "Undefined",
@@ -28069,9 +27108,6 @@
         "length": 97,
         "balance": 0.61,
         "handling": 87,
-        "length": 97,
-        "balance": 0.61,
-        "handling": 87,
         "bodyArmor": 1,
         "flags": [
           "MeleeWeapon"
@@ -28081,7 +27117,6 @@
         "thrustSpeed": 85,
         "swingDamage": 29,
         "swingDamageType": "Cut",
-        "swingSpeed": 88
         "swingSpeed": 88
       }
     ]
@@ -28214,7 +27249,6 @@
   {
     "id": "crpg_small_bit_axe_t2",
     "name": "Tabar Axe",
-    "name": "Tabar Axe",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
     "price": 292,
@@ -28327,7 +27361,6 @@
   {
     "id": "crpg_small_spurred_axe_t2",
     "name": "Boarding Axe",
-    "name": "Boarding Axe",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
     "price": 1044,
@@ -28347,9 +27380,6 @@
         "length": 67,
         "balance": 0.68,
         "handling": 89,
-        "length": 67,
-        "balance": 0.68,
-        "handling": 89,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -28357,7 +27387,6 @@
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 93,
         "thrustSpeed": 93,
         "swingDamage": 30,
         "swingDamageType": "Cut",
@@ -28446,22 +27475,16 @@
         "length": 123,
         "balance": 0.57,
         "handling": 81,
-        "balance": 0.57,
-        "handling": 81,
         "bodyArmor": 5,
         "flags": [
           "MeleeWeapon",
           "NotUsableWithOneHand"
         ],
         "thrustDamage": 16,
-        "thrustDamage": 16,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 92,
         "swingDamage": 38,
-        "thrustSpeed": 92,
-        "swingDamage": 38,
         "swingDamageType": "Cut",
-        "swingSpeed": 87
         "swingSpeed": 87
       }
     ]
@@ -28542,8 +27565,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -28603,14 +27625,12 @@
       "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
   {
     "id": "crpg_southern_small_axe_t2",
-    "name": "Desert Crescent Axe",
     "name": "Desert Crescent Axe",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
@@ -28917,7 +27937,6 @@
           "AmmoBreaksOnBounceBack"
         ],
         "thrustDamage": 44,
-        "thrustDamage": 44,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 90,
         "swingDamage": 0,
@@ -28942,7 +27961,6 @@
         "thrustDamageType": "Undefined",
         "thrustSpeed": 90,
         "swingDamage": 12,
-        "swingDamage": 12,
         "swingDamageType": "Cut",
         "swingSpeed": 101
       }
@@ -28965,8 +27983,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -28987,8 +28004,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -29079,8 +28095,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -29099,8 +28114,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -29119,8 +28133,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -29141,8 +28154,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -29420,7 +28432,6 @@
         "length": 108,
         "balance": 0.36,
         "handling": 84,
-        "handling": 84,
         "bodyArmor": 4,
         "flags": [
           "MeleeWeapon"
@@ -29559,8 +28570,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -29677,8 +28687,7 @@
       "bodyArmor": 9,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 1
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -29737,8 +28746,7 @@
       "bodyArmor": 22,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 1
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -29759,8 +28767,7 @@
       "bodyArmor": 7,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 1
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -29820,8 +28827,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -29861,8 +28867,7 @@
       "bodyArmor": 8,
       "armArmor": 5,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -29883,8 +28888,7 @@
       "bodyArmor": 0,
       "armArmor": 18,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -29906,8 +28910,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -29988,8 +28991,7 @@
       "bodyArmor": 12,
       "armArmor": 2,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -30089,8 +29091,7 @@
       "bodyArmor": 0,
       "armArmor": 18,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -30208,8 +29209,7 @@
       "bodyArmor": 9,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 1
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -30405,8 +29405,7 @@
       "bodyArmor": 18,
       "armArmor": 9,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -30467,8 +29466,7 @@
       "bodyArmor": 0,
       "armArmor": 18,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -30550,8 +29548,7 @@
       "bodyArmor": 31,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 1
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -30591,8 +29588,7 @@
       "bodyArmor": 0,
       "armArmor": 12,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -30631,35 +29627,12 @@
         "swingSpeed": 77
       },
       {
-        "class": "OneHandedAxe",
-        "itemUsage": "onehanded_rshield_axe",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 111,
-        "balance": 0.25,
-        "handling": 73,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon",
-          "BonusAgainstShield"
-        ],
-        "thrustDamage": 0,
-        "thrustDamageType": "Undefined",
-        "thrustSpeed": 94,
-        "swingDamage": 31,
-        "swingDamageType": "Cut",
-        "swingSpeed": 77
-      },
-      {
         "class": "TwoHandedAxe",
         "itemUsage": "twohanded_widegrip_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 111,
-        "balance": 0.81,
-        "handling": 82,
         "balance": 0.81,
         "handling": 82,
         "bodyArmor": 0,
@@ -30673,31 +29646,7 @@
         "thrustDamageType": "Undefined",
         "thrustSpeed": 100,
         "swingDamage": 31,
-        "thrustSpeed": 100,
-        "swingDamage": 31,
         "swingDamageType": "Cut",
-        "swingSpeed": 94
-      },
-      {
-        "class": "OneHandedAxe",
-        "itemUsage": "onehanded_axe",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 111,
-        "balance": 0.25,
-        "handling": 73,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon",
-          "BonusAgainstShield"
-        ],
-        "thrustDamage": 0,
-        "thrustDamageType": "Undefined",
-        "thrustSpeed": 94,
-        "swingDamage": 31,
-        "swingDamageType": "Cut",
-        "swingSpeed": 77
         "swingSpeed": 94
       },
       {
@@ -30764,7 +29713,6 @@
   {
     "id": "crpg_sturgia_axe_2_t2",
     "name": "Iron Hand Axe",
-    "name": "Iron Hand Axe",
     "culture": "Sturgia",
     "type": "OneHandedWeapon",
     "price": 1545,
@@ -30784,8 +29732,6 @@
         "length": 69,
         "balance": 0.82,
         "handling": 92,
-        "balance": 0.82,
-        "handling": 92,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -30797,13 +29743,11 @@
         "swingDamage": 29,
         "swingDamageType": "Cut",
         "swingSpeed": 94
-        "swingSpeed": 94
       }
     ]
   },
   {
     "id": "crpg_sturgia_axe_3_t3",
-    "name": "Forester Axe",
     "name": "Forester Axe",
     "culture": "Sturgia",
     "type": "OneHandedWeapon",
@@ -30841,7 +29785,6 @@
   {
     "id": "crpg_sturgia_axe_4_t4",
     "name": "Steel Pillager Axe",
-    "name": "Steel Pillager Axe",
     "culture": "Sturgia",
     "type": "OneHandedWeapon",
     "price": 2837,
@@ -30861,8 +29804,6 @@
         "length": 77,
         "balance": 0.63,
         "handling": 87,
-        "balance": 0.63,
-        "handling": 87,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -30874,13 +29815,11 @@
         "swingDamage": 34,
         "swingDamageType": "Cut",
         "swingSpeed": 88
-        "swingSpeed": 88
       }
     ]
   },
   {
     "id": "crpg_sturgia_axe_5_t5",
-    "name": "Wood Chopper Axe",
     "name": "Wood Chopper Axe",
     "culture": "Sturgia",
     "type": "OneHandedWeapon",
@@ -30995,8 +29934,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 3,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -31036,8 +29974,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -31310,7 +30247,7 @@
         "flags": [
           "MeleeWeapon"
         ],
-        "thrustDamage": 19,
+        "thrustDamage": 18,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 86,
         "swingDamage": 36,
@@ -31679,8 +30616,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -31743,8 +30679,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -31765,8 +30700,7 @@
       "bodyArmor": 64,
       "armArmor": 25,
       "legArmor": 25,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -31785,8 +30719,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -31805,8 +30738,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -31825,8 +30757,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -31845,8 +30776,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -31865,8 +30795,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -31948,8 +30877,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -31968,8 +30896,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -31988,8 +30915,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -32010,8 +30936,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -32030,8 +30955,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -32050,8 +30974,7 @@
       "bodyArmor": 25,
       "armArmor": 9,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -32149,8 +31072,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -32188,9 +31110,6 @@
     "flags": [
       "DropOnWeaponChange"
     ],
-    "flags": [
-      "DropOnWeaponChange"
-    ],
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -32199,9 +31118,7 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 423,
-        "length": 423,
         "balance": 0.0,
-        "handling": 36,
         "handling": 36,
         "bodyArmor": 0,
         "flags": [
@@ -32211,13 +31128,10 @@
           "TwoHandIdleOnMount"
         ],
         "thrustDamage": 23,
-        "thrustDamage": 23,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 79,
         "thrustSpeed": 79,
         "swingDamage": 0,
         "swingDamageType": "Undefined",
-        "swingSpeed": 23
         "swingSpeed": 23
       },
       {
@@ -32227,9 +31141,7 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 423,
-        "length": 423,
         "balance": 0.0,
-        "handling": 36,
         "handling": 36,
         "bodyArmor": 0,
         "flags": [
@@ -32239,9 +31151,7 @@
           "TwoHandIdleOnMount"
         ],
         "thrustDamage": 23,
-        "thrustDamage": 23,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 79,
         "thrustSpeed": 79,
         "swingDamage": 0,
         "swingDamageType": "Undefined",
@@ -32309,8 +31219,6 @@
         ],
         "thrustDamage": 20,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 84,
-        "swingDamage": 35,
         "thrustSpeed": 84,
         "swingDamage": 35,
         "swingDamageType": "Cut",
@@ -32392,8 +31300,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -32474,8 +31381,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -32496,8 +31402,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -32519,8 +31424,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -32574,8 +31478,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -32838,8 +31741,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -33077,8 +31979,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -33122,8 +32023,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -33145,8 +32045,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -33198,7 +32097,6 @@
           "MeleeWeapon"
         ],
         "thrustDamage": 24,
-        "thrustDamage": 24,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
         "swingDamage": 29,
@@ -33209,7 +32107,6 @@
   },
   {
     "id": "crpg_tzkurion_axe_t3",
-    "name": "Long Tzikourion Axe",
     "name": "Long Tzikourion Axe",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
@@ -33230,9 +32127,6 @@
         "length": 92,
         "balance": 0.84,
         "handling": 90,
-        "length": 92,
-        "balance": 0.84,
-        "handling": 90,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -33243,7 +32137,6 @@
         "thrustSpeed": 97,
         "swingDamage": 28,
         "swingDamageType": "Cut",
-        "swingSpeed": 95
         "swingSpeed": 95
       }
     ]
@@ -33322,8 +32215,7 @@
       "bodyArmor": 17,
       "armArmor": 4,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -33342,8 +32234,7 @@
       "bodyArmor": 22,
       "armArmor": 6,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -33364,8 +32255,7 @@
       "bodyArmor": 22,
       "armArmor": 6,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -33386,8 +32276,7 @@
       "bodyArmor": 17,
       "armArmor": 4,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -33406,8 +32295,7 @@
       "bodyArmor": 25,
       "armArmor": 9,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -33487,8 +32375,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -33507,8 +32394,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -33527,8 +32413,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -33549,8 +32434,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -33664,7 +32548,6 @@
   {
     "id": "crpg_vlandia_axe_1_t3",
     "name": "Steel Footman Axe",
-    "name": "Steel Footman Axe",
     "culture": "Vlandia",
     "type": "OneHandedWeapon",
     "price": 2992,
@@ -33682,9 +32565,7 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 73,
-        "length": 73,
         "balance": 0.68,
-        "handling": 87,
         "handling": 87,
         "bodyArmor": 0,
         "flags": [
@@ -33702,7 +32583,6 @@
   },
   {
     "id": "crpg_vlandia_axe_2_t4",
-    "name": "Knightly Spiked Battle Axe",
     "name": "Knightly Spiked Battle Axe",
     "culture": "Vlandia",
     "type": "OneHandedWeapon",
@@ -33732,7 +32612,6 @@
         "thrustSpeed": 97,
         "swingDamage": 34,
         "swingDamageType": "Cut",
-        "swingSpeed": 88
         "swingSpeed": 88
       }
     ]
@@ -33816,8 +32695,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -33836,8 +32714,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -33879,8 +32756,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -34072,8 +32948,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -34113,7 +32988,6 @@
   {
     "id": "crpg_vlandia_mace_2_t4",
     "name": "Fullered Western Mace",
-    "name": "Fullered Western Mace",
     "culture": "Vlandia",
     "type": "OneHandedWeapon",
     "price": 4510,
@@ -34131,9 +33005,6 @@
         "length": 85,
         "balance": 0.46,
         "handling": 81,
-        "length": 85,
-        "balance": 0.46,
-        "handling": 81,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon"
@@ -34142,10 +33013,7 @@
         "thrustDamageType": "Undefined",
         "thrustSpeed": 86,
         "swingDamage": 25,
-        "thrustSpeed": 86,
-        "swingDamage": 25,
         "swingDamageType": "Blunt",
-        "swingSpeed": 83
         "swingSpeed": 83
       }
     ]
@@ -34176,8 +33044,6 @@
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 85,
-        "swingDamage": 28,
         "thrustSpeed": 85,
         "swingDamage": 28,
         "swingDamageType": "Blunt",
@@ -34212,12 +33078,10 @@
           "MeleeWeapon"
         ],
         "thrustDamage": 21,
-        "thrustDamage": 21,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 86,
         "swingDamage": 35,
         "swingDamageType": "Cut",
-        "swingSpeed": 85
         "swingSpeed": 85
       }
     ]
@@ -34241,7 +33105,6 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 105,
         "length": 105,
         "balance": 0.48,
         "handling": 83,
@@ -34290,7 +33153,6 @@
         "swingDamage": 30,
         "swingDamageType": "Cut",
         "swingSpeed": 85
-        "swingSpeed": 85
       }
     ]
   },
@@ -34316,8 +33178,6 @@
         "length": 95,
         "balance": 0.51,
         "handling": 83,
-        "balance": 0.51,
-        "handling": 83,
         "bodyArmor": 5,
         "flags": [
           "MeleeWeapon"
@@ -34327,7 +33187,6 @@
         "thrustSpeed": 85,
         "swingDamage": 34,
         "swingDamageType": "Cut",
-        "swingSpeed": 85
         "swingSpeed": 85
       }
     ]
@@ -34341,9 +33200,6 @@
     "weight": 1.07,
     "tier": 0.42320165,
     "requirement": 0,
-    "flags": [
-      "DropOnWeaponChange"
-    ],
     "flags": [
       "DropOnWeaponChange"
     ],
@@ -34457,17 +33313,12 @@
         "length": 99,
         "balance": 0.48,
         "handling": 79,
-        "length": 99,
-        "balance": 0.48,
-        "handling": 79,
         "bodyArmor": 3,
         "flags": [
           "MeleeWeapon"
         ],
         "thrustDamage": 21,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 86,
-        "swingDamage": 34,
         "thrustSpeed": 86,
         "swingDamage": 34,
         "swingDamageType": "Cut",
@@ -34501,7 +33352,6 @@
         "flags": [
           "MeleeWeapon"
         ],
-        "thrustDamage": 23,
         "thrustDamage": 23,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 85,
@@ -34571,7 +33421,6 @@
           "MeleeWeapon"
         ],
         "thrustDamage": 24,
-        "thrustDamage": 24,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 92,
         "swingDamage": 29,
@@ -34631,8 +33480,7 @@
       "bodyArmor": 6,
       "armArmor": 3,
       "legArmor": 2,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -34673,8 +33521,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -34693,8 +33540,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -35004,8 +33850,7 @@
       "bodyArmor": 12,
       "armArmor": 2,
       "legArmor": 0,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -35024,8 +33869,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -35044,8 +33888,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -35276,8 +34119,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Plate",
-      "familyType": 0
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -35918,10 +34760,7 @@
         "thrustDamageType": "Pierce",
         "thrustSpeed": 88,
         "swingDamage": 34,
-        "thrustSpeed": 88,
-        "swingDamage": 34,
         "swingDamageType": "Cut",
-        "swingSpeed": 88
         "swingSpeed": 88
       }
     ]
@@ -35975,8 +34814,7 @@
       "bodyArmor": 17,
       "armArmor": 4,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -35995,8 +34833,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -36017,8 +34854,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -36039,8 +34875,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -36064,8 +34899,6 @@
         "length": 124,
         "balance": 0.31,
         "handling": 83,
-        "balance": 0.31,
-        "handling": 83,
         "bodyArmor": 1,
         "flags": [
           "MeleeWeapon",
@@ -36075,10 +34908,7 @@
         "thrustDamageType": "Blunt",
         "thrustSpeed": 90,
         "swingDamage": 16,
-        "thrustSpeed": 90,
-        "swingDamage": 16,
         "swingDamageType": "Blunt",
-        "swingSpeed": 79
         "swingSpeed": 79
       },
       {
@@ -36088,8 +34918,6 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 124,
-        "balance": 0.88,
-        "handling": 89,
         "balance": 0.88,
         "handling": 89,
         "bodyArmor": 1,
@@ -36102,10 +34930,7 @@
         "thrustDamageType": "Blunt",
         "thrustSpeed": 98,
         "swingDamage": 16,
-        "thrustSpeed": 98,
-        "swingDamage": 16,
         "swingDamageType": "Blunt",
-        "swingSpeed": 96
         "swingSpeed": 96
       },
       {
@@ -36117,8 +34942,6 @@
         "length": 124,
         "balance": 0.31,
         "handling": 83,
-        "balance": 0.31,
-        "handling": 83,
         "bodyArmor": 1,
         "flags": [
           "MeleeWeapon",
@@ -36128,10 +34951,7 @@
         "thrustDamageType": "Blunt",
         "thrustSpeed": 90,
         "swingDamage": 16,
-        "thrustSpeed": 90,
-        "swingDamage": 16,
         "swingDamageType": "Blunt",
-        "swingSpeed": 79
         "swingSpeed": 79
       }
     ]
@@ -36156,23 +34976,16 @@
         "length": 95,
         "balance": 0.75,
         "handling": 95,
-        "length": 95,
-        "balance": 0.75,
-        "handling": 95,
         "bodyArmor": 1,
         "flags": [
           "MeleeWeapon",
           "NoBlood"
         ],
         "thrustDamage": 10,
-        "thrustDamage": 10,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 92,
         "swingDamage": 10,
-        "thrustSpeed": 92,
-        "swingDamage": 10,
         "swingDamageType": "Blunt",
-        "swingSpeed": 92
         "swingSpeed": 92
       }
     ]
@@ -36407,8 +35220,7 @@
       "bodyArmor": 0,
       "armArmor": 3,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -36448,8 +35260,7 @@
       "bodyArmor": 8,
       "armArmor": 5,
       "legArmor": 0,
-      "materialType": "Leather",
-      "familyType": 0
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -36492,8 +35303,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -36515,8 +35325,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -36538,8 +35347,7 @@
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -36582,8 +35390,7 @@
       "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
-      "materialType": "Cloth",
-      "familyType": 0
+      "materialType": "Cloth"
     },
     "weapons": []
   },

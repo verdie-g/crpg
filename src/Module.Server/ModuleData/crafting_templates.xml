@@ -25,7 +25,6 @@
       <UsablePiece piece_id="crpg_military_cleaver_t2_handle" />
       <UsablePiece piece_id="crpg_military_cleaver_t2_pommel" />
       <UsablePiece piece_id="crpg_thegn_sword_1_t2_blade" />
-      <UsablePiece piece_id="crpg_thegn_sword_1_t2_blade" />
       <UsablePiece piece_id="crpg_ambassador_sword_t3_blade" />
       <UsablePiece piece_id="crpg_ambassador_sword_t3_guard" />
       <UsablePiece piece_id="crpg_ambassador_sword_t3_handle" />
@@ -465,10 +464,6 @@
       <UsablePiece piece_id="crpg_winter_pommel" />
       <UsablePiece piece_id="crpg_barmace_blade" />
       <UsablePiece piece_id="crpg_barmace_handle" />
-	  <UsablePiece piece_id="crpg_claymore_blade"/>
-      <UsablePiece piece_id="crpg_claymore_guard"/>
-      <UsablePiece piece_id="crpg_claymore_handle"/>
-      <UsablePiece piece_id="crpg_claymore_pommel"/>
 	  <UsablePiece piece_id="crpg_claymore_blade"/>
       <UsablePiece piece_id="crpg_claymore_guard"/>
       <UsablePiece piece_id="crpg_claymore_handle"/>
@@ -1204,10 +1199,6 @@
       <UsablePiece piece_id="crpg_imperial_throwing_spear_1_t4_pommel" />
       <UsablePiece piece_id="crpg_iron_spatha_sword_t2_pommel" />
       <UsablePiece piece_id="crpg_justicier_2hsword_pommel" />
-      <UsablePiece piece_id="crpg_kama_blade"/>
-      <UsablePiece piece_id="crpg_kama_handle"/>
-	  <UsablePiece piece_id="crpg_sherpherds_head"/>
-      <UsablePiece piece_id="crpg_sherpherds_handle"/>
       <UsablePiece piece_id="crpg_kama_blade"/>
       <UsablePiece piece_id="crpg_kama_handle"/>
 	  <UsablePiece piece_id="crpg_sherpherds_head"/>
@@ -2385,16 +2376,6 @@
       <UsablePiece piece_id="crpg_bos_handle" />
       <UsablePiece piece_id="crpg_gada_blade" />
       <UsablePiece piece_id="crpg_gada_handle" />
-	  <UsablePiece piece_id="crpg_heavy_blacksmith_hammer_head"/>
-      <UsablePiece piece_id="crpg_heavy_blacksmith_hammer_handle"/>
-      <UsablePiece piece_id="crpg_mallet_head"/>
-      <UsablePiece piece_id="crpg_mallet_handle"/>
-      <UsablePiece piece_id="crpg_shieldsplitter_head"/>
-      <UsablePiece piece_id="crpg_shieldsplitter_handle"/>
-      <UsablePiece piece_id="crpg_maul_head"/>
-      <UsablePiece piece_id="crpg_maul_handle"/>
-      <UsablePiece piece_id="crpg_long_maul_head"/>
-      <UsablePiece piece_id="crpg_long_maul_handle"/>
 	  <UsablePiece piece_id="crpg_heavy_blacksmith_hammer_head"/>
       <UsablePiece piece_id="crpg_heavy_blacksmith_hammer_handle"/>
       <UsablePiece piece_id="crpg_mallet_head"/>

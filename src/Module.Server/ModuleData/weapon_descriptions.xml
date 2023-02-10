@@ -10,7 +10,6 @@
       <AvailablePiece id="crpg_military_cleaver_t2_handle" />
       <AvailablePiece id="crpg_military_cleaver_t2_pommel" />
       <AvailablePiece id="crpg_thegn_sword_1_t2_blade" />
-      <AvailablePiece id="crpg_thegn_sword_1_t2_blade" />
       <AvailablePiece id="crpg_ambassador_sword_t3_blade" />
       <AvailablePiece id="crpg_ambassador_sword_t3_guard" />
       <AvailablePiece id="crpg_ambassador_sword_t3_handle" />
@@ -1616,10 +1615,6 @@
       <AvailablePiece id="crpg_kama_handle"/>
 	  <AvailablePiece id="crpg_sherpherds_head"/>
       <AvailablePiece id="crpg_sherpherds_handle"/>
-      <AvailablePiece id="crpg_kama_blade"/>
-      <AvailablePiece id="crpg_kama_handle"/>
-	  <AvailablePiece id="crpg_sherpherds_head"/>
-      <AvailablePiece id="crpg_sherpherds_handle"/>
     </AvailablePieces>
   </WeaponDescription>
   <WeaponDescription id="crpg_OneHandedBastardAxe" weapon_class="OneHandedAxe" item_usage_features="onehanded:rshield:axe">
@@ -1645,8 +1640,6 @@
       <AvailablePiece id="crpg_vlandia_2haxe_1_t4_blade" />
       <AvailablePiece id="crpg_sturgia_2haxe_1_t4_handle" />
       <AvailablePiece id="crpg_bearded_axe_t3_handle" />
-      <AvailablePiece id="crpg_sturgia_2haxe_1_t4_handle" />
-      <AvailablePiece id="crpg_bearded_axe_t3_handle" />
     </AvailablePieces>
   </WeaponDescription>
   <WeaponDescription id="crpg_OneHandedBastardAxeAlternative" weapon_class="OneHandedAxe" item_usage_features="onehanded:axe">
@@ -1670,8 +1663,6 @@
       <AvailablePiece id="crpg_sturgia_2haxe_1_t4_blade" />
       <AvailablePiece id="crpg_sturgia_2haxe_2_t5_blade" />
       <AvailablePiece id="crpg_vlandia_2haxe_1_t4_blade" />
-      <AvailablePiece id="crpg_sturgia_2haxe_1_t4_handle" />
-      <AvailablePiece id="crpg_bearded_axe_t3_handle" />
       <AvailablePiece id="crpg_sturgia_2haxe_1_t4_handle" />
       <AvailablePiece id="crpg_bearded_axe_t3_handle" />
     </AvailablePieces>
@@ -3325,17 +3316,6 @@
       <AvailablePiece id="crpg_2hmorningstar_mace_t3_handle" />
       <AvailablePiece id="crpg_2hmorningstar_mace_t3_pommel" />
       <AvailablePiece id="crpg_gada_blade" />
-      <AvailablePiece id="crpg_gada_handle" />
-      <AvailablePiece id="crpg_heavy_blacksmith_hammer_head"/>
-      <AvailablePiece id="crpg_heavy_blacksmith_hammer_handle"/>
-      <AvailablePiece id="crpg_mallet_head"/>
-      <AvailablePiece id="crpg_mallet_handle"/>
-      <AvailablePiece id="crpg_shieldsplitter_head"/>
-      <AvailablePiece id="crpg_shieldsplitter_handle"/>
-      <AvailablePiece id="crpg_maul_head"/>
-      <AvailablePiece id="crpg_maul_handle"/>
-      <AvailablePiece id="crpg_long_maul_head"/>
-      <AvailablePiece id="crpg_long_maul_handle"/>
       <AvailablePiece id="crpg_gada_handle" />
       <AvailablePiece id="crpg_heavy_blacksmith_hammer_head"/>
       <AvailablePiece id="crpg_heavy_blacksmith_hammer_handle"/>

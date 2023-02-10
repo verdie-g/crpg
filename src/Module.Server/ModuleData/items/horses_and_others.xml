@@ -1149,7 +1149,6 @@
   <Item id="crpg_mule2_1" name="Mule" mesh="mule_mesh" item_category="sumpter_horse" weight="300" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.mule" maneuver="58" speed="30" charge_damage="0" body_length="92" is_mountable="true" extra_health="100" is_pack_animal="true" />
-      <Horse monster="Monster.mule" maneuver="58" speed="30" charge_damage="0" body_length="92" is_mountable="true" extra_health="100" is_pack_animal="true" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
