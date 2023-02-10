@@ -246,21 +246,21 @@
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_baggy_trunks" name="{=btrf2AXp}Baggy Trunks" mesh="bandit_1_a" subtype="body_armor" culture="Culture.battania" weight="0.2543356" difficulty="0" appearance="1" Type="BodyArmor">
+  <Item id="crpg_baggy_trunks" name="{=btrf2AXp}Baggy Trunks" mesh="bandit_1_a" subtype="body_armor" culture="Culture.battania" weight="0.7030825" difficulty="0" appearance="1" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="3" leg_armor="3" covers_body="false" has_gender_variations="false" modifier_group="leather" material_type="Leather" />
+      <Armor body_armor="6" leg_armor="2" arm_armor="3" covers_body="false" has_gender_variations="false" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags DoesNotHideChest="true" UseTeamColor="true" Civilian="true" />
   </Item>
-  <Item id="crpg_armored_baggy_trunks" name="{=w6j8Oaai}Armored Baggy Trunks" mesh="bandit_1_b" subtype="body_armor" culture="Culture.battania" weight="0.4672444" difficulty="0" appearance="1" Type="BodyArmor">
+  <Item id="crpg_armored_baggy_trunks" name="{=w6j8Oaai}Armored Baggy Trunks" mesh="bandit_1_b" subtype="body_armor" culture="Culture.battania" weight="6.336565" difficulty="0" appearance="1" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="3" leg_armor="6" arm_armor="0" covers_body="false" has_gender_variations="false" modifier_group="leather" material_type="Leather" />
+      <Armor body_armor="28" leg_armor="13" arm_armor="8" covers_body="false" has_gender_variations="false" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags DoesNotHideChest="true" UseTeamColor="true" />
   </Item>
-  <Item id="crpg_sleeveless_studded_fur_armor" name="{=4AfHO0BA}Sleeveless Studded Fur Armor" mesh="bandit_1_c" subtype="body_armor" culture="Culture.battania" weight="1.107542" difficulty="0" appearance="1" Type="BodyArmor">
+  <Item id="crpg_sleeveless_studded_fur_armor" name="{=4AfHO0BA}Sleeveless Studded Fur Armor" mesh="bandit_1_c" subtype="body_armor" culture="Culture.battania" weight="3.253509" difficulty="0" appearance="1" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="11" leg_armor="5" arm_armor="0" covers_body="false" modifier_group="leather" material_type="Leather" />
+      <Armor body_armor="26" leg_armor="3" arm_armor="3" covers_body="false" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags UseTeamColor="true" Civilian="true" DoesNotHideChest="true" />
   </Item>
@@ -270,33 +270,33 @@
     </ItemComponent>
     <Flags UseTeamColor="true" Civilian="true" />
   </Item>
-  <Item id="crpg_burlap_waistcoat" name="{=mkoMUmLh}Burlap Waistcoat" mesh="walker_costume_c" subtype="body_armor" culture="Culture.battania" weight="0.2718723" difficulty="0" appearance="0.3" Type="BodyArmor">
+  <Item id="crpg_burlap_waistcoat" name="{=mkoMUmLh}Burlap Waistcoat" mesh="walker_costume_c" subtype="body_armor" culture="Culture.battania" weight="0.7030825" difficulty="0" appearance="0.3" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="3" leg_armor="2" arm_armor="1" covers_body="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
+      <Armor body_armor="6" leg_armor="2" arm_armor="3" covers_body="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
     </ItemComponent>
     <Flags UseTeamColor="true" Civilian="true" />
   </Item>
-  <Item id="crpg_battania_woodland_outfit" name="{=46orXtt0}Woodland Garments" subtype="body_armor" mesh="battania_woodland_outfit" culture="Culture.battania" weight="2.174978" difficulty="0" appearance="1.2" Type="BodyArmor">
+  <Item id="crpg_battania_woodland_outfit" name="{=46orXtt0}Woodland Garments" subtype="body_armor" mesh="battania_woodland_outfit" culture="Culture.battania" weight="0.7030825" difficulty="0" appearance="1.2" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="14" leg_armor="6" arm_armor="4" has_gender_variations="true" covers_body="true" modifier_group="leather" material_type="Leather" />
+      <Armor body_armor="6" leg_armor="2" arm_armor="3" has_gender_variations="true" covers_body="true" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags UseTeamColor="true" Civilian="true" />
   </Item>
-  <Item id="crpg_battania_dress_a" name="{=RUvI70xS}Plaid Dress" mesh="battania_dress_a" culture="Culture.battania" weight="0.7941818" appearance="1" Type="BodyArmor">
+  <Item id="crpg_battania_dress_a" name="{=RUvI70xS}Plaid Dress" mesh="battania_dress_a" culture="Culture.battania" weight="0.7030825" appearance="1" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="6" leg_armor="3" arm_armor="3" has_gender_variations="false" covers_body="false" body_mesh_type="shoulders" modifier_group="cloth_unarmoured" material_type="Cloth" />
+      <Armor body_armor="6" leg_armor="2" arm_armor="3" has_gender_variations="false" covers_body="false" body_mesh_type="shoulders" modifier_group="cloth_unarmoured" material_type="Cloth" />
     </ItemComponent>
     <Flags Civilian="true" UseTeamColor="true" />
   </Item>
-  <Item id="crpg_battania_dress_b" name="{=yfjqWrUx}Woodland Commoner Dress" mesh="battania_dress_b" culture="Culture.battania" weight="0.4322978" appearance="1" Type="BodyArmor">
+  <Item id="crpg_battania_dress_b" name="{=yfjqWrUx}Woodland Commoner Dress" mesh="battania_dress_b" culture="Culture.battania" weight="0.7030825" appearance="1" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="4" leg_armor="2" arm_armor="2" has_gender_variations="false" covers_body="false" body_mesh_type="shoulders" modifier_group="cloth_unarmoured" material_type="Cloth" />
+      <Armor body_armor="6" leg_armor="2" arm_armor="3" has_gender_variations="false" covers_body="false" body_mesh_type="shoulders" modifier_group="cloth_unarmoured" material_type="Cloth" />
     </ItemComponent>
     <Flags Civilian="true" UseTeamColor="true" />
   </Item>
-  <Item id="crpg_battania_dress_c" name="{=DMciP5z3}Tartan Long Dress" mesh="battania_dress_c" culture="Culture.battania" weight="0.5926227" appearance="1" Type="BodyArmor">
+  <Item id="crpg_battania_dress_c" name="{=DMciP5z3}Tartan Long Dress" mesh="battania_dress_c" culture="Culture.battania" weight="0.7030825" appearance="1" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="6" leg_armor="2" arm_armor="2" has_gender_variations="false" covers_body="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
+      <Armor body_armor="6" leg_armor="2" arm_armor="3" has_gender_variations="false" covers_body="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
     </ItemComponent>
     <Flags Civilian="true" UseTeamColor="true" />
   </Item>
@@ -306,171 +306,171 @@
     </ItemComponent>
     <Flags UseTeamColor="true" Civilian="true" />
   </Item>
-  <Item id="crpg_battania_civil_b" name="{=qH5VV8In}Villager Leather Tunic" mesh="battania_civil_b" culture="Culture.battania" weight="1.164658" appearance="1" Type="BodyArmor">
+  <Item id="crpg_battania_civil_b" name="{=qH5VV8In}Villager Leather Tunic" mesh="battania_civil_b" culture="Culture.battania" weight="0.7030825" appearance="1" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="10" leg_armor="4" arm_armor="2" covers_body="true" modifier_group="leather" material_type="Leather" />
+      <Armor body_armor="6" leg_armor="2" arm_armor="3" covers_body="true" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags UseTeamColor="true" Civilian="true" />
   </Item>
-  <Item id="crpg_battania_civil_c" name="{=mT1bvZxM}Townsman Luxury Coat" mesh="battania_civil_c" culture="Culture.battania" weight="1.505816" appearance="1" Type="BodyArmor">
+  <Item id="crpg_battania_civil_c" name="{=mT1bvZxM}Townsman Luxury Coat" mesh="battania_civil_c" culture="Culture.battania" weight="0.7030825" appearance="1" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="8" leg_armor="4" arm_armor="6" covers_body="true" modifier_group="leather" material_type="Leather" />
+      <Armor body_armor="6" leg_armor="2" arm_armor="3" covers_body="true" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags UseTeamColor="true" Civilian="true" />
   </Item>
-  <Item id="crpg_battania_female_civil_a" name="{=7CPMZKVY}Tartan Dress" mesh="battania_female_civil_a" culture="Culture.battania" weight="0.4322978" appearance="1" Type="BodyArmor">
+  <Item id="crpg_battania_female_civil_a" name="{=7CPMZKVY}Tartan Dress" mesh="battania_female_civil_a" culture="Culture.battania" weight="0.7030825" appearance="1" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="4" leg_armor="2" arm_armor="2" has_gender_variations="false" covers_body="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
+      <Armor body_armor="6" leg_armor="2" arm_armor="3" has_gender_variations="false" covers_body="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
     </ItemComponent>
     <Flags Civilian="true" UseTeamColor="true" />
   </Item>
-  <Item id="crpg_battania_female_civil_b" name="{=MXpeQ7jp}Villager Thick Dress" mesh="battania_female_civil_b" culture="Culture.battania" weight="0.4322978" appearance="1" Type="BodyArmor">
+  <Item id="crpg_battania_female_civil_b" name="{=MXpeQ7jp}Villager Thick Dress" mesh="battania_female_civil_b" culture="Culture.battania" weight="0.7030825" appearance="1" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="4" leg_armor="2" arm_armor="2" has_gender_variations="false" covers_body="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
+      <Armor body_armor="6" leg_armor="2" arm_armor="3" has_gender_variations="false" covers_body="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
     </ItemComponent>
     <Flags Civilian="true" UseTeamColor="true" />
   </Item>
-  <Item id="crpg_fur_armor_with_strap" name="{=eWf7bFGo}Fur Armor with Strap" mesh="pict_armor_b" subtype="body_armor" culture="Culture.battania" weight="1.495371" difficulty="0" appearance="0.6" Type="BodyArmor">
+  <Item id="crpg_fur_armor_with_strap" name="{=eWf7bFGo}Fur Armor with Strap" mesh="pict_armor_b" subtype="body_armor" culture="Culture.battania" weight="3.253509" difficulty="0" appearance="0.6" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="12" leg_armor="5" arm_armor="2" covers_body="true" modifier_group="leather" material_type="Leather" />
+      <Armor body_armor="26" leg_armor="3" arm_armor="3" covers_body="true" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags UseTeamColor="true" Civilian="true" />
   </Item>
-  <Item id="crpg_fur_armor" name="{=VSMpadvq}Fur Armor" subtype="body_armor" mesh="battania_fur_armor_a" culture="Culture.battania" weight="1.643783" difficulty="0" appearance="0.6" Type="BodyArmor">
+  <Item id="crpg_fur_armor" name="{=VSMpadvq}Fur Armor" subtype="body_armor" mesh="battania_fur_armor_a" culture="Culture.battania" weight="6.591481" difficulty="0" appearance="0.6" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="14" leg_armor="3" arm_armor="3" has_gender_variations="true" covers_body="true" modifier_group="leather" material_type="Leather" />
+      <Armor body_armor="28" leg_armor="8" arm_armor="13" has_gender_variations="true" covers_body="true" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_long_fur_coat" name="{=VbAHQ1BS}Long Fur Coat" mesh="pict_armor_long_furry" subtype="body_armor" culture="Culture.battania" weight="1.611588" difficulty="0" appearance="1" Type="BodyArmor">
+  <Item id="crpg_long_fur_coat" name="{=VbAHQ1BS}Long Fur Coat" mesh="pict_armor_long_furry" subtype="body_armor" culture="Culture.battania" weight="6.336565" difficulty="0" appearance="1" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="12" leg_armor="6" arm_armor="2" covers_body="true" modifier_group="leather" material_type="Leather" />
+      <Armor body_armor="28" leg_armor="13" arm_armor="8" covers_body="true" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags UseTeamColor="true" Civilian="true" />
   </Item>
-  <Item id="crpg_highland_cloth" name="{=j1pFE61w}Woodland Cloth Armor" subtype="body_armor" mesh="battania_cloth_armor_a" culture="Culture.battania" weight="1.060683" difficulty="0" appearance="1" Type="BodyArmor">
+  <Item id="crpg_highland_cloth" name="{=j1pFE61w}Woodland Cloth Armor" subtype="body_armor" mesh="battania_cloth_armor_a" culture="Culture.battania" weight="6.591481" difficulty="0" appearance="1" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="9" leg_armor="4" arm_armor="2" has_gender_variations="true" covers_body="true" modifier_group="cloth" material_type="Cloth" />
+      <Armor body_armor="28" leg_armor="8" arm_armor="13" has_gender_variations="true" covers_body="true" modifier_group="cloth" material_type="Cloth" />
     </ItemComponent>
     <Flags UseTeamColor="true" Civilian="true" />
   </Item>
-  <Item id="crpg_battanian_savage_armor" name="{=63jCqJPA}Wildling Armor" subtype="body_armor" mesh="battanian_savage_armor" culture="Culture.battania" weight="0.4117688" difficulty="0" appearance="1" Type="BodyArmor">
+  <Item id="crpg_battanian_savage_armor" name="{=63jCqJPA}Wildling Armor" subtype="body_armor" mesh="battanian_savage_armor" culture="Culture.battania" weight="0.7030825" difficulty="0" appearance="1" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="2" leg_armor="5" arm_armor="1" has_gender_variations="false" covers_body="false" modifier_group="cloth" material_type="Cloth" />
+      <Armor body_armor="6" leg_armor="2" arm_armor="3" has_gender_variations="false" covers_body="false" modifier_group="cloth" material_type="Cloth" />
     </ItemComponent>
     <Flags UseTeamColor="true" DoesNotHideChest="true" Civilian="true" />
   </Item>
-  <Item id="crpg_western_scale_mail" name="{=qrCVMyEk}Rough Scale Mail" mesh="vlandia_scale_armor" culture="Culture.battania" weight="9.240578" appearance="1" Type="BodyArmor">
+  <Item id="crpg_western_scale_mail" name="{=qrCVMyEk}Rough Scale Mail" mesh="vlandia_scale_armor" culture="Culture.battania" weight="17.11691" appearance="1" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="32" leg_armor="16" arm_armor="14" covers_body="true" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="52" leg_armor="18" arm_armor="23" covers_body="true" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_kilt_over_plated_leather" name="{=fptsl0Qn}Kilt over Plated Leather" mesh="leather_armor_kilt" subtype="body_armor" culture="Culture.battania" weight="9.879503" difficulty="0" appearance="1" Type="BodyArmor">
+  <Item id="crpg_kilt_over_plated_leather" name="{=fptsl0Qn}Kilt over Plated Leather" mesh="leather_armor_kilt" subtype="body_armor" culture="Culture.battania" weight="11.13812" difficulty="0" appearance="1" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="42" leg_armor="23" arm_armor="3" covers_body="true" modifier_group="leather" material_type="Leather" />
+      <Armor body_armor="40" leg_armor="18" arm_armor="13" covers_body="true" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_battania_woodland_chainmail" name="{=CcWpkREW}Heavy Mail Shirt with Wide Belt" subtype="body_armor" mesh="battania_woodland_chainmail" culture="Culture.battania" weight="7.393808" difficulty="0" appearance="1.2" Type="BodyArmor">
+  <Item id="crpg_battania_woodland_chainmail" name="{=CcWpkREW}Heavy Mail Shirt with Wide Belt" subtype="body_armor" mesh="battania_woodland_chainmail" culture="Culture.battania" weight="17.11691" difficulty="0" appearance="1.2" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="31" leg_armor="13" arm_armor="10" has_gender_variations="true" covers_body="true" modifier_group="chain" material_type="Chainmail" />
+      <Armor body_armor="52" leg_armor="18" arm_armor="23" has_gender_variations="true" covers_body="true" modifier_group="chain" material_type="Chainmail" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_ranger_mail" name="{=HKRGEXqy}Ranger Mail" mesh="armor_pict_a" culture="Culture.battania" subtype="body_armor" weight="6.151767" difficulty="0" appearance="2" Type="BodyArmor">
+  <Item id="crpg_ranger_mail" name="{=HKRGEXqy}Ranger Mail" mesh="armor_pict_a" culture="Culture.battania" subtype="body_armor" weight="7.287423" difficulty="0" appearance="2" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="32" leg_armor="8" arm_armor="8" covers_body="true" modifier_group="chain" material_type="Chainmail" />
+      <Armor body_armor="38" leg_armor="8" arm_armor="8" covers_body="true" modifier_group="chain" material_type="Chainmail" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_battania_mercenary_armor" name="{=sAml91Z3}Luxury Brigandine" subtype="body_armor" mesh="battania_mercenary_armor" culture="Culture.battania" weight="13.25808" difficulty="0" appearance="1.6" Type="BodyArmor">
+  <Item id="crpg_battania_mercenary_armor" name="{=sAml91Z3}Luxury Brigandine" subtype="body_armor" mesh="battania_mercenary_armor" culture="Culture.battania" weight="22.98152" difficulty="0" appearance="1.6" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="53" leg_armor="18" arm_armor="10" has_gender_variations="true" covers_body="true" modifier_group="chain" material_type="Chainmail" />
+      <Armor body_armor="64" leg_armor="25" arm_armor="25" has_gender_variations="true" covers_body="true" modifier_group="chain" material_type="Chainmail" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_scale_armor" name="{=4eOHPops}Rugged Scale Armor" subtype="body_armor" mesh="battania_scale_armor_a" culture="Culture.battania" weight="4.053739" difficulty="0" appearance="1.4" Type="BodyArmor">
+  <Item id="crpg_scale_armor" name="{=4eOHPops}Rugged Scale Armor" subtype="body_armor" mesh="battania_scale_armor_a" culture="Culture.battania" weight="12.27731" difficulty="0" appearance="1.4" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="31" leg_armor="7" arm_armor="0" has_gender_variations="true" covers_body="false" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="50" leg_armor="13" arm_armor="13" has_gender_variations="true" covers_body="false" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_battanian_chainmail_armor_a" name="{=6fA31IxF}Heavy Mail Vest" subtype="body_armor" mesh="battanian_chainmail_armor_a" culture="Culture.battania" weight="4.141332" difficulty="0" appearance="1.5" Type="BodyArmor">
+  <Item id="crpg_battanian_chainmail_armor_a" name="{=6fA31IxF}Heavy Mail Vest" subtype="body_armor" mesh="battanian_chainmail_armor_a" culture="Culture.battania" weight="11.44514" difficulty="0" appearance="1.5" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="28" leg_armor="8" arm_armor="2" has_gender_variations="true" covers_body="true" modifier_group="chain" material_type="Chainmail" />
+      <Armor body_armor="40" leg_armor="13" arm_armor="18" has_gender_variations="true" covers_body="true" modifier_group="chain" material_type="Chainmail" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_battanian_chainmail_armor_b" name="{=y3CwqUDR}Highland Mail Shirt" subtype="body_armor" mesh="battanian_chainmail_armor_b" culture="Culture.battania" weight="3.145961" difficulty="0" appearance="1.8" Type="BodyArmor">
+  <Item id="crpg_battanian_chainmail_armor_b" name="{=y3CwqUDR}Highland Mail Shirt" subtype="body_armor" mesh="battanian_chainmail_armor_b" culture="Culture.battania" weight="11.13812" difficulty="0" appearance="1.8" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="23" leg_armor="4" arm_armor="4" has_gender_variations="true" covers_body="true" modifier_group="chain" material_type="Chainmail" />
+      <Armor body_armor="40" leg_armor="18" arm_armor="13" has_gender_variations="true" covers_body="true" modifier_group="chain" material_type="Chainmail" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_battanian_chainmail_armor_c" name="{=MTB2BunA}Highland Reinforced Mail over Tartan" subtype="body_armor" mesh="battanian_chainmail_armor_c" culture="Culture.battania" weight="5.239789" difficulty="0" appearance="1.7" Type="BodyArmor">
+  <Item id="crpg_battanian_chainmail_armor_c" name="{=MTB2BunA}Highland Reinforced Mail over Tartan" subtype="body_armor" mesh="battanian_chainmail_armor_c" culture="Culture.battania" weight="7.287423" difficulty="0" appearance="1.7" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="32" leg_armor="8" arm_armor="4" has_gender_variations="true" covers_body="true" modifier_group="chain" material_type="Chainmail" />
+      <Armor body_armor="38" leg_armor="8" arm_armor="8" has_gender_variations="true" covers_body="true" modifier_group="chain" material_type="Chainmail" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_battanian_chainmail_armor_d" name="{=Gcrqt90P}Highland Reinforced Mail" subtype="body_armor" mesh="battanian_chainmail_armor_d" culture="Culture.battania" weight="5.592241" difficulty="0" appearance="1.7" Type="BodyArmor">
+  <Item id="crpg_battanian_chainmail_armor_d" name="{=Gcrqt90P}Highland Reinforced Mail" subtype="body_armor" mesh="battanian_chainmail_armor_d" culture="Culture.battania" weight="7.287423" difficulty="0" appearance="1.7" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="34" leg_armor="8" arm_armor="4" has_gender_variations="true" covers_body="true" modifier_group="chain" material_type="Chainmail" />
+      <Armor body_armor="38" leg_armor="8" arm_armor="8" has_gender_variations="true" covers_body="true" modifier_group="chain" material_type="Chainmail" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_battania_noble_armor" name="{=p9cQARqf}Highborn Mail Armor" subtype="body_armor" mesh="battania_noble_armor" culture="Culture.battania" weight="13.62685" difficulty="0" appearance="3" Type="BodyArmor">
+  <Item id="crpg_battania_noble_armor" name="{=p9cQARqf}Highborn Mail Armor" subtype="body_armor" mesh="battania_noble_armor" culture="Culture.battania" weight="17.11691" difficulty="0" appearance="3" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="48" leg_armor="22" arm_armor="12" has_gender_variations="true" covers_body="true" modifier_group="chain" material_type="Chainmail" />
+      <Armor body_armor="52" leg_armor="18" arm_armor="23" has_gender_variations="true" covers_body="true" modifier_group="chain" material_type="Chainmail" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_battania_warlord_armor" name="{=erlrhK2a}Scale Warlord Armor" subtype="body_armor" mesh="battania_warlord_armor" culture="Culture.battania" weight="11.322" difficulty="0" appearance="3" Type="BodyArmor">
+  <Item id="crpg_battania_warlord_armor" name="{=erlrhK2a}Scale Warlord Armor" subtype="body_armor" mesh="battania_warlord_armor" culture="Culture.battania" weight="22.98152" difficulty="0" appearance="3" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="37" leg_armor="18" arm_armor="16" has_gender_variations="true" covers_body="true" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="64" leg_armor="25" arm_armor="25" has_gender_variations="true" covers_body="true" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_battanian_scale_armor_a" name="{=QlvnKQbc}Highland Scale Armor over Mail Armor" subtype="body_armor" mesh="battanian_scale_armor_a" culture="Culture.battania" weight="10.63266" difficulty="0" appearance="3" Type="BodyArmor">
+  <Item id="crpg_battanian_scale_armor_a" name="{=QlvnKQbc}Highland Scale Armor over Mail Armor" subtype="body_armor" mesh="battanian_scale_armor_a" culture="Culture.battania" weight="16.76543" difficulty="0" appearance="3" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="42" leg_armor="15" arm_armor="12" has_gender_variations="true" covers_body="true" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="52" leg_armor="23" arm_armor="18" has_gender_variations="true" covers_body="true" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_battanian_scale_armor_b" name="{=oJKXjRJ3}Highland Scale Armor over Cloth" subtype="body_armor" mesh="battanian_scale_armor_b" culture="Culture.battania" weight="4.512953" difficulty="0" appearance="3" Type="BodyArmor">
+  <Item id="crpg_battanian_scale_armor_b" name="{=oJKXjRJ3}Highland Scale Armor over Cloth" subtype="body_armor" mesh="battanian_scale_armor_b" culture="Culture.battania" weight="12.27731" difficulty="0" appearance="3" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="31" leg_armor="6" arm_armor="3" has_gender_variations="true" covers_body="true" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="50" leg_armor="13" arm_armor="13" has_gender_variations="true" covers_body="true" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_battania_light_armor_a" name="{=aSJbMKdb}Highland Tartan with Chest Plate" subtype="body_armor" mesh="battania_light_armor_a" culture="Culture.battania" weight="2.011607" difficulty="0" appearance="1.7" Type="BodyArmor">
+  <Item id="crpg_battania_light_armor_a" name="{=aSJbMKdb}Highland Tartan with Chest Plate" subtype="body_armor" mesh="battania_light_armor_a" culture="Culture.battania" weight="11.44514" difficulty="0" appearance="1.7" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="15" leg_armor="5" arm_armor="3" has_gender_variations="true" covers_body="false" body_mesh_type="shoulders" modifier_group="chain" material_type="Chainmail" />
+      <Armor body_armor="40" leg_armor="13" arm_armor="18" has_gender_variations="true" covers_body="false" body_mesh_type="shoulders" modifier_group="chain" material_type="Chainmail" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_battania_light_armor_b" name="{=zG4Ms3f4}Highland Tartan" subtype="body_armor" mesh="battania_light_armor_b" culture="Culture.battania" weight="0.987126" difficulty="0" appearance="1.7" Type="BodyArmor">
+  <Item id="crpg_battania_light_armor_b" name="{=zG4Ms3f4}Highland Tartan" subtype="body_armor" mesh="battania_light_armor_b" culture="Culture.battania" weight="3.253509" difficulty="0" appearance="1.7" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="6" leg_armor="5" arm_armor="3" has_gender_variations="true" covers_body="false" body_mesh_type="shoulders" modifier_group="chain" material_type="Chainmail" />
+      <Armor body_armor="26" leg_armor="3" arm_armor="3" has_gender_variations="true" covers_body="false" body_mesh_type="shoulders" modifier_group="chain" material_type="Chainmail" />
     </ItemComponent>
     <Flags UseTeamColor="true" Civilian="true" />
   </Item>
-  <Item id="crpg_battania_light_armor_c" name="{=kaR27kWL}Highland Long Tartan" subtype="body_armor" mesh="battania_light_armor_c" culture="Culture.battania" weight="0.5472431" difficulty="0" appearance="1.7" Type="BodyArmor">
+  <Item id="crpg_battania_light_armor_c" name="{=kaR27kWL}Highland Long Tartan" subtype="body_armor" mesh="battania_light_armor_c" culture="Culture.battania" weight="6.336565" difficulty="0" appearance="1.7" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="7" leg_armor="3" arm_armor="0" has_gender_variations="true" covers_body="false" modifier_group="chain" material_type="Chainmail" />
+      <Armor body_armor="28" leg_armor="13" arm_armor="8" has_gender_variations="true" covers_body="false" modifier_group="chain" material_type="Chainmail" />
     </ItemComponent>
     <Flags UseTeamColor="true" Civilian="true" />
   </Item>
-  <Item id="crpg_battania_light_armor_d" name="{=hab2DsOW}Highland Kilt over Tartan Trousers" subtype="body_armor" mesh="battania_light_armor_d" culture="Culture.battania" weight="0.1384428" difficulty="0" appearance="1.7" Type="BodyArmor">
+  <Item id="crpg_battania_light_armor_d" name="{=hab2DsOW}Highland Kilt over Tartan Trousers" subtype="body_armor" mesh="battania_light_armor_d" culture="Culture.battania" weight="0.7030825" difficulty="0" appearance="1.7" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="0" leg_armor="4" arm_armor="0" has_gender_variations="false" covers_body="false" modifier_group="chain" material_type="Chainmail" />
+      <Armor body_armor="6" leg_armor="2" arm_armor="3" has_gender_variations="false" covers_body="false" modifier_group="chain" material_type="Chainmail" />
     </ItemComponent>
     <Flags DoesNotHideChest="true" UseTeamColor="true" Civilian="true" />
   </Item>
-  <Item id="crpg_battania_light_armor_e" name="{=yDykmlS7}Tartan Toga" subtype="body_armor" mesh="battania_light_armor_e" culture="Culture.battania" weight="0.8111392" difficulty="0" appearance="1.1" Type="BodyArmor">
+  <Item id="crpg_battania_light_armor_e" name="{=yDykmlS7}Tartan Toga" subtype="body_armor" mesh="battania_light_armor_e" culture="Culture.battania" weight="0.7030825" difficulty="0" appearance="1.1" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="4" leg_armor="9" arm_armor="0" has_gender_variations="true" covers_body="false" modifier_group="cloth" material_type="Cloth" />
+      <Armor body_armor="6" leg_armor="2" arm_armor="3" has_gender_variations="true" covers_body="false" modifier_group="cloth" material_type="Cloth" />
     </ItemComponent>
     <Flags DoesNotHideChest="true" UseTeamColor="true" Civilian="true" />
   </Item>

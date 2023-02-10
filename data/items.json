@@ -149,17 +149,17 @@
     "name": "Simple Cape",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 51,
-    "weight": 0.05929271,
-    "tier": 0.666929662,
+    "price": 53,
+    "weight": 0.08992123,
+    "tier": 0.948947,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 1,
-      "armArmor": 1,
+      "bodyArmor": 3,
+      "armArmor": 0,
       "legArmor": 0,
       "materialType": "Cloth",
       "familyType": 0
@@ -583,9 +583,9 @@
     "name": "Armored Baggy Trunks",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 58,
-    "weight": 0.4672444,
-    "tier": 0.8792622,
+    "price": 2967,
+    "weight": 6.336565,
+    "tier": 5.095345,
     "requirement": 0,
     "flags": [
       "UseTeamColor",
@@ -593,11 +593,10 @@
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 3,
-      "armArmor": 0,
-      "legArmor": 6,
-      "materialType": "Leather",
-      "familyType": 0
+      "bodyArmor": 28,
+      "armArmor": 8,
+      "legArmor": 13,
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -606,15 +605,15 @@
     "name": "Armored Bearskin",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 816,
-    "weight": 1.107542,
-    "tier": 4.841069,
+    "price": 4731,
+    "weight": 2.766361,
+    "tier": 7.993438,
     "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 16,
-      "armArmor": 0,
+      "bodyArmor": 18,
+      "armArmor": 9,
       "legArmor": 0,
       "materialType": "Cloth",
       "familyType": 0
@@ -626,9 +625,9 @@
     "name": "Armwraps",
     "culture": "Battania",
     "type": "HandArmor",
-    "price": 53,
-    "weight": 0.1291116,
-    "tier": 1.163952,
+    "price": 413,
+    "weight": 1.032893,
+    "tier": 4.47510052,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -636,7 +635,7 @@
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
-      "armArmor": 3,
+      "armArmor": 12,
       "legArmor": 0,
       "materialType": "Cloth",
       "familyType": 0
@@ -2437,9 +2436,9 @@
     "name": "Baggy Trunks",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 53,
-    "weight": 0.2543356,
-    "tier": 0.6496769,
+    "price": 86,
+    "weight": 0.7030825,
+    "tier": 1.40798426,
     "requirement": 0,
     "flags": [
       "UseTeamColor",
@@ -2448,11 +2447,10 @@
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 3,
-      "armArmor": 0,
-      "legArmor": 3,
-      "materialType": "Leather",
-      "familyType": 0
+      "bodyArmor": 6,
+      "armArmor": 3,
+      "legArmor": 2,
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -3797,9 +3795,9 @@
     "name": "Villager Leather Tunic",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 151,
-    "weight": 1.164658,
-    "tier": 1.91655827,
+    "price": 86,
+    "weight": 0.7030825,
+    "tier": 1.40798426,
     "requirement": 0,
     "flags": [
       "UseTeamColor",
@@ -3807,11 +3805,10 @@
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 10,
-      "armArmor": 2,
-      "legArmor": 4,
-      "materialType": "Leather",
-      "familyType": 0
+      "bodyArmor": 6,
+      "armArmor": 3,
+      "legArmor": 2,
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -3820,9 +3817,9 @@
     "name": "Townsman Luxury Coat",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 211,
-    "weight": 1.505816,
-    "tier": 2.20756125,
+    "price": 86,
+    "weight": 0.7030825,
+    "tier": 1.40798426,
     "requirement": 0,
     "flags": [
       "UseTeamColor",
@@ -3830,11 +3827,10 @@
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 8,
-      "armArmor": 6,
-      "legArmor": 4,
-      "materialType": "Leather",
-      "familyType": 0
+      "bodyArmor": 6,
+      "armArmor": 3,
+      "legArmor": 2,
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -3843,14 +3839,14 @@
     "name": "Woodland Fur Cloak",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 80,
-    "weight": 0.2543356,
-    "tier": 1.88299263,
+    "price": 53,
+    "weight": 0.08992123,
+    "tier": 0.948947,
     "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 6,
+      "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Cloth",
@@ -3863,16 +3859,16 @@
     "name": "Fringed Cape",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 50,
-    "weight": 0.04894691,
-    "tier": 0.633906662,
+    "price": 53,
+    "weight": 0.08992123,
+    "tier": 0.948947,
     "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 2,
+      "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Cloth",
@@ -3907,16 +3903,16 @@
     "name": "Tartan Cloak",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 50,
-    "weight": 0.04894691,
-    "tier": 0.633906662,
+    "price": 53,
+    "weight": 0.08992123,
+    "tier": 0.948947,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 2,
+      "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Cloth",
@@ -3929,14 +3925,14 @@
     "name": "Tartan Cape",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 58,
-    "weight": 0.1384428,
-    "tier": 1.26228166,
+    "price": 53,
+    "weight": 0.08992123,
+    "tier": 0.948947,
     "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 4,
+      "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Cloth",
@@ -3949,15 +3945,15 @@
     "name": "Chained Fur Cloak",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 291,
-    "weight": 0.7030825,
-    "tier": 3.48074365,
+    "price": 4731,
+    "weight": 2.766361,
+    "tier": 7.993438,
     "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 8,
-      "armArmor": 3,
+      "bodyArmor": 18,
+      "armArmor": 9,
       "legArmor": 0,
       "materialType": "Leather",
       "familyType": 0
@@ -3969,13 +3965,13 @@
     "name": "Highland Ceremonial Crown",
     "culture": "Battania",
     "type": "HeadArmor",
-    "price": 66,
-    "weight": 0.2053926,
-    "tier": 1.43914938,
+    "price": 56,
+    "weight": 0.1334064,
+    "tier": 1.08309555,
     "requirement": 0,
     "flags": [],
     "armor": {
-      "headArmor": 8,
+      "headArmor": 6,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
@@ -3989,9 +3985,9 @@
     "name": "Plaid Dress",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 93,
-    "weight": 0.7941818,
-    "tier": 1.48012245,
+    "price": 86,
+    "weight": 0.7030825,
+    "tier": 1.40798426,
     "requirement": 0,
     "flags": [
       "UseTeamColor",
@@ -4001,9 +3997,8 @@
       "headArmor": 0,
       "bodyArmor": 6,
       "armArmor": 3,
-      "legArmor": 3,
-      "materialType": "Cloth",
-      "familyType": 0
+      "legArmor": 2,
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -4012,9 +4007,9 @@
     "name": "Woodland Commoner Dress",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 62,
-    "weight": 0.4322978,
-    "tier": 1.00235939,
+    "price": 86,
+    "weight": 0.7030825,
+    "tier": 1.40798426,
     "requirement": 0,
     "flags": [
       "UseTeamColor",
@@ -4022,8 +4017,8 @@
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 4,
-      "armArmor": 2,
+      "bodyArmor": 6,
+      "armArmor": 3,
       "legArmor": 2,
       "materialType": "Cloth",
       "familyType": 0
@@ -4035,9 +4030,9 @@
     "name": "Tartan Long Dress",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 75,
-    "weight": 0.5926227,
-    "tier": 1.26540363,
+    "price": 86,
+    "weight": 0.7030825,
+    "tier": 1.40798426,
     "requirement": 0,
     "flags": [
       "UseTeamColor",
@@ -4046,7 +4041,7 @@
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
-      "armArmor": 2,
+      "armArmor": 3,
       "legArmor": 2,
       "materialType": "Cloth",
       "familyType": 0
@@ -4058,13 +4053,13 @@
     "name": "Fringed Steel Cap with Cheek Guards",
     "culture": "Battania",
     "type": "HeadArmor",
-    "price": 2333,
-    "weight": 1.960666,
-    "tier": 6.039774,
+    "price": 3261,
+    "weight": 2.296359,
+    "tier": 6.637725,
     "requirement": 0,
     "flags": [],
     "armor": {
-      "headArmor": 36,
+      "headArmor": 40,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
@@ -4078,13 +4073,13 @@
     "name": "Fringed Bronze Cap with Cheek Guards",
     "culture": "Battania",
     "type": "HeadArmor",
-    "price": 2133,
-    "weight": 1.879541,
-    "tier": 5.88811874,
+    "price": 3261,
+    "weight": 2.296359,
+    "tier": 6.637725,
     "requirement": 0,
     "flags": [],
     "armor": {
-      "headArmor": 35,
+      "headArmor": 40,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
@@ -4098,13 +4093,13 @@
     "name": "Steel Cap with Cheek Guards",
     "culture": "Battania",
     "type": "HeadArmor",
-    "price": 1606,
-    "weight": 1.643141,
-    "tier": 5.42778873,
+    "price": 3261,
+    "weight": 2.296359,
+    "tier": 6.637725,
     "requirement": 0,
     "flags": [],
     "armor": {
-      "headArmor": 32,
+      "headArmor": 40,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
@@ -4118,13 +4113,13 @@
     "name": "Bronze Cap with Cheek Guards",
     "culture": "Battania",
     "type": "HeadArmor",
-    "price": 1452,
-    "weight": 1.566723,
-    "tier": 5.27252865,
+    "price": 3261,
+    "weight": 2.296359,
+    "tier": 6.637725,
     "requirement": 0,
     "flags": [],
     "armor": {
-      "headArmor": 31,
+      "headArmor": 40,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
@@ -4138,13 +4133,13 @@
     "name": "Fringed Decorated Steel Cap with Cheek Guards",
     "culture": "Battania",
     "type": "HeadArmor",
-    "price": 2770,
-    "weight": 2.126303,
-    "tier": 6.340465,
+    "price": 14325,
+    "weight": 4.647504,
+    "tier": 9.967334,
     "requirement": 0,
     "flags": [],
     "armor": {
-      "headArmor": 38,
+      "headArmor": 64,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
@@ -4158,13 +4153,13 @@
     "name": "Fringed Decorated Bronze Cap with Cheek Guards",
     "culture": "Battania",
     "type": "HeadArmor",
-    "price": 2545,
-    "weight": 2.042925,
-    "tier": 6.190553,
+    "price": 3261,
+    "weight": 2.296359,
+    "tier": 6.637725,
     "requirement": 0,
     "flags": [],
     "armor": {
-      "headArmor": 37,
+      "headArmor": 40,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
@@ -4178,13 +4173,13 @@
     "name": "Decorated Bronze Helmet with Cheek Guards",
     "culture": "Battania",
     "type": "HeadArmor",
-    "price": 2133,
-    "weight": 1.879541,
-    "tier": 5.88811874,
+    "price": 3261,
+    "weight": 2.296359,
+    "tier": 6.637725,
     "requirement": 0,
     "flags": [],
     "armor": {
-      "headArmor": 35,
+      "headArmor": 40,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
@@ -4198,13 +4193,13 @@
     "name": "Ridged Decorated Steel Cap with Cheek Guards",
     "culture": "Battania",
     "type": "HeadArmor",
-    "price": 3527,
-    "weight": 2.383009,
-    "tier": 6.785095,
+    "price": 7483,
+    "weight": 3.403728,
+    "tier": 8.353923,
     "requirement": 0,
     "flags": [],
     "armor": {
-      "headArmor": 41,
+      "headArmor": 52,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
@@ -4238,9 +4233,9 @@
     "name": "Tartan Dress",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 62,
-    "weight": 0.4322978,
-    "tier": 1.00235939,
+    "price": 86,
+    "weight": 0.7030825,
+    "tier": 1.40798426,
     "requirement": 0,
     "flags": [
       "UseTeamColor",
@@ -4248,8 +4243,8 @@
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 4,
-      "armArmor": 2,
+      "bodyArmor": 6,
+      "armArmor": 3,
       "legArmor": 2,
       "materialType": "Cloth",
       "familyType": 0
@@ -4261,9 +4256,9 @@
     "name": "Villager Thick Dress",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 62,
-    "weight": 0.4322978,
-    "tier": 1.00235939,
+    "price": 86,
+    "weight": 0.7030825,
+    "tier": 1.40798426,
     "requirement": 0,
     "flags": [
       "UseTeamColor",
@@ -4271,8 +4266,8 @@
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 4,
-      "armArmor": 2,
+      "bodyArmor": 6,
+      "armArmor": 3,
       "legArmor": 2,
       "materialType": "Cloth",
       "familyType": 0
@@ -4284,9 +4279,9 @@
     "name": "Fur Boots",
     "culture": "Battania",
     "type": "LegArmor",
-    "price": 56,
-    "weight": 0.2543356,
-    "tier": 1.49714434,
+    "price": 113,
+    "weight": 0.7193698,
+    "tier": 2.93280482,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -4295,9 +4290,8 @@
       "headArmor": 0,
       "bodyArmor": 0,
       "armArmor": 0,
-      "legArmor": 6,
-      "materialType": "Leather",
-      "familyType": 0
+      "legArmor": 12,
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -4306,13 +4300,13 @@
     "name": "Cap with Fur Coif",
     "culture": "Battania",
     "type": "HeadArmor",
-    "price": 382,
-    "weight": 0.8118855,
-    "tier": 3.5022254,
+    "price": 1055,
+    "weight": 1.34489,
+    "tier": 4.80117464,
     "requirement": 0,
     "flags": [],
     "armor": {
-      "headArmor": 20,
+      "headArmor": 28,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
@@ -4506,9 +4500,9 @@
     "name": "Highborn Leather Boots",
     "culture": "Battania",
     "type": "LegArmor",
-    "price": 53,
-    "weight": 0.1934797,
-    "tier": 1.25122046,
+    "price": 289,
+    "weight": 1.321567,
+    "tier": 4.294804,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -4517,9 +4511,8 @@
       "headArmor": 0,
       "bodyArmor": 0,
       "armArmor": 0,
-      "legArmor": 5,
-      "materialType": "Leather",
-      "familyType": 0
+      "legArmor": 18,
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -4528,20 +4521,19 @@
     "name": "Highland Tartan with Chest Plate",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 375,
-    "weight": 2.011607,
-    "tier": 2.71473956,
+    "price": 9909,
+    "weight": 11.44514,
+    "tier": 7.145161,
     "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 15,
-      "armArmor": 3,
-      "legArmor": 5,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "bodyArmor": 40,
+      "armArmor": 18,
+      "legArmor": 13,
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -4550,9 +4542,9 @@
     "name": "Highland Tartan",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 108,
-    "weight": 0.987126,
-    "tier": 1.62232971,
+    "price": 1114,
+    "weight": 3.253509,
+    "tier": 3.8279264,
     "requirement": 0,
     "flags": [
       "UseTeamColor",
@@ -4560,11 +4552,10 @@
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 6,
+      "bodyArmor": 26,
       "armArmor": 3,
-      "legArmor": 5,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "legArmor": 3,
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -4573,9 +4564,9 @@
     "name": "Highland Long Tartan",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 70,
-    "weight": 0.5472431,
-    "tier": 1.18244159,
+    "price": 2967,
+    "weight": 6.336565,
+    "tier": 5.095345,
     "requirement": 0,
     "flags": [
       "UseTeamColor",
@@ -4583,11 +4574,10 @@
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 7,
-      "armArmor": 0,
-      "legArmor": 3,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "bodyArmor": 28,
+      "armArmor": 8,
+      "legArmor": 13,
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -4596,9 +4586,9 @@
     "name": "Highland Kilt over Tartan Trousers",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 50,
-    "weight": 0.1384428,
-    "tier": 0.319379121,
+    "price": 86,
+    "weight": 0.7030825,
+    "tier": 1.40798426,
     "requirement": 0,
     "flags": [
       "UseTeamColor",
@@ -4607,11 +4597,10 @@
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 4,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "bodyArmor": 6,
+      "armArmor": 3,
+      "legArmor": 2,
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -4620,9 +4609,9 @@
     "name": "Tartan Toga",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 73,
-    "weight": 0.8111392,
-    "tier": 1.23256469,
+    "price": 86,
+    "weight": 0.7030825,
+    "tier": 1.40798426,
     "requirement": 0,
     "flags": [
       "UseTeamColor",
@@ -4631,11 +4620,10 @@
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 4,
-      "armArmor": 0,
-      "legArmor": 9,
-      "materialType": "Cloth",
-      "familyType": 0
+      "bodyArmor": 6,
+      "armArmor": 3,
+      "legArmor": 2,
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -4754,20 +4742,19 @@
     "name": "Luxury Brigandine",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 13122,
-    "weight": 13.25808,
-    "tier": 7.719322,
+    "price": 34733,
+    "weight": 22.98152,
+    "tier": 10.0576954,
     "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 53,
-      "armArmor": 10,
-      "legArmor": 18,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "bodyArmor": 64,
+      "armArmor": 25,
+      "legArmor": 25,
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -4776,20 +4763,19 @@
     "name": "Highborn Mail Armor",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 12624,
-    "weight": 13.62685,
-    "tier": 7.637858,
+    "price": 20718,
+    "weight": 17.11691,
+    "tier": 8.744833,
     "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 48,
-      "armArmor": 12,
-      "legArmor": 22,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "bodyArmor": 52,
+      "armArmor": 23,
+      "legArmor": 18,
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -4798,9 +4784,9 @@
     "name": "Fian Bracers",
     "culture": "Battania",
     "type": "HandArmor",
-    "price": 1432,
-    "weight": 1.897545,
-    "tier": 6.50314426,
+    "price": 3563,
+    "weight": 2.921461,
+    "tier": 8.397632,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -4808,7 +4794,7 @@
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
-      "armArmor": 18,
+      "armArmor": 24,
       "legArmor": 0,
       "materialType": "Leather",
       "familyType": 0
@@ -4966,15 +4952,15 @@
     "name": "Heavy Tartan Scarf",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 58,
-    "weight": 0.1528404,
-    "tier": 1.29460013,
+    "price": 483,
+    "weight": 0.9420564,
+    "tier": 4.119663,
     "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 3,
-      "armArmor": 1,
+      "bodyArmor": 8,
+      "armArmor": 5,
       "legArmor": 0,
       "materialType": "Cloth",
       "familyType": 0
@@ -4986,15 +4972,15 @@
     "name": "Reinforced Harness with Cape",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 163,
-    "weight": 0.4672444,
-    "tier": 2.79703736,
+    "price": 2040,
+    "weight": 1.796804,
+    "tier": 6.319268,
     "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 9,
-      "armArmor": 0,
+      "bodyArmor": 17,
+      "armArmor": 4,
       "legArmor": 0,
       "materialType": "Leather",
       "familyType": 0
@@ -5006,15 +4992,15 @@
     "name": "Shoulder Harness",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 58,
-    "weight": 0.1384428,
-    "tier": 1.26228166,
+    "price": 564,
+    "weight": 0.96,
+    "tier": 4.32491446,
     "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 4,
-      "armArmor": 0,
+      "bodyArmor": 12,
+      "armArmor": 2,
       "legArmor": 0,
       "materialType": "Leather",
       "familyType": 0
@@ -5026,15 +5012,15 @@
     "name": "Tartan Shoulder Harness",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 99,
-    "weight": 0.3204995,
-    "tier": 2.19005466,
+    "price": 483,
+    "weight": 0.9420564,
+    "tier": 4.119663,
     "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 7,
-      "armArmor": 0,
+      "bodyArmor": 8,
+      "armArmor": 5,
       "legArmor": 0,
       "materialType": "Leather",
       "familyType": 0
@@ -5268,20 +5254,19 @@
     "name": "Scale Warlord Armor",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 8782,
-    "weight": 11.322,
-    "tier": 6.91079235,
+    "price": 34733,
+    "weight": 22.98152,
+    "tier": 10.0576954,
     "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 37,
-      "armArmor": 16,
-      "legArmor": 18,
-      "materialType": "Plate",
-      "familyType": 0
+      "bodyArmor": 64,
+      "armArmor": 25,
+      "legArmor": 25,
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -5290,18 +5275,17 @@
     "name": "Scaled Boots",
     "culture": "Battania",
     "type": "LegArmor",
-    "price": 836,
-    "weight": 2.294248,
-    "tier": 5.998785,
+    "price": 1291,
+    "weight": 2.843559,
+    "tier": 6.80681,
     "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
       "armArmor": 0,
-      "legArmor": 26,
-      "materialType": "Plate",
-      "familyType": 0
+      "legArmor": 30,
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -5310,15 +5294,15 @@
     "name": "Scale Warlord Bracers",
     "culture": "Battania",
     "type": "HandArmor",
-    "price": 4055,
-    "weight": 3.105942,
-    "tier": 8.7016325,
+    "price": 7199,
+    "weight": 4.082867,
+    "tier": 10.1763792,
     "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
-      "armArmor": 25,
+      "armArmor": 30,
       "legArmor": 0,
       "materialType": "Plate",
       "familyType": 0
@@ -5330,15 +5314,15 @@
     "name": "Heavy Warlord Pauldrons",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 6611,
-    "weight": 3.24,
-    "tier": 8.762225,
+    "price": 9654,
+    "weight": 3.808972,
+    "tier": 9.713134,
     "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 20,
-      "armArmor": 10,
+      "bodyArmor": 25,
+      "armArmor": 9,
       "legArmor": 0,
       "materialType": "Plate",
       "familyType": 0
@@ -5350,9 +5334,9 @@
     "name": "Woodland Boots",
     "culture": "Battania",
     "type": "LegArmor",
-    "price": 56,
-    "weight": 0.2543356,
-    "tier": 1.49714434,
+    "price": 113,
+    "weight": 0.7193698,
+    "tier": 2.93280482,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -5361,9 +5345,8 @@
       "headArmor": 0,
       "bodyArmor": 0,
       "armArmor": 0,
-      "legArmor": 6,
-      "materialType": "Leather",
-      "familyType": 0
+      "legArmor": 12,
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -5372,20 +5355,19 @@
     "name": "Heavy Mail Shirt with Wide Belt",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 4096,
-    "weight": 7.393808,
-    "tier": 5.583909,
+    "price": 20718,
+    "weight": 17.11691,
+    "tier": 8.744833,
     "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 31,
-      "armArmor": 10,
-      "legArmor": 13,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "bodyArmor": 52,
+      "armArmor": 23,
+      "legArmor": 18,
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -5394,14 +5376,14 @@
     "name": "Woodland Cape",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 58,
-    "weight": 0.1384428,
-    "tier": 1.26228166,
+    "price": 53,
+    "weight": 0.08992123,
+    "tier": 0.948947,
     "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 4,
+      "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Leather",
@@ -5414,9 +5396,9 @@
     "name": "Woodland Garments",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 406,
-    "weight": 2.174978,
-    "tier": 2.78732419,
+    "price": 86,
+    "weight": 0.7030825,
+    "tier": 1.40798426,
     "requirement": 0,
     "flags": [
       "UseTeamColor",
@@ -5424,11 +5406,10 @@
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 14,
-      "armArmor": 4,
-      "legArmor": 6,
-      "materialType": "Leather",
-      "familyType": 0
+      "bodyArmor": 6,
+      "armArmor": 3,
+      "legArmor": 2,
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -5437,20 +5418,19 @@
     "name": "Heavy Mail Vest",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 1519,
-    "weight": 4.141332,
-    "tier": 4.197012,
+    "price": 9909,
+    "weight": 11.44514,
+    "tier": 7.145161,
     "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 28,
-      "armArmor": 2,
-      "legArmor": 8,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "bodyArmor": 40,
+      "armArmor": 18,
+      "legArmor": 13,
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -5459,20 +5439,19 @@
     "name": "Highland Mail Shirt",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 975,
-    "weight": 3.145961,
-    "tier": 3.67669487,
+    "price": 8705,
+    "weight": 11.13812,
+    "tier": 6.89389944,
     "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 23,
-      "armArmor": 4,
-      "legArmor": 4,
-      "materialType": "Chainmail",
-      "familyType": 0
+      "bodyArmor": 40,
+      "armArmor": 13,
+      "legArmor": 18,
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -5481,17 +5460,17 @@
     "name": "Highland Reinforced Mail over Tartan",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 2447,
-    "weight": 5.239789,
-    "tier": 4.821514,
+    "price": 4710,
+    "weight": 7.287423,
+    "tier": 5.808194,
     "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 32,
-      "armArmor": 4,
+      "bodyArmor": 38,
+      "armArmor": 8,
       "legArmor": 8,
       "materialType": "Chainmail",
       "familyType": 0
@@ -5503,17 +5482,17 @@
     "name": "Highland Reinforced Mail",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 2814,
-    "weight": 5.592241,
-    "tier": 5.018692,
+    "price": 4710,
+    "weight": 7.287423,
+    "tier": 5.808194,
     "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 34,
-      "armArmor": 4,
+      "bodyArmor": 38,
+      "armArmor": 8,
       "legArmor": 8,
       "materialType": "Chainmail",
       "familyType": 0
@@ -5525,15 +5504,15 @@
     "name": "Mail Shoulder Pieces",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 80,
-    "weight": 0.2543356,
-    "tier": 1.88299263,
+    "price": 2040,
+    "weight": 1.796804,
+    "tier": 6.319268,
     "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 6,
-      "armArmor": 0,
+      "bodyArmor": 17,
+      "armArmor": 4,
       "legArmor": 0,
       "materialType": "Cloth",
       "familyType": 0
@@ -5545,15 +5524,15 @@
     "name": "Mail Shoulder Reinforcements",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 99,
-    "weight": 0.3204995,
-    "tier": 2.19005466,
+    "price": 1825,
+    "weight": 1.774667,
+    "tier": 6.12210655,
     "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 7,
-      "armArmor": 0,
+      "bodyArmor": 13,
+      "armArmor": 7,
       "legArmor": 0,
       "materialType": "Cloth",
       "familyType": 0
@@ -5565,13 +5544,13 @@
     "name": "Highland Crowned Helmet",
     "culture": "Battania",
     "type": "HeadArmor",
-    "price": 6613,
-    "weight": 3.209259,
-    "tier": 8.075494,
+    "price": 7483,
+    "weight": 3.403728,
+    "tier": 8.353923,
     "requirement": 0,
     "flags": [],
     "armor": {
-      "headArmor": 50,
+      "headArmor": 52,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
@@ -5585,15 +5564,15 @@
     "name": "Cured Leather Shoulder Pieces",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 66,
-    "weight": 0.1934797,
-    "tier": 1.57368863,
+    "price": 564,
+    "weight": 0.96,
+    "tier": 4.32491446,
     "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 5,
-      "armArmor": 0,
+      "bodyArmor": 12,
+      "armArmor": 2,
       "legArmor": 0,
       "materialType": "Cloth",
       "familyType": 0
@@ -5605,13 +5584,13 @@
     "name": "Warlord Helmet ",
     "culture": "Battania",
     "type": "HeadArmor",
-    "price": 7946,
-    "weight": 3.502383,
-    "tier": 8.492063,
+    "price": 14325,
+    "weight": 4.647504,
+    "tier": 9.967334,
     "requirement": 0,
     "flags": [],
     "armor": {
-      "headArmor": 53,
+      "headArmor": 64,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
@@ -5625,13 +5604,13 @@
     "name": "Warlord Helmet with Feathers",
     "culture": "Battania",
     "type": "HeadArmor",
-    "price": 5081,
-    "weight": 2.831956,
-    "tier": 7.509759,
+    "price": 7483,
+    "weight": 3.403728,
+    "tier": 8.353923,
     "requirement": 0,
     "flags": [],
     "armor": {
-      "headArmor": 46,
+      "headArmor": 52,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
@@ -5645,9 +5624,9 @@
     "name": "Wildling Armor",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 56,
-    "weight": 0.4117688,
-    "tier": 0.816965163,
+    "price": 86,
+    "weight": 0.7030825,
+    "tier": 1.40798426,
     "requirement": 0,
     "flags": [
       "UseTeamColor",
@@ -5656,11 +5635,10 @@
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 2,
-      "armArmor": 1,
-      "legArmor": 5,
-      "materialType": "Cloth",
-      "familyType": 0
+      "bodyArmor": 6,
+      "armArmor": 3,
+      "legArmor": 2,
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -5669,20 +5647,19 @@
     "name": "Highland Scale Armor over Mail Armor",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 8509,
-    "weight": 10.63266,
-    "tier": 6.850667,
+    "price": 18757,
+    "weight": 16.76543,
+    "tier": 8.511378,
     "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 42,
-      "armArmor": 12,
-      "legArmor": 15,
-      "materialType": "Plate",
-      "familyType": 0
+      "bodyArmor": 52,
+      "armArmor": 18,
+      "legArmor": 23,
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -5691,20 +5668,19 @@
     "name": "Highland Scale Armor over Cloth",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 1945,
-    "weight": 4.512953,
-    "tier": 4.51159,
+    "price": 12044,
+    "weight": 12.27731,
+    "tier": 7.5397234,
     "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 31,
-      "armArmor": 3,
-      "legArmor": 6,
-      "materialType": "Plate",
-      "familyType": 0
+      "bodyArmor": 50,
+      "armArmor": 13,
+      "legArmor": 13,
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -5910,13 +5886,13 @@
     "name": "Bear Head",
     "culture": "Battania",
     "type": "HeadArmor",
-    "price": 656,
-    "weight": 1.067251,
-    "tier": 4.159431,
+    "price": 7483,
+    "weight": 3.403728,
+    "tier": 8.353923,
     "requirement": 0,
     "flags": [],
     "armor": {
-      "headArmor": 24,
+      "headArmor": 52,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
@@ -5930,15 +5906,15 @@
     "name": "Bear Pelt",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 542,
-    "weight": 0.9065096,
-    "tier": 4.270092,
+    "price": 5151,
+    "weight": 2.792014,
+    "tier": 8.182938,
     "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 14,
-      "armArmor": 0,
+      "bodyArmor": 22,
+      "armArmor": 6,
       "legArmor": 0,
       "materialType": "Leather",
       "familyType": 0
@@ -5988,9 +5964,9 @@
     "name": "Belted Leather Boots",
     "culture": "Battania",
     "type": "LegArmor",
-    "price": 53,
-    "weight": 0.1934797,
-    "tier": 1.25122046,
+    "price": 289,
+    "weight": 1.321567,
+    "tier": 4.294804,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -5999,9 +5975,8 @@
       "headArmor": 0,
       "bodyArmor": 0,
       "armArmor": 0,
-      "legArmor": 5,
-      "materialType": "Leather",
-      "familyType": 0
+      "legArmor": 18,
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -7429,9 +7404,9 @@
     "name": "Burlap Waistcoat",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 54,
-    "weight": 0.2718723,
-    "tier": 0.721269548,
+    "price": 86,
+    "weight": 0.7030825,
+    "tier": 1.40798426,
     "requirement": 0,
     "flags": [
       "UseTeamColor",
@@ -7439,8 +7414,8 @@
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 3,
-      "armArmor": 1,
+      "bodyArmor": 6,
+      "armArmor": 3,
       "legArmor": 2,
       "materialType": "Cloth",
       "familyType": 0
@@ -7452,9 +7427,9 @@
     "name": "Buttoned Leather Bracers",
     "culture": "Battania",
     "type": "HandArmor",
-    "price": 59,
-    "weight": 0.1987803,
-    "tier": 1.54675126,
+    "price": 413,
+    "weight": 1.032893,
+    "tier": 4.47510052,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -7462,7 +7437,7 @@
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
-      "armArmor": 4,
+      "armArmor": 12,
       "legArmor": 0,
       "materialType": "Leather",
       "familyType": 0
@@ -12701,20 +12676,19 @@
     "name": "Fur Armor",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 286,
-    "weight": 1.643783,
-    "tier": 2.46953821,
+    "price": 3571,
+    "weight": 6.591481,
+    "tier": 5.371324,
     "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 14,
-      "armArmor": 3,
-      "legArmor": 3,
-      "materialType": "Leather",
-      "familyType": 0
+      "bodyArmor": 28,
+      "armArmor": 13,
+      "legArmor": 8,
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -12723,9 +12697,9 @@
     "name": "Fur Armor with Strap",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 217,
-    "weight": 1.495371,
-    "tier": 2.2289753,
+    "price": 1114,
+    "weight": 3.253509,
+    "tier": 3.8279264,
     "requirement": 0,
     "flags": [
       "UseTeamColor",
@@ -12733,11 +12707,10 @@
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 12,
-      "armArmor": 2,
-      "legArmor": 5,
-      "materialType": "Leather",
-      "familyType": 0
+      "bodyArmor": 26,
+      "armArmor": 3,
+      "legArmor": 3,
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -13334,9 +13307,9 @@
     "name": "Guarded Armwraps",
     "culture": "Battania",
     "type": "HandArmor",
-    "price": 111,
-    "weight": 0.4601828,
-    "tier": 2.67431521,
+    "price": 413,
+    "weight": 1.032893,
+    "tier": 4.47510052,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -13344,7 +13317,7 @@
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
-      "armArmor": 7,
+      "armArmor": 12,
       "legArmor": 0,
       "materialType": "Cloth",
       "familyType": 0
@@ -14166,9 +14139,9 @@
     "name": "Forester Boots",
     "culture": "Battania",
     "type": "LegArmor",
-    "price": 53,
-    "weight": 0.1934797,
-    "tier": 1.25122046,
+    "price": 289,
+    "weight": 1.321567,
+    "tier": 4.294804,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -14177,9 +14150,8 @@
       "headArmor": 0,
       "bodyArmor": 0,
       "armArmor": 0,
-      "legArmor": 5,
-      "materialType": "Leather",
-      "familyType": 0
+      "legArmor": 18,
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -14188,9 +14160,9 @@
     "name": "Woodland Cloth Armor",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 130,
-    "weight": 1.060683,
-    "tier": 1.791895,
+    "price": 3571,
+    "weight": 6.591481,
+    "tier": 5.371324,
     "requirement": 0,
     "flags": [
       "UseTeamColor",
@@ -14198,11 +14170,10 @@
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 9,
-      "armArmor": 2,
-      "legArmor": 4,
-      "materialType": "Cloth",
-      "familyType": 0
+      "bodyArmor": 28,
+      "armArmor": 13,
+      "legArmor": 8,
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -14211,9 +14182,9 @@
     "name": "Fur Rimmed Leather Gloves",
     "culture": "Battania",
     "type": "HandArmor",
-    "price": 144,
-    "weight": 0.5622355,
-    "tier": 3.042563,
+    "price": 1432,
+    "weight": 1.897545,
+    "tier": 6.50314426,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -14221,7 +14192,7 @@
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
-      "armArmor": 8,
+      "armArmor": 18,
       "legArmor": 0,
       "materialType": "Leather",
       "familyType": 0
@@ -14233,9 +14204,9 @@
     "name": "Woodland Leg Wrappings",
     "culture": "Battania",
     "type": "LegArmor",
-    "price": 67,
-    "weight": 0.3915753,
-    "tier": 1.983557,
+    "price": 50,
+    "weight": 0.08992123,
+    "tier": 0.754496157,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -14244,9 +14215,8 @@
       "headArmor": 0,
       "bodyArmor": 0,
       "armArmor": 0,
-      "legArmor": 8,
-      "materialType": "Cloth",
-      "familyType": 0
+      "legArmor": 3,
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -17523,20 +17493,19 @@
     "name": "Kilt over Plated Leather",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 6468,
-    "weight": 9.879503,
-    "tier": 6.34792328,
+    "price": 8705,
+    "weight": 11.13812,
+    "tier": 6.89389944,
     "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 42,
-      "armArmor": 3,
-      "legArmor": 23,
-      "materialType": "Leather",
-      "familyType": 0
+      "bodyArmor": 40,
+      "armArmor": 13,
+      "legArmor": 18,
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -18241,13 +18210,13 @@
     "name": "Leather Studded Helm",
     "culture": "Battania",
     "type": "HeadArmor",
-    "price": 66,
-    "weight": 0.2053926,
-    "tier": 1.43914938,
+    "price": 1055,
+    "weight": 1.34489,
+    "tier": 4.80117464,
     "requirement": 0,
     "flags": [],
     "armor": {
-      "headArmor": 8,
+      "headArmor": 28,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
@@ -18261,13 +18230,13 @@
     "name": "Leather Studded Helm over Headcloth",
     "culture": "Battania",
     "type": "HeadArmor",
-    "price": 84,
-    "weight": 0.2870449,
-    "tier": 1.79203117,
+    "price": 1055,
+    "weight": 1.34489,
+    "tier": 4.80117464,
     "requirement": 0,
     "flags": [],
     "armor": {
-      "headArmor": 10,
+      "headArmor": 28,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
@@ -18281,13 +18250,13 @@
     "name": "Leather Studded Helm over Roughscale",
     "culture": "Battania",
     "type": "HeadArmor",
-    "price": 505,
-    "weight": 0.936664,
-    "tier": 3.83277321,
+    "price": 1055,
+    "weight": 1.34489,
+    "tier": 4.80117464,
     "requirement": 0,
     "flags": [],
     "armor": {
-      "headArmor": 22,
+      "headArmor": 28,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
@@ -18301,13 +18270,13 @@
     "name": "Leather Studded Helm over Thinhide",
     "culture": "Battania",
     "type": "HeadArmor",
-    "price": 112,
-    "weight": 0.3773303,
-    "tier": 2.14149237,
+    "price": 1055,
+    "weight": 1.34489,
+    "tier": 4.80117464,
     "requirement": 0,
     "flags": [],
     "armor": {
-      "headArmor": 12,
+      "headArmor": 28,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
@@ -18853,9 +18822,9 @@
     "name": "Long Fur Coat",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 234,
-    "weight": 1.611588,
-    "tier": 2.29479218,
+    "price": 2967,
+    "weight": 6.336565,
+    "tier": 5.095345,
     "requirement": 0,
     "flags": [
       "UseTeamColor",
@@ -18863,11 +18832,10 @@
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 12,
-      "armArmor": 2,
-      "legArmor": 6,
-      "materialType": "Leather",
-      "familyType": 0
+      "bodyArmor": 28,
+      "armArmor": 8,
+      "legArmor": 13,
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -26032,16 +26000,16 @@
     "name": "Ranger Mail",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 3276,
-    "weight": 6.151767,
-    "tier": 5.241151,
+    "price": 4710,
+    "weight": 7.287423,
+    "tier": 5.808194,
     "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 32,
+      "bodyArmor": 38,
       "armArmor": 8,
       "legArmor": 8,
       "materialType": "Chainmail",
@@ -26373,13 +26341,13 @@
     "name": "Ridged Helm",
     "culture": "Battania",
     "type": "HeadArmor",
-    "price": 5081,
-    "weight": 2.831956,
-    "tier": 7.509759,
+    "price": 7483,
+    "weight": 3.403728,
+    "tier": 8.353923,
     "requirement": 0,
     "flags": [],
     "armor": {
-      "headArmor": 46,
+      "headArmor": 52,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
@@ -26466,15 +26434,15 @@
     "name": "Rough Bearskin",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 1750,
-    "weight": 1.67619,
-    "tier": 6.049653,
+    "price": 4731,
+    "weight": 2.766361,
+    "tier": 7.993438,
     "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 16,
-      "armArmor": 4,
+      "bodyArmor": 18,
+      "armArmor": 9,
       "legArmor": 0,
       "materialType": "Leather",
       "familyType": 0
@@ -26526,9 +26494,9 @@
     "name": "Rough Tied Boots",
     "culture": "Battania",
     "type": "LegArmor",
-    "price": 56,
-    "weight": 0.2543356,
-    "tier": 1.49714434,
+    "price": 50,
+    "weight": 0.08992123,
+    "tier": 0.754496157,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -26537,9 +26505,8 @@
       "headArmor": 0,
       "bodyArmor": 0,
       "armArmor": 0,
-      "legArmor": 6,
-      "materialType": "Leather",
-      "familyType": 0
+      "legArmor": 3,
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -26548,9 +26515,9 @@
     "name": "Rough Tied Bracers",
     "culture": "Battania",
     "type": "HandArmor",
-    "price": 190,
-    "weight": 0.6708834,
-    "tier": 3.40680957,
+    "price": 413,
+    "weight": 1.032893,
+    "tier": 4.47510052,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -26558,7 +26525,7 @@
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
-      "armArmor": 9,
+      "armArmor": 12,
       "legArmor": 0,
       "materialType": "Cloth",
       "familyType": 0
@@ -26615,13 +26582,13 @@
     "name": "Roughscale Helmet",
     "culture": "Battania",
     "type": "HeadArmor",
-    "price": 838,
-    "weight": 1.203399,
-    "tier": 4.482219,
+    "price": 1055,
+    "weight": 1.34489,
+    "tier": 4.80117464,
     "requirement": 0,
     "flags": [],
     "armor": {
-      "headArmor": 26,
+      "headArmor": 28,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
@@ -26635,9 +26602,9 @@
     "name": "Roughtied Leather Bracers",
     "culture": "Battania",
     "type": "HandArmor",
-    "price": 53,
-    "weight": 0.1291116,
-    "tier": 1.163952,
+    "price": 1432,
+    "weight": 1.897545,
+    "tier": 6.50314426,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -26645,7 +26612,7 @@
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
-      "armArmor": 3,
+      "armArmor": 18,
       "legArmor": 0,
       "materialType": "Leather",
       "familyType": 0
@@ -27329,20 +27296,19 @@
     "name": "Rugged Scale Armor",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 1562,
-    "weight": 4.053739,
-    "tier": 4.231516,
+    "price": 12044,
+    "weight": 12.27731,
+    "tier": 7.5397234,
     "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 31,
-      "armArmor": 0,
-      "legArmor": 7,
-      "materialType": "Plate",
-      "familyType": 0
+      "bodyArmor": 50,
+      "armArmor": 13,
+      "legArmor": 13,
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -28227,9 +28193,9 @@
     "name": "Sleeveless Studded Fur Armor",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 137,
-    "weight": 1.107542,
-    "tier": 1.83731163,
+    "price": 1114,
+    "weight": 3.253509,
+    "tier": 3.8279264,
     "requirement": 0,
     "flags": [
       "UseTeamColor",
@@ -28238,11 +28204,10 @@
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 11,
-      "armArmor": 0,
-      "legArmor": 5,
-      "materialType": "Leather",
-      "familyType": 0
+      "bodyArmor": 26,
+      "armArmor": 3,
+      "legArmor": 3,
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -30112,9 +30077,9 @@
     "name": "Strapped Leather Bracers",
     "culture": "Battania",
     "type": "HandArmor",
-    "price": 70,
-    "weight": 0.2778039,
-    "tier": 1.92624247,
+    "price": 1432,
+    "weight": 1.897545,
+    "tier": 6.50314426,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -30122,7 +30087,7 @@
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
-      "armArmor": 5,
+      "armArmor": 18,
       "legArmor": 0,
       "materialType": "Leather",
       "familyType": 0
@@ -32415,15 +32380,15 @@
     "name": "Thinhide Coif",
     "culture": "Battania",
     "type": "HeadArmor",
-    "price": 74,
-    "weight": 0.2450832,
-    "tier": 1.616004,
+    "price": 56,
+    "weight": 0.1334064,
+    "tier": 1.08309555,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "armor": {
-      "headArmor": 9,
+      "headArmor": 6,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
@@ -33190,9 +33155,9 @@
     "name": "Folded Leather Boots",
     "culture": "Battania",
     "type": "LegArmor",
-    "price": 74,
-    "weight": 0.4672444,
-    "tier": 2.22389,
+    "price": 289,
+    "weight": 1.321567,
+    "tier": 4.294804,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -33201,9 +33166,8 @@
       "headArmor": 0,
       "bodyArmor": 0,
       "armArmor": 0,
-      "legArmor": 9,
-      "materialType": "Leather",
-      "familyType": 0
+      "legArmor": 18,
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -35360,20 +35324,19 @@
     "name": "Rough Scale Mail",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 5948,
-    "weight": 9.240578,
-    "tier": 6.200956,
+    "price": 20718,
+    "weight": 17.11691,
+    "tier": 8.744833,
     "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 32,
-      "armArmor": 14,
-      "legArmor": 16,
-      "materialType": "Plate",
-      "familyType": 0
+      "bodyArmor": 52,
+      "armArmor": 23,
+      "legArmor": 18,
+      "materialType": "Plate"
     },
     "weapons": []
   },
@@ -36002,15 +35965,15 @@
     "name": "Wolf Pelt Cape",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 133,
-    "weight": 0.4322979,
-    "tier": 2.55569434,
+    "price": 2040,
+    "weight": 1.796804,
+    "tier": 6.319268,
     "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 6,
-      "armArmor": 2,
+      "bodyArmor": 17,
+      "armArmor": 4,
       "legArmor": 0,
       "materialType": "Leather",
       "familyType": 0
@@ -36022,13 +35985,13 @@
     "name": "Wolf Head",
     "culture": "Battania",
     "type": "HeadArmor",
-    "price": 209,
-    "weight": 0.580938,
-    "tier": 2.82947755,
+    "price": 1055,
+    "weight": 1.34489,
+    "tier": 4.80117464,
     "requirement": 0,
     "flags": [],
     "armor": {
-      "headArmor": 16,
+      "headArmor": 28,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
@@ -36562,16 +36525,16 @@
     "name": "Wrapped Headcloth",
     "culture": "Battania",
     "type": "HeadArmor",
-    "price": 53,
-    "weight": 0.1014857,
-    "tier": 0.903980136,
+    "price": 56,
+    "weight": 0.1334064,
+    "tier": 1.08309555,
     "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
     ],
     "armor": {
-      "headArmor": 5,
+      "headArmor": 6,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0,
@@ -36585,9 +36548,9 @@
     "name": "Wrapped Leather Boots",
     "culture": "Battania",
     "type": "LegArmor",
-    "price": 61,
-    "weight": 0.3204995,
-    "tier": 1.74128556,
+    "price": 289,
+    "weight": 1.321567,
+    "tier": 4.294804,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -36596,9 +36559,8 @@
       "headArmor": 0,
       "bodyArmor": 0,
       "armArmor": 0,
-      "legArmor": 7,
-      "materialType": "Leather",
-      "familyType": 0
+      "legArmor": 18,
+      "materialType": "Leather"
     },
     "weapons": []
   },

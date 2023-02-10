@@ -12,63 +12,63 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_highland_leg_wrappings" name="{=xqE9aycc}Woodland Leg Wrappings" mesh="battania_boot_a" culture="Culture.battania" weight="0.3915753" difficulty="0" appearance="1" Type="LegArmor">
+  <Item id="crpg_highland_leg_wrappings" name="{=xqE9aycc}Woodland Leg Wrappings" mesh="battania_boot_a" culture="Culture.battania" weight="0.08992123" difficulty="0" appearance="1" Type="LegArmor">
     <ItemComponent>
-      <Armor leg_armor="8" covers_legs="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
+      <Armor leg_armor="3" covers_legs="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_rough_tied_boots" name="{=Oo0baNaq}Rough Tied Boots" mesh="bandit_3_boot" culture="Culture.battania" weight="0.2543356" appearance="1" Type="LegArmor">
+  <Item id="crpg_rough_tied_boots" name="{=Oo0baNaq}Rough Tied Boots" mesh="bandit_3_boot" culture="Culture.battania" weight="0.08992123" appearance="1" Type="LegArmor">
     <ItemComponent>
-      <Armor leg_armor="6" covers_legs="true" modifier_group="leather" material_type="Leather" />
+      <Armor leg_armor="3" covers_legs="true" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_battania_leather_boots" name="{=4Ygp7P0Y}Highborn Leather Boots" mesh="battania_leather_boots_a" culture="Culture.battania" weight="0.1934797" difficulty="0" appearance="1" Type="LegArmor">
+  <Item id="crpg_battania_leather_boots" name="{=4Ygp7P0Y}Highborn Leather Boots" mesh="battania_leather_boots_a" culture="Culture.battania" weight="1.321567" difficulty="0" appearance="1" Type="LegArmor">
     <ItemComponent>
-      <Armor leg_armor="5" covers_legs="true" modifier_group="leather" material_type="Leather" />
+      <Armor leg_armor="18" covers_legs="true" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_battania_woodland_boots" name="{=L7qYlJqn}Woodland Boots" mesh="battania_woodland_boots" culture="Culture.battania" weight="0.2543356" difficulty="0" appearance="1" Type="LegArmor">
+  <Item id="crpg_battania_woodland_boots" name="{=L7qYlJqn}Woodland Boots" mesh="battania_woodland_boots" culture="Culture.battania" weight="0.7193698" difficulty="0" appearance="1" Type="LegArmor">
     <ItemComponent>
-      <Armor leg_armor="6" covers_legs="true" modifier_group="leather" material_type="Leather" />
+      <Armor leg_armor="12" covers_legs="true" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_battania_fur_boots" name="{=jVK5B86k}Fur Boots" mesh="battania_fur_boot_a" culture="Culture.battania" weight="0.2543356" difficulty="0" appearance="1" Type="LegArmor">
+  <Item id="crpg_battania_fur_boots" name="{=jVK5B86k}Fur Boots" mesh="battania_fur_boot_a" culture="Culture.battania" weight="0.7193698" difficulty="0" appearance="1" Type="LegArmor">
     <ItemComponent>
-      <Armor leg_armor="6" covers_legs="true" modifier_group="leather" material_type="Leather" />
+      <Armor leg_armor="12" covers_legs="true" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_highland_boots" name="{=FQqaVHq2}Forester Boots" mesh="pict_armor_boot" culture="Culture.battania" weight="0.1934797" difficulty="0" appearance="1" Type="LegArmor">
+  <Item id="crpg_highland_boots" name="{=FQqaVHq2}Forester Boots" mesh="pict_armor_boot" culture="Culture.battania" weight="1.321567" difficulty="0" appearance="1" Type="LegArmor">
     <ItemComponent>
-      <Armor leg_armor="5" covers_legs="true" modifier_group="leather" material_type="Leather" />
+      <Armor leg_armor="18" covers_legs="true" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_wrapped_leather_boots" name="{=WahziEXA}Wrapped Leather Boots" mesh="bandit_leather_boots" culture="Culture.battania" weight="0.3204995" appearance="1" Type="LegArmor">
+  <Item id="crpg_wrapped_leather_boots" name="{=WahziEXA}Wrapped Leather Boots" mesh="bandit_leather_boots" culture="Culture.battania" weight="1.321567" appearance="1" Type="LegArmor">
     <ItemComponent>
-      <Armor leg_armor="7" covers_legs="true" modifier_group="leather" material_type="Leather" />
+      <Armor leg_armor="18" covers_legs="true" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_belted_leather_boots" name="{=bFm9jOft}Belted Leather Boots" mesh="bandit_11_boots" culture="Culture.battania" weight="0.1934797" appearance="1" Type="LegArmor">
+  <Item id="crpg_belted_leather_boots" name="{=bFm9jOft}Belted Leather Boots" mesh="bandit_11_boots" culture="Culture.battania" weight="1.321567" appearance="1" Type="LegArmor">
     <ItemComponent>
-      <Armor leg_armor="5" covers_legs="false" modifier_group="leather" material_type="Leather" />
+      <Armor leg_armor="18" covers_legs="false" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_turndown_leather_boots" name="{=xwWYJb5A}Folded Leather Boots" mesh="sea_raider_leather_boot" culture="Culture.battania" weight="0.4672444" appearance="1" Type="LegArmor">
+  <Item id="crpg_turndown_leather_boots" name="{=xwWYJb5A}Folded Leather Boots" mesh="sea_raider_leather_boot" culture="Culture.battania" weight="1.321567" appearance="1" Type="LegArmor">
     <ItemComponent>
-      <Armor leg_armor="9" covers_legs="true" modifier_group="leather" material_type="Leather" />
+      <Armor leg_armor="18" covers_legs="true" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_battania_warlord_boots" name="{=UuWPfE1x}Scaled Boots" mesh="battania_warlord_boots" culture="Culture.battania" weight="2.294248" difficulty="0" appearance="3" Type="LegArmor">
+  <Item id="crpg_battania_warlord_boots" name="{=UuWPfE1x}Scaled Boots" mesh="battania_warlord_boots" culture="Culture.battania" weight="2.843559" difficulty="0" appearance="3" Type="LegArmor">
     <ItemComponent>
-      <Armor leg_armor="26" covers_legs="true" modifier_group="plate" material_type="Plate" />
+      <Armor leg_armor="30" covers_legs="true" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>

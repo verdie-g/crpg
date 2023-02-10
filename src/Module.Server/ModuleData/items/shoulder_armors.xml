@@ -78,115 +78,115 @@
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_battania_shoulder_strap" name="{=y1YTxkmn}Shoulder Harness" mesh="battania_shoulder_strap" culture="Culture.battania" weight="0.1384428" appearance="1" Type="Cape">
+  <Item id="crpg_battania_shoulder_strap" name="{=y1YTxkmn}Shoulder Harness" mesh="battania_shoulder_strap" culture="Culture.battania" weight="0.96" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="4" modifier_group="leather" material_type="Leather" />
+      <Armor body_armor="12" arm_armor="2" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_battania_shoulder_strap_cloak" name="{=vRBg9ICF}Tartan Shoulder Harness" mesh="battania_shoulder_strap_cloak" culture="Culture.battania" weight="0.3204995" appearance="1.5" Type="Cape">
+  <Item id="crpg_battania_shoulder_strap_cloak" name="{=vRBg9ICF}Tartan Shoulder Harness" mesh="battania_shoulder_strap_cloak" culture="Culture.battania" weight="0.9420564" appearance="1.5" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="7" modifier_group="leather" material_type="Leather" />
+      <Armor body_armor="8" arm_armor="5" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_battania_cloak" name="{=NZjbiEXg}Tartan Cloak" mesh="battania_cloak" culture="Culture.battania" weight="0.04894691" appearance="1.2" Type="Cape">
+  <Item id="crpg_battania_cloak" name="{=NZjbiEXg}Tartan Cloak" mesh="battania_cloak" culture="Culture.battania" weight="0.08992123" appearance="1.2" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="2" modifier_group="cloth_unarmoured" material_type="Cloth" />
+      <Armor body_armor="3" modifier_group="cloth_unarmoured" material_type="Cloth" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_a_battania_cloak_a" name="{=Jm3AiUo3}Simple Cape" mesh="battania_cloak_a" culture="Culture.battania" weight="0.05929271" appearance="1" Type="Cape">
+  <Item id="crpg_a_battania_cloak_a" name="{=Jm3AiUo3}Simple Cape" mesh="battania_cloak_a" culture="Culture.battania" weight="0.08992123" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="1" arm_armor="1" modifier_group="cloth_unarmoured" material_type="Cloth" />
+      <Armor body_armor="3" arm_armor="0" modifier_group="cloth_unarmoured" material_type="Cloth" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_wolf_shoulder" name="{=beg6guIH}Wolf Pelt Cape" mesh="wolf_shoulder" culture="Culture.battania" subtype="body_armor" weight="0.4322979" difficulty="0" appearance="2" Type="Cape">
+  <Item id="crpg_wolf_shoulder" name="{=beg6guIH}Wolf Pelt Cape" mesh="wolf_shoulder" culture="Culture.battania" subtype="body_armor" weight="1.796804" difficulty="0" appearance="2" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="6" arm_armor="2" modifier_group="leather" material_type="Leather" />
+      <Armor body_armor="17" arm_armor="4" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_battania_woodland_cloak" name="{=hjYFbvcy}Woodland Cape" mesh="battania_woodland_cloak" culture="Culture.battania" subtype="body_armor" weight="0.1384428" difficulty="0" appearance="1.5" Type="Cape">
+  <Item id="crpg_battania_woodland_cloak" name="{=hjYFbvcy}Woodland Cape" mesh="battania_woodland_cloak" culture="Culture.battania" subtype="body_armor" weight="0.08992123" difficulty="0" appearance="1.5" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="4" modifier_group="leather" material_type="Leather" />
+      <Armor body_armor="3" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_bearskin" name="{=s7WRzaf2}Bear Pelt" subtype="body_armor" mesh="battania_helmet_h" culture="Culture.battania" weight="0.9065096" difficulty="0" appearance="3" Type="Cape">
+  <Item id="crpg_bearskin" name="{=s7WRzaf2}Bear Pelt" subtype="body_armor" mesh="battania_helmet_h" culture="Culture.battania" weight="2.792014" difficulty="0" appearance="3" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="14" modifier_group="leather" material_type="Leather" />
+      <Armor body_armor="22" arm_armor="6" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_armored_bearskin" name="{=FOx5vZSJ}Armored Bearskin" subtype="body_armor" mesh="battania_helmet_j" culture="Culture.battania" weight="1.107542" difficulty="0" appearance="2" Type="Cape">
+  <Item id="crpg_armored_bearskin" name="{=FOx5vZSJ}Armored Bearskin" subtype="body_armor" mesh="battania_helmet_j" culture="Culture.battania" weight="2.766361" difficulty="0" appearance="2" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="16" modifier_group="cloth" material_type="Cloth" />
+      <Armor body_armor="18" arm_armor="9" modifier_group="cloth" material_type="Cloth" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_battania_cloak_furr" name="{=B58Ocaxw}Chained Fur Cloak" mesh="battania_cloak_furr" culture="Culture.battania" weight="0.7030825" appearance="3" Type="Cape">
+  <Item id="crpg_battania_cloak_furr" name="{=B58Ocaxw}Chained Fur Cloak" mesh="battania_cloak_furr" culture="Culture.battania" weight="2.766361" appearance="3" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="8" arm_armor="3" modifier_group="leather" material_type="Leather" />
+      <Armor body_armor="18" arm_armor="9" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_battania_warlord_pauldrons" name="{=yrCoCgJf}Heavy Warlord Pauldrons" mesh="battania_warlord_pauldrons" culture="Culture.battania" subtype="body_armor" weight="3.24" difficulty="0" appearance="3" Type="Cape">
+  <Item id="crpg_battania_warlord_pauldrons" name="{=yrCoCgJf}Heavy Warlord Pauldrons" mesh="battania_warlord_pauldrons" culture="Culture.battania" subtype="body_armor" weight="3.808972" difficulty="0" appearance="3" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="20" arm_armor="10" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="25" arm_armor="9" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_battania_civil_cloak" name="{=e6WOD7Ra}Fringed Cape" mesh="battania_civil_cloak" culture="Culture.battania" subtype="body_armor" weight="0.04894691" difficulty="0" appearance="1.5" Type="Cape">
+  <Item id="crpg_battania_civil_cloak" name="{=e6WOD7Ra}Fringed Cape" mesh="battania_civil_cloak" culture="Culture.battania" subtype="body_armor" weight="0.08992123" difficulty="0" appearance="1.5" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="2" modifier_group="cloth_unarmoured" material_type="Cloth" />
+      <Armor body_armor="3" modifier_group="cloth_unarmoured" material_type="Cloth" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_battania_cloak_b" name="{=lVtoBMhp}Tartan Cape" mesh="battania_cloak_b" culture="Culture.battania" subtype="body_armor" weight="0.1384428" difficulty="0" appearance="1.5" Type="Cape">
+  <Item id="crpg_battania_cloak_b" name="{=lVtoBMhp}Tartan Cape" mesh="battania_cloak_b" culture="Culture.battania" subtype="body_armor" weight="0.08992123" difficulty="0" appearance="1.5" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="4" modifier_group="cloth_unarmoured" material_type="Cloth" />
+      <Armor body_armor="3" modifier_group="cloth_unarmoured" material_type="Cloth" />
     </ItemComponent>
   </Item>
-  <Item id="crpg_battania_scarf_a" name="{=ectdzWNx}Heavy Tartan Scarf" mesh="battania_scarf_a" culture="Culture.battania" subtype="body_armor" weight="0.1528404" difficulty="0" appearance="1.5" Type="Cape">
+  <Item id="crpg_battania_scarf_a" name="{=ectdzWNx}Heavy Tartan Scarf" mesh="battania_scarf_a" culture="Culture.battania" subtype="body_armor" weight="0.9420564" difficulty="0" appearance="1.5" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="3" arm_armor="1" modifier_group="cloth_unarmoured" material_type="Cloth" />
+      <Armor body_armor="8" arm_armor="5" modifier_group="cloth_unarmoured" material_type="Cloth" />
     </ItemComponent>
   </Item>
-  <Item id="crpg_battania_shoulder_furr" name="{=4ryhrb9p}Reinforced Harness with Cape" mesh="battania_shoulder_furr" culture="Culture.battania" weight="0.4672444" appearance="1.5" Type="Cape">
+  <Item id="crpg_battania_shoulder_furr" name="{=4ryhrb9p}Reinforced Harness with Cape" mesh="battania_shoulder_furr" culture="Culture.battania" weight="1.796804" appearance="1.5" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="9" modifier_group="leather" material_type="Leather" />
-    </ItemComponent>
-    <Flags />
-  </Item>
-  <Item id="crpg_rough_bearskin" name="{=KKWEkA4P}Rough Bearskin" mesh="cloak_fur_c" culture="Culture.battania" weight="1.67619" appearance="3" Type="Cape">
-    <ItemComponent>
-      <Armor body_armor="16" arm_armor="4" modifier_group="leather" material_type="Leather" />
+      <Armor body_armor="17" arm_armor="4" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_battania_civil_cape" name="{=5uqExwWb}Woodland Fur Cloak" subtype="body_armor" mesh="battania_civil_cape" culture="Culture.battania" weight="0.2543356" difficulty="0" appearance="1.5" Type="Cape">
+  <Item id="crpg_rough_bearskin" name="{=KKWEkA4P}Rough Bearskin" mesh="cloak_fur_c" culture="Culture.battania" weight="2.766361" appearance="3" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="6" modifier_group="cloth" material_type="Cloth" />
+      <Armor body_armor="18" arm_armor="9" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_battanian_chainmail_shoulder_b" name="{=qdMP2qWG}Mail Shoulder Reinforcements" subtype="body_armor" mesh="battanian_chainmail_shoulder_b" culture="Culture.battania" weight="0.3204995" difficulty="0" appearance="1.8" Type="Cape">
+  <Item id="crpg_battania_civil_cape" name="{=5uqExwWb}Woodland Fur Cloak" subtype="body_armor" mesh="battania_civil_cape" culture="Culture.battania" weight="0.08992123" difficulty="0" appearance="1.5" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="7" modifier_group="cloth" material_type="Cloth" />
+      <Armor body_armor="3" modifier_group="cloth" material_type="Cloth" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_battanian_chainmail_shoulder_a" name="{=M0n609ut}Mail Shoulder Pieces" subtype="body_armor" mesh="battanian_chainmail_shoulder_a" culture="Culture.battania" weight="0.2543356" difficulty="0" appearance="1.8" Type="Cape">
+  <Item id="crpg_battanian_chainmail_shoulder_b" name="{=qdMP2qWG}Mail Shoulder Reinforcements" subtype="body_armor" mesh="battanian_chainmail_shoulder_b" culture="Culture.battania" weight="1.774667" difficulty="0" appearance="1.8" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="6" modifier_group="cloth" material_type="Cloth" />
+      <Armor body_armor="13" arm_armor="7" modifier_group="cloth" material_type="Cloth" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_battanian_leather_shoulder_a" name="{=ICsecuVv}Cured Leather Shoulder Pieces" subtype="body_armor" mesh="battanian_leather_shoulder_a" culture="Culture.battania" weight="0.1934797" difficulty="0" appearance="1.8" Type="Cape">
+  <Item id="crpg_battanian_chainmail_shoulder_a" name="{=M0n609ut}Mail Shoulder Pieces" subtype="body_armor" mesh="battanian_chainmail_shoulder_a" culture="Culture.battania" weight="1.796804" difficulty="0" appearance="1.8" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="5" modifier_group="cloth" material_type="Cloth" />
+      <Armor body_armor="17" arm_armor="4" modifier_group="cloth" material_type="Cloth" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_battanian_leather_shoulder_a" name="{=ICsecuVv}Cured Leather Shoulder Pieces" subtype="body_armor" mesh="battanian_leather_shoulder_a" culture="Culture.battania" weight="0.96" difficulty="0" appearance="1.8" Type="Cape">
+    <ItemComponent>
+      <Armor body_armor="12" arm_armor="2" modifier_group="cloth" material_type="Cloth" />
     </ItemComponent>
     <Flags />
   </Item>

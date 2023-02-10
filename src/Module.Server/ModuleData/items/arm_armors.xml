@@ -12,57 +12,57 @@
     </ItemComponent>
     <Flags Civilian="true" UseTeamColor="true" />
   </Item>
-  <Item id="crpg_armwraps" name="{=oEJnxsQ1}Armwraps" mesh="battania_armwraps_a" culture="Culture.battania" weight="0.1291116" difficulty="0" appearance="0.3" Type="HandArmor">
+  <Item id="crpg_armwraps" name="{=oEJnxsQ1}Armwraps" mesh="battania_armwraps_a" culture="Culture.battania" weight="1.032893" difficulty="0" appearance="0.3" Type="HandArmor">
     <ItemComponent>
-      <Armor arm_armor="3" modifier_group="cloth_unarmoured" material_type="Cloth" />
+      <Armor arm_armor="12" modifier_group="cloth_unarmoured" material_type="Cloth" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_guarded_armwraps" name="{=a1BGHdaU}Guarded Armwraps" mesh="battania_armwraps_b" culture="Culture.battania" weight="0.4601828" difficulty="0" appearance="0.4" Type="HandArmor">
+  <Item id="crpg_guarded_armwraps" name="{=a1BGHdaU}Guarded Armwraps" mesh="battania_armwraps_b" culture="Culture.battania" weight="1.032893" difficulty="0" appearance="0.4" Type="HandArmor">
     <ItemComponent>
-      <Armor arm_armor="7" modifier_group="cloth" material_type="Cloth" />
+      <Armor arm_armor="12" modifier_group="cloth" material_type="Cloth" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_rough_tied_bracers" name="{=uEPRE33m}Rough Tied Bracers" mesh="bandit_3_wrist" culture="Culture.battania" weight="0.6708834" appearance="0.3" Type="HandArmor">
+  <Item id="crpg_rough_tied_bracers" name="{=uEPRE33m}Rough Tied Bracers" mesh="bandit_3_wrist" culture="Culture.battania" weight="1.032893" appearance="0.3" Type="HandArmor">
     <ItemComponent>
-      <Armor arm_armor="9" covers_hands="false" modifier_group="cloth" material_type="Cloth" />
+      <Armor arm_armor="12" covers_hands="false" modifier_group="cloth" material_type="Cloth" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_buttoned_leather_bracers" name="{=iD0ePqi7}Buttoned Leather Bracers" mesh="bandit_leather_wristbands" culture="Culture.battania" weight="0.1987803" appearance="1" Type="HandArmor">
+  <Item id="crpg_buttoned_leather_bracers" name="{=iD0ePqi7}Buttoned Leather Bracers" mesh="bandit_leather_wristbands" culture="Culture.battania" weight="1.032893" appearance="1" Type="HandArmor">
     <ItemComponent>
-      <Armor arm_armor="4" covers_hands="false" modifier_group="leather" material_type="Leather" />
+      <Armor arm_armor="12" covers_hands="false" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_strapped_leather_bracers" name="{=DOYS7dmq}Strapped Leather Bracers" mesh="bandit_10_wristband" culture="Culture.battania" weight="0.2778039" appearance="0.4" Type="HandArmor">
+  <Item id="crpg_strapped_leather_bracers" name="{=DOYS7dmq}Strapped Leather Bracers" mesh="bandit_10_wristband" culture="Culture.battania" weight="1.897545" appearance="0.4" Type="HandArmor">
     <ItemComponent>
-      <Armor arm_armor="5" covers_hands="false" modifier_group="leather" material_type="Leather" />
+      <Armor arm_armor="18" covers_hands="false" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_roughtied_leather_bracers" name="{=e4lKZhgv}Roughtied Leather Bracers" mesh="sea_raider_leather_wristband" culture="Culture.battania" weight="0.1291116" appearance="1" Type="HandArmor">
+  <Item id="crpg_roughtied_leather_bracers" name="{=e4lKZhgv}Roughtied Leather Bracers" mesh="sea_raider_leather_wristband" culture="Culture.battania" weight="1.897545" appearance="1" Type="HandArmor">
     <ItemComponent>
-      <Armor arm_armor="3" covers_hands="false" modifier_group="leather" material_type="Leather" />
+      <Armor arm_armor="18" covers_hands="false" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_battania_noble_bracers" name="{=wLAL9NRB}Fian Bracers" mesh="battania_noble_bracers" culture="Culture.battania" weight="1.897545" difficulty="0" appearance="3" Type="HandArmor">
+  <Item id="crpg_battania_noble_bracers" name="{=wLAL9NRB}Fian Bracers" mesh="battania_noble_bracers" culture="Culture.battania" weight="2.921461" difficulty="0" appearance="3" Type="HandArmor">
+    <ItemComponent>
+      <Armor arm_armor="24" covers_hands="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_highland_gloves" name="{=4HcrY0S2}Fur Rimmed Leather Gloves" mesh="pict_armor_glove" culture="Culture.battania" weight="1.897545" difficulty="0" appearance="1" Type="HandArmor">
     <ItemComponent>
       <Armor arm_armor="18" covers_hands="true" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_highland_gloves" name="{=4HcrY0S2}Fur Rimmed Leather Gloves" mesh="pict_armor_glove" culture="Culture.battania" weight="0.5622355" difficulty="0" appearance="1" Type="HandArmor">
+  <Item id="crpg_battania_warlord_bracers" name="{=I0vRCZ7U}Scale Warlord Bracers" mesh="battania_warlord_bracers" culture="Culture.battania" weight="4.082867" difficulty="0" appearance="3" Type="HandArmor">
     <ItemComponent>
-      <Armor arm_armor="8" covers_hands="true" modifier_group="leather" material_type="Leather" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_battania_warlord_bracers" name="{=I0vRCZ7U}Scale Warlord Bracers" mesh="battania_warlord_bracers" culture="Culture.battania" weight="3.105942" difficulty="0" appearance="3" Type="HandArmor">
-    <ItemComponent>
-      <Armor arm_armor="25" covers_hands="true" modifier_group="plate" material_type="Plate" />
+      <Armor arm_armor="30" covers_hands="true" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
