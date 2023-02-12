@@ -24,13 +24,18 @@ namespace Crpg.Module;
 
 internal class CrpgSubModule : MBSubModuleBase
 {
+    static CrpgSubModule()
+    {
+        AppDomain.CurrentDomain.UnhandledException += (_, args) =>
+            Debug.Print(args.ExceptionObject.ToString(), color: Debug.DebugColor.Red);
+    }
+
+
     private CrpgConstants _constants = default!;
 
     protected override void OnSubModuleLoad()
     {
         base.OnSubModuleLoad();
-
-        AppDomain.CurrentDomain.UnhandledException += OnUnhandledException;
 
         _constants = LoadCrpgConstants();
         TaleWorlds.MountAndBlade.Module.CurrentModule.AddMultiplayerGameMode(new CrpgBattleGameMode(_constants, isSkirmish: true));
@@ -76,11 +81,6 @@ internal class CrpgSubModule : MBSubModuleBase
     {
         string path = ModuleHelper.GetModuleFullPath("cRPG") + "ModuleData/constants.json";
         return JsonConvert.DeserializeObject<CrpgConstants>(File.ReadAllText(path))!;
-    }
-
-    private void OnUnhandledException(object sender, UnhandledExceptionEventArgs args)
-    {
-        Debug.Print(args.ExceptionObject.ToString(), color: Debug.DebugColor.Red);
     }
 
     private void InitializeGameModels(IGameStarter basicGameStarter)
