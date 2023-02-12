@@ -19,6 +19,7 @@ public record CreateClanCommand : IMediatorRequest<ClanViewModel>
     public int UserId { get; init; }
     public string Tag { get; init; } = string.Empty;
     public string Name { get; init; } = string.Empty;
+    public string Description { get; init; } = string.Empty;
     public uint PrimaryColor { get; init; }
     public uint SecondaryColor { get; init; }
     public string BannerKey { get; init; } = string.Empty;
@@ -43,6 +44,10 @@ public record CreateClanCommand : IMediatorRequest<ClanViewModel>
             RuleFor(c => c.Name)
                 .MinimumLength(constants.ClanNameMinLength)
                 .MaximumLength(constants.ClanNameMaxLength);
+
+            RuleFor(c => c.Description)
+                .MinimumLength(constants.ClanDescriptionMinLength)
+                .MaximumLength(constants.ClanDescriptionMaxLength);
 
             RuleFor(c => c.BannerKey)
                 .MinimumLength(0)
@@ -99,6 +104,7 @@ public record CreateClanCommand : IMediatorRequest<ClanViewModel>
                 PrimaryColor = req.PrimaryColor,
                 SecondaryColor = req.SecondaryColor,
                 Name = req.Name,
+                Description = req.Description,
                 BannerKey = req.BannerKey,
                 Region = req.Region,
                 Discord = req.Discord,

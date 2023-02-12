@@ -23,6 +23,7 @@ public class CreateClanCommandTest : TestBase
             PrimaryColor = 0xFFFFFFFF,
             SecondaryColor = 0xFF000000,
             Name = "TaleWorlds",
+            Description = "a description",
             BannerKey = "abc",
             Region = Region.Na,
             Discord = new Uri("https://discord.gg/abc"),
@@ -33,6 +34,7 @@ public class CreateClanCommandTest : TestBase
         Assert.AreEqual(0xFFFFFFFF, clan.PrimaryColor);
         Assert.AreEqual(0xFF000000, clan.SecondaryColor);
         Assert.AreEqual("TaleWorlds", clan.Name);
+        Assert.AreEqual("a description", clan.Description);
         Assert.AreEqual("abc", clan.BannerKey);
         Assert.AreEqual(Region.Na, clan.Region);
         Assert.AreEqual(new Uri("https://discord.gg/abc"), clan.Discord);

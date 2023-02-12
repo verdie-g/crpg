@@ -107,6 +107,7 @@ public class UpdateClanCommandTest : TestBase
             PrimaryColor = 123,
             SecondaryColor = 456,
             Name = "B",
+            Description = "C",
             BannerKey = "789",
             Region = Region.As,
             Discord = new Uri("https://discord.gg/abc"),
@@ -123,6 +124,7 @@ public class UpdateClanCommandTest : TestBase
             PrimaryColor = 1234,
             SecondaryColor = 4567,
             Name = "D",
+            Description = "E",
             BannerKey = "7890",
             Region = Region.Na,
             Discord = new Uri("https://discord.gg/def"),
@@ -132,6 +134,7 @@ public class UpdateClanCommandTest : TestBase
         var clanVm = res.Data!;
         Assert.AreEqual(Region.Na, clanVm.Region);
         Assert.AreEqual("C", clanVm.Tag);
+        Assert.AreEqual("E", clanVm.Description);
         Assert.AreEqual(1234, clanVm.PrimaryColor);
         Assert.AreEqual(4567, clanVm.SecondaryColor);
         Assert.AreEqual("D", clanVm.Name);

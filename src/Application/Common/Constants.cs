@@ -53,6 +53,8 @@ public class Constants
     public string ClanTagRegex { get; set; } = string.Empty;
     public int ClanNameMinLength { get; set; }
     public int ClanNameMaxLength { get; set; }
+    public int ClanDescriptionMinLength { get; set; }
+    public int ClanDescriptionMaxLength { get; set; }
     public uint ClanColorMinValue { get; set; }
     public int ClanBannerKeyMaxLength { get; set; }
     public string ClanBannerKeyRegex { get; set; } = string.Empty;

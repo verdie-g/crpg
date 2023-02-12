@@ -27,6 +27,11 @@ public class Clan : AuditableEntity
     public string Name { get; set; } = string.Empty;
 
     /// <summary>
+    /// Description of the clan.
+    /// </summary>
+    public string Description { get; set; } = string.Empty;
+
+    /// <summary>
     /// Bannerlord's banner key of the clan.
     /// </summary>
     public string BannerKey { get; set; } = string.Empty;
