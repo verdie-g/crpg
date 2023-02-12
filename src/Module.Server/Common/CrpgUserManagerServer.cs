@@ -169,7 +169,7 @@ internal class CrpgUserManagerServer : MissionNetwork
         catch (Exception e)
         {
             Debug.Print($"Couldn't get user {userName} ({platform}#{platformUserId}): {e}");
-            KickHelper.Kick(networkPeer, DisconnectType.KickedByHost);
+            KickHelper.Kick(networkPeer, DisconnectType.ServerNotResponding);
             return;
         }
 
