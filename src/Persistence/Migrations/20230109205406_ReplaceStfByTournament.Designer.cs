@@ -321,9 +321,9 @@ namespace Crpg.Persistence.Migrations
                         .HasColumnType("text")
                         .HasColumnName("name");
 
-                    b.Property<bool>("Tournament")
+                    b.Property<bool>("ForTournament")
                         .HasColumnType("boolean")
-                        .HasColumnName("tournament");
+                        .HasColumnName("for_tournament");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone")
