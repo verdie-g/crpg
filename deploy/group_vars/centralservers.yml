@@ -85,9 +85,7 @@ datadog_checks:
                         (SELECT COUNT(*) FROM users WHERE updated_at > now() - INTERVAL '1 month') AS active_users_30d,
                         (SELECT COUNT(*) FROM users WHERE updated_at > now() - INTERVAL '1 week') AS active_users_7d,
                         (SELECT COUNT(*) FROM users WHERE updated_at > now() - INTERVAL '1 day') AS active_users_1d,
-                        (SELECT COUNT(*) FROM users WHERE updated_at > now() - INTERVAL '15 min') AS active_users_15min,
-                        (SELECT AVG(gold) FROM users WHERE updated_at > now() - INTERVAL '1 month') AS active_users_30d_average_gold,
-                        (SELECT AVG(level) FROM characters WHERE updated_at > now() - INTERVAL '1 month') AS active_characters_30d_average_level
+                        (SELECT COUNT(*) FROM users WHERE updated_at > now() - INTERVAL '15 min') AS active_users_15min
                     columns:
                         - name: users.count
                           type: gauge
@@ -99,10 +97,39 @@ datadog_checks:
                           type: gauge
                         - name: users.active.15min.count
                           type: gauge
-                        - name: users.active.30d.average_gold
-                          type: gauge
-                        - name: characters.active.30d.average_level
-                          type: gauge
+                  - metric_prefix: crpg.users.active.30d.gold
+                    query: SELECT pctls[1] AS p25, pctls[2] as p50, pctls[3] AS p75, pctls[4] AS p99
+                        FROM (
+                            SELECT percentile_disc(ARRAY[0.25, 0.50, 0.75, 0.99]) WITHIN GROUP (ORDER BY gold) AS pctls
+                            FROM users
+                            WHERE NOW() - updated_at < '30 days'::INTERVAL
+                        ) AS q;
+                    columns:
+                      - name: p25
+                        type: gauge
+                      - name: p50
+                        type: gauge
+                      - name: p75
+                        type: gauge
+                      - name: p99
+                        type: gauge
+                  - metric_prefix: crpg.characters.active.30d.level
+                    query: SELECT pctls[1] AS p25, pctls[2] as p50, pctls[3] AS p75, pctls[4] AS p99
+                        FROM (
+                            SELECT
+                            percentile_disc(ARRAY[0.25, 0.50, 0.75, 0.99]) WITHIN GROUP (ORDER BY level) AS pctls
+                            FROM characters
+                            WHERE NOW() - updated_at < '30 days'::INTERVAL
+                        ) AS q;
+                    columns:
+                      - name: p25
+                        type: gauge
+                      - name: p50
+                        type: gauge
+                      - name: p75
+                        type: gauge
+                      - name: p99
+                        type: gauge
         logs:
             - type: file
               path: /var/log/postgresql/postgresql.csv
