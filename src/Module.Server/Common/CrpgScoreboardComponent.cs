@@ -15,7 +15,7 @@ internal class CrpgScoreboardComponent : MissionScoreboardComponent
 
     public override void OnScoreHit(
         Agent affectedAgent,
-        Agent affectorAgent,
+        Agent? affectorAgent,
         WeaponComponentData attackerWeapon,
         bool isBlocked,
         bool isSiegeEngineHit,
@@ -30,14 +30,14 @@ internal class CrpgScoreboardComponent : MissionScoreboardComponent
             return;
         }
 
+        if (affectorAgent == null || affectorAgent == affectedAgent)
+        {
+            return;
+        }
+
         if (affectorAgent.IsMount)
         {
             affectorAgent = affectorAgent.RiderAgent;
-        }
-
-        if (affectorAgent == null)
-        {
-            return;
         }
 
         var missionPeer = affectorAgent.MissionPeer ??
@@ -50,23 +50,19 @@ internal class CrpgScoreboardComponent : MissionScoreboardComponent
         }
 
         float score = damagedHp;
-        if (affectedAgent.IsMount)
+        if (isBlocked || damagedHp <= 0.0)
+        {
+            if (!collisionData.AttackBlockedWithShield)
+            {
+                return;
+            }
+
+            score = collisionData.InflictedDamage * 0.2f;
+        }
+        else if (affectedAgent.IsMount)
         {
             score = damagedHp * 0.45f;
             affectedAgent = affectedAgent.RiderAgent;
-        }
-        else if (collisionData.AttackBlockedWithShield)
-        {
-            score = collisionData.InflictedDamage * 0.2f;
-        }
-        else if (isBlocked || damagedHp <= 0.0)
-        {
-            return;
-        }
-
-        if (affectedAgent == null || affectorAgent == affectedAgent)
-        {
-            return;
         }
 
         score = affectorAgent.IsFriendOf(affectedAgent) ? score * -1.5f : score;
@@ -77,7 +73,6 @@ internal class CrpgScoreboardComponent : MissionScoreboardComponent
             null, missionPeer.KillCount, missionPeer.AssistCount, missionPeer.DeathCount, missionPeer.Score));
         GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
     }
-
 
     protected override void AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegistererContainer registerer)
     {
