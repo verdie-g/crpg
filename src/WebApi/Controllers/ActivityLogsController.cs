@@ -10,23 +10,26 @@ namespace Crpg.WebApi.Controllers;
 public class ActivityLogsController : BaseController
 {
     /// <summary>
-    /// Get activity logs.
+    /// Get activity logs. The result is limited too 1000 logs.
     /// </summary>
-    /// <query name="count">The number of logs to return.</query>
-    /// <query name="after">The id where to start the search.</query>
+    /// <query name="from">Start of the queried time period.</query>
+    /// <query name="to">End of the queried time period.</query>
+    /// <query name="userId">Optional user id to filer the logs.</query>
     /// <returns>The activity logs.</returns>
     /// <response code="200">Ok.</response>
     /// <response code="400">Bad Request.</response>
     [Authorize(Policy = ModeratorPolicy)]
     [HttpGet]
     public async Task<ActionResult<Result<IList<ActivityLogViewModel>>>> GetActivityLogs(
-        [FromQuery] int count,
-        [FromQuery] int? afterId)
+        [FromQuery] DateTime from,
+        [FromQuery] DateTime to,
+        [FromQuery] int? userId)
     {
         return ResultToAction(await Mediator.Send(new GetActivityLogsQuery
         {
-            Count = count,
-            AfterId = afterId,
+            From = from,
+            To = to,
+            UserId = userId,
         }, CancellationToken.None));
     }
 }

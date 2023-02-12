@@ -8,5 +8,6 @@ public class ActivityLogConfiguration : IEntityTypeConfiguration<ActivityLog>
 {
     public void Configure(EntityTypeBuilder<ActivityLog> builder)
     {
+        builder.HasIndex(l => new { l.CreatedAt, l.UserId });
     }
 }
