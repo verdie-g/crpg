@@ -48,8 +48,11 @@ internal class CrpgUserManagerServer : MissionNetwork
     protected override void HandleNewClientAfterSynchronized(NetworkCommunicator networkPeer)
     {
         base.HandleNewClientAfterSynchronized(networkPeer);
-        KickEmptyNames(networkPeer);
-        KickWeirdBodyProperties(networkPeer);
+        if (KickEmptyNames(networkPeer) || KickWeirdBodyProperties(networkPeer))
+        {
+            return;
+        }
+
         _ = SetCrpgComponentAsync(networkPeer);
     }
 
@@ -68,26 +71,32 @@ internal class CrpgUserManagerServer : MissionNetwork
         }
     }
 
-    private void KickWeirdBodyProperties(NetworkCommunicator networkPeer)
+    private bool KickWeirdBodyProperties(NetworkCommunicator networkPeer)
     {
         var vp = networkPeer.VirtualPlayer;
         var bodyProperties = vp.BodyProperties;
         ulong height = (bodyProperties.KeyPart8 >> 19) & 0x3F;
-        if (height < 15 || height > 47) // Min/max height of the armory.
+        if (height >= 15 && height <= 47) // Min/max height of the armory.
         {
-            Debug.Print($"Kick player {vp.UserName} with a height of {height}");
-            KickHelper.Kick(networkPeer, DisconnectType.KickedByAntiCheat);
+            return false;
         }
+
+        Debug.Print($"Kick player {vp.UserName} with a height of {height}");
+        KickHelper.Kick(networkPeer, DisconnectType.KickedByAntiCheat);
+        return true;
     }
 
-    private void KickEmptyNames(NetworkCommunicator networkPeer)
+    private bool KickEmptyNames(NetworkCommunicator networkPeer)
     {
         var vp = networkPeer.VirtualPlayer;
-        if (string.IsNullOrWhiteSpace(vp.UserName))
+        if (!string.IsNullOrWhiteSpace(vp.UserName))
         {
-            Debug.Print($"Kick player with an empty name \"{vp.UserName}\"");
-            KickHelper.Kick(networkPeer, DisconnectType.KickedByAntiCheat);
+            return false;
         }
+
+        Debug.Print($"Kick player with an empty name \"{vp.UserName}\"");
+        KickHelper.Kick(networkPeer, DisconnectType.KickedByAntiCheat);
+        return true;
     }
 
     /// <summary>
