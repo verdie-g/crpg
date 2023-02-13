@@ -58,7 +58,7 @@ internal class CrpgActivityLogsBehavior : MissionLogic
 
         if (affectorAgent!.Team == affectedAgent!.Team)
         {
-            AddTeamHitLog(affectorUserId.Value, affectedUserId.Value);
+            AddTeamHitLog(affectorUserId.Value, affectedUserId.Value, damagedHp);
         }
     }
 
@@ -87,11 +87,12 @@ internal class CrpgActivityLogsBehavior : MissionLogic
         });
     }
 
-    private void AddTeamHitLog(int userId, int targetUserId)
+    private void AddTeamHitLog(int userId, int targetUserId, int damage)
     {
         AddLog(CrpgActivityLogType.TeamHit, userId, new Dictionary<string, string>
         {
             ["targetUserId"] = targetUserId.ToString(),
+            ["damage"] = damage.ToString(),
         });
     }
 
