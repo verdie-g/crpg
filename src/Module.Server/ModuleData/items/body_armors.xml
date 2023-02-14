@@ -114,9 +114,9 @@
     </ItemComponent>
     <Flags UseTeamColor="true" Civilian="true" />
   </Item>
-  <Item id="crpg_studded_leather_coat" name="{=XkL1Re8b}Studded Leather Coat" lod_atlas_index="12" mesh="bandit_leather_a" culture="Culture.aserai" weight="2.817747" appearance="1" Type="BodyArmor">
+  <Item id="crpg_studded_leather_coat" name="{=XkL1Re8b}Studded Leather Coat" lod_atlas_index="12" mesh="bandit_leather_a" culture="Culture.aserai" weight="3.253509" appearance="1" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="23" leg_armor="3" arm_armor="3" has_gender_variations="true" covers_body="true" modifier_group="leather" material_type="Leather" />
+      <Armor body_armor="26" leg_armor="3" arm_armor="3" has_gender_variations="true" covers_body="true" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
@@ -588,9 +588,9 @@
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_eastern_plated_leather_vest" name="{=BbhGL8XT}Brigandine Vest" mesh="plated_leather_armor_a" culture="Culture.khuzait" weight="15.49771" appearance="1" Type="BodyArmor">
+  <Item id="crpg_eastern_plated_leather_vest" name="{=BbhGL8XT}Brigandine Vest" mesh="plated_leather_armor_a" culture="Culture.khuzait" weight="12.27731" appearance="1" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="52" leg_armor="18" arm_armor="18" covers_body="true" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="50" leg_armor="13" arm_armor="13" covers_body="true" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
@@ -678,9 +678,9 @@
     </ItemComponent>
     <Flags Civilian="true" UseTeamColor="true" />
   </Item>
-  <Item id="crpg_aketon" name="{=7b8Cwogx}Aketon" mesh="crossbow_armor" culture="Culture.vlandia" weight="2.817747" appearance="1" Type="BodyArmor">
+  <Item id="crpg_aketon" name="{=7b8Cwogx}Aketon" mesh="crossbow_armor" culture="Culture.vlandia" weight="3.253509" appearance="1" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="23" leg_armor="3" arm_armor="3" covers_body="true" modifier_group="cloth" material_type="Cloth" />
+      <Armor body_armor="26" leg_armor="3" arm_armor="3" covers_body="true" modifier_group="cloth" material_type="Cloth" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
@@ -696,9 +696,9 @@
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_padded_short_coat" name="{=4pqIsPhp}Padded Short Coat" mesh="padded_coat_c" culture="Culture.vlandia" weight="2.817747" appearance="1" Type="BodyArmor">
+  <Item id="crpg_padded_short_coat" name="{=4pqIsPhp}Padded Short Coat" mesh="padded_coat_c" culture="Culture.vlandia" weight="3.253509" appearance="1" Type="BodyArmor">
     <ItemComponent>
-      <Armor body_armor="23" leg_armor="3" arm_armor="3" has_gender_variations="true" covers_body="true" modifier_group="cloth" material_type="Cloth" />
+      <Armor body_armor="26" leg_armor="3" arm_armor="3" has_gender_variations="true" covers_body="true" modifier_group="cloth" material_type="Cloth" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>

@@ -4,9 +4,9 @@
     "name": "Heavy Morningstar",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
-    "price": 9821,
-    "weight": 2.16,
-    "tier": 8.200697,
+    "price": 14962,
+    "weight": 2.03,
+    "tier": 10.3747292,
     "requirement": 0,
     "flags": [
       "CanBePickedUpFromCorpse"
@@ -19,8 +19,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 99,
-        "balance": 0.57,
-        "handling": 81,
+        "balance": 0.66,
+        "handling": 83,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -30,10 +30,10 @@
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 92,
+        "thrustSpeed": 93,
         "swingDamage": 30,
         "swingDamageType": "Pierce",
-        "swingSpeed": 87
+        "swingSpeed": 89
       }
     ]
   },
@@ -406,16 +406,16 @@
     "name": "Aketon",
     "culture": "Vlandia",
     "type": "BodyArmor",
-    "price": 830,
-    "weight": 2.817747,
-    "tier": 3.501227,
+    "price": 1114,
+    "weight": 3.253509,
+    "tier": 3.8279264,
     "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 23,
+      "bodyArmor": 26,
       "armArmor": 3,
       "legArmor": 3,
       "materialType": "Cloth",
@@ -428,9 +428,9 @@
     "name": "The Ambassador",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
-    "price": 9151,
-    "weight": 2.93,
-    "tier": 7.879004,
+    "price": 17759,
+    "weight": 2.83,
+    "tier": 11.4005785,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -440,20 +440,20 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 116,
-        "balance": 0.61,
-        "handling": 84,
+        "length": 120,
+        "balance": 0.64,
+        "handling": 85,
         "bodyArmor": 3,
         "flags": [
           "MeleeWeapon",
           "NotUsableWithOneHand"
         ],
-        "thrustDamage": 22,
+        "thrustDamage": 27,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 87,
         "swingDamage": 37,
         "swingDamageType": "Cut",
-        "swingSpeed": 88
+        "swingSpeed": 89
       }
     ]
   },
@@ -583,9 +583,9 @@
     "name": "Imperial Arrows",
     "culture": "Empire",
     "type": "Arrows",
-    "price": 643,
+    "price": 4268,
     "weight": 0.05,
-    "tier": 3.05308,
+    "tier": 9.708494,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -594,7 +594,7 @@
         "itemUsage": "arrow_top",
         "accuracy": 100,
         "missileSpeed": 10,
-        "stackAmount": 30,
+        "stackAmount": 6,
         "length": 97,
         "balance": 0.0,
         "handling": 0,
@@ -602,7 +602,7 @@
         "flags": [
           "Consumable"
         ],
-        "thrustDamage": 0,
+        "thrustDamage": 7,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 0,
         "swingDamage": 0,
@@ -1624,9 +1624,9 @@
     "name": "Spiralled Mace",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
-    "price": 4022,
-    "weight": 1.23,
-    "tier": 7.0261507,
+    "price": 7023,
+    "weight": 1.19,
+    "tier": 9.640662,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -1637,18 +1637,18 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 87,
-        "balance": 0.58,
-        "handling": 88,
+        "balance": 0.62,
+        "handling": 89,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon"
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 93,
-        "swingDamage": 21,
+        "thrustSpeed": 94,
+        "swingDamage": 22,
         "swingDamageType": "Blunt",
-        "swingSpeed": 87
+        "swingSpeed": 88
       }
     ]
   },
@@ -1657,9 +1657,9 @@
     "name": "Decorated Kaskara",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
-    "price": 9026,
+    "price": 11578,
     "weight": 1.84,
-    "tier": 11.079525,
+    "tier": 12.6972218,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -1678,10 +1678,10 @@
         "flags": [
           "MeleeWeapon"
         ],
-        "thrustDamage": 15,
+        "thrustDamage": 16,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 88,
-        "swingDamage": 32,
+        "swingDamage": 33,
         "swingDamageType": "Cut",
         "swingSpeed": 90
       }
@@ -1692,9 +1692,9 @@
     "name": "Decorated Elite Scimitar",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
-    "price": 11098,
+    "price": 14059,
     "weight": 2.35,
-    "tier": 12.4075537,
+    "tier": 14.1070271,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -1716,7 +1716,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 84,
-        "swingDamage": 33,
+        "swingDamage": 34,
         "swingDamageType": "Cut",
         "swingSpeed": 89
       }
@@ -1727,9 +1727,9 @@
     "name": "Decorated Scimitar with Wide Grip",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
-    "price": 6926,
-    "weight": 1.96,
-    "tier": 9.566406,
+    "price": 13714,
+    "weight": 1.95,
+    "tier": 13.9187107,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -1742,18 +1742,18 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 101,
-        "balance": 0.56,
+        "balance": 0.58,
         "handling": 88,
         "bodyArmor": 5,
         "flags": [
           "MeleeWeapon"
         ],
-        "thrustDamage": 21,
+        "thrustDamage": 23,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 87,
-        "swingDamage": 32,
+        "swingDamage": 34,
         "swingDamageType": "Cut",
-        "swingSpeed": 86
+        "swingSpeed": 87
       }
     ]
   },
@@ -1762,9 +1762,9 @@
     "name": "Engraved Angular Kaskara",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
-    "price": 8461,
+    "price": 11141,
     "weight": 2.12,
-    "tier": 10.69158,
+    "tier": 12.43377,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -1783,10 +1783,10 @@
         "flags": [
           "MeleeWeapon"
         ],
-        "thrustDamage": 17,
+        "thrustDamage": 19,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 85,
-        "swingDamage": 31,
+        "swingDamage": 32,
         "swingDamageType": "Cut",
         "swingSpeed": 90
       }
@@ -2033,9 +2033,9 @@
     "name": "Slightly Ridged Flyssa",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
-    "price": 6792,
-    "weight": 2.41,
-    "tier": 9.462969,
+    "price": 8353,
+    "weight": 2.36,
+    "tier": 10.6159878,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -2046,8 +2046,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 98,
-        "balance": 0.58,
-        "handling": 89,
+        "balance": 0.61,
+        "handling": 90,
         "bodyArmor": 5,
         "flags": [
           "MeleeWeapon"
@@ -2057,7 +2057,7 @@
         "thrustSpeed": 84,
         "swingDamage": 32,
         "swingDamageType": "Cut",
-        "swingSpeed": 87
+        "swingSpeed": 88
       }
     ]
   },
@@ -2099,9 +2099,9 @@
     "name": "Fine Steel Scimitar",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
-    "price": 8743,
-    "weight": 1.5,
-    "tier": 10.8865232,
+    "price": 13148,
+    "weight": 1.48,
+    "tier": 13.6052017,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -2112,7 +2112,7 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 93,
-        "balance": 0.7,
+        "balance": 0.72,
         "handling": 89,
         "bodyArmor": 5,
         "flags": [
@@ -2121,9 +2121,9 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 90,
-        "swingDamage": 32,
+        "swingDamage": 33,
         "swingDamageType": "Cut",
-        "swingSpeed": 90
+        "swingSpeed": 91
       }
     ]
   },
@@ -2132,9 +2132,9 @@
     "name": "Narrow Fine Steel Kaskara",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
-    "price": 6545,
+    "price": 10599,
     "weight": 2.18,
-    "tier": 9.26839,
+    "tier": 12.0997648,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -2151,10 +2151,10 @@
         "flags": [
           "MeleeWeapon"
         ],
-        "thrustDamage": 22,
+        "thrustDamage": 23,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 85,
-        "swingDamage": 32,
+        "swingDamage": 34,
         "swingDamageType": "Cut",
         "swingSpeed": 86
       }
@@ -2165,9 +2165,9 @@
     "name": "Thamaskene Steel Kaskara",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
-    "price": 2097,
-    "weight": 1.68,
-    "tier": 4.77088451,
+    "price": 14675,
+    "weight": 1.47,
+    "tier": 14.437027,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -2178,18 +2178,18 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 105,
-        "balance": 0.39,
-        "handling": 83,
+        "balance": 0.55,
+        "handling": 86,
         "bodyArmor": 5,
         "flags": [
           "MeleeWeapon"
         ],
-        "thrustDamage": 26,
+        "thrustDamage": 29,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 89,
-        "swingDamage": 29,
+        "thrustSpeed": 90,
+        "swingDamage": 33,
         "swingDamageType": "Cut",
-        "swingSpeed": 81
+        "swingSpeed": 86
       }
     ]
   },
@@ -4590,9 +4590,9 @@
     "name": "Light Morningstar",
     "culture": "Battania",
     "type": "OneHandedWeapon",
-    "price": 2587,
-    "weight": 1.97,
-    "tier": 5.41908932,
+    "price": 5489,
+    "weight": 1.79,
+    "tier": 8.394609,
     "requirement": 0,
     "flags": [
       "CanBePickedUpFromCorpse"
@@ -4605,8 +4605,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 72,
-        "balance": 0.53,
-        "handling": 91,
+        "balance": 0.67,
+        "handling": 94,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -4614,10 +4614,10 @@
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 87,
+        "thrustSpeed": 88,
         "swingDamage": 24,
         "swingDamageType": "Pierce",
-        "swingSpeed": 86
+        "swingSpeed": 90
       }
     ]
   },
@@ -5797,9 +5797,9 @@
     "name": "Bec De Corbin",
     "culture": "Neutral",
     "type": "Polearm",
-    "price": 17671,
+    "price": 15896,
     "weight": 1.91,
-    "tier": 10.5012026,
+    "tier": 9.904106,
     "requirement": 0,
     "flags": [
       "CanBePickedUpFromCorpse"
@@ -5821,7 +5821,7 @@
           "WideGrip",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 25,
+        "thrustDamage": 23,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 93,
         "swingDamage": 30,
@@ -5879,9 +5879,9 @@
     "name": "Billhook",
     "culture": "Vlandia",
     "type": "Polearm",
-    "price": 15998,
-    "weight": 1.91,
-    "tier": 9.939254,
+    "price": 15012,
+    "weight": 1.95,
+    "tier": 9.594488,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -5892,8 +5892,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 141,
-        "balance": 0.42,
-        "handling": 69,
+        "balance": 0.39,
+        "handling": 68,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -5905,9 +5905,9 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 93,
-        "swingDamage": 45,
+        "swingDamage": 46,
         "swingDamageType": "Cut",
-        "swingSpeed": 82
+        "swingSpeed": 81
       }
     ]
   },
@@ -5954,9 +5954,9 @@
     "name": "Blacksmith Warhammer",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 5808,
-    "weight": 2.06,
-    "tier": 8.666502,
+    "price": 9032,
+    "weight": 2.01,
+    "tier": 11.08346,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -5969,8 +5969,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 75,
-        "balance": 0.39,
-        "handling": 86,
+        "balance": 0.44,
+        "handling": 88,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -5978,10 +5978,10 @@
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 86,
+        "thrustSpeed": 87,
         "swingDamage": 22,
         "swingDamageType": "Blunt",
-        "swingSpeed": 81
+        "swingSpeed": 83
       }
     ]
   },
@@ -6063,9 +6063,9 @@
     "name": "Stacked Bodkin Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 3777,
+    "price": 3705,
     "weight": 0.048,
-    "tier": 9.064188,
+    "tier": 8.966272,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -6074,7 +6074,7 @@
         "itemUsage": "arrow_right",
         "accuracy": 100,
         "missileSpeed": 10,
-        "stackAmount": 32,
+        "stackAmount": 22,
         "length": 97,
         "balance": 0.0,
         "handling": 0,
@@ -6082,8 +6082,8 @@
         "flags": [
           "Consumable"
         ],
-        "thrustDamage": 3,
-        "thrustDamageType": "Pierce",
+        "thrustDamage": 2,
+        "thrustDamageType": "Blunt",
         "thrustSpeed": 0,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
@@ -6096,9 +6096,9 @@
     "name": "Bodkin Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 2791,
+    "price": 4664,
     "weight": 0.048,
-    "tier": 7.62720776,
+    "tier": 10.2018452,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -6107,7 +6107,7 @@
         "itemUsage": "arrow_right",
         "accuracy": 100,
         "missileSpeed": 10,
-        "stackAmount": 24,
+        "stackAmount": 16,
         "length": 97,
         "balance": 0.0,
         "handling": 0,
@@ -6116,7 +6116,7 @@
           "Consumable"
         ],
         "thrustDamage": 3,
-        "thrustDamageType": "Pierce",
+        "thrustDamageType": "Blunt",
         "thrustSpeed": 0,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
@@ -6129,9 +6129,9 @@
     "name": "Light Bodkin Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 2430,
+    "price": 1935,
     "weight": 0.048,
-    "tier": 7.039964,
+    "tier": 6.156524,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -6148,8 +6148,8 @@
         "flags": [
           "Consumable"
         ],
-        "thrustDamage": 3,
-        "thrustDamageType": "Pierce",
+        "thrustDamage": 1,
+        "thrustDamageType": "Blunt",
         "thrustSpeed": 0,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
@@ -6434,9 +6434,9 @@
     "name": "Bone Crusher",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 3187,
-    "weight": 1.93,
-    "tier": 6.13410664,
+    "price": 7829,
+    "weight": 1.78,
+    "tier": 10.2418222,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -6447,18 +6447,18 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 71,
-        "balance": 0.57,
-        "handling": 91,
+        "balance": 0.68,
+        "handling": 93,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon"
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 87,
-        "swingDamage": 22,
+        "thrustSpeed": 89,
+        "swingDamage": 23,
         "swingDamageType": "Blunt",
-        "swingSpeed": 87
+        "swingSpeed": 90
       }
     ]
   },
@@ -6927,9 +6927,9 @@
     "name": "Broad Head Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 4475,
+    "price": 3350,
     "weight": 0.098,
-    "tier": 9.96991348,
+    "tier": 8.467912,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -6946,7 +6946,7 @@
         "flags": [
           "Consumable"
         ],
-        "thrustDamage": 15,
+        "thrustDamage": 14,
         "thrustDamageType": "Cut",
         "thrustSpeed": 0,
         "swingDamage": 0,
@@ -7120,9 +7120,9 @@
     "name": "Burgundian Glaive",
     "culture": "Neutral",
     "type": "Polearm",
-    "price": 13917,
+    "price": 15192,
     "weight": 1.78,
-    "tier": 9.197954,
+    "tier": 9.658267,
     "requirement": 0,
     "flags": [
       "CanBePickedUpFromCorpse"
@@ -7144,10 +7144,10 @@
           "WideGrip",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 22,
+        "thrustDamage": 21,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 93,
-        "swingDamage": 44,
+        "swingDamage": 45,
         "swingDamageType": "Cut",
         "swingSpeed": 76
       }
@@ -7158,9 +7158,9 @@
     "name": "Burgundian Poleaxe",
     "culture": "Neutral",
     "type": "Polearm",
-    "price": 12513,
-    "weight": 2.27,
-    "tier": 8.666276,
+    "price": 16174,
+    "weight": 2.33,
+    "tier": 9.999937,
     "requirement": 0,
     "flags": [
       "CanBePickedUpFromCorpse"
@@ -7173,21 +7173,22 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 128,
-        "balance": 0.41,
-        "handling": 72,
+        "balance": 0.37,
+        "handling": 71,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
           "NotUsableWithOneHand",
           "WideGrip",
+          "BonusAgainstShield",
           "TwoHandIdleOnMount"
         ],
         "thrustDamage": 25,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 91,
-        "swingDamage": 42,
+        "swingDamage": 43,
         "swingDamageType": "Cut",
-        "swingSpeed": 82
+        "swingSpeed": 81
       }
     ]
   },
@@ -8567,9 +8568,9 @@
     "name": "Dawnbreaker",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 6452,
-    "weight": 2.2,
-    "tier": 9.19476,
+    "price": 12525,
+    "weight": 2.15,
+    "tier": 13.25202,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -8582,18 +8583,18 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 102,
-        "balance": 0.55,
+        "balance": 0.59,
         "handling": 92,
         "bodyArmor": 4,
         "flags": [
           "MeleeWeapon"
         ],
-        "thrustDamage": 20,
+        "thrustDamage": 21,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 85,
-        "swingDamage": 31,
+        "swingDamage": 33,
         "swingDamageType": "Cut",
-        "swingSpeed": 86
+        "swingSpeed": 87
       }
     ]
   },
@@ -8622,9 +8623,9 @@
     "name": "Decorated Great Saber",
     "culture": "Khuzait",
     "type": "TwoHandedWeapon",
-    "price": 12026,
-    "weight": 2.11,
-    "tier": 9.18923,
+    "price": 18589,
+    "weight": 2.15,
+    "tier": 11.6889572,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -8635,19 +8636,19 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 119,
-        "balance": 0.9,
+        "balance": 0.88,
         "handling": 90,
         "bodyArmor": 3,
         "flags": [
           "MeleeWeapon",
           "NotUsableWithOneHand"
         ],
-        "thrustDamage": 15,
+        "thrustDamage": 20,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 93,
-        "swingDamage": 31,
+        "thrustSpeed": 92,
+        "swingDamage": 33,
         "swingDamageType": "Cut",
-        "swingSpeed": 97
+        "swingSpeed": 96
       }
     ]
   },
@@ -9343,9 +9344,9 @@
     "name": "Polesword",
     "culture": "Aserai",
     "type": "Polearm",
-    "price": 5728,
+    "price": 6545,
     "weight": 1.75,
-    "tier": 5.526349,
+    "tier": 5.97756147,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -9368,7 +9369,7 @@
         "thrustDamage": 20,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 93,
-        "swingDamage": 47,
+        "swingDamage": 48,
         "swingDamageType": "Cut",
         "swingSpeed": 65
       }
@@ -9696,18 +9697,18 @@
     "name": "Brigandine Vest",
     "culture": "Khuzait",
     "type": "BodyArmor",
-    "price": 17305,
-    "weight": 15.49771,
-    "tier": 8.326477,
+    "price": 12044,
+    "weight": 12.27731,
+    "tier": 7.5397234,
     "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 52,
-      "armArmor": 18,
-      "legArmor": 18,
+      "bodyArmor": 50,
+      "armArmor": 13,
+      "legArmor": 13,
       "materialType": "Plate",
       "familyType": 0
     },
@@ -10496,9 +10497,9 @@
     "name": "Heavy Cloak",
     "culture": "Neutral",
     "type": "ShoulderArmor",
-    "price": 68,
-    "weight": 0.2259883,
-    "tier": 1.63741827,
+    "price": 53,
+    "weight": 0.08992123,
+    "tier": 0.948947,
     "requirement": 0,
     "flags": [
       "UseTeamColor",
@@ -10507,7 +10508,7 @@
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
-      "armArmor": 2,
+      "armArmor": 0,
       "legArmor": 0,
       "materialType": "Cloth",
       "familyType": 0
@@ -11158,9 +11159,9 @@
     "name": "Decorated Short Spatha",
     "culture": "Empire",
     "type": "OneHandedWeapon",
-    "price": 7647,
+    "price": 13620,
     "weight": 1.75,
-    "tier": 10.1084776,
+    "tier": 13.8670912,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -11177,10 +11178,10 @@
         "flags": [
           "MeleeWeapon"
         ],
-        "thrustDamage": 20,
+        "thrustDamage": 23,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 89,
-        "swingDamage": 30,
+        "swingDamage": 32,
         "swingDamageType": "Cut",
         "swingSpeed": 90
       }
@@ -11191,9 +11192,9 @@
     "name": "Thamaskene Steel Spatha",
     "culture": "Empire",
     "type": "OneHandedWeapon",
-    "price": 6910,
-    "weight": 2.22,
-    "tier": 9.553895,
+    "price": 12435,
+    "weight": 2.12,
+    "tier": 13.1999388,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -11204,18 +11205,18 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 105,
-        "balance": 0.48,
-        "handling": 86,
+        "balance": 0.55,
+        "handling": 88,
         "bodyArmor": 5,
         "flags": [
           "MeleeWeapon"
         ],
-        "thrustDamage": 22,
+        "thrustDamage": 20,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 85,
-        "swingDamage": 33,
+        "swingDamage": 34,
         "swingDamageType": "Cut",
-        "swingSpeed": 84
+        "swingSpeed": 86
       }
     ]
   },
@@ -11224,9 +11225,9 @@
     "name": "Spatha Blade with Ring Pommel",
     "culture": "Empire",
     "type": "OneHandedWeapon",
-    "price": 7174,
+    "price": 11803,
     "weight": 2.46,
-    "tier": 9.755739,
+    "tier": 12.8310061,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -11243,10 +11244,10 @@
         "flags": [
           "MeleeWeapon"
         ],
-        "thrustDamage": 21,
+        "thrustDamage": 22,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 83,
-        "swingDamage": 31,
+        "swingDamage": 33,
         "swingDamageType": "Cut",
         "swingSpeed": 87
       }
@@ -11297,9 +11298,9 @@
     "name": "Menavlion",
     "culture": "Empire",
     "type": "Polearm",
-    "price": 13906,
+    "price": 14950,
     "weight": 1.84,
-    "tier": 9.193977,
+    "tier": 9.572582,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -11319,7 +11320,7 @@
           "WideGrip",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 22,
+        "thrustDamage": 23,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 94,
         "swingDamage": 41,
@@ -11333,9 +11334,9 @@
     "name": "Fine Steel Menavlion",
     "culture": "Empire",
     "type": "Polearm",
-    "price": 10375,
-    "weight": 1.29,
-    "tier": 7.79638147,
+    "price": 13185,
+    "weight": 1.26,
+    "tier": 8.924269,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -11346,8 +11347,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 201,
-        "balance": 0.06,
-        "handling": 62,
+        "balance": 0.09,
+        "handling": 63,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -11360,7 +11361,7 @@
         "thrustSpeed": 96,
         "swingDamage": 48,
         "swingDamageType": "Cut",
-        "swingSpeed": 71
+        "swingSpeed": 72
       }
     ]
   },
@@ -11498,9 +11499,9 @@
     "name": "Fine Steel Paramerion",
     "culture": "Empire",
     "type": "OneHandedWeapon",
-    "price": 7458,
-    "weight": 2.52,
-    "tier": 9.968936,
+    "price": 11015,
+    "weight": 2.44,
+    "tier": 12.3570824,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -11511,18 +11512,18 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 104,
-        "balance": 0.46,
-        "handling": 84,
+        "balance": 0.53,
+        "handling": 85,
         "bodyArmor": 5,
         "flags": [
           "MeleeWeapon"
         ],
         "thrustDamage": 20,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 82,
+        "thrustSpeed": 83,
         "swingDamage": 35,
         "swingDamageType": "Cut",
-        "swingSpeed": 83
+        "swingSpeed": 85
       }
     ]
   },
@@ -11531,9 +11532,9 @@
     "name": "Thamaskene Steel Spathion",
     "culture": "Empire",
     "type": "OneHandedWeapon",
-    "price": 7128,
-    "weight": 2.53,
-    "tier": 9.720951,
+    "price": 13338,
+    "weight": 2.45,
+    "tier": 13.7110615,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -11544,18 +11545,18 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 97,
-        "balance": 0.6,
-        "handling": 89,
+        "balance": 0.66,
+        "handling": 90,
         "bodyArmor": 5,
         "flags": [
           "MeleeWeapon"
         ],
-        "thrustDamage": 21,
+        "thrustDamage": 22,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 83,
-        "swingDamage": 32,
+        "swingDamage": 33,
         "swingDamageType": "Cut",
-        "swingSpeed": 87
+        "swingSpeed": 89
       }
     ]
   },
@@ -12213,9 +12214,9 @@
     "name": "French Voulge",
     "culture": "Neutral",
     "type": "Polearm",
-    "price": 15489,
-    "weight": 1.99,
-    "tier": 9.762769,
+    "price": 15527,
+    "weight": 2.15,
+    "tier": 9.775999,
     "requirement": 0,
     "flags": [
       "CanBePickedUpFromCorpse"
@@ -12228,8 +12229,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 133,
-        "balance": 0.61,
-        "handling": 75,
+        "balance": 0.48,
+        "handling": 72,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -12237,12 +12238,12 @@
           "WideGrip",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 23,
+        "thrustDamage": 24,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 93,
-        "swingDamage": 37,
+        "thrustSpeed": 92,
+        "swingDamage": 41,
         "swingDamageType": "Cut",
-        "swingSpeed": 88
+        "swingSpeed": 84
       }
     ]
   },
@@ -13785,9 +13786,9 @@
     "name": "Stacked Steppe Arrows",
     "culture": "Khuzait",
     "type": "Arrows",
-    "price": 2444,
+    "price": 3777,
     "weight": 0.036,
-    "tier": 7.0627203,
+    "tier": 9.064188,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -13796,7 +13797,7 @@
         "itemUsage": "arrow_right",
         "accuracy": 100,
         "missileSpeed": 10,
-        "stackAmount": 36,
+        "stackAmount": 32,
         "length": 97,
         "balance": 0.0,
         "handling": 0,
@@ -13804,7 +13805,7 @@
         "flags": [
           "Consumable"
         ],
-        "thrustDamage": 2,
+        "thrustDamage": 3,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 0,
         "swingDamage": 0,
@@ -15575,9 +15576,9 @@
     "name": "Judgement",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 2831,
-    "weight": 2.58,
-    "tier": 5.719167,
+    "price": 5176,
+    "weight": 2.36,
+    "tier": 8.119748,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -15588,18 +15589,18 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 70,
-        "balance": 0.17,
-        "handling": 84,
+        "balance": 0.33,
+        "handling": 87,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon"
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 82,
-        "swingDamage": 30,
+        "thrustSpeed": 84,
+        "swingDamage": 29,
         "swingDamageType": "Blunt",
-        "swingSpeed": 75
+        "swingSpeed": 79
       }
     ]
   },
@@ -15644,9 +15645,9 @@
     "name": "Kama",
     "culture": "Sturgia",
     "type": "OneHandedWeapon",
-    "price": 3099,
-    "weight": 1.25,
-    "tier": 6.03419065,
+    "price": 5979,
+    "weight": 1.2,
+    "tier": 8.809711,
     "requirement": 0,
     "flags": [
       "CanBePickedUpFromCorpse"
@@ -15659,8 +15660,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 71,
-        "balance": 0.6,
-        "handling": 85,
+        "balance": 0.64,
+        "handling": 86,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -15668,10 +15669,10 @@
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 93,
-        "swingDamage": 25,
+        "thrustSpeed": 94,
+        "swingDamage": 26,
         "swingDamageType": "Pierce",
-        "swingSpeed": 87
+        "swingSpeed": 89
       },
       {
         "class": "OneHandedAxe",
@@ -15680,8 +15681,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 71,
-        "balance": 0.6,
-        "handling": 85,
+        "balance": 0.64,
+        "handling": 86,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -15689,10 +15690,10 @@
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 93,
-        "swingDamage": 25,
+        "thrustSpeed": 94,
+        "swingDamage": 26,
         "swingDamageType": "Pierce",
-        "swingSpeed": 87
+        "swingSpeed": 89
       }
     ]
   },
@@ -16691,9 +16692,9 @@
     "name": "Eastern Heavy Mace",
     "culture": "Khuzait",
     "type": "OneHandedWeapon",
-    "price": 2426,
+    "price": 7654,
     "weight": 1.43,
-    "tier": 5.212704,
+    "tier": 10.1142616,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -16713,7 +16714,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 92,
-        "swingDamage": 18,
+        "swingDamage": 21,
         "swingDamageType": "Blunt",
         "swingSpeed": 92
       }
@@ -16724,9 +16725,9 @@
     "name": "Fine Steel Mace",
     "culture": "Khuzait",
     "type": "OneHandedWeapon",
-    "price": 3952,
-    "weight": 1.42,
-    "tier": 6.95526743,
+    "price": 5846,
+    "weight": 1.37,
+    "tier": 8.698741,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -16737,18 +16738,18 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 91,
-        "balance": 0.39,
-        "handling": 84,
+        "balance": 0.44,
+        "handling": 85,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon"
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 91,
+        "thrustSpeed": 92,
         "swingDamage": 24,
         "swingDamageType": "Blunt",
-        "swingSpeed": 81
+        "swingSpeed": 83
       }
     ]
   },
@@ -16949,9 +16950,9 @@
     "name": "Glaive",
     "culture": "Khuzait",
     "type": "Polearm",
-    "price": 14751,
-    "weight": 1.68,
-    "tier": 9.501213,
+    "price": 16190,
+    "weight": 1.71,
+    "tier": 10.0052967,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -16962,8 +16963,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 147,
-        "balance": 0.44,
-        "handling": 71,
+        "balance": 0.41,
+        "handling": 70,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -16971,12 +16972,12 @@
           "WideGrip",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 25,
+        "thrustDamage": 24,
         "thrustDamageType": "Cut",
         "thrustSpeed": 94,
-        "swingDamage": 41,
+        "swingDamage": 43,
         "swingDamageType": "Cut",
-        "swingSpeed": 83
+        "swingSpeed": 82
       }
     ]
   },
@@ -16985,9 +16986,9 @@
     "name": "Long Glaive",
     "culture": "Khuzait",
     "type": "Polearm",
-    "price": 13317,
-    "weight": 1.44,
-    "tier": 8.974446,
+    "price": 13834,
+    "weight": 1.41,
+    "tier": 9.167392,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -16998,7 +16999,7 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 200,
-        "balance": 0.12,
+        "balance": 0.15,
         "handling": 63,
         "bodyArmor": 0,
         "flags": [
@@ -17009,10 +17010,10 @@
         ],
         "thrustDamage": 25,
         "thrustDamageType": "Cut",
-        "thrustSpeed": 95,
-        "swingDamage": 47,
+        "thrustSpeed": 96,
+        "swingDamage": 46,
         "swingDamageType": "Cut",
-        "swingSpeed": 73
+        "swingSpeed": 74
       }
     ]
   },
@@ -18279,9 +18280,9 @@
     "name": "Light Goedendag",
     "culture": "Sturgia",
     "type": "OneHandedWeapon",
-    "price": 4207,
+    "price": 8391,
     "weight": 1.66,
-    "tier": 7.211605,
+    "tier": 10.6422863,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -18298,10 +18299,10 @@
         "flags": [
           "MeleeWeapon"
         ],
-        "thrustDamage": 18,
+        "thrustDamage": 21,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 22,
+        "swingDamage": 24,
         "swingDamageType": "Blunt",
         "swingSpeed": 93
       }
@@ -18464,9 +18465,9 @@
     "name": "Long Bardiche",
     "culture": "Aserai",
     "type": "Polearm",
-    "price": 13995,
-    "weight": 1.7,
-    "tier": 9.226804,
+    "price": 15580,
+    "weight": 1.73,
+    "tier": 9.794569,
     "requirement": 0,
     "flags": [
       "CanBePickedUpFromCorpse"
@@ -18478,8 +18479,8 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 158,
-        "balance": 0.17,
+        "length": 161,
+        "balance": 0.13,
         "handling": 65,
         "bodyArmor": 0,
         "flags": [
@@ -18489,12 +18490,12 @@
           "BonusAgainstShield",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 24,
+        "thrustDamage": 26,
         "thrustDamageType": "Cut",
         "thrustSpeed": 94,
-        "swingDamage": 48,
+        "swingDamage": 49,
         "swingDamageType": "Cut",
-        "swingSpeed": 75
+        "swingSpeed": 74
       }
     ]
   },
@@ -18624,9 +18625,9 @@
     "name": "Long Hafted Spiked Mace",
     "culture": "Khuzait",
     "type": "Polearm",
-    "price": 17575,
-    "weight": 1.87,
-    "tier": 10.4698267,
+    "price": 13711,
+    "weight": 1.91,
+    "tier": 9.121935,
     "requirement": 0,
     "flags": [
       "CanBePickedUpFromCorpse"
@@ -18639,8 +18640,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 155,
-        "balance": 0.17,
-        "handling": 67,
+        "balance": 0.14,
+        "handling": 66,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -18651,10 +18652,10 @@
         ],
         "thrustDamage": 17,
         "thrustDamageType": "Blunt",
-        "thrustSpeed": 93,
+        "thrustSpeed": 92,
         "swingDamage": 25,
         "swingDamageType": "Blunt",
-        "swingSpeed": 75
+        "swingSpeed": 74
       }
     ]
   },
@@ -19510,9 +19511,9 @@
     "name": "Medium Goedendag",
     "culture": "Sturgia",
     "type": "OneHandedWeapon",
-    "price": 3766,
-    "weight": 1.82,
-    "tier": 6.76351643,
+    "price": 7745,
+    "weight": 1.75,
+    "tier": 10.1806164,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -19523,18 +19524,18 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 71,
-        "balance": 0.48,
-        "handling": 88,
+        "balance": 0.53,
+        "handling": 89,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon"
         ],
-        "thrustDamage": 22,
+        "thrustDamage": 24,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 88,
-        "swingDamage": 24,
+        "thrustSpeed": 89,
+        "swingDamage": 25,
         "swingDamageType": "Blunt",
-        "swingSpeed": 84
+        "swingSpeed": 86
       }
     ]
   },
@@ -19736,9 +19737,9 @@
     "name": "Military Hammer",
     "culture": "Sturgia",
     "type": "OneHandedWeapon",
-    "price": 7328,
-    "weight": 1.54,
-    "tier": 9.871957,
+    "price": 10949,
+    "weight": 1.49,
+    "tier": 12.3168344,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -19751,8 +19752,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 78,
-        "balance": 0.42,
-        "handling": 84,
+        "balance": 0.48,
+        "handling": 85,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -19763,7 +19764,7 @@
         "thrustSpeed": 90,
         "swingDamage": 22,
         "swingDamageType": "Blunt",
-        "swingSpeed": 82
+        "swingSpeed": 84
       }
     ]
   },
@@ -19795,9 +19796,9 @@
     "name": "Morningstar",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 5295,
-    "weight": 2.02,
-    "tier": 8.224357,
+    "price": 7803,
+    "weight": 1.89,
+    "tier": 10.2224865,
     "requirement": 0,
     "flags": [
       "CanBePickedUpFromCorpse"
@@ -19810,8 +19811,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 79,
-        "balance": 0.47,
-        "handling": 81,
+        "balance": 0.55,
+        "handling": 82,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -19819,373 +19820,21 @@
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 86,
+        "thrustSpeed": 87,
         "swingDamage": 28,
         "swingDamageType": "Pierce",
-        "swingSpeed": 84
+        "swingSpeed": 86
       }
     ]
-  },
-  {
-    "id": "crpg_mount_camel_10",
-    "name": "Seleucid Light Camel",
-    "culture": "Aserai",
-    "type": "Mount",
-    "price": 14551,
-    "weight": 520.0,
-    "tier": 8.883225,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 110,
-      "chargeDamage": 4,
-      "maneuver": 82,
-      "speed": 36,
-      "hitPoints": 231,
-      "familyType": 2
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_mount_camel_11",
-    "name": "Seleucid Heavy Camel",
-    "culture": "Aserai",
-    "type": "Mount",
-    "price": 15506,
-    "weight": 520.0,
-    "tier": 9.204619,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 110,
-      "chargeDamage": 5,
-      "maneuver": 81,
-      "speed": 35,
-      "hitPoints": 249,
-      "familyType": 2
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_mount_camel_12",
-    "name": "Parthian Light Camel",
-    "culture": "Aserai",
-    "type": "Mount",
-    "price": 16271,
-    "weight": 520.0,
-    "tier": 9.454871,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 110,
-      "chargeDamage": 4,
-      "maneuver": 83,
-      "speed": 37,
-      "hitPoints": 231,
-      "familyType": 2
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_mount_camel_13",
-    "name": "Parthian Heavy Camel",
-    "culture": "Aserai",
-    "type": "Mount",
-    "price": 17379,
-    "weight": 520.0,
-    "tier": 9.807319,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 110,
-      "chargeDamage": 5,
-      "maneuver": 82,
-      "speed": 36,
-      "hitPoints": 249,
-      "familyType": 2
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_mount_camel_14",
-    "name": "Achaemenian Light Camel",
-    "culture": "Aserai",
-    "type": "Mount",
-    "price": 20002,
-    "weight": 520.0,
-    "tier": 10.5999737,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 110,
-      "chargeDamage": 5,
-      "maneuver": 84,
-      "speed": 38,
-      "hitPoints": 240,
-      "familyType": 2
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_mount_camel_15",
-    "name": "Achaemenian Heavy Camel",
-    "culture": "Aserai",
-    "type": "Mount",
-    "price": 21326,
-    "weight": 520.0,
-    "tier": 10.9804239,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 110,
-      "chargeDamage": 6,
-      "maneuver": 83,
-      "speed": 37,
-      "hitPoints": 258,
-      "familyType": 2
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_mount_camel_16",
-    "name": "Safinat al-Barr",
-    "culture": "Aserai",
-    "type": "Mount",
-    "price": 23251,
-    "weight": 520.0,
-    "tier": 11.5130272,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 110,
-      "chargeDamage": 7,
-      "maneuver": 85,
-      "speed": 37,
-      "hitPoints": 258,
-      "familyType": 2
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_mount_camel_17",
-    "name": "Padishah",
-    "culture": "Aserai",
-    "type": "Mount",
-    "price": 25931,
-    "weight": 520.0,
-    "tier": 12.2194681,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 110,
-      "chargeDamage": 7,
-      "maneuver": 86,
-      "speed": 38,
-      "hitPoints": 258,
-      "familyType": 2
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_mount_camel_2",
-    "name": "Pack Camel",
-    "culture": "Aserai",
-    "type": "Mount",
-    "price": 4779,
-    "weight": 520.0,
-    "tier": 4.651889,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 110,
-      "chargeDamage": 2,
-      "maneuver": 72,
-      "speed": 29,
-      "hitPoints": 216,
-      "familyType": 2
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_mount_camel_3",
-    "name": "Pratihara Camel",
-    "culture": "Aserai",
-    "type": "Mount",
-    "price": 6394,
-    "weight": 520.0,
-    "tier": 5.538042,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 110,
-      "chargeDamage": 2,
-      "maneuver": 76,
-      "speed": 30,
-      "hitPoints": 222,
-      "familyType": 2
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_mount_camel_4",
-    "name": "Qedarite Camel",
-    "culture": "Aserai",
-    "type": "Mount",
-    "price": 7767,
-    "weight": 520.0,
-    "tier": 6.20829725,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 110,
-      "chargeDamage": 3,
-      "maneuver": 77,
-      "speed": 31,
-      "hitPoints": 228,
-      "familyType": 2
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_mount_camel_5",
-    "name": "Palmyrene Camel",
-    "culture": "Aserai",
-    "type": "Mount",
-    "price": 9400,
-    "weight": 520.0,
-    "tier": 6.93329,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 110,
-      "chargeDamage": 4,
-      "maneuver": 78,
-      "speed": 32,
-      "hitPoints": 234,
-      "familyType": 2
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_mount_camel_6",
-    "name": "Sargonid Light Camel",
-    "culture": "Aserai",
-    "type": "Mount",
-    "price": 10628,
-    "weight": 520.0,
-    "tier": 7.43830967,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 110,
-      "chargeDamage": 4,
-      "maneuver": 80,
-      "speed": 34,
-      "hitPoints": 222,
-      "familyType": 2
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_mount_camel_7",
-    "name": "Sargonid Heavy Camel",
-    "culture": "Aserai",
-    "type": "Mount",
-    "price": 11346,
-    "weight": 520.0,
-    "tier": 7.72047329,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 110,
-      "chargeDamage": 5,
-      "maneuver": 79,
-      "speed": 33,
-      "hitPoints": 240,
-      "familyType": 2
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_mount_camel_8",
-    "name": "Nabatean Light Camel",
-    "culture": "Aserai",
-    "type": "Mount",
-    "price": 11916,
-    "weight": 520.0,
-    "tier": 7.93814945,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 110,
-      "chargeDamage": 4,
-      "maneuver": 81,
-      "speed": 35,
-      "hitPoints": 222,
-      "familyType": 2
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_mount_camel_9",
-    "name": "Nabatean Heavy Camel",
-    "culture": "Aserai",
-    "type": "Mount",
-    "price": 12753,
-    "weight": 520.0,
-    "tier": 8.248472,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 110,
-      "chargeDamage": 5,
-      "maneuver": 80,
-      "speed": 34,
-      "hitPoints": 240,
-      "familyType": 2
-    },
-    "weapons": []
   },
   {
     "id": "crpg_mount_greathorse_10",
     "name": "Barthais Great Horse",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 16650,
+    "price": 15722,
     "weight": 450.0,
-    "tier": 9.576936,
+    "tier": 9.27576,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20195,7 +19844,7 @@
       "chargeDamage": 7,
       "maneuver": 81,
       "speed": 38,
-      "hitPoints": 228,
+      "hitPoints": 222,
       "familyType": 1
     },
     "weapons": []
@@ -20205,9 +19854,9 @@
     "name": "Brabant Great Horse",
     "culture": "Vlandia",
     "type": "Mount",
-    "price": 18219,
+    "price": 18901,
     "weight": 450.0,
-    "tier": 10.0673294,
+    "tier": 10.2740908,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20217,7 +19866,7 @@
       "chargeDamage": 8,
       "maneuver": 82,
       "speed": 38,
-      "hitPoints": 231,
+      "hitPoints": 235,
       "familyType": 1
     },
     "weapons": []
@@ -20227,9 +19876,9 @@
     "name": "Comtois Great Horse",
     "culture": "Empire",
     "type": "Mount",
-    "price": 20806,
+    "price": 19673,
     "weight": 450.0,
-    "tier": 10.8325243,
+    "tier": 10.50343,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20239,7 +19888,7 @@
       "chargeDamage": 8,
       "maneuver": 83,
       "speed": 39,
-      "hitPoints": 234,
+      "hitPoints": 228,
       "familyType": 1
     },
     "weapons": []
@@ -20249,9 +19898,9 @@
     "name": "English Black Great Horse",
     "culture": "Vlandia",
     "type": "Mount",
-    "price": 22128,
+    "price": 20932,
     "weight": 450.0,
-    "tier": 11.2051754,
+    "tier": 10.8683853,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20261,7 +19910,7 @@
       "chargeDamage": 8,
       "maneuver": 84,
       "speed": 39,
-      "hitPoints": 237,
+      "hitPoints": 231,
       "familyType": 1
     },
     "weapons": []
@@ -20271,9 +19920,9 @@
     "name": "Percheron Great Horse",
     "culture": "Empire",
     "type": "Mount",
-    "price": 25207,
+    "price": 23873,
     "weight": 450.0,
-    "tier": 12.0323639,
+    "tier": 11.6804876,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20283,7 +19932,7 @@
       "chargeDamage": 9,
       "maneuver": 84,
       "speed": 40,
-      "hitPoints": 240,
+      "hitPoints": 234,
       "familyType": 1
     },
     "weapons": []
@@ -20293,9 +19942,9 @@
     "name": "Lionheart",
     "culture": "Empire",
     "type": "Mount",
-    "price": 27707,
+    "price": 26248,
     "weight": 450.0,
-    "tier": 12.6679363,
+    "tier": 12.3006783,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20305,7 +19954,7 @@
       "chargeDamage": 9,
       "maneuver": 84,
       "speed": 41,
-      "hitPoints": 243,
+      "hitPoints": 237,
       "familyType": 1
     },
     "weapons": []
@@ -20315,9 +19964,9 @@
     "name": "Suffolk Punch Draught",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 6729,
+    "price": 6346,
     "weight": 450.0,
-    "tier": 5.707611,
+    "tier": 5.513256,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20327,7 +19976,7 @@
       "chargeDamage": 4,
       "maneuver": 72,
       "speed": 33,
-      "hitPoints": 213,
+      "hitPoints": 207,
       "familyType": 1
     },
     "weapons": []
@@ -20337,9 +19986,9 @@
     "name": "Boulonnais Great Horse",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 8216,
+    "price": 7751,
     "weight": 450.0,
-    "tier": 6.41457,
+    "tier": 6.20048952,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20349,7 +19998,7 @@
       "chargeDamage": 5,
       "maneuver": 74,
       "speed": 34,
-      "hitPoints": 216,
+      "hitPoints": 210,
       "familyType": 1
     },
     "weapons": []
@@ -20359,9 +20008,9 @@
     "name": "Galloway Great Horse",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 10022,
+    "price": 9458,
     "weight": 450.0,
-    "tier": 7.19298363,
+    "tier": 6.95779943,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20371,7 +20020,7 @@
       "chargeDamage": 6,
       "maneuver": 76,
       "speed": 35,
-      "hitPoints": 219,
+      "hitPoints": 213,
       "familyType": 1
     },
     "weapons": []
@@ -20381,9 +20030,9 @@
     "name": "Poitevin Great Horse",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 11949,
+    "price": 11275,
     "weight": 450.0,
-    "tier": 7.95053339,
+    "tier": 7.69281,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20393,7 +20042,7 @@
       "chargeDamage": 6,
       "maneuver": 78,
       "speed": 36,
-      "hitPoints": 222,
+      "hitPoints": 216,
       "familyType": 1
     },
     "weapons": []
@@ -20403,9 +20052,9 @@
     "name": "Oberlander Great Horse",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 14534,
+    "price": 13722,
     "weight": 450.0,
-    "tier": 8.877398,
+    "tier": 8.595644,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20415,7 +20064,7 @@
       "chargeDamage": 7,
       "maneuver": 80,
       "speed": 37,
-      "hitPoints": 225,
+      "hitPoints": 219,
       "familyType": 1
     },
     "weapons": []
@@ -20425,9 +20074,9 @@
     "name": "Black Forest Rouncey",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 14786,
+    "price": 13815,
     "weight": 420.0,
-    "tier": 8.963193,
+    "tier": 8.628228,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20437,7 +20086,7 @@
       "chargeDamage": 3,
       "maneuver": 75,
       "speed": 45,
-      "hitPoints": 198,
+      "hitPoints": 192,
       "familyType": 1
     },
     "weapons": []
@@ -20447,9 +20096,9 @@
     "name": "Bidet Breton Rouncey",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 16906,
+    "price": 15803,
     "weight": 420.0,
-    "tier": 9.658382,
+    "tier": 9.302354,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20459,7 +20108,7 @@
       "chargeDamage": 3,
       "maneuver": 76,
       "speed": 46,
-      "hitPoints": 201,
+      "hitPoints": 195,
       "familyType": 1
     },
     "weapons": []
@@ -20469,9 +20118,9 @@
     "name": "Dzhabe Rouncey",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 19306,
+    "price": 18054,
     "weight": 420.0,
-    "tier": 10.3948927,
+    "tier": 10.0168886,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20481,7 +20130,7 @@
       "chargeDamage": 3,
       "maneuver": 77,
       "speed": 47,
-      "hitPoints": 204,
+      "hitPoints": 198,
       "familyType": 1
     },
     "weapons": []
@@ -20491,9 +20140,9 @@
     "name": "Karachay Rouncey",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 20726,
+    "price": 19396,
     "weight": 420.0,
-    "tier": 10.80942,
+    "tier": 10.4217911,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20503,7 +20152,7 @@
       "chargeDamage": 3,
       "maneuver": 78,
       "speed": 47,
-      "hitPoints": 207,
+      "hitPoints": 201,
       "familyType": 1
     },
     "weapons": []
@@ -20513,9 +20162,9 @@
     "name": "Unmol Rouncey",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 22953,
+    "price": 21501,
     "weight": 420.0,
-    "tier": 11.43211,
+    "tier": 11.0296774,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20525,7 +20174,7 @@
       "chargeDamage": 4,
       "maneuver": 78,
       "speed": 48,
-      "hitPoints": 210,
+      "hitPoints": 204,
       "familyType": 1
     },
     "weapons": []
@@ -20535,9 +20184,9 @@
     "name": "Kehilan al-Khamsa",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 25150,
+    "price": 24092,
     "weight": 420.0,
-    "tier": 12.0175943,
+    "tier": 11.738925,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20547,7 +20196,7 @@
       "chargeDamage": 4,
       "maneuver": 78,
       "speed": 49,
-      "hitPoints": 213,
+      "hitPoints": 209,
       "familyType": 1
     },
     "weapons": []
@@ -20557,9 +20206,9 @@
     "name": "Sumpter Horse",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 3726,
+    "price": 3506,
     "weight": 420.0,
-    "tier": 3.993084,
+    "tier": 3.84466958,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20569,7 +20218,7 @@
       "chargeDamage": 1,
       "maneuver": 60,
       "speed": 34,
-      "hitPoints": 200,
+      "hitPoints": 194,
       "familyType": 1
     },
     "weapons": []
@@ -20579,9 +20228,9 @@
     "name": "Raymond Rouncey",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 4828,
+    "price": 4519,
     "weight": 420.0,
-    "tier": 4.680662,
+    "tier": 4.49625826,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20591,7 +20240,7 @@
       "chargeDamage": 1,
       "maneuver": 62,
       "speed": 38,
-      "hitPoints": 189,
+      "hitPoints": 183,
       "familyType": 1
     },
     "weapons": []
@@ -20601,9 +20250,9 @@
     "name": "Fell Pony",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 5535,
+    "price": 5163,
     "weight": 420.0,
-    "tier": 5.08262157,
+    "tier": 4.87438154,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20613,7 +20262,7 @@
       "chargeDamage": 2,
       "maneuver": 64,
       "speed": 40,
-      "hitPoints": 180,
+      "hitPoints": 174,
       "familyType": 1
     },
     "weapons": []
@@ -20623,9 +20272,9 @@
     "name": "Welsh Cob",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 6650,
+    "price": 6202,
     "weight": 420.0,
-    "tier": 5.667833,
+    "tier": 5.4389205,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20635,7 +20284,7 @@
       "chargeDamage": 2,
       "maneuver": 66,
       "speed": 41,
-      "hitPoints": 183,
+      "hitPoints": 177,
       "familyType": 1
     },
     "weapons": []
@@ -20645,9 +20294,9 @@
     "name": "Sanhe Rouncey",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 8090,
+    "price": 7549,
     "weight": 420.0,
-    "tier": 6.356974,
+    "tier": 6.10597372,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20657,7 +20306,7 @@
       "chargeDamage": 3,
       "maneuver": 68,
       "speed": 42,
-      "hitPoints": 186,
+      "hitPoints": 180,
       "familyType": 1
     },
     "weapons": []
@@ -20667,9 +20316,9 @@
     "name": "Megrelakaya Rouncey",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 9672,
+    "price": 9027,
     "weight": 420.0,
-    "tier": 7.04795742,
+    "tier": 6.77340126,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20679,7 +20328,7 @@
       "chargeDamage": 3,
       "maneuver": 70,
       "speed": 43,
-      "hitPoints": 189,
+      "hitPoints": 183,
       "familyType": 1
     },
     "weapons": []
@@ -20689,9 +20338,9 @@
     "name": "East Anglis Rouncey",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 11544,
+    "price": 10775,
     "weight": 420.0,
-    "tier": 7.79657173,
+    "tier": 7.49693155,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20701,7 +20350,7 @@
       "chargeDamage": 3,
       "maneuver": 72,
       "speed": 44,
-      "hitPoints": 192,
+      "hitPoints": 186,
       "familyType": 1
     },
     "weapons": []
@@ -20711,9 +20360,9 @@
     "name": "Anadolu Rouncey",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 13752,
+    "price": 12839,
     "weight": 420.0,
-    "tier": 8.60612,
+    "tier": 8.279811,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20723,7 +20372,7 @@
       "chargeDamage": 3,
       "maneuver": 74,
       "speed": 45,
-      "hitPoints": 195,
+      "hitPoints": 189,
       "familyType": 1
     },
     "weapons": []
@@ -20733,9 +20382,9 @@
     "name": "Yunnan Destrier",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 16755,
+    "price": 15730,
     "weight": 430.0,
-    "tier": 9.610231,
+    "tier": 9.27831,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20745,7 +20394,7 @@
       "chargeDamage": 6,
       "maneuver": 79,
       "speed": 42,
-      "hitPoints": 210,
+      "hitPoints": 204,
       "familyType": 1
     },
     "weapons": []
@@ -20755,9 +20404,9 @@
     "name": "Auvergne Destrier",
     "culture": "Vlandia",
     "type": "Mount",
-    "price": 18266,
+    "price": 17169,
     "weight": 430.0,
-    "tier": 10.08158,
+    "tier": 9.741429,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20767,7 +20416,7 @@
       "chargeDamage": 7,
       "maneuver": 80,
       "speed": 42,
-      "hitPoints": 213,
+      "hitPoints": 207,
       "familyType": 1
     },
     "weapons": []
@@ -20777,9 +20426,9 @@
     "name": "Lusitano Pureblood Destrier",
     "culture": "Battania",
     "type": "Mount",
-    "price": 20828,
+    "price": 19583,
     "weight": 430.0,
-    "tier": 10.8387308,
+    "tier": 10.4768829,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20789,7 +20438,7 @@
       "chargeDamage": 7,
       "maneuver": 81,
       "speed": 43,
-      "hitPoints": 216,
+      "hitPoints": 210,
       "familyType": 1
     },
     "weapons": []
@@ -20799,9 +20448,9 @@
     "name": "Bohemond",
     "culture": "Vlandia",
     "type": "Mount",
-    "price": 24283,
+    "price": 22855,
     "weight": 430.0,
-    "tier": 11.7897854,
+    "tier": 11.405304,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20811,7 +20460,7 @@
       "chargeDamage": 8,
       "maneuver": 82,
       "speed": 44,
-      "hitPoints": 219,
+      "hitPoints": 213,
       "familyType": 1
     },
     "weapons": []
@@ -20821,9 +20470,9 @@
     "name": "Llamrei",
     "culture": "Battania",
     "type": "Mount",
-    "price": 26636,
+    "price": 25080,
     "weight": 430.0,
-    "tier": 12.3993654,
+    "tier": 11.9993753,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20833,7 +20482,7 @@
       "chargeDamage": 8,
       "maneuver": 82,
       "speed": 45,
-      "hitPoints": 222,
+      "hitPoints": 216,
       "familyType": 1
     },
     "weapons": []
@@ -20843,9 +20492,9 @@
     "name": "Murgese Destrier",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 7014,
+    "price": 6576,
     "weight": 450.0,
-    "tier": 5.8485837,
+    "tier": 5.630917,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20855,7 +20504,7 @@
       "chargeDamage": 4,
       "maneuver": 70,
       "speed": 37,
-      "hitPoints": 195,
+      "hitPoints": 189,
       "familyType": 1
     },
     "weapons": []
@@ -20865,9 +20514,9 @@
     "name": "Holsteiner Destrier",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 8392,
+    "price": 7868,
     "weight": 430.0,
-    "tier": 6.493924,
+    "tier": 6.25500059,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20877,7 +20526,7 @@
       "chargeDamage": 4,
       "maneuver": 72,
       "speed": 38,
-      "hitPoints": 198,
+      "hitPoints": 192,
       "familyType": 1
     },
     "weapons": []
@@ -20887,9 +20536,9 @@
     "name": "Kathiawadi Destrier",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 10183,
+    "price": 9551,
     "weight": 430.0,
-    "tier": 7.25868273,
+    "tier": 6.99706554,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20899,7 +20548,7 @@
       "chargeDamage": 5,
       "maneuver": 74,
       "speed": 39,
-      "hitPoints": 201,
+      "hitPoints": 195,
       "familyType": 1
     },
     "weapons": []
@@ -20909,9 +20558,9 @@
     "name": "Friesian Destrier",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 12128,
+    "price": 11376,
     "weight": 430.0,
-    "tier": 8.017658,
+    "tier": 7.73185444,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20921,7 +20570,7 @@
       "chargeDamage": 5,
       "maneuver": 76,
       "speed": 40,
-      "hitPoints": 204,
+      "hitPoints": 198,
       "familyType": 1
     },
     "weapons": []
@@ -20931,9 +20580,9 @@
     "name": "Carthusian Destrier",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 14654,
+    "price": 13753,
     "weight": 430.0,
-    "tier": 8.918327,
+    "tier": 8.606788,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20943,8 +20592,360 @@
       "chargeDamage": 6,
       "maneuver": 78,
       "speed": 41,
-      "hitPoints": 207,
+      "hitPoints": 201,
       "familyType": 1
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_mount1_camel_10",
+    "name": "Seleucid Light Camel",
+    "culture": "Aserai",
+    "type": "Mount",
+    "price": 13735,
+    "weight": 520.0,
+    "tier": 8.600387,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 110,
+      "chargeDamage": 4,
+      "maneuver": 82,
+      "speed": 36,
+      "hitPoints": 225,
+      "familyType": 2
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_mount1_camel_11",
+    "name": "Seleucid Heavy Camel",
+    "culture": "Aserai",
+    "type": "Mount",
+    "price": 14701,
+    "weight": 520.0,
+    "tier": 8.934379,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 110,
+      "chargeDamage": 5,
+      "maneuver": 81,
+      "speed": 35,
+      "hitPoints": 243,
+      "familyType": 2
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_mount1_camel_12",
+    "name": "Parthian Light Camel",
+    "culture": "Aserai",
+    "type": "Mount",
+    "price": 15352,
+    "weight": 520.0,
+    "tier": 9.153386,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 110,
+      "chargeDamage": 4,
+      "maneuver": 83,
+      "speed": 37,
+      "hitPoints": 225,
+      "familyType": 2
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_mount1_camel_13",
+    "name": "Parthian Heavy Camel",
+    "culture": "Aserai",
+    "type": "Mount",
+    "price": 16469,
+    "weight": 520.0,
+    "tier": 9.518836,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 110,
+      "chargeDamage": 5,
+      "maneuver": 82,
+      "speed": 36,
+      "hitPoints": 243,
+      "familyType": 2
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_mount1_camel_14",
+    "name": "Achaemenian Light Camel",
+    "culture": "Aserai",
+    "type": "Mount",
+    "price": 18907,
+    "weight": 520.0,
+    "tier": 10.2758207,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 110,
+      "chargeDamage": 5,
+      "maneuver": 84,
+      "speed": 38,
+      "hitPoints": 234,
+      "familyType": 2
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_mount1_camel_15",
+    "name": "Achaemenian Heavy Camel",
+    "culture": "Aserai",
+    "type": "Mount",
+    "price": 20243,
+    "weight": 520.0,
+    "tier": 10.6700382,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 110,
+      "chargeDamage": 6,
+      "maneuver": 83,
+      "speed": 37,
+      "hitPoints": 252,
+      "familyType": 2
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_mount1_camel_16",
+    "name": "Safinat al-Barr",
+    "culture": "Aserai",
+    "type": "Mount",
+    "price": 22074,
+    "weight": 520.0,
+    "tier": 11.1902046,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 110,
+      "chargeDamage": 7,
+      "maneuver": 85,
+      "speed": 37,
+      "hitPoints": 252,
+      "familyType": 2
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_mount1_camel_17",
+    "name": "Padishah",
+    "culture": "Aserai",
+    "type": "Mount",
+    "price": 24610,
+    "weight": 520.0,
+    "tier": 11.8760071,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 110,
+      "chargeDamage": 7,
+      "maneuver": 86,
+      "speed": 38,
+      "hitPoints": 252,
+      "familyType": 2
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_mount1_camel_2",
+    "name": "Pack Camel",
+    "culture": "Aserai",
+    "type": "Mount",
+    "price": 4514,
+    "weight": 520.0,
+    "tier": 4.493249,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 110,
+      "chargeDamage": 2,
+      "maneuver": 72,
+      "speed": 29,
+      "hitPoints": 210,
+      "familyType": 2
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_mount1_camel_3",
+    "name": "Pratihara Camel",
+    "culture": "Aserai",
+    "type": "Mount",
+    "price": 6039,
+    "weight": 520.0,
+    "tier": 5.35360336,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 110,
+      "chargeDamage": 2,
+      "maneuver": 76,
+      "speed": 30,
+      "hitPoints": 216,
+      "familyType": 2
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_mount1_camel_4",
+    "name": "Qedarite Camel",
+    "culture": "Aserai",
+    "type": "Mount",
+    "price": 7344,
+    "weight": 520.0,
+    "tier": 6.00828552,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 110,
+      "chargeDamage": 3,
+      "maneuver": 77,
+      "speed": 31,
+      "hitPoints": 222,
+      "familyType": 2
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_mount1_camel_5",
+    "name": "Palmyrene Camel",
+    "culture": "Aserai",
+    "type": "Mount",
+    "price": 8897,
+    "weight": 520.0,
+    "tier": 6.716852,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 110,
+      "chargeDamage": 4,
+      "maneuver": 78,
+      "speed": 32,
+      "hitPoints": 228,
+      "familyType": 2
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_mount1_camel_6",
+    "name": "Sargonid Light Camel",
+    "culture": "Aserai",
+    "type": "Mount",
+    "price": 10023,
+    "weight": 520.0,
+    "tier": 7.19307661,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 110,
+      "chargeDamage": 4,
+      "maneuver": 80,
+      "speed": 34,
+      "hitPoints": 216,
+      "familyType": 2
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_mount1_camel_7",
+    "name": "Sargonid Heavy Camel",
+    "culture": "Aserai",
+    "type": "Mount",
+    "price": 10750,
+    "weight": 520.0,
+    "tier": 7.486729,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 110,
+      "chargeDamage": 5,
+      "maneuver": 79,
+      "speed": 33,
+      "hitPoints": 234,
+      "familyType": 2
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_mount1_camel_8",
+    "name": "Nabatean Light Camel",
+    "culture": "Aserai",
+    "type": "Mount",
+    "price": 11232,
+    "weight": 520.0,
+    "tier": 7.675955,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 110,
+      "chargeDamage": 4,
+      "maneuver": 81,
+      "speed": 35,
+      "hitPoints": 216,
+      "familyType": 2
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_mount1_camel_9",
+    "name": "Nabatean Heavy Camel",
+    "culture": "Aserai",
+    "type": "Mount",
+    "price": 12076,
+    "weight": 520.0,
+    "tier": 7.99815,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 110,
+      "chargeDamage": 5,
+      "maneuver": 80,
+      "speed": 34,
+      "hitPoints": 234,
+      "familyType": 2
     },
     "weapons": []
   },
@@ -20953,9 +20954,9 @@
     "name": "Desert Norman Charger",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 17003,
+    "price": 16015,
     "weight": 450.0,
-    "tier": 9.689158,
+    "tier": 9.37179,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20965,7 +20966,7 @@
       "chargeDamage": 7,
       "maneuver": 73,
       "speed": 44,
-      "hitPoints": 219,
+      "hitPoints": 213,
       "familyType": 1
     },
     "weapons": []
@@ -20975,9 +20976,9 @@
     "name": "Andravida Charger",
     "culture": "Vlandia",
     "type": "Mount",
-    "price": 18693,
+    "price": 17629,
     "weight": 450.0,
-    "tier": 10.2113171,
+    "tier": 9.885577,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20987,7 +20988,7 @@
       "chargeDamage": 8,
       "maneuver": 74,
       "speed": 44,
-      "hitPoints": 222,
+      "hitPoints": 216,
       "familyType": 1
     },
     "weapons": []
@@ -20997,9 +20998,9 @@
     "name": "Neapolitan Charger",
     "culture": "Empire",
     "type": "Mount",
-    "price": 21251,
+    "price": 20046,
     "weight": 450.0,
-    "tier": 10.9591351,
+    "tier": 10.6126842,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21009,7 +21010,7 @@
       "chargeDamage": 8,
       "maneuver": 75,
       "speed": 45,
-      "hitPoints": 225,
+      "hitPoints": 219,
       "familyType": 1
     },
     "weapons": []
@@ -21019,9 +21020,9 @@
     "name": "Hengeron",
     "culture": "Vlandia",
     "type": "Mount",
-    "price": 24943,
+    "price": 23556,
     "weight": 450.0,
-    "tier": 11.9636717,
+    "tier": 11.5956087,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21031,7 +21032,7 @@
       "chargeDamage": 9,
       "maneuver": 76,
       "speed": 46,
-      "hitPoints": 228,
+      "hitPoints": 222,
       "familyType": 1
     },
     "weapons": []
@@ -21041,9 +21042,9 @@
     "name": "Bucephalus",
     "culture": "Empire",
     "type": "Mount",
-    "price": 27215,
+    "price": 25710,
     "weight": 450.0,
-    "tier": 12.5450792,
+    "tier": 12.162818,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21053,7 +21054,7 @@
       "chargeDamage": 9,
       "maneuver": 76,
       "speed": 47,
-      "hitPoints": 231,
+      "hitPoints": 225,
       "familyType": 1
     },
     "weapons": []
@@ -21063,9 +21064,9 @@
     "name": "Norwegian Fjord Draught",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 6823,
+    "price": 6413,
     "weight": 450.0,
-    "tier": 5.75440836,
+    "tier": 5.547713,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21075,7 +21076,7 @@
       "chargeDamage": 3,
       "maneuver": 64,
       "speed": 39,
-      "hitPoints": 204,
+      "hitPoints": 198,
       "familyType": 1
     },
     "weapons": []
@@ -21085,9 +21086,9 @@
     "name": "Icelandic Charger",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 8316,
+    "price": 7819,
     "weight": 450.0,
-    "tier": 6.459526,
+    "tier": 6.23220158,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21097,7 +21098,7 @@
       "chargeDamage": 4,
       "maneuver": 66,
       "speed": 40,
-      "hitPoints": 207,
+      "hitPoints": 201,
       "familyType": 1
     },
     "weapons": []
@@ -21107,9 +21108,9 @@
     "name": "Shire Charger",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 10109,
+    "price": 9509,
     "weight": 450.0,
-    "tier": 7.22863865,
+    "tier": 6.97926855,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21119,7 +21120,7 @@
       "chargeDamage": 5,
       "maneuver": 68,
       "speed": 41,
-      "hitPoints": 210,
+      "hitPoints": 204,
       "familyType": 1
     },
     "weapons": []
@@ -21129,9 +21130,9 @@
     "name": "Ardennes Charger",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 12275,
+    "price": 11552,
     "weight": 450.0,
-    "tier": 8.072592,
+    "tier": 7.799703,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21141,7 +21142,7 @@
       "chargeDamage": 6,
       "maneuver": 70,
       "speed": 42,
-      "hitPoints": 213,
+      "hitPoints": 207,
       "familyType": 1
     },
     "weapons": []
@@ -21151,9 +21152,9 @@
     "name": "Andalusian Charger",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 14913,
+    "price": 14043,
     "weight": 450.0,
-    "tier": 9.006035,
+    "tier": 8.708097,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21163,7 +21164,7 @@
       "chargeDamage": 7,
       "maneuver": 72,
       "speed": 43,
-      "hitPoints": 216,
+      "hitPoints": 210,
       "familyType": 1
     },
     "weapons": []
@@ -21173,9 +21174,9 @@
     "name": "Ahalteke Courser",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 16952,
+    "price": 15859,
     "weight": 420.0,
-    "tier": 9.672839,
+    "tier": 9.320776,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21185,7 +21186,7 @@
       "chargeDamage": 5,
       "maneuver": 71,
       "speed": 49,
-      "hitPoints": 201,
+      "hitPoints": 195,
       "familyType": 1
     },
     "weapons": []
@@ -21195,9 +21196,9 @@
     "name": "Datong Courser",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 18239,
+    "price": 17075,
     "weight": 420.0,
-    "tier": 10.0734215,
+    "tier": 9.711726,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21207,7 +21208,7 @@
       "chargeDamage": 5,
       "maneuver": 72,
       "speed": 49,
-      "hitPoints": 204,
+      "hitPoints": 198,
       "familyType": 1
     },
     "weapons": []
@@ -21217,9 +21218,9 @@
     "name": "Darashouri Courser",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 20764,
+    "price": 19447,
     "weight": 420.0,
-    "tier": 10.820447,
+    "tier": 10.4367933,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21229,7 +21230,7 @@
       "chargeDamage": 5,
       "maneuver": 73,
       "speed": 50,
-      "hitPoints": 207,
+      "hitPoints": 201,
       "familyType": 1
     },
     "weapons": []
@@ -21239,9 +21240,9 @@
     "name": "Muniqi al-Khamsa",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 23910,
+    "price": 22413,
     "weight": 420.0,
-    "tier": 11.690567,
+    "tier": 11.2840347,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21251,7 +21252,7 @@
       "chargeDamage": 6,
       "maneuver": 74,
       "speed": 51,
-      "hitPoints": 210,
+      "hitPoints": 204,
       "familyType": 1
     },
     "weapons": []
@@ -21261,9 +21262,9 @@
     "name": "Shadowfax",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 26085,
+    "price": 24466,
     "weight": 420.0,
-    "tier": 12.2591181,
+    "tier": 11.8381853,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21273,7 +21274,7 @@
       "chargeDamage": 6,
       "maneuver": 74,
       "speed": 52,
-      "hitPoints": 213,
+      "hitPoints": 207,
       "familyType": 1
     },
     "weapons": []
@@ -21283,9 +21284,9 @@
     "name": "Turkoman Courser",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 7102,
+    "price": 6633,
     "weight": 420.0,
-    "tier": 5.891725,
+    "tier": 5.65955448,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21295,7 +21296,7 @@
       "chargeDamage": 3,
       "maneuver": 62,
       "speed": 44,
-      "hitPoints": 186,
+      "hitPoints": 180,
       "familyType": 1
     },
     "weapons": []
@@ -21305,9 +21306,9 @@
     "name": "Menorquín Courser",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 8516,
+    "price": 7953,
     "weight": 420.0,
-    "tier": 6.54915428,
+    "tier": 6.2944665,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21317,7 +21318,7 @@
       "chargeDamage": 3,
       "maneuver": 64,
       "speed": 45,
-      "hitPoints": 189,
+      "hitPoints": 183,
       "familyType": 1
     },
     "weapons": []
@@ -21327,9 +21328,9 @@
     "name": "Nisean Courser",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 10330,
+    "price": 9653,
     "weight": 420.0,
-    "tier": 7.31866837,
+    "tier": 7.03996849,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21339,7 +21340,7 @@
       "chargeDamage": 4,
       "maneuver": 66,
       "speed": 46,
-      "hitPoints": 192,
+      "hitPoints": 186,
       "familyType": 1
     },
     "weapons": []
@@ -21349,9 +21350,9 @@
     "name": "Thessalian Courser",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 12326,
+    "price": 11519,
     "weight": 420.0,
-    "tier": 8.091337,
+    "tier": 7.7870717,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21361,7 +21362,7 @@
       "chargeDamage": 4,
       "maneuver": 68,
       "speed": 47,
-      "hitPoints": 195,
+      "hitPoints": 189,
       "familyType": 1
     },
     "weapons": []
@@ -21371,9 +21372,9 @@
     "name": "Einsiedler Courser",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 14868,
+    "price": 13904,
     "weight": 420.0,
-    "tier": 8.990841,
+    "tier": 8.659401,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21383,7 +21384,7 @@
       "chargeDamage": 5,
       "maneuver": 70,
       "speed": 48,
-      "hitPoints": 198,
+      "hitPoints": 192,
       "familyType": 1
     },
     "weapons": []
@@ -21393,9 +21394,9 @@
     "name": "Berber Jennet",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 15750,
+    "price": 15200,
     "weight": 300.0,
-    "tier": 9.28492451,
+    "tier": 9.102712,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21405,7 +21406,7 @@
       "chargeDamage": 3,
       "maneuver": 83,
       "speed": 43,
-      "hitPoints": 189,
+      "hitPoints": 186,
       "familyType": 1
     },
     "weapons": []
@@ -21415,9 +21416,9 @@
     "name": "Tchenarani Palfrey",
     "culture": "Vlandia",
     "type": "Mount",
-    "price": 17069,
+    "price": 16483,
     "weight": 300.0,
-    "tier": 9.709838,
+    "tier": 9.523221,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21427,7 +21428,7 @@
       "chargeDamage": 4,
       "maneuver": 84,
       "speed": 43,
-      "hitPoints": 192,
+      "hitPoints": 189,
       "familyType": 1
     },
     "weapons": []
@@ -21437,9 +21438,9 @@
     "name": "Asil Purebred Arabian Palfrey",
     "culture": "Vlandia",
     "type": "Mount",
-    "price": 19520,
+    "price": 18855,
     "weight": 300.0,
-    "tier": 10.458271,
+    "tier": 10.2600384,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21449,7 +21450,7 @@
       "chargeDamage": 4,
       "maneuver": 85,
       "speed": 44,
-      "hitPoints": 195,
+      "hitPoints": 192,
       "familyType": 1
     },
     "weapons": []
@@ -21459,9 +21460,9 @@
     "name": "Marengo",
     "culture": "Vlandia",
     "type": "Mount",
-    "price": 22293,
+    "price": 21539,
     "weight": 300.0,
-    "tier": 11.2507267,
+    "tier": 11.0403948,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21471,7 +21472,7 @@
       "chargeDamage": 4,
       "maneuver": 86,
       "speed": 45,
-      "hitPoints": 198,
+      "hitPoints": 195,
       "familyType": 1
     },
     "weapons": []
@@ -21481,9 +21482,9 @@
     "name": "Baucent",
     "culture": "Vlandia",
     "type": "Mount",
-    "price": 24810,
+    "price": 23983,
     "weight": 300.0,
-    "tier": 11.9287815,
+    "tier": 11.7100611,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21493,7 +21494,7 @@
       "chargeDamage": 5,
       "maneuver": 86,
       "speed": 46,
-      "hitPoints": 201,
+      "hitPoints": 198,
       "familyType": 1
     },
     "weapons": []
@@ -21503,9 +21504,9 @@
     "name": "Irish Hobby",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 6690,
+    "price": 6451,
     "weight": 300.0,
-    "tier": 5.688221,
+    "tier": 5.56715536,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21515,7 +21516,7 @@
       "chargeDamage": 2,
       "maneuver": 74,
       "speed": 38,
-      "hitPoints": 174,
+      "hitPoints": 171,
       "familyType": 1
     },
     "weapons": []
@@ -21525,9 +21526,9 @@
     "name": "Caspian Palfrey",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 8008,
+    "price": 7722,
     "weight": 300.0,
-    "tier": 6.3196454,
+    "tier": 6.18717146,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21537,7 +21538,7 @@
       "chargeDamage": 2,
       "maneuver": 76,
       "speed": 39,
-      "hitPoints": 177,
+      "hitPoints": 174,
       "familyType": 1
     },
     "weapons": []
@@ -21547,9 +21548,9 @@
     "name": "Marwari Palfrey",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 9570,
+    "price": 9229,
     "weight": 300.0,
-    "tier": 7.00477743,
+    "tier": 6.860152,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21559,7 +21560,7 @@
       "chargeDamage": 2,
       "maneuver": 78,
       "speed": 40,
-      "hitPoints": 180,
+      "hitPoints": 177,
       "familyType": 1
     },
     "weapons": []
@@ -21569,9 +21570,9 @@
     "name": "Moroccan Barb",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 11415,
+    "price": 11009,
     "weight": 300.0,
-    "tier": 7.746775,
+    "tier": 7.58922052,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21581,7 +21582,7 @@
       "chargeDamage": 2,
       "maneuver": 80,
       "speed": 41,
-      "hitPoints": 183,
+      "hitPoints": 180,
       "familyType": 1
     },
     "weapons": []
@@ -21591,9 +21592,9 @@
     "name": "Morvandiau Palfrey",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 13738,
+    "price": 13256,
     "weight": 300.0,
-    "tier": 8.601491,
+    "tier": 8.430206,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21603,7 +21604,7 @@
       "chargeDamage": 3,
       "maneuver": 82,
       "speed": 42,
-      "hitPoints": 186,
+      "hitPoints": 183,
       "familyType": 1
     },
     "weapons": []
@@ -21716,13 +21717,13 @@
     "weapons": []
   },
   {
-    "id": "crpg_mule2_1",
+    "id": "crpg_mule1_1",
     "name": "Mule",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 2440,
+    "price": 2393,
     "weight": 300.0,
-    "tier": 3.05089855,
+    "tier": 3.0125072,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21732,19 +21733,19 @@
       "chargeDamage": 0,
       "maneuver": 58,
       "speed": 30,
-      "hitPoints": 200,
+      "hitPoints": 198,
       "familyType": 1
     },
     "weapons": []
   },
   {
-    "id": "crpg_mule2_2",
+    "id": "crpg_mule1_2",
     "name": "Chadz",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 6643,
+    "price": 6095,
     "weight": 300.0,
-    "tier": 5.664498,
+    "tier": 5.383079,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21754,7 +21755,7 @@
       "chargeDamage": 1,
       "maneuver": 60,
       "speed": 33,
-      "hitPoints": 275,
+      "hitPoints": 264,
       "familyType": 1
     },
     "weapons": []
@@ -23455,9 +23456,9 @@
     "name": "Broad Leaf Shaped Spear",
     "culture": "Battania",
     "type": "Polearm",
-    "price": 3827,
+    "price": 12389,
     "weight": 1.5,
-    "tier": 4.334009,
+    "tier": 8.617993,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -23478,7 +23479,7 @@
         "thrustDamage": 26,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 87,
-        "swingDamage": 21,
+        "swingDamage": 40,
         "swingDamageType": "Cut",
         "swingSpeed": 42
       },
@@ -23501,7 +23502,7 @@
         "thrustDamage": 26,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 95,
-        "swingDamage": 21,
+        "swingDamage": 40,
         "swingDamageType": "Cut",
         "swingSpeed": 82
       },
@@ -23524,7 +23525,7 @@
         "thrustDamage": 26,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 95,
-        "swingDamage": 21,
+        "swingDamage": 40,
         "swingDamageType": "Cut",
         "swingSpeed": 82
       }
@@ -24254,16 +24255,16 @@
     "name": "Padded Short Coat",
     "culture": "Vlandia",
     "type": "BodyArmor",
-    "price": 830,
-    "weight": 2.817747,
-    "tier": 3.501227,
+    "price": 1114,
+    "weight": 3.253509,
+    "tier": 3.8279264,
     "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 23,
+      "bodyArmor": 26,
       "armArmor": 3,
       "legArmor": 3,
       "materialType": "Cloth",
@@ -24966,9 +24967,9 @@
     "name": "Scythe",
     "culture": "Neutral",
     "type": "Polearm",
-    "price": 12385,
-    "weight": 2.25,
-    "tier": 8.616375,
+    "price": 8430,
+    "weight": 2.34,
+    "tier": 6.92394543,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -24981,8 +24982,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 98,
-        "balance": 0.58,
-        "handling": 72,
+        "balance": 0.52,
+        "handling": 71,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -24996,7 +24997,7 @@
         "thrustSpeed": 91,
         "swingDamage": 30,
         "swingDamageType": "Pierce",
-        "swingSpeed": 87
+        "swingSpeed": 85
       }
     ]
   },
@@ -25041,9 +25042,9 @@
     "name": "Militia Pernach",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 2267,
-    "weight": 2.72,
-    "tier": 5.003991,
+    "price": 5287,
+    "weight": 2.58,
+    "tier": 8.21804,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -25054,8 +25055,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 73,
-        "balance": 0.39,
-        "handling": 89,
+        "balance": 0.49,
+        "handling": 90,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon"
@@ -25063,9 +25064,9 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 82,
-        "swingDamage": 24,
+        "swingDamage": 25,
         "swingDamageType": "Blunt",
-        "swingSpeed": 81
+        "swingSpeed": 84
       }
     ]
   },
@@ -25110,9 +25111,9 @@
     "name": "Piercing Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 4500,
+    "price": 4660,
     "weight": 0.041,
-    "tier": 10.00033,
+    "tier": 10.1973019,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -25121,7 +25122,7 @@
         "itemUsage": "arrow_right",
         "accuracy": 100,
         "missileSpeed": 10,
-        "stackAmount": 23,
+        "stackAmount": 15,
         "length": 97,
         "balance": 0.0,
         "handling": 0,
@@ -25129,7 +25130,7 @@
         "flags": [
           "Consumable"
         ],
-        "thrustDamage": 4,
+        "thrustDamage": 5,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 0,
         "swingDamage": 0,
@@ -26172,9 +26173,9 @@
     "name": "Ridged Saber ",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
-    "price": 3481,
-    "weight": 2.18,
-    "tier": 6.45965958,
+    "price": 6177,
+    "weight": 2.14,
+    "tier": 8.972451,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -26185,16 +26186,16 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 100,
-        "balance": 0.54,
-        "handling": 86,
+        "balance": 0.56,
+        "handling": 87,
         "bodyArmor": 4,
         "flags": [
           "MeleeWeapon"
         ],
-        "thrustDamage": 17,
+        "thrustDamage": 20,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 85,
-        "swingDamage": 30,
+        "swingDamage": 32,
         "swingDamageType": "Cut",
         "swingSpeed": 86
       }
@@ -27114,9 +27115,9 @@
     "name": "Seax",
     "culture": "Sturgia",
     "type": "OneHandedWeapon",
-    "price": 838,
-    "weight": 2.87,
-    "tier": 2.630501,
+    "price": 1157,
+    "weight": 2.84,
+    "tier": 3.271019,
     "requirement": 0,
     "flags": [
       "CanBePickedUpFromCorpse",
@@ -27130,18 +27131,18 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 52,
-        "balance": 0.72,
-        "handling": 102,
+        "balance": 0.75,
+        "handling": 103,
         "bodyArmor": 1,
         "flags": [
           "MeleeWeapon"
         ],
-        "thrustDamage": 8,
+        "thrustDamage": 25,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 81,
         "swingDamage": 32,
         "swingDamageType": "Cut",
-        "swingSpeed": 91
+        "swingSpeed": 92
       }
     ]
   },
@@ -27717,9 +27718,9 @@
     "name": "Simple Poleaxe",
     "culture": "Neutral",
     "type": "Polearm",
-    "price": 10749,
+    "price": 13353,
     "weight": 2.2,
-    "tier": 7.9545083,
+    "tier": 8.987777,
     "requirement": 0,
     "flags": [
       "CanBePickedUpFromCorpse"
@@ -27739,12 +27740,13 @@
           "MeleeWeapon",
           "NotUsableWithOneHand",
           "WideGrip",
+          "BonusAgainstShield",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 24,
+        "thrustDamage": 25,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 91,
-        "swingDamage": 44,
+        "swingDamage": 43,
         "swingDamageType": "Cut",
         "swingSpeed": 78
       }
@@ -28842,9 +28844,9 @@
     "name": "Spiked Polehammer",
     "culture": "Neutral",
     "type": "Polearm",
-    "price": 15290,
+    "price": 16012,
     "weight": 2.0,
-    "tier": 9.693021,
+    "tier": 9.944254,
     "requirement": 0,
     "flags": [
       "CanBePickedUpFromCorpse"
@@ -28866,7 +28868,7 @@
           "WideGrip",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 21,
+        "thrustDamage": 22,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 92,
         "swingDamage": 30,
@@ -29165,9 +29167,9 @@
     "name": "Steel Shestopyor",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 3118,
+    "price": 8549,
     "weight": 1.34,
-    "tier": 6.055444,
+    "tier": 10.75255,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -29187,7 +29189,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 92,
-        "swingDamage": 21,
+        "swingDamage": 24,
         "swingDamageType": "Blunt",
         "swingSpeed": 87
       }
@@ -30114,16 +30116,16 @@
     "name": "Studded Leather Coat",
     "culture": "Aserai",
     "type": "BodyArmor",
-    "price": 830,
-    "weight": 2.817747,
-    "tier": 3.501227,
+    "price": 1114,
+    "weight": 3.253509,
+    "tier": 3.8279264,
     "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 23,
+      "bodyArmor": 26,
       "armArmor": 3,
       "legArmor": 3,
       "materialType": "Leather",
@@ -31901,9 +31903,9 @@
     "name": "Thamaskene Steel Claymore",
     "culture": "Empire",
     "type": "TwoHandedWeapon",
-    "price": 9334,
-    "weight": 3.55,
-    "tier": 7.968273,
+    "price": 11571,
+    "weight": 3.5,
+    "tier": 8.993423,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -31914,8 +31916,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 128,
-        "balance": 0.46,
-        "handling": 80,
+        "balance": 0.48,
+        "handling": 81,
         "bodyArmor": 5,
         "flags": [
           "MeleeWeapon",
@@ -31923,10 +31925,10 @@
         ],
         "thrustDamage": 20,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 83,
+        "thrustSpeed": 84,
         "swingDamage": 40,
         "swingDamageType": "Cut",
-        "swingSpeed": 83
+        "swingSpeed": 84
       }
     ]
   },
@@ -33761,9 +33763,9 @@
     "name": "Fullered Western Mace",
     "culture": "Vlandia",
     "type": "OneHandedWeapon",
-    "price": 5224,
-    "weight": 2.03,
-    "tier": 8.161566,
+    "price": 9192,
+    "weight": 1.92,
+    "tier": 11.1912384,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -33774,18 +33776,18 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 85,
-        "balance": 0.46,
-        "handling": 81,
+        "balance": 0.55,
+        "handling": 82,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon"
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 86,
+        "thrustSpeed": 87,
         "swingDamage": 25,
         "swingDamageType": "Blunt",
-        "swingSpeed": 83
+        "swingSpeed": 86
       }
     ]
   },
@@ -33794,9 +33796,9 @@
     "name": "Pernach",
     "culture": "Vlandia",
     "type": "OneHandedWeapon",
-    "price": 7489,
-    "weight": 2.18,
-    "tier": 9.991999,
+    "price": 8982,
+    "weight": 2.12,
+    "tier": 11.0496588,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -33807,7 +33809,7 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 89,
-        "balance": 0.4,
+        "balance": 0.43,
         "handling": 74,
         "bodyArmor": 0,
         "flags": [
@@ -33818,7 +33820,7 @@
         "thrustSpeed": 85,
         "swingDamage": 28,
         "swingDamageType": "Blunt",
-        "swingSpeed": 81
+        "swingSpeed": 82
       }
     ]
   },
@@ -34028,9 +34030,9 @@
     "name": "Voulge",
     "culture": "Vlandia",
     "type": "Polearm",
-    "price": 17802,
-    "weight": 1.47,
-    "tier": 10.5442076,
+    "price": 15815,
+    "weight": 1.5,
+    "tier": 9.876115,
     "requirement": 0,
     "flags": [
       "CanBePickedUpFromCorpse"
@@ -34043,8 +34045,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 142,
-        "balance": 0.38,
-        "handling": 66,
+        "balance": 0.36,
+        "handling": 65,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -34053,12 +34055,12 @@
           "BonusAgainstShield",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 22,
+        "thrustDamage": 24,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 96,
+        "thrustSpeed": 95,
         "swingDamage": 44,
         "swingDamageType": "Cut",
-        "swingSpeed": 81
+        "swingSpeed": 80
       }
     ]
   },
@@ -34370,9 +34372,9 @@
     "name": "Lowland Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 1689,
+    "price": 2725,
     "weight": 0.06,
-    "tier": 5.67485046,
+    "tier": 7.523614,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -34381,7 +34383,7 @@
         "itemUsage": "arrow_top",
         "accuracy": 100,
         "missileSpeed": 10,
-        "stackAmount": 25,
+        "stackAmount": 40,
         "length": 97,
         "balance": 0.0,
         "handling": 0,
@@ -34474,9 +34476,9 @@
     "name": "Warhammer",
     "culture": "Sturgia",
     "type": "OneHandedWeapon",
-    "price": 4394,
-    "weight": 1.99,
-    "tier": 7.394393,
+    "price": 7934,
+    "weight": 1.89,
+    "tier": 10.3177929,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -34487,8 +34489,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 70,
-        "balance": 0.41,
-        "handling": 88,
+        "balance": 0.5,
+        "handling": 90,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon"
@@ -34498,7 +34500,7 @@
         "thrustSpeed": 87,
         "swingDamage": 26,
         "swingDamageType": "Blunt",
-        "swingSpeed": 82
+        "swingSpeed": 85
       }
     ]
   },

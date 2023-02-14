@@ -472,9 +472,9 @@
     </ItemComponent>
     <Flags Civilian="true" UseTeamColor="true" />
   </Item>
-  <Item id="crpg_empire_cape_a" name="{=KQ9h5eAe}Heavy Cloak" mesh="empire_cape_a" culture="Culture.neutral_culture" subtype="body_armor" weight="0.2259883" difficulty="0" appearance="3" Type="Cape">
+  <Item id="crpg_empire_cape_a" name="{=KQ9h5eAe}Heavy Cloak" mesh="empire_cape_a" culture="Culture.neutral_culture" subtype="body_armor" weight="0.08992123" difficulty="0" appearance="3" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="3" arm_armor="2" modifier_group="cloth_unarmoured" material_type="Cloth" />
+      <Armor body_armor="3" arm_armor="0" modifier_group="cloth_unarmoured" material_type="Cloth" />
     </ItemComponent>
     <Flags Civilian="true" UseTeamColor="true" />
   </Item>
