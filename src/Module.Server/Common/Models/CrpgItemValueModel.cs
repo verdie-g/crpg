@@ -135,28 +135,28 @@ internal class CrpgItemValueModel : ItemValueModel
         {
             float weaponSwingScaler = weapon.WeaponClass switch
             {
-                WeaponClass.OneHandedSword => 19f,
-                WeaponClass.OneHandedAxe => 23f,
-                WeaponClass.Mace => 23f,
+                WeaponClass.OneHandedSword => 20.9f,
+                WeaponClass.OneHandedAxe => 25.3f,
+                WeaponClass.Mace => 25.3f,
                 WeaponClass.Dagger => 27f,
                 WeaponClass.TwoHandedSword => 27.5f,
                 WeaponClass.TwoHandedMace => 28.5f,
                 WeaponClass.TwoHandedAxe => 29.5f,
                 WeaponClass.TwoHandedPolearm => 25f,
-                WeaponClass.OneHandedPolearm => 27.5f,
+                WeaponClass.OneHandedPolearm => 25f,
                 _ => float.MaxValue,
             };
             float weaponThrustScaler = weapon.WeaponClass switch
             {
-                WeaponClass.OneHandedSword => 28f,
-                WeaponClass.OneHandedAxe => 28f,
-                WeaponClass.Mace => 28f,
+                WeaponClass.OneHandedSword => 30.8f,
+                WeaponClass.OneHandedAxe => 30.8f,
+                WeaponClass.Mace => 30.8f,
                 WeaponClass.Dagger => 34f,
                 WeaponClass.TwoHandedSword => 30f,
                 WeaponClass.TwoHandedMace => 30f,
                 WeaponClass.TwoHandedAxe => 30f,
-                WeaponClass.TwoHandedPolearm => 30f,
-                WeaponClass.OneHandedPolearm => 30f,
+                WeaponClass.TwoHandedPolearm => 33f,
+                WeaponClass.OneHandedPolearm => 33f,
                 _ => float.MaxValue,
             };
             float thrustTier =
@@ -169,6 +169,11 @@ internal class CrpgItemValueModel : ItemValueModel
                 * CalculateDamageTypeFactor(weapon.SwingDamageType)
                 * (float)Math.Pow(weapon.SwingSpeed, 4.1f)
                 / 104000000f;
+
+            if (!weapon.WeaponFlags.HasAnyFlag(WeaponFlags.NotUsableWithOneHand))
+            {
+                swingTier *= 1.1f;
+            }
 
             if (weapon.WeaponFlags.HasAnyFlag(WeaponFlags.BonusAgainstShield))
             {
