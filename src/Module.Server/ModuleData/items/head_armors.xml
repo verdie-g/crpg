@@ -1254,7 +1254,7 @@
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_rus_helm_regular2" name="Vaegir Helmet" mesh="rus_helm_regular2" culture="Culture.sturgia" weight="6.743144" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_rus_helm_regular2" name="Shiny Vaegir Helmet" mesh="rus_helm_regular2" culture="Culture.sturgia" weight="6.743144" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>

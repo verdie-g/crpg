@@ -108,7 +108,7 @@
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_aserai_scale_shoulder_b" name="{=z4nryDlp}Long Sleeved Bronze Scale Shoulder Guards" mesh="aserai_scale_shoulder_b" culture="Culture.aserai" weight="3.524155" appearance="5" Type="Cape">
+  <Item id="crpg_aserai_scale_shoulder_b" name="{=z4nryDlp}Thin Sleeved Bronze Scale Shoulder Guards" mesh="aserai_scale_shoulder_b" culture="Culture.aserai" weight="3.524155" appearance="5" Type="Cape">
     <ItemComponent>
       <Armor body_armor="16" modifier_group="plate" material_type="Plate" arm_armor="8" />
     </ItemComponent>

@@ -1880,7 +1880,7 @@
   },
   {
     "id": "crpg_aserai_scale_shoulder_b",
-    "name": "Long Sleeved Bronze Scale Shoulder Guards",
+    "name": "Thin Sleeved Bronze Scale Shoulder Guards",
     "culture": "Aserai",
     "type": "ShoulderArmor",
     "price": 4064,
@@ -16271,7 +16271,7 @@
   },
   {
     "id": "crpg_khuzait_fortified_armor",
-    "name": "Reinforced Mirror Armor",
+    "name": "Steppe Reinforced Mirror Armor",
     "culture": "Khuzait",
     "type": "BodyArmor",
     "price": 7021,
@@ -16294,7 +16294,7 @@
   },
   {
     "id": "crpg_khuzait_lamellar_strapped",
-    "name": "Reinforced Leather Armor",
+    "name": "Steppe Reinforced Leather Armor",
     "culture": "Khuzait",
     "type": "BodyArmor",
     "price": 15510,
@@ -26323,7 +26323,7 @@
   },
   {
     "id": "crpg_rus_armour1",
-    "name": "Vaegir Coat of Plates",
+    "name": "Shiny Vaegir Coat of Plates",
     "culture": "Sturgia",
     "type": "BodyArmor",
     "price": 26628,
@@ -26385,7 +26385,7 @@
   },
   {
     "id": "crpg_rus_helm_regular2",
-    "name": "Vaegir Helmet",
+    "name": "Shiny Vaegir Helmet",
     "culture": "Sturgia",
     "type": "HeadArmor",
     "price": 4709,
