@@ -70,16 +70,16 @@ internal class CrpgItemValueModel : ItemValueModel
     {
         float armorPower =
               1.2f * armorComponent.HeadArmor
-            + 1.0f * armorComponent.BodyArmor
-            + 1.0f * armorComponent.ArmArmor
-            + 0.8f * armorComponent.LegArmor;
+            + 1.1f * armorComponent.BodyArmor
+            + 1.15f * armorComponent.ArmArmor
+            + 0.75f * armorComponent.LegArmor;
         float bestArmorPower = armorComponent.Item.ItemType switch
         {
-            ItemObject.ItemTypeEnum.HeadArmor => 50.05f,
-            ItemObject.ItemTypeEnum.Cape => 22.66f,
-            ItemObject.ItemTypeEnum.BodyArmor => 51.85f,
-            ItemObject.ItemTypeEnum.HandArmor => 20.38f,
-            ItemObject.ItemTypeEnum.LegArmor => 16.5f,
+            ItemObject.ItemTypeEnum.HeadArmor => 27.2f,
+            ItemObject.ItemTypeEnum.Cape => 10.3f,
+            ItemObject.ItemTypeEnum.BodyArmor => 19.492481f,
+            ItemObject.ItemTypeEnum.HandArmor => 12.2f,
+            ItemObject.ItemTypeEnum.LegArmor => 7.95f,
             ItemObject.ItemTypeEnum.HorseHarness => 45f,
             _ => throw new ArgumentOutOfRangeException(),
         };
@@ -87,7 +87,7 @@ internal class CrpgItemValueModel : ItemValueModel
         return armorComponent.Item.ItemType switch
         {
             ItemObject.ItemTypeEnum.HorseHarness => 10 * armorPower / bestArmorPower,
-            _ => 10 * armorPower / (bestArmorPower * (float)Math.Pow(armorComponent.Item.Weight + 4, 0.2f)),
+            _ => 10 * armorPower / (bestArmorPower * (float)Math.Pow(armorComponent.Item.Weight + 8, 0.5f)),
         };
     }
 
@@ -135,38 +135,45 @@ internal class CrpgItemValueModel : ItemValueModel
         {
             float weaponSwingScaler = weapon.WeaponClass switch
             {
-                WeaponClass.OneHandedSword => 22.5f,
-                WeaponClass.OneHandedAxe => 23.5f,
-                WeaponClass.Mace => 23.5f,
+                WeaponClass.OneHandedSword => 20.9f,
+                WeaponClass.OneHandedAxe => 25.3f,
+                WeaponClass.Mace => 25.3f,
                 WeaponClass.Dagger => 27f,
                 WeaponClass.TwoHandedSword => 27.5f,
-                WeaponClass.TwoHandedMace => 27.5f,
-                WeaponClass.TwoHandedAxe => 27.5f,
+                WeaponClass.TwoHandedMace => 28.5f,
+                WeaponClass.TwoHandedAxe => 29.5f,
                 WeaponClass.TwoHandedPolearm => 25f,
-                WeaponClass.OneHandedPolearm => 27.5f,
+                WeaponClass.OneHandedPolearm => 25f,
                 _ => float.MaxValue,
             };
             float weaponThrustScaler = weapon.WeaponClass switch
             {
-                WeaponClass.OneHandedSword => 26f,
-                WeaponClass.OneHandedAxe => 26f,
-                WeaponClass.Mace => 26f,
-                WeaponClass.Dagger => 26f,
+                WeaponClass.OneHandedSword => 30.8f,
+                WeaponClass.OneHandedAxe => 30.8f,
+                WeaponClass.Mace => 30.8f,
+                WeaponClass.Dagger => 34f,
                 WeaponClass.TwoHandedSword => 30f,
                 WeaponClass.TwoHandedMace => 30f,
                 WeaponClass.TwoHandedAxe => 30f,
-                WeaponClass.TwoHandedPolearm => 30f,
-                WeaponClass.OneHandedPolearm => 30f,
+                WeaponClass.TwoHandedPolearm => 33f,
+                WeaponClass.OneHandedPolearm => 33f,
                 _ => float.MaxValue,
             };
             float thrustTier =
                   (float)Math.Pow(CrpgStrikeMagnitudeModel.BladeDamageFactorToDamageRatio * weapon.ThrustDamageFactor, 4.27f)
                 * CalculateDamageTypeFactor(weapon.ThrustDamageType)
-                * (float)Math.Pow(weapon.ThrustSpeed * 0.1f, 2f);
+                * (float)Math.Pow(weapon.ThrustSpeed * 0.1f, 2f)
+                / 62000f;
             float swingTier =
-                  (float)Math.Pow(CrpgStrikeMagnitudeModel.BladeDamageFactorToDamageRatio * weapon.SwingDamageFactor, 2.25f)
+                  (float)Math.Pow(CrpgStrikeMagnitudeModel.BladeDamageFactorToDamageRatio * weapon.SwingDamageFactor, 2.15f)
                 * CalculateDamageTypeFactor(weapon.SwingDamageType)
-                * (float)Math.Pow(weapon.SwingSpeed * 0.01f, 3f);
+                * (float)Math.Pow(weapon.SwingSpeed, 4.1f)
+                / 104000000f;
+
+            if (!weapon.WeaponFlags.HasAnyFlag(WeaponFlags.NotUsableWithOneHand))
+            {
+                swingTier *= 1.1f;
+            }
 
             if (weapon.WeaponFlags.HasAnyFlag(WeaponFlags.BonusAgainstShield))
             {
@@ -175,12 +182,12 @@ internal class CrpgItemValueModel : ItemValueModel
 
             if (weapon.WeaponFlags.HasAnyFlag(WeaponFlags.CanCrushThrough))
             {
-                swingTier *= 1.4f;
+                swingTier *= 1.5f;
             }
 
             if (weapon.WeaponFlags.HasAnyFlag(WeaponFlags.CanKnockDown))
             {
-                swingTier *= 1.5f;
+                swingTier *= 1.6f;
             }
 
             if (weapon.WeaponFlags.HasAnyFlag(WeaponFlags.MultiplePenetration))
@@ -233,17 +240,17 @@ internal class CrpgItemValueModel : ItemValueModel
                     throw new Exception(weapon.WeaponClass.ToString() + " has no swingTierAssociated");
             }
 
-            float swinghandlingFactor = weapon.Handling / 100f;
-            float thrustHandlingFactor = weapon.Handling / 10f;
+            float swinghandlingFactor = weapon.Handling / 10000f;
+            float thrustHandlingFactor = weapon.Handling / 10000f;
             swingTier =
-                  0.18f
+                  12f
                 * (swingTier * swingLengthTier)
-                * (float)Math.Pow(swinghandlingFactor, 3f)
+                * (float)Math.Pow(swinghandlingFactor, 1f)
                 / weaponSwingScaler;
             thrustTier =
-                        0.18f
+                        5f
                         * (thrustTier * thrustLengthTier)
-                        * (float)Math.Pow(thrustHandlingFactor, 2f) / 10000000f
+                        * (float)Math.Pow(thrustHandlingFactor, 1f)
                         / weaponThrustScaler;
             float tier = 0.8f * Math.Max(swingTier, thrustTier) + 0.2f * Math.Min(swingTier, thrustTier);
             if (tier >= maxTier)
@@ -311,15 +318,17 @@ internal class CrpgItemValueModel : ItemValueModel
     private float CalculateThrownWeaponTier(WeaponComponent weaponComponent)
     {
         WeaponComponentData weapon = weaponComponent.Weapons.MaxBy(a => a.MaxDataValue);
-        float scaler = 1752710.44f;
-        return
-              weapon.ThrustDamage
+        float scaler = 1600000f;
+        float bonusVsShield = weapon.WeaponFlags.HasFlag(WeaponFlags.BonusAgainstShield) ? 1.15f : 1f;
+        float tier = weapon.ThrustDamage
             * weapon.ThrustDamage
             * weapon.MissileSpeed
             * weapon.Accuracy
             * weapon.MaxDataValue
             * CalculateDamageTypeFactorForThrown(weapon.ThrustDamageType)
+            * bonusVsShield
             / scaler;
+        return tier * tier / 10f;
     }
 
     private float CalculateRangedWeaponTier(WeaponComponent weaponComponent)
@@ -330,55 +339,57 @@ internal class CrpgItemValueModel : ItemValueModel
         if (weaponComponent.Item is { ItemType: ItemObject.ItemTypeEnum.Crossbow })
         {
             float crossbowscaler = 2.479958463230f;
-            return
-                 weapon.ThrustDamage / 100f * weapon.ThrustDamage / 100f
+            float crossbowTier = weapon.ThrustDamage / 100f * weapon.ThrustDamage / 100f
                 * weapon.SwingSpeed / 100f
                 * weapon.MissileSpeed / 10f
                 * weapon.Accuracy / 10f
                 * (float)Math.Pow(weapon.ThrustSpeed, 0.5f) / 10f
                 * (weapon.ItemUsage == "crossbow_light" ? 2f : 1f)
                 / crossbowscaler;
+            return crossbowTier * crossbowTier / 10f;
         }
 
-        return
-              weapon.ThrustDamage / 100f * weapon.ThrustDamage / 100f
+        float bowTier = weapon.ThrustDamage / 100f * weapon.ThrustDamage / 100f
             * weapon.SwingSpeed / 100f
             * weapon.MissileSpeed / 10f
             * weapon.Accuracy / 10f
             * weapon.ThrustSpeed / 10f
             * (weapon.ItemUsage == "long_bow" ? 0.668f : 1f)
             / scaler;
+        return bowTier * bowTier / 10f;
     }
 
     private float CalculateShieldTier(WeaponComponent weaponComponent)
     {
         WeaponComponentData weapon = weaponComponent.Weapons[0];
-        return
-                  (1.0f * weapon.MaxDataValue
+        float shieldTier = (1.0f * weapon.MaxDataValue
                 * (1.0f + weapon.BodyArmor / 10f)
                 + 1.0f * weapon.ThrustSpeed)
                 * (0.14f + weapon.GetRealWeaponLength())
                 / (6f + weaponComponent.Item.Weight)
                 / 25f
                 * 10f;
+        return shieldTier * shieldTier / 10f;
     }
 
     private float CalculateAmmoTier(WeaponComponent weaponComponent)
     {
         WeaponComponentData weapon = weaponComponent.Weapons[0];
-        return weaponComponent.Item.ItemType switch
-        {
-            ItemObject.ItemTypeEnum.Arrows => 10f
+        float arrowsTier = 10f
           * CalculateDamageTypeFactorForAmmo(weapon.ThrustDamageType) * CalculateDamageTypeFactorForAmmo(weapon.ThrustDamageType)
           * (10 + weapon.MissileDamage) * (10 + weapon.MissileDamage)
           * (float)Math.Pow(weapon.MaxDataValue, 0.3f)
-          / 1537.6f,
-
-            ItemObject.ItemTypeEnum.Bolts => 10f
+          / 1537.6f;
+        float boltsTier = 10f
           * CalculateDamageTypeFactorForAmmo(weapon.ThrustDamageType) * CalculateDamageTypeFactorForAmmo(weapon.ThrustDamageType)
           * (22 + weapon.MissileDamage) * (22 + weapon.MissileDamage)
           * (float)Math.Pow(weapon.MaxDataValue, 0.3f)
-          / 6606.34f,
+          / 6606.34f;
+        return weaponComponent.Item.ItemType switch
+        {
+            ItemObject.ItemTypeEnum.Arrows => arrowsTier * arrowsTier / 10f,
+
+            ItemObject.ItemTypeEnum.Bolts => boltsTier * boltsTier / 10f,
             _ => 10f,
         };
     }
