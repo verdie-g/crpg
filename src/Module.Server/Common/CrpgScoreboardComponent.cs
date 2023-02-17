@@ -15,7 +15,7 @@ internal class CrpgScoreboardComponent : MissionScoreboardComponent
 
     public override void OnScoreHit(
         Agent affectedAgent,
-        Agent? affectorAgent,
+        Agent affectorAgent,
         WeaponComponentData attackerWeapon,
         bool isBlocked,
         bool isSiegeEngineHit,
@@ -30,14 +30,13 @@ internal class CrpgScoreboardComponent : MissionScoreboardComponent
             return;
         }
 
-        if (affectorAgent == null || affectorAgent == affectedAgent)
-        {
-            return;
-        }
-
         if (affectorAgent.IsMount)
         {
             affectorAgent = affectorAgent.RiderAgent;
+            if (affectorAgent == null)
+            {
+                return;
+            }
         }
 
         var missionPeer = affectorAgent.MissionPeer ??
@@ -63,6 +62,15 @@ internal class CrpgScoreboardComponent : MissionScoreboardComponent
         {
             score = damagedHp * 0.45f;
             affectedAgent = affectedAgent.RiderAgent;
+            if (affectedAgent == null)
+            {
+                return;
+            }
+        }
+
+        if (affectorAgent == affectedAgent)
+        {
+            return;
         }
 
         score = affectorAgent.IsFriendOf(affectedAgent) ? score * -1.5f : score;
