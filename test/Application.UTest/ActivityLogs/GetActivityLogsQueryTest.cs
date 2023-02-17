@@ -24,7 +24,7 @@ public class GetActivityLogsQueryTest : TestBase
         {
             From = DateTime.UtcNow.AddMinutes(-7),
             To = DateTime.UtcNow.AddMinutes(-3),
-            UserId = null,
+            UserIds = Array.Empty<int>(),
         }, CancellationToken.None);
 
         Assert.AreEqual(2, res.Data!.Count);
@@ -52,7 +52,7 @@ public class GetActivityLogsQueryTest : TestBase
         {
             From = DateTime.UtcNow.AddMinutes(-10),
             To = DateTime.UtcNow,
-            UserId = user.Id,
+            UserIds = new[] { user.Id },
         }, CancellationToken.None);
 
         Assert.AreEqual(3, res.Data!.Count);

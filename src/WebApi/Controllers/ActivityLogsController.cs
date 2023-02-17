@@ -23,13 +23,13 @@ public class ActivityLogsController : BaseController
     public async Task<ActionResult<Result<IList<ActivityLogViewModel>>>> GetActivityLogs(
         [FromQuery] DateTime from,
         [FromQuery] DateTime to,
-        [FromQuery] int? userId)
+        [FromQuery(Name = "userId[]")] int[]? userIds)
     {
         return ResultToAction(await Mediator.Send(new GetActivityLogsQuery
         {
             From = from,
             To = to,
-            UserId = userId,
+            UserIds = userIds ?? Array.Empty<int>(),
         }, CancellationToken.None));
     }
 }

@@ -12,7 +12,7 @@ public record GetActivityLogsQuery : IMediatorRequest<IList<ActivityLogViewModel
 {
     public DateTime From { get; init; }
     public DateTime To { get; init; }
-    public int? UserId { get; init; }
+    public int[] UserIds { get; init; } = Array.Empty<int>();
 
     public class Validator : AbstractValidator<GetActivityLogsQuery>
     {
@@ -38,7 +38,7 @@ public record GetActivityLogsQuery : IMediatorRequest<IList<ActivityLogViewModel
         {
             var activityLogs = await _db.ActivityLogs
                 .Include(l => l.Metadata)
-                .Where(l => l.CreatedAt >= req.From && l.CreatedAt <= req.To && (!req.UserId.HasValue || req.UserId.Value == l.UserId))
+                .Where(l => l.CreatedAt >= req.From && l.CreatedAt <= req.To && (req.UserIds.Length == 0 || req.UserIds.Contains(l.UserId)))
                 .OrderByDescending(l => l.CreatedAt)
                 .Take(1000)
                 .ToArrayAsync(cancellationToken);
