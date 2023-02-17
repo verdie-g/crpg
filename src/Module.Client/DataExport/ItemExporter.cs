@@ -192,7 +192,7 @@ internal class ItemExporter : IDataExporter
             1.0f * (armorNode.Attributes["head_armor"] == null ? 0f : float.Parse(armorNode.Attributes["head_armor"].Value))
           + 1.0f * (armorNode.Attributes["body_armor"] == null ? 0f : float.Parse(armorNode.Attributes["body_armor"].Value))
           + 1.3f * (armorNode.Attributes["arm_armor"] == null ? 0f : float.Parse(armorNode.Attributes["arm_armor"].Value))
-          + 1.4f * (armorNode.Attributes["leg_armor"] == null ? 0f : float.Parse(armorNode.Attributes["leg_armor"].Value));
+          + 1.1f * (armorNode.Attributes["leg_armor"] == null ? 0f : float.Parse(armorNode.Attributes["leg_armor"].Value));
         float bestArmorPower = type switch
         {
             ItemObject.ItemTypeEnum.HeadArmor => 661f,
@@ -203,7 +203,7 @@ internal class ItemExporter : IDataExporter
             ItemObject.ItemTypeEnum.HorseHarness => 100f,
             _ => throw new ArgumentOutOfRangeException(),
         };
-        return 6 * (float)Math.Pow(armorPower, 1.5f) / bestArmorPower;
+        return 20f * (float)Math.Pow(armorPower, 1.3f) / bestArmorPower;
     }
 
     private static void ModifyNodeAttribute(

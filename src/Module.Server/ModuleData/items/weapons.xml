@@ -508,7 +508,7 @@
       <Piece id="crpg_eastern_spear_3_t3_pommel" Type="Pommel" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_highland_spear_3_t3" name="{=HVcwvRMF}Reinforced Highland Spear" crafting_template="crpg_TwoHandedPolearm" culture="Culture.battania" modifier_group="polearm">
+  <CraftedItem id="crpg_highland_spear_3_t3" name="{=HVcwvRMF}Reinforced Highland Spear" crafting_template="crpg_Pike" culture="Culture.battania" modifier_group="polearm">
     <Pieces>
       <Piece id="crpg_highland_spear_3_t3_blade" Type="Blade" scale_factor="100" />
       <Piece id="crpg_highland_spear_3_t3_handle" Type="Handle" scale_factor="110" />
@@ -548,7 +548,7 @@
       <Piece id="crpg_triangluar_spear_t3_handle" Type="Handle" scale_factor="90" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_western_spear_4_t4" name="{=t28VYqjP}Long Fine Steel Spear" crafting_template="crpg_TwoHandedPolearm" culture="Culture.empire" modifier_group="polearm">
+  <CraftedItem id="crpg_western_spear_4_t4" name="{=t28VYqjP}Long Fine Steel Spear" crafting_template="crpg_Pike" culture="Culture.empire" modifier_group="polearm">
     <Pieces>
       <Piece id="crpg_western_spear_4_t4_blade" Type="Blade" scale_factor="100" />
       <Piece id="crpg_western_spear_4_t4_guard" Type="Guard" scale_factor="100" />
@@ -556,7 +556,7 @@
       <Piece id="crpg_western_spear_4_t4_pommel" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_western_spear_5_t4" name="{=jcOJqWGA}Fine Steel Spear" crafting_template="crpg_TwoHandedPolearm" culture="Culture.empire" modifier_group="polearm">
+  <CraftedItem id="crpg_western_spear_5_t4" name="{=jcOJqWGA}Fine Steel Spear" crafting_template="crpg_Pike" culture="Culture.empire" modifier_group="polearm">
     <Pieces>
       <Piece id="crpg_western_spear_5_t4_blade" Type="Blade" scale_factor="100" />
       <Piece id="crpg_western_spear_5_t4_guard" Type="Guard" scale_factor="100" />
@@ -612,14 +612,14 @@
       <Piece id="crpg_imperial_throwing_spear_1_t4_pommel" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_wide_leaf_spear_t4" name="{=hz87PBsa}Wide Leaf Spear" crafting_template="crpg_TwoHandedPolearm" modifier_group="polearm">
+  <CraftedItem id="crpg_wide_leaf_spear_t4" name="{=hz87PBsa}Wide Leaf Spear" crafting_template="crpg_Pike" modifier_group="polearm">
     <Pieces>
       <Piece id="crpg_wide_leaf_spear_t4_blade" Type="Blade" scale_factor="100" />
       <Piece id="crpg_wide_leaf_spear_t4_handle" Type="Handle" scale_factor="100" />
       <Piece id="crpg_wide_leaf_spear_t4_pommel" Type="Pommel" scale_factor="90" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_eastern_spear_5_t5" name="{=mWxNSjSP}Thin Fine Steel Hewing Spear" crafting_template="crpg_TwoHandedPolearm" culture="Culture.khuzait" modifier_group="polearm">
+  <CraftedItem id="crpg_eastern_spear_5_t5" name="{=mWxNSjSP}Thin Fine Steel Hewing Spear" crafting_template="crpg_Pike" culture="Culture.khuzait" modifier_group="polearm">
     <Pieces>
       <Piece id="crpg_eastern_spear_5_t5_blade" Type="Blade" scale_factor="100" />
       <Piece id="crpg_eastern_spear_5_t5_guard" Type="Guard" scale_factor="100" />
@@ -627,7 +627,7 @@
       <Piece id="crpg_eastern_spear_5_t5_pommel" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_northern_spear_4_t5" name="{=N28bDEhh}Fine Steel Hewing Spear" crafting_template="crpg_TwoHandedPolearm" culture="Culture.sturgia" modifier_group="polearm">
+  <CraftedItem id="crpg_northern_spear_4_t5" name="{=N28bDEhh}Fine Steel Hewing Spear" crafting_template="crpg_Pike" culture="Culture.sturgia" modifier_group="polearm">
     <Pieces>
       <Piece id="crpg_northern_spear_4_t5_blade" Type="Blade" scale_factor="90" />
       <Piece id="crpg_northern_spear_4_t5_guard" Type="Guard" scale_factor="100" />
@@ -713,7 +713,7 @@
       <Piece id="crpg_battania_polearm_1_t5_pommel" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_vlandia_polearm_1_t5" name="{=zbsajPMp}Voulge" crafting_template="crpg_TwoHandedPolearm" culture="Culture.vlandia" modifier_group="polearm">
+  <CraftedItem id="crpg_vlandia_polearm_1_t5" name="{=zbsajPMp}Early Halberd" crafting_template="crpg_TwoHandedPolearm" culture="Culture.vlandia" modifier_group="polearm">
     <Pieces>
       <Piece id="crpg_vlandia_polearm_1_t5_blade" Type="Blade" scale_factor="99" />
       <Piece id="crpg_vlandia_polearm_1_t5_guard" Type="Guard" scale_factor="100" />

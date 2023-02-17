@@ -855,7 +855,7 @@
     </Materials>
   </CraftingPiece>
   <CraftingPiece id="crpg_highland_spear_3_t3_handle" name="{=GsBQCQEF}Reinforced Long Pine Shaft" tier="3" piece_type="Handle" mesh="spear_handle_23" length="250" weight="1.6">
-    <BuildData piece_offset="22.9" />
+    <BuildData piece_offset="37.9" />
     <Materials>
       <Material id="Iron3" count="1" />
       <Material id="Wood" count="1" />
@@ -898,7 +898,7 @@
     </Materials>
   </CraftingPiece>
   <CraftingPiece id="crpg_northern_spear_4_t5_handle" name="{=ELpWa0K5}Cured Oaken Pike Shaft" tier="5" piece_type="Handle" mesh="spear_handle_26" length="280" weight="1.3">
-    <BuildData piece_offset="22.9" />
+    <BuildData piece_offset="70.9" />
     <Materials>
       <Material id="Wood" count="3" />
     </Materials>
@@ -963,8 +963,8 @@
       <Material id="Wood" count="1" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_eastern_spear_5_t5_handle" name="{=aQa3tp6Q}Decorated Long Pine Shaft" tier="5" piece_type="Handle" mesh="spear_handle_8" length="230" weight="0.8" CraftingCost="110">
-    <BuildData piece_offset="22.9" />
+  <CraftingPiece id="crpg_eastern_spear_5_t5_handle" name="{=aQa3tp6Q}Decorated Long Pine Shaft" tier="5" piece_type="Handle" mesh="spear_handle_8" length="230" weight="1.8" CraftingCost="110">
+    <BuildData piece_offset="75.9" />
     <Materials>
       <Material id="Wood" count="1" />
     </Materials>
@@ -1006,7 +1006,7 @@
     </Materials>
   </CraftingPiece>
   <CraftingPiece id="crpg_wide_leaf_spear_t4_handle" name="{=tSQbGb4m}Extra Long Mahogany Shaft" tier="4" piece_type="Handle" mesh="spear_handle_27" length="290" weight="1.6" is_default="true">
-    <BuildData piece_offset="22.9" />
+    <BuildData piece_offset="40.9" />
     <Materials>
       <Material id="Wood" count="1" />
     </Materials>
@@ -1018,13 +1018,13 @@
     </Materials>
   </CraftingPiece>
   <CraftingPiece id="crpg_western_spear_5_t4_handle" name="{=tSQbGb4m}Extra Long Mahogany Shaft" tier="4" piece_type="Handle" mesh="spear_handle_27" length="290" weight="1.6" is_default="true">
-    <BuildData piece_offset="22.9" />
+    <BuildData piece_offset="40.9" />
     <Materials>
       <Material id="Wood" count="1" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_western_spear_4_t4_handle" name="{=tSQbGb4m}Extra Long Mahogany Shaft" tier="4" piece_type="Handle" mesh="spear_handle_27" length="290" weight="1.2" is_default="true">
-    <BuildData piece_offset="22.9" />
+  <CraftingPiece id="crpg_western_spear_4_t4_handle" name="{=tSQbGb4m}Extra Long Mahogany Shaft" tier="4" piece_type="Handle" mesh="spear_handle_27" length="290" weight="1.5" is_default="true">
+    <BuildData piece_offset="72.9" />
     <Materials>
       <Material id="Wood" count="1" />
     </Materials>
@@ -1047,7 +1047,7 @@
       <Material id="Wood" count="1" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_military_fork_t2_handle" name="{=RXjhTS9s}Long Wrapped Oak Shaft" tier="2" piece_type="Handle" mesh="spear_handle_6" length="250" weight="2.7" CraftingCost="120">
+  <CraftingPiece id="crpg_military_fork_t2_handle" name="{=RXjhTS9s}Long Wrapped Oak Shaft" tier="2" piece_type="Handle" mesh="spear_handle_6" length="250" weight="2.4" CraftingCost="120">
     <BuildData piece_offset="24.9" />
     <Materials>
       <Material id="Wood" count="1" />
@@ -1276,7 +1276,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_wide_leaf_spear_t4_blade" name="{=8T7gNbfM}Drilled Wide Leaf Shaped Spear Head" tier="4" piece_type="Blade" mesh="spear_blade_39" length="54.2" weight="0.4216" excluded_item_usage_features="swing">
     <BladeData stack_amount="2" physics_material="wood_weapon" body_name="bo_spear_b">
-      <Thrust damage_type="Cut" damage_factor="3.2" />
+      <Thrust damage_type="Pierce" damage_factor="2.3" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="2" />
@@ -1293,7 +1293,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_military_fork_t2_blade" name="{=Y0gbKTgZ}Sturgian Military Fork Head" tier="2" piece_type="Blade" mesh="spear_blade_26" length="29.8" weight="0.4584" excluded_item_usage_features="swing">
     <BladeData stack_amount="2" physics_material="wood_weapon" body_name="bo_spear_b">
-      <Thrust damage_type="Pierce" damage_factor="3.1" />
+      <Thrust damage_type="Pierce" damage_factor="3.2" />
     </BladeData>
     <Flags>
     </Flags>
@@ -1413,7 +1413,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_northern_spear_4_t5_blade" name="{=MpVC0RXl}Northern Triangular Spear" tier="5" piece_type="Blade" mesh="spear_blade_13" length="50.864" weight="0.3592" excluded_item_usage_features="swing">
     <BladeData stack_amount="2" physics_material="wood_weapon" body_name="bo_spear_b">
-      <Thrust damage_type="Pierce" damage_factor="2.5" />
+      <Thrust damage_type="Pierce" damage_factor="2.2" />
     </BladeData>
     <Flags>
       <Flag name="NotStackable" type="ItemFlags" />
@@ -1633,7 +1633,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_eastern_spear_5_t5_blade" name="{=1rGNXUaJ}Thin Fine Steel Hewing Spear Head" tier="5" piece_type="Blade" mesh="spear_blade_27" length="69.5" weight="0.5" excluded_item_usage_features="swing">
     <BladeData stack_amount="3" physics_material="wood_weapon" body_name="bo_spear_b" holster_mesh="throwing_spear_quiver_2" holster_body_name="bo_throwing_spear_quiver_2" holster_mesh_length="94.6">
-      <Thrust damage_type="Pierce" damage_factor="2.3" />
+      <Thrust damage_type="Pierce" damage_factor="2.5" />
     </BladeData>
     <Materials>
       <Material id="Iron5" count="2" />
@@ -1751,7 +1751,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_western_spear_5_t4_blade" name="{=ZcUNAfKT}Extra Long Fine Steel Spear Head" tier="4" piece_type="Blade" mesh="spear_blade_4" length="72.558" weight="0.6168" excluded_item_usage_features="swing">
     <BladeData stack_amount="2" physics_material="wood_weapon" body_name="bo_spear_b">
-      <Thrust damage_type="Pierce" damage_factor="2.6" />
+      <Thrust damage_type="Pierce" damage_factor="2.7" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="2" />
@@ -1767,7 +1767,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_highland_spear_3_t3_blade" name="{=CdBAvJdP}Kontos Head" tier="3" piece_type="Blade" mesh="spear_blade_8" length="60.153" weight="0.7" excluded_item_usage_features="swing">
     <BladeData stack_amount="2" physics_material="wood_weapon" body_name="bo_spear_b">
-      <Thrust damage_type="Pierce" damage_factor="2.5" />
+      <Thrust damage_type="Pierce" damage_factor="2.7" />
     </BladeData>
     <Materials>
       <Material id="Iron3" count="2" />
@@ -6113,13 +6113,13 @@
 </CraftingPiece>
 <CraftingPiece id="crpg_awlpike_blade" name="{=}Awlpike Blade" tier="4" piece_type="Blade" mesh="awlpike_blade" length="85.8" weight="0.45" excluded_item_usage_features="swing">
 <BladeData stack_amount="3" physics_material="wood_weapon" body_name="bo_spear_b">
-<Thrust damage_type="Pierce" damage_factor="2.5"/>
+<Thrust damage_type="Pierce" damage_factor="2.9"/>
 </BladeData>
 <Materials>
 <Material id="Iron4" count="2"/>
 </Materials>
 </CraftingPiece>
-<CraftingPiece id="crpg_awlpike_handle" name="{=}Awlpike Handle" tier="4" piece_type="Handle" mesh="awlpike_handle" length="160" weight="1.6" is_default="true">
+<CraftingPiece id="crpg_awlpike_handle" name="{=}Awlpike Handle" tier="4" piece_type="Handle" mesh="awlpike_handle" length="160" weight="1.9" is_default="true">
 <BuildData piece_offset="10.0" next_piece_offset="7.0" previous_piece_offset="0"/>
 <Materials>
 <Material id="Wood" count="1"/>
@@ -6183,7 +6183,7 @@
   </CraftingPiece>
 <CraftingPiece id="crpg_hoplite_blade_1" name="{=}Hoplite Leaf Spear Head" tier="4" piece_type="Blade" mesh="spear_blade_42" length="42" weight="0.1" excluded_item_usage_features="swing">
   <BladeData stack_amount="3" physics_material="wood_weapon" body_name="bo_spear_b" holster_mesh="throwing_spear_quiver_4_1" holster_body_name="bo_throwing_spear_quiver_4_1" holster_mesh_length="96.2">
-     <Thrust damage_type="Pierce" damage_factor="2.3" />
+     <Thrust damage_type="Pierce" damage_factor="2.7" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="2" />

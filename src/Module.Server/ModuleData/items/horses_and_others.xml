@@ -223,7 +223,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_2" name="Sumpter Horse" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="60" speed="34" charge_damage="1" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-6" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="60" speed="34" charge_damage="1" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-5" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -312,7 +312,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_11" name="Brabant Great Horse" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="82" speed="38" charge_damage="8" body_length="105" is_mountable="true" extra_health="35" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="82" speed="38" charge_damage="8" body_length="105" is_mountable="true" extra_health="25" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>

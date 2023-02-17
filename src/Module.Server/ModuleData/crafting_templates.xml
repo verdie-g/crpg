@@ -1590,10 +1590,6 @@
       <UsablePiece piece_id="crpg_eastern_spear_4_t4_guard" />
       <UsablePiece piece_id="crpg_eastern_spear_4_t4_handle" />
       <UsablePiece piece_id="crpg_eastern_spear_4_t4_pommel" />
-      <UsablePiece piece_id="crpg_eastern_spear_5_t5_blade" />
-      <UsablePiece piece_id="crpg_eastern_spear_5_t5_guard" />
-      <UsablePiece piece_id="crpg_eastern_spear_5_t5_handle" />
-      <UsablePiece piece_id="crpg_eastern_spear_5_t5_pommel" />
       <UsablePiece piece_id="crpg_eastern_throwing_spear_1_t3_blade" />
       <UsablePiece piece_id="crpg_eastern_throwing_spear_1_t3_guard" />
       <UsablePiece piece_id="crpg_eastern_throwing_spear_2_t4_blade" />
@@ -1618,8 +1614,6 @@
       <UsablePiece piece_id="crpg_generic_javelin_1_t3_blade" />
       <UsablePiece piece_id="crpg_generic_javelin_1_t3_guard" />
       <UsablePiece piece_id="crpg_generic_javelin_1_t3_pommel" />
-      <UsablePiece piece_id="crpg_highland_spear_3_t3_blade" />
-      <UsablePiece piece_id="crpg_highland_spear_3_t3_handle" />
       <UsablePiece piece_id="crpg_highland_spear_4_t4_blade" />
       <UsablePiece piece_id="crpg_highland_spear_4_t4_guard" />
       <UsablePiece piece_id="crpg_highland_spear_4_t4_handle" />
@@ -1672,10 +1666,6 @@
       <UsablePiece piece_id="crpg_northern_spear_3_t4_guard" />
       <UsablePiece piece_id="crpg_northern_spear_3_t4_handle" />
       <UsablePiece piece_id="crpg_northern_spear_3_t4_pommel" />
-      <UsablePiece piece_id="crpg_northern_spear_4_t5_blade" />
-      <UsablePiece piece_id="crpg_northern_spear_4_t5_guard" />
-      <UsablePiece piece_id="crpg_northern_spear_4_t5_handle" />
-      <UsablePiece piece_id="crpg_northern_spear_4_t5_pommel" />
       <UsablePiece piece_id="crpg_peasant_maul_t1_2_handle" />
       <UsablePiece piece_id="crpg_peasant_maul_t1_handle" />
       <UsablePiece piece_id="crpg_peasant_pitchfork_1_t1_blade" />
@@ -1748,17 +1738,7 @@
       <UsablePiece piece_id="crpg_western_spear_3_t3_handle" />
       <UsablePiece piece_id="crpg_western_spear_4_t3_blade" />
       <UsablePiece piece_id="crpg_western_spear_4_t3_handle" />
-      <UsablePiece piece_id="crpg_western_spear_4_t4_blade" />
-      <UsablePiece piece_id="crpg_western_spear_4_t4_guard" />
-      <UsablePiece piece_id="crpg_western_spear_4_t4_handle" />
       <UsablePiece piece_id="crpg_western_spear_4_t4_pommel" />
-      <UsablePiece piece_id="crpg_western_spear_5_t4_blade" />
-      <UsablePiece piece_id="crpg_western_spear_5_t4_guard" />
-      <UsablePiece piece_id="crpg_western_spear_5_t4_handle" />
-      <UsablePiece piece_id="crpg_western_spear_5_t4_pommel" />
-      <UsablePiece piece_id="crpg_wide_leaf_spear_t4_blade" />
-      <UsablePiece piece_id="crpg_wide_leaf_spear_t4_handle" />
-      <UsablePiece piece_id="crpg_wide_leaf_spear_t4_pommel" />
       <UsablePiece piece_id="crpg_long_bardiche_head" />
       <UsablePiece piece_id="crpg_long_bardiche_handle" />
       <UsablePiece piece_id="crpg_long_hafted_spiked_mace_head" />
@@ -1892,7 +1872,6 @@
       <UsablePiece piece_id="crpg_eastern_spear_3_t3_guard" />
       <UsablePiece piece_id="crpg_eastern_spear_3_t3_pommel" />
       <UsablePiece piece_id="crpg_eastern_spear_4_t4_blade" />
-      <UsablePiece piece_id="crpg_eastern_spear_5_t5_blade" />
       <UsablePiece piece_id="crpg_eastern_throwing_spear_1_t3_blade" />
       <UsablePiece piece_id="crpg_eastern_throwing_spear_1_t3_guard" />
       <UsablePiece piece_id="crpg_eastern_throwing_spear_2_t4_blade" />
@@ -1936,7 +1915,6 @@
       <UsablePiece piece_id="crpg_northern_spear_1_t2_blade" />
       <UsablePiece piece_id="crpg_northern_spear_2_t3_blade" />
       <UsablePiece piece_id="crpg_northern_spear_3_t4_blade" />
-      <UsablePiece piece_id="crpg_northern_spear_4_t5_blade" />
       <UsablePiece piece_id="crpg_peasant_pitchfork_1_t1_blade" />
       <UsablePiece piece_id="crpg_peasant_pitchfork_2_t1_blade" />
       <UsablePiece piece_id="crpg_practice_spear_t1_guard" />
@@ -1973,12 +1951,27 @@
       <UsablePiece piece_id="crpg_western_spear_2_t2_blade" />
       <UsablePiece piece_id="crpg_western_spear_3_t3_blade" />
       <UsablePiece piece_id="crpg_western_spear_4_t3_blade" />
+      <UsablePiece piece_id="crpg_northern_spear_4_t5_blade" />
+      <UsablePiece piece_id="crpg_northern_spear_4_t5_guard" />
+      <UsablePiece piece_id="crpg_northern_spear_4_t5_handle" />
+      <UsablePiece piece_id="crpg_northern_spear_4_t5_pommel" />
       <UsablePiece piece_id="crpg_western_spear_4_t4_blade" />
+      <UsablePiece piece_id="crpg_western_spear_4_t4_guard" />
       <UsablePiece piece_id="crpg_western_spear_4_t4_handle" />
+      <UsablePiece piece_id="crpg_western_spear_4_t4_pommel" />
       <UsablePiece piece_id="crpg_western_spear_5_t4_blade" />
+      <UsablePiece piece_id="crpg_western_spear_5_t4_guard" />
       <UsablePiece piece_id="crpg_western_spear_5_t4_handle" />
+      <UsablePiece piece_id="crpg_western_spear_5_t4_pommel" />
       <UsablePiece piece_id="crpg_wide_leaf_spear_t4_blade" />
       <UsablePiece piece_id="crpg_wide_leaf_spear_t4_handle" />
+      <UsablePiece piece_id="crpg_wide_leaf_spear_t4_pommel" />
+      <UsablePiece piece_id="crpg_eastern_spear_5_t5_blade" />
+      <UsablePiece piece_id="crpg_eastern_spear_5_t5_guard" />
+      <UsablePiece piece_id="crpg_eastern_spear_5_t5_handle" />
+      <UsablePiece piece_id="crpg_eastern_spear_5_t5_pommel" />
+      <UsablePiece piece_id="crpg_highland_spear_3_t3_blade" />
+      <UsablePiece piece_id="crpg_highland_spear_3_t3_handle" />
     </UsablePieces>
   </CraftingTemplate>
   <CraftingTemplate id="crpg_Javelin" item_type="Thrown" modifier_group="spear_dart_throwing" item_holsters="javelins:javelins_2:bow_hip:bow_hip_2" default_item_holster_position_offset="0,0,-0.10" piece_type_to_scale_holster_with="Handle" hidden_piece_types_on_holster="Guard:Handle:Pommel" rotate_weapon_in_holster="true" always_show_holster_with_weapon="true">
