@@ -616,9 +616,9 @@
     "name": "Short Handled Bardiche",
     "culture": "Aserai",
     "type": "TwoHandedWeapon",
-    "price": 9309,
+    "price": 13942,
     "weight": 1.45,
-    "tier": 7.95601034,
+    "tier": 9.977131,
     "requirement": 0,
     "flags": [
       "CanBePickedUpFromCorpse"
@@ -643,7 +643,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 97,
-        "swingDamage": 37,
+        "swingDamage": 39,
         "swingDamageType": "Cut",
         "swingSpeed": 90
       }
@@ -692,9 +692,9 @@
     "name": "Chainbreaker",
     "culture": "Aserai",
     "type": "TwoHandedWeapon",
-    "price": 11583,
+    "price": 13776,
     "weight": 1.44,
-    "tier": 8.998354,
+    "tier": 9.911296,
     "requirement": 0,
     "flags": [
       "CanBePickedUpFromCorpse"
@@ -719,7 +719,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 96,
-        "swingDamage": 44,
+        "swingDamage": 45,
         "swingDamageType": "Cut",
         "swingSpeed": 82
       }
@@ -3205,9 +3205,9 @@
     "name": "Square Bit Two Handed Axe",
     "culture": "Battania",
     "type": "TwoHandedWeapon",
-    "price": 2339,
+    "price": 6541,
     "weight": 1.34,
-    "tier": 3.48086619,
+    "tier": 6.498451,
     "requirement": 0,
     "flags": [
       "CanBePickedUpFromCorpse"
@@ -3232,7 +3232,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 98,
-        "swingDamage": 32,
+        "swingDamage": 37,
         "swingDamageType": "Cut",
         "swingSpeed": 92
       }
@@ -5677,9 +5677,9 @@
     "name": "Bearded Axe",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
-    "price": 6425,
+    "price": 9868,
     "weight": 1.39,
-    "tier": 6.431207,
+    "tier": 8.22307,
     "requirement": 0,
     "flags": [
       "CanBePickedUpFromCorpse"
@@ -5702,7 +5702,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 90,
-        "swingDamage": 34,
+        "swingDamage": 36,
         "swingDamageType": "Cut",
         "swingSpeed": 74
       },
@@ -5725,7 +5725,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 98,
-        "swingDamage": 34,
+        "swingDamage": 36,
         "swingDamageType": "Cut",
         "swingSpeed": 92
       },
@@ -5746,7 +5746,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 90,
-        "swingDamage": 34,
+        "swingDamage": 36,
         "swingDamageType": "Cut",
         "swingSpeed": 74
       }
@@ -12969,9 +12969,9 @@
     "name": "Greataxe",
     "culture": "Battania",
     "type": "TwoHandedWeapon",
-    "price": 7856,
+    "price": 13640,
     "weight": 1.41,
-    "tier": 7.22239447,
+    "tier": 9.856837,
     "requirement": 0,
     "flags": [
       "CanBePickedUpFromCorpse"
@@ -12996,7 +12996,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 97,
-        "swingDamage": 40,
+        "swingDamage": 43,
         "swingDamageType": "Cut",
         "swingSpeed": 90
       }
@@ -22666,9 +22666,9 @@
     "name": "Northlander Broad Axe",
     "culture": "Sturgia",
     "type": "TwoHandedWeapon",
-    "price": 8765,
+    "price": 13409,
     "weight": 1.26,
-    "tier": 7.688643,
+    "tier": 9.763928,
     "requirement": 0,
     "flags": [
       "CanBePickedUpFromCorpse"
@@ -22693,7 +22693,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 99,
-        "swingDamage": 35,
+        "swingDamage": 37,
         "swingDamageType": "Cut",
         "swingSpeed": 92
       }
