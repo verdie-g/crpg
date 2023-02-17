@@ -26,6 +26,7 @@
     <managed_core_parameter id="BipedalCombatSpeedMaxMultiplier" value="0.88"/>
     <managed_core_parameter id="BipedalRangedReadySpeedMultiplier" value="0.5"/>
     <managed_core_parameter id="BipedalRangedReloadSpeedMultiplier" value="0.25"/>
+
     <!-- damage related -->
     <managed_core_parameter id="DamageInterruptAttackthresholdPierce" value="5.0"/>
     <managed_core_parameter id="DamageInterruptAttackthresholdCut" value="7.5"/>
@@ -38,9 +39,11 @@
     <managed_core_parameter id="FallSpeedReductionMultiplierForRiderDamage" value="0.77"/>
     <!--While mounted fall speed will be multiplied with this value for rider's damage calculation. Mount's speed will not be effected.-->
     <managed_core_parameter id="FistFightDamageMultiplier" value="4.0" />
+
     <managed_core_parameter id="SwingHitWithArmDamageMultiplier" value="0.15" />
     <managed_core_parameter id="ThrustHitWithArmDamageMultiplier" value="0.15" />
     <managed_core_parameter id="NonTipThrustHitDamageMultiplier" value="0.15" />
+
     <!-- damage graph related -->
     <!-- link for the function -->
     <!-- https://www.desmos.com/calculator/dnhpcqilvg -->
@@ -66,13 +69,17 @@
     <managed_core_parameter id="StunDefendWeaponWeightMultiplierWeaponWeight" value="0.25"/>
     <managed_core_parameter id="StunDefendWeaponWeightBonusTwoHanded" value="0.25"/>
     <managed_core_parameter id="StunDefendWeaponWeightBonusPolearm" value="0.35"/>
+
     <managed_core_parameter id="StunMomentumTransferFactor" value="0.0055"/>
+
     <managed_core_parameter id="StunDefendWeaponWeightParryMultiplier" value="0.2"/>
     <managed_core_parameter id="StunDefendWeaponWeightBonusRightStance" value="0.0"/>
+
     <managed_core_parameter id="StunDefendWeaponWeightBonusActiveBlocked" value="0.1"/>
     <managed_core_parameter id="StunDefendWeaponWeightBonusChamberBlocked" value="0.4"/>
     <managed_core_parameter id="StunPeriodAttackerFriendlyFire" value="0.4"/>
     <managed_core_parameter id="StunPeriodMax" value="0.8"/>
+
     <!-- penetration limits -->
     <managed_core_parameter id="ProjectileMaxPenetrationSpeed" value="120.0" />
     <managed_core_parameter id="ObjectMinPenetration" value="0.03" />
@@ -81,15 +88,20 @@
     <managed_core_parameter id="ProjectileMaxPenetration" value="0.4" />
     <managed_core_parameter id="RotatingProjectileMinPenetration" value="0.04" />
     <managed_core_parameter id="RotatingProjectileMaxPenetration" value="0.08" />
+
     <!-- hit point normal weights for rotating projectiles, 1 = equal to hit direction -->
     <managed_core_parameter id="ProjectileNormalWeight" value="0.9" />
     <managed_core_parameter id="AgentProjectilenormalWeight" value="0.4" />
+
     <!-- shield damage multipliers -->
     <managed_core_parameter id="ShieldRightStanceBlockDamageMultiplier" value="1.00" />
     <managed_core_parameter id="ShieldCorrectSideBlockDamageMultiplier" value="0.70" />
+
     <!-- shield penetration -->
     <managed_core_parameter id="ShieldPenetrationOffset" value="30.0" />
     <managed_core_parameter id="ShieldPenetrationFactor" value="3.0" />
+
     <managed_core_parameter id="ActivateHeroTest" value="0" />
+
   </managed_core_parameters>
 </base>
