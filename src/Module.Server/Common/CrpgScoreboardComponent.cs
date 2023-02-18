@@ -61,7 +61,7 @@ internal class CrpgScoreboardComponent : MissionScoreboardComponent
                 return;
             }
 
-            score = collisionData.InflictedDamage * 0.2f;
+            score = collisionData.InflictedDamage * 0.3f;
         }
         else if (affectedAgent.IsMount)
         {
