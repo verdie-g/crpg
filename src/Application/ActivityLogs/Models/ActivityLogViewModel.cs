@@ -16,6 +16,6 @@ public record ActivityLogViewModel : IMapFrom<ActivityLog>
     {
         profile.CreateMap<ActivityLog, ActivityLogViewModel>()
             .ForMember(l => l.Metadata, opt => opt.MapFrom(l =>
-                l.Metadata.ToDictionary(m => new ActivityLogMetadata(m.Key, m.Value))));
+                l.Metadata.ToDictionary(m => m.Key, m => m.Value)));
     }
 }
