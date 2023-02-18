@@ -30,6 +30,11 @@ internal class CrpgScoreboardComponent : MissionScoreboardComponent
             return;
         }
 
+        if (damagedHp < 0 || collisionData.InflictedDamage < 0) // Happens when the damage is disabled on round end.
+        {
+            return;
+        }
+
         if (affectorAgent.IsMount)
         {
             affectorAgent = affectorAgent.RiderAgent;
@@ -49,7 +54,7 @@ internal class CrpgScoreboardComponent : MissionScoreboardComponent
         }
 
         float score = damagedHp;
-        if (isBlocked || damagedHp <= 0.0)
+        if (isBlocked)
         {
             if (!collisionData.AttackBlockedWithShield)
             {
