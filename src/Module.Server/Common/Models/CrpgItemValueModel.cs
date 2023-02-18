@@ -325,7 +325,7 @@ internal class CrpgItemValueModel : ItemValueModel
             * weapon.MissileSpeed
             * weapon.Accuracy
             * weapon.MaxDataValue
-            * CalculateDamageTypeFactorForThrown(weapon.ThrustDamageType)
+            * CalculateDamageTypeFactorForThrown(weapon.ThrustDamageType == DamageTypes.Invalid ? weapon.SwingDamageType : weapon.ThrustDamageType)
             * bonusVsShield
             / scaler;
         return tier * tier / 10f;

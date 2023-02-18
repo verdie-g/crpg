@@ -2075,6 +2075,12 @@
       <Piece id="crpg_highland_throwing_axe_1_t2_handle" Type="Handle" scale_factor="100" />
     </Pieces>
   </CraftedItem>
+  <CraftedItem id="crpg_throwing_maul" name="{=GrfnpDxu}Throwing Hammers" crafting_template="crpg_ThrowingAxe" culture="Culture.battania">
+    <Pieces>
+      <Piece id="crpg_throwing_maul_blade" Type="Blade" scale_factor="75" />
+      <Piece id="crpg_throwing_maul_handle" Type="Handle" scale_factor="50" />
+    </Pieces>
+  </CraftedItem>
   <CraftedItem id="crpg_southern_throwing_axe_1_t4" name="{=X31qND4N}Tribesman Throwing Axe" crafting_template="crpg_ThrowingAxe" culture="Culture.aserai" modifier_group="axe_throwing">
     <Pieces>
       <Piece id="crpg_southern_throwing_axe_1_t4_blade" Type="Blade" scale_factor="100" />
