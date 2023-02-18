@@ -762,13 +762,13 @@
     </ItemComponent>
     <Flags UseTeamColor="true" Civilian="true" />
   </Item>
-  <Item id="crpg_khuzait_fortified_armor" name="{=KVG0Tzaa}Reinforced Mirror Armor" mesh="khuzait_fortified_armor" culture="Culture.khuzait" weight="8.549518" appearance="1" Type="BodyArmor">
+  <Item id="crpg_khuzait_fortified_armor" name="{=KVG0Tzaa}Steppe Reinforced Mirror Armor" mesh="khuzait_fortified_armor" culture="Culture.khuzait" weight="8.549518" appearance="1" Type="BodyArmor">
     <ItemComponent>
       <Armor body_armor="33" leg_armor="8" arm_armor="8" has_gender_variations="true" covers_body="true" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags UseTeamColor="true" Civilian="true" />
   </Item>
-  <Item id="crpg_khuzait_lamellar_strapped" name="{=}Reinforced Leather Armor" mesh="khuzait_lamellar_strap" culture="Culture.khuzait" weight="14.33895" appearance="1.4" Type="BodyArmor">
+  <Item id="crpg_khuzait_lamellar_strapped" name="{=}Steppe Reinforced Leather Armor" mesh="khuzait_lamellar_strap" culture="Culture.khuzait" weight="14.33895" appearance="1.4" Type="BodyArmor">
     <ItemComponent>
       <Armor body_armor="40" leg_armor="13" arm_armor="18" covers_body="true" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
@@ -1164,7 +1164,7 @@
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_rus_armour1" name="Vaegir Coat of Plates" mesh="Rus_armour1" culture="Culture.sturgia" weight="20.34638" appearance="1" Type="BodyArmor" subtype="body_armor" difficulty="0" is_merchandise="true">
+  <Item id="crpg_rus_armour1" name="Shiny Vaegir Coat of Plates" mesh="Rus_armour1" culture="Culture.sturgia" weight="20.34638" appearance="1" Type="BodyArmor" subtype="body_armor" difficulty="0" is_merchandise="true">
     <ItemComponent>
       <Armor body_armor="52" leg_armor="18" arm_armor="23" covers_body="true" modifier_group="Plate" material_type="Plate" />
     </ItemComponent>
