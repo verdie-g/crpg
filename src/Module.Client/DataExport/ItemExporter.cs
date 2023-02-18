@@ -203,7 +203,7 @@ internal class ItemExporter : IDataExporter
             ItemObject.ItemTypeEnum.HorseHarness => 100f,
             _ => throw new ArgumentOutOfRangeException(),
         };
-        return 1.895f * (float)Math.Pow(armorPower, 1.5f) / bestArmorPower;
+        return 1.87f * (float)Math.Pow(armorPower, 1.8f) / bestArmorPower;
     }
 
     private static void ModifyNodeAttribute(
