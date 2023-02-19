@@ -1504,6 +1504,8 @@
       <StatData stat_type="Handling" max_value="200" />
     </StatsData>
     <UsablePieces>
+      <UsablePiece piece_id="crpg_throwing_maul_blade" />
+      <UsablePiece piece_id="crpg_throwing_maul_handle" />
       <UsablePiece piece_id="crpg_highland_throwing_axe_1_t2_blade" />
       <UsablePiece piece_id="crpg_highland_throwing_axe_1_t2_handle" />
       <UsablePiece piece_id="crpg_northern_throwing_axe_1_t1_blade" />

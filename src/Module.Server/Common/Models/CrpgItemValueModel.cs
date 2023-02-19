@@ -75,11 +75,11 @@ internal class CrpgItemValueModel : ItemValueModel
             + 0.75f * armorComponent.LegArmor;
         float bestArmorPower = armorComponent.Item.ItemType switch
         {
-            ItemObject.ItemTypeEnum.HeadArmor => 27.2f,
-            ItemObject.ItemTypeEnum.Cape => 10.3f,
+            ItemObject.ItemTypeEnum.HeadArmor => 21.25f,
+            ItemObject.ItemTypeEnum.Cape => 11.36f,
             ItemObject.ItemTypeEnum.BodyArmor => 19.492481f,
-            ItemObject.ItemTypeEnum.HandArmor => 12.2f,
-            ItemObject.ItemTypeEnum.LegArmor => 7.95f,
+            ItemObject.ItemTypeEnum.HandArmor => 10.1992f,
+            ItemObject.ItemTypeEnum.LegArmor => 6.94f,
             ItemObject.ItemTypeEnum.HorseHarness => 45f,
             _ => throw new ArgumentOutOfRangeException(),
         };
@@ -99,7 +99,8 @@ internal class CrpgItemValueModel : ItemValueModel
         * (float)Math.Pow(horseComponent.HitPoints + horseComponent.HitPointBonus, 1.26f)
         + 300f * (float)Math.Pow(horseComponent.ChargeDamage, 5f) + 2500000f * horseComponent.ChargeDamage;
         float bestHorsePower = 487438929.1f;
-        return 10f * horsePower / bestHorsePower;
+        float horseTier = 10f * horsePower / bestHorsePower;
+        return horseTier * horseTier / 12.2f;
     }
 
     private float CalculateBannerTier(BannerComponent bannerComponent)
@@ -325,7 +326,7 @@ internal class CrpgItemValueModel : ItemValueModel
             * weapon.MissileSpeed
             * weapon.Accuracy
             * weapon.MaxDataValue
-            * CalculateDamageTypeFactorForThrown(weapon.ThrustDamageType)
+            * CalculateDamageTypeFactorForThrown(weapon.ThrustDamageType == DamageTypes.Invalid ? weapon.SwingDamageType : weapon.ThrustDamageType)
             * bonusVsShield
             / scaler;
         return tier * tier / 10f;
