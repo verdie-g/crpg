@@ -1,5 +1,4 @@
-﻿using Crpg.Module.Common;
-using NetworkMessages.FromServer;
+﻿using NetworkMessages.FromServer;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -359,9 +358,10 @@ internal class CrpgSiegeServer : MissionMultiplayerGameModeBase, IAnalyticsFlagI
     private void ResetFlags()
     {
         AllCapturePoints = new MBReadOnlyList<FlagCapturePoint>(Mission.MissionObjects.FindAllWithType<FlagCapturePoint>().ToList());
-        SceneChecks.ThrowOnBadFlagIndexes(AllCapturePoints);
-        _flagOwners = new Team[AllCapturePoints.Count];
-        _flagRemainingMoraleGains = new int[AllCapturePoints.Count];
+        int maxNumberOfFlags = AllCapturePoints.Select(f => f.FlagIndex).Max() + 1;
+
+        _flagOwners = new Team[maxNumberOfFlags];
+        _flagRemainingMoraleGains = new int[maxNumberOfFlags];
 
         foreach (FlagCapturePoint flag in AllCapturePoints)
         {

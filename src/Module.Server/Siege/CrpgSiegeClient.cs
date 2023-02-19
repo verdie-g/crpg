@@ -53,7 +53,8 @@ internal class CrpgSiegeClient : MissionMultiplayerGameModeBaseClient, ICommande
         base.OnBehaviorInitialize();
         MissionNetworkComponent.OnMyClientSynchronized += OnMyClientSynchronized;
         _flags = Mission.MissionObjects.FindAllWithType<FlagCapturePoint>().ToArray();
-        _flagOwners = new Team[_flags.Length];
+        int maxNumberOfFlags = AllCapturePoints.Select(f => f.FlagIndex).Max() + 1;
+        _flagOwners = new Team[maxNumberOfFlags];
     }
 
     public override void OnRemoveBehavior()
