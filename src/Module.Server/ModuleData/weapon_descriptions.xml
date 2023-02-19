@@ -1841,6 +1841,8 @@
       <WeaponFlag value="UnloadWhenSheathed" />
     </WeaponFlags>
     <AvailablePieces>
+      <AvailablePiece id="crpg_throwing_maul_handle" />
+      <AvailablePiece id="crpg_throwing_maul_blade" />
       <AvailablePiece id="crpg_southern_throwing_axe_1_t4_handle" />
       <AvailablePiece id="crpg_highland_throwing_axe_1_t2_handle" />
       <AvailablePiece id="crpg_western_throwing_axe_1_t1_handle" />

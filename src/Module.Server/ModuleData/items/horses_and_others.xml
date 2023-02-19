@@ -2,7 +2,7 @@
 <Items>
   <Item id="crpg_mount_rouncey_15" name="Kehilan al-Khamsa" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="78" speed="49" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="9" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="78" speed="49" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="7" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
