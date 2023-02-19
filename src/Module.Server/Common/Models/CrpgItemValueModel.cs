@@ -99,7 +99,8 @@ internal class CrpgItemValueModel : ItemValueModel
         * (float)Math.Pow(horseComponent.HitPoints + horseComponent.HitPointBonus, 1.26f)
         + 300f * (float)Math.Pow(horseComponent.ChargeDamage, 5f) + 2500000f * horseComponent.ChargeDamage;
         float bestHorsePower = 487438929.1f;
-        return 10f * horsePower / bestHorsePower;
+        float horseTier = 10f * horsePower / bestHorsePower;
+        return horseTier * horseTier / 12.2f;
     }
 
     private float CalculateBannerTier(BannerComponent bannerComponent)
