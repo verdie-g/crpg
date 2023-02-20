@@ -31,7 +31,7 @@ internal class HttpCrpgClient : ICrpgClient
         _httpClient = new HttpClient(httpClientHandler)
         {
             BaseAddress = new Uri(apiUrl),
-            Timeout = TimeSpan.FromSeconds(5),
+            Timeout = TimeSpan.FromSeconds(10),
         };
         _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
         string version = typeof(HttpCrpgClient).Assembly.GetName().Version!.ToString();
