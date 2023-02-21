@@ -29,7 +29,31 @@
       <XmlName id="CraftingTemplates" path="crafting_templates"/>
     </XmlNode>
     <XmlNode>
-      <XmlName id="Items" path="items"/>
+      <XmlName id="Items" path="items/arm_armors"/>
+    </XmlNode>
+    <XmlNode>
+      <XmlName id="Items" path="items/banners"/>
+    </XmlNode>
+    <XmlNode>
+      <XmlName id="Items" path="items/body_armors"/>
+    </XmlNode>
+    <XmlNode>
+      <XmlName id="Items" path="items/head_armors"/>
+    </XmlNode>
+    <XmlNode>
+      <XmlName id="Items" path="items/horses_and_others"/>
+    </XmlNode>
+    <XmlNode>
+      <XmlName id="Items" path="items/leg_armors"/>
+    </XmlNode>
+    <XmlNode>
+      <XmlName id="Items" path="items/shields"/>
+    </XmlNode>
+    <XmlNode>
+      <XmlName id="Items" path="items/shoulder_armors"/>
+    </XmlNode>
+    <XmlNode>
+      <XmlName id="Items" path="items/weapons"/>
     </XmlNode>
     <XmlNode>
       <XmlName id="MPCharacters" path="characters"/>
