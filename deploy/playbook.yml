@@ -4,6 +4,7 @@
     - nginx
     - postgresql
     - datadog
+    - geoip
     - dotnet
     - crpg-web-api
     - crpg-web-ui

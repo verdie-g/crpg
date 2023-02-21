@@ -3,15 +3,16 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using AspNet.Security.OpenId;
 using AspNet.Security.OpenId.Steam;
-using AutoMapper;
 using Crpg.Application;
 using Crpg.Application.Common.Interfaces;
+using Crpg.Application.Common.Services;
 using Crpg.Application.Steam;
 using Crpg.Application.System.Commands;
 using Crpg.Application.Users.Commands;
 using Crpg.Application.Users.Models;
 using Crpg.Common.Helpers;
 using Crpg.Common.Json;
+using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Users;
 using Crpg.Persistence;
 using Crpg.Sdk;
@@ -43,7 +44,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .AddSdk(builder.Configuration, appEnv)
     .AddPersistence(builder.Configuration, appEnv)
-    .AddApplication()
+    .AddApplication(builder.Configuration, appEnv)
     // .AddHostedService<StrategusWorker>() Disable strategus for now.
     .AddHostedService<DonorSynchronizerWorker>()
     .AddHostedService<ActivityLogsCleanerWorker>()
@@ -244,7 +245,7 @@ static void ConfigureSteamAuthentication(SteamAuthenticationOptions options, ICo
 static async Task OnSteamUserAuthenticated(OpenIdAuthenticatedContext ctx)
 {
     var mediator = ctx.HttpContext.RequestServices.GetRequiredService<IMediator>();
-    var mapper = ctx.HttpContext.RequestServices.GetRequiredService<IMapper>();
+    var geoIpService = ctx.HttpContext.RequestServices.GetRequiredService<IGeoIpService>();
     var logger = ctx.HttpContext.RequestServices.GetRequiredService<ILogger<Program>>();
 
     var player = ctx.UserPayload!.RootElement
@@ -252,7 +253,19 @@ static async Task OnSteamUserAuthenticated(OpenIdAuthenticatedContext ctx)
         .GetProperty(SteamAuthenticationConstants.Parameters.Players)[0]
         .ToObject<SteamPlayer>(new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
-    var result = await mediator.Send(mapper.Map<UpsertUserCommand>(player));
+    var ipAddress = ctx.HttpContext.Connection.RemoteIpAddress;
+    Region? region = ipAddress == null ? null : geoIpService.ResolveRegionFromIp(ipAddress);
+
+    var result = await mediator.Send(new UpsertUserCommand
+    {
+        PlatformUserId = player.SteamId,
+        Name = player.PersonaName,
+        Region = region,
+        Avatar = player.Avatar,
+        AvatarMedium = player.AvatarMedium,
+        AvatarFull = player.AvatarFull,
+    });
+
     await ctx.HttpContext.SignInAsync(new IdentityServerUser(result.Data!.Id.ToString()));
 
     // Delete temporary cookie used during external authentication

@@ -1,0 +1,20 @@
+﻿---
+- name: download MaxMind GeoIP database
+  unarchive:
+    src: "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country&license_key={{ maxmind_license_key }}&suffix=tar.gz"
+    dest: /tmp
+    remote_src: yes
+    list_files: true
+  register: unarchive_result
+
+- name: resolve database folder name
+  set_fact:
+    geoip_folder_name: "{{ unarchive_result.files[0].split('/')[0] }}"
+
+- name: remove old database
+  file:
+    path: "{{ geoip_path }}"
+    state: absent
+
+- name: replace database
+  command: "mv /tmp/{{ geoip_folder_name }} {{ geoip_path }}"

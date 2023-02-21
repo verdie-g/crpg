@@ -1,11 +1,10 @@
 using AutoMapper;
 using Crpg.Application.Common.Interfaces;
-using Crpg.Application.Common.Mappings;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
-using Crpg.Application.Steam;
 using Crpg.Application.Users.Models;
+using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Users;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
@@ -14,20 +13,14 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Users.Commands;
 
-public record UpsertUserCommand : IMediatorRequest<UserViewModel>, IMapFrom<SteamPlayer>
+public record UpsertUserCommand : IMediatorRequest<UserViewModel>
 {
     public string PlatformUserId { get; set; } = string.Empty;
     public string Name { get; set; } = string.Empty;
+    public Region? Region { get; set; }
     public Uri Avatar { get; set; } = default!;
     public Uri AvatarMedium { get; set; } = default!;
     public Uri AvatarFull { get; set; } = default!;
-
-    public void Mapping(Profile profile)
-    {
-        profile.CreateMap<SteamPlayer, UpsertUserCommand>()
-            .ForMember(u => u.PlatformUserId, opt => opt.MapFrom(p => p.SteamId))
-            .ForMember(u => u.Name, opt => opt.MapFrom(p => p.PersonaName));
-    }
 
     public class Validator : AbstractValidator<UpsertUserCommand>
     {
@@ -66,7 +59,12 @@ public record UpsertUserCommand : IMediatorRequest<UserViewModel>, IMapFrom<Stea
 
             if (user == null)
             {
-                user = new User { Platform = Platform.Steam, PlatformUserId = request.PlatformUserId };
+                user = new User
+                {
+                    Platform = Platform.Steam,
+                    PlatformUserId = request.PlatformUserId,
+                    Region = request.Region,
+                };
                 _userService.SetDefaultValuesForUser(user);
                 _db.Users.Add(user);
                 newUser = true;
@@ -75,6 +73,7 @@ public record UpsertUserCommand : IMediatorRequest<UserViewModel>, IMapFrom<Stea
             string oldName = user.Name;
 
             user.Name = request.Name;
+            user.Region = request.Region ?? user.Region;
             user.AvatarSmall = request.Avatar;
             user.AvatarMedium = request.AvatarMedium;
             user.AvatarFull = request.AvatarFull;
