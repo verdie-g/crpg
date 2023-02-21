@@ -8,6 +8,8 @@ Restart=always
 RestartSec=5
 KillSignal=SIGINT
 User={{ crpg_game_server_user }}
+LogRateLimitBurst=20000
+LogRateLimitIntervalSec=10s
 Environment=CRPG_ENV=Production
 Environment=CRPG_REGION={{ crpg_region }}
 Environment=CRPG_SERVICE={{ crpg_game_server_service_name }}
