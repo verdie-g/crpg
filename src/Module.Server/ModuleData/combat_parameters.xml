@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="combat_parameters">
+  <definitions>
+    <!--
+			definition names must start with character!
+			values can only be integers or floats or other definitions!
+			if you want to use a definition as value. You should define it before using as value.
+		-->
+
+  </definitions>
+
+  <combat_parameters>
+  </combat_parameters>
+</base>

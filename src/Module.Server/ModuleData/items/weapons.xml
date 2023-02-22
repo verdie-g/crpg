@@ -2451,16 +2451,10 @@
       <Piece id="crpg_maul_handle" Type="Handle" scale_factor="100"/>
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_kama" name="{=}Kama" crafting_template="crpg_OneHandedAxe" culture="Culture.sturgia" modifier_group="axe">
-    <Pieces>
-      <Piece id="crpg_kama_blade" Type="Blade" scale_factor="100" />
-      <Piece id="crpg_kama_handle" Type="Handle" scale_factor="100" />
-    </Pieces>
-  </CraftedItem>
   <CraftedItem id="crpg_heavy_blacksmith_hammer" name="{=}Heavy Blacksmith Hammer" crafting_template="crpg_TwoHandedMace" modifier_group="cheap_weapon">
     <Pieces>
-      <Piece id="crpg_heavy_blacksmith_hammer_head" Type="Blade" scale_factor="100"/>
-      <Piece id="crpg_heavy_blacksmith_hammer_handle" Type="Handle" scale_factor="112"/>
+      <Piece id="crpg_heavy_blacksmith_hammer_head" Type="Blade" scale_factor="132"/>
+      <Piece id="crpg_heavy_blacksmith_hammer_handle" Type="Handle" scale_factor="132"/>
     </Pieces>
   </CraftedItem>
   <CraftedItem id="crpg_mallet" name="{=}Mallet" crafting_template="crpg_TwoHandedMace" modifier_group="cheap_weapon">
@@ -2567,8 +2561,8 @@
   </CraftedItem>
   <CraftedItem id="crpg_bec_de_corbin" name="{=}Bec De Corbin" crafting_template="crpg_TwoHandedPolearm">
 		<Pieces>
-			<Piece id="crpg_bec_de_corbin_blade" Type="Blade" scale_factor="83"/>
-			<Piece id="crpg_bec_de_corbin_handle" Type="Handle" scale_factor="100"/>
+			<Piece id="crpg_bec_de_corbin_blade" Type="Blade" scale_factor="98"/>
+			<Piece id="crpg_bec_de_corbin_handle" Type="Handle" scale_factor="98"/>
 		</Pieces>
   </CraftedItem>
   <CraftedItem id="crpg_simple_poleaxe" name="{=}Simple Poleaxe" crafting_template="crpg_TwoHandedPolearm">
@@ -2591,8 +2585,8 @@
   </CraftedItem>
   <CraftedItem id="crpg_french_voulge" name="{=}French Voulge" crafting_template="crpg_TwoHandedPolearm">
 		<Pieces>
-			<Piece id="crpg_french_voulge_blade" Type="Blade" scale_factor="99"/>
-			<Piece id="crpg_french_voulge_handle" Type="Handle" scale_factor="100"/>
+			<Piece id="crpg_french_voulge_blade" Type="Blade" scale_factor="100"/>
+			<Piece id="crpg_french_voulge_handle" Type="Handle" scale_factor="110"/>
 		</Pieces>
   </CraftedItem>
 </Items>

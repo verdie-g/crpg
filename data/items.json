@@ -5797,9 +5797,9 @@
     "name": "Bec De Corbin",
     "culture": "Neutral",
     "type": "Polearm",
-    "price": 15537,
-    "weight": 1.91,
-    "tier": 9.779432,
+    "price": 16185,
+    "weight": 2.11,
+    "tier": 10.003664,
     "requirement": 0,
     "flags": [
       "CanBePickedUpFromCorpse"
@@ -5811,8 +5811,8 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 124,
-        "balance": 0.47,
+        "length": 139,
+        "balance": 0.4,
         "handling": 70,
         "bodyArmor": 0,
         "flags": [
@@ -5821,12 +5821,12 @@
           "WideGrip",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 23,
+        "thrustDamage": 27,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 93,
-        "swingDamage": 30,
+        "thrustSpeed": 92,
+        "swingDamage": 29,
         "swingDamageType": "Pierce",
-        "swingSpeed": 84
+        "swingSpeed": 82
       }
     ]
   },
@@ -12113,9 +12113,9 @@
     "name": "French Voulge",
     "culture": "Neutral",
     "type": "Polearm",
-    "price": 15055,
-    "weight": 2.15,
-    "tier": 9.60979748,
+    "price": 14752,
+    "weight": 2.13,
+    "tier": 9.50171852,
     "requirement": 0,
     "flags": [
       "CanBePickedUpFromCorpse"
@@ -12127,9 +12127,9 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 133,
-        "balance": 0.48,
-        "handling": 72,
+        "length": 163,
+        "balance": 0.29,
+        "handling": 71,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -12140,9 +12140,9 @@
         "thrustDamage": 24,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 92,
-        "swingDamage": 41,
+        "swingDamage": 43,
         "swingDamageType": "Cut",
-        "swingSpeed": 84
+        "swingSpeed": 78
       }
     ]
   },
@@ -13343,9 +13343,9 @@
     "name": "Heavy Blacksmith Hammer",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
-    "price": 11124,
-    "weight": 2.82,
-    "tier": 8.79707,
+    "price": 12450,
+    "weight": 1.94,
+    "tier": 9.36895752,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -13357,9 +13357,9 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 84,
-        "balance": 0.15,
-        "handling": 74,
+        "length": 99,
+        "balance": 0.1,
+        "handling": 68,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -13370,10 +13370,10 @@
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 87,
+        "thrustSpeed": 92,
         "swingDamage": 29,
         "swingDamageType": "Blunt",
-        "swingSpeed": 74
+        "swingSpeed": 72
       }
     ]
   },
@@ -14149,9 +14149,9 @@
     "name": "Highland Throwing Axe",
     "culture": "Battania",
     "type": "Thrown",
-    "price": 5173,
-    "weight": 1.45,
-    "tier": 8.18839,
+    "price": 6800,
+    "weight": 0.65,
+    "tier": 9.550939,
     "requirement": 0,
     "flags": [
       "CanBePickedUpFromCorpse"
@@ -14161,11 +14161,11 @@
         "class": "ThrowingAxe",
         "itemUsage": "throwing_axe",
         "accuracy": 93,
-        "missileSpeed": 25,
+        "missileSpeed": 27,
         "stackAmount": 3,
         "length": 43,
         "balance": 1.0,
-        "handling": 103,
+        "handling": 111,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -14177,10 +14177,10 @@
         ],
         "thrustDamage": 38,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 92,
+        "thrustSpeed": 100,
         "swingDamage": 0,
         "swingDamageType": "Cut",
-        "swingSpeed": 106
+        "swingSpeed": 119
       },
       {
         "class": "OneHandedAxe",
@@ -14190,7 +14190,7 @@
         "stackAmount": 0,
         "length": 43,
         "balance": 1.0,
-        "handling": 103,
+        "handling": 111,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -14198,10 +14198,10 @@
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 92,
-        "swingDamage": 11,
+        "thrustSpeed": 100,
+        "swingDamage": 19,
         "swingDamageType": "Cut",
-        "swingSpeed": 106
+        "swingSpeed": 119
       }
     ]
   },
@@ -15551,27 +15551,6 @@
       "CanBePickedUpFromCorpse"
     ],
     "weapons": [
-      {
-        "class": "OneHandedAxe",
-        "itemUsage": "onehanded_shield_axe",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 71,
-        "balance": 0.64,
-        "handling": 86,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon",
-          "BonusAgainstShield"
-        ],
-        "thrustDamage": 0,
-        "thrustDamageType": "Undefined",
-        "thrustSpeed": 94,
-        "swingDamage": 26,
-        "swingDamageType": "Pierce",
-        "swingSpeed": 89
-      },
       {
         "class": "OneHandedAxe",
         "itemUsage": "onehanded_shield_axe",
@@ -20082,9 +20061,9 @@
     "name": "Kehilan al-Khamsa",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 22454,
+    "price": 21501,
     "weight": 420.0,
-    "tier": 11.2952747,
+    "tier": 11.0297079,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -20094,7 +20073,7 @@
       "chargeDamage": 4,
       "maneuver": 78,
       "speed": 49,
-      "hitPoints": 209,
+      "hitPoints": 207,
       "familyType": 1
     },
     "weapons": []
@@ -23335,9 +23314,9 @@
     "name": "Raider Throwing Axe",
     "culture": "Sturgia",
     "type": "Thrown",
-    "price": 6933,
-    "weight": 1.53,
-    "tier": 9.655089,
+    "price": 6936,
+    "weight": 0.75,
+    "tier": 9.65706,
     "requirement": 0,
     "flags": [
       "CanBePickedUpFromCorpse"
@@ -23347,11 +23326,11 @@
         "class": "ThrowingAxe",
         "itemUsage": "throwing_axe",
         "accuracy": 93,
-        "missileSpeed": 24,
+        "missileSpeed": 27,
         "stackAmount": 4,
         "length": 37,
         "balance": 1.0,
-        "handling": 106,
+        "handling": 109,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -23361,12 +23340,12 @@
           "AutoReload",
           "AmmoBreaksOnBounceBack"
         ],
-        "thrustDamage": 35,
+        "thrustDamage": 33,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 91,
+        "thrustSpeed": 100,
         "swingDamage": 0,
         "swingDamageType": "Cut",
-        "swingSpeed": 107
+        "swingSpeed": 114
       },
       {
         "class": "OneHandedAxe",
@@ -23376,7 +23355,7 @@
         "stackAmount": 0,
         "length": 37,
         "balance": 1.0,
-        "handling": 106,
+        "handling": 109,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -23384,10 +23363,10 @@
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 91,
-        "swingDamage": 10,
+        "thrustSpeed": 100,
+        "swingDamage": 14,
         "swingDamageType": "Cut",
-        "swingSpeed": 107
+        "swingSpeed": 114
       }
     ]
   },
@@ -28403,9 +28382,9 @@
     "name": "Tribesman Throwing Axe",
     "culture": "Aserai",
     "type": "Thrown",
-    "price": 6440,
-    "weight": 1.65,
-    "tier": 9.265024,
+    "price": 6800,
+    "weight": 0.72,
+    "tier": 9.550939,
     "requirement": 0,
     "flags": [
       "CanBePickedUpFromCorpse"
@@ -28415,11 +28394,11 @@
         "class": "ThrowingAxe",
         "itemUsage": "throwing_axe",
         "accuracy": 93,
-        "missileSpeed": 24,
+        "missileSpeed": 27,
         "stackAmount": 3,
         "length": 50,
         "balance": 1.0,
-        "handling": 98,
+        "handling": 110,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -28429,12 +28408,12 @@
           "AutoReload",
           "AmmoBreaksOnBounceBack"
         ],
-        "thrustDamage": 40,
+        "thrustDamage": 38,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 90,
+        "thrustSpeed": 100,
         "swingDamage": 0,
         "swingDamageType": "Cut",
-        "swingSpeed": 100
+        "swingSpeed": 117
       },
       {
         "class": "OneHandedAxe",
@@ -28444,7 +28423,7 @@
         "stackAmount": 0,
         "length": 50,
         "balance": 1.0,
-        "handling": 98,
+        "handling": 110,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -28452,10 +28431,10 @@
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 90,
-        "swingDamage": 10,
+        "thrustSpeed": 100,
+        "swingDamage": 17,
         "swingDamageType": "Cut",
-        "swingSpeed": 100
+        "swingSpeed": 117
       }
     ]
   },
