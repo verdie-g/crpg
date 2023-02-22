@@ -1,4 +1,5 @@
 ---
+
 - name: create user
   user:
    name: "{{ crpg_game_server_user }}"
@@ -26,7 +27,34 @@
       - steamcmd
     update_cache: yes
 
-- name: create service
+- name: get Bannerlord installation path
+  set_fact:
+    crpg_game_server_local_path: "{{ lookup('env', 'MB_SERVER_PATH') }}"
+
+- name: check game server files
+  stat:
+    path: "{{ crpg_game_server_local_path }}/Modules/cRPG/{{ item }}"
+  loop: ["SceneObj", "bin/Linux64_Shipping_Server/Crpg.Module.dll"]
+  register: file_stats
+  delegate_to: localhost
+  become: false
+
+- name: assert game server files are present
+  assert:
+    that: item.stat.exists
+    fail_msg: "{{ item.item }} was not found"
+  loop: "{{ file_stats.results }}"
+  delegate_to: localhost
+  become: false
+
+- name: compress locally game server
+  archive:
+    path: "{{ crpg_game_server_local_path }}/Modules/cRPG"
+    dest: "/tmp/crpg.tgz"
+  delegate_to: localhost
+  become: false
+
+- name: create game server service
   template:
     src: "{{ crpg_game_server_service_name }}@.service.j2"
     dest: "/lib/systemd/system/{{ crpg_game_server_service_name }}@.service"
@@ -37,9 +65,9 @@
 
 - name: stop game server
   service:
-    name: "{{ crpg_game_server_service_name }}@{{ item }}"
+    name: "{{ crpg_game_server_service_name }}@{{ item.name }}"
     state: stopped
-  loop: "{{ crpg_game_server_instance_names }}"
+  loop: "{{ crpg_game_server_instances }}"
 
 - name: install bannerlord dependencies
   apt:
@@ -65,13 +93,42 @@
     dest: "{{ crpg_game_server_bin_path | dirname }}"
     remote_src: True
 
-# TODO: upload cRPG + config file
+- name: clean old module
+  file:
+    path: "{{ crpg_game_server_path }}/Modules/cRPG"
+    state: absent
 
-- name: open bannerlord port
-  ufw:
-    rule: allow
-    port: "7210"
-    proto: udp
+- name: copy to host and decompress game server
+  unarchive:
+    src: /tmp/crpg.tgz
+    dest: "{{ crpg_game_server_path }}/Modules"
+    mode: -x
+    owner: "{{ crpg_game_server_user }}"
+    group: "{{ crpg_game_server_user }}"
+
+# Setting permissions need to be done in two steps (https://stackoverflow.com/a/60240956/5407910)
+- name: fix permissions on module
+  file:
+    path: "{{ crpg_game_server_path }}/Modules/cRPG"
+    mode: u=rwX,g=rX,o=rX
+    recurse: true
+
+- name: generate game server configurations
+  template:
+    src: "config-{{ item.game_type }}.txt.j2"
+    dest: "{{ crpg_game_server_path }}/Modules/cRPG/config-{{ item.name }}.txt"
+    mode: 0644
+    owner: "{{ crpg_game_server_user }}"
+    group: "{{ crpg_game_server_user }}"
+  loop: "{{ crpg_game_server_instances }}"
+
+- name: generate game server start script
+  template:
+    src: crpg-game-server.sh.j2
+    dest: "{{ crpg_game_server_path }}/Modules/cRPG/crpg-game-server.sh"
+    mode: 0755
+    owner: "{{ crpg_game_server_user }}"
+    group: "{{ crpg_game_server_user }}"
 
 - name: open ssh port
   ufw:
@@ -81,8 +138,9 @@
 - name: open bannerlord port
   ufw:
     rule: allow
-    port: "7210"
+    port: "{{ item.port }}"
     proto: udp
+  loop: "{{ crpg_game_server_instances }}"
 
 - name: enable firewall
   ufw:
@@ -93,4 +151,4 @@
     name: "{{ crpg_game_server_service_name }}@{{ item }}"
     state: started
     enabled: yes
-  loop: "{{ crpg_game_server_instance_names }}"
+  loop: "{{ crpg_game_server_instances | map(attribute='name') }}"

@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+case "$1" in
+{% for instance in crpg_game_server_instances %}
+  {{ instance.name }})
+    port={{ instance.port }}
+    token='{{ instance.bannerlord_token }}'
+    ;;
+{% endfor %}
+  *)
+    echo "Unexpected instance id '$1'"
+    exit 1
+    ;;
+esac
+
+{{ crpg_game_server_bin_path | dirname }}/dotnet {{ crpg_game_server_bin_path | basename }} _MODULES_*Native*Multiplayer*cRPG*_MODULES_ \
+  /dedicatedcustomserverconfigfile ../cRPG/config-$1.txt \
+  /dedicatedcustomserver $port \
+  USER 0 \
+  /playerhosteddedicatedserver \
+  /disableerrorreporting \
+  /dedicatedcustomserverauthtoken "$token"
