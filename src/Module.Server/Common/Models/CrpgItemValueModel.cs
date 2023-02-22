@@ -168,8 +168,8 @@ internal class CrpgItemValueModel : ItemValueModel
             float swingTier =
                   (float)Math.Pow(CrpgStrikeMagnitudeModel.BladeDamageFactorToDamageRatio * weapon.SwingDamageFactor, 2.15f)
                 * CalculateDamageTypeFactor(weapon.SwingDamageType)
-                * (float)Math.Pow(weapon.SwingSpeed, 4.1f)
-                / 104000000f;
+                * (float)Math.Pow(weapon.SwingSpeed, 4.4f)
+                / 390000000f;
 
             if (!weapon.WeaponFlags.HasAnyFlag(WeaponFlags.NotUsableWithOneHand))
             {
@@ -287,7 +287,7 @@ internal class CrpgItemValueModel : ItemValueModel
     {
         return damageType switch
         {
-            DamageTypes.Blunt => 2f,
+            DamageTypes.Blunt => 2.4f,
             DamageTypes.Pierce => 1.75f,
             _ => 1.25f,
         };
