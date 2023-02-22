@@ -39,11 +39,11 @@ internal class MaxMindGeoIpService : IGeoIpService
         return countryResponse.Continent.Code switch
         {
             "AF" => Region.Eu,
-            "AN" => Region.Oce,
+            "AN" => Region.Oc,
             "AS" => Region.As,
             "EU" => Region.Eu,
             "NA" => Region.Na,
-            "OC" => Region.Oce,
+            "OC" => Region.Oc,
             "SA" => Region.Na,
             _ => Region.Eu,
         };

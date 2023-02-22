@@ -236,7 +236,7 @@ public class SeedDataCommandTest : TestBase
             .Setup(m => m.TranslatePositionForRegion(It.IsAny<Point>(), Region.Eu, Region.As))
             .Returns(new Point(5, 6));
         strategusMapMock
-            .Setup(m => m.TranslatePositionForRegion(It.IsAny<Point>(), Region.Eu, Region.Oce))
+            .Setup(m => m.TranslatePositionForRegion(It.IsAny<Point>(), Region.Eu, Region.Oc))
             .Returns(new Point(5, 6));
 
         SeedDataCommand.Handler handler = new(ActDb, Mock.Of<IItemsSource>(), CreateAppEnv(), CharacterService,

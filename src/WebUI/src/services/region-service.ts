@@ -4,12 +4,12 @@ export const regionToStr: Record<Region, string> = {
   [Region.Eu]: 'Europe',
   [Region.Na]: 'North America',
   [Region.As]: 'Asia',
-  [Region.Oce]: 'Oceania',
+  [Region.Oc]: 'Oceania',
 };
 
 export const regionIcons: Record<Region, string> = {
   [Region.Eu]: 'globe-europe',
   [Region.Na]: 'globe-americas',
   [Region.As]: 'globe-asia',
-  [Region.Oce]: 'globe-oceania',
+  [Region.Oc]: 'globe-oceania',
 };

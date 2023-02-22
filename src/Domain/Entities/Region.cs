@@ -12,5 +12,5 @@ public enum Region
     As,
 
     /// <summary>Oceania.</summary>
-    Oce,
+    Oc,
 }

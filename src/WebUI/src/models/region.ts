@@ -2,7 +2,7 @@ export enum Region {
   Eu = 'Eu',
   Na = 'Na',
   As = 'As',
-  Oce = 'Oce',
+  Oc = 'Oc',
 }
 
 export default Region;

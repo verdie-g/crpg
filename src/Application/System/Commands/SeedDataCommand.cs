@@ -875,7 +875,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "GHI",
                 BannerKey = string.Empty,
-                Region = Region.Oce,
+                Region = Region.Oc,
             };
             Clan jklClan = new()
             {
@@ -884,7 +884,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "JKL",
                 BannerKey = string.Empty,
-                Region = Region.Oce,
+                Region = Region.Oc,
             };
             Clan mnoClan = new()
             {
@@ -1846,8 +1846,8 @@ public record SeedDataCommand : IMediatorRequest
             {
                 foreach (var region in GetRegions())
                 {
-                    // TODO: if AS and OCE share the same map the settlements should be shared equally.
-                    if (region == Region.Oce)
+                    // TODO: if AS and OC share the same map the settlements should be shared equally.
+                    if (region == Region.Oc)
                     {
                         continue;
                     }

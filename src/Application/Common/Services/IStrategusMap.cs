@@ -94,24 +94,24 @@ internal class StrategusMap : IStrategusMap
         }
 
         // Europe map is duplicated twice for NorthAmerica and Asia and are put together but NorthAmerica is
-        // horizontally mirrored. | EU | AN | AS/OCE |
+        // horizontally mirrored. | EU | AN | AS/OC |
         double x = (sourceRegion, targetRegion) switch
         {
             (Region.Eu, Region.Na) => 2 * _width - pos.X,
             (Region.Eu, Region.As) => 2 * _width + pos.X,
-            (Region.Eu, Region.Oce) => 2 * _width + pos.X,
+            (Region.Eu, Region.Oc) => 2 * _width + pos.X,
 
             (Region.Na, Region.Eu) => 2 * _width - pos.X,
             (Region.Na, Region.As) => 4 * _width - pos.X,
-            (Region.Na, Region.Oce) => 4 * _width - pos.X,
+            (Region.Na, Region.Oc) => 4 * _width - pos.X,
 
             (Region.As, Region.Eu) => -2 * _width + pos.X,
             (Region.As, Region.Na) => 4 * _width - pos.X,
-            (Region.As, Region.Oce) => pos.X,
+            (Region.As, Region.Oc) => pos.X,
 
-            (Region.Oce, Region.Eu) => -2 * _width + pos.X,
-            (Region.Oce, Region.Na) => 4 * _width - pos.X,
-            (Region.Oce, Region.As) => pos.X,
+            (Region.Oc, Region.Eu) => -2 * _width + pos.X,
+            (Region.Oc, Region.Na) => 4 * _width - pos.X,
+            (Region.Oc, Region.As) => pos.X,
             _ => throw new ArgumentOutOfRangeException(),
         };
 
