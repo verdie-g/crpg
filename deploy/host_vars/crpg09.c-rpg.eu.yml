@@ -1,7 +1,7 @@
 ﻿---
 
 crpg_region: eu
-crpg_happy_hours: "19:30-21:30,Central European Standard Time"
+crpg_happy_hours: "19:30-21:30,Europe/Paris"
 
 crpg_game_server_instances:
   - name: a

@@ -1,7 +1,7 @@
 ﻿---
 
 crpg_region: as
-crpg_happy_hours: "21:00-23:00,China Standard Time"
+crpg_happy_hours: "21:00-23:00,Asia/Shanghai"
 
 crpg_game_server_instances:
   - name: a
