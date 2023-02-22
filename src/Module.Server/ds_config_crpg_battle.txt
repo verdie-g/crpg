@@ -31,7 +31,7 @@ RoundTotal 10
 MapTimeLimit 8
 RoundTimeLimit 300
 WarmupTimeLimit 1
-crpg_prime_time 19:00-20:00
+crpg_happy_hours 20:00-21:00,Central European Standard Time
 start_game
 set_automated_battle_count -1
 enable_automated_battle_switching

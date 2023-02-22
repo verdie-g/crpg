@@ -261,7 +261,7 @@ internal class CrpgRewardServer : MissionBehavior
             return false;
         }
 
-        TimeSpan timeOfDay = DateTime.Now.TimeOfDay;
+        TimeSpan timeOfDay = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, happyHours.Item3).TimeOfDay;
         if (timeOfDay < happyHours.Item1 || happyHours.Item2 < timeOfDay)
         {
             if (_lastRewardDuringHappyHours)

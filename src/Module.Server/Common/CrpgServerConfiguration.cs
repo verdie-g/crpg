@@ -13,7 +13,7 @@ public static class CrpgServerConfiguration
     }
 
     public static float ServerExperienceMultiplier { get; private set; } = 1.0f;
-    public static Tuple<TimeSpan, TimeSpan>? ServerHappyHours { get; private set; }
+    public static Tuple<TimeSpan, TimeSpan, TimeZoneInfo>? ServerHappyHours { get; private set; }
 
     [UsedImplicitly]
     [ConsoleCommandMethod("crpg_experience_multiplier", "Sets a reward multiplier for the server.")]
@@ -31,7 +31,7 @@ public static class CrpgServerConfiguration
     }
 
     [UsedImplicitly]
-    [ConsoleCommandMethod("crpg_happy_hours", "Sets the happy local hours. Format: HH:MM-HH:MM")]
+    [ConsoleCommandMethod("crpg_happy_hours", "Sets the happy hours. Format: HH:MM-HH:MM,TZ")]
     private static void SetServerHappyHours(string? happHoursStr)
     {
         if (happHoursStr == null)
@@ -40,8 +40,8 @@ public static class CrpgServerConfiguration
             return;
         }
 
-        Match match = Regex.Match(happHoursStr, "(\\d\\d:\\d\\d)-(\\d\\d:\\d\\d)");
-        if (match.Groups.Count != 3
+        Match match = Regex.Match(happHoursStr, "^(\\d\\d:\\d\\d)-(\\d\\d:\\d\\d),([\\w ]+)$");
+        if (match.Groups.Count != 4
             || !TimeSpan.TryParse(match.Groups[1].Value, out var startTime)
             || startTime < TimeSpan.Zero
             || startTime > TimeSpan.FromHours(24)
@@ -53,6 +53,7 @@ public static class CrpgServerConfiguration
             return;
         }
 
-        ServerHappyHours = Tuple.Create(startTime, endTime);
+        var timeZone = TimeZoneInfo.FindSystemTimeZoneById(match.Groups[3].Value);
+        ServerHappyHours = Tuple.Create(startTime, endTime, timeZone);
     }
 }
