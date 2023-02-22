@@ -10,7 +10,7 @@ crpg_game_server_instances:
     game_type: battle
   - name: c
     bannerlord_token: "{{ bannerlord_token1 }}"
-    port: 7211
+    port: 7212
     game_type: duel
 
 ansible_sudo_pass: !vault |
