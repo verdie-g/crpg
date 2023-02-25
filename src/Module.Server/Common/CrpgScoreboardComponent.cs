@@ -45,7 +45,7 @@ internal class CrpgScoreboardComponent : MissionScoreboardComponent
             return;
         }
 
-        const float ratingToScoreScaler = 0.01f;
+        const float ratingToScoreScaler = 0.001f;
         float rating = affectedCrpgUser.Character.Rating.Value - 2 * affectedCrpgUser.Character.Rating.Deviation;
         float ratingFactor = rating * ratingToScoreScaler;
 
