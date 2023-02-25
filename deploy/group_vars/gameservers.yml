@@ -2,8 +2,9 @@
 
 crpg_game_server_user: crpg
 crpg_game_server_service_name: crpg-game-server
-crpg_game_server_path: "/home/{{ crpg_game_server_user }}/bannerlord"
-crpg_game_server_bin_path: "{{ crpg_game_server_path }}/bin/Linux64_Shipping_Server/TaleWorlds.Starter.DotNetCore.Linux.dll"
+bannerlord_server_path: "/home/{{ crpg_game_server_user }}/bannerlord"
+bannerlord_server_bin_path: "{{ bannerlord_server_path }}/bin/Linux64_Shipping_Server/TaleWorlds.Starter.DotNetCore.Linux.dll"
+crpg_module_path: "{{ bannerlord_server_path }}/Modules/cRPG"
 
 crpg_game_server_id: "{{ ansible_hostname | regex_replace('^crpg(\\d\\d)$', '\\1') }}"
 

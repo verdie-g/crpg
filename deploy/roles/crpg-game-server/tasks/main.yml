@@ -54,6 +54,14 @@
   delegate_to: localhost
   become: false
 
+- name: copy to host and decompress game server
+  unarchive:
+    src: /tmp/crpg.tgz
+    dest: /tmp
+    mode: -x
+    owner: "{{ crpg_game_server_user }}"
+    group: "{{ crpg_game_server_user }}"
+
 - name: create game server service
   template:
     src: "{{ crpg_game_server_service_name }}@.service.j2"
@@ -77,12 +85,12 @@
     update_cache: yes
 
 - name: install/update Bannerlord
-  command: "/usr/games/steamcmd +force_install_dir {{ crpg_game_server_path }} +login {{ steam_user_name }} +app_update 1863440 +exit"
+  command: "/usr/games/steamcmd +force_install_dir {{ bannerlord_server_path }} +login {{ steam_user_name }} +app_update 1863440 +exit"
   become_user: "{{ crpg_game_server_user }}"
 
 - name: make sure that MultiplayerForcedAvatars folder is present
   file:
-    path: "{{ crpg_game_server_path }}/Modules/Native/MultiplayerForcedAvatars"
+    path: "{{ bannerlord_server_path }}/Modules/Native/MultiplayerForcedAvatars"
     state: directory
     owner: "{{ crpg_game_server_user }}"
     group: "{{ crpg_game_server_user }}"
@@ -90,33 +98,28 @@
 - name: download .NET runtime
   unarchive:
     src: "https://dotnetcli.azureedge.net/dotnet/aspnetcore/Runtime/3.1.31/aspnetcore-runtime-3.1.31-linux-x64.tar.gz"
-    dest: "{{ crpg_game_server_bin_path | dirname }}"
+    dest: "{{ bannerlord_server_bin_path | dirname }}"
     remote_src: True
 
 - name: clean old module
   file:
-    path: "{{ crpg_game_server_path }}/Modules/cRPG"
+    path: "{{ crpg_module_path }}"
     state: absent
 
-- name: copy to host and decompress game server
-  unarchive:
-    src: /tmp/crpg.tgz
-    dest: "{{ crpg_game_server_path }}/Modules"
-    mode: -x
-    owner: "{{ crpg_game_server_user }}"
-    group: "{{ crpg_game_server_user }}"
+- name: move new module version
+  command: "mv /tmp/cRPG {{ crpg_module_path }}"
 
 # Setting permissions need to be done in two steps (https://stackoverflow.com/a/60240956/5407910)
 - name: fix permissions on module
   file:
-    path: "{{ crpg_game_server_path }}/Modules/cRPG"
+    path: "{{ crpg_module_path }}"
     mode: u=rwX,g=rX,o=rX
     recurse: true
 
 - name: generate game server configurations
   template:
     src: "config-{{ item.game_type }}.txt.j2"
-    dest: "{{ crpg_game_server_path }}/Modules/cRPG/config-{{ item.name }}.txt"
+    dest: "{{ crpg_module_path }}/config-{{ item.name }}.txt"
     mode: 0644
     owner: "{{ crpg_game_server_user }}"
     group: "{{ crpg_game_server_user }}"
@@ -125,7 +128,7 @@
 - name: generate game server start script
   template:
     src: crpg-game-server.sh.j2
-    dest: "{{ crpg_game_server_path }}/Modules/cRPG/crpg-game-server.sh"
+    dest: "{{ crpg_module_path }}/crpg-game-server.sh"
     mode: 0755
     owner: "{{ crpg_game_server_user }}"
     group: "{{ crpg_game_server_user }}"

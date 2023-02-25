@@ -2,8 +2,8 @@
 Description=cRPG Game Server
 
 [Service]
-WorkingDirectory={{ crpg_game_server_bin_path | dirname }}
-ExecStart={{ crpg_game_server_path }}/Modules/cRPG/crpg-game-server.sh %i
+WorkingDirectory={{ bannerlord_server_bin_path | dirname }}
+ExecStart={{ crpg_module_path }}/crpg-game-server.sh %i
 Restart=always
 RestartSec=5
 KillSignal=SIGINT
