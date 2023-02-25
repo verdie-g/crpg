@@ -31,8 +31,8 @@ internal class CrpgActivityLogsBehavior : MissionLogic
     public override void OnRemoveBehavior()
     {
         _chatBox.OnMessageReceivedAtDedicatedServer = (Action<NetworkCommunicator, string>)Delegate.Remove(
-            OnMessageReceivedAtDedicatedServer,
-            _chatBox.OnMessageReceivedAtDedicatedServer)!;
+            _chatBox.OnMessageReceivedAtDedicatedServer,
+            OnMessageReceivedAtDedicatedServer)!;
 
         FlushLogs();
     }
