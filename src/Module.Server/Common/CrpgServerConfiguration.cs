@@ -55,5 +55,6 @@ public static class CrpgServerConfiguration
 
         var timeZone = TimeZoneInfo.FindSystemTimeZoneById(match.Groups[3].Value);
         ServerHappyHours = Tuple.Create(startTime, endTime, timeZone);
+        Debug.Print($"Set happy hours from {startTime} to {endTime} in time zone {timeZone}");
     }
 }
