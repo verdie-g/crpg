@@ -37,7 +37,7 @@ internal class CrpgRewardClient : MissionNetwork
         if (message.Valour)
         {
             InformationManager.DisplayMessage(new InformationMessage("Thy valour on the battlefield has been rewarded!",
-                new Color(218, 112, 214)));
+                new Color(0.48f, 0f, 1f)));
         }
 
         if (message.SoldItemIds.Count != 0)
