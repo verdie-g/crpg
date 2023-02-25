@@ -40,7 +40,7 @@ public static class CrpgServerConfiguration
             return;
         }
 
-        Match match = Regex.Match(happHoursStr, "^(\\d\\d:\\d\\d)-(\\d\\d:\\d\\d),([\\w ]+)$");
+        Match match = Regex.Match(happHoursStr, "^(\\d\\d:\\d\\d)-(\\d\\d:\\d\\d),([\\w/ ]+)$");
         if (match.Groups.Count != 4
             || !TimeSpan.TryParse(match.Groups[1].Value, out var startTime)
             || startTime < TimeSpan.Zero
