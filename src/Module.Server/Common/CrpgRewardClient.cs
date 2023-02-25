@@ -8,6 +8,32 @@ namespace Crpg.Module.Common;
 
 internal class CrpgRewardClient : MissionNetwork
 {
+    private static readonly string[] ValourMessages =
+    {
+        "Thy valor on the battlefield hath been recompensed.",
+        "Forsooth, thy gallantry on the field of war hath been duly recompensed.",
+        "Verily, thy courage in battle hath been justly rewarded.",
+        "Thou hast been duly honored for thy valor on the field of combat.",
+        "Thy bravery amidst the tumult of war hath earned thee due reward.",
+        "In truth, thy deeds of valor on the battlefield have not gone unrewarded.",
+        "For thy valiant efforts on the field of battle, thou hast been richly rewarded.",
+        "Thou hast proven thyself a brave warrior, and thy reward is justly deserved.",
+        "Thy prowess in battle hath been rewarded, as it ought to be.",
+        "Thou hast earned thy reward by thy gallantry and bravery in the heat of battle.",
+        "As a reward for thy courage on the battlefield, thou hast been duly recognized.",
+        "By thy valiant actions in the midst of war, thou hast earned thy rightful reward.",
+        "Thy bravery hath been acknowledged and suitably rewarded for thy actions in battle.",
+        "For thy boldness on the battlefield, thou hast been granted a well-deserved reward.",
+        "Thou hast displayed courage and valor in battle, and thy reward reflects it.",
+        "Thy actions on the field of war have earned thee justly deserved recognition and reward.",
+        "In recognition of thy gallantry on the field of battle, thou hast been granted a reward.",
+        "Thou hast earned a reward for thy bravery in the face of danger on the battlefield.",
+        "Thy valor in the midst of battle hath been rightfully rewarded.",
+        "Thou hast fought bravely and thy reward is a testament to thy valor.",
+        "Thou hast earned a just reward for thy deeds of bravery in the heat of battle.",
+        "For thy bravery in the face of adversity on the battlefield, thou hast received a fitting reward.",
+    };
+
     protected override void AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegistererContainer registerer)
     {
         registerer.Register<CrpgRewardUser>(HandleRewardUser);
@@ -36,7 +62,8 @@ internal class CrpgRewardClient : MissionNetwork
 
         if (message.Valour)
         {
-            InformationManager.DisplayMessage(new InformationMessage("Thy valour on the battlefield has been rewarded!",
+            string valourMessage = ValourMessages.GetRandomElement();
+            InformationManager.DisplayMessage(new InformationMessage(valourMessage,
                 new Color(0.48f, 0f, 1f)));
         }
 
