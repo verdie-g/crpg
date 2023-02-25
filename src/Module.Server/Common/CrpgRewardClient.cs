@@ -34,6 +34,12 @@ internal class CrpgRewardClient : MissionNetwork
                     color));
         }
 
+        if (message.Valour)
+        {
+            InformationManager.DisplayMessage(new InformationMessage("Thy valour on the battlefield has been rewarded!",
+                new Color(218, 112, 214)));
+        }
+
         if (message.SoldItemIds.Count != 0)
         {
             var soldItemNames = message.SoldItemIds

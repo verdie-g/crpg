@@ -27,9 +27,10 @@ internal class CrpgRewardServer : MissionBehavior
     private readonly MultiplayerRoundController? _roundController;
     private readonly Dictionary<PlayerId, CrpgPlayerRating> _characterRatings;
     private readonly CrpgRatingPeriodResults _ratingResults;
-    private readonly Random _random = new();
+    private readonly Dictionary<PlayerId, int> _lastScores;
+    private readonly Random _random;
 
-    private Dictionary<PlayerId, CrpgCharacterStatistics> _lastAllTotalStats = new();
+    private Dictionary<PlayerId, CrpgCharacterStatistics> _lastAllTotalStats;
     private MissionTimer? _tickTimer;
     private bool _lastRewardDuringHappyHours;
 
@@ -45,6 +46,9 @@ internal class CrpgRewardServer : MissionBehavior
         _roundController = roundController;
         _characterRatings = new Dictionary<PlayerId, CrpgPlayerRating>();
         _ratingResults = new CrpgRatingPeriodResults();
+        _lastScores = new Dictionary<PlayerId, int>();
+        _random = new Random();
+        _lastAllTotalStats = new Dictionary<PlayerId, CrpgCharacterStatistics>();
         _lastRewardDuringHappyHours = false;
     }
 
@@ -162,8 +166,11 @@ internal class CrpgRewardServer : MissionBehavior
         List<CrpgUserUpdate> userUpdates = new();
         var networkPeers = GameNetwork.NetworkPeers.ToArray();
         bool lowPopulationServer = networkPeers.Length <= 4;
+        var valorousPlayerIds = GetValorousPlayers(networkPeers, !lowPopulationServer);
         foreach (NetworkCommunicator networkPeer in networkPeers)
         {
+            var playerId = networkPeer.VirtualPlayer.Id;
+
             var missionPeer = networkPeer.GetComponent<MissionPeer>();
             var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
             if (missionPeer == null || crpgPeer?.User == null)
@@ -193,7 +200,8 @@ internal class CrpgRewardServer : MissionBehavior
             if ((_roundController != null && crpgPeer.SpawnTeamThisRound != null)
                 || (_roundController == null && missionPeer.Team != null && missionPeer.Team.Side != BattleSideEnum.None))
             {
-                SetReward(userUpdate, crpgPeer, durationRewarded, !lowPopulationServer);
+                bool isValorousPlayer = valorousPlayerIds.Contains(playerId);
+                SetReward(userUpdate, crpgPeer, durationRewarded, isValorousPlayer, !lowPopulationServer);
                 SetStatistics(userUpdate, networkPeer, newAllTotalStats);
                 userUpdate.BrokenItems = BreakItems(crpgPeer, durationRewarded * (lowPopulationServer ? 0.5f : 1f));
             }
@@ -216,7 +224,7 @@ internal class CrpgRewardServer : MissionBehavior
         try
         {
             var res = (await _crpgClient.UpdateUsersAsync(new CrpgGameUsersUpdateRequest { Updates = userUpdates })).Data!;
-            SendRewardToPeers(res.UpdateResults, crpgPeerByUserId);
+            SendRewardToPeers(res.UpdateResults, crpgPeerByUserId, valorousPlayerIds);
         }
         catch (Exception e)
         {
@@ -225,7 +233,8 @@ internal class CrpgRewardServer : MissionBehavior
         }
     }
 
-    private void SetReward(CrpgUserUpdate userUpdate, CrpgPeer crpgPeer, float durationRewarded, bool rewardMultiplierEnabled)
+    private void SetReward(CrpgUserUpdate userUpdate, CrpgPeer crpgPeer, float durationRewarded, bool isValorousPlayer,
+        bool rewardMultiplierEnabled)
     {
         float serverXpMultiplier = CrpgServerConfiguration.ServerExperienceMultiplier;
         serverXpMultiplier *= IsHappyHour() ? 2 : 1;
@@ -247,9 +256,16 @@ internal class CrpgRewardServer : MissionBehavior
         }
         else
         {
-            crpgPeer.RewardMultiplier = _roundController.RoundWinner == crpgPeer.SpawnTeamThisRound!.Side
-                ? Math.Min(5, crpgPeer.RewardMultiplier + 1)
+            int rewardMultiplier = _roundController.RoundWinner == crpgPeer.SpawnTeamThisRound!.Side
+                ? crpgPeer.RewardMultiplier + 1
                 : 1;
+
+            if (isValorousPlayer)
+            {
+                rewardMultiplier += 1;
+            }
+
+            crpgPeer.RewardMultiplier = Math.Min(rewardMultiplier, 5);
         }
     }
 
@@ -292,6 +308,48 @@ internal class CrpgRewardServer : MissionBehavior
 
         _lastRewardDuringHappyHours = true;
         return true;
+    }
+
+    /// <summary>Valorous players are the top X% of the round of the defeated team.</summary>
+    private HashSet<PlayerId> GetValorousPlayers(NetworkCommunicator[] networkPeers, bool rewardMultiplierEnabled)
+    {
+        if (_roundController == null || !rewardMultiplierEnabled)
+        {
+            return new HashSet<PlayerId>();
+        }
+
+        var defeatedTeamPlayersWithRoundScore = new List<(PlayerId playerId, int score)>();
+        foreach (var networkPeer in networkPeers)
+        {
+            var missionPeer = networkPeer.GetComponent<MissionPeer>();
+            var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
+            if (missionPeer == null || crpgPeer == null)
+            {
+                continue;
+            }
+
+            var playerId = networkPeer.VirtualPlayer.Id;
+            if (!_lastScores.TryGetValue(playerId, out int lastRoundScore))
+            {
+                lastRoundScore = 0;
+            }
+
+            _lastScores[playerId] = missionPeer.Score;
+
+            if (crpgPeer.SpawnTeamThisRound?.Side == _roundController.RoundWinner.GetOppositeSide())
+            {
+                int roundScore = missionPeer.Score - lastRoundScore;
+                defeatedTeamPlayersWithRoundScore.Add((playerId, roundScore));
+            }
+        }
+
+        int numberOfPlayersToGiveValour = (int)(0.2f * defeatedTeamPlayersWithRoundScore.Count);
+        Debug.Print($"Giving valour to {numberOfPlayersToGiveValour} out of the {defeatedTeamPlayersWithRoundScore.Count} players in the defeated team");
+        return defeatedTeamPlayersWithRoundScore
+            .OrderByDescending(p => p.score)
+            .Take(numberOfPlayersToGiveValour)
+            .Select(p => p.playerId)
+            .ToHashSet();
     }
 
     private CrpgCharacterRating GetNewRating(CrpgPeer crpgPeer)
@@ -363,7 +421,7 @@ internal class CrpgRewardServer : MissionBehavior
     }
 
     private void SendRewardToPeers(IList<UpdateCrpgUserResult> updateResults,
-        Dictionary<int, CrpgPeer> crpgPeerByUserId)
+        Dictionary<int, CrpgPeer> crpgPeerByUserId, HashSet<PlayerId> valorousPlayerIds)
     {
         foreach (var updateResult in updateResults)
         {
@@ -373,17 +431,20 @@ internal class CrpgRewardServer : MissionBehavior
                 continue;
             }
 
+            var networkPeer = crpgPeer.GetNetworkPeer();
+
             crpgPeer.User = updateResult.User;
             if (!crpgPeer.User.Character.ForTournament && CrpgFeatureFlags.IsEnabled(CrpgFeatureFlags.FeatureTournament))
             {
-                KickHelper.Kick(crpgPeer.GetNetworkPeer(), DisconnectType.KickedByHost);
+                KickHelper.Kick(networkPeer, DisconnectType.KickedByHost);
                 continue;
             }
 
-            GameNetwork.BeginModuleEventAsServer(crpgPeer.GetNetworkPeer());
+            GameNetwork.BeginModuleEventAsServer(networkPeer);
             GameNetwork.WriteMessage(new CrpgRewardUser
             {
                 Reward = updateResult.EffectiveReward,
+                Valour = valorousPlayerIds.Contains(networkPeer.VirtualPlayer.Id),
                 RepairCost = updateResult.RepairedItems.Sum(r => r.RepairCost),
                 SoldItemIds = updateResult.RepairedItems.Where(r => r.Sold).Select(r => r.ItemId).ToList(),
             });
