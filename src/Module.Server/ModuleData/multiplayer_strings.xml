@@ -37,7 +37,7 @@
   <string id="str_multiplayer_scene_name.crpg_battle_dragonsroost" text="{=!}Dragon's Roost" />
   <string id="str_multiplayer_scene_name.crpg_battle_fallenaqueduct" text="{=!}Fallen Aqueduct" />
   <string id="str_multiplayer_scene_name.crpg_battle_ghosttown" text="{=!}Ghost Town" />
-  <string id="str_multiplayer_scene_name.crpg_battle_helmpoint" text="{=!}Helm Point" />
+  <string id="str_multiplayer_scene_name.crpg_battle_helmspoint" text="{=!}Helm's Point" />
   <string id="str_multiplayer_scene_name.crpg_battle_hexenbrennen" text="{=!}Hexenbrennen" />
   <string id="str_multiplayer_scene_name.crpg_battle_icelake" text="{=!}Ice Lake" />
   <string id="str_multiplayer_scene_name.crpg_battle_islandvillage" text="{=!}Island Village" />
@@ -53,6 +53,7 @@
   <string id="str_multiplayer_scene_name.crpg_battle_ruinedbattlement" text="{=!}Ruined Battlement" />
   <string id="str_multiplayer_scene_name.crpg_battle_sallyout" text="{=!}Sally Out" />
   <string id="str_multiplayer_scene_name.crpg_battle_sanctuary" text="{=!}Sanctuary" />
+  <string id="str_multiplayer_scene_name.crpg_battle_sandibous" text="{=!}Sandiboush" />
   <string id="str_multiplayer_scene_name.crpg_battle_sandpit" text="{=!}Sandpit" />
   <string id="str_multiplayer_scene_name.crpg_battle_skolderby" text="{=!}Skolderby" />
   <string id="str_multiplayer_scene_name.crpg_battle_skyfall" text="{=!}Skyfall" />
