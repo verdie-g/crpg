@@ -1,17 +1,29 @@
 ﻿using System.Text.RegularExpressions;
+using Crpg.Module.Api.Models;
 using JetBrains.Annotations;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common;
 
-public static class CrpgServerConfiguration
+internal static class CrpgServerConfiguration
 {
+    static CrpgServerConfiguration()
+    {
+        string? regionStr = Environment.GetEnvironmentVariable("CRPG_REGION");
+        Region = Enum.TryParse(regionStr, out CrpgRegion region) ? region : CrpgRegion.Eu;
+        Service = Environment.GetEnvironmentVariable("CRPG_SERVICE") ?? "unknown-service";
+        Instance = Environment.GetEnvironmentVariable("CRPG_INSTANCE") ?? "unknown-instance";
+    }
+
     public static void Init()
     {
         DedicatedServerConsoleCommandManager.AddType(typeof(CrpgServerConfiguration));
     }
 
+    public static CrpgRegion Region { get; }
+    public static string Service { get; }
+    public static string Instance { get; }
     public static float ServerExperienceMultiplier { get; private set; } = 1.0f;
     public static Tuple<TimeSpan, TimeSpan, TimeZoneInfo>? ServerHappyHours { get; private set; }
 

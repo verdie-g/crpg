@@ -12,9 +12,6 @@ namespace Crpg.Module.Common;
 internal class PlayerStatsComponent : MissionBehavior
 {
     private static readonly EndPoint DogStatsDEndpoint = new DnsEndPoint("localhost", 8125);
-    private static readonly string? Region = Environment.GetEnvironmentVariable("CRPG_REGION");
-    private static readonly string? Service = Environment.GetEnvironmentVariable("CRPG_SERVICE");
-    private static readonly string? Instance = Environment.GetEnvironmentVariable("CRPG_INSTANCE");
 
     private MissionTimer? _updateTimer;
     private Socket? _socket;
@@ -23,11 +20,6 @@ internal class PlayerStatsComponent : MissionBehavior
 
     public override void OnBehaviorInitialize()
     {
-        if (Region == null || Service == null || Instance == null)
-        {
-            return;
-        }
-
         _updateTimer = new MissionTimer(60);
         _socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
         _socket.Connect(DogStatsDEndpoint);
@@ -46,9 +38,12 @@ internal class PlayerStatsComponent : MissionBehavior
         }
 
         int players = GameNetwork.NetworkPeers.Count(x => x.IsSynchronized);
+        string region = CrpgServerConfiguration.Region.ToString().ToLowerInvariant();
+        string service = CrpgServerConfiguration.Service;
+        string instance = CrpgServerConfiguration.Instance;
 
         // https://docs.datadoghq.com/developers/dogstatsd/datagram_shell?tab=metrics
-        string datagramStr = $"crpg.users.playing.count:{players}|g|#region:{Region},service:{Service},instance:{Instance}";
+        string datagramStr = $"crpg.users.playing.count:{players}|g|#region:{region},service:{service},instance:{instance}";
         byte[] datagram = Encoding.ASCII.GetBytes(datagramStr);
         _socket!.Send(datagram);
     }
