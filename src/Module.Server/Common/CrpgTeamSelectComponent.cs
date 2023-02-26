@@ -6,9 +6,9 @@ using TaleWorlds.MountAndBlade;
 using Crpg.Module.Api.Models.Items;
 using Crpg.Module.Api.Models.Users;
 using Crpg.Module.Balancing;
+using Crpg.Module.Rating;
 using NetworkMessages.FromClient;
 using TaleWorlds.Core;
-using TaleWorlds.Library;
 using TaleWorlds.ObjectSystem;
 using TaleWorlds.PlayerServices;
 #endif
@@ -325,8 +325,7 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
 
     private float ComputeWeight(CrpgUser user)
     {
-        var rating = user.Character.Rating;
-        float ratingWeight = 0.0025f * (float)Math.Pow(rating.Value - 2 * rating.Deviation, 1.5f);
+        float ratingWeight = ComputeRatingWeight(user);
 
         float itemsPrice = ComputeEquippedItemsPrice(user.Character.EquippedItems);
         float itemsWeight = 1f + itemsPrice / 50_000f;
@@ -337,6 +336,13 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
         float levelWeight = 1f + user.Character.Level / 30f;
 
         return ratingWeight * itemsWeight * levelWeight;
+    }
+
+    private float ComputeRatingWeight(CrpgUser user)
+    {
+        var rating = user.Character.Rating;
+        float regionPenalty = CrpgRatingHelper.ComputeRegionRatingPenalty(user.Region);
+        return 0.0025f * (float)Math.Pow(rating.Value - 2 * rating.Deviation, 1.5f) * regionPenalty;
     }
 
     private float ComputeEquippedItemsPrice(IList<CrpgEquippedItem> equippedItems)

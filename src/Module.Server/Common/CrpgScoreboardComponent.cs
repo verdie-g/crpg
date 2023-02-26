@@ -4,6 +4,10 @@ using NetworkMessages.FromServer;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 
+#if CRPG_SERVER
+using Crpg.Module.Rating;
+#endif
+
 namespace Crpg.Module.Common;
 
 internal class CrpgScoreboardComponent : MissionScoreboardComponent
@@ -25,11 +29,7 @@ internal class CrpgScoreboardComponent : MissionScoreboardComponent
         float hitDistance,
         float shotDifficulty)
     {
-        if (!GameNetwork.IsServer)
-        {
-            return;
-        }
-
+#if CRPG_SERVER
         if (damagedHp < 0 || collisionData.InflictedDamage < 0) // Happens when the damage is disabled on round end.
         {
             return;
@@ -47,7 +47,7 @@ internal class CrpgScoreboardComponent : MissionScoreboardComponent
 
         const float ratingToScoreScaler = 0.001f;
         float rating = affectedCrpgUser.Character.Rating.Value - 2 * affectedCrpgUser.Character.Rating.Deviation;
-        float ratingFactor = rating * ratingToScoreScaler;
+        float ratingFactor = rating * ratingToScoreScaler * CrpgRatingHelper.ComputeRegionRatingPenalty(affectedCrpgUser.Region);
 
         float score = damagedHp * ratingFactor;
         if (isBlocked)
@@ -77,6 +77,7 @@ internal class CrpgScoreboardComponent : MissionScoreboardComponent
         GameNetwork.WriteMessage(new KillDeathCountChange(affectorMissionPeer.GetNetworkPeer(),
             null, affectorMissionPeer.KillCount, affectorMissionPeer.AssistCount, affectorMissionPeer.DeathCount, affectorMissionPeer.Score));
         GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
+#endif
     }
 
     protected override void AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegistererContainer registerer)

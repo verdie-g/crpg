@@ -137,6 +137,13 @@ internal class CrpgRewardServer : MissionBehavior
                 return false;
             }
 
+            // If the user has no region yet or they are not playing locally, act like they weren't there. That is, don't
+            // change their rating or their opponent rating.
+            if (crpgPeer.User.Region != CrpgServerConfiguration.Region)
+            {
+                return false;
+            }
+
             var characterRating = crpgPeer.User.Character.Rating;
             rating = new CrpgPlayerRating(characterRating.Value, characterRating.Deviation, characterRating.Volatility);
             _characterRatings[agent.MissionPeer.Peer.Id] = rating;
