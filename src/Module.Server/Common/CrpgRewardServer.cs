@@ -263,14 +263,9 @@ internal class CrpgRewardServer : MissionBehavior
         }
         else
         {
-            int rewardMultiplier = _roundController.RoundWinner == crpgPeer.SpawnTeamThisRound!.Side
+            int rewardMultiplier = _roundController.RoundWinner == crpgPeer.SpawnTeamThisRound!.Side || isValorousPlayer
                 ? crpgPeer.RewardMultiplier + 1
                 : 1;
-
-            if (isValorousPlayer)
-            {
-                rewardMultiplier += 1;
-            }
 
             crpgPeer.RewardMultiplier = Math.Min(rewardMultiplier, 5);
         }
