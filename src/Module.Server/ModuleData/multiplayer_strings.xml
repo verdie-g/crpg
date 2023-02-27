@@ -53,7 +53,7 @@
   <string id="str_multiplayer_scene_name.crpg_battle_ruinedbattlement" text="{=!}Ruined Battlement" />
   <string id="str_multiplayer_scene_name.crpg_battle_sallyout" text="{=!}Sally Out" />
   <string id="str_multiplayer_scene_name.crpg_battle_sanctuary" text="{=!}Sanctuary" />
-  <string id="str_multiplayer_scene_name.crpg_battle_sandibous" text="{=!}Sandiboush" />
+  <string id="str_multiplayer_scene_name.crpg_battle_sandiboush" text="{=!}Sandiboush" />
   <string id="str_multiplayer_scene_name.crpg_battle_sandpit" text="{=!}Sandpit" />
   <string id="str_multiplayer_scene_name.crpg_battle_skolderby" text="{=!}Skolderby" />
   <string id="str_multiplayer_scene_name.crpg_battle_skyfall" text="{=!}Skyfall" />
