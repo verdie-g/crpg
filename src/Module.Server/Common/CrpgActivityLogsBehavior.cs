@@ -102,7 +102,7 @@ internal class CrpgActivityLogsBehavior : MissionLogic
         {
             Type = type,
             UserId = userId,
-            Metadata = metadata,
+            Metadata = new Dictionary<string, string>(metadata) { ["instance"] = CrpgServerConfiguration.Instance },
             CreatedAt = DateTime.UtcNow,
         };
 
