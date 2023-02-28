@@ -385,12 +385,15 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                     props.WeaponRotationalAccuracyPenaltyInRadians = 0.1f;
                 }
             }
-
-            // does this govern couching?
-            else if (equippedItem.WeaponFlags.HasAllFlags(WeaponFlags.WideGrip))
+            else
             {
-                props.WeaponUnsteadyBeginTime = 1.0f + weaponSkill * 0.005f;
-                props.WeaponUnsteadyEndTime = 3.0f + weaponSkill * 0.01f;
+                // does this govern couching?
+                if (equippedItem.WeaponFlags.HasAllFlags(WeaponFlags.WideGrip))
+                {
+                    props.WeaponUnsteadyBeginTime = 1.0f + weaponSkill * 0.005f;
+                    props.WeaponUnsteadyEndTime = 3.0f + weaponSkill * 0.01f;
+                }
+                props.CombatMaxSpeedMultiplier *= ImpactofStrAndWeaponLengthOnCombatMaxSpeedMultiplier(equippedItem.WeaponLength, strengthSkill);
             }
 
             // Mounted Archery
@@ -421,6 +424,12 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         props.AttributeHorseArchery = Game.Current.BasicModels.StrikeMagnitudeModel.CalculateHorseArcheryFactor(character);
 
         SetAiRelatedProperties(agent, props, equippedItem, secondaryItem);
+    }
+
+    private float ImpactofStrAndWeaponLengthOnCombatMaxSpeedMultiplier(int weaponLength, int strengthSkill)
+    {
+        float maxLength = 75 + (strengthSkill - 3) * 7;
+        return Math.Min(MBMath.Lerp(0.8f, 1f, maxLength / weaponLength), 1f);
     }
 
     private float ImpactOfStrReqOnCrossbows(Agent agent, float impact, ItemObject? equippedItem)

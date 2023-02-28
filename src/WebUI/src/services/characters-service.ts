@@ -31,11 +31,13 @@ export function computeSpeedStats({
   athletics,
   agility,
   totalEncumbrance,
+  longestWeaponLength,
 }: {
   strength: number;
   athletics: number;
   agility: number;
   totalEncumbrance: number;
+  longestWeaponLength: number;
 }): CharacterSpeedStats {
   const awfulScaler = 3231477.548;
   const weightReductionPolynomialFactor = [
@@ -58,6 +60,10 @@ export function computeSpeedStats({
     1.5 *
     (1 + perceivedWeight / 15) *
     (20 / (20 + Math.pow((20 * athletics + 3 * agility) / 120, 2)));
+  const maxWeaponLength = 75 + (strength - 3) * 7;
+
+  const movementSpeedPenaltyWhenSwinging =
+    100 * (Math.min(0.8 + (0.2 * maxWeaponLength) / longestWeaponLength, 1) - 1);
 
   return {
     weightReductionFactor,
@@ -66,5 +72,7 @@ export function computeSpeedStats({
     nakedSpeed,
     сurrentSpeed,
     timeToMaxSpeed,
+    maxWeaponLength,
+    movementSpeedPenaltyWhenSwinging,
   };
 }
