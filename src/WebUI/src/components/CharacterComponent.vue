@@ -120,7 +120,8 @@
           expanded
           @click="openRespecializeCharacterDialog"
         >
-          Respecialize
+          Respecialize {{ respecPrice.toLocaleString('en-US') }}
+          <b-icon icon="coins" size="is-small" />
         </b-button>
       </b-tooltip>
 
@@ -406,6 +407,10 @@ export default class CharacterComponent extends Vue {
           ui => this.userItemToReplace === null || ui.id !== this.userItemToReplace.id
         );
   }
+  get respecPrice(): String {
+    const respecPrice = (this.character.experience / 4420824) * 5000;
+    return respecPrice.toFixed(0);
+  }
 
   get itemToReplaceUpgradeInfo(): { upgradable: boolean; reason: string } {
     // const info = { upgradable: true, reason: '' };
@@ -459,8 +464,10 @@ export default class CharacterComponent extends Vue {
   openRespecializeCharacterDialog(): void {
     this.$buefy.dialog.confirm({
       title: 'Respecialize character',
-      message: `Are you sure you want to respecialize your character ${this.character.name} lvl. ${this.character.level}?
-        This action cannot be undone.`,
+      message: `Are you sure you want to respecialize your character ${this.character.name} lvl. ${this.character.level} for ${this.respecPrice} gold
+
+              This action cannot be undone.`,
+
       confirmText: 'Respecialize Character',
       type: 'is-danger',
       hasIcon: true,
