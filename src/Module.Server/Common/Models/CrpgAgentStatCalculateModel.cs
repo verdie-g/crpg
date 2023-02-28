@@ -252,6 +252,17 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         BasicCharacterObject character = agent.Character;
         MissionEquipment equipment = agent.Equipment;
         props.WeaponsEncumbrance = equipment.GetTotalWeightOfWeapons();
+        EquipmentIndex wieldedItemIndex3 = agent.GetWieldedItemIndex(Agent.HandIndex.MainHand);
+        WeaponComponentData? equippedItem = wieldedItemIndex3 != EquipmentIndex.None
+            ? equipment[wieldedItemIndex3].CurrentUsageItem
+            : null;
+        ItemObject? primaryItem = wieldedItemIndex3 != EquipmentIndex.None
+            ? equipment[wieldedItemIndex3].Item
+            : null;
+        EquipmentIndex wieldedItemIndex4 = agent.GetWieldedItemIndex(Agent.HandIndex.OffHand);
+        WeaponComponentData? secondaryItem = wieldedItemIndex4 != EquipmentIndex.None
+            ? equipment[wieldedItemIndex4].CurrentUsageItem
+            : null;
 
         int strengthSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
         int athleticsSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, DefaultSkills.Athletics);
@@ -261,7 +272,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         float totalEncumbrance = props.ArmorEncumbrance + props.WeaponsEncumbrance;
         float freeWeight = 2.5f * (1 + (strengthSkill - 3f) / 30f);
         float perceivedWeight = Math.Max(totalEncumbrance - freeWeight, 0f) * weightReductionFactor;
-        props.TopSpeedReachDuration = 1.5f * (1f + perceivedWeight / 15f) * (20f / (20f + (float)Math.Pow(athleticsSkill / 120f, 2f)));
+        props.TopSpeedReachDuration = 1.5f * (1f + perceivedWeight / 15f) * (20f / (20f + (float)Math.Pow(athleticsSkill / 120f, 2f))) + ImpactofStrAndWeaponLengthOnTimeToMaxSpeed(equippedItem != null ? equippedItem.WeaponLength : 75, strengthSkill);
         float speed = 0.68f + 0.00091f * athleticsSkill;
         props.MaxSpeedMultiplier = MBMath.ClampFloat(
             speed * (float)Math.Pow(361f / (361f + (float)Math.Pow(perceivedWeight, 5f)), 0.055f),
@@ -276,18 +287,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                     bipedalCombatSpeedMinMultiplier,
                     MathF.Min(perceivedWeight / 40f, 1f)),
                 1f);
-
-        EquipmentIndex wieldedItemIndex3 = agent.GetWieldedItemIndex(Agent.HandIndex.MainHand);
-        WeaponComponentData? equippedItem = wieldedItemIndex3 != EquipmentIndex.None
-            ? equipment[wieldedItemIndex3].CurrentUsageItem
-            : null;
-        ItemObject? primaryItem = wieldedItemIndex3 != EquipmentIndex.None
-            ? equipment[wieldedItemIndex3].Item
-            : null;
-        EquipmentIndex wieldedItemIndex4 = agent.GetWieldedItemIndex(Agent.HandIndex.OffHand);
-        WeaponComponentData? secondaryItem = wieldedItemIndex4 != EquipmentIndex.None
-            ? equipment[wieldedItemIndex4].CurrentUsageItem
-            : null;
         int itemSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, equippedItem?.RelevantSkill ?? DefaultSkills.Athletics);
         // Use weapon master here instead of wpf so the archer with no melee wpf can still fight.
         int weaponMaster = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.WeaponMaster);
@@ -385,12 +384,16 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                     props.WeaponRotationalAccuracyPenaltyInRadians = 0.1f;
                 }
             }
-
-            // does this govern couching?
-            else if (equippedItem.WeaponFlags.HasAllFlags(WeaponFlags.WideGrip))
+            else
             {
-                props.WeaponUnsteadyBeginTime = 1.0f + weaponSkill * 0.005f;
-                props.WeaponUnsteadyEndTime = 3.0f + weaponSkill * 0.01f;
+                // does this govern couching?
+                if (equippedItem.WeaponFlags.HasAllFlags(WeaponFlags.WideGrip))
+                {
+                    props.WeaponUnsteadyBeginTime = 1.0f + weaponSkill * 0.005f;
+                    props.WeaponUnsteadyEndTime = 3.0f + weaponSkill * 0.01f;
+                }
+
+                props.CombatMaxSpeedMultiplier *= ImpactofStrAndWeaponLengthOnCombatMaxSpeedMultiplier(equippedItem.WeaponLength, strengthSkill);
             }
 
             // Mounted Archery
@@ -421,6 +424,19 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         props.AttributeHorseArchery = Game.Current.BasicModels.StrikeMagnitudeModel.CalculateHorseArcheryFactor(character);
 
         SetAiRelatedProperties(agent, props, equippedItem, secondaryItem);
+    }
+
+    private float ImpactofStrAndWeaponLengthOnCombatMaxSpeedMultiplier(int weaponLength, int strengthSkill)
+    {
+        float maxWeaponLength = 75 + (strengthSkill - 3) * 7;
+        return Math.Min(MBMath.Lerp(0.8f, 1f, maxWeaponLength / weaponLength), 1f);
+    }
+
+    private float ImpactofStrAndWeaponLengthOnTimeToMaxSpeed(int weaponLength, int strengthSkill)
+    {
+        float maxWeaponLength = 75 + (strengthSkill - 3) * 7;
+
+        return (float)Math.Max((1.2 * (weaponLength - maxWeaponLength)) / maxWeaponLength, 0f);
     }
 
     private float ImpactOfStrReqOnCrossbows(Agent agent, float impact, ItemObject? equippedItem)

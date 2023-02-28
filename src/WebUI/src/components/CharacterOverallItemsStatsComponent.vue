@@ -112,6 +112,20 @@
             <b-icon icon="running" size="is-small" />
           </td>
         </tr>
+        <tr>
+          <td><b>Max Weapon Length Without Penalty</b></td>
+          <td>
+            {{ speedStats.maxWeaponLength.toLocaleString('en-US') }}
+            <b-icon icon="running" size="is-small" />
+          </td>
+        </tr>
+        <tr>
+          <td><b>Extra Movement Speed When Attacking Penalty</b></td>
+          <td>
+            {{ speedStats.movementSpeedPenaltyWhenAttacking.toLocaleString('en-US') }} %
+            <b-icon icon="running" size="is-small" />
+          </td>
+        </tr>
       </template>
     </table>
   </div>
@@ -156,6 +170,7 @@ export default class CharacterOverallItemsStatsComponent extends Vue {
       agility: this.characteristics.attributes.agility,
       athletics: this.characteristics.skills.athletics,
       totalEncumbrance: this.itemStats.weight,
+      longestWeaponLength: this.itemStats.longestWeaponLength,
     });
   }
 
@@ -168,6 +183,7 @@ export default class CharacterOverallItemsStatsComponent extends Vue {
       armArmor: 0,
       legArmor: 0,
       weight: 0,
+      longestWeaponLength: 0,
     };
 
     if (!this.equippedItems) return result;
@@ -188,6 +204,10 @@ export default class CharacterOverallItemsStatsComponent extends Vue {
           result.weight +=
             ei.userItem.baseItem.weight * ei.userItem.baseItem.weapons[0].stackAmount;
         } else {
+          result.longestWeaponLength = Math.max(
+            result.longestWeaponLength,
+            ei.userItem.baseItem.weapons[0].length
+          );
           result.weight += ei.userItem.baseItem.weight;
         }
       }

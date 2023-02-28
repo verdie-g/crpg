@@ -5,4 +5,6 @@ export default interface CharacterSpeedStats {
   nakedSpeed: number;
   сurrentSpeed: number;
   timeToMaxSpeed: number;
+  maxWeaponLength: number;
+  movementSpeedPenaltyWhenAttacking: number;
 }
