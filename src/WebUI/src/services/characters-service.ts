@@ -1,6 +1,7 @@
 import { applyPolynomialFunction, clamp } from '@/utils/math';
 import Constants from '../../../../data/constants.json';
 import type CharacterSpeedStats from '@/models/сharacter-speed-stats';
+import Character from '@/models/character';
 
 export function computeHealthPoints(ironFlesh: number, strength: number): number {
   return (
@@ -19,6 +20,16 @@ export function getExperienceForLevel(level: number): number {
   } else {
     return getExperienceForLevel(30) * Math.pow(2, level - 30);
   }
+}
+
+export function computeRespecializationPrice(character: Character): number {
+  if (character.forTournament) {
+    return 0;
+  }
+
+  return Math.floor(
+    (character.experience / getExperienceForLevel(30)) * Constants.respecializePriceForLevel30
+  );
 }
 
 function ComputeExperienceDistribution(level: number): number {

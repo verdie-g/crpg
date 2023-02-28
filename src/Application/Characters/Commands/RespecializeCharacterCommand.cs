@@ -42,6 +42,7 @@ public record RespecializeCharacterCommand : IMediatorRequest<CharacterViewModel
         public async Task<Result<CharacterViewModel>> Handle(RespecializeCharacterCommand req, CancellationToken cancellationToken)
         {
             var character = await _db.Characters
+                .Include(c => c.User)
                 .FirstOrDefaultAsync(c => c.Id == req.CharacterId && c.UserId == req.UserId, cancellationToken);
             if (character == null)
             {
@@ -53,6 +54,13 @@ public record RespecializeCharacterCommand : IMediatorRequest<CharacterViewModel
                 character.Experience = (int)MathHelper.ApplyPolynomialFunction(character.Experience,
                     _constants.RespecializeExperiencePenaltyCoefs);
                 character.Level = _experienceTable.GetLevelForExperience(character.Experience);
+                int price = (int)((float)character.Experience / _experienceTable.GetExperienceForLevel(30) * _constants.RespecializePriceForLevel30);
+                if (character.User!.Gold < price)
+                {
+                    return new(CommonErrors.NotEnoughGold(price, character.User.Gold));
+                }
+
+                character.User.Gold -= price;
             }
 
             _characterService.ResetCharacterCharacteristics(character, true);

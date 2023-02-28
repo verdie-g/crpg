@@ -118,9 +118,12 @@
           type="is-warning"
           icon-left="angle-double-down"
           expanded
+          :disabled="!canRespecialize"
           @click="openRespecializeCharacterDialog"
         >
-          Respecialize
+          Respecialize ({{ respecializationPrice }}
+          <b-icon icon="coins" size="is-small" class="m-1" />
+          )
         </b-button>
       </b-tooltip>
 
@@ -360,6 +363,7 @@ import UserItem from '@/models/user-item';
 import DisplayUserItem from '@/components/user/DisplayUserItem.vue';
 import ConfirmActionForm from '@/components/ConfirmActionForm.vue';
 import { timestampToTimeString } from '@/utils/date';
+import { computeRespecializationPrice } from '@/services/characters-service';
 
 @Component({
   components: {
@@ -405,6 +409,17 @@ export default class CharacterComponent extends Vue {
       : filterUserItemsFittingInSlot(userModule.userItems, this.userItemToReplaceSlot).filter(
           ui => this.userItemToReplace === null || ui.id !== this.userItemToReplace.id
         );
+  }
+  get canRespecialize(): boolean {
+    if (userModule.user === null) {
+      return false;
+    }
+
+    return this.respecializationPrice <= userModule.user.gold;
+  }
+
+  get respecializationPrice(): number {
+    return computeRespecializationPrice(this.character);
   }
 
   get itemToReplaceUpgradeInfo(): { upgradable: boolean; reason: string } {
@@ -459,8 +474,10 @@ export default class CharacterComponent extends Vue {
   openRespecializeCharacterDialog(): void {
     this.$buefy.dialog.confirm({
       title: 'Respecialize character',
-      message: `Are you sure you want to respecialize your character ${this.character.name} lvl. ${this.character.level}?
-        This action cannot be undone.`,
+      message: `Are you sure you want to respecialize your character ${this.character.name} lvl. ${this.character.level} for ${this.respecializationPrice} gold
+
+              This action cannot be undone.`,
+
       confirmText: 'Respecialize Character',
       type: 'is-danger',
       hasIcon: true,
