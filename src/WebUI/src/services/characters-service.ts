@@ -56,14 +56,20 @@ export function computeSpeedStats({
     0.1,
     1.5
   );
+  const maxWeaponLength = 75 + (strength - 3) * 7;
+  const timeToMaxSpeedWeaponLenghthTerm = Math.max(
+    (1.2 * (longestWeaponLength - maxWeaponLength)) / maxWeaponLength,
+    0
+  );
+
   const timeToMaxSpeed =
     1.5 *
-    (1 + perceivedWeight / 15) *
-    (20 / (20 + Math.pow((20 * athletics + 3 * agility) / 120, 2)));
-  const maxWeaponLength = 75 + (strength - 3) * 7;
+      (1 + perceivedWeight / 15) *
+      (20 / (20 + Math.pow((20 * athletics + 3 * agility) / 120, 2))) +
+    timeToMaxSpeedWeaponLenghthTerm;
 
   const movementSpeedPenaltyWhenAttacking =
-    100 * (Math.min(0.8 + (0.2 * maxWeaponLength) / longestWeaponLength, 1) - 1);
+    100 * (Math.min(0.8 + (0.2 * (maxWeaponLength + 1)) / (longestWeaponLength + 1), 1) - 1);
 
   return {
     weightReductionFactor,
