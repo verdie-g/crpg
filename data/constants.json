@@ -33,7 +33,7 @@
   "damageFactorForPowerStrikeCoefs": [0.08, 1.0],
   "damageFactorForPowerDrawCoefs": [0.14, 1.0],
   "damageFactorForPowerThrowCoefs": [ 0.10, 1.0 ],
-  "HandlingFactorForWeaponMaster":  [0.65, 0.71, 0.747, 0.779, 0.808, 0.835, 0.861, 0.887, 0.923, 0.98, 1.15, 1.33, 1.48, 1.6],
+  "handlingFactorForWeaponMaster":  [0.65, 0.71, 0.747, 0.779, 0.808, 0.835, 0.861, 0.887, 0.923, 0.98, 1.15, 1.33, 1.48, 1.6],
   "durabilityFactorForShieldRecursiveCoefs": [1.0, 0.4, 0.1],
   "speedFactorForShieldCoefs": [0.03, 1.0],
   "coverageFactorForShieldCoefs": [0.12, 0.0],
