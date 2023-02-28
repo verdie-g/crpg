@@ -407,7 +407,7 @@ export default class CharacterComponent extends Vue {
           ui => this.userItemToReplace === null || ui.id !== this.userItemToReplace.id
         );
   }
-  get respecPrice(): String {
+  get respecPrice(): string {
     const respecPrice = (this.character.experience / 4420824) * 5000;
     return respecPrice.toFixed(0);
   }
