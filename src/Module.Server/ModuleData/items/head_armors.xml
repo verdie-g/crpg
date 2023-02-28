@@ -1674,4 +1674,16 @@
     </ItemComponent>
     <Flags Civilian="true" UseTeamColor="true" />
   </Item>
+  <Item id="crpg_takeocrown" name="Takeo's Crown" subtype="head_armor" mesh="takeocrown" culture="Culture.vlandia" weight="1.28961" difficulty="0" appearance="1" Type="HeadArmor">
+    <ItemComponent>
+      <Armor head_armor="30" has_gender_variations="false" hair_cover_type="none" modifier_group="cloth_unarmoured" material_type="Cloth" beard_cover_type="none" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_takeo_fleur_de_lis" name="Takeo's Fleur De Lis" subtype="head_armor" mesh="takeocrown1" culture="Culture.vlandia" weight="1.28961" difficulty="0" appearance="1" Type="HeadArmor">
+    <ItemComponent>
+      <Armor head_armor="30" has_gender_variations="false" hair_cover_type="none" modifier_group="cloth_unarmoured" material_type="Cloth" beard_cover_type="none" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
 </Items>
