@@ -13,6 +13,7 @@ public class Constants
     public float ExperienceMultiplierByGeneration { get; set; }
     public float MaxExperienceMultiplierForGeneration { get; set; }
     public float[] RespecializeExperiencePenaltyCoefs { get; set; } = Array.Empty<float>();
+    public int RespecializePriceForLevel30 { get; set; }
     public int MinimumRetirementLevel { get; set; }
     public float BaseExperienceGainPerSecond { get; set; }
     public float MultipliedExperienceGainPerSecond { get; set; }

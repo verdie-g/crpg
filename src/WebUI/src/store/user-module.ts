@@ -15,6 +15,7 @@ import CharacterUpdate from '@/models/character-update';
 import EquippedItem from '@/models/equipped-item';
 import Clan from '@/models/clan';
 import UserItem from '@/models/user-item';
+import { computeRespecializationPrice } from '@/services/characters-service';
 
 @Module({ store, dynamic: true, name: 'user' })
 class UserModule extends VuexModule {
@@ -371,6 +372,7 @@ class UserModule extends VuexModule {
 
   @Action
   async respecializeCharacter(character: Character): Promise<void> {
+    this.substractGold(computeRespecializationPrice(character));
     character = await userService.respecializeCharacter(character.id);
     this.replaceCharacter(character);
     const characteristics = await userService.getCharacterCharacteristics(character.id);

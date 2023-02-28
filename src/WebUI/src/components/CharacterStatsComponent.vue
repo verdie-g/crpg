@@ -72,7 +72,9 @@
         <b-switch v-model="isCharacterActive" :disabled="character.forTournament" />
       </b-field>
 
-        <p class="is-size-6 has-text-danger" v-if="character.forTournament">Character is only playable in tournaments.</p>
+      <p class="is-size-6 has-text-danger" v-if="character.forTournament">
+        Character is only playable in tournaments.
+      </p>
     </div>
 
     <div class="characteristic-section" v-if="characteristics !== null">
