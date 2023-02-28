@@ -120,9 +120,9 @@
           </td>
         </tr>
         <tr>
-          <td><b>Extra Movement Speed When Swinging Penalty</b></td>
+          <td><b>Extra Movement Speed When Attacking Penalty</b></td>
           <td>
-            {{ speedStats.movementSpeedPenaltyWhenSwinging.toLocaleString('en-US') }} %
+            {{ speedStats.movementSpeedPenaltyWhenAttacking.toLocaleString('en-US') }} %
             <b-icon icon="running" size="is-small" />
           </td>
         </tr>

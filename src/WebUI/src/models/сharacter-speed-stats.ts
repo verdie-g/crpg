@@ -6,5 +6,5 @@ export default interface CharacterSpeedStats {
   сurrentSpeed: number;
   timeToMaxSpeed: number;
   maxWeaponLength: number;
-  movementSpeedPenaltyWhenSwinging: number;
+  movementSpeedPenaltyWhenAttacking: number;
 }

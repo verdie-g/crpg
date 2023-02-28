@@ -62,7 +62,7 @@ export function computeSpeedStats({
     (20 / (20 + Math.pow((20 * athletics + 3 * agility) / 120, 2)));
   const maxWeaponLength = 75 + (strength - 3) * 7;
 
-  const movementSpeedPenaltyWhenSwinging =
+  const movementSpeedPenaltyWhenAttacking =
     100 * (Math.min(0.8 + (0.2 * maxWeaponLength) / longestWeaponLength, 1) - 1);
 
   return {
@@ -73,6 +73,6 @@ export function computeSpeedStats({
     сurrentSpeed,
     timeToMaxSpeed,
     maxWeaponLength,
-    movementSpeedPenaltyWhenSwinging,
+    movementSpeedPenaltyWhenAttacking,
   };
 }
