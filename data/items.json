@@ -31935,9 +31935,9 @@
     "name": "Throwing Hammers",
     "culture": "Battania",
     "type": "Thrown",
-    "price": 11873,
+    "price": 5955,
     "weight": 1.22,
-    "tier": 12.981554,
+    "tier": 8.866577,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -31958,7 +31958,7 @@
           "AutoReload",
           "AmmoBreaksOnBounceBack"
         ],
-        "thrustDamage": 33,
+        "thrustDamage": 30,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 94,
         "swingDamage": 0,
@@ -31981,7 +31981,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 94,
-        "swingDamage": 10,
+        "swingDamage": 9,
         "swingDamageType": "Blunt",
         "swingSpeed": 104
       }
