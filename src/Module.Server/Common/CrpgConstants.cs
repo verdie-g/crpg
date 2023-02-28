@@ -36,6 +36,7 @@ internal class CrpgConstants
     public float[] DamageFactorForPowerStrikeCoefs { get; set; } = Array.Empty<float>();
     public float[] DamageFactorForPowerDrawCoefs { get; set; } = Array.Empty<float>();
     public float[] DamageFactorForPowerThrowCoefs { get; set; } = Array.Empty<float>();
+    public float[] HandlingFactorForWeaponMaster { get; set; } = Array.Empty<float>();
     public float[] DurabilityFactorForShieldRecursiveCoefs { get; set; } = Array.Empty<float>();
     public float[] SpeedFactorForShieldCoefs { get; set; } = Array.Empty<float>();
     public float[] CoverageFactorForShieldCoefs { get; set; } = Array.Empty<float>();
