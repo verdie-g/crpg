@@ -2,7 +2,7 @@
 <Module>
   <Name value="cRPG_Exporter"/>
   <Id value="cRPG_Exporter"/>
-  <Version value="v1.0.3.23"/>
+  <Version value="v1.0.3.24"/>
   <ModuleCategory value="Singleplayer"/>
   <DependedModules>
     <DependedModule Id="Native" DependentVersion="v1.0.3" Optional="false"/>

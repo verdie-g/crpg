@@ -279,7 +279,7 @@ internal class CrpgItemValueModel : ItemValueModel
         {
             DamageTypes.Blunt => 2f,
             DamageTypes.Pierce => 1.75f,
-            _ => 1.0f,
+            _ => 1.35f,
         };
     }
 
@@ -289,7 +289,7 @@ internal class CrpgItemValueModel : ItemValueModel
         {
             DamageTypes.Blunt => 2.4f,
             DamageTypes.Pierce => 1.75f,
-            _ => 1.25f,
+            _ => 1.35f,
         };
     }
 
@@ -320,7 +320,7 @@ internal class CrpgItemValueModel : ItemValueModel
     {
         WeaponComponentData weapon = weaponComponent.Weapons.MaxBy(a => a.MaxDataValue);
         float scaler = 1600000f;
-        float bonusVsShield = weapon.WeaponFlags.HasFlag(WeaponFlags.BonusAgainstShield) ? 1.15f : 1f;
+        float bonusVsShield = weapon.WeaponFlags.HasFlag(WeaponFlags.BonusAgainstShield) ? 1.40f : 1f;
         float tier = weapon.ThrustDamage
             * weapon.ThrustDamage
             * weapon.MissileSpeed
