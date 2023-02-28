@@ -416,6 +416,10 @@
       <UsablePiece piece_id="crpg_wooden_2hsword_t1_guard" />
       <UsablePiece piece_id="crpg_wooden_2hsword_t1_handle" />
       <UsablePiece piece_id="crpg_wooden_2hsword_t1_pommel" />
+      <UsablePiece piece_id="crpg_sentinel_2hsword_blade" />
+      <UsablePiece piece_id="crpg_sentinel_2hsword_guard" />
+      <UsablePiece piece_id="crpg_sentinel_2hsword_handle" />
+      <UsablePiece piece_id="crpg_sentinel_2hsword_pommel" />
       <UsablePiece piece_id="crpg_wooden_sword_t1_blade" />
       <UsablePiece piece_id="crpg_wooden_sword_t1_guard" />
       <UsablePiece piece_id="crpg_wooden_sword_t1_handle" />
@@ -1486,6 +1490,8 @@
     <WeaponDescriptions>
       <WeaponDescription id="crpg_ThrowingAxe" />
       <WeaponDescription id="crpg_OneHandedAxe" />
+      <WeaponDescription id="crpg_ThrowingHammer" />
+      <WeaponDescription id="crpg_Mace" />
     </WeaponDescriptions>
     <StatsData weapon_description="crpg_ThrowingAxe">
       <StatData stat_type="Weight" max_value="7.0" />

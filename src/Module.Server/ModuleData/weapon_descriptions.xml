@@ -369,6 +369,10 @@
       <AvailablePiece id="crpg_wooden_sword_t1_guard" />
       <AvailablePiece id="crpg_wooden_sword_t1_handle" />
       <AvailablePiece id="crpg_wooden_sword_t1_pommel" />
+      <AvailablePiece id="crpg_sentinel_2hsword_blade" />
+      <AvailablePiece id="crpg_sentinel_2hsword_guard" />
+      <AvailablePiece id="crpg_sentinel_2hsword_handle" />
+      <AvailablePiece id="crpg_sentinel_2hsword_pommel" />
     </AvailablePieces>
   </WeaponDescription>
   <WeaponDescription id="crpg_OneHandedBastardSword" weapon_class="OneHandedSword" item_usage_features="onehanded:block:rshield:swing:thrust">
@@ -839,6 +843,10 @@
       <AvailablePiece id="crpg_wooden_sword_t1_blade" />
       <AvailablePiece id="crpg_wooden_sword_t1_guard" />
       <AvailablePiece id="crpg_wooden_sword_t1_pommel" />
+      <AvailablePiece id="crpg_sentinel_2hsword_blade" />
+      <AvailablePiece id="crpg_sentinel_2hsword_guard" />
+      <AvailablePiece id="crpg_sentinel_2hsword_handle" />
+      <AvailablePiece id="crpg_sentinel_2hsword_pommel" />
     </AvailablePieces>
   </WeaponDescription>
   <WeaponDescription id="crpg_TwoHandedSword" weapon_class="TwoHandedSword" item_usage_features="twohanded:block:swing:thrust">
@@ -1841,8 +1849,6 @@
       <WeaponFlag value="UnloadWhenSheathed" />
     </WeaponFlags>
     <AvailablePieces>
-      <AvailablePiece id="crpg_throwing_maul_handle" />
-      <AvailablePiece id="crpg_throwing_maul_blade" />
       <AvailablePiece id="crpg_southern_throwing_axe_1_t4_handle" />
       <AvailablePiece id="crpg_highland_throwing_axe_1_t2_handle" />
       <AvailablePiece id="crpg_western_throwing_axe_1_t1_handle" />
@@ -1851,6 +1857,19 @@
       <AvailablePiece id="crpg_western_throwing_axe_1_t1_blade" />
       <AvailablePiece id="crpg_southern_throwing_axe_1_t4_blade" />
       <AvailablePiece id="crpg_highland_throwing_axe_1_t2_blade" />
+    </AvailablePieces>
+  </WeaponDescription>
+  <WeaponDescription id="crpg_ThrowingHammer" weapon_class="ThrowingAxe" item_usage_features="throwing:axe">
+    <WeaponFlags>
+      <WeaponFlag value="RangedWeapon" />
+      <WeaponFlag value="Consumable" />
+      <WeaponFlag value="UseHandAsThrowBase" />
+      <WeaponFlag value="AutoReload" />
+      <WeaponFlag value="UnloadWhenSheathed" />
+    </WeaponFlags>
+    <AvailablePieces>
+      <AvailablePiece id="crpg_throwing_maul_handle" />
+      <AvailablePiece id="crpg_throwing_maul_blade" />
     </AvailablePieces>
   </WeaponDescription>
   <WeaponDescription id="crpg_OneHandedPolearm" weapon_class="OneHandedPolearm" item_usage_features="onehanded_polearm:block:long:rshield:thrust">
@@ -3085,6 +3104,8 @@
       <WeaponFlag value="MeleeWeapon" />
     </WeaponFlags>
     <AvailablePieces>
+      <AvailablePiece id="crpg_throwing_maul_handle" />
+      <AvailablePiece id="crpg_throwing_maul_blade" />
       <AvailablePiece id="crpg_blacksmith_war_hammer_mace_t3_handle" />
       <AvailablePiece id="crpg_blacksmith_war_hammer_1_t1_blade" />
       <AvailablePiece id="crpg_medium_goedendag_head"/>

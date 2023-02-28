@@ -120,6 +120,14 @@
     </ItemComponent>
     <Flags WoodenParry="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" />
   </Item>
+<Item id="crpg_Heavy_Highland_Tower_Shield" name="{crpg_Heavy_Highland_Tower_Shield}Heavy Highland Tower Shield" body_name="bo_cap_battania_large_shield_b" shield_body_name="bo_battania_large_shield_b" recalculate_body="false" mesh="mp_battania_large_shield_b" culture="Culture.battania" using_tableau="true" weight="12.0" appearance="1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0.1,0">
+    <ItemComponent>
+      <Weapon weapon_class="LargeShield" body_armor="10" thrust_speed="55" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="55" physics_material="wood_shield" item_usage="hand_shield" position="0.04, -0.01, 0.0" rotation="-75.00,-62.90,0.00" weapon_length="140" center_of_mass="0.0,0.065,0.05" hit_points="125" modifier_group="shield">
+        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags WoodenParry="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" />
+  </Item>
   <Item id="crpg_old_kite_shield" name="{=vXvuViMT}Makeshift Kite Shield" body_name="bo_cap_kite_shield_a" shield_body_name="bo_kite_shield_a" recalculate_body="false" mesh="kite_shield_a" using_tableau="true" weight="11.7" appearance="0.3" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,0,-0.025">
     <ItemComponent>
       <Weapon weapon_class="LargeShield" body_armor="0" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="82" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="170" center_of_mass="0.0,0.05,0.05" hit_points="70" modifier_group="shield">
@@ -488,17 +496,17 @@
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
-  <Item id="crpg_long_buckler" name="{=}Oval Buckler" body_name="bo_cap_crpg_long_buckler" shield_body_name="bo_aserai_shields_g" recalculate_body="false" mesh="long_buckler" culture="Culture.sturgia" using_tableau="true" weight="1.2" difficulty="0" appearance="0.9" Type="Shield" item_holsters="sword_left_hip_3:sword_left_hip:sword_left_hip_2" has_lower_holster_priority="true" holster_position_shift="0,-0.05,0">
+  <Item id="crpg_long_buckler" name="{=}Heavy Oval Buckler Shield" body_name="bo_cap_crpg_long_buckler" shield_body_name="bo_crpg_long_buckler" recalculate_body="false" mesh="long_buckler" using_tableau="true" weight="1.2" difficulty="0" appearance="0.9" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="0.15,0.40,-0.10">
     <ItemComponent>
-      <Weapon weapon_class="SmallShield" body_armor="8" thrust_speed="80" thrust_damage="10" thrust_damage_type="Blunt" speed_rating="100" physics_material="metal_shield" item_usage="hand_shield" position="0.0, 0.01, 0.0" rotation="0.0,100.0,75.0" weapon_length="24" center_of_mass="0, 0, 0" hit_points="220" modifier_group="shield">
+      <Weapon weapon_class="SmallShield" body_armor="8" thrust_speed="80" thrust_damage="10" thrust_damage_type="Blunt" speed_rating="100" physics_material="metal_shield" item_usage="hand_shield" position="0.0, 0.01, 0.0" rotation="-10.0,-90.0,0.0" weapon_length="24" center_of_mass="0.0,0.1,0,1" hit_points="220" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="false" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" />
   </Item>
-  <Item id="crpg_buckler" name="{=}Round Buckler" body_name="bo_cap_crpg_buckler" shield_body_name="bo_aserai_shields_g" recalculate_body="false" mesh="buckler" culture="Culture.sturgia" using_tableau="true" weight="1.0" difficulty="0" appearance="0.9" Type="Shield" item_holsters="sword_left_hip_3:sword_left_hip:sword_left_hip_2" has_lower_holster_priority="true" holster_position_shift="0,-0.05,0">
+  <Item id="crpg_buckler" name="{=}Round Buckler Shield" body_name="bo_cap_crpg_buckler" shield_body_name="bo_crpg_buckler" recalculate_body="false" mesh="buckler" using_tableau="true" weight="1.0" difficulty="0" appearance="0.9" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="0.15,0.40,-0.10">
     <ItemComponent>
-      <Weapon weapon_class="SmallShield" body_armor="8" thrust_speed="86" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="100" physics_material="metal_shield" item_usage="hand_shield" position="0.0, 0.01, 0.0" rotation="0.0,100.0,75.0" weapon_length="15" center_of_mass="0, 0, 0" hit_points="200" modifier_group="shield">
+      <Weapon weapon_class="SmallShield" body_armor="8" thrust_speed="86" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="100" physics_material="metal_shield" item_usage="hand_shield" position="0.0, 0.01, 0.0" rotation="-10.0,-90.0,0.0" weapon_length="15" center_of_mass="0.0,0.1,0,1" hit_points="200" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
