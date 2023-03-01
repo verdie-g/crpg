@@ -287,7 +287,7 @@ internal class CrpgItemValueModel : ItemValueModel
     {
         return damageType switch
         {
-            DamageTypes.Blunt => 2.4f,
+            DamageTypes.Blunt => 3.5f,
             DamageTypes.Pierce => 1.75f,
             _ => 1.35f,
         };
