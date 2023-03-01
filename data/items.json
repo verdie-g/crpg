@@ -27914,9 +27914,9 @@
     "name": "Snowball",
     "culture": "Neutral",
     "type": "Thrown",
-    "price": 383,
+    "price": 1070,
     "weight": 0.1,
-    "tier": 1.47456,
+    "tier": 3.136,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -31935,9 +31935,9 @@
     "name": "Throwing Hammers",
     "culture": "Battania",
     "type": "Thrown",
-    "price": 5955,
+    "price": 6230,
     "weight": 1.22,
-    "tier": 8.866577,
+    "tier": 9.093782,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -31958,7 +31958,7 @@
           "AutoReload",
           "AmmoBreaksOnBounceBack"
         ],
-        "thrustDamage": 30,
+        "thrustDamage": 25,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 94,
         "swingDamage": 0,
@@ -31981,7 +31981,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 94,
-        "swingDamage": 9,
+        "swingDamage": 7,
         "swingDamageType": "Blunt",
         "swingSpeed": 104
       }
@@ -31992,9 +31992,9 @@
     "name": "Stone",
     "culture": "Neutral",
     "type": "Thrown",
-    "price": 383,
+    "price": 1070,
     "weight": 0.1,
-    "tier": 1.47456,
+    "tier": 3.136,
     "requirement": 0,
     "flags": [],
     "weapons": [
