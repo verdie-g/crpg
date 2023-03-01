@@ -31931,6 +31931,43 @@
     "weapons": []
   },
   {
+    "id": "crpg_throwing_heavy_stone",
+    "name": "Heavy Stones",
+    "culture": "Neutral",
+    "type": "Thrown",
+    "price": 2785,
+    "weight": 0.1,
+    "tier": 5.71535969,
+    "requirement": 0,
+    "flags": [],
+    "weapons": [
+      {
+        "class": "Stone",
+        "itemUsage": "stone",
+        "accuracy": 100,
+        "missileSpeed": 40,
+        "stackAmount": 6,
+        "length": 10,
+        "balance": 0.0,
+        "handling": 102,
+        "bodyArmor": 0,
+        "flags": [
+          "RangedWeapon",
+          "Consumable",
+          "UnloadWhenSheathed",
+          "AutoReload",
+          "AmmoBreaksOnBounceBack"
+        ],
+        "thrustDamage": 12,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 102,
+        "swingDamage": 0,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 102
+      }
+    ]
+  },
+  {
     "id": "crpg_throwing_maul",
     "name": "Throwing Hammers",
     "culture": "Battania",
@@ -31992,9 +32029,9 @@
     "name": "Stone",
     "culture": "Neutral",
     "type": "Thrown",
-    "price": 1070,
+    "price": 568,
     "weight": 0.1,
-    "tier": 3.136,
+    "tier": 2.00704,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -32003,7 +32040,7 @@
         "itemUsage": "stone",
         "accuracy": 100,
         "missileSpeed": 40,
-        "stackAmount": 10,
+        "stackAmount": 8,
         "length": 10,
         "balance": 0.0,
         "handling": 102,
