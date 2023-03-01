@@ -204,12 +204,20 @@ export default class CharacterOverallItemsStatsComponent extends Vue {
           result.weight +=
             ei.userItem.baseItem.weight * ei.userItem.baseItem.weapons[0].stackAmount;
         } else {
-          result.longestWeaponLength = Math.max(
-            result.longestWeaponLength,
-            ei.userItem.baseItem.weapons[0].length
-          );
           result.weight += ei.userItem.baseItem.weight;
         }
+      }
+
+      if (
+        [ItemType.OneHandedWeapon, ItemType.TwoHandedWeapon, ItemType.Polearm].includes(
+          ei.userItem.baseItem.type
+        ) &&
+        ei.userItem.baseItem.weapons.length !== 0
+      ) {
+        result.longestWeaponLength = Math.max(
+          result.longestWeaponLength,
+          ei.userItem.baseItem.weapons[0].length
+        );
       }
 
       const armor = ei.userItem.baseItem.armor;
