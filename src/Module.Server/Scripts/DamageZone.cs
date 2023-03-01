@@ -52,8 +52,10 @@ internal class DamageZone : ScriptComponentBehavior
         // Killing an agent removes it from the Mission.Agents list which breaks its enumerator. So a temporary buffer
         // need to be used.
         List<Agent>? agentsToDamage = null;
-        foreach (var agent in Mission.Current.GetAgentsInRange(entityOrigin.AsVec2, entityScale.AsVec2.Length / 2))
+        var proximitySearch = AgentProximityMap.BeginSearch(Mission.Current, entityOrigin.AsVec2, entityScale.AsVec2.Length / 2);
+        for (; proximitySearch.LastFoundAgent != null; AgentProximityMap.FindNext(Mission.Current, ref proximitySearch))
         {
+            Agent agent = proximitySearch.LastFoundAgent;
             if (!agent.IsActive())
             {
                 _agentsInZone.Remove(agent.Index); // TODO: check go in, out, die, come back with same index.

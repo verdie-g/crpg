@@ -21,7 +21,6 @@ public class DeleteOldActivityLogsCommandTest : TestBase
         });
         await ArrangeDb.SaveChangesAsync();
 
-
         DeleteOldActivityLogsCommand.Handler handler = new(ActDb, new MachineDateTime());
         await handler.Handle(new DeleteOldActivityLogsCommand(), CancellationToken.None);
 

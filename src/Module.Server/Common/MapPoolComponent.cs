@@ -22,15 +22,6 @@ internal class MapPoolComponent : MissionLogic
     private static int _mapsIndex;
     private string? _forcedNextMap;
 
-    public override void OnBehaviorInitialize()
-    {
-        if (_maps == null)
-        {
-            // Clear the map votes else it tries to send to player a packet containing all maps, which will likely overflow it.
-            MultiplayerIntermissionVotingManager.Instance.MapVoteItems.Clear();
-        }
-    }
-
     public void ForceNextMap(string map)
     {
         if (!DedicatedCustomServerSubModule.Instance.AutomatedMapPool.Contains(map))
@@ -62,7 +53,7 @@ internal class MapPoolComponent : MissionLogic
         {
             if (!firstMission && GameNetwork.NetworkPeers.Count() > 10)
             {
-                var lastVoteLostMaps = mapVoteItems.Keys.Where(m => m != Mission.SceneName);
+                var lastVoteLostMaps = mapVoteItems.Where(vote => vote.Id != Mission.SceneName);
                 Debug.Print($"Map {Mission.SceneName} was voted over {string.Join(",", lastVoteLostMaps)}");
             }
 
@@ -70,7 +61,8 @@ internal class MapPoolComponent : MissionLogic
             int maxMapsToVote = Math.Min(_mapsIndex + MaxMapsToVote, _maps.Length);
             for (; _mapsIndex < maxMapsToVote; _mapsIndex += 1)
             {
-                mapVoteItems[_maps[_mapsIndex]] = 0;
+                mapVoteItems.Add(new IntermissionVoteItem(_maps[_mapsIndex], 0));
+                // mapVoteItems[_maps[_mapsIndex]] = 0;
             }
 
             // Vote result is ignored is there is only one map, so we need to force it here.
@@ -78,7 +70,7 @@ internal class MapPoolComponent : MissionLogic
             {
                 MultiplayerOptions.Instance
                     .GetOptionFromOptionType(MultiplayerOptions.OptionType.Map)
-                    .UpdateValue(mapVoteItems.First().Key);
+                    .UpdateValue(mapVoteItems.First().Id);
             }
 
             if (_mapsIndex >= _maps.Length)

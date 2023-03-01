@@ -334,7 +334,7 @@ internal static class MatchBalancingHelpers
             indexSortingMap = indexSortingMap.Reverse().ToArray();
         }
 
-        var partitions = new PriorityQueue<float, PartitionNode<T>>();
+        var partitions = new TaleWorlds.Library.PriorityQueue<float, PartitionNode<T>>();
         // iteration on weights
         for (int i = 0; i < weights.Length; i++)
         {

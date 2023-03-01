@@ -309,8 +309,10 @@ internal class CrpgFlagDominationServer : MissionMultiplayerGameModeBase
 
             Agent? closestAgentToFlag = null;
             float closestAgentDistanceToFlagSquared = 16f; // Where does this number come from?
-            foreach (Agent agent in Mission.Current.GetAgentsInRange(flag.Position.AsVec2, FlagCaptureRange))
+            var proximitySearch = AgentProximityMap.BeginSearch(Mission.Current, flag.Position.AsVec2, FlagCaptureRange);
+            for (; proximitySearch.LastFoundAgent != null; AgentProximityMap.FindNext(Mission.Current, ref proximitySearch))
             {
+                Agent agent = proximitySearch.LastFoundAgent;
                 if (!agent.IsActive() || !agent.IsHuman || (!_isSkirmish && agent.HasMount))
                 {
                     continue;
@@ -447,11 +449,21 @@ internal class CrpgFlagDominationServer : MissionMultiplayerGameModeBase
             return 0;
         }
 
-        return Mission.GetAgentsInRange(flag.Position.AsVec2, FlagCaptureRange)
-            .Count<Agent>(a => a.IsHuman
-                               && a.IsActive()
-                               && a.Position.DistanceSquared(flag.Position) <= FlagCaptureRangeSquared
-                               && a.Team.Side != flagOwner.Side);
+        int count = 0;
+        var proximitySearch = AgentProximityMap.BeginSearch(Mission.Current, flag.Position.AsVec2, FlagCaptureRange);
+        for (; proximitySearch.LastFoundAgent != null; AgentProximityMap.FindNext(Mission.Current, ref proximitySearch))
+        {
+            Agent agent = proximitySearch.LastFoundAgent;
+            if (agent.IsHuman
+                && agent.IsActive()
+                && agent.Position.DistanceSquared(flag.Position) <= FlagCaptureRangeSquared
+                && agent.Team.Side != flagOwner.Side)
+            {
+                count += 1;
+            }
+        }
+
+        return count;
     }
 
     /// <summary>Gets the last flag that should not be removed.</summary>

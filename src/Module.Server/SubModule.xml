@@ -2,10 +2,10 @@
 <Module>
   <Name value="cRPG"/>
   <Id value="cRPG"/>
-  <Version value="v1.0.3.52"/>
+  <Version value="v1.1.0.53"/>
   <ModuleCategory value="Multiplayer"/>
   <DependedModules>
-    <DependedModule Id="Native" DependentVersion="v1.0.3" Optional="false"/>
+    <DependedModule Id="Native" DependentVersion="v1.1.0" Optional="false"/>
   </DependedModules>
   <SubModules>
     <SubModule>

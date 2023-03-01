@@ -88,13 +88,6 @@
   command: "/usr/games/steamcmd +force_install_dir {{ bannerlord_server_path }} +login {{ steam_user_name }} +app_update 1863440 +exit"
   become_user: "{{ crpg_game_server_user }}"
 
-- name: make sure that MultiplayerForcedAvatars folder is present
-  file:
-    path: "{{ bannerlord_server_path }}/Modules/Native/MultiplayerForcedAvatars"
-    state: directory
-    owner: "{{ crpg_game_server_user }}"
-    group: "{{ crpg_game_server_user }}"
-
 - name: download .NET runtime
   unarchive:
     src: "https://dotnetcli.azureedge.net/dotnet/aspnetcore/Runtime/3.1.31/aspnetcore-runtime-3.1.31-linux-x64.tar.gz"

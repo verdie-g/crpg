@@ -30,7 +30,6 @@ internal class CrpgSubModule : MBSubModuleBase
             Debug.Print(args.ExceptionObject.ToString(), color: Debug.DebugColor.Red);
     }
 
-
     private CrpgConstants _constants = default!;
 
     protected override void OnSubModuleLoad()

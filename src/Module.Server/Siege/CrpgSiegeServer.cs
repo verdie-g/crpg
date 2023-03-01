@@ -304,8 +304,10 @@ internal class CrpgSiegeServer : MissionMultiplayerGameModeBase, IAnalyticsFlagI
             Team? flagOwner = GetFlagOwnerTeam(flag);
             Agent? closestAgentToFlag = null;
             float closestAgentDistanceToFlagSquared = float.MaxValue;
-            foreach (Agent agent in Mission.GetAgentsInRange(flag.Position.AsVec2, FlagCaptureRange))
+            var proximitySearch = AgentProximityMap.BeginSearch(Mission.Current, flag.Position.AsVec2, FlagCaptureRange);
+            for (; proximitySearch.LastFoundAgent != null; AgentProximityMap.FindNext(Mission.Current, ref proximitySearch))
             {
+                Agent agent = proximitySearch.LastFoundAgent;
                 if (agent.IsMount || !agent.IsActive())
                 {
                     continue;

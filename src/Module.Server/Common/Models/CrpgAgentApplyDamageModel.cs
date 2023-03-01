@@ -8,7 +8,7 @@ namespace Crpg.Module.Common.Models;
 /// <summary>
 /// Used to adjust dmg calculations.
 /// </summary>
-internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
+internal class CrpgAgentApplyDamageModel : MultiplayerAgentApplyDamageModel
 {
     private readonly CrpgConstants _constants;
 
@@ -106,33 +106,6 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
         }
 
         defenderStunMultiplier = 1f;
-    }
-
-    public override bool DecideMountRearedByBlow(
-        Agent? attackerAgent,
-        Agent victimAgent,
-        in AttackCollisionData collisionData,
-        WeaponComponentData? attackerWeapon,
-        in Blow blow)
-    {
-        float damageMultiplierOfCombatDifficulty = Mission.Current.GetDamageMultiplierOfCombatDifficulty(victimAgent, attackerAgent);
-        if (attackerWeapon != null
-            && attackerWeapon.WeaponFlags.HasAnyFlag(WeaponFlags.WideGrip)
-            && blow.StrikeType == StrikeType.Thrust
-            && collisionData.ThrustTipHit
-            && blow.DamageType == DamageTypes.Pierce
-            && attackerAgent != null
-            && !attackerAgent.HasMount
-            && !attackerAgent.WieldedWeapon.IsAnyConsumable() // Consumable = any kind of throwing
-            && victimAgent.GetAgentFlags().HasAnyFlag(AgentFlag.CanRear)
-            && victimAgent.MovementVelocity.y > 0.1f
-            && Vec3.DotProduct(blow.Direction, victimAgent.Frame.rotation.f) < -0.35f)
-        {
-            float rearThreshold = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.MakesRearAttackDamageThreshold);
-            return collisionData.InflictedDamage >= rearThreshold * damageMultiplierOfCombatDifficulty;
-        }
-
-        return false;
     }
 
     private int GetSkillValue(IAgentOriginBase agentOrigin, SkillObject skill)
