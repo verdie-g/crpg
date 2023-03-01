@@ -15,14 +15,14 @@ internal class CrpgItemValueModel : ItemValueModel
         [ItemObject.ItemTypeEnum.BodyArmor] = (34000, ArmorPriceCoeffs),
         [ItemObject.ItemTypeEnum.HandArmor] = (6750, ArmorPriceCoeffs),
         [ItemObject.ItemTypeEnum.LegArmor] = (5150, ArmorPriceCoeffs),
-        [ItemObject.ItemTypeEnum.HorseHarness] = (42000, ItemPriceCoeffs),
-        [ItemObject.ItemTypeEnum.Horse] = (18000, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.HorseHarness] = (27500, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Horse] = (15000, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Shield] = (9235, ItemPriceCoeffs),
-        [ItemObject.ItemTypeEnum.Bow] = (12264, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Bow] = (14000, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Crossbow] = (18000, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.OneHandedWeapon] = (7500, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.TwoHandedWeapon] = (14000, ItemPriceCoeffs),
-        [ItemObject.ItemTypeEnum.Polearm] = (16175, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Polearm] = (14000, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Thrown] = (7385, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Arrows] = (4500, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Bolts] = (8200, ItemPriceCoeffs),
@@ -80,7 +80,7 @@ internal class CrpgItemValueModel : ItemValueModel
             ItemObject.ItemTypeEnum.BodyArmor => 19.492481f,
             ItemObject.ItemTypeEnum.HandArmor => 10.1992f,
             ItemObject.ItemTypeEnum.LegArmor => 6.94f,
-            ItemObject.ItemTypeEnum.HorseHarness => 45f,
+            ItemObject.ItemTypeEnum.HorseHarness => 60f,
             _ => throw new ArgumentOutOfRangeException(),
         };
 
@@ -168,8 +168,8 @@ internal class CrpgItemValueModel : ItemValueModel
             float swingTier =
                   (float)Math.Pow(CrpgStrikeMagnitudeModel.BladeDamageFactorToDamageRatio * weapon.SwingDamageFactor, 2.15f)
                 * CalculateDamageTypeFactor(weapon.SwingDamageType)
-                * (float)Math.Pow(weapon.SwingSpeed, 4.1f)
-                / 104000000f;
+                * (float)Math.Pow(weapon.SwingSpeed, 4.4f)
+                / 390000000f;
 
             if (!weapon.WeaponFlags.HasAnyFlag(WeaponFlags.NotUsableWithOneHand))
             {
@@ -279,7 +279,7 @@ internal class CrpgItemValueModel : ItemValueModel
         {
             DamageTypes.Blunt => 2f,
             DamageTypes.Pierce => 1.75f,
-            _ => 1.0f,
+            _ => 1.35f,
         };
     }
 
@@ -287,9 +287,9 @@ internal class CrpgItemValueModel : ItemValueModel
     {
         return damageType switch
         {
-            DamageTypes.Blunt => 2f,
+            DamageTypes.Blunt => 3.5f,
             DamageTypes.Pierce => 1.75f,
-            _ => 1.25f,
+            _ => 1.35f,
         };
     }
 
@@ -320,7 +320,7 @@ internal class CrpgItemValueModel : ItemValueModel
     {
         WeaponComponentData weapon = weaponComponent.Weapons.MaxBy(a => a.MaxDataValue);
         float scaler = 1600000f;
-        float bonusVsShield = weapon.WeaponFlags.HasFlag(WeaponFlags.BonusAgainstShield) ? 1.15f : 1f;
+        float bonusVsShield = weapon.WeaponFlags.HasFlag(WeaponFlags.BonusAgainstShield) ? 1.40f : 1f;
         float tier = weapon.ThrustDamage
             * weapon.ThrustDamage
             * weapon.MissileSpeed
