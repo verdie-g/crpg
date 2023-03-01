@@ -1,6 +1,4 @@
-﻿using TaleWorlds.Core;
-using TaleWorlds.Library;
-using TaleWorlds.MountAndBlade;
+﻿using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.DedicatedCustomServer;
 
 namespace Crpg.Module.Common;
@@ -15,11 +13,6 @@ namespace Crpg.Module.Common;
 /// </remarks>
 internal class MapPoolComponent : MissionLogic
 {
-    private const int MaxMapsToVote = 2; // N.B: Only 5 maps fit in the intermission screen.
-
-    /// <summary>The entire map pool. Needs to be static to survive the mission change.</summary>
-    private static string[]? _maps;
-    private static int _mapsIndex;
     private string? _forcedNextMap;
 
     public void ForceNextMap(string map)
@@ -34,60 +27,14 @@ internal class MapPoolComponent : MissionLogic
 
     protected override void OnEndMission()
     {
-        bool firstMission = _maps == null; // _maps is null only when the first mission ends.
-
-        var votingManager = MultiplayerIntermissionVotingManager.Instance;
-        var mapVoteItems = votingManager.MapVoteItems;
-        if (_maps == null)
+        if (_forcedNextMap != null)
         {
-            _maps = DedicatedCustomServerSubModule.Instance.AutomatedMapPool.ToArray();
-
-            _maps.Shuffle();
-            // Move back the first map in first position.
-            int currentMapIndex = Array.IndexOf(_maps, Mission.SceneName);
-            (_maps[currentMapIndex], _maps[0]) = (_maps[0], _maps[currentMapIndex]);
-            _mapsIndex = 1;
-        }
-
-        if (votingManager.IsMapVoteEnabled)
-        {
-            if (!firstMission && GameNetwork.NetworkPeers.Count() > 10)
+            foreach (var vote in MultiplayerIntermissionVotingManager.Instance.MapVoteItems)
             {
-                var lastVoteLostMaps = mapVoteItems.Where(vote => vote.Id != Mission.SceneName);
-                Debug.Print($"Map {Mission.SceneName} was voted over {string.Join(",", lastVoteLostMaps)}");
+                vote.SetVoteCount(vote.Id == _forcedNextMap ? 1 : 0);
             }
 
-            mapVoteItems.Clear();
-            int maxMapsToVote = Math.Min(_mapsIndex + MaxMapsToVote, _maps.Length);
-            for (; _mapsIndex < maxMapsToVote; _mapsIndex += 1)
-            {
-                mapVoteItems.Add(new IntermissionVoteItem(_maps[_mapsIndex], 0));
-                // mapVoteItems[_maps[_mapsIndex]] = 0;
-            }
-
-            // Vote result is ignored is there is only one map, so we need to force it here.
-            if (mapVoteItems.Count == 1)
-            {
-                MultiplayerOptions.Instance
-                    .GetOptionFromOptionType(MultiplayerOptions.OptionType.Map)
-                    .UpdateValue(mapVoteItems.First().Id);
-            }
-
-            if (_mapsIndex >= _maps.Length)
-            {
-                _mapsIndex = 0;
-                _maps.Shuffle();
-            }
-        }
-        else if (_forcedNextMap != null)
-        {
-            MultiplayerOptions.Instance.GetOptionFromOptionType(MultiplayerOptions.OptionType.Map).UpdateValue(_forcedNextMap);
             _forcedNextMap = null;
-        }
-        else
-        {
-            MultiplayerOptions.Instance.GetOptionFromOptionType(MultiplayerOptions.OptionType.Map).UpdateValue(_maps[_mapsIndex]);
-            _mapsIndex = (_mapsIndex + 1) % _maps.Length;
         }
     }
 }
