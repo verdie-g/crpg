@@ -6308,7 +6308,7 @@
     <CraftingPiece id="crpg_throwing_maul_blade" name="{=}Maul Head" tier="1" piece_type="Blade" mesh="maul_head" length="12" weight="1.70" full_scale="true">
     <BuildData piece_offset="-11.0" next_piece_offset="0" />
     <BladeData stack_amount="3" physics_material="metal_weapon" body_name="bo_mace_a">
-      <Swing damage_type="Blunt" damage_factor="1" />
+      <Swing damage_type="Blunt" damage_factor="0.75" />
     </BladeData>
     <Materials>
       <Material id="Iron2" count="2" />
