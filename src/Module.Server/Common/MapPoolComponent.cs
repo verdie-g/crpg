@@ -14,6 +14,8 @@ namespace Crpg.Module.Common;
 /// </remarks>
 internal class MapPoolComponent : MissionLogic
 {
+    private static int _mapVoteItemsIdx;
+
     private string? _forcedNextMap;
 
     public void ForceNextMap(string map)
@@ -36,14 +38,15 @@ internal class MapPoolComponent : MissionLogic
             baseNetworkComponent.UpdateCurrentBattleIndex(1);
         }
 
-        if (_forcedNextMap != null)
-        {
-            foreach (var vote in MultiplayerIntermissionVotingManager.Instance.MapVoteItems)
-            {
-                vote.SetVoteCount(vote.Id == _forcedNextMap ? 1 : 0);
-            }
+        var votingManager = MultiplayerIntermissionVotingManager.Instance;
+        _mapVoteItemsIdx = (_mapVoteItemsIdx + 1) % votingManager.MapVoteItems.Count;
 
-            _forcedNextMap = null;
+        string nextMap = _forcedNextMap ?? votingManager.MapVoteItems[_mapVoteItemsIdx].Id;
+        foreach (var vote in votingManager.MapVoteItems)
+        {
+            vote.SetVoteCount(vote.Id == nextMap ? 1 : 0);
         }
+
+        _forcedNextMap = null;
     }
 }
