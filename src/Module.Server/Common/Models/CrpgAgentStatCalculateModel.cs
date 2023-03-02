@@ -424,19 +424,23 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         props.AttributeHorseArchery = Game.Current.BasicModels.StrikeMagnitudeModel.CalculateHorseArcheryFactor(character);
 
         SetAiRelatedProperties(agent, props, equippedItem, secondaryItem);
+        InformationManager.DisplayMessage(new InformationMessage($"handling est a {props.HandlingMultiplier} et WeaponMaster a {weaponMaster} "));
     }
 
     private float ImpactofStrAndWeaponLengthOnCombatMaxSpeedMultiplier(int weaponLength, int strengthSkill)
     {
-        float maxWeaponLength = 75 + (strengthSkill - 3) * 7;
-        return Math.Min(MBMath.Lerp(0.8f, 1f, maxWeaponLength / weaponLength), 1f);
+        return Math.Min(MBMath.Lerp(0.8f, 1f, MaxWeaponLengthForStrLevel(strengthSkill) / weaponLength), 1f);
     }
 
     private float ImpactofStrAndWeaponLengthOnTimeToMaxSpeed(int weaponLength, int strengthSkill)
     {
-        float maxWeaponLength = 75 + (strengthSkill - 3) * 7;
+        return (float)Math.Max((1.2 * (weaponLength - MaxWeaponLengthForStrLevel(strengthSkill))) / MaxWeaponLengthForStrLevel(strengthSkill), 0f);
+    }
 
-        return (float)Math.Max((1.2 * (weaponLength - maxWeaponLength)) / maxWeaponLength, 0f);
+    private int MaxWeaponLengthForStrLevel(int strengthSkill)
+    {
+        int uncappedMaxWeaponLength = (int)(30 + (strengthSkill - 3) * 12 + Math.Pow((strengthSkill - 3) * 0.13492828, 10));
+        return Math.Min(uncappedMaxWeaponLength, 650);
     }
 
     private float ImpactOfStrReqOnCrossbows(Agent agent, float impact, ItemObject? equippedItem)
