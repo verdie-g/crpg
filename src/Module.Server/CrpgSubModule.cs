@@ -26,17 +26,13 @@ namespace Crpg.Module;
 
 internal class CrpgSubModule : MBSubModuleBase
 {
-    static CrpgSubModule()
-    {
-        AppDomain.CurrentDomain.UnhandledException += (_, args) =>
-            Debug.Print(args.ExceptionObject.ToString(), color: Debug.DebugColor.Red);
-    }
-
     private CrpgConstants _constants = default!;
 
     protected override void OnSubModuleLoad()
     {
         base.OnSubModuleLoad();
+
+        AppDomain.CurrentDomain.UnhandledException += OnUnhandledException;
 
         _constants = LoadCrpgConstants();
         TaleWorlds.MountAndBlade.Module.CurrentModule.AddMultiplayerGameMode(new CrpgBattleGameMode(_constants, isSkirmish: true));
@@ -55,6 +51,10 @@ internal class CrpgSubModule : MBSubModuleBase
 #if CRPG_EXPORT
         TaleWorlds.MountAndBlade.Module.CurrentModule.AddInitialStateOption(new InitialStateOption("ExportData",
             new TextObject("Export Data"), 4578, ExportData, () => (false, null)));
+        TaleWorlds.MountAndBlade.Module.CurrentModule.AddInitialStateOption(new InitialStateOption("RecomputeWeight",
+            new TextObject("Recompute Armors Weights"), 4578, ComputeWeight, () => (false, null)));
+        TaleWorlds.MountAndBlade.Module.CurrentModule.AddInitialStateOption(new InitialStateOption("ExportImages",
+            new TextObject("Export Thumbnails"), 4578, ExportImages, () => (false, null)));
 #endif
 
         // Uncomment to start watching UI changes.
@@ -86,6 +86,11 @@ internal class CrpgSubModule : MBSubModuleBase
         return JsonConvert.DeserializeObject<CrpgConstants>(File.ReadAllText(path))!;
     }
 
+    private void OnUnhandledException(object sender, UnhandledExceptionEventArgs args)
+    {
+        Debug.Print(args.ExceptionObject.ToString(), color: Debug.DebugColor.Red);
+    }
+
     private void InitializeGameModels(IGameStarter basicGameStarter)
     {
         basicGameStarter.AddModel(new CrpgAgentStatCalculateModel(_constants));
@@ -95,6 +100,23 @@ internal class CrpgSubModule : MBSubModuleBase
     }
 
 #if CRPG_EXPORT
+    private void ComputeWeight()
+    {
+        IDataExporter[] exporters =
+        {
+            new ItemExporter(),
+            // new SettlementExporter(),
+        };
+
+        InformationManager.DisplayMessage(new InformationMessage("Computing Weight."));
+        Task.WhenAll(exporters.Select(e => e.ComputeWeight("lol"))).ContinueWith(t =>
+        {
+            InformationManager.DisplayMessage(t.IsFaulted
+                ? new InformationMessage(t.Exception!.Message)
+                : new InformationMessage("Done."));
+        });
+    }
+
     private void ExportData()
     {
         IDataExporter[] exporters =
@@ -104,29 +126,27 @@ internal class CrpgSubModule : MBSubModuleBase
         };
 
         InformationManager.DisplayMessage(new InformationMessage("Exporting data."));
-        string gitRepoPath = FindGitRepositoryRootPath();
-        Task.WhenAll(exporters.Select(e => e.Export(gitRepoPath))).ContinueWith(t =>
+        Task.WhenAll(exporters.Select(e => e.Export("lol"))).ContinueWith(t =>
         {
             InformationManager.DisplayMessage(t.IsFaulted
                 ? new InformationMessage(t.Exception!.Message)
                 : new InformationMessage("Done."));
         });
     }
-
-    private string FindGitRepositoryRootPath([CallerFilePath] string currentFilePath = default!)
+    private void ExportImages()
     {
-        var dir = Directory.GetParent(currentFilePath);
-        while (dir != null)
+        IDataExporter[] exporters =
         {
-            if (Directory.Exists(Path.Combine(dir.FullName, ".git")))
-            {
-                return dir.FullName;
-            }
+            new ItemExporter(),
+        };
 
-            dir = dir.Parent;
-        }
-
-        throw new InvalidOperationException("Could not find cRPG git repository");
+        InformationManager.DisplayMessage(new InformationMessage("Exporting Images."));
+        Task.WhenAll(exporters.Select(e => e.ImageExport("lol"))).ContinueWith(t =>
+        {
+            InformationManager.DisplayMessage(t.IsFaulted
+                ? new InformationMessage(t.Exception!.Message)
+                : new InformationMessage("Done."));
+        });
     }
 #endif
-}
+    }

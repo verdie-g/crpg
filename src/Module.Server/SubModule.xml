@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Module>
-  <Name value="cRPG"/>
-  <Id value="cRPG"/>
-  <Version value="v1.1.3.64"/>
-  <ModuleCategory value="Multiplayer"/>
+  <Name value="cRPG_Exporter"/>
+  <Id value="cRPG_Exporter"/>
+  <Version value="v1.1.0.25"/>
+  <ModuleCategory value="Singleplayer"/>
   <DependedModules>
     <DependedModule Id="Native" DependentVersion="v1.1.2" Optional="false"/>
   </DependedModules>
   <SubModules>
     <SubModule>
-      <Name value="cRPG"/>
+      <Name value="cRPG_Exporter"/>
       <DLLName value="Crpg.Module.dll"/>
       <SubModuleClassType value="Crpg.Module.CrpgSubModule"/>
       <Tags />
