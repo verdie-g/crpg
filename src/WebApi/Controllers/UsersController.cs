@@ -32,8 +32,8 @@ public class UsersController : BaseController
     /// <returns>Found users. A limit of 10 records.</returns>
     /// <response code="200">Ok.</response>
     /// <response code="400">Bad Request.</response>
+    [HttpGet("search")]
     [Authorize(Policy = ModeratorPolicy)]
-    [HttpGet]
     public async Task<ActionResult<Result<UserPublicViewModel[]>>> SearchUsers(
         [FromQuery] Platform platform,
         [FromQuery] string? platformUserId,
@@ -72,11 +72,25 @@ public class UsersController : BaseController
     /// <response code="200">Ok.</response>
     /// <response code="400">Bad Request.</response>
     /// <response code="404">User was not found.</response>
-    [Authorize(Policy = ModeratorPolicy)]
     [HttpGet("{id}")]
+    [Authorize(Policy = ModeratorPolicy)]
     public Task<ActionResult<Result<UserPublicViewModel>>> GetUserById([FromRoute] int id)
     {
         return ResultToActionAsync(Mediator.Send(new GetUserByIdQuery { UserId = id }));
+    }
+
+    /// <summary>
+    /// Get user by id.
+    /// </summary>
+    /// <param name="ids">The user ids.</param>
+    /// <returns>The users.</returns>
+    /// <response code="200">Ok.</response>
+    /// <response code="400">Bad Request.</response>
+    [HttpGet]
+    [Authorize(Policy = ModeratorPolicy)]
+    public Task<ActionResult<Result<IList<UserPublicViewModel>>>> GetUsersById([FromQuery(Name = "id[]")] int[] ids)
+    {
+        return ResultToActionAsync(Mediator.Send(new GetUsersByIdQuery { UserIds = ids }));
     }
 
     /// <summary>

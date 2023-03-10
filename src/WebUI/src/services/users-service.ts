@@ -35,7 +35,7 @@ function mapUserItem(userItem: UserItem) {
 
 export function searchUser(payload: UserSearchQuery): Promise<UserPublic[]> {
   const query = queryString.stringify(payload, { skipEmptyString: true, skipNull: true });
-  return get(`/users?${query}`);
+  return get(`/users/search?${query}`);
 }
 
 export async function getUserRestrictions(id: number): Promise<RestrictionWithActive[]> {
