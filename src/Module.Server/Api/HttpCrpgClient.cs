@@ -27,8 +27,12 @@ internal class HttpCrpgClient : ICrpgClient
 
     public HttpCrpgClient(string apiUrl, string apiKey)
     {
-        HttpClientHandler httpClientHandler = new() { AutomaticDecompression = DecompressionMethods.GZip };
-        _httpClient = new HttpClient(httpClientHandler)
+        SocketsHttpHandler socketsHttpHandler = new()
+        {
+            AutomaticDecompression = DecompressionMethods.GZip,
+            ConnectTimeout = TimeSpan.FromSeconds(30),
+        };
+        _httpClient = new HttpClient(socketsHttpHandler)
         {
             BaseAddress = new Uri(apiUrl),
             Timeout = TimeSpan.FromSeconds(10),
