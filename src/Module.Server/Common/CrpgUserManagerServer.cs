@@ -82,7 +82,7 @@ internal class CrpgUserManagerServer : MissionNetwork
         }
 
         Debug.Print($"Kick player {vp.UserName} with a height of {height}");
-        KickHelper.Kick(networkPeer, DisconnectType.KickedByAntiCheat);
+        KickHelper.Kick(networkPeer, DisconnectType.KickedByHost);
         return true;
     }
 
@@ -95,7 +95,7 @@ internal class CrpgUserManagerServer : MissionNetwork
         }
 
         Debug.Print($"Kick player with an empty name \"{vp.UserName}\"");
-        KickHelper.Kick(networkPeer, DisconnectType.KickedByAntiCheat);
+        KickHelper.Kick(networkPeer, DisconnectType.KickedByHost);
         return true;
     }
 
