@@ -342,7 +342,8 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
     {
         var rating = user.Character.Rating;
         float regionPenalty = CrpgRatingHelper.ComputeRegionRatingPenalty(user.Region);
-        return 0.0025f * (float)Math.Pow(rating.Value - 2 * rating.Deviation, 1.5f) * regionPenalty;
+        // https://www.desmos.com/calculator/23qchzvrw3
+        return 0.0001f * (float)Math.Pow(rating.Value - 2 * rating.Deviation, 2f) * regionPenalty;
     }
 
     private float ComputeEquippedItemsPrice(IList<CrpgEquippedItem> equippedItems)
