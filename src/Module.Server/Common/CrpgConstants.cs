@@ -40,7 +40,8 @@ internal class CrpgConstants
     public float[] HandlingFactorForWeaponMaster { get; set; } = Array.Empty<float>();
     public float[] DurabilityFactorForShieldRecursiveCoefs { get; set; } = Array.Empty<float>();
     public float[] SpeedFactorForShieldCoefs { get; set; } = Array.Empty<float>();
-    public float[] CoverageFactorForShieldCoefs { get; set; } = Array.Empty<float>();
+    public float[] InfantryCoverageFactorForShieldCoefs { get; set; } = Array.Empty<float>();
+    public float[] CavCoverageFactorForShieldCoefs { get; set; } = Array.Empty<float>();
     public float[] MountedRangedSkillInaccurary { get; set; } = Array.Empty<float>();
     public float[] ShieldDefendStunMultiplierForSkillRecursiveCoefs { get; set; } = Array.Empty<float>();
     public float ArmorSetRequirementPowerMeanPValue { get; set; }

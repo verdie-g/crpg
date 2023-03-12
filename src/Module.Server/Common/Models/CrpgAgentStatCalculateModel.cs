@@ -417,7 +417,10 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         }
 
         int shieldSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.Shield);
-        props.AttributeShieldMissileCollisionBodySizeAdder = MathHelper.ApplyPolynomialFunction(shieldSkill, _constants.CoverageFactorForShieldCoefs);
+        float[] coverageFactorForShieldCoefs = agent.HasMount
+            ? _constants.CavCoverageFactorForShieldCoefs
+            : _constants.InfantryCoverageFactorForShieldCoefs;
+        props.AttributeShieldMissileCollisionBodySizeAdder = MathHelper.ApplyPolynomialFunction(shieldSkill, coverageFactorForShieldCoefs);
         float ridingAttribute = agent.MountAgent?.GetAgentDrivenPropertyValue(DrivenProperty.AttributeRiding) ?? 1f;
         props.AttributeRiding = ridingSkill * ridingAttribute;
         // TODO: AttributeHorseArchery doesn't seem to have any effect for now.
