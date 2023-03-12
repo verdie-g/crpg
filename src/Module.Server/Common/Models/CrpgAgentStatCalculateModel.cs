@@ -371,7 +371,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                     props.WeaponUnsteadyBeginTime = 1.0f + weaponSkill * 0.006f + powerThrow * powerThrow / 10f * 0.4f;
                     props.WeaponUnsteadyEndTime = 10f + props.WeaponUnsteadyBeginTime;
                     props.WeaponRotationalAccuracyPenaltyInRadians = 0.025f;
-                    props.ThrustOrRangedReadySpeedMultiplier = MBMath.Lerp(0.2f, 0.3f, itemSkill * 40f / equippedItem.ThrustDamage / 200f);
+                    props.ThrustOrRangedReadySpeedMultiplier = MBMath.Lerp(0.2f, 0.3f, (float)Math.Pow(itemSkill / 160f, 3f) * 40f / equippedItem.ThrustDamage);
                     props.ReloadSpeed *= MBMath.Lerp(0.6f, 1.4f, itemSkill / 200f);
                 }
 
