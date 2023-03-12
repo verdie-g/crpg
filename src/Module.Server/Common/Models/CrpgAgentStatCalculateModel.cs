@@ -303,6 +303,10 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         props.BipedalRangedReadySpeedMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalRangedReadySpeedMultiplier);
         props.BipedalRangedReloadSpeedMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalRangedReloadSpeedMultiplier);
         int shieldSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.Shield);
+        float[] coverageFactorForShieldCoefs = agent.HasMount
+            ? _constants.CavCoverageFactorForShieldCoefs
+            : _constants.InfantryCoverageFactorForShieldCoefs;
+        props.AttributeShieldMissileCollisionBodySizeAdder = MathHelper.ApplyPolynomialFunction(shieldSkill, coverageFactorForShieldCoefs);
         if (equippedItem != null)
         {
             int weaponSkill = GetEffectiveSkillForWeapon(agent, equippedItem);
@@ -316,11 +320,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 // Thrustspeed Nerf on Horseback
                 props.ThrustOrRangedReadySpeedMultiplier *= 0.84f;
                 float[] coverageFactorsForCavShield = { 0.04f, 0f };
-                props.AttributeShieldMissileCollisionBodySizeAdder = MathHelper.ApplyPolynomialFunction(shieldSkill, _constants.CavCoverageFactorForShieldCoefs);
-            }
-            else
-            {
-               props.AttributeShieldMissileCollisionBodySizeAdder = MathHelper.ApplyPolynomialFunction(shieldSkill, _constants.InfantryCoverageFactorForShieldCoefs);
             }
 
             // Ranged Behavior

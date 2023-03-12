@@ -20,7 +20,7 @@
   "minimumLevel": 1,
   "maximumLevel": 38,
   "tournamentLevel": 30,
-  "experienceForLevelCoefs": [ 13, 200 ],
+  "experienceForLevelCoefs": [13, 200],
   "defaultStrength": 3,
   "defaultAgility": 3,
   "defaultHealthPoints": 60, /* A 33 STR, 3 AGI character with 11 IF would reach 115 HP. */
