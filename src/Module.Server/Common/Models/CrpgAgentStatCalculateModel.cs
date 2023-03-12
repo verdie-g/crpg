@@ -415,7 +415,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 props.WeaponInaccuracy /= _constants.MountedRangedSkillInaccurary[mountedArcherySkill];
             }
         }
-        
+
         int shieldSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.Shield);
         float[] coverageFactorForShieldCoefs = agent.HasMount
             ? _constants.CavCoverageFactorForShieldCoefs
