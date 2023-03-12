@@ -35,6 +35,7 @@ internal class ChatCommandsComponent : MissionLogic
             new MuteCommand(this, crpgClient),
             new BanCommand(this, crpgClient),
             new MapCommand(this),
+            new SharedConstantUpdateCommand(this),
         };
 #else
         _commands = Array.Empty<ChatCommand>();

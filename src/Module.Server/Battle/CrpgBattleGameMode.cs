@@ -150,6 +150,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new MissionMatchHistoryComponent(),
                     new MissionRecentPlayersComponent(),
                     new CrpgRewardClient(),
+                    new SharedConstantsClient(),
 #endif
                 });
     }
