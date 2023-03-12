@@ -439,7 +439,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
     private int MaxWeaponLengthForStrLevel(int strengthSkill)
     {
-        int uncappedMaxWeaponLength = (int)(30 + (strengthSkill - 3) * 12 + Math.Pow((strengthSkill - 3) * 0.13492828, 10));
+        int uncappedMaxWeaponLength = (int)(30 + (strengthSkill - 3) * 9 + Math.Pow((strengthSkill - 3) * 0.14677993f, 12));
         return Math.Min(uncappedMaxWeaponLength, 650);
     }
 
