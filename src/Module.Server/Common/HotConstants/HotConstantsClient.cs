@@ -2,18 +2,18 @@
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
-namespace Crpg.Module.Common;
+namespace Crpg.Module.Common.HotConstants;
 
-internal class SharedConstantsClient : MissionNetwork
+internal class HotConstantsClient : MissionNetwork
 {
     protected override void AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegistererContainer registerer)
     {
-        registerer.Register<UpdateSharedConstant>(HandleUpdateSharedConstant);
+        registerer.Register<UpdateHotConstant>(HandleUpdateHotConstant);
     }
 
-    private void HandleUpdateSharedConstant(UpdateSharedConstant message)
+    private void HandleUpdateHotConstant(UpdateHotConstant message)
     {
-        SharedConstant.TryUpdate(message.Id, message.NewValue, out _);
+        HotConstant.TryUpdate(message.Id, message.NewValue, out _);
         InformationManager.DisplayMessage(new InformationMessage($"Changed constant with id '{message.Id}' from {message.OldValue} to {message.NewValue}"));
     }
 }

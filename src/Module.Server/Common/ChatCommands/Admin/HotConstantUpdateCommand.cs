@@ -1,12 +1,12 @@
-﻿using Crpg.Module.Common.Network;
+﻿using Crpg.Module.Common.HotConstants;
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common.ChatCommands.Admin;
 
-/// <summary>Command to update a <see cref="SharedConstant"/>.</summary>
-internal class SharedConstantUpdateCommand : AdminCommand
+/// <summary>Command to update a <see cref="HotConstant"/>.</summary>
+internal class HotConstantUpdateCommand : AdminCommand
 {
-    public SharedConstantUpdateCommand(ChatCommandsComponent chatComponent)
+    public HotConstantUpdateCommand(ChatCommandsComponent chatComponent)
         : base(chatComponent)
     {
         Name = "const";
@@ -19,19 +19,19 @@ internal class SharedConstantUpdateCommand : AdminCommand
 
     private void Execute(NetworkCommunicator fromPeer, object[] arguments)
     {
-        int sharedConstantId = (int)arguments[0];
+        int hotConstantId = (int)arguments[0];
         float newValue = (float)arguments[1];
 
-        if (!SharedConstant.TryUpdate(sharedConstantId, newValue, out float oldValue))
+        if (!HotConstant.TryUpdate(hotConstantId, newValue, out float oldValue))
         {
-            ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorWarning, $"Not constant was found with id '{sharedConstantId}'.");
+            ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorWarning, $"Not constant was found with id '{hotConstantId}'.");
             return;
         }
 
         GameNetwork.BeginBroadcastModuleEvent();
-        GameNetwork.WriteMessage(new UpdateSharedConstant
+        GameNetwork.WriteMessage(new UpdateHotConstant
         {
-            Id = sharedConstantId,
+            Id = hotConstantId,
             OldValue = oldValue,
             NewValue = newValue,
         });

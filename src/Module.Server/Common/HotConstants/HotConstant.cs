@@ -1,22 +1,22 @@
-﻿namespace Crpg.Module.Common;
+﻿namespace Crpg.Module.Common.HotConstants;
 
 /// <summary>
 /// A constant shared between the client and the server that can be easily changed with a chat command during development.
 /// </summary>
-internal class SharedConstant
+internal class HotConstant
 {
-    private static readonly Dictionary<int, SharedConstant> AllConstants = new();
+    private static readonly Dictionary<int, HotConstant> AllConstants = new();
 
     /// <param name="id">An id to uniquely identity the constant.</param>
     /// <param name="defaultValue">The default value of the constant.</param>
-    public static SharedConstant Create(int id, float defaultValue)
+    public static HotConstant Create(int id, float defaultValue)
     {
         if (AllConstants.ContainsKey(id))
         {
-            throw new ArgumentException("A shared constant already exists with this id", nameof(id));
+            throw new ArgumentException("A hot constant already exists with this id", nameof(id));
         }
 
-        SharedConstant constant = new(defaultValue);
+        HotConstant constant = new(defaultValue);
         AllConstants[id] = constant;
         return constant;
     }
@@ -34,7 +34,7 @@ internal class SharedConstant
         return false;
     }
 
-    private SharedConstant(float defaultValue)
+    private HotConstant(float defaultValue)
     {
         Value = defaultValue;
     }

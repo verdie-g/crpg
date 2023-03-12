@@ -1,4 +1,5 @@
 using Crpg.Module.Common;
+using Crpg.Module.Common.HotConstants;
 using Crpg.Module.Common.Warmup;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
@@ -150,7 +151,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new MissionMatchHistoryComponent(),
                     new MissionRecentPlayersComponent(),
                     new CrpgRewardClient(),
-                    new SharedConstantsClient(),
+                    new HotConstantsClient(),
 #endif
                 });
     }

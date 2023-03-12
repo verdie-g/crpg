@@ -1,10 +1,10 @@
 ﻿using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Network.Messages;
 
-namespace Crpg.Module.Common.Network;
+namespace Crpg.Module.Common.HotConstants;
 
 [DefineGameNetworkMessageTypeForMod(GameNetworkMessageSendType.FromServer)]
-internal sealed class UpdateSharedConstant : GameNetworkMessage
+internal sealed class UpdateHotConstant : GameNetworkMessage
 {
     public int Id { get; set; }
     public float OldValue { get; set; }
@@ -33,6 +33,6 @@ internal sealed class UpdateSharedConstant : GameNetworkMessage
 
     protected override string OnGetLogFormat()
     {
-        return "Update shared constant";
+        return "Update hot constant";
     }
 }
