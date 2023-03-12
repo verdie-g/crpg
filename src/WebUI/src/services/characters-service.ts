@@ -67,7 +67,10 @@ export function computeSpeedStats({
     0.1,
     1.5
   );
-  const maxWeaponLength = 75 + (strength - 3) * 7;
+  const maxWeaponLength = Math.min(
+    45 + (strength - 3) * 9 + Math.pow((strength - 3) * 0.14677993, 12),
+    650
+  );
   const timeToMaxSpeedWeaponLenghthTerm = Math.max(
     (1.2 * (longestWeaponLength - maxWeaponLength)) / maxWeaponLength,
     0
