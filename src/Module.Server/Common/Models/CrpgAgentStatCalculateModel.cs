@@ -307,6 +307,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             ? _constants.CavCoverageFactorForShieldCoefs
             : _constants.InfantryCoverageFactorForShieldCoefs;
         props.AttributeShieldMissileCollisionBodySizeAdder = MathHelper.ApplyPolynomialFunction(shieldSkill, coverageFactorForShieldCoefs);
+
         if (equippedItem != null)
         {
             int weaponSkill = GetEffectiveSkillForWeapon(agent, equippedItem);
@@ -319,7 +320,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 props.SwingSpeedMultiplier *= HasSwingDamage(primaryItem) ? swingSpeedFactor : 1f;
                 // Thrustspeed Nerf on Horseback
                 props.ThrustOrRangedReadySpeedMultiplier *= 0.84f;
-                float[] coverageFactorsForCavShield = { 0.04f, 0f };
             }
 
             // Ranged Behavior
