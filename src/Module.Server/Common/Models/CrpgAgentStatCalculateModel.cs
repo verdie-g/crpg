@@ -307,6 +307,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         {
             int weaponSkill = GetEffectiveSkillForWeapon(agent, equippedItem);
             props.WeaponInaccuracy = GetWeaponInaccuracy(agent, equippedItem, weaponSkill);
+            // melee cav
             if (agent.HasMount && !equippedItem.IsRangedWeapon)
             {
                 // SwingSpeed Nerf on Horseback
@@ -316,6 +317,10 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 props.ThrustOrRangedReadySpeedMultiplier *= 0.84f;
                 float[] coverageFactorsForCavShield = { 0.04f, 0f };
                 props.AttributeShieldMissileCollisionBodySizeAdder = MathHelper.ApplyPolynomialFunction(shieldSkill, coverageFactorsForCavShield);
+            }
+            else
+            {
+               props.AttributeShieldMissileCollisionBodySizeAdder = MathHelper.ApplyPolynomialFunction(shieldSkill, _constants.CoverageFactorForShieldCoefs);
             }
 
             // Ranged Behavior
@@ -417,9 +422,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 props.WeaponInaccuracy /= _constants.MountedRangedSkillInaccurary[mountedArcherySkill];
             }
         }
-
-        
-        props.AttributeShieldMissileCollisionBodySizeAdder = MathHelper.ApplyPolynomialFunction(shieldSkill, _constants.CoverageFactorForShieldCoefs);
         float ridingAttribute = agent.MountAgent?.GetAgentDrivenPropertyValue(DrivenProperty.AttributeRiding) ?? 1f;
         props.AttributeRiding = ridingSkill * ridingAttribute;
         // TODO: AttributeHorseArchery doesn't seem to have any effect for now.
