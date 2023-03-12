@@ -302,17 +302,11 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         int ridingSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, DefaultSkills.Riding);
         props.BipedalRangedReadySpeedMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalRangedReadySpeedMultiplier);
         props.BipedalRangedReloadSpeedMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalRangedReloadSpeedMultiplier);
-        int shieldSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.Shield);
-        float[] coverageFactorForShieldCoefs = agent.HasMount
-            ? _constants.CavCoverageFactorForShieldCoefs
-            : _constants.InfantryCoverageFactorForShieldCoefs;
-        props.AttributeShieldMissileCollisionBodySizeAdder = MathHelper.ApplyPolynomialFunction(shieldSkill, coverageFactorForShieldCoefs);
 
         if (equippedItem != null)
         {
             int weaponSkill = GetEffectiveSkillForWeapon(agent, equippedItem);
             props.WeaponInaccuracy = GetWeaponInaccuracy(agent, equippedItem, weaponSkill);
-            // melee cav
             if (agent.HasMount && !equippedItem.IsRangedWeapon)
             {
                 // SwingSpeed Nerf on Horseback
@@ -421,6 +415,12 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 props.WeaponInaccuracy /= _constants.MountedRangedSkillInaccurary[mountedArcherySkill];
             }
         }
+        
+        int shieldSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.Shield);
+        float[] coverageFactorForShieldCoefs = agent.HasMount
+            ? _constants.CavCoverageFactorForShieldCoefs
+            : _constants.InfantryCoverageFactorForShieldCoefs;
+        props.AttributeShieldMissileCollisionBodySizeAdder = MathHelper.ApplyPolynomialFunction(shieldSkill, coverageFactorForShieldCoefs);
         float ridingAttribute = agent.MountAgent?.GetAgentDrivenPropertyValue(DrivenProperty.AttributeRiding) ?? 1f;
         props.AttributeRiding = ridingSkill * ridingAttribute;
         // TODO: AttributeHorseArchery doesn't seem to have any effect for now.
