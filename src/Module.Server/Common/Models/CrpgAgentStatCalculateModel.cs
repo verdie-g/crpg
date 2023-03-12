@@ -302,7 +302,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         int ridingSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, DefaultSkills.Riding);
         props.BipedalRangedReadySpeedMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalRangedReadySpeedMultiplier);
         props.BipedalRangedReloadSpeedMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalRangedReloadSpeedMultiplier);
-
+        int shieldSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.Shield);
         if (equippedItem != null)
         {
             int weaponSkill = GetEffectiveSkillForWeapon(agent, equippedItem);
@@ -314,6 +314,8 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 props.SwingSpeedMultiplier *= HasSwingDamage(primaryItem) ? swingSpeedFactor : 1f;
                 // Thrustspeed Nerf on Horseback
                 props.ThrustOrRangedReadySpeedMultiplier *= 0.84f;
+                float[] coverageFactorsForCavShield = { 0.04f, 0f };
+                props.AttributeShieldMissileCollisionBodySizeAdder = MathHelper.ApplyPolynomialFunction(shieldSkill, coverageFactorsForCavShield);
             }
 
             // Ranged Behavior
@@ -416,7 +418,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             }
         }
 
-        int shieldSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.Shield);
+        
         props.AttributeShieldMissileCollisionBodySizeAdder = MathHelper.ApplyPolynomialFunction(shieldSkill, _constants.CoverageFactorForShieldCoefs);
         float ridingAttribute = agent.MountAgent?.GetAgentDrivenPropertyValue(DrivenProperty.AttributeRiding) ?? 1f;
         props.AttributeRiding = ridingSkill * ridingAttribute;
