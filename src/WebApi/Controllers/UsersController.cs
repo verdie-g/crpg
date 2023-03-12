@@ -123,6 +123,7 @@ public class UsersController : BaseController
     [HttpPut("self")]
     public Task<ActionResult<Result<UserViewModel>>> UpdateUser([FromBody] UpdateUserCommand req)
     {
+        // ReSharper disable once WithExpressionModifiesAllMembers
         req = req with { UserId = CurrentUser.User!.Id };
         return ResultToActionAsync(Mediator.Send(req));
     }

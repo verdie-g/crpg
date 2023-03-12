@@ -3,7 +3,6 @@ using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Users.Models;
-using Crpg.Domain.Entities;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -14,13 +13,11 @@ namespace Crpg.Application.Users.Commands;
 public record UpdateUserCommand : IMediatorRequest<UserViewModel>
 {
     public int UserId { get; init; }
-    public Region Region { get; init; }
 
     public class Validator : AbstractValidator<UpdateUserCommand>
     {
         public Validator()
         {
-            RuleFor(u => u.Region).IsInEnum();
         }
     }
 
@@ -45,7 +42,7 @@ public record UpdateUserCommand : IMediatorRequest<UserViewModel>
                 return new(CommonErrors.UserNotFound(req.UserId));
             }
 
-            user.Region = req.Region;
+            // This command doesn't do anything anymore but the code was not deleted because it can be useful later.
 
             await _db.SaveChangesAsync(cancellationToken);
             Logger.LogInformation("User '{0}' updated", req.UserId);
