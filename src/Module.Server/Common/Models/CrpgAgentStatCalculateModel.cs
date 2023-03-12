@@ -424,7 +424,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         props.AttributeHorseArchery = Game.Current.BasicModels.StrikeMagnitudeModel.CalculateHorseArcheryFactor(character);
 
         SetAiRelatedProperties(agent, props, equippedItem, secondaryItem);
-        InformationManager.DisplayMessage(new InformationMessage($"handling est a {props.HandlingMultiplier} et WeaponMaster a {weaponMaster} "));
     }
 
     private float ImpactofStrAndWeaponLengthOnCombatMaxSpeedMultiplier(int weaponLength, int strengthSkill)
@@ -439,7 +438,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
     private int MaxWeaponLengthForStrLevel(int strengthSkill)
     {
-        int uncappedMaxWeaponLength = (int)(30 + (strengthSkill - 3) * 9 + Math.Pow((strengthSkill - 3) * 0.14677993f, 12));
+        int uncappedMaxWeaponLength = (int)(45 + (strengthSkill - 3) * 9 + Math.Pow((strengthSkill - 3) * 0.14677993f, 12));
         return Math.Min(uncappedMaxWeaponLength, 650);
     }
 
