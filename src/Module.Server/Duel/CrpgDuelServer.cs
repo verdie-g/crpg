@@ -146,9 +146,8 @@ internal class CrpgDuelServer : MissionMultiplayerDuel
                 GameNetwork.BeginModuleEventAsServer(networkPeer);
                 GameNetwork.WriteMessage(new CrpgNotification
                 {
-                    Type = CrpgNotification.NotificationType.Notification,
-                    Message = $"Your character was updated.",
-                    IsMessageTextId = false,
+                    Type = CrpgNotificationType.Notification,
+                    Message = "Your character was updated.",
                     SoundEvent = string.Empty,
                 });
                 GameNetwork.EndModuleEventAsServer();

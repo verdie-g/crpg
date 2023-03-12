@@ -102,11 +102,11 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
             if (_notifiedPlayersAboutSpawnRestriction.Add(networkPeer.VirtualPlayer.Id))
             {
                 GameNetwork.BeginModuleEventAsServer(networkPeer);
-                GameNetwork.WriteMessage(new CrpgNotification
+                GameNetwork.WriteMessage(new CrpgNotificationId
                 {
-                    Type = CrpgNotification.NotificationType.Announcement,
-                    Message = "You should have at least one weapon equipped to spawn! Equip a weapon and reconnect to the server.",
-                    IsMessageTextId = false,
+                    Type = CrpgNotificationType.Announcement,
+                    TextId = "str_kick_reason",
+                    TextVariation = "no_weapon",
                     SoundEvent = string.Empty,
                 });
                 GameNetwork.EndModuleEventAsServer();
@@ -124,9 +124,8 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
                 GameNetwork.BeginModuleEventAsServer(networkPeer);
                 GameNetwork.WriteMessage(new CrpgNotification
                 {
-                    Type = CrpgNotification.NotificationType.Notification,
+                    Type = CrpgNotificationType.Notification,
                     Message = $"Cavalry will spawn in {_cavalrySpawnDelayTimer?.GetTimerDuration()} seconds!",
-                    IsMessageTextId = false,
                     SoundEvent = string.Empty,
                 });
                 GameNetwork.EndModuleEventAsServer();

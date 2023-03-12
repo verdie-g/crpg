@@ -82,7 +82,7 @@ internal class CrpgUserManagerServer : MissionNetwork
         }
 
         Debug.Print($"Kick player {vp.UserName} with a height of {height}");
-        KickHelper.Kick(networkPeer, DisconnectType.KickedByHost);
+        KickHelper.Kick(networkPeer, DisconnectType.KickedByHost, "bad_player_height");
         return true;
     }
 
@@ -95,7 +95,7 @@ internal class CrpgUserManagerServer : MissionNetwork
         }
 
         Debug.Print($"Kick player with an empty name \"{vp.UserName}\"");
-        KickHelper.Kick(networkPeer, DisconnectType.KickedByHost);
+        KickHelper.Kick(networkPeer, DisconnectType.KickedByHost, "empty_name");
         return true;
     }
 
@@ -127,7 +127,7 @@ internal class CrpgUserManagerServer : MissionNetwork
             || (platform != Platform.Steam && platform != Platform.Epic))
         {
             Debug.Print($"Kick player {vp.UserName} playing on {vp.Id.ProvidedType}");
-            KickHelper.Kick(networkPeer, DisconnectType.KickedByHost);
+            KickHelper.Kick(networkPeer, DisconnectType.KickedByHost, "unsupported_platform");
         }
 
         string platformUserId = PlayerIdToPlatformUserId(vp.Id, platform);
@@ -169,14 +169,14 @@ internal class CrpgUserManagerServer : MissionNetwork
         catch (Exception e)
         {
             Debug.Print($"Couldn't get user {userName} ({platform}#{platformUserId}): {e}");
-            KickHelper.Kick(networkPeer, DisconnectType.ServerNotResponding);
+            KickHelper.Kick(networkPeer, DisconnectType.ServerNotResponding, "unreachable_server");
             return;
         }
 
         if (crpgUser.Restrictions.FirstOrDefault(r => r.Type == CrpgRestrictionType.Join) != null)
         {
             Debug.Print($"Kick join restricted user {userName} ({platform}#{platformUserId})");
-            KickHelper.Kick(networkPeer, DisconnectType.BannedByPoll);
+            KickHelper.Kick(networkPeer, DisconnectType.BannedByPoll, "banned");
             return;
         }
 

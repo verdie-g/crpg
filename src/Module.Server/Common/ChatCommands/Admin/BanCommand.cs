@@ -1,6 +1,5 @@
 ﻿using Crpg.Module.Api;
 using Crpg.Module.Api.Models.Restrictions;
-using Crpg.Module.Common.Network;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Diamond;
@@ -69,21 +68,7 @@ internal class BanCommand : AdminCommand
         ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorFatal, $"You banned {targetPeer.UserName} for {duration}.");
         ChatComponent.ServerSendServerMessageToEveryone(ColorFatal, $"{targetPeer.UserName} was banned by {fromPeer.UserName} for {duration}. Reason: {reason}");
 
-        GameNetwork.BeginModuleEventAsServer(targetPeer);
-        GameNetwork.WriteMessage(new CrpgNotification
-        {
-            Type = CrpgNotification.NotificationType.Announcement,
-            Message = $"Banned by {fromPeer.UserName} for {duration}. Reason: {reason}",
-        });
-        GameNetwork.EndModuleEventAsServer();
-
-        await Task.Delay(250);
-        if (!targetPeer.IsConnectionActive)
-        {
-            return;
-        }
-
-        KickHelper.Kick(targetPeer, DisconnectType.BannedByPoll);
+        KickHelper.Kick(targetPeer, DisconnectType.BannedByPoll, "banned");
     }
 
     private void ExecuteBanByName(NetworkCommunicator fromPeer, object[] arguments)

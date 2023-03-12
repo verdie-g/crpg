@@ -311,7 +311,7 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
         GameNetwork.BeginBroadcastModuleEvent();
         GameNetwork.WriteMessage(new CrpgNotification
         {
-            Type = CrpgNotification.NotificationType.Notification,
+            Type = CrpgNotificationType.Notification,
             Message = notifBuilder.ToString(),
         });
         GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);

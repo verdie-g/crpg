@@ -27,7 +27,7 @@ internal class AnnouncementCommand : AdminCommand
                 GameNetwork.BeginModuleEventAsServer(targetPeer);
                 GameNetwork.WriteMessage(new CrpgNotification
                 {
-                    Type = CrpgNotification.NotificationType.Announcement,
+                    Type = CrpgNotificationType.Announcement,
                     Message = message,
                 });
                 GameNetwork.EndModuleEventAsServer();

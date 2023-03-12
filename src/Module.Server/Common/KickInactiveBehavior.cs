@@ -97,9 +97,8 @@ internal class KickInactiveBehavior : MissionBehavior
                 GameNetwork.BeginModuleEventAsServer(networkPeer);
                 GameNetwork.WriteMessage(new CrpgNotification
                 {
-                    Type = CrpgNotification.NotificationType.Notification,
+                    Type = CrpgNotificationType.Notification,
                     Message = $"You will be removed for inactivity after {warningTime} seconds!",
-                    IsMessageTextId = false,
                     SoundEvent = string.Empty,
                 });
                 GameNetwork.EndModuleEventAsServer();

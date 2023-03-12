@@ -287,7 +287,7 @@ internal class CrpgRewardServer : MissionBehavior
                 GameNetwork.BeginBroadcastModuleEvent();
                 GameNetwork.WriteMessage(new CrpgNotification
                 {
-                    Type = CrpgNotification.NotificationType.Announcement,
+                    Type = CrpgNotificationType.Announcement,
                     Message = "Happy hours ended!",
                 });
                 GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
@@ -302,7 +302,7 @@ internal class CrpgRewardServer : MissionBehavior
             GameNetwork.BeginBroadcastModuleEvent();
             GameNetwork.WriteMessage(new CrpgNotification
             {
-                Type = CrpgNotification.NotificationType.Announcement,
+                Type = CrpgNotificationType.Announcement,
                 Message = "It's happy hours time! Experience is multiplied by two.",
             });
             GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
@@ -438,7 +438,7 @@ internal class CrpgRewardServer : MissionBehavior
             crpgPeer.User = updateResult.User;
             if (!crpgPeer.User.Character.ForTournament && CrpgFeatureFlags.IsEnabled(CrpgFeatureFlags.FeatureTournament))
             {
-                KickHelper.Kick(networkPeer, DisconnectType.KickedByHost);
+                KickHelper.Kick(networkPeer, DisconnectType.KickedByHost, "tournament_only");
                 continue;
             }
 

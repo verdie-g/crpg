@@ -85,11 +85,11 @@ internal class CrpgSkirmishSpawningBehavior : CrpgSpawningBehaviorBase
             if (_notifiedPlayersAboutSpawnRestriction.Add(networkPeer.VirtualPlayer.Id))
             {
                 GameNetwork.BeginModuleEventAsServer(networkPeer);
-                GameNetwork.WriteMessage(new CrpgNotification
+                GameNetwork.WriteMessage(new CrpgNotificationId
                 {
-                    Type = CrpgNotification.NotificationType.Notification,
-                    Message = "You should have at least one weapon equipped to spawn!",
-                    IsMessageTextId = false,
+                    Type = CrpgNotificationType.Announcement,
+                    TextId = "str_kick_reason",
+                    TextVariation = "no_weapon",
                     SoundEvent = string.Empty,
                 });
                 GameNetwork.EndModuleEventAsServer();

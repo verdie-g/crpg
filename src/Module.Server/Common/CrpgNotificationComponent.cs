@@ -1,4 +1,3 @@
-using System.Text;
 using Crpg.Module.Common.Network;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
@@ -21,36 +20,41 @@ internal class CrpgNotificationComponent : MultiplayerGameNotificationsComponent
         if (GameNetwork.IsClientOrReplay)
         {
             registerer.Register<CrpgNotification>(HandleNotification);
+            registerer.Register<CrpgNotificationId>(HandleNotificationId);
             registerer.Register<CrpgServerMessage>(HandleServerMessage);
         }
     }
 
     private void HandleNotification(CrpgNotification notification)
     {
-        string message = notification.IsMessageTextId ? GameTexts.FindText(notification.Message).ToString() : notification.Message;
+        PrintNotification(notification.Message, notification.Type, notification.SoundEvent);
+    }
 
-        // Notifcation like "Flag A and B were removed"
-        if (notification.Type == CrpgNotification.NotificationType.Notification)
-        {
-            MBInformationManager.AddQuickInformation(new TextObject(message), 0, null, notification.SoundEvent);
-        }
-
-        // Red announcement like "A new update is available. Please update your client" (Lobbyscreen)
-        else if (notification.Type == CrpgNotification.NotificationType.Announcement)
-        {
-            InformationManager.AddSystemNotification(message);
-        }
-
-        // Plays a sound event
-        else if (notification.Type == CrpgNotification.NotificationType.Sound)
-        {
-            SoundEvent.CreateEventFromString(notification.SoundEvent, Mission.Scene).Play();
-        }
+    private void HandleNotificationId(CrpgNotificationId notification)
+    {
+        string message = GameTexts.FindText(notification.TextId, notification.TextVariation).ToString();
+        PrintNotification(message, notification.Type, notification.SoundEvent);
     }
 
     private void HandleServerMessage(CrpgServerMessage message)
     {
         string msg = message.IsMessageTextId ? GameTexts.FindText(message.Message).ToString() : message.Message;
         InformationManager.DisplayMessage(new InformationMessage(msg, new Color(message.Red, message.Green, message.Blue, message.Alpha)));
+    }
+
+    private void PrintNotification(string message, CrpgNotificationType type, string? soundEvent)
+    {
+        if (type == CrpgNotificationType.Notification) // Small text at the top of the screen.
+        {
+            MBInformationManager.AddQuickInformation(new TextObject(message), 0, null, soundEvent);
+        }
+        else if (type == CrpgNotificationType.Announcement) // Big red text in the middle of the screen.
+        {
+            InformationManager.AddSystemNotification(message);
+        }
+        else if (type == CrpgNotificationType.Sound)
+        {
+            SoundEvent.CreateEventFromString(soundEvent, Mission.Scene).Play();
+        }
     }
 }
