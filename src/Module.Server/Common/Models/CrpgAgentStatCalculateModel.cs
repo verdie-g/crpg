@@ -316,11 +316,11 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 // Thrustspeed Nerf on Horseback
                 props.ThrustOrRangedReadySpeedMultiplier *= 0.84f;
                 float[] coverageFactorsForCavShield = { 0.04f, 0f };
-                props.AttributeShieldMissileCollisionBodySizeAdder = MathHelper.ApplyPolynomialFunction(shieldSkill, coverageFactorsForCavShield);
+                props.AttributeShieldMissileCollisionBodySizeAdder = MathHelper.ApplyPolynomialFunction(shieldSkill, _constants.CavCoverageFactorForShieldCoefs);
             }
             else
             {
-               props.AttributeShieldMissileCollisionBodySizeAdder = MathHelper.ApplyPolynomialFunction(shieldSkill, _constants.CoverageFactorForShieldCoefs);
+               props.AttributeShieldMissileCollisionBodySizeAdder = MathHelper.ApplyPolynomialFunction(shieldSkill, _constants.InfantryCoverageFactorForShieldCoefs);
             }
 
             // Ranged Behavior

@@ -41,7 +41,8 @@ public class Constants
     public float[] DamageFactorForPowerThrowCoefs { get; set; } = Array.Empty<float>();
     public float[] HandlingFactorForWeaponMaster { get; set; } = Array.Empty<float>();
     public float[] DurabilityFactorForShieldCoefs { get; set; } = Array.Empty<float>();
-    public float[] CoverageFactorForShieldCoefs { get; set; } = Array.Empty<float>();
+    public float[] InfantryCoverageFactorForShieldCoefs { get; set; } = Array.Empty<float>();
+    public float[] CavCoverageFactorForShieldCoefs { get; set; } = Array.Empty<float>();
     public float[] SpeedFactorForShieldCoefs { get; set; } = Array.Empty<float>();
     public float ArmorSetRequirementPowerMeanPValue { get; set; }
     public float DefaultRating { get; set; }
