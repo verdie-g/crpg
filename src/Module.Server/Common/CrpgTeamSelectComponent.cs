@@ -1,14 +1,16 @@
-﻿using System.Text;
-using Crpg.Module.Common.Network;
-using TaleWorlds.MountAndBlade;
+﻿using TaleWorlds.MountAndBlade;
 
 #if CRPG_SERVER
+using System.Text;
 using Crpg.Module.Api.Models.Items;
 using Crpg.Module.Api.Models.Users;
 using Crpg.Module.Balancing;
+using Crpg.Module.Common.Network;
 using Crpg.Module.Rating;
 using NetworkMessages.FromClient;
+using Newtonsoft.Json;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TaleWorlds.ObjectSystem;
 using TaleWorlds.PlayerServices;
 #endif
@@ -105,12 +107,11 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
 
     private void OnRoundEnded()
     {
-        if (_roundController.IsMatchEnding)
+        LogRoundResult();
+        if (!_roundController.IsMatchEnding)
         {
-            return;
+            BalanceTeams(firstBalance: false);
         }
-
-        BalanceTeams(firstBalance: false);
     }
 
     private void OnWarmupEnded()
@@ -326,14 +327,8 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
     private float ComputeWeight(CrpgUser user)
     {
         float ratingWeight = ComputeRatingWeight(user);
-
-        float itemsPrice = ComputeEquippedItemsPrice(user.Character.EquippedItems);
-        float itemsWeight = 1f + itemsPrice / 50_000f;
-
-        // Ideally the rating should be elastic enough to change when the character
-        // retires but that's not the case so for now let's use the level to compute
-        // the weight.
-        float levelWeight = 1f + user.Character.Level / 30f;
+        float itemsWeight = ComputeEquippedItemsWeight(user.Character.EquippedItems);
+        float levelWeight = ComputeLevelWeight(user.Character.Level);
 
         return ratingWeight * itemsWeight * levelWeight;
     }
@@ -346,10 +341,16 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
         return 0.0001f * (float)Math.Pow(rating.Value - 2 * rating.Deviation, 2f) * regionPenalty;
     }
 
-    private float ComputeEquippedItemsPrice(IList<CrpgEquippedItem> equippedItems)
+    private float ComputeEquippedItemsWeight(IList<CrpgEquippedItem> equippedItems)
     {
-        float price = 0f;
-        float weaponMaxPrice = 0f;
+        float itemsPrice = ComputeEquippedItemsPrice(equippedItems);
+        return 1f + itemsPrice / 50_000f;
+    }
+
+    private int ComputeEquippedItemsPrice(IList<CrpgEquippedItem> equippedItems)
+    {
+        int price = 0;
+        int weaponMaxPrice = 0;
         foreach (var ei in equippedItems)
         {
             var itemObject = MBObjectManager.Instance.GetObject<ItemObject>(ei.UserItem.BaseItemId);
@@ -371,10 +372,89 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
         return price + weaponMaxPrice;
     }
 
+    private float ComputeLevelWeight(int level)
+    {
+        // Ideally the rating should be elastic enough to change when the character
+        // retires but that's not the case so for now let's use the level to compute
+        // the weight.
+        return 1f + level / 30f;
+    }
+
     private bool IsNativeBalancerEnabled()
     {
-        var autoTeamBalanceThreshold = (AutoTeamBalanceLimits)MultiplayerOptions.OptionType.AutoTeamBalanceThreshold.GetIntValue();
+        var autoTeamBalanceThreshold =
+            (AutoTeamBalanceLimits)MultiplayerOptions.OptionType.AutoTeamBalanceThreshold.GetIntValue();
         return autoTeamBalanceThreshold != AutoTeamBalanceLimits.Off;
+    }
+
+    private void LogRoundResult()
+    {
+        RoundResultData roundResult = new()
+        {
+            WinnerSide = _roundController.RoundWinner,
+            MapId = Mission.SceneName,
+            Version = GetType().Assembly.GetName().Version!,
+        };
+
+        foreach (var networkPeer in GameNetwork.NetworkPeers)
+        {
+            var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
+            if (!networkPeer.IsSynchronized || crpgPeer?.User == null || crpgPeer.SpawnTeamThisRound == null)
+            {
+                continue;
+            }
+
+            var character = crpgPeer.User.Character;
+            RoundPlayerData roundPlayer = new()
+            {
+                UserId = crpgPeer.User.Id,
+                UserName = crpgPeer.User.Name,
+                Weight = ComputeWeight(crpgPeer.User),
+                Level = character.Level,
+                LevelWeight = ComputeLevelWeight(character.Level),
+                Rating = character.Rating.Value,
+                RatingWeight = ComputeRatingWeight(crpgPeer.User),
+                EquipmentCost = ComputeEquippedItemsPrice(character.EquippedItems),
+                EquipmentWeight = ComputeEquippedItemsWeight(character.EquippedItems),
+                ClanTag = crpgPeer.Clan?.Tag,
+            };
+
+            if (crpgPeer.SpawnTeamThisRound.Side == BattleSideEnum.Defender)
+            {
+                roundResult.Defenders.Add(roundPlayer);
+            }
+            else if (crpgPeer.SpawnTeamThisRound.Side == BattleSideEnum.Attacker)
+            {
+                roundResult.Attackers.Add(roundPlayer);
+            }
+        }
+
+        string roundResultJson = JsonConvert.SerializeObject(roundResult);
+        string base64RoundResultJson = Convert.ToBase64String(Encoding.UTF8.GetBytes(roundResultJson));
+        Debug.Print("Round result data: " + base64RoundResultJson);
+    }
+
+    private class RoundResultData
+    {
+        public BattleSideEnum WinnerSide { get; set; }
+        public string MapId { get; set; } = string.Empty;
+        public Version Version { get; set; } = default!;
+        public List<RoundPlayerData> Defenders { get; set; } = new();
+        public List<RoundPlayerData> Attackers { get; set; } = new();
+    }
+
+    private class RoundPlayerData
+    {
+        public int UserId { get; set; }
+        public string UserName { get; set; } = string.Empty;
+        public float Weight { get; set; }
+        public int Level { get; set; }
+        public float LevelWeight { get; set; }
+        public float Rating { get; set; }
+        public float RatingWeight { get; set; }
+        public int EquipmentCost { get; set; }
+        public float EquipmentWeight { get; set; }
+        public string? ClanTag { get; set; }
     }
 #else
     }
