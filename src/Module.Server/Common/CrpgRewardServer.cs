@@ -244,7 +244,7 @@ internal class CrpgRewardServer : MissionBehavior
         bool rewardMultiplierEnabled)
     {
         float serverXpMultiplier = CrpgServerConfiguration.ServerExperienceMultiplier;
-        serverXpMultiplier *= IsHappyHour() ? 2 : 1;
+        serverXpMultiplier *= IsHappyHour() ? 1.5f : 1f;
         userUpdate.Reward = new CrpgUserReward
         {
             Experience = (int)(serverXpMultiplier * durationRewarded * (_constants.BaseExperienceGainPerSecond
@@ -303,7 +303,7 @@ internal class CrpgRewardServer : MissionBehavior
             GameNetwork.WriteMessage(new CrpgNotification
             {
                 Type = CrpgNotificationType.Announcement,
-                Message = "It's happy hours time! Experience is multiplied by two.",
+                Message = "It's happy hours time! Experience gain is increased by 50%.",
             });
             GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
         }

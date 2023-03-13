@@ -1,7 +1,7 @@
 ﻿---
 
 crpg_region: oc
-crpg_happy_hours: "20:30-22:30,Australia/Sydney"
+crpg_happy_hours: "20:00-23:59,Australia/Sydney"
 
 crpg_game_server_instances:
   - name: a

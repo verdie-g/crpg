@@ -1,7 +1,7 @@
 ﻿---
 
 crpg_region: na
-crpg_happy_hours: "20:00-22:00,America/Chicago"
+crpg_happy_hours: "19:30-23:30,America/Chicago"
 
 crpg_game_server_instances:
   - name: a
