@@ -1,6 +1,7 @@
 using System.Net.Http.Json;
-using System.Text.Json;
+using System.Text.Json.Serialization;
 using Crpg.Application.Games.Models;
+using Crpg.Domain.Entities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using LoggerFactory = Crpg.Logging.LoggerFactory;
@@ -40,12 +41,15 @@ public class DatadogGameServerStatsService : IGameServerStatsService
 
     public async Task<GameServerStats> GetGameServerStatsAsync(CancellationToken cancellationToken)
     {
+        GameServerStats serverStats = new()
+        {
+            Total = new GameStats { PlayingCount = 0 },
+            Regions = new Dictionary<Region, GameStats>(),
+        };
+
         if (_ddHttpClient == null)
         {
-            return new GameServerStats
-            {
-                PlayingCount = 0,
-            };
+            return serverStats;
         }
 
         if (DateTime.UtcNow < _lastUpdate + TimeSpan.FromMinutes(2))
@@ -59,24 +63,21 @@ public class DatadogGameServerStatsService : IGameServerStatsService
         {
             KeyValuePair.Create("from", from.ToUnixTimeSeconds().ToString()),
             KeyValuePair.Create("to", to.ToUnixTimeSeconds().ToString()),
-            KeyValuePair.Create("query", "sum:crpg.users.playing.count{*}"),
+            KeyValuePair.Create("query", "sum:crpg.users.playing.count{*} by {region}"),
         });
         string queryStr = await query.ReadAsStringAsync(cancellationToken);
 
         try
         {
-            var doc = await _ddHttpClient.GetFromJsonAsync<JsonDocument>("api/v1/query?" + queryStr, cancellationToken);
-            var pointListEl = doc!.RootElement.GetProperty("series").EnumerateArray().First().GetProperty("pointlist");
-            if (pointListEl.GetArrayLength() > 0)
+            var res = await _ddHttpClient.GetFromJsonAsync<DatadogQueryResponse>("api/v1/query?" + queryStr, cancellationToken);
+            foreach (var series in res!.Series)
             {
-                int playingCount = (int)pointListEl.EnumerateArray().Last().EnumerateArray().Last().GetDouble();
-                // Both fields can be updated by several threads but the results is the same.
-                _lastUpdate = DateTime.UtcNow;
-                _serverStats = new GameServerStats
-                {
-                    PlayingCount = playingCount,
-                };
-                return _serverStats;
+                string regionStr = series.Scope[^2..];
+                var region = Enum.Parse<Region>(regionStr, ignoreCase: true);
+
+                int playingCount = series.PointList.Length > 0 ? (int)series.PointList[^1][^1] : 0;
+                serverStats.Total.PlayingCount += playingCount;
+                serverStats.Regions[region] = new GameStats { PlayingCount = playingCount };
             }
         }
         catch (Exception e)
@@ -84,11 +85,50 @@ public class DatadogGameServerStatsService : IGameServerStatsService
             Logger.LogError(e, "Could not get server stats");
         }
 
+        // Both fields can be updated by several threads but the results is the same.
         _lastUpdate = DateTime.UtcNow;
-        _serverStats = new GameServerStats
-        {
-            PlayingCount = 0,
-        };
+        _serverStats = serverStats;
         return _serverStats;
+    }
+
+    private class DatadogQueryResponse
+    {
+        public string Status { get; set; } = string.Empty;
+        [JsonPropertyName("res_type")]
+        public string ResType { get; set; } = string.Empty;
+        [JsonPropertyName("resp_version")]
+        public int RespVersion { get; set; }
+        public string Query { get; set; } = string.Empty;
+        [JsonPropertyName("from_date")]
+        public long FromDate { get; set; }
+        [JsonPropertyName("to_date")]
+        public long ToDate { get; set; }
+        public DatadogSeries[] Series { get; set; } = Array.Empty<DatadogSeries>();
+        public object[] Values { get; set; } = Array.Empty<object>();
+        public object[] Times { get; set; } = Array.Empty<object>();
+        public string Message { get; set; } = string.Empty;
+        [JsonPropertyName("group_by")]
+        public string[] GroupBy { get; set; } = Array.Empty<string>();
+    }
+
+    private class DatadogSeries
+    {
+        public string Unit { get; set; } = string.Empty;
+        [JsonPropertyName("query_index")]
+        public int QueryIndex { get; set; }
+        public string Aggr { get; set; } = string.Empty;
+        public string Metric { get; set; } = string.Empty;
+        [JsonPropertyName("tag_set")]
+        public string[] TagSet { get; set; } = Array.Empty<string>();
+        public string Expression { get; set; } = string.Empty;
+        public string Scope { get; set; } = string.Empty;
+        public int Interval { get; set; }
+        public int Length { get; set; }
+        public long Start { get; set; }
+        public long End { get; set; }
+        public double[][] PointList { get; set; } = Array.Empty<double[]>();
+        [JsonPropertyName("display_name")]
+        public string DisplayName { get; set; } = string.Empty;
+        public Dictionary<string, object> Attributes { get; set; } = new();
     }
 }

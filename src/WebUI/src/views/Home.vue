@@ -48,7 +48,7 @@
 
         <p>
           <b-icon icon="circle" size="is-small" class="mr-3 has-text-primary" />
-          {{ gameServerStats.playingCount }} online
+          {{ gameServerStats.total.playingCount }} online
         </p>
       </div>
     </section>
@@ -61,11 +61,20 @@ import { signIn } from '@/services/auth-service';
 import userModule from '@/store/user-module';
 import { getGameServerStats } from '@/services/game-server-statistics-service';
 import { GameServerStats } from '@/models/game-server-stats';
+import Region from '@/models/region';
 
 @Component
 export default class Home extends Vue {
   signingIn = false;
-  gameServerStats: GameServerStats = { playingCount: 0 };
+  gameServerStats: GameServerStats = {
+    total: { playingCount: 0 },
+    regions: {
+      [Region.Eu]: { playingCount: 0 },
+      [Region.Na]: { playingCount: 0 },
+      [Region.As]: { playingCount: 0 },
+      [Region.Oc]: { playingCount: 0 },
+    },
+  };
 
   get isSignedIn(): boolean {
     return userModule.isSignedIn;

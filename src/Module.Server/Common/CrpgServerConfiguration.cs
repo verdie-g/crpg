@@ -11,7 +11,7 @@ internal static class CrpgServerConfiguration
     static CrpgServerConfiguration()
     {
         string? regionStr = Environment.GetEnvironmentVariable("CRPG_REGION");
-        Region = Enum.TryParse(regionStr, out CrpgRegion region) ? region : CrpgRegion.Eu;
+        Region = Enum.TryParse(regionStr, ignoreCase: true, out CrpgRegion region) ? region : CrpgRegion.Eu;
         Service = Environment.GetEnvironmentVariable("CRPG_SERVICE") ?? "unknown-service";
         Instance = Environment.GetEnvironmentVariable("CRPG_INSTANCE") ?? "unknown-instance";
     }
