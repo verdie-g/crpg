@@ -26,6 +26,7 @@ public class CrpgDbContext : DbContext, ICrpgDbContext
 #pragma warning disable CS0618 // Since 7.0, should use NpgsqlDataSourceBuilder but it breaks the migrations. I think there is an issue in npgsql.
         NpgsqlConnection.GlobalTypeMapper.MapEnum<Platform>();
         NpgsqlConnection.GlobalTypeMapper.MapEnum<Role>();
+        NpgsqlConnection.GlobalTypeMapper.MapEnum<CharacterClass>();
         NpgsqlConnection.GlobalTypeMapper.MapEnum<RestrictionType>();
         NpgsqlConnection.GlobalTypeMapper.MapEnum<Culture>();
         NpgsqlConnection.GlobalTypeMapper.MapEnum<ItemType>();
@@ -122,6 +123,7 @@ public class CrpgDbContext : DbContext, ICrpgDbContext
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(CrpgDbContext).Assembly);
         modelBuilder.HasPostgresEnum<Platform>();
         modelBuilder.HasPostgresEnum<Role>();
+        modelBuilder.HasPostgresEnum<CharacterClass>();
         modelBuilder.HasPostgresEnum<RestrictionType>();
         modelBuilder.HasPostgresEnum<Culture>();
         modelBuilder.HasPostgresEnum<ItemType>();
