@@ -30,13 +30,13 @@ public record GetBattleMercenaryApplicationsQuery : IMediatorRequest<IList<Battl
     {
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
-        private readonly ICharacterClassModel _characterClassModel;
+        private readonly ICharacterClassResolver _characterClassResolver;
 
-        public Handler(ICrpgDbContext db, IMapper mapper, ICharacterClassModel characterClassModel)
+        public Handler(ICrpgDbContext db, IMapper mapper, ICharacterClassResolver characterClassResolver)
         {
             _db = db;
             _mapper = mapper;
-            _characterClassModel = characterClassModel;
+            _characterClassResolver = characterClassResolver;
         }
 
         public async Task<Result<IList<BattleMercenaryApplicationViewModel>>> Handle(GetBattleMercenaryApplicationsQuery req, CancellationToken cancellationToken)
@@ -71,7 +71,7 @@ public record GetBattleMercenaryApplicationsQuery : IMediatorRequest<IList<Battl
                     {
                         Id = m.Character.Id,
                         Level = m.Character.Level,
-                        Class = _characterClassModel.ResolveCharacterClass(m.Character.Characteristics),
+                        Class = m.Character.Class,
                     },
                     Wage = m.Wage,
                     Note = m.Note,

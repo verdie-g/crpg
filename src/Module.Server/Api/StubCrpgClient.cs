@@ -30,7 +30,6 @@ internal class StubCrpgClient : ICrpgClient
                 Generation = 0,
                 Level = 30,
                 Experience = 0,
-                ExperienceMultiplier = 1.0f,
                 ForTournament = false,
                 Characteristics = new CrpgCharacterCharacteristics
                 {

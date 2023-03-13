@@ -15,6 +15,7 @@ public class Character : AuditableEntity
     public int Generation { get; set; }
     public int Level { get; set; }
     public int Experience { get; set; }
+    public CharacterClass Class { get; set; }
 
     /// <summary>
     /// True if the character is used for for tournaments.

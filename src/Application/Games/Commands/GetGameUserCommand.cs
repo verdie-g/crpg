@@ -213,6 +213,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
             Character character = new()
             {
                 Name = "Peasant",
+                Class = CharacterClass.ShockInfantry,
                 EquippedItems = equippedItems,
                 Statistics = new CharacterStatistics
                 {

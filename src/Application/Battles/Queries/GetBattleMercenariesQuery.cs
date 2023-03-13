@@ -20,13 +20,13 @@ public record GetBattleMercenariesQuery : IMediatorRequest<IList<BattleMercenary
     {
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
-        private readonly ICharacterClassModel _characterClassModel;
+        private readonly ICharacterClassResolver _characterClassResolver;
 
-        public Handler(ICrpgDbContext db, IMapper mapper, ICharacterClassModel characterClassModel)
+        public Handler(ICrpgDbContext db, IMapper mapper, ICharacterClassResolver characterClassResolver)
         {
             _db = db;
             _mapper = mapper;
-            _characterClassModel = characterClassModel;
+            _characterClassResolver = characterClassResolver;
         }
 
         public async Task<Result<IList<BattleMercenaryViewModel>>> Handle(GetBattleMercenariesQuery req, CancellationToken cancellationToken)
@@ -65,7 +65,7 @@ public record GetBattleMercenariesQuery : IMediatorRequest<IList<BattleMercenary
                     {
                         Id = m.Character.Id,
                         Level = m.Character.Level,
-                        Class = _characterClassModel.ResolveCharacterClass(m.Character.Characteristics),
+                        Class = m.Character.Class,
                     },
                     Side = m.Side,
                 }).ToArray();

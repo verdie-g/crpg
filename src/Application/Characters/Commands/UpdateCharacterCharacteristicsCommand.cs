@@ -4,6 +4,7 @@ using Crpg.Application.Common;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
+using Crpg.Application.Common.Services;
 using Crpg.Common.Helpers;
 using Crpg.Domain.Entities.Characters;
 using Microsoft.EntityFrameworkCore;
@@ -20,12 +21,14 @@ public record UpdateCharacterCharacteristicsCommand : IMediatorRequest<Character
     {
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
+        private readonly ICharacterClassResolver _characterClassResolver;
         private readonly Constants _constants;
 
-        public Handler(ICrpgDbContext db, IMapper mapper, Constants constants)
+        public Handler(ICrpgDbContext db, IMapper mapper, ICharacterClassResolver characterClassResolver, Constants constants)
         {
             _db = db;
             _mapper = mapper;
+            _characterClassResolver = characterClassResolver;
             _constants = constants;
         }
 
@@ -54,6 +57,8 @@ public record UpdateCharacterCharacteristicsCommand : IMediatorRequest<Character
             {
                 return new(errors);
             }
+
+            character.Class = _characterClassResolver.ResolveCharacterClass(character.Characteristics);
 
             await _db.SaveChangesAsync(cancellationToken);
             return new(_mapper.Map<CharacterCharacteristicsViewModel>(character.Characteristics));

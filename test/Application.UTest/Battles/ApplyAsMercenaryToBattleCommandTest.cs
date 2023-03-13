@@ -1,12 +1,9 @@
 ﻿using Crpg.Application.Battles.Commands;
-using Crpg.Application.Characters.Models;
 using Crpg.Application.Common.Results;
-using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities.Battles;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Parties;
 using Crpg.Domain.Entities.Users;
-using Moq;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Battles;
@@ -20,7 +17,7 @@ public class ApplyAsMercenaryToBattleCommandTest : TestBase
         ArrangeDb.Users.Add(user);
         await ArrangeDb.SaveChangesAsync();
 
-        ApplyAsMercenaryToBattleCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        ApplyAsMercenaryToBattleCommand.Handler handler = new(ActDb, Mapper);
         var res = await handler.Handle(new()
         {
             UserId = user.Id,
@@ -41,7 +38,7 @@ public class ApplyAsMercenaryToBattleCommandTest : TestBase
         ArrangeDb.Users.Add(user);
         await ArrangeDb.SaveChangesAsync();
 
-        ApplyAsMercenaryToBattleCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        ApplyAsMercenaryToBattleCommand.Handler handler = new(ActDb, Mapper);
         var res = await handler.Handle(new()
         {
             UserId = user.Id,
@@ -68,7 +65,7 @@ public class ApplyAsMercenaryToBattleCommandTest : TestBase
         ArrangeDb.Battles.Add(battle);
         await ArrangeDb.SaveChangesAsync();
 
-        ApplyAsMercenaryToBattleCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        ApplyAsMercenaryToBattleCommand.Handler handler = new(ActDb, Mapper);
         var res = await handler.Handle(new()
         {
             UserId = user.Id,
@@ -97,7 +94,7 @@ public class ApplyAsMercenaryToBattleCommandTest : TestBase
 
         await ArrangeDb.SaveChangesAsync();
 
-        ApplyAsMercenaryToBattleCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        ApplyAsMercenaryToBattleCommand.Handler handler = new(ActDb, Mapper);
         var res = await handler.Handle(new()
         {
             UserId = user.Id,
@@ -131,7 +128,7 @@ public class ApplyAsMercenaryToBattleCommandTest : TestBase
         ArrangeDb.BattleMercenaryApplications.Add(existingApplication);
         await ArrangeDb.SaveChangesAsync();
 
-        ApplyAsMercenaryToBattleCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        ApplyAsMercenaryToBattleCommand.Handler handler = new(ActDb, Mapper);
         var res = await handler.Handle(new()
         {
             UserId = user.Id,
@@ -159,12 +156,7 @@ public class ApplyAsMercenaryToBattleCommandTest : TestBase
         ArrangeDb.Battles.Add(battle);
         await ArrangeDb.SaveChangesAsync();
 
-        Mock<ICharacterClassModel> characterClassModelMock = new();
-        characterClassModelMock
-            .Setup(m => m.ResolveCharacterClass(It.IsAny<CharacterCharacteristics>()))
-            .Returns(CharacterClass.Crossbowman);
-
-        ApplyAsMercenaryToBattleCommand.Handler handler = new(ActDb, Mapper, characterClassModelMock.Object);
+        ApplyAsMercenaryToBattleCommand.Handler handler = new(ActDb, Mapper);
         var res = await handler.Handle(new()
         {
             UserId = user.Id,
@@ -180,7 +172,6 @@ public class ApplyAsMercenaryToBattleCommandTest : TestBase
         Assert.NotZero(application.Id);
         Assert.AreEqual(user.Id, application.User.Id);
         Assert.AreEqual(character.Id, application.Character.Id);
-        Assert.AreEqual(CharacterClass.Crossbowman, application.Character.Class);
         Assert.AreEqual(BattleSide.Defender, application.Side);
         Assert.AreEqual(123, application.Wage);
         Assert.AreEqual("toto", application.Note);

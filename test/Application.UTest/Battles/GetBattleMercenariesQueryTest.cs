@@ -14,7 +14,7 @@ public class GetBattleMercenariesQueryTest : TestBase
     [Test]
     public async Task ShouldReturnErrorIfBattleNotFound()
     {
-        GetBattleMercenariesQuery.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        GetBattleMercenariesQuery.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassResolver>());
         var res = await handler.Handle(new GetBattleMercenariesQuery
         {
             UserId = 99,
@@ -32,7 +32,7 @@ public class GetBattleMercenariesQueryTest : TestBase
         ArrangeDb.Battles.Add(battle);
         await ArrangeDb.SaveChangesAsync();
 
-        GetBattleMercenariesQuery.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        GetBattleMercenariesQuery.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassResolver>());
         var res = await handler.Handle(new GetBattleMercenariesQuery
         {
             UserId = 99,
@@ -50,7 +50,7 @@ public class GetBattleMercenariesQueryTest : TestBase
         ArrangeDb.Battles.Add(battle);
         await ArrangeDb.SaveChangesAsync();
 
-        GetBattleMercenariesQuery.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        GetBattleMercenariesQuery.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassResolver>());
         var res = await handler.Handle(new GetBattleMercenariesQuery
         {
             UserId = 99,
@@ -85,7 +85,7 @@ public class GetBattleMercenariesQueryTest : TestBase
         ArrangeDb.Battles.Add(battle);
         await ArrangeDb.SaveChangesAsync();
 
-        GetBattleMercenariesQuery.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        GetBattleMercenariesQuery.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassResolver>());
         var res = await handler.Handle(new GetBattleMercenariesQuery
         {
             UserId = 20,
@@ -123,7 +123,7 @@ public class GetBattleMercenariesQueryTest : TestBase
         ArrangeDb.Battles.Add(battle);
         await ArrangeDb.SaveChangesAsync();
 
-        GetBattleMercenariesQuery.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        GetBattleMercenariesQuery.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassResolver>());
         var res = await handler.Handle(new GetBattleMercenariesQuery
         {
             UserId = 20,

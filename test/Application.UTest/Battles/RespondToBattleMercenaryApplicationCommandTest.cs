@@ -16,7 +16,7 @@ public class RespondToBattleMercenaryApplicationCommandTest : TestBase
     [Test]
     public async Task ShouldReturnErrorIfPartyIsNotFound()
     {
-        RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassResolver>());
         var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
         {
             PartyId = 99,
@@ -35,7 +35,7 @@ public class RespondToBattleMercenaryApplicationCommandTest : TestBase
         ArrangeDb.Parties.Add(party);
         await ArrangeDb.SaveChangesAsync();
 
-        RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassResolver>());
         var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
         {
             PartyId = party.Id,
@@ -69,7 +69,7 @@ public class RespondToBattleMercenaryApplicationCommandTest : TestBase
         ArrangeDb.BattleMercenaryApplications.Add(application);
         await ArrangeDb.SaveChangesAsync();
 
-        RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassResolver>());
         var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
         {
             PartyId = party.Id,
@@ -112,7 +112,7 @@ public class RespondToBattleMercenaryApplicationCommandTest : TestBase
         ArrangeDb.BattleMercenaryApplications.Add(application);
         await ArrangeDb.SaveChangesAsync();
 
-        RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassResolver>());
         var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
         {
             PartyId = party.Id,
@@ -158,7 +158,7 @@ public class RespondToBattleMercenaryApplicationCommandTest : TestBase
         ArrangeDb.BattleMercenaryApplications.Add(application);
         await ArrangeDb.SaveChangesAsync();
 
-        RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassResolver>());
         var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
         {
             PartyId = party.Id,
@@ -202,7 +202,7 @@ public class RespondToBattleMercenaryApplicationCommandTest : TestBase
         ArrangeDb.BattleMercenaryApplications.Add(application);
         await ArrangeDb.SaveChangesAsync();
 
-        RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassResolver>());
         var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
         {
             PartyId = party.Id,
@@ -245,7 +245,7 @@ public class RespondToBattleMercenaryApplicationCommandTest : TestBase
         ArrangeDb.BattleMercenaryApplications.Add(application);
         await ArrangeDb.SaveChangesAsync();
 
-        RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassResolver>());
         var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
         {
             PartyId = party.Id,
@@ -332,7 +332,7 @@ public class RespondToBattleMercenaryApplicationCommandTest : TestBase
         ArrangeDb.BattleMercenaryApplications.AddRange(otherApplications);
         await ArrangeDb.SaveChangesAsync();
 
-        RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassResolver>());
         var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
         {
             PartyId = party.Id,

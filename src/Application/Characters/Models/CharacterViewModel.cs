@@ -10,5 +10,6 @@ public record CharacterViewModel : IMapFrom<Character>
     public int Generation { get; init; }
     public int Level { get; init; }
     public int Experience { get; init; }
+    public CharacterClass Class { get; init; }
     public bool ForTournament { get; init; }
 }

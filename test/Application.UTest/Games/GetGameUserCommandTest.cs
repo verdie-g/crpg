@@ -51,6 +51,7 @@ public class GetGameUserCommandTest : TestBase
         Assert.AreEqual(Platform.Epic, gameUser.Platform);
         Assert.AreEqual("1", gameUser.PlatformUserId);
         Assert.AreEqual("Peasant", gameUser.Character.Name);
+        Assert.AreEqual(CharacterClass.ShockInfantry, gameUser.Character.Class);
         Assert.IsNotEmpty(gameUser.Character.EquippedItems);
         Assert.IsEmpty(gameUser.Restrictions);
 
@@ -104,6 +105,7 @@ public class GetGameUserCommandTest : TestBase
         Assert.AreEqual(user.Platform, gameUser.Platform);
         Assert.AreEqual(user.PlatformUserId, gameUser.PlatformUserId);
         Assert.AreEqual("Peasant", gameUser.Character.Name);
+        Assert.AreEqual(CharacterClass.ShockInfantry, gameUser.Character.Class);
         Assert.IsNotEmpty(gameUser.Character.EquippedItems);
         Assert.IsEmpty(gameUser.Restrictions);
 

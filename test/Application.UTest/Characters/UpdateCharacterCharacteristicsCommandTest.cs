@@ -2,8 +2,10 @@ using Crpg.Application.Characters.Commands;
 using Crpg.Application.Characters.Models;
 using Crpg.Application.Common;
 using Crpg.Application.Common.Results;
+using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Users;
+using Moq;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Characters;
@@ -57,41 +59,41 @@ public class UpdateCharacterCharacteristicsCommandTest : TestBase
         ArrangeDb.Add(character);
         await ArrangeDb.SaveChangesAsync();
 
-        var result = await new UpdateCharacterCharacteristicsCommand.Handler(ActDb, Mapper, Constants).Handle(
-            new UpdateCharacterCharacteristicsCommand
+        UpdateCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassResolver>(), Constants);
+        var result = await handler.Handle(new UpdateCharacterCharacteristicsCommand
+        {
+            UserId = character.UserId,
+            CharacterId = character.Id,
+            Characteristics = new CharacterCharacteristicsViewModel
             {
-                UserId = character.UserId,
-                CharacterId = character.Id,
-                Characteristics = new CharacterCharacteristicsViewModel
+                Attributes = new CharacterAttributesViewModel
                 {
-                    Attributes = new CharacterAttributesViewModel
-                    {
-                        Strength = 30,
-                        Agility = 60,
-                    },
-                    Skills = new CharacterSkillsViewModel
-                    {
-                        IronFlesh = 10,
-                        PowerStrike = 10,
-                        PowerDraw = 10,
-                        PowerThrow = 10,
-                        Athletics = 10,
-                        Riding = 10,
-                        WeaponMaster = 10,
-                        MountedArchery = 10,
-                        Shield = 10,
-                    },
-                    WeaponProficiencies = new CharacterWeaponProficienciesViewModel
-                    {
-                        OneHanded = 7,
-                        TwoHanded = 7,
-                        Polearm = 7,
-                        Bow = 7,
-                        Throwing = 7,
-                        Crossbow = 7,
-                    },
+                    Strength = 30,
+                    Agility = 60,
                 },
-            }, CancellationToken.None);
+                Skills = new CharacterSkillsViewModel
+                {
+                    IronFlesh = 10,
+                    PowerStrike = 10,
+                    PowerDraw = 10,
+                    PowerThrow = 10,
+                    Athletics = 10,
+                    Riding = 10,
+                    WeaponMaster = 10,
+                    MountedArchery = 10,
+                    Shield = 10,
+                },
+                WeaponProficiencies = new CharacterWeaponProficienciesViewModel
+                {
+                    OneHanded = 7,
+                    TwoHanded = 7,
+                    Polearm = 7,
+                    Bow = 7,
+                    Throwing = 7,
+                    Crossbow = 7,
+                },
+            },
+        }, CancellationToken.None);
 
         var stats = result.Data!;
         Assert.AreEqual(0, stats.Attributes.Points);
@@ -129,8 +131,7 @@ public class UpdateCharacterCharacteristicsCommandTest : TestBase
         });
         await ArrangeDb.SaveChangesAsync();
 
-        UpdateCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper, Constants);
-
+        UpdateCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassResolver>(), Constants);
         var result = await handler.Handle(new UpdateCharacterCharacteristicsCommand
         {
             CharacterId = character.Entity.Id,
@@ -176,8 +177,7 @@ public class UpdateCharacterCharacteristicsCommandTest : TestBase
         });
         await ArrangeDb.SaveChangesAsync();
 
-        UpdateCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper, Constants);
-
+        UpdateCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassResolver>(), Constants);
         var result = await handler.Handle(new UpdateCharacterCharacteristicsCommand
         {
             CharacterId = character.Entity.Id,
@@ -274,7 +274,7 @@ public class UpdateCharacterCharacteristicsCommandTest : TestBase
             },
         };
 
-        UpdateCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper, Constants);
+        UpdateCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassResolver>(), Constants);
         foreach (var statObject in statsObjects)
         {
             var result = await handler.Handle(new UpdateCharacterCharacteristicsCommand
@@ -300,7 +300,7 @@ public class UpdateCharacterCharacteristicsCommandTest : TestBase
             new CharacterCharacteristicsViewModel { Attributes = new CharacterAttributesViewModel { Agility = 1 } },
         };
 
-        UpdateCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper, Constants);
+        UpdateCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassResolver>(), Constants);
         foreach (var statObject in statsObjects)
         {
             var result = await handler.Handle(new UpdateCharacterCharacteristicsCommand
@@ -333,7 +333,7 @@ public class UpdateCharacterCharacteristicsCommandTest : TestBase
             new() { Skills = new CharacterSkillsViewModel { Shield = 1 } },
         };
 
-        UpdateCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper, Constants);
+        UpdateCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassResolver>(), Constants);
         foreach (var statObject in statsObjects)
         {
             var result = await handler.Handle(new UpdateCharacterCharacteristicsCommand
@@ -363,7 +363,7 @@ public class UpdateCharacterCharacteristicsCommandTest : TestBase
             new CharacterCharacteristicsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Crossbow = 1 } },
         };
 
-        UpdateCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper, Constants);
+        UpdateCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassResolver>(), Constants);
         foreach (var statObject in statsObjects)
         {
             var result = await handler.Handle(new UpdateCharacterCharacteristicsCommand
@@ -412,7 +412,7 @@ public class UpdateCharacterCharacteristicsCommandTest : TestBase
             new() { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Crossbow = -1 } },
         };
 
-        UpdateCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper, Constants);
+        UpdateCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassResolver>(), Constants);
         foreach (var statObject in statsObjects)
         {
             var result = await handler.Handle(new UpdateCharacterCharacteristicsCommand
@@ -431,7 +431,7 @@ public class UpdateCharacterCharacteristicsCommandTest : TestBase
         var user = ArrangeDb.Add(new User());
         await ArrangeDb.SaveChangesAsync();
 
-        UpdateCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper, Constants);
+        UpdateCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassResolver>(), Constants);
         var result = await handler.Handle(new UpdateCharacterCharacteristicsCommand
         {
             UserId = user.Entity.Id,
@@ -444,7 +444,7 @@ public class UpdateCharacterCharacteristicsCommandTest : TestBase
     [Test]
     public async Task ShouldThrowNotFoundIfUserNotFound()
     {
-        UpdateCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper, Constants);
+        UpdateCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassResolver>(), Constants);
         var result = await handler.Handle(new UpdateCharacterCharacteristicsCommand
         {
             UserId = 1,

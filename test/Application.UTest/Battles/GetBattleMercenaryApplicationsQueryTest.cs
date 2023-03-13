@@ -14,7 +14,7 @@ public class GetBattleMercenaryApplicationsQueryTest : TestBase
     [Test]
     public async Task ShouldReturnErrorIfBattleNotFound()
     {
-        GetBattleMercenaryApplicationsQuery.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        GetBattleMercenaryApplicationsQuery.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassResolver>());
         var res = await handler.Handle(new GetBattleMercenaryApplicationsQuery
         {
             UserId = 99,
@@ -33,7 +33,7 @@ public class GetBattleMercenaryApplicationsQueryTest : TestBase
         ArrangeDb.Battles.Add(battle);
         await ArrangeDb.SaveChangesAsync();
 
-        GetBattleMercenaryApplicationsQuery.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        GetBattleMercenaryApplicationsQuery.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassResolver>());
         var res = await handler.Handle(new GetBattleMercenaryApplicationsQuery
         {
             UserId = 99,
@@ -95,7 +95,7 @@ public class GetBattleMercenaryApplicationsQueryTest : TestBase
         ArrangeDb.Battles.Add(battle);
         await ArrangeDb.SaveChangesAsync();
 
-        GetBattleMercenaryApplicationsQuery.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        GetBattleMercenaryApplicationsQuery.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassResolver>());
         var res = await handler.Handle(new GetBattleMercenaryApplicationsQuery
         {
             UserId = 20,
@@ -155,7 +155,7 @@ public class GetBattleMercenaryApplicationsQueryTest : TestBase
         ArrangeDb.Battles.Add(battle);
         await ArrangeDb.SaveChangesAsync();
 
-        GetBattleMercenaryApplicationsQuery.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        GetBattleMercenaryApplicationsQuery.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassResolver>());
         var res = await handler.Handle(new GetBattleMercenaryApplicationsQuery
         {
             UserId = user.Id,

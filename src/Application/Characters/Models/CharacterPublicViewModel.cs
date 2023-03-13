@@ -1,3 +1,5 @@
+using Crpg.Domain.Entities.Characters;
+
 namespace Crpg.Application.Characters.Models;
 
 public record CharacterPublicViewModel

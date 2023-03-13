@@ -41,7 +41,7 @@ public static class DependencyInjection
             .AddSingleton<IStrategusMap, StrategusMap>()
             .AddSingleton<IStrategusSpeedModel, StrategusSpeedModel>()
             .AddSingleton<IBattleScheduler>(strategusBattleScheduler)
-            .AddSingleton<ICharacterClassModel, CharacterClassModel>()
+            .AddSingleton<ICharacterClassResolver, CharacterClassResolver>()
             .AddSingleton<IBattleMercenaryDistributionModel, BattleMercenaryUniformDistributionModel>()
             .AddSingleton(constants)
             .AddSingleton<IItemsSource, FileItemsSource>()

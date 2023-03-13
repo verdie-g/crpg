@@ -40,13 +40,11 @@ public record ApplyAsMercenaryToBattleCommand : IMediatorRequest<BattleMercenary
 
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
-        private readonly ICharacterClassModel _characterClassModel;
 
-        public Handler(ICrpgDbContext db, IMapper mapper, ICharacterClassModel characterClassModel)
+        public Handler(ICrpgDbContext db, IMapper mapper)
         {
             _db = db;
             _mapper = mapper;
-            _characterClassModel = characterClassModel;
         }
 
         public async Task<Result<BattleMercenaryApplicationViewModel>> Handle(
@@ -115,7 +113,7 @@ public record ApplyAsMercenaryToBattleCommand : IMediatorRequest<BattleMercenary
                 {
                     Id = character.Id,
                     Level = character.Level,
-                    Class = _characterClassModel.ResolveCharacterClass(character.Characteristics),
+                    Class = character.Class,
                 },
                 Side = application.Side,
                 Wage = application.Wage,

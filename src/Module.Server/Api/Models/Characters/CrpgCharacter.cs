@@ -10,7 +10,7 @@ internal class CrpgCharacter
     public int Generation { get; set; }
     public int Level { get; set; }
     public int Experience { get; set; }
-    public float ExperienceMultiplier { get; set; }
+    public CrpgCharacterClass Class { get; set; }
 
     public bool ForTournament { get; set; }
     public CrpgCharacterCharacteristics Characteristics { get; set; } = new();

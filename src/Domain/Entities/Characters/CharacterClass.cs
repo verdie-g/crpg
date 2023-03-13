@@ -1,4 +1,4 @@
-﻿namespace Crpg.Application.Characters.Models;
+﻿namespace Crpg.Domain.Entities.Characters;
 
 public enum CharacterClass
 {

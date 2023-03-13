@@ -10,8 +10,8 @@ public class CharacterClassModelTest
     [TestCaseSource(nameof(TestResolveCharacterClassSource))]
     public void TestResolveCharacterClass(CharacterClass expectedClass, CharacterCharacteristics stats)
     {
-        CharacterClassModel model = new();
-        CharacterClass actualClass = model.ResolveCharacterClass(stats);
+        CharacterClassResolver resolver = new();
+        CharacterClass actualClass = resolver.ResolveCharacterClass(stats);
         Assert.AreEqual(expectedClass, actualClass);
     }
 

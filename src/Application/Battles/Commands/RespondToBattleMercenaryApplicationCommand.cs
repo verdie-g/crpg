@@ -25,13 +25,13 @@ public record RespondToBattleMercenaryApplicationCommand : IMediatorRequest<Batt
 
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
-        private readonly ICharacterClassModel _characterClassModel;
+        private readonly ICharacterClassResolver _characterClassResolver;
 
-        public Handler(ICrpgDbContext db, IMapper mapper, ICharacterClassModel characterClassModel)
+        public Handler(ICrpgDbContext db, IMapper mapper, ICharacterClassResolver characterClassResolver)
         {
             _db = db;
             _mapper = mapper;
-            _characterClassModel = characterClassModel;
+            _characterClassResolver = characterClassResolver;
         }
 
         public async Task<Result<BattleMercenaryApplicationViewModel>> Handle(RespondToBattleMercenaryApplicationCommand req,
@@ -115,7 +115,7 @@ public record RespondToBattleMercenaryApplicationCommand : IMediatorRequest<Batt
                 {
                     Id = application.Character.Id,
                     Level = application.Character.Level,
-                    Class = _characterClassModel.ResolveCharacterClass(application.Character.Characteristics),
+                    Class = application.Character.Class,
                 },
                 Wage = application.Wage,
                 Note = application.Note,
