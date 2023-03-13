@@ -1,4 +1,5 @@
-﻿using TaleWorlds.MountAndBlade;
+﻿using Newtonsoft.Json.Converters;
+using TaleWorlds.MountAndBlade;
 
 #if CRPG_SERVER
 using System.Text;
@@ -431,7 +432,7 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
             }
         }
 
-        string roundResultJson = JsonConvert.SerializeObject(roundResult);
+        string roundResultJson = JsonConvert.SerializeObject(roundResult, new StringEnumConverter());
         string base64RoundResultJson = Convert.ToBase64String(Encoding.UTF8.GetBytes(roundResultJson));
         Debug.Print("Round result data: " + base64RoundResultJson);
     }
