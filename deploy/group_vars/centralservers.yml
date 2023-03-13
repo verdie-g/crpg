@@ -130,6 +130,15 @@ datadog_checks:
                         type: gauge
                       - name: p99
                         type: gauge
+                  - query: SELECT COUNT(*), class
+                        FROM characters
+                        WHERE NOW() - updated_at < '30 days'::INTERVAL
+                        GROUP BY class;
+                    columns:
+                      - name: crpg.characters.active.30d.class
+                        type: gauge
+                      - name: class
+                        type: tag
         logs:
             - type: file
               path: /var/log/postgresql/postgresql.csv
