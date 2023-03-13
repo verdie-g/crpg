@@ -2,6 +2,7 @@
 
 #if CRPG_SERVER
 using System.Text;
+using Crpg.Module.Api.Models.Characters;
 using Crpg.Module.Api.Models.Items;
 using Crpg.Module.Api.Models.Users;
 using Crpg.Module.Balancing;
@@ -412,6 +413,7 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
                 Weight = ComputeWeight(crpgPeer.User),
                 Level = character.Level,
                 LevelWeight = ComputeLevelWeight(character.Level),
+                Class = character.Class,
                 Rating = character.Rating.Value,
                 RatingWeight = ComputeRatingWeight(crpgPeer.User),
                 EquipmentCost = ComputeEquippedItemsPrice(character.EquippedItems),
@@ -450,6 +452,7 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
         public float Weight { get; set; }
         public int Level { get; set; }
         public float LevelWeight { get; set; }
+        public CrpgCharacterClass Class { get; set; }
         public float Rating { get; set; }
         public float RatingWeight { get; set; }
         public int EquipmentCost { get; set; }
