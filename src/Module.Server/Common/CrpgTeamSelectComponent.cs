@@ -396,6 +396,7 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
             WinnerSide = _roundController.RoundWinner,
             MapId = Mission.SceneName,
             Version = GetType().Assembly.GetName().Version!,
+            Date = DateTime.UtcNow,
         };
 
         foreach (var networkPeer in GameNetwork.NetworkPeers)
@@ -442,6 +443,7 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
         public BattleSideEnum WinnerSide { get; set; }
         public string MapId { get; set; } = string.Empty;
         public Version Version { get; set; } = default!;
+        public DateTime Date { get; set; }
         public List<RoundPlayerData> Defenders { get; set; } = new();
         public List<RoundPlayerData> Attackers { get; set; } = new();
     }
