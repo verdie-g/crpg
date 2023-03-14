@@ -89,7 +89,7 @@ public class FileItemsSourceTest
         List<string> errors = new();
         foreach (var item in items)
         {
-            if (item.Id.Contains("test") || item.Id.Contains("dummy") || item.Name.Contains('_'))
+            if ((item.Id.Contains("test") || item.Id.Contains("dummy") || item.Name.Contains('_')) && !item.Id.Contains("Testudo"))
             {
                 errors.Add(item.Id);
             }
