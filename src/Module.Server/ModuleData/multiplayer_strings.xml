@@ -46,6 +46,7 @@
   <string id="str_multiplayer_scene_name.crpg_battle_dragonsroost" text="{=!}Dragon's Roost" />
   <string id="str_multiplayer_scene_name.crpg_battle_fallenaqueduct" text="{=!}Fallen Aqueduct" />
   <string id="str_multiplayer_scene_name.crpg_battle_ghosttown" text="{=!}Ghost Town" />
+  <string id="str_multiplayer_scene_name.crpg_battle_hadiiqa" text="{=!}Hadiiqa" />
   <string id="str_multiplayer_scene_name.crpg_battle_helmspoint" text="{=!}Helm's Point" />
   <string id="str_multiplayer_scene_name.crpg_battle_hexenbrennen" text="{=!}Hexenbrennen" />
   <string id="str_multiplayer_scene_name.crpg_battle_icelake" text="{=!}Ice Lake" />
@@ -71,6 +72,7 @@
   <string id="str_multiplayer_scene_name.crpg_battle_tavernbrawl" text="{=!}Tavern Brawl" />
   <string id="str_multiplayer_scene_name.crpg_battle_tolstabeach" text="{=!}Tolsta Beach" />
   <string id="str_multiplayer_scene_name.crpg_battle_vatnborg" text="{=!}Vatnborg" />
+  <string id="str_multiplayer_scene_name.crpg_battle_verloren" text="{=!}Verloren" />
   <string id="str_multiplayer_scene_name.crpg_battle_waterwaytojelkala" text="{=!}Water Way to Jelkala" />
   <string id="str_multiplayer_scene_name.crpg_battle_weirwater" text="{=!}Weir Water" />
   <string id="str_multiplayer_scene_name.crpg_battle_whitebridge" text="{=!}White Bridge" />

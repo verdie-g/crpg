@@ -17,7 +17,7 @@
   <SpriteCategories>
     <SpriteCategory>
       <Name>ui_mploading</Name>
-      <SpriteSheetCount>101</SpriteSheetCount>
+      <SpriteSheetCount>103</SpriteSheetCount>
       <SpriteSheetSize ID="1" Width="3840" Height="1935" />
       <SpriteSheetSize ID="2" Width="3840" Height="1935" />
       <SpriteSheetSize ID="3" Width="3383" Height="1902" />
@@ -113,6 +113,8 @@
       <SpriteSheetSize ID="99" Width="1920" Height="1080" />
       <SpriteSheetSize ID="100" Width="1920" Height="1080" />
       <SpriteSheetSize ID="101" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="102" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="103" Width="1920" Height="1080" />
       <AlwaysLoad />
     </SpriteCategory>
   </SpriteCategories>
@@ -972,6 +974,24 @@
       <SheetY>0</SheetY>
       <CategoryName>ui_mploading</CategoryName>
     </SpritePart>
+    <SpritePart>
+      <SheetID>102</SheetID>
+      <Name>crpg_battle_verloren</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>103</SheetID>
+      <Name>crpg_battle_hadiiqa</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
   </SpriteParts>
   <Sprites>
     <GenericSprite>
@@ -1353,6 +1373,14 @@
     <GenericSprite>
       <Name>crpg_battle_sandiboush</Name>
       <SpritePartName>crpg_battle_sandiboush</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_verloren</Name>
+      <SpritePartName>crpg_battle_verloren</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_hadiiqa</Name>
+      <SpritePartName>crpg_battle_hadiiqa</SpritePartName>
     </GenericSprite>
   </Sprites>
 </SpriteData>
