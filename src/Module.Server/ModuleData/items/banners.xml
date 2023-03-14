@@ -957,39 +957,6 @@
            HasToBeHeldUp="true"
            CanBePickedUpFromCorpse="false" />
   </Item>
-  <Item id="crpg_testudo_standard_t3"
-        name="{=LylVtFCG}Testudo Standard"
-        is_merchandise="false"
-        body_name="bo_mace_a"
-        recalculate_body="true"
-        mesh="empire_tier_3_banner"
-        prefab="empire_tier_3_banner"
-        culture="Culture.empire"
-        weight="0.2"
-        Type="Banner"
-        using_tableau="true"
-        item_holsters="abdomen_left">
-    <ItemComponent>
-      <Banner banner_level="3"
-              weapon_class="Banner"
-              effect="None"
-              weapon_balance="100"
-              thrust_speed="78"
-              speed_rating="97"
-              missile_speed="0"
-              weapon_length="150"
-              swing_damage="6"
-              swing_damage_type="Blunt"
-              item_usage="banner"
-              physics_material="metal_weapon"
-              position="0.0, 0.0, -0.8"/>
-    </ItemComponent>
-    <Flags DropOnWeaponChange="true"
-           ForceAttachOffHandPrimaryItemBone="true"
-           HeldInOffHand="true"
-           HasToBeHeldUp="true"
-           CanBePickedUpFromCorpse="false" />
-  </Item>
   <Item id="crpg_close_shields_banner_t1"
         name="{=0heYJNpN}Close Shields Banner"
         is_merchandise="false"
