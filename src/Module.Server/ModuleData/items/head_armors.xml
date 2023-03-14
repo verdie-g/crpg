@@ -1686,4 +1686,10 @@
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
+  <Item id="crpg_takeocrown_noglow" name="Takeo's Crown No Glow" subtype="head_armor" mesh="takeocrown_noglow" culture="Culture.vlandia" weight="1.28961" difficulty="0" appearance="1" Type="HeadArmor">
+    <ItemComponent>
+      <Armor head_armor="30" has_gender_variations="false" hair_cover_type="none" modifier_group="cloth_unarmoured" material_type="Cloth" beard_cover_type="none" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
 </Items>
