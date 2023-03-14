@@ -2,6 +2,7 @@
 
 public enum CharacterClass
 {
+    Peasant,
     Infantry,
     ShockInfantry,
     Skirmisher,

@@ -1,5 +1,4 @@
-﻿using Crpg.Application.Characters.Models;
-using Crpg.Application.Common.Services;
+﻿using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities.Characters;
 using NUnit.Framework;
 
@@ -19,9 +18,30 @@ public class CharacterClassModelTest
     {
         new object[]
         {
+            CharacterClass.Peasant,
+            new CharacterCharacteristics
+            {
+                Attributes = new CharacterAttributes { Agility = 3, Strength = 3 },
+                Skills = new CharacterSkills(),
+                WeaponProficiencies = new CharacterWeaponProficiencies(),
+            },
+        },
+        new object[]
+        {
+            CharacterClass.Peasant,
+            new CharacterCharacteristics
+            {
+                Attributes = new CharacterAttributes { Agility = 9, Strength = 9 },
+                Skills = new CharacterSkills(),
+                WeaponProficiencies = new CharacterWeaponProficiencies(),
+            },
+        },
+        new object[]
+        {
             CharacterClass.Cavalry,
             new CharacterCharacteristics
             {
+                Attributes = new CharacterAttributes { Agility = 12, Strength = 12 },
                 Skills = new CharacterSkills { Riding = 5 },
                 WeaponProficiencies = new CharacterWeaponProficiencies { Polearm = 120 },
             },
@@ -31,6 +51,7 @@ public class CharacterClassModelTest
             CharacterClass.MountedArcher,
             new CharacterCharacteristics
             {
+                Attributes = new CharacterAttributes { Agility = 12, Strength = 12 },
                 Skills = new CharacterSkills { Riding = 4 },
                 WeaponProficiencies = new CharacterWeaponProficiencies { Crossbow = 100 },
             },
@@ -40,6 +61,7 @@ public class CharacterClassModelTest
             CharacterClass.MountedArcher,
             new CharacterCharacteristics
             {
+                Attributes = new CharacterAttributes { Agility = 12, Strength = 12 },
                 Skills = new CharacterSkills { Riding = 3 },
                 WeaponProficiencies = new CharacterWeaponProficiencies { Crossbow = 80 },
             },
@@ -49,6 +71,7 @@ public class CharacterClassModelTest
             CharacterClass.Skirmisher,
             new CharacterCharacteristics
             {
+                Attributes = new CharacterAttributes { Agility = 12, Strength = 12 },
                 Skills = new CharacterSkills(),
                 WeaponProficiencies = new CharacterWeaponProficiencies { Throwing = 60 },
             },
@@ -58,6 +81,7 @@ public class CharacterClassModelTest
             CharacterClass.Crossbowman,
             new CharacterCharacteristics
             {
+                Attributes = new CharacterAttributes { Agility = 12, Strength = 12 },
                 Skills = new CharacterSkills(),
                 WeaponProficiencies = new CharacterWeaponProficiencies { Crossbow = 70 },
             },
@@ -67,6 +91,7 @@ public class CharacterClassModelTest
             CharacterClass.Archer,
             new CharacterCharacteristics
             {
+                Attributes = new CharacterAttributes { Agility = 12, Strength = 12 },
                 Skills = new CharacterSkills(),
                 WeaponProficiencies = new CharacterWeaponProficiencies { Bow = 50 },
             },
@@ -76,6 +101,7 @@ public class CharacterClassModelTest
             CharacterClass.Infantry,
             new CharacterCharacteristics
             {
+                Attributes = new CharacterAttributes { Agility = 12, Strength = 12 },
                 Skills = new CharacterSkills { Shield = 4 },
                 WeaponProficiencies = new CharacterWeaponProficiencies(),
             },
@@ -85,6 +111,7 @@ public class CharacterClassModelTest
             CharacterClass.ShockInfantry,
             new CharacterCharacteristics
             {
+                Attributes = new CharacterAttributes { Agility = 12, Strength = 12 },
                 Skills = new CharacterSkills(),
                 WeaponProficiencies = new CharacterWeaponProficiencies { TwoHanded = 120 },
             },

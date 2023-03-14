@@ -16,6 +16,11 @@ internal class CharacterClassResolver : ICharacterClassResolver
 
     public CharacterClass ResolveCharacterClass(CharacterCharacteristics characteristics)
     {
+        if (characteristics.Attributes.Strength + characteristics.Attributes.Agility < 20)
+        {
+            return CharacterClass.Peasant;
+        }
+
         if (IsMounted(characteristics))
         {
             return IsArcher(characteristics) || IsCrossbowman(characteristics) ? CharacterClass.MountedArcher : CharacterClass.Cavalry;

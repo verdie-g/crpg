@@ -66,6 +66,7 @@ internal class CharacterService : ICharacterService
                 Points = WeaponProficiencyPointsForLevel(respecialization ? character.Level : 1),
             },
         };
+        character.Class = CharacterClass.Peasant;
     }
 
     public void GiveExperience(Character character, int experience)

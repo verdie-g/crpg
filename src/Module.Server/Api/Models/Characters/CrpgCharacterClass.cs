@@ -2,6 +2,7 @@
 
 public enum CrpgCharacterClass
 {
+    Peasant,
     Infantry,
     ShockInfantry,
     Skirmisher,

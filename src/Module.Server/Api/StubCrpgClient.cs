@@ -30,6 +30,7 @@ internal class StubCrpgClient : ICrpgClient
                 Generation = 0,
                 Level = 30,
                 Experience = 0,
+                Class = CrpgCharacterClass.Crossbowman,
                 ForTournament = false,
                 Characteristics = new CrpgCharacterCharacteristics
                 {

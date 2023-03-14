@@ -87,6 +87,7 @@ public class CharacterServiceTest
         Character character = new()
         {
             Level = 5,
+            Class = CharacterClass.ShockInfantry,
             Characteristics = new CharacterCharacteristics
             {
                 Attributes = new CharacterAttributes
@@ -122,6 +123,7 @@ public class CharacterServiceTest
         };
 
         characterService.ResetCharacterCharacteristics(character, respecialization);
+        Assert.AreEqual(CharacterClass.Peasant, character.Class);
         if (respecialization)
         {
             Assert.AreEqual(4, character.Characteristics.Attributes.Points);
