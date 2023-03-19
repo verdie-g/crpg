@@ -8,6 +8,8 @@ using Crpg.Application.Common.Results;
 using Crpg.Application.Items.Commands;
 using Crpg.Application.Items.Models;
 using Crpg.Application.Items.Queries;
+using Crpg.Application.Limitations.Models;
+using Crpg.Application.Limitations.Queries;
 using Crpg.Application.Restrictions.Models;
 using Crpg.Application.Restrictions.Queries;
 using Crpg.Application.Users.Commands;
@@ -283,6 +285,22 @@ public class UsersController : BaseController
     public Task<ActionResult<Result<CharacterStatisticsViewModel>>> GetCharacterStatistics([FromRoute] int id)
     {
         return ResultToActionAsync(Mediator.Send(new GetUserCharacterStatisticsQuery
+        {
+            UserId = CurrentUser.User!.Id,
+            CharacterId = id,
+        }));
+    }
+
+    /// <summary>
+    /// Get character limitations for the current user.
+    /// </summary>
+    /// <param name="id">Character id.</param>
+    /// <returns>The character limitations.</returns>
+    /// <response code="200">Ok.</response>
+    [HttpGet("self/characters/{id}/limitations")]
+    public Task<ActionResult<Result<CharacterLimitationsViewModel>>> GetCharacterLimitations([FromRoute] int id)
+    {
+        return ResultToActionAsync(Mediator.Send(new GetCharacterLimitationsQuery
         {
             UserId = CurrentUser.User!.Id,
             CharacterId = id,

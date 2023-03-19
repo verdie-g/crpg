@@ -113,17 +113,22 @@
         </div>
       </div>
 
-      <b-tooltip label="Respecialize character." multilined>
+      <b-tooltip multilined>
+        <template v-slot:content>
+          Respecialize character for {{ respecCapability.price }}
+          <b-icon icon="coins" size="is-small" />
+          <span v-if="!respecCapability.free">
+            (next free respecialization in {{ respecCapability.nextFreeAt }}).
+          </span>
+        </template>
         <b-button
           type="is-warning"
           icon-left="angle-double-down"
           expanded
-          :disabled="!canRespecialize"
+          :disabled="!respecCapability.enabled"
           @click="openRespecializeCharacterDialog"
         >
-          Respecialize ({{ respecializationPrice }}
-          <b-icon icon="coins" size="is-small" class="m-1" />
-          )
+          Respecialize
         </b-button>
       </b-tooltip>
 
@@ -362,8 +367,8 @@ import EquippedItem from '@/models/equipped-item';
 import UserItem from '@/models/user-item';
 import DisplayUserItem from '@/components/user/DisplayUserItem.vue';
 import ConfirmActionForm from '@/components/ConfirmActionForm.vue';
-import { timestampToTimeString } from '@/utils/date';
-import { computeRespecializationPrice } from '@/services/characters-service';
+import { computeLeftMs, timestampToTimeString } from '@/utils/date';
+import { getExperienceForLevel } from '@/services/characters-service';
 
 @Component({
   components: {
@@ -410,16 +415,32 @@ export default class CharacterComponent extends Vue {
           ui => this.userItemToReplace === null || ui.id !== this.userItemToReplace.id
         );
   }
-  get canRespecialize(): boolean {
-    if (userModule.user === null) {
-      return false;
+
+  get respecCapability(): { price: number; free: boolean; nextFreeAt: string; enabled: boolean } {
+    const limitations = userModule.characterLimitations(this.character.id);
+    if (userModule.user === null || limitations === null) {
+      return { price: 0, free: false, nextFreeAt: '', enabled: false };
     }
 
-    return this.respecializationPrice <= userModule.user.gold;
-  }
+    const nextFreeAt = new Date(limitations.lastFreeRespecializeAt);
+    nextFreeAt.setDate(nextFreeAt.getDate() + Constants.freeRespecializeIntervalDays);
+    if (nextFreeAt < new Date()) {
+      return { price: 0, free: true, nextFreeAt: '', enabled: true };
+    }
 
-  get respecializationPrice(): number {
-    return computeRespecializationPrice(this.character);
+    const price = this.character.forTournament
+      ? 0
+      : Math.floor(
+          (this.character.experience / getExperienceForLevel(30)) *
+            Constants.respecializePriceForLevel30
+        );
+
+    return {
+      price,
+      free: false,
+      nextFreeAt: timestampToTimeString(computeLeftMs(nextFreeAt, 0)),
+      enabled: price <= userModule.user.gold,
+    };
   }
 
   get itemToReplaceUpgradeInfo(): { upgradable: boolean; reason: string } {
@@ -461,6 +482,7 @@ export default class CharacterComponent extends Vue {
 
   created() {
     userModule.getCharacterItems(this.character.id);
+    userModule.getCharacterLimitations(this.character.id);
   }
 
   userItemImage(userItem: UserItem): string {
@@ -474,16 +496,15 @@ export default class CharacterComponent extends Vue {
   openRespecializeCharacterDialog(): void {
     this.$buefy.dialog.confirm({
       title: 'Respecialize character',
-      message: `Are you sure you want to respecialize your character ${this.character.name} lvl. ${this.character.level} for ${this.respecializationPrice} gold
-
-              This action cannot be undone.`,
-
+      message: `Are you sure you want to respecialize your character ${this.character.name} lvl. ${this.character.level} for ${this.respecCapability.price} gold. This action cannot be undone.`,
       confirmText: 'Respecialize Character',
       type: 'is-danger',
       hasIcon: true,
-      onConfirm: () => {
-        userModule.respecializeCharacter(this.character);
+      onConfirm: async () => {
+        await userModule.respecializeCharacter(this.character);
+        userModule.substractGold(this.respecCapability.price);
         notify('Character respecialized');
+        await userModule.getCharacterLimitations(this.character.id);
       },
     });
   }

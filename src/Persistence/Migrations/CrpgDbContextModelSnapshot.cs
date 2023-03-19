@@ -686,6 +686,22 @@ namespace Crpg.Persistence.Migrations
                     b.ToTable("user_items", (string)null);
                 });
 
+            modelBuilder.Entity("Crpg.Domain.Entities.Limitations.CharacterLimitations", b =>
+                {
+                    b.Property<int>("CharacterId")
+                        .HasColumnType("integer")
+                        .HasColumnName("character_id");
+
+                    b.Property<DateTime>("LastFreeRespecializeAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("last_free_respecialize_at");
+
+                    b.HasKey("CharacterId")
+                        .HasName("pk_character_limitations");
+
+                    b.ToTable("character_limitations", (string)null);
+                });
+
             modelBuilder.Entity("Crpg.Domain.Entities.Parties.Party", b =>
                 {
                     b.Property<int>("Id")
@@ -1793,6 +1809,18 @@ namespace Crpg.Persistence.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Crpg.Domain.Entities.Limitations.CharacterLimitations", b =>
+                {
+                    b.HasOne("Crpg.Domain.Entities.Characters.Character", "Character")
+                        .WithOne("Limitations")
+                        .HasForeignKey("Crpg.Domain.Entities.Limitations.CharacterLimitations", "CharacterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_character_limitations_characters_character_id");
+
+                    b.Navigation("Character");
+                });
+
             modelBuilder.Entity("Crpg.Domain.Entities.Parties.Party", b =>
                 {
                     b.HasOne("Crpg.Domain.Entities.Users.User", "User")
@@ -1921,6 +1949,8 @@ namespace Crpg.Persistence.Migrations
             modelBuilder.Entity("Crpg.Domain.Entities.Characters.Character", b =>
                 {
                     b.Navigation("EquippedItems");
+
+                    b.Navigation("Limitations");
                 });
 
             modelBuilder.Entity("Crpg.Domain.Entities.Clans.Clan", b =>

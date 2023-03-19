@@ -1,5 +1,6 @@
 using Crpg.Domain.Common;
 using Crpg.Domain.Entities.Items;
+using Crpg.Domain.Entities.Limitations;
 using Crpg.Domain.Entities.Users;
 
 namespace Crpg.Domain.Entities.Characters;
@@ -33,4 +34,5 @@ public class Character : AuditableEntity
     public CharacterRating Rating { get; set; } = new();
 
     public User? User { get; set; }
+    public CharacterLimitations? Limitations { get; set; }
 }

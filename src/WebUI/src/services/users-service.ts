@@ -15,6 +15,7 @@ import Clan from '@/models/clan';
 import UserItem from '@/models/user-item';
 import Platform from '@/models/platform';
 import { getActiveJoinRestriction, mapRestrictions } from '@/services/restriction-service';
+import { CharacterLimitations } from '@/models/character-limitations';
 
 export function getUserByUserId(id: number): Promise<UserPublic> {
   return get(`/users/${id}`);
@@ -132,6 +133,14 @@ export function convertCharacterCharacteristics(
   conversion: CharacteristicConversion
 ): Promise<CharacterCharacteristics> {
   return put(`/users/self/characters/${characterId}/characteristics/convert`, { conversion });
+}
+
+export async function getCharacterLimitations(characterId: number): Promise<CharacterLimitations> {
+  const limitations = await get(`/users/self/characters/${characterId}/limitations`);
+  return {
+    ...limitations,
+    lastFreeRespecializeAt: new Date(limitations.lastFreeRespecializeAt),
+  };
 }
 
 export async function buyItem(itemId: string): Promise<UserItem> {

@@ -6,6 +6,7 @@ using Crpg.Application.Common.Services;
 using Crpg.Application.Games.Models;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
+using Crpg.Domain.Entities.Limitations;
 using Crpg.Domain.Entities.Users;
 using Crpg.Sdk.Abstractions;
 using Microsoft.EntityFrameworkCore;
@@ -221,6 +222,10 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
                     Deaths = 0,
                     Assists = 0,
                     PlayTime = TimeSpan.Zero,
+                },
+                Limitations = new CharacterLimitations
+                {
+                    LastFreeRespecializeAt = _dateTime.UtcNow,
                 },
             };
 

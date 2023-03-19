@@ -8,6 +8,7 @@ using Crpg.Domain.Entities.Battles;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Clans;
 using Crpg.Domain.Entities.Items;
+using Crpg.Domain.Entities.Limitations;
 using Crpg.Domain.Entities.Parties;
 using Crpg.Domain.Entities.Restrictions;
 using Crpg.Domain.Entities.Settlements;
@@ -685,6 +686,10 @@ public record SeedDataCommand : IMediatorRequest
                     Deaths = 6,
                     PlayTime = new TimeSpan(0, 10, 50, 20),
                 },
+                Limitations = new CharacterLimitations
+                {
+                    LastFreeRespecializeAt = DateTime.UtcNow.AddDays(-1).AddMinutes(21),
+                },
             };
             Character takeoCharacter1 = new()
             {
@@ -699,6 +704,10 @@ public record SeedDataCommand : IMediatorRequest
                     Assists = 3,
                     Deaths = 6,
                     PlayTime = new TimeSpan(365, 0, 0, 20),
+                },
+                Limitations = new CharacterLimitations
+                {
+                    LastFreeRespecializeAt = DateTime.UtcNow.AddDays(-2),
                 },
             };
             Character takeoCharacter2 = new()
@@ -715,6 +724,10 @@ public record SeedDataCommand : IMediatorRequest
                     Deaths = 6,
                     PlayTime = new TimeSpan(3, 7, 0, 29),
                 },
+                Limitations = new CharacterLimitations
+                {
+                    LastFreeRespecializeAt = DateTime.UtcNow.AddDays(-8),
+                },
             };
             Character namidakaCharacter0 = new()
             {
@@ -722,6 +735,7 @@ public record SeedDataCommand : IMediatorRequest
                 Name = "namichar",
                 Level = 10,
                 Experience = 146457,
+                Limitations = new CharacterLimitations(),
             };
             Character orleCharacter0 = new()
             {
@@ -734,6 +748,10 @@ public record SeedDataCommand : IMediatorRequest
                     Attributes = new CharacterAttributes { Points = 100 },
                     Skills = new CharacterSkills { Points = 100 },
                 },
+                Limitations = new CharacterLimitations
+                {
+                    LastFreeRespecializeAt = DateTime.UtcNow.AddDays(-8),
+                },
             };
             Character orleCharacter1 = new()
             {
@@ -741,26 +759,34 @@ public record SeedDataCommand : IMediatorRequest
                 Name = "Orle Peasant",
                 Level = 2,
                 Experience = _experienceTable.GetExperienceForLevel(2) + 999,
+                Limitations = new CharacterLimitations
+                {
+                    LastFreeRespecializeAt = DateTime.UtcNow.AddDays(-1).AddMinutes(-30),
+                },
             };
             Character falcomCharacter0 = new()
             {
                 User = falcom,
                 Name = falcom.Name,
+                Limitations = new CharacterLimitations(),
             };
             Character victorhh888Character0 = new()
             {
                 User = victorhh888,
                 Name = victorhh888.Name,
+                Limitations = new CharacterLimitations(),
             };
             Character sellkaCharacter0 = new()
             {
                 User = sellka,
                 Name = sellka.Name,
+                Limitations = new CharacterLimitations(),
             };
             Character krogCharacter0 = new()
             {
                 User = krog,
                 Name = krog.Name,
+                Limitations = new CharacterLimitations(),
             };
 
             Character[] newCharacters =

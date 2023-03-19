@@ -26,24 +26,25 @@
           >
             Download
           </b-button>
-        <b-button
-          size="is-large"
-          type="is-link"
-          icon-left="steam-symbol"
-          icon-pack="fab"
-          @click="onClick"
-          :loading="isSigningIn"
-          v-if="!isSignedIn"
-        >
-          Sign in through Steam
-        </b-button>
+          <b-button
+            size="is-large"
+            type="is-link"
+            icon-left="steam-symbol"
+            icon-pack="fab"
+            @click="onClick"
+            :loading="isSigningIn"
+            v-if="!isSignedIn"
+          >
+            Sign in through Steam
+          </b-button>
         </div>
 
         <p>
           Join our community on
           <a href="https://discord.gg/c-rpg" target="_blank">Discord</a>
           or on
-          <a href="https://www.reddit.com/r/CRPG_Bannerlord" target="_blank">Reddit</a>.
+          <a href="https://www.reddit.com/r/CRPG_Bannerlord" target="_blank">Reddit</a>
+          .
         </p>
 
         <p>

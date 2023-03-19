@@ -11,7 +11,7 @@ internal interface IActivityLogService
     ActivityLog CreateItemSoldLog(int userId, string itemId, int price);
     ActivityLog CreateCharacterCreatedLog(int userId, int characterId);
     ActivityLog CreateCharacterDeletedLog(int userId, int characterId, int generation, int level);
-    ActivityLog CreateCharacterRespecializedLog(int userId, int characterId);
+    ActivityLog CreateCharacterRespecializedLog(int userId, int characterId, int price);
     ActivityLog CreateCharacterRetiredLog(int userId, int characterId, int level);
 }
 
@@ -72,11 +72,12 @@ internal class ActivityLogService : IActivityLogService
         });
     }
 
-    public ActivityLog CreateCharacterRespecializedLog(int userId, int characterId)
+    public ActivityLog CreateCharacterRespecializedLog(int userId, int characterId, int price)
     {
         return CreateLog(ActivityLogType.CharacterRespecialized, userId, new ActivityLogMetadata[]
         {
             new("characterId", characterId.ToString()),
+            new("price", price.ToString()),
         });
     }
 

@@ -15,7 +15,7 @@ import CharacterUpdate from '@/models/character-update';
 import EquippedItem from '@/models/equipped-item';
 import Clan from '@/models/clan';
 import UserItem from '@/models/user-item';
-import { computeRespecializationPrice } from '@/services/characters-service';
+import { CharacterLimitations } from '@/models/character-limitations';
 
 @Module({ store, dynamic: true, name: 'user' })
 class UserModule extends VuexModule {
@@ -27,6 +27,7 @@ class UserModule extends VuexModule {
   characters: Character[] = [];
   equippedItemsByCharacterId: { [id: number]: EquippedItem[] } = {};
   characteristicsByCharacterId: { [id: number]: CharacterCharacteristics } = {};
+  limitationsByCharacterId: { [id: number]: CharacterLimitations } = {};
   statisticsByCharacterId: { [id: number]: CharacterStatistics } = {};
 
   get isSignedIn(): boolean {
@@ -41,6 +42,13 @@ class UserModule extends VuexModule {
     return (id: number) => {
       const characteristics = this.characteristicsByCharacterId[id];
       return characteristics === undefined ? null : characteristics;
+    };
+  }
+
+  get characterLimitations() {
+    return (id: number) => {
+      const limitations = this.limitationsByCharacterId[id];
+      return limitations === undefined ? null : limitations;
     };
   }
 
@@ -190,6 +198,17 @@ class UserModule extends VuexModule {
     characteristics: CharacterCharacteristics;
   }) {
     Vue.set(this.characteristicsByCharacterId, characterId, characteristics);
+  }
+
+  @Mutation
+  setCharacterLimitations({
+    characterId,
+    limitations,
+  }: {
+    characterId: number;
+    limitations: CharacterLimitations;
+  }) {
+    Vue.set(this.limitationsByCharacterId, characterId, limitations);
   }
 
   @Mutation
@@ -361,6 +380,13 @@ class UserModule extends VuexModule {
   }
 
   @Action
+  async getCharacterLimitations(characterId: number): Promise<CharacterLimitations> {
+    const limitations = await userService.getCharacterLimitations(characterId);
+    this.setCharacterLimitations({ characterId, limitations });
+    return limitations;
+  }
+
+  @Action
   async retireCharacter(character: Character): Promise<void> {
     this.addHeirloomPoints(1);
     character = await userService.retireCharacter(character.id);
@@ -372,7 +398,6 @@ class UserModule extends VuexModule {
 
   @Action
   async respecializeCharacter(character: Character): Promise<void> {
-    this.substractGold(computeRespecializationPrice(character));
     character = await userService.respecializeCharacter(character.id);
     this.replaceCharacter(character);
     const characteristics = await userService.getCharacterCharacteristics(character.id);

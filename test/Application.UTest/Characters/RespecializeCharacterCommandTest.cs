@@ -4,7 +4,10 @@ using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
+using Crpg.Domain.Entities.Limitations;
 using Crpg.Domain.Entities.Users;
+using Crpg.Sdk;
+using Crpg.Sdk.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
@@ -17,10 +20,11 @@ public class RespecializeCharacterCommandTest : TestBase
     {
         RespecializeExperiencePenaltyCoefs = new[] { 0.5f, 0f },
         RespecializePriceForLevel30 = 5000,
+        FreeRespecializeIntervalDays = 7,
     };
 
-    [Test]
-    public async Task RespecializeCharacterLevel3ShouldMakeItLevel2()
+    [Theory]
+    public async Task RespecializeCharacterLevel3ShouldMakeItLevel2(bool freeRespec)
     {
         Character character = new()
         {
@@ -42,6 +46,12 @@ public class RespecializeCharacterCommandTest : TestBase
                 PlayTime = TimeSpan.FromSeconds(4),
             },
             User = new() { Gold = 1000 },
+            Limitations = new CharacterLimitations
+            {
+                LastFreeRespecializeAt = freeRespec
+                    ? new DateTime(2023, 3, 9)
+                    : new DateTime(2023, 3, 16),
+            },
         };
         ArrangeDb.Add(character);
         await ArrangeDb.SaveChangesAsync();
@@ -54,8 +64,11 @@ public class RespecializeCharacterCommandTest : TestBase
 
         Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
 
+        Mock<IDateTime> dateTimeMock = new();
+        dateTimeMock.Setup(dt => dt.UtcNow).Returns(new DateTime(2023, 3, 17));
+
         RespecializeCharacterCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object,
-            experienceTableMock.Object, activityLogServiceMock.Object, Constants);
+            experienceTableMock.Object, activityLogServiceMock.Object, dateTimeMock.Object, Constants);
         await handler.Handle(new RespecializeCharacterCommand
         {
             CharacterId = character.Id,
@@ -66,7 +79,20 @@ public class RespecializeCharacterCommandTest : TestBase
             .Include(c => c.User)
             .Include(c => c.EquippedItems)
             .FirstAsync(c => c.Id == character.Id);
-        Assert.Less(character.User!.Gold, 1000);
+        var characterDb = await AssertDb.Characters
+            .Include(c => c.Limitations)
+            .FirstAsync(c => c.Id == character.Id);
+        if (freeRespec)
+        {
+            Assert.AreEqual(character.User!.Gold, 1000);
+            Assert.AreEqual(dateTimeMock.Object.UtcNow, characterDb.Limitations!.LastFreeRespecializeAt);
+        }
+        else
+        {
+            Assert.Less(character.User!.Gold, 1000);
+            Assert.AreEqual(new DateTime(2023, 3, 16), characterDb.Limitations!.LastFreeRespecializeAt);
+        }
+
         Assert.AreEqual(2, character.Generation);
         Assert.AreEqual(2, character.Level);
         Assert.AreEqual(75, character.Experience);
@@ -101,6 +127,7 @@ public class RespecializeCharacterCommandTest : TestBase
                 PlayTime = TimeSpan.FromSeconds(4),
             },
             User = new() { Gold = 500 },
+            Limitations = new CharacterLimitations { LastFreeRespecializeAt = DateTime.UtcNow - TimeSpan.FromDays(1) },
         };
         ArrangeDb.Add(character);
         await ArrangeDb.SaveChangesAsync();
@@ -110,7 +137,7 @@ public class RespecializeCharacterCommandTest : TestBase
         Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
 
         RespecializeCharacterCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object,
-            experienceTableMock.Object, activityLogServiceMock.Object, Constants);
+            experienceTableMock.Object, activityLogServiceMock.Object, new MachineDateTime(), Constants);
         await handler.Handle(new RespecializeCharacterCommand
         {
             CharacterId = character.Id,
@@ -143,6 +170,7 @@ public class RespecializeCharacterCommandTest : TestBase
             Experience = 150,
             ForTournament = false,
             User = new() { Gold = 0 },
+            Limitations = new CharacterLimitations { LastFreeRespecializeAt = DateTime.UtcNow },
         };
         ArrangeDb.Add(character);
         await ArrangeDb.SaveChangesAsync();
@@ -156,7 +184,7 @@ public class RespecializeCharacterCommandTest : TestBase
         Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
 
         RespecializeCharacterCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object,
-            experienceTableMock.Object, activityLogServiceMock.Object, Constants);
+            experienceTableMock.Object, activityLogServiceMock.Object, new MachineDateTime(), Constants);
         var res = await handler.Handle(new RespecializeCharacterCommand
         {
             CharacterId = character.Id,
@@ -174,7 +202,7 @@ public class RespecializeCharacterCommandTest : TestBase
         var characterService = Mock.Of<ICharacterService>();
         var activityLogService = Mock.Of<IActivityLogService>();
         RespecializeCharacterCommand.Handler handler = new(ActDb, Mapper, characterService, experienceTable,
-            activityLogService, Constants);
+            activityLogService, new MachineDateTime(), Constants);
         var result = await handler.Handle(
             new RespecializeCharacterCommand
             {
@@ -195,13 +223,12 @@ public class RespecializeCharacterCommandTest : TestBase
         var characterService = Mock.Of<ICharacterService>();
         var activityLogService = Mock.Of<IActivityLogService>();
         RespecializeCharacterCommand.Handler handler = new(ActDb, Mapper, characterService, experienceTable,
-            activityLogService, Constants);
-        var result = await handler.Handle(
-            new RespecializeCharacterCommand
-            {
-                CharacterId = 1,
-                UserId = user.Entity.Id,
-            }, CancellationToken.None);
+            activityLogService, new MachineDateTime(), Constants);
+        var result = await handler.Handle(new RespecializeCharacterCommand
+        {
+            CharacterId = 1,
+            UserId = user.Entity.Id,
+        }, CancellationToken.None);
 
         Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
     }
