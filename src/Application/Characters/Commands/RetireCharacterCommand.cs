@@ -68,9 +68,6 @@ public record RetireCharacterCommand : IMediatorRequest<CharacterViewModel>
             character.Level = _constants.MinimumLevel;
             character.Experience = 0;
             character.EquippedItems.Clear();
-            character.Statistics.Kills = 0;
-            character.Statistics.Deaths = 0;
-            character.Statistics.Assists = 0;
             _characterService.ResetCharacterCharacteristics(character);
 
             await _db.SaveChangesAsync(cancellationToken);
