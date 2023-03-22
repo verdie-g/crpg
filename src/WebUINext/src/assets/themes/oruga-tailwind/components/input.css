@@ -128,3 +128,15 @@
 .o-input[readonly] {
   @apply pointer-events-none;
 }
+
+
+/* hide up/down arrows in FireFox */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
