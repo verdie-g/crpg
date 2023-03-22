@@ -197,6 +197,10 @@ export const getAvailableSlotsByItem = (
     return [];
   }
 
+  if (item.flags.includes(ItemFlags.DropOnWeaponChange)) {
+    return [ItemSlot.WeaponExtra];
+  }
+
   return itemSlotsByType[item.type]!;
 };
 
