@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useWindowScroll } from '@vueuse/core';
 import { UseDraggable as Draggable } from '@vueuse/components';
 
 import { type UserItemsBySlot } from '@/models/user';
@@ -184,8 +183,6 @@ onBeforeRouteLeave(() => {
   return true;
 });
 
-const { y: yWindow } = useWindowScroll();
-
 await userStore.fetchUserItems();
 </script>
 
@@ -337,9 +334,8 @@ await userStore.fetchUserItems();
     <template v-for="oi in openedItems" :key="oi.id">
       <Teleport to="body">
         <Draggable
-          prevent-default
-          :initial-value="{ x: oi.bound.x + oi.bound.width + 8, y: oi.bound.y + yWindow }"
-          class="absolute z-50 cursor-move select-none rounded-lg bg-base-300 p-4 shadow-lg"
+          :initial-value="{ x: oi.bound.x + oi.bound.width + 8, y: oi.bound.y }"
+          class="fixed z-50 cursor-move select-none rounded-lg bg-base-300 p-4 shadow-lg"
         >
           <OButton
             class="absolute right-2 top-2 z-10 cursor-pointer"
