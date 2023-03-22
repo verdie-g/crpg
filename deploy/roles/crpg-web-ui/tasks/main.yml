@@ -12,7 +12,7 @@
   become: false
 
 - name: Build locally cRPG Web UI
-  command: "npm --prefix {{ playbook_dir | dirname }}/src/WebUINext run build -- --dest /tmp/{{ crpg_ui_path | basename }}_new"
+  command: "npm --prefix {{ playbook_dir | dirname }}/src/WebUINext run build -- --outDir /tmp/{{ crpg_ui_path | basename }}_new"
   delegate_to: localhost
   become: false
 
