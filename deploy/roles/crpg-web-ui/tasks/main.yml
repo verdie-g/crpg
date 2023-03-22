@@ -1,18 +1,18 @@
 ---
 - name: Install locally cRPG Web UI dependencies
-  command: "npm --prefix {{ playbook_dir | dirname }}/src/WebUI install"
+  command: "npm --prefix {{ playbook_dir | dirname }}/src/WebUINext install"
   delegate_to: localhost
   become: false
 
 - name: Generate locally cRPG Web UI environment
   template:
     src: env.production.local.j2
-    dest: "{{ playbook_dir | dirname }}/src/WebUI/.env.production.local"
+    dest: "{{ playbook_dir | dirname }}/src/WebUINext/.env.production.local"
   delegate_to: localhost
   become: false
 
 - name: Build locally cRPG Web UI
-  command: "npm --prefix {{ playbook_dir | dirname }}/src/WebUI run build -- --dest /tmp/{{ crpg_ui_path | basename }}_new"
+  command: "npm --prefix {{ playbook_dir | dirname }}/src/WebUINext run build -- --dest /tmp/{{ crpg_ui_path | basename }}_new"
   delegate_to: localhost
   become: false
 
