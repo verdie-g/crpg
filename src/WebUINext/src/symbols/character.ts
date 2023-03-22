@@ -12,6 +12,7 @@ export const characterKey: InjectionKey<ComputedRef<Character>> = Symbol('Charac
 export const characterCharacteristicsKey: InjectionKey<{
   characterCharacteristics: DeepReadonly<Ref<CharacterCharacteristics>>;
   setCharacterCharacteristics: (payload: CharacterCharacteristics) => void;
+  loadCharacterCharacteristics: (delay: number, payload: { id: number }) => void;
 }> = Symbol('CharacterCharacteristics');
 
 export const characterItemsKey: InjectionKey<{

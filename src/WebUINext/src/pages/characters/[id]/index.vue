@@ -9,7 +9,7 @@ import {
   freeRespecializeIntervalDays,
 } from '@root/data/constants.json';
 import { useUserStore } from '@/stores/user';
-import { characterKey } from '@/symbols/character';
+import { characterKey, characterCharacteristicsKey } from '@/symbols/character';
 import { parseTimestamp } from '@/utils/date';
 import { notify } from '@/services/notification-service';
 import { t } from '@/services/translate-service';
@@ -41,6 +41,7 @@ const router = useRouter();
 const userStore = useUserStore();
 
 const character = injectStrict(characterKey);
+const { loadCharacterCharacteristics } = injectStrict(characterCharacteristicsKey);
 
 const currentLevelExperience = computed(() => getExperienceForLevel(character.value.level));
 const nextLevelExperience = computed(() => getExperienceForLevel(character.value.level + 1));
@@ -59,7 +60,10 @@ const respecCapability = computed(() =>
 const onRespecializeCharacter = async () => {
   userStore.replaceCharacter(await respecializeCharacter(character.value.id));
   userStore.subtractGold(respecCapability.value.price);
-  await loadCharacterLimitations(0, { id: character.value.id });
+  await Promise.all([
+     loadCharacterLimitations(0, { id: character.value.id }),
+     loadCharacterCharacteristics(0, { id: character.value.id }),
+  ]);
   notify(t('character.settings.respecialize.notify.success'));
 };
 
