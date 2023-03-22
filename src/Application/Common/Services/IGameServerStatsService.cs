@@ -113,7 +113,7 @@ public class DatadogGameServerStatsService : IGameServerStatsService
 
     private class DatadogSeries
     {
-        public string Unit { get; set; } = string.Empty;
+        public object Unit { get; set; } = string.Empty;
         [JsonPropertyName("query_index")]
         public int QueryIndex { get; set; }
         public string Aggr { get; set; } = string.Empty;
