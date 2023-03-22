@@ -6,6 +6,16 @@ vi.mock('@/services/auth-service', () => ({
   login: mockLogin,
 }));
 
+const mockNotify = vi.fn();
+vi.mock('@/services/notification-service', async () => {
+  return {
+    ...(await vi.importActual<typeof import('@/services/notification-service')>(
+      '@/services/notification-service'
+    )),
+    notify: mockNotify,
+  };
+});
+
 import { mockGet, mockPost, mockPut, mockDelete } from 'vi-fetch';
 import { get, post, put, del } from './crpg-client';
 import { ErrorType, type Result } from '@/models/crpg-client-result';
@@ -37,7 +47,7 @@ describe('get', () => {
           traceId: null,
           type: ErrorType.InternalError,
           code: '500',
-          title: null,
+          title: 'some error',
           detail: null,
           stackTrace: null,
         },
@@ -49,7 +59,7 @@ describe('get', () => {
     // ref https://vitest.dev/api/#rejects
     await expect(get(path)).rejects.toThrow('Server error');
 
-    // TODO: notify
+    expect(mockNotify).toBeCalledWith('some error', 'danger');
   });
 
   it('with error - other', async () => {
@@ -60,7 +70,7 @@ describe('get', () => {
           traceId: null,
           type: ErrorType.Forbidden,
           code: '500',
-          title: null,
+          title: 'some warning',
           detail: null,
           stackTrace: null,
         },
@@ -71,7 +81,7 @@ describe('get', () => {
 
     await expect(get(path)).rejects.toThrow('Bad request');
 
-    // TODO: notify Warning
+    expect(mockNotify).toBeCalledWith('some warning', 'warning');
   });
 
   it('Unauthorized', async () => {
@@ -81,7 +91,7 @@ describe('get', () => {
 
     expect(result).toEqual(null);
 
-    // TODO: notify Session expired
+    expect(mockNotify).toBeCalledWith('Session expired', 'warning');
   });
 });
 

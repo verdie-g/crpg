@@ -1,0 +1,149 @@
+.o-table {
+  @apply table w-full border-separate border-spacing-0 rounded-2xl;
+}
+
+.o-table--bordered thead tr th {
+  @apply border-t border-b border-border-200;
+}
+
+.o-table--bordered thead th:first-child {
+  @apply border-l;
+}
+
+.o-table--bordered thead th:last-child {
+  @apply border-r;
+}
+
+.o-table--bordered thead tr:first-child th:first-child {
+  @apply rounded-tl-2xl border-l;
+}
+
+.o-table--bordered thead tr:first-child th:last-child {
+  @apply rounded-tr-2xl border-r;
+}
+
+.o-table--bordered tbody tr td:first-child {
+  @apply border-l border-border-200;
+}
+
+.o-table--bordered tbody tr td:last-child {
+  @apply border-r border-border-200;
+}
+
+.o-table--bordered tbody tr:last-child td {
+  @apply border-b border-border-200;
+}
+
+.o-table--bordered tbody tr:last-child td:first-child {
+  @apply rounded-bl-2xl;
+}
+
+.o-table--bordered tbody tr:last-child td:last-child {
+  @apply rounded-br-2xl;
+}
+
+/*  */
+.o-table--striped tbody tr:not(.o-table__tr--selected):nth-child(2n) {
+}
+
+.o-table__th,
+.o-table__td {
+  @apply px-6 py-3;
+}
+
+.o-table--narrowed .o-table__th,
+.o-table--narrowed .o-table__td {
+  @apply py-2 px-2;
+}
+
+.o-table--hoverable tbody tr:not(.o-table__tr--selected) {
+  @apply cursor-pointer hover:bg-base-200;
+}
+
+.o-table--table__empty {
+}
+
+.o-table__root {
+  @apply relative;
+}
+
+.o-table__wrapper {
+  @apply relative;
+}
+
+.o-table__th {
+  @apply relative text-left text-2xs text-content-400;
+}
+
+.o-table__th-current-sort {
+}
+
+.o-table__th.o-table__th--centered {
+  @apply text-center;
+}
+
+.o-table__th.o-table__th--right {
+  @apply text-right;
+}
+
+.o-table__th.o-table__th--left {
+  @apply text-left;
+}
+
+.o-table__th--sortable {
+  @apply cursor-pointer hover:text-content-100;
+}
+
+.o-table__th--unselectable {
+  @apply select-none;
+}
+
+.o-table__th__sort-icon {
+  @apply absolute right-2 top-1/2 flex -translate-y-1/2 transform;
+}
+
+.o-table__td {
+  @apply text-left align-middle;
+}
+
+.o-table tr:not(:last-child) .o-table__td {
+  @apply border-b border-border-200;
+}
+
+.o-table__td--left {
+  @apply text-left;
+}
+
+.o-table__td--centered {
+  @apply text-center;
+}
+
+.o-table__td--right {
+  @apply text-right;
+}
+
+.o-table__pagination {
+  @apply mt-14 mb-8;
+}
+
+.o-table__mobile-sort {
+  @apply hidden;
+}
+
+.o-table__wrapper--sticky-header thead {
+  @apply sticky top-0 left-0 z-50 bg-base-100;
+}
+
+/* Border conflict fix for sticky */
+.o-table__wrapper--sticky-header thead:before {
+  content: '';
+  @apply absolute inset-0 block w-full bg-base-100;
+}
+
+.o-table__wrapper--sticky-header th {
+  @apply bg-base-100;
+}
+
+.o-table__wrapper--sticky-header tfoot {
+  @apply sticky bottom-0 left-0 bg-base-100;
+}

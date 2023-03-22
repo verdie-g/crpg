@@ -1,12 +1,13 @@
 {
     "id": 2,
     "platform": "Steam",
-    "platformUserId": "76561198016876889",
-    "name": "orle",
+    "platformUserId": 76561198016876889,
+    "name": "Applejack",
     "gold": 100000,
     "heirloomPoints": 0,
     "role": "User",
     "avatarSmall": "https://avatars.akamai.steamstatic.com/d51d5155b1a564421c0b3fd5fb7eed7c4474e73d.jpg",
     "avatarMedium": "https://avatars.akamai.steamstatic.com/d51d5155b1a564421c0b3fd5fb7eed7c4474e73d_medium.jpg",
-    "avatarFull": "https://avatars.akamai.steamstatic.com/d51d5155b1a564421c0b3fd5fb7eed7c4474e73d_full.jpg"
+    "avatarFull": "https://avatars.akamai.steamstatic.com/d51d5155b1a564421c0b3fd5fb7eed7c4474e73d_full.jpg",
+    "activeCharacterId": 1
 }

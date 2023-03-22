@@ -1,0 +1,130 @@
+.o-ctrl-input {
+  @apply relative block;
+}
+
+.o-ctrl-input--expanded {
+  @apply w-full;
+}
+
+.o-ctrl-input--expanded .o-input {
+  @apply w-full;
+}
+
+.o-input {
+  @apply resize-none appearance-none rounded-lg border leading-none ;
+  @apply border-border-200 bg-bg-main text-content-300 placeholder:text-content-500;
+}
+
+.o-input--rounded {
+  @apply rounded-full;
+}
+
+.o-input--xs {
+  @apply py-2 px-3 text-2xs;
+}
+
+.o-input--xs.o-input-iconspace-left {
+  @apply pl-6;
+}
+
+.o-input--xs.o-input-iconspace-right {
+  @apply pr-7;
+}
+
+.o-input--sm {
+  @apply py-3 px-4.5 text-2xs;
+}
+
+.o-input--sm.o-input-iconspace-left {
+  @apply pl-8;
+}
+
+.o-input--sm.o-input-iconspace-right {
+  @apply pr-8;
+}
+
+.o-input--lg {
+  @apply py-3.5 px-4 text-sm;
+}
+
+.o-input--lg.o-input-iconspace-left {
+  @apply pl-12;
+}
+
+.o-input--lg.o-input-iconspace-right {
+  @apply pr-12;
+}
+
+.o-input--lg ~ .o-input__icon-left {
+  @apply left-2;
+}
+
+.o-input--lg ~ .o-input__icon-right {
+  @apply right-2;
+}
+
+.o-input:hover {
+  @apply border-border-300 text-content-100 placeholder:text-content-400;
+}
+
+.o-input:focus {
+  @apply border-border-200 bg-base-200 text-content-100 outline-none;
+}
+
+.o-input--danger {
+  @apply border-status-danger;
+}
+
+.o-input__counter {
+  @apply absolute top-1/2 right-4 -translate-y-1/2 transform;
+}
+
+.o-input__textarea ~ .o-input__counter {
+  @apply top-auto bottom-1;
+}
+
+.o-input__icon-left,
+.o-input__icon-right {
+  @apply absolute top-0 z-10 h-full w-9;
+}
+
+.o-input__icon-left {
+  @apply left-0 text-content-400;
+}
+
+.o-input__icon-right {
+  @apply right-0;
+}
+
+.o-input__icon-right.o-icon--clickable {
+  @apply text-content-400 hover:text-content-100;
+}
+
+/* COLOR PICKER */
+.o-input[type='color'] {
+  @apply cursor-pointer border-none;
+  @apply h-3.5 w-3.5;
+  @apply rotate-45 transform overflow-hidden rounded-sm;
+}
+
+::-webkit-color-swatch-wrapper {
+  @apply p-0;
+}
+
+::-webkit-color-swatch {
+  box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.15);
+  @apply h-full w-full rounded-none border-none hover:opacity-75;
+}
+
+::-moz-color-swatch,
+::-moz-focus-inner {
+  @apply border-none;
+}
+
+::-moz-focus-inner {
+  @apply p-0;
+}
+
+.o-input[readonly] {
+  @apply pointer-events-none;
+}

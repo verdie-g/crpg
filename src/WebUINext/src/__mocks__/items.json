@@ -1,0 +1,200 @@
+[
+  {
+    "id": "crpg_sturgia_axe_5_t5",
+    "name": "Wood Chopper Axe",
+    "culture": "Sturgia",
+    "type": "OneHandedWeapon",
+    "price": 1267,
+    "tier": 3.4712532,
+    "requirement": 0,
+    "weight": 1.15,
+    "flags": ["CanBePickedUpFromCorpse"],
+    "armor": null,
+    "mount": null,
+    "weapons": [
+      {
+        "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
+        "accuracy": 0,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 84,
+        "balance": 0.49,
+        "handling": 81,
+        "bodyArmor": 0,
+        "flags": ["MeleeWeapon", "BonusAgainstShield"],
+        "thrustDamage": 0,
+        "thrustDamageType": "Undefined",
+        "thrustSpeed": 94,
+        "swingDamage": 31,
+        "swingDamageType": "Cut",
+        "swingSpeed": 84
+      }
+    ]
+  },
+  {
+    "id": "crpg_peasant_sickle_1_t1",
+    "name": "Sickle",
+    "culture": "Neutral",
+    "type": "OneHandedWeapon",
+    "price": 1238,
+    "tier": 3.420419,
+    "requirement": 0,
+    "weight": 1.18,
+    "flags": ["Civilian"],
+    "armor": null,
+    "mount": null,
+    "weapons": [
+      {
+        "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
+        "accuracy": 0,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 82,
+        "balance": 0.9,
+        "handling": 98,
+        "bodyArmor": 0,
+        "flags": ["MeleeWeapon", "BonusAgainstShield"],
+        "thrustDamage": 0,
+        "thrustDamageType": "Undefined",
+        "thrustSpeed": 94,
+        "swingDamage": 20,
+        "swingDamageType": "Cut",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
+    "id": "crpg_northern_leather_tabard",
+    "name": "Leather Tabard",
+    "culture": "Sturgia",
+    "type": "BodyArmor",
+    "price": 1166,
+    "tier": 3.8802795,
+    "requirement": 0,
+    "weight": 4.968383,
+    "flags": ["UseTeamColor"],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 18,
+      "armArmor": 6,
+      "legArmor": 9,
+      "materialType": "Leather"
+    },
+    "mount": null,
+    "weapons": []
+  },
+  {
+    "id": "crpg_leatherlame_roundkettle_over_imperial_leather",
+    "name": "Roundkettle over Leather",
+    "culture": "Empire",
+    "type": "HeadArmor",
+    "price": 1310,
+    "tier": 5.1163445,
+    "requirement": 0,
+    "weight": 1.491529,
+    "flags": [],
+    "armor": {
+      "headArmor": 30,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Plate"
+    },
+    "mount": null,
+    "weapons": []
+  },
+  {
+    "id": "crpg_vlandia_lance_1_t3",
+    "name": "Light Lance",
+    "culture": "Vlandia",
+    "type": "Polearm",
+    "price": 1816,
+    "tier": 2.689549,
+    "requirement": 0,
+    "weight": 2.11,
+    "flags": [],
+    "armor": null,
+    "mount": null,
+    "weapons": [
+      {
+        "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
+        "accuracy": 0,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 208,
+        "balance": 0,
+        "handling": 53,
+        "bodyArmor": 0,
+        "flags": ["MeleeWeapon", "NotUsableWithOneHand", "WideGrip", "TwoHandIdleOnMount"],
+        "thrustDamage": 23,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 89,
+        "swingDamage": 0,
+        "swingDamageType": "Undefined",
+        "swingSpeed": 62
+      },
+      {
+        "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_bracing",
+        "accuracy": 0,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 208,
+        "balance": 0,
+        "handling": 53,
+        "bodyArmor": 0,
+        "flags": ["MeleeWeapon", "NotUsableWithOneHand", "WideGrip", "TwoHandIdleOnMount"],
+        "thrustDamage": 23,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 89,
+        "swingDamage": 0,
+        "swingDamageType": "Undefined",
+        "swingSpeed": 62
+      }
+    ]
+  },
+  {
+    "id": "crpg_mountain_hunting_bow",
+    "name": "Mountain Hunting Bow",
+    "culture": "Battania",
+    "type": "Bow",
+    "price": 4153,
+    "tier": 5.375617,
+    "requirement": 0,
+    "weight": 0.25,
+    "flags": ["ForceAttachOffHandPrimaryItemBone"],
+    "armor": null,
+    "mount": null,
+    "weapons": [
+      {
+        "class": "Bow",
+        "itemUsage": "bow",
+        "accuracy": 98,
+        "missileSpeed": 79,
+        "stackAmount": 1,
+        "length": 108,
+        "balance": 0,
+        "handling": 107,
+        "bodyArmor": 0,
+        "flags": [
+          "RangedWeapon",
+          "NotUsableWithOneHand",
+          "HasString",
+          "StringHeldByHand",
+          "UnloadWhenSheathed",
+          "AutoReload",
+          "TwoHandIdleOnMount"
+        ],
+        "thrustDamage": 9,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 107,
+        "swingDamage": 0,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 125
+      }
+    ]
+  }
+]

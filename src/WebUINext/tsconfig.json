@@ -24,20 +24,24 @@
       "@@/*": [
         "/*"
       ],
+      "@root/*": [
+        "../../*"
+      ],
     },
     "types": [
+      "type-fest",
       "vite/client",
       "vitest/globals",
-      "vite-plugin-pages/client",
       "vite-plugin-vue-layouts/client",
       "@intlify/vite-plugin-vue-i18n/client",
-      "vi-fetch/matchers"
+      "vi-fetch/matchers",
+      "@types/body-scroll-lock",
     ],
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.d.ts",
-    "src/**/*.vue"
+    "src/**/*.vue",
   ],
   "exclude": [
     "node_modules"

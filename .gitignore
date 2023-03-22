@@ -446,6 +446,8 @@ stats.html
 src/WebUI/public/items/
 *.jwk
 *.png
+*.jpg
+*.webp
 *.ico
 *.zip
 

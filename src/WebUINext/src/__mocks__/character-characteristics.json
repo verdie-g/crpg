@@ -1,0 +1,28 @@
+{
+    "attributes": {
+      "points": 2,
+      "strength": 3,
+      "agility": 3
+    },
+    "skills": {
+      "points": 1,
+      "ironFlesh": 0,
+      "powerStrike": 0,
+      "powerDraw": 0,
+      "powerThrow": 0,
+      "athletics": 0,
+      "riding": 0,
+      "weaponMaster": 0,
+      "mountedArchery": 0,
+      "shield": 0
+    },
+    "weaponProficiencies": {
+      "points": 62,
+      "oneHanded": 0,
+      "twoHanded": 0,
+      "polearm": 0,
+      "bow": 0,
+      "throwing": 0,
+      "crossbow": 0
+    }
+  }

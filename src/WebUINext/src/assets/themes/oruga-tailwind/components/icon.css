@@ -1,0 +1,71 @@
+.fa-5x {
+  @apply text-[50px];
+}
+
+.fa-4x {
+  @apply text-3xl;
+}
+
+.fa-3x {
+  @apply text-2xl;
+}
+
+.fa-2xl {
+  @apply text-xl;
+}
+
+.fa-xl {
+  @apply text-lg;
+}
+
+.fa-lg {
+  @apply text-lg;
+}
+
+.fa-sm {
+  @apply text-sm;
+}
+
+.fa-xs {
+  @apply text-xs;
+}
+
+.fa-2xs {
+  @apply text-2xs;
+}
+
+/*  */
+.o-icon {
+  @apply inline-flex items-center justify-center;
+  @apply transition-all duration-150 ease-out;
+}
+
+.o-icon--small {
+}
+
+.o-icon--medium {
+}
+
+.o-icon--large {
+}
+
+.o-icon--success {
+  @apply text-status-success;
+}
+
+.o-icon--warning {
+  @apply text-status-warning;
+}
+
+.o-icon--danger {
+  @apply text-status-danger;
+}
+
+/*  */
+.o-icon--spin {
+  @apply animate-spin;
+}
+
+.o-icon--clickable {
+  @apply pointer-events-auto cursor-pointer;
+}

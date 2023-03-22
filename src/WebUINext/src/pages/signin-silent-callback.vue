@@ -1,15 +1,11 @@
 <script setup lang="ts">
-import { userManager } from '@/services/auth-service';
-
-onMounted(async () => {
-  await userManager.signinSilentCallback();
+definePage({
+  meta: {
+    layout: 'empty',
+    skipAuth: true,
+    middleware: 'signInSilentCallback',
+  },
 });
 </script>
-
-<route lang="yaml">
-meta:
-  layout: default
-  skipAuth: true
-</route>
 
 <template></template>

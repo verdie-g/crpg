@@ -1,3 +1,943 @@
-button:
+locale:
+  en: English
+  ru: Russian
+
+dateTime:
+  days:
+    short: d
+    long: day | days
+  hours:
+    short: h
+    long: hour | hours
+  minutes:
+    short: min
+    long: minute | minutes
+
+dateTimeFormat:
+  # TODO: https://github.com/tc39/proposal-intl-duration-format
+  countdown: '{hours}:{minutes}:{seconds}'
+  'mm': '{minutes} @:dateTime.minutes.short'
+  'dd:hh:mm': '{days}@:dateTime.days.short {hours}@:dateTime.hours.short {minutes}@:dateTime.minutes.short'
+
+nav:
+  main:
+    Characters: Characters
+    Shop: Shop
+    Clans: Clans
+    Moderator: Moderator
+    Builder: Builder
   back: Back
+
+action:
+  cancel: Cancel
+  delete: Delete
+  save: Save
+  leave: Leave
+  kick: Kick
+  confirm: Confirm
+  create: Create
+  search: Search
+  apply: Apply
+  decline: Decline
+  readMore: Read more
+  expand: Expand
+  collapse: Collapse
+  find: Find
+  reset: Reset
+  refresh: Refresh
+  commit: Commit
+  sort: Sort
+  share: Share
+  sell: Sell
+
+confirmAction: Please confirm action
+
+scrollToTop: Scroll to top
+you: You
+here: here
 not-found: Not found
+results-not-found: Results not found...
+
+setting:
+  language: Language
+  settings: Settings
+  logout: Logout
+
+validations:
+  required: Value is required
+  url: The value is not a valid URL address
+  sameAs: Value should be equal to the {value} value
+  minLength: Value should be at least {min} characters long
+  maxLength: The maximum length allowed is {max}
+  clanTagPattern: Value should contain only integer and alphabetical
+  clanBannerKeyPattern: Value should contain only integer and dots
+  discordLinkPattern: Value must be a valid Discord link
+
+error:
+  title: Something went wrong...
+  intro: If you're seeing this page, it's because you ran into an error of some kind!
+  discord: If you'd like to help us fix it, please log a ticket in our {discordLink}
+  modMail: You can log a ticket by utilizing ModMail, you can find a guide on how to do this {modMailGuideLink}
+  report:
+    title: 'When you log a ticket, please make sure to include:'
+    step:
+      reproduce: What you were doing before the error occurred
+      repeat: Whether you are able to consistently reproduce this error
+  goToHomePage: Go to home page
+
+form:
+  validate:
+    invalid: The form contains errors
+  field:
+    optional: optional
+    required: required
+
+confirm:
+  placeholder: Name
+  name: 'Enter the following to confirm: {name}'
+
+region:
+  Eu: Europe
+  Na: North America
+  As: Asia
+  Oc: Oceania
+
+region-title: Region
+
+character:
+  nav:
+    overview: Overview
+    inventory: Inventory
+    characteristic: Characteristic
+
+  format:
+    kda: '{kills}/{deaths}/{assists} ({ratio})'
+    select: '{name} ({level})'
+    expMultiplier: '×{multiplier}'
+
+  empty:
+    title: You don't have a character yet
+    desc: To create a character, simply join a cRPG server
+
+  create:
+    title: New character
+    guide:
+      title: Create a new character
+      intro: 'To create a new character, simply follow the below steps:'
+      step:
+        install: Load up Bannerlord with the cRPG Mod installed
+        join: Join any cRPG Server (Battle/Siege/Duel)
+        joined: Once you join a server, a new character will be generated on the website
+        refresh: '{refresh} the website, your new character should now be present'
+      outro: You can only create a new character every 1 hour. Otherwise you will be automatically kicked off the server
+
+  status:
+    active:
+      title: Сharacter is active
+      short: active
+    forTournament:
+      title: Character is for tournament
+      short: trnmt
+
+  class:
+    Peasant: Peasant
+    Infantry: Infantry
+    ShockInfantry: Shock infantry
+    Skirmisher: Skirmisher
+    Crossbowman: Crossbowman
+    Archer: Archer
+    Cavalry: Cavalry
+    MountedArcher: Mounted archer
+
+  statistics:
+    generation:
+      title: Generation
+      tooltip:
+        title: Number of times you retired this character
+        desc:
+    experience:
+      title: Character experience
+      tooltip:
+        title: Character experience
+        desc: 'Left to the level up: {remainExpToUp} exp'
+    expMultiplier:
+      title: Exp. multiplier
+      tooltip:
+        title: 'Experience multiplier. The maximum: {maxExpMulti}'
+        desc: <p>To increase the multiplier, retire the character.</p><p>The multiplier applies to all characters</p>
+    level:
+      title: Level
+      tooltip:
+        title: 'The level of your character. The maximum: {maxLevel}'
+        desc:
+      lockedTooltip:
+        title: Level progress is locked
+        desc:
+    kda:
+      title: KDA
+      tooltip:
+        title: Kills/Deaths/Assists
+        desc:
+    playTime:
+      title: Play Time
+    name:
+      title: Level
+
+  settings:
+    group:
+      overview:
+        title: Overview
+      actions:
+        title: Actions
+    update:
+      title: Update character
+      form:
+        field:
+          name: Name
+          active: Active
+      notify:
+        success: Character successful updated
+    active:
+      title: Active
+      tooltip:
+        title: Active character
+        desc:
+          <p>Switch on to use this character in game.</p>
+          <p>If none of your characters was chosen as active, joining a server will create a new character.</p>
+          <p>Beware that you can create only one character per hour. After that you will get automatically kicked by the server.</p>
+    respecialize:
+      title: Respecialize
+      tooltip:
+        title: Respecialize character
+        desc: 'Reset your characteristics for {respecializationPrice}'
+        free: You can respecialize for free once every {days} days
+        nextFreeAt: 'Next free respecialization in: {nextFreeAt}'
+      dialog:
+        title: Respecialize character
+        desc: Are you sure you want to respecialize your character for {respecializationPrice}? This action cannot be undone
+      notify:
+        success: Character respecialized
+    retire:
+      title: Retire
+      tooltip:
+        title: Retire character
+        desc: 'Reset character to level {resetLevel} to grant a bonus multiplier {multiplierBonus} (max: {maxMultiplierBonus}). You will get heirloom points{heirloom} depending on the level of your character'
+        requiredDesc: '{requiredLevel} level required'
+      dialog:
+        title: Retire character
+        desc: Are you sure you want to retire your character? This action cannot be undone
+        reward: 'You get three: {heirloom} heirloom, {multiplierBonus} exp. multiplier. The char level will become: {resetLevel}'
+      notify:
+        success: Character retired
+    tournament:
+      title: Tournament
+      tooltip:
+        title: Tournament character
+        desc: Set this character to be used in tournament ONLY. Upgrade its level to {tournamentLevel} and locks its experience permanently
+        requiredDesc: '{requiredLevel} level required'
+      dialog:
+        title: Tournament character
+        desc: Are you sure you want to make a character for the tournament? This action cannot be undone
+      notify:
+        success: Character updated
+    delete:
+      title: You can {link}. You won't be able to restore it
+      link: delete your character
+      dialog:
+        title: Deleting character
+        desc: Are you sure you want to delete your character? This action cannot be undone
+      notify:
+        success: Character deleted
+
+  characteristic:
+    convert:
+      attrsToSkills:
+        title: Convert to skills
+        tooltip: Convert {attribute} attribute point to {skill} skill points
+      skillsToAttrs:
+        title: Convert to attributes
+        tooltip: Convert {skill} skill points to {attribute} attribute point
+
+    requires:
+      title: Requires
+      linked:
+        oneAttrs: 1 attributes
+        threeStr: 3 strength per level
+        threeAgi: 3 agility per level
+        sixAgi: 6 agility per level
+
+    attributes:
+      title: Attributes
+      children:
+        strength:
+          title: Strength
+          desc: Increases your health points
+          requires: '@:character.characteristic.requires.linked.oneAttrs'
+        agility:
+          title: Agility
+          desc: Increases your weapon points and makes you move a bit faster
+          requires: '@:character.characteristic.requires.linked.oneAttrs'
+
+    skills:
+      title: Skills
+      children:
+        ironFlesh:
+          title: Iron flesh
+          desc: Increases your health
+          requires: '@:character.characteristic.requires.linked.threeStr'
+        powerStrike:
+          title: Power strike
+          desc: Increases melee damage
+          requires: '@:character.characteristic.requires.linked.threeStr'
+        powerDraw:
+          title: Power draw
+          desc: Increases bow damage
+          requires: '@:character.characteristic.requires.linked.threeStr'
+        powerThrow:
+          title: Power throw
+          desc: Increases throw damage
+          requires: '@:character.characteristic.requires.linked.threeStr'
+        athletics:
+          title: Athletics
+          desc: Increases running speed
+          requires: '@:character.characteristic.requires.linked.threeAgi'
+        riding:
+          title: Riding
+          desc: Increases riding speed, acceleration and maneuver
+          requires: '@:character.characteristic.requires.linked.threeAgi'
+        weaponMaster:
+          title: Weapon master
+          desc: Gives weapon points
+          requires: '@:character.characteristic.requires.linked.threeAgi'
+        mountedArchery:
+          title: Mounted archery
+          desc: Reduces penalty for using ranged weapons on a moving mount by 10% per level
+          requires: '@:character.characteristic.requires.linked.sixAgi'
+        shield:
+          title: Shield
+          desc: Improves shield durability. Increases coverage from ranged attacks
+          requires: '@:character.characteristic.requires.linked.sixAgi'
+
+    weaponProficiencies:
+      title: Weapon proficiencies
+      children:
+        oneHanded:
+          title: One handed
+          desc: ''
+          requires: ''
+        twoHanded:
+          title: Two handed
+          desc: ''
+          requires: ''
+        polearm:
+          title: Polearm
+          desc: ''
+          requires: ''
+        bow:
+          title: Bow
+          desc: ''
+          requires: ''
+        crossbow:
+          title: Crossbow
+          desc: ''
+          requires: ''
+        throwing:
+          title: Throwing
+          desc: ''
+          requires: ''
+
+    commit:
+      notify: Changes have been successfully saved
+
+  stats:
+    hp:
+      title: Health points
+      desc: ''
+    weight:
+      title: Weight
+      desc: ''
+    freeWeight:
+      title: Free weight
+      desc: ''
+    weightReduction:
+      title: Weight reduction
+      desc: The remaining weight after deduction by Free Weight, get reduced by your strength attribute points
+    perceivedWeight:
+      title: Perceived weight
+      desc: ''
+    timeToMaxSpeed:
+      title: Time to max speed
+      desc: Acceleration - the time required to reach maximum speed of running
+    nakedSpeed:
+      title: Naked speed
+      desc: Speed of running without equipment
+    currentSpeed:
+      title: Current speed
+      desc: ''
+    maxWeaponLength:
+      title: Max weapon length
+      desc: Max weapon length without a movement speed penalty when fighting. Depends on strength attribute points
+    movementSpeedPenaltyWhenAttacking:
+      title: Mov. speed penalty
+      desc: Extra movement speed when attacking penalty. Depends on the length of the weapon and strength attribute points
+    price:
+      title: Price
+      desc: ''
+    avgRepairCost:
+      title: Avg repair cost
+      desc: ''
+
+  inventory:
+    empty: The inventory is empty..
+    total:
+      tpl: '{count} {sum}'
+      count: '... | {count} item | {count} items'
+      sum: 'worth {sum}'
+
+    sort:
+      price_asc: Price (asc)
+      price_desc: Price (desc)
+      type_asc: By type
+
+    item:
+      sell:
+        title: Sell for {price}
+        confirm: Are you sure you want to sell the item?
+        freeRefund: 100% refund for the next {dateTime}
+        penaltyRefund: 'Item will be sold with a {penalty} penalty'
+        notify:
+          success: Item successfully sold
+      equipped: Item equipped
+
+  doll:
+    slot:
+      Head: Head armor
+      Shoulder: Shoulder armor
+      Body: Body armor
+      Hand: Hand armor
+      Leg: Leg armor
+      MountHarness: Mount harness
+      Mount: Mount
+      Weapon0: Weapon
+      Weapon1: Weapon
+      Weapon2: Weapon
+      Weapon3: Weapon
+      WeaponExtra: Banner
+    armorOverall:
+      ArmArmor: Arm armor
+      BodyArmor: Body armor
+      HeadArmor: Head armor
+      LegArmor: Leg armor
+      MountArmor: Mount armor
+
+builder:
+  title: cRPG Character Builder
+  levelTpl: 'Level {level} ({exp} exp)'
+  levelIntervalTpl: 'Level {level} ({exp} exp) - {nextExp} exp to level {nextLevel}'
+  levelChangeAttention: The characteristics will be reset when the level is changed
+  share:
+    notify:
+      success: Link copied to clipboard
+  weight: Enter the estimated weight of the equipment to calculate the character's stats
+  weaponLength:
+    title: Weapon length
+    description: Enter the length of the primary weapon to calculate the character's stats
+
+shop:
+  item:
+    buy:
+      notify:
+        success: Item was successfully purchased
+      tooltip:
+        buy: Buy item
+        inInventory: Item already purchased
+        notEnoughGold: Not enough gold
+    weaponUsage:
+      title: Not a primary usage mode
+      desc: This weapon has several modes of use
+      secondary: 'Current mode (secondary): {weaponClass}'
+      primary: 'Primary mode: {weaponClass}'
+  filter:
+    reset: Reset filter
+  pagination:
+    perPage: Items on the page
+  sort:
+    asc: Sort by ascending
+    desc: Sort by descending
+  compare:
+    add: Add to Compare
+    addAll: Add all to Compare
+    remove: Remove from comparison
+    removeAll: Remove all from comparison
+    title: Compare mode
+  nonPrimaryWeaponMode:
+    title: Show additional items
+    tooltip:
+      title: Secondary weapon mode
+      desc:
+        <p>Some items have multiple weapon modes, for example a throwing axe can be used in melee combat as a one-handed axe.</p>
+        <p>This option will show such weapons in the store list</p>
+
+clan:
+  action:
+    create: Create a new clan
+    goToMyClan: My clan
+    settings: Clan settings
+    kickMember: Clan settings
+  roleTitle: Role
+  role:
+    Member: Member
+    Officer: Officer
+    Leader: Leader
+  table:
+    column:
+      tag: Tag
+      region: Region
+      members: Members
+      name: Name
+      memberName: Name
+      role: Role
+  create:
+    page:
+      title: Create clan
+    notify:
+      success: Clan is created
+  update:
+    page:
+      title: Clan settings
+    form:
+      field:
+        mainInfo: Main information
+        name: Clan name
+        tag: Tag
+        description: Description
+        colors: Colors
+        primaryColor: Primary
+        secondaryColor: Secondary
+        bannerKey: Banner key
+        discord: Discord server
+    bannerKeyGeneratorTools: Generate one on {link}
+    notify:
+      success: Clan settings updated
+  member:
+    update:
+      transferRights: Transfer the rights to control
+      confirmationDialog:
+        title: Confirmation
+        desc: Confirm the transfer of the clan to another member.
+      notify:
+        success: Member updated
+    kick:
+      title: You can {memberLink}. This action cannot be undone.
+      memberLink: kick this user
+      dialog:
+        title: Kick {memberName} ?
+        desc: This action cannot be undone.
+      notify:
+        success: Clan member kicked
+    leave:
+      dialog:
+        title: Leave the clan
+        desc: Are you sure you want to leave the {clanName} clan? The action cannot be undone
+      notify:
+        success: You have left the clan
+  application:
+    title: Applications
+    apply: Apply to join
+    sent: The application has been sent, please wait
+    page:
+      title: Active applications
+    table:
+      column:
+        name: Name
+        actions: Actions
+    respond:
+      accept:
+        notify:
+          success: Application accepted
+      decline:
+        notify:
+          success: Application declined
+
+user:
+  field:
+    name: User name
+    gold: Gold
+    heirloom: Heirlooms points
+  settings:
+    title: Account settings
+    delete:
+      title: You can {link}. You won't be able to restore it.
+      link: delete your account
+      dialog:
+        title: Deleting account
+        desc: Are you sure you want to delete your account? This action cannot be undone.
+      notify:
+        success: Account deleted
+  restriction:
+    notification: 'You are banned for: {duration}'
+    guide:
+      intro: "If you'd like to discuss your punishment further, please follow the below steps:"
+      step:
+        join: Join our {discordLink}
+        navigate: Navigate to our {modMailLink} channel
+        follow: Follow the instructions in that channel to reach out to us
+      outro: Please note that at this time, we do not accept appeals through any platform other than Discord.
+
+restriction:
+  title: Restrictions
+  type:
+    Join: Join
+    Chat: Chat
+  status:
+    active: Active
+    inactive: Non active
+  table:
+    column:
+      status: Status
+      user: User
+      createdAt: Created At
+      duration: Duration
+      type: Type
+      reason: Reason
+      restrictedBy: By
+  user:
+    title: User Restriction
+    history: Restrictions history
+  create:
+    form:
+      title: New restriction
+      field:
+        type:
+          label: Type
+        days:
+          label: Days
+        hours:
+          label: Hours
+        minutes:
+          label: Minutes
+        reason:
+          label: Reason
+      action:
+        submit: Add restriction
+    notify:
+      success: User restricted
+
+findUser:
+  title: Find User
+  result:
+    title: Matched user
+  mode:
+    Name:
+      label: By name
+      field:
+        name:
+          label: Nickname
+          placeholder: User nickname
+    Id:
+      label: By ID
+      field:
+        id:
+          label: User ID
+          placeholder: User ID
+    Platform:
+      label: By platform
+      field:
+        platform:
+          label: Platform
+          placeholder: User ID
+        platformId:
+          label: User platform ID
+          placeholder: Platform-specific User ID
+
+mainpage:
+  intro: cRPG is a mod for {link}
+  description: It adds persistence to the multiplayer. You start as a peasant and you'll develop your unique character with different stats and items.
+  online: '{count} online'
+  login: Sign in with Steam
+  download: Download
+
+patreon: Do you like our project?{br}You can support us on
+
+hh:
+  tooltip-trigger: 'Happy hours for {region}:'
+  tooltip-content:
+    template: '{title}{desc}{region}'
+    title: Happy hours!
+    desc: 'Happy Hours is a daily promotion during which {descHighlight}'
+    descHighlight: your entire experience will be increased by 50%.
+    region: The promotion lasts for the time specified for your region - {currentRegion}. Region is automatically detected.
+  notify:
+    started: The happy hours have begun 🙂
+    ended: The happy hours are over 😭
+
+item:
+  type:
+    Undefined: ''
+    HeadArmor: 'Head armor'
+    ShoulderArmor: 'Shoulder armor'
+    BodyArmor: 'Body armor'
+    HandArmor: 'Hand armor'
+    LegArmor: 'Leg armor'
+    MountHarness: 'Mount harness'
+    Mount: 'Mount'
+    Shield: 'Shield'
+    Bow: 'Bow'
+    Crossbow: 'Crossbow'
+    OneHandedWeapon: 'One handed weapon'
+    TwoHandedWeapon: 'Two handed weapon'
+    Polearm: 'Polearm'
+    Thrown: 'Thrown'
+    Arrows: 'Arrows'
+    Bolts: 'Bolts'
+    Pistol: 'Pistol'
+    Musket: 'Musket'
+    Bullets: 'Bullets'
+    Banner: 'Banner'
+
+  flags:
+    ForceAttachOffHandPrimaryItemBone: ''
+    ForceAttachOffHandSecondaryItemBone: ''
+    NotUsableByFemale: ''
+    NotUsableByMale: ''
+    DropOnWeaponChange: 'Drop on weapon change'
+    DropOnAnyAction: 'Drop on any action'
+    CannotBePickedUp: ''
+    CanBePickedUpFromCorpse: ''
+    QuickFadeOut: ''
+    WoodenAttack: ''
+    WoodenParry: ''
+    HeldInOffHand: ''
+    HasToBeHeldUp: ''
+    UseTeamColor: 'Use team color'
+    Civilian: ''
+    DoNotScaleBodyAccordingToWeaponLength: ''
+    DoesNotHideChest: ''
+    NotStackable: 'Not stackable'
+
+  usage:
+    long_bow: 'Longbow'
+    bow: 'Bow'
+    crossbow: 'Heavy crossbow'
+    crossbow_light: 'Light crossbow'
+    polearm_couch: 'Couch'
+    polearm_bracing: 'Brace'
+    polearm_pike: 'Pike'
+
+  weaponClass:
+    Undefined: ''
+    Dagger: 'Dagger'
+    OneHandedSword: 'One handed sword'
+    TwoHandedSword: 'Two handed sword'
+    OneHandedAxe: 'One handed axe'
+    TwoHandedAxe: 'Two handed axe'
+    Mace: 'Mace'
+    Pick: 'Pick'
+    TwoHandedMace: 'Two handed Mace'
+    OneHandedPolearm: 'One handed polearm'
+    TwoHandedPolearm: 'Two handed polearm'
+    LowGripPolearm: 'Low grip polearm'
+    Arrow: 'Arrow'
+    Bolt: 'Bolt'
+    Cartridge: 'Cartridge'
+    Bow: 'Bow'
+    Crossbow: 'Crossbow'
+    Stone: 'Stone'
+    Boulder: 'Boulder'
+    ThrowingAxe: 'Throwing axe'
+    ThrowingKnife: 'Throwing knife'
+    Javelin: 'Javelin'
+    Pistol: 'Pistol'
+    Musket: 'Musket'
+    SmallShield: 'Small shield'
+    LargeShield: 'Large shield'
+    Banner: 'Banner'
+
+  weaponFlags:
+    AffectsAreaBig: 'Affects area big'
+    AffectsArea: 'Affects area'
+    AmmoBreaksOnBounceBack: ''
+    AmmoCanBreakOnBounceBack: ''
+    AmmoSticksWhenShot: ''
+    AttachAmmoToVisual: ''
+    AutoReload: 'Auto reload'
+    BonusAgainstShield: 'Bonus against shield'
+    Burning: 'Burning'
+    CanBlockRanged: 'Can block ranged'
+    CanCrushThrough: 'Crush through'
+    CanDismount: 'Can dismount'
+    CanHook: 'CanHook'
+    CanKnockDown: 'Can knock down'
+    CanPenetrateShield: 'Can penetrate shield'
+    CantReloadOnHorseback: 'Cant reload on horseback'
+    CanReloadOnHorseback: 'Can reload on horseback'
+    Consumable: ''
+    FirearmAmmo: ''
+    HasHitPoints: ''
+    HasString: ''
+    LeavesTrail: ''
+    MeleeWeapon: ''
+    MissileWithPhysics: ''
+    MultiplePenetration: 'Multiple penetration'
+    NoBlood: ''
+    NotUsableWithOneHand: 'Two hand only'
+    NotUsableWithTwoHand: 'One hand only'
+    PenaltyWithShield: 'Penalty with shield'
+    RangedWeapon: 'Ranged weapon'
+    StringHeldByHand: ''
+    TwoHandIdleOnMount: 'Two hand idle on mount'
+    UnloadWhenSheathed: ''
+    UseHandAsThrowBase: ''
+    WideGrip: 'Wide grip'
+
+  culture:
+    Neutral: Neutral
+    Aserai: Aserai
+    Battania: Battania
+    Empire: Empire
+    Khuzait: Khuzait
+    Looters: Looters
+    Sturgia: Sturgia
+    Vlandia: Vlandia
+
+  familyType:
+    1: 'Horse'
+    2: 'Camel'
+
+  damageTypeFormat: '{value} {type}'
+  damageType:
+    Cut:
+      long: 'Cut'
+      short: 'c'
+    Pierce:
+      long: 'Pierce'
+      short: 'p'
+    Blunt:
+      long: 'Blunt'
+      short: 'b'
+
+  aggregations:
+    type:
+      title: 'Item type'
+      description: ''
+    price:
+      title: 'Price'
+      description: ''
+    culture:
+      title: 'Culture'
+      description: ''
+    requirement:
+      title: 'Requirement'
+      description: ''
+    tier:
+      title: 'Item Tier'
+      description: '<p>TODO: cRPG has what is called an item value model. This model aims to predict and quantify the efficiency of any items in the game. It does so using formulas to calculate  a tier between 0 and 10 for each item, using the item stats. The value model has been completely reworked in order to better predict which weapons and items performs the best. The tier calculated for each item is what will determine the item requirements, and the item price. That is why you will see that the order of item in the pricing list will have changed because the value model appraisal has changed. The best weapons should now be the one that cost the more. The item value model is not a form of item balancing, but merely an indicator of the balancing game items. We will in further updates balance items in order to have a more even play field.</p>'
+    flags:
+      title: 'Features'
+      description: ''
+    weight:
+      title: 'Weight'
+      description: ''
+
+    headArmor:
+      title: 'Head armor'
+      description: ''
+    bodyArmor:
+      title: 'Body armor'
+      description: ''
+    armArmor:
+      title: 'Arm armor'
+      description: ''
+    legArmor:
+      title: 'Leg armor'
+      description: ''
+
+    bodyLength:
+      title: 'Body length'
+      description: ''
+    chargeDamage:
+      title: 'Charge damage'
+      description: ''
+    maneuver:
+      title: 'Maneuver'
+      description: ''
+    speed:
+      title: 'Speed'
+      description: ''
+    hitPoints:
+      title: 'Hit points'
+      description: ''
+    mountFamilyType:
+      title: 'Mount type'
+      description: ''
+    mountArmor:
+      title: 'Mount Armor'
+      description: ''
+    mountArmorFamilyType:
+      title: 'Mount armor type'
+      description: ''
+    weaponClass:
+      title: 'Weapon class'
+      description: ''
+    length:
+      title: 'Reach'
+      description: ''
+    handling:
+      title: 'Handling'
+      description: 'TODO: Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos! Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos! Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos!'
+    thrustSpeed:
+      title: 'Thrust speed'
+      description: ''
+    thrustDamage:
+      title: 'Thrust damage'
+      description: ''
+    thrustDamageType:
+      title: 'Thrust damage type'
+      description: ''
+    swingSpeed:
+      title: 'Swing speed'
+      description: ''
+    swingDamage:
+      title: 'Swing damage'
+      description: ''
+    swingDamageType:
+      title: 'Swing damage type'
+      description: ''
+
+    accuracy:
+      title: 'Accuracy'
+      description: ''
+    missileSpeed:
+      title: 'Fire Rate'
+      description: ''
+    reloadSpeed:
+      title: 'Reload speed'
+      description: ''
+    aimSpeed:
+      title: 'Aim speed'
+      description: ''
+
+    damage:
+      title: 'Damage'
+      description: ''
+    damageType:
+      title: 'Damage type'
+      description: ''
+    stackAmount:
+      title: 'Ammo'
+      description: ''
+    stackWeight:
+      title: 'Stack Weight'
+      description: ''
+
+    shieldSpeed:
+      title: 'Speed'
+      description: ''
+    shieldDurability:
+      title: 'Durability'
+      description: ''
+    shieldArmor:
+      title: 'Armor'
+      description: ''
+
+

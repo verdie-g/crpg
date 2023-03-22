@@ -1,12 +1,13 @@
-import type { RouteLocationNormalized, NavigationGuard } from 'vue-router';
+import type { RouteLocationNormalized, NavigationGuard } from 'vue-router/auto';
+
 import { useUserStore } from '@/stores/user';
-import { signInSilent } from '@/services/auth-service';
+import { userManager, signInSilent } from '@/services/auth-service';
 import type Role from '@/models/role';
 
-const routeHasAnyRoles = (route: RouteLocationNormalized): boolean =>
+const routeHasAnyRoles = (route: RouteLocationNormalized<any>): boolean =>
   Boolean(route.meta?.roles?.length);
 
-const userAllowedAccess = (route: RouteLocationNormalized, role: Role): boolean =>
+const userAllowedAccess = (route: RouteLocationNormalized<any>, role: Role): boolean =>
   Boolean(route.meta?.roles?.includes(role));
 
 export const authRouterMiddleware: NavigationGuard = async to => {
@@ -39,9 +40,19 @@ export const authRouterMiddleware: NavigationGuard = async to => {
   if (routeHasAnyRoles(to)) {
     // (4)
     if (userStore.user === null || !userAllowedAccess(to, userStore.user.role)) {
-      return { name: 'index' };
+      return { name: 'Root' } as RouteLocationNormalized<'Root'>;
     }
   }
 
+  return true;
+};
+
+export const signInCallback: NavigationGuard = async () => {
+  await userManager.signinCallback();
+  return { name: 'Characters' } as RouteLocationNormalized<'Characters'>;
+};
+
+export const signInSilentCallback: NavigationGuard = async () => {
+  await userManager.signinSilentCallback();
   return true;
 };

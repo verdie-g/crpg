@@ -1,0 +1,55 @@
+.o-field {
+}
+
+.o-field--horizontal {
+  @apply flex;
+}
+
+.o-field--grouped {
+  @apply flex flex-row;
+}
+
+.o-field--horizontal {
+  @apply flex-row;
+}
+
+.o-field--addons {
+  @apply flex flex-wrap gap-4;
+}
+
+.o-field--filled {
+}
+
+.o-field__label {
+  @apply mb-2 block;
+}
+
+.o-field__label-small {
+  @apply mb-1 text-2xs;
+}
+
+.o-field--horizontal .o-field__label,
+.o-field--horizontal .o-field__label-small {
+  @apply mb-0;
+}
+
+.o-field__horizontal-label {
+  @apply mr-3 flex-grow;
+  flex-basis: 0;
+}
+
+.o-field__body {
+}
+
+.o-field__horizontal-body {
+  @apply flex flex-grow-[5] gap-3;
+  flex-basis: 0;
+}
+
+.o-field__message {
+  @apply mt-3 text-left text-2xs;
+}
+
+.o-field__message-danger {
+  @apply text-status-danger;
+}
