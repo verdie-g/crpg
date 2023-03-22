@@ -1,9 +1,13 @@
-import UserPublic from '@/models/user-public';
-import RestrictionType from '@/models/restriction-type';
+import { UserPublic } from '@/models/user';
 
-export default interface Restriction {
+export enum RestrictionType {
+  Join = 'Join',
+  Chat = 'Chat',
+}
+
+export interface Restriction {
   id: number;
-  restrictedUser: UserPublic | null;
+  restrictedUser: UserPublic;
   duration: number;
   type: RestrictionType;
   reason: string;
@@ -13,4 +17,11 @@ export default interface Restriction {
 
 export interface RestrictionWithActive extends Restriction {
   active: boolean;
+}
+
+export interface RestrictionCreation {
+  restrictedUserId: number;
+  type: RestrictionType;
+  reason: string;
+  duration: number;
 }

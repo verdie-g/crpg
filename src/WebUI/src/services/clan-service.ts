@@ -1,13 +1,15 @@
-import { get, post, put, del } from './crpg-client';
-import Clan from '@/models/clan';
-import ClanWithMemberCount from '@/models/clan-with-member-count';
-import ClanInvitation from '@/models/clan-invitation';
-import ClanInvitationStatus from '@/models/clan-invitation-status';
-import ClanInvitationType from '@/models/clan-invitation-type';
-import ClanMember from '@/models/clan-member';
-import ClanMemberRole from '@/models/clan-member-role';
-import { ClanEdition } from '@/models/clan-edition';
-
+import {
+  type Clan,
+  type ClanWithMemberCount,
+  type ClanEdition,
+  type ClanMember,
+  ClanMemberRole,
+  type ClanInvitation,
+  ClanInvitationType,
+  ClanInvitationStatus,
+} from '@/models/clan';
+import { Region } from '@/models/region';
+import { get, post, put, del } from '@/services/crpg-client';
 import { rgbHexColorToArgbInt, argbIntToRgbHexColor } from '@/utils/color';
 
 const mapClanRequest = (payload: Omit<Clan, 'id'>): Omit<ClanEdition, 'id'> => {
@@ -18,7 +20,7 @@ const mapClanRequest = (payload: Omit<Clan, 'id'>): Omit<ClanEdition, 'id'> => {
   };
 };
 
-const mapClanResponse = (payload: ClanEdition): Clan => {
+export const mapClanResponse = (payload: ClanEdition): Clan => {
   return {
     ...payload,
     primaryColor: argbIntToRgbHexColor(payload.primaryColor),
@@ -26,61 +28,94 @@ const mapClanResponse = (payload: ClanEdition): Clan => {
   };
 };
 
-export async function getClan(id: number): Promise<Clan> {
-  const response = await get(`/clans/${id}`);
-  return mapClanResponse(response as ClanEdition);
-}
+// TODO: backend pagination/region query!
+export const getClans = async () => {
+  const clans = await get<ClanWithMemberCount<ClanEdition>[]>('/clans');
+  return clans.map(c => ({
+    ...c,
+    clan: mapClanResponse(c.clan),
+  }));
+};
 
-export function getClanMembers(id: number): Promise<ClanMember[]> {
-  return get(`/clans/${id}/members`);
-}
+export const getFilteredClans = (
+  clans: ClanWithMemberCount<Clan>[],
+  region: Region,
+  search: string
+) => {
+  const searchQuery = search.toLowerCase();
+  return clans.filter(
+    c =>
+      c.clan.region === region &&
+      (c.clan.tag.toLowerCase().includes(searchQuery) ||
+        c.clan.name.toLowerCase().includes(searchQuery))
+  );
+};
 
-export function updateClanMember(
-  clanId: number,
-  memberId: number,
-  role: ClanMemberRole
-): Promise<ClanMember> {
-  return put(`/clans/${clanId}/members/${memberId}`, { role });
-}
+export const createClan = async (clan: Omit<Clan, 'id'>) =>
+  mapClanResponse(await post<ClanEdition>('/clans', mapClanRequest(clan)));
 
-export function getClanInvitations(
+export const updateClan = async (clanId: number, clan: Clan) =>
+  mapClanResponse(await put<ClanEdition>(`/clans/${clanId}`, mapClanRequest(clan)));
+
+export const getClan = async (id: number) =>
+  mapClanResponse(await get<ClanEdition>(`/clans/${id}`));
+
+export const getClanMembers = async (id: number) => get<ClanMember[]>(`/clans/${id}/members`);
+
+export const updateClanMember = async (clanId: number, memberId: number, role: ClanMemberRole) =>
+  put<ClanMember>(`/clans/${clanId}/members/${memberId}`, { role });
+
+export const kickClanMember = async (clanId: number, memberId: number) =>
+  del(`/clans/${clanId}/members/${memberId}`);
+
+export const inviteToClan = async (clanId: number, inviteeId: number) =>
+  post<ClanInvitation>(`/clans/${clanId}/invitations`, { inviteeId });
+
+export const getClanInvitations = async (
   clanId: number,
   types: ClanInvitationType[],
   statuses: ClanInvitationStatus[]
-): Promise<ClanInvitation[]> {
+) => {
   const params = new URLSearchParams();
   types.forEach(t => params.append('type[]', t));
   statuses.forEach(s => params.append('status[]', s));
+  return get<ClanInvitation[]>(`/clans/${clanId}/invitations?${params}`);
+};
 
-  return get(`/clans/${clanId}/invitations?${params}`);
-}
-
-export function inviteToClan(clanId: number, inviteeId: number): Promise<ClanInvitation> {
-  return post(`/clans/${clanId}/invitations`, { inviteeId });
-}
-
-export function respondToClanInvitation(
+export const respondToClanInvitation = async (
   clanId: number,
   clanInvitationId: number,
   accept: boolean
-): Promise<ClanInvitation> {
-  return put(`/clans/${clanId}/invitations/${clanInvitationId}/response`, { accept });
-}
+) => put<ClanInvitation>(`/clans/${clanId}/invitations/${clanInvitationId}/response`, { accept });
 
-export function getClans(): Promise<ClanWithMemberCount[]> {
-  return get('/clans');
-}
+// TODO: need a name
+export const getClanMember = (clanMembers: ClanMember[], userId: number) =>
+  clanMembers.find(m => m.user.id === userId) || null;
 
-export async function createClan(clan: Omit<Clan, 'id'>): Promise<Clan> {
-  const response = await post('/clans', mapClanRequest(clan));
-  return mapClanResponse(response as ClanEdition);
-}
+export const canManageApplicationsValidate = (member: ClanMember) =>
+  [ClanMemberRole.Leader, ClanMemberRole.Officer].includes(member.role);
 
-export async function updateClan(clanId: number, clan: Clan): Promise<Clan> {
-  const response = await put(`/clans/${clanId}`, mapClanRequest(clan));
-  return mapClanResponse(response as ClanEdition);
-}
+export const canUpdateClanValidate = (member: ClanMember) =>
+  [ClanMemberRole.Leader].includes(member.role);
 
-export function kickClanMember(clanId: number, memberId: number): Promise<void> {
-  return del(`/clans/${clanId}/members/${memberId}`);
-}
+export const canUpdateMemberValidate = (member: ClanMember) =>
+  [ClanMemberRole.Leader].includes(member.role);
+
+export const canKickMemberValidate = (
+  selfMember: ClanMember,
+  member: ClanMember,
+  clanMembersCount: number
+) => {
+  if (
+    member.user.id === selfMember.user.id &&
+    (member.role !== ClanMemberRole.Leader || clanMembersCount === 1)
+  ) {
+    return true;
+  }
+
+  return (
+    (selfMember.role === ClanMemberRole.Leader &&
+      [ClanMemberRole.Officer, ClanMemberRole.Member].includes(member.role)) ||
+    (selfMember.role === ClanMemberRole.Officer && member.role === ClanMemberRole.Member)
+  );
+};

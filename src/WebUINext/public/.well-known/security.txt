@@ -1,3 +1,0 @@
-Contact: mailto:hello@c-rpg.eu
-Preferred-Languages: en, fr
-Policy: https://raw.githubusercontent.com/verdie-g/crpg/master/SECURITY.md

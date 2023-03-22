@@ -1,15 +1,15 @@
 - hosts: centralservers
   become: yes
   roles:
-    - nginx
-    - postgresql
-    - datadog
-    - geoip
-    - dotnet
-    - crpg-web-api
     - crpg-web-ui
-- hosts: gameservers
-  become: yes
-  roles:
-    - datadog
-    - crpg-game-server
+    # - nginx
+    # - postgresql
+    # - datadog
+    # - geoip
+    # - dotnet
+    # - crpg-web-api
+# - hosts: gameservers
+#   become: yes
+#   roles:
+#     - datadog
+#     - crpg-game-server

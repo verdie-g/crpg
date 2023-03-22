@@ -1,40 +1,47 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "esnext",
+    "useDefineForClassFields": true,
     "module": "esnext",
-    "strict": true,
-    "strictPropertyInitialization": false,
-    "jsx": "preserve",
-    "importHelpers": true,
     "moduleResolution": "node",
-    "experimentalDecorators": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true,
+    "strict": true,
+    "jsx": "preserve",
     "sourceMap": true,
-    "baseUrl": ".",
-    "types": [
-      "webpack-env",
-      "jest"
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "lib": [
+      "esnext",
+      "dom"
     ],
+    "baseUrl": ".",
     "paths": {
       "@/*": [
         "src/*"
-      ]
+      ],
+      "@@/*": [
+        "/*"
+      ],
+      "@root/*": [
+        "../../*"
+      ],
     },
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ]
+    "types": [
+      "type-fest",
+      "vite/client",
+      "vitest/globals",
+      "vite-plugin-vue-layouts/client",
+      "@intlify/vite-plugin-vue-i18n/client",
+      "vi-fetch/matchers",
+      "@types/body-scroll-lock",
+    ],
   },
   "include": [
     "src/**/*.ts",
-    "src/**/*.tsx",
+    "src/**/*.d.ts",
     "src/**/*.vue",
-    "src/tests/**/*.ts",
-    "src/tests/**/*.tsx"
   ],
   "exclude": [
     "node_modules"

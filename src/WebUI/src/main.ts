@@ -1,44 +1,20 @@
-import Vue from 'vue';
-import Buefy from 'buefy';
+import { createApp } from 'vue';
+import { type BootModule } from './types/boot-module';
+import { guessDefaultLocale, switchLanguage } from '@/services/translate-service';
+
+import 'floating-vue/dist/style.css';
+import './assets/styles/tailwind.css';
+import './assets/themes/oruga-tailwind/index.css';
+
 import App from './App.vue';
-import router from './router';
-import store from './store';
-import { Icon } from 'leaflet';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import shareMutations from 'vuex-shared-mutations';
-import PoolInterval from '@/libs/poll-interval';
-import 'buefy/dist/buefy.css';
-import '@fortawesome/fontawesome-free/css/all.css';
-import '@fortawesome/fontawesome-free/css/fontawesome.css';
-import 'leaflet/dist/leaflet.css';
-import '@/assets/scss/index.scss';
 
-Vue.use(Buefy, {
-  defaultIconPack: 'fas',
-});
+const app = createApp(App);
 
-//Default icons
-delete (Icon.Default.prototype as any)._getIconUrl;
-Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
-});
+// Load modules || plugins
+Object.values(
+  import.meta.glob<BootModule>('./boot/*.ts', { eager: true, import: 'install' })
+).forEach(install => install(app));
 
-Vue.config.productionTip = false;
+await switchLanguage(guessDefaultLocale());
 
-// Synchronize browser tabs: user info (gold) and characters info (exp)
-shareMutations({
-  predicate: ['setUser', 'setCharacters'],
-})(store);
-
-Vue.use(PoolInterval, {
-  period: 1000 * 60 * 2,
-});
-
-new Vue({
-  router,
-  store,
-  render: h => h(App),
-}).$mount('#app');
+app.mount('#app');

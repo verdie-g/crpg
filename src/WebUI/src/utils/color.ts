@@ -1,5 +1,5 @@
 ﻿export function rgbHexColorToArgbInt(hexColor: string): number {
-  return parseInt('FF' + hexColor.substr(1), 16);
+  return parseInt('FF' + hexColor.substring(1), 16);
 }
 
 export function argbIntToRgbHexColor(argb: number) {

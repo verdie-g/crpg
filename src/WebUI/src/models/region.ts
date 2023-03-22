@@ -4,5 +4,3 @@ export enum Region {
   As = 'As',
   Oc = 'Oc',
 }
-
-export default Region;

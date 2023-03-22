@@ -1,4 +1,4 @@
-enum Culture {
+export enum Culture {
   Neutral = 'Neutral',
   Aserai = 'Aserai',
   Battania = 'Battania',
@@ -8,5 +8,3 @@ enum Culture {
   Sturgia = 'Sturgia',
   Vlandia = 'Vlandia',
 }
-
-export default Culture;

@@ -1,57 +1,41 @@
-// TODO: unit
-export function timestampToTimeString(ts: number): string {
+import { HumanDuration } from '@/models/datetime';
+
+export const parseTimestamp = (ts: number): HumanDuration => {
   const days = Math.floor(ts / 86400000);
   const hours = Math.floor((ts % 86400000) / 3600000);
   const minutes = Math.floor(((ts % 86400000) % 3600000) / 60000);
 
-  let timeStr = '';
+  return {
+    days,
+    hours,
+    minutes,
+  };
+};
 
-  if (days !== 0) {
-    timeStr += `${days}d `;
-  }
+const daysToMs = (days: number) => days * 24 * 60 * 60 * 1000;
 
-  if (hours !== 0) {
-    timeStr += `${hours} h `;
-  }
+const hoursToMs = (hours: number) => hours * 60 * 60 * 1000;
 
-  if (minutes !== 0) {
-    timeStr += `${minutes} min `;
-  }
+const minutesToMs = (minutes: number) => minutes * 60 * 1000;
 
-  if (timeStr.length > 1) {
-    timeStr = timeStr.slice(0, -1); // remove extra space
-  }
-
-  return timeStr;
-}
-
-function daysToMs(days: number) {
-  return days * 24 * 60 * 60 * 1000;
-}
-
-function hoursToMs(hours: number) {
-  return hours * 60 * 60 * 1000;
-}
-
-function minutesToMs(minutes: number) {
-  return minutes * 60 * 1000;
-}
-
-export interface HumanDuration {
-  days: number;
-  hours: number;
-  minutes: number;
-}
-
-export function convertHumanDurationToMs(duration: HumanDuration): number {
+export const convertHumanDurationToMs = (duration: HumanDuration) => {
   return daysToMs(duration.days) + hoursToMs(duration.hours) + minutesToMs(duration.minutes);
-}
+};
 
-export function checkIsDateExpired(createdAt: Date, duration: number): boolean {
+/**
+ * @param {number} duration - ms
+ */
+export const checkIsDateExpired = (createdAt: Date, duration: number) => {
   return new Date().getTime() > new Date(createdAt).getTime() + duration;
-}
+};
 
-export function computeLeftMs(createdAt: Date, duration: number): number {
+/**
+ * @param {number} duration - ms
+ */
+export const computeLeftMs = (createdAt: Date, duration: number) => {
   const result = new Date(createdAt).getTime() + duration - new Date().getTime();
   return result < 0 ? 0 : result;
-}
+};
+
+export const isBetween = (date: Date, start: Date, end: Date) =>
+  date.valueOf() >= start.valueOf() && date.valueOf() <= end.valueOf();

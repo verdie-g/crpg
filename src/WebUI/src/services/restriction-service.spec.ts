@@ -1,141 +1,233 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
-import { mapRestrictions } from '@/services/restriction-service';
+import { mockGet, mockPost } from 'vi-fetch';
+import { response } from '@/__mocks__/crpg-client';
+import { type RestrictionCreation, type RestrictionWithActive } from '@/models/restriction';
 
-const [expiredDate, nowDate, futureDate] = [
-  '2022-11-27T20:00:00.0000000Z',
-  '2022-11-27T21:00:00.0000000Z',
-  '2022-11-27T22:00:00.0000000Z',
-];
+const mockCheckIsDateExpired = vi.fn();
+vi.mock('@/utils/date', () => ({
+  checkIsDateExpired: mockCheckIsDateExpired,
+}));
+
+import {
+  mapRestrictions,
+  getRestrictions,
+  restrictUser,
+  getActiveJoinRestriction,
+} from '@/services/restriction-service';
+
 const duration = 180000; // 3 min
 
-// mock Date
-const DateReal = global.Date;
-const spy = jest.spyOn(global, 'Date').mockImplementation((...args) => {
-  if (args.length) {
-    return new DateReal(...args);
-  }
-  return new Date(nowDate);
+describe('mapRestrictions', () => {
+  describe('single', () => {
+    const payload = [
+      {
+        id: 1,
+        restrictedUser: {
+          id: 1,
+        },
+        type: 'Join',
+        createdAt: '2022-11-27T22:00:00.000Z',
+      },
+    ];
+
+    it('non-expired', () => {
+      mockCheckIsDateExpired.mockReturnValue(false);
+
+      // @ts-ignore
+      expect(mapRestrictions(payload).at(0).active).toBeTruthy();
+    });
+
+    it('expired', () => {
+      mockCheckIsDateExpired.mockReturnValue(true);
+
+      // @ts-ignore
+      expect(mapRestrictions(payload).at(0).active).toBeFalsy();
+    });
+  });
+
+  describe('several', () => {
+    describe('same type', () => {
+      const payload = [
+        {
+          id: 1,
+          restrictedUser: {
+            id: 1,
+          },
+          type: 'Join',
+          createdAt: '2022-11-28T22:00:00.000Z',
+        },
+        {
+          id: 2,
+          restrictedUser: {
+            id: 1,
+          },
+          type: 'Join',
+          createdAt: '2022-11-27T22:00:00.000Z',
+        },
+      ];
+
+      it('non-expired', () => {
+        mockCheckIsDateExpired.mockReturnValue(false);
+
+        // @ts-ignore
+        const result = mapRestrictions(payload);
+
+        expect(result.at(0)!.active).toBeTruthy();
+        expect(result.at(1)!.active).toBeFalsy();
+      });
+
+      it('expired', () => {
+        mockCheckIsDateExpired.mockReturnValue(true);
+
+        // @ts-ignore
+        const result = mapRestrictions(payload);
+
+        expect(result.at(0)!.active).toBeFalsy();
+        expect(result.at(1)!.active).toBeFalsy();
+      });
+    });
+
+    describe('different type', () => {
+      const payload = [
+        {
+          id: 1,
+          restrictedUser: {
+            id: 1,
+          },
+          duration,
+          type: 'Chat',
+          createdAt: '2022-11-27T22:00:00.000Z',
+        },
+        {
+          id: 2,
+          restrictedUser: {
+            id: 1,
+          },
+          duration,
+          type: 'Join',
+          createdAt: '2022-11-27T22:00:00.000Z',
+        },
+      ];
+
+      it('non-expired', () => {
+        mockCheckIsDateExpired.mockReturnValue(false);
+
+        // @ts-ignore
+        const result = mapRestrictions(payload);
+
+        expect(result.at(0)!.active).toBeTruthy();
+        expect(result.at(1)!.active).toBeTruthy();
+      });
+
+      it('expired', () => {
+        mockCheckIsDateExpired.mockReturnValue(true);
+
+        // @ts-ignore
+        const result = mapRestrictions(payload);
+
+        expect(result.at(0)!.active).toBeFalsy();
+        expect(result.at(1)!.active).toBeFalsy();
+      });
+    });
+
+    describe('different user', () => {
+      const payload = [
+        {
+          id: 1,
+          restrictedUser: {
+            id: 1,
+          },
+          duration,
+          type: 'Join',
+        },
+        {
+          id: 2,
+          restrictedUser: {
+            id: 2,
+          },
+          duration,
+          type: 'Join',
+        },
+      ];
+
+      it('non-expired', () => {
+        mockCheckIsDateExpired.mockReturnValue(false);
+
+        // @ts-ignore
+        const result = mapRestrictions(payload);
+
+        expect(result.at(0)!.active).toBeTruthy();
+        expect(result.at(1)!.active).toBeTruthy();
+      });
+
+      it('expired', () => {
+        mockCheckIsDateExpired.mockReturnValue(true);
+
+        // @ts-ignore
+        const result = mapRestrictions(payload);
+
+        expect(result.at(0)!.active).toBeFalsy();
+        expect(result.at(1)!.active).toBeFalsy();
+      });
+    });
+  });
 });
 
-describe('mapRestrictions', () => {
-  afterAll(() => {
-    spy.mockRestore();
-  });
+it('getRestrictions', async () => {
+  mockCheckIsDateExpired.mockReturnValue(false);
+  const restrictions = {
+    id: 1,
+    restrictedUser: { id: 1 },
+    duration,
+    type: 'Join',
+    reason: '',
+    restrictedByUser: { id: 1 },
+  };
 
-  it('single non-expired restriction', () => {
-    const payload = [
-      {
-        id: 1,
-        restrictedUser: {
-          id: 1,
-        },
-        duration,
-        type: 'Join',
-        createdAt: futureDate,
-      },
-    ];
+  mockGet('/restrictions').willResolve(response([restrictions]));
+  expect(await getRestrictions()).toEqual([{ ...restrictions, active: true }]);
 
-    expect(mapRestrictions(payload).at(0)!.active).toBeTruthy();
-  });
+  expect(mockCheckIsDateExpired).toBeCalled();
+});
 
-  it('single expired restriction', () => {
-    const payload = [
-      {
-        id: 1,
-        restrictedUser: {
-          id: 1,
-        },
-        duration,
-        type: 'Join',
-        createdAt: expiredDate,
-      },
-    ];
+it('getActiveJoinRestriction', () => {
+  const restrictions = [
+    {
+      id: 1,
+      duration: 1,
+      type: 'Chat',
+      reason: '',
+      active: true,
+    },
+    {
+      id: 2,
+      duration: 11,
+      type: 'Join',
+      reason: '',
+      active: true,
+    },
+  ];
 
-    expect(mapRestrictions(payload).at(0)!.active).toBeFalsy();
-  });
+  expect(getActiveJoinRestriction(restrictions as RestrictionWithActive[])!.id).toEqual(2);
+});
 
-  it('several restrictions of the same type', () => {
-    const payload = [
-      {
-        id: 1,
-        restrictedUser: {
-          id: 1,
-        },
-        duration,
-        type: 'Join',
-        createdAt: expiredDate,
-      },
-      {
-        id: 2,
-        restrictedUser: {
-          id: 1,
-        },
-        duration,
-        type: 'Join',
-        createdAt: futureDate,
-      },
-    ];
+it('restrictUser', async () => {
+  const payload = {
+    restrictedUserId: 1,
+    type: 'Chat',
+    reason: '',
+    duration: 100,
+  } as RestrictionCreation;
 
-    const result = mapRestrictions(payload);
+  const restriction = {
+    id: 1,
+    restrictedUser: { id: 1 },
+    duration: 1,
+    type: 'Join',
+    reason: '',
+    restrictedByUser: { id: 1 },
+  };
 
-    expect(result.at(0)!.active).toBeFalsy();
-    expect(result.at(1)!.active).toBeTruthy();
-  });
-
-  it('several restrictions of the different type', () => {
-    const payload = [
-      {
-        id: 1,
-        restrictedUser: {
-          id: 1,
-        },
-        duration,
-        type: 'Chat',
-        createdAt: futureDate,
-      },
-      {
-        id: 2,
-        restrictedUser: {
-          id: 1,
-        },
-        duration,
-        type: 'Join',
-        createdAt: futureDate,
-      },
-    ];
-
-    const result = mapRestrictions(payload);
-
-    expect(result.at(0)!.active).toBeTruthy();
-    expect(result.at(1)!.active).toBeTruthy();
-  });
-
-  it('several restrictions of the different user', () => {
-    const payload = [
-      {
-        id: 1,
-        restrictedUser: {
-          id: 1,
-        },
-        duration,
-        type: 'Join',
-        createdAt: futureDate,
-      },
-      {
-        id: 2,
-        restrictedUser: {
-          id: 2,
-        },
-        duration,
-        type: 'Join',
-        createdAt: futureDate,
-      },
-    ];
-
-    const result = mapRestrictions(payload);
-
-    expect(result.at(0)!.active).toBeTruthy();
-    expect(result.at(1)!.active).toBeTruthy();
-  });
+  const mock = mockPost('/restrictions').willResolve(response(restriction));
+  expect(await restrictUser(payload)).toEqual(restriction);
+  expect(mock).toHaveFetchedWithBody(payload);
 });

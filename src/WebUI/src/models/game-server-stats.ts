@@ -1,10 +1,10 @@
-import Region from '@/models/region';
+import { Region } from './region';
+
+interface GameStats {
+  playingCount: number;
+}
 
 export interface GameServerStats {
   total: GameStats;
-  regions: Record<Region, GameStats>;
-}
-
-export interface GameStats {
-  playingCount: number;
+  regions: Partial<Record<Region, GameStats>>;
 }
