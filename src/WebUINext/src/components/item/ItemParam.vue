@@ -8,7 +8,7 @@ const props = withDefaults(
     item: ItemFlat;
     field: keyof ItemFlat;
     bestValue?: number;
-    compareMode: boolean;
+    compareMode?: boolean;
   }>(),
   { compareMode: false }
 );
