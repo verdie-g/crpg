@@ -28,6 +28,7 @@ import {
   getCharacterKDARatio,
   getRespecCapability,
 } from '@/services/characters-service';
+import Coin from '@/assets/themes/oruga-tailwind/img/coin.svg';
 
 definePage({
   meta: {
@@ -264,11 +265,7 @@ await fetchPageData(character.value.id);
                     size="sm"
                     label="free"
                   />
-                  <img
-                    v-else
-                    class="m-0 w-4"
-                    :src="getAssetUrl('themes/oruga-tailwind/img/coin.svg')"
-                  />
+                  <img v-else class="m-0 w-4" :src="Coin" />
                 </div>
               </OButton>
             </div>

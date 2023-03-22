@@ -346,14 +346,14 @@ export const damageTypeToIcon: Record<DamageType, string | null> = {
 };
 
 export const itemCultureToIcon: Record<Culture, string | null> = {
-  [Culture.Neutral]: '/themes/oruga-tailwind/img/culture/neutrals.svg',
-  [Culture.Aserai]: '/themes/oruga-tailwind/img/culture/aserai.svg',
-  [Culture.Battania]: '/themes/oruga-tailwind/img/culture/battania.svg',
-  [Culture.Empire]: '/themes/oruga-tailwind/img/culture/empire.svg',
-  [Culture.Khuzait]: '/themes/oruga-tailwind/img/culture/khuzait.svg',
-  [Culture.Looters]: '/themes/oruga-tailwind/img/culture/looters.svg',
-  [Culture.Sturgia]: '/themes/oruga-tailwind/img/culture/sturgia.svg',
-  [Culture.Vlandia]: '/themes/oruga-tailwind/img/culture/vlandia.svg',
+  [Culture.Neutral]: 'neutrals',
+  [Culture.Aserai]: 'aserai',
+  [Culture.Battania]: 'battania',
+  [Culture.Empire]: 'empire',
+  [Culture.Khuzait]: 'khuzait',
+  [Culture.Looters]: 'looters',
+  [Culture.Sturgia]: 'sturgia',
+  [Culture.Vlandia]: 'vlandia',
 };
 
 // TO MODEL:

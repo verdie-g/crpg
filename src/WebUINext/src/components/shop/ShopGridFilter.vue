@@ -66,9 +66,8 @@ const innerModel = computed({
         <div class="max-w-md">
           <template v-if="aggregationConfig.view === AggregationView.Checkbox">
             <DropdownItem v-for="bucket in aggregation.buckets">
-              <OCheckbox v-model="innerModel" :native-value="bucket.key" class="items-center">
+              <OCheckbox v-model="innerModel" :nativeValue="bucket.key" class="items-center">
                 <div class="flex items-center gap-2">
-                  <!-- TODO: size, align -->
                   <ItemFieldIcon
                     v-if="humanizeBucket(aggregation.name, bucket.key)?.icon"
                     :icon="humanizeBucket(aggregation.name, bucket.key).icon!"
@@ -87,7 +86,7 @@ const innerModel = computed({
           <template v-else-if="aggregationConfig.view === AggregationView.Range">
             <div class="py-3 px-8">
               <SliderInput
-                v-model="(innerModel as number[])"
+                v-model="innerModel"
                 :min="getMinRange(getBucketValues(scopeAggregation.buckets))"
                 :max="getMaxRange(getBucketValues(scopeAggregation.buckets))"
                 :step="getStepRange(getBucketValues(scopeAggregation.buckets))"

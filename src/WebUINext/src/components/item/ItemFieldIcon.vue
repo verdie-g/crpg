@@ -13,6 +13,10 @@ const props = withDefaults(
     showTooltip: true,
   }
 );
+
+const cultureIcons = import.meta.glob('@/assets/themes/oruga-tailwind/img/culture/*.svg', {
+  eager: true,
+});
 </script>
 
 <!-- TODO: -->
@@ -20,7 +24,9 @@ const props = withDefaults(
   <div v-tooltip="showTooltip ? label : null" class="flex items-center">
     <template v-if="icon.type === IconBucketType.Asset">
       <img
-        :src="getAssetUrl(icon.name)"
+        :src="
+          cultureIcons[`/src/assets/themes/oruga-tailwind/img/culture/${icon.name}.svg`].default
+        "
         class="object-contain"
         :class="size === '2xl' ? 'w-8' : 'w-6'"
       />

@@ -3,6 +3,12 @@ import { useUserStore } from '@/stores/user';
 import { login } from '@/services/auth-service';
 import { useGameServerStats } from '@/composables/use-game-server-stats';
 
+import Logo from '@/assets/themes/oruga-tailwind/img/logo.svg';
+import LogoDecor from '@/assets/themes/oruga-tailwind/img/logo-decor.svg';
+const localeIcons = import.meta.glob('@/assets/themes/oruga-tailwind/img/locale/*.svg', {
+  eager: true,
+});
+
 definePage({
   meta: {
     layout: 'empty',
@@ -27,7 +33,9 @@ await loadGameServerStats();
             <div class="flex items-center gap-2.5">
               <img
                 class="w-4"
-                :src="getAssetUrl(`themes/oruga-tailwind/img/locale/${locale}.svg`)"
+                :src="
+                  localeIcons[`/src/assets/themes/oruga-tailwind/img/locale/${locale}.svg`].default
+                "
               />
               <div class="h-4 w-px select-none bg-border-300"></div>
               <OIcon
@@ -43,18 +51,9 @@ await loadGameServerStats();
 
       <div class="mx-auto space-y-8 md:w-1/2 2xl:w-1/3 2xl:space-y-10">
         <div class="item-center mb-6 flex select-none justify-center gap-6 md:gap-12">
-          <img
-            class="w-16 rotate-180 transform xl:w-20 2xl:w-24"
-            :src="getAssetUrl('themes/oruga-tailwind/img/logo-decor.svg')"
-          />
-          <img
-            class="w-24 xl:w-36 2xl:w-40"
-            :src="getAssetUrl('themes/oruga-tailwind/img/logo.svg')"
-          />
-          <img
-            class="w-16 xl:w-20 2xl:w-24"
-            :src="getAssetUrl('themes/oruga-tailwind/img/logo-decor.svg')"
-          />
+          <img class="w-16 rotate-180 transform xl:w-20 2xl:w-24" :src="LogoDecor" />
+          <img class="w-24 xl:w-36 2xl:w-40" :src="Logo" />
+          <img class="w-16 xl:w-20 2xl:w-24" :src="LogoDecor" />
         </div>
 
         <Divider />
