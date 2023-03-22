@@ -78,6 +78,7 @@ provide(characterKey, character);
 provide(characterCharacteristicsKey, {
   characterCharacteristics: readonly(characterCharacteristics),
   setCharacterCharacteristics,
+  loadCharacterCharacteristics,
 });
 provide(characterHealthPointsKey, healthPoints);
 provide(characterItemsKey, {
