@@ -6,6 +6,7 @@ import { getCharacterSLotsSchema, getOverallArmorValueBySlot } from '@/services/
 import { useInventoryDnD } from '@/composables/character/use-inventory-dnd';
 import { useItemDetail } from '@/composables/character/use-item-detail';
 import { equippedItemsBySlotKey, characterItemsStatsKey } from '@/symbols/character';
+import BodySilhouette from '@/assets/themes/oruga-tailwind/img/body-silhouette.svg';
 
 const equippedItemsBySlot = injectStrict(equippedItemsBySlotKey);
 const itemsStats = injectStrict(characterItemsStatsKey);
@@ -41,10 +42,7 @@ const { openItemDetail } = useItemDetail();
   <div class="relative grid grid-cols-3 gap-4">
     <div class="absolute inset-0 -z-10 flex items-end justify-center">
       <!-- TODO: new img -->
-      <img
-        class="w-52 2xl:w-64"
-        :src="getAssetUrl('themes/oruga-tailwind/img/body-silhouette.svg')"
-      />
+      <img class="w-52 2xl:w-64" :src="BodySilhouette" />
     </div>
     <div
       v-for="(slotGroup, idx) in slotsSchema"

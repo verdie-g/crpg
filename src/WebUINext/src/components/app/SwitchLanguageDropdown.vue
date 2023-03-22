@@ -3,6 +3,10 @@ import { supportedLocales, currentLocale, switchLanguage } from '@/services/tran
 
 const locale = computed(() => currentLocale());
 const locales = computed(() => supportedLocales());
+
+const localeIcons = import.meta.glob('@/assets/themes/oruga-tailwind/img/locale/*.svg', {
+  eager: true,
+});
 </script>
 
 <template>
@@ -23,7 +27,10 @@ const locales = computed(() => supportedLocales());
           }
         "
       >
-        <img class="w-5" :src="getAssetUrl(`themes/oruga-tailwind/img/locale/${l}.svg`)" />
+        <img
+          class="w-5"
+          :src="localeIcons[`/src/assets/themes/oruga-tailwind/img/locale/${l}.svg`].default"
+        />
         {{ $t(`locale.${l}`) }}
       </DropdownItem>
     </template>

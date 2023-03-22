@@ -9,8 +9,6 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    AppLink: typeof import('./../components/ui/AppLink.vue')['default']
-    Badge: typeof import('../components/ui/Tag.vue')['default']
     Bg: typeof import('./../components/app/Bg.vue')['default']
     CharacterCharacteristic: typeof import('./../components/character/CharacterCharacteristic.vue')['default']
     CharacterCreateModal: typeof import('./../components/character/CharacterCreateModal.vue')['default']
@@ -21,7 +19,6 @@ declare module '@vue/runtime-core' {
     CharacterInventoryItemCard: typeof import('./../components/character/inventory/CharacterInventoryItemCard.vue')['default']
     CharacterInventoryItemDetail: typeof import('./../components/character/inventory/CharacterInventoryItemDetail.vue')['default']
     CharacterInventoryItemList: typeof import('./../components/character/inventory/CharacterInventoryItemList.vue')['default']
-    CharacterSpeedStats: typeof import('../components/character/CharacterStats.vue')['default']
     CharacterStats: typeof import('./../components/character/CharacterStats.vue')['default']
     ClanForm: typeof import('./../components/clan/ClanForm.vue')['default']
     ClanMemberDetail: typeof import('./../components/clan/ClanMemberDetail.vue')['default']
@@ -40,12 +37,10 @@ declare module '@vue/runtime-core' {
     Modal: typeof import('./../components/ui/Modal.vue')['default']
     NumericInput: typeof import('./../components/ui/NumericInput.vue')['default']
     OnlinePlayers: typeof import('./../components/app/OnlinePlayers.vue')['default']
-    Price: typeof import('../components/app/Coin.vue')['default']
     RestrictionsTable: typeof import('./../components/moderator/RestrictionsTable.vue')['default']
     ResultNotFound: typeof import('./../components/app/ResultNotFound.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SearchUser: typeof import('./../components/moderator/SearchUser.vue')['default']
     ShopGridFilter: typeof import('./../components/shop/ShopGridFilter.vue')['default']
     ShopGridItemBuyBtn: typeof import('./../components/shop/ShopGridItemBuyBtn.vue')['default']
     ShopGridItemName: typeof import('./../components/shop/ShopGridItemName.vue')['default']

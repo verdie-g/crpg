@@ -18,6 +18,7 @@ import { useUserStore } from '@/stores/user';
 import { useClan } from '@/composables/clan/use-clan';
 import { useClanApplications } from '@/composables/clan/use-clan-applications';
 import { usePagination } from '@/composables/use-pagination';
+import LogoDecor from '@/assets/themes/oruga-tailwind/img/logo-decor.svg';
 
 definePage({
   props: true,
@@ -123,21 +124,15 @@ if (canManageApplications.value) {
       </div>
 
       <div class="item-center flex select-none justify-center gap-4 md:gap-8">
-        <img
-          class="w-16 rotate-180 transform md:w-28"
-          :src="getAssetUrl('themes/oruga-tailwind/img/logo-decor.svg')"
-        />
+        <img class="w-16 rotate-180 transform md:w-28" :src="LogoDecor" />
         <h1 data-aq-clan-info="name" class="text-2xl text-content-100">{{ clan.name }}</h1>
-        <img class="w-16 md:w-28" :src="getAssetUrl('themes/oruga-tailwind/img/logo-decor.svg')" />
+        <img class="w-16 md:w-28" :src="LogoDecor" />
       </div>
     </div>
 
     <div class="container">
       <div class="mx-auto mb-10 max-w-lg">
-        <img
-          class="mx-auto mb-7 w-full select-none"
-          :src="getAssetUrl('themes/oruga-tailwind/img/divider.svg')"
-        />
+        <Divider />
 
         <div class="flex flex-wrap items-center justify-center gap-4.5">
           <div class="flex items-center gap-1.5">
@@ -172,10 +167,7 @@ if (canManageApplications.value) {
           {{ clan.description }}
         </div>
 
-        <img
-          class="mx-auto mt-7 w-full select-none"
-          :src="getAssetUrl('themes/oruga-tailwind/img/divider.svg')"
-        />
+        <Divider />
       </div>
     </div>
 

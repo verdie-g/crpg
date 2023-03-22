@@ -7,10 +7,6 @@ it.todo('TODO:', () => {});
 //   getItemImage: vi.fn().mockImplementation((name: string) => `PATH_TO_CDN/images/${name}.png`),
 // }));
 
-// vi.mock('@/utils/assets', () => ({
-//   getAssetUrl: vi.fn().mockImplementation((path: string) => `PATH_TO_ASSET/images/${path}`),
-// }));
-
 // import CharacterInventoryDoll from './CharacterInventoryDoll.vue';
 
 // const userItem = {

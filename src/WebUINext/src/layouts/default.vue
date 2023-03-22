@@ -14,6 +14,10 @@ import { useGameServerStats } from '@/composables/use-game-server-stats';
 
 import { mainHeaderHeightKey } from '@/symbols/common';
 import { scrollToTop } from '@/utils/scroll';
+import Logo from '@/assets/themes/oruga-tailwind/img/logo.svg';
+const localeIcons = import.meta.glob('@/assets/themes/oruga-tailwind/img/locale/*.svg', {
+  eager: true,
+});
 
 const userStore = useUserStore();
 const route = useRoute();
@@ -70,7 +74,7 @@ await userStore.getUserClanMember(); // TODO: get the clan role in the query `us
       <div class="flex flex-wrap items-center justify-between px-6 py-3">
         <div class="flex items-center gap-6">
           <RouterLink :to="{ name: 'Root' }">
-            <img class="w-16" :src="getAssetUrl('themes/oruga-tailwind/img/logo.svg')" />
+            <img class="w-16" :src="Logo" />
           </RouterLink>
 
           <OnlinePlayers :gameServerStats="gameServerStats" />
@@ -164,7 +168,10 @@ await userStore.getUserClanMember(); // TODO: get the clan role in the query `us
                 <DropdownItem :active="shown">
                   <img
                     class="w-5"
-                    :src="getAssetUrl(`themes/oruga-tailwind/img/locale/${locale}.svg`)"
+                    :src="
+                      localeIcons[`/src/assets/themes/oruga-tailwind/img/locale/${locale}.svg`]
+                        .default
+                    "
                   />
                   {{ $t('setting.language') }} | {{ locale.toUpperCase() }}
                 </DropdownItem>
