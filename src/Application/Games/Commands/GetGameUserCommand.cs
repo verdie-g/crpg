@@ -86,6 +86,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
                 ("crpg_vlandia_bandit_c", ItemSlot.Body),
                 ("crpg_rough_tied_boots", ItemSlot.Leg),
                 ("crpg_light_mace_t3", ItemSlot.Weapon0),
+                ("crpg_bound_adarga", ItemSlot.Weapon1),
             },
         };
         private static readonly ILogger Logger = LoggerFactory.CreateLogger<GetGameUserCommand>();
