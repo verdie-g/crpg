@@ -29,6 +29,7 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
     private readonly MultiplayerWarmupComponent _warmupComponent;
     private readonly MultiplayerRoundController _roundController;
     private readonly MatchBalancer _balancer;
+    private readonly PeriodStatsHelper _periodStatsHelper;
 
     /// <summary>
     /// Players waiting to be assigned to a team when the cRPG balancer is enabled.
@@ -40,6 +41,7 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
         _warmupComponent = warmupComponent;
         _roundController = roundController;
         _balancer = new MatchBalancer();
+        _periodStatsHelper = new PeriodStatsHelper();
         _playersWaitingForTeam = new HashSet<PlayerId>();
     }
 #endif
@@ -399,6 +401,8 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
             Date = DateTime.UtcNow,
         };
 
+        var allRoundStats = _periodStatsHelper.ComputePeriodStats();
+
         foreach (var networkPeer in GameNetwork.NetworkPeers)
         {
             var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
@@ -416,12 +420,24 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
                 Level = character.Level,
                 LevelWeight = ComputeLevelWeight(character.Level),
                 Class = character.Class,
+                Score = 0,
+                Kills = 0,
+                Deaths = 0,
+                Assists = 0,
                 Rating = character.Rating.Value,
                 RatingWeight = ComputeRatingWeight(crpgPeer.User),
                 EquipmentCost = ComputeEquippedItemsPrice(character.EquippedItems),
                 EquipmentWeight = ComputeEquippedItemsWeight(character.EquippedItems),
                 ClanTag = crpgPeer.Clan?.Tag,
             };
+
+            if (allRoundStats.TryGetValue(networkPeer.VirtualPlayer.Id, out var roundStats))
+            {
+                roundPlayer.Score = roundStats.Score;
+                roundPlayer.Kills = roundStats.Kills;
+                roundPlayer.Deaths = roundStats.Deaths;
+                roundPlayer.Assists = roundStats.Assists;
+            }
 
             if (crpgPeer.SpawnTeamThisRound.Side == BattleSideEnum.Defender)
             {
@@ -456,6 +472,10 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
         public int Level { get; set; }
         public float LevelWeight { get; set; }
         public CrpgCharacterClass Class { get; set; }
+        public int Score { get; set; }
+        public int Kills { get; set; }
+        public int Deaths { get; set; }
+        public int Assists { get; set; }
         public float Rating { get; set; }
         public float RatingWeight { get; set; }
         public int EquipmentCost { get; set; }

@@ -27,10 +27,9 @@ internal class CrpgRewardServer : MissionBehavior
     private readonly MultiplayerRoundController? _roundController;
     private readonly Dictionary<PlayerId, CrpgPlayerRating> _characterRatings;
     private readonly CrpgRatingPeriodResults _ratingResults;
-    private readonly Dictionary<PlayerId, int> _lastScores;
     private readonly Random _random;
+    private readonly PeriodStatsHelper _periodStatsHelper;
 
-    private Dictionary<PlayerId, CrpgCharacterStatistics> _lastAllTotalStats;
     private MissionTimer? _tickTimer;
     private bool _lastRewardDuringHappyHours;
 
@@ -46,9 +45,8 @@ internal class CrpgRewardServer : MissionBehavior
         _roundController = roundController;
         _characterRatings = new Dictionary<PlayerId, CrpgPlayerRating>();
         _ratingResults = new CrpgRatingPeriodResults();
-        _lastScores = new Dictionary<PlayerId, int>();
         _random = new Random();
-        _lastAllTotalStats = new Dictionary<PlayerId, CrpgCharacterStatistics>();
+        _periodStatsHelper = new PeriodStatsHelper();
         _lastRewardDuringHappyHours = false;
     }
 
@@ -169,11 +167,11 @@ internal class CrpgRewardServer : MissionBehavior
         CrpgRatingCalculator.UpdateRatings(_ratingResults);
 
         Dictionary<int, CrpgPeer> crpgPeerByUserId = new();
-        var newAllTotalStats = new Dictionary<PlayerId, CrpgCharacterStatistics>();
+        Dictionary<PlayerId, PeriodStats> periodStats = _periodStatsHelper.ComputePeriodStats();
         List<CrpgUserUpdate> userUpdates = new();
         var networkPeers = GameNetwork.NetworkPeers.ToArray();
         bool lowPopulationServer = networkPeers.Length <= 4;
-        var valorousPlayerIds = GetValorousPlayers(networkPeers, !lowPopulationServer);
+        var valorousPlayerIds = GetValorousPlayers(networkPeers, periodStats, !lowPopulationServer);
         foreach (NetworkCommunicator networkPeer in networkPeers)
         {
             var playerId = networkPeer.VirtualPlayer.Id;
@@ -209,7 +207,7 @@ internal class CrpgRewardServer : MissionBehavior
             {
                 bool isValorousPlayer = valorousPlayerIds.Contains(playerId);
                 SetReward(userUpdate, crpgPeer, durationRewarded, isValorousPlayer, !lowPopulationServer);
-                SetStatistics(userUpdate, networkPeer, newAllTotalStats);
+                SetStatistics(userUpdate, networkPeer, periodStats);
                 userUpdate.BrokenItems = BreakItems(crpgPeer, durationRewarded * (lowPopulationServer ? 0.5f : 1f));
             }
 
@@ -223,9 +221,6 @@ internal class CrpgRewardServer : MissionBehavior
         {
             return;
         }
-
-        // Save last stats to be able to make the difference next time.
-        _lastAllTotalStats = newAllTotalStats;
 
         // TODO: add retry mechanism (the endpoint need to be idempotent though).
         try
@@ -313,7 +308,8 @@ internal class CrpgRewardServer : MissionBehavior
     }
 
     /// <summary>Valorous players are the top X% of the round of the defeated team.</summary>
-    private HashSet<PlayerId> GetValorousPlayers(NetworkCommunicator[] networkPeers, bool rewardMultiplierEnabled)
+    private HashSet<PlayerId> GetValorousPlayers(NetworkCommunicator[] networkPeers,
+        Dictionary<PlayerId, PeriodStats> allPeriodStats, bool rewardMultiplierEnabled)
     {
         if (_roundController == null || !rewardMultiplierEnabled)
         {
@@ -330,17 +326,10 @@ internal class CrpgRewardServer : MissionBehavior
                 continue;
             }
 
-            var playerId = networkPeer.VirtualPlayer.Id;
-            if (!_lastScores.TryGetValue(playerId, out int lastRoundScore))
-            {
-                lastRoundScore = 0;
-            }
-
-            _lastScores[playerId] = missionPeer.Score;
-
             if (crpgPeer.SpawnTeamThisRound?.Side == _roundController.RoundWinner.GetOppositeSide())
             {
-                int roundScore = missionPeer.Score - lastRoundScore;
+                var playerId = networkPeer.VirtualPlayer.Id;
+                int roundScore = allPeriodStats.TryGetValue(playerId, out var s) ? s.Score : 0;
                 defeatedTeamPlayersWithRoundScore.Add((playerId, roundScore));
             }
         }
@@ -393,33 +382,17 @@ internal class CrpgRewardServer : MissionBehavior
     }
 
     private void SetStatistics(CrpgUserUpdate userUpdate, NetworkCommunicator networkPeer,
-        Dictionary<PlayerId, CrpgCharacterStatistics> newAllTotalStats)
+        Dictionary<PlayerId, PeriodStats> allPeriodStats)
     {
-        var missionPeer = networkPeer.GetComponent<MissionPeer>();
-        var newTotalStats = new CrpgCharacterStatistics
+        if (allPeriodStats.TryGetValue(networkPeer.VirtualPlayer.Id, out var peerPeriodStats))
         {
-            Kills = missionPeer.KillCount,
-            Deaths = missionPeer.DeathCount,
-            Assists = missionPeer.AssistCount,
-            PlayTime = DateTime.Now - missionPeer.JoinTime,
-        };
-
-        if (_lastAllTotalStats.TryGetValue(networkPeer.VirtualPlayer.Id, out var lastTotalStats))
-        {
-            userUpdate.Statistics.Kills = newTotalStats.Kills - lastTotalStats.Kills;
-            userUpdate.Statistics.Deaths = newTotalStats.Deaths - lastTotalStats.Deaths;
-            userUpdate.Statistics.Assists = newTotalStats.Assists - lastTotalStats.Assists;
-            userUpdate.Statistics.PlayTime = newTotalStats.PlayTime - lastTotalStats.PlayTime;
+            userUpdate.Statistics = new CrpgCharacterStatistics
+            {
+                Kills = peerPeriodStats.Kills,
+                Deaths = peerPeriodStats.Deaths,
+                Assists = peerPeriodStats.Assists,
+            };
         }
-        else
-        {
-            userUpdate.Statistics.Kills = newTotalStats.Kills;
-            userUpdate.Statistics.Deaths = newTotalStats.Deaths;
-            userUpdate.Statistics.Assists = newTotalStats.Assists;
-            userUpdate.Statistics.PlayTime = newTotalStats.PlayTime;
-        }
-
-        newAllTotalStats[networkPeer.VirtualPlayer.Id] = newTotalStats;
     }
 
     private void SendRewardToPeers(IList<UpdateCrpgUserResult> updateResults,
