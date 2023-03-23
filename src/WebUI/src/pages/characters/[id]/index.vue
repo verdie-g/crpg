@@ -159,11 +159,11 @@ await fetchPageData(character.value.id);
 
           <SimpleTableRow
             :label="$t('character.statistics.expMultiplier.title')"
-            :value="$t('character.format.expMultiplier', { multiplier: userStore.user!.experienceMultiplier })"
+            :value="$t('character.format.expMultiplier', { multiplier: $n(userStore.user!.experienceMultiplier) })"
             :tooltip="{
               title: $t('character.statistics.expMultiplier.tooltip.title', {
                 maxExpMulti: $t('character.format.expMultiplier', {
-                  multiplier: maxExperienceMultiplierForGeneration,
+                  multiplier: $n(maxExperienceMultiplierForGeneration),
                 }),
               }),
               description: $t('character.statistics.expMultiplier.tooltip.desc'),
