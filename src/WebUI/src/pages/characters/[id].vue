@@ -18,8 +18,8 @@ import {
   computeOverallWeight,
   computeOverallPrice,
   computeLongestWeaponLength,
-  computeAverageRepairCostByHour,
 } from '@/services/characters-service';
+import { computeOverallAverageRepairCostByHour } from '@/services/characters-service';
 
 definePage({
   props: true,
@@ -66,7 +66,7 @@ const healthPoints = computed(() =>
 const itemsStats = computed((): CharacterOverallItemsStats => {
   const items = characterItems.value.map(ei => ei.userItem.baseItem);
   return {
-    averageRepairCostByHour: computeAverageRepairCostByHour(items),
+    averageRepairCostByHour: computeOverallAverageRepairCostByHour(items),
     weight: computeOverallWeight(items),
     price: computeOverallPrice(items),
     longestWeaponLength: computeLongestWeaponLength(items),

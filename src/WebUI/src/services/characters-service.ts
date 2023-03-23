@@ -18,8 +18,6 @@ import {
   maximumLevel,
   minimumRetirementLevel,
   tournamentLevel,
-  itemBreakChance,
-  itemRepairCostPerSecond,
   experienceMultiplierByGeneration,
   maxExperienceMultiplierForGeneration,
   respecializePriceForLevel30,
@@ -46,7 +44,7 @@ import { type HumanDuration } from '@/models/datetime';
 
 import { get, put, del } from '@/services/crpg-client';
 import { mapUserItem } from '@/services/users-service';
-import { armorTypes } from '@/services/item-service';
+import { armorTypes, computeAverageRepairCostByHour } from '@/services/item-service';
 import { applyPolynomialFunction, clamp } from '@/utils/math';
 import { computeLeftMs, parseTimestamp } from '@/utils/date';
 
@@ -308,11 +306,9 @@ export const computeLongestWeaponLength = (items: Item[]) => {
   }, 0 as number);
 };
 
-export const computeAverageRepairCostByHour = (items: Item[]) =>
-  Math.floor(
-    items.reduce((total, item) => total + item.price * itemRepairCostPerSecond * 3600, 0) *
-      itemBreakChance
-  );
+// TODO: handle upgrade items.
+export const computeOverallAverageRepairCostByHour = (items: Item[]) =>
+  Math.floor(items.reduce((total, item) => total + computeAverageRepairCostByHour(item.price), 0));
 
 export const getHeirloomPointByLevel = (level: number) => {
   if (level < minimumRetirementLevel) return 0;

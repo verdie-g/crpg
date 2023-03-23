@@ -7,7 +7,11 @@ import {
   getAggregationsConfig,
   getVisibleAggregationsConfig,
 } from '@/services/item-search-service';
-import { getItemImage, computeSalePrice } from '@/services/item-service';
+import {
+  getItemImage,
+  computeSalePrice,
+  computeAverageRepairCostByHour,
+} from '@/services/item-service';
 import { parseTimestamp } from '@/utils/date';
 
 const props = withDefaults(
@@ -33,6 +37,8 @@ const userItemToReplaceSalePrice = computed(() => {
         : parseTimestamp(salePrice.graceTimeEnd.valueOf() - new Date().valueOf()),
   };
 });
+
+const avgRepairCostPerHour = computed(() => computeAverageRepairCostByHour(props.item.price));
 
 const emit = defineEmits<{
   (e: 'sell'): void;
@@ -103,6 +109,14 @@ const aggregationsConfig = computed(() =>
             <Coin :value="(rawBuckets as number)" />
           </template>
         </ItemParam>
+      </div>
+
+      <div class="space-y-1">
+        <h6 class="text-2xs text-content-300">{{ $t('item.aggregations.repairCost.title') }}:</h6>
+        <div class="inline-flex gap-1.5 align-middle font-bold text-primary">
+          <SvgSpriteImg name="coin" viewBox="0 0 18 18" class="w-4" />
+          {{ $n(avgRepairCostPerHour) }} / {{ $t('dateTime.hours.short') }}
+        </div>
       </div>
     </div>
 

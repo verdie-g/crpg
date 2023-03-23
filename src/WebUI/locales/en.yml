@@ -823,6 +823,9 @@ item:
     price:
       title: 'Price'
       description: ''
+    repairCost:
+      title: 'Repair cost'
+      description: ''
     culture:
       title: 'Culture'
       description: ''

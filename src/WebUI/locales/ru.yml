@@ -821,6 +821,9 @@ item:
     price:
       title: 'Стоимость'
       description: ''
+    repairCost:
+      title: 'Стоимость ремонта'
+      description: ''
     culture:
       title: 'Культура'
       description: ''
