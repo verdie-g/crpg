@@ -8,7 +8,7 @@ import { t } from '@/services/translate-service';
 
 export const useHappyHours = () => {
   const userStore = useUserStore();
-  let interval: number;
+  let interval: ReturnType<typeof setInterval>;
 
   const source = ref();
   const HHEvent = computedWithControl(
@@ -21,7 +21,6 @@ export const useHappyHours = () => {
   const isHHCountdownEnded = ref<boolean>(true);
 
   onMounted(() => {
-    // @ts-ignore
     interval = setInterval(HHEvent.trigger, 5000);
   });
 
@@ -35,7 +34,7 @@ export const useHappyHours = () => {
   };
 
   const onStartHHCountdown = () => {
-    // TODO:
+    // TODO: if on, it is annoying to be notified every time at f5
     // notify(t('hh.notify.started'));
   };
 

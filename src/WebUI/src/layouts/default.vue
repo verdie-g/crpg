@@ -11,6 +11,7 @@ import { t } from '@/services/translate-service';
 import { useNavigation } from '@/composables/use-navigation';
 import { useHappyHours } from '@/composables/use-hh';
 import { useGameServerStats } from '@/composables/use-game-server-stats';
+import usePollInterval from '@/composables/use-poll-interval';
 
 import { mainHeaderHeightKey } from '@/symbols/common';
 import { scrollToTop } from '@/utils/scroll';
@@ -48,6 +49,15 @@ if (userStore.clan === null) {
 const mainHeader = ref(null);
 const { height: mainHeaderHeight } = useElementSize(mainHeader);
 provide(mainHeaderHeightKey, mainHeaderHeight);
+
+const { subscribe, unsubscribe } = usePollInterval();
+const id = Symbol('fetchUser');
+onMounted(() => {
+  subscribe({ id, fn: userStore.fetchUser });
+});
+onBeforeUnmount(() => {
+  unsubscribe(id);
+});
 
 await Promise.all(promises);
 await userStore.getUserClanMember(); // TODO: get the clan role in the query `users/self/clans`
