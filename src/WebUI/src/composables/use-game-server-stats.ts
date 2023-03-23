@@ -2,6 +2,8 @@ import { getGameServerStats } from '@/services/game-server-statistics-service';
 import { Region } from '@/models/region';
 
 export const useGameServerStats = () => {
+  let interval: number;
+
   const { state: gameServerStats, execute: loadGameServerStats } = useAsyncState(
     () => getGameServerStats(),
     {
@@ -25,6 +27,15 @@ export const useGameServerStats = () => {
       immediate: false,
     }
   );
+
+  onMounted(() => {
+    // @ts-ignore
+    interval = setInterval(loadGameServerStats, 10000);
+  });
+
+  onBeforeUnmount(() => {
+    clearInterval(interval);
+  });
 
   return {
     gameServerStats,
