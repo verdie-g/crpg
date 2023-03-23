@@ -414,6 +414,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
   [ItemType.OneHandedWeapon]: [
     'weaponUsage',
     'flags',
+    'weight',
     'length',
     'handling',
     'thrustDamage',
@@ -424,6 +425,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
   ],
   [ItemType.TwoHandedWeapon]: [
     'flags',
+    'weight',
     'length',
     'handling',
     'thrustDamage',
@@ -435,6 +437,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
   [ItemType.Polearm]: [
     'weaponUsage',
     'flags',
+    'weight',
     'length',
     'handling',
     'thrustDamage',
@@ -457,6 +460,7 @@ export const aggregationsKeysByWeaponClass: Partial<Record<WeaponClass, Array<ke
   {
   [WeaponClass.OneHandedSword]: [
     'weaponUsage',
+    'weight',
     'length',
     'handling',
     'thrustDamage',
@@ -467,6 +471,7 @@ export const aggregationsKeysByWeaponClass: Partial<Record<WeaponClass, Array<ke
   ],
   [WeaponClass.OneHandedAxe]: [
     'flags',
+    'weight',
     'weaponUsage',
     'length',
     'handling',
@@ -476,6 +481,7 @@ export const aggregationsKeysByWeaponClass: Partial<Record<WeaponClass, Array<ke
   ],
   [WeaponClass.Mace]: [
     'flags',
+    'weight',
     'length',
     'handling',
     'swingDamage',
@@ -484,6 +490,7 @@ export const aggregationsKeysByWeaponClass: Partial<Record<WeaponClass, Array<ke
   ],
   [WeaponClass.Dagger]: [
     'length',
+    'weight',
     'handling',
     'thrustDamage',
     'thrustSpeed',
@@ -493,6 +500,7 @@ export const aggregationsKeysByWeaponClass: Partial<Record<WeaponClass, Array<ke
   ],
   [WeaponClass.TwoHandedAxe]: [
     'flags',
+    'weight',
     'length',
     'handling',
     'swingDamage',
@@ -501,6 +509,7 @@ export const aggregationsKeysByWeaponClass: Partial<Record<WeaponClass, Array<ke
   ],
   [WeaponClass.TwoHandedMace]: [
     'flags',
+    'weight',
     'length',
     'handling',
     'swingDamage',
@@ -519,6 +528,7 @@ export const aggregationsKeysByWeaponClass: Partial<Record<WeaponClass, Array<ke
 
   [WeaponClass.ThrowingKnife]: [
     'damage',
+    'weaponUsage',
     'missileSpeed',
     'stackWeight',
     'stackAmount',
