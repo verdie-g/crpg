@@ -10,6 +10,8 @@ import AutoImport from 'unplugin-auto-import/vite';
 import { VueRouterAutoImports, getPascalCaseRouteName } from 'unplugin-vue-router';
 import VueRouter from 'unplugin-vue-router/vite';
 import Visualizer from 'rollup-plugin-visualizer';
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
+
 import json5 from 'json5';
 
 // TODO: to libs
@@ -75,7 +77,7 @@ export default defineConfig({
           '@vueuse/core': ['useAsyncState'],
         },
       ],
-      dirs: ['src/utils/inject-strict', 'src/utils/assets'],
+      dirs: ['src/utils/inject-strict'],
       // cache: false,
       dts: 'src/types/vite-auto-imports.d.ts',
       vueTemplate: true,
@@ -102,6 +104,10 @@ export default defineConfig({
     }),
 
     JSON5(),
+
+    createSvgIconsPlugin({
+      iconDirs: [fileURLToPath(new URL('./src/assets/themes/oruga-tailwind/img', import.meta.url))],
+    }),
   ],
 
   // https://vitest.dev/api/
