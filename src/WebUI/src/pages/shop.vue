@@ -219,7 +219,7 @@ const buyItem = async (item: ItemFlat) => {
 
       <template #footer>
         <div class="space-y-4 bg-base-100 py-4 pr-2 backdrop-blur-sm">
-          <div class="grid grid-cols-3 items-center gap-6">
+          <div class="grid h-14 grid-cols-3 items-center gap-6">
             <div class="flex items-center gap-4">
               <OPagination
                 v-model:current="pageModel"
