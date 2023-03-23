@@ -131,7 +131,7 @@ if (canManageApplications.value) {
     </div>
 
     <div class="container">
-      <div class="mx-auto mb-10 max-w-lg">
+      <div class="mx-auto mb-10 max-w-lg space-y-6">
         <Divider />
 
         <div class="flex flex-wrap items-center justify-center gap-4.5">
