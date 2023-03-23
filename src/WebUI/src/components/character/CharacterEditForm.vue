@@ -5,12 +5,11 @@ import { type Character } from '@/models/character';
 
 const props = defineProps<{
   character: Character;
-  active: boolean;
 }>();
 
 const emit = defineEmits<{
   (e: 'cancel'): void;
-  (e: 'confirm', { name, active }: { name: string; active: boolean }): void;
+  (e: 'confirm', { name }: { name: string }): void;
 }>();
 
 const nameModel = ref<string>(props.character.name);
@@ -25,7 +24,6 @@ const $v = useVuelidate(
   { nameModel }
 );
 
-const activeModel = ref<boolean>(props.active);
 const onCancel = () => {
   $v.value.$reset();
   emit('cancel');
@@ -34,12 +32,10 @@ const onCancel = () => {
 const onConfirm = async () => {
   if (!(await $v.value.$validate())) return;
 
-  emit('confirm', { name: nameModel.value, active: activeModel.value });
+  emit('confirm', { name: nameModel.value });
 };
 
-const wasChange = computed(
-  () => nameModel.value !== props.character.name || activeModel.value !== props.active
-);
+const wasChange = computed(() => nameModel.value !== props.character.name);
 </script>
 
 <template>
@@ -65,25 +61,6 @@ const wasChange = computed(
           @blur="$v.$touch"
           @focus="$v.$reset"
         />
-      </OField>
-
-      <OField
-        v-if="!character.forTournament"
-        :label="$t('character.settings.update.form.field.active')"
-        horizontal
-      >
-        <VTooltip placement="auto">
-          <OSwitch v-model="activeModel" />
-
-          <template #popper>
-            <div class="prose prose-invert">
-              <h5 class="text-content-100">
-                {{ $t('character.settings.active.tooltip.title') }}
-              </h5>
-              <div v-html="$t('character.settings.active.tooltip.desc')"></div>
-            </div>
-          </template>
-        </VTooltip>
       </OField>
     </div>
 
