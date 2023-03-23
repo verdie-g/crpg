@@ -16,6 +16,23 @@ internal class MaxMindGeoIpService : IGeoIpService
 {
     private static readonly ILogger Logger = LoggerFactory.CreateLogger<MaxMindGeoIpService>();
 
+    // https://en.wikipedia.org/wiki/ISO_3166-1
+    private static readonly Dictionary<string, Region> CountryRegions = new()
+    {
+        ["TR"] = Region.Eu,
+    };
+
+    private static readonly Dictionary<string, Region> ContinentRegions = new()
+    {
+        ["AF"] = Region.Eu,
+        ["AN"] = Region.Oc,
+        ["AS"] = Region.As,
+        ["EU"] = Region.Eu,
+        ["NA"] = Region.Na,
+        ["OC"] = Region.Oc,
+        ["SA"] = Region.Na,
+    };
+
     private readonly IGeoIP2DatabaseReader _geoIpDatabase;
 
     public MaxMindGeoIpService(IGeoIP2DatabaseReader geoIpDatabase)
@@ -36,17 +53,19 @@ internal class MaxMindGeoIpService : IGeoIpService
             return null;
         }
 
-        return countryResponse.Continent.Code switch
+        string? countryCode = countryResponse.Country.IsoCode;
+        if (countryCode != null && CountryRegions.TryGetValue(countryCode, out Region region))
         {
-            "AF" => Region.Eu,
-            "AN" => Region.Oc,
-            "AS" => Region.As,
-            "EU" => Region.Eu,
-            "NA" => Region.Na,
-            "OC" => Region.Oc,
-            "SA" => Region.Na,
-            _ => Region.Eu,
-        };
+            return region;
+        }
+
+        string? continentCode = countryResponse.Continent.Code;
+        if (continentCode != null && ContinentRegions.TryGetValue(continentCode, out region))
+        {
+            return region;
+        }
+
+        return Region.Eu;
     }
 }
 
