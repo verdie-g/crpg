@@ -3,7 +3,7 @@ using Crpg.Module.Helpers;
 using TaleWorlds.Library;
 
 namespace Crpg.Module.Balancing;
-
+// This class includes proprietary code developed by Namidaka
 internal class MatchBalancer
 {
     public const float PowerParameter = 1f;

@@ -1,0 +1,48 @@
+﻿SOFTWARE LICENSE AGREEMENT
+
+This Software License Agreement ("Agreement") is entered into as of [23 March 2023] ("Effective Date") by and between MBen known as Namidaka ("Licensor") and [cRPG] ("Licensee"). Licensor and Licensee may be referred to individually as a "Party" or collectively as the "Parties".
+
+WHEREAS, Licensor has developed a proprietary balancer software for the cRPG mod ("Software"); and
+
+WHEREAS, Licensee desires to use the Software for its mod, and Licensor desires to grant Licensee a non-exclusive, royalty-free, and perpetual license to use, modify, and distribute the Software subject to the terms and conditions of this Agreement.
+
+NOW, THEREFORE, in consideration of the mutual promises and covenants contained herein, the Parties hereby agree as follows:
+
+1. License Grant
+
+Subject to the terms and conditions of this Agreement, Licensor hereby grants to Licensee a non-exclusive, royalty-free, perpetual, and worldwide license to use, modify, and distribute the Software.
+
+2. Intellectual Property Rights
+
+Licensor retains all right, title, and interest in and to the Software, including, without limitation, all copyrights, trademarks, trade secrets, and other intellectual property rights. Licensee acknowledges that the Software is the exclusive property of Licensor and that this Agreement does not convey any title or ownership rights to Licensee.
+
+3. Restrictions
+
+(a) Licensee shall not sublicense, sell, lease, rent, or otherwise transfer the Software to any third party without the prior written consent of Licensor.
+
+(b) Licensee shall not use the Software for any purpose that is unlawful or prohibited by this Agreement.
+
+(c) Licensee shall not remove or alter any copyright, trademark, or other proprietary notices contained in the Software.
+
+4. Attribution
+
+If Licensee modifies or distributes the Software, Licensee shall provide appropriate attribution to Licensor by including the following notice in a prominent location in the modified Software or documentation: "This class includes proprietary code developed by Namidaka."
+
+5. Termination
+
+This Agreement shall automatically terminate if Licensee breaches any of the terms and conditions of this Agreement. Upon termination, Licensee shall cease all use of the Software and destroy all copies in its possession or control.
+
+6. Governing Law
+
+This Agreement shall be governed by and construed in accordance with the laws of France without regard to its conflicts of law principles.
+
+7. Miscellaneous
+
+This Agreement constitutes the entire agreement between the Parties with respect to the subject matter hereof and supersedes all prior and contemporaneous agreements, understandings, and communications, whether written or oral. This Agreement may be amended only by a written document signed by both Parties.
+
+IN WITNESS WHEREOF, the Parties have executed this Agreement as of the Effective Date.
+
+Namidaka                                                Crpg
+_____________________________                ______________________________
+Ben Younes Mehdi                                    
+Licensor                                              Licensee

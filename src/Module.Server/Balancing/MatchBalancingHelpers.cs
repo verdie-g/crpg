@@ -2,7 +2,7 @@
 using TaleWorlds.Library;
 
 namespace Crpg.Module.Balancing;
-
+// This class includes proprietary code developed by Namidaka
 internal static class MatchBalancingHelpers
 {
     /// <summary>
