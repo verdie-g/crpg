@@ -1,4 +1,8 @@
-import { itemSellCostCoefs } from '@root/data/constants.json';
+import {
+  itemSellCostCoefs,
+  itemRepairCostPerSecond,
+  itemBreakChance,
+} from '@root/data/constants.json';
 import {
   type Item,
   ItemSlot,
@@ -543,3 +547,6 @@ export const computeSalePrice = (
   // If the item was recently bought it is sold at 100% of its original price.
   return { price: userItem.baseItem.price, graceTimeEnd };
 };
+
+export const computeAverageRepairCostByHour = (price: number) =>
+  Math.floor(price * itemRepairCostPerSecond * 3600 * itemBreakChance);
