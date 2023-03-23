@@ -1,9 +1,8 @@
-import { getGameServerStats } from '@/services/game-server-statistics-service';
 import { Region } from '@/models/region';
+import { getGameServerStats } from '@/services/game-server-statistics-service';
+import usePollInterval from '@/composables/use-poll-interval';
 
 export const useGameServerStats = () => {
-  let interval: number;
-
   const { state: gameServerStats, execute: loadGameServerStats } = useAsyncState(
     () => getGameServerStats(),
     {
@@ -28,13 +27,13 @@ export const useGameServerStats = () => {
     }
   );
 
+  const { subscribe, unsubscribe } = usePollInterval();
+  const id = Symbol('loadGameServerStats');
   onMounted(() => {
-    // @ts-ignore
-    interval = setInterval(loadGameServerStats, 10000);
+    subscribe({ id, fn: loadGameServerStats });
   });
-
   onBeforeUnmount(() => {
-    clearInterval(interval);
+    unsubscribe(id);
   });
 
   return {
