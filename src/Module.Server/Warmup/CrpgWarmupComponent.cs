@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using Crpg.Module.Battle;
+using Crpg.Module.Helpers;
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common.Warmup;
@@ -11,11 +12,16 @@ internal class CrpgWarmupComponent : MultiplayerWarmupComponent
 {
     private static readonly FieldInfo WarmupStateField = typeof(MultiplayerWarmupComponent)
         .GetField("_warmupState", BindingFlags.NonPublic | BindingFlags.Instance)!;
+    private static readonly FieldInfo TimerComponentField = typeof(MultiplayerWarmupComponent)
+        .GetField("_timerComponent", BindingFlags.NonPublic | BindingFlags.Instance)!;
+    private static readonly FieldInfo GameModeField = typeof(MultiplayerWarmupComponent)
+        .GetField("_gameMode", BindingFlags.NonPublic | BindingFlags.Instance)!;
+    private static readonly FieldInfo LobbyComponentField = typeof(MultiplayerWarmupComponent)
+        .GetField("_lobbyComponent", BindingFlags.NonPublic | BindingFlags.Instance)!;
 
     private readonly CrpgConstants _constants;
     private readonly MultiplayerGameNotificationsComponent _notificationsComponent;
     private readonly Func<(SpawnFrameBehaviorBase, SpawningBehaviorBase)>? _createSpawnBehaviors;
-    private WarmupStates _lastTickWarmupState;
 
     public CrpgWarmupComponent(CrpgConstants constants,
         MultiplayerGameNotificationsComponent notificationsComponent,
@@ -24,44 +30,104 @@ internal class CrpgWarmupComponent : MultiplayerWarmupComponent
         _constants = constants;
         _notificationsComponent = notificationsComponent;
         _createSpawnBehaviors = createSpawnBehaviors;
-        _lastTickWarmupState = WarmupStates.WaitingForPlayers;
     }
 
-    public override void OnBehaviorInitialize()
+    private WarmupStates WarmupStateReflection
     {
-        base.OnBehaviorInitialize();
-        base.OnWarmupEnding += OnWarmupEnding;
+        get => (WarmupStates)WarmupStateField.GetValue(this)!;
+        set => WarmupStateField.SetValue(this, value);
     }
+
+    private MultiplayerTimerComponent TimerComponentReflection => (MultiplayerTimerComponent)TimerComponentField.GetValue(this)!;
+    private MissionMultiplayerGameModeBase GameModeReflection => (MissionMultiplayerGameModeBase)GameModeField.GetValue(this)!;
+    private MissionLobbyComponent LobbyComponentReflection => (MissionLobbyComponent)LobbyComponentField.GetValue(this)!;
 
     public override void OnPreDisplayMissionTick(float dt)
     {
-        base.OnPreDisplayMissionTick(dt);
         if (!GameNetwork.IsServer)
         {
             return;
         }
 
-        var warmupState = (WarmupStates)WarmupStateField.GetValue(this)!;
-
-        if (_lastTickWarmupState == WarmupStates.WaitingForPlayers && warmupState == WarmupStates.InProgress)
+        var warmupState = WarmupStateReflection;
+        switch (warmupState)
         {
-            SpawnComponent spawnComponent = Mission.GetMissionBehavior<SpawnComponent>();
-            spawnComponent.SetNewSpawnFrameBehavior(new FFASpawnFrameBehavior());
-            spawnComponent.SetNewSpawningBehavior(new CrpgWarmupSpawningBehavior(_constants));
-        }
-        else if (_lastTickWarmupState == WarmupStates.Ending && warmupState == WarmupStates.Ended)
-        {
-            SpawnComponent spawnComponent = Mission.GetMissionBehavior<SpawnComponent>();
-            (SpawnFrameBehaviorBase spawnFrame, SpawningBehaviorBase spawning) = _createSpawnBehaviors!();
-            spawnComponent.SetNewSpawnFrameBehavior(spawnFrame);
-            spawnComponent.SetNewSpawningBehavior(spawning);
-        }
+            case WarmupStates.WaitingForPlayers:
+                BeginWarmup();
+                break;
+            case WarmupStates.InProgress:
+                if (CheckForWarmupProgressEnd())
+                {
+                    EndWarmupProgress();
+                }
 
-        _lastTickWarmupState = warmupState;
+                break;
+            case WarmupStates.Ending:
+                if (TimerComponentReflection.CheckIfTimerPassed())
+                {
+                    EndWarmup();
+                }
+
+                break;
+            case WarmupStates.Ended:
+                if (TimerComponentReflection.CheckIfTimerPassed())
+                {
+                    Mission.RemoveMissionBehavior(this);
+                }
+
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
     }
 
-    private new void OnWarmupEnding()
+    private void BeginWarmup()
     {
-        _notificationsComponent.WarmupEnding();
+        WarmupStateReflection = WarmupStates.InProgress;
+        Mission.Current.ResetMission();
+        GameModeReflection.MultiplayerTeamSelectComponent.BalanceTeams();
+        TimerComponentReflection.StartTimerAsServer(TotalWarmupDuration);
+        GameModeReflection.SpawnComponent.SpawningBehavior.Clear();
+        SpawnComponent spawnComponent = Mission.GetMissionBehavior<SpawnComponent>();
+        spawnComponent.SetNewSpawnFrameBehavior(new FFASpawnFrameBehavior());
+        spawnComponent.SetNewSpawningBehavior(new CrpgWarmupSpawningBehavior(_constants));
+    }
+
+    private void EndWarmupProgress()
+    {
+        WarmupStateReflection = WarmupStates.Ending;
+        TimerComponentReflection.StartTimerAsServer(30f);
+        ReflectionHelper.RaiseEvent(this, nameof(OnWarmupEnding), Array.Empty<object>());
+        if (!GameNetwork.IsDedicatedServer)
+        {
+            _notificationsComponent.WarmupEnding();
+        }
+    }
+
+    private void EndWarmup()
+    {
+        WarmupStateReflection = WarmupStates.Ended;
+        TimerComponentReflection.StartTimerAsServer(3f);
+        ReflectionHelper.RaiseEvent(this, nameof(OnWarmupEnded), Array.Empty<object>());
+
+        if (GameNetwork.NetworkPeers.Count() < MultiplayerOptions.OptionType.MinNumberOfPlayersForMatchStart.GetIntValue())
+        {
+            LobbyComponentReflection.SetStateEndingAsServer();
+            return;
+        }
+
+        if (!GameNetwork.IsDedicatedServer)
+        {
+            ReflectionHelper.InvokeMethod(this, "PlayBattleStartingSound", Array.Empty<object>());
+        }
+
+        Mission.Current.ResetMission();
+        GameModeReflection.MultiplayerTeamSelectComponent.BalanceTeams();
+
+        GameModeReflection.SpawnComponent.SpawningBehavior.Clear();
+        SpawnComponent spawnComponent = Mission.GetMissionBehavior<SpawnComponent>();
+        (SpawnFrameBehaviorBase spawnFrame, SpawningBehaviorBase spawning) = _createSpawnBehaviors!();
+        spawnComponent.SetNewSpawnFrameBehavior(spawnFrame);
+        spawnComponent.SetNewSpawningBehavior(spawning);
     }
 }
