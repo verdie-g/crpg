@@ -115,9 +115,12 @@ public record SeedDataCommand : IMediatorRequest
                 Name = "orle",
                 Role = Role.Moderator,
                 Gold = 100000,
+                HeirloomPoints = 2,
+                ExperienceMultiplier = 1.09f,
                 AvatarSmall = new Uri("https://avatars.akamai.steamstatic.com/d51d5155b1a564421c0b3fd5fb7eed7c4474e73d.jpg"),
                 AvatarMedium = new Uri("https://avatars.akamai.steamstatic.com/d51d5155b1a564421c0b3fd5fb7eed7c4474e73d_medium.jpg"),
                 AvatarFull = new Uri("https://avatars.akamai.steamstatic.com/d51d5155b1a564421c0b3fd5fb7eed7c4474e73d_full.jpg"),
+                ActiveCharacterId = 5,
             };
             User laHire = new()
             {
@@ -741,8 +744,16 @@ public record SeedDataCommand : IMediatorRequest
             {
                 User = orle,
                 Name = "Orle Soldier",
-                Level = 23,
-                Experience = _experienceTable.GetExperienceForLevel(23) + 200000,
+                Level = 33,
+                Generation = 3,
+                Experience = _experienceTable.GetExperienceForLevel(33) + (_experienceTable.GetExperienceForLevel(34) - _experienceTable.GetExperienceForLevel(33)) / 2,
+                Statistics = new CharacterStatistics
+                {
+                    Kills = 2,
+                    Assists = 3,
+                    Deaths = 6,
+                    PlayTime = new TimeSpan(365, 0, 0, 20),
+                },
                 Characteristics = new CharacterCharacteristics
                 {
                     Attributes = new CharacterAttributes { Points = 100 },
@@ -757,8 +768,15 @@ public record SeedDataCommand : IMediatorRequest
             {
                 User = orle,
                 Name = "Orle Peasant",
-                Level = 2,
-                Experience = _experienceTable.GetExperienceForLevel(2) + 999,
+                Level = 25,
+                Experience = _experienceTable.GetExperienceForLevel(25) + (_experienceTable.GetExperienceForLevel(26) - _experienceTable.GetExperienceForLevel(25)) / 2,
+            };
+             Character orleCharacter2 = new()
+            {
+                User = orle,
+                Name = "Orle Farmer",
+                Level = 25,
+                Experience = _experienceTable.GetExperienceForLevel(25) + (_experienceTable.GetExperienceForLevel(26) - _experienceTable.GetExperienceForLevel(25)) / 2,
                 Limitations = new CharacterLimitations
                 {
                     LastFreeRespecializeAt = DateTime.UtcNow.AddDays(-1).AddMinutes(-30),
@@ -791,7 +809,7 @@ public record SeedDataCommand : IMediatorRequest
 
             Character[] newCharacters =
             {
-                takeoCharacter0, takeoCharacter1, takeoCharacter2, namidakaCharacter0, orleCharacter0, orleCharacter1,
+                takeoCharacter0, takeoCharacter1, takeoCharacter2, namidakaCharacter0, orleCharacter0, orleCharacter1, orleCharacter2,
                 falcomCharacter0, victorhh888Character0, sellkaCharacter0, krogCharacter0,
             };
 
@@ -945,7 +963,8 @@ public record SeedDataCommand : IMediatorRequest
                 }
             }
 
-            ClanMember namidakaMember = new() { User = takeo, Clan = pecores, Role = ClanMemberRole.Leader };
+            ClanMember orleMember = new() { User = orle, Clan = pecores, Role = ClanMemberRole.Leader };
+            ClanMember namidakaMember = new() { User = takeo, Clan = pecores, Role = ClanMemberRole.Officer };
             ClanMember neostralieMember = new() { User = neostralie, Clan = pecores, Role = ClanMemberRole.Officer };
             ClanMember elmarykMember = new() { User = elmaryk, Clan = pecores, Role = ClanMemberRole.Officer };
             ClanMember laHireMember = new() { User = laHire, Clan = pecores, Role = ClanMemberRole.Member };
@@ -975,7 +994,7 @@ public record SeedDataCommand : IMediatorRequest
 
             ClanMember[] newClanMembers =
             {
-                namidakaMember, neostralieMember, elmarykMember, laHireMember, azumaMember, zorguyMember,
+                orleMember, namidakaMember, neostralieMember, elmarykMember, laHireMember, azumaMember, zorguyMember,
                 eckoMember, firebatMember, sellkaMember, leanirMember, opsetMember,
                 falcomMember, brainfartMember, kiwiMember, ikaroozMember, brygganMember, schumetzqMember,
                 victorhh888Member, distanceMember, bakhratMember, lancelotMember,
@@ -998,6 +1017,14 @@ public record SeedDataCommand : IMediatorRequest
                 Type = ClanInvitationType.Request,
                 Status = ClanInvitationStatus.Pending,
             };
+            ClanInvitation victorhh888MemberRequestForPecores = new()
+            {
+                Clan = pecores,
+                Invitee = victorhh888,
+                Inviter = victorhh888,
+                Type = ClanInvitationType.Request,
+                Status = ClanInvitationStatus.Pending,
+            };
             ClanInvitation neostralieOfferToBrygganForPecores = new()
             {
                 Clan = pecores,
@@ -1006,7 +1033,7 @@ public record SeedDataCommand : IMediatorRequest
                 Type = ClanInvitationType.Offer,
                 Status = ClanInvitationStatus.Pending,
             };
-            ClanInvitation[] newClanInvitations = { schumetzqRequestForPecores, neostralieOfferToBrygganForPecores };
+            ClanInvitation[] newClanInvitations = { schumetzqRequestForPecores, victorhh888MemberRequestForPecores, neostralieOfferToBrygganForPecores };
             var existingClanInvitations =
                 await _db.ClanInvitations.ToDictionaryAsync(i => (i.InviteeId, i.InviterId));
             foreach (var newClanInvitation in newClanInvitations)
