@@ -19,6 +19,7 @@ declare module '@vue/runtime-core' {
     CharacterInventoryItemCard: typeof import('./../components/character/inventory/CharacterInventoryItemCard.vue')['default']
     CharacterInventoryItemDetail: typeof import('./../components/character/inventory/CharacterInventoryItemDetail.vue')['default']
     CharacterInventoryItemList: typeof import('./../components/character/inventory/CharacterInventoryItemList.vue')['default']
+    CharacterSelectItem: typeof import('./../components/character/CharacterSelectItem.vue')['default']
     CharacterStats: typeof import('./../components/character/CharacterStats.vue')['default']
     ClanForm: typeof import('./../components/clan/ClanForm.vue')['default']
     ClanMemberDetail: typeof import('./../components/clan/ClanMemberDetail.vue')['default']

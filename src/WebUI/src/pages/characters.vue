@@ -31,17 +31,19 @@ const currentCharacterIsActive = computed(
   () => user.value?.activeCharacterId === currentCharacterId.value
 );
 
-const onUpdateCharacter = async ({ name, active }: { name: string; active: boolean }) => {
+const onUpdateCharacter = async ({ name }: { name: string }) => {
   if (currentCharacter.value === undefined) return;
-
-  if (active !== currentCharacterIsActive.value) {
-    await activateCharacter(currentCharacter.value.id, active);
-    await userStore.fetchUser();
-  }
 
   if (name !== currentCharacter.value.name) {
     userStore.replaceCharacter(await updateCharacter(currentCharacter.value!.id, { name }));
   }
+
+  notify(t('character.settings.update.notify.success'));
+};
+
+const onActivateCharacter = async (id: number) => {
+  await activateCharacter(id, true);
+  await userStore.fetchUser();
 
   notify(t('character.settings.update.notify.success'));
 };
@@ -121,31 +123,11 @@ if (userStore.characters.length === 0) {
             :to="{ name: route.name, params: { id: char.id } }"
             @click="hide"
           >
-            <OIcon
-              :icon="characterClassToIcon[char.class]"
-              size="lg"
-              v-tooltip="$t(`character.class.${char.class}`)"
+            <CharacterSelectItem
+              :character="char"
+              :isCharacterActive="user!.activeCharacterId === char.id"
+              @activate="onActivateCharacter(char.id)"
             />
-
-            {{ $t('character.format.select', { name: char.name, level: char.level }) }}
-
-            <div class="flex items-center gap-0.5">
-              <Tag
-                v-if="char.id === user?.activeCharacterId"
-                :label="$t('character.status.active.short')"
-                v-tooltip="$t('character.status.active.title')"
-                variant="success"
-                size="sm"
-              />
-
-              <Tag
-                v-if="char.forTournament"
-                :label="$t('character.status.forTournament.short')"
-                v-tooltip="$t('character.status.forTournament.title')"
-                variant="warning"
-                size="sm"
-              />
-            </div>
           </DropdownItem>
 
           <DropdownItem
