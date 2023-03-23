@@ -106,11 +106,11 @@ const forceRerender = () => {
       <OInput
         class="w-24"
         :key="inputComponentKey"
+        :modelValue="localValue[0]"
         size="sm"
         type="number"
         :min="min"
         :max="max"
-        :modelValue="localValue[0]"
         :iconRight="min !== localValue[0] ? 'close' : null"
         iconRightClickable
         @iconRightClick="localValue = [min, localValue[1]]"
@@ -119,13 +119,14 @@ const forceRerender = () => {
       <OInput
         class="w-24"
         :key="inputComponentKey"
+        :modelValue="localValue[1]"
         size="sm"
         type="number"
-        iconRightClickable
-        :iconRight="max !== localValue[1] ? 'close' : null"
         :min="min"
         :max="max"
-        :modelValue="localValue[1]"
+        :iconRight="max !== localValue[1] ? 'close' : null"
+        iconRightClickable
+        @iconRightClick="localValue = [localValue[0], max]"
         @update:modelValue="localValue = [localValue[0], $event]"
       />
     </div>
