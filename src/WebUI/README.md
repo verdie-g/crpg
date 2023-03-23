@@ -88,7 +88,7 @@ Just add an SVG icon as in the example: `src/assets/themes/oruga-tailwind/icons/
 
 ### Image
 
-TODO:
+TODO: svg sprite with https://github.com/vbenjs/vite-plugin-svg-icons
 
 ### Caveat
 

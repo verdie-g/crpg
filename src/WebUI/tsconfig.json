@@ -36,6 +36,7 @@
       "@intlify/vite-plugin-vue-i18n/client",
       "vi-fetch/matchers",
       "@types/body-scroll-lock",
+      "vite-plugin-svg-icons/client"
     ],
   },
   "include": [

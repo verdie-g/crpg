@@ -26,7 +26,6 @@ import {
   equippedItemsBySlotKey,
 } from '@/symbols/character';
 
-// import Coin from '@/assets/themes/oruga-tailwind/img/coin.svg';
 import { mainHeaderHeightKey } from '@/symbols/common';
 
 definePage({
@@ -311,14 +310,14 @@ await userStore.fetchUserItems();
     >
       <SimpleTableRow :label="$t('character.stats.price.title')">
         <div class="inline-flex gap-1.5 align-middle font-bold text-primary">
-          <!-- <img class="w-4" :src="Coin" /> -->
+          <SvgSpriteImg name="coin" viewBox="0 0 18 18" class="w-4" />
           {{ $n(itemsStats.price) }}
         </div>
       </SimpleTableRow>
 
       <SimpleTableRow :label="$t('character.stats.avgRepairCost.title')">
         <div class="inline-flex gap-1.5 align-middle font-bold text-primary">
-          <!-- <img class="w-4" :src="Coin" /> -->
+          <SvgSpriteImg name="coin" viewBox="0 0 18 18" class="w-4" />
           {{ $n(itemsStats.averageRepairCostByHour) }} / {{ $t('dateTime.hours.short') }}
         </div>
       </SimpleTableRow>

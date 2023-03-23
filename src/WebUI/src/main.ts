@@ -5,6 +5,7 @@ import { guessDefaultLocale, switchLanguage } from '@/services/translate-service
 import 'floating-vue/dist/style.css';
 import './assets/styles/tailwind.css';
 import './assets/themes/oruga-tailwind/index.css';
+import 'virtual:svg-icons-register';
 
 import App from './App.vue';
 

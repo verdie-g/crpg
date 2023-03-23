@@ -28,7 +28,6 @@ import {
   getCharacterKDARatio,
   getRespecCapability,
 } from '@/services/characters-service';
-// import Coin from '@/assets/themes/oruga-tailwind/img/coin.svg';
 
 definePage({
   meta: {
@@ -61,8 +60,8 @@ const onRespecializeCharacter = async () => {
   userStore.replaceCharacter(await respecializeCharacter(character.value.id));
   userStore.subtractGold(respecCapability.value.price);
   await Promise.all([
-     loadCharacterLimitations(0, { id: character.value.id }),
-     loadCharacterCharacteristics(0, { id: character.value.id }),
+    loadCharacterLimitations(0, { id: character.value.id }),
+    loadCharacterCharacteristics(0, { id: character.value.id }),
   ]);
   notify(t('character.settings.respecialize.notify.success'));
 };
@@ -269,8 +268,7 @@ await fetchPageData(character.value.id);
                     size="sm"
                     label="free"
                   />
-
-                  <!-- <img v-else class="m-0 w-4" :src="Coin" /> -->
+                  <SvgSpriteImg v-else name="coin" viewBox="0 0 18 18" class="w-4" />
                 </div>
               </OButton>
             </div>
