@@ -1,7 +1,5 @@
-<script setup lang="ts">
-import Img from '@/assets/themes/oruga-tailwind/img/divider.svg';
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <img class="mx-auto w-full select-none" :src="Img" />
+  <SvgSpriteImg name="divider" viewBox="0 0 480 19" class="w-full" />
 </template>

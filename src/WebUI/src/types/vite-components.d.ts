@@ -49,6 +49,7 @@ declare module '@vue/runtime-core' {
     SimpleTableRow: typeof import('./../components/ui/SimpleTableRow.vue')['default']
     SliderInput: typeof import('./../components/ui/SliderInput.vue')['default']
     Socials: typeof import('./../components/app/Socials.vue')['default']
+    SvgSpriteImg: typeof import('./../components/ui/SvgSpriteImg.vue')['default']
     SwitchLanguageDropdown: typeof import('./../components/app/SwitchLanguageDropdown.vue')['default']
     Tag: typeof import('./../components/ui/Tag.vue')['default']
     UserMedia: typeof import('./../components/user/UserMedia.vue')['default']

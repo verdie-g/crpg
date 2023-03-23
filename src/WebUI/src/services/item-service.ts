@@ -350,14 +350,14 @@ export const damageTypeToIcon: Record<DamageType, string | null> = {
 };
 
 export const itemCultureToIcon: Record<Culture, string | null> = {
-  [Culture.Neutral]: 'neutrals',
-  [Culture.Aserai]: 'aserai',
-  [Culture.Battania]: 'battania',
-  [Culture.Empire]: 'empire',
-  [Culture.Khuzait]: 'khuzait',
-  [Culture.Looters]: 'looters',
-  [Culture.Sturgia]: 'sturgia',
-  [Culture.Vlandia]: 'vlandia',
+  [Culture.Neutral]: 'culture-neutrals',
+  [Culture.Aserai]: 'culture-aserai',
+  [Culture.Battania]: 'culture-battania',
+  [Culture.Empire]: 'culture-empire',
+  [Culture.Khuzait]: 'culture-khuzait',
+  [Culture.Looters]: 'culture-looters',
+  [Culture.Sturgia]: 'culture-sturgia',
+  [Culture.Vlandia]: 'culture-vlandia',
 };
 
 // TO MODEL:
