@@ -18,6 +18,7 @@ import {
   getCharacterStatistics,
   getCharacterLimitations,
   deleteCharacter,
+  activateCharacter,
   respecializeCharacter,
   canRetireValidate,
   retireCharacter,
@@ -47,10 +48,26 @@ const currentLevelExperience = computed(() => getExperienceForLevel(character.va
 const nextLevelExperience = computed(() => getExperienceForLevel(character.value.level + 1));
 
 const onDeleteCharacter = async () => {
+  if (character.value.id === userStore.user!.activeCharacterId) {
+    await activateCharacter(character.value.id, false);
+    await userStore.fetchUser();
+  }
+
   await deleteCharacter(character.value.id);
-  await userStore.fetchCharacters();
   notify(t('character.settings.delete.notify.success'));
-  router.replace({ name: 'Characters' });
+
+  const characters = userStore.characters.filter(char => char.id !== character.value.id);
+
+  if (characters.length === 0) {
+    await router.replace({ name: 'Root' });
+  } else {
+    await router.replace({
+      name: 'CharactersId',
+      params: { id: userStore.user!.activeCharacterId || characters[0].id },
+    });
+  }
+
+  userStore.fetchCharacters();
 };
 
 const respecCapability = computed(() =>
@@ -114,7 +131,7 @@ const heirloomPointByLevel = computed(() => getHeirloomPointByLevel(character.va
 const { subscribe, unsubscribe } = usePollInterval();
 const id = Symbol('loadCharacterStatistics');
 onMounted(() => {
-  subscribe({ id, fn: () => loadCharacterStatistics(0, { id: character.value.id }) });
+  subscribe({ id, fn: userStore.fetchCharacters });
 });
 onBeforeUnmount(() => {
   unsubscribe(id);
