@@ -2,9 +2,10 @@ import { useAsyncState } from '@vueuse/core';
 import { ClanInvitationStatus, ClanInvitationType } from '@/models/clan';
 import { getClanInvitations } from '@/services/clan-service';
 
-export const useClanApplications = (id: number) => {
+export const useClanApplications = () => {
   const { state: applications, execute: loadClanApplications } = useAsyncState(
-    () => getClanInvitations(id, [ClanInvitationType.Request], [ClanInvitationStatus.Pending]),
+    ({ id }: { id: number }) =>
+      getClanInvitations(id, [ClanInvitationType.Request], [ClanInvitationStatus.Pending]),
     [],
     {
       immediate: false,
