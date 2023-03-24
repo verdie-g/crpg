@@ -131,7 +131,7 @@ const heirloomPointByLevel = computed(() => getHeirloomPointByLevel(character.va
 const { subscribe, unsubscribe } = usePollInterval();
 const id = Symbol('loadCharacterStatistics');
 onMounted(() => {
-  subscribe({ id, fn: () => loadCharacterStatistics(0, { id: character.value.id }) });
+  subscribe({ id, fn: userStore.fetchCharacters });
 });
 onBeforeUnmount(() => {
   unsubscribe(id);
