@@ -6,7 +6,7 @@ interface Subscription {
 // global state
 const subscriptions: Array<Subscription> = [];
 
-const INTERVAL = 1000 * 60 * 1; // 1 min
+const INTERVAL = 1000 * 60 * 2; // 1 min
 
 setInterval(() => {
   subscriptions.forEach(({ fn }) => fn());
