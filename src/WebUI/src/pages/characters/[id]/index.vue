@@ -29,7 +29,6 @@ import {
   getCharacterKDARatio,
   getRespecCapability,
 } from '@/services/characters-service';
-import usePollInterval from '@/composables/use-poll-interval';
 
 definePage({
   meta: {
@@ -127,15 +126,6 @@ const experienceMultiplierBonus = computed(() =>
 );
 
 const heirloomPointByLevel = computed(() => getHeirloomPointByLevel(character.value.level));
-
-const { subscribe, unsubscribe } = usePollInterval();
-const id = Symbol('loadCharacterStatistics');
-onMounted(() => {
-  subscribe({ id, fn: userStore.fetchCharacters });
-});
-onBeforeUnmount(() => {
-  unsubscribe(id);
-});
 
 const fetchPageData = async (characterId: number) =>
   Promise.all([

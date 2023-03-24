@@ -10,7 +10,8 @@ import {
 import {
   getItemImage,
   computeSalePrice,
-  computeAverageRepairCostByHour,
+  computeAverageRepairCostPerHour,
+  computeRepairCost,
 } from '@/services/item-service';
 import { parseTimestamp } from '@/utils/date';
 
@@ -38,10 +39,12 @@ const userItemToReplaceSalePrice = computed(() => {
   };
 });
 
-const avgRepairCostPerHour = computed(() => computeAverageRepairCostByHour(props.item.price));
+const avgRepairCostPerHour = computed(() => computeAverageRepairCostPerHour(props.item.price));
+const repairCost = computed(() => computeRepairCost(props.item.price));
 
 const emit = defineEmits<{
   (e: 'sell'): void;
+  (e: 'repair'): void;
   // (e: 'upgrade'): void; // TODO:
 }>();
 
@@ -52,6 +55,8 @@ const omitEmptyParam = (field: keyof ItemFlat) => {
 
   return true;
 };
+
+const isBroken = computed(() => props.userItem.rank < 0);
 
 const aggregationsConfig = computed(() =>
   getVisibleAggregationsConfig(getAggregationsConfig(props.item.type, props.item.weaponClass))
@@ -67,6 +72,19 @@ const aggregationsConfig = computed(() =>
         :title="props.item.name"
         class="pointer-events-none aspect-video w-full select-none object-contain"
       />
+
+      <div
+        v-if="userItem.rank !== 0"
+        class="absolute -top-0.5 -left-0.5 z-10 cursor-default opacity-80 hover:opacity-100"
+      >
+        <OIcon
+          v-if="isBroken"
+          icon="error"
+          size="2xl"
+          class="text-status-danger"
+          v-tooltip="'Item is broken'"
+        />
+      </div>
 
       <Tag
         v-if="equipped"
@@ -93,7 +111,7 @@ const aggregationsConfig = computed(() =>
 
       <!-- TODO: filter aggregationsConfig instead v-show !!! -->
       <div
-        v-for="(agg, field) in aggregationsConfig"
+        v-for="(_agg, field) in aggregationsConfig"
         v-show="omitEmptyParam(field)"
         class="space-y-1"
       >
@@ -112,7 +130,7 @@ const aggregationsConfig = computed(() =>
       </div>
 
       <div class="space-y-1">
-        <h6 class="text-2xs text-content-300">{{ $t('item.aggregations.repairCost.title') }}:</h6>
+        <h6 class="text-2xs text-content-300">{{ $t('item.aggregations.repairCost.title') }}</h6>
         <div class="inline-flex gap-1.5 align-middle font-bold text-primary">
           <SvgSpriteImg name="coin" viewBox="0 0 18 18" class="w-4" />
           {{ $n(avgRepairCostPerHour) }} / {{ $t('dateTime.hours.short') }}
@@ -120,9 +138,14 @@ const aggregationsConfig = computed(() =>
       </div>
     </div>
 
-    <div class="-mx-4 -mb-4 mt-6 bg-base-400 p-2">
-      <VTooltip :triggers="['click']">
-        <OButton variant="secondary" rounded size="lg">
+    <div class="-mx-4 -mb-4 mt-6 flex items-center gap-2 bg-base-400 p-2">
+      <ConfirmActionTooltip
+        class="flex-1"
+        :confirmLabel="$t('action.sell')"
+        :title="$t('character.inventory.item.sell.confirm')"
+        @confirm="emit('sell')"
+      >
+        <OButton variant="secondary" expanded rounded size="lg">
           <i18n-t
             scope="global"
             keypath="character.inventory.item.sell.title"
@@ -177,37 +200,26 @@ const aggregationsConfig = computed(() =>
             </template>
           </VTooltip>
         </OButton>
+      </ConfirmActionTooltip>
 
-        <template #popper="{ hide }">
-          <div class="space-y-3">
-            <div>
-              {{ $t('character.inventory.item.sell.confirm') }}
-            </div>
+      <ConfirmActionTooltip v-if="isBroken" @confirm="emit('repair')">
+        <VTooltip>
+          <OButton iconRight="repair" variant="secondary" size="lg" rounded />
 
-            <div class="flex items-center gap-2">
-              <OButton
-                variant="success"
-                size="2xs"
-                iconLeft="check"
-                :label="$t('action.sell')"
-                @click="
-                  () => {
-                    emit('sell');
-                    hide();
-                  }
-                "
-              />
-              <OButton
-                variant="danger"
-                size="2xs"
-                iconLeft="close"
-                :label="$t('action.cancel')"
-                @click="hide"
-              />
-            </div>
-          </div>
-        </template>
-      </VTooltip>
+          <template #popper>
+            <i18n-t
+              scope="global"
+              keypath="character.inventory.item.repair.tooltip.title"
+              tag="span"
+              class="flex gap-2"
+            >
+              <template #price>
+                <Coin :value="repairCost" />
+              </template>
+            </i18n-t>
+          </template>
+        </VTooltip>
+      </ConfirmActionTooltip>
     </div>
   </article>
 </template>

@@ -20,6 +20,7 @@ import {
   computeLongestWeaponLength,
 } from '@/services/characters-service';
 import { computeOverallAverageRepairCostByHour } from '@/services/characters-service';
+import usePollInterval from '@/composables/use-poll-interval';
 
 definePage({
   props: true,
@@ -87,6 +88,26 @@ provide(characterItemsKey, {
 });
 provide(characterItemsStatsKey, itemsStats);
 
+const { subscribe, unsubscribe } = usePollInterval();
+const loadCharacterItemsSymbol = Symbol('loadCharacterItems');
+const loadCharactersSymbol = Symbol('fetchCharacters');
+const loadUserItemsSymbol = Symbol('fetchUserItems');
+
+onMounted(() => {
+  subscribe({ id: loadCharactersSymbol, fn: userStore.fetchCharacters });
+  subscribe({
+    id: loadCharacterItemsSymbol,
+    fn: () => loadCharacterItems(0, { id: character.value.id }),
+  });
+  subscribe({ id: loadUserItemsSymbol, fn: userStore.fetchUserItems });
+});
+
+onBeforeUnmount(() => {
+  unsubscribe(loadCharactersSymbol);
+  unsubscribe(loadCharacterItemsSymbol);
+  unsubscribe(loadUserItemsSymbol);
+});
+
 const fetchPageData = async (characterId: number) =>
   Promise.all([
     loadCharacterCharacteristics(0, { id: characterId }),
@@ -96,9 +117,15 @@ const fetchPageData = async (characterId: number) =>
 onBeforeRouteUpdate(async (to, from) => {
   if (to.name === from.name) {
     // if character changed
-    await fetchPageData(
-      Number((to as RouteLocationNormalized<'CharactersId'>).params.id as string)
-    );
+    unsubscribe(loadCharacterItemsSymbol);
+
+    const characterId = Number((to as RouteLocationNormalized<'CharactersId'>).params.id as string);
+    await fetchPageData(characterId);
+
+    subscribe({
+      id: loadCharacterItemsSymbol,
+      fn: () => loadCharacterItems(0, { id: characterId }),
+    });
   }
 
   return true;

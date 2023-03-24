@@ -8,7 +8,7 @@ import { AggregationConfig, AggregationView, SortingConfig } from '@/models/item
 import { extractItemFromUserItem } from '@/services/users-service';
 import { updateCharacterItems } from '@/services/characters-service';
 import { useUserStore } from '@/stores/user';
-import { sellUserItem } from '@/services/users-service';
+import { sellUserItem, upgradeUserItem } from '@/services/users-service';
 import { getCompareItemsResult } from '@/services/item-service';
 import { createItemIndex } from '@/services/item-search-service/indexator';
 import { getSearchResult, getAggregationsConfig } from '@/services/item-search-service';
@@ -63,6 +63,12 @@ const onSellUserItem = async (itemId: number) => {
   notify(t('character.inventory.item.sell.notify.success'));
 };
 
+const onRepairUserItem = async (itemId: number) => {
+  await upgradeUserItem(itemId);
+  await Promise.all([userStore.fetchUser(), userStore.fetchUserItems()]);
+  notify(t('character.inventory.item.repair.notify.success'));
+};
+
 const flatItems = computed(() => createItemIndex(extractItemFromUserItem(userStore.userItems)));
 
 const sortingConfig: SortingConfig = {
@@ -107,8 +113,6 @@ const searchResult = computed(() =>
     query: filterByNameModel.value,
     filter: {
       type: filterByTypeModel.value,
-      // @ts-ignore
-      // isPrimaryUsage: [true],
     },
   })
 );
@@ -374,6 +378,12 @@ await userStore.fetchUserItems();
             () => {
               closeItemDetail(oi.id);
               onSellUserItem(oi.userId);
+            }
+          "
+          @repair="
+            () => {
+              closeItemDetail(oi.id);
+              onRepairUserItem(oi.userId);
             }
           "
         />

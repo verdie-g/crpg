@@ -12,6 +12,7 @@ const props = withDefaults(
   }
 );
 
+// TODO: colors
 const rarityColor = computed(() => {
   if (props.item.rank === 1) {
     return '#1eff00';
@@ -42,19 +43,32 @@ const rarityColor = computed(() => {
         data-aq-item-card-thumb
       />
 
-      <OIcon
-        v-if="item.rank > 0"
+      <div
+        v-if="item.rank !== 0"
         class="absolute -top-0.5 -left-0.5 z-10 cursor-default opacity-80 hover:opacity-100"
-        icon="rare-duotone"
-        size="xs"
-        v-tooltip="'Item rarity'"
-        :style="{
-          '--fa-primary-opacity': 0.15,
-          '--fa-primary-color': '#fff',
-          '--fa-secondary-opacity': 0.75,
-          '--fa-secondary-color': rarityColor,
-        }"
-      />
+      >
+        <OIcon
+          v-if="item.rank < 0"
+          icon="error"
+          size="lg"
+          class="text-status-danger"
+          v-tooltip="'Item is broken'"
+        />
+
+        <!-- TODO: i18n -->
+        <OIcon
+          v-else
+          icon="rare-duotone"
+          size="xs"
+          v-tooltip="'Item rarity'"
+          :style="{
+            '--fa-primary-opacity': 0.15,
+            '--fa-primary-color': '#fff',
+            '--fa-secondary-opacity': 0.75,
+            '--fa-secondary-color': rarityColor,
+          }"
+        />
+      </div>
 
       <Tag
         v-if="equipped"

@@ -404,6 +404,14 @@ character:
         notify:
           success: Предмет успешно продан
       equipped: Экипировано
+      broken:
+        notify:
+          warning: Предмет сломан и не может быть экипирован
+      repair:
+        tooltip:
+          title: Починить за {price}
+        notify:
+          success: Предмет успешно отремонтирован
 
   doll:
     slot:

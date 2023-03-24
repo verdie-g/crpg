@@ -408,6 +408,14 @@ character:
         notify:
           success: Item successfully sold
       equipped: Item equipped
+      broken:
+        notify:
+          warning: Item is broken and cannot be equipped
+      repair:
+        tooltip:
+          title: Repair for {price}
+        notify:
+          success: The item was successfully repaired
 
   doll:
     slot:
