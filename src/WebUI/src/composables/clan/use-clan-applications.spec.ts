@@ -7,16 +7,16 @@ vi.mock('@/services/clan-service', () => ({
 import { useClanApplications } from './use-clan-applications';
 
 it('initial state', () => {
-  const { applications, applicationsCount } = useClanApplications(2);
+  const { applications, applicationsCount } = useClanApplications();
 
   expect(applications.value).toEqual([]);
   expect(applicationsCount.value).toEqual(0);
 });
 
 it('initial state', async () => {
-  const { applications, applicationsCount, loadClanApplications } = useClanApplications(2);
+  const { applications, applicationsCount, loadClanApplications } = useClanApplications();
 
-  await loadClanApplications();
+  await loadClanApplications(0, { id: 2 });
 
   expect(applications.value).toEqual(CLAN_INVINTATIONS);
   expect(applicationsCount.value).toEqual(2);

@@ -13,9 +13,9 @@ it('initial state', () => {
 });
 
 it('load clan', async () => {
-  const { clan, loadClan } = useClan('2');
+  const { clanId, clan, loadClan } = useClan('2');
 
-  await loadClan();
+  await loadClan(0, { id: clanId.value });
   expect(clan.value).toEqual({ id: 2, tag: 'mlp' });
   expect(mockedGetClan).toBeCalledWith(2);
 });

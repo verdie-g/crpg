@@ -21,18 +21,18 @@ const props = defineProps<{
 }>();
 
 const { clanId } = useClan(props.id);
-const { applications, loadClanApplications } = useClanApplications(clanId.value);
+const { applications, loadClanApplications } = useClanApplications();
 const { pageModel, perPage } = usePagination();
 
 const respond = async (application: ClanInvitation, status: boolean) => {
   await respondToClanInvitation(clanId.value, application.id, status);
-  await loadClanApplications();
+  await loadClanApplications(0, { id: clanId.value });
   status
     ? notify(t('clan.application.respond.accept.notify.success'))
     : notify(t('clan.application.respond.decline.notify.success'));
 };
 
-await loadClanApplications();
+await loadClanApplications(0, { id: clanId.value });
 </script>
 
 <template>

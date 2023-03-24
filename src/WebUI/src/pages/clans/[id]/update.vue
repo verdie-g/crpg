@@ -31,7 +31,7 @@ const onSubmit = async (form: Omit<Clan, 'id'>) => {
   router.replace({ name: 'ClansId', params: { id: clan.id } });
 };
 
-await loadClan();
+await loadClan(0, { id: clanId.value });
 </script>
 
 <template>

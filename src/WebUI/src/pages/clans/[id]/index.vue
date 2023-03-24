@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { type RouteLocationNormalized } from 'vue-router/auto';
 import { useAsyncState } from '@vueuse/core';
 import { ClanMemberRole, type ClanMember } from '@/models/clan';
 import {
@@ -36,9 +37,9 @@ const props = defineProps<{
 const userStore = useUserStore();
 
 const { clanId, clan, loadClan } = useClan(props.id);
-const { applicationsCount, loadClanApplications } = useClanApplications(clanId.value);
+const { applicationsCount, loadClanApplications } = useClanApplications();
 const { state: clanMembers, execute: loadClanMembers } = useAsyncState(
-  () => getClanMembers(clanId.value),
+  ({ id }: { id: number }) => getClanMembers(id),
   [],
   {
     immediate: false,
@@ -69,7 +70,7 @@ const canUpdateMember = computed(() =>
 
 const updateMember = async (userId: number, selectedRole: ClanMemberRole) => {
   await updateClanMember(clanId.value, userId, selectedRole);
-  await loadClanMembers();
+  await loadClanMembers(0, { id: clanId.value });
   notify(t('clan.member.update.notify.success'));
 };
 
@@ -82,7 +83,7 @@ const kickMember = async (member: ClanMember) => {
   const isSelfMember = checkIsSelfMember(member);
 
   await kickClanMember(clanId.value, member.user.id);
-  await loadClanMembers();
+  await loadClanMembers(0, { id: clanId.value });
   if (isSelfMember) {
     await userStore.getUserClan();
   }
@@ -108,11 +109,25 @@ const selectedClanMember = computed(() =>
 
 const { pageModel, perPage } = usePagination();
 
-await Promise.all([loadClan(), loadClanMembers()]);
+const fetchPageData = async (clanId: number) => {
+  await Promise.all([loadClan(0, { id: clanId }), loadClanMembers(0, { id: clanId })]);
 
-if (canManageApplications.value) {
-  await loadClanApplications();
-}
+  if (canManageApplications.value) {
+    await loadClanApplications(0, { id: clanId });
+  }
+};
+
+// TODO: SPEC
+onBeforeRouteUpdate(async (to, from) => {
+  if (to.name === from.name) {
+    // if clan changed
+    await fetchPageData(Number((to as RouteLocationNormalized<'ClansId'>).params.id as string));
+  }
+
+  return true;
+});
+
+await fetchPageData(clanId.value);
 </script>
 
 <template>
