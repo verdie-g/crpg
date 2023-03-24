@@ -17,7 +17,7 @@
   <SpriteCategories>
     <SpriteCategory>
       <Name>ui_mploading</Name>
-      <SpriteSheetCount>103</SpriteSheetCount>
+      <SpriteSheetCount>104</SpriteSheetCount>
       <SpriteSheetSize ID="1" Width="3840" Height="1935" />
       <SpriteSheetSize ID="2" Width="3840" Height="1935" />
       <SpriteSheetSize ID="3" Width="3383" Height="1902" />
@@ -115,6 +115,7 @@
       <SpriteSheetSize ID="101" Width="1920" Height="1080" />
       <SpriteSheetSize ID="102" Width="1920" Height="1080" />
       <SpriteSheetSize ID="103" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="104" Width="1920" Height="1080" />
       <AlwaysLoad />
     </SpriteCategory>
   </SpriteCategories>
@@ -992,6 +993,15 @@
       <SheetY>0</SheetY>
       <CategoryName>ui_mploading</CategoryName>
     </SpritePart>
+    <SpritePart>
+      <SheetID>104</SheetID>
+      <Name>crpg_battle_lostcathedral</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
   </SpriteParts>
   <Sprites>
     <GenericSprite>
@@ -1381,6 +1391,10 @@
     <GenericSprite>
       <Name>crpg_battle_hadiiqa</Name>
       <SpritePartName>crpg_battle_hadiiqa</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_lostcathedral</Name>
+      <SpritePartName>crpg_battle_lostcathedral</SpritePartName>
     </GenericSprite>
   </Sprites>
 </SpriteData>
