@@ -657,7 +657,9 @@ mainpage:
   login: Sign in with Steam
   download: Download
 
-patreon: Do you like our project?{br}You can support us on
+patreon:
+  <p>Do you like our project?</p>
+  <p>You can support us on</p>
 
 hh:
   tooltip-trigger: 'Happy hours for {region}:'
