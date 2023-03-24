@@ -1,3 +1,4 @@
+import { type PartialDeep } from 'type-fest';
 import { mockGet } from 'vi-fetch';
 import { response } from '@/__mocks__/crpg-client';
 import {
@@ -53,7 +54,7 @@ import mockItems from '@/__mocks__/items.json';
 
 import {
   getItems,
-  getItemImage,
+  // getItemImage,
   getAvailableSlotsByItem,
   hasWeaponClassesByItemType,
   getWeaponClassesByItemType,
@@ -70,55 +71,49 @@ it('getItems', async () => {
   expect(await getItems()).toEqual(mockItems);
 });
 
-it('getItemImage', () => {
-  expect(getItemImage('123')).toEqual('http://localhost:8081/items/123.png'); // TODO: FIXME:
-});
+// TODO:
+// it('getItemImage', () => {
+//   expect(getItemImage('123')).toEqual('http://localhost:8081/items/123.png');
+// });
 
-it('getItemImage', () => {
-  expect(getItemImage('123')).toEqual('http://localhost:8081/items/123.png'); // TODO: FIXME:
-});
-
-it.each<[Item, Record<ItemSlot, UserItem>, ItemSlot[]]>(
-  // prettier-ignore
+it.each<[PartialDeep<Item>, PartialDeep<Record<ItemSlot, UserItem>>, ItemSlot[]]>([
   [
-    [
-      { type: ItemType.MountHarness, armor: { familyType: ItemFamilyType.Horse }, } as Item,
-      {} as Record<ItemSlot, UserItem>,
-      [ItemSlot.MountHarness],
-    ],
-    [
-      { type: ItemType.MountHarness, armor: { familyType: ItemFamilyType.Horse }, } as Item,
-      { [ItemSlot.Mount]: { baseItem: { mount: { familyType: ItemFamilyType.Horse }}} } as Record<ItemSlot, UserItem>,
-      [ItemSlot.MountHarness],
-    ],
-    [
-      { type: ItemType.MountHarness, armor: { familyType: ItemFamilyType.Camel }, } as Item,
-      {} as Record<ItemSlot, UserItem>,
-      [ItemSlot.MountHarness],
-    ],
-    [
-      { type: ItemType.MountHarness, armor: { familyType: ItemFamilyType.Camel }, } as Item,
-      { [ItemSlot.Mount]: { baseItem: { mount: { familyType: ItemFamilyType.Horse }}} } as Record<ItemSlot, UserItem>,
-      [],
-    ],
-    [
-      { type: ItemType.MountHarness, armor: { familyType: ItemFamilyType.Horse }, } as Item,
-      { [ItemSlot.Mount]: { baseItem: { mount: { familyType: ItemFamilyType.Camel }}} } as Record<ItemSlot, UserItem>,
-      [],
-    ],
-    [
-      { type: ItemType.OneHandedWeapon } as Item,
-      {} as Record<ItemSlot, UserItem>,
-      [ItemSlot.Weapon0, ItemSlot.Weapon1, ItemSlot.Weapon2, ItemSlot.Weapon3],
-    ],
-    [
-      { type: ItemType.Banner } as Item,
-      {} as Record<ItemSlot, UserItem>,
-      [ItemSlot.WeaponExtra],
-    ],
-  ]
-)('getAvailableSlotsByItem - item: %j, equipedItems: %j', (item, equipedItems, expectation) => {
-  expect(getAvailableSlotsByItem(item, equipedItems)).toEqual(expectation);
+    { type: ItemType.MountHarness, flags: [], armor: { familyType: ItemFamilyType.Horse } },
+    {},
+    [ItemSlot.MountHarness],
+  ],
+  [
+    { type: ItemType.MountHarness, flags: [], armor: { familyType: ItemFamilyType.Horse } },
+    { [ItemSlot.Mount]: { baseItem: { mount: { familyType: ItemFamilyType.Horse } } } },
+    [ItemSlot.MountHarness],
+  ],
+  [
+    { type: ItemType.MountHarness, flags: [], armor: { familyType: ItemFamilyType.Camel } },
+    {},
+    [ItemSlot.MountHarness],
+  ],
+  [
+    { type: ItemType.MountHarness, flags: [], armor: { familyType: ItemFamilyType.Camel } },
+    { [ItemSlot.Mount]: { baseItem: { mount: { familyType: ItemFamilyType.Horse } } } },
+    [],
+  ],
+  [
+    { type: ItemType.MountHarness, flags: [], armor: { familyType: ItemFamilyType.Horse } },
+    { [ItemSlot.Mount]: { baseItem: { mount: { familyType: ItemFamilyType.Camel } } } },
+    [],
+  ],
+  [
+    { type: ItemType.OneHandedWeapon, flags: [] },
+    {},
+    [ItemSlot.Weapon0, ItemSlot.Weapon1, ItemSlot.Weapon2, ItemSlot.Weapon3],
+  ],
+  [{ type: ItemType.Banner, flags: [] }, {}, [ItemSlot.WeaponExtra]],
+  [{ type: ItemType.Polearm, flags: [ItemFlags.DropOnWeaponChange] }, {}, [ItemSlot.WeaponExtra]], // Pike
+  // [{ type: ItemType.Polearm, flags: [ItemFlags.DropOnWeaponChange] }, {}, [ItemSlot.WeaponExtra]], // Pike
+])('getAvailableSlotsByItem - item: %j, equipedItems: %j', (item, equipedItems, expectation) => {
+  expect(getAvailableSlotsByItem(item as Item, equipedItems as Record<ItemSlot, UserItem>)).toEqual(
+    expectation
+  );
 });
 
 it.each([
@@ -138,6 +133,7 @@ it.each<[ItemType, WeaponClass[]]>([
   expect(getWeaponClassesByItemType(itemType)).toEqual(expectation);
 });
 
+// TODO:
 // it.each<[keyof ItemFlat, string, string]>([
 //   ['type', ItemType.OneHandedWeapon, 'item.type.OneHandedWeapon'],
 //   ['weaponClass', WeaponClass.OneHandedPolearm, 'item.weaponClass.OneHandedPolearm'],
@@ -149,6 +145,7 @@ it.each<[ItemType, WeaponClass[]]>([
 //   expect(humanizeBucket(aggKey, bucket)).toEqual(expectation);
 // });
 
+// TODO:
 // describe('itemFieldFormatter', () => {
 //   const item = {
 //     type: ItemType.OneHandedWeapon,

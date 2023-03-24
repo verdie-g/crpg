@@ -17,6 +17,7 @@
   "multipliedGoldGainPerSecond": 0.66,
   "itemRepairCostPerSecond": 0.000064,
   "itemBreakChance": 0.5,
+  "brokenItemRepairPenaltySeconds": 300,
   "itemSellCostCoefs": [0.5, 0.0],
   "minimumLevel": 1,
   "maximumLevel": 38,

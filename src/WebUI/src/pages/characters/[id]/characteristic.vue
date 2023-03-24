@@ -255,7 +255,7 @@ onBeforeRouteUpdate(() => {
         @click="reset"
       />
 
-      <VTooltip :triggers="['click']">
+      <ConfirmActionTooltip @confirm="onCommitCharacterCharacteristics">
         <OButton
           variant="primary"
           size="lg"
@@ -264,36 +264,7 @@ onBeforeRouteUpdate(() => {
           :label="$t('action.commit')"
           data-aq-commit-action
         />
-        <template #popper="{ hide }">
-          <div class="space-y-3">
-            <div>
-              {{ $t('confirmAction') }}
-            </div>
-
-            <div class="flex items-center gap-2">
-              <OButton
-                variant="success"
-                size="2xs"
-                iconLeft="check"
-                :label="$t('action.confirm')"
-                @click="
-                  () => {
-                    onCommitCharacterCharacteristics();
-                    hide();
-                  }
-                "
-              />
-              <OButton
-                variant="danger"
-                size="2xs"
-                iconLeft="close"
-                :label="$t('action.cancel')"
-                @click="hide"
-              />
-            </div>
-          </div>
-        </template>
-      </VTooltip>
+      </ConfirmActionTooltip>
     </div>
   </div>
 </template>

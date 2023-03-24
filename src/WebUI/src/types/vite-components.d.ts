@@ -27,6 +27,7 @@ declare module '@vue/runtime-core' {
     ClanTagIcon: typeof import('./../components/clan/ClanTagIcon.vue')['default']
     Coin: typeof import('./../components/app/Coin.vue')['default']
     ConfirmActionForm: typeof import('./../components/app/ConfirmActionForm.vue')['default']
+    ConfirmActionTooltip: typeof import('./../components/app/ConfirmActionTooltip.vue')['default']
     CreateRestrictionForm: typeof import('./../components/moderator/CreateRestrictionForm.vue')['default']
     Divider: typeof import('./../components/app/Divider.vue')['default']
     DropdownItem: typeof import('./../components/ui/DropdownItem.vue')['default']

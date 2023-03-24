@@ -24,7 +24,7 @@ export interface UserPublic extends Pick<User, 'id' | 'platform' | 'platformUser
   avatar: string;
 }
 
-export type UserItemRank = 0 | 1 | 2 | 3; // TODO: -1,-2,-3?
+export type UserItemRank = -1 | 0 | 1 | 2 | 3;
 
 export interface UserItem {
   id: number;

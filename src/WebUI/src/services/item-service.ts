@@ -2,6 +2,7 @@ import {
   itemSellCostCoefs,
   itemRepairCostPerSecond,
   itemBreakChance,
+  brokenItemRepairPenaltySeconds,
 } from '@root/data/constants.json';
 import {
   type Item,
@@ -28,15 +29,15 @@ import { n, t } from '@/services/translate-service';
 import { applyPolynomialFunction, roundFLoat } from '@/utils/math';
 
 // TODO: delete mocks
-import {
-  BecDeCorbin,
-  // Longsword,
-  // SimpleShortSpear,
-  // Bow,
-  NobleCavalryLance,
-  Pike,
-  WoodenSword,
-} from '@/services/item-search-service/__tests__/mocks';
+// import {
+//   BecDeCorbin,
+//   // Longsword,
+//   // SimpleShortSpear,
+//   // Bow,
+//   NobleCavalryLance,
+//   Pike,
+//   WoodenSword,
+// } from '@/services/item-search-service/__tests__/mocks';
 
 // export const getItems = () =>
 //   new Promise(res => {
@@ -201,6 +202,7 @@ export const getAvailableSlotsByItem = (
     return [];
   }
 
+  // Pikes
   if (item.flags.includes(ItemFlags.DropOnWeaponChange)) {
     return [ItemSlot.WeaponExtra];
   }
@@ -548,5 +550,8 @@ export const computeSalePrice = (
   return { price: userItem.baseItem.price, graceTimeEnd };
 };
 
-export const computeAverageRepairCostByHour = (price: number) =>
+export const computeAverageRepairCostPerHour = (price: number) =>
   Math.floor(price * itemRepairCostPerSecond * 3600 * itemBreakChance);
+
+export const computeBrokenItemRepairCost = (price: number) =>
+  Math.floor(price * itemRepairCostPerSecond * brokenItemRepairPenaltySeconds);

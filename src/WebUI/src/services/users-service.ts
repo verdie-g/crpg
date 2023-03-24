@@ -15,8 +15,6 @@ import { get, post, put, del } from '@/services/crpg-client';
 import { getActiveJoinRestriction, mapRestrictions } from '@/services/restriction-service';
 import { mapClanResponse } from '@/services/clan-service';
 
-// import userRareItems from '@/__mocks__/user-rare-items.json';
-
 export const getUser = () => get<User>('/users/self');
 
 export const deleteUser = () => del('/users/self');
@@ -31,8 +29,6 @@ interface UserSearchQuery {
 
 // TODO: SPEC
 export const searchUser = async (payload: UserSearchQuery) => {
-  console.log('sdsdsdsd', `/users/search/?${qs.stringify(payload)}`);
-
   return get<UserPublic[]>(`/users/search/?${qs.stringify(payload)}`);
 };
 
@@ -44,11 +40,7 @@ export const mapUserItem = (userItem: UserItem): UserItem => ({
 export const extractItemFromUserItem = (items: UserItem[]): Item[] => items.map(ui => ui.baseItem);
 
 export const getUserItems = async () =>
-  [
-    // @ts-ignore TODO: FIXME: delete mock
-    // ...(userRareItems as UserItem[]),
-    ...(await get<UserItem[]>('/users/self/items')),
-  ].map(mapUserItem);
+  (await get<UserItem[]>('/users/self/items')).map(mapUserItem);
 
 export const buyUserItem = async (itemId: string) =>
   mapUserItem(await post<UserItem>('/users/self/items', { itemId }));

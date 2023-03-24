@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { t } from '@/services/translate-service';
-import { computeAverageRepairCostByHour } from '@/services/item-service';
+import { computeAverageRepairCostPerHour } from '@/services/item-service';
 
 const props = defineProps<{
   price: number;
@@ -12,7 +12,7 @@ const emit = defineEmits<{
   (e: 'buy'): void;
 }>();
 
-const avgRepairCostPerHour = computed(() => computeAverageRepairCostByHour(props.price));
+const avgRepairCostPerHour = computed(() => computeAverageRepairCostPerHour(props.price));
 
 const tooltipTitle = computed(() => {
   if (props.inInventory) {

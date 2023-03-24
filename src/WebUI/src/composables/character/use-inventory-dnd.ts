@@ -2,6 +2,8 @@ import type { EquippedItemsBySlot, EquippedItemId } from '@/models/character';
 import { ItemSlot } from '@/models/item';
 import { type UserItem } from '@/models/user';
 import { getAvailableSlotsByItem } from '@/services/item-service';
+import { notify, NotificationType } from '@/services/notification-service';
+import { t } from '@/services/translate-service';
 
 // Shaaaared state
 const focusedItemId = ref<number | null>(null);
@@ -14,6 +16,10 @@ export const useInventoryDnD = (equippedItemsBySlot: Ref<EquippedItemsBySlot>) =
 
   const onDragStart = (item: UserItem | null = null, slot: ItemSlot | null = null) => {
     if (!item) return;
+    if (item.rank < 0) {
+      notify(t('character.inventory.item.broken.notify.warning'), NotificationType.Warning);
+      return;
+    }
 
     focusedItemId.value = item.id;
     availableSlots.value = getAvailableSlotsByItem(item.baseItem, equippedItemsBySlot.value);
@@ -33,8 +39,6 @@ export const useInventoryDnD = (equippedItemsBySlot: Ref<EquippedItemsBySlot>) =
 
   const onDragEnd = (_e: DragEvent | null = null, slot: ItemSlot | null = null) => {
     if (slot && !toSlot.value) {
-      console.log('change - drop outside');
-
       emit('change', [{ userItemId: null, slot }]); // drop outside
     }
 
