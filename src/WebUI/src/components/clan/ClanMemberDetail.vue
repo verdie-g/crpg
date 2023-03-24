@@ -101,8 +101,8 @@ const onSave = () => {
                     data-aq-clan-member-action="kick"
                     @click="
                       () => {
-                        emit('kick');
                         hide();
+                        emit('kick');
                       }
                     "
                   />
@@ -149,8 +149,8 @@ const onSave = () => {
           @cancel="hide"
           @confirm="
             () => {
-              emit('update', memberRoleModel);
               hide();
+              emit('update', memberRoleModel);
             }
           "
         />
