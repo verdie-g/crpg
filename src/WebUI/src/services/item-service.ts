@@ -553,5 +553,5 @@ export const computeSalePrice = (
 export const computeAverageRepairCostPerHour = (price: number) =>
   Math.floor(price * itemRepairCostPerSecond * 3600 * itemBreakChance);
 
-export const computeRepairCost = (price: number) =>
+export const computeBrokenItemRepairCost = (price: number) =>
   Math.floor(price * itemRepairCostPerSecond * brokenItemRepairPenaltySeconds);

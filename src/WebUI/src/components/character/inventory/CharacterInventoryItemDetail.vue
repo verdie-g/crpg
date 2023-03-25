@@ -11,7 +11,7 @@ import {
   getItemImage,
   computeSalePrice,
   computeAverageRepairCostPerHour,
-  computeRepairCost,
+  computeBrokenItemRepairCost,
 } from '@/services/item-service';
 import { parseTimestamp } from '@/utils/date';
 
@@ -40,7 +40,7 @@ const userItemToReplaceSalePrice = computed(() => {
 });
 
 const avgRepairCostPerHour = computed(() => computeAverageRepairCostPerHour(props.item.price));
-const repairCost = computed(() => computeRepairCost(props.item.price));
+const repairCost = computed(() => computeBrokenItemRepairCost(props.item.price));
 
 const emit = defineEmits<{
   (e: 'sell'): void;
