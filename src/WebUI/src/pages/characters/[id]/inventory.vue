@@ -177,6 +177,21 @@ const compareItemsResult = computed(() => {
     });
 });
 
+const computeDetailCardYPosition = (y: number) => {
+  // we cannot automatically determine the height of the card, so we take the maximum possible value
+  // think about it, but it's fine as it is
+  const cardHeight = 700;
+
+  const yDiff = window.innerHeight - y;
+  const needOffset = yDiff < cardHeight;
+
+  if (!needOffset) {
+    return y;
+  }
+
+  return y + yDiff - cardHeight;
+};
+
 onBeforeRouteLeave(() => {
   closeAll();
   return true;
@@ -330,37 +345,40 @@ await userStore.fetchUserItems();
       />
     </div>
 
-    <template v-for="oi in openedItems" :key="oi.id">
-      <Teleport to="body">
-        <Draggable
-          :initial-value="{ x: oi.bound.x + oi.bound.width + 8, y: oi.bound.y }"
-          class="fixed z-50 cursor-move select-none rounded-lg bg-base-300 p-4 shadow-lg"
-        >
-          <OButton
-            class="absolute right-2 top-2 z-10 cursor-pointer"
-            iconRight="close"
-            rounded
-            size="2xs"
-            variant="secondary"
-            @click="closeItemDetail(oi.id)"
-          />
+    <Teleport to="body">
+      <Draggable
+        v-for="oi in openedItems"
+        :key="oi.id"
+        :initial-value="{
+          x: oi.bound.x + oi.bound.width + 8,
+          y: computeDetailCardYPosition(oi.bound.y),
+        }"
+        class="fixed z-50 cursor-move select-none rounded-lg bg-base-300 p-4 shadow-lg"
+      >
+        <OButton
+          class="absolute right-2 top-2 z-10 cursor-pointer"
+          iconRight="close"
+          rounded
+          size="2xs"
+          variant="secondary"
+          @click="closeItemDetail(oi.id)"
+        />
 
-          <CharacterInventoryItemDetail
-            class="w-72"
-            :compareResult="compareItemsResult.find(cr => cr.type === flatItems.find(fi => fi.id === oi.id)!.type)?.compareResult"
-            :item="flatItems.find(fi => fi.id === oi.id)!"
-            :userItem="userStore.userItems.find(ui => ui.id === oi.userId)!"
-            :equipped="equippedItemsIds.includes(oi.userId)"
-            @sell="
-              () => {
-                closeItemDetail(oi.id);
-                onSellUserItem(oi.userId);
-              }
-            "
-          />
-        </Draggable>
-      </Teleport>
-    </template>
+        <CharacterInventoryItemDetail
+          class="w-72"
+          :compareResult="compareItemsResult.find(cr => cr.type === flatItems.find(fi => fi.id === oi.id)!.type)?.compareResult"
+          :item="flatItems.find(fi => fi.id === oi.id)!"
+          :userItem="userStore.userItems.find(ui => ui.id === oi.userId)!"
+          :equipped="equippedItemsIds.includes(oi.userId)"
+          @sell="
+            () => {
+              closeItemDetail(oi.id);
+              onSellUserItem(oi.userId);
+            }
+          "
+        />
+      </Draggable>
+    </Teleport>
   </div>
 </template>
 
