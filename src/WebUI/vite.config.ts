@@ -11,7 +11,7 @@ import { VueRouterAutoImports, getPascalCaseRouteName } from 'unplugin-vue-route
 import VueRouter from 'unplugin-vue-router/vite';
 import Visualizer from 'rollup-plugin-visualizer';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
-
+import viteCompression from 'vite-plugin-compression';
 import json5 from 'json5';
 
 // TODO: to libs
@@ -107,6 +107,11 @@ export default defineConfig({
 
     createSvgIconsPlugin({
       iconDirs: [fileURLToPath(new URL('./src/assets/themes/oruga-tailwind/img', import.meta.url))],
+    }),
+
+    viteCompression({
+      algorithm: 'gzip',
+      filter: /\.(js|css|woff2|html)$/i,
     }),
   ],
 
