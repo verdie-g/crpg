@@ -36,7 +36,7 @@ export const i18n = createI18n({
         style: 'unit',
         unit: 'second',
         unitDisplay: 'narrow',
-        maximumFractionDigits: 2,
+        maximumFractionDigits: 3,
       },
       percent: {
         style: 'percent',
@@ -44,10 +44,7 @@ export const i18n = createI18n({
       },
       decimal: {
         style: 'decimal',
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0,
-        minimumSignificantDigits: 1,
-        maximumSignificantDigits: 2,
+        maximumFractionDigits: 3,
       },
     },
     ru: {
@@ -55,7 +52,7 @@ export const i18n = createI18n({
         style: 'unit',
         unit: 'second',
         unitDisplay: 'narrow',
-        maximumFractionDigits: 2,
+        maximumFractionDigits: 3,
       },
       percent: {
         style: 'percent',
@@ -63,10 +60,7 @@ export const i18n = createI18n({
       },
       decimal: {
         style: 'decimal',
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0,
-        minimumSignificantDigits: 1,
-        maximumSignificantDigits: 2,
+        maximumFractionDigits: 3,
       },
     },
   },
