@@ -51,7 +51,7 @@ await loadGameServerStats();
 
         <Divider />
 
-        <div class="prose prose-invert text-center">
+        <div class="prose prose-invert mx-auto text-center">
           <i18n-t keypath="mainpage.intro" tag="p" scope="global">
             <template #link>
               <a
