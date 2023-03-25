@@ -42,6 +42,12 @@ const socialsLinks: SocialLink[] = [
     icon: 'steam',
     href: 'https://steamcommunity.com/sharedfiles/filedetails/?id=2878356589',
   },
+  {
+    id: 'github',
+    title: 'Github',
+    icon: 'github',
+    href: 'https://github.com/verdie-g/crpg',
+  },
 ];
 
 const links = computed(() =>
@@ -54,9 +60,7 @@ const patreonLink = computed(() => socialsLinks.find(l => l.id === 'patreon')!);
 <template>
   <div class="flex flex-wrap items-center gap-6">
     <template v-if="patreonExpanded">
-      <i18n-t keypath="patreon" scope="global" tag="p">
-        <template #br><br /></template>
-      </i18n-t>
+      <div v-html="$t('patreon')" />
 
       <OButton
         variant="secondary"
@@ -66,9 +70,8 @@ const patreonLink = computed(() => socialsLinks.find(l => l.id === 'patreon')!);
         :icon-left="patreonLink.icon"
         :href="patreonLink.href"
         target="_blank"
-      >
-        Patreon
-      </OButton>
+        label="Patreon"
+      />
 
       <div class="h-8 w-px select-none bg-border-200" />
     </template>
