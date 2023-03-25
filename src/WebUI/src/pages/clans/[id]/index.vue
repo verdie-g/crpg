@@ -50,6 +50,11 @@ const clanMemberCount = computed(() => clanMembers.value.length);
 const selfMember = computed(() => getClanMember(clanMembers.value, userStore.user!.id));
 const checkIsSelfMember = (member: ClanMember) => member.user.id === selfMember.value?.user.id;
 
+const searchModel = ref<string>('');
+const filteredClanMembers = computed(() =>
+  clanMembers.value.filter(member => member.user.name.includes(searchModel.value))
+);
+
 const canManageApplications = computed(() =>
   selfMember.value === null ? false : canManageApplicationsValidate(selfMember.value)
 );
@@ -301,7 +306,7 @@ await fetchPageData(clanId.value);
     <div class="container mt-20">
       <div class="mx-auto max-w-3xl">
         <OTable
-          :data="clanMembers"
+          :data="filteredClanMembers"
           :perPage="perPage"
           :hoverable="selfMember !== null && selfMember.role !== ClanMemberRole.Member"
           bordered
@@ -309,18 +314,31 @@ await fetchPageData(clanId.value);
           :paginated="clanMembers.length > perPage"
           @click="onOpenMemberDetail"
         >
-          <OTableColumn
-            #default="{ row: member }: { row: ClanMember }"
-            field="user.name"
-            :label="$t('clan.table.column.name')"
-          >
-            <UserMedia
-              :class="
-                member.role === ClanMemberRole.Leader ? 'text-more-support' : 'text-content-100'
-              "
-              :user="member.user"
-              :isSelf="checkIsSelfMember(member)"
-            />
+          <OTableColumn field="user.name">
+            <template #header>
+              <div class="w-44">
+                <OInput
+                  v-model="searchModel"
+                  type="text"
+                  expanded
+                  clearable
+                  :placeholder="$t('clan.table.column.name')"
+                  icon="search"
+                  rounded
+                  size="xs"
+                />
+              </div>
+            </template>
+
+            <template #default="{ row: member }: { row: ClanMember }">
+              <UserMedia
+                :class="
+                  member.role === ClanMemberRole.Leader ? 'text-more-support' : 'text-content-100'
+                "
+                :user="member.user"
+                :isSelf="checkIsSelfMember(member)"
+              />
+            </template>
           </OTableColumn>
 
           <OTableColumn
