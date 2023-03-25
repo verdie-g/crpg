@@ -520,6 +520,15 @@ export const aggregationsKeysByWeaponClass: Partial<Record<WeaponClass, Array<ke
     'price',
   ],
 
+  [WeaponClass.Javelin]: [
+    'flags',
+    'damage',
+    'missileSpeed',
+    'stackWeight',
+    'stackAmount',
+    'price',
+  ],
+
   [WeaponClass.ThrowingAxe]: [
     'flags',
     'damage',
