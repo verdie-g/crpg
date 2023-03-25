@@ -61,7 +61,7 @@ const speedStats = computed(() =>
     <div>{{ speedStats.weightReductionFactor }}</div>
     <div>{{ (1 - speedStats.weightReductionFactor) * 100 }}</div>
     -->
-    <span class="text-status-danger">
+    <span class="text-xs text-status-danger">
       {{ $n(1 - (speedStats.weightReductionFactor + 1), 'percent') }}
     </span>
   </SimpleTableRow>
@@ -118,16 +118,15 @@ const speedStats = computed(() =>
       description: $t('character.stats.movementSpeedPenaltyWhenAttacking.desc'),
     }"
   >
-    <!--
-    <div>
-      {{ speedStats.movementSpeedPenaltyWhenAttacking }}
-    </div>
-    <div>
-      {{ speedStats.movementSpeedPenaltyWhenAttacking / 100 }}
-    </div>
-    -->
-    <span :class="{ 'text-status-danger': speedStats.movementSpeedPenaltyWhenAttacking !== 0 }">
+    <div
+      class="text-xs"
+      :class="[
+        speedStats.movementSpeedPenaltyWhenAttacking !== 0
+          ? 'text-status-danger'
+          : 'text-content-100',
+      ]"
+    >
       {{ $n(speedStats.movementSpeedPenaltyWhenAttacking / 100, 'percent') }}
-    </span>
+    </div>
   </SimpleTableRow>
 </template>

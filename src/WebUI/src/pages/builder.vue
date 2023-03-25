@@ -406,9 +406,9 @@ const onShare = () => {
                 v-model="weight"
                 type="number"
                 size="xs"
+                class="w-16 text-right"
                 :min="0"
                 :max="100"
-                class="text-right"
               />
             </SimpleTableRow>
 
@@ -423,9 +423,9 @@ const onShare = () => {
                 v-model="weaponLength"
                 type="number"
                 size="xs"
+                class="w-16 text-right"
                 :min="0"
-                :max="100"
-                class="text-right"
+                :max="500"
               />
             </SimpleTableRow>
 
