@@ -34,7 +34,7 @@ const speedStats = computed(() =>
   <SimpleTableRow
     v-if="!hiddenRows.includes('weight')"
     :label="$t('character.stats.weight.title')"
-    :value="$n(weight)"
+    :value="$n(weight, 'decimal')"
   />
 
   <SimpleTableRow
