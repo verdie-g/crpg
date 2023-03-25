@@ -361,6 +361,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
 
   [ItemType.Crossbow]: [
     'flags',
+    'weight',
     'damage',
     'accuracy',
     'missileSpeed',
@@ -371,6 +372,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
   ],
   [ItemType.Bow]: [
     'flags',
+    'weight',
     'damage',
     'accuracy',
     'missileSpeed',
@@ -450,6 +452,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
   // banners are all the same, no need for aggregation
   [ItemType.Banner]: [
     'flags',
+    'weight',
     'culture',
     'price',
   ],
