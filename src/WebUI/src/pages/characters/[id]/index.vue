@@ -169,7 +169,10 @@ await fetchPageData(character.value.id);
                 }
           "
         >
-          <div class="flex gap-1.5" :class="{ 'text-status-warning': character.forTournament }">
+          <div
+            class="flex gap-1.5"
+            :class="[character.forTournament ? 'text-status-warning' : 'text-content-100']"
+          >
             {{ character.level }}
             <OIcon v-if="character.forTournament" icon="lock" size="sm" />
           </div>

@@ -18,11 +18,9 @@ const props = defineProps<{
         {{ label }}
       </div>
 
-      <div class="text-right text-xs text-content-100">
-        <slot v-if="$slots.default" />
-        <template v-else>
-          {{ value }}
-        </template>
+      <slot v-if="$slots.default" />
+      <div v-else class="text-right text-xs text-content-100">
+        {{ value }}
       </div>
 
       <slot name="message" />
