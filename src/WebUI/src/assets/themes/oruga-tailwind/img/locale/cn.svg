@@ -1,11 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="900" height="600" viewBox="0 0 30 20">
-  <defs>
-    <path id="s" d="M0,-1 0.587785,0.809017 -0.951057,-0.309017H0.951057L-0.587785,0.809017z" fill="#FFFF00"/>
-  </defs>
-  <rect width="30" height="20" fill="#EE1C25"/>
-  <use xlink:href="#s" transform="translate(5,5) scale(3)"/>
-  <use xlink:href="#s" transform="translate(10,2) rotate(23.036243)"/>
-  <use xlink:href="#s" transform="translate(12,4) rotate(45.869898)"/>
-  <use xlink:href="#s" transform="translate(12,7) rotate(69.945396)"/>
-  <use xlink:href="#s" transform="translate(10,9) rotate(20.659808)"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18"><path fill="#EE1C25" d="M1 3h16v12H1V3Z"/><path fill="#FF0" d="m3.667 4.067.94 2.894-2.463-1.789H5.19l-2.464 1.79.94-2.895ZM6.542 3.576l-.089 1.01-.522-.87.934.398-.99.227.667-.765ZM7.783 4.762l-.474.897-.144-1.005.707.73-1-.175.91-.447ZM7.901 6.55l-.799.626.279-.976.348.954-.842-.567 1.014-.036ZM6.521 7.301l-.046 1.013-.559-.847.95.358-.978.268.633-.792Z"/></svg>
