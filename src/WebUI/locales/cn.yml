@@ -388,6 +388,10 @@ character:
       title: 平均维修成本
       desc: ''
 
+  highUpkeepWarning:
+    title: 你无法承担你目前的维护费用！你必须要有足够的资金！
+    desc: <p>如果你在回合结束时不能支付维持费，你的物品将被打破</p><p>你可以在你的库存中付费修理你的物品</p>
+
   inventory:
     empty: 背包空空如也...
     total:
@@ -458,6 +462,8 @@ shop:
       desc: 该武器有多种使用模式
       secondary: '当前模式 (次要)：{weaponClass}'
       primary: '主要模式：{weaponClass}'
+    expensive: 你负担不起这个项目的维护费用
+
   filter:
     reset: 重置过滤器
   pagination:

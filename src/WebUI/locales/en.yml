@@ -388,6 +388,10 @@ character:
       title: Avg repair cost
       desc: ''
 
+  highUpkeepWarning:
+    title: You cannot afford your current upkeep!
+    desc: <p>If you cannot pay upkeep at the end of the round your items will be break</p><p>You can repair your items for a fee in your inventory</p>
+
   inventory:
     empty: The inventory is empty..
     total:
@@ -417,6 +421,7 @@ character:
           title: Repair for {price}
         notify:
           success: The item was successfully repaired
+
 
   doll:
     slot:
@@ -466,6 +471,7 @@ shop:
       desc: This weapon has several modes of use
       secondary: 'Current mode (secondary): {weaponClass}'
       primary: 'Primary mode: {weaponClass}'
+    expensive: You can't afford the upkeep of this item
   filter:
     reset: Reset filter
   pagination:
