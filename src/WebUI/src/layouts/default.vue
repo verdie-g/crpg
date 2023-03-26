@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useTransition } from '@vueuse/core';
 import { useElementSize } from '@vueuse/core';
 import VueCountdown from '@chenfengyuan/vue-countdown';
 import { routes } from 'vue-router/auto/routes';
@@ -19,7 +20,7 @@ import { scrollToTop } from '@/utils/scroll';
 const userStore = useUserStore();
 const route = useRoute();
 
-const { mainNavigation } = useNavigation(routes, userStore.user?.role!);
+const { mainNavigation } = useNavigation(routes, userStore.user!.role);
 
 const { state: joinRestrictionRemainingDuration, execute: loadJoinRestriction } = useAsyncState(
   () => getUserActiveJoinRestriction(userStore.user!.id),
@@ -39,6 +40,8 @@ const {
 } = useHappyHours();
 
 const { gameServerStats, loadGameServerStats } = useGameServerStats();
+
+const animatedUserGold = useTransition(computed(() => userStore.user!.gold));
 
 const promises: any = [loadGameServerStats(), loadJoinRestriction()];
 
@@ -118,6 +121,7 @@ await userStore.getUserClanMember(); // TODO: get the clan role in the query `us
               >
                 <OIcon icon="gift" size="sm" />
                 <VueCountdown
+                  class="w-24"
                   :time="HHEventRemaining"
                   :transform="transformSlotProps"
                   v-slot="{ hours, minutes, seconds }"
@@ -132,7 +136,10 @@ await userStore.getUserClanMember(); // TODO: get the clan role in the query `us
         </div>
 
         <div v-if="userStore.user" class="gap flex items-center gap-5">
-          <Coin :value="userStore.user.gold" v-tooltip.bottom="$t('user.field.gold')" />
+          <Coin
+            :value="Number(animatedUserGold.toFixed(0))"
+            v-tooltip.bottom="$t('user.field.gold')"
+          />
 
           <!-- TODO: to divider -->
           <div class="h-8 w-px select-none bg-border-200" />

@@ -656,10 +656,14 @@ findUser:
           label: ID пользователя
           placeholder: ID пользователя
 
+onlinePlayers:
+  format: '{count} онлайн'
+  tooltip:
+    title: Игроки онлайн
+
 mainpage:
   intro: cRPG - это мод для {link}
   description: Он добавляет постоянство в многопользовательскую игру. Вы начинаете как крестьянин и будете развивать своего уникального персонажа с различными статами и предметами.
-  online: '{count} online'
   login: Войти с помощью Steam
   download: Скачать
 

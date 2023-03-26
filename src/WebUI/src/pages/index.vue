@@ -69,8 +69,8 @@ await loadGameServerStats();
           </p>
         </div>
 
-        <div v-if="gameServerStats !== null" class="flex justify-center">
-          <OnlinePlayers :gameServerStats="gameServerStats" />
+        <div class="flex justify-center">
+          <OnlinePlayers :gameServerStats="gameServerStats" showLabel />
         </div>
 
         <div class="flex justify-center gap-4">
