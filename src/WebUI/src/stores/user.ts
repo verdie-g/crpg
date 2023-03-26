@@ -9,6 +9,7 @@ import { getClanMembers, getClanMember } from '@/services/clan-service';
 interface State {
   user: User | null;
   characters: Character[];
+  charactersOnceFetched: boolean;
   userItems: UserItem[];
   clan: Clan | null;
   clanMember: ClanMember | null;
@@ -18,13 +19,25 @@ export const useUserStore = defineStore('user', {
   state: (): State => ({
     user: null,
     characters: [],
+    charactersOnceFetched: false,
     userItems: [],
     clan: null,
     clanMember: null,
   }),
 
   getters: {
-    activeCharacterId: state => state.user?.activeCharacterId || state.characters?.[0]?.id || null,
+    activeCharacterId: state => {
+      if (state.characters.length === 0) return null;
+
+      if (
+        state.user?.activeCharacterId !== null &&
+        state.characters.some(c => c.id === state.user!.activeCharacterId)
+      ) {
+        return state.user!.activeCharacterId;
+      }
+
+      return state.characters[0].id;
+    },
   },
 
   actions: {
@@ -46,6 +59,10 @@ export const useUserStore = defineStore('user', {
 
     async fetchCharacters() {
       this.characters = await getCharacters();
+
+      if (!this.charactersOnceFetched) {
+        this.charactersOnceFetched = true;
+      }
     },
 
     async fetchUserItems() {

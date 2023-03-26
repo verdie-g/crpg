@@ -58,7 +58,7 @@ const onCreateNewCharacter = async () => {
   shownCreateCharacterGuideModal.value = true;
 };
 
-if (userStore.characters.length === 0) {
+if (!userStore.charactersOnceFetched) {
   await userStore.fetchCharacters();
 }
 </script>

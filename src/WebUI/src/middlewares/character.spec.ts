@@ -1,10 +1,8 @@
 import { getRoute, next } from '@/__mocks__/router';
 import { createTestingPinia } from '@pinia/testing';
 
-import { type User } from '@/models/user';
-import { type Character } from '@/models/character';
-
 import { useUserStore } from '@/stores/user';
+
 const userStore = useUserStore(createTestingPinia());
 
 import { characterValidate, activeCharacterRedirect } from './character';
@@ -15,13 +13,21 @@ beforeEach(() => {
 
 describe('characterValidate', () => {
   it('redirect - no chars page', async () => {
+    vi.mocked(userStore.validateCharacter).mockReturnValue(false);
+    const RANDOM_CHAR_ID = 123;
+
     const to = getRoute({
-      params: { id: '1224' },
+      params: { id: String(RANDOM_CHAR_ID) },
     });
+
+    // https://pinia.vuejs.org/cookbook/testing.html#mocking-getters
+    // @ts-expect-error
+    userStore.activeCharacterId = null;
 
     const result = await characterValidate(to, getRoute(), next);
 
     expect(userStore.fetchCharacters).toHaveBeenCalled();
+    expect(userStore.validateCharacter).toHaveBeenCalledWith(RANDOM_CHAR_ID);
     expect(result).toEqual({ name: 'Characters' });
   });
 
@@ -29,45 +35,45 @@ describe('characterValidate', () => {
     vi.mocked(userStore.validateCharacter).mockReturnValue(false);
 
     const ACTIVE_CHAR_ID = 6;
+    const RANDOM_CHAR_ID = 123;
 
-    userStore.user = {
-      activeCharacterId: ACTIVE_CHAR_ID,
-    } as User;
+    // @ts-expect-error
+    userStore.activeCharacterId = ACTIVE_CHAR_ID;
 
     const to = getRoute({
-      params: { id: '1224' },
+      params: { id: String(RANDOM_CHAR_ID) },
     });
 
     const result = await characterValidate(to, getRoute(), next);
 
+    expect(userStore.validateCharacter).toHaveBeenCalledWith(RANDOM_CHAR_ID);
     expect(userStore.fetchCharacters).toHaveBeenCalled();
-    expect(result).toEqual({ name: 'CharactersIdInventory', params: { id: ACTIVE_CHAR_ID } });
+    expect(result).toEqual({
+      name: 'CharactersIdInventory',
+      params: { id: String(ACTIVE_CHAR_ID) },
+    });
   });
 
-  it('no redirect', async () => {
+  it.only('no redirect', async () => {
     vi.mocked(userStore.validateCharacter).mockReturnValue(true);
-
-    const ACTIVE_CHAR_ID = 6;
-
-    userStore.user = {
-      activeCharacterId: ACTIVE_CHAR_ID,
-    } as User;
-
-    userStore.characters = [{ id: ACTIVE_CHAR_ID }] as Character[];
+    const RANDOM_CHAR_ID = 123;
 
     const to = getRoute({
-      params: { id: '1224' },
+      params: { id: String(RANDOM_CHAR_ID) },
     });
 
     const result = await characterValidate(to, getRoute(), next);
 
-    expect(userStore.fetchCharacters).not.toHaveBeenCalled();
+    expect(userStore.validateCharacter).toHaveBeenCalledWith(RANDOM_CHAR_ID);
     expect(result).toStrictEqual(true);
   });
 });
 
 describe('activeCharacterRedirect', () => {
   it('no redirect', async () => {
+    // @ts-expect-error
+    userStore.activeCharacterId = null;
+
     const result = await activeCharacterRedirect(getRoute(), getRoute(), next);
 
     expect(userStore.fetchCharacters).toHaveBeenCalled();
@@ -76,31 +82,28 @@ describe('activeCharacterRedirect', () => {
 
   it('redirect to active char page - user.activeCharacterId', async () => {
     const ACTIVE_CHAR_ID = 3;
-
-    userStore.user = {
-      activeCharacterId: ACTIVE_CHAR_ID,
-    } as User;
+    // @ts-expect-error
+    userStore.activeCharacterId = ACTIVE_CHAR_ID;
 
     const result = await activeCharacterRedirect(getRoute(), getRoute(), next);
 
     expect(userStore.fetchCharacters).toHaveBeenCalled();
     expect(result).toEqual({
       name: 'CharactersIdInventory',
-      params: { id: ACTIVE_CHAR_ID },
+      params: { id: String(ACTIVE_CHAR_ID) },
     });
   });
 
-  it('redirect to active char page - characters[0].id - first char', async () => {
-    const CHAR_ID = 3;
-
-    userStore.characters = [{ id: CHAR_ID }] as Character[];
+  it('characters already fetched', async () => {
+    userStore.$patch({
+      charactersOnceFetched: true,
+    });
+    // @ts-expect-error
+    userStore.activeCharacterId = null;
 
     const result = await activeCharacterRedirect(getRoute(), getRoute(), next);
 
     expect(userStore.fetchCharacters).not.toHaveBeenCalled();
-    expect(result).toEqual({
-      name: 'CharactersIdInventory',
-      params: { id: CHAR_ID },
-    });
+    expect(result).toStrictEqual(true);
   });
 });

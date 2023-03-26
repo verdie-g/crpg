@@ -4,12 +4,13 @@ import { useUserStore } from '@/stores/user';
 export const characterValidate: NavigationGuard = async to => {
   const userStore = useUserStore();
 
-  if (userStore.characters.length === 0) {
+  if (!userStore.charactersOnceFetched) {
     await userStore.fetchCharacters();
   }
 
   if (!userStore.validateCharacter(Number(to.params!.id as string))) {
-    if (userStore.activeCharacterId) {
+    // redirect to active char
+    if (userStore.activeCharacterId !== null) {
       return {
         name: 'CharactersIdInventory',
         params: { id: String(userStore.activeCharacterId) },
@@ -25,11 +26,11 @@ export const characterValidate: NavigationGuard = async to => {
 export const activeCharacterRedirect: NavigationGuard = async _to => {
   const userStore = useUserStore();
 
-  if (userStore.characters.length === 0) {
+  if (!userStore.charactersOnceFetched) {
     await userStore.fetchCharacters();
   }
 
-  if (userStore.activeCharacterId) {
+  if (userStore.activeCharacterId !== null) {
     return {
       name: 'CharactersIdInventory',
       params: { id: String(userStore.activeCharacterId) },

@@ -62,7 +62,7 @@ describe('userStore', () => {
     });
 
     it('characters[0].id', () => {
-      store.$patch({ characters: [{ id: 1 }, { id: 112 }] });
+      store.$patch({ user: { activeCharacterId: null }, characters: [{ id: 1 }, { id: 112 }] });
 
       expect(store.activeCharacterId).toEqual(1);
     });
@@ -80,9 +80,12 @@ describe('userStore', () => {
     });
 
     it('fetchCharacters', async () => {
+      expect(store.charactersOnceFetched).toBeFalsy();
+
       await store.fetchCharacters();
 
       expect(store.characters).toEqual(mockCharacters);
+      expect(store.charactersOnceFetched).toBeTruthy();
     });
 
     it('validateCharacter', () => {
