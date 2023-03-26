@@ -4,6 +4,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <RootNamespace>Crpg.WebApi</RootNamespace>
     <AssemblyName>Crpg.WebApi</AssemblyName>
+    <UserSecretsId>35196f32-3a01-482b-a491-c50d5e80df42</UserSecretsId>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>1591;1701;1702</NoWarn>
   </PropertyGroup>

@@ -238,7 +238,7 @@ static void ConfigureJwtBearer(JwtBearerOptions options, IConfiguration configur
 
 static void ConfigureSteamAuthentication(SteamAuthenticationOptions options, IConfiguration configuration)
 {
-    options.ApplicationKey = configuration["IdentityServer:Providers:Steam:ApplicationKey"];
+    options.ApplicationKey = configuration["Steam:ApiKey"];
     options.Events.OnAuthenticated = OnSteamUserAuthenticated;
 }
 
