@@ -1,6 +1,7 @@
 locale:
   en: English
   ru: Russian
+  cn: Chinese
 
 dateTime:
   days:
