@@ -94,12 +94,9 @@ const loadCharactersSymbol = Symbol('fetchCharacters');
 const loadUserItemsSymbol = Symbol('fetchUserItems');
 
 onMounted(() => {
-  subscribe({ id: loadCharactersSymbol, fn: userStore.fetchCharacters });
-  subscribe({
-    id: loadCharacterItemsSymbol,
-    fn: () => loadCharacterItems(0, { id: character.value.id }),
-  });
-  subscribe({ id: loadUserItemsSymbol, fn: userStore.fetchUserItems });
+  subscribe(loadCharactersSymbol, userStore.fetchCharacters);
+  subscribe(loadCharacterItemsSymbol, () => loadCharacterItems(0, { id: character.value.id }));
+  subscribe(loadUserItemsSymbol, userStore.fetchUserItems);
 });
 
 onBeforeUnmount(() => {
@@ -122,10 +119,7 @@ onBeforeRouteUpdate(async (to, from) => {
     const characterId = Number((to as RouteLocationNormalized<'CharactersId'>).params.id as string);
     await fetchPageData(characterId);
 
-    subscribe({
-      id: loadCharacterItemsSymbol,
-      fn: () => loadCharacterItems(0, { id: characterId }),
-    });
+    subscribe(loadCharacterItemsSymbol, () => loadCharacterItems(0, { id: characterId }));
   }
 
   return true;
