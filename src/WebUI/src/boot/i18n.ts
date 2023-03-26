@@ -63,6 +63,22 @@ export const i18n = createI18n({
         maximumFractionDigits: 3,
       },
     },
+    cn: {
+      second: {
+        style: 'unit',
+        unit: 'second',
+        unitDisplay: 'narrow',
+        maximumFractionDigits: 3,
+      },
+      percent: {
+        style: 'percent',
+        minimumFractionDigits: 2,
+      },
+      decimal: {
+        style: 'decimal',
+        maximumFractionDigits: 3,
+      },
+    },
   },
   datetimeFormats: {
     en: {
@@ -83,6 +99,23 @@ export const i18n = createI18n({
       },
     },
     ru: {
+      time: {
+        hour: 'numeric',
+        minute: 'numeric',
+      },
+      short: {
+        dateStyle: 'short',
+      },
+      long: {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        weekday: 'short',
+        hour: 'numeric',
+        minute: 'numeric',
+      },
+    },
+    cn: {
       time: {
         hour: 'numeric',
         minute: 'numeric',
