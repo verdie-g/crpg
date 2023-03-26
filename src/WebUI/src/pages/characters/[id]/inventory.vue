@@ -6,7 +6,7 @@ import type { EquippedItemId } from '@/models/character';
 import { type ItemFlat, ItemType, WeaponClass } from '@/models/item';
 import { AggregationConfig, AggregationView, SortingConfig } from '@/models/item-search';
 import { extractItemFromUserItem } from '@/services/users-service';
-import { updateCharacterItems } from '@/services/characters-service';
+import { updateCharacterItems, checkUpkeepIsHigh } from '@/services/characters-service';
 import { useUserStore } from '@/stores/user';
 import { sellUserItem, upgradeUserItem } from '@/services/users-service';
 import { getCompareItemsResult } from '@/services/item-service';
@@ -25,7 +25,6 @@ import {
   characterItemsStatsKey,
   equippedItemsBySlotKey,
 } from '@/symbols/character';
-
 import { mainHeaderHeightKey } from '@/symbols/common';
 
 definePage({
@@ -36,6 +35,8 @@ definePage({
   },
 });
 
+const userStore = useUserStore();
+
 const character = injectStrict(characterKey);
 const { characterCharacteristics } = injectStrict(characterCharacteristicsKey);
 const healthPoints = injectStrict(characterHealthPointsKey);
@@ -43,8 +44,9 @@ const { characterItems, loadCharacterItems } = injectStrict(characterItemsKey);
 const itemsStats = injectStrict(characterItemsStatsKey);
 const mainHeaderHeight = injectStrict(mainHeaderHeightKey);
 
-const userStore = useUserStore();
-
+const upkeepIsHigh = computed(() =>
+  checkUpkeepIsHigh(userStore.user!.gold, itemsStats.value.averageRepairCostByHour)
+);
 const equippedItemsIds = computed(() => characterItems.value.map(ei => ei.userItem.id));
 
 const changeEquippedItems = async (items: EquippedItemId[]) => {
@@ -328,16 +330,31 @@ await userStore.fetchUserItems();
       :style="{ top: `${mainHeaderHeight + 16}px` }"
     >
       <SimpleTableRow :label="$t('character.stats.price.title')">
-        <div class="inline-flex gap-1.5 align-middle font-bold text-primary">
+        <div class="inline-flex gap-1.5 align-middle">
           <SvgSpriteImg name="coin" viewBox="0 0 18 18" class="w-4" />
-          {{ $n(itemsStats.price) }}
+          <span class="text-xs font-bold text-primary">{{ $n(itemsStats.price) }}</span>
         </div>
       </SimpleTableRow>
 
       <SimpleTableRow :label="$t('character.stats.avgRepairCost.title')">
-        <div class="inline-flex gap-1.5 align-middle font-bold text-primary">
+        <div class="inline-flex gap-1.5 align-middle">
           <SvgSpriteImg name="coin" viewBox="0 0 18 18" class="w-4" />
-          {{ $n(itemsStats.averageRepairCostByHour) }} / {{ $t('dateTime.hours.short') }}
+          <ClosableTooltip :disabled="!upkeepIsHigh" shown placement="top">
+            <span
+              class="text-xs font-bold"
+              :class="[upkeepIsHigh ? 'text-status-danger' : 'text-primaryr']"
+            >
+              {{ $n(itemsStats.averageRepairCostByHour) }} / {{ $t('dateTime.hours.short') }}
+            </span>
+            <template #popper>
+              <div class="prose prose-invert">
+                <h4 class="text-content-100">
+                  {{ $t('character.highUpkeepWarning.title') }}
+                </h4>
+                <div v-html="$t('character.highUpkeepWarning.desc')"></div>
+              </div>
+            </template>
+          </ClosableTooltip>
         </div>
       </SimpleTableRow>
 

@@ -25,6 +25,7 @@ declare module '@vue/runtime-core' {
     ClanMemberDetail: typeof import('./../components/clan/ClanMemberDetail.vue')['default']
     ClanRoleIcon: typeof import('./../components/clan/ClanRoleIcon.vue')['default']
     ClanTagIcon: typeof import('./../components/clan/ClanTagIcon.vue')['default']
+    ClosableTooltip: typeof import('./../components/ui/ClosableTooltip.vue')['default']
     Coin: typeof import('./../components/app/Coin.vue')['default']
     ConfirmActionForm: typeof import('./../components/app/ConfirmActionForm.vue')['default']
     ConfirmActionTooltip: typeof import('./../components/app/ConfirmActionTooltip.vue')['default']

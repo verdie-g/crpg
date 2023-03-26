@@ -113,8 +113,8 @@ export const getExperienceForLevel = (level: number): number => {
   if (level <= 30) {
     const experienceForLevel30 = 4420824;
     return Math.trunc(
-      experienceForLevel30 *
-        computeExperienceDistribution(level) / computeExperienceDistribution(30)
+      (experienceForLevel30 * computeExperienceDistribution(level)) /
+        computeExperienceDistribution(30)
     );
   }
 
@@ -357,8 +357,6 @@ export const getRespecCapability = (
   };
 };
 
-// export const computeRespecCapability
-
 export const getCharacterSLotsSchema = (): {
   key: ItemSlot;
   placeholderIcon: string;
@@ -473,4 +471,9 @@ export const getOverallArmorValueBySlot = (
   };
 
   return slot in itemSlotToArmorValue ? itemSlotToArmorValue[slot] : undefined;
+};
+
+// TODO: SPEC, more complicated logic?
+export const checkUpkeepIsHigh = (userGold: number, upkeepPerHour: number) => {
+  return userGold < upkeepPerHour;
 };
