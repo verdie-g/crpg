@@ -658,10 +658,15 @@ findUser:
           label: User platform ID
           placeholder: Platform-specific User ID
 
+
+onlinePlayers:
+  format: '{count} online'
+  tooltip:
+    title: Players online
+
 mainpage:
   intro: cRPG is a mod for {link}
   description: It adds persistence to the multiplayer. You start as a peasant and you'll develop your unique character with different stats and items.
-  online: '{count} online'
   login: Sign in with Steam
   download: Download
 

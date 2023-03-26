@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useTransition } from '@vueuse/core';
 import { type RouteLocationNormalized } from 'vue-router/auto';
 import {
   experienceMultiplierByGeneration,
@@ -42,6 +43,7 @@ const userStore = useUserStore();
 
 const character = injectStrict(characterKey);
 const { loadCharacterCharacteristics } = injectStrict(characterCharacteristicsKey);
+const animatedCharacterExperience = useTransition(computed(() => character.value.experience));
 
 const currentLevelExperience = computed(() => getExperienceForLevel(character.value.level));
 const nextLevelExperience = computed(() => getExperienceForLevel(character.value.level + 1));
@@ -215,7 +217,7 @@ await fetchPageData(character.value.id);
               <VueSlider
                 :key="currentLevelExperience"
                 class="!cursor-default !opacity-100"
-                :modelValue="character.experience"
+                :modelValue="Number(animatedCharacterExperience.toFixed(0))"
                 disabled
                 tooltip="always"
                 :min="currentLevelExperience"
