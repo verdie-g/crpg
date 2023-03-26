@@ -156,8 +156,7 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
                     .InitialDirection(in initialDirection)
                     .IsFemale(character.IsFemale)
                     .ClothingColor1(team.Side == BattleSideEnum.Attacker ? teamCulture.Color : teamCulture.ClothAlternativeColor)
-                    .ClothingColor2(team.Side == BattleSideEnum.Attacker ? teamCulture.Color2 : teamCulture.ClothAlternativeColor2)
-                    .NoHorses(true); // Bots with horses are just running around most of the time.
+                    .ClothingColor2(team.Side == BattleSideEnum.Attacker ? teamCulture.Color2 : teamCulture.ClothAlternativeColor2);
 
                 var bodyProperties = BodyProperties.GetRandomBodyProperties(
                     character.Race,

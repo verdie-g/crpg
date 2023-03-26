@@ -47,4 +47,220 @@
       </Perk>
     </Perks>
   </MPClassDivision>
+
+  <MPClassDivision id="crpg_bot_strengthiuscrutchius"
+                   hero="crpg_bot_strengthiuscrutchius"
+                   troop="crpg_bot_strengthiuscrutchius"
+                   hero_idle_anim="act_vlandia_mp_voulgier_idle"
+                   troop_idle_anim="act_idle_spear_1_left_stance"
+                   multiplier="0"
+                   cost="0"
+                   icon="Special_Swordsman"
+                   melee_ai="40"
+                   ranged_ai="0"
+                   armor="0"
+                   movement_speed="0"
+                   combat_movement_speed="0"
+                   acceleration="0">
+    <Perks>
+      <Perk game_mode="all"
+            name="{=}None"
+            description="{=}None."
+            icon="PerkToughness"
+            perk_list="1">
+      </Perk>
+    </Perks>
+  </MPClassDivision>
+
+  <MPClassDivision id="crpg_bot_pantlesspete"
+                   hero="crpg_bot_pantlesspete"
+                   troop="crpg_bot_pantlesspete"
+                   hero_idle_anim="act_vlandia_mp_voulgier_idle"
+                   troop_idle_anim="act_idle_spear_1_left_stance"
+                   multiplier="0"
+                   cost="0"
+                   icon="Special_Axeman"
+                   melee_ai="50"
+                   ranged_ai="0"
+                   armor="0"
+                   movement_speed="0"
+                   combat_movement_speed="0"
+                   acceleration="0">
+    <Perks>
+      <Perk game_mode="all"
+            name="{=}None"
+            description="{=}None."
+            icon="PerkToughness"
+            perk_list="1">
+      </Perk>
+    </Perks>
+  </MPClassDivision>
+
+  <MPClassDivision id="crpg_bot_herbertknechtmann"
+                   hero="crpg_bot_herbertknechtmann"
+                   troop="crpg_bot_herbertknechtmann"
+                   hero_idle_anim="act_battania_mp_ranger_idle"
+                   troop_idle_anim="act_idle_bow_1"
+                   multiplier="0"
+                   cost="0"
+                   icon="Archer_Heavy"
+                   melee_ai="40"
+                   ranged_ai="50"
+                   armor="0"
+                   movement_speed="0"
+                   combat_movement_speed="0"
+                   acceleration="0">
+    <Perks>
+      <Perk game_mode="all"
+            name="{=}None"
+            description="{=}None."
+            icon="PerkToughness"
+            perk_list="1">
+      </Perk>
+    </Perks>
+  </MPClassDivision>
+
+  <MPClassDivision id="crpg_bot_lepesante"
+                   hero="crpg_bot_lepesante"
+                   troop="crpg_bot_lepesante"
+                   hero_mount_idle_anim="act_vlandia_mp_vanguard_mount_idle"
+                   troop_mount_idle_anim="act_horse_idle_1"
+                   multiplier="0"
+                   cost="0"
+                   icon="Cavalry_Light"
+                   melee_ai="50"
+                   ranged_ai="50"
+                   armor="0"
+                   movement_speed="0"
+                   combat_movement_speed="0"
+                   acceleration="0">
+    <Perks>
+      <Perk game_mode="all"
+            name="{=}None"
+            description="{=}None."
+            icon="PerkToughness"
+            perk_list="1">
+      </Perk>
+    </Perks>
+  </MPClassDivision>
+
+  <MPClassDivision id="crpg_bot_angusmcdoogal"
+                   hero="crpg_bot_angusmcdoogal"
+                   troop="crpg_bot_angusmcdoogal"
+                   hero_idle_anim="act_vlandia_mp_voulgier_idle"
+                   troop_idle_anim="act_idle_spear_1_left_stance"
+                   multiplier="0"
+                   cost="0"
+                   icon="Special_Swordsman"
+                   melee_ai="50"
+                   ranged_ai="0"
+                   armor="0"
+                   movement_speed="0"
+                   combat_movement_speed="0"
+                   acceleration="0">
+    <Perks>
+      <Perk game_mode="all"
+            name="{=}None"
+            description="{=}None."
+            icon="PerkToughness"
+            perk_list="1">
+      </Perk>
+    </Perks>
+  </MPClassDivision>
+
+  <MPClassDivision id="crpg_bot_theflash"
+                   hero="crpg_bot_theflash"
+                   troop="crpg_bot_theflash"
+                   hero_idle_anim="act_vlandia_mp_voulgier_idle"
+                   troop_idle_anim="act_idle_spear_1_left_stance"
+                   multiplier="0"
+                   cost="0"
+                   icon="Infantry_Light"
+                   melee_ai="50"
+                   ranged_ai="0"
+                   armor="0"
+                   movement_speed="0"
+                   combat_movement_speed="0"
+                   acceleration="0">
+    <Perks>
+      <Perk game_mode="all"
+            name="{=}None"
+            description="{=}None."
+            icon="PerkToughness"
+            perk_list="1">
+      </Perk>
+    </Perks>
+  </MPClassDivision>
+
+  <MPClassDivision id="crpg_bot_takeo"
+                   hero="crpg_bot_takeo"
+                   troop="crpg_bot_takeo"
+                   hero_idle_anim="act_vlandia_mp_voulgier_idle"
+                   troop_idle_anim="act_idle_spear_1_left_stance"
+                   multiplier="0"
+                   cost="0"
+                   icon="Special_Swordsman"
+                   melee_ai="50"
+                   ranged_ai="0"
+                   armor="0"
+                   movement_speed="0"
+                   combat_movement_speed="0"
+                   acceleration="0">
+    <Perks>
+      <Perk game_mode="all"
+            name="{=}None"
+            description="{=}None."
+            icon="PerkToughness"
+            perk_list="1">
+      </Perk>
+    </Perks>
+  </MPClassDivision>
+
+  <MPClassDivision id="crpg_bot_vietgnome"
+                   hero="crpg_bot_vietgnome"
+                   troop="crpg_bot_vietgnome"
+                   hero_idle_anim="act_vlandia_mp_sharpshooter_idle"
+                   troop_idle_anim="act_idle_1h_with_shield_1_left_stance"
+                   multiplier="0"
+                   cost="0"
+                   icon="Crossbowman_Light"
+                   melee_ai="50"
+                   ranged_ai="50"
+                   armor="0"
+                   movement_speed="0"
+                   combat_movement_speed="0"
+                   acceleration="0">
+    <Perks>
+      <Perk game_mode="all"
+            name="{=}None"
+            description="{=}None."
+            icon="PerkToughness"
+            perk_list="1">
+      </Perk>
+    </Perks>
+  </MPClassDivision>
+
+  <MPClassDivision id="crpg_bot_jason"
+                   hero="crpg_bot_jason"
+                   troop="crpg_bot_jason"
+                   hero_idle_anim="act_vlandia_mp_voulgier_idle"
+                   troop_idle_anim="act_idle_spear_1_left_stance"
+                   multiplier="0"
+                   cost="0"
+                   icon="Special_Axeman"
+                   melee_ai="50"
+                   ranged_ai="0"
+                   armor="0"
+                   movement_speed="0"
+                   combat_movement_speed="0"
+                   acceleration="0">
+    <Perks>
+      <Perk game_mode="all"
+            name="{=}None"
+            description="{=}None."
+            icon="PerkToughness"
+            perk_list="1">
+      </Perk>
+    </Perks>
+  </MPClassDivision>
 </MPClassDivisions>

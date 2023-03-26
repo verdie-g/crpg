@@ -128,7 +128,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
     /// <summary>AI difficulty.</summary>
     public override float GetDifficultyModifier()
     {
-        return 0.5f; // Same value as MultiplayerAgentStatCalculateModel.
+        return 1f;
     }
 
     public override bool CanAgentRideMount(Agent agent, Agent targetMount)
