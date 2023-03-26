@@ -30,7 +30,7 @@ export const useGameServerStats = () => {
   const { subscribe, unsubscribe } = usePollInterval();
   const id = Symbol('loadGameServerStats');
   onMounted(() => {
-    subscribe({ id, fn: loadGameServerStats });
+    subscribe(id, loadGameServerStats);
   });
   onBeforeUnmount(() => {
     unsubscribe(id);

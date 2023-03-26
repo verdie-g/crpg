@@ -1,25 +1,23 @@
-interface Subscription {
-  id: symbol;
-  fn: () => Promise<any> | any;
-}
+type SubscriptionFn = () => Promise<any> | any;
+
+const INTERVAL = 1000 * 60 * 2; // 2 min
 
 // global state
-const subscriptions: Array<Subscription> = [];
-
-const INTERVAL = 1000 * 60 * 2; // 1 min
+const subscriptions = new Map<symbol, SubscriptionFn>();
 
 setInterval(() => {
-  subscriptions.forEach(({ fn }) => fn());
+  for (let fn of subscriptions.values()) {
+    fn();
+  }
 }, INTERVAL);
 
 export default () => {
-  const subscribe = (subscription: Subscription) => {
-    subscriptions.push(subscription);
+  const subscribe = (id: symbol, fn: SubscriptionFn) => {
+    subscriptions.set(id, fn);
   };
 
   const unsubscribe = (id: symbol) => {
-    const index = subscriptions.findIndex(el => el.id === id);
-    subscriptions.splice(index, 1);
+    subscriptions.delete(id);
   };
 
   return {

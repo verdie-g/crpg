@@ -56,7 +56,7 @@ provide(mainHeaderHeightKey, mainHeaderHeight);
 const { subscribe, unsubscribe } = usePollInterval();
 const id = Symbol('fetchUser');
 onMounted(() => {
-  subscribe({ id, fn: userStore.fetchUser });
+  subscribe(id, userStore.fetchUser);
 });
 onBeforeUnmount(() => {
   unsubscribe(id);
