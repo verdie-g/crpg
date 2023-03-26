@@ -662,7 +662,7 @@ mainpage:
   login: 使用Steam登录
   download: 下载
 
-patreon: 喜欢我们的项目吗？{br}您可以在{link}上支持我们
+patreon: <p>喜欢我们的项目吗</p><p>您可以在{link}上支持我们</p>
 
 hh:
   tooltip-trigger: '{region}的快乐时光:'
