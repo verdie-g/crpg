@@ -134,12 +134,6 @@
   @apply sticky top-0 left-0 z-50 bg-base-100;
 }
 
-/* Border conflict fix for sticky */
-.o-table__wrapper--sticky-header thead:before {
-  content: '';
-  @apply absolute inset-0 block w-full bg-base-100;
-}
-
 .o-table__wrapper--sticky-header th {
   @apply bg-base-100;
 }

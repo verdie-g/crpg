@@ -32,7 +32,7 @@ const emit = defineEmits<{
 
 <template>
   <div
-    class="group relative flex aspect-video items-center justify-center rounded-lg bg-base-200 p-1.5 ring"
+    class="group relative flex h-28 items-center justify-center rounded-lg bg-base-200 p-1.5 ring"
     :class="[
       [available ? 'ring-border-300' : 'ring-transparent hover:ring-border-200'],
       {
