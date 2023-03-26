@@ -13,13 +13,11 @@ internal interface IItemService
 
 internal class ItemService : IItemService
 {
-    private readonly IItemModifierService _itemModifierService;
     private readonly IDateTime _dateTime;
     private readonly Constants _constants;
 
-    public ItemService(IItemModifierService itemModifierService, IDateTime dateTime, Constants constants)
+    public ItemService(IDateTime dateTime, Constants constants)
     {
-        _itemModifierService = itemModifierService;
         _dateTime = dateTime;
         _constants = constants;
     }
@@ -27,7 +25,7 @@ internal class ItemService : IItemService
     /// <inheritdoc />
     public int SellUserItem(ICrpgDbContext db, UserItem userItem)
     {
-        int price = _itemModifierService.ModifyItem(userItem.BaseItem!, userItem.Rank).Price;
+        int price = userItem.BaseItem!.Price;
         // If the item was recently bought it is sold at 100% of its original price.
         int sellPrice = userItem.CreatedAt + TimeSpan.FromHours(1) < _dateTime.UtcNow
             ? (int)MathHelper.ApplyPolynomialFunction(price, _constants.ItemSellCostCoefs)

@@ -262,6 +262,32 @@ public class UpdateCharacterItemsCommandTest : TestBase
     }
 
     [Test]
+    public async Task ItemBroken()
+    {
+        UserItem userItem = new() { Rank = -1, BaseItem = new Item { Type = ItemType.HeadArmor, Enabled = true } };
+        Character character = new();
+        User user = new()
+        {
+            Characters = { character },
+            Items = { userItem },
+        };
+        ArrangeDb.Characters.Add(character);
+        ArrangeDb.Users.Add(user);
+        await ArrangeDb.SaveChangesAsync();
+
+        UpdateCharacterItemsCommand.Handler handler = new(ActDb, Mapper);
+        UpdateCharacterItemsCommand cmd = new()
+        {
+            CharacterId = character.Id,
+            UserId = user.Id,
+            Items = new List<EquippedItemIdViewModel> { new() { UserItemId = userItem.Id, Slot = ItemSlot.Head } },
+        };
+
+        var result = await handler.Handle(cmd, CancellationToken.None);
+        Assert.AreEqual(ErrorCode.ItemBroken, result.Errors![0].Code);
+    }
+
+    [Test]
     public async Task ItemNotOwned()
     {
         UserItem userItem = new() { BaseItem = new Item { Type = ItemType.HeadArmor, Enabled = true } };

@@ -1,5 +1,4 @@
 ﻿using Crpg.Application.Characters.Models;
-using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Games.Commands;
 using Crpg.Application.Games.Models;
@@ -18,8 +17,7 @@ public class UpdateGameUsersCommandTest : TestBase
     public void ShouldDoNothingForEmptyUpdates()
     {
         Mock<ICharacterService> characterServiceMock = new();
-        Mock<IItemService> itemServiceMock = new();
-        UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, itemServiceMock.Object);
+        UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object);
         Assert.DoesNotThrowAsync(() => handler.Handle(new UpdateGameUsersCommand(), CancellationToken.None));
     }
 
@@ -70,8 +68,7 @@ public class UpdateGameUsersCommandTest : TestBase
         characterServiceMock
             .Setup(cs => cs.GiveExperience(It.IsAny<Character>(), 10))
             .Callback((Character c, int xp) => c.Experience += xp);
-        Mock<IItemService> itemServiceMock = new();
-        UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, itemServiceMock.Object);
+        UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object);
         var result = await handler.Handle(new UpdateGameUsersCommand
         {
             Updates = new[]
@@ -91,12 +88,12 @@ public class UpdateGameUsersCommandTest : TestBase
                         Assists = 7,
                         PlayTime = TimeSpan.FromSeconds(8),
                     },
-                    // Rating = new CharacterRatingViewModel
-                    // {
-                    //     Value = 4,
-                    //     Deviation = 5,
-                    //     Volatility = 6,
-                    // },
+                    Rating = new CharacterRatingViewModel
+                    {
+                        Value = 4,
+                        Deviation = 5,
+                        Volatility = 6,
+                    },
                 },
             },
         }, CancellationToken.None);
@@ -120,9 +117,9 @@ public class UpdateGameUsersCommandTest : TestBase
         Assert.AreEqual(8, dbCharacter.Statistics.Deaths);
         Assert.AreEqual(10, dbCharacter.Statistics.Assists);
         Assert.AreEqual(TimeSpan.FromSeconds(12), dbCharacter.Statistics.PlayTime);
-        // Assert.AreEqual(4, dbCharacter.Rating.Value);
-        // Assert.AreEqual(5, dbCharacter.Rating.Deviation);
-        // Assert.AreEqual(6, dbCharacter.Rating.Volatility);
+        Assert.AreEqual(4, dbCharacter.Rating.Value);
+        Assert.AreEqual(5, dbCharacter.Rating.Deviation);
+        Assert.AreEqual(6, dbCharacter.Rating.Volatility);
 
         characterServiceMock.VerifyAll();
     }
@@ -160,8 +157,7 @@ public class UpdateGameUsersCommandTest : TestBase
         await ArrangeDb.SaveChangesAsync();
 
         Mock<ICharacterService> characterServiceMock = new();
-        Mock<IItemService> itemServiceMock = new();
-        UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, itemServiceMock.Object);
+        UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object);
         var result = await handler.Handle(new UpdateGameUsersCommand
         {
             Updates = new[]
@@ -171,18 +167,18 @@ public class UpdateGameUsersCommandTest : TestBase
                     CharacterId = user.Characters[0].Id,
                     BrokenItems = new[]
                     {
-                        new GameUserBrokenItem { UserItemId = user.Characters[0].EquippedItems[0].UserItemId, RepairCost = 100 },
-                        new GameUserBrokenItem { UserItemId = user.Characters[0].EquippedItems[1].UserItemId, RepairCost = 150 },
-                        new GameUserBrokenItem { UserItemId = user.Characters[0].EquippedItems[2].UserItemId, RepairCost = 200 },
-                        new GameUserBrokenItem { UserItemId = user.Characters[0].EquippedItems[3].UserItemId, RepairCost = 250 },
-                        new GameUserBrokenItem { UserItemId = user.Characters[0].EquippedItems[4].UserItemId, RepairCost = 300 },
-                        new GameUserBrokenItem { UserItemId = user.Characters[0].EquippedItems[5].UserItemId, RepairCost = 350 },
-                        new GameUserBrokenItem { UserItemId = user.Characters[0].EquippedItems[6].UserItemId, RepairCost = 400 },
-                        new GameUserBrokenItem { UserItemId = user.Characters[0].EquippedItems[7].UserItemId, RepairCost = 450 },
-                        new GameUserBrokenItem { UserItemId = user.Characters[0].EquippedItems[8].UserItemId, RepairCost = 500 },
-                        new GameUserBrokenItem { UserItemId = user.Characters[0].EquippedItems[9].UserItemId, RepairCost = 550 },
-                        new GameUserBrokenItem { UserItemId = user.Characters[0].EquippedItems[10].UserItemId, RepairCost = 600 },
-                        new GameUserBrokenItem { UserItemId = user.Characters[0].EquippedItems[11].UserItemId, RepairCost = 650 },
+                        new GameUserDamagedItem { UserItemId = user.Characters[0].EquippedItems[0].UserItemId, RepairCost = 100 },
+                        new GameUserDamagedItem { UserItemId = user.Characters[0].EquippedItems[1].UserItemId, RepairCost = 150 },
+                        new GameUserDamagedItem { UserItemId = user.Characters[0].EquippedItems[2].UserItemId, RepairCost = 200 },
+                        new GameUserDamagedItem { UserItemId = user.Characters[0].EquippedItems[3].UserItemId, RepairCost = 250 },
+                        new GameUserDamagedItem { UserItemId = user.Characters[0].EquippedItems[4].UserItemId, RepairCost = 300 },
+                        new GameUserDamagedItem { UserItemId = user.Characters[0].EquippedItems[5].UserItemId, RepairCost = 350 },
+                        new GameUserDamagedItem { UserItemId = user.Characters[0].EquippedItems[6].UserItemId, RepairCost = 400 },
+                        new GameUserDamagedItem { UserItemId = user.Characters[0].EquippedItems[7].UserItemId, RepairCost = 450 },
+                        new GameUserDamagedItem { UserItemId = user.Characters[0].EquippedItems[8].UserItemId, RepairCost = 500 },
+                        new GameUserDamagedItem { UserItemId = user.Characters[0].EquippedItems[9].UserItemId, RepairCost = 550 },
+                        new GameUserDamagedItem { UserItemId = user.Characters[0].EquippedItems[10].UserItemId, RepairCost = 600 },
+                        new GameUserDamagedItem { UserItemId = user.Characters[0].EquippedItems[11].UserItemId, RepairCost = 650 },
                     },
                 },
             },
@@ -219,7 +215,7 @@ public class UpdateGameUsersCommandTest : TestBase
 
         User user = new()
         {
-            Gold = 3000,
+            Gold = 2000,
             Characters =
             {
                 new Character
@@ -233,18 +229,23 @@ public class UpdateGameUsersCommandTest : TestBase
                         new EquippedItem { UserItem = userItem4, Slot = ItemSlot.Leg },
                     },
                 },
+                new Character
+                {
+                    EquippedItems =
+                    {
+                        new EquippedItem { UserItem = userItem0, Slot = ItemSlot.Head },
+                        new EquippedItem { UserItem = userItem2, Slot = ItemSlot.Body },
+                        new EquippedItem { UserItem = userItem3, Slot = ItemSlot.Hand },
+                    },
+                },
             },
         };
         ArrangeDb.Users.Add(user);
         await ArrangeDb.SaveChangesAsync();
 
         Mock<ICharacterService> characterServiceMock = new();
-        Mock<IItemService> itemServiceMock = new();
-        itemServiceMock
-            .Setup(s => s.SellUserItem(It.IsAny<ICrpgDbContext>(), It.IsAny<UserItem>()))
-            .Returns(500);
 
-        UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, itemServiceMock.Object);
+        UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object);
         var result = await handler.Handle(new UpdateGameUsersCommand
         {
             Updates = new[]
@@ -254,10 +255,10 @@ public class UpdateGameUsersCommandTest : TestBase
                     CharacterId = user.Characters[0].Id,
                     BrokenItems = new[]
                     {
-                        new GameUserBrokenItem { UserItemId = userItem0.Id, RepairCost = 1000 },
-                        new GameUserBrokenItem { UserItemId = userItem1.Id, RepairCost = 1000 },
-                        new GameUserBrokenItem { UserItemId = userItem2.Id, RepairCost = 1000 },
-                        new GameUserBrokenItem { UserItemId = userItem3.Id, RepairCost = 1000 },
+                        new GameUserDamagedItem { UserItemId = userItem0.Id, RepairCost = 1000 },
+                        new GameUserDamagedItem { UserItemId = userItem1.Id, RepairCost = 1000 },
+                        new GameUserDamagedItem { UserItemId = userItem2.Id, RepairCost = 1000 },
+                        new GameUserDamagedItem { UserItemId = userItem3.Id, RepairCost = 1000 },
                     },
                 },
             },
@@ -265,7 +266,28 @@ public class UpdateGameUsersCommandTest : TestBase
 
         var data = result.Data!;
         Assert.AreEqual(0, data.UpdateResults[0].User.Gold);
-        Assert.AreEqual(5, data.UpdateResults[0].RepairedItems.Count);
-        Assert.AreEqual(2, data.UpdateResults[0].RepairedItems.Count(i => i.Sold));
+        CollectionAssert.AreEquivalent(
+            new[] { userItem0.Id, userItem1.Id, userItem4.Id },
+            data.UpdateResults[0].User.Character.EquippedItems.Select(ei => ei.UserItem.Id));
+        Assert.AreEqual(4, data.UpdateResults[0].RepairedItems.Count);
+        Assert.AreEqual(2, data.UpdateResults[0].RepairedItems.Count(i => i.Broke));
+        Assert.AreEqual(2000, data.UpdateResults[0].RepairedItems.Sum(i => i.RepairCost));
+
+        // Check the user's second character got his item equipped too.
+        var characterDb1 = await AssertDb.Characters
+            .Include(c => c.EquippedItems)
+            .FirstAsync(c => c.Id == user.Characters[1].Id);
+        CollectionAssert.AreEquivalent(
+            new[] { userItem0.Id },
+            characterDb1.EquippedItems.Select(ei => ei.UserItemId));
+
+        // Check the user item ranks were set to -1.
+        var userItemsDb = await AssertDb.UserItems
+            .Where(ui => new[] { userItem2.Id, userItem3.Id }.Contains(ui.Id))
+            .ToArrayAsync();
+        foreach (var userItem in userItemsDb)
+        {
+            Assert.AreEqual(-1, userItem.Rank);
+        }
     }
 }

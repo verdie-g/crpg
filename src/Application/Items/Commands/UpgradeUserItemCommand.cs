@@ -3,7 +3,6 @@ using Crpg.Application.Common;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
-using Crpg.Application.Common.Services;
 using Crpg.Application.Items.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -22,14 +21,12 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
 
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
-        private readonly IItemModifierService _itemModifierService;
         private readonly Constants _constants;
 
-        public Handler(ICrpgDbContext db, IMapper mapper, IItemModifierService itemModifierService, Constants constants)
+        public Handler(ICrpgDbContext db, IMapper mapper, Constants constants)
         {
             _db = db;
             _mapper = mapper;
-            _itemModifierService = itemModifierService;
             _constants = constants;
         }
 
@@ -38,7 +35,6 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
             var userItem = await _db.UserItems
                 .Include(ui => ui.User!)
                 .Include(ui => ui.BaseItem!)
-                .Include(ui => ui.EquippedItems)
                 .FirstOrDefaultAsync(ui => ui.UserId == req.UserId && ui.Id == req.UserItemId, cancellationToken);
             if (userItem == null)
             {
@@ -52,8 +48,9 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
 
             if (userItem.Rank < 0) // repair
             {
-                int price = _itemModifierService.ModifyItem(userItem.BaseItem!, userItem.Rank).Price;
-                int repairCost = (int)(price * _constants.ItemRepairCostPerSecond * 60 * 5);
+                int repairCost = (int)(userItem.BaseItem!.Price
+                                       * _constants.ItemRepairCostPerSecond
+                                       * _constants.BrokenItemRepairPenaltySeconds);
                 if (userItem.User!.Gold < repairCost)
                 {
                     return new(CommonErrors.NotEnoughGold(repairCost, userItem.User!.Gold));
@@ -63,12 +60,15 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
             }
             else // looming
             {
+                return new(CommonErrors.NotEnoughHeirloomPoints(9999, userItem.User!.HeirloomPoints));
+#if false
                 if (userItem.User!.HeirloomPoints == 0)
                 {
                     return new(CommonErrors.NotEnoughHeirloomPoints(1, userItem.User.HeirloomPoints));
                 }
 
                 userItem.User!.HeirloomPoints -= 1;
+#endif
             }
 
             userItem.Rank += 1;

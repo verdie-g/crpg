@@ -32,16 +32,10 @@ public class ItemServiceTest : TestBase
         ArrangeDb.Users.Add(user);
         await ArrangeDb.SaveChangesAsync();
 
-        Item upgradedItem = new() { Id = "0", Price = 150 };
-        Mock<IItemModifierService> itemModifierServiceMock = new();
-        itemModifierServiceMock
-            .Setup(m => m.ModifyItem(It.IsAny<Item>(), It.IsAny<int>()))
-            .Returns(upgradedItem);
-
         Mock<IDateTime> dateTimeMock = new();
         dateTimeMock.Setup(dt => dt.UtcNow).Returns(new DateTime(2000, 01, 02));
 
-        ItemService itemService = new(itemModifierServiceMock.Object, dateTimeMock.Object, Constants);
+        ItemService itemService = new(dateTimeMock.Object, Constants);
         var userItem = await ActDb.UserItems
             .Include(ui => ui.User)
             .Include(ui => ui.BaseItem)
@@ -53,7 +47,7 @@ public class ItemServiceTest : TestBase
         user = await AssertDb.Users
             .Include(u => u.Items)
             .FirstAsync(u => u.Id == user.Id);
-        Assert.AreEqual(recentlyBought ? 150 : 75, user.Gold);
+        Assert.AreEqual(recentlyBought ? 100 : 50, user.Gold);
         Assert.False(user.Items.Any(ui => ui.Id == user.Items[0].Id));
     }
 
@@ -86,16 +80,10 @@ public class ItemServiceTest : TestBase
         ArrangeDb.Users.Add(user);
         await ArrangeDb.SaveChangesAsync();
 
-        Item upgradedItem = new() { Id = "0", Price = 150 };
-        Mock<IItemModifierService> itemModifierServiceMock = new();
-        itemModifierServiceMock
-            .Setup(m => m.ModifyItem(It.IsAny<Item>(), It.IsAny<int>()))
-            .Returns(upgradedItem);
-
         Mock<IDateTime> dateTimeMock = new();
         dateTimeMock.Setup(dt => dt.UtcNow).Returns(new DateTime(2000, 01, 01));
 
-        ItemService itemService = new(itemModifierServiceMock.Object, dateTimeMock.Object, Constants);
+        ItemService itemService = new(dateTimeMock.Object, Constants);
         userItem = await ActDb.UserItems
             .Include(ui => ui.User)
             .Include(ui => ui.BaseItem)
@@ -108,7 +96,7 @@ public class ItemServiceTest : TestBase
             .Include(u => u.Characters)
             .Include(u => u.Items)
             .FirstAsync(u => u.Id == user.Id);
-        Assert.AreEqual(75, user.Gold);
+        Assert.AreEqual(50, user.Gold);
         Assert.False(user.Items.Any(ui => ui.Id == userItem.Id));
         Assert.IsEmpty(user.Characters[0].EquippedItems);
         Assert.IsEmpty(user.Characters[1].EquippedItems);

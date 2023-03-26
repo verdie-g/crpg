@@ -67,14 +67,15 @@ internal class CrpgRewardClient : MissionNetwork
                 new Color(0.48f, 0f, 1f)));
         }
 
-        if (message.SoldItemIds.Count != 0)
+        if (message.BrokeItemIds.Count != 0)
         {
-            var soldItemNames = message.SoldItemIds
+            var brokeItemNames = message.BrokeItemIds
                 .Select(i => MBObjectManager.Instance.GetObject<ItemObject>(i)?.Name.ToString())
                 .Where(i => i != null);
-            string soldItemNamesStr = string.Join(", ", soldItemNames);
-            string s = message.SoldItemIds.Count > 1 ? "s" : string.Empty;
-            InformationManager.DisplayMessage(new InformationMessage($"Sold item{s} {soldItemNamesStr} to pay for upkeep.",
+            string brokeItemNamesStr = string.Join(", ", brokeItemNames);
+            string s = message.BrokeItemIds.Count > 1 ? "s" : string.Empty;
+            InformationManager.DisplayMessage(new InformationMessage(
+                $"You were unable to afford the upkeep cost for the item{s} {brokeItemNamesStr}, which resulted in them breaking and becoming unequipped. You will need to visit the Web UI and equip a less expensive item.",
                 new Color(0.74f, 0.28f, 0.01f)));
         }
 

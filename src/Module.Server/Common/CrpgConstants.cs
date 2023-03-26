@@ -20,6 +20,7 @@ internal class CrpgConstants
     public float MultipliedGoldGainPerSecond { get; set; }
     public float ItemRepairCostPerSecond { get; set; }
     public float ItemBreakChance { get; set; }
+    public int BrokenItemRepairPenaltySeconds { get; set; }
     public float[] ItemSellCostCoefs { get; set; } = Array.Empty<float>();
     public int MinimumLevel { get; set; }
     public int MaximumLevel { get; set; }

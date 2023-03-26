@@ -191,7 +191,7 @@ internal class CrpgRewardServer : MissionBehavior
                 Reward = new CrpgUserReward { Experience = 0, Gold = 0 },
                 Statistics = new CrpgCharacterStatistics { Kills = 0, Deaths = 0, Assists = 0, PlayTime = TimeSpan.Zero },
                 Rating = crpgPeer.User.Character.Rating,
-                BrokenItems = Array.Empty<CrpgUserBrokenItem>(),
+                BrokenItems = Array.Empty<CrpgUserDamagedItem>(),
             };
 
             if (CrpgFeatureFlags.IsEnabled(CrpgFeatureFlags.FeatureTournament))
@@ -359,9 +359,9 @@ internal class CrpgRewardServer : MissionBehavior
         };
     }
 
-    private IList<CrpgUserBrokenItem> BreakItems(CrpgPeer crpgPeer, float roundDuration)
+    private IList<CrpgUserDamagedItem> BreakItems(CrpgPeer crpgPeer, float roundDuration)
     {
-        List<CrpgUserBrokenItem> brokenItems = new();
+        List<CrpgUserDamagedItem> brokenItems = new();
         foreach (var equippedItem in crpgPeer.User!.Character.EquippedItems)
         {
             var mbItem = Game.Current.ObjectManager.GetObject<ItemObject>(equippedItem.UserItem.BaseItemId);
@@ -371,7 +371,7 @@ internal class CrpgRewardServer : MissionBehavior
             }
 
             int repairCost = (int)(mbItem.Value * roundDuration * _constants.ItemRepairCostPerSecond);
-            brokenItems.Add(new CrpgUserBrokenItem
+            brokenItems.Add(new CrpgUserDamagedItem
             {
                 UserItemId = equippedItem.UserItem.Id,
                 RepairCost = repairCost,
@@ -422,7 +422,7 @@ internal class CrpgRewardServer : MissionBehavior
                 Reward = updateResult.EffectiveReward,
                 Valour = valorousPlayerIds.Contains(networkPeer.VirtualPlayer.Id),
                 RepairCost = updateResult.RepairedItems.Sum(r => r.RepairCost),
-                SoldItemIds = updateResult.RepairedItems.Where(r => r.Sold).Select(r => r.ItemId).ToList(),
+                BrokeItemIds = updateResult.RepairedItems.Where(r => r.Broke).Select(r => r.ItemId).ToList(),
             });
             GameNetwork.EndModuleEventAsServer();
         }

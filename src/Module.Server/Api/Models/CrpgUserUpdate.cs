@@ -9,5 +9,5 @@ internal class CrpgUserUpdate
     public CrpgUserReward? Reward { get; set; }
     public CrpgCharacterStatistics Statistics { get; set; } = default!;
     public CrpgCharacterRating Rating { get; set; } = default!;
-    public IList<CrpgUserBrokenItem> BrokenItems { get; set; } = Array.Empty<CrpgUserBrokenItem>();
+    public IList<CrpgUserDamagedItem> BrokenItems { get; set; } = Array.Empty<CrpgUserDamagedItem>();
 }

@@ -12,7 +12,7 @@ internal sealed class CrpgRewardUser : GameNetworkMessage
     public CrpgUserEffectiveReward Reward { get; set; } = default!;
     public bool Valour { get; set; }
     public int RepairCost { get; set; }
-    public List<string> SoldItemIds { get; set; } = new();
+    public List<string> BrokeItemIds { get; set; } = new();
 
     protected override void OnWrite()
     {
@@ -21,8 +21,8 @@ internal sealed class CrpgRewardUser : GameNetworkMessage
         WriteBoolToPacket(Reward.LevelUp);
         WriteBoolToPacket(Valour);
         WriteIntToPacket(RepairCost, Int32CompressionInfo);
-        WriteIntToPacket(SoldItemIds.Count, Int32CompressionInfo);
-        foreach (string soldItem in SoldItemIds)
+        WriteIntToPacket(BrokeItemIds.Count, Int32CompressionInfo);
+        foreach (string soldItem in BrokeItemIds)
         {
             WriteStringToPacket(soldItem);
         }
@@ -37,10 +37,10 @@ internal sealed class CrpgRewardUser : GameNetworkMessage
         Reward = new CrpgUserEffectiveReward { Gold = gold, Experience = experience, LevelUp = levelUp };
         Valour = ReadBoolFromPacket(ref bufferReadValid);
         RepairCost = ReadIntFromPacket(Int32CompressionInfo, ref bufferReadValid);
-        int soldItemIdsCount = ReadIntFromPacket(Int32CompressionInfo, ref bufferReadValid);
-        for (int i = 0; i < soldItemIdsCount; i += 1)
+        int brokeItemIds = ReadIntFromPacket(Int32CompressionInfo, ref bufferReadValid);
+        for (int i = 0; i < brokeItemIds; i += 1)
         {
-            SoldItemIds.Add(ReadStringFromPacket(ref bufferReadValid));
+            BrokeItemIds.Add(ReadStringFromPacket(ref bufferReadValid));
         }
 
         return bufferReadValid;

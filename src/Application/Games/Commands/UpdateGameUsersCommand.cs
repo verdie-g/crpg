@@ -27,14 +27,12 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
         private readonly ICharacterService _characterService;
-        private readonly IItemService _itemService;
 
-        public Handler(ICrpgDbContext db, IMapper mapper, ICharacterService characterService, IItemService itemService)
+        public Handler(ICrpgDbContext db, IMapper mapper, ICharacterService characterService)
         {
             _db = db;
             _mapper = mapper;
             _characterService = characterService;
-            _itemService = itemService;
         }
 
         public async Task<Result<UpdateGameUsersResult>> Handle(UpdateGameUsersCommand req,
@@ -118,79 +116,55 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
             character.Rating.Volatility = rating.Volatility;
         }
 
-        private async Task<List<GameRepairedItem>> RepairOrBreakItems(Character character, IList<GameUserBrokenItem> itemsToRepair,
-            CancellationToken cancellationToken)
+        private async Task<List<GameRepairedItem>> RepairOrBreakItems(Character character,
+            IList<GameUserDamagedItem> damagedItems, CancellationToken cancellationToken)
         {
             List<GameRepairedItem> repairedItems = new();
+            List<int> userItemIdsToBreak = new();
 
-            int debt = 0;
-            foreach (var itemToRepair in itemsToRepair)
+            foreach (var damagedItem in damagedItems)
             {
-                if (character.User!.Gold >= itemToRepair.RepairCost)
+                if (character.User!.Gold >= damagedItem.RepairCost)
                 {
-                    character.User.Gold -= itemToRepair.RepairCost;
+                    character.User.Gold -= damagedItem.RepairCost;
                     repairedItems.Add(new GameRepairedItem
                     {
                         ItemId = string.Empty,
-                        RepairCost = itemToRepair.RepairCost,
-                        Sold = false,
+                        RepairCost = damagedItem.RepairCost,
+                        Broke = false,
                     });
                 }
                 else
                 {
-                    debt += itemToRepair.RepairCost;
+                    userItemIdsToBreak.Add(damagedItem.UserItemId);
                 }
             }
 
-            if (debt == 0)
+            if (userItemIdsToBreak.Count == 0)
             {
                 return repairedItems;
             }
 
-            string[] equippedItemIds = character.EquippedItems.Select(ei => ei.UserItem!.BaseItemId).ToArray();
-            await _db.Items
-                .Where(i => equippedItemIds.Contains(i.Id))
-                .LoadAsync(cancellationToken);
+            Logger.LogInformation("User '{0}' broke '{1}' items",
+                character.UserId, userItemIdsToBreak.Count);
 
-            // Sell the recently bought items first because they might have the sell penalty immunity.
-            foreach (var ei in character.EquippedItems.OrderByDescending(ei => ei.UserItem!.CreatedAt))
+            var userItemsToBreak = await _db.UserItems
+                .Where(ui => userItemIdsToBreak.Contains(ui.Id))
+                .Include(ui => ui.EquippedItems)
+                .ToArrayAsync(cancellationToken);
+            foreach (var userItem in userItemsToBreak)
             {
+                userItem.Rank = -1;
+                _db.EquippedItems.RemoveRange(userItem.EquippedItems);
                 repairedItems.Add(new GameRepairedItem
                 {
-                    ItemId = ei.UserItem!.BaseItemId,
+                    ItemId = userItem.BaseItemId,
                     RepairCost = 0,
-                    Sold = true,
+                    Broke = true,
                 });
-                Logger.LogInformation("User '{0}' sold item '{1}' to pay their debt",
-                    character.UserId, ei.UserItem.BaseItemId);
-
-                debt -= _itemService.SellUserItem(_db, ei.UserItem!);
-                if (debt <= 0)
-                {
-                    break;
-                }
             }
 
             return repairedItems;
-            // TODO: downgrade items. check auto-repair.
-        }
-
-        private async Task<List<GameUserBrokenItem>> DowngradeItems(List<GameUserBrokenItem> brokenItems, CancellationToken cancellationToken)
-        {
-            int[] userItemIds = brokenItems.Select(bi => bi.UserItemId).ToArray();
-            var userItems = await _db.UserItems
-                .Where(ui => userItemIds.Contains(ui.Id))
-                .ToArrayAsync(cancellationToken);
-            foreach (var userItem in userItems)
-            {
-                if (userItem.Rank > -3)
-                {
-                    // TODO: check user item with this rank already exist
-                    userItem.Rank -= 1;
-                }
-            }
-
-            return brokenItems;
         }
     }
 }

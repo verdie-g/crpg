@@ -103,6 +103,11 @@ public record UpdateCharacterItemsCommand : IMediatorRequest<IList<EquippedItemV
                     return new(CommonErrors.ItemDisabled(userItem.BaseItemId));
                 }
 
+                if (userItem.Rank < 0)
+                {
+                    return new(CommonErrors.ItemBroken(userItem.BaseItemId));
+                }
+
                 if ((userItem.BaseItem!.Flags & (ItemFlags.DropOnAnyAction | ItemFlags.DropOnWeaponChange)) != 0)
                 {
                     if (newEquippedItem.Slot != ItemSlot.WeaponExtra)

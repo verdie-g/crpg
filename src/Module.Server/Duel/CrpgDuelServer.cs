@@ -125,7 +125,7 @@ internal class CrpgDuelServer : MissionMultiplayerDuel
                 Reward = new CrpgUserReward { Experience = 0, Gold = 0 },
                 Statistics = new CrpgCharacterStatistics { Kills = 0, Deaths = 0, Assists = 0, PlayTime = TimeSpan.Zero },
                 Rating = crpgPeer.User!.Character.Rating,
-                BrokenItems = Array.Empty<CrpgUserBrokenItem>(),
+                BrokenItems = Array.Empty<CrpgUserDamagedItem>(),
             };
 
             userUpdates.Add(userUpdate);

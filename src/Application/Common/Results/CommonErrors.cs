@@ -195,6 +195,12 @@ internal static class CommonErrors
         Detail = $"Item with id '{itemId}' cannot be put in the slot '{slot}'",
     };
 
+    public static Error ItemBroken(string itemId) => new(ErrorType.Validation, ErrorCode.ItemBroken)
+    {
+        Title = "Item is broken",
+        Detail = $"Item with id '{itemId}' is broken so the action cannot be performed",
+    };
+
     public static Error ItemDisabled(string itemId) => new(ErrorType.Validation, ErrorCode.ItemDisabled)
     {
         Title = "Item is disabled",

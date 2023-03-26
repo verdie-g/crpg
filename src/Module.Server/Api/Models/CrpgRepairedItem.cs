@@ -5,5 +5,5 @@ internal class CrpgRepairedItem
 {
     public string ItemId { get; set; } = string.Empty;
     public int RepairCost { get; set; }
-    public bool Sold { get; set; }
+    public bool Broke { get; set; }
 }

@@ -8,5 +8,5 @@ public record UserItemViewModel : IMapFrom<UserItem>
     public int Id { get; init; }
     public ItemViewModel BaseItem { get; init; } = default!;
     public int Rank { get; init; }
-    public DateTime CreatedAt { get; set; }
+    public DateTime CreatedAt { get; init; }
 }

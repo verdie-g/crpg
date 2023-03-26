@@ -30,6 +30,7 @@ public enum ErrorCode
     InvalidField,
     ItemAlreadyOwned,
     ItemBadSlot,
+    ItemBroken,
     ItemDisabled,
     ItemNotBuyable,
     ItemNotFound,

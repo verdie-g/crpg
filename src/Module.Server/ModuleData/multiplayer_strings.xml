@@ -24,7 +24,7 @@
   <string id="str_scoreboard_header.life" text="{=*}Life" />
 
   <!-- Kick reasons -->
-  <string id="str_kick_reason.no_weapon" text="{=*}You should have at least one weapon equipped to spawn! Equip a weapon and reconnect to the server." />
+  <string id="str_kick_reason.no_weapon" text="{=*}You should have at least one weapon equipped to spawn!" />
   <string id="str_kick_reason.banned" text="{=*}You were banned from cRPG servers." />
   <string id="str_kick_reason.tournament_only" text="{=*}Only tournament characters can join this server." />
   <string id="str_kick_reason.bad_player_height" text="{=*}Your character has a weird height. Fix it in the Bannerlord Armory to join a cRPG server." />
