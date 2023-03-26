@@ -104,16 +104,17 @@ export const updateCharacterCharacteristics = (
 //
 const computeExperienceDistribution = (level: number): number => {
   const [a, b] = experienceForLevelCoefs;
-  return Math.pow(level - 1, a) + b * (level - 1);
+  return Math.pow(level - 1, a) + Math.pow(b, a / 2.0) * (level - 1);
 };
 
 export const getExperienceForLevel = (level: number): number => {
   if (level <= 0) return 0;
 
   if (level <= 30) {
+    const experienceForLevel30 = 4420824;
     return Math.trunc(
-      4420824 *
-        Math.max(computeExperienceDistribution(level) / computeExperienceDistribution(30), 0)
+      experienceForLevel30 *
+        computeExperienceDistribution(level) / computeExperienceDistribution(30)
     );
   }
 
