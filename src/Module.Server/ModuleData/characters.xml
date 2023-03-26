@@ -10,4 +10,44 @@
                       key="00000C07000000010011111211151111000701000010000000111011000101000000500202111110000000000000000000000000000000000000000000A00000" />
     </face>
   </NPCCharacter>
+
+  <NPCCharacter id="crpg_bot_narutofan"
+                name="{=}Naruto Fan">
+    <face>
+      <BodyProperties version="4"
+                      age="23"
+                      weight="0.3333"
+                      build="0"
+                      key="00000C07000000010011111211151111000701000010000000111011000101000000500202111110000000000000000000000000000000000000000000A00000" />
+    </face>
+    <skills>
+      <skill id="Strength" value="15" />
+      <skill id="Agility" value="21" />
+      <skill id="IronFlesh" value="5" />
+      <skill id="PowerStrike" value="5" />
+      <skill id="PowerDraw" value="0" />
+      <skill id="PowerThrow" value="0" />
+      <skill id="Athletics" value="141" />
+      <skill id="Riding" value="0" />
+      <skill id="WeaponMaster" value="7" />
+      <skill id="MountedArchery" value="0" />
+      <skill id="Shield" value="0" />
+      <skill id="OneHanded" value="0" />
+      <skill id="TwoHanded" value="177" />
+      <skill id="Polearm" value="0" />
+      <skill id="Bow" value="0" />
+      <skill id="Crossbow" value="0" />
+      <skill id="Throwing" value="0" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.crpg_katana_blue" />
+        <equipment slot="Head" id="Item.crpg_roningasa" />
+        <equipment slot="Cape" id="Item.crpg_lamellar_shoulders" />
+        <equipment slot="Body" id="Item.crpg_khuzait_sturdy_armor" />
+        <equipment slot="Gloves" id="Item.crpg_guarded_armwraps" />
+        <equipment slot="Leg" id="Item.crpg_steppe_leather_boots" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
 </MPCharacters>

@@ -139,7 +139,7 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
             {
                 MultiplayerClassDivisions.MPHeroClass botClass = MultiplayerClassDivisions
                     .GetMPHeroClasses()
-                    .GetRandomElementWithPredicate<MultiplayerClassDivisions.MPHeroClass>(x => x.Culture == teamCulture);
+                    .GetRandomElementWithPredicate<MultiplayerClassDivisions.MPHeroClass>(x => x.StringId.StartsWith("crpg_bot_"));
                 BasicCharacterObject character = botClass.HeroCharacter;
 
                 bool hasMount = character.Equipment[EquipmentIndex.Horse].Item != null;
