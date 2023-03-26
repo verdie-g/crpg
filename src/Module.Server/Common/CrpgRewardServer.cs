@@ -391,6 +391,7 @@ internal class CrpgRewardServer : MissionBehavior
                 Kills = peerPeriodStats.Kills,
                 Deaths = peerPeriodStats.Deaths,
                 Assists = peerPeriodStats.Assists,
+                PlayTime = peerPeriodStats.PlayTime,
             };
         }
     }
