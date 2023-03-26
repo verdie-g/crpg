@@ -55,8 +55,8 @@ By default, the Web API uses an in-memory database so no DBMS need to be downloa
 - Download [Node.js](https://nodejs.org)
 - Go to `src/WebUI`
 - Run `npm install` to install dependencies
-- Run `npm run serve` to launch the application
-- Use `npm run lint-fix` to fix the coding style
+- Run `npm run dev` to launch the application
+- Use `npm run lint` to fix the coding style
 
 The client relies on the server so you have to run both.
 
