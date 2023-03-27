@@ -21,8 +21,8 @@ public class GetBattleMercenariesQueryTest : TestBase
             BattleId = 99,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.BattleNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.BattleNotFound));
     }
 
     [Test]
@@ -39,8 +39,8 @@ public class GetBattleMercenariesQueryTest : TestBase
             BattleId = battle.Id,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.BattleInvalidPhase, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.BattleInvalidPhase));
     }
 
     [Test]
@@ -57,8 +57,8 @@ public class GetBattleMercenariesQueryTest : TestBase
             BattleId = battle.Id,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.PartyNotAFighter, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.PartyNotAFighter));
     }
 
     [Test]
@@ -92,10 +92,10 @@ public class GetBattleMercenariesQueryTest : TestBase
             BattleId = battle.Id,
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
+        Assert.That(res.Errors, Is.Null);
         var mercenaries = res.Data!;
-        Assert.AreEqual(1, mercenaries.Count);
-        Assert.AreEqual(BattleSide.Defender, mercenaries[0].Side);
+        Assert.That(mercenaries.Count, Is.EqualTo(1));
+        Assert.That(mercenaries[0].Side, Is.EqualTo(BattleSide.Defender));
     }
 
     [TestCase(BattlePhase.Scheduled)]
@@ -130,8 +130,8 @@ public class GetBattleMercenariesQueryTest : TestBase
             BattleId = battle.Id,
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
+        Assert.That(res.Errors, Is.Null);
         var mercenaries = res.Data!;
-        Assert.AreEqual(2, mercenaries.Count);
+        Assert.That(mercenaries.Count, Is.EqualTo(2));
     }
 }

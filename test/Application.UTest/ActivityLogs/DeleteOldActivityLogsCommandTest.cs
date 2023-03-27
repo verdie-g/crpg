@@ -24,7 +24,7 @@ public class DeleteOldActivityLogsCommandTest : TestBase
         DeleteOldActivityLogsCommand.Handler handler = new(ActDb, new MachineDateTime());
         await handler.Handle(new DeleteOldActivityLogsCommand(), CancellationToken.None);
 
-        Assert.AreEqual(3, await AssertDb.ActivityLogs.CountAsync());
-        Assert.AreEqual(0, await AssertDb.ActivityLogMetadata.CountAsync());
+        Assert.That(await AssertDb.ActivityLogs.CountAsync(), Is.EqualTo(3));
+        Assert.That(await AssertDb.ActivityLogMetadata.CountAsync(), Is.EqualTo(0));
     }
 }

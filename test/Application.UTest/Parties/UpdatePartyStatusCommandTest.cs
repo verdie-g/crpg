@@ -22,8 +22,8 @@ public class UpdatePartyStatusCommandTest : TestBase
             Waypoints = MultiPoint.Empty,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.PartyNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.PartyNotFound));
     }
 
     [Test]
@@ -40,8 +40,8 @@ public class UpdatePartyStatusCommandTest : TestBase
             Waypoints = MultiPoint.Empty,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.PartyNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.PartyNotFound));
     }
 
     [Test]
@@ -68,8 +68,8 @@ public class UpdatePartyStatusCommandTest : TestBase
             }),
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.PartyInBattle, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.PartyInBattle));
     }
 
     [Test]
@@ -97,12 +97,12 @@ public class UpdatePartyStatusCommandTest : TestBase
         }, CancellationToken.None);
 
         var party = res.Data!;
-        Assert.IsNotNull(party);
-        Assert.AreEqual(user.Id, party.Id);
-        Assert.AreEqual(PartyStatus.Idle, party.Status);
-        Assert.AreEqual(0, party.Waypoints.Count);
-        Assert.IsNull(party.TargetedParty);
-        Assert.IsNull(party.TargetedSettlement);
+        Assert.That(party, Is.Not.Null);
+        Assert.That(party.Id, Is.EqualTo(user.Id));
+        Assert.That(party.Status, Is.EqualTo(PartyStatus.Idle));
+        Assert.That(party.Waypoints.Count, Is.EqualTo(0));
+        Assert.That(party.TargetedParty, Is.Null);
+        Assert.That(party.TargetedSettlement, Is.Null);
     }
 
     [Test]
@@ -132,12 +132,12 @@ public class UpdatePartyStatusCommandTest : TestBase
         }, CancellationToken.None);
 
         var party = res.Data!;
-        Assert.IsNotNull(party);
-        Assert.AreEqual(user.Id, party.Id);
-        Assert.AreEqual(PartyStatus.MovingToPoint, party.Status);
-        Assert.AreEqual(2, party.Waypoints.Count);
-        Assert.AreEqual(new Point(4, 5), party.Waypoints[0]);
-        Assert.AreEqual(new Point(6, 7), party.Waypoints[1]);
+        Assert.That(party, Is.Not.Null);
+        Assert.That(party.Id, Is.EqualTo(user.Id));
+        Assert.That(party.Status, Is.EqualTo(PartyStatus.MovingToPoint));
+        Assert.That(party.Waypoints.Count, Is.EqualTo(2));
+        Assert.That(party.Waypoints[0], Is.EqualTo(new Point(4, 5)));
+        Assert.That(party.Waypoints[1], Is.EqualTo(new Point(6, 7)));
     }
 
     [TestCase(PartyStatus.FollowingParty)]
@@ -163,8 +163,8 @@ public class UpdatePartyStatusCommandTest : TestBase
             TargetedPartyId = 10,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.UserNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.UserNotFound));
     }
 
     [TestCase(PartyStatus.FollowingParty)]
@@ -201,8 +201,8 @@ public class UpdatePartyStatusCommandTest : TestBase
             TargetedPartyId = targetUser.Id,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.PartyNotInSight, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.PartyNotInSight));
     }
 
     [TestCase(PartyStatus.FollowingParty)]
@@ -240,11 +240,11 @@ public class UpdatePartyStatusCommandTest : TestBase
         }, CancellationToken.None);
 
         var party = res.Data!;
-        Assert.IsNotNull(party);
-        Assert.AreEqual(user.Id, party.Id);
-        Assert.AreEqual(status, party.Status);
-        Assert.AreEqual(targetUser.Id, party.TargetedParty!.Id);
-        Assert.IsNull(party.TargetedSettlement);
+        Assert.That(party, Is.Not.Null);
+        Assert.That(party.Id, Is.EqualTo(user.Id));
+        Assert.That(party.Status, Is.EqualTo(status));
+        Assert.That(party.TargetedParty!.Id, Is.EqualTo(targetUser.Id));
+        Assert.That(party.TargetedSettlement, Is.Null);
     }
 
     [Test]
@@ -278,10 +278,10 @@ public class UpdatePartyStatusCommandTest : TestBase
         }, CancellationToken.None);
 
         var party = res.Data!;
-        Assert.IsNotNull(party);
-        Assert.AreEqual(user.Id, party.Id);
-        Assert.AreEqual(PartyStatus.FollowingParty, party.Status);
-        Assert.AreEqual(targetUser.Id, party.TargetedParty!.Id);
+        Assert.That(party, Is.Not.Null);
+        Assert.That(party.Id, Is.EqualTo(user.Id));
+        Assert.That(party.Status, Is.EqualTo(PartyStatus.FollowingParty));
+        Assert.That(party.TargetedParty!.Id, Is.EqualTo(targetUser.Id));
     }
 
     [TestCase(PartyStatus.MovingToSettlement)]
@@ -307,8 +307,8 @@ public class UpdatePartyStatusCommandTest : TestBase
             TargetedSettlementId = 10,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.SettlementNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.SettlementNotFound));
     }
 
     [TestCase(PartyStatus.MovingToSettlement)]
@@ -337,11 +337,11 @@ public class UpdatePartyStatusCommandTest : TestBase
         }, CancellationToken.None);
 
         var party = res.Data!;
-        Assert.IsNotNull(party);
-        Assert.AreEqual(user.Id, party.Id);
-        Assert.AreEqual(status, party.Status);
-        Assert.IsNull(party.TargetedParty);
-        Assert.AreEqual(targetSettlement.Id, party.TargetedSettlement!.Id);
+        Assert.That(party, Is.Not.Null);
+        Assert.That(party.Id, Is.EqualTo(user.Id));
+        Assert.That(party.Status, Is.EqualTo(status));
+        Assert.That(party.TargetedParty, Is.Null);
+        Assert.That(party.TargetedSettlement!.Id, Is.EqualTo(targetSettlement.Id));
     }
 
     [Test]
@@ -369,10 +369,10 @@ public class UpdatePartyStatusCommandTest : TestBase
         }, CancellationToken.None);
 
         var party = res.Data!;
-        Assert.IsNotNull(party);
-        Assert.AreEqual(user.Id, party.Id);
-        Assert.AreEqual(PartyStatus.MovingToAttackSettlement, party.Status);
-        Assert.AreEqual(targetSettlement.Id, party.TargetedSettlement!.Id);
+        Assert.That(party, Is.Not.Null);
+        Assert.That(party.Id, Is.EqualTo(user.Id));
+        Assert.That(party.Status, Is.EqualTo(PartyStatus.MovingToAttackSettlement));
+        Assert.That(party.TargetedSettlement!.Id, Is.EqualTo(targetSettlement.Id));
     }
 
     [Test]
@@ -392,8 +392,8 @@ public class UpdatePartyStatusCommandTest : TestBase
             Status = PartyStatus.IdleInSettlement,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.PartyNotInASettlement, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.PartyNotInASettlement));
     }
 
     [Test]
@@ -417,9 +417,9 @@ public class UpdatePartyStatusCommandTest : TestBase
             Status = PartyStatus.IdleInSettlement,
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
-        Assert.AreEqual(PartyStatus.IdleInSettlement, res.Data!.Status);
-        Assert.IsNotNull(res.Data!.TargetedSettlement);
+        Assert.That(res.Errors, Is.Null);
+        Assert.That(res.Data!.Status, Is.EqualTo(PartyStatus.IdleInSettlement));
+        Assert.That(res.Data!.TargetedSettlement, Is.Not.Null);
     }
 
     [Test]
@@ -439,8 +439,8 @@ public class UpdatePartyStatusCommandTest : TestBase
             Status = PartyStatus.RecruitingInSettlement,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.PartyNotInASettlement, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.PartyNotInASettlement));
     }
 
     [Test]
@@ -464,8 +464,8 @@ public class UpdatePartyStatusCommandTest : TestBase
             Status = PartyStatus.RecruitingInSettlement,
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
-        Assert.AreEqual(PartyStatus.RecruitingInSettlement, res.Data!.Status);
-        Assert.IsNotNull(res.Data!.TargetedSettlement);
+        Assert.That(res.Errors, Is.Null);
+        Assert.That(res.Data!.Status, Is.EqualTo(PartyStatus.RecruitingInSettlement));
+        Assert.That(res.Data!.TargetedSettlement, Is.Not.Null);
     }
 }

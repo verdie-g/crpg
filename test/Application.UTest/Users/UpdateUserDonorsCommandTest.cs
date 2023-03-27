@@ -49,15 +49,15 @@ public class UpdateUserDonorsCommandTest : TestBase
 
         var usersDb = await AssertDb.Users.Include(u => u.Items).ToArrayAsync();
         var user1 = usersDb.First(u => u.PlatformUserId == "1");
-        Assert.IsTrue(user1.IsDonor);
-        Assert.AreEqual(0, user1.Items.Count);
+        Assert.That(user1.IsDonor, Is.True);
+        Assert.That(user1.Items.Count, Is.EqualTo(0));
 
         var user2 = usersDb.First(u => u.PlatformUserId == "2");
-        Assert.IsFalse(user2.IsDonor);
-        Assert.AreEqual(1, user2.Items.Count);
+        Assert.That(user2.IsDonor, Is.False);
+        Assert.That(user2.Items.Count, Is.EqualTo(1));
 
         var user3 = usersDb.First(u => u.PlatformUserId == "3");
-        Assert.IsTrue(user3.IsDonor);
-        Assert.AreEqual(0, user3.Items.Count);
+        Assert.That(user3.IsDonor, Is.True);
+        Assert.That(user3.Items.Count, Is.EqualTo(0));
     }
 }

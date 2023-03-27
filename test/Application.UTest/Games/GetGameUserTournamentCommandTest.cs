@@ -18,8 +18,8 @@ public class GetGameUserTournamentCommandTest : TestBase
             PlatformUserId = "123",
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.UserNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.UserNotFound));
     }
 
     [Theory]
@@ -44,8 +44,8 @@ public class GetGameUserTournamentCommandTest : TestBase
             PlatformUserId = user.PlatformUserId,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.CharacterForTournamentNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.CharacterForTournamentNotFound));
     }
 
     [Test]
@@ -77,11 +77,11 @@ public class GetGameUserTournamentCommandTest : TestBase
         }, CancellationToken.None);
 
         var gameUser = res.Data!;
-        Assert.IsNull(res.Errors);
-        Assert.AreEqual(user.Id, gameUser.Id);
-        Assert.AreEqual(user.Platform, gameUser.Platform);
-        Assert.AreEqual(user.PlatformUserId, gameUser.PlatformUserId);
-        Assert.AreEqual(user.Characters[0].Id, gameUser.Character.Id);
-        Assert.IsNotEmpty(gameUser.Character.EquippedItems);
+        Assert.That(res.Errors, Is.Null);
+        Assert.That(gameUser.Id, Is.EqualTo(user.Id));
+        Assert.That(gameUser.Platform, Is.EqualTo(user.Platform));
+        Assert.That(gameUser.PlatformUserId, Is.EqualTo(user.PlatformUserId));
+        Assert.That(gameUser.Character.Id, Is.EqualTo(user.Characters[0].Id));
+        Assert.That(gameUser.Character.EquippedItems, Is.Not.Empty);
     }
 }

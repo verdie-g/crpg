@@ -27,8 +27,8 @@ public class UpsertUserCommandTest : TestBase
         var user = result.Data!;
         userServiceMock.Verify(us => us.SetDefaultValuesForUser(It.IsAny<User>()));
         var dbUser = await AssertDb.Users.FirstOrDefaultAsync(u => u.Id == user.Id);
-        Assert.IsNotNull(dbUser);
-        Assert.IsNull(dbUser!.DeletedAt);
+        Assert.That(dbUser, Is.Not.Null);
+        Assert.That(dbUser!.DeletedAt, Is.Null);
     }
 
     [Test]
@@ -60,19 +60,19 @@ public class UpsertUserCommandTest : TestBase
         }, CancellationToken.None);
 
         var createdUser = result.Data!;
-        Assert.AreEqual(user.Id, createdUser.Id);
+        Assert.That(createdUser.Id, Is.EqualTo(user.Id));
         userServiceMock.Verify(us => us.SetDefaultValuesForUser(It.IsAny<User>()), Times.Never);
 
         var dbUser = await AssertDb.Users.FindAsync(user.Id);
-        Assert.AreEqual(dbUser!.Id, createdUser.Id);
-        Assert.AreEqual(dbUser.PlatformUserId, createdUser.PlatformUserId);
-        Assert.AreEqual(dbUser.Gold, createdUser.Gold);
-        Assert.AreEqual(dbUser.Name, createdUser.Name);
-        Assert.AreEqual(dbUser.Role, createdUser.Role);
-        Assert.AreEqual(new Uri("http://gh.klm"), createdUser.AvatarSmall);
-        Assert.AreEqual(new Uri("http://mn.pqr"), createdUser.AvatarMedium);
-        Assert.AreEqual(new Uri("http://st.vwx"), createdUser.AvatarFull);
-        Assert.IsNull(dbUser.DeletedAt);
+        Assert.That(createdUser.Id, Is.EqualTo(dbUser!.Id));
+        Assert.That(createdUser.PlatformUserId, Is.EqualTo(dbUser.PlatformUserId));
+        Assert.That(createdUser.Gold, Is.EqualTo(dbUser.Gold));
+        Assert.That(createdUser.Name, Is.EqualTo(dbUser.Name));
+        Assert.That(createdUser.Role, Is.EqualTo(dbUser.Role));
+        Assert.That(createdUser.AvatarSmall, Is.EqualTo(new Uri("http://gh.klm")));
+        Assert.That(createdUser.AvatarMedium, Is.EqualTo(new Uri("http://mn.pqr")));
+        Assert.That(createdUser.AvatarFull, Is.EqualTo(new Uri("http://st.vwx")));
+        Assert.That(dbUser.DeletedAt, Is.Null);
     }
 
     [Test]
@@ -95,7 +95,7 @@ public class UpsertUserCommandTest : TestBase
 
         var dbUser = await AssertDb.Users
             .FirstAsync(u => u.Id == user.Id);
-        Assert.IsNull(dbUser.DeletedAt);
+        Assert.That(dbUser.DeletedAt, Is.Null);
     }
 
     [Test]
@@ -111,7 +111,7 @@ public class UpsertUserCommandTest : TestBase
             AvatarFull = new Uri("http://st.vwx"),
         });
 
-        Assert.AreEqual(0, res.Errors.Count);
+        Assert.That(res.Errors.Count, Is.EqualTo(0));
     }
 
     [Test]
@@ -124,6 +124,6 @@ public class UpsertUserCommandTest : TestBase
             Name = string.Empty,
         });
 
-        Assert.AreEqual(4, res.Errors.Count);
+        Assert.That(res.Errors.Count, Is.EqualTo(4));
     }
 }

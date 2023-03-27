@@ -29,7 +29,7 @@ public class UpdateCharacterCommandTest : TestBase
         };
 
         var result = await new UpdateCharacterCommand.Handler(ActDb, Mapper).Handle(cmd, CancellationToken.None);
-        Assert.AreEqual(cmd.Name, result.Data!.Name);
+        Assert.That(result.Data!.Name, Is.EqualTo(cmd.Name));
     }
 
     [Test]
@@ -46,7 +46,7 @@ public class UpdateCharacterCommandTest : TestBase
         };
 
         var result = await handler.Handle(cmd, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.CharacterNotFound));
     }
 
     [Test]
@@ -64,7 +64,7 @@ public class UpdateCharacterCommandTest : TestBase
         };
 
         var result = await handler.Handle(cmd, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.CharacterNotFound));
     }
 
     [Test]
@@ -81,6 +81,6 @@ public class UpdateCharacterCommandTest : TestBase
         };
 
         var result = await handler.Handle(cmd, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.CharacterNotFound));
     }
 }

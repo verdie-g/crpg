@@ -29,8 +29,8 @@ public class GetClanMembersQueryTest : TestBase
             ClanId = clan.Id,
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
-        Assert.AreEqual(3, res.Data!.Count);
+        Assert.That(res.Errors, Is.Null);
+        Assert.That(res.Data!.Count, Is.EqualTo(3));
     }
 
     [Test]
@@ -42,7 +42,7 @@ public class GetClanMembersQueryTest : TestBase
             ClanId = 1,
         }, CancellationToken.None);
 
-        Assert.NotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.ClanNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.ClanNotFound));
     }
 }

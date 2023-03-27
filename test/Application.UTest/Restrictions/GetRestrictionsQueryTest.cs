@@ -23,6 +23,6 @@ public class GetRestrictionsQueryTest : TestBase
 
         var result = await new GetRestrictionsQuery.Handler(ActDb, Mapper).Handle(
             new GetRestrictionsQuery(), CancellationToken.None);
-        Assert.AreEqual(2, result.Data!.Count);
+        Assert.That(result.Data!.Count, Is.EqualTo(2));
     }
 }

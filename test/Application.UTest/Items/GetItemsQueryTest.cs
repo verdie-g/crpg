@@ -50,6 +50,6 @@ public class GetItemsQueryTest : TestBase
         GetItemsQuery.Handler handler = new(ActDb, Mapper);
         var result = await handler.Handle(new GetItemsQuery(), CancellationToken.None);
 
-        Assert.AreEqual(3, result.Data!.Count);
+        Assert.That(result.Data!.Count, Is.EqualTo(3));
     }
 }

@@ -32,12 +32,12 @@ public class UpdatePartyTroopsCommandTest : TestBase
         }, CancellationToken.None);
 
         party1 = await AssertDb.Parties.FirstAsync(h => h.Id == party1.Id);
-        Assert.AreEqual(5, party1.Troops);
+        Assert.That(party1.Troops, Is.EqualTo(5));
         party2 = await AssertDb.Parties.FirstAsync(h => h.Id == party2.Id);
-        Assert.AreEqual(10, party2.Troops);
+        Assert.That(party2.Troops, Is.EqualTo(10));
         party3 = await AssertDb.Parties.FirstAsync(h => h.Id == party3.Id);
-        Assert.AreEqual(10, party3.Troops);
+        Assert.That(party3.Troops, Is.EqualTo(10));
         party4 = await AssertDb.Parties.FirstAsync(h => h.Id == party4.Id);
-        Assert.AreEqual(2, party4.Troops);
+        Assert.That(party4.Troops, Is.EqualTo(2));
     }
 }

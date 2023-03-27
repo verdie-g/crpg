@@ -20,8 +20,8 @@ public class GetClanInvitationsQueryTest : TestBase
             ClanId = 2,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.UserNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.UserNotFound));
     }
 
     [Test]
@@ -42,8 +42,8 @@ public class GetClanInvitationsQueryTest : TestBase
             ClanId = clan.Id,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.ClanMemberRoleNotMet, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.ClanMemberRoleNotMet));
     }
 
     [Test]
@@ -110,8 +110,8 @@ public class GetClanInvitationsQueryTest : TestBase
             Statuses = Array.Empty<ClanInvitationStatus>(),
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
-        Assert.AreEqual(4, res.Data!.Count);
+        Assert.That(res.Errors, Is.Null);
+        Assert.That(res.Data!.Count, Is.EqualTo(4));
     }
 
     [Test]
@@ -186,8 +186,8 @@ public class GetClanInvitationsQueryTest : TestBase
             Statuses = new[] { ClanInvitationStatus.Pending },
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
-        Assert.AreEqual(1, res.Data!.Count);
-        Assert.AreEqual(ClanInvitationStatus.Pending, res.Data![0].Status);
+        Assert.That(res.Errors, Is.Null);
+        Assert.That(res.Data!.Count, Is.EqualTo(1));
+        Assert.That(res.Data![0].Status, Is.EqualTo(ClanInvitationStatus.Pending));
     }
 }

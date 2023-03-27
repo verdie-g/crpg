@@ -33,8 +33,8 @@ public class DeleteCharacterCommandTest : TestBase
         var characterDb = await AssertDb.Characters
             .IgnoreQueryFilters()
             .FirstOrDefaultAsync(c => c.Id == character.Id);
-        Assert.IsNotNull(characterDb);
-        Assert.IsNotNull(characterDb!.DeletedAt);
+        Assert.That(characterDb, Is.Not.Null);
+        Assert.That(characterDb!.DeletedAt, Is.Not.Null);
     }
 
     [Test]
@@ -55,7 +55,7 @@ public class DeleteCharacterCommandTest : TestBase
             UserId = 1,
         }, CancellationToken.None);
 
-        Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.CharacterNotFound));
     }
 
     [Test]
@@ -63,6 +63,6 @@ public class DeleteCharacterCommandTest : TestBase
     {
         DeleteCharacterCommand.Handler handler = new(ActDb, Mock.Of<IDateTime>(), Mock.Of<IActivityLogService>());
         var result = await handler.Handle(new DeleteCharacterCommand { CharacterId = 1 }, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.CharacterNotFound));
     }
 }

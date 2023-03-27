@@ -1107,7 +1107,7 @@ public class MatchBalancerTest
         float teamBMeanRating = WeightHelpers.ComputeTeamWeightPowerSum(balancedGame.TeamB, 1);
         float meanRatingRatio = teamAMeanRating / teamBMeanRating;
         MatchBalancingHelpers.DumpTeams(balancedGame);
-        Assert.AreEqual(sizeRatio, 0.7f, 0.3f);
+        Assert.That(sizeRatio, Is.EqualTo(0.7f).Within(0.3f));
     }
 
     [Test]
@@ -1128,7 +1128,7 @@ public class MatchBalancerTest
         float ratingRatio = teamARating / teamBRating;
         Console.WriteLine($"teamASize = {teamASize} teamBSize = {teamBSize}");
         Console.WriteLine($"teamARating = new CrpgCharacterRating {{ Value = {teamARating} teamBRating = new CrpgCharacterRating {{ Value = {teamBRating} }} }}");
-        Assert.AreEqual(ratingRatio, 1, 0.2);
+        Assert.That(ratingRatio, Is.EqualTo(1).Within(0.2));
     }
 
     [Test]
@@ -1146,7 +1146,7 @@ public class MatchBalancerTest
         float teamARating = WeightHelpers.ComputeTeamWeightPowerSum(balancedGame.TeamA, 1);
         float teamBRating = WeightHelpers.ComputeTeamWeightPowerSum(balancedGame.TeamB, 1);
         float ratingRatio = teamARating / teamBRating;
-        Assert.AreEqual(ratingRatio, 1, 0.2);
+        Assert.That(ratingRatio, Is.EqualTo(1).Within(0.2));
     }
 
     [Test]
@@ -1159,7 +1159,7 @@ public class MatchBalancerTest
         float teamARating = WeightHelpers.ComputeTeamWeightPowerSum(balancedGame.TeamA, 1);
         float teamBRating = WeightHelpers.ComputeTeamWeightPowerSum(balancedGame.TeamB, 1);
         float ratingRatio = teamARating / teamBRating;
-        Assert.AreEqual(ratingRatio, 1, 0.2);
+        Assert.That(ratingRatio, Is.EqualTo(1).Within(0.2));
     }
 
     [Test]
@@ -1190,7 +1190,7 @@ public class MatchBalancerTest
         float teamBRating = WeightHelpers.ComputeTeamWeightPowerSum(balancedGame.TeamB, 1);
         float ratingRatio = teamARating / teamBRating;
         MatchBalancingHelpers.DumpTeams(balancedGame);
-        Assert.AreEqual(ratingRatio, 1, 0.2);
+        Assert.That(ratingRatio, Is.EqualTo(1).Within(0.2));
     }
 
     [Test]
@@ -1210,8 +1210,7 @@ public class MatchBalancerTest
         allUsersFromUnbalancedGame.AddRange(Game1.TeamA);
         allUsersFromUnbalancedGame.AddRange(Game1.TeamB);
         allUsersFromUnbalancedGame.AddRange(Game1.Waiting);
-        CollectionAssert.AreEqual(allUsersFromUnbalancedGame.OrderBy(u => u.User.Id),
-            allUsersFromBalancedGame.OrderBy(u => u.User.Id));
+        Assert.That(allUsersFromUnbalancedGame, Is.EquivalentTo(allUsersFromBalancedGame));
     }
 
     [Test]
@@ -1236,7 +1235,7 @@ public class MatchBalancerTest
             {
                 if (u2.ClanId != null)
                 {
-                    Assert.AreNotEqual(u.ClanId, u2.ClanId);
+                    Assert.That(u.ClanId, Is.Not.EqualTo(u2.ClanId));
                 }
             }
         }
@@ -1291,7 +1290,7 @@ public class MatchBalancerTest
     {
         List<float> floats = new() { 0, 0, 5, 5, 10, 10 };
         Console.WriteLine(MathHelper.PowerMean(floats, 1f));
-        Assert.AreEqual(MathHelper.PowerMean(floats, 1f), 5, 0.01);
+        Assert.That(MathHelper.PowerMean(floats, 1f), Is.EqualTo(5).Within(0.01));
     }
 
     [Test]
@@ -1303,14 +1302,14 @@ public class MatchBalancerTest
         userList.AddRange(Game3.TeamB);
         List<ClanGroup> clanGroups = MatchBalancingHelpers.SplitUsersIntoClanGroups(userList);
         List<WeightedCrpgUser> newUserList = MatchBalancingHelpers.JoinClanGroupsIntoUsers(clanGroups);
-        CollectionAssert.AreEqual(userList.OrderBy(u => u.User.Id), newUserList.OrderBy(u => u.User.Id));
+        Assert.That(userList, Is.EquivalentTo(newUserList));
     }
 
     [Test]
     public void RegroupClansShouldEmptyWaiting()
     {
         var game = MatchBalancingHelpers.RejoinClans(Game2);
-        Assert.IsEmpty(game.Waiting);
+        Assert.That(game.Waiting, Is.Empty);
     }
 
     [Test]
@@ -1325,8 +1324,7 @@ public class MatchBalancerTest
         allUsersFromUnbalancedGame.AddRange(Game2.TeamA);
         allUsersFromUnbalancedGame.AddRange(Game2.TeamB);
         allUsersFromUnbalancedGame.AddRange(Game2.Waiting);
-        CollectionAssert.AreEqual(allUsersFromUnbalancedGame.OrderBy(u => u.User.Id),
-            allUsersFromBalancedGame.OrderBy(u => u.User.Id));
+        Assert.That(allUsersFromUnbalancedGame, Is.EquivalentTo(allUsersFromBalancedGame));
     }
 
     [Test]
@@ -1341,7 +1339,7 @@ public class MatchBalancerTest
         List<int> teamAClanId = balancedGame.TeamA.Where(u => u.ClanId != null).Select(u => u.ClanId!.Value).ToList();
         List<int> teamBClanId = balancedGame.TeamB.Where(u => u.ClanId != null).Select(u => u.ClanId!.Value).ToList();
         var intersection = teamAClanId.Intersect(teamBClanId);
-        Assert.IsEmpty(intersection);
+        Assert.That(intersection, Is.Empty);
         MatchBalancingHelpers.DumpTeamsStatus(balancedGame);
     }
 
@@ -1375,11 +1373,12 @@ public class MatchBalancerTest
         };
 
         var game2 = MatchBalancingHelpers.RejoinClans(game);
-        Assert.IsEmpty(game2.Waiting);
-        Assert.IsTrue(
+        Assert.That(game2.Waiting, Is.Empty);
+        Assert.That(
             game2.TeamB.Where(u => u.ClanId != null).Select(u => u.ClanId!.Value)
                 .Intersect(game2.TeamB.Where(u => u.ClanId != null).Select(u => u.ClanId!.Value))
-                .Any());
+                .Any(),
+            Is.True);
     }
 
     private GameMatch PureBannerBalancing(GameMatch gameMatch)

@@ -18,7 +18,7 @@ public class GetClanQueryTest : TestBase
             ClanId = clan.Id,
         }, CancellationToken.None);
 
-        Assert.NotNull(result.Data);
+        Assert.That(result.Data, Is.Not.Null);
     }
 
     [Test]
@@ -29,7 +29,7 @@ public class GetClanQueryTest : TestBase
             ClanId = 1,
         }, CancellationToken.None);
 
-        Assert.Null(result.Data);
-        Assert.IsNotEmpty(result.Errors!);
+        Assert.That(result.Data, Is.Null);
+        Assert.That(result.Errors!, Is.Not.Empty);
     }
 }

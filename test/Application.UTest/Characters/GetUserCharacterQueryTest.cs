@@ -17,7 +17,7 @@ public class GetUserCharacterQueryTest : TestBase
             UserId = 2,
         }, CancellationToken.None);
 
-        Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.CharacterNotFound));
     }
 
     [Test]
@@ -38,7 +38,7 @@ public class GetUserCharacterQueryTest : TestBase
             UserId = 2,
         }, CancellationToken.None);
 
-        Assert.NotNull(result.Data);
+        Assert.That(result.Data, Is.Not.Null);
     }
 
     [Test]
@@ -59,6 +59,6 @@ public class GetUserCharacterQueryTest : TestBase
             UserId = 1,
         }, CancellationToken.None);
 
-        Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.CharacterNotFound));
     }
 }

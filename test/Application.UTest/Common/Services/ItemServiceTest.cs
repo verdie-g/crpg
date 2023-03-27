@@ -47,8 +47,8 @@ public class ItemServiceTest : TestBase
         user = await AssertDb.Users
             .Include(u => u.Items)
             .FirstAsync(u => u.Id == user.Id);
-        Assert.AreEqual(recentlyBought ? 100 : 50, user.Gold);
-        Assert.False(user.Items.Any(ui => ui.Id == user.Items[0].Id));
+        Assert.That(recentlyBought ? 100 : 50, Is.EqualTo(user.Gold));
+        Assert.That(user.Items, Has.None.Matches<UserItem>(ui => ui.Id == user.Items[0].Id));
     }
 
     [Test]
@@ -96,19 +96,19 @@ public class ItemServiceTest : TestBase
             .Include(u => u.Characters)
             .Include(u => u.Items)
             .FirstAsync(u => u.Id == user.Id);
-        Assert.AreEqual(50, user.Gold);
-        Assert.False(user.Items.Any(ui => ui.Id == userItem.Id));
-        Assert.IsEmpty(user.Characters[0].EquippedItems);
-        Assert.IsEmpty(user.Characters[1].EquippedItems);
-        Assert.IsEmpty(user.Characters[2].EquippedItems);
-        Assert.IsEmpty(user.Characters[3].EquippedItems);
-        Assert.IsEmpty(user.Characters[4].EquippedItems);
-        Assert.IsEmpty(user.Characters[5].EquippedItems);
-        Assert.IsEmpty(user.Characters[6].EquippedItems);
-        Assert.IsEmpty(user.Characters[7].EquippedItems);
-        Assert.IsEmpty(user.Characters[8].EquippedItems);
-        Assert.IsEmpty(user.Characters[9].EquippedItems);
-        Assert.IsEmpty(user.Characters[10].EquippedItems);
-        Assert.IsEmpty(user.Characters[11].EquippedItems);
+        Assert.That(user.Gold, Is.EqualTo(50));
+        Assert.That(user.Items, Has.None.Matches<UserItem>(ui => ui.Id == userItem.Id));
+        Assert.That(user.Characters[0].EquippedItems, Is.Empty);
+        Assert.That(user.Characters[1].EquippedItems, Is.Empty);
+        Assert.That(user.Characters[2].EquippedItems, Is.Empty);
+        Assert.That(user.Characters[3].EquippedItems, Is.Empty);
+        Assert.That(user.Characters[4].EquippedItems, Is.Empty);
+        Assert.That(user.Characters[5].EquippedItems, Is.Empty);
+        Assert.That(user.Characters[6].EquippedItems, Is.Empty);
+        Assert.That(user.Characters[7].EquippedItems, Is.Empty);
+        Assert.That(user.Characters[8].EquippedItems, Is.Empty);
+        Assert.That(user.Characters[9].EquippedItems, Is.Empty);
+        Assert.That(user.Characters[10].EquippedItems, Is.Empty);
+        Assert.That(user.Characters[11].EquippedItems, Is.Empty);
     }
 }

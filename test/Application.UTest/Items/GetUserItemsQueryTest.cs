@@ -24,6 +24,6 @@ public class GetUserItemsQueryTest : TestBase
         var result = await new GetUserItemsQuery.Handler(ActDb, Mapper).Handle(
             new GetUserItemsQuery { UserId = user.Entity.Id }, CancellationToken.None);
 
-        Assert.AreEqual(2, result.Data!.Count);
+        Assert.That(result.Data!.Count, Is.EqualTo(2));
     }
 }

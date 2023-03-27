@@ -21,7 +21,7 @@ public class CreateActivityLogsCommandTest : TestBase
             },
         }, CancellationToken.None);
 
-        Assert.AreEqual(2, await AssertDb.ActivityLogs.CountAsync());
-        Assert.AreEqual(1, await AssertDb.ActivityLogMetadata.CountAsync());
+        Assert.That(await AssertDb.ActivityLogs.CountAsync(), Is.EqualTo(2));
+        Assert.That(await AssertDb.ActivityLogMetadata.CountAsync(), Is.EqualTo(1));
     }
 }

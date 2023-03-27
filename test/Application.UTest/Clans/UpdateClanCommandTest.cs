@@ -26,8 +26,8 @@ public class UpdateClanCommandTest : TestBase
             ClanId = 234,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.ClanNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.ClanNotFound));
     }
 
     [TestCase(ClanMemberRole.Member)]
@@ -46,8 +46,8 @@ public class UpdateClanCommandTest : TestBase
             ClanId = clan.Id,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.ClanMemberRoleNotMet, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.ClanMemberRoleNotMet));
     }
 
     [Test]
@@ -69,9 +69,9 @@ public class UpdateClanCommandTest : TestBase
             Region = Region.Na,
         }, CancellationToken.None);
 
-        Assert.NotNull(result.Errors);
-        Assert.IsNotEmpty(result.Errors!);
-        Assert.AreEqual(ErrorCode.ClanTagAlreadyUsed, result.Errors![0].Code);
+        Assert.That(result.Errors, Is.Not.Null);
+        Assert.That(result.Errors!, Is.Not.Empty);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.ClanTagAlreadyUsed));
     }
 
     [Test]
@@ -93,9 +93,9 @@ public class UpdateClanCommandTest : TestBase
             Region = Region.Na,
         }, CancellationToken.None);
 
-        Assert.NotNull(result.Errors);
-        Assert.IsNotEmpty(result.Errors!);
-        Assert.AreEqual(ErrorCode.ClanNameAlreadyUsed, result.Errors![0].Code);
+        Assert.That(result.Errors, Is.Not.Null);
+        Assert.That(result.Errors!, Is.Not.Empty);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.ClanNameAlreadyUsed));
     }
 
     [Test]
@@ -130,16 +130,16 @@ public class UpdateClanCommandTest : TestBase
             Discord = new Uri("https://discord.gg/def"),
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
+        Assert.That(res.Errors, Is.Null);
         var clanVm = res.Data!;
-        Assert.AreEqual(Region.Na, clanVm.Region);
-        Assert.AreEqual("C", clanVm.Tag);
-        Assert.AreEqual("E", clanVm.Description);
-        Assert.AreEqual(1234, clanVm.PrimaryColor);
-        Assert.AreEqual(4567, clanVm.SecondaryColor);
-        Assert.AreEqual("D", clanVm.Name);
-        Assert.AreEqual("7890", clanVm.BannerKey);
-        Assert.AreEqual(Region.Na, clanVm.Region);
-        Assert.AreEqual(new Uri("https://discord.gg/def"), clanVm.Discord);
+        Assert.That(clanVm.Region, Is.EqualTo(Region.Na));
+        Assert.That(clanVm.Tag, Is.EqualTo("C"));
+        Assert.That(clanVm.Description, Is.EqualTo("E"));
+        Assert.That(clanVm.PrimaryColor, Is.EqualTo(1234));
+        Assert.That(clanVm.SecondaryColor, Is.EqualTo(4567));
+        Assert.That(clanVm.Name, Is.EqualTo("D"));
+        Assert.That(clanVm.BannerKey, Is.EqualTo("7890"));
+        Assert.That(clanVm.Region, Is.EqualTo(Region.Na));
+        Assert.That(clanVm.Discord, Is.EqualTo(new Uri("https://discord.gg/def")));
     }
 }

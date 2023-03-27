@@ -34,6 +34,6 @@ public class GetUserCharactersQueryTest : TestBase
         var result = await handler.Handle(new GetUserCharactersQuery { UserId = user0.Id }, CancellationToken.None);
 
         var characters = result.Data!;
-        Assert.AreEqual(2, characters.Count);
+        Assert.That(characters.Count, Is.EqualTo(2));
     }
 }

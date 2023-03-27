@@ -11,7 +11,7 @@ public class CharacterClassModelTest
     {
         CharacterClassResolver resolver = new();
         CharacterClass actualClass = resolver.ResolveCharacterClass(stats);
-        Assert.AreEqual(expectedClass, actualClass);
+        Assert.That(actualClass, Is.EqualTo(expectedClass));
     }
 
     private static readonly object[][] TestResolveCharacterClassSource =

@@ -92,27 +92,27 @@ public class GetBattlesQueryTest : TestBase
             Phases = new[] { BattlePhase.Hiring, BattlePhase.Live },
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
+        Assert.That(res.Errors, Is.Null);
 
         var battlesVm = res.Data!;
-        Assert.AreEqual(2, battlesVm.Count);
+        Assert.That(battlesVm.Count, Is.EqualTo(2));
 
-        Assert.AreEqual(Region.Na, battlesVm[0].Region);
-        Assert.AreEqual(BattlePhase.Hiring, battlesVm[0].Phase);
-        Assert.IsNotNull(battlesVm[0].Attacker);
-        Assert.IsNotNull(battlesVm[0].Attacker.Party);
-        Assert.AreEqual(35, battlesVm[0].AttackerTotalTroops);
-        Assert.IsNotNull(battlesVm[0].Defender);
-        Assert.IsNotNull(battlesVm[0].Defender!.Party);
-        Assert.AreEqual(45, battlesVm[0].DefenderTotalTroops);
+        Assert.That(battlesVm[0].Region, Is.EqualTo(Region.Na));
+        Assert.That(battlesVm[0].Phase, Is.EqualTo(BattlePhase.Hiring));
+        Assert.That(battlesVm[0].Attacker, Is.Not.Null);
+        Assert.That(battlesVm[0].Attacker.Party, Is.Not.Null);
+        Assert.That(battlesVm[0].AttackerTotalTroops, Is.EqualTo(35));
+        Assert.That(battlesVm[0].Defender, Is.Not.Null);
+        Assert.That(battlesVm[0].Defender!.Party, Is.Not.Null);
+        Assert.That(battlesVm[0].DefenderTotalTroops, Is.EqualTo(45));
 
-        Assert.AreEqual(Region.Na, battlesVm[1].Region);
-        Assert.AreEqual(BattlePhase.Live, battlesVm[1].Phase);
-        Assert.IsNotNull(battlesVm[1].Attacker);
-        Assert.IsNotNull(battlesVm[1].Attacker.Party);
-        Assert.AreEqual(100, battlesVm[1].AttackerTotalTroops);
-        Assert.AreEqual(47, battlesVm[1].DefenderTotalTroops);
-        Assert.IsNotNull(battlesVm[1].Defender);
-        Assert.IsNotNull(battlesVm[1].Defender!.Settlement);
+        Assert.That(battlesVm[1].Region, Is.EqualTo(Region.Na));
+        Assert.That(battlesVm[1].Phase, Is.EqualTo(BattlePhase.Live));
+        Assert.That(battlesVm[1].Attacker, Is.Not.Null);
+        Assert.That(battlesVm[1].Attacker.Party, Is.Not.Null);
+        Assert.That(battlesVm[1].AttackerTotalTroops, Is.EqualTo(100));
+        Assert.That(battlesVm[1].DefenderTotalTroops, Is.EqualTo(47));
+        Assert.That(battlesVm[1].Defender, Is.Not.Null);
+        Assert.That(battlesVm[1].Defender!.Settlement, Is.Not.Null);
     }
 }

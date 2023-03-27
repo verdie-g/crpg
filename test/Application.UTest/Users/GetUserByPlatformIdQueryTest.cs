@@ -16,7 +16,7 @@ public class GetUserByPlatformIdQueryTest : TestBase
             Platform = Platform.Steam,
             PlatformUserId = "1234",
         }, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.UserNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.UserNotFound));
     }
 
     [Test]
@@ -37,6 +37,6 @@ public class GetUserByPlatformIdQueryTest : TestBase
             PlatformUserId = "13948192759205810",
         }, CancellationToken.None);
 
-        Assert.NotNull(userVm);
+        Assert.That(userVm, Is.Not.Null);
     }
 }

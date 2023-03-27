@@ -46,8 +46,8 @@ public class UpdateBattlePhasesCommandTest : TestBase
         await handler.Handle(new UpdateBattlePhasesCommand(), CancellationToken.None);
 
         battles = await AssertDb.Battles.ToArrayAsync();
-        Assert.AreEqual(BattlePhase.Hiring, battles[0].Phase);
-        Assert.AreEqual(BattlePhase.Preparation, battles[1].Phase);
+        Assert.That(battles[0].Phase, Is.EqualTo(BattlePhase.Hiring));
+        Assert.That(battles[1].Phase, Is.EqualTo(BattlePhase.Preparation));
 
         battleMercenaryDistributionModelMock.Verify(m =>
             m.DistributeMercenaries(It.IsAny<IList<BattleFighter>>(), It.IsAny<int>()), Times.Once);
@@ -80,9 +80,9 @@ public class UpdateBattlePhasesCommandTest : TestBase
         await handler.Handle(new UpdateBattlePhasesCommand(), CancellationToken.None);
 
         battles = await AssertDb.Battles.ToArrayAsync();
-        Assert.AreEqual(BattlePhase.Scheduled, battles[0].Phase);
+        Assert.That(battles[0].Phase, Is.EqualTo(BattlePhase.Scheduled));
         battleSchedulerMock.Verify(s => s.ScheduleBattle(It.IsAny<Battle>()), Times.Once);
-        Assert.AreEqual(BattlePhase.Hiring, battles[1].Phase);
+        Assert.That(battles[1].Phase, Is.EqualTo(BattlePhase.Hiring));
     }
 
     [Test]
@@ -112,7 +112,7 @@ public class UpdateBattlePhasesCommandTest : TestBase
         await handler.Handle(new UpdateBattlePhasesCommand(), CancellationToken.None);
 
         battles = await AssertDb.Battles.ToArrayAsync();
-        Assert.AreEqual(BattlePhase.Live, battles[0].Phase);
-        Assert.AreEqual(BattlePhase.Scheduled, battles[1].Phase);
+        Assert.That(battles[0].Phase, Is.EqualTo(BattlePhase.Live));
+        Assert.That(battles[1].Phase, Is.EqualTo(BattlePhase.Scheduled));
     }
 }

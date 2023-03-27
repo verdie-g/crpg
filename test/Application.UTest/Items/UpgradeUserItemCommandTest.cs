@@ -30,8 +30,8 @@ public class UpgradeUserItemCommandTest : TestBase
             UserId = user.Id,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(result.Errors);
-        Assert.AreEqual(ErrorCode.UserItemNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors, Is.Not.Null);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.UserItemNotFound));
     }
 
     [Test]
@@ -53,8 +53,8 @@ public class UpgradeUserItemCommandTest : TestBase
             UserId = user.Id,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(result.Errors);
-        Assert.AreEqual(ErrorCode.NotEnoughGold, result.Errors![0].Code);
+        Assert.That(result.Errors, Is.Not.Null);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.NotEnoughGold));
     }
 
     [Test]
@@ -76,10 +76,10 @@ public class UpgradeUserItemCommandTest : TestBase
             UserId = user.Id,
         }, CancellationToken.None);
 
-        Assert.IsNull(result.Errors);
-        Assert.AreEqual(0, result.Data!.Rank);
+        Assert.That(result.Errors, Is.Null);
+        Assert.That(result.Data!.Rank, Is.EqualTo(0));
 
         var userDb = await AssertDb.Users.FirstAsync(u => u.Id == user.Id);
-        Assert.AreEqual(667, userDb.Gold);
+        Assert.That(userDb.Gold, Is.EqualTo(667));
     }
 }

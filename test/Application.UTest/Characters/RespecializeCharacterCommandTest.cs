@@ -84,23 +84,23 @@ public class RespecializeCharacterCommandTest : TestBase
             .FirstAsync(c => c.Id == character.Id);
         if (freeRespec)
         {
-            Assert.AreEqual(character.User!.Gold, 1000);
-            Assert.AreEqual(dateTimeMock.Object.UtcNow, characterDb.Limitations!.LastFreeRespecializeAt);
+            Assert.That(character.User!.Gold, Is.EqualTo(1000));
+            Assert.That(characterDb.Limitations!.LastFreeRespecializeAt, Is.EqualTo(dateTimeMock.Object.UtcNow));
         }
         else
         {
-            Assert.Less(character.User!.Gold, 1000);
-            Assert.AreEqual(new DateTime(2023, 3, 16), characterDb.Limitations!.LastFreeRespecializeAt);
+            Assert.That(character.User!.Gold, Is.LessThan(1000));
+            Assert.That(characterDb.Limitations!.LastFreeRespecializeAt, Is.EqualTo(new DateTime(2023, 3, 16)));
         }
 
-        Assert.AreEqual(2, character.Generation);
-        Assert.AreEqual(2, character.Level);
-        Assert.AreEqual(75, character.Experience);
-        Assert.AreEqual(3, character.EquippedItems.Count);
-        Assert.AreEqual(1, character.Statistics.Kills);
-        Assert.AreEqual(2, character.Statistics.Deaths);
-        Assert.AreEqual(3, character.Statistics.Assists);
-        Assert.AreEqual(TimeSpan.FromSeconds(4), character.Statistics.PlayTime);
+        Assert.That(character.Generation, Is.EqualTo(2));
+        Assert.That(character.Level, Is.EqualTo(2));
+        Assert.That(character.Experience, Is.EqualTo(75));
+        Assert.That(character.EquippedItems.Count, Is.EqualTo(3));
+        Assert.That(character.Statistics.Kills, Is.EqualTo(1));
+        Assert.That(character.Statistics.Deaths, Is.EqualTo(2));
+        Assert.That(character.Statistics.Assists, Is.EqualTo(3));
+        Assert.That(character.Statistics.PlayTime, Is.EqualTo(TimeSpan.FromSeconds(4)));
         characterServiceMock.Verify(cs => cs.ResetCharacterCharacteristics(It.IsAny<Character>(), true));
     }
 
@@ -148,15 +148,15 @@ public class RespecializeCharacterCommandTest : TestBase
             .Include(c => c.User)
             .Include(c => c.EquippedItems)
             .FirstAsync(c => c.Id == character.Id);
-        Assert.AreEqual(500, character.User!.Gold);
-        Assert.AreEqual(0, character.Generation);
-        Assert.AreEqual(3, character.Level);
-        Assert.AreEqual(150, character.Experience);
-        Assert.AreEqual(3, character.EquippedItems.Count);
-        Assert.AreEqual(1, character.Statistics.Kills);
-        Assert.AreEqual(2, character.Statistics.Deaths);
-        Assert.AreEqual(3, character.Statistics.Assists);
-        Assert.AreEqual(TimeSpan.FromSeconds(4), character.Statistics.PlayTime);
+        Assert.That(character.User!.Gold, Is.EqualTo(500));
+        Assert.That(character.Generation, Is.EqualTo(0));
+        Assert.That(character.Level, Is.EqualTo(3));
+        Assert.That(character.Experience, Is.EqualTo(150));
+        Assert.That(character.EquippedItems.Count, Is.EqualTo(3));
+        Assert.That(character.Statistics.Kills, Is.EqualTo(1));
+        Assert.That(character.Statistics.Deaths, Is.EqualTo(2));
+        Assert.That(character.Statistics.Assists, Is.EqualTo(3));
+        Assert.That(character.Statistics.PlayTime, Is.EqualTo(TimeSpan.FromSeconds(4)));
         characterServiceMock.Verify(cs => cs.ResetCharacterCharacteristics(It.IsAny<Character>(), true));
     }
 
@@ -191,8 +191,8 @@ public class RespecializeCharacterCommandTest : TestBase
             UserId = character.UserId,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.NotEnoughGold, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.NotEnoughGold));
     }
 
     [Test]
@@ -210,7 +210,7 @@ public class RespecializeCharacterCommandTest : TestBase
                 UserId = 2,
             }, CancellationToken.None);
 
-        Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.CharacterNotFound));
     }
 
     [Test]
@@ -230,6 +230,6 @@ public class RespecializeCharacterCommandTest : TestBase
             UserId = user.Entity.Id,
         }, CancellationToken.None);
 
-        Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.CharacterNotFound));
     }
 }

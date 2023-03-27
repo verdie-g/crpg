@@ -21,7 +21,7 @@ public class ExperienceTableTest
     [TestCase(9000000, 31)]
     public void GetLevelForExperience(int experience, int expectedLevel)
     {
-        Assert.AreEqual(expectedLevel, ExperienceTable.GetLevelForExperience(experience));
+        Assert.That(ExperienceTable.GetLevelForExperience(experience), Is.EqualTo(expectedLevel));
     }
 
     [TestCase(2, 388)]
@@ -30,7 +30,7 @@ public class ExperienceTableTest
     [TestCase(30, 4420824)]
     public void GetExperienceForLevel(int level, int expectedExperience)
     {
-        Assert.AreEqual(expectedExperience, ExperienceTable.GetExperienceForLevel(level));
+        Assert.That(ExperienceTable.GetExperienceForLevel(level), Is.EqualTo(expectedExperience));
     }
 
     [Test]
@@ -40,7 +40,7 @@ public class ExperienceTableTest
         for (int lvl = 31; lvl <= Constants.MaximumLevel; lvl += 1)
         {
             int xp = ExperienceTable.GetExperienceForLevel(lvl);
-            Assert.AreEqual(2 * xpLastLevel, xp);
+            Assert.That(xp, Is.EqualTo(2 * xpLastLevel));
             xpLastLevel = xp;
         }
     }
@@ -52,7 +52,7 @@ public class ExperienceTableTest
         for (int lvl = Constants.MinimumLevel; lvl <= Constants.MaximumLevel; lvl += 1)
         {
             int xp = ExperienceTable.GetExperienceForLevel(lvl);
-            Assert.Greater(xp, xpLastLevel, "Experience for lvl {0} should be greater than for lvl {1}", lvl, lvl - 1);
+            Assert.That(xp, Is.GreaterThan(xpLastLevel), "Experience for lvl {0} should be greater than for lvl {1}", lvl, lvl - 1);
             xpLastLevel = xp;
         }
     }

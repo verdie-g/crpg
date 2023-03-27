@@ -26,8 +26,8 @@ public class ApplyAsMercenaryToBattleCommandTest : TestBase
             Side = BattleSide.Attacker,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.CharacterNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.CharacterNotFound));
     }
 
     [Test]
@@ -47,8 +47,8 @@ public class ApplyAsMercenaryToBattleCommandTest : TestBase
             Side = BattleSide.Attacker,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.BattleNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.BattleNotFound));
     }
 
     [TestCase(BattlePhase.Preparation)]
@@ -74,8 +74,8 @@ public class ApplyAsMercenaryToBattleCommandTest : TestBase
             Side = BattleSide.Attacker,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.BattleInvalidPhase, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.BattleInvalidPhase));
     }
 
     [Test]
@@ -103,8 +103,8 @@ public class ApplyAsMercenaryToBattleCommandTest : TestBase
             Side = BattleSide.Attacker,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.PartyFighter, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.PartyFighter));
     }
 
     [TestCase(BattleMercenaryApplicationStatus.Pending)]
@@ -137,12 +137,12 @@ public class ApplyAsMercenaryToBattleCommandTest : TestBase
             Side = BattleSide.Attacker,
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
+        Assert.That(res.Errors, Is.Null);
         var application = res.Data!;
-        Assert.AreEqual(existingApplication.Id, application.Id);
-        Assert.AreEqual(user.Id, application.User.Id);
-        Assert.AreEqual(character.Id, application.Character.Id);
-        Assert.AreEqual(existingApplicationStatus, application.Status);
+        Assert.That(application.Id, Is.EqualTo(existingApplication.Id));
+        Assert.That(application.User.Id, Is.EqualTo(user.Id));
+        Assert.That(application.Character.Id, Is.EqualTo(character.Id));
+        Assert.That(application.Status, Is.EqualTo(existingApplicationStatus));
     }
 
     [Test]
@@ -167,14 +167,14 @@ public class ApplyAsMercenaryToBattleCommandTest : TestBase
             Note = "toto",
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
+        Assert.That(res.Errors, Is.Null);
         var application = res.Data!;
-        Assert.NotZero(application.Id);
-        Assert.AreEqual(user.Id, application.User.Id);
-        Assert.AreEqual(character.Id, application.Character.Id);
-        Assert.AreEqual(BattleSide.Defender, application.Side);
-        Assert.AreEqual(123, application.Wage);
-        Assert.AreEqual("toto", application.Note);
-        Assert.AreEqual(BattleMercenaryApplicationStatus.Pending, application.Status);
+        Assert.That(application.Id, Is.Not.Zero);
+        Assert.That(application.User.Id, Is.EqualTo(user.Id));
+        Assert.That(application.Character.Id, Is.EqualTo(character.Id));
+        Assert.That(application.Side, Is.EqualTo(BattleSide.Defender));
+        Assert.That(application.Wage, Is.EqualTo(123));
+        Assert.That(application.Note, Is.EqualTo("toto"));
+        Assert.That(application.Status, Is.EqualTo(BattleMercenaryApplicationStatus.Pending));
     }
 }

@@ -11,13 +11,13 @@ internal class ConsoleDebugManager : IDebugManager
 
     public void Assert(bool condition, string message, string callerFile = "", string callerMethod = "", int callerLine = 0)
     {
-        NUnit.Framework.Assert.IsTrue(condition, message);
+        NUnit.Framework.Assert.That(condition, NUnit.Framework.Is.True, message);
     }
 
     public void SilentAssert(bool condition, string message = "", bool getDump = false, string callerFile = "",
         string callerMethod = "", int callerLine = 0)
     {
-        NUnit.Framework.Assert.IsTrue(condition, message);
+        NUnit.Framework.Assert.That(condition, NUnit.Framework.Is.True, message);
     }
 
     public void Print(string message, int logLevel = 0, Debug.DebugColor color = Debug.DebugColor.White,

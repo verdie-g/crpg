@@ -27,7 +27,7 @@ public class ActivateCharacterCommandTest : TestBase
             Active = true,
         }, CancellationToken.None);
 
-        Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.CharacterNotFound));
     }
 
     [Test]
@@ -48,8 +48,8 @@ public class ActivateCharacterCommandTest : TestBase
             Active = true,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(result.Errors);
-        Assert.AreEqual(ErrorCode.CharacterForTournament, result.Errors![0].Code);
+        Assert.That(result.Errors, Is.Not.Null);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.CharacterForTournament));
     }
 
     [Test]
@@ -70,10 +70,10 @@ public class ActivateCharacterCommandTest : TestBase
             Active = true,
         }, CancellationToken.None);
 
-        Assert.IsNull(result.Errors);
+        Assert.That(result.Errors, Is.Null);
 
         var userDb = await AssertDb.Users.FirstAsync(u => u.Id == user.Id);
-        Assert.AreEqual(user.Characters[0].Id, userDb.ActiveCharacterId);
+        Assert.That(userDb.ActiveCharacterId, Is.EqualTo(user.Characters[0].Id));
     }
 
     [Test]
@@ -94,10 +94,10 @@ public class ActivateCharacterCommandTest : TestBase
             Active = false,
         }, CancellationToken.None);
 
-        Assert.IsNull(result.Errors);
+        Assert.That(result.Errors, Is.Null);
 
         var userDb = await AssertDb.Users.FirstAsync(u => u.Id == user.Id);
-        Assert.IsNull(userDb.ActiveCharacter);
-        Assert.IsNull(userDb.ActiveCharacterId);
+        Assert.That(userDb.ActiveCharacter, Is.Null);
+        Assert.That(userDb.ActiveCharacterId, Is.Null);
     }
 }

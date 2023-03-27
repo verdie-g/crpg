@@ -25,7 +25,7 @@ public class StrategusMapTest
     {
         Point p1 = new(0.00001, 0.00001);
         Point p2 = new(0.00002, 0.00002);
-        Assert.True(StrategusMap.ArePointsEquivalent(p1, p2));
+        Assert.That(StrategusMap.ArePointsEquivalent(p1, p2), Is.True);
     }
 
     [Test]
@@ -33,7 +33,7 @@ public class StrategusMapTest
     {
         Point p1 = new(0, 0);
         Point p2 = new(10, 10);
-        Assert.False(StrategusMap.ArePointsEquivalent(p1, p2));
+        Assert.That(StrategusMap.ArePointsEquivalent(p1, p2), Is.False);
     }
 
     [Test]
@@ -41,7 +41,7 @@ public class StrategusMapTest
     {
         Point p1 = new(0.5, 0.5);
         Point p2 = new(1, 0.5);
-        Assert.True(StrategusMap.ArePointsAtInteractionDistance(p1, p2));
+        Assert.That(StrategusMap.ArePointsAtInteractionDistance(p1, p2), Is.True);
     }
 
     [Test]
@@ -49,7 +49,7 @@ public class StrategusMapTest
     {
         Point p1 = new(0, 0);
         Point p2 = new(100, 100);
-        Assert.False(StrategusMap.ArePointsAtInteractionDistance(p1, p2));
+        Assert.That(StrategusMap.ArePointsAtInteractionDistance(p1, p2), Is.False);
     }
 
     [Test]
@@ -58,10 +58,10 @@ public class StrategusMapTest
         Point p1 = new(0, 0);
         Point p2 = new(100, 100);
         var p3 = StrategusMap.MovePointTowards(p1, p2, 1);
-        Assert.Greater(p3.X, p1.X);
-        Assert.Greater(p3.Y, p1.Y);
-        Assert.Less(p3.X, p2.X);
-        Assert.Less(p3.Y, p2.Y);
+        Assert.That(p3.X, Is.GreaterThan(p1.X));
+        Assert.That(p3.Y, Is.GreaterThan(p1.Y));
+        Assert.That(p3.X, Is.LessThan(p2.X));
+        Assert.That(p3.Y, Is.LessThan(p2.Y));
     }
 
     [Test]
@@ -70,7 +70,7 @@ public class StrategusMapTest
         Point p1 = new(0, 0);
         Point p2 = new(100, 100);
         var p3 = StrategusMap.MovePointTowards(p1, p2, 10000000);
-        Assert.AreEqual(p2, p3);
+        Assert.That(p3, Is.EqualTo(p2));
     }
 
     [TestCase(Region.Eu, Region.Eu, 4, 7)]
@@ -93,8 +93,8 @@ public class StrategusMapTest
     {
         Point p1 = new(4, 7);
         Point p2 = StrategusMap.TranslatePositionForRegion(p1, source, target);
-        Assert.AreEqual(expectedX, p2.X);
-        Assert.AreEqual(expectedY, p2.Y);
+        Assert.That(p2.X, Is.EqualTo(expectedX));
+        Assert.That(p2.Y, Is.EqualTo(expectedY));
     }
 
     [Test]

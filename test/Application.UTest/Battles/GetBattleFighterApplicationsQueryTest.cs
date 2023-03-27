@@ -20,8 +20,8 @@ public class GetBattleFighterApplicationsQueryTest : TestBase
             Statuses = Array.Empty<BattleFighterApplicationStatus>(),
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.BattleNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.BattleNotFound));
     }
 
     [Test]
@@ -87,10 +87,10 @@ public class GetBattleFighterApplicationsQueryTest : TestBase
             },
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
+        Assert.That(res.Errors, Is.Null);
         var applications = res.Data!;
-        Assert.AreEqual(3, applications.Count);
-        Assert.AreEqual(BattleSide.Defender, applications[0].Side);
+        Assert.That(applications.Count, Is.EqualTo(3));
+        Assert.That(applications[0].Side, Is.EqualTo(BattleSide.Defender));
     }
 
     [Theory]
@@ -155,10 +155,10 @@ public class GetBattleFighterApplicationsQueryTest : TestBase
             },
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
+        Assert.That(res.Errors, Is.Null);
         var applications = res.Data!;
-        Assert.AreEqual(2, applications.Count);
-        Assert.AreEqual(BattleSide.Attacker, applications[0].Side);
-        Assert.AreEqual(BattleSide.Defender, applications[1].Side);
+        Assert.That(applications.Count, Is.EqualTo(2));
+        Assert.That(applications[0].Side, Is.EqualTo(BattleSide.Attacker));
+        Assert.That(applications[1].Side, Is.EqualTo(BattleSide.Defender));
     }
 }

@@ -30,14 +30,14 @@ public class CreateClanCommandTest : TestBase
         }, CancellationToken.None);
 
         var clan = result.Data!;
-        Assert.AreEqual("TW", clan.Tag);
-        Assert.AreEqual(0xFFFFFFFF, clan.PrimaryColor);
-        Assert.AreEqual(0xFF000000, clan.SecondaryColor);
-        Assert.AreEqual("TaleWorlds", clan.Name);
-        Assert.AreEqual("a description", clan.Description);
-        Assert.AreEqual("abc", clan.BannerKey);
-        Assert.AreEqual(Region.Na, clan.Region);
-        Assert.AreEqual(new Uri("https://discord.gg/abc"), clan.Discord);
+        Assert.That(clan.Tag, Is.EqualTo("TW"));
+        Assert.That(clan.PrimaryColor, Is.EqualTo(0xFFFFFFFF));
+        Assert.That(clan.SecondaryColor, Is.EqualTo(0xFF000000));
+        Assert.That(clan.Name, Is.EqualTo("TaleWorlds"));
+        Assert.That(clan.Description, Is.EqualTo("a description"));
+        Assert.That(clan.BannerKey, Is.EqualTo("abc"));
+        Assert.That(clan.Region, Is.EqualTo(Region.Na));
+        Assert.That(clan.Discord, Is.EqualTo(new Uri("https://discord.gg/abc")));
 
         Assert.That(AssertDb.Clans, Has.Exactly(1).Matches<Clan>(c => c.Id == clan.Id));
         Assert.That(AssertDb.ClanMembers, Has.Exactly(1)
@@ -57,9 +57,9 @@ public class CreateClanCommandTest : TestBase
             BannerKey = string.Empty,
         }, CancellationToken.None);
 
-        Assert.NotNull(result.Errors);
-        Assert.IsNotEmpty(result.Errors!);
-        Assert.AreEqual(ErrorCode.UserNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors, Is.Not.Null);
+        Assert.That(result.Errors!, Is.Not.Empty);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.UserNotFound));
     }
 
     [Test]
@@ -79,9 +79,9 @@ public class CreateClanCommandTest : TestBase
             BannerKey = string.Empty,
         }, CancellationToken.None);
 
-        Assert.NotNull(result.Errors);
-        Assert.IsNotEmpty(result.Errors!);
-        Assert.AreEqual(ErrorCode.UserAlreadyInAClan, result.Errors![0].Code);
+        Assert.That(result.Errors, Is.Not.Null);
+        Assert.That(result.Errors!, Is.Not.Empty);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.UserAlreadyInAClan));
     }
 
     [Test]
@@ -102,9 +102,9 @@ public class CreateClanCommandTest : TestBase
             BannerKey = string.Empty,
         }, CancellationToken.None);
 
-        Assert.NotNull(result.Errors);
-        Assert.IsNotEmpty(result.Errors!);
-        Assert.AreEqual(ErrorCode.ClanTagAlreadyUsed, result.Errors![0].Code);
+        Assert.That(result.Errors, Is.Not.Null);
+        Assert.That(result.Errors!, Is.Not.Empty);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.ClanTagAlreadyUsed));
     }
 
     [Test]
@@ -125,8 +125,8 @@ public class CreateClanCommandTest : TestBase
             BannerKey = string.Empty,
         }, CancellationToken.None);
 
-        Assert.NotNull(result.Errors);
-        Assert.IsNotEmpty(result.Errors!);
-        Assert.AreEqual(ErrorCode.ClanNameAlreadyUsed, result.Errors![0].Code);
+        Assert.That(result.Errors, Is.Not.Null);
+        Assert.That(result.Errors!, Is.Not.Empty);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.ClanNameAlreadyUsed));
     }
 }

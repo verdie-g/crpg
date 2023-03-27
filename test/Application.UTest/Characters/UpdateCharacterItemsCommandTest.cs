@@ -88,21 +88,21 @@ public class UpdateCharacterItemsCommandTest : TestBase
             },
         };
         var result = await handler.Handle(cmd, CancellationToken.None);
-        Assert.IsNull(result.Errors);
+        Assert.That(result.Errors, Is.Null);
 
         var userItemIdBySlot = result.Data!.ToDictionary(i => i.Slot, ei => ei.UserItem.Id);
-        Assert.AreEqual(headNew.Id, userItemIdBySlot[ItemSlot.Head]);
-        Assert.AreEqual(shoulderNew.Id, userItemIdBySlot[ItemSlot.Shoulder]);
-        Assert.AreEqual(bodyNew.Id, userItemIdBySlot[ItemSlot.Body]);
-        Assert.AreEqual(handNew.Id, userItemIdBySlot[ItemSlot.Hand]);
-        Assert.AreEqual(legNew.Id, userItemIdBySlot[ItemSlot.Leg]);
-        Assert.AreEqual(mountHarnessNew.Id, userItemIdBySlot[ItemSlot.MountHarness]);
-        Assert.AreEqual(mountNew.Id, userItemIdBySlot[ItemSlot.Mount]);
-        Assert.AreEqual(weapon0New.Id, userItemIdBySlot[ItemSlot.Weapon0]);
-        Assert.AreEqual(weapon1New.Id, userItemIdBySlot[ItemSlot.Weapon1]);
-        Assert.AreEqual(weapon2New.Id, userItemIdBySlot[ItemSlot.Weapon2]);
-        Assert.AreEqual(weapon3New.Id, userItemIdBySlot[ItemSlot.Weapon3]);
-        Assert.AreEqual(weaponExtraNew.Id, userItemIdBySlot[ItemSlot.WeaponExtra]);
+        Assert.That(userItemIdBySlot[ItemSlot.Head], Is.EqualTo(headNew.Id));
+        Assert.That(userItemIdBySlot[ItemSlot.Shoulder], Is.EqualTo(shoulderNew.Id));
+        Assert.That(userItemIdBySlot[ItemSlot.Body], Is.EqualTo(bodyNew.Id));
+        Assert.That(userItemIdBySlot[ItemSlot.Hand], Is.EqualTo(handNew.Id));
+        Assert.That(userItemIdBySlot[ItemSlot.Leg], Is.EqualTo(legNew.Id));
+        Assert.That(userItemIdBySlot[ItemSlot.MountHarness], Is.EqualTo(mountHarnessNew.Id));
+        Assert.That(userItemIdBySlot[ItemSlot.Mount], Is.EqualTo(mountNew.Id));
+        Assert.That(userItemIdBySlot[ItemSlot.Weapon0], Is.EqualTo(weapon0New.Id));
+        Assert.That(userItemIdBySlot[ItemSlot.Weapon1], Is.EqualTo(weapon1New.Id));
+        Assert.That(userItemIdBySlot[ItemSlot.Weapon2], Is.EqualTo(weapon2New.Id));
+        Assert.That(userItemIdBySlot[ItemSlot.Weapon3], Is.EqualTo(weapon3New.Id));
+        Assert.That(userItemIdBySlot[ItemSlot.WeaponExtra], Is.EqualTo(weaponExtraNew.Id));
     }
 
     [Test]
@@ -147,12 +147,12 @@ public class UpdateCharacterItemsCommandTest : TestBase
         var result = await handler.Handle(cmd, CancellationToken.None);
 
         var userItemIdBySlot = result.Data!.ToDictionary(i => i.Slot, i => i.UserItem.Id);
-        Assert.AreEqual(headNew.Id, userItemIdBySlot[ItemSlot.Head]);
+        Assert.That(userItemIdBySlot[ItemSlot.Head], Is.EqualTo(headNew.Id));
         Assert.That(userItemIdBySlot, Does.Not.ContainKey(ItemSlot.Shoulder));
-        Assert.AreEqual(bodyNew.Id, userItemIdBySlot[ItemSlot.Body]);
+        Assert.That(userItemIdBySlot[ItemSlot.Body], Is.EqualTo(bodyNew.Id));
         Assert.That(userItemIdBySlot, Does.Not.ContainKey(ItemSlot.Shoulder));
         Assert.That(userItemIdBySlot, Does.Not.ContainKey(ItemSlot.Hand));
-        Assert.AreEqual(legOld.Id, userItemIdBySlot[ItemSlot.Leg]);
+        Assert.That(userItemIdBySlot[ItemSlot.Leg], Is.EqualTo(legOld.Id));
         Assert.That(userItemIdBySlot, Does.Not.ContainKey(ItemSlot.MountHarness));
         Assert.That(userItemIdBySlot, Does.Not.ContainKey(ItemSlot.Mount));
         Assert.That(userItemIdBySlot, Does.Not.ContainKey(ItemSlot.Weapon0));
@@ -175,7 +175,7 @@ public class UpdateCharacterItemsCommandTest : TestBase
         };
 
         var result = await handler.Handle(cmd, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.CharacterNotFound));
     }
 
     [Test]
@@ -193,7 +193,7 @@ public class UpdateCharacterItemsCommandTest : TestBase
         };
 
         var result = await handler.Handle(cmd, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.CharacterNotFound));
     }
 
     [Test]
@@ -210,7 +210,7 @@ public class UpdateCharacterItemsCommandTest : TestBase
         };
 
         var result = await handler.Handle(cmd, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.CharacterNotFound));
     }
 
     [Test]
@@ -232,7 +232,7 @@ public class UpdateCharacterItemsCommandTest : TestBase
         };
 
         var result = await handler.Handle(cmd, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.UserItemNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.UserItemNotFound));
     }
 
     [Test]
@@ -258,7 +258,7 @@ public class UpdateCharacterItemsCommandTest : TestBase
         };
 
         var result = await handler.Handle(cmd, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.ItemDisabled, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.ItemDisabled));
     }
 
     [Test]
@@ -284,7 +284,7 @@ public class UpdateCharacterItemsCommandTest : TestBase
         };
 
         var result = await handler.Handle(cmd, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.ItemBroken, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.ItemBroken));
     }
 
     [Test]
@@ -307,7 +307,7 @@ public class UpdateCharacterItemsCommandTest : TestBase
         };
 
         var result = await handler.Handle(cmd, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.UserItemNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.UserItemNotFound));
     }
 
     [TestCase(ItemType.HeadArmor, ItemSlot.Shoulder)]
@@ -351,7 +351,7 @@ public class UpdateCharacterItemsCommandTest : TestBase
         };
 
         var result = await handler.Handle(cmd, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.ItemBadSlot, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.ItemBadSlot));
     }
 
     [TestCase(ItemFlags.DropOnAnyAction)]
@@ -386,6 +386,6 @@ public class UpdateCharacterItemsCommandTest : TestBase
         };
 
         var result = await handler.Handle(cmd, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.ItemBadSlot, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.ItemBadSlot));
     }
 }

@@ -45,9 +45,9 @@ public class UpdatePartyPositionsCommandTest : TestBase
         }, CancellationToken.None);
 
         party = await AssertDb.Parties.FirstAsync(u => u.Id == party.Id);
-        Assert.AreEqual(PartyStatus.MovingToPoint, party.Status);
-        Assert.AreEqual(newPosition, party.Position);
-        Assert.AreEqual(1, party.Waypoints.Count);
+        Assert.That(party.Status, Is.EqualTo(PartyStatus.MovingToPoint));
+        Assert.That(party.Position, Is.EqualTo(newPosition));
+        Assert.That(party.Waypoints.Count, Is.EqualTo(1));
     }
 
     [Test]
@@ -79,9 +79,9 @@ public class UpdatePartyPositionsCommandTest : TestBase
         }, CancellationToken.None);
 
         party = await AssertDb.Parties.FirstAsync(u => u.Id == party.Id);
-        Assert.AreEqual(PartyStatus.MovingToPoint, party.Status);
-        Assert.AreEqual(newPosition, party.Position);
-        Assert.AreEqual(1, party.Waypoints.Count);
+        Assert.That(party.Status, Is.EqualTo(PartyStatus.MovingToPoint));
+        Assert.That(party.Position, Is.EqualTo(newPosition));
+        Assert.That(party.Waypoints.Count, Is.EqualTo(1));
     }
 
     [Test]
@@ -114,9 +114,9 @@ public class UpdatePartyPositionsCommandTest : TestBase
         }, CancellationToken.None);
 
         party = await AssertDb.Parties.FirstAsync(u => u.Id == party.Id);
-        Assert.AreEqual(PartyStatus.Idle, party.Status);
-        Assert.AreEqual(newPosition, party.Position);
-        Assert.AreEqual(0, party.Waypoints.Count);
+        Assert.That(party.Status, Is.EqualTo(PartyStatus.Idle));
+        Assert.That(party.Position, Is.EqualTo(newPosition));
+        Assert.That(party.Waypoints.Count, Is.EqualTo(0));
     }
 
     [TestCase(PartyStatus.FollowingParty)]
@@ -146,8 +146,8 @@ public class UpdatePartyPositionsCommandTest : TestBase
         }, CancellationToken.None);
 
         party = await AssertDb.Parties.FirstAsync(u => u.Id == party.Id);
-        Assert.AreEqual(PartyStatus.Idle, party.Status);
-        Assert.IsNull(party.TargetedPartyId);
+        Assert.That(party.Status, Is.EqualTo(PartyStatus.Idle));
+        Assert.That(party.TargetedPartyId, Is.Null);
     }
 
     [TestCase(PartyStatus.FollowingParty)]
@@ -196,8 +196,8 @@ public class UpdatePartyPositionsCommandTest : TestBase
         }, CancellationToken.None);
 
         party = await AssertDb.Parties.FirstAsync(u => u.Id == party.Id);
-        Assert.AreEqual(status, party.Status);
-        Assert.AreEqual(newPosition, party.Position);
+        Assert.That(party.Status, Is.EqualTo(status));
+        Assert.That(party.Position, Is.EqualTo(newPosition));
     }
 
     [TestCase(PartyStatus.IdleInSettlement)]
@@ -238,7 +238,7 @@ public class UpdatePartyPositionsCommandTest : TestBase
             DeltaTime = TimeSpan.FromMinutes(1),
         }, CancellationToken.None);
 
-        Assert.AreEqual(0, await AssertDb.Battles.CountAsync());
+        Assert.That(await AssertDb.Battles.CountAsync(), Is.EqualTo(0));
     }
 
     [Test]
@@ -280,20 +280,20 @@ public class UpdatePartyPositionsCommandTest : TestBase
         var battle = await AssertDb.Battles
             .Include(b => b.Fighters).ThenInclude(f => f.Party)
             .FirstOrDefaultAsync();
-        Assert.IsNotNull(battle);
-        Assert.AreEqual(BattlePhase.Preparation, battle!.Phase);
-        Assert.AreEqual(new Point(4, 5), battle.Position);
-        Assert.AreEqual(2, battle.Fighters.Count);
+        Assert.That(battle, Is.Not.Null);
+        Assert.That(battle!.Phase, Is.EqualTo(BattlePhase.Preparation));
+        Assert.That(battle.Position, Is.EqualTo(new Point(4, 5)));
+        Assert.That(battle.Fighters.Count, Is.EqualTo(2));
 
-        Assert.AreEqual(party.Id, battle.Fighters[0].PartyId);
-        Assert.AreEqual(PartyStatus.InBattle, battle.Fighters[0].Party!.Status);
-        Assert.AreEqual(BattleSide.Attacker, battle.Fighters[0].Side);
-        Assert.IsTrue(battle.Fighters[0].Commander);
+        Assert.That(battle.Fighters[0].PartyId, Is.EqualTo(party.Id));
+        Assert.That(battle.Fighters[0].Party!.Status, Is.EqualTo(PartyStatus.InBattle));
+        Assert.That(battle.Fighters[0].Side, Is.EqualTo(BattleSide.Attacker));
+        Assert.That(battle.Fighters[0].Commander, Is.True);
 
-        Assert.AreEqual(targetParty.Id, battle.Fighters[1].PartyId);
-        Assert.AreEqual(PartyStatus.InBattle, battle.Fighters[1].Party!.Status);
-        Assert.AreEqual(BattleSide.Defender, battle.Fighters[1].Side);
-        Assert.IsTrue(battle.Fighters[1].Commander);
+        Assert.That(battle.Fighters[1].PartyId, Is.EqualTo(targetParty.Id));
+        Assert.That(battle.Fighters[1].Party!.Status, Is.EqualTo(PartyStatus.InBattle));
+        Assert.That(battle.Fighters[1].Side, Is.EqualTo(BattleSide.Defender));
+        Assert.That(battle.Fighters[1].Commander, Is.True);
     }
 
     [TestCase(PartyStatus.MovingToSettlement)]
@@ -327,8 +327,8 @@ public class UpdatePartyPositionsCommandTest : TestBase
         }, CancellationToken.None);
 
         party = await AssertDb.Parties.FirstAsync(u => u.Id == party.Id);
-        Assert.AreEqual(status, party.Status);
-        Assert.AreEqual(newPosition, party.Position);
+        Assert.That(party.Status, Is.EqualTo(status));
+        Assert.That(party.Position, Is.EqualTo(newPosition));
     }
 
     [Test]
@@ -361,8 +361,8 @@ public class UpdatePartyPositionsCommandTest : TestBase
         }, CancellationToken.None);
 
         party = await AssertDb.Parties.FirstAsync(u => u.Id == party.Id);
-        Assert.AreEqual(PartyStatus.IdleInSettlement, party.Status);
-        Assert.AreEqual(destination, party.Position);
+        Assert.That(party.Status, Is.EqualTo(PartyStatus.IdleInSettlement));
+        Assert.That(party.Position, Is.EqualTo(destination));
     }
 
     [Test]
@@ -410,7 +410,7 @@ public class UpdatePartyPositionsCommandTest : TestBase
             DeltaTime = TimeSpan.FromMinutes(1),
         }, CancellationToken.None);
 
-        Assert.AreEqual(1, await AssertDb.Battles.CountAsync());
+        Assert.That(await AssertDb.Battles.CountAsync(), Is.EqualTo(1));
     }
 
     [Test]
@@ -451,22 +451,22 @@ public class UpdatePartyPositionsCommandTest : TestBase
         var battle = await AssertDb.Battles
             .Include(b => b.Fighters).ThenInclude(f => f.Party)
             .FirstOrDefaultAsync();
-        Assert.IsNotNull(battle);
-        Assert.AreEqual(Region.Na, battle!.Region);
-        Assert.AreEqual(BattlePhase.Preparation, battle.Phase);
-        Assert.AreEqual(new Point(4, 5), battle.Position);
+        Assert.That(battle, Is.Not.Null);
+        Assert.That(battle!.Region, Is.EqualTo(Region.Na));
+        Assert.That(battle.Phase, Is.EqualTo(BattlePhase.Preparation));
+        Assert.That(battle.Position, Is.EqualTo(new Point(4, 5)));
 
-        Assert.AreEqual(2, battle.Fighters.Count);
+        Assert.That(battle.Fighters.Count, Is.EqualTo(2));
 
-        Assert.AreEqual(party.Id, battle.Fighters[0].PartyId);
-        Assert.AreEqual(PartyStatus.InBattle, battle.Fighters[0].Party!.Status);
-        Assert.IsNull(battle.Fighters[0].SettlementId);
-        Assert.AreEqual(BattleSide.Attacker, battle.Fighters[0].Side);
-        Assert.IsTrue(battle.Fighters[0].Commander);
+        Assert.That(battle.Fighters[0].PartyId, Is.EqualTo(party.Id));
+        Assert.That(battle.Fighters[0].Party!.Status, Is.EqualTo(PartyStatus.InBattle));
+        Assert.That(battle.Fighters[0].SettlementId, Is.Null);
+        Assert.That(battle.Fighters[0].Side, Is.EqualTo(BattleSide.Attacker));
+        Assert.That(battle.Fighters[0].Commander, Is.True);
 
-        Assert.IsNull(battle.Fighters[1].PartyId);
-        Assert.AreEqual(settlement.Id, battle.Fighters[1].SettlementId);
-        Assert.AreEqual(BattleSide.Defender, battle.Fighters[1].Side);
-        Assert.IsTrue(battle.Fighters[1].Commander);
+        Assert.That(battle.Fighters[1].PartyId, Is.Null);
+        Assert.That(battle.Fighters[1].SettlementId, Is.EqualTo(settlement.Id));
+        Assert.That(battle.Fighters[1].Side, Is.EqualTo(BattleSide.Defender));
+        Assert.That(battle.Fighters[1].Commander, Is.True);
     }
 }
