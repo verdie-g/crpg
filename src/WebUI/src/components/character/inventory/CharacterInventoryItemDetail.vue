@@ -115,7 +115,22 @@ const aggregationsConfig = computed(() =>
         v-show="omitEmptyParam(field)"
         class="space-y-1"
       >
-        <h6 class="text-2xs text-content-300">{{ $t(`item.aggregations.${field}.title`) }}</h6>
+        <VTooltip :delay="{ show: 600 }">
+          <h6 class="text-2xs text-content-300">
+            {{ $t(`item.aggregations.${field}.title`) }}
+          </h6>
+
+          <template #popper>
+            <div class="prose prose-invert">
+              <h5 class="text-content-100">
+                {{ $t(`item.aggregations.${field}.title`) }}
+              </h5>
+              <p v-if="$t(`item.aggregations.${field}.description`)">
+                {{ $t(`item.aggregations.${field}.description`) }}
+              </p>
+            </div>
+          </template>
+        </VTooltip>
 
         <ItemParam
           :item="item"

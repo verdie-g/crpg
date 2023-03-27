@@ -297,6 +297,7 @@ export enum ItemSlot {
 export enum ItemFieldFormat {
   List = 'List',
   Damage = 'Damage',
+  Requirement = 'Requirement',
   Number = 'Number',
 }
 

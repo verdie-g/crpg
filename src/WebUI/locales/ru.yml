@@ -417,6 +417,9 @@ character:
           title: Починить за {price}
         notify:
           success: Предмет успешно отремонтирован
+      requirement:
+        notify:
+          warning: У вас недостаточно силы для использования этого предмета
 
   doll:
     slot:
@@ -848,7 +851,7 @@ item:
       description: ''
     requirement:
       title: 'Требования'
-      description: ''
+      description: 'Есть требование минимальногог значении атрибута силы для данного предмета'
     tier:
       title: 'Ранг предмета'
       description: '<p>TODO: </p>'

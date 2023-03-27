@@ -413,6 +413,17 @@ character:
         notify:
           success: 物品已成功售出
       equipped: 物品已装备
+      broken:
+        notify:
+          warning: 项目已损坏，无法装备
+      repair:
+        tooltip:
+          title: 修复为 {price}
+        notify:
+          success: 该项目已成功修复
+      requirement:
+        notify:
+          warning: 你没有足够的力量来使用这个项目
 
   doll:
     slot:
@@ -839,7 +850,7 @@ item:
       description: ''
     requirement:
       title: '需求'
-      description: ''
+      description: '对这个项目的强度属性有一个最低值的要求'
     tier:
       title: '物品等级'
       description: '<p>TODO: cRPG有一个称为物品价值模型的东西，它旨在预测和量化游戏中任何物品的效率。它使用公式计算每个物品的0到10级别，使用物品统计数据。价值模型已经完全重构，以更好地预测哪些武器和物品表现最佳。计算出的物品级别将决定物品的要求和价格。这就是为什么您会看到定价列表中物品的顺序已经改变，因为价值模型的评估已经改变。最好的武器现在应该是最贵的武器。物品价值模型不是物品平衡的形式，而仅仅是平衡游戏物品的指标。我们将在进一步更新中平衡物品，以实现更平衡的游戏环境。</p>'

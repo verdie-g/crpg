@@ -404,6 +404,7 @@ const createIcon = (type: IconBucketType, name: string | null | undefined): Icon
         name,
       };
 
+// TODO: fix SPEC
 export const humanizeBucket = (
   aggregationKey: keyof ItemFlat,
   bucket: any,
@@ -492,6 +493,11 @@ export const humanizeBucket = (
       }),
       null
     );
+  }
+
+  if (format === ItemFieldFormat.Requirement) {
+    // there is no point in making a translation for "srt"
+    return createHumanBucket(`${bucket} str`, null);
   }
 
   if (format === ItemFieldFormat.Number) {

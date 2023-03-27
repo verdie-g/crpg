@@ -1,23 +1,38 @@
-import type { EquippedItemsBySlot, EquippedItemId } from '@/models/character';
+import type {
+  EquippedItemsBySlot,
+  EquippedItemId,
+  CharacterCharacteristics,
+} from '@/models/character';
 import { ItemSlot } from '@/models/item';
 import { type UserItem } from '@/models/user';
 import { getAvailableSlotsByItem } from '@/services/item-service';
+import { validateItemNotMeetRequirement } from '@/services/characters-service';
 import { notify, NotificationType } from '@/services/notification-service';
 import { t } from '@/services/translate-service';
 
-// Shaaaared state
+// Shared state
 const focusedItemId = ref<number | null>(null);
 const availableSlots = ref<ItemSlot[]>([]);
 const fromSlot = ref<ItemSlot | null>(null);
 const toSlot = ref<ItemSlot | null>(null);
 
-export const useInventoryDnD = (equippedItemsBySlot: Ref<EquippedItemsBySlot>) => {
+export const useInventoryDnD = (
+  equippedItemsBySlot: Ref<EquippedItemsBySlot>,
+  characterCharacteristics: Ref<CharacterCharacteristics>
+) => {
   const { emit } = getCurrentInstance() as NonNullable<ReturnType<typeof getCurrentInstance>>;
 
   const onDragStart = (item: UserItem | null = null, slot: ItemSlot | null = null) => {
     if (!item) return;
+
+    // TODO: to service
     if (item.rank < 0) {
       notify(t('character.inventory.item.broken.notify.warning'), NotificationType.Warning);
+      return;
+    }
+
+    if (validateItemNotMeetRequirement(item.baseItem, characterCharacteristics.value)) {
+      notify(t('character.inventory.item.requirement.notify.warning'), NotificationType.Warning);
       return;
     }
 

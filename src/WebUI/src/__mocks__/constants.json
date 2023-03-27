@@ -19,7 +19,7 @@
   "minimumLevel": 1,
   "maximumLevel": 38,
   "tournamentLevel": 30,
-  "experienceForLevelCoefs": [5.65, 150000],
+  "experienceForLevelCoefs": [13, 200],
   "defaultStrength": 3,
   "defaultAgility": 3,
   "defaultHealthPoints": 60,

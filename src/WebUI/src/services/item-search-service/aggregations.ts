@@ -58,7 +58,7 @@ export const aggregationsConfig: AggregationConfig = {
   requirement: {
     size,
     view: AggregationView.Range,
-    format: ItemFieldFormat.Number,
+    format: ItemFieldFormat.Requirement,
     compareRule: ItemFieldCompareRule.Less,
   },
   weight: {

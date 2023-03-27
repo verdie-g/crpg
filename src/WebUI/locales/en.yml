@@ -421,7 +421,9 @@ character:
           title: Repair for {price}
         notify:
           success: The item was successfully repaired
-
+      requirement:
+        notify:
+          warning: You do not have enough strength to use this item
 
   doll:
     slot:
@@ -853,7 +855,7 @@ item:
       description: ''
     requirement:
       title: 'Requirement'
-      description: ''
+      description: 'There is a requirement for a minimum value of the strength attribute for this item'
     tier:
       title: 'Item Tier'
       description: '<p>TODO: cRPG has what is called an item value model. This model aims to predict and quantify the efficiency of any items in the game. It does so using formulas to calculate  a tier between 0 and 10 for each item, using the item stats. The value model has been completely reworked in order to better predict which weapons and items performs the best. The tier calculated for each item is what will determine the item requirements, and the item price. That is why you will see that the order of item in the pricing list will have changed because the value model appraisal has changed. The best weapons should now be the one that cost the more. The item value model is not a form of item balancing, but merely an indicator of the balancing game items. We will in further updates balance items in order to have a more even play field.</p>'
