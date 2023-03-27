@@ -70,7 +70,7 @@ const aggregationsConfig = computed(() =>
         :src="getItemImage(props.item.id)"
         :alt="props.item.name"
         :title="props.item.name"
-        class="pointer-events-none aspect-video w-full select-none object-contain"
+        class="pointer-events-none w-full select-none object-contain"
       />
 
       <div

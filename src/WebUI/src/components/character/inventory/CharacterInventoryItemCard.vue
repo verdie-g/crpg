@@ -32,9 +32,9 @@ const rarityColor = computed(() => {
 
 <template>
   <article
-    class="relative aspect-video h-full w-full cursor-grab items-center justify-center rounded-lg bg-base-200 p-1.5 ring ring-transparent hover:ring-border-200"
+    class="relative h-20 w-full cursor-grab items-center justify-center rounded-lg bg-base-200 p-1.5 ring ring-transparent hover:ring-border-200"
   >
-    <div class="group relative h-full w-full cursor-grab object-cover">
+    <div class="group relative h-full w-full cursor-grab">
       <img
         :src="getItemImage(item.baseItem.id)"
         :alt="item.baseItem.name"
