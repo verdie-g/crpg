@@ -16,8 +16,8 @@ public class GetBattleQueryTest : TestBase
             BattleId = 99,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.BattleNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.BattleNotFound));
     }
 
     [Test]
@@ -33,8 +33,8 @@ public class GetBattleQueryTest : TestBase
             BattleId = battle.Id,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.BattleInvalidPhase, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.BattleInvalidPhase));
     }
 
     [Test]
@@ -50,7 +50,7 @@ public class GetBattleQueryTest : TestBase
             BattleId = battle.Id,
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
-        Assert.AreEqual(battle.Id, res.Data!.Id);
+        Assert.That(res.Errors, Is.Null);
+        Assert.That(res.Data!.Id, Is.EqualTo(battle.Id));
     }
 }

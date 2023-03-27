@@ -63,36 +63,36 @@ public class ItemModifierServiceTest : TestBase
 
         for (int i = 1; i < modifiedItems.Length; i += 1)
         {
-            StringAssert.EndsWith("123", modifiedItems[i].Id);
-            StringAssert.EndsWith("toto", modifiedItems[i].Name);
-            Assert.AreEqual(itemType, modifiedItems[i].Type);
+            Assert.That(modifiedItems[i].Id, Does.EndWith("123"));
+            Assert.That(modifiedItems[i].Name, Does.EndWith("toto"));
+            Assert.That(modifiedItems[i].Type, Is.EqualTo(itemType));
 
-            Assert.GreaterOrEqual(modifiedItems[i].Price, modifiedItems[i - 1].Price);
-            Assert.LessOrEqual(modifiedItems[i].Weight, modifiedItems[i - 1].Weight);
+            Assert.That(modifiedItems[i].Price, Is.GreaterThanOrEqualTo(modifiedItems[i - 1].Price));
+            Assert.That(modifiedItems[i].Weight, Is.LessThanOrEqualTo(modifiedItems[i - 1].Weight));
 
-            Assert.GreaterOrEqual(modifiedItems[i].Armor!.HeadArmor, modifiedItems[i - 1].Armor!.HeadArmor);
-            Assert.GreaterOrEqual(modifiedItems[i].Armor!.BodyArmor, modifiedItems[i - 1].Armor!.BodyArmor);
-            Assert.GreaterOrEqual(modifiedItems[i].Armor!.ArmArmor, modifiedItems[i - 1].Armor!.ArmArmor);
-            Assert.GreaterOrEqual(modifiedItems[i].Armor!.LegArmor, modifiedItems[i - 1].Armor!.LegArmor);
+            Assert.That(modifiedItems[i].Armor!.HeadArmor, Is.GreaterThanOrEqualTo(modifiedItems[i - 1].Armor!.HeadArmor));
+            Assert.That(modifiedItems[i].Armor!.BodyArmor, Is.GreaterThanOrEqualTo(modifiedItems[i - 1].Armor!.BodyArmor));
+            Assert.That(modifiedItems[i].Armor!.ArmArmor, Is.GreaterThanOrEqualTo(modifiedItems[i - 1].Armor!.ArmArmor));
+            Assert.That(modifiedItems[i].Armor!.LegArmor, Is.GreaterThanOrEqualTo(modifiedItems[i - 1].Armor!.LegArmor));
 
-            Assert.GreaterOrEqual(modifiedItems[i].Mount!.BodyLength, modifiedItems[i - 1].Mount!.BodyLength);
-            Assert.GreaterOrEqual(modifiedItems[i].Mount!.ChargeDamage, modifiedItems[i - 1].Mount!.ChargeDamage);
-            Assert.GreaterOrEqual(modifiedItems[i].Mount!.Maneuver, modifiedItems[i - 1].Mount!.Maneuver);
-            Assert.GreaterOrEqual(modifiedItems[i].Mount!.Speed, modifiedItems[i - 1].Mount!.Speed);
-            Assert.GreaterOrEqual(modifiedItems[i].Mount!.HitPoints, modifiedItems[i - 1].Mount!.HitPoints);
+            Assert.That(modifiedItems[i].Mount!.BodyLength, Is.GreaterThanOrEqualTo(modifiedItems[i - 1].Mount!.BodyLength));
+            Assert.That(modifiedItems[i].Mount!.ChargeDamage, Is.GreaterThanOrEqualTo(modifiedItems[i - 1].Mount!.ChargeDamage));
+            Assert.That(modifiedItems[i].Mount!.Maneuver, Is.GreaterThanOrEqualTo(modifiedItems[i - 1].Mount!.Maneuver));
+            Assert.That(modifiedItems[i].Mount!.Speed, Is.GreaterThanOrEqualTo(modifiedItems[i - 1].Mount!.Speed));
+            Assert.That(modifiedItems[i].Mount!.HitPoints, Is.GreaterThanOrEqualTo(modifiedItems[i - 1].Mount!.HitPoints));
 
-            Assert.GreaterOrEqual(modifiedItems[i].PrimaryWeapon!.Accuracy, modifiedItems[i - 1].PrimaryWeapon!.Accuracy);
-            Assert.GreaterOrEqual(modifiedItems[i].PrimaryWeapon!.MissileSpeed, modifiedItems[i - 1].PrimaryWeapon!.MissileSpeed);
-            Assert.GreaterOrEqual(modifiedItems[i].PrimaryWeapon!.StackAmount, modifiedItems[i - 1].PrimaryWeapon!.StackAmount);
-            Assert.GreaterOrEqual(modifiedItems[i].PrimaryWeapon!.Length, modifiedItems[i - 1].PrimaryWeapon!.Length);
-            Assert.GreaterOrEqual(modifiedItems[i].PrimaryWeapon!.Handling, modifiedItems[i - 1].PrimaryWeapon!.Handling);
-            Assert.GreaterOrEqual(modifiedItems[i].PrimaryWeapon!.BodyArmor, modifiedItems[i - 1].PrimaryWeapon!.BodyArmor);
-            Assert.GreaterOrEqual(modifiedItems[i].PrimaryWeapon!.ThrustDamage, modifiedItems[i - 1].PrimaryWeapon!.ThrustDamage);
-            Assert.AreEqual(item.PrimaryWeapon!.ThrustDamageType, modifiedItems[i].PrimaryWeapon!.ThrustDamageType);
-            Assert.GreaterOrEqual(modifiedItems[i].PrimaryWeapon!.ThrustSpeed, modifiedItems[i - 1].PrimaryWeapon!.ThrustSpeed);
-            Assert.GreaterOrEqual(modifiedItems[i].PrimaryWeapon!.SwingDamage, modifiedItems[i - 1].PrimaryWeapon!.SwingDamage);
-            Assert.AreEqual(item.PrimaryWeapon!.SwingDamageType, modifiedItems[i].PrimaryWeapon!.SwingDamageType);
-            Assert.GreaterOrEqual(modifiedItems[i].PrimaryWeapon!.SwingSpeed, modifiedItems[i - 1].PrimaryWeapon!.SwingSpeed);
+            Assert.That(modifiedItems[i].PrimaryWeapon!.Accuracy, Is.GreaterThanOrEqualTo(modifiedItems[i - 1].PrimaryWeapon!.Accuracy));
+            Assert.That(modifiedItems[i].PrimaryWeapon!.MissileSpeed, Is.GreaterThanOrEqualTo(modifiedItems[i - 1].PrimaryWeapon!.MissileSpeed));
+            Assert.That(modifiedItems[i].PrimaryWeapon!.StackAmount, Is.GreaterThanOrEqualTo(modifiedItems[i - 1].PrimaryWeapon!.StackAmount));    
+            Assert.That(modifiedItems[i].PrimaryWeapon!.Length, Is.GreaterThanOrEqualTo(modifiedItems[i - 1].PrimaryWeapon!.Length));
+            Assert.That(modifiedItems[i].PrimaryWeapon!.Handling, Is.GreaterThanOrEqualTo(modifiedItems[i - 1].PrimaryWeapon!.Handling));
+            Assert.That(modifiedItems[i].PrimaryWeapon!.BodyArmor, Is.GreaterThanOrEqualTo(modifiedItems[i - 1].PrimaryWeapon!.BodyArmor));
+            Assert.That(modifiedItems[i].PrimaryWeapon!.ThrustDamage, Is.GreaterThanOrEqualTo(modifiedItems[i - 1].PrimaryWeapon!.ThrustDamage));
+            Assert.That(modifiedItems[i].PrimaryWeapon!.ThrustDamageType, Is.EqualTo(item.PrimaryWeapon!.ThrustDamageType));
+            Assert.That(modifiedItems[i].PrimaryWeapon!.ThrustSpeed, Is.GreaterThanOrEqualTo(modifiedItems[i - 1].PrimaryWeapon!.ThrustSpeed));
+            Assert.That(modifiedItems[i].PrimaryWeapon!.SwingDamage, Is.GreaterThanOrEqualTo(modifiedItems[i - 1].PrimaryWeapon!.SwingDamage));
+            Assert.That(modifiedItems[i].PrimaryWeapon!.SwingDamageType, Is.EqualTo(item.PrimaryWeapon!.SwingDamageType));
+            Assert.That(modifiedItems[i].PrimaryWeapon!.SwingSpeed, Is.GreaterThanOrEqualTo(modifiedItems[i - 1].PrimaryWeapon!.SwingSpeed));
         }
     }
 }

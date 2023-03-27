@@ -22,8 +22,8 @@ public class RespondClanInvitationCommandTest : TestBase
             Accept = true,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.UserNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.UserNotFound));
     }
 
     [Test]
@@ -43,8 +43,8 @@ public class RespondClanInvitationCommandTest : TestBase
             Accept = true,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.ClanInvitationNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.ClanInvitationNotFound));
     }
 
     [Test]
@@ -67,8 +67,8 @@ public class RespondClanInvitationCommandTest : TestBase
             Accept = true,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.ClanInvitationNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.ClanInvitationNotFound));
     }
 
     [Theory]
@@ -97,7 +97,7 @@ public class RespondClanInvitationCommandTest : TestBase
             Accept = accept,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
+        Assert.That(res.Errors, Is.Not.Null);
     }
 
     [Theory]
@@ -126,7 +126,7 @@ public class RespondClanInvitationCommandTest : TestBase
             Accept = accept,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
+        Assert.That(res.Errors, Is.Not.Null);
     }
 
     [TestCase(false, ClanInvitationStatus.Declined)]
@@ -158,7 +158,7 @@ public class RespondClanInvitationCommandTest : TestBase
             Accept = accept,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
+        Assert.That(res.Errors, Is.Not.Null);
     }
 
     [Test]
@@ -187,10 +187,10 @@ public class RespondClanInvitationCommandTest : TestBase
             Accept = false,
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
-        Assert.AreEqual(clanInvitation.Id, res.Data!.Id);
-        Assert.AreEqual(ClanInvitationStatus.Declined, res.Data!.Status);
-        Assert.AreNotEqual(user.Id, res.Data!.Inviter.Id);
+        Assert.That(res.Errors, Is.Null);
+        Assert.That(res.Data!.Id, Is.EqualTo(clanInvitation.Id));
+        Assert.That(res.Data!.Status, Is.EqualTo(ClanInvitationStatus.Declined));
+        Assert.That(res.Data!.Inviter.Id, Is.Not.EqualTo(user.Id));
     }
 
     [Test]
@@ -219,10 +219,10 @@ public class RespondClanInvitationCommandTest : TestBase
             Accept = true,
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
-        Assert.AreEqual(clanInvitation.Id, res.Data!.Id);
-        Assert.AreEqual(ClanInvitationStatus.Accepted, res.Data!.Status);
-        Assert.AreNotEqual(user.Id, res.Data!.Inviter.Id);
+        Assert.That(res.Errors, Is.Null);
+        Assert.That(res.Data!.Id, Is.EqualTo(clanInvitation.Id));
+        Assert.That(res.Data!.Status, Is.EqualTo(ClanInvitationStatus.Accepted));
+        Assert.That(res.Data!.Inviter.Id, Is.Not.EqualTo(user.Id));
         Assert.That(AssertDb.ClanMembers, Has.Exactly(1)
             .Matches<ClanMember>(cm => cm.ClanId == clan.Id && cm.UserId == user.Id));
     }
@@ -253,10 +253,10 @@ public class RespondClanInvitationCommandTest : TestBase
             Accept = true,
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
-        Assert.AreEqual(clanInvitation.Id, res.Data!.Id);
-        Assert.AreEqual(ClanInvitationStatus.Accepted, res.Data!.Status);
-        Assert.AreNotEqual(user.Id, res.Data!.Inviter.Id);
+        Assert.That(res.Errors, Is.Null);
+        Assert.That(res.Data!.Id, Is.EqualTo(clanInvitation.Id));
+        Assert.That(res.Data!.Status, Is.EqualTo(ClanInvitationStatus.Accepted));
+        Assert.That(res.Data!.Inviter.Id, Is.Not.EqualTo(user.Id));
         Assert.That(AssertDb.ClanMembers, Has.Exactly(1)
             .Matches<ClanMember>(cm => cm.ClanId == clan.Id && cm.UserId == user.Id));
     }
@@ -287,7 +287,7 @@ public class RespondClanInvitationCommandTest : TestBase
             Accept = accept,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
+        Assert.That(res.Errors, Is.Not.Null);
     }
 
     [Theory]
@@ -316,8 +316,8 @@ public class RespondClanInvitationCommandTest : TestBase
             Accept = accept,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.UserNotAClanMember, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.UserNotAClanMember));
     }
 
     [Theory]
@@ -346,8 +346,8 @@ public class RespondClanInvitationCommandTest : TestBase
             Accept = accept,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.ClanMemberRoleNotMet, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.ClanMemberRoleNotMet));
     }
 
     [TestCase(false, ClanInvitationStatus.Declined)]
@@ -379,8 +379,8 @@ public class RespondClanInvitationCommandTest : TestBase
             Accept = accept,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.ClanInvitationClosed, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.ClanInvitationClosed));
     }
 
     [Test]
@@ -409,10 +409,10 @@ public class RespondClanInvitationCommandTest : TestBase
             Accept = true,
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
-        Assert.AreEqual(clanInvitation.Id, res.Data!.Id);
-        Assert.AreEqual(ClanInvitationStatus.Accepted, res.Data!.Status);
-        Assert.AreEqual(user.Id, res.Data!.Inviter.Id);
+        Assert.That(res.Errors, Is.Null);
+        Assert.That(res.Data!.Id, Is.EqualTo(clanInvitation.Id));
+        Assert.That(res.Data!.Status, Is.EqualTo(ClanInvitationStatus.Accepted));
+        Assert.That(res.Data!.Inviter.Id, Is.EqualTo(user.Id));
     }
 
     [Test]
@@ -441,9 +441,9 @@ public class RespondClanInvitationCommandTest : TestBase
             Accept = false,
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
-        Assert.AreEqual(clanInvitation.Id, res.Data!.Id);
-        Assert.AreEqual(ClanInvitationStatus.Declined, res.Data!.Status);
-        Assert.AreEqual(user.Id, res.Data!.Inviter.Id);
+        Assert.That(res.Errors, Is.Null);
+        Assert.That(res.Data!.Id, Is.EqualTo(clanInvitation.Id));
+        Assert.That(res.Data!.Status, Is.EqualTo(ClanInvitationStatus.Declined));
+        Assert.That(res.Data!.Inviter.Id, Is.EqualTo(user.Id));
     }
 }

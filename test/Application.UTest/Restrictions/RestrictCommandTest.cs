@@ -23,12 +23,12 @@ public class RestrictCommandTest : TestBase
         }, CancellationToken.None);
 
         var restriction = result.Data!;
-        Assert.AreEqual(user1.Entity.Id, restriction.RestrictedUser!.Id);
-        Assert.AreEqual(TimeSpan.FromDays(1), restriction.Duration);
-        Assert.AreEqual("toto", restriction.Reason);
-        Assert.AreEqual(user2.Entity.Id, restriction.RestrictedByUser!.Id);
-        Assert.AreEqual(user2.Entity.PlatformUserId, restriction.RestrictedByUser.PlatformUserId);
-        Assert.AreEqual(user2.Entity.Name, restriction.RestrictedByUser.Name);
+        Assert.That(restriction.RestrictedUser!.Id, Is.EqualTo(user1.Entity.Id));
+        Assert.That(restriction.Duration, Is.EqualTo(TimeSpan.FromDays(1)));
+        Assert.That(restriction.Reason, Is.EqualTo("toto"));
+        Assert.That(restriction.RestrictedByUser!.Id, Is.EqualTo(user2.Entity.Id));
+        Assert.That(restriction.RestrictedByUser.PlatformUserId, Is.EqualTo(user2.Entity.PlatformUserId));
+        Assert.That(restriction.RestrictedByUser.Name, Is.EqualTo(user2.Entity.Name));
     }
 
     [Test]
@@ -45,7 +45,7 @@ public class RestrictCommandTest : TestBase
             RestrictedByUserId = user2.Entity.Id,
         }, CancellationToken.None);
 
-        Assert.AreEqual(ErrorCode.UserNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.UserNotFound));
     }
 
     [Test]
@@ -62,7 +62,7 @@ public class RestrictCommandTest : TestBase
             RestrictedByUserId = 10,
         }, CancellationToken.None);
 
-        Assert.AreEqual(ErrorCode.UserNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.UserNotFound));
     }
 
     [Test]
@@ -76,7 +76,7 @@ public class RestrictCommandTest : TestBase
             RestrictedByUserId = 1,
         });
 
-        Assert.AreEqual(1, res.Errors.Count);
+        Assert.That(res.Errors.Count, Is.EqualTo(1));
     }
 
     [Test]
@@ -90,6 +90,6 @@ public class RestrictCommandTest : TestBase
             RestrictedByUserId = 2,
         });
 
-        Assert.AreEqual(1, res.Errors.Count);
+        Assert.That(res.Errors.Count, Is.EqualTo(1));
     }
 }

@@ -25,9 +25,9 @@ public class GetUserRestrictionsQueryTest : TestBase
         var result = await new GetUserRestrictionsQuery.Handler(ActDb, Mapper).Handle(
             new GetUserRestrictionsQuery { UserId = user.Id }, CancellationToken.None);
         var restrictions = result.Data!;
-        Assert.AreEqual(2, restrictions.Count);
-        Assert.AreEqual("123", restrictions[0].RestrictedByUser!.PlatformUserId);
-        Assert.AreEqual("456", restrictions[1].RestrictedByUser!.PlatformUserId);
+        Assert.That(restrictions.Count, Is.EqualTo(2));
+        Assert.That(restrictions[0].RestrictedByUser!.PlatformUserId, Is.EqualTo("123"));
+        Assert.That(restrictions[1].RestrictedByUser!.PlatformUserId, Is.EqualTo("456"));
     }
 
     [Test]
@@ -35,6 +35,6 @@ public class GetUserRestrictionsQueryTest : TestBase
     {
         GetUserRestrictionsQuery.Handler handler = new(ActDb, Mapper);
         var result = await handler.Handle(new GetUserRestrictionsQuery { UserId = 1 }, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.UserNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.UserNotFound));
     }
 }

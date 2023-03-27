@@ -47,13 +47,13 @@ public class GetGameUserCommandTest : TestBase
         }, CancellationToken.None);
 
         var gameUser = result.Data!;
-        Assert.NotZero(gameUser.Id);
-        Assert.AreEqual(Platform.Epic, gameUser.Platform);
-        Assert.AreEqual("1", gameUser.PlatformUserId);
-        Assert.AreEqual("Peasant", gameUser.Character.Name);
-        Assert.AreEqual(CharacterClass.Peasant, gameUser.Character.Class);
-        Assert.IsNotEmpty(gameUser.Character.EquippedItems);
-        Assert.IsEmpty(gameUser.Restrictions);
+        Assert.That(gameUser.Id, Is.Not.Zero);
+        Assert.That(gameUser.Platform, Is.EqualTo(Platform.Epic));
+        Assert.That(gameUser.PlatformUserId, Is.EqualTo("1"));
+        Assert.That(gameUser.Character.Name, Is.EqualTo("Peasant"));
+        Assert.That(gameUser.Character.Class, Is.EqualTo(CharacterClass.Peasant));
+        Assert.That(gameUser.Character.EquippedItems, Is.Not.Empty);
+        Assert.That(gameUser.Restrictions, Is.Empty);
 
         // Check that default values were set for user and character.
         userServiceMock.Verify(us => us.SetDefaultValuesForUser(It.IsAny<User>()));
@@ -65,9 +65,9 @@ public class GetGameUserCommandTest : TestBase
             .Include(u => u.Characters).ThenInclude(c => c.EquippedItems)
             .FirstOrDefaultAsync(u => u.Id == gameUser.Id);
 
-        Assert.IsNotNull(dbUser);
-        Assert.IsNotEmpty(dbUser!.Characters);
-        Assert.IsNotEmpty(dbUser.Characters[0].EquippedItems);
+        Assert.That(dbUser, Is.Not.Null);
+        Assert.That(dbUser!.Characters, Is.Not.Empty);
+        Assert.That(dbUser.Characters[0].EquippedItems, Is.Not.Empty);
     }
 
     [Test]
@@ -100,14 +100,14 @@ public class GetGameUserCommandTest : TestBase
         }, CancellationToken.None);
 
         var gameUser = result.Data!;
-        Assert.IsNull(result.Errors);
-        Assert.AreEqual(user.Id, gameUser.Id);
-        Assert.AreEqual(user.Platform, gameUser.Platform);
-        Assert.AreEqual(user.PlatformUserId, gameUser.PlatformUserId);
-        Assert.AreEqual("Peasant", gameUser.Character.Name);
-        Assert.AreEqual(CharacterClass.Peasant, gameUser.Character.Class);
-        Assert.IsNotEmpty(gameUser.Character.EquippedItems);
-        Assert.IsEmpty(gameUser.Restrictions);
+        Assert.That(result.Errors, Is.Null);
+        Assert.That(gameUser.Id, Is.EqualTo(user.Id));
+        Assert.That(gameUser.Platform, Is.EqualTo(user.Platform));
+        Assert.That(gameUser.PlatformUserId, Is.EqualTo(user.PlatformUserId));
+        Assert.That(gameUser.Character.Name, Is.EqualTo("Peasant"));
+        Assert.That(gameUser.Character.Class, Is.EqualTo(CharacterClass.Peasant));
+        Assert.That(gameUser.Character.EquippedItems, Is.Not.Empty);
+        Assert.That(gameUser.Restrictions, Is.Empty);
 
         // Check that default values were set for character.
         userServiceMock.Verify(us => us.SetDefaultValuesForUser(It.IsAny<User>()), Times.Never);
@@ -119,9 +119,9 @@ public class GetGameUserCommandTest : TestBase
             .Include(u => u.Characters).ThenInclude(c => c.EquippedItems)
             .FirstOrDefaultAsync(u => u.Id == gameUser.Id);
 
-        Assert.IsNotNull(dbUser);
-        Assert.IsNotEmpty(dbUser!.Characters);
-        Assert.IsNotEmpty(dbUser.Characters[1].EquippedItems);
+        Assert.That(dbUser, Is.Not.Null);
+        Assert.That(dbUser!.Characters, Is.Not.Empty);
+        Assert.That(dbUser.Characters[1].EquippedItems, Is.Not.Empty);
     }
 
     [Theory]
@@ -157,8 +157,8 @@ public class GetGameUserCommandTest : TestBase
             PlatformUserId = user.PlatformUserId,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.CharacterRecentlyCreated, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.CharacterRecentlyCreated));
     }
 
     [Test]
@@ -196,7 +196,7 @@ public class GetGameUserCommandTest : TestBase
         }, CancellationToken.None);
 
         var userItems = await AssertDb.UserItems.Where(oi => oi.UserId == user.Id).ToArrayAsync();
-        Assert.AreEqual(4, userItems.Length);
+        Assert.That(userItems.Length, Is.EqualTo(4));
     }
 
     [Test]
@@ -237,9 +237,9 @@ public class GetGameUserCommandTest : TestBase
         }, CancellationToken.None);
 
         var gameUser = result.Data!;
-        Assert.AreEqual(user0.Platform, gameUser.Platform);
-        Assert.AreEqual(user0.PlatformUserId, gameUser.PlatformUserId);
-        Assert.AreEqual(user0Character.Id, gameUser.Character.Id);
+        Assert.That(gameUser.Platform, Is.EqualTo(user0.Platform));
+        Assert.That(gameUser.PlatformUserId, Is.EqualTo(user0.PlatformUserId));
+        Assert.That(gameUser.Character.Id, Is.EqualTo(user0Character.Id));
     }
 
     [Test]
@@ -275,7 +275,7 @@ public class GetGameUserCommandTest : TestBase
         }, CancellationToken.None);
 
         var gameUser = result.Data!;
-        Assert.AreEqual(character.Id, gameUser.Character.Id);
+        Assert.That(gameUser.Character.Id, Is.EqualTo(character.Id));
     }
 
     [Test]
@@ -335,7 +335,7 @@ public class GetGameUserCommandTest : TestBase
         }, CancellationToken.None);
 
         var gamerUser = result.Data!;
-        Assert.AreEqual(2, gamerUser.Restrictions.Count);
+        Assert.That(gamerUser.Restrictions.Count, Is.EqualTo(2));
     }
 
     [Test]
@@ -394,7 +394,7 @@ public class GetGameUserCommandTest : TestBase
         }, CancellationToken.None);
 
         var gameUser = result.Data!;
-        Assert.IsEmpty(gameUser.Restrictions);
+        Assert.That(gameUser.Restrictions, Is.Empty);
     }
 
     [Test]
@@ -408,14 +408,14 @@ public class GetGameUserCommandTest : TestBase
             {
                 if (!items.TryGetValue(mbId, out var item))
                 {
-                    Assert.IsTrue(items.ContainsKey(mbId), $"Item '{mbId}' doesn't exist");
+                    Assert.That(items, Does.ContainKey(mbId), $"Item '{mbId}' doesn't exist");
                     continue;
                 }
 
                 price += item.Price;
             }
 
-            Assert.Less(price, 2900);
+            Assert.That(price, Is.LessThan(2900));
         }
     }
 }

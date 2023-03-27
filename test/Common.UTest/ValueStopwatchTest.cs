@@ -10,11 +10,11 @@ public class ValueStopwatchTest
         var sw = ValueStopwatch.StartNew();
 
         await Task.Delay(200);
-        Assert.Greater(sw.Elapsed.TotalMilliseconds, 150);
-        Assert.Less(sw.Elapsed.TotalMilliseconds, 500);
+        Assert.That(sw.Elapsed.TotalMilliseconds, Is.GreaterThan(150));
+        Assert.That(sw.Elapsed.TotalMilliseconds, Is.LessThan(500));
 
         await Task.Delay(200);
-        Assert.Greater(sw.Elapsed.TotalMilliseconds, 350);
-        Assert.Less(sw.Elapsed.TotalMilliseconds, 1000);
+        Assert.That(sw.Elapsed.TotalMilliseconds, Is.GreaterThan(350));
+        Assert.That(sw.Elapsed.TotalMilliseconds, Is.LessThan(1000));
     }
 }

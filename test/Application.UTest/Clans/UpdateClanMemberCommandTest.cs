@@ -30,8 +30,8 @@ public class UpdateClanMemberCommandTest : TestBase
             Role = ClanMemberRole.Officer,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.ClanMemberRoleNotMet, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.ClanMemberRoleNotMet));
     }
 
     [Test]
@@ -50,8 +50,8 @@ public class UpdateClanMemberCommandTest : TestBase
             Role = ClanMemberRole.Officer,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.ClanMemberRoleNotMet, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.ClanMemberRoleNotMet));
     }
 
     [Test]
@@ -71,10 +71,10 @@ public class UpdateClanMemberCommandTest : TestBase
             Role = ClanMemberRole.Officer,
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
+        Assert.That(res.Errors, Is.Null);
         var memberVm = res.Data!;
-        Assert.AreEqual(member.Id, memberVm.User.Id);
-        Assert.AreEqual(ClanMemberRole.Officer, memberVm.Role);
+        Assert.That(memberVm.User.Id, Is.EqualTo(member.Id));
+        Assert.That(memberVm.Role, Is.EqualTo(ClanMemberRole.Officer));
     }
 
     [Test]
@@ -94,11 +94,11 @@ public class UpdateClanMemberCommandTest : TestBase
             Role = ClanMemberRole.Leader,
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
+        Assert.That(res.Errors, Is.Null);
         var memberVm = res.Data!;
-        Assert.AreEqual(member.Id, memberVm.User.Id);
-        Assert.AreEqual(ClanMemberRole.Leader, memberVm.Role);
+        Assert.That(memberVm.User.Id, Is.EqualTo(member.Id));
+        Assert.That(memberVm.Role, Is.EqualTo(ClanMemberRole.Leader));
         var userMember = await AssertDb.ClanMembers.FirstAsync(m => m.UserId == user.Id);
-        Assert.AreEqual(ClanMemberRole.Officer, userMember.Role);
+        Assert.That(userMember.Role, Is.EqualTo(ClanMemberRole.Officer));
     }
 }

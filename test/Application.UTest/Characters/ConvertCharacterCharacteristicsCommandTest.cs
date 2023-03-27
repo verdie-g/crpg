@@ -28,8 +28,8 @@ public class ConvertCharacterCharacteristicsCommandTest : TestBase
             }, CancellationToken.None);
 
         var stats = result.Data!;
-        Assert.AreEqual(0, stats.Attributes.Points);
-        Assert.AreEqual(2, stats.Skills.Points);
+        Assert.That(stats.Attributes.Points, Is.EqualTo(0));
+        Assert.That(stats.Skills.Points, Is.EqualTo(2));
     }
 
     [Test]
@@ -50,8 +50,8 @@ public class ConvertCharacterCharacteristicsCommandTest : TestBase
             }, CancellationToken.None);
 
         var stats = result.Data!;
-        Assert.AreEqual(1, stats.Attributes.Points);
-        Assert.AreEqual(0, stats.Skills.Points);
+        Assert.That(stats.Attributes.Points, Is.EqualTo(1));
+        Assert.That(stats.Skills.Points, Is.EqualTo(0));
     }
 
     [Test]
@@ -71,7 +71,7 @@ public class ConvertCharacterCharacteristicsCommandTest : TestBase
             Conversion = CharacterCharacteristicConversion.AttributesToSkills,
         }, CancellationToken.None);
 
-        Assert.AreEqual(ErrorCode.NotEnoughAttributePoints, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.NotEnoughAttributePoints));
     }
 
     [Test]
@@ -90,7 +90,7 @@ public class ConvertCharacterCharacteristicsCommandTest : TestBase
             UserId = character.Entity.UserId,
             Conversion = CharacterCharacteristicConversion.SkillsToAttributes,
         }, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.NotEnoughSkillPoints, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.NotEnoughSkillPoints));
     }
 
     [Test]
@@ -102,7 +102,7 @@ public class ConvertCharacterCharacteristicsCommandTest : TestBase
             Conversion = (CharacterCharacteristicConversion)10,
         });
 
-        Assert.False(res.IsValid);
+        Assert.That(res.IsValid, Is.False);
     }
 
     [Test]
@@ -118,7 +118,7 @@ public class ConvertCharacterCharacteristicsCommandTest : TestBase
             CharacterId = 1,
         }, CancellationToken.None);
 
-        Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.CharacterNotFound));
     }
 
     [Test]
@@ -131,6 +131,6 @@ public class ConvertCharacterCharacteristicsCommandTest : TestBase
             CharacterId = 1,
         }, CancellationToken.None);
 
-        Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.CharacterNotFound));
     }
 }

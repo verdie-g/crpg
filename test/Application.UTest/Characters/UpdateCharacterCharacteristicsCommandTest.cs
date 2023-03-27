@@ -96,26 +96,26 @@ public class UpdateCharacterCharacteristicsCommandTest : TestBase
         }, CancellationToken.None);
 
         var stats = result.Data!;
-        Assert.AreEqual(0, stats.Attributes.Points);
-        Assert.AreEqual(30, stats.Attributes.Strength);
-        Assert.AreEqual(60, stats.Attributes.Agility);
-        Assert.AreEqual(0, stats.Skills.Points);
-        Assert.AreEqual(10, stats.Skills.IronFlesh);
-        Assert.AreEqual(10, stats.Skills.PowerStrike);
-        Assert.AreEqual(10, stats.Skills.PowerDraw);
-        Assert.AreEqual(10, stats.Skills.PowerThrow);
-        Assert.AreEqual(10, stats.Skills.Athletics);
-        Assert.AreEqual(10, stats.Skills.Riding);
-        Assert.AreEqual(10, stats.Skills.WeaponMaster);
-        Assert.AreEqual(10, stats.Skills.MountedArchery);
-        Assert.AreEqual(10, stats.Skills.Shield);
-        Assert.AreEqual(779, stats.WeaponProficiencies.Points);
-        Assert.AreEqual(7, stats.WeaponProficiencies.OneHanded);
-        Assert.AreEqual(7, stats.WeaponProficiencies.TwoHanded);
-        Assert.AreEqual(7, stats.WeaponProficiencies.Polearm);
-        Assert.AreEqual(7, stats.WeaponProficiencies.Bow);
-        Assert.AreEqual(7, stats.WeaponProficiencies.Throwing);
-        Assert.AreEqual(7, stats.WeaponProficiencies.Crossbow);
+        Assert.That(stats.Attributes.Points, Is.EqualTo(0));
+        Assert.That(stats.Attributes.Strength, Is.EqualTo(30));
+        Assert.That(stats.Attributes.Agility, Is.EqualTo(60));
+        Assert.That(stats.Skills.Points, Is.EqualTo(0));
+        Assert.That(stats.Skills.IronFlesh, Is.EqualTo(10));
+        Assert.That(stats.Skills.PowerStrike, Is.EqualTo(10));
+        Assert.That(stats.Skills.PowerDraw, Is.EqualTo(10));
+        Assert.That(stats.Skills.PowerThrow, Is.EqualTo(10));
+        Assert.That(stats.Skills.Athletics, Is.EqualTo(10));
+        Assert.That(stats.Skills.Riding, Is.EqualTo(10));
+        Assert.That(stats.Skills.WeaponMaster, Is.EqualTo(10));
+        Assert.That(stats.Skills.MountedArchery, Is.EqualTo(10));
+        Assert.That(stats.Skills.Shield, Is.EqualTo(10));
+        Assert.That(stats.WeaponProficiencies.Points, Is.EqualTo(779));
+        Assert.That(stats.WeaponProficiencies.OneHanded, Is.EqualTo(7));
+        Assert.That(stats.WeaponProficiencies.TwoHanded, Is.EqualTo(7));
+        Assert.That(stats.WeaponProficiencies.Polearm, Is.EqualTo(7));
+        Assert.That(stats.WeaponProficiencies.Bow, Is.EqualTo(7));
+        Assert.That(stats.WeaponProficiencies.Throwing, Is.EqualTo(7));
+        Assert.That(stats.WeaponProficiencies.Crossbow, Is.EqualTo(7));
     }
 
     [Test]
@@ -143,8 +143,8 @@ public class UpdateCharacterCharacteristicsCommandTest : TestBase
         }, CancellationToken.None);
 
         var stats = result.Data!;
-        Assert.AreEqual(1, stats.Attributes.Agility);
-        Assert.AreEqual(98, stats.WeaponProficiencies.Points);
+        Assert.That(stats.Attributes.Agility, Is.EqualTo(1));
+        Assert.That(stats.WeaponProficiencies.Points, Is.EqualTo(98));
 
         result = await handler.Handle(new UpdateCharacterCharacteristicsCommand
         {
@@ -158,9 +158,9 @@ public class UpdateCharacterCharacteristicsCommandTest : TestBase
         }, CancellationToken.None);
 
         stats = result.Data!;
-        Assert.AreEqual(3, stats.Attributes.Agility);
-        Assert.AreEqual(0, stats.WeaponProficiencies.Points);
-        Assert.AreEqual(42, stats.WeaponProficiencies.Bow);
+        Assert.That(stats.Attributes.Agility, Is.EqualTo(3));
+        Assert.That(stats.WeaponProficiencies.Points, Is.EqualTo(0));
+        Assert.That(stats.WeaponProficiencies.Bow, Is.EqualTo(42));
     }
 
     [Test]
@@ -190,8 +190,8 @@ public class UpdateCharacterCharacteristicsCommandTest : TestBase
         }, CancellationToken.None);
 
         var stats = result.Data!;
-        Assert.AreEqual(1, stats.Skills.WeaponMaster);
-        Assert.AreEqual(280, stats.WeaponProficiencies.Points);
+        Assert.That(stats.Skills.WeaponMaster, Is.EqualTo(1));
+        Assert.That(stats.WeaponProficiencies.Points, Is.EqualTo(280));
 
         result = await handler.Handle(new UpdateCharacterCharacteristicsCommand
         {
@@ -206,9 +206,9 @@ public class UpdateCharacterCharacteristicsCommandTest : TestBase
         }, CancellationToken.None);
 
         stats = result.Data!;
-        Assert.AreEqual(3, stats.Skills.WeaponMaster);
-        Assert.AreEqual(0, stats.WeaponProficiencies.Points);
-        Assert.AreEqual(100, stats.WeaponProficiencies.Bow);
+        Assert.That(stats.Skills.WeaponMaster, Is.EqualTo(3));
+        Assert.That(stats.WeaponProficiencies.Points, Is.EqualTo(0));
+        Assert.That(stats.WeaponProficiencies.Bow, Is.EqualTo(100));
     }
 
     [Test]
@@ -283,7 +283,7 @@ public class UpdateCharacterCharacteristicsCommandTest : TestBase
                 CharacterId = character.Id,
                 Characteristics = statObject,
             }, CancellationToken.None);
-            Assert.AreEqual(ErrorCode.SkillRequirementNotMet, result.Errors![0].Code);
+            Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.SkillRequirementNotMet));
         }
     }
 
@@ -309,7 +309,7 @@ public class UpdateCharacterCharacteristicsCommandTest : TestBase
                 CharacterId = character.Id,
                 Characteristics = statObject,
             }, CancellationToken.None);
-            Assert.AreEqual(ErrorCode.NotEnoughAttributePoints, result.Errors![0].Code);
+            Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.NotEnoughAttributePoints));
         }
     }
 
@@ -342,7 +342,7 @@ public class UpdateCharacterCharacteristicsCommandTest : TestBase
                 CharacterId = character.Id,
                 Characteristics = statObject,
             }, CancellationToken.None);
-            Assert.AreEqual(ErrorCode.NotEnoughSkillPoints, result.Errors![0].Code);
+            Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.NotEnoughSkillPoints));
         }
     }
 
@@ -372,7 +372,7 @@ public class UpdateCharacterCharacteristicsCommandTest : TestBase
                 CharacterId = character.Id,
                 Characteristics = statObject,
             }, CancellationToken.None);
-            Assert.AreEqual(ErrorCode.NotEnoughWeaponProficiencyPoints, result.Errors![0].Code);
+            Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.NotEnoughWeaponProficiencyPoints));
         }
     }
 
@@ -421,7 +421,7 @@ public class UpdateCharacterCharacteristicsCommandTest : TestBase
                 CharacterId = character.Id,
                 Characteristics = statObject,
             }, CancellationToken.None);
-            Assert.AreEqual(ErrorCode.CharacteristicDecreased, result.Errors![0].Code);
+            Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.CharacteristicDecreased));
         }
     }
 
@@ -438,7 +438,7 @@ public class UpdateCharacterCharacteristicsCommandTest : TestBase
             CharacterId = 1,
             Characteristics = new CharacterCharacteristicsViewModel(),
         }, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.CharacterNotFound));
     }
 
     [Test]
@@ -451,6 +451,6 @@ public class UpdateCharacterCharacteristicsCommandTest : TestBase
             CharacterId = 1,
             Characteristics = new CharacterCharacteristicsViewModel(),
         }, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.CharacterNotFound));
     }
 }

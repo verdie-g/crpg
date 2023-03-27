@@ -25,14 +25,14 @@ public class BattleMercenaryDistributionModelTest
         int battleSlots = 100;
         Distribution.DistributeMercenaries(fighters, battleSlots);
 
-        Assert.AreEqual(16, fighters[0].MercenarySlots);
-        Assert.AreEqual(32, fighters[1].MercenarySlots);
-        Assert.AreEqual(49, fighters[2].MercenarySlots);
-        Assert.AreEqual(battleSlots - 3, fighters.Take(3).Sum(f => f.MercenarySlots));
+        Assert.That(fighters[0].MercenarySlots, Is.EqualTo(16));
+        Assert.That(fighters[1].MercenarySlots, Is.EqualTo(32));
+        Assert.That(fighters[2].MercenarySlots, Is.EqualTo(49));
+        Assert.That(fighters.Take(3).Sum(f => f.MercenarySlots), Is.EqualTo(battleSlots - 3));
 
-        Assert.AreEqual(49, fighters[3].MercenarySlots);
-        Assert.AreEqual(49, fighters[4].MercenarySlots);
-        Assert.AreEqual(battleSlots - 2, fighters.Skip(3).Sum(f => f.MercenarySlots));
+        Assert.That(fighters[3].MercenarySlots, Is.EqualTo(49));
+        Assert.That(fighters[4].MercenarySlots, Is.EqualTo(49));
+        Assert.That(fighters.Skip(3).Sum(f => f.MercenarySlots), Is.EqualTo(battleSlots - 2));
     }
 
     [Test]
@@ -46,9 +46,9 @@ public class BattleMercenaryDistributionModelTest
         };
 
         Distribution.DistributeMercenaries(fighters, 6);
-        Assert.AreEqual(1, fighters[0].MercenarySlots);
-        Assert.AreEqual(1, fighters[1].MercenarySlots);
-        Assert.AreEqual(1, fighters[2].MercenarySlots);
+        Assert.That(fighters[0].MercenarySlots, Is.EqualTo(1));
+        Assert.That(fighters[1].MercenarySlots, Is.EqualTo(1));
+        Assert.That(fighters[2].MercenarySlots, Is.EqualTo(1));
     }
 
     [Test]
@@ -62,9 +62,9 @@ public class BattleMercenaryDistributionModelTest
         };
 
         Distribution.DistributeMercenaries(fighters, 8);
-        Assert.AreEqual(2, fighters[0].MercenarySlots);
-        Assert.AreEqual(2, fighters[1].MercenarySlots);
-        Assert.AreEqual(1, fighters[2].MercenarySlots);
+        Assert.That(fighters[0].MercenarySlots, Is.EqualTo(2));
+        Assert.That(fighters[1].MercenarySlots, Is.EqualTo(2));
+        Assert.That(fighters[2].MercenarySlots, Is.EqualTo(1));
     }
 
     private BattleFighter NewFighter(float troops, BattleSide side) => new()

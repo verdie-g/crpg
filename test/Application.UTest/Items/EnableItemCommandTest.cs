@@ -23,7 +23,7 @@ public class EnableItemCommandTest : TestBase
             Enable = true,
             UserId = user.Id,
         }, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.ItemNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.ItemNotFound));
     }
 
     [Test]
@@ -42,9 +42,9 @@ public class EnableItemCommandTest : TestBase
             UserId = user.Id,
         }, CancellationToken.None);
 
-        Assert.IsNull(result.Errors);
+        Assert.That(result.Errors, Is.Null);
         var dbItem = AssertDb.Items.First(i => i.Id == "a");
-        Assert.IsTrue(dbItem.Enabled);
+        Assert.That(dbItem.Enabled, Is.True);
     }
 
     [Test]
@@ -87,12 +87,12 @@ public class EnableItemCommandTest : TestBase
             UserId = user0.Id,
         }, CancellationToken.None);
 
-        Assert.IsNull(result.Errors);
+        Assert.That(result.Errors, Is.Null);
         var dbItem = AssertDb.Items.First(i => i.Id == "a");
-        Assert.IsFalse(dbItem.Enabled);
+        Assert.That(dbItem.Enabled, Is.False);
 
         var equippedItems = await AssertDb.EquippedItems.Include(ei => ei.UserItem).ToArrayAsync();
-        Assert.AreEqual(1, equippedItems.Length);
-        Assert.AreEqual("b", equippedItems[0].UserItem!.BaseItemId);
+        Assert.That(equippedItems.Length, Is.EqualTo(1));
+        Assert.That(equippedItems[0].UserItem!.BaseItemId, Is.EqualTo("b"));
     }
 }

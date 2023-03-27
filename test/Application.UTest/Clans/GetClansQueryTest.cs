@@ -23,8 +23,8 @@ public class GetClansQueryTest : TestBase
 
         var result = await new GetClansQuery.Handler(ActDb, Mapper).Handle(new GetClansQuery(), CancellationToken.None);
         var clans = result.Data!;
-        Assert.AreEqual(2, clans.Count);
-        Assert.AreEqual(2, clans[0].MemberCount);
-        Assert.AreEqual(1, clans[1].MemberCount);
+        Assert.That(clans.Count, Is.EqualTo(2));
+        Assert.That(clans[0].MemberCount, Is.EqualTo(2));
+        Assert.That(clans[1].MemberCount, Is.EqualTo(1));
     }
 }

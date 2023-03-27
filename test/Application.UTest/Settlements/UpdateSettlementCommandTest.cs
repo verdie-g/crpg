@@ -20,8 +20,8 @@ public class UpdateSettlementCommandTest : TestBase
             Troops = 0,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.PartyNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.PartyNotFound));
     }
 
     [Test]
@@ -39,8 +39,8 @@ public class UpdateSettlementCommandTest : TestBase
             Troops = 0,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.PartyNotInASettlement, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.PartyNotInASettlement));
     }
 
     [Test]
@@ -67,8 +67,8 @@ public class UpdateSettlementCommandTest : TestBase
             Troops = 0,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.PartyNotInASettlement, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.PartyNotInASettlement));
     }
 
     [Test]
@@ -96,8 +96,8 @@ public class UpdateSettlementCommandTest : TestBase
             Troops = 6,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.PartyNotEnoughTroops, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.PartyNotEnoughTroops));
     }
 
     [Test]
@@ -125,8 +125,8 @@ public class UpdateSettlementCommandTest : TestBase
             Troops = 5,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.PartyNotSettlementOwner, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.PartyNotSettlementOwner));
     }
 
     [Test]
@@ -157,10 +157,10 @@ public class UpdateSettlementCommandTest : TestBase
             Troops = 30,
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
+        Assert.That(res.Errors, Is.Null);
         var settlementVm = res.Data!;
-        Assert.AreEqual(settlement.Id, settlementVm.Id);
-        Assert.AreEqual(30, AssertDb.Settlements.Find(settlement.Id)!.Troops);
+        Assert.That(settlementVm.Id, Is.EqualTo(settlement.Id));
+        Assert.That(AssertDb.Settlements.Find(settlement.Id)!.Troops, Is.EqualTo(30));
     }
 
     [Test]
@@ -192,10 +192,10 @@ public class UpdateSettlementCommandTest : TestBase
             Troops = 10,
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
+        Assert.That(res.Errors, Is.Null);
         var settlementVm = res.Data!;
-        Assert.AreEqual(settlement.Id, settlementVm.Id);
-        Assert.AreEqual(20, AssertDb.Parties.Find(party.Id)!.Troops);
-        Assert.AreEqual(10, AssertDb.Settlements.Find(settlement.Id)!.Troops);
+        Assert.That(settlementVm.Id, Is.EqualTo(settlement.Id));
+        Assert.That(AssertDb.Parties.Find(party.Id)!.Troops, Is.EqualTo(20));
+        Assert.That(AssertDb.Settlements.Find(settlement.Id)!.Troops, Is.EqualTo(10));
     }
 }

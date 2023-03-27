@@ -15,8 +15,8 @@ public class GetUsersByIdQueryTest : TestBase
             UserIds = new[] { 1 },
         }, CancellationToken.None);
 
-        Assert.NotNull(res.Data);
-        Assert.AreEqual(0, res.Data!.Count);
+        Assert.That(res.Data, Is.Not.Null);
+        Assert.That(res.Data!.Count, Is.EqualTo(0));
     }
 
     [Test]
@@ -33,7 +33,7 @@ public class GetUsersByIdQueryTest : TestBase
             UserIds = new[] { user0.Id, user1.Id },
         }, CancellationToken.None);
 
-        Assert.NotNull(res.Data);
-        Assert.AreEqual(2, res.Data!.Count);
+        Assert.That(res.Data, Is.Not.Null);
+        Assert.That(res.Data!.Count, Is.EqualTo(2));
     }
 }

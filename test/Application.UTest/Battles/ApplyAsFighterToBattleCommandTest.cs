@@ -23,8 +23,8 @@ public class ApplyAsFighterToBattleCommandTest : TestBase
             Side = BattleSide.Attacker,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.PartyNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.PartyNotFound));
     }
 
     [Test]
@@ -42,8 +42,8 @@ public class ApplyAsFighterToBattleCommandTest : TestBase
             Side = BattleSide.Attacker,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.PartyInBattle, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.PartyInBattle));
     }
 
     [Test]
@@ -61,8 +61,8 @@ public class ApplyAsFighterToBattleCommandTest : TestBase
             Side = BattleSide.Attacker,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.BattleNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.BattleNotFound));
     }
 
     [Test]
@@ -91,8 +91,8 @@ public class ApplyAsFighterToBattleCommandTest : TestBase
             Side = BattleSide.Attacker,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.BattleInvalidPhase, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.BattleInvalidPhase));
     }
 
     [Test]
@@ -126,8 +126,8 @@ public class ApplyAsFighterToBattleCommandTest : TestBase
             Side = BattleSide.Attacker,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.BattleTooFar, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.BattleTooFar));
     }
 
     [TestCase(BattleFighterApplicationStatus.Pending)]
@@ -170,8 +170,8 @@ public class ApplyAsFighterToBattleCommandTest : TestBase
             Side = BattleSide.Defender,
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
-        Assert.AreEqual(existingApplication.Id, res.Data!.Id);
+        Assert.That(res.Errors, Is.Null);
+        Assert.That(res.Data!.Id, Is.EqualTo(existingApplication.Id));
     }
 
     [Test]
@@ -205,11 +205,11 @@ public class ApplyAsFighterToBattleCommandTest : TestBase
             Side = BattleSide.Defender,
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
+        Assert.That(res.Errors, Is.Null);
         var application = res.Data!;
-        Assert.NotZero(application.Id);
-        Assert.AreEqual(party.Id, application.Party!.Id);
-        Assert.AreEqual(BattleSide.Defender, application.Side);
-        Assert.AreEqual(BattleFighterApplicationStatus.Pending, application.Status);
+        Assert.That(application.Id, Is.Not.Zero);
+        Assert.That(application.Party!.Id, Is.EqualTo(party.Id));
+        Assert.That(application.Side, Is.EqualTo(BattleSide.Defender));
+        Assert.That(application.Status, Is.EqualTo(BattleFighterApplicationStatus.Pending));
     }
 }

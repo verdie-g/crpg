@@ -53,7 +53,7 @@ public class SellUserItemCommandTest : TestBase
             UserItemId = 1,
             UserId = user.Entity.Id,
         }, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.UserItemNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.UserItemNotFound));
     }
 
     [Test]
@@ -70,7 +70,7 @@ public class SellUserItemCommandTest : TestBase
             UserItemId = 1,
             UserId = user.Id,
         }, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.UserItemNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.UserItemNotFound));
     }
 
     [Test]
@@ -97,6 +97,6 @@ public class SellUserItemCommandTest : TestBase
             UserItemId = user.Items[0].Id,
             UserId = user.Id,
         }, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.ItemDisabled, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.ItemDisabled));
     }
 }

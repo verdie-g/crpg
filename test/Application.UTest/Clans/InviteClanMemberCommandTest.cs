@@ -25,8 +25,8 @@ public class InviteClanMemberCommandTest : TestBase
             InviteeId = 1,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.UserNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.UserNotFound));
     }
 
     [Test]
@@ -45,8 +45,8 @@ public class InviteClanMemberCommandTest : TestBase
             InviteeId = user.Id,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.UserAlreadyInTheClan, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.UserAlreadyInTheClan));
     }
 
     [Test]
@@ -66,12 +66,12 @@ public class InviteClanMemberCommandTest : TestBase
         }, CancellationToken.None);
 
         var invitation = res.Data!;
-        Assert.IsNull(res.Errors);
-        Assert.NotZero(invitation.Id);
-        Assert.AreEqual(user.Id, invitation.Invitee.Id);
-        Assert.AreEqual(user.Id, invitation.Inviter.Id);
-        Assert.AreEqual(ClanInvitationType.Request, invitation.Type);
-        Assert.AreEqual(ClanInvitationStatus.Pending, invitation.Status);
+        Assert.That(res.Errors, Is.Null);
+        Assert.That(invitation.Id, Is.Not.Zero);
+        Assert.That(invitation.Invitee.Id, Is.EqualTo(user.Id));
+        Assert.That(invitation.Inviter.Id, Is.EqualTo(user.Id));
+        Assert.That(invitation.Type, Is.EqualTo(ClanInvitationType.Request));
+        Assert.That(invitation.Status, Is.EqualTo(ClanInvitationStatus.Pending));
     }
 
     [Test]
@@ -99,8 +99,8 @@ public class InviteClanMemberCommandTest : TestBase
             InviteeId = user.Id,
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
-        Assert.AreEqual(invitation.Id, res.Data!.Id);
+        Assert.That(res.Errors, Is.Null);
+        Assert.That(res.Data!.Id, Is.EqualTo(invitation.Id));
     }
 
     [Test]
@@ -120,8 +120,8 @@ public class InviteClanMemberCommandTest : TestBase
             InviteeId = invitee.Id,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.UserAlreadyInTheClan, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.UserAlreadyInTheClan));
     }
 
     [Test]
@@ -141,8 +141,8 @@ public class InviteClanMemberCommandTest : TestBase
             InviteeId = invitee.Id,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.UserNotInAClan, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.UserNotInAClan));
     }
 
     [Test]
@@ -162,8 +162,8 @@ public class InviteClanMemberCommandTest : TestBase
             InviteeId = invitee.Id,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.UserNotAClanMember, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.UserNotAClanMember));
     }
 
     [Test]
@@ -183,8 +183,8 @@ public class InviteClanMemberCommandTest : TestBase
             InviteeId = invitee.Id,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.ClanMemberRoleNotMet, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.ClanMemberRoleNotMet));
     }
 
     [Test]
@@ -213,8 +213,8 @@ public class InviteClanMemberCommandTest : TestBase
             InviteeId = invitee.Id,
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
-        Assert.AreEqual(offer.Id, res.Data!.Id);
+        Assert.That(res.Errors, Is.Null);
+        Assert.That(res.Data!.Id, Is.EqualTo(offer.Id));
     }
 
     [Test]
@@ -235,11 +235,11 @@ public class InviteClanMemberCommandTest : TestBase
         }, CancellationToken.None);
 
         var invitation = res.Data!;
-        Assert.IsNull(res.Errors);
-        Assert.NotZero(invitation.Id);
-        Assert.AreEqual(invitee.Id, invitation.Invitee.Id);
-        Assert.AreEqual(inviter.Id, invitation.Inviter.Id);
-        Assert.AreEqual(ClanInvitationType.Offer, invitation.Type);
-        Assert.AreEqual(ClanInvitationStatus.Pending, invitation.Status);
+        Assert.That(res.Errors, Is.Null);
+        Assert.That(invitation.Id, Is.Not.Zero);
+        Assert.That(invitation.Invitee.Id, Is.EqualTo(invitee.Id));
+        Assert.That(invitation.Inviter.Id, Is.EqualTo(inviter.Id));
+        Assert.That(invitation.Type, Is.EqualTo(ClanInvitationType.Offer));
+        Assert.That(invitation.Status, Is.EqualTo(ClanInvitationStatus.Pending));
     }
 }

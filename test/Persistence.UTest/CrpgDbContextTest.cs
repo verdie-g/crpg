@@ -24,8 +24,8 @@ public class CrpgDbContextTest
         db.Add(character);
         await db.SaveChangesAsync();
 
-        Assert.AreEqual(dt, character.UpdatedAt);
-        Assert.AreEqual(dt, character.CreatedAt);
+        Assert.That(dt, Is.EqualTo(character.UpdatedAt));
+        Assert.That(dt, Is.EqualTo(character.CreatedAt));
     }
 
     [Test]
@@ -51,6 +51,6 @@ public class CrpgDbContextTest
         character.Name = "toto";
         await db.SaveChangesAsync();
 
-        Assert.AreEqual(dt2, character.UpdatedAt);
+        Assert.That(dt2, Is.EqualTo(character.UpdatedAt));
     }
 }

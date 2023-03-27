@@ -33,10 +33,10 @@ public class GetSettlementsQueryTest : TestBase
         GetSettlementsQuery.Handler handler = new(ActDb, Mapper);
         var res = await handler.Handle(new GetSettlementsQuery(), CancellationToken.None);
         var settlementViews = res.Data!;
-        Assert.IsNotNull(settlementViews);
-        Assert.AreEqual(2, settlementViews.Count);
+        Assert.That(settlementViews, Is.Not.Null);
+        Assert.That(settlementViews.Count, Is.EqualTo(2));
 
-        Assert.AreEqual("abc", settlementViews[0].Name);
-        Assert.AreEqual("def", settlementViews[1].Name);
+        Assert.That(settlementViews[0].Name, Is.EqualTo("abc"));
+        Assert.That(settlementViews[1].Name, Is.EqualTo("def"));
     }
 }

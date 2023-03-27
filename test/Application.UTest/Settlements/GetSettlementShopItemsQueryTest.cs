@@ -24,8 +24,8 @@ public class GetSettlementShopItemsQueryTest : TestBase
             SettlementId = 2,
         }, CancellationToken.None);
 
-        Assert.NotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.PartyNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.PartyNotFound));
     }
 
     [Test]
@@ -42,8 +42,8 @@ public class GetSettlementShopItemsQueryTest : TestBase
             SettlementId = 2,
         }, CancellationToken.None);
 
-        Assert.NotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.SettlementNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.SettlementNotFound));
     }
 
     [Test]
@@ -70,8 +70,8 @@ public class GetSettlementShopItemsQueryTest : TestBase
             SettlementId = settlement.Id,
         }, CancellationToken.None);
 
-        Assert.NotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.SettlementTooFar, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.SettlementTooFar));
     }
 
     [Test]
@@ -105,7 +105,7 @@ public class GetSettlementShopItemsQueryTest : TestBase
             SettlementId = settlement.Id,
         }, CancellationToken.None);
 
-        Assert.Null(res.Errors);
-        Assert.AreEqual(2, res.Data!.Count);
+        Assert.That(res.Errors, Is.Null);
+        Assert.That(res.Data!.Count, Is.EqualTo(2));
     }
 }

@@ -27,9 +27,9 @@ public class GetActivityLogsQueryTest : TestBase
             UserIds = Array.Empty<int>(),
         }, CancellationToken.None);
 
-        Assert.AreEqual(2, res.Data!.Count);
-        Assert.AreEqual(2, res.Data[0].Id);
-        Assert.AreEqual(3, res.Data[1].Id);
+        Assert.That(res.Data!.Count, Is.EqualTo(2));
+        Assert.That(res.Data[0].Id, Is.EqualTo(2));
+        Assert.That(res.Data[1].Id, Is.EqualTo(3));
     }
 
     [Test]
@@ -55,9 +55,9 @@ public class GetActivityLogsQueryTest : TestBase
             UserIds = new[] { user.Id },
         }, CancellationToken.None);
 
-        Assert.AreEqual(3, res.Data!.Count);
-        Assert.AreEqual(1, res.Data[0].Id);
-        Assert.AreEqual(2, res.Data[1].Id);
-        Assert.AreEqual(4, res.Data[2].Id);
+        Assert.That(res.Data!.Count, Is.EqualTo(3));
+        Assert.That(res.Data[0].Id, Is.EqualTo(1));
+        Assert.That(res.Data[1].Id, Is.EqualTo(2));
+        Assert.That(res.Data[2].Id, Is.EqualTo(4));
     }
 }

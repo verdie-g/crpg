@@ -43,8 +43,8 @@ public class SeedDataCommandTest : TestBase
         await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
 
         var items = await AssertDb.Items.ToArrayAsync();
-        Assert.AreEqual(2, items.Length);
-        Assert.IsTrue(items.All(i => i.Enabled));
+        Assert.That(items.Length, Is.EqualTo(2));
+        Assert.That(items, Has.All.Matches<Item>(i => i.Enabled));
     }
 
     [Test]
@@ -76,9 +76,9 @@ public class SeedDataCommandTest : TestBase
         await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
 
         var items = await AssertDb.Items.ToArrayAsync();
-        Assert.AreEqual(1, items.Length);
-        Assert.AreEqual(9, items[0].Armor!.HeadArmor);
-        Assert.IsFalse(items[0].Enabled, "Items seeds shouldn't enable disabled item");
+        Assert.That(items.Length, Is.EqualTo(1));
+        Assert.That(items[0].Armor!.HeadArmor, Is.EqualTo(9));
+        Assert.That(items[0].Enabled, Is.False, "Items seeds shouldn't enable disabled item");
     }
 
     [Test]
@@ -94,7 +94,7 @@ public class SeedDataCommandTest : TestBase
             ItemModifierService);
         await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
         var items = await AssertDb.Items.ToArrayAsync();
-        Assert.AreEqual(1, items.Length);
+        Assert.That(items.Length, Is.EqualTo(1));
 
         // Users buy the new item and equip it.
         User user0 = new() { Gold = 100, HeirloomPoints = 0 };
@@ -129,12 +129,12 @@ public class SeedDataCommandTest : TestBase
 
         await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
         items = await AssertDb.Items.ToArrayAsync();
-        Assert.AreEqual(0, items.Length);
+        Assert.That(items.Length, Is.EqualTo(0));
         var users = await AssertDb.Users.ToArrayAsync();
-        Assert.Greater(users[0].Gold, 100);
-        Assert.AreEqual(0, users[0].HeirloomPoints);
-        Assert.Greater(users[1].Gold, 200);
-        Assert.AreEqual(1, users[1].HeirloomPoints);
+        Assert.That(users[0].Gold, Is.GreaterThan(100));
+        Assert.That(users[0].HeirloomPoints, Is.EqualTo(0));
+        Assert.That(users[1].Gold, Is.GreaterThan(200));
+        Assert.That(users[1].HeirloomPoints, Is.EqualTo(1));
     }
 
     [Test]
@@ -158,21 +158,21 @@ public class SeedDataCommandTest : TestBase
         await handler.Handle(new SeedDataCommand(), CancellationToken.None);
 
         var settlements = await AssertDb.Settlements.ToArrayAsync();
-        Assert.AreEqual(2 * (Regions.Length - 1), settlements.Length);
+        Assert.That(settlements.Length, Is.EqualTo(2 * (Regions.Length - 1)));
 
-        Assert.NotZero(settlements[0].Id);
-        Assert.AreEqual("a", settlements[0].Name);
-        Assert.AreEqual(Region.Eu, settlements[0].Region);
+        Assert.That(settlements[0].Id, Is.Not.Zero);
+        Assert.That(settlements[0].Name, Is.EqualTo("a"));
+        Assert.That(settlements[0].Region, Is.EqualTo(Region.Eu));
 
-        Assert.NotZero(settlements[1].Id);
-        Assert.AreEqual("a", settlements[1].Name);
-        Assert.AreEqual(Region.Na, settlements[1].Region);
+        Assert.That(settlements[1].Id, Is.Not.Zero);
+        Assert.That(settlements[1].Name, Is.EqualTo("a"));
+        Assert.That(settlements[1].Region, Is.EqualTo(Region.Na));
 
-        Assert.NotZero(settlements[2].Id);
-        Assert.AreEqual("a", settlements[2].Name);
-        Assert.AreEqual(Region.As, settlements[2].Region);
+        Assert.That(settlements[2].Id, Is.Not.Zero);
+        Assert.That(settlements[2].Name, Is.EqualTo("a"));
+        Assert.That(settlements[2].Region, Is.EqualTo(Region.As));
 
-        Assert.AreEqual("b", settlements[3].Name);
+        Assert.That(settlements[3].Name, Is.EqualTo("b"));
     }
 
     [Test]
@@ -244,21 +244,21 @@ public class SeedDataCommandTest : TestBase
         await handler.Handle(new SeedDataCommand(), CancellationToken.None);
 
         var settlements = await AssertDb.Settlements.ToArrayAsync();
-        Assert.AreEqual(Regions.Length - 1, settlements.Length);
+        Assert.That(settlements.Length, Is.EqualTo(Regions.Length - 1));
 
-        Assert.AreEqual(Region.Eu, settlements[0].Region);
-        Assert.AreEqual(new Point(3, 4), settlements[0].Position);
-        Assert.AreEqual(Region.Na, settlements[1].Region);
-        Assert.AreEqual(new Point(4, 5), settlements[1].Position);
-        Assert.AreEqual(Region.As, settlements[2].Region);
-        Assert.AreEqual(new Point(5, 6), settlements[2].Position);
+        Assert.That(settlements[0].Region, Is.EqualTo(Region.Eu));
+        Assert.That(settlements[0].Position, Is.EqualTo(new Point(3, 4)));
+        Assert.That(settlements[1].Region, Is.EqualTo(Region.Na));
+        Assert.That(settlements[1].Position, Is.EqualTo(new Point(4, 5)));
+        Assert.That(settlements[2].Region, Is.EqualTo(Region.As));
+        Assert.That(settlements[2].Position, Is.EqualTo(new Point(5, 6)));
         for (int i = 0; i < settlements.Length; i += 1)
         {
-            Assert.AreEqual(dbSettlements[i].Id, settlements[i].Id);
-            Assert.AreEqual("a", settlements[i].Name);
-            Assert.AreEqual(SettlementType.Town, settlements[i].Type);
-            Assert.AreEqual(Culture.Battania, settlements[i].Culture);
-            Assert.AreEqual("def", settlements[i].Scene);
+            Assert.That(settlements[i].Id, Is.EqualTo(dbSettlements[i].Id));
+            Assert.That(settlements[i].Name, Is.EqualTo("a"));
+            Assert.That(settlements[i].Type, Is.EqualTo(SettlementType.Town));
+            Assert.That(settlements[i].Culture, Is.EqualTo(Culture.Battania));
+            Assert.That(settlements[i].Scene, Is.EqualTo("def"));
         }
     }
 
@@ -280,7 +280,7 @@ public class SeedDataCommandTest : TestBase
         await handler.Handle(new SeedDataCommand(), CancellationToken.None);
 
         var settlements = await AssertDb.Settlements.ToArrayAsync();
-        Assert.AreEqual(0, settlements.Length);
+        Assert.That(settlements.Length, Is.EqualTo(0));
     }
 
     private IApplicationEnvironment CreateAppEnv()

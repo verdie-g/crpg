@@ -15,7 +15,7 @@ public class GetUserByIdQueryTest : TestBase
         {
             UserId = 1,
         }, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.UserNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.UserNotFound));
     }
 
     [Test]
@@ -31,6 +31,6 @@ public class GetUserByIdQueryTest : TestBase
             UserId = user.Id,
         }, CancellationToken.None);
 
-        Assert.NotNull(userVm.Data);
+        Assert.That(userVm.Data, Is.Not.Null);
     }
 }

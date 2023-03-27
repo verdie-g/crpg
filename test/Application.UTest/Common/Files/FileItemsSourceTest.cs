@@ -12,7 +12,7 @@ public class FileItemsSourceTest
     public void TestCanDeserializeFile()
     {
         FileItemsSource source = new();
-        Assert.DoesNotThrowAsync(() => source.LoadItems());
+        Assert.That(() => source.LoadItems(), Throws.Nothing);
     }
 
     [Test]
@@ -32,10 +32,8 @@ public class FileItemsSourceTest
             ids.Add(item.Id);
         }
 
-        if (duplicates.Count != 0)
-        {
-            Assert.Fail("Duplicate items: " + string.Join(", ", duplicates));
-        }
+        Assert.That(duplicates, Is.Empty,
+           "Duplicate items: " + string.Join(", ", duplicates));
     }
 
     [Test]
@@ -76,10 +74,8 @@ public class FileItemsSourceTest
             }
         }
 
-        if (errors.Count != 0)
-        {
-            Assert.Fail("- " + string.Join($"{Environment.NewLine}- ", errors));
-        }
+        Assert.That(errors, Is.Empty,
+            "- " + string.Join($"{Environment.NewLine}- ", errors));
     }
 
     [Test]
@@ -95,10 +91,8 @@ public class FileItemsSourceTest
             }
         }
 
-        if (errors.Count != 0)
-        {
-            Assert.Fail($"Test items detected:{Environment.NewLine}- " + string.Join($"{Environment.NewLine}- ", errors));
-        }
+        Assert.That(errors, Is.Empty,
+            $"Test items detected:{Environment.NewLine}- " + string.Join($"{Environment.NewLine}- ", errors));
     }
 
     [Test]
@@ -114,10 +108,8 @@ public class FileItemsSourceTest
             }
         }
 
-        if (errors.Count != 0)
-        {
-            Assert.Fail($"Item with too higher tier:{Environment.NewLine}- " + string.Join($"{Environment.NewLine}- ", errors));
-        }
+        Assert.That(errors, Is.Empty,
+            $"Item with too higher tier:{Environment.NewLine}- " + string.Join($"{Environment.NewLine}- ", errors));
     }
 
     [Test]
@@ -133,9 +125,7 @@ public class FileItemsSourceTest
             }
         }
 
-        if (errors.Count != 0)
-        {
-            Assert.Fail($"Items with zero, or negative price or price too high:{Environment.NewLine}- " + string.Join($"{Environment.NewLine}- ", errors));
-        }
+        Assert.That(errors, Is.Empty,
+            $"Items with zero, or negative price or price too high:{Environment.NewLine}- " + string.Join($"{Environment.NewLine}- ", errors));
     }
 }

@@ -28,8 +28,8 @@ public class CreatePartyCommandTest : TestBase
             Region = Region.Na,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.UserNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.UserNotFound));
     }
 
     [Test]
@@ -49,8 +49,8 @@ public class CreatePartyCommandTest : TestBase
             Region = Region.Na,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.UserAlreadyRegisteredToStrategus, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.UserAlreadyRegisteredToStrategus));
     }
 
     [Test]
@@ -70,15 +70,15 @@ public class CreatePartyCommandTest : TestBase
         }, CancellationToken.None);
 
         var party = res.Data!;
-        Assert.IsNotNull(party);
-        Assert.AreEqual(user.Id, party.Id);
-        Assert.AreEqual(Region.Na, party.Region);
-        Assert.AreEqual(0, party.Gold);
-        Assert.AreEqual(1, party.Troops);
-        Assert.AreEqual(new Point(150.0, 50.0), party.Position);
-        Assert.AreEqual(PartyStatus.Idle, party.Status);
-        Assert.AreEqual(0, party.Waypoints.Count);
-        Assert.IsNull(party.TargetedParty);
-        Assert.IsNull(party.TargetedSettlement);
+        Assert.That(party, Is.Not.Null);
+        Assert.That(party.Id, Is.EqualTo(user.Id));
+        Assert.That(party.Region, Is.EqualTo(Region.Na));
+        Assert.That(party.Gold, Is.EqualTo(0));
+        Assert.That(party.Troops, Is.EqualTo(1));
+        Assert.That(party.Position, Is.EqualTo(new Point(150.0, 50.0)));
+        Assert.That(party.Status, Is.EqualTo(PartyStatus.Idle));
+        Assert.That(party.Waypoints.Count, Is.EqualTo(0));
+        Assert.That(party.TargetedParty, Is.Null);
+        Assert.That(party.TargetedSettlement, Is.Null);
     }
 }

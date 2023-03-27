@@ -21,8 +21,8 @@ public class GetUsersByNameQueryTest : TestBase
             Name = "yo",
         }, CancellationToken.None);
 
-        Assert.NotNull(res.Data);
-        Assert.AreEqual(0, res.Data!.Length);
+        Assert.That(res.Data, Is.Not.Null);
+        Assert.That(res.Data!.Length, Is.EqualTo(0));
     }
 
     [Test]
@@ -44,7 +44,7 @@ public class GetUsersByNameQueryTest : TestBase
             Name = "yo",
         }, CancellationToken.None);
 
-        Assert.NotNull(res.Data);
-        Assert.AreEqual(4, res.Data!.Length);
+        Assert.That(res.Data, Is.Not.Null);
+        Assert.That(res.Data!.Length, Is.EqualTo(4));
     }
 }

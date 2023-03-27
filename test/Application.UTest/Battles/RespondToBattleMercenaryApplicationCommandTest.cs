@@ -24,8 +24,8 @@ public class RespondToBattleMercenaryApplicationCommandTest : TestBase
             Accept = true,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.PartyNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.PartyNotFound));
     }
 
     [Test]
@@ -43,8 +43,8 @@ public class RespondToBattleMercenaryApplicationCommandTest : TestBase
             Accept = true,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.ApplicationNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.ApplicationNotFound));
     }
 
     [Test]
@@ -77,8 +77,8 @@ public class RespondToBattleMercenaryApplicationCommandTest : TestBase
             Accept = true,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.PartyNotAFighter, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.PartyNotAFighter));
     }
 
     [Test]
@@ -120,8 +120,8 @@ public class RespondToBattleMercenaryApplicationCommandTest : TestBase
             Accept = true,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.PartiesNotOnTheSameSide, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.PartiesNotOnTheSameSide));
     }
 
     [TestCase(BattlePhase.Preparation)]
@@ -166,8 +166,8 @@ public class RespondToBattleMercenaryApplicationCommandTest : TestBase
             Accept = true,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.BattleInvalidPhase, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.BattleInvalidPhase));
     }
 
     [TestCase(BattleMercenaryApplicationStatus.Declined)]
@@ -210,8 +210,8 @@ public class RespondToBattleMercenaryApplicationCommandTest : TestBase
             Accept = true,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.ApplicationClosed, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.ApplicationClosed));
     }
 
     [Test]
@@ -253,12 +253,12 @@ public class RespondToBattleMercenaryApplicationCommandTest : TestBase
             Accept = false,
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
+        Assert.That(res.Errors, Is.Null);
         var applicationVm = res.Data!;
-        Assert.AreEqual(application.Id, applicationVm.Id);
-        Assert.AreEqual(BattleMercenaryApplicationStatus.Declined, applicationVm.Status);
+        Assert.That(applicationVm.Id, Is.EqualTo(application.Id));
+        Assert.That(applicationVm.Status, Is.EqualTo(BattleMercenaryApplicationStatus.Declined));
 
-        Assert.AreEqual(0, await AssertDb.BattleMercenaries.CountAsync());
+        Assert.That(await AssertDb.BattleMercenaries.CountAsync(), Is.EqualTo(0));
     }
 
     [Test]
@@ -340,12 +340,12 @@ public class RespondToBattleMercenaryApplicationCommandTest : TestBase
             Accept = true,
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
+        Assert.That(res.Errors, Is.Null);
         var applicationVm = res.Data!;
-        Assert.AreEqual(application.Id, applicationVm.Id);
-        Assert.AreEqual(BattleMercenaryApplicationStatus.Accepted, applicationVm.Status);
+        Assert.That(applicationVm.Id, Is.EqualTo(application.Id));
+        Assert.That(applicationVm.Status, Is.EqualTo(BattleMercenaryApplicationStatus.Accepted));
 
-        Assert.AreEqual(1, await AssertDb.BattleMercenaries.CountAsync());
-        Assert.AreEqual(4, await AssertDb.BattleMercenaryApplications.CountAsync());
+        Assert.That(await AssertDb.BattleMercenaries.CountAsync(), Is.EqualTo(1));
+        Assert.That(await AssertDb.BattleMercenaryApplications.CountAsync(), Is.EqualTo(4));
     }
 }

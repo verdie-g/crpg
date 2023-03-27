@@ -37,10 +37,10 @@ public class BuyItemCommandTest : TestBase
             .FirstAsync(u => u.Id == user.Id);
 
         var boughtUserItem = result.Data!;
-        Assert.AreEqual(0, boughtUserItem.Rank);
-        Assert.AreEqual(item.Id, boughtUserItem.BaseItem.Id);
-        Assert.AreEqual(0, userDb.Gold);
-        Assert.IsTrue(userDb.Items.Any(ui => ui.Id == boughtUserItem.Id));
+        Assert.That(boughtUserItem.Rank, Is.EqualTo(0));
+        Assert.That(boughtUserItem.BaseItem.Id, Is.EqualTo(item.Id));
+        Assert.That(userDb.Gold, Is.EqualTo(0));
+        Assert.That(userDb.Items, Has.Some.Matches<UserItem>(ui => ui.Id == boughtUserItem.Id));
     }
 
     [Test]
@@ -56,7 +56,7 @@ public class BuyItemCommandTest : TestBase
             UserId = user.Entity.Id,
         }, CancellationToken.None);
 
-        Assert.AreEqual(ErrorCode.ItemNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.ItemNotFound));
     }
 
     [Test]
@@ -71,7 +71,7 @@ public class BuyItemCommandTest : TestBase
             ItemId = item.Entity.Id,
             UserId = 1,
         }, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.UserNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.UserNotFound));
     }
 
     [Test]
@@ -88,8 +88,8 @@ public class BuyItemCommandTest : TestBase
             UserId = user.Entity.Id,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(result.Errors);
-        Assert.AreEqual(ErrorCode.ItemDisabled, result.Errors![0].Code);
+        Assert.That(result.Errors, Is.Not.Null);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.ItemDisabled));
     }
 
     [Theory]
@@ -109,12 +109,12 @@ public class BuyItemCommandTest : TestBase
 
         if (isDonor || role != Role.User)
         {
-            Assert.IsNull(result.Errors);
+            Assert.That(result.Errors, Is.Null);
         }
         else
         {
-            Assert.IsNotNull(result.Errors);
-            Assert.AreEqual(ErrorCode.ItemNotBuyable, result.Errors![0].Code);
+            Assert.That(result.Errors, Is.Not.Null);
+            Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.ItemNotBuyable));
         }
     }
 
@@ -131,7 +131,7 @@ public class BuyItemCommandTest : TestBase
             ItemId = item.Entity.Id,
             UserId = user.Entity.Id,
         }, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.NotEnoughGold, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.NotEnoughGold));
     }
 
     [Test]
@@ -153,6 +153,6 @@ public class BuyItemCommandTest : TestBase
             ItemId = item.Id,
             UserId = user.Id,
         }, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.ItemAlreadyOwned, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.ItemAlreadyOwned));
     }
 }

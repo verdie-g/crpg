@@ -22,8 +22,8 @@ public class GetStrategusUpdateQueryTest : TestBase
             PartyId = 1,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.PartyNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.PartyNotFound));
     }
 
     [Test]
@@ -39,8 +39,8 @@ public class GetStrategusUpdateQueryTest : TestBase
             PartyId = user.Id,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.PartyNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.PartyNotFound));
     }
 
     [Test]
@@ -100,13 +100,13 @@ public class GetStrategusUpdateQueryTest : TestBase
         }, CancellationToken.None);
 
         var update = res.Data!;
-        Assert.IsNotNull(update);
-        Assert.NotNull(update.Party);
-        Assert.AreEqual(1, update.VisibleParties.Count);
-        Assert.AreEqual(closeParty.Id, update.VisibleParties[0].Id);
-        Assert.AreEqual(1, update.VisibleSettlements.Count);
-        Assert.AreEqual(closeSettlement.Id, update.VisibleSettlements[0].Id);
-        Assert.AreEqual(1, update.VisibleBattles.Count);
-        Assert.AreEqual(closeBattle.Id, update.VisibleBattles[0].Id);
+        Assert.That(update, Is.Not.Null);
+        Assert.That(update.Party, Is.Not.Null);
+        Assert.That(update.VisibleParties.Count, Is.EqualTo(1));
+        Assert.That(update.VisibleParties[0].Id, Is.EqualTo(closeParty.Id));
+        Assert.That(update.VisibleSettlements.Count, Is.EqualTo(1));
+        Assert.That(update.VisibleSettlements[0].Id, Is.EqualTo(closeSettlement.Id));
+        Assert.That(update.VisibleBattles.Count, Is.EqualTo(1));
+        Assert.That(update.VisibleBattles[0].Id, Is.EqualTo(closeBattle.Id));
     }
 }

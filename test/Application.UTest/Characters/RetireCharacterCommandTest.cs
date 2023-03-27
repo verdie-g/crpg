@@ -68,12 +68,12 @@ public class RetireCharacterCommandTest : TestBase
             .Include(c => c.User)
             .Include(c => c.EquippedItems)
             .FirstAsync(c => c.Id == character.Id);
-        Assert.AreEqual(1, character.Generation);
-        Assert.AreEqual(Constants.MinimumLevel, character.Level);
-        Assert.AreEqual(0, character.Experience);
-        Assert.AreEqual(expectedPoints, character.User!.HeirloomPoints);
-        Assert.AreEqual(expectedExperienceMultiplier, character.User.ExperienceMultiplier, delta: 0.001f);
-        Assert.IsEmpty(character.EquippedItems);
+        Assert.That(character.Generation, Is.EqualTo(1));
+        Assert.That(character.Level, Is.EqualTo(Constants.MinimumLevel));
+        Assert.That(character.Experience, Is.EqualTo(0));
+        Assert.That(character.User!.HeirloomPoints, Is.EqualTo(expectedPoints));
+        Assert.That(character.User.ExperienceMultiplier, Is.EqualTo(expectedExperienceMultiplier).Within(0.001f));
+        Assert.That(character.EquippedItems, Is.Empty);
 
         characterServiceMock.Verify(cs => cs.ResetCharacterCharacteristics(It.IsAny<Character>(), false));
     }
@@ -90,7 +90,7 @@ public class RetireCharacterCommandTest : TestBase
                 CharacterId = 1,
                 UserId = 2,
             }, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.CharacterNotFound));
     }
 
     [Test]
@@ -108,7 +108,7 @@ public class RetireCharacterCommandTest : TestBase
                 CharacterId = 1,
                 UserId = user.Entity.Id,
             }, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.CharacterNotFound));
     }
 
     [Test]
@@ -131,6 +131,6 @@ public class RetireCharacterCommandTest : TestBase
                 CharacterId = character.Id,
                 UserId = character.UserId,
             }, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.CharacterLevelRequirementNotMet, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.CharacterLevelRequirementNotMet));
     }
 }

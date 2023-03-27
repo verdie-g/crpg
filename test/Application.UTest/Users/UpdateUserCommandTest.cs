@@ -16,8 +16,8 @@ public class UpdateUserCommandTest : TestBase
             UserId = 1,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.UserNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.UserNotFound));
     }
 
     [Test]
@@ -32,7 +32,7 @@ public class UpdateUserCommandTest : TestBase
             UserId = user.Id,
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
-        // Assert.AreEqual(Region.Na, res.Data!.Region);
+        Assert.That(res.Errors, Is.Null);
+        // Assert.That(Region.Na, Is.EqualTo(res.Data!.Region));
     }
 }

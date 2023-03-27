@@ -38,8 +38,8 @@ public class CharacterServiceTest
         };
         characterService.GiveExperience(character, 3);
 
-        Assert.AreEqual(1, character.Level);
-        Assert.AreEqual(8, character.Experience);
+        Assert.That(character.Level, Is.EqualTo(1));
+        Assert.That(character.Experience, Is.EqualTo(8));
     }
 
     [Test]
@@ -55,8 +55,8 @@ public class CharacterServiceTest
         };
         characterService.GiveExperience(character, 3);
 
-        Assert.AreEqual(1, character.Level);
-        Assert.AreEqual(2, character.Experience);
+        Assert.That(character.Level, Is.EqualTo(1));
+        Assert.That(character.Experience, Is.EqualTo(2));
     }
 
     [Test]
@@ -72,11 +72,11 @@ public class CharacterServiceTest
         };
         characterService.GiveExperience(character, 6000);
 
-        Assert.AreEqual(2, character.Level);
-        Assert.AreEqual(12002, character.Experience);
-        Assert.AreEqual(1, character.Characteristics.Attributes.Points);
-        Assert.AreEqual(1, character.Characteristics.Skills.Points);
-        Assert.AreEqual(100, character.Characteristics.WeaponProficiencies.Points);
+        Assert.That(character.Level, Is.EqualTo(2));
+        Assert.That(character.Experience, Is.EqualTo(12002));
+        Assert.That(character.Characteristics.Attributes.Points, Is.EqualTo(1));
+        Assert.That(character.Characteristics.Skills.Points, Is.EqualTo(1));
+        Assert.That(character.Characteristics.WeaponProficiencies.Points, Is.EqualTo(100));
     }
 
     [Test]
@@ -123,37 +123,37 @@ public class CharacterServiceTest
         };
 
         characterService.ResetCharacterCharacteristics(character, respecialization);
-        Assert.AreEqual(CharacterClass.Peasant, character.Class);
+        Assert.That(character.Class, Is.EqualTo(CharacterClass.Peasant));
         if (respecialization)
         {
-            Assert.AreEqual(4, character.Characteristics.Attributes.Points);
-            Assert.AreEqual(6, character.Characteristics.Skills.Points);
-            Assert.AreEqual(410, character.Characteristics.WeaponProficiencies.Points);
+            Assert.That(character.Characteristics.Attributes.Points, Is.EqualTo(4));
+            Assert.That(character.Characteristics.Skills.Points, Is.EqualTo(6));
+            Assert.That(character.Characteristics.WeaponProficiencies.Points, Is.EqualTo(410));
         }
         else
         {
-            Assert.Zero(character.Characteristics.Attributes.Points);
-            Assert.AreEqual(2, character.Characteristics.Skills.Points);
-            Assert.AreEqual(10, character.Characteristics.WeaponProficiencies.Points);
+            Assert.That(character.Characteristics.Attributes.Points, Is.Zero);
+            Assert.That(character.Characteristics.Skills.Points, Is.EqualTo(2));
+            Assert.That(character.Characteristics.WeaponProficiencies.Points, Is.EqualTo(10));
         }
 
-        Assert.AreEqual(Constants.DefaultStrength, character.Characteristics.Attributes.Strength);
-        Assert.AreEqual(Constants.DefaultAgility, character.Characteristics.Attributes.Agility);
-        Assert.Zero(character.Characteristics.Skills.IronFlesh);
-        Assert.Zero(character.Characteristics.Skills.PowerStrike);
-        Assert.Zero(character.Characteristics.Skills.PowerDraw);
-        Assert.Zero(character.Characteristics.Skills.PowerThrow);
-        Assert.Zero(character.Characteristics.Skills.Athletics);
-        Assert.Zero(character.Characteristics.Skills.Riding);
-        Assert.Zero(character.Characteristics.Skills.WeaponMaster);
-        Assert.Zero(character.Characteristics.Skills.MountedArchery);
-        Assert.Zero(character.Characteristics.Skills.Shield);
-        Assert.Zero(character.Characteristics.WeaponProficiencies.OneHanded);
-        Assert.Zero(character.Characteristics.WeaponProficiencies.TwoHanded);
-        Assert.Zero(character.Characteristics.WeaponProficiencies.Polearm);
-        Assert.Zero(character.Characteristics.WeaponProficiencies.Bow);
-        Assert.Zero(character.Characteristics.WeaponProficiencies.Throwing);
-        Assert.Zero(character.Characteristics.WeaponProficiencies.Crossbow);
+        Assert.That(character.Characteristics.Attributes.Strength, Is.EqualTo(Constants.DefaultStrength));
+        Assert.That(character.Characteristics.Attributes.Agility, Is.EqualTo(Constants.DefaultAgility));
+        Assert.That(character.Characteristics.Skills.IronFlesh, Is.Zero);
+        Assert.That(character.Characteristics.Skills.PowerStrike, Is.Zero);
+        Assert.That(character.Characteristics.Skills.PowerDraw, Is.Zero);
+        Assert.That(character.Characteristics.Skills.PowerThrow, Is.Zero);
+        Assert.That(character.Characteristics.Skills.Athletics, Is.Zero);
+        Assert.That(character.Characteristics.Skills.Riding, Is.Zero);
+        Assert.That(character.Characteristics.Skills.WeaponMaster, Is.Zero);
+        Assert.That(character.Characteristics.Skills.MountedArchery, Is.Zero);
+        Assert.That(character.Characteristics.Skills.Shield, Is.Zero);
+        Assert.That(character.Characteristics.WeaponProficiencies.OneHanded, Is.Zero);
+        Assert.That(character.Characteristics.WeaponProficiencies.TwoHanded, Is.Zero);
+        Assert.That(character.Characteristics.WeaponProficiencies.Polearm, Is.Zero);
+        Assert.That(character.Characteristics.WeaponProficiencies.Bow, Is.Zero);
+        Assert.That(character.Characteristics.WeaponProficiencies.Throwing, Is.Zero);
+        Assert.That(character.Characteristics.WeaponProficiencies.Crossbow, Is.Zero);
     }
 
     [Test]
@@ -163,8 +163,8 @@ public class CharacterServiceTest
         Character character = new() { Level = 2, Experience = 2, ForTournament = false };
         characterService.SetDefaultValuesForCharacter(character);
 
-        Assert.AreEqual(Constants.MinimumLevel, character.Level);
-        Assert.AreEqual(0, character.Experience);
-        Assert.IsFalse(character.ForTournament);
+        Assert.That(character.Level, Is.EqualTo(Constants.MinimumLevel));
+        Assert.That(character.Experience, Is.EqualTo(0));
+        Assert.That(character.ForTournament, Is.False);
     }
 }

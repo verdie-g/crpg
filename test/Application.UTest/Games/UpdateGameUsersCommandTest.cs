@@ -18,7 +18,7 @@ public class UpdateGameUsersCommandTest : TestBase
     {
         Mock<ICharacterService> characterServiceMock = new();
         UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object);
-        Assert.DoesNotThrowAsync(() => handler.Handle(new UpdateGameUsersCommand(), CancellationToken.None));
+        Assert.That(() => handler.Handle(new UpdateGameUsersCommand(), CancellationToken.None), Throws.Nothing);
     }
 
     [Test]
@@ -99,27 +99,27 @@ public class UpdateGameUsersCommandTest : TestBase
         }, CancellationToken.None);
 
         var data = result.Data!;
-        Assert.AreEqual(1, data.UpdateResults.Count);
-        Assert.AreEqual(user.Id, data.UpdateResults[0].User.Id);
-        Assert.AreEqual(Platform.Steam, data.UpdateResults[0].User.Platform);
-        Assert.AreEqual("1", data.UpdateResults[0].User.PlatformUserId);
-        Assert.AreEqual(1000 + 200, data.UpdateResults[0].User.Gold);
-        Assert.AreEqual("a", data.UpdateResults[0].User.Character.Name);
-        Assert.AreEqual(1, data.UpdateResults[0].User.Character.EquippedItems.Count);
-        Assert.IsEmpty(data.UpdateResults[0].User.Restrictions);
-        Assert.AreEqual(10, data.UpdateResults[0].EffectiveReward.Experience);
-        Assert.AreEqual(200, data.UpdateResults[0].EffectiveReward.Gold);
-        Assert.IsFalse(data.UpdateResults[0].EffectiveReward.LevelUp);
-        Assert.IsEmpty(data.UpdateResults[0].RepairedItems);
+        Assert.That(data.UpdateResults.Count, Is.EqualTo(1));
+        Assert.That(data.UpdateResults[0].User.Id, Is.EqualTo(user.Id));
+        Assert.That(data.UpdateResults[0].User.Platform, Is.EqualTo(Platform.Steam));
+        Assert.That(data.UpdateResults[0].User.PlatformUserId, Is.EqualTo("1"));
+        Assert.That(data.UpdateResults[0].User.Gold, Is.EqualTo(1000 + 200));
+        Assert.That(data.UpdateResults[0].User.Character.Name, Is.EqualTo("a"));
+        Assert.That(data.UpdateResults[0].User.Character.EquippedItems.Count, Is.EqualTo(1));
+        Assert.That(data.UpdateResults[0].User.Restrictions, Is.Empty);
+        Assert.That(data.UpdateResults[0].EffectiveReward.Experience, Is.EqualTo(10));
+        Assert.That(data.UpdateResults[0].EffectiveReward.Gold, Is.EqualTo(200));
+        Assert.That(data.UpdateResults[0].EffectiveReward.LevelUp, Is.False);
+        Assert.That(data.UpdateResults[0].RepairedItems, Is.Empty);
 
         var dbCharacter = await AssertDb.Characters.FirstAsync(c => c.Id == user.Characters[0].Id);
-        Assert.AreEqual(6, dbCharacter.Statistics.Kills);
-        Assert.AreEqual(8, dbCharacter.Statistics.Deaths);
-        Assert.AreEqual(10, dbCharacter.Statistics.Assists);
-        Assert.AreEqual(TimeSpan.FromSeconds(12), dbCharacter.Statistics.PlayTime);
-        Assert.AreEqual(4, dbCharacter.Rating.Value);
-        Assert.AreEqual(5, dbCharacter.Rating.Deviation);
-        Assert.AreEqual(6, dbCharacter.Rating.Volatility);
+        Assert.That(dbCharacter.Statistics.Kills, Is.EqualTo(6));
+        Assert.That(dbCharacter.Statistics.Deaths, Is.EqualTo(8));
+        Assert.That(dbCharacter.Statistics.Assists, Is.EqualTo(10));
+        Assert.That(dbCharacter.Statistics.PlayTime, Is.EqualTo(TimeSpan.FromSeconds(12)));
+        Assert.That(dbCharacter.Rating.Value, Is.EqualTo(4));
+        Assert.That(dbCharacter.Rating.Deviation, Is.EqualTo(5));
+        Assert.That(dbCharacter.Rating.Volatility, Is.EqualTo(6));
 
         characterServiceMock.VerifyAll();
     }
@@ -185,23 +185,23 @@ public class UpdateGameUsersCommandTest : TestBase
         }, CancellationToken.None);
 
         var data = result.Data!;
-        Assert.AreEqual(10000 - 4500, data.UpdateResults[0].User.Gold);
-        Assert.AreEqual(12, data.UpdateResults[0].RepairedItems.Count);
+        Assert.That(data.UpdateResults[0].User.Gold, Is.EqualTo(10000 - 4500));
+        Assert.That(data.UpdateResults[0].RepairedItems.Count, Is.EqualTo(12));
 
         var expectedItemsBySlot = user.Characters[0].EquippedItems.ToDictionary(ei => ei.Slot);
         var actualItemsBySlot = data.UpdateResults[0].User.Character.EquippedItems.ToDictionary(ei => ei.Slot);
-        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Head].UserItemId, actualItemsBySlot[ItemSlot.Head].UserItem.Id);
-        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Shoulder].UserItemId, actualItemsBySlot[ItemSlot.Shoulder].UserItem.Id);
-        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Body].UserItemId, actualItemsBySlot[ItemSlot.Body].UserItem.Id);
-        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Hand].UserItemId, actualItemsBySlot[ItemSlot.Hand].UserItem.Id);
-        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Leg].UserItemId, actualItemsBySlot[ItemSlot.Leg].UserItem.Id);
-        Assert.AreEqual(expectedItemsBySlot[ItemSlot.MountHarness].UserItemId, actualItemsBySlot[ItemSlot.MountHarness].UserItem.Id);
-        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Mount].UserItemId, actualItemsBySlot[ItemSlot.Mount].UserItem.Id);
-        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Weapon0].UserItemId, actualItemsBySlot[ItemSlot.Weapon0].UserItem.Id);
-        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Weapon1].UserItemId, actualItemsBySlot[ItemSlot.Weapon1].UserItem.Id);
-        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Weapon2].UserItemId, actualItemsBySlot[ItemSlot.Weapon2].UserItem.Id);
-        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Weapon3].UserItemId, actualItemsBySlot[ItemSlot.Weapon3].UserItem.Id);
-        Assert.AreEqual(expectedItemsBySlot[ItemSlot.WeaponExtra].UserItemId, actualItemsBySlot[ItemSlot.WeaponExtra].UserItem.Id);
+        Assert.That(actualItemsBySlot[ItemSlot.Head].UserItem.Id, Is.EqualTo(expectedItemsBySlot[ItemSlot.Head].UserItemId));
+        Assert.That(actualItemsBySlot[ItemSlot.Shoulder].UserItem.Id, Is.EqualTo(expectedItemsBySlot[ItemSlot.Shoulder].UserItemId));
+        Assert.That(actualItemsBySlot[ItemSlot.Body].UserItem.Id, Is.EqualTo(expectedItemsBySlot[ItemSlot.Body].UserItemId));
+        Assert.That(actualItemsBySlot[ItemSlot.Hand].UserItem.Id, Is.EqualTo(expectedItemsBySlot[ItemSlot.Hand].UserItemId));
+        Assert.That(actualItemsBySlot[ItemSlot.Leg].UserItem.Id, Is.EqualTo(expectedItemsBySlot[ItemSlot.Leg].UserItemId));
+        Assert.That(actualItemsBySlot[ItemSlot.MountHarness].UserItem.Id, Is.EqualTo(expectedItemsBySlot[ItemSlot.MountHarness].UserItemId));
+        Assert.That(actualItemsBySlot[ItemSlot.Mount].UserItem.Id, Is.EqualTo(expectedItemsBySlot[ItemSlot.Mount].UserItemId));
+        Assert.That(actualItemsBySlot[ItemSlot.Weapon0].UserItem.Id, Is.EqualTo(expectedItemsBySlot[ItemSlot.Weapon0].UserItemId));
+        Assert.That(actualItemsBySlot[ItemSlot.Weapon1].UserItem.Id, Is.EqualTo(expectedItemsBySlot[ItemSlot.Weapon1].UserItemId));
+        Assert.That(actualItemsBySlot[ItemSlot.Weapon2].UserItem.Id, Is.EqualTo(expectedItemsBySlot[ItemSlot.Weapon2].UserItemId));
+        Assert.That(actualItemsBySlot[ItemSlot.Weapon3].UserItem.Id, Is.EqualTo(expectedItemsBySlot[ItemSlot.Weapon3].UserItemId));
+        Assert.That(actualItemsBySlot[ItemSlot.WeaponExtra].UserItem.Id, Is.EqualTo(expectedItemsBySlot[ItemSlot.WeaponExtra].UserItemId));
     }
 
     [Test]
@@ -265,21 +265,20 @@ public class UpdateGameUsersCommandTest : TestBase
         }, CancellationToken.None);
 
         var data = result.Data!;
-        Assert.AreEqual(0, data.UpdateResults[0].User.Gold);
-        CollectionAssert.AreEquivalent(
-            new[] { userItem0.Id, userItem1.Id, userItem4.Id },
-            data.UpdateResults[0].User.Character.EquippedItems.Select(ei => ei.UserItem.Id));
-        Assert.AreEqual(4, data.UpdateResults[0].RepairedItems.Count);
-        Assert.AreEqual(2, data.UpdateResults[0].RepairedItems.Count(i => i.Broke));
-        Assert.AreEqual(2000, data.UpdateResults[0].RepairedItems.Sum(i => i.RepairCost));
+        Assert.That(data.UpdateResults[0].User.Gold, Is.EqualTo(0));
+        Assert.That(data.UpdateResults[0].User.Character.EquippedItems.Select(ei => ei.UserItem.Id),
+            Is.EquivalentTo(new[] { userItem0.Id, userItem1.Id, userItem4.Id }));
+
+        Assert.That(data.UpdateResults[0].RepairedItems.Count, Is.EqualTo(4));
+        Assert.That(data.UpdateResults[0].RepairedItems.Count(i => i.Broke), Is.EqualTo(2));
+        Assert.That(data.UpdateResults[0].RepairedItems.Sum(i => i.RepairCost), Is.EqualTo(2000));
 
         // Check the user's second character got his item equipped too.
         var characterDb1 = await AssertDb.Characters
             .Include(c => c.EquippedItems)
             .FirstAsync(c => c.Id == user.Characters[1].Id);
-        CollectionAssert.AreEquivalent(
-            new[] { userItem0.Id },
-            characterDb1.EquippedItems.Select(ei => ei.UserItemId));
+        Assert.That(characterDb1.EquippedItems.Select(ei => ei.UserItemId),
+            Is.EquivalentTo(new[] { userItem0.Id }));
 
         // Check the user item ranks were set to -1.
         var userItemsDb = await AssertDb.UserItems
@@ -287,7 +286,7 @@ public class UpdateGameUsersCommandTest : TestBase
             .ToArrayAsync();
         foreach (var userItem in userItemsDb)
         {
-            Assert.AreEqual(-1, userItem.Rank);
+            Assert.That(userItem.Rank, Is.EqualTo(-1));
         }
     }
 }

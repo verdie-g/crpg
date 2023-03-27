@@ -31,7 +31,7 @@ public class StrategusSpeedModelTest
             },
         };
         StrategusSpeedModel speedModel = new();
-        Assert.GreaterOrEqual(speedModel.ComputePartySpeed(party1), speedModel.ComputePartySpeed(party2));
+        Assert.That(speedModel.ComputePartySpeed(party1), Is.GreaterThanOrEqualTo(speedModel.ComputePartySpeed(party2)));
     }
 
     [Test]
@@ -65,7 +65,7 @@ public class StrategusSpeedModelTest
                 (which is worst of the top tier mounts) .
                 In this case the speed may not increase but should not decrease
                 */
-                Assert.LessOrEqual(speed, previousSpeed);
+                Assert.That(speed, Is.LessThanOrEqualTo(previousSpeed));
             }
             else
             {
@@ -99,7 +99,7 @@ public class StrategusSpeedModelTest
                 },
             };
             double speed = speedModel.ComputePartySpeed(party);
-            Assert.Greater(speed, previousSpeed);
+            Assert.That(speed, Is.GreaterThan(previousSpeed));
             previousSpeed = speed;
         }
     }

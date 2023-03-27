@@ -24,10 +24,10 @@ public class UserServiceTest
         User user = new();
         userService.SetDefaultValuesForUser(user);
 
-        Assert.AreEqual(Constants.DefaultGold, user.Gold);
-        Assert.AreEqual(Constants.DefaultRole, user.Role);
-        Assert.AreEqual(Constants.DefaultHeirloomPoints, user.HeirloomPoints);
-        Assert.AreEqual(Constants.DefaultExperienceMultiplier, user.ExperienceMultiplier);
+        Assert.That(user.Gold, Is.EqualTo(Constants.DefaultGold));
+        Assert.That(user.Role, Is.EqualTo(Constants.DefaultRole));
+        Assert.That(user.HeirloomPoints, Is.EqualTo(Constants.DefaultHeirloomPoints));
+        Assert.That(user.ExperienceMultiplier, Is.EqualTo(Constants.DefaultExperienceMultiplier));
     }
 
     [Test]
@@ -39,7 +39,7 @@ public class UserServiceTest
         UserService userService = new(dateTimeMock.Object, Constants);
         User user = new() { CreatedAt = default };
         userService.SetDefaultValuesForUser(user);
-        Assert.AreEqual(Constants.DefaultGold, user.Gold);
+        Assert.That(user.Gold, Is.EqualTo(Constants.DefaultGold));
     }
 
     [Test]
@@ -51,7 +51,7 @@ public class UserServiceTest
         UserService userService = new(dateTimeMock.Object, Constants);
         User user = new() { CreatedAt = new DateTime(2000, 8, 1) };
         userService.SetDefaultValuesForUser(user);
-        Assert.AreEqual(Constants.DefaultGold, user.Gold);
+        Assert.That(user.Gold, Is.EqualTo(Constants.DefaultGold));
     }
 
     [TestCase(100, 100)]
@@ -64,6 +64,6 @@ public class UserServiceTest
         UserService userService = new(dateTimeMock.Object, Constants);
         User user = new() { Gold = currentGold, CreatedAt = new DateTime(2000, 10, 5) };
         userService.SetDefaultValuesForUser(user);
-        Assert.AreEqual(expectedGold, user.Gold);
+        Assert.That(user.Gold, Is.EqualTo(expectedGold));
     }
 }

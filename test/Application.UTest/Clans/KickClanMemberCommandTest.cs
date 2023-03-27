@@ -26,7 +26,7 @@ public class KickClanMemberCommandTest : TestBase
             KickedUserId = user.Id,
         }, CancellationToken.None);
 
-        Assert.IsNull(result.Errors);
+        Assert.That(result.Errors, Is.Null);
         Assert.That(AssertDb.ClanMembers, Has.Exactly(0)
             .Matches<ClanMember>(cm => cm.ClanId == clan.Id && cm.UserId == user.Id));
     }
@@ -48,8 +48,8 @@ public class KickClanMemberCommandTest : TestBase
             KickedUserId = kickedUser.Id,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(result.Errors);
-        Assert.AreEqual(ErrorCode.ClanMemberRoleNotMet, result.Errors![0].Code);
+        Assert.That(result.Errors, Is.Not.Null);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.ClanMemberRoleNotMet));
     }
 
     [TestCase(ClanMemberRole.Officer, ClanMemberRole.Member)]
@@ -69,7 +69,7 @@ public class KickClanMemberCommandTest : TestBase
             KickedUserId = kickedUser.Id,
         }, CancellationToken.None);
 
-        Assert.IsNull(result.Errors);
+        Assert.That(result.Errors, Is.Null);
         Assert.That(AssertDb.ClanMembers, Has.Exactly(1)
             .Matches<ClanMember>(cm => cm.ClanId == clan.Id && cm.UserId == user.Id));
         Assert.That(AssertDb.ClanMembers, Has.Exactly(0)

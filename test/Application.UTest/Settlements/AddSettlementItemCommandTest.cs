@@ -23,8 +23,8 @@ public class AddSettlementItemCommandTest : TestBase
             Count = 0,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.PartyNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.PartyNotFound));
     }
 
     [Test]
@@ -49,8 +49,8 @@ public class AddSettlementItemCommandTest : TestBase
             Count = 0,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.PartyNotInASettlement, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.PartyNotInASettlement));
     }
 
     [Test]
@@ -76,8 +76,8 @@ public class AddSettlementItemCommandTest : TestBase
             Count = 0,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.PartyNotInASettlement, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.PartyNotInASettlement));
     }
 
     [Test]
@@ -110,8 +110,8 @@ public class AddSettlementItemCommandTest : TestBase
             Count = 0,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.ItemNotOwned, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.ItemNotOwned));
     }
 
     [Test]
@@ -143,8 +143,8 @@ public class AddSettlementItemCommandTest : TestBase
             Count = 6,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.ItemNotOwned, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.ItemNotOwned));
     }
 
     [Test]
@@ -179,8 +179,8 @@ public class AddSettlementItemCommandTest : TestBase
             Count = -2,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.PartyNotSettlementOwner, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.PartyNotSettlementOwner));
     }
 
     [Test]
@@ -217,8 +217,8 @@ public class AddSettlementItemCommandTest : TestBase
             Count = -1,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.ItemNotOwned, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.ItemNotOwned));
     }
 
     [Test]
@@ -254,8 +254,8 @@ public class AddSettlementItemCommandTest : TestBase
             Count = -3,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.ItemNotOwned, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.ItemNotOwned));
     }
 
     [TestCase(3, 7, 11)]
@@ -300,23 +300,23 @@ public class AddSettlementItemCommandTest : TestBase
             Count = diff,
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
+        Assert.That(res.Errors, Is.Null);
         var itemStack = res.Data!;
-        Assert.AreEqual(item0.Id, itemStack.Item.Id);
-        Assert.AreEqual(settlementItemCount + diff, itemStack.Count);
+        Assert.That(itemStack.Item.Id, Is.EqualTo(item0.Id));
+        Assert.That(itemStack.Count, Is.EqualTo(settlementItemCount + diff));
 
         settlement = await AssertDb.Settlements
             .Include(s => s.Items)
             .FirstAsync(s => s.Id == settlement.Id);
-        Assert.AreEqual(1, settlement.Items.Count);
-        Assert.AreEqual(item0.Id, settlement.Items[0].ItemId);
-        Assert.AreEqual(settlementItemCount + diff, settlement.Items[0].Count);
+        Assert.That(settlement.Items.Count, Is.EqualTo(1));
+        Assert.That(settlement.Items[0].ItemId, Is.EqualTo(item0.Id));
+        Assert.That(settlement.Items[0].Count, Is.EqualTo(settlementItemCount + diff));
 
         party = await AssertDb.Parties
             .Include(h => h.Items)
             .FirstAsync(h => h.Id == party.Id);
-        Assert.AreEqual(1, party.Items.Count);
-        Assert.AreEqual(item0.Id, party.Items[0].ItemId);
-        Assert.AreEqual(partyItemCount - diff, party.Items[0].Count);
+        Assert.That(party.Items.Count, Is.EqualTo(1));
+        Assert.That(party.Items[0].ItemId, Is.EqualTo(item0.Id));
+        Assert.That(party.Items[0].Count, Is.EqualTo(partyItemCount - diff));
     }
 }

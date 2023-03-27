@@ -36,21 +36,21 @@ public class SetCharacterForTournamentCommandTest : TestBase
             UserId = character.UserId,
         }, CancellationToken.None);
 
-        Assert.IsNull(result.Errors);
+        Assert.That(result.Errors, Is.Null);
         character = AssertDb.Characters.First(c => c.Id == character.Id);
-        Assert.AreEqual(0, character.Generation);
-        Assert.AreEqual(30, character.Level);
-        Assert.AreEqual(30000, character.Experience);
-        Assert.IsTrue(character.ForTournament);
+        Assert.That(character.Generation, Is.EqualTo(0));
+        Assert.That(character.Level, Is.EqualTo(30));
+        Assert.That(character.Experience, Is.EqualTo(30000));
+        Assert.That(character.ForTournament, Is.True);
 
         var userDb = await AssertDb.Users.FirstAsync(u => u.Id == user.Id);
         if (activeCharacter)
         {
-            Assert.IsNull(userDb.ActiveCharacterId);
+            Assert.That(userDb.ActiveCharacterId, Is.Null);
         }
         else
         {
-            Assert.IsNotNull(userDb.ActiveCharacterId);
+            Assert.That(userDb.ActiveCharacterId, Is.Not.Null);
         }
 
         characterServiceMock.Verify(cs => cs.ResetCharacterCharacteristics(It.IsAny<Character>(), true), Times.Once);
@@ -73,8 +73,8 @@ public class SetCharacterForTournamentCommandTest : TestBase
             UserId = character.UserId,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(result.Errors);
-        Assert.AreEqual(ErrorCode.CharacterGenerationRequirement, result.Errors![0].Code);
+        Assert.That(result.Errors, Is.Not.Null);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.CharacterGenerationRequirement));
     }
 
     [Test]
@@ -92,6 +92,6 @@ public class SetCharacterForTournamentCommandTest : TestBase
             CharacterId = 1,
         }, CancellationToken.None);
 
-        Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.CharacterNotFound));
     }
 }

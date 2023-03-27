@@ -19,8 +19,8 @@ public class GetBattleFightersQueryTest : TestBase
             BattleId = 99,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.BattleNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.BattleNotFound));
     }
 
     [Test]
@@ -36,8 +36,8 @@ public class GetBattleFightersQueryTest : TestBase
             BattleId = battle.Id,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.BattleInvalidPhase, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.BattleInvalidPhase));
     }
 
     [Test]
@@ -72,13 +72,13 @@ public class GetBattleFightersQueryTest : TestBase
             BattleId = battle.Id,
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
+        Assert.That(res.Errors, Is.Null);
         var fighters = res.Data!;
-        Assert.AreEqual(3, fighters.Count);
-        Assert.AreEqual("a", fighters[0].Settlement!.Name);
-        Assert.AreEqual("b", fighters[1].Party!.Name);
-        Assert.AreEqual(true, fighters[1].Commander);
-        Assert.AreEqual("c", fighters[2].Party!.Name);
-        Assert.AreEqual(false, fighters[2].Commander);
+        Assert.That(fighters.Count, Is.EqualTo(3));
+        Assert.That(fighters[0].Settlement!.Name, Is.EqualTo("a"));
+        Assert.That(fighters[1].Party!.Name, Is.EqualTo("b"));
+        Assert.That(fighters[1].Commander, Is.EqualTo(true));
+        Assert.That(fighters[2].Party!.Name, Is.EqualTo("c"));
+        Assert.That(fighters[2].Commander, Is.EqualTo(false));
     }
 }

@@ -14,8 +14,8 @@ public class ClanServiceTest : TestBase
     {
         ClanService clanService = new();
         var res = await clanService.GetClanMember(ActDb, 1, 2, CancellationToken.None);
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.UserNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.UserNotFound));
     }
 
     [Test]
@@ -27,8 +27,8 @@ public class ClanServiceTest : TestBase
 
         ClanService clanService = new();
         var res = await clanService.GetClanMember(ActDb, user.Id, 2, CancellationToken.None);
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.UserNotInAClan, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.UserNotInAClan));
     }
 
     [Test]
@@ -40,8 +40,8 @@ public class ClanServiceTest : TestBase
 
         ClanService clanService = new();
         var res = await clanService.GetClanMember(ActDb, user.Id, 3, CancellationToken.None);
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.UserNotAClanMember, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.UserNotAClanMember));
     }
 
     [Test]
@@ -53,7 +53,7 @@ public class ClanServiceTest : TestBase
 
         ClanService clanService = new();
         var res = await clanService.GetClanMember(ActDb, user.Id, user.ClanMembership.ClanId, CancellationToken.None);
-        Assert.IsNull(res.Errors);
+        Assert.That(res.Errors, Is.Null);
     }
 
     [Test]
@@ -106,7 +106,7 @@ public class ClanServiceTest : TestBase
         var res = await clanService.JoinClan(ActDb, u, clan.Id, CancellationToken.None);
         await ActDb.SaveChangesAsync();
 
-        Assert.IsNull(res.Errors);
+        Assert.That(res.Errors, Is.Null);
         Assert.That(AssertDb.ClanInvitations, Has.Exactly(2)
             .Matches<ClanInvitation>(ci => ci.Type == ClanInvitationType.Offer && ci.Status == ClanInvitationStatus.Declined));
         Assert.That(AssertDb.ClanInvitations, Has.Exactly(0)
@@ -136,8 +136,8 @@ public class ClanServiceTest : TestBase
         var res = await clanService.LeaveClan(ActDb, member, CancellationToken.None);
         await ActDb.SaveChangesAsync();
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.ClanNeedLeader, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.ClanNeedLeader));
     }
 
     [Test]
@@ -154,7 +154,7 @@ public class ClanServiceTest : TestBase
         var res = await clanService.LeaveClan(ActDb, member, CancellationToken.None);
         await ActDb.SaveChangesAsync();
 
-        Assert.IsNull(res.Errors);
+        Assert.That(res.Errors, Is.Null);
         Assert.That(AssertDb.Clans, Has.Exactly(0).Matches<Clan>(c => c.Id == clan.Id));
         Assert.That(AssertDb.ClanMembers, Has.Exactly(0).Matches<ClanMember>(cm => cm.UserId == user.Id));
     }
@@ -173,7 +173,7 @@ public class ClanServiceTest : TestBase
         var res = await clanService.LeaveClan(ActDb, member, CancellationToken.None);
         await ActDb.SaveChangesAsync();
 
-        Assert.IsNull(res.Errors);
+        Assert.That(res.Errors, Is.Null);
         Assert.That(AssertDb.Clans, Has.Exactly(1).Matches<Clan>(c => c.Id == clan.Id));
         Assert.That(AssertDb.ClanMembers, Has.Exactly(0).Matches<ClanMember>(cm => cm.UserId == user.Id));
     }

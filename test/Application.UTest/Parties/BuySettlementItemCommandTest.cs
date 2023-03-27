@@ -27,8 +27,8 @@ public class BuySettlementItemCommandTest : TestBase
             SettlementId = 3,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.PartyNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.PartyNotFound));
     }
 
     [Test]
@@ -47,8 +47,8 @@ public class BuySettlementItemCommandTest : TestBase
             SettlementId = 3,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.SettlementNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.SettlementNotFound));
     }
 
     [Test]
@@ -77,8 +77,8 @@ public class BuySettlementItemCommandTest : TestBase
             SettlementId = settlement.Id,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.SettlementTooFar, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.SettlementTooFar));
     }
 
     [Test]
@@ -104,8 +104,8 @@ public class BuySettlementItemCommandTest : TestBase
             SettlementId = settlement.Id,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.ItemNotFound, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.ItemNotFound));
     }
 
     [Test]
@@ -133,8 +133,8 @@ public class BuySettlementItemCommandTest : TestBase
             SettlementId = settlement.Id,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.ItemNotBuyable, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.ItemNotBuyable));
     }
 
     [Test]
@@ -162,8 +162,8 @@ public class BuySettlementItemCommandTest : TestBase
             SettlementId = settlement.Id,
         }, CancellationToken.None);
 
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.NotEnoughGold, res.Errors![0].Code);
+        Assert.That(res.Errors, Is.Not.Null);
+        Assert.That(res.Errors![0].Code, Is.EqualTo(ErrorCode.NotEnoughGold));
     }
 
     [Test]
@@ -193,12 +193,12 @@ public class BuySettlementItemCommandTest : TestBase
             SettlementId = settlement.Id,
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
-        Assert.AreEqual(item.Id, res.Data!.Item.Id);
-        Assert.AreEqual(7, res.Data!.Count);
+        Assert.That(res.Errors, Is.Null);
+        Assert.That(res.Data!.Item.Id, Is.EqualTo(item.Id));
+        Assert.That(res.Data!.Count, Is.EqualTo(7));
 
         party = await AssertDb.Parties.FirstAsync(h => h.Id == party.Id);
-        Assert.AreEqual(60, party.Gold);
+        Assert.That(party.Gold, Is.EqualTo(60));
     }
 
     [Test]
@@ -226,11 +226,11 @@ public class BuySettlementItemCommandTest : TestBase
             SettlementId = settlement.Id,
         }, CancellationToken.None);
 
-        Assert.IsNull(res.Errors);
-        Assert.AreEqual(item.Id, res.Data!.Item.Id);
-        Assert.AreEqual(10, res.Data!.Count);
+        Assert.That(res.Errors, Is.Null);
+        Assert.That(res.Data!.Item.Id, Is.EqualTo(item.Id));
+        Assert.That(res.Data!.Count, Is.EqualTo(10));
 
         party = await AssertDb.Parties.FirstAsync(h => h.Id == party.Id);
-        Assert.AreEqual(0, party.Gold);
+        Assert.That(party.Gold, Is.EqualTo(0));
     }
 }
