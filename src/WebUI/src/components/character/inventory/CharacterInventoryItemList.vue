@@ -29,7 +29,7 @@ const onSellItem = (item: UserItem) => {
   <div class="grid grid-cols-3 gap-2 2xl:grid-cols-4" style="grid-area: items">
     <ElementBounding v-for="item in items" :key="item.id" v-slot="{ x, y, width }">
       <CharacterInventoryItemCard
-        class="h-32"
+        class="h-20"
         :item="item"
         :equipped="equippedItemsIds.includes(item.id)"
         @dragstart="onDragStart(item)"
