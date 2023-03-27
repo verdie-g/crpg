@@ -32,7 +32,7 @@ const rarityColor = computed(() => {
 
 <template>
   <article
-    class="relative h-20 w-full cursor-grab items-center justify-center rounded-lg bg-base-200 p-1.5 ring ring-transparent hover:ring-border-200"
+    class="relative w-full cursor-grab items-center justify-center rounded-lg bg-base-200 p-1.5 ring ring-transparent hover:ring-border-200"
   >
     <div class="group relative h-full w-full cursor-grab">
       <img
