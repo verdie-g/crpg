@@ -22,8 +22,16 @@ internal static class ReflectionHelper
 
     public static void RaiseEvent(object instance, string evt, object[] parameters)
     {
-        var raiseMethod = GetEventInfo(instance, evt).GetRaiseMethod();
-        raiseMethod?.Invoke(instance, parameters);
+        var deleg = (MulticastDelegate?)GetFieldInfo(instance, evt).GetValue(instance);
+        if (deleg == null)
+        {
+            return;
+        }
+
+        foreach (var invocation in deleg.GetInvocationList())
+        {
+            invocation?.DynamicInvoke(parameters);
+        }
     }
 
     private static FieldInfo GetFieldInfo(object instance, string field)
@@ -62,16 +70,5 @@ internal static class ReflectionHelper
         }
 
         throw new ArgumentException($"Property {prop} not found in {instance.GetType()}");
-    }
-
-    private static EventInfo GetEventInfo(object instance, string evt)
-    {
-        var e = instance.GetType().GetEvent(evt);
-        if (e == null)
-        {
-            throw new ArgumentException($"Event {evt} not found in {instance.GetType()}");
-        }
-
-        return e;
     }
 }
