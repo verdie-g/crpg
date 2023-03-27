@@ -1,5 +1,6 @@
 ﻿using Crpg.Module.Api;
 using Crpg.Module.Api.Models.ActivityLogs;
+using Crpg.Module.Common.Warmup;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -10,12 +11,14 @@ internal class CrpgActivityLogsBehavior : MissionLogic
 {
     private const int LogsBufferSize = 100;
 
+    private readonly CrpgWarmupComponent? _warmupComponent;
     private readonly ChatBox _chatBox;
     private readonly ICrpgClient _crpgClient;
     private readonly List<CrpgActivityLog> _logsBuffer;
 
-    public CrpgActivityLogsBehavior(ChatBox chatBox, ICrpgClient crpgClient)
+    public CrpgActivityLogsBehavior(CrpgWarmupComponent? warmupComponent, ChatBox chatBox, ICrpgClient crpgClient)
     {
+        _warmupComponent = warmupComponent;
         _chatBox = chatBox;
         _crpgClient = crpgClient;
         _logsBuffer = new List<CrpgActivityLog>();
@@ -49,6 +52,11 @@ internal class CrpgActivityLogsBehavior : MissionLogic
         float hitDistance,
         float shotDifficulty)
     {
+        if (_warmupComponent is { IsInWarmup: true })
+        {
+            return;
+        }
+
         int? affectedUserId = affectedAgent?.MissionPeer?.GetComponent<CrpgPeer>()?.User?.Id;
         int? affectorUserId = affectorAgent?.MissionPeer?.GetComponent<CrpgPeer>()?.User?.Id;
         if (affectedUserId == null || affectorUserId == null)
@@ -56,7 +64,9 @@ internal class CrpgActivityLogsBehavior : MissionLogic
             return;
         }
 
-        if (affectorAgent!.Team == affectedAgent!.Team)
+        if (affectorAgent!.Team != null
+            && affectorAgent.Team.Side != BattleSideEnum.None
+            && affectorAgent.Team == affectedAgent!.Team)
         {
             AddTeamHitLog(affectorUserId.Value, affectedUserId.Value, (int)damagedHp);
         }
