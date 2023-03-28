@@ -359,9 +359,11 @@ internal class MatchBalancer
             ? (weakClanGroupsTeam, strongClanGroupsTeam)
             : (strongClanGroupsTeam, weakClanGroupsTeam);
         Vector2 targetVector = new(targetSwapSizeDifference * sizeScaler, halfWeightDifference);
-        // If the team that has the least players is empty, we will do the swap with an empty clan group. A bit weird
-        // but very practical for the rest of the algorithm to avoid null checks.
+        // the clangroups are sets , the empty group act as an empty set. Since we're swaping sets of users between teams , it can be interesting to swap
+        // people from one team in exchange of no one.
         ClanGroup emptyClanGroup = new(null);
+        // note that clangroup are formed at the begining of the algorithm and never changed. This is what allows us to assign the reference to the same empty clangroup to
+        // two different variable as emptyClanGroup is meant to remain empty. It is merely a tool that allows the balancer to not swap players as iterating on it won't do anything.
         ClanGroup weakClanGroupToSwap = emptyClanGroup;
         ClanGroup strongClanGroupToSwap = emptyClanGroup;
 
