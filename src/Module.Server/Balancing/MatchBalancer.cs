@@ -226,7 +226,7 @@ internal class MatchBalancer
         (List<WeightedCrpgUser> teamToSwapFrom, List<WeightedCrpgUser> teamToSwapInto) = swappingFromWeakTeam
             ? (weakTeam, strongTeam)
             : (strongTeam, weakTeam);
-
+        Debug.Print($"Swapping {clanGroupToSwap1.Size} players  from {(swappingFromWeakTeam ? "Weak Team" : "Strong Team")} in exchange of {clanGroupsToSwap2.Sum(c => c.Size)} players");
         foreach (var clanGroup in clanGroupsToSwap2)
         {
             foreach (WeightedCrpgUser user in clanGroup.Members)
@@ -362,8 +362,8 @@ internal class MatchBalancer
         // If the team that has the least players is empty, we will do the swap with an empty clan group. A bit weird
         // but very practical for the rest of the algorithm to avoid null checks.
         ClanGroup emptyClanGroup = new(null);
-        ClanGroup weakClanGroupToSwap = weakClanGroupsTeam.FirstOrDefault() ?? emptyClanGroup;
-        ClanGroup strongClanGroupToSwap = strongClanGroupsTeam.LastOrDefault() ?? emptyClanGroup;
+        ClanGroup weakClanGroupToSwap = emptyClanGroup;
+        ClanGroup strongClanGroupToSwap = emptyClanGroup;
 
         // Initializing a first pair to compare afterward with other pairs
         float bestClanGroupToSwapTargetWeight = swappingFromWeakTeam
