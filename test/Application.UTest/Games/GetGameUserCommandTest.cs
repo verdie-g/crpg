@@ -196,7 +196,7 @@ public class GetGameUserCommandTest : TestBase
         }, CancellationToken.None);
 
         var userItems = await AssertDb.UserItems.Where(oi => oi.UserId == user.Id).ToArrayAsync();
-        Assert.That(userItems.Length, Is.EqualTo(4));
+        Assert.That(userItems.Length, Is.EqualTo(5));
     }
 
     [Test]

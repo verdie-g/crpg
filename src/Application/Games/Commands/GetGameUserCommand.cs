@@ -42,7 +42,8 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
                 ("crpg_leather_apron", ItemSlot.Body),
                 ("crpg_leather_gloves", ItemSlot.Hand),
                 ("crpg_leather_shoes", ItemSlot.Leg),
-                ("crpg_peasant_maul_t1_2", ItemSlot.Weapon0),
+                ("crpg_peasant_pitchfork_2_t1", ItemSlot.Weapon0),
+                ("crpg_throwing_stone", ItemSlot.Weapon1),
             },
             // empire
             new[]
@@ -50,7 +51,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
                 ("crpg_pilgrim_hood", ItemSlot.Head),
                 ("crpg_tied_cloth_tunic", ItemSlot.Body),
                 ("crpg_leather_shoes", ItemSlot.Leg),
-                ("crpg_peasant_2haxe_1_t1", ItemSlot.Weapon0),
+                ("crpg_peasant_pitchfork_2_t1", ItemSlot.Weapon0),
                 ("crpg_throwing_stone", ItemSlot.Weapon1),
             },
             // sturgia
@@ -60,6 +61,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
                 ("crpg_light_tunic", ItemSlot.Body),
                 ("crpg_leather_shoes", ItemSlot.Leg),
                 ("crpg_peasant_2haxe_1_t1", ItemSlot.Weapon0),
+                ("crpg_bound_adarga", ItemSlot.Weapon1),
             },
             // khuzait
             new[]
