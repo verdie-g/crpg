@@ -1,12 +1,11 @@
 ﻿using Crpg.Module.Common;
-using Crpg.Module.Duel.Network;
 using Crpg.Module.Helpers;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.MissionRepresentatives;
 using TaleWorlds.PlayerServices;
 
-namespace Crpg.Module.Duel;
+namespace Crpg.Module.Modes.Duel;
 
 internal class CrpgDuelSpawningBehavior : CrpgSpawningBehaviorBase
 {

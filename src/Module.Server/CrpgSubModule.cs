@@ -1,8 +1,8 @@
-﻿using Crpg.Module.Battle;
-using Crpg.Module.Common;
+﻿using Crpg.Module.Common;
 using Crpg.Module.Common.Models;
-using Crpg.Module.Duel;
-using Crpg.Module.Siege;
+using Crpg.Module.Modes.Battle;
+using Crpg.Module.Modes.Duel;
+using Crpg.Module.Modes.Siege;
 using Newtonsoft.Json;
 using TaleWorlds.Core;
 using TaleWorlds.Library;

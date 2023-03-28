@@ -5,7 +5,7 @@ using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Objects;
 
-namespace Crpg.Module.Siege;
+namespace Crpg.Module.Modes.Siege;
 
 internal class CrpgSiegeClient : MissionMultiplayerGameModeBaseClient, ICommanderInfo
 {

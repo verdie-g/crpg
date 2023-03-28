@@ -1,6 +1,6 @@
 ﻿using Crpg.Module.Api;
 using Crpg.Module.Api.Models.ActivityLogs;
-using Crpg.Module.Common.Warmup;
+using Crpg.Module.Modes.Warmup;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;

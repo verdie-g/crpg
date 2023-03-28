@@ -1,7 +1,7 @@
 ﻿using Crpg.Module.Common;
-using Crpg.Module.Duel;
 using Crpg.Module.Helpers;
-using Crpg.Module.Siege;
+using Crpg.Module.Modes.Duel;
+using Crpg.Module.Modes.Siege;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;

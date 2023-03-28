@@ -1,9 +1,10 @@
 ﻿using System.Reflection;
-using Crpg.Module.Battle;
+using Crpg.Module.Common;
 using Crpg.Module.Helpers;
+using Crpg.Module.Modes.Battle;
 using TaleWorlds.MountAndBlade;
 
-namespace Crpg.Module.Common.Warmup;
+namespace Crpg.Module.Modes.Warmup;
 
 /// <summary>
 /// Custom warmup component so we can load the <see cref="CrpgBattleSpawningBehavior"/> as soon as warmup ends.

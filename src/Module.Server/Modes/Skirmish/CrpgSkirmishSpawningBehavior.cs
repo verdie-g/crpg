@@ -3,7 +3,7 @@ using Crpg.Module.Common.Network;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.PlayerServices;
 
-namespace Crpg.Module.Battle;
+namespace Crpg.Module.Modes.Skirmish;
 
 internal class CrpgSkirmishSpawningBehavior : CrpgSpawningBehaviorBase
 {

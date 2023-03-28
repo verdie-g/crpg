@@ -1,4 +1,5 @@
-﻿using NetworkMessages.FromServer;
+﻿using Crpg.Module.Modes.Skirmish;
+using NetworkMessages.FromServer;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -8,7 +9,7 @@ using TaleWorlds.ObjectSystem;
 using MathF = TaleWorlds.Library.MathF;
 using Timer = TaleWorlds.Core.Timer;
 
-namespace Crpg.Module.Battle;
+namespace Crpg.Module.Modes.Battle;
 
 internal class CrpgFlagDominationServer : MissionMultiplayerGameModeBase
 {

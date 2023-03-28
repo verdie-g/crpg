@@ -2,7 +2,7 @@ using Crpg.Module.Api;
 using Crpg.Module.Api.Models;
 using Crpg.Module.Api.Models.Characters;
 using Crpg.Module.Common.Network;
-using Crpg.Module.Common.Warmup;
+using Crpg.Module.Modes.Warmup;
 using Crpg.Module.Rating;
 using TaleWorlds.Core;
 using TaleWorlds.Library;

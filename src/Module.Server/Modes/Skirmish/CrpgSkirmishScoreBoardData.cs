@@ -3,7 +3,7 @@ using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Diamond.MultiplayerBadges;
 
-namespace Crpg.Module.Battle;
+namespace Crpg.Module.Modes.Skirmish;
 
 internal class CrpgSkirmishScoreboardData : IScoreboardData
 {

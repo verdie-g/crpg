@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 using Crpg.Module.Helpers;
-using Crpg.Module.Siege;
+using Crpg.Module.Modes.Siege;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;

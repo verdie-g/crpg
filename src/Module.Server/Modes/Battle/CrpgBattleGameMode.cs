@@ -1,6 +1,7 @@
 using Crpg.Module.Common;
 using Crpg.Module.Common.HotConstants;
-using Crpg.Module.Common.Warmup;
+using Crpg.Module.Modes.Skirmish;
+using Crpg.Module.Modes.Warmup;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Source.Missions;
@@ -15,7 +16,7 @@ using TaleWorlds.MountAndBlade.View;
 using TaleWorlds.MountAndBlade.View.MissionViews;
 #endif
 
-namespace Crpg.Module.Battle;
+namespace Crpg.Module.Modes.Battle;
 
 [ViewCreatorModule] // Exposes methods with ViewMethod attribute.
 internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode

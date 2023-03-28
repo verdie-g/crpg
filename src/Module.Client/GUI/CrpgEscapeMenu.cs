@@ -1,4 +1,4 @@
-﻿using Crpg.Module.Duel;
+﻿using Crpg.Module.Modes.Duel;
 using NetworkMessages.FromClient;
 using TaleWorlds.Core;
 using TaleWorlds.Library;

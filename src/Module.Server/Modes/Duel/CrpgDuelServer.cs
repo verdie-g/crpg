@@ -7,7 +7,7 @@ using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
-namespace Crpg.Module.Duel;
+namespace Crpg.Module.Modes.Duel;
 
 /// <summary>
 /// The cRPG Duel implementation.

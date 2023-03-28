@@ -1,6 +1,7 @@
-﻿using TaleWorlds.MountAndBlade;
+﻿using Crpg.Module.Common;
+using TaleWorlds.MountAndBlade;
 
-namespace Crpg.Module.Common.Warmup;
+namespace Crpg.Module.Modes.Warmup;
 
 internal class CrpgWarmupSpawningBehavior : CrpgSpawningBehaviorBase
 {

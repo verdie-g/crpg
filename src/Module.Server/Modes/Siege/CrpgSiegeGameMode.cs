@@ -1,5 +1,5 @@
 using Crpg.Module.Common;
-using Crpg.Module.Common.Warmup;
+using Crpg.Module.Modes.Warmup;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Source.Missions;
@@ -14,7 +14,7 @@ using TaleWorlds.MountAndBlade.View;
 using TaleWorlds.MountAndBlade.View.MissionViews;
 #endif
 
-namespace Crpg.Module.Siege;
+namespace Crpg.Module.Modes.Siege;
 
 [ViewCreatorModule] // Exposes methods with ViewMethod attribute.
 internal class CrpgSiegeGameMode : MissionBasedMultiplayerGameMode

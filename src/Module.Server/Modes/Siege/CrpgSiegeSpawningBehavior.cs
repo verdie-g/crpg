@@ -3,7 +3,7 @@ using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Diamond;
 
-namespace Crpg.Module.Siege;
+namespace Crpg.Module.Modes.Siege;
 
 internal class CrpgSiegeSpawningBehavior : CrpgSpawningBehaviorBase
 {

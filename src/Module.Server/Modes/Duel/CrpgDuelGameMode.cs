@@ -12,7 +12,7 @@ using TaleWorlds.MountAndBlade.View;
 using TaleWorlds.MountAndBlade.View.MissionViews;
 #endif
 
-namespace Crpg.Module.Duel;
+namespace Crpg.Module.Modes.Duel;
 
 [ViewCreatorModule] // Exposes methods with ViewMethod attribute.
 internal class CrpgDuelGameMode : MissionBasedMultiplayerGameMode

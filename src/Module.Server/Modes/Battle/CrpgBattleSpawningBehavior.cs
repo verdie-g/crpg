@@ -4,7 +4,7 @@ using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.PlayerServices;
 
-namespace Crpg.Module.Battle;
+namespace Crpg.Module.Modes.Battle;
 
 internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
 {

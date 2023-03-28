@@ -7,7 +7,7 @@ using TaleWorlds.MountAndBlade.MissionRepresentatives;
 using TaleWorlds.MountAndBlade.Objects;
 using MathF = TaleWorlds.Library.MathF;
 
-namespace Crpg.Module.Battle;
+namespace Crpg.Module.Modes.Battle;
 
 internal class CrpgFlagDominationClient : MissionMultiplayerGameModeBaseClient, ICommanderInfo
 {

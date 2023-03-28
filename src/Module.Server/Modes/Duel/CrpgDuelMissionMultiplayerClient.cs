@@ -1,9 +1,8 @@
-﻿using Crpg.Module.Duel.Network;
-using TaleWorlds.Core;
+﻿using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.MissionRepresentatives;
 
-namespace Crpg.Module.Duel;
+namespace Crpg.Module.Modes.Duel;
 
 internal class CrpgDuelMissionMultiplayerClient : MissionMultiplayerGameModeDuelClient
 {
