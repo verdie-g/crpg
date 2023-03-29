@@ -377,7 +377,7 @@ export interface IconedBucket {
   name: string;
 }
 
-interface HumanBucket {
+export interface HumanBucket {
   icon: IconedBucket | null;
   label: string;
 }
@@ -431,7 +431,7 @@ export const humanizeBucket = (
 
   if (aggregationKey === 'damageType') {
     return createHumanBucket(
-      t(`item.damageType.${bucket as WeaponClass}.long`),
+      t(`item.damageType.${bucket}.long`),
       createIcon(IconBucketType.Svg, damageTypeToIcon[bucket as DamageType])
     );
   }
@@ -474,8 +474,6 @@ export const humanizeBucket = (
   }
 
   if (format === ItemFieldFormat.Damage && item !== undefined) {
-    const fieldValue = item[aggregationKey]!;
-
     const damageTypeField =
       damageTypeFieldByDamageField[
         aggregationKey as keyof Pick<ItemFlat, 'damage' | 'thrustDamage' | 'swingDamage'>
@@ -483,12 +481,22 @@ export const humanizeBucket = (
 
     const damageType = item[damageTypeField];
 
-    if (damageType === null || damageType === undefined) return createHumanBucket(bucket, null);
+    if (damageType === null || damageType === undefined)
+      return createHumanBucket(String(bucket), null);
 
     return createHumanBucket(
       t('item.damageTypeFormat', {
-        value: fieldValue,
+        value: bucket,
         type: t(`item.damageType.${damageType as DamageType}.short`),
+      }),
+      null
+    );
+  }
+
+  if (format === ItemFieldFormat.Requirement) {
+    return createHumanBucket(
+      t('item.requirementFormat', {
+        value: bucket,
       }),
       null
     );
@@ -498,7 +506,7 @@ export const humanizeBucket = (
     return createHumanBucket(n(bucket as number), null);
   }
 
-  return createHumanBucket(bucket, null);
+  return createHumanBucket(String(bucket), null);
 };
 
 export const getCompareItemsResult = (items: ItemFlat[], aggregationsConfig: AggregationConfig) => {
@@ -550,8 +558,10 @@ export const computeSalePrice = (
   return { price: userItem.baseItem.price, graceTimeEnd };
 };
 
+// TODO: SPEC
 export const computeAverageRepairCostPerHour = (price: number) =>
   Math.floor(price * itemRepairCostPerSecond * 3600 * itemBreakChance);
 
+// TODO: SPEC
 export const computeBrokenItemRepairCost = (price: number) =>
   Math.floor(price * itemRepairCostPerSecond * brokenItemRepairPenaltySeconds);

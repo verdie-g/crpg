@@ -1,4 +1,6 @@
 import { mockGet, mockPut, mockDelete } from 'vi-fetch';
+import { PartialDeep } from 'type-fest';
+
 import { response } from '@/__mocks__/crpg-client';
 import mockCharacters from '@/__mocks__/characters.json';
 import mockCharacterCharacteristics from '@/__mocks__/character-characteristics.json';
@@ -9,6 +11,7 @@ import {
   type CharacterCharacteristics,
   CharacteristicConversion,
 } from '@/models/character';
+import { type Item } from '@/models/item';
 
 vi.mock('@/services/auth-service', () => ({
   getToken: vi.fn().mockResolvedValue('mockedToken'),
@@ -40,6 +43,7 @@ import {
   getExperienceMultiplierBonus,
   getCharacterKDARatio,
   getRespecCapability,
+  validateItemNotMeetRequirement,
 } from './characters-service';
 
 it('getCharacters', async () => {
@@ -146,7 +150,7 @@ it('updateCharacterCharacteristics', async () => {
 it.each([
   [0, 0],
   [1, 0],
-  [2, 3538],
+  [2, 388],
   [30, 4420824],
   [31, 8841648], // 30 lvl *2^1
   [36, 282932736], // 30 lvl * 2^6
@@ -285,3 +289,20 @@ it.each<[Partial<CharacterStatistics>, number]>([
 });
 
 it.todo('TODO: getRespecCapability', () => {});
+
+it.each<[PartialDeep<Item>, PartialDeep<CharacterCharacteristics>, boolean]>([
+  [{ requirement: 18 }, { attributes: { strength: 18 } }, false],
+  [{ requirement: 17 }, { attributes: { strength: 18 } }, false],
+  [{ requirement: 19 }, { attributes: { strength: 18 } }, true],
+  [{ requirement: 0 }, { attributes: { strength: 18 } }, false],
+])(
+  'validateItemNotMeetRequirement - item: %j, characterCharacteristics: %j, ',
+  (item, characterCharacteristics, expectation) => {
+    expect(
+      validateItemNotMeetRequirement(
+        item as Item,
+        characterCharacteristics as CharacterCharacteristics
+      )
+    ).toEqual(expectation);
+  }
+);

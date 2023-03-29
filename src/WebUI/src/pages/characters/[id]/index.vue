@@ -10,7 +10,7 @@ import {
   freeRespecializeIntervalDays,
 } from '@root/data/constants.json';
 import { useUserStore } from '@/stores/user';
-import { characterKey, characterCharacteristicsKey } from '@/symbols/character';
+import { characterKey, characterCharacteristicsKey, characterItemsKey } from '@/symbols/character';
 import { parseTimestamp } from '@/utils/date';
 import { notify } from '@/services/notification-service';
 import { t } from '@/services/translate-service';
@@ -43,6 +43,7 @@ const userStore = useUserStore();
 
 const character = injectStrict(characterKey);
 const { loadCharacterCharacteristics } = injectStrict(characterCharacteristicsKey);
+
 const animatedCharacterExperience = useTransition(computed(() => character.value.experience));
 
 const currentLevelExperience = computed(() => getExperienceForLevel(character.value.level));
@@ -88,7 +89,10 @@ const onRespecializeCharacter = async () => {
 const canRetire = computed(() => canRetireValidate(character.value.level));
 const onRetireCharacter = async () => {
   userStore.replaceCharacter(await retireCharacter(character.value.id));
-  await userStore.fetchUser();
+  await Promise.all([
+    userStore.fetchUser(),
+    loadCharacterCharacteristics(0, { id: character.value.id }),
+  ]);
   notify(t('character.settings.retire.notify.success'));
 };
 
@@ -98,6 +102,7 @@ const canSetCharacterForTournament = computed(() =>
 
 const onSetCharacterForTournament = async () => {
   userStore.replaceCharacter(await setCharacterForTournament(character.value.id));
+  await loadCharacterCharacteristics(0, { id: character.value.id });
   notify(t('character.settings.tournament.notify.success'));
 };
 

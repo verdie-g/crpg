@@ -6,9 +6,11 @@ const props = withDefaults(
   defineProps<{
     item: UserItem;
     equipped: boolean;
+    notMeetRequirement: boolean;
   }>(),
   {
     equipped: false,
+    notMeetRequirement: false,
   }
 );
 
@@ -45,14 +47,14 @@ const rarityColor = computed(() => {
 
       <div
         v-if="item.rank !== 0"
-        class="absolute -top-0.5 -left-0.5 z-10 cursor-default opacity-80 hover:opacity-100"
+        class="absolute top-0 left-0 z-10 cursor-default opacity-80 hover:opacity-100"
       >
-        <OIcon
+        <Tag
           v-if="item.rank < 0"
+          rounded
+          variant="danger"
           icon="error"
-          size="lg"
-          class="text-status-danger"
-          v-tooltip="'Item is broken'"
+          v-tooltip="$t('character.inventory.item.broken.tooltip.title')"
         />
 
         <!-- TODO: i18n -->
@@ -70,14 +72,22 @@ const rarityColor = computed(() => {
         />
       </div>
 
-      <Tag
-        v-if="equipped"
-        class="absolute bottom-0 right-0 z-10 cursor-default opacity-75 hover:opacity-100"
-        rounded
-        variant="primary"
-        icon="check"
-        v-tooltip="$t('character.inventory.item.equipped')"
-      />
+      <div class="absolute bottom-0 right-0 z-10 cursor-default opacity-80 hover:opacity-100">
+        <Tag
+          v-if="notMeetRequirement"
+          rounded
+          variant="danger"
+          icon="alert"
+          v-tooltip="$t('character.inventory.item.requirement.tooltip.title')"
+        />
+        <Tag
+          v-if="equipped"
+          rounded
+          variant="primary"
+          icon="check"
+          v-tooltip="$t('character.inventory.item.equipped')"
+        />
+      </div>
     </div>
   </article>
 </template>

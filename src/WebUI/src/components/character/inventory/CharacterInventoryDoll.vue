@@ -1,14 +1,23 @@
 <script setup lang="ts">
 import { UseElementBounding as ElementBounding } from '@vueuse/components';
-import type { CharacterOverallItemsStats, EquippedItem, EquippedItemId } from '@/models/character';
+import type { EquippedItemId } from '@/models/character';
 import { ItemSlot } from '@/models/item';
-import { getCharacterSLotsSchema, getOverallArmorValueBySlot } from '@/services/characters-service';
+import {
+  getCharacterSLotsSchema,
+  getOverallArmorValueBySlot,
+  validateItemNotMeetRequirement,
+} from '@/services/characters-service';
 import { useInventoryDnD } from '@/composables/character/use-inventory-dnd';
 import { useItemDetail } from '@/composables/character/use-item-detail';
-import { equippedItemsBySlotKey, characterItemsStatsKey } from '@/symbols/character';
+import {
+  equippedItemsBySlotKey,
+  characterItemsStatsKey,
+  characterCharacteristicsKey,
+} from '@/symbols/character';
 
 const equippedItemsBySlot = injectStrict(equippedItemsBySlotKey);
 const itemsStats = injectStrict(characterItemsStatsKey);
+const { characterCharacteristics } = injectStrict(characterCharacteristicsKey);
 
 const slotsSchema = getCharacterSLotsSchema();
 
@@ -18,12 +27,10 @@ const emit = defineEmits<{
 }>();
 
 const onUnEquipItem = (slot: ItemSlot) => {
-  console.log('onUnEquipItem');
   emit('change', [{ userItemId: null, slot }]);
 };
 
 const {
-  focusedItemId,
   availableSlots,
   fromSlot,
   toSlot,
@@ -53,6 +60,13 @@ const { openItemDetail } = useItemDetail();
           :slot="slot.key"
           :placeholder="slot.placeholderIcon"
           :item="equippedItemsBySlot[slot.key]"
+          :notMeetRequirement="
+            slot.key in equippedItemsBySlot &&
+            validateItemNotMeetRequirement(
+              equippedItemsBySlot[slot.key].baseItem,
+              characterCharacteristics
+            )
+          "
           :available="Boolean(availableSlots.length && availableSlots.includes(slot.key))"
           :focused="toSlot === slot.key && availableSlots.includes(slot.key)"
           :armorOverall="getOverallArmorValueBySlot(slot.key, itemsStats)"

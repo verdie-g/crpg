@@ -477,3 +477,10 @@ export const getOverallArmorValueBySlot = (
 export const checkUpkeepIsHigh = (userGold: number, upkeepPerHour: number) => {
   return userGold < upkeepPerHour;
 };
+
+export const validateItemNotMeetRequirement = (
+  item: Item,
+  characterCharacteristics: CharacterCharacteristics
+) => {
+  return item.requirement > characterCharacteristics.attributes.strength;
+};
