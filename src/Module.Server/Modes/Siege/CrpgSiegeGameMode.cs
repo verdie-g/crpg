@@ -107,6 +107,7 @@ internal class CrpgSiegeGameMode : MissionBasedMultiplayerGameMode
                 new AgentHumanAILogic(),
                 new EquipmentControllerLeaveLogic(),
                 new MultiplayerPreloadHelper(),
+                new WelcomeMessageBehavior(warmupComponent),
 
                 // Shit that need to stay because BL code is extremely coupled to the visual spawning.
                 new MultiplayerMissionAgentVisualSpawnComponent(),

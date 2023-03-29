@@ -129,6 +129,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new MultiplayerPreloadHelper(),
                     warmupComponent,
                     notificationsComponent,
+                    new WelcomeMessageBehavior(warmupComponent),
 #if CRPG_SERVER
                     roundController,
                     new CrpgFlagDominationServer(flagDominationClient, _isSkirmish),
