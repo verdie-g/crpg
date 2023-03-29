@@ -6,7 +6,6 @@ import type {
 import { ItemSlot } from '@/models/item';
 import { type UserItem } from '@/models/user';
 import { getAvailableSlotsByItem } from '@/services/item-service';
-import { validateItemNotMeetRequirement } from '@/services/characters-service';
 import { notify, NotificationType } from '@/services/notification-service';
 import { t } from '@/services/translate-service';
 
@@ -16,10 +15,7 @@ const availableSlots = ref<ItemSlot[]>([]);
 const fromSlot = ref<ItemSlot | null>(null);
 const toSlot = ref<ItemSlot | null>(null);
 
-export const useInventoryDnD = (
-  equippedItemsBySlot: Ref<EquippedItemsBySlot>,
-  characterCharacteristics: Ref<CharacterCharacteristics>
-) => {
+export const useInventoryDnD = (equippedItemsBySlot: Ref<EquippedItemsBySlot>) => {
   const { emit } = getCurrentInstance() as NonNullable<ReturnType<typeof getCurrentInstance>>;
 
   const onDragStart = (item: UserItem | null = null, slot: ItemSlot | null = null) => {
@@ -28,11 +24,6 @@ export const useInventoryDnD = (
     // TODO: to service
     if (item.rank < 0) {
       notify(t('character.inventory.item.broken.notify.warning'), NotificationType.Warning);
-      return;
-    }
-
-    if (validateItemNotMeetRequirement(item.baseItem, characterCharacteristics.value)) {
-      notify(t('character.inventory.item.requirement.notify.warning'), NotificationType.Warning);
       return;
     }
 

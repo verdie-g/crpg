@@ -18,13 +18,6 @@ vi.mock('@/services/item-service', () => {
   };
 });
 
-const mockValidateItemNotMeetRequirement = vi.fn().mockReturnValue(false);
-vi.mock('@/services/characters-service', () => {
-  return {
-    validateItemNotMeetRequirement: mockValidateItemNotMeetRequirement,
-  };
-});
-
 const mockNotify = vi.fn();
 vi.mock('@/services/notification-service', async () => {
   return {
@@ -62,8 +55,7 @@ describe('useInventoryDnD', () => {
   describe('onDragStart', () => {
     it('no item', () => {
       const { focusedItemId, availableSlots, fromSlot, onDragStart, onDragEnd } = useInventoryDnD(
-        ref(userItemsBySlot as UserItemsBySlot),
-        ref(characterCharacteristics as CharacterCharacteristics)
+        ref(userItemsBySlot as UserItemsBySlot)
       );
 
       onDragStart(null, null);
@@ -91,8 +83,7 @@ describe('useInventoryDnD', () => {
       mockGetAvailableSlotsByItem.mockReturnValue(AVAILABLE_SLOTS);
 
       const { focusedItemId, availableSlots, fromSlot, onDragStart, onDragEnd } = useInventoryDnD(
-        ref(userItemsBySlot as UserItemsBySlot),
-        ref(characterCharacteristics as CharacterCharacteristics)
+        ref(userItemsBySlot as UserItemsBySlot)
       );
 
       onDragStart(userItem as UserItem, ItemSlot.Weapon1);
@@ -120,8 +111,7 @@ describe('useInventoryDnD', () => {
       mockGetAvailableSlotsByItem.mockReturnValue(AVAILABLE_SLOTS);
 
       const { focusedItemId, availableSlots, fromSlot, onDragStart, onDragEnd } = useInventoryDnD(
-        ref(userItemsBySlot as UserItemsBySlot),
-        ref(characterCharacteristics as CharacterCharacteristics)
+        ref(userItemsBySlot as UserItemsBySlot)
       );
 
       onDragStart(userItem as UserItem, null);
@@ -141,8 +131,7 @@ describe('useInventoryDnD', () => {
       };
 
       const { focusedItemId, availableSlots, fromSlot, onDragStart, onDragEnd } = useInventoryDnD(
-        ref(userItemsBySlot as UserItemsBySlot),
-        ref(characterCharacteristics as CharacterCharacteristics)
+        ref(userItemsBySlot as UserItemsBySlot)
       );
 
       onDragStart(userItem as UserItem, ItemSlot.Head);
@@ -158,40 +147,10 @@ describe('useInventoryDnD', () => {
 
       onDragEnd();
     });
-
-    it('requirements', () => {
-      mockValidateItemNotMeetRequirement.mockResolvedValueOnce(true);
-
-      const userItem: PartialDeep<UserItem> = {
-        id: 42,
-        baseItem: { type: ItemType.Crossbow, flags: [], requirement: 21 },
-      };
-
-      const { focusedItemId, availableSlots, fromSlot, onDragStart, onDragEnd } = useInventoryDnD(
-        ref(userItemsBySlot as UserItemsBySlot),
-        ref(characterCharacteristics as CharacterCharacteristics)
-      );
-
-      onDragStart(userItem as UserItem, ItemSlot.Weapon0);
-
-      expect(mockNotify).toBeCalledWith(
-        'character.inventory.item.requirement.notify.warning',
-        'warning'
-      );
-
-      expect(focusedItemId.value).toEqual(null);
-      expect(availableSlots.value).toEqual([]);
-      expect(fromSlot.value).toEqual(null);
-
-      onDragEnd();
-    });
   });
 
   it('onDragEnter', () => {
-    const { toSlot, onDragEnter } = useInventoryDnD(
-      ref(userItemsBySlot as UserItemsBySlot),
-      ref(characterCharacteristics as CharacterCharacteristics)
-    );
+    const { toSlot, onDragEnter } = useInventoryDnD(ref(userItemsBySlot as UserItemsBySlot));
 
     expect(toSlot.value).toBeNull();
 
@@ -202,8 +161,7 @@ describe('useInventoryDnD', () => {
 
   it('onDragLeave', () => {
     const { toSlot, onDragEnter, onDragLeave } = useInventoryDnD(
-      ref(userItemsBySlot as UserItemsBySlot),
-      ref(characterCharacteristics as CharacterCharacteristics)
+      ref(userItemsBySlot as UserItemsBySlot)
     );
 
     onDragEnter(ItemSlot.Mount);
@@ -218,8 +176,7 @@ describe('useInventoryDnD', () => {
   describe('onDragEnd', () => {
     it('empty slot', () => {
       const { toSlot, onDragEnter, onDragEnd } = useInventoryDnD(
-        ref(userItemsBySlot as UserItemsBySlot),
-        ref(characterCharacteristics as CharacterCharacteristics)
+        ref(userItemsBySlot as UserItemsBySlot)
       );
 
       onDragEnter(ItemSlot.Mount);
@@ -233,10 +190,7 @@ describe('useInventoryDnD', () => {
     });
 
     it('empty slot, with toSlot', () => {
-      const { onDragEnd } = useInventoryDnD(
-        ref(userItemsBySlot as UserItemsBySlot),
-        ref(characterCharacteristics as CharacterCharacteristics)
-      );
+      const { onDragEnd } = useInventoryDnD(ref(userItemsBySlot as UserItemsBySlot));
 
       onDragEnd();
 
@@ -244,10 +198,7 @@ describe('useInventoryDnD', () => {
     });
 
     it('with slot, empty toSlot - drag item outside = unEquip item', () => {
-      const { onDragEnd } = useInventoryDnD(
-        ref(userItemsBySlot as UserItemsBySlot),
-        ref(characterCharacteristics as CharacterCharacteristics)
-      );
+      const { onDragEnd } = useInventoryDnD(ref(userItemsBySlot as UserItemsBySlot));
 
       onDragEnd(null, ItemSlot.Mount);
       expect(mockEmit).toBeCalledWith('change', [{ userItemId: null, slot: ItemSlot.Mount }]);
@@ -264,8 +215,7 @@ describe('useInventoryDnD', () => {
       };
 
       const { onDragStart, onDrop, onDragEnd } = useInventoryDnD(
-        ref(userItemsBySlot as UserItemsBySlot),
-        ref(characterCharacteristics as CharacterCharacteristics)
+        ref(userItemsBySlot as UserItemsBySlot)
       );
 
       onDragStart(userItem as UserItem);
@@ -286,8 +236,7 @@ describe('useInventoryDnD', () => {
       };
 
       const { onDragStart, onDrop, onDragEnd } = useInventoryDnD(
-        ref(userItemsBySlot as UserItemsBySlot),
-        ref(characterCharacteristics as CharacterCharacteristics)
+        ref(userItemsBySlot as UserItemsBySlot)
       );
 
       onDragStart(userItem as UserItem);
@@ -308,8 +257,7 @@ describe('useInventoryDnD', () => {
       };
 
       const { onDragStart, onDrop, onDragEnd } = useInventoryDnD(
-        ref(userItemsBySlot as UserItemsBySlot),
-        ref(characterCharacteristics as CharacterCharacteristics)
+        ref(userItemsBySlot as UserItemsBySlot)
       );
 
       onDragStart(userItem as UserItem);
@@ -350,8 +298,7 @@ describe('useInventoryDnD', () => {
               type: ItemType.TwoHandedWeapon,
             },
           },
-        } as UserItemsBySlot),
-        ref(characterCharacteristics as CharacterCharacteristics)
+        } as UserItemsBySlot)
       );
 
       onDragStart(userItem as UserItem, ItemSlot.Weapon1);

@@ -13,39 +13,41 @@ import {
   ItemFieldCompareRule,
   ItemSlot,
   ItemFamilyType,
+  DamageType,
 } from '@/models/item';
 import { type AggregationConfig, AggregationView } from '@/models/item-search';
+import { UserItem } from '@/models/user';
+import { Culture } from '@/models/culture';
 
 vi.mock('@/services/item-search-service/aggregations.ts', () => ({
   aggregationsConfig: {
     type: {
-      title: 'Type',
       view: AggregationView.Checkbox,
     },
     flags: {
-      title: 'Flags',
       view: AggregationView.Checkbox,
       format: ItemFieldFormat.List,
     },
     price: {
-      title: 'Price',
       view: AggregationView.Range,
       format: ItemFieldFormat.Number,
     },
     thrustDamage: {
-      title: 'Thrust damage',
       view: AggregationView.Range,
       format: ItemFieldFormat.Damage,
     },
     swingDamage: {
-      title: 'Swing damage',
       view: AggregationView.Range,
       format: ItemFieldFormat.Damage,
     },
     damage: {
-      title: 'Damage',
       view: AggregationView.Range,
       format: ItemFieldFormat.Damage,
+    },
+    requirement: {
+      view: AggregationView.Range,
+      format: ItemFieldFormat.Requirement,
+      compareRule: ItemFieldCompareRule.Less,
     },
   } as AggregationConfig,
 }));
@@ -54,16 +56,16 @@ import mockItems from '@/__mocks__/items.json';
 
 import {
   getItems,
-  // getItemImage,
+  getItemImage,
   getAvailableSlotsByItem,
   hasWeaponClassesByItemType,
   getWeaponClassesByItemType,
-  // itemFieldFormatter,
   getCompareItemsResult,
-  // humanizeBucket,
+  humanizeBucket,
   getItemFieldDiffStr,
+  type HumanBucket,
+  IconBucketType,
 } from './item-service';
-import { UserItem } from '@/models/user';
 
 it('getItems', async () => {
   mockGet('/items').willResolve(response<Item[]>(mockItems as Item[]));
@@ -71,10 +73,11 @@ it('getItems', async () => {
   expect(await getItems()).toEqual(mockItems);
 });
 
-// TODO:
-// it('getItemImage', () => {
-//   expect(getItemImage('123')).toEqual('http://localhost:8081/items/123.png');
-// });
+it('getItemImage', () => {
+  expect(getItemImage('crpg_aserai_noble_sword_2_t5')).toEqual(
+    '/items/crpg_aserai_noble_sword_2_t5.png'
+  );
+});
 
 it.each<[PartialDeep<Item>, PartialDeep<Record<ItemSlot, UserItem>>, ItemSlot[]]>([
   [
@@ -133,56 +136,129 @@ it.each<[ItemType, WeaponClass[]]>([
   expect(getWeaponClassesByItemType(itemType)).toEqual(expectation);
 });
 
-// TODO:
-// it.each<[keyof ItemFlat, string, string]>([
-//   ['type', ItemType.OneHandedWeapon, 'item.type.OneHandedWeapon'],
-//   ['weaponClass', WeaponClass.OneHandedPolearm, 'item.weaponClass.OneHandedPolearm'],
-//   ['flags', ItemUsage.PolearmCouch, 'item.usage.polearm_couch'],
-//   ['flags', ItemFlags.UseTeamColor, 'item.flags.UseTeamColor'],
-//   ['flags', WeaponFlags.CanDismount, 'item.weaponFlags.CanDismount'],
-//   ['handling', '123', '123'],
-// ])('humanizeBucket - aggKey: %s, bucket: %s ', (aggKey, bucket, expectation) => {
-//   expect(humanizeBucket(aggKey, bucket)).toEqual(expectation);
-// });
+describe('humanizeBucket', () => {
+  it.each<[keyof ItemFlat, any, HumanBucket]>([
+    ['type', null, { icon: null, label: 'type - invalid bucket' }],
+    [
+      'type',
+      ItemType.OneHandedWeapon,
+      {
+        icon: { name: 'item-type-one-handed-weapon', type: IconBucketType.Svg },
+        label: 'item.type.OneHandedWeapon',
+      },
+    ],
+    [
+      'weaponClass',
+      WeaponClass.OneHandedPolearm,
+      {
+        icon: { name: 'weapon-class-one-handed-polearm', type: IconBucketType.Svg },
+        label: 'item.weaponClass.OneHandedPolearm',
+      },
+    ],
+    [
+      'damageType',
+      DamageType.Cut,
+      {
+        icon: { name: 'damage-type-cut', type: IconBucketType.Svg },
+        label: 'item.damageType.Cut.long',
+      },
+    ],
+    [
+      'culture',
+      Culture.Vlandia,
+      {
+        icon: { name: 'culture-vlandia', type: IconBucketType.Asset },
+        label: 'item.culture.Vlandia',
+      },
+    ],
+    [
+      'mountArmorFamilyType',
+      ItemFamilyType.Horse,
+      {
+        icon: { name: 'mount-type-horse', type: IconBucketType.Svg },
+        label: 'item.familyType.1',
+      },
+    ],
+    [
+      'mountFamilyType',
+      ItemFamilyType.Camel,
+      {
+        icon: { name: 'mount-type-camel', type: IconBucketType.Svg },
+        label: 'item.familyType.2',
+      },
+    ],
+    [
+      'flags',
+      ItemFlags.DropOnWeaponChange,
+      {
+        icon: { name: 'item-flag-drop-on-change', type: IconBucketType.Svg },
+        label: 'item.flags.DropOnWeaponChange',
+      },
+    ],
+    [
+      'flags',
+      WeaponFlags.CanDismount,
+      {
+        icon: { name: 'item-flag-can-dismount', type: IconBucketType.Svg },
+        label: 'item.weaponFlags.CanDismount',
+      },
+    ],
+    [
+      'flags',
+      ItemUsage.PolearmBracing,
+      {
+        icon: { name: 'item-flag-brace', type: IconBucketType.Svg },
+        label: 'item.usage.polearm_bracing',
+      },
+    ],
+    [
+      'requirement',
+      18,
+      {
+        icon: null,
+        label: 'item.requirementFormat',
+      },
+    ],
+    [
+      'price',
+      1234,
+      {
+        icon: null,
+        label: '1234',
+      },
+    ],
+    [
+      'handling',
+      12,
+      {
+        icon: null,
+        label: '12',
+      },
+    ],
+  ])('aggKey: %s, bucket: %s ', (aggKey, bucket, expectation) => {
+    expect(humanizeBucket(aggKey, bucket)).toEqual(expectation);
+  });
 
-// TODO:
-// describe('itemFieldFormatter', () => {
-//   const item = {
-//     type: ItemType.OneHandedWeapon,
-//     flags: ['UseTeamColor', 'Civilian'],
-//     thrustDamage: 21,
-//     thrustDamageType: 'Pierce',
-//     swingDamage: 12,
-//     swingDamageType: 'Cut',
-//     damage: 12,
-//     damageType: 'Blunt',
-//     price: 1234,
-//     length: 122,
-//   } as ItemFlat;
+  it('damage', () => {
+    const item: Partial<ItemFlat> = {
+      swingDamageType: DamageType.Cut,
+    };
 
-//   it('list', () => {
-//     expect(itemFieldFormatter('flags', item)).toEqual(
-//       'item.flags.UseTeamColor, item.flags.Civilian'
-//     );
-//   });
+    expect(humanizeBucket('swingDamage', 10, item as ItemFlat)).toEqual({
+      icon: null,
+      label: 'item.damageTypeFormat',
+    });
+  });
 
-//   it('damage', () => {
-//     expect(itemFieldFormatter('thrustDamage', item)).toEqual('21 p');
-//     expect(itemFieldFormatter('swingDamage', item)).toEqual('12 c');
-//     expect(itemFieldFormatter('damage', item)).toEqual('12 p');
-//   });
+  it('damage', () => {
+    const item: Partial<ItemFlat> = {};
 
-//   it('price', () => {
-//     expect(itemFieldFormatter('price', item)).toEqual('1,234');
-//   });
-
-//   it('no format', () => {
-//     expect(itemFieldFormatter('length', item)).toEqual(122);
-//   });
-//   it('no format + humanize', () => {
-//     expect(itemFieldFormatter('type', item)).toEqual('item.type.OneHandedWeapon');
-//   });
-// });
+    expect(humanizeBucket('thrustDamage', 0, item as ItemFlat)).toEqual({
+      icon: null,
+      label: '0',
+    });
+  });
+});
 
 it('compareItemsResult', () => {
   const items = [
@@ -247,3 +323,9 @@ it.each<[ItemFieldCompareRule, number, number, string]>([
     expect(getItemFieldDiffStr(compareRule, value, bestValue)).toEqual(expectation);
   }
 );
+
+it.todo('TODO: computeSalePrice', () => {});
+
+it.todo('TODO: computeAverageRepairCostPerHour', () => {});
+
+it.todo('TODO: computeBrokenItemRepairCost', () => {});

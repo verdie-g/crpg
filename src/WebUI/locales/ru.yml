@@ -410,6 +410,8 @@ character:
           success: Предмет успешно продан
       equipped: Экипировано
       broken:
+        tooltip:
+          title: Предмет сломан
         notify:
           warning: Предмет сломан и не может быть экипирован
       repair:
@@ -418,8 +420,8 @@ character:
         notify:
           success: Предмет успешно отремонтирован
       requirement:
-        notify:
-          warning: У вас недостаточно силы для использования этого предмета
+        tooltip:
+          title: У вас недостаточно сил для использования этого предмета. Показатели предмета будут снижены.
 
   doll:
     slot:
@@ -835,6 +837,7 @@ item:
     Blunt:
       long: 'Дробящий'
       short: 'b'
+  requirementFormat: '{value} str'
 
   aggregations:
     type:

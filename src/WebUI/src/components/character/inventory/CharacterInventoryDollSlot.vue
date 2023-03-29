@@ -11,13 +11,15 @@ const props = withDefaults(
     placeholder: string;
     item?: UserItem;
     armorOverall?: CharacterArmorOverall;
+    notMeetRequirement: boolean;
     // slot state
     available?: boolean;
     focused?: boolean;
     invalid?: boolean;
-    remove?: boolean; // TODO: need a name
+    remove?: boolean;
   }>(),
   {
+    notMeetRequirement: false,
     available: false,
     focused: false,
     invalid: false,
@@ -43,13 +45,22 @@ const emit = defineEmits<{
     ]"
   >
     <template v-if="props.item">
-      <!--  -->
       <img
         class="h-full w-full cursor-grab select-none object-contain"
         :src="getItemImage(props.item.baseItem.id)"
         :alt="props.item.baseItem.name"
         data-aq-character-slot-item-thumb
       />
+
+      <div class="absolute bottom-1.5 right-1.5 z-10 cursor-default opacity-80 hover:opacity-100">
+        <Tag
+          v-if="notMeetRequirement"
+          rounded
+          variant="danger"
+          icon="alert"
+          v-tooltip="$t('character.inventory.item.requirement.tooltip.title')"
+        />
+      </div>
     </template>
 
     <OIcon

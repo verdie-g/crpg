@@ -3,6 +3,7 @@ import { UseElementBounding as ElementBounding } from '@vueuse/components';
 import { type UserItem } from '@/models/user';
 import { useInventoryDnD } from '@/composables/character/use-inventory-dnd';
 import { useItemDetail } from '@/composables/character/use-item-detail';
+import { validateItemNotMeetRequirement } from '@/services/characters-service';
 import { equippedItemsBySlotKey, characterCharacteristicsKey } from '@/symbols/character';
 
 const props = defineProps<{
@@ -17,7 +18,7 @@ const emit = defineEmits<{
   (e: 'sell', itemId: number): void;
 }>();
 
-const { onDragStart, onDragEnd } = useInventoryDnD(equippedItemsBySlot, characterCharacteristics);
+const { onDragStart, onDragEnd } = useInventoryDnD(equippedItemsBySlot);
 const { openItemDetail, closeItemDetail } = useItemDetail();
 
 const onSellItem = (item: UserItem) => {
@@ -33,6 +34,9 @@ const onSellItem = (item: UserItem) => {
         class="h-20"
         :item="item"
         :equipped="equippedItemsIds.includes(item.id)"
+        :notMeetRequirement="
+          validateItemNotMeetRequirement(item.baseItem, characterCharacteristics)
+        "
         @dragstart="onDragStart(item)"
         @dragend="onDragEnd"
         @sell="onSellItem(item)"

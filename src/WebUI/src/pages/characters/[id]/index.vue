@@ -9,7 +9,6 @@ import {
   maximumLevel,
   freeRespecializeIntervalDays,
 } from '@root/data/constants.json';
-import { type Item } from '@/models/item';
 import { useUserStore } from '@/stores/user';
 import { characterKey, characterCharacteristicsKey, characterItemsKey } from '@/symbols/character';
 import { parseTimestamp } from '@/utils/date';
@@ -30,8 +29,6 @@ import {
   getExperienceMultiplierBonus,
   getCharacterKDARatio,
   getRespecCapability,
-  updateCharacterItems,
-  validateItemNotMeetRequirement,
 } from '@/services/characters-service';
 
 definePage({
@@ -45,10 +42,7 @@ const router = useRouter();
 const userStore = useUserStore();
 
 const character = injectStrict(characterKey);
-const { characterCharacteristics, loadCharacterCharacteristics } = injectStrict(
-  characterCharacteristicsKey
-);
-const { characterItems, loadCharacterItems } = injectStrict(characterItemsKey);
+const { loadCharacterCharacteristics } = injectStrict(characterCharacteristicsKey);
 
 const animatedCharacterExperience = useTransition(computed(() => character.value.experience));
 
@@ -82,19 +76,6 @@ const respecCapability = computed(() =>
   getRespecCapability(character.value, characterLimitations.value, userStore.user!.gold)
 );
 
-const unEquipNotMeetRequirementItems = async () => {
-  const notMeetRequirementItems = characterItems.value.filter(ci =>
-    validateItemNotMeetRequirement(ci.userItem.baseItem as Item, characterCharacteristics.value)
-  );
-
-  if (notMeetRequirementItems.length === 0) return;
-
-  const items = notMeetRequirementItems.map(item => ({ userItemId: null, slot: item.slot }));
-
-  await updateCharacterItems(character.value.id, items);
-  await loadCharacterItems(0, { id: character.value.id });
-};
-
 const onRespecializeCharacter = async () => {
   userStore.replaceCharacter(await respecializeCharacter(character.value.id));
   userStore.subtractGold(respecCapability.value.price);
@@ -102,8 +83,7 @@ const onRespecializeCharacter = async () => {
     loadCharacterLimitations(0, { id: character.value.id }),
     loadCharacterCharacteristics(0, { id: character.value.id }),
   ]);
-  await unEquipNotMeetRequirementItems(),
-    notify(t('character.settings.respecialize.notify.success'));
+  notify(t('character.settings.respecialize.notify.success'));
 };
 
 const canRetire = computed(() => canRetireValidate(character.value.level));
@@ -113,7 +93,6 @@ const onRetireCharacter = async () => {
     userStore.fetchUser(),
     loadCharacterCharacteristics(0, { id: character.value.id }),
   ]);
-  await unEquipNotMeetRequirementItems();
   notify(t('character.settings.retire.notify.success'));
 };
 
@@ -124,7 +103,6 @@ const canSetCharacterForTournament = computed(() =>
 const onSetCharacterForTournament = async () => {
   userStore.replaceCharacter(await setCharacterForTournament(character.value.id));
   await loadCharacterCharacteristics(0, { id: character.value.id });
-  await unEquipNotMeetRequirementItems();
   notify(t('character.settings.tournament.notify.success'));
 };
 
