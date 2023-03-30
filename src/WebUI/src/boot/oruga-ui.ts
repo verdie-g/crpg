@@ -1,4 +1,8 @@
-import { FontAwesomeIcon, FontAwesomeLayers } from '@fortawesome/vue-fontawesome';
+import {
+  FontAwesomeIcon,
+  FontAwesomeLayers,
+  FontAwesomeLayersText,
+} from '@fortawesome/vue-fontawesome';
 import { library, type IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import {
   Config,
@@ -50,6 +54,7 @@ export const install: BootModule = app => {
     .component('OPaginationButton', OPaginationButton)
     .component('FontAwesomeIcon', FontAwesomeIcon)
     .component('FontAwesomeLayers', FontAwesomeLayers)
+    .component('FontAwesomeLayersText', FontAwesomeLayersText)
     .component('ONotification', ONotification)
     .component('OCollapse', OCollapse)
     .component('VueSlider', VueSlider)

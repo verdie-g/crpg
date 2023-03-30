@@ -107,6 +107,7 @@ const aggregationConfig = {
 const searchResult = computed(() =>
   getSearchResult({
     items: flatItems.value,
+    userBaseItemsIds: [],
     aggregationConfig: aggregationConfig,
     sortingConfig: sortingConfig,
     sort: sortingModel.value,

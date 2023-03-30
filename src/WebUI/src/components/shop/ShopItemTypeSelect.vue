@@ -45,6 +45,7 @@ const subLevelActive = computed(
 
 <template>
   <OTabs
+    contentClass="hidden"
     v-model="itemTypeModel"
     :type="subLevelActive ? 'fill-rounded-grouped' : 'fill-rounded'"
     :animated="false"

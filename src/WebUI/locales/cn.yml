@@ -497,6 +497,8 @@ shop:
       desc:
         <p>某些物品有多种武器模式，例如投掷斧可以作为单手斧在近战中使用。</p>
         <p>此选项将在商店列表中显示此类武器。</p>
+  hideOwnedItems:
+    title: 隐藏拥有的物品
 
 clan:
   action:
