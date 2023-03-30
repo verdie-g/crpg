@@ -7,10 +7,12 @@ const props = withDefaults(
     item: UserItem;
     equipped: boolean;
     notMeetRequirement: boolean;
+    isNew: boolean;
   }>(),
   {
     equipped: false,
     notMeetRequirement: false,
+    isNew: false,
   }
 );
 
@@ -30,6 +32,8 @@ const rarityColor = computed(() => {
 
   return;
 });
+
+// computed
 </script>
 
 <template>
@@ -70,6 +74,10 @@ const rarityColor = computed(() => {
             '--fa-secondary-color': rarityColor,
           }"
         />
+      </div>
+
+      <div class="absolute bottom-0 left-0 z-10 cursor-default opacity-80 hover:opacity-100">
+        <Tag v-if="isNew" variant="success" label="new" />
       </div>
 
       <div class="absolute bottom-0 right-0 z-10 cursor-default opacity-80 hover:opacity-100">

@@ -540,14 +540,20 @@ export const getItemFieldDiffStr = (
   return `-${n(roundFLoat(Math.abs(bestValue - value)))}`;
 };
 
-// TODO: SPEC
-export const computeSalePrice = (
-  userItem: UserItem
-): { price: number; graceTimeEnd: Date | null } => {
+export const getItemGraceTimeEnd = (userItem: UserItem) => {
   const graceTimeEnd = new Date(userItem.createdAt);
   graceTimeEnd.setHours(graceTimeEnd.getHours() + 1); // TODO: to constants
+  return graceTimeEnd;
+};
 
-  if (graceTimeEnd < new Date(Date.now())) {
+export const isGraceTimeExpired = (itemGraceTimeEnd: Date) => {
+  return itemGraceTimeEnd < new Date();
+};
+
+export const computeSalePrice = (userItem: UserItem) => {
+  const graceTimeEnd = getItemGraceTimeEnd(userItem);
+
+  if (isGraceTimeExpired(graceTimeEnd)) {
     return {
       price: Math.floor(applyPolynomialFunction(userItem.baseItem.price, itemSellCostCoefs)),
       graceTimeEnd: null,
@@ -558,10 +564,8 @@ export const computeSalePrice = (
   return { price: userItem.baseItem.price, graceTimeEnd };
 };
 
-// TODO: SPEC
 export const computeAverageRepairCostPerHour = (price: number) =>
   Math.floor(price * itemRepairCostPerSecond * 3600 * itemBreakChance);
 
-// TODO: SPEC
 export const computeBrokenItemRepairCost = (price: number) =>
   Math.floor(price * itemRepairCostPerSecond * brokenItemRepairPenaltySeconds);
