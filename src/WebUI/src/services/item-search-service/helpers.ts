@@ -12,7 +12,7 @@ export const excludeRangeFilters = (filterModel: FiltersModel<string[] | number[
     }, {} as FiltersModel<string[]>);
 };
 
-export const applyRangeFilters = (
+const applyRangeFilters = (
   item: ItemFlat,
   filtersModel: FiltersModel<string[] | number[]>
 ): boolean => {
@@ -31,6 +31,20 @@ export const applyRangeFilters = (
           : roundFLoat(item[key] as number) >= Number(values[0]) &&
             roundFLoat(item[key] as number) <= Number(values[1]);
     });
+
+  return result;
+};
+
+export const applyFilters = (
+  item: ItemFlat,
+  filtersModel: FiltersModel<string[] | number[]>,
+  userBaseItemsIds: string[]
+) => {
+  let result = applyRangeFilters(item, filtersModel);
+
+  if (userBaseItemsIds.includes(item.id)) {
+    result = false;
+  }
 
   return result;
 };

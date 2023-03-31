@@ -496,6 +496,8 @@ shop:
       desc:
         <p>Some items have multiple weapon modes, for example a throwing axe can be used in melee combat as a one-handed axe.</p>
         <p>This option will show such weapons in the store list</p>
+  hideOwnedItems:
+    title: Hide owned items
 
 clan:
   action:

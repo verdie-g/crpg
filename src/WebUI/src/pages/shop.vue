@@ -24,6 +24,7 @@ definePage({
 });
 
 const userStore = useUserStore();
+const userBaseItemsIds = computed(() => userStore.userItems.map(ui => ui.baseItem.id));
 
 const { state: items, execute: loadItems } = useAsyncState(() => getItems(), [], {
   immediate: false,
@@ -36,12 +37,10 @@ const {
   weaponClassModel,
   filterModel,
   updateFilter,
-
+  hideOwnedItemsModel,
   filteredByClassFlatItems,
-
   aggregationsConfig,
   aggregationsConfigVisible,
-
   aggregationByType,
   aggregationByClass,
   scopeAggregations,
@@ -63,6 +62,7 @@ const {
 const searchResult = computed(() =>
   getSearchResult({
     items: filteredByClassFlatItems.value,
+    userBaseItemsIds: hideOwnedItemsModel.value ? userBaseItemsIds.value : [],
     aggregationConfig: aggregationsConfig.value,
     sortingConfig: sortingConfig.value,
     sort: sortingModel.value,
@@ -100,12 +100,61 @@ const buyItem = async (item: ItemFlat) => {
       <div>searchResult.pagination.total {{ searchResult.pagination.total }}</div>
     </div> -->
 
-    <ShopItemTypeSelect
-      v-model:itemType="itemTypeModel"
-      v-model:weaponClass="weaponClassModel"
-      :itemTypeBuckets="aggregationByType.data.buckets"
-      :weaponClassBuckets="aggregationByClass.data.buckets"
-    />
+    <div class="mb-2 flex items-center gap-6 overflow-x-auto pb-2">
+      <VDropdown :triggers="['click']" placement="bottom-end">
+        <OButton variant="secondary" outlined size="xl" rounded>
+          <FontAwesomeLayers full-width class="fa-2x">
+            <FontAwesomeIcon :icon="['crpg', 'dots']" />
+            <FontAwesomeLayersText
+              v-if="
+                hideOwnedItemsModel ||
+                ('weaponUsage' in filterModel && filterModel['weaponUsage']!.length > 1)
+              "
+              counter
+              value="●"
+              position="top-right"
+              :style="{ '--fa-counter-background-color': '#53825A' }"
+            />
+          </FontAwesomeLayers>
+        </OButton>
+
+        <template #popper>
+          <DropdownItem>
+            <OCheckbox v-model="hideOwnedItemsModel">
+              {{ $t('shop.hideOwnedItems.title') }}
+            </OCheckbox>
+          </DropdownItem>
+
+          <DropdownItem v-if="'weaponUsage' in filterModel">
+            <VTooltip>
+              <OCheckbox
+                :nativeValue="WeaponUsage.Secondary"
+                :modelValue="filterModel['weaponUsage']"
+                @update:modelValue="(val: string) => updateFilter('weaponUsage', val)"
+              >
+                {{ $t('shop.nonPrimaryWeaponMode.title') }}
+              </OCheckbox>
+
+              <template #popper>
+                <div class="prose prose-invert">
+                  <h5 class="text-content-100">
+                    {{ $t('shop.nonPrimaryWeaponMode.tooltip.title') }}
+                  </h5>
+                  <div v-html="$t('shop.nonPrimaryWeaponMode.tooltip.desc')" />
+                </div>
+              </template>
+            </VTooltip>
+          </DropdownItem>
+        </template>
+      </VDropdown>
+
+      <ShopItemTypeSelect
+        v-model:itemType="itemTypeModel"
+        v-model:weaponClass="weaponClassModel"
+        :itemTypeBuckets="aggregationByType.data.buckets"
+        :weaponClassBuckets="aggregationByClass.data.buckets"
+      />
+    </div>
 
     <OTable
       v-model:current-page="pageModel"
@@ -204,7 +253,7 @@ const buyItem = async (item: ItemFlat) => {
             <template v-if="field === 'price'" #default="{ rawBuckets }">
               <ShopGridItemBuyBtn
                 :price="(rawBuckets as number)"
-                :inInventory="userStore.userItems.some(ui => ui.baseItem.id === item.id)"
+                :inInventory="userBaseItemsIds.includes(item.id)"
                 :notEnoughGold="userStore.user!.gold < item.price"
                 @buy="buyItem(item)"
               />
@@ -266,28 +315,5 @@ const buyItem = async (item: ItemFlat) => {
         </div>
       </template>
     </OTable>
-
-    <!-- TODO: placement -->
-    <div v-if="'weaponUsage' in filterModel" class="mt-4 flex">
-      <VTooltip>
-        <OCheckbox
-          class="opacity-75"
-          :nativeValue="WeaponUsage.Secondary"
-          :modelValue="filterModel['weaponUsage']"
-          @update:modelValue="(val: string) => updateFilter('weaponUsage', val)"
-        >
-          {{ $t('shop.nonPrimaryWeaponMode.title') }}
-        </OCheckbox>
-
-        <template #popper>
-          <div class="prose prose-invert">
-            <h5 class="text-content-100">
-              {{ $t('shop.nonPrimaryWeaponMode.tooltip.title') }}
-            </h5>
-            <div v-html="$t('shop.nonPrimaryWeaponMode.tooltip.desc')" />
-          </div>
-        </template>
-      </VTooltip>
-    </div>
   </div>
 </template>

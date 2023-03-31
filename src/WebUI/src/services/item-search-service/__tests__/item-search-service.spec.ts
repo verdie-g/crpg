@@ -370,6 +370,7 @@ it('getSearchResult', () => {
 
   getSearchResult({
     items: [],
+    userBaseItemsIds: [],
     aggregationConfig: {},
     sortingConfig: {},
     sort: 'price_asc',

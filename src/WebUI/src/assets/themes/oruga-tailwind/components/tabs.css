@@ -11,7 +11,7 @@
 
 .o-tabs__nav {
   @apply flex flex-shrink-0 flex-grow items-center justify-start gap-2;
-  @apply m-0 select-none overflow-x-auto overflow-y-hidden;
+  @apply m-0 select-none;
 }
 
 .o-tabs--vertical .o-tabs__nav {

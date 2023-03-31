@@ -11,7 +11,7 @@ import {
   aggregationsKeysByItemType,
   aggregationsKeysByWeaponClass,
 } from './aggregations';
-import { excludeRangeFilters, applyRangeFilters } from './helpers';
+import { excludeRangeFilters, applyFilters } from './helpers';
 
 export const generateEmptyFiltersModel = (aggregations: AggregationConfig) => {
   return (Object.keys(aggregations) as [keyof ItemFlat]).reduce((model, aggKey) => {
@@ -128,6 +128,7 @@ const sortAggregationBuckets = (aggKey: keyof ItemFlat, buckets: any[]) => {
 
 export const getSearchResult = ({
   items,
+  userBaseItemsIds,
   aggregationConfig,
   sortingConfig,
   sort,
@@ -137,6 +138,7 @@ export const getSearchResult = ({
   filter,
 }: {
   items: ItemFlat[];
+  userBaseItemsIds: string[];
   aggregationConfig: AggregationConfig;
   sortingConfig: SortingConfig;
   sort: string;
@@ -155,7 +157,7 @@ export const getSearchResult = ({
     page,
     sort,
     filters: excludeRangeFilters(filter),
-    filter: item => applyRangeFilters(item, filter),
+    filter: item => applyFilters(item, filter, userBaseItemsIds), // there will be a more beautiful solution when migrating Orama search
   });
 
   // TODO: FIXME: SPEC

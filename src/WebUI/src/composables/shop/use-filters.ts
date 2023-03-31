@@ -28,6 +28,7 @@ export const useItemsFilter = (items: Item[]) => {
           ...(weaponClasses.length !== 0 && {
             weaponClass: weaponClasses[0],
           }),
+          ...pick(route.query, ['hideOwnedItems']),
         },
       });
     },
@@ -43,6 +44,7 @@ export const useItemsFilter = (items: Item[]) => {
         query: {
           type: itemTypeModel.value,
           weaponClass: val === null ? undefined : val,
+          ...pick(route.query, ['hideOwnedItems']),
         },
       });
     },
@@ -85,6 +87,21 @@ export const useItemsFilter = (items: Item[]) => {
     });
   };
 
+  const hideOwnedItemsModel = computed({
+    set(val: boolean) {
+      router.push({
+        query: {
+          ...route.query,
+          hideOwnedItems: val === false ? undefined : String(val),
+        },
+      });
+    },
+
+    get() {
+      return Boolean(route.query.hideOwnedItems) || false;
+    },
+  });
+
   const resetFilters = () => {
     router.push({
       query: {
@@ -97,6 +114,8 @@ export const useItemsFilter = (items: Item[]) => {
           // TODO: need to be purged?
           'compareMode',
           'compareList',
+
+          'hideOwnedItems',
         ]), // TODO: keys to config?
       },
     });
@@ -137,6 +156,8 @@ export const useItemsFilter = (items: Item[]) => {
     updateFilter,
 
     resetFilters,
+
+    hideOwnedItemsModel,
 
     aggregationsConfig,
     aggregationsConfigVisible,
