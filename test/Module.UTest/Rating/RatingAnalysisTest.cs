@@ -16,7 +16,7 @@ public class RatingAnalysisTest
     [Test]
     public void TestDifferentRating()
     {
-        var ratingAnalysis = new CrpgRatingAnalysis(@"A:\\log.txt");
+        var ratingAnalysis = new CrpgRatingAnalysis(@"A:\log.txt");
         BattleSideEnum ClangroupPenalizedTeamRaterPrediction(RoundResultData result)
         {
             return TeamRaterPrediction(result, players => ClanGroupPenalizedTeamRater(players));

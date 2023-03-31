@@ -14,23 +14,28 @@ internal class CrpgRatingAnalysis
         private readonly List<RoundResultData>? _results;
         public CrpgRatingAnalysis(string logLocation)
         {
-
             Regex roundDataRegex = new("\\[.+\\] Round result data: ([\\w=]+)", RegexOptions.Compiled);
             using StreamReader logFile = new(@logLocation);
             List<RoundResultData> results = new List<RoundResultData>();
             while (logFile.ReadLine() is { } line)
             {
-                var m = roundDataRegex.Match(line);
-                if (!m.Success)
-                {
-                    continue;
-                }
+                if (line == null)
+                    {
+                    }
+                else
+                    {
+                    var m = roundDataRegex.Match(line);
+                    if (!m.Success)
+                    {
+                        continue;
+                    }
 
-                string base64RoundResultJson = m.Groups[1].Value;
-                string roundResultJson = Encoding.UTF8.GetString(Convert.FromBase64String(base64RoundResultJson));
-                var roundResult = JsonSerializer.Deserialize<RoundResultData>(roundResultJson)!;
-                results.Add(roundResult);
-            }
+                    string base64RoundResultJson = m.Groups[1].Value;
+                    string roundResultJson = Encoding.UTF8.GetString(Convert.FromBase64String(base64RoundResultJson));
+                    var roundResult = JsonSerializer.Deserialize<RoundResultData>(roundResultJson)!;
+                    results.Add(roundResult);
+                    }
+        }
 
             _results = results;
         }
