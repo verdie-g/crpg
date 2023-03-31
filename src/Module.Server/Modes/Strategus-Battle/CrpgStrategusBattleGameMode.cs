@@ -87,13 +87,12 @@ internal class CrpgStrategusBattleGameMode : MissionBasedMultiplayerGameMode
 #if CRPG_SERVER
         ICrpgClient crpgClient = CrpgClient.Create();
         ChatBox chatBox = Game.Current.GetGameHandler<ChatBox>();
-        MultiplayerRoundController roundController = new(); // starts/stops round, ends match
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent, () =>
             (new BattleSpawnFrameBehavior(), new CrpgStrategusBattleSpawningBehavior(_constants, roundController)));
-        CrpgTeamSelectComponent teamSelectComponent = new(warmupComponent, roundController);
+        CrpgStrategusTeamSelectComponent teamSelectComponent = new(warmupComponent,null);
 #else
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent, null);
-        CrpgTeamSelectComponent teamSelectComponent = new();
+        CrpgStrategusTeamSelectComponent teamSelectComponent = new();
 #endif
         CrpgStrategusBattleClient StrategusBattleClient = new();
 

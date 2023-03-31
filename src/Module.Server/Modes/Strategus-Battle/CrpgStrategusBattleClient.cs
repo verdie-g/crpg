@@ -41,14 +41,12 @@ internal class CrpgStrategusBattleClient : MissionMultiplayerGameModeBaseClient
     public override void OnBehaviorInitialize()
     {
         base.OnBehaviorInitialize();
-        RoundComponent.OnPreparationEnded += OnPreparationEnded;
         MissionNetworkComponent.OnMyClientSynchronized += OnMyClientSynchronized;
     }
 
     public override void OnRemoveBehavior()
     {
         base.OnRemoveBehavior();
-        RoundComponent.OnPreparationEnded -= OnPreparationEnded;
         MissionNetworkComponent.OnMyClientSynchronized -= OnMyClientSynchronized;
     }
 
@@ -68,22 +66,6 @@ internal class CrpgStrategusBattleClient : MissionMultiplayerGameModeBaseClient
         {
             return;
         }
-
-        if (_remainingTimeForBellSoundToStop > 0.0)
-        {
-            _remainingTimeForBellSoundToStop -= dt;
-        }
-
-        if (_bellSoundEvent == null
-            || (_remainingTimeForBellSoundToStop > 0.0
-                && MissionLobbyComponent.CurrentMultiplayerState == MissionLobbyComponent.MultiplayerGameState.Playing))
-        {
-            return;
-        }
-
-        _remainingTimeForBellSoundToStop = float.MinValue;
-        _bellSoundEvent.Stop();
-        _bellSoundEvent = null;
     }
 
     public override void AfterStart()
@@ -93,14 +75,6 @@ internal class CrpgStrategusBattleClient : MissionMultiplayerGameModeBaseClient
 
     public override void OnClearScene()
     {
-        _notifiedForFlagRemoval = false;
-
-        if (_bellSoundEvent != null)
-        {
-            _remainingTimeForBellSoundToStop = float.MinValue;
-            _bellSoundEvent.Stop();
-            _bellSoundEvent = null;
-        }
     }
 
     protected override void AddRemoveMessageHandlers(
@@ -112,43 +86,8 @@ internal class CrpgStrategusBattleClient : MissionMultiplayerGameModeBaseClient
         }
     }
 
-    protected override int GetWarningTimer()
-    {
-        if (!IsRoundInProgress || _flags.Length < 2)
-        {
-            return 0;
-        }
-
-        float timerStart = MultiplayerOptions.OptionType.RoundTimeLimit.GetIntValue() - FlagsRemovalTime;
-        float timerEnd = timerStart + 30f;
-        if (RoundComponent.RemainingRoundTime < timerStart
-            || RoundComponent.RemainingRoundTime > timerEnd)
-        {
-            return 0;
-        }
-
-        int warningTimer = MathF.Ceiling(30.0f - timerEnd - RoundComponent.RemainingRoundTime);
-        if (!_notifiedForFlagRemoval)
-        {
-            _notifiedForFlagRemoval = true;
-            NotificationsComponent.FlagsWillBeRemovedInXSeconds(30);
-        }
-
-        return warningTimer;
-    }
-
     private void OnPreparationEnded()
     {
-        if (_flags.Length == 0)
-        {
-            return;
-        }
-
-        OnFlagNumberChangedEvent?.Invoke();
-        foreach (var flag in _flags)
-        {
-            OnCapturePointOwnerChangedEvent?.Invoke(flag, null);
-        }
     }
 
     private void OnMyClientSynchronized()
