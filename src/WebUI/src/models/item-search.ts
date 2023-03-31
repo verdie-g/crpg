@@ -9,7 +9,6 @@ export enum AggregationView {
 export type FiltersModel<T> = Partial<Record<keyof ItemFlat, T>>;
 export interface Aggregation extends Omit<itemsjs.Aggregation, 'title'> {
   view: AggregationView;
-  chosen_filters_on_top?: boolean; // TODO: field is missing in the @types/itemsjs@2.1.1
   description?: string;
   title?: string;
   format?: ItemFieldFormat;
