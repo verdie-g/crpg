@@ -52,6 +52,17 @@ vi.mock('@/services/item-search-service/aggregations.ts', () => ({
   } as AggregationConfig,
 }));
 
+// mock Date
+const NOW = '2022-11-27T21:00:00.0000000Z';
+const DateReal = global.Date;
+vi.spyOn(global, 'Date').mockImplementation((...args: any[]) => {
+  if (args.length) {
+    // @ts-ignore
+    return new DateReal(...args);
+  }
+  return new Date(NOW);
+});
+
 import mockItems from '@/__mocks__/items.json';
 
 import {
@@ -65,6 +76,11 @@ import {
   getItemFieldDiffStr,
   type HumanBucket,
   IconBucketType,
+  getItemGraceTimeEnd,
+  isGraceTimeExpired,
+  computeSalePrice,
+  computeBrokenItemRepairCost,
+  computeAverageRepairCostPerHour,
 } from './item-service';
 
 it('getItems', async () => {
@@ -324,8 +340,72 @@ it.each<[ItemFieldCompareRule, number, number, string]>([
   }
 );
 
-it.todo('TODO: computeSalePrice', () => {});
+it('getItemGraceTimeEnd', () => {
+  const userItem: PartialDeep<UserItem> = {
+    createdAt: new Date('2022-11-27T20:00:00.0000000Z'),
+  };
 
-it.todo('TODO: computeAverageRepairCostPerHour', () => {});
+  expect(getItemGraceTimeEnd(userItem as UserItem)).toEqual(
+    new Date('2022-11-27T21:00:00.0000000Z')
+  );
+});
 
-it.todo('TODO: computeBrokenItemRepairCost', () => {});
+it.each<[Date, boolean]>([
+  [new Date('2022-11-27T20:00:00.0000000Z'), true],
+  [new Date('2022-11-27T20:59:00.0000000Z'), true],
+  [new Date('2022-11-27T21:00:00.0000000Z'), false],
+  [new Date('2022-11-27T21:01:00.0000000Z'), false],
+])('isGraceTimeExpired - date: %s,', (itemGraceTimeEnd, expectation) => {
+  expect(isGraceTimeExpired(itemGraceTimeEnd)).toEqual(expectation);
+});
+
+it.only.each<[PartialDeep<UserItem>, { price: number; graceTimeEnd: Date | null }]>([
+  [
+    {
+      createdAt: new Date('2022-11-27T20:00:00.0000000Z'),
+      baseItem: {
+        price: 1100,
+      },
+    },
+    {
+      graceTimeEnd: new Date('2022-11-27T21:00:00.000Z'),
+      price: 1100,
+    },
+  ],
+  [
+    {
+      createdAt: new Date('2022-11-27T19:00:00.0000000Z'),
+      baseItem: {
+        price: 1100,
+      },
+    },
+    {
+      graceTimeEnd: null,
+      price: 550,
+    },
+  ],
+])('computeSalePrice - userItem: %s,', (userItem, expectation) => {
+  expect(computeSalePrice(userItem as UserItem)).toEqual(expectation);
+});
+
+it.only.each<[number, number]>([
+  [1, 0],
+  [10, 0],
+  [100, 1],
+  [1000, 19],
+  [10000, 192],
+  [100000, 1919],
+])('computeBrokenItemRepairCost - price: %s,', (price, expectation) => {
+  expect(computeBrokenItemRepairCost(price)).toEqual(expectation);
+});
+
+it.each<[number, number]>([
+  [1, 0],
+  [10, 1],
+  [100, 11],
+  [1000, 115],
+  [10000, 1152],
+  [100000, 11519],
+])('computeAverageRepairCostPerHour - price: %s,', (price, expectation) => {
+  expect(computeAverageRepairCostPerHour(price)).toEqual(expectation);
+});

@@ -4,6 +4,7 @@ import { type UserItem } from '@/models/user';
 import { useInventoryDnD } from '@/composables/character/use-inventory-dnd';
 import { useItemDetail } from '@/composables/character/use-item-detail';
 import { validateItemNotMeetRequirement } from '@/services/characters-service';
+import { getItemGraceTimeEnd, isGraceTimeExpired } from '@/services/item-service';
 import { equippedItemsBySlotKey, characterCharacteristicsKey } from '@/symbols/character';
 
 const props = defineProps<{
@@ -37,6 +38,7 @@ const onSellItem = (item: UserItem) => {
         :notMeetRequirement="
           validateItemNotMeetRequirement(item.baseItem, characterCharacteristics)
         "
+        :isNew="!isGraceTimeExpired(getItemGraceTimeEnd(item))"
         @dragstart="onDragStart(item)"
         @dragend="onDragEnd"
         @sell="onSellItem(item)"

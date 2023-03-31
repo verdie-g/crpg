@@ -28,14 +28,12 @@ const props = withDefaults(
 );
 
 const userItemToReplaceSalePrice = computed(() => {
-  const salePrice = computeSalePrice(props.userItem);
+  const { price, graceTimeEnd } = computeSalePrice(props.userItem);
 
   return {
-    price: salePrice.price,
+    price,
     graceTimeEnd:
-      salePrice.graceTimeEnd === null
-        ? null
-        : parseTimestamp(salePrice.graceTimeEnd.valueOf() - new Date().valueOf()),
+      graceTimeEnd === null ? null : parseTimestamp(graceTimeEnd.valueOf() - new Date().valueOf()),
   };
 });
 
