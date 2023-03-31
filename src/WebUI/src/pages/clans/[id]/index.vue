@@ -52,7 +52,9 @@ const checkIsSelfMember = (member: ClanMember) => member.user.id === selfMember.
 
 const searchModel = ref<string>('');
 const filteredClanMembers = computed(() =>
-  clanMembers.value.filter(member => member.user.name.includes(searchModel.value))
+  clanMembers.value.filter(member =>
+    member.user.name.toLowerCase().includes(searchModel.value.toLowerCase())
+  )
 );
 
 const canManageApplications = computed(() =>
