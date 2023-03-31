@@ -1103,8 +1103,8 @@ public class MatchBalancerTest
         float teamASize = balancedGame.TeamA.Count;
         float teamBSize = balancedGame.TeamB.Count;
         float sizeRatio = teamASize / teamBSize;
-        float teamAMeanRating = WeightHelpers.ComputeTeamWeightPowerSum(balancedGame.TeamA, 1);
-        float teamBMeanRating = WeightHelpers.ComputeTeamWeightPowerSum(balancedGame.TeamB, 1);
+        float teamAMeanRating = WeightHelpers.ComputeTeamWeight(balancedGame.TeamA, 1);
+        float teamBMeanRating = WeightHelpers.ComputeTeamWeight(balancedGame.TeamB, 1);
         float meanRatingRatio = teamAMeanRating / teamBMeanRating;
         MatchBalancingHelpers.DumpTeams(balancedGame);
         Assert.That(sizeRatio, Is.EqualTo(0.7f).Within(0.3f));
@@ -1113,8 +1113,8 @@ public class MatchBalancerTest
     [Test]
     public void BannerBalancing()
     {
-        float unbalancedTeamAMeanRating = WeightHelpers.ComputeTeamWeightPowerSum(Game1.TeamA, 1);
-        float unbalancedTeamBMeanRating = WeightHelpers.ComputeTeamWeightPowerSum(Game1.TeamB, 1);
+        float unbalancedTeamAMeanRating = WeightHelpers.ComputeTeamWeight(Game1.TeamA, 1);
+        float unbalancedTeamBMeanRating = WeightHelpers.ComputeTeamWeight(Game1.TeamB, 1);
         float unbalancedMeanRatingRatio = unbalancedTeamAMeanRating / unbalancedTeamBMeanRating;
         Console.WriteLine($"unbalanced rating ratio = {unbalancedMeanRatingRatio}");
 
@@ -1123,8 +1123,8 @@ public class MatchBalancerTest
         float teamBSize = balancedGame.TeamB.Count;
         float sizeRatio = teamASize / teamBSize;
         Console.WriteLine($"balanced size ratio = {sizeRatio}");
-        float teamARating = WeightHelpers.ComputeTeamWeightPowerSum(balancedGame.TeamA, 1);
-        float teamBRating = WeightHelpers.ComputeTeamWeightPowerSum(balancedGame.TeamB, 1);
+        float teamARating = WeightHelpers.ComputeTeamWeight(balancedGame.TeamA, 1);
+        float teamBRating = WeightHelpers.ComputeTeamWeight(balancedGame.TeamB, 1);
         float ratingRatio = teamARating / teamBRating;
         Console.WriteLine($"teamASize = {teamASize} teamBSize = {teamBSize}");
         Console.WriteLine($"teamARating = new CrpgCharacterRating {{ Value = {teamARating} teamBRating = new CrpgCharacterRating {{ Value = {teamBRating} }} }}");
@@ -1136,15 +1136,15 @@ public class MatchBalancerTest
     {
         var matchBalancer = new MatchBalancer();
 
-        float unbalancedTeamAMeanRating = WeightHelpers.ComputeTeamWeightPowerSum(Game1.TeamA, 1);
-        float unbalancedTeamBMeanRating = WeightHelpers.ComputeTeamWeightPowerSum(Game1.TeamB, 1);
+        float unbalancedTeamAMeanRating = WeightHelpers.ComputeTeamWeight(Game1.TeamA, 1);
+        float unbalancedTeamBMeanRating = WeightHelpers.ComputeTeamWeight(Game1.TeamB, 1);
         float unbalancedMeanRatingRatio = unbalancedTeamAMeanRating / unbalancedTeamBMeanRating;
         GameMatch balancedGame = matchBalancer.BannerBalancingWithEdgeCases(Game1, firstBalance: true);
         float teamASize = balancedGame.TeamA.Count;
         float teamBSize = balancedGame.TeamB.Count;
         float sizeRatio = teamASize / teamBSize;
-        float teamARating = WeightHelpers.ComputeTeamWeightPowerSum(balancedGame.TeamA, 1);
-        float teamBRating = WeightHelpers.ComputeTeamWeightPowerSum(balancedGame.TeamB, 1);
+        float teamARating = WeightHelpers.ComputeTeamWeight(balancedGame.TeamA, 1);
+        float teamBRating = WeightHelpers.ComputeTeamWeight(balancedGame.TeamB, 1);
         float ratingRatio = teamARating / teamBRating;
         Assert.That(ratingRatio, Is.EqualTo(1).Within(0.2));
     }
@@ -1156,8 +1156,8 @@ public class MatchBalancerTest
         GameMatch balancedGame = matchBalancer.NaiveCaptainBalancing(Game1);
         balancedGame = matchBalancer.BannerBalancingWithEdgeCases(balancedGame, firstBalance: false);
 
-        float teamARating = WeightHelpers.ComputeTeamWeightPowerSum(balancedGame.TeamA, 1);
-        float teamBRating = WeightHelpers.ComputeTeamWeightPowerSum(balancedGame.TeamB, 1);
+        float teamARating = WeightHelpers.ComputeTeamWeight(balancedGame.TeamA, 1);
+        float teamBRating = WeightHelpers.ComputeTeamWeight(balancedGame.TeamB, 1);
         float ratingRatio = teamARating / teamBRating;
         Assert.That(ratingRatio, Is.EqualTo(1).Within(0.2));
     }
@@ -1168,8 +1168,8 @@ public class MatchBalancerTest
         var matchBalancer = new MatchBalancer();
         var balancedGame = matchBalancer.BannerBalancingWithEdgeCases(EmptyTeamGame, firstBalance: false);
 
-        float teamARating = WeightHelpers.ComputeTeamWeightPowerSum(balancedGame.TeamA, 1);
-        float teamBRating = WeightHelpers.ComputeTeamWeightPowerSum(balancedGame.TeamB, 1);
+        float teamARating = WeightHelpers.ComputeTeamWeight(balancedGame.TeamA, 1);
+        float teamBRating = WeightHelpers.ComputeTeamWeight(balancedGame.TeamB, 1);
         float ratingRatio = teamARating / teamBRating;
         MatchBalancingHelpers.DumpTeams(balancedGame);
     }
@@ -1179,15 +1179,15 @@ public class MatchBalancerTest
     {
         var matchBalancer = new MatchBalancer();
         MatchBalancingHelpers.DumpTeams(GameWithVeryStrongClanGroup);
-        float unbalancedTeamAMeanRating = WeightHelpers.ComputeTeamWeightPowerSum(GameWithVeryStrongClanGroup.TeamA, 1);
-        float unbalancedTeamBMeanRating = WeightHelpers.ComputeTeamWeightPowerSum(GameWithVeryStrongClanGroup.TeamB, 1);
+        float unbalancedTeamAMeanRating = WeightHelpers.ComputeTeamWeight(GameWithVeryStrongClanGroup.TeamA, 1);
+        float unbalancedTeamBMeanRating = WeightHelpers.ComputeTeamWeight(GameWithVeryStrongClanGroup.TeamB, 1);
         float unbalancedMeanRatingRatio = unbalancedTeamAMeanRating / unbalancedTeamBMeanRating;
         GameMatch balancedGame = matchBalancer.BannerBalancingWithEdgeCases(GameWithVeryStrongClanGroup);
         float teamASize = balancedGame.TeamA.Count;
         float teamBSize = balancedGame.TeamB.Count;
         float sizeRatio = teamASize / teamBSize;
-        float teamARating = WeightHelpers.ComputeTeamWeightPowerSum(balancedGame.TeamA, 1);
-        float teamBRating = WeightHelpers.ComputeTeamWeightPowerSum(balancedGame.TeamB, 1);
+        float teamARating = WeightHelpers.ComputeTeamWeight(balancedGame.TeamA, 1);
+        float teamBRating = WeightHelpers.ComputeTeamWeight(balancedGame.TeamB, 1);
         float ratingRatio = teamARating / teamBRating;
         MatchBalancingHelpers.DumpTeams(balancedGame);
         Assert.That(ratingRatio, Is.EqualTo(1).Within(0.2));
@@ -1198,8 +1198,8 @@ public class MatchBalancerTest
     {
         var matchBalancer = new MatchBalancer();
 
-        float unbalancedTeamAMeanRating = WeightHelpers.ComputeTeamWeightPowerSum(Game1.TeamA, 1);
-        float unbalancedTeamBMeanRating = WeightHelpers.ComputeTeamWeightPowerSum(Game1.TeamB, 1);
+        float unbalancedTeamAMeanRating = WeightHelpers.ComputeTeamWeight(Game1.TeamA, 1);
+        float unbalancedTeamBMeanRating = WeightHelpers.ComputeTeamWeight(Game1.TeamB, 1);
         float unbalancedMeanRatingRatio = unbalancedTeamAMeanRating / unbalancedTeamBMeanRating;
         GameMatch balancedGame = matchBalancer.BannerBalancingWithEdgeCases(Game1);
         List<WeightedCrpgUser> allUsersFromBalancedGame = new();
@@ -1218,8 +1218,8 @@ public class MatchBalancerTest
     {
         var matchBalancer = new MatchBalancer();
 
-        float unbalancedTeamAMeanRating = WeightHelpers.ComputeTeamWeightPowerSum(Game1.TeamA, 1);
-        float unbalancedTeamBMeanRating = WeightHelpers.ComputeTeamWeightPowerSum(Game1.TeamB, 1);
+        float unbalancedTeamAMeanRating = WeightHelpers.ComputeTeamWeight(Game1.TeamA, 1);
+        float unbalancedTeamBMeanRating = WeightHelpers.ComputeTeamWeight(Game1.TeamB, 1);
         float unbalancedMeanRatingRatio = unbalancedTeamAMeanRating / unbalancedTeamBMeanRating;
         Console.WriteLine($"unbalanced rating ratio = {unbalancedMeanRatingRatio}");
 
@@ -1246,8 +1246,8 @@ public class MatchBalancerTest
     {
         var matchBalancer = new MatchBalancer();
 
-        float unbalancedTeamAMeanRating = WeightHelpers.ComputeTeamWeightPowerSum(NoManGame.TeamA, 1);
-        float unbalancedTeamBMeanRating = WeightHelpers.ComputeTeamWeightPowerSum(NoManGame.TeamB, 1);
+        float unbalancedTeamAMeanRating = WeightHelpers.ComputeTeamWeight(NoManGame.TeamA, 1);
+        float unbalancedTeamBMeanRating = WeightHelpers.ComputeTeamWeight(NoManGame.TeamB, 1);
         float unbalancedMeanRatingRatio = unbalancedTeamAMeanRating / unbalancedTeamBMeanRating;
         GameMatch balancedGame = matchBalancer.BannerBalancingWithEdgeCases(NoManGame);
     }
@@ -1257,8 +1257,8 @@ public class MatchBalancerTest
     {
         var matchBalancer = new MatchBalancer();
 
-        float unbalancedTeamAMeanRating = WeightHelpers.ComputeTeamWeightPowerSum(OneManGame.TeamA, 1);
-        float unbalancedTeamBMeanRating = WeightHelpers.ComputeTeamWeightPowerSum(OneManGame.TeamB, 1);
+        float unbalancedTeamAMeanRating = WeightHelpers.ComputeTeamWeight(OneManGame.TeamA, 1);
+        float unbalancedTeamBMeanRating = WeightHelpers.ComputeTeamWeight(OneManGame.TeamB, 1);
         float unbalancedMeanRatingRatio = unbalancedTeamAMeanRating / unbalancedTeamBMeanRating;
         GameMatch balancedGame = matchBalancer.BannerBalancingWithEdgeCases(OneManGame);
     }
@@ -1268,8 +1268,8 @@ public class MatchBalancerTest
     {
         var matchBalancer = new MatchBalancer();
 
-        float unbalancedTeamAMeanRating = WeightHelpers.ComputeTeamWeightPowerSum(TwoManGame.TeamA, 1);
-        float unbalancedTeamBMeanRating = WeightHelpers.ComputeTeamWeightPowerSum(TwoManGame.TeamB, 1);
+        float unbalancedTeamAMeanRating = WeightHelpers.ComputeTeamWeight(TwoManGame.TeamA, 1);
+        float unbalancedTeamBMeanRating = WeightHelpers.ComputeTeamWeight(TwoManGame.TeamB, 1);
         float unbalancedMeanRatingRatio = unbalancedTeamAMeanRating / unbalancedTeamBMeanRating;
         GameMatch balancedGame = matchBalancer.BannerBalancingWithEdgeCases(TwoManGame);
     }
@@ -1279,8 +1279,8 @@ public class MatchBalancerTest
     {
         var matchBalancer = new MatchBalancer();
 
-        float unbalancedTeamAMeanRating = WeightHelpers.ComputeTeamWeightPowerSum(ThreeManGame.TeamA, 1);
-        float unbalancedTeamBMeanRating = WeightHelpers.ComputeTeamWeightPowerSum(ThreeManGame.TeamB, 1);
+        float unbalancedTeamAMeanRating = WeightHelpers.ComputeTeamWeight(ThreeManGame.TeamA, 1);
+        float unbalancedTeamBMeanRating = WeightHelpers.ComputeTeamWeight(ThreeManGame.TeamB, 1);
         float unbalancedMeanRatingRatio = unbalancedTeamAMeanRating / unbalancedTeamBMeanRating;
         GameMatch balancedGame = matchBalancer.BannerBalancingWithEdgeCases(ThreeManGame);
     }

@@ -1,4 +1,6 @@
 ﻿using Crpg.Module.Api.Models.Users;
+using Crpg.Module.Helpers;
+using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Balancing;
 
@@ -21,13 +23,13 @@ internal class ClanGroup
         Members.Add(user);
     }
 
-    public float WeightPsum(float p = MatchBalancer.PowerParameter)
+    public float Weight(float p = MatchBalancer.PowerParameter)
     {
-        return WeightHelpers.ComputeTeamWeightPowerSum(Members, p);
+        return MathHelper.PowerSumBy(Members, u => u.Weight, p) * (1 + Size / 50f);
     }
 
     public float WeightPMean(float p = MatchBalancer.PowerParameter)
     {
-        return WeightHelpers.ComputeTeamWeightPowerMean(Members, p);
+        return Weight() / Size;
     }
 }
