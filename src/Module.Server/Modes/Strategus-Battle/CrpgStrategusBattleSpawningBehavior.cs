@@ -62,7 +62,7 @@ internal class CrpgStrategusBattleSpawningBehavior : CrpgSpawningBehaviorBase
     {
         base.RequestStartSpawnSession();
         _botsSpawned = false;
-        _cyclicSpawnTimer = new MissionTimer(CyclicSpawnDuration); // Cycle Between spawn the same way Wolfenstein enemy territory does (or full invasion)
+        _cyclicSpawnTimer = new MissionTimer(CyclicSpawnDuration); // Spawning in waves the same way Wolfenstein enemy territory does (or full invasion)
         _spawnTimer = new MissionTimer(SpawnDuration);
 
         ResetSpawnTeams();
