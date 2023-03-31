@@ -1,6 +1,6 @@
-// @ts-check
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import { type Config } from 'tailwindcss';
+
+export default {
   content: ['index.html', './src/**/*.{js,jsx,ts,tsx,vue,html}'],
   theme: {
     container: {
@@ -131,11 +131,11 @@ module.exports = {
       },
 
       zIndex: {
-        100: 100,
+        '100': '100',
       },
 
       opacity: {
-        15: 0.15,
+        '15': '0.15',
       },
 
       borderRadius: {
@@ -188,4 +188,4 @@ module.exports = {
     require('@tailwindcss/typography'),
     require('./src/assets/themes/oruga-tailwind/forms'), // TODO:
   ],
-};
+} satisfies Config;
