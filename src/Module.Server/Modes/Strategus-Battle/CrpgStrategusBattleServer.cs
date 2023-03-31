@@ -48,7 +48,7 @@ internal class CrpgStrategusBattleServer : MissionMultiplayerGameModeBase
     {
         return MissionLobbyComponent.MultiplayerGameType.Battle;
     }
-
+    public override Team GetWinnerTeam() => base.GetWinnerTeam();
     public override void AfterStart()
     {
         base.AfterStart();
