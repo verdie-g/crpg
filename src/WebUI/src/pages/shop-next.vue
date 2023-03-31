@@ -20,17 +20,31 @@ const { state: items, execute: loadItems } = useAsyncState(() => getItems(), [],
   immediate: false,
 });
 
+const stats = {
+  price: {
+    min: 0,
+    max: 0,
+  },
+};
+
 const db = await create({
   schema: {
     name: 'string',
     foo: 'string',
     price: 'number',
-    // tags: 'string',
   },
   components: {
     tokenizer: {
       language: 'english',
       stemmer: stemmers.english,
+    },
+    afterInsert: (_orama, _id, doc) => {
+      for (const key in doc) {
+        if (key in stats) {
+          stats[key].min = Math.min(stats[key].min, doc[key]);
+          stats[key].max = Math.max(stats[key].max, doc[key]);
+        }
+      }
     },
   },
 });
@@ -50,12 +64,6 @@ const docs = [
     price: 1000,
     tags: ['tag1'],
   },
-  {
-    name: 'Harry Potter and the Philosopher',
-    foo: 'bar',
-    price: 1500,
-    tags: ['tag3'],
-  },
 ];
 
 await insertMultiple(db, docs, 1200);
@@ -73,8 +81,8 @@ const results = await search(db, {
     price: {
       ranges: [
         {
-          from: 0,
-          to: 100000,
+          from: stats.price.min,
+          to: stats.price.max,
         },
       ],
     },
