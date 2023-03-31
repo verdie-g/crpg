@@ -31,7 +31,7 @@ internal class CrpgStrategusBattleClient : MissionMultiplayerGameModeBaseClient
 
     public override bool IsGameModeUsingGold => false;
     public override bool IsGameModeTactical => _flags.Length != 0;
-    public override bool IsGameModeUsingRoundCountdown => true;
+    public override bool IsGameModeUsingRoundCountdown => false;
     public override MissionLobbyComponent.MultiplayerGameType GameType => MissionLobbyComponent.MultiplayerGameType.TeamDeathmatch;
     public override bool IsGameModeUsingCasualGold => false;
     public IEnumerable<FlagCapturePoint> AllCapturePoints => _flags;
@@ -101,89 +101,6 @@ internal class CrpgStrategusBattleClient : MissionMultiplayerGameModeBaseClient
             _bellSoundEvent.Stop();
             _bellSoundEvent = null;
         }
-    }
-
-    public void ChangeMorale(float morale)
-    {
-        for (BattleSideEnum side = BattleSideEnum.Defender; side < BattleSideEnum.NumSides; side += 1)
-        {
-            float num = (morale + 1.0f) / 2.0f;
-            if (side == BattleSideEnum.Defender)
-            {
-                OnMoraleChangedEvent?.Invoke(BattleSideEnum.Defender, 1f - num);
-            }
-            else if (side == BattleSideEnum.Attacker)
-            {
-                OnMoraleChangedEvent?.Invoke(BattleSideEnum.Attacker, num);
-            }
-        }
-
-        BattleSideEnum mySide = _missionPeer?.Team?.Side ?? BattleSideEnum.None;
-        if (mySide == BattleSideEnum.None)
-        {
-            return;
-        }
-
-        float absMorale = MathF.Abs(morale);
-        if (_remainingTimeForBellSoundToStop < 0.0)
-        {
-            _remainingTimeForBellSoundToStop = absMorale < 0.6 || absMorale >= 1.0
-                ? float.MinValue
-                : float.MaxValue;
-            if (_remainingTimeForBellSoundToStop <= 0.0)
-            {
-                return;
-            }
-
-            _bellSoundEvent =
-                (mySide == BattleSideEnum.Defender && morale >= 0.6f) ||
-                (mySide == BattleSideEnum.Attacker && morale <= -0.6f)
-                    ? SoundEvent.CreateEventFromString("event:/multiplayer/warning_bells_defender", Mission.Scene)
-                    : SoundEvent.CreateEventFromString("event:/multiplayer/warning_bells_attacker", Mission.Scene);
-            MatrixFrame flagGlobalFrame = _flags
-                .Where(flag => !flag.IsDeactivated)
-                .GetRandomElementInefficiently()
-                .GameEntity.GetGlobalFrame();
-            _bellSoundEvent.PlayInPosition(flagGlobalFrame.origin + flagGlobalFrame.rotation.u * 3f);
-        }
-        else
-        {
-            if (absMorale < 1.0 && absMorale >= 0.6)
-            {
-                return;
-            }
-
-            _remainingTimeForBellSoundToStop = float.MinValue;
-        }
-    }
-
-    public void CaptureFlag(FlagCapturePoint flag, Team owner)
-    {
-        _flagOwners[flag.FlagIndex] = owner;
-        OnCapturePointOwnerChangedEvent?.Invoke(flag, owner);
-
-        var myTeam = _missionPeer?.Team;
-        if (myTeam == null)
-        {
-            return;
-        }
-
-        MatrixFrame cameraFrame = Mission.Current.GetCameraFrame();
-        Vec3 position = cameraFrame.origin + cameraFrame.rotation.u;
-        string eventStr = myTeam == owner
-            ? "event:/alerts/report/flag_captured"
-            : "event:/alerts/report/flag_lost";
-        MBSoundEvent.PlaySound(SoundEvent.GetEventIdFromString(eventStr), position);
-    }
-
-    public void ChangeNumberOfFlags()
-    {
-        OnFlagNumberChangedEvent?.Invoke();
-    }
-
-    public Team? GetFlagOwner(FlagCapturePoint flag)
-    {
-        return _flagOwners[flag.FlagIndex];
     }
 
     protected override void AddRemoveMessageHandlers(

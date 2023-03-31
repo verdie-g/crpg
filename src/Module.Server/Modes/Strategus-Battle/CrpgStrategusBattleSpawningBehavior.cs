@@ -8,9 +8,11 @@ namespace Crpg.Module.Modes.StrategusBattle;
 
 internal class CrpgStrategusBattleSpawningBehavior : CrpgSpawningBehaviorBase
 {
-    private const float TotalSpawnDuration = 30f;
+    private const float CyclicSpawnDuration = 30f; // This needs to depends on how many players are on the side
+    private const float SpawnDuration = 30f; // this needs to make sure dead player has time to spawn without being too long
     private readonly MultiplayerRoundController _roundController;
     private readonly HashSet<PlayerId> _notifiedPlayersAboutSpawnRestriction;
+    private MissionTimer? _cyclicSpawnTimer;
     private MissionTimer? _spawnTimer;
     private MissionTimer? _cavalrySpawnDelayTimer;
     private bool _botsSpawned;
@@ -42,25 +44,33 @@ internal class CrpgStrategusBattleSpawningBehavior : CrpgSpawningBehaviorBase
         {
             SpawnAgents();
         }
+        // Update the spawn timer.
+        if (_cyclicSpawnTimer != null)
+        {
+            // Check if the timer has reached 0.
+            if (_cyclicSpawnTimer.Check(true))
+            {
+                if (_spawnTimer != null)
+                {
+                    _spawnTimer.Check(true);
+                }
+            }
+        }
     }
 
     public override void RequestStartSpawnSession()
     {
         base.RequestStartSpawnSession();
         _botsSpawned = false;
-        _spawnTimer = new MissionTimer(TotalSpawnDuration); // Limit spawning for 30 seconds.
-        _cavalrySpawnDelayTimer = new MissionTimer(GetCavalrySpawnDelay()); // Cav will spawn X seconds later.
+        _cyclicSpawnTimer = new MissionTimer(CyclicSpawnDuration); // Cycle Between spawn the same way Wolfenstein enemy territory does (or full invasion)
+        _spawnTimer = new MissionTimer(SpawnDuration);
+
         ResetSpawnTeams();
     }
 
     public override bool AllowEarlyAgentVisualsDespawning(MissionPeer missionPeer)
     {
         return false;
-    }
-
-    public bool SpawnDelayEnded()
-    {
-        return _cavalrySpawnDelayTimer != null && _cavalrySpawnDelayTimer!.Check();
     }
 
     protected override bool IsRoundInProgress()
@@ -97,43 +107,6 @@ internal class CrpgStrategusBattleSpawningBehavior : CrpgSpawningBehaviorBase
         }
 
         var characterEquipment = CreateCharacterEquipment(crpgPeer.User.Character.EquippedItems);
-        if (!DoesEquipmentContainWeapon(characterEquipment)) // Disallow spawning without weapons.
-        {
-            if (_notifiedPlayersAboutSpawnRestriction.Add(networkPeer.VirtualPlayer.Id))
-            {
-                GameNetwork.BeginModuleEventAsServer(networkPeer);
-                GameNetwork.WriteMessage(new CrpgNotificationId
-                {
-                    Type = CrpgNotificationType.Announcement,
-                    TextId = "str_kick_reason",
-                    TextVariation = "no_weapon",
-                    SoundEvent = string.Empty,
-                });
-                GameNetwork.EndModuleEventAsServer();
-            }
-
-            return false;
-        }
-
-        bool hasMount = characterEquipment[EquipmentIndex.Horse].Item != null;
-        // Disallow spawning cavalry before the cav spawn delay ended.
-        if (hasMount && (!_cavalrySpawnDelayTimer?.Check() ?? false))
-        {
-            if (_notifiedPlayersAboutSpawnRestriction.Add(networkPeer.VirtualPlayer.Id))
-            {
-                GameNetwork.BeginModuleEventAsServer(networkPeer);
-                GameNetwork.WriteMessage(new CrpgNotification
-                {
-                    Type = CrpgNotificationType.Notification,
-                    Message = $"Cavalry will spawn in {_cavalrySpawnDelayTimer?.GetTimerDuration()} seconds!",
-                    SoundEvent = string.Empty,
-                });
-                GameNetwork.EndModuleEventAsServer();
-            }
-
-            return false;
-        }
-
         return true;
     }
 
