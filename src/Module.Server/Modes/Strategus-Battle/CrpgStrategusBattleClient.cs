@@ -9,7 +9,7 @@ using MathF = TaleWorlds.Library.MathF;
 
 namespace Crpg.Module.Modes.StrategusBattle;
 
-internal class CrpgStrategusBattleClient : MissionMultiplayerGameModeBaseClient, StrategusBattle
+internal class CrpgStrategusBattleClient : MissionMultiplayerGameModeBaseClient
 {
     private const int BattleFlagsRemovalTime = 120;
     private const int SkirmishFlagsRemovalTime = 120;
@@ -21,7 +21,6 @@ internal class CrpgStrategusBattleClient : MissionMultiplayerGameModeBaseClient,
     private float _remainingTimeForBellSoundToStop = float.MinValue;
     private SoundEvent? _bellSoundEvent;
     private MissionPeer? _missionPeer;
-
     public event Action<BattleSideEnum, float>? OnMoraleChangedEvent;
     public event Action? OnFlagNumberChangedEvent;
     public event Action<FlagCapturePoint, Team?>? OnCapturePointOwnerChangedEvent;
@@ -33,9 +32,7 @@ internal class CrpgStrategusBattleClient : MissionMultiplayerGameModeBaseClient,
     public override bool IsGameModeUsingGold => false;
     public override bool IsGameModeTactical => _flags.Length != 0;
     public override bool IsGameModeUsingRoundCountdown => true;
-    public override MissionLobbyComponent.MultiplayerGameType GameType => _isSkirmish
-        ? MissionLobbyComponent.MultiplayerGameType.Skirmish
-        : MissionLobbyComponent.MultiplayerGameType.Battle;
+    public override MissionLobbyComponent.MultiplayerGameType GameType => MissionLobbyComponent.MultiplayerGameType.TeamDeathmatch;
     public override bool IsGameModeUsingCasualGold => false;
     public IEnumerable<FlagCapturePoint> AllCapturePoints => _flags;
     public bool AreMoralesIndependent => false;
@@ -46,7 +43,6 @@ internal class CrpgStrategusBattleClient : MissionMultiplayerGameModeBaseClient,
         base.OnBehaviorInitialize();
         RoundComponent.OnPreparationEnded += OnPreparationEnded;
         MissionNetworkComponent.OnMyClientSynchronized += OnMyClientSynchronized;
-        ResetFlags(); // Get the flags early so it's available for the HUD.
     }
 
     public override void OnRemoveBehavior()
@@ -98,7 +94,6 @@ internal class CrpgStrategusBattleClient : MissionMultiplayerGameModeBaseClient,
     public override void OnClearScene()
     {
         _notifiedForFlagRemoval = false;
-        ResetFlags();
 
         if (_bellSoundEvent != null)
         {
