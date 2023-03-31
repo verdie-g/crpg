@@ -55,6 +55,7 @@ declare module 'vue-router/auto/routes' {
     'ModeratorUserRestrictionsId': RouteRecordInfo<'ModeratorUserRestrictionsId', '/moderator/user-restrictions/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
     'Settings': RouteRecordInfo<'Settings', '/settings', Record<never, never>, Record<never, never>>,
     'Shop': RouteRecordInfo<'Shop', '/shop', Record<never, never>, Record<never, never>>,
+    'ShopNext': RouteRecordInfo<'ShopNext', '/shop-next', Record<never, never>, Record<never, never>>,
     'SigninCallback': RouteRecordInfo<'SigninCallback', '/signin-callback', Record<never, never>, Record<never, never>>,
     'SigninSilentCallback': RouteRecordInfo<'SigninSilentCallback', '/signin-silent-callback', Record<never, never>, Record<never, never>>,
   }
