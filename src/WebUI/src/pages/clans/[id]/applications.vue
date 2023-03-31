@@ -81,9 +81,9 @@ await loadClanApplications(0, { id: clanId.value });
                 <OButton
                   variant="primary"
                   inverted
-                  :label="$t('action.apply')"
+                  :label="$t('action.accept')"
                   size="xs"
-                  data-aq-clan-application-action="apply"
+                  data-aq-clan-application-action="accept"
                   @click="respond(application, true)"
                 />
                 <OButton

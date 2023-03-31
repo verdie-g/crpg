@@ -38,6 +38,7 @@ action:
   create: Создать
   search: Поиск
   apply: Принять
+  accept: Принять
   decline: Отклонить
   readMore: Подробнее
   expand: Развернуть

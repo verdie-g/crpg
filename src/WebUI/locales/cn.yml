@@ -39,6 +39,7 @@ action:
   create: 创建
   search: 搜索
   apply: 申请
+  accept: 申请
   decline: 拒绝
   readMore: 阅读更多
   expand: 扩大

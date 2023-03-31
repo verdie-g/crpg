@@ -39,6 +39,7 @@ action:
   create: Create
   search: Search
   apply: Apply
+  accept: Accept
   decline: Decline
   readMore: Read more
   expand: Expand
