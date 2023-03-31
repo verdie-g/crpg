@@ -72,11 +72,11 @@ const mountOptions = {
   },
 };
 
-it('respond - apply', async () => {
+it('respond - accept', async () => {
   const { wrapper } = await mountWithRouter(mountOptions, routes, route);
 
   const rows = wrapper.findAll('tr');
-  await rows.at(1)!.find('[data-aq-clan-application-action="apply"]').trigger('click');
+  await rows.at(1)!.find('[data-aq-clan-application-action="accept"]').trigger('click');
   await flushPromises();
 
   expect(mockedRespondToClanInvitation).toBeCalledWith(CLAN_ID, 1, true);
