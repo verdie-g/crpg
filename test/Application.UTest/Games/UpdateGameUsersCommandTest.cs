@@ -66,8 +66,8 @@ public class UpdateGameUsersCommandTest : TestBase
 
         Mock<ICharacterService> characterServiceMock = new();
         characterServiceMock
-            .Setup(cs => cs.GiveExperience(It.IsAny<Character>(), 10))
-            .Callback((Character c, int xp) => c.Experience += xp);
+            .Setup(cs => cs.GiveExperience(It.IsAny<Character>(), 10, true))
+            .Callback((Character c, int xp, bool _) => c.Experience += xp);
         UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object);
         var result = await handler.Handle(new UpdateGameUsersCommand
         {

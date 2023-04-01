@@ -1,6 +1,8 @@
 ﻿using Crpg.Application.Common;
+using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities.Characters;
+using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
 using NUnit.Framework;
 
@@ -12,6 +14,9 @@ public class CharacterServiceTest
     {
         MinimumLevel = 1,
         MaximumLevel = 38,
+        MinimumRetirementLevel = 31,
+        ExperienceMultiplierByGeneration = 0.03f,
+        MaxExperienceMultiplierForGeneration = 1.48f,
         ExperienceForLevelCoefs = new[] { 2f, 0 },
         DefaultAttributePoints = 0,
         AttributePointsPerLevel = 1,
@@ -36,10 +41,28 @@ public class CharacterServiceTest
             ForTournament = false,
             User = new User { ExperienceMultiplier = 2f },
         };
-        characterService.GiveExperience(character, 3);
+        characterService.GiveExperience(character, 3, true);
 
         Assert.That(character.Level, Is.EqualTo(1));
         Assert.That(character.Experience, Is.EqualTo(8));
+    }
+
+
+    [Test]
+    public void GiveExperienceShouldGiveExperienceBypassingMultiplier()
+    {
+        CharacterService characterService = new(ExperienceTable, Constants);
+        Character character = new()
+        {
+            Level = 1,
+            Experience = 2,
+            ForTournament = false,
+            User = new User { ExperienceMultiplier = 2f },
+        };
+        characterService.GiveExperience(character, 3, false);
+
+        Assert.That(character.Level, Is.EqualTo(1));
+        Assert.That(character.Experience, Is.EqualTo(5));
     }
 
     [Test]
@@ -53,7 +76,7 @@ public class CharacterServiceTest
             ForTournament = true,
             User = new User { ExperienceMultiplier = 2f },
         };
-        characterService.GiveExperience(character, 3);
+        characterService.GiveExperience(character, 3, true);
 
         Assert.That(character.Level, Is.EqualTo(1));
         Assert.That(character.Experience, Is.EqualTo(2));
@@ -70,7 +93,7 @@ public class CharacterServiceTest
             ForTournament = false,
             User = new User { ExperienceMultiplier = 2f },
         };
-        characterService.GiveExperience(character, 6000);
+        characterService.GiveExperience(character, 6000, true);
 
         Assert.That(character.Level, Is.EqualTo(2));
         Assert.That(character.Experience, Is.EqualTo(12002));
@@ -154,6 +177,58 @@ public class CharacterServiceTest
         Assert.That(character.Characteristics.WeaponProficiencies.Bow, Is.Zero);
         Assert.That(character.Characteristics.WeaponProficiencies.Throwing, Is.Zero);
         Assert.That(character.Characteristics.WeaponProficiencies.Crossbow, Is.Zero);
+    }
+
+    [TestCase(31, 1.00f, 1, 1.03f)]
+    [TestCase(32, 1.00f, 1, 1.03f)]
+    [TestCase(33, 1.00f, 2, 1.03f)]
+    [TestCase(34, 1.00f, 2, 1.03f)]
+    [TestCase(35, 1.00f, 3, 1.03f)]
+    [TestCase(36, 1.00f, 3, 1.03f)]
+    [TestCase(31, 1.06f, 1, 1.09f)]
+    [TestCase(31, 1.06f, 1, 1.09f)]
+    [TestCase(31, 1.45f, 1, 1.48f)]
+    [TestCase(31, 1.48f, 1, 1.48f)]
+    public void RetireTest(int level, float experienceMultiplier, int expectedPoints, float expectedExperienceMultiplier)
+    {
+        Character character = new()
+        {
+            Generation = 0,
+            Level = level,
+            Experience = 32000,
+            EquippedItems =
+            {
+                new EquippedItem { Slot = ItemSlot.Head },
+                new EquippedItem { Slot = ItemSlot.Hand },
+            },
+            User = new User
+            {
+                HeirloomPoints = 0,
+                ExperienceMultiplier = experienceMultiplier,
+            },
+        };
+
+        CharacterService characterService = new(ExperienceTable, Constants);
+        var error = characterService.Retire(character);
+
+        Assert.That(error, Is.Null);
+        Assert.That(character.Generation, Is.EqualTo(1));
+        Assert.That(character.Level, Is.EqualTo(Constants.MinimumLevel));
+        Assert.That(character.Experience, Is.EqualTo(0));
+        Assert.That(character.User!.HeirloomPoints, Is.EqualTo(expectedPoints));
+        Assert.That(character.User.ExperienceMultiplier, Is.EqualTo(expectedExperienceMultiplier).Within(0.001f));
+        Assert.That(character.EquippedItems, Is.Empty);
+    }
+
+    [Test]
+    public void RetireShouldFailIfLevelTooLow()
+    {
+        Character character = new() { Level = 30 };
+        CharacterService characterService = new(ExperienceTable, Constants);
+        var error = characterService.Retire(character);
+
+        Assert.That(error, Is.Not.Null);
+        Assert.That(error!.Code, Is.EqualTo(ErrorCode.CharacterLevelRequirementNotMet));
     }
 
     [Test]

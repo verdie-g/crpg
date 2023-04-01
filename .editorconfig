@@ -154,6 +154,8 @@ dotnet_diagnostic.CA2253.severity = silent # No numeric characters for log place
 dotnet_diagnostic.CS1570.severity = silent # XML comment has badly formed XML
 dotnet_diagnostic.CS1591.severity = silent # Missing XML comment for publicly visible type
 
+dotnet_diagnostic.IDE0045.severity = silent # 'if' statement can be simplified
+
 dotnet_diagnostic.SA1101.severity = silent # PrefixLocalCallsWithThis
 dotnet_diagnostic.SA1108.severity = silent # BlockStatementsMustNotContainEmbeddedComments
 dotnet_diagnostic.SA1116.severity = silent # SplitParametersMustStartOnLineAfterDeclaration

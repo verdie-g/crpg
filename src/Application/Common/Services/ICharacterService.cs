@@ -1,4 +1,6 @@
-﻿using Crpg.Common.Helpers;
+﻿using System.Diagnostics;
+using Crpg.Application.Common.Results;
+using Crpg.Common.Helpers;
 using Crpg.Domain.Entities.Characters;
 
 namespace Crpg.Application.Common.Services;
@@ -17,7 +19,9 @@ internal interface ICharacterService
     /// <param name="respecialization">If the stats points should be redistributed.</param>
     void ResetCharacterCharacteristics(Character character, bool respecialization = false);
 
-    void GiveExperience(Character character, int experience);
+    Error? Retire(Character character);
+
+    void GiveExperience(Character character, int experience, bool useExperienceMultiplier);
 }
 
 /// <inheritdoc />
@@ -47,7 +51,7 @@ internal class CharacterService : ICharacterService
     }
 
     /// <inheritdoc />
-    public void ResetCharacterCharacteristics(Character character, bool respecialization = false)
+    public void ResetCharacterCharacteristics(Character character, bool respecialization)
     {
         character.Characteristics = new CharacterCharacteristics
         {
@@ -69,18 +73,56 @@ internal class CharacterService : ICharacterService
         character.Class = CharacterClass.Peasant;
     }
 
-    public void GiveExperience(Character character, int experience)
+    public Error? Retire(Character character)
     {
+        if (character.Level < _constants.MinimumRetirementLevel)
+        {
+            return CommonErrors.CharacterLevelRequirementNotMet(_constants.MinimumRetirementLevel, character.Level);
+        }
+
+        int heirloomPoints;
+        if (character.Level < _constants.MinimumRetirementLevel + 2)
+        {
+            heirloomPoints = 1;
+        }
+        else if (character.Level < _constants.MinimumRetirementLevel + 4)
+        {
+            heirloomPoints = 2;
+        }
+        else
+        {
+            heirloomPoints = 3;
+        }
+
+        character.User!.HeirloomPoints += heirloomPoints;
+        character.User.ExperienceMultiplier = Math.Min(
+            character.User.ExperienceMultiplier + _constants.ExperienceMultiplierByGeneration,
+            _constants.MaxExperienceMultiplierForGeneration);
+
+        character.Generation += 1;
+        character.Level = _constants.MinimumLevel;
+        character.Experience = 0;
+        character.EquippedItems.Clear();
+        ResetCharacterCharacteristics(character, respecialization: false);
+        return null;
+    }
+
+    public void GiveExperience(Character character, int experience, bool useExperienceMultiplier)
+    {
+        Debug.Assert(experience >= 0, "Given experience should be positive");
+
         if (character.ForTournament)
         {
             return;
         }
 
-        character.Experience += (int)(character.User!.ExperienceMultiplier * experience);
+        character.Experience += useExperienceMultiplier
+            ? (int)(character.User!.ExperienceMultiplier * experience)
+            : experience;
         int newLevel = _experienceTable.GetLevelForExperience(character.Experience);
-        if (character.Level != newLevel) // if character leveled up
+        int levelDiff = newLevel - character.Level;
+        if (levelDiff != 0) // if character leveled up
         {
-            int levelDiff = newLevel - character.Level;
             character.Characteristics.Attributes.Points += levelDiff * _constants.AttributePointsPerLevel;
             character.Characteristics.Skills.Points += levelDiff * _constants.SkillPointsPerLevel;
             character.Characteristics.WeaponProficiencies.Points += WeaponProficiencyPointsForLevel(newLevel) - WeaponProficiencyPointsForLevel(character.Level);

@@ -91,7 +91,7 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
             int experience = character.Experience;
 
             character.User!.Gold += reward.Gold;
-            _characterService.GiveExperience(character, reward.Experience);
+            _characterService.GiveExperience(character, reward.Experience, useExperienceMultiplier: true);
 
             return new GameUserEffectiveReward
             {

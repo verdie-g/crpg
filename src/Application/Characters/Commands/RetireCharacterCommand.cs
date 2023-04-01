@@ -1,6 +1,5 @@
 using AutoMapper;
 using Crpg.Application.Characters.Models;
-using Crpg.Application.Common;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
@@ -24,16 +23,14 @@ public record RetireCharacterCommand : IMediatorRequest<CharacterViewModel>
         private readonly IMapper _mapper;
         private readonly ICharacterService _characterService;
         private readonly IActivityLogService _activityLogService;
-        private readonly Constants _constants;
 
         public Handler(ICrpgDbContext db, IMapper mapper, ICharacterService characterService,
-            IActivityLogService activityLogService, Constants constants)
+            IActivityLogService activityLogService)
         {
             _db = db;
             _mapper = mapper;
             _characterService = characterService;
             _activityLogService = activityLogService;
-            _constants = constants;
         }
 
         public async Task<Result<CharacterViewModel>> Handle(RetireCharacterCommand req, CancellationToken cancellationToken)
@@ -47,28 +44,13 @@ public record RetireCharacterCommand : IMediatorRequest<CharacterViewModel>
                 return new(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
             }
 
-            if (character.Level < _constants.MinimumRetirementLevel)
+            var error = _characterService.Retire(character);
+            if (error != null)
             {
-                return new(CommonErrors.CharacterLevelRequirementNotMet(_constants.MinimumRetirementLevel, character.Level));
+                return new(error);
             }
 
             _db.ActivityLogs.Add(_activityLogService.CreateCharacterRetiredLog(character.UserId, character.Id, character.Level));
-
-            character.User!.HeirloomPoints += character.Level switch
-            {
-                < 33 => 1,
-                < 35 => 2,
-                _ => 3,
-            };
-            character.User.ExperienceMultiplier = Math.Min(
-                character.User.ExperienceMultiplier + _constants.ExperienceMultiplierByGeneration,
-                _constants.MaxExperienceMultiplierForGeneration);
-
-            character.Generation += 1;
-            character.Level = _constants.MinimumLevel;
-            character.Experience = 0;
-            character.EquippedItems.Clear();
-            _characterService.ResetCharacterCharacteristics(character);
 
             await _db.SaveChangesAsync(cancellationToken);
 

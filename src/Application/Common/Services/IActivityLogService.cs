@@ -7,12 +7,14 @@ internal interface IActivityLogService
     ActivityLog CreateUserCreatedLog(int userId);
     ActivityLog CreateUserDeletedLog(int userId);
     ActivityLog CreateUserRenamedLog(int userId, string oldName, string newName);
+    ActivityLog CreateUserRewardedLog(int userId, int gold, int heirloomPoints);
     ActivityLog CreateItemBoughtLog(int userId, string itemId, int price);
     ActivityLog CreateItemSoldLog(int userId, string itemId, int price);
     ActivityLog CreateCharacterCreatedLog(int userId, int characterId);
     ActivityLog CreateCharacterDeletedLog(int userId, int characterId, int generation, int level);
     ActivityLog CreateCharacterRespecializedLog(int userId, int characterId, int price);
     ActivityLog CreateCharacterRetiredLog(int userId, int characterId, int level);
+    ActivityLog CreateCharacterRewardedLog(int userId, int characterId, int experience);
 }
 
 internal class ActivityLogService : IActivityLogService
@@ -33,6 +35,15 @@ internal class ActivityLogService : IActivityLogService
         {
             new("oldName", oldName),
             new("newName", newName),
+        });
+    }
+
+    public ActivityLog CreateUserRewardedLog(int userId, int gold, int heirloomPoints)
+    {
+        return CreateLog(ActivityLogType.UserRewarded, userId, new ActivityLogMetadata[]
+        {
+            new("gold", gold.ToString()),
+            new("heirloomPoints", heirloomPoints.ToString()),
         });
     }
 
@@ -87,6 +98,15 @@ internal class ActivityLogService : IActivityLogService
         {
             new("characterId", characterId.ToString()),
             new("level", level.ToString()),
+        });
+    }
+
+    public ActivityLog CreateCharacterRewardedLog(int userId, int characterId, int experience)
+    {
+        return CreateLog(ActivityLogType.CharacterRewarded, userId, new ActivityLogMetadata[]
+        {
+            new("characterId", characterId.ToString()),
+            new("experience", experience.ToString()),
         });
     }
 

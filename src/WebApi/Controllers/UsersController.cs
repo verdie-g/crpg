@@ -131,6 +131,22 @@ public class UsersController : BaseController
     }
 
     /// <summary>
+    /// Reward user.
+    /// </summary>
+    /// <param name="id">User id.</param>
+    /// <param name="req">The reward.</param>
+    /// <returns>The updated user.</returns>
+    /// <response code="200">Done.</response>
+    /// <response code="400">Bad Request.</response>
+    [Authorize(AdminPolicy)]
+    [HttpPut("{id}/rewards")]
+    public Task<ActionResult<Result<UserViewModel>>> RewardUser([FromRoute] int id, [FromBody] RewardUserCommand req)
+    {
+        req = req with { UserId = id };
+        return ResultToActionAsync(Mediator.Send(req));
+    }
+
+    /// <summary>
     /// Deletes current user.
     /// </summary>
     /// <response code="204">Deleted.</response>
@@ -344,6 +360,24 @@ public class UsersController : BaseController
             CharacterId = id,
             UserId = CurrentUser.User!.Id,
         }));
+    }
+
+    /// <summary>
+    /// Reward character.
+    /// </summary>
+    /// <param name="userId">User id.</param>
+    /// <param name="characterId">Character id.</param>
+    /// <param name="req">The reward.</param>
+    /// <returns>The updated character.</returns>
+    /// <response code="200">Done.</response>
+    /// <response code="400">Bad Request.</response>
+    [Authorize(AdminPolicy)]
+    [HttpPut("{userId}/characters/{characterId}/rewards")]
+    public Task<ActionResult<Result<CharacterViewModel>>> RewardCharacter([FromRoute] int userId,
+        [FromRoute] int characterId, [FromBody] RewardCharacterCommand req)
+    {
+        req = req with { CharacterId = characterId, UserId = userId };
+        return ResultToActionAsync(Mediator.Send(req));
     }
 
     /// <summary>
