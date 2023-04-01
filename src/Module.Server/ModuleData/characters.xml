@@ -411,4 +411,634 @@
       </EquipmentRoster>
     </Equipments>
   </NPCCharacter>
+
+  <NPCCharacter id="crpg_bot_angrywife"
+                name="{=}Angry Wife">
+    <face>
+      <BodyProperties version="4"
+                      age="54.66"
+                      weight="0.5"
+                      build="0.5"
+                      key="000D440600FC100A268933B883468BC8B747526B93835D83728B885888D497DC058776560877BB7400000000000000000000000000FC10C40000000068FC1044" />
+    </face>
+    <skills>
+      <skill id="Strength" value="24" />
+      <skill id="Agility" value="15" />
+      <skill id="IronFlesh" value="8" />
+      <skill id="PowerStrike" value="8" />
+      <skill id="PowerDraw" value="0" />
+      <skill id="PowerThrow" value="0" />
+      <skill id="Athletics" value="130" />
+      <skill id="Riding" value="0" />
+      <skill id="WeaponMaster" value="5" />
+      <skill id="MountedArchery" value="0" />
+      <skill id="Shield" value="0" />
+      <skill id="OneHanded" value="0" />
+      <skill id="TwoHanded" value="0" />
+      <skill id="Polearm" value="152" />
+      <skill id="Bow" value="0" />
+      <skill id="Crossbow" value="0" />
+      <skill id="Throwing" value="0" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.crpg_bo_staff_t1" />
+        <equipment slot="Body" id="Item.crpg_vlandian_dress" />
+        <equipment slot="Leg" id="Item.crpg_ladys_shoe" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+
+  <NPCCharacter id="crpg_bot_Robertus"
+                name="{=}Robertus">
+    <face>
+      <BodyProperties version="4"
+                      age="23"
+                      weight="0.3333"
+                      build="0"
+                      key="000D440600FC100A268933B883468BC8B747526B93835D83728B885888D497DC058776560877BB7400000000000000000000000000FC10C40000000068FC1044" />
+    </face>
+    <skills>
+      <skill id="Strength" value="21" />
+      <skill id="Agility" value="18" />
+      <skill id="IronFlesh" value="3" />
+      <skill id="PowerStrike" value="7" />
+      <skill id="PowerDraw" value="0" />
+      <skill id="PowerThrow" value="0" />
+      <skill id="Athletics" value="156" />
+      <skill id="Riding" value="0" />
+      <skill id="WeaponMaster" value="5" />
+      <skill id="MountedArchery" value="0" />
+      <skill id="Shield" value="2" />
+      <skill id="OneHanded" value="154" />
+      <skill id="TwoHanded" value="0" />
+      <skill id="Polearm" value="0" />
+      <skill id="Bow" value="0" />
+      <skill id="Crossbow" value="0" />
+      <skill id="Throwing" value="0" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Head" id="Item.crpg_fluted_helm_with_faceplate" />
+        <equipment slot="Cape" id="Item.crpg_noble_pauldron_with_scarf" />
+        <equipment slot="Body" id="Item.crpg_mail_with_tabbard6" />
+        <equipment slot="Gloves" id="Item.crpg_mail_mitten" />
+        <equipment slot="Leg" id="Item.crpg_mail_chausses" />
+        <equipment slot="Horse" id="Item." />
+        <equipment slot="HorseHarness" id="Item." />
+        <equipment slot="Item0" id="Item.crpg_vlandia_noble_sword_1_t5" />
+        <equipment slot="Item1" id="Item.crpg_wide_heater_shield" />
+        <equipment slot="Item2" id="Item." />
+        <equipment slot="Item3" id="Item." />
+        <equipment slot="ExtraWeaponSlot" id="Item." />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+
+  <NPCCharacter id="crpg_bot_ernauttheugly"
+                name="{=}Ernaut The Ugly">
+    <face>
+      <BodyProperties version="4"
+                      age="23"
+                      weight="0.3333"
+                      build="0"
+                      key="00000C07000000010011111211151111000701000010000000111011000101000000500202111110000000000000000000000000000000000000000000A00000" />
+    </face>
+    <skills>
+      <skill id="Strength" value="15" />
+      <skill id="Agility" value="24" />
+      <skill id="IronFlesh" value="4" />
+      <skill id="PowerStrike" value="5" />
+      <skill id="PowerDraw" value="0" />
+      <skill id="PowerThrow" value="0" />
+      <skill id="Athletics" value="48" />
+      <skill id="Riding" value="160" />
+      <skill id="WeaponMaster" value="4" />
+      <skill id="MountedArchery" value="0" />
+      <skill id="Shield" value="2" />
+      <skill id="OneHanded" value="149" />
+      <skill id="TwoHanded" value="0" />
+      <skill id="Polearm" value="0" />
+      <skill id="Bow" value="0" />
+      <skill id="Crossbow" value="0" />
+      <skill id="Throwing" value="0" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Head" id="Item.crpg_sallet_no_visor" />
+        <equipment slot="Cape" id="Item.crpg_chainmail_shoulder_armor" />
+        <equipment slot="Body" id="Item.crpg_red_coat_over_mail" />
+        <equipment slot="Gloves" id="Item.crpg_mail_mitten" />
+        <equipment slot="Leg" id="Item.crpg_strapped_mail_chausses" />
+        <equipment slot="Horse" id="Item.crpg_mount_greathorse_11" />
+        <equipment slot="HorseHarness" id="Item.crpg_halfchain_barding" />
+        <equipment slot="Item0" id="Item.crpg_vlandia_sword_5_t5" />
+        <equipment slot="Item1" id="Item.crpg_bracketed_heater_shield" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+
+  <NPCCharacter id="crpg_bot_longhorn"
+                name="{=}Longhorn">
+    <face>
+      <BodyProperties version="4"
+                      age="23"
+                      weight="0.3333"
+                      build="0"
+                      key="00000C07000000010011111211151111000701000010000000111011000101000000500202111110000000000000000000000000000000000000000000A00000" />
+    </face>
+    <skills>
+      <skill id="Strength" value="18" />
+      <skill id="Agility" value="18" />
+      <skill id="IronFlesh" value="3" />
+      <skill id="PowerStrike" value="6" />
+      <skill id="PowerDraw" value="0" />
+      <skill id="PowerThrow" value="0" />
+      <skill id="Athletics" value="156" />
+      <skill id="Riding" value="0" />
+      <skill id="WeaponMaster" value="5" />
+      <skill id="MountedArchery" value="0" />
+      <skill id="Shield" value="0" />
+      <skill id="OneHanded" value="0" />
+      <skill id="TwoHanded" value="0" />
+      <skill id="Polearm" value="152" />
+      <skill id="Bow" value="0" />
+      <skill id="Crossbow" value="0" />
+      <skill id="Throwing" value="0" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Head" id="Item.crpg_peaked_helmet_over_laced_coif" />
+        <equipment slot="Cape" id="Item.crpg_padded_leather_shoulders" />
+        <equipment slot="Body" id="Item.crpg_padded_coat" />
+        <equipment slot="Gloves" id="Item.crpg_padded_mitten" />
+        <equipment slot="Leg" id="Item.crpg_folded_town_boots" />
+        <equipment slot="Item0" id="Item.crpg_simple_poleaxev2" />
+        <equipment slot="ExtraWeaponSlot" id="Item.crpg_thamaskene_pike_t4" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+
+  <NPCCharacter id="crpg_bot_willemwolfbane"
+                name="{=}Willem Wolfbane">
+    <face>
+      <BodyProperties version="4"
+                      age="23"
+                      weight="0.3333"
+                      build="0"
+                      key="00000C07000000010011111211151111000701000010000000111011000101000000500202111110000000000000000000000000000000000000000000A00000" />
+    </face>
+    <skills>
+      <skill id="Strength" value="18" />
+      <skill id="Agility" value="21" />
+      <skill id="IronFlesh" value="1" />
+      <skill id="PowerStrike" value="3" />
+      <skill id="PowerDraw" value="6" />
+      <skill id="PowerThrow" value="0" />
+      <skill id="Athletics" value="162" />
+      <skill id="Riding" value="0" />
+      <skill id="WeaponMaster" value="7" />
+      <skill id="MountedArchery" value="0" />
+      <skill id="Shield" value="0" />
+      <skill id="OneHanded" value="0" />
+      <skill id="TwoHanded" value="101" />
+      <skill id="Polearm" value="0" />
+      <skill id="Bow" value="150" />
+      <skill id="Crossbow" value="0" />
+      <skill id="Throwing" value="0" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Head" id="Item.crpg_ridged_northernhelm" />
+        <equipment slot="Cape" id="Item.crpg_bearskin" />
+        <equipment slot="Body" id="Item.crpg_battania_light_armor_a" />
+        <equipment slot="Gloves" id="Item.crpg_battania_noble_bracers" />
+        <equipment slot="Leg" id="Item.crpg_turndown_leather_boots" />
+        <equipment slot="Item0" id="Item.crpg_noble_long_bow" />
+        <equipment slot="Item1" id="Item.crpg_piercing_arrows" />
+        <equipment slot="Item2" id="Item.crpg_piercing_arrows" />
+        <equipment slot="Item3" id="Item.crpg_battania_2hsword_2_t3" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+
+  <NPCCharacter id="crpg_bot_bruce"
+                name="{=}Bruce">
+    <face>
+      <BodyProperties version="4"
+                      age="23"
+                      weight="0.3333"
+                      build="0"
+                      key="00000C07000000010011111211151111000701000010000000111011000101000000500202111110000000000000000000000000000000000000000000A00000" />
+    </face>
+    <skills>
+      <skill id="Strength" value="24" />
+      <skill id="Agility" value="15" />
+      <skill id="IronFlesh" value="5" />
+      <skill id="PowerStrike" value="8" />
+      <skill id="PowerDraw" value="0" />
+      <skill id="PowerThrow" value="0" />
+      <skill id="Athletics" value="130" />
+      <skill id="Riding" value="0" />
+      <skill id="WeaponMaster" value="5" />
+      <skill id="MountedArchery" value="0" />
+      <skill id="Shield" value="0" />
+      <skill id="OneHanded" value="0" />
+      <skill id="TwoHanded" value="151" />
+      <skill id="Polearm" value="0" />
+      <skill id="Bow" value="0" />
+      <skill id="Crossbow" value="0" />
+      <skill id="Throwing" value="0" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Head" id="Item.crpg_battanian_noble_helmet_with_feather" />
+        <equipment slot="Cape" id="Item.crpg_battania_shoulder_strap" />
+        <equipment slot="Body" id="Item.crpg_scale_armor" />
+        <equipment slot="Gloves" id="Item.crpg_battania_warlord_bracers" />
+        <equipment slot="Leg" id="Item.crpg_rough_tied_boots" />
+        <equipment slot="HorseHarness" id="Item." />
+        <equipment slot="Item0" id="Item.crpg_greataxe" />
+        <equipment slot="ExtraWeaponSlot" id="Item." />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+
+  <NPCCharacter id="crpg_bot_wylieoneeye"
+                name="{=}Wylie One-Eye">
+    <face>
+      <BodyProperties version="4"
+                      age="23"
+                      weight="0.3333"
+                      build="0"
+                      key="00000C07000000010011111211151111000701000010000000111011000101000000500202111110000000000000000000000000000000000000000000A00000" />
+    </face>
+    <skills>
+      <skill id="Strength" value="15" />
+      <skill id="Agility" value="24" />
+      <skill id="IronFlesh" value="3" />
+      <skill id="PowerStrike" value="5" />
+      <skill id="PowerDraw" value="0" />
+      <skill id="PowerThrow" value="0" />
+      <skill id="Athletics" value="208" />
+      <skill id="Riding" value="0" />
+      <skill id="WeaponMaster" value="7" />
+      <skill id="MountedArchery" value="0" />
+      <skill id="Shield" value="0" />
+      <skill id="OneHanded" value="180" />
+      <skill id="TwoHanded" value="0" />
+      <skill id="Polearm" value="0" />
+      <skill id="Bow" value="0" />
+      <skill id="Crossbow" value="0" />
+      <skill id="Throwing" value="0" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Head" id="Item.crpg_brass_aserai_helmet_b_closed" />
+        <equipment slot="Cape" id="Item.crpg_desert_leather_shoulderpad" />
+        <equipment slot="Body" id="Item.crpg_aserai_chain_plate_armor_c" />
+        <equipment slot="Gloves" id="Item.crpg_guarded_padded_vambrace" />
+        <equipment slot="Leg" id="Item.crpg_southern_moccasins" />
+        <equipment slot="Item0" id="Item.crpg_aserai_noble_sword_2_t5" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+
+  <NPCCharacter id="crpg_bot_barbaros"
+                name="{=}Barbaros">
+    <face>
+      <BodyProperties version="4"
+                      age="23"
+                      weight="0.3333"
+                      build="0"
+                      key="00000C07000000010011111211151111000701000010000000111011000101000000500202111110000000000000000000000000000000000000000000A00000" />
+    </face>
+    <skills>
+      <skill id="Strength" value="18" />
+      <skill id="Agility" value="18" />
+      <skill id="IronFlesh" value="1" />
+      <skill id="PowerStrike" value="2" />
+      <skill id="PowerDraw" value="0" />
+      <skill id="PowerThrow" value="6" />
+      <skill id="Athletics" value="136" />
+      <skill id="Riding" value="0" />
+      <skill id="WeaponMaster" value="6" />
+      <skill id="MountedArchery" value="0" />
+      <skill id="Shield" value="0" />
+      <skill id="OneHanded" value="0" />
+      <skill id="TwoHanded" value="0" />
+      <skill id="Polearm" value="82" />
+      <skill id="Bow" value="0" />
+      <skill id="Crossbow" value="0" />
+      <skill id="Throwing" value="140" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Head" id="Item.crpg_aserai_crown" />
+        <equipment slot="Cape" id="Item.crpg_southern_shawl" />
+        <equipment slot="Body" id="Item.crpg_leather_strips_over_padded_robe" />
+        <equipment slot="Leg" id="Item.crpg_wrapped_shoes" />
+        <equipment slot="Item0" id="Item.crpg_eastern_javelin_3_t4" />
+        <equipment slot="Item1" id="Item.crpg_eastern_javelin_3_t4" />
+        <equipment slot="Item2" id="Item.crpg_eastern_javelin_3_t4" />
+        <equipment slot="Item3" id="Item.crpg_iklwa_spear_1" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+
+  <NPCCharacter id="crpg_bot_lanceelittle"
+                name="{=}Lance E'Little">
+    <face>
+      <BodyProperties version="4"
+                      age="23"
+                      weight="0.3333"
+                      build="0"
+                      key="00000C07000000010011111211151111000701000010000000111011000101000000500202111110000000000000000000000000000000000000000000A00000" />
+    </face>
+    <skills>
+      <skill id="Strength" value="18" />
+      <skill id="Agility" value="18" />
+      <skill id="IronFlesh" value="2" />
+      <skill id="PowerStrike" value="6" />
+      <skill id="PowerDraw" value="0" />
+      <skill id="PowerThrow" value="0" />
+      <skill id="Athletics" value="156" />
+      <skill id="Riding" value="120" />
+      <skill id="WeaponMaster" value="6" />
+      <skill id="MountedArchery" value="0" />
+      <skill id="Shield" value="3" />
+      <skill id="OneHanded" value="103" />
+      <skill id="TwoHanded" value="0" />
+      <skill id="Polearm" value="130" />
+      <skill id="Bow" value="0" />
+      <skill id="Crossbow" value="0" />
+      <skill id="Throwing" value="0" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Head" id="Item.crpg_pothelm" />
+        <equipment slot="Cape" id="Item.crpg_imperial_lamellar_shoulders" />
+        <equipment slot="Body" id="Item.crpg_lamellar_with_scale_skirt" />
+        <equipment slot="Gloves" id="Item.crpg_reinforced_padded_mitten" />
+        <equipment slot="Leg" id="Item.crpg_lamellar_plate_boots" />
+        <equipment slot="Horse" id="Item.crpg_mount1_charger_11" />
+        <equipment slot="HorseHarness" id="Item.crpg_imperial_scale_barding" />
+        <equipment slot="Item0" id="Item.crpg_empire_lance_1_t3" />
+        <equipment slot="Item1" id="Item.crpg_jousting_shield" />
+        <equipment slot="Item2" id="Item.crpg_empire_mace_3_t4" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="crpg_bot_augustus"
+                name="{=}Augustus">
+    <face>
+      <BodyProperties version="4"
+                      age="23"
+                      weight="0.3333"
+                      build="0"
+                      key="00000C07000000010011111211151111000701000010000000111011000101000000500202111110000000000000000000000000000000000000000000A00000" />
+    </face>
+    <skills>
+      <skill id="Strength" value="15" />
+      <skill id="Agility" value="18" />
+      <skill id="IronFlesh" value="3" />
+      <skill id="PowerStrike" value="5" />
+      <skill id="PowerDraw" value="0" />
+      <skill id="PowerThrow" value="0" />
+      <skill id="Athletics" value="156" />
+      <skill id="Riding" value="0" />
+      <skill id="WeaponMaster" value="6" />
+      <skill id="MountedArchery" value="0" />
+      <skill id="Shield" value="0" />
+      <skill id="OneHanded" value="79" />
+      <skill id="TwoHanded" value="0" />
+      <skill id="Polearm" value="0" />
+      <skill id="Bow" value="0" />
+      <skill id="Crossbow" value="140" />
+      <skill id="Throwing" value="0" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Head" id="Item.crpg_spiked_kettle_over_imperial_padding" />
+        <equipment slot="Cape" id="Item.crpg_woven_leather_shoulders" />
+        <equipment slot="Body" id="Item.crpg_padded_cloth_with_strips" />
+        <equipment slot="Gloves" id="Item.crpg_woven_leather_bracers" />
+        <equipment slot="Leg" id="Item.crpg_strapped_leather_boots" />
+        <equipment slot="Item0" id="Item.crpg_crossbow_j" />
+        <equipment slot="Item1" id="Item.crpg_bolt_c" />
+        <equipment slot="Item2" id="Item.crpg_bolt_c" />
+        <equipment slot="Item3" id="Item.crpg_iron_spatha_sword_t2" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+
+  <NPCCharacter id="crpg_bot_demetrius"
+                name="{=}Demetrius">
+    <face>
+      <BodyProperties version="4"
+                      age="23"
+                      weight="0.3333"
+                      build="0"
+                      key="00000C07000000010011111211151111000701000010000000111011000101000000500202111110000000000000000000000000000000000000000000A00000" />
+    </face>
+    <skills>
+      <skill id="Strength" value="21" />
+      <skill id="Agility" value="18" />
+      <skill id="IronFlesh" value="1" />
+      <skill id="PowerStrike" value="7" />
+      <skill id="PowerDraw" value="0" />
+      <skill id="PowerThrow" value="0" />
+      <skill id="Athletics" value="156" />
+      <skill id="Riding" value="0" />
+      <skill id="WeaponMaster" value="6" />
+      <skill id="MountedArchery" value="0" />
+      <skill id="Shield" value="3" />
+      <skill id="OneHanded" value="87" />
+      <skill id="TwoHanded" value="0" />
+      <skill id="Polearm" value="140" />
+      <skill id="Bow" value="0" />
+      <skill id="Crossbow" value="0" />
+      <skill id="Throwing" value="0" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Head" id="Item.crpg_empire_battle_crown_west" />
+        <equipment slot="Cape" id="Item.crpg_studded_imperial_neckguard" />
+        <equipment slot="Body" id="Item.crpg_imperial_lamellar_over_leather" />
+        <equipment slot="Gloves" id="Item.crpg_padded_vambrace" />
+        <equipment slot="Leg" id="Item.crpg_strapped_leather_boots" />
+        <equipment slot="Item0" id="Item.crpg_hoplite_spear_1" />
+        <equipment slot="Item1" id="Item.crpg_leather_round_shield" />
+        <equipment slot="Item2" id="Item.crpg_empire_noble_sword_1_t5" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+
+  <NPCCharacter id="crpg_bot_thundergrip"
+                name="{=}Thundergrip">
+    <face>
+      <BodyProperties version="4"
+                      age="23"
+                      weight="0.3333"
+                      build="0"
+                      key="00000C07000000010011111211151111000701000010000000111011000101000000500202111110000000000000000000000000000000000000000000A00000" />
+    </face>
+    <skills>
+      <skill id="Strength" value="21" />
+      <skill id="Agility" value="18" />
+      <skill id="IronFlesh" value="4" />
+      <skill id="PowerStrike" value="7" />
+      <skill id="PowerDraw" value="0" />
+      <skill id="PowerThrow" value="0" />
+      <skill id="Athletics" value="156" />
+      <skill id="Riding" value="0" />
+      <skill id="WeaponMaster" value="6" />
+      <skill id="MountedArchery" value="0" />
+      <skill id="Shield" value="0" />
+      <skill id="OneHanded" value="0" />
+      <skill id="TwoHanded" value="165" />
+      <skill id="Polearm" value="0" />
+      <skill id="Bow" value="0" />
+      <skill id="Crossbow" value="0" />
+      <skill id="Throwing" value="0" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Head" id="Item.crpg_closed_goggled_helmet" />
+        <equipment slot="Cape" id="Item.crpg_mail_shoulders" />
+        <equipment slot="Body" id="Item.crpg_sturgian_chainmale_longsleeve" />
+        <equipment slot="Gloves" id="Item.crpg_reinforced_leather_vambraces" />
+        <equipment slot="Leg" id="Item.crpg_sturgia_boots_b" />
+        <equipment slot="Item0" id="Item.crpg_northern_2hsword_t4" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+
+  <NPCCharacter id="crpg_bot_thidrikthebold"
+                name="{=}Thidrik the Bold">
+    <face>
+      <BodyProperties version="4"
+                      age="23"
+                      weight="0.3333"
+                      build="0"
+                      key="00000C07000000010011111211151111000701000010000000111011000101000000500202111110000000000000000000000000000000000000000000A00000" />
+    </face>
+    <skills>
+      <skill id="Strength" value="15" />
+      <skill id="Agility" value="24" />
+      <skill id="IronFlesh" value="1" />
+      <skill id="PowerStrike" value="5" />
+      <skill id="PowerDraw" value="0" />
+      <skill id="PowerThrow" value="0" />
+      <skill id="Athletics" value="208" />
+      <skill id="Riding" value="0" />
+      <skill id="WeaponMaster" value="5" />
+      <skill id="MountedArchery" value="0" />
+      <skill id="Shield" value="4" />
+      <skill id="OneHanded" value="159" />
+      <skill id="TwoHanded" value="0" />
+      <skill id="Polearm" value="0" />
+      <skill id="Bow" value="0" />
+      <skill id="Crossbow" value="0" />
+      <skill id="Throwing" value="0" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Head" id="Item.crpg_goggled_helmet_over_leather" />
+        <equipment slot="Cape" id="Item.crpg_brass_lamellar_shoulder_white" />
+        <equipment slot="Body" id="Item.crpg_northern_lamellar_armor" />
+        <equipment slot="Gloves" id="Item.crpg_northern_brass_bracers" />
+        <equipment slot="Leg" id="Item.crpg_sturgia_boots_c" />
+        <equipment slot="Item0" id="Item.crpg_northern_battle_axe_t3" />
+        <equipment slot="Item1" id="Item.crpg_viking_round_shield" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+
+  <NPCCharacter id="crpg_bot_jebe"
+                name="{=}Jebe">
+    <face>
+      <BodyProperties version="4"
+                      age="23"
+                      weight="0.3333"
+                      build="0"
+                      key="00000C07000000010011111211151111000701000010000000111011000101000000500202111110000000000000000000000000000000000000000000A00000" />
+    </face>
+    <skills>
+      <skill id="Strength" value="12" />
+      <skill id="Agility" value="24" />
+      <skill id="IronFlesh" value="4" />
+      <skill id="PowerStrike" value="4" />
+      <skill id="PowerDraw" value="4" />
+      <skill id="PowerThrow" value="0" />
+      <skill id="Athletics" value="0" />
+      <skill id="Riding" value="160" />
+      <skill id="WeaponMaster" value="8" />
+      <skill id="MountedArchery" value="4" />
+      <skill id="Shield" value="0" />
+      <skill id="OneHanded" value="94" />
+      <skill id="TwoHanded" value="0" />
+      <skill id="Polearm" value="0" />
+      <skill id="Bow" value="170" />
+      <skill id="Crossbow" value="0" />
+      <skill id="Throwing" value="0" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Head" id="Item.crpg_plumed_nomad_helmet" />
+        <equipment slot="Cape" id="Item.crpg_leather_lamellar_shoulders" />
+        <equipment slot="Body" id="Item.crpg_leather_lamellar_armor" />
+        <equipment slot="Gloves" id="Item.crpg_steppe_leather_vambraces" />
+        <equipment slot="Leg" id="Item.crpg_reinforced_suede_boots" />
+        <equipment slot="Horse" id="Item.crpg_mount_rouncey_13" />
+        <equipment slot="HorseHarness" id="Item.crpg_steppe_half_barding" />
+        <equipment slot="Item0" id="Item.crpg_composite_steppe_bow" />
+        <equipment slot="Item1" id="Item.crpg_broad_arrows_a" />
+        <equipment slot="Item2" id="Item.crpg_broad_arrows_a" />
+        <equipment slot="Item3" id="Item.crpg_khuzait_sword_3_t3" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+
+  <NPCCharacter id="crpg_bot_chormakhan"
+                name="{=}Chormakhan">
+    <face>
+      <BodyProperties version="4"
+                      age="23"
+                      weight="0.3333"
+                      build="0"
+                      key="00000C07000000010011111211151111000701000010000000111011000101000000500202111110000000000000000000000000000000000000000000A00000" />
+    </face>
+    <skills>
+      <skill id="Strength" value="18" />
+      <skill id="Agility" value="18" />
+      <skill id="IronFlesh" value="2" />
+      <skill id="PowerStrike" value="6" />
+      <skill id="PowerDraw" value="0" />
+      <skill id="PowerThrow" value="0" />
+      <skill id="Athletics" value="156" />
+      <skill id="Riding" value="0" />
+      <skill id="WeaponMaster" value="6" />
+      <skill id="MountedArchery" value="0" />
+      <skill id="Shield" value="0" />
+      <skill id="OneHanded" value="0" />
+      <skill id="TwoHanded" value="0" />
+      <skill id="Polearm" value="163" />
+      <skill id="Bow" value="0" />
+      <skill id="Crossbow" value="0" />
+      <skill id="Throwing" value="0" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Head" id="Item.crpg_spiked_helmet" />
+        <equipment slot="Cape" id="Item.crpg_eastern_studded_shoulders" />
+        <equipment slot="Body" id="Item.crpg_khuzait_lamellar_strapped" />
+        <equipment slot="Gloves" id="Item.crpg_eastern_plated_leather_vambraces" />
+        <equipment slot="Leg" id="Item.crpg_khuzait_curved_boots" />
+        <equipment slot="HorseHarness" id="Item." />
+        <equipment slot="Item0" id="Item.crpg_khuzait_polearm_1_t4" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+
 </MPCharacters>
