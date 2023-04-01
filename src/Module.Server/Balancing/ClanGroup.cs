@@ -25,7 +25,7 @@ internal class ClanGroup
 
     public float Weight(float p = MatchBalancer.PowerParameter)
     {
-        return MathHelper.PowerSumBy(Members, u => u.Weight, p) * (1 + Size / 50f);
+        return MathHelper.PowerSumBy(Members, u => u.Weight, p) * (1 + Size * 0.028f);
     }
 
     public float WeightPMean(float p = MatchBalancer.PowerParameter)
