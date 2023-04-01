@@ -2,10 +2,11 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Text;
-    using System.Text.Json;
+    using Newtonsoft.Json;
     using System.Text.RegularExpressions;
     using Crpg.Module.Api.Models.Characters;
     using TaleWorlds.Core;
+using Newtonsoft.Json.Converters;
 
     namespace Crpg.Module.UTest.Rating;
     internal class CrpgRatingAnalysis
@@ -27,14 +28,22 @@
 
                         string base64RoundResultJson = m.Groups[1].Value;
                         string roundResultJson = Encoding.UTF8.GetString(Convert.FromBase64String(base64RoundResultJson));
-                        var roundResult = JsonSerializer.Deserialize<RoundResultData>(roundResultJson)!;
-                        results.Add(roundResult);
-            }
+            // Use Json.NET for deserialization
+            var roundResult = JsonConvert.DeserializeObject<RoundResultData>(roundResultJson, new JsonSerializerSettings
+            {
+                Converters = { new StringEnumConverter() }
+            });
 
-                _results = results;
+            if (roundResult != null)
+            {
+                results.Add(roundResult);
             }
+        }
 
-            public float AccuratePredictionPercentage(Func<RoundResultData, BattleSideEnum> predictionMethod)
+        _results = results;
+    }
+
+    public float AccuratePredictionPercentage(Func<RoundResultData, BattleSideEnum> predictionMethod)
             {
                 return _results.Sum(r => predictionMethod(r) == r.WinnerSide ? 1 : 0) / (float)_results.Count();
             }
