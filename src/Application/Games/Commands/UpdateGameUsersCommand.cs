@@ -27,12 +27,14 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
         private readonly ICharacterService _characterService;
+        private readonly IActivityLogService _activityLogService;
 
-        public Handler(ICrpgDbContext db, IMapper mapper, ICharacterService characterService)
+        public Handler(ICrpgDbContext db, IMapper mapper, ICharacterService characterService, IActivityLogService activityLogService)
         {
             _db = db;
             _mapper = mapper;
             _characterService = characterService;
+            _activityLogService = activityLogService;
         }
 
         public async Task<Result<UpdateGameUsersResult>> Handle(UpdateGameUsersCommand req,
@@ -162,6 +164,7 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
                     RepairCost = 0,
                     Broke = true,
                 });
+                _db.ActivityLogs.Add(_activityLogService.CreateItemBrokeLog(character.UserId, userItem.BaseItemId));
             }
 
             return repairedItems;

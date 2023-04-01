@@ -8,6 +8,8 @@ internal enum CrpgActivityLogType
     UserRewarded,
     ItemBought,
     ItemSold,
+    ItemBroke,
+    ItemUpgraded,
     CharacterCreated,
     CharacterDeleted,
     CharacterRespecialized,

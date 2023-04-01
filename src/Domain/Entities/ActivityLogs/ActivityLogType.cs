@@ -8,6 +8,8 @@ public enum ActivityLogType
     UserRewarded,
     ItemBought,
     ItemSold,
+    ItemBroke,
+    ItemUpgraded,
     CharacterCreated,
     CharacterDeleted,
     CharacterRespecialized,

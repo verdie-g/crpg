@@ -1,9 +1,11 @@
 ﻿using Crpg.Application.Common;
 using Crpg.Application.Common.Results;
+using Crpg.Application.Common.Services;
 using Crpg.Application.Items.Commands;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
+using Moq;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Items;
@@ -23,7 +25,9 @@ public class UpgradeUserItemCommandTest : TestBase
         ArrangeDb.Users.Add(user);
         await ArrangeDb.SaveChangesAsync();
 
-        UpgradeUserItemCommand.Handler handler = new(ActDb, Mapper, Constants);
+        Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
+
+        UpgradeUserItemCommand.Handler handler = new(ActDb, Mapper, activityLogServiceMock.Object, Constants);
         var result = await handler.Handle(new UpgradeUserItemCommand
         {
             UserItemId = 1,
@@ -46,7 +50,9 @@ public class UpgradeUserItemCommandTest : TestBase
         ArrangeDb.Users.Add(user);
         await ArrangeDb.SaveChangesAsync();
 
-        UpgradeUserItemCommand.Handler handler = new(ActDb, Mapper, Constants);
+        Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
+
+        UpgradeUserItemCommand.Handler handler = new(ActDb, Mapper, activityLogServiceMock.Object, Constants);
         var result = await handler.Handle(new UpgradeUserItemCommand
         {
             UserItemId = userItem.Id,
@@ -69,7 +75,9 @@ public class UpgradeUserItemCommandTest : TestBase
         ArrangeDb.Users.Add(user);
         await ArrangeDb.SaveChangesAsync();
 
-        UpgradeUserItemCommand.Handler handler = new(ActDb, Mapper, Constants);
+        Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
+
+        UpgradeUserItemCommand.Handler handler = new(ActDb, Mapper, activityLogServiceMock.Object, Constants);
         var result = await handler.Handle(new UpgradeUserItemCommand
         {
             UserItemId = userItem.Id,

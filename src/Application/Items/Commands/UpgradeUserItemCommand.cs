@@ -3,6 +3,7 @@ using Crpg.Application.Common;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
+using Crpg.Application.Common.Services;
 using Crpg.Application.Items.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -21,12 +22,14 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
 
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
+        private readonly IActivityLogService _activityLogService;
         private readonly Constants _constants;
 
-        public Handler(ICrpgDbContext db, IMapper mapper, Constants constants)
+        public Handler(ICrpgDbContext db, IMapper mapper, IActivityLogService activityLogService, Constants constants)
         {
             _db = db;
             _mapper = mapper;
+            _activityLogService = activityLogService;
             _constants = constants;
         }
 
@@ -57,6 +60,8 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
                 }
 
                 userItem.User!.Gold -= repairCost;
+
+                _db.ActivityLogs.Add(_activityLogService.CreateItemUpgradedLog(userItem.UserId, userItem.BaseItemId, repairCost, 0));
             }
             else // looming
             {
@@ -68,6 +73,8 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
                 }
 
                 userItem.User!.HeirloomPoints -= 1;
+
+                _db.ActivityLogs.Add(_activityLogService.CreateItemUpgradedLog(userItem.UserId, userItem.BaseItemId, 0, 1));
 #endif
             }
 
