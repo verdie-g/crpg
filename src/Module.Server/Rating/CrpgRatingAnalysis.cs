@@ -40,10 +40,12 @@ internal class CrpgRatingAnalysis
             {
                 Converters = { new StringEnumConverter() }
             });
+
             if (roundResult != null)
             {
+                if (roundResult.Attackers.Count + roundResult.Defenders.Count > 30)
                 results.Add(roundResult);
-            }
+                }
             }
             catch (FormatException)
             {

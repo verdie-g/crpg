@@ -16,9 +16,10 @@ public class RatingAnalysisTest
     [Test]
     public void TestDifferentRating()
     {
-        Debug.Print("penaltyfactor,prediction");
+        
         var ratingAnalysis = new CrpgRatingAnalysis(@"A:\log.txt");
-        for (int i = 0; i < 100; i++)
+        Debug.Print("penaltyfactor,prediction");
+        for (int i = 0; i < 1000; i++)
         {
             BattleSideEnum ClangroupPenalizedTeamRaterPrediction(RoundResultData result)
         {
