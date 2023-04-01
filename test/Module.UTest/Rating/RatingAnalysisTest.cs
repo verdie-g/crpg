@@ -16,15 +16,18 @@ public class RatingAnalysisTest
     [Test]
     public void TestDifferentRating()
     {
+        Debug.Print("penaltyfactor,prediction");
         var ratingAnalysis = new CrpgRatingAnalysis(@"A:\log.txt");
-        BattleSideEnum ClangroupPenalizedTeamRaterPrediction(RoundResultData result)
+        for (int i = 0; i < 100; i++)
         {
-            return TeamRaterPrediction(result, players => ClanGroupPenalizedTeamRater(players));
+            BattleSideEnum ClangroupPenalizedTeamRaterPrediction(RoundResultData result)
+        {
+            return TeamRaterPrediction(result, players => ClanGroupPenalizedTeamRater(players, i/1000f));
         }
 
         float successPercentage = ratingAnalysis.AccuratePredictionPercentage(ClangroupPenalizedTeamRaterPrediction);
-        Debug.Print($"{successPercentage}");
-
+        Debug.Print($"{i/1000f},{successPercentage * 100}");
+        }
     }
 
     private BattleSideEnum TeamRaterPrediction(RoundResultData result, Func<List<RoundPlayerData>,float> teamRater)
@@ -32,14 +35,15 @@ public class RatingAnalysisTest
         return teamRater(result.Attackers) > teamRater(result.Defenders) ? BattleSideEnum.Attacker : BattleSideEnum.Defender;
     }
 
-    private float ClanGroupPenalizedTeamRater(List<RoundPlayerData> playerList, float penaltyFactor = 0.02f)
+    private float ClanGroupPenalizedTeamRater(List<RoundPlayerData> playerList, float penaltyFactor = 0.05f)
     {
         float rating = 0;
         var clanGroups = SplitUsersIntoClanGroups(playerList);
         foreach (var clanGroup in clanGroups)
         {
-            rating = clanGroup.Sum(p => p.Rating) * (1 + penaltyFactor * clanGroup.Count);
+            rating += clanGroup.Sum(p => p.Weight) * (1 + penaltyFactor * clanGroup.Count);
         }
+
         return rating;
     }
 
