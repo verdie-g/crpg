@@ -27,26 +27,22 @@ internal class CrpgRatingAnalysis
             {
                 continue;
             }
+
             try
             {
                 string base64RoundResultJson = m.Groups[1].Value;
                 string roundResultJson = Encoding.UTF8.GetString(Convert.FromBase64String(base64RoundResultJson));
-                // Use Json.NET for deserialization
+                var roundResult = JsonConvert.DeserializeObject<RoundResultData>(roundResultJson, new JsonSerializerSettings
+                {
+                    Converters = { new StringEnumConverter() }
+                });
 
-            
-            
-
-            var roundResult = JsonConvert.DeserializeObject<RoundResultData>(roundResultJson, new JsonSerializerSettings
-            {
-                Converters = { new StringEnumConverter() }
-            });
-
-            if (roundResult != null)
-            {
-                if (roundResult.Attackers.Count + roundResult.Defenders.Count > 30)
-                results.Add(roundResult);
+                if (roundResult != null)
+                {
+                    if (roundResult.Attackers.Count + roundResult.Defenders.Count > 30)
+                    results.Add(roundResult);
+                    }
                 }
-            }
             catch (FormatException)
             {
                 // Log the issue or handle it as needed
@@ -54,6 +50,7 @@ internal class CrpgRatingAnalysis
                 continue;
             }
         }
+
         Console.WriteLine($"skipped {skippedline} lines");
         Console.WriteLine($"logged {results.Count} rounds");
         _results = results;
@@ -93,4 +90,3 @@ internal class CrpgRatingAnalysis
         public string? ClanTag { get; set; }
     }
 }
-
