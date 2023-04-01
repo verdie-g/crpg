@@ -8,6 +8,7 @@
   "maxExperienceMultiplierForGeneration": 1.48,
   "respecializeExperiencePenaltyCoefs": [1, 0.0],
   "respecializePriceForLevel30": 5000,
+  "freeRespecializeIntervalDays": 7,
   "minimumRetirementLevel": 31,
   "baseExperienceGainPerSecond": 13.9,
   "multipliedExperienceGainPerSecond": 13.9,
