@@ -3,6 +3,7 @@ using Crpg.Application.ActivityLogs.Models;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
+using Crpg.Domain.Entities.ActivityLogs;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,12 +14,14 @@ public record GetActivityLogsQuery : IMediatorRequest<IList<ActivityLogViewModel
     public DateTime From { get; init; }
     public DateTime To { get; init; }
     public int[] UserIds { get; init; } = Array.Empty<int>();
+    public ActivityLogType[] Types { get; init; } = Array.Empty<ActivityLogType>();
 
     public class Validator : AbstractValidator<GetActivityLogsQuery>
     {
         public Validator()
         {
             RuleFor(l => l.From).LessThan(l => l.To);
+            RuleForEach(l => l.Types).IsInEnum();
         }
     }
 
@@ -38,7 +41,11 @@ public record GetActivityLogsQuery : IMediatorRequest<IList<ActivityLogViewModel
         {
             var activityLogs = await _db.ActivityLogs
                 .Include(l => l.Metadata)
-                .Where(l => l.CreatedAt >= req.From && l.CreatedAt <= req.To && (req.UserIds.Length == 0 || req.UserIds.Contains(l.UserId)))
+                .Where(l =>
+                    l.CreatedAt >= req.From
+                    && l.CreatedAt <= req.To
+                    && (req.UserIds.Length == 0 || req.UserIds.Contains(l.UserId))
+                    && (req.Types.Length == 0 || req.Types.Contains(l.Type)))
                 .OrderByDescending(l => l.CreatedAt)
                 .Take(1000)
                 .ToArrayAsync(cancellationToken);
