@@ -327,20 +327,20 @@ export const getExperienceMultiplierBonus = (multiplier: number) => {
   return 0;
 };
 
-interface RespecCapability {
+export interface RespecCapability {
   price: number;
   nextFreeAt: HumanDuration;
   enabled: Boolean;
 }
 
-// TODO: SPEC
 export const getRespecCapability = (
   character: Character,
   limitations: CharacterLimitations,
   userGold: number
 ): RespecCapability => {
   const nextFreeAt = new Date(limitations.lastFreeRespecializeAt);
-  nextFreeAt.setDate(nextFreeAt.getDate() + freeRespecializeIntervalDays);
+  nextFreeAt.setUTCDate(nextFreeAt.getUTCDate() + freeRespecializeIntervalDays);
+  nextFreeAt.setUTCMinutes(nextFreeAt.getUTCMinutes() + 5);
 
   if (nextFreeAt < new Date()) {
     return { price: 0, nextFreeAt: { days: 0, hours: 0, minutes: 0 }, enabled: true };

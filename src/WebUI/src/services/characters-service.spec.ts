@@ -10,6 +10,7 @@ import {
   type CharacterStatistics,
   type CharacterCharacteristics,
   CharacteristicConversion,
+  type CharacterLimitations,
 } from '@/models/character';
 import { type Item } from '@/models/item';
 
@@ -17,7 +18,19 @@ vi.mock('@/services/auth-service', () => ({
   getToken: vi.fn().mockResolvedValue('mockedToken'),
 }));
 
+// mock Date
+const NOW = '2023-03-30T18:00:00.0000000Z';
+const DateReal = global.Date;
+vi.spyOn(global, 'Date').mockImplementation((...args: any[]) => {
+  if (args.length) {
+    // @ts-ignore
+    return new DateReal(...args);
+  }
+  return new Date(NOW);
+});
+
 import {
+  type RespecCapability,
   getCharacters,
   updateCharacter,
   activateCharacter,
@@ -288,7 +301,61 @@ it.each<[Partial<CharacterStatistics>, number]>([
   expect(getCharacterKDARatio(characterStatistics as CharacterStatistics)).toEqual(expectation);
 });
 
-it.todo('TODO: getRespecCapability', () => {});
+it.each<[Partial<Character>, CharacterLimitations, number, RespecCapability]>([
+  [
+    { forTournament: false, experience: 10 },
+    {
+      lastFreeRespecializeAt: new Date('2023-03-23T18:00:00.0000000Z'), // the current time in the test is mocked, see at the top of the file
+    },
+    100000,
+    {
+      price: 0,
+      nextFreeAt: { days: 0, hours: 0, minutes: 5 },
+      enabled: true,
+    },
+  ],
+  [
+    { forTournament: false, experience: 10 },
+    {
+      lastFreeRespecializeAt: new Date('2023-03-23T17:55:00.0000000Z'),
+    },
+    100000,
+    {
+      price: 0,
+      nextFreeAt: { days: 0, hours: 0, minutes: 0 },
+      enabled: true,
+    },
+  ],
+  [
+    { forTournament: false, experience: 100000 },
+    {
+      lastFreeRespecializeAt: new Date('2023-03-23T18:00:00.0000000Z'),
+    },
+    10,
+    {
+      price: 113,
+      nextFreeAt: { days: 0, hours: 0, minutes: 5 },
+      enabled: false,
+    },
+  ],
+  [
+    { forTournament: true, experience: 100000 },
+    {
+      lastFreeRespecializeAt: new Date('2023-03-23T18:00:00.0000000Z'),
+    },
+    10,
+    {
+      price: 0,
+      nextFreeAt: { days: 0, hours: 0, minutes: 5 },
+      enabled: true,
+    },
+  ],
+])(
+  'getCharacterKDARatio - character: %j, charLimitations: %j, gold: %n',
+  (character, charLimitations, gold, expectation) => {
+    expect(getRespecCapability(character as Character, charLimitations, gold)).toEqual(expectation);
+  }
+);
 
 it.each<[PartialDeep<Item>, PartialDeep<CharacterCharacteristics>, boolean]>([
   [{ requirement: 18 }, { attributes: { strength: 18 } }, false],
