@@ -38,38 +38,11 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
 
     public override void OnTick(float dt)
     {
-        if (IsSpawningEnabled && IsRoundInProgress())
+        if (!IsSpawningEnabled || !IsRoundInProgress())
         {
-            SpawnAgents();
+            return;
         }
-    }
 
-    public override void RequestStartSpawnSession()
-    {
-        base.RequestStartSpawnSession();
-        _botsSpawned = false;
-        _spawnTimer = new MissionTimer(TotalSpawnDuration); // Limit spawning for 30 seconds.
-        _cavalrySpawnDelayTimer = new MissionTimer(GetCavalrySpawnDelay()); // Cav will spawn X seconds later.
-        ResetSpawnTeams();
-    }
-
-    public override bool AllowEarlyAgentVisualsDespawning(MissionPeer missionPeer)
-    {
-        return false;
-    }
-
-    public bool SpawnDelayEnded()
-    {
-        return _cavalrySpawnDelayTimer != null && _cavalrySpawnDelayTimer!.Check();
-    }
-
-    protected override bool IsRoundInProgress()
-    {
-        return _roundController.IsRoundInProgress;
-    }
-
-    protected override void SpawnAgents()
-    {
         if (_spawnTimer!.Check())
         {
             return;
@@ -81,7 +54,26 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
             _botsSpawned = true;
         }
 
-        SpawnPeerAgents();
+        SpawnAgents();
+    }
+
+    public override void RequestStartSpawnSession()
+    {
+        base.RequestStartSpawnSession();
+        _botsSpawned = false;
+        _spawnTimer = new MissionTimer(TotalSpawnDuration); // Limit spawning for 30 seconds.
+        _cavalrySpawnDelayTimer = new MissionTimer(GetCavalrySpawnDelay()); // Cav will spawn X seconds later.
+        ResetSpawnTeams();
+    }
+
+    public bool SpawnDelayEnded()
+    {
+        return _cavalrySpawnDelayTimer != null && _cavalrySpawnDelayTimer!.Check();
+    }
+
+    protected override bool IsRoundInProgress()
+    {
+        return _roundController.IsRoundInProgress;
     }
 
     protected override bool IsPlayerAllowedToSpawn(NetworkCommunicator networkPeer)

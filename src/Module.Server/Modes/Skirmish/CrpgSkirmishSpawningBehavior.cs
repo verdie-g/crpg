@@ -36,10 +36,18 @@ internal class CrpgSkirmishSpawningBehavior : CrpgSpawningBehaviorBase
 
     public override void OnTick(float dt)
     {
-        if (IsSpawningEnabled && IsRoundInProgress())
+        if (!IsSpawningEnabled || !IsRoundInProgress())
         {
-            SpawnAgents();
+            return;
         }
+
+        if (!_botsSpawned)
+        {
+            SpawnBotAgents();
+            _botsSpawned = true;
+        }
+
+        SpawnAgents();
     }
 
     public override void RequestStartSpawnSession()
@@ -49,25 +57,9 @@ internal class CrpgSkirmishSpawningBehavior : CrpgSpawningBehaviorBase
         ResetSpawnTeams();
     }
 
-    public override bool AllowEarlyAgentVisualsDespawning(MissionPeer missionPeer)
-    {
-        return false;
-    }
-
     protected override bool IsRoundInProgress()
     {
         return _roundController.IsRoundInProgress;
-    }
-
-    protected override void SpawnAgents()
-    {
-        if (!_botsSpawned)
-        {
-            SpawnBotAgents();
-            _botsSpawned = true;
-        }
-
-        SpawnPeerAgents();
     }
 
     protected override bool IsPlayerAllowedToSpawn(NetworkCommunicator networkPeer)

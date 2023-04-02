@@ -26,19 +26,9 @@ internal class CrpgSiegeSpawningBehavior : CrpgSpawningBehaviorBase
         _timeSinceSpawnEnabled += dt;
     }
 
-    public override bool AllowEarlyAgentVisualsDespawning(MissionPeer missionPeer)
-    {
-        return false;
-    }
-
     protected override bool IsRoundInProgress()
     {
         return Mission.CurrentState == Mission.State.Continuing;
-    }
-
-    protected override void SpawnAgents()
-    {
-        SpawnPeerAgents();
     }
 
     protected override bool IsPlayerAllowedToSpawn(NetworkCommunicator networkPeer)

@@ -18,12 +18,17 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
         _constants = constants;
     }
 
+    public override bool AllowEarlyAgentVisualsDespawning(MissionPeer missionPeer)
+    {
+        return false;
+    }
+
     protected virtual bool IsPlayerAllowedToSpawn(NetworkCommunicator networkPeer)
     {
         return true;
     }
 
-    protected void SpawnPeerAgents()
+    protected override void SpawnAgents()
     {
         BasicCultureObject cultureTeam1 = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam1.GetStrValue());
         BasicCultureObject cultureTeam2 = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam2.GetStrValue());

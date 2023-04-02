@@ -31,22 +31,12 @@ internal class CrpgDuelSpawningBehavior : CrpgSpawningBehaviorBase
         base.OnTick(dt);
     }
 
-    public override bool AllowEarlyAgentVisualsDespawning(MissionPeer missionPeer)
-    {
-        return true;
-    }
-
     protected override bool IsPlayerAllowedToSpawn(NetworkCommunicator networkPeer)
     {
         MissionPeer missionPeer = networkPeer.GetComponent<MissionPeer>();
         return missionPeer.Culture != null
                && missionPeer.Representative is DuelMissionRepresentative
                && missionPeer.SpawnTimer.Check(Mission.CurrentTime);
-    }
-
-    protected override void SpawnAgents()
-    {
-        SpawnPeerAgents();
     }
 
     protected override bool IsRoundInProgress()
