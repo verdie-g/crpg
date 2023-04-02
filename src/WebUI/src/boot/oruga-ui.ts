@@ -22,6 +22,7 @@ import {
   OPaginationButton,
   ONotification,
   OCollapse,
+  ODatetimepicker,
 } from '@oruga-ui/oruga-next';
 import VueSlider from 'vue-slider-component';
 
@@ -57,6 +58,7 @@ export const install: BootModule = app => {
     .component('FontAwesomeLayersText', FontAwesomeLayersText)
     .component('ONotification', ONotification)
     .component('OCollapse', OCollapse)
+    .component('ODateTimePicker', ODatetimepicker)
     .component('VueSlider', VueSlider)
     .use(Config, {
       // https://oruga.io/components/Icon.html

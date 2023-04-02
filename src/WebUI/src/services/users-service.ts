@@ -19,6 +19,17 @@ export const getUser = () => get<User>('/users/self');
 
 export const deleteUser = () => del('/users/self');
 
+// TODO: SPEC
+export const getUsersByIds = (payload: number[]) =>
+  get<UserPublic[]>(
+    `/users?${qs.stringify(
+      { id: payload },
+      {
+        arrayFormat: 'brackets',
+      }
+    )}`
+  );
+
 export const getUserById = (id: number) => get<UserPublic>(`/users/${id}`);
 
 interface UserSearchQuery {

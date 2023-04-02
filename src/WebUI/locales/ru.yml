@@ -96,6 +96,11 @@ validations:
   clanBannerKeyPattern: Значение должно содержать только целые числа и точки
   discordLinkPattern: Значение должно быть валидной Дискорд ссылкой
 
+sort:
+  directions:
+    asc: Сортировать по возврастанию
+    desc: Сортировать по убыванию
+
 error:
   title: Что то пошло не так
   intro: Если вы видите эту страницу, это значит, что вы столкнулись с какой-то ошибкой!
@@ -657,6 +662,7 @@ restriction:
   type:
     Join: Вход
     Chat: Чат
+    All: Всё
   status:
     active: Активно
     inactive: Не активно

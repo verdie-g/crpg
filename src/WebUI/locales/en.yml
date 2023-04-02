@@ -97,6 +97,11 @@ validations:
   clanBannerKeyPattern: Value should contain only integer and dots
   discordLinkPattern: Value must be a valid Discord link
 
+sort:
+  directions:
+    asc: Sort by ascending
+    desc: Sort by descending
+
 error:
   title: Something went wrong...
   intro: If you're seeing this page, it's because you ran into an error of some kind!
@@ -129,8 +134,8 @@ region:
 region-title: Region
 
 clanBalancingExplanation: "
- <h3>You're not in any clan</h3>
- <p>In order to play with friends on the same team, we recommend creating a new clan or joining an existing clan</p>"
+  <h3>You're not in any clan</h3>
+  <p>In order to play with friends on the same team, we recommend creating a new clan or joining an existing clan</p>"
 
 character:
   nav:
@@ -660,6 +665,7 @@ restriction:
   type:
     Join: Join
     Chat: Chat
+    All: All
   status:
     active: Active
     inactive: Non active
@@ -1022,3 +1028,29 @@ item:
 
   format:
     upkeep: '{upkeep} / @:dateTime.hours.short'
+
+activityLog:
+  form:
+    from: From
+    to: To
+    type: Type
+    addUser: Add User
+  sort:
+    createdAt: Created at
+  tpl:
+    UserCreated: 'The user was created'
+    UserDeleted: 'The user was deleted'
+    UserRenamed: 'The user {0} was renamed to {1}'
+    UserRewarded: 'The user has been rewarded with: {0} {1}'
+    ItemBought: 'User bought item {1} for {0}'
+    ItemSold: 'User sold item {1} for {0}'
+    ItemBroke: 'The item {0} was broken'
+    ItemUpgraded: 'The item {2} was upgraded for {0} {1}'
+    CharacterCreated: 'The character {0} was created'
+    CharacterDeleted: 'The character {2} was deleted. Level {0} generation {1}'
+    CharacterRespecialized: 'The character {1} has been respecialized for {0}'
+    CharacterRetired: 'The character {1} was retired. Level {0}'
+    CharacterRewarded: 'The character {1} was rewarded. Experience {0}'
+    ServerJoined: 'The user has joined the server'
+    ChatMessageSent: 'Wrote a message: {0}'
+    TeamHit: 'Dealt {0} damage to {1}'

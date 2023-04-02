@@ -3,7 +3,7 @@
 }
 
 .o-table--bordered thead tr th {
-  @apply border-t border-b border-border-200;
+  @apply border-b border-t border-border-200;
 }
 
 .o-table--bordered thead th:first-child {
@@ -51,9 +51,17 @@
   @apply px-6 py-3;
 }
 
+.o-table__th--detailed {
+  @apply w-16;
+}
+
+.o-table__td-chevron {
+  @apply w-16;
+}
+
 .o-table--narrowed .o-table__th,
 .o-table--narrowed .o-table__td {
-  @apply py-2 px-2;
+  @apply px-2 py-2;
 }
 
 .o-table--hoverable tbody tr:not(.o-table__tr--selected) {
@@ -123,7 +131,7 @@
 }
 
 .o-table__pagination {
-  @apply mt-14 mb-8;
+  @apply mb-8 mt-14;
 }
 
 .o-table__mobile-sort {
@@ -131,7 +139,7 @@
 }
 
 .o-table__wrapper--sticky-header thead {
-  @apply sticky top-0 left-0 z-50 bg-base-100;
+  @apply sticky left-0 top-0 z-50 bg-base-100;
 }
 
 .o-table__wrapper--sticky-header th {
@@ -140,4 +148,12 @@
 
 .o-table__wrapper--sticky-header tfoot {
   @apply sticky bottom-0 left-0 bg-base-100;
+}
+
+.o-table__detail {
+  @apply bg-base-200;
+}
+
+.o-table__detail td td {
+  @apply border-none px-4 py-2;
 }

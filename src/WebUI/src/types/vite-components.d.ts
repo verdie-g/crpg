@@ -9,6 +9,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    ActivityLogItem: typeof import('./../components/moderator/ActivityLogItem.vue')['default']
     Bg: typeof import('./../components/app/Bg.vue')['default']
     CharacterCharacteristic: typeof import('./../components/character/CharacterCharacteristic.vue')['default']
     CharacterCreateModal: typeof import('./../components/character/CharacterCreateModal.vue')['default']
@@ -58,6 +59,7 @@ declare module '@vue/runtime-core' {
     SvgSpriteImg: typeof import('./../components/ui/SvgSpriteImg.vue')['default']
     SwitchLanguageDropdown: typeof import('./../components/app/SwitchLanguageDropdown.vue')['default']
     Tag: typeof import('./../components/ui/Tag.vue')['default']
+    UserFinder: typeof import('./../components/moderator/UserFinder.vue')['default']
     UserMedia: typeof import('./../components/user/UserMedia.vue')['default']
     UserPlatform: typeof import('./../components/user/UserPlatform.vue')['default']
     UserRestrictionGuide: typeof import('./../components/user/UserRestrictionGuide.vue')['default']

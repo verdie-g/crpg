@@ -70,12 +70,13 @@ config.global.stubs = {
   RouterLink: true,
   OButton: FakeBtn,
   OField: {
-    template: `<div><div data-aq-o-field-stub-message-slot><slot name="message"/></div> <slot /></div>`,
+    template: `<div><div data-aq-o-field-stub-message-slot><slot name="message"/></div><slot /></div>`,
   },
   OInput: FakeInput,
   OSwitch: FakeCheckBox,
   OCheckbox: FakeCheckBox,
   ORadio: FakeRadioBox,
+  ODateTimePicker: true,
   OIcon: true,
 
   OPagination: true,

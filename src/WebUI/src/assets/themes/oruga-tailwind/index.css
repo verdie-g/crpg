@@ -24,6 +24,10 @@
 @import './components/dropdown.css';
 @import './components/slider.css';
 
+@import './components/date-time-picker.css';
+@import './components/select.css';
+@import './components/drop.css';
+
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--secondary) var(--primary);
@@ -48,4 +52,8 @@ body {
 path {
   clip-rule: evenodd;
   fill-rule: evenodd;
+}
+
+input {
+  color-scheme: dark;
 }
