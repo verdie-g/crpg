@@ -174,7 +174,7 @@ internal static class MatchBalancingHelpers
 
     public static float ClanGroupsWeight(List<ClanGroup> clanGroups)
     {
-        return clanGroups.Sum(c => c.WeightPsum());
+        return clanGroups.Sum(c => c.Weight());
     }
 
     public static ClanGroupsGameMatch GroupTeamsByClan(GameMatch gameMatch)
@@ -413,20 +413,20 @@ internal static class MatchBalancingHelpers
     public static void DumpTeamsStatus(GameMatch gameMatch)
     {
         Debug.Print("--------------------------------------------");
-        Debug.Print($"Team A Count {gameMatch.TeamA.Count} Weight: {WeightHelpers.ComputeTeamWeightPowerSum(gameMatch.TeamA)}");
-        Debug.Print($"Team B Count {gameMatch.TeamB.Count} Weight: {WeightHelpers.ComputeTeamWeightPowerSum(gameMatch.TeamB)}");
-        Debug.Print($"Waiting Team Count {gameMatch.Waiting.Count} Weight: {WeightHelpers.ComputeTeamWeightPowerSum(gameMatch.Waiting)}");
+        Debug.Print($"Team A Count {gameMatch.TeamA.Count} Weight: {WeightHelpers.ComputeTeamWeight(gameMatch.TeamA)}");
+        Debug.Print($"Team B Count {gameMatch.TeamB.Count} Weight: {WeightHelpers.ComputeTeamWeight(gameMatch.TeamB)}");
+        Debug.Print($"Waiting Team Count {gameMatch.Waiting.Count} Weight: {WeightHelpers.ComputeTeamWeight(gameMatch.Waiting)}");
         Debug.Print("--------------------------------------------");
     }
 
     private static Vector2 ClanGroupRescaledVector(float scaler, ClanGroup clanGroup)
     {
-        return new Vector2(clanGroup.Size * scaler, clanGroup.WeightPsum());
+        return new Vector2(clanGroup.Size * scaler, clanGroup.Weight());
     }
 
     private static Vector2 ClanGroupsRescaledVector(float scaler, List<ClanGroup> clanGroups)
     {
-        return new Vector2(clanGroups.Sum(c => c.Size) * scaler, WeightHelpers.ClanGroupsPowerSum(clanGroups));
+        return new Vector2(clanGroups.Sum(c => c.Size) * scaler, WeightHelpers.ClanGroupsWeightSum(clanGroups));
     }
 
     private static float Vector2Angles(Vector2 v)

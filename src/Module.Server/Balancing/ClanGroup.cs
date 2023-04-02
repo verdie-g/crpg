@@ -1,4 +1,4 @@
-﻿using Crpg.Module.Api.Models.Users;
+﻿using Crpg.Module.Helpers;
 
 namespace Crpg.Module.Balancing;
 
@@ -21,13 +21,14 @@ internal class ClanGroup
         Members.Add(user);
     }
 
-    public float WeightPsum(float p = MatchBalancer.PowerParameter)
+    public float Weight(float p = MatchBalancer.PowerParameter)
     {
-        return WeightHelpers.ComputeTeamWeightPowerSum(Members, p);
+        const float clanGroupSizePenalty = 0.028f;
+        return MathHelper.PowerSumBy(Members, u => u.Weight, p) * (1 + Size * clanGroupSizePenalty);
     }
 
-    public float WeightPMean(float p = MatchBalancer.PowerParameter)
+    public float WeightMean()
     {
-        return WeightHelpers.ComputeTeamWeightPowerMean(Members, p);
+        return Weight() / Size;
     }
 }

@@ -196,8 +196,8 @@ internal class MatchBalancer
         userCountDifference = Math.Abs(userCountDifference);
 
         float teamWeightDiff = Math.Abs(WeightHelpers.ComputeTeamWeightedDifference(gameMatch));
-        weakClanGroupsTeam = weakClanGroupsTeam.OrderBy(c => c.WeightPMean()).ToList();
-        strongClanGroupsTeam = strongClanGroupsTeam.OrderBy(c => c.WeightPMean()).ToList();
+        weakClanGroupsTeam = weakClanGroupsTeam.OrderBy(c => c.WeightMean()).ToList();
+        strongClanGroupsTeam = strongClanGroupsTeam.OrderBy(c => c.WeightMean()).ToList();
         var clanGroupsToSwapUsingAngleTuple = FindBestClanGroupsSwap(weakClanGroupsTeam, strongClanGroupsTeam, teamWeightDiff / 2f, userCountDifference / 2, true, swappingFromWeakTeam, sizeScaler);
         var clanGroupsToSwapUsingDistanceTuple = FindBestClanGroupsSwap(weakClanGroupsTeam, strongClanGroupsTeam, teamWeightDiff / 2f, userCountDifference / 2, false, swappingFromWeakTeam, sizeScaler);
 
@@ -217,8 +217,8 @@ internal class MatchBalancer
         }
 
         if (!IsSwapValid(strongTeam, weakTeam, swappingFromWeakTeam, clanGroupToSwap1.Size,
-                clanGroupToSwap1.WeightPsum(), clanGroupsToSwap2.Sum(c => c.Size),
-                WeightHelpers.ClanGroupsPowerSum(clanGroupsToSwap2), sizeScaler))
+                clanGroupToSwap1.Weight(), clanGroupsToSwap2.Sum(c => c.Size),
+                WeightHelpers.ClanGroupsWeightSum(clanGroupsToSwap2), sizeScaler))
         {
             return false;
         }
@@ -369,8 +369,8 @@ internal class MatchBalancer
 
         // Initializing a first pair to compare afterward with other pairs
         float bestClanGroupToSwapTargetWeight = swappingFromWeakTeam
-            ? weakClanGroupToSwap.WeightPsum() + halfWeightDifference
-            : strongClanGroupToSwap.WeightPsum() - halfWeightDifference;
+            ? weakClanGroupToSwap.Weight() + halfWeightDifference
+            : strongClanGroupToSwap.Weight() - halfWeightDifference;
 
         ClanGroup bestClanGroupToSwapSource = swappingFromWeakTeam ? weakClanGroupToSwap : strongClanGroupToSwap;
 
@@ -383,7 +383,7 @@ internal class MatchBalancer
 
         Vector2 bestSwapVector = new(
             (MatchBalancingHelpers.ClanGroupsSize(bestClanGroupToSwapDestination) - bestClanGroupToSwapSource.Size) * sizeScaler,
-            Math.Abs(bestClanGroupToSwapSource.WeightPsum() - MatchBalancingHelpers.ClanGroupsWeight(bestClanGroupToSwapDestination)));
+            Math.Abs(bestClanGroupToSwapSource.Weight() - MatchBalancingHelpers.ClanGroupsWeight(bestClanGroupToSwapDestination)));
         float distanceToTargetVector = (targetVector - bestSwapVector).Length();
 
         foreach (ClanGroup clanGroup in teamToSwapFrom)
@@ -391,8 +391,8 @@ internal class MatchBalancer
             // c is the potential first member of the pair (potentialClanGrouptoSwap1)
             // we compute below what's the target weight for the second member of the pair
             float potentialClanGroupToSwapTargetWeight = swappingFromWeakTeam
-                ? clanGroup.WeightPsum() + halfWeightDifference
-                : clanGroup.WeightPsum() - halfWeightDifference;
+                ? clanGroup.Weight() + halfWeightDifference
+                : clanGroup.Weight() - halfWeightDifference;
             // potential second member of the pair
             List<ClanGroup> potentialClanGroupToSwap = MatchBalancingHelpers.FindAClanGroupToSwapUsing(
                 potentialClanGroupToSwapTargetWeight,
@@ -402,7 +402,7 @@ internal class MatchBalancer
                 usingAngle);
             Vector2 potentialSwapVector = new(
                 (MatchBalancingHelpers.ClanGroupsSize(potentialClanGroupToSwap) - clanGroup.Size) * sizeScaler,
-                Math.Abs(clanGroup.WeightPsum() - MatchBalancingHelpers.ClanGroupsWeight(potentialClanGroupToSwap)));
+                Math.Abs(clanGroup.Weight() - MatchBalancingHelpers.ClanGroupsWeight(potentialClanGroupToSwap)));
             if ((targetVector - potentialSwapVector).Length() < (targetVector - bestSwapVector).Length())
             {
                 bestClanGroupToSwapSource = clanGroup;
@@ -435,7 +435,7 @@ internal class MatchBalancer
     private bool IsWeightRatioAcceptable(GameMatch gameMatch, float percentageDifference)
     {
         double weightRatio = Math.Abs(
-            (WeightHelpers.ComputeTeamWeightPowerSum(gameMatch.TeamB) - WeightHelpers.ComputeTeamWeightPowerSum(gameMatch.TeamA))
+            (WeightHelpers.ComputeTeamWeight(gameMatch.TeamB) - WeightHelpers.ComputeTeamWeight(gameMatch.TeamA))
             / gameMatch.TeamA.Sum(u => Math.Abs(u.Weight)));
         return MathHelper.Within((float)weightRatio, 0f, percentageDifference);
     }
