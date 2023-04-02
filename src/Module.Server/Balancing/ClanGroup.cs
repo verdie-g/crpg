@@ -1,6 +1,4 @@
-﻿using Crpg.Module.Api.Models.Users;
-using Crpg.Module.Helpers;
-using TaleWorlds.MountAndBlade;
+﻿using Crpg.Module.Helpers;
 
 namespace Crpg.Module.Balancing;
 
@@ -25,10 +23,11 @@ internal class ClanGroup
 
     public float Weight(float p = MatchBalancer.PowerParameter)
     {
-        return MathHelper.PowerSumBy(Members, u => u.Weight, p) * (1 + Size * 0.028f);
+        const float clanGroupSizePenalty = 0.028f;
+        return MathHelper.PowerSumBy(Members, u => u.Weight, p) * (1 + Size * clanGroupSizePenalty);
     }
 
-    public float WeightPMean(float p = MatchBalancer.PowerParameter)
+    public float WeightMean()
     {
         return Weight() / Size;
     }

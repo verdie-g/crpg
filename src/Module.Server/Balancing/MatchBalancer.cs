@@ -196,8 +196,8 @@ internal class MatchBalancer
         userCountDifference = Math.Abs(userCountDifference);
 
         float teamWeightDiff = Math.Abs(WeightHelpers.ComputeTeamWeightedDifference(gameMatch));
-        weakClanGroupsTeam = weakClanGroupsTeam.OrderBy(c => c.WeightPMean()).ToList();
-        strongClanGroupsTeam = strongClanGroupsTeam.OrderBy(c => c.WeightPMean()).ToList();
+        weakClanGroupsTeam = weakClanGroupsTeam.OrderBy(c => c.WeightMean()).ToList();
+        strongClanGroupsTeam = strongClanGroupsTeam.OrderBy(c => c.WeightMean()).ToList();
         var clanGroupsToSwapUsingAngleTuple = FindBestClanGroupsSwap(weakClanGroupsTeam, strongClanGroupsTeam, teamWeightDiff / 2f, userCountDifference / 2, true, swappingFromWeakTeam, sizeScaler);
         var clanGroupsToSwapUsingDistanceTuple = FindBestClanGroupsSwap(weakClanGroupsTeam, strongClanGroupsTeam, teamWeightDiff / 2f, userCountDifference / 2, false, swappingFromWeakTeam, sizeScaler);
 
