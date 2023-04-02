@@ -26,6 +26,9 @@ public class CharacterServiceTest
         DefaultStrength = 3,
         DefaultAgility = 3,
         DefaultGeneration = 1,
+        DefaultRating = 101,
+        DefaultRatingDeviation = 102,
+        DefaultRatingVolatility = 103,
     };
 
     private static readonly ExperienceTable ExperienceTable = new(Constants);
@@ -177,6 +180,27 @@ public class CharacterServiceTest
         Assert.That(character.Characteristics.WeaponProficiencies.Bow, Is.Zero);
         Assert.That(character.Characteristics.WeaponProficiencies.Throwing, Is.Zero);
         Assert.That(character.Characteristics.WeaponProficiencies.Crossbow, Is.Zero);
+    }
+
+    [Test]
+    public void ResetRatingTest()
+    {
+        Character character = new()
+        {
+            Rating = new CharacterRating
+            {
+                Value = 1,
+                Deviation = 2,
+                Volatility = 3,
+            },
+        };
+
+        CharacterService characterService = new(ExperienceTable, Constants);
+        characterService.ResetRating(character);
+
+        Assert.That(character.Rating.Value, Is.EqualTo(Constants.DefaultRating));
+        Assert.That(character.Rating.Deviation, Is.EqualTo(Constants.DefaultRatingDeviation));
+        Assert.That(character.Rating.Volatility, Is.EqualTo(Constants.DefaultRatingVolatility));
     }
 
     [TestCase(31, 1.00f, 1, 1.03f)]

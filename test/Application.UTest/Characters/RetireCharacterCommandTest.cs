@@ -31,6 +31,7 @@ public class RetireCharacterCommandTest : TestBase
             UserId = character.UserId,
         }, CancellationToken.None);
 
+        characterServiceMock.Verify(cs => cs.ResetRating(It.IsAny<Character>()));
         characterServiceMock.Verify(cs => cs.Retire(It.IsAny<Character>()));
     }
 

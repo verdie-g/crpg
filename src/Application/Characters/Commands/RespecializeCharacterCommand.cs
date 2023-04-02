@@ -76,6 +76,7 @@ public record RespecializeCharacterCommand : IMediatorRequest<CharacterViewModel
             }
 
             _characterService.ResetCharacterCharacteristics(character, true);
+            _characterService.ResetRating(character);
 
             _db.ActivityLogs.Add(_activityLogService.CreateCharacterRespecializedLog(character.UserId, character.Id, price));
 

@@ -44,6 +44,7 @@ public record RetireCharacterCommand : IMediatorRequest<CharacterViewModel>
                 return new(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
             }
 
+            _characterService.ResetRating(character);
             var error = _characterService.Retire(character);
             if (error != null)
             {
