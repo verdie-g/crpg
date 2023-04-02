@@ -58,7 +58,6 @@ public class GetGameUserCommandTest : TestBase
         // Check that default values were set for user and character.
         userServiceMock.Verify(us => us.SetDefaultValuesForUser(It.IsAny<User>()));
         characterServiceMock.Verify(cs => cs.SetDefaultValuesForCharacter(It.IsAny<Character>()));
-        characterServiceMock.Verify(cs => cs.ResetCharacterCharacteristics(It.IsAny<Character>(), false));
 
         // Check that user and its owned entities were created
         var dbUser = await AssertDb.Users
@@ -112,7 +111,6 @@ public class GetGameUserCommandTest : TestBase
         // Check that default values were set for character.
         userServiceMock.Verify(us => us.SetDefaultValuesForUser(It.IsAny<User>()), Times.Never);
         characterServiceMock.Verify(cs => cs.SetDefaultValuesForCharacter(It.IsAny<Character>()));
-        characterServiceMock.Verify(cs => cs.ResetCharacterCharacteristics(It.IsAny<Character>(), false));
 
         // Check that user and its owned entities were created
         var dbUser = await AssertDb.Users

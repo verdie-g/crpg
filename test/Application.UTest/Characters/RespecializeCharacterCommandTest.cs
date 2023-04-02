@@ -102,6 +102,7 @@ public class RespecializeCharacterCommandTest : TestBase
         Assert.That(character.Statistics.Assists, Is.EqualTo(3));
         Assert.That(character.Statistics.PlayTime, Is.EqualTo(TimeSpan.FromSeconds(4)));
         characterServiceMock.Verify(cs => cs.ResetCharacterCharacteristics(It.IsAny<Character>(), true));
+        characterServiceMock.Verify(cs => cs.ResetRating(It.IsAny<Character>()));
     }
 
     [Test]
@@ -158,6 +159,7 @@ public class RespecializeCharacterCommandTest : TestBase
         Assert.That(character.Statistics.Assists, Is.EqualTo(3));
         Assert.That(character.Statistics.PlayTime, Is.EqualTo(TimeSpan.FromSeconds(4)));
         characterServiceMock.Verify(cs => cs.ResetCharacterCharacteristics(It.IsAny<Character>(), true));
+        characterServiceMock.Verify(cs => cs.ResetRating(It.IsAny<Character>()));
     }
 
     [Test]

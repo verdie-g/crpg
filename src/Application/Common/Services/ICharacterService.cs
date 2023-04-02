@@ -19,6 +19,8 @@ internal interface ICharacterService
     /// <param name="respecialization">If the stats points should be redistributed.</param>
     void ResetCharacterCharacteristics(Character character, bool respecialization = false);
 
+    void ResetRating(Character character);
+
     Error? Retire(Character character);
 
     void GiveExperience(Character character, int experience, bool useExperienceMultiplier);
@@ -42,16 +44,13 @@ internal class CharacterService : ICharacterService
         character.Level = _constants.MinimumLevel;
         character.Experience = _experienceTable.GetExperienceForLevel(character.Level);
         character.ForTournament = false;
-        character.Rating = new CharacterRating
-        {
-            Value = _constants.DefaultRating,
-            Deviation = _constants.DefaultRatingDeviation,
-            Volatility = _constants.DefaultRatingVolatility,
-        };
+
+        ResetCharacterCharacteristics(character);
+        ResetRating(character);
     }
 
     /// <inheritdoc />
-    public void ResetCharacterCharacteristics(Character character, bool respecialization)
+    public void ResetCharacterCharacteristics(Character character, bool respecialization = false)
     {
         character.Characteristics = new CharacterCharacteristics
         {
@@ -71,6 +70,16 @@ internal class CharacterService : ICharacterService
             },
         };
         character.Class = CharacterClass.Peasant;
+    }
+
+    public void ResetRating(Character character)
+    {
+        character.Rating = new CharacterRating
+        {
+            Value = _constants.DefaultRating,
+            Deviation = _constants.DefaultRatingDeviation,
+            Volatility = _constants.DefaultRatingVolatility,
+        };
     }
 
     public Error? Retire(Character character)
