@@ -55,6 +55,10 @@ const changeEquippedItems = async (items: EquippedItemId[]) => {
 };
 
 const onSellUserItem = async (itemId: number) => {
+  // reset filter
+  if (filteredUserItems.value.length === 1) {
+    filterByTypeModel.value = [];
+  }
   await sellUserItem(itemId);
   await Promise.all([
     userStore.fetchUser(),
