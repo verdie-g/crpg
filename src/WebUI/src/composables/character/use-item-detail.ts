@@ -30,10 +30,16 @@ export const useItemDetail = () => {
     openedItems.value = [];
   };
 
+  const getElementBounds = (el: HTMLElement) => {
+    const { x, y, width } = el.getBoundingClientRect();
+    return { x, y, width };
+  };
+
   return {
     openedItems: readonly(openedItems),
     openItemDetail,
     closeItemDetail,
     closeAll,
+    getElementBounds,
   };
 };
