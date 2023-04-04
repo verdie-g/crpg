@@ -8,6 +8,7 @@ using Crpg.Module.Api.Models.Characters;
 using TaleWorlds.Core;
 using Newtonsoft.Json.Converters;
 using System.Diagnostics;
+using System.IO.Compression;
 
 namespace Crpg.Module.UTest.Rating;
 internal class CrpgRatingAnalysis
@@ -16,7 +17,7 @@ internal class CrpgRatingAnalysis
     private readonly List<RoundResultData>? _results;
     public CrpgRatingAnalysis(string logLocation)
     {
-        Regex roundDataRegex = new("\\[.+\\] Round result data: ([\\w=]+)", RegexOptions.Compiled);
+        Regex roundDataRegex = new("\\[.+\\] Round result data: ([\\w=/+]+)", RegexOptions.Compiled);
         using StreamReader logFile = new(@logLocation);
         List<RoundResultData> results = new List<RoundResultData>();
         int skippedline = 0;
@@ -28,10 +29,19 @@ internal class CrpgRatingAnalysis
                 continue;
             }
 
+            string base64RoundResultJsonCompressedBytes = m.Groups[1].Value;
             try
             {
-                string base64RoundResultJson = m.Groups[1].Value;
-                string roundResultJson = Encoding.UTF8.GetString(Convert.FromBase64String(base64RoundResultJson));
+                byte[] roundResultJsonCompressedBytes = Convert.FromBase64String(base64RoundResultJsonCompressedBytes);
+                byte[] roundResultJsonBytes;
+                using (var compressedStream = new MemoryStream(roundResultJsonCompressedBytes))
+                using (var gzipStream = new GZipStream(compressedStream, CompressionMode.Decompress))
+                using (var decompressedStream = new MemoryStream())
+                {
+                    gzipStream.CopyTo(decompressedStream);
+                    roundResultJsonBytes = decompressedStream.ToArray();
+                }
+                string roundResultJson = Encoding.UTF8.GetString(roundResultJsonBytes);
                 var roundResult = JsonConvert.DeserializeObject<RoundResultData>(roundResultJson, new JsonSerializerSettings
                 {
                     Converters = { new StringEnumConverter() }
@@ -39,7 +49,7 @@ internal class CrpgRatingAnalysis
 
                 if (roundResult != null)
                 {
-                    if (roundResult.Attackers.Count + roundResult.Defenders.Count > 30)
+                    if (roundResult.Attackers.Count + roundResult.Defenders.Count > 25)
                     results.Add(roundResult);
                     }
                 }

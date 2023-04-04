@@ -17,17 +17,30 @@ public class RatingAnalysisTest
     public void TestDifferentRating()
     {
         
-        var ratingAnalysis = new CrpgRatingAnalysis(@"A:\log.txt");
+        var ratingAnalysis = new CrpgRatingAnalysis(@"A:\log2.txt");
         Debug.Print("penaltyfactor,prediction");
         for (int i = 0; i < 1000; i++)
         {
             BattleSideEnum ClangroupPenalizedTeamRaterPrediction(RoundResultData result)
         {
-            return TeamRaterPrediction(result, players => ClanGroupPenalizedTeamRater(players, i/1000f));
+            return TeamRaterPrediction(result, players => ClanGroupPenalizedTeamRater(players, i/1000f - 0.5f));
         }
 
         float successPercentage = ratingAnalysis.AccuratePredictionPercentage(ClangroupPenalizedTeamRaterPrediction);
-        Debug.Print($"{i/1000f},{successPercentage * 100}");
+        Debug.Print($"{i / 1000f - 0.5f},{successPercentage * 100}");
+        }
+    }
+
+    [Test]
+    public void HowOftenDoAttackerWin()
+    {
+
+        var ratingAnalysis = new CrpgRatingAnalysis(@"A:\log2.txt");
+        Debug.Print("penaltyfactor,prediction");
+        for (int i = 0; i < 1000; i++)
+        {
+            float successPercentage = ratingAnalysis.AccuratePredictionPercentage(AlwaysAttackerWin);
+            Debug.Print($"{i / 1000f},{successPercentage * 100}");
         }
     }
 
@@ -36,13 +49,18 @@ public class RatingAnalysisTest
         return teamRater(result.Attackers) > teamRater(result.Defenders) ? BattleSideEnum.Attacker : BattleSideEnum.Defender;
     }
 
+    private BattleSideEnum AlwaysAttackerWin(RoundResultData result)
+    {
+        return BattleSideEnum.Attacker;
+    }
+
     private float ClanGroupPenalizedTeamRater(List<RoundPlayerData> playerList, float penaltyFactor = 0.05f)
     {
         float rating = 0;
         var clanGroups = SplitUsersIntoClanGroups(playerList);
         foreach (var clanGroup in clanGroups)
         {
-            rating += clanGroup.Sum(p => p.Weight) * (1 + penaltyFactor * clanGroup.Count);
+            rating += clanGroup.Sum(p => p.Weight) * (1 + penaltyFactor * clanGroup.Count) / (1 + 0.028f * clanGroup.Count);
         }
 
         return rating;
