@@ -1,8 +1,10 @@
 ﻿using System.Runtime.CompilerServices;
 using Crpg.Module.Api.Models.Clans;
+using Crpg.Module.Api.Models.Items;
 using Crpg.Module.Api.Models.Users;
 using Crpg.Module.Balancing;
 using Crpg.Module.Helpers;
+using Crpg.Module.Rating;
 using NUnit.Framework;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
@@ -19,15 +21,15 @@ public class RatingAnalysisTest
         
         var ratingAnalysis = new CrpgRatingAnalysis(@"A:\log2.txt");
         Debug.Print("penaltyfactor,prediction");
-        for (int i = 0; i < 1000; i++)
+        for (int i = 0; i < 2000; i++)
         {
             BattleSideEnum ClangroupPenalizedTeamRaterPrediction(RoundResultData result)
         {
-            return TeamRaterPrediction(result, players => ClanGroupPenalizedTeamRater(players, i/1000f - 0.5f));
+            return TeamRaterPrediction(result, players => FullRater(players, priceDivider: 200 * i));
         }
 
         float successPercentage = ratingAnalysis.AccuratePredictionPercentage(ClangroupPenalizedTeamRaterPrediction);
-        Debug.Print($"{i / 1000f - 0.5f},{successPercentage * 100}");
+        Debug.Print($"{100 * i},{successPercentage * 100}");
         }
     }
 
@@ -56,6 +58,7 @@ public class RatingAnalysisTest
 
     private float ClanGroupPenalizedTeamRater(List<RoundPlayerData> playerList, float penaltyFactor = 0.05f)
     {
+
         float rating = 0;
         var clanGroups = SplitUsersIntoClanGroups(playerList);
         foreach (var clanGroup in clanGroups)
@@ -65,7 +68,47 @@ public class RatingAnalysisTest
 
         return rating;
     }
+    private float FullRater(List<RoundPlayerData> playerList, float penaltyFactor = 0.048f, float priceDivider = 50000f)
+    {
+        float ComputeWeight(RoundPlayerData user)
+        {
+            float ratingWeight = ComputeRatingWeight(user);
+            float itemsWeight = ComputeEquippedItemsWeight(user.EquipmentCost);
+            float levelWeight = ComputeLevelWeight(user.Level);
 
+            return ratingWeight * itemsWeight * levelWeight;
+        }
+
+        float ComputeRatingWeight(RoundPlayerData user)
+        {
+            var rating = user.Rating;
+            // https://www.desmos.com/calculator/snynzhhoay
+            return 6E-8f * (float)Math.Pow(rating - 2 * 50, 3f);
+        }
+
+        float ComputeEquippedItemsWeight(float equipmentcost)
+        {
+            float itemsPrice = equipmentcost;
+            return 1f + itemsPrice / priceDivider;
+        }
+
+        float ComputeLevelWeight(int level)
+        {
+            // Ideally the rating should be elastic enough to change when the character
+            // retires but that's not the case so for now let's use the level to compute
+            // the weight.
+            return 1f + level / 30f;
+        }
+
+        float weight = 0;
+        var clanGroups = SplitUsersIntoClanGroups(playerList);
+        foreach (var clanGroup in clanGroups)
+        {
+            weight += clanGroup.Sum(p => ComputeWeight(p)) * (1 + penaltyFactor * clanGroup.Count) / (1 + 0.028f * clanGroup.Count);
+        }
+
+        return weight;
+    }
     private static List<List<RoundPlayerData>> SplitUsersIntoClanGroups(List<RoundPlayerData> users)
     {
         Dictionary<string, List<RoundPlayerData>> clanGroupsByClanId = new();
