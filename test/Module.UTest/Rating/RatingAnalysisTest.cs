@@ -14,22 +14,22 @@ namespace Crpg.Module.UTest.Rating;
 
 public class RatingAnalysisTest
 {
-  
+
     [Test]
     public void TestDifferentRating()
     {
-        
-        var ratingAnalysis = new CrpgRatingAnalysis(@"A:\log2.txt");
+
+        var ratingAnalysis = new CrpgRatingAnalysis(@"A:\maxilog.txt");
         Debug.Print("penaltyfactor,prediction");
-        for (int i = 0; i < 2000; i++)
+        for (int i = 1; i < 1000; i++)
         {
             BattleSideEnum ClangroupPenalizedTeamRaterPrediction(RoundResultData result)
-        {
-            return TeamRaterPrediction(result, players => FullRater(players, priceDivider: 200 * i));
-        }
+            {
+                return TeamRaterPrediction(result, players => FullRater(players, ratingPower: i / 100f));
+            }
 
-        float successPercentage = ratingAnalysis.AccuratePredictionPercentage(ClangroupPenalizedTeamRaterPrediction);
-        Debug.Print($"{100 * i},{successPercentage * 100}");
+            float successPercentage = ratingAnalysis.AccuratePredictionPercentage(ClangroupPenalizedTeamRaterPrediction);
+            Debug.Print($"{i / 100f},{successPercentage * 100}");
         }
     }
 
@@ -37,7 +37,7 @@ public class RatingAnalysisTest
     public void HowOftenDoAttackerWin()
     {
 
-        var ratingAnalysis = new CrpgRatingAnalysis(@"A:\log2.txt");
+        var ratingAnalysis = new CrpgRatingAnalysis(@"A:\maxilogtxt");
         Debug.Print("penaltyfactor,prediction");
         for (int i = 0; i < 1000; i++)
         {
@@ -46,7 +46,7 @@ public class RatingAnalysisTest
         }
     }
 
-    private BattleSideEnum TeamRaterPrediction(RoundResultData result, Func<List<RoundPlayerData>,float> teamRater)
+    private BattleSideEnum TeamRaterPrediction(RoundResultData result, Func<List<RoundPlayerData>, float> teamRater)
     {
         return teamRater(result.Attackers) > teamRater(result.Defenders) ? BattleSideEnum.Attacker : BattleSideEnum.Defender;
     }
@@ -68,7 +68,7 @@ public class RatingAnalysisTest
 
         return rating;
     }
-    private float FullRater(List<RoundPlayerData> playerList, float penaltyFactor = 0.048f, float priceDivider = 50000f)
+    private float FullRater(List<RoundPlayerData> playerList, float penaltyFactor = 0.048f, float priceDivider = 500000f, float maxPrice = 56000f, float ratingPower = 3f)
     {
         float ComputeWeight(RoundPlayerData user)
         {
@@ -83,7 +83,7 @@ public class RatingAnalysisTest
         {
             var rating = user.Rating;
             // https://www.desmos.com/calculator/snynzhhoay
-            return 6E-8f * (float)Math.Pow(rating - 2 * 50, 3f);
+            return 6E-8f * (float)Math.Pow(rating - 2 * 50, ratingPower);
         }
 
         float ComputeEquippedItemsWeight(float equipmentcost)
