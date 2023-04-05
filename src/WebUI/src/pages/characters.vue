@@ -65,114 +65,115 @@ if (userStore.characters.length === 0) {
 
 <template>
   <div class="container relative py-6">
-    <div v-if="currentCharacter !== undefined" class="group absolute left-4 flex items-start gap-4">
-      <VDropdown :triggers="['click']" placement="bottom-end">
-        <template #default="{ shown }">
-          <OButton
-            variant="primary"
-            outlined
-            :label="`${currentCharacter.name} (${currentCharacter.level})`"
-            size="lg"
-          >
-            <OIcon
-              :icon="characterClassToIcon[currentCharacter.class]"
+    <div
+      v-if="currentCharacter !== undefined"
+      id="character-top-navbar"
+      class="mb-16 grid grid-cols-3 items-center justify-between gap-4"
+    >
+      <div class="order-1 flex items-center gap-4">
+        <VDropdown :triggers="['click']" placement="bottom-end">
+          <template #default="{ shown }">
+            <OButton
+              variant="primary"
+              outlined
+              :label="`${currentCharacter.name} (${currentCharacter.level})`"
               size="lg"
-              v-tooltip="$t(`character.class.${currentCharacter.class}`)"
-            />
+            >
+              <OIcon
+                :icon="characterClassToIcon[currentCharacter.class]"
+                size="lg"
+                v-tooltip="$t(`character.class.${currentCharacter.class}`)"
+              />
 
-            <div class="flex items-center gap-1">
-              <div class="max-w-[150px] overflow-x-hidden text-ellipsis whitespace-nowrap">
-                {{ currentCharacter.name }}
+              <div class="flex items-center gap-1">
+                <div class="max-w-[150px] overflow-x-hidden text-ellipsis whitespace-nowrap">
+                  {{ currentCharacter.name }}
+                </div>
+
+                <div>({{ currentCharacter.level }})</div>
               </div>
 
-              <div>({{ currentCharacter.level }})</div>
-            </div>
+              <Tag
+                v-if="currentCharacter.id === user?.activeCharacterId"
+                :label="$t('character.status.active.short')"
+                v-tooltip="$t('character.status.active.title')"
+                variant="success"
+                size="sm"
+              />
 
-            <Tag
-              v-if="currentCharacter.id === user?.activeCharacterId"
-              :label="$t('character.status.active.short')"
-              v-tooltip="$t('character.status.active.title')"
-              variant="success"
-              size="sm"
-            />
+              <Tag
+                v-if="currentCharacter.forTournament"
+                :label="$t('character.status.forTournament.short')"
+                v-tooltip="$t('character.status.forTournament.title')"
+                variant="warning"
+                size="sm"
+              />
 
-            <Tag
-              v-if="currentCharacter.forTournament"
-              :label="$t('character.status.forTournament.short')"
-              v-tooltip="$t('character.status.forTournament.title')"
-              variant="warning"
-              size="sm"
-            />
+              <div class="h-4 w-px select-none bg-border-300"></div>
 
-            <div class="h-4 w-px select-none bg-border-300"></div>
+              <OIcon
+                icon="chevron-down"
+                size="lg"
+                :rotation="shown ? 180 : 0"
+                class="text-content-400"
+              />
+            </OButton>
+          </template>
 
-            <OIcon
-              icon="chevron-down"
-              size="lg"
-              :rotation="shown ? 180 : 0"
-              class="text-content-400"
-            />
-          </OButton>
-        </template>
+          <template #popper="{ hide }">
+            <DropdownItem
+              v-for="char in characters"
+              :checked="char.id === currentCharacterId"
+              tag="RouterLink"
+              :to="{ name: route.name, params: { id: char.id } }"
+              @click="hide"
+            >
+              <CharacterSelectItem
+                :character="char"
+                :isCharacterActive="user!.activeCharacterId === char.id"
+                @activate="onActivateCharacter(char.id)"
+              />
+            </DropdownItem>
 
-        <template #popper="{ hide }">
-          <DropdownItem
-            v-for="char in characters"
-            :checked="char.id === currentCharacterId"
-            tag="RouterLink"
-            :to="{ name: route.name, params: { id: char.id } }"
-            @click="hide"
-          >
-            <CharacterSelectItem
-              :character="char"
-              :isCharacterActive="user!.activeCharacterId === char.id"
-              @activate="onActivateCharacter(char.id)"
-            />
-          </DropdownItem>
+            <DropdownItem
+              class="text-primary hover:text-primary-hover"
+              @click="
+                () => {
+                  onCreateNewCharacter();
+                  hide();
+                }
+              "
+            >
+              <OIcon icon="add" size="lg" />
+              {{ $t('character.create.title') }}
+            </DropdownItem>
+          </template>
+        </VDropdown>
 
-          <DropdownItem
-            class="text-primary hover:text-primary-hover"
-            @click="
-              () => {
-                onCreateNewCharacter();
-                hide();
-              }
-            "
-          >
-            <OIcon icon="add" size="lg" />
-            {{ $t('character.create.title') }}
-          </DropdownItem>
-        </template>
-      </VDropdown>
-
-      <Modal>
-        <OButton
-          size="xl"
-          iconRight="edit"
-          rounded
-          variant="secondary"
-          outlined
-          v-tooltip="$t('character.settings.update.title')"
-        />
-        <template #popper="{ hide }">
-          <CharacterEditForm
-            :character="currentCharacter"
-            :active="currentCharacterIsActive"
-            @cancel="hide"
-            @confirm="
-              data => {
-                onUpdateCharacter(data);
-                hide();
-              }
-            "
+        <Modal>
+          <OButton
+            size="xl"
+            iconRight="edit"
+            rounded
+            variant="secondary"
+            outlined
+            v-tooltip="$t('character.settings.update.title')"
           />
-        </template>
-      </Modal>
-
-      <CharacterCreateModal
-        :shown="shownCreateCharacterGuideModal"
-        @apply-hide="shownCreateCharacterGuideModal = false"
-      />
+          <template #popper="{ hide }">
+            <CharacterEditForm
+              :character="currentCharacter"
+              :active="currentCharacterIsActive"
+              @cancel="hide"
+              @confirm="
+                data => {
+                  onUpdateCharacter(data);
+                  hide();
+                }
+              "
+            />
+          </template>
+        </Modal>
+      </div>
     </div>
 
     <RouterView v-slot="{ Component }">
@@ -183,5 +184,10 @@ if (userStore.characters.length === 0) {
         </template>
       </Suspense>
     </RouterView>
+
+    <CharacterCreateModal
+      :shown="shownCreateCharacterGuideModal"
+      @apply-hide="shownCreateCharacterGuideModal = false"
+    />
   </div>
 </template>

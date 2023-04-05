@@ -8,7 +8,6 @@ import { Region } from '@/models/region';
 import { useUserStore } from '@/stores/user';
 import { logout } from '@/services/auth-service';
 import { getUserActiveJoinRestriction } from '@/services/users-service';
-import { t } from '@/services/translate-service';
 import { useNavigation } from '@/composables/use-navigation';
 import { useHappyHours } from '@/composables/use-hh';
 import { useGameServerStats } from '@/composables/use-game-server-stats';
@@ -98,17 +97,7 @@ await userStore.getUserClanMember(); // TODO: get the clan role in the query `us
               inactiveClass="text-content-300 hover:text-content-100"
               :to="{ name: navLink.name }"
             >
-              {{ t(`nav.main.${navLink.name}`) }}
-            </RouterLink>
-
-            <RouterLink :to="{ name: 'Builder' }">
-              <OButton
-                variant="primary"
-                outlined
-                size="lg"
-                iconLeft="calculator"
-                :label="t(`nav.main.Builder`)"
-              />
+              {{ $t(`nav.main.${navLink.name}`) }}
             </RouterLink>
           </nav>
 
