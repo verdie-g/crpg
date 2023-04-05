@@ -55,7 +55,8 @@ const changeEquippedItems = async (items: EquippedItemId[]) => {
 };
 
 const onSellUserItem = async (itemId: number) => {
-  // reset filter
+  // if the item sold is the last item in the active category,
+  // you must reset the filter because that category is no longer in inventory
   if (filteredUserItems.value.length === 1) {
     filterByTypeModel.value = [];
   }
