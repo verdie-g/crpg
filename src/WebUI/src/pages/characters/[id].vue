@@ -130,34 +130,48 @@ await fetchPageData(character.value.id);
 
 <template>
   <div>
-    <div class="mb-16 flex items-center justify-center gap-2 place-self-center">
-      <RouterLink :to="{ name: 'CharactersId', params: { id } }" v-slot="{ isExactActive }">
-        <OButton
-          :variant="isExactActive ? 'transparent-active' : 'transparent'"
-          size="lg"
-          :label="$t('character.nav.overview')"
-        />
-      </RouterLink>
+    <Teleport to="#character-top-navbar">
+      <div class="order-2 flex items-center justify-center gap-2">
+        <RouterLink :to="{ name: 'CharactersId', params: { id } }" v-slot="{ isExactActive }">
+          <OButton
+            :variant="isExactActive ? 'transparent-active' : 'transparent'"
+            size="lg"
+            :label="$t('character.nav.overview')"
+          />
+        </RouterLink>
 
-      <RouterLink :to="{ name: 'CharactersIdInventory', params: { id } }" v-slot="{ isActive }">
-        <OButton
-          :variant="isActive ? 'transparent-active' : 'transparent'"
-          size="lg"
-          :label="$t('character.nav.inventory')"
-        />
-      </RouterLink>
+        <RouterLink :to="{ name: 'CharactersIdInventory', params: { id } }" v-slot="{ isActive }">
+          <OButton
+            :variant="isActive ? 'transparent-active' : 'transparent'"
+            size="lg"
+            :label="$t('character.nav.inventory')"
+          />
+        </RouterLink>
 
-      <RouterLink
-        :to="{ name: 'CharactersIdCharacteristic', params: { id } }"
-        v-slot="{ isActive }"
-      >
-        <OButton
-          :variant="isActive ? 'transparent-active' : 'transparent'"
-          size="lg"
-          :label="$t('character.nav.characteristic')"
-        />
-      </RouterLink>
-    </div>
+        <RouterLink
+          :to="{ name: 'CharactersIdCharacteristic', params: { id } }"
+          v-slot="{ isActive }"
+        >
+          <OButton
+            :variant="isActive ? 'transparent-active' : 'transparent'"
+            size="lg"
+            :label="$t('character.nav.characteristic')"
+          />
+        </RouterLink>
+      </div>
+
+      <div class="order-3 place-self-end">
+        <RouterLink :to="{ name: 'Builder' }">
+          <OButton
+            variant="primary"
+            outlined
+            size="lg"
+            iconLeft="calculator"
+            :label="$t(`nav.main.Builder`)"
+          />
+        </RouterLink>
+      </div>
+    </Teleport>
 
     <RouterView />
   </div>
