@@ -16,6 +16,7 @@ import { notify } from '@/services/notification-service';
 import { t } from '@/services/translate-service';
 import { scrollToTop } from '@/utils/scroll';
 import { useItemDetail } from '@/composables/character/use-item-detail';
+import useStickySidebar from '@/composables/use-sticky-sidebar';
 
 import {
   characterKey,
@@ -184,6 +185,9 @@ const compareItemsResult = computed(() => {
     });
 });
 
+const aside = ref<HTMLDivElement | null>(null);
+const { top } = useStickySidebar(aside, mainHeaderHeight.value + 16, 16);
+
 const computeDetailCardYPosition = (y: number) => {
   // we cannot automatically determine the height of the card, so we take the maximum possible value
   // think about it, but it's fine as it is
@@ -217,11 +221,7 @@ await userStore.fetchUserItems();
     <div class="col-span-5">
       <template v-if="userStore.userItems.length !== 0">
         <div class="inventoryGrid relative grid h-full gap-x-3 gap-y-4">
-          <div
-            class="sticky self-start"
-            style="grid-area: filter"
-            :style="{ top: `${mainHeaderHeight + 16}px` }"
-          >
+          <div ref="aside" class="sticky" style="grid-area: filter" :style="{ top: `${top}px` }">
             <CharacterInventoryFilter
               v-model="filterByTypeModel"
               :buckets="searchResult.data.aggregations.type.buckets"

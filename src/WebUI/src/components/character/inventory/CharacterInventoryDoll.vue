@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { UseElementBounding as ElementBounding } from '@vueuse/components';
 import type { EquippedItemId } from '@/models/character';
 import { ItemSlot } from '@/models/item';
 import {
@@ -41,7 +40,7 @@ const {
   onDrop,
 } = useInventoryDnD(equippedItemsBySlot);
 
-const { openItemDetail } = useItemDetail();
+const { openItemDetail, getElementBounds } = useItemDetail();
 </script>
 
 <template>
@@ -55,44 +54,44 @@ const { openItemDetail } = useItemDetail();
       class="flex flex-col gap-3"
       :class="[{ 'z-20': idx === 0 }, { 'z-10 justify-end': idx === 1 }]"
     >
-      <ElementBounding v-for="slot in slotGroup" :key="slot.key" v-slot="{ x, y, width }">
-        <CharacterInventoryDollSlot
-          :slot="slot.key"
-          :placeholder="slot.placeholderIcon"
-          :item="equippedItemsBySlot[slot.key]"
-          :notMeetRequirement="
-            slot.key in equippedItemsBySlot &&
-            validateItemNotMeetRequirement(
-              equippedItemsBySlot[slot.key].baseItem,
-              characterCharacteristics
-            )
-          "
-          :available="Boolean(availableSlots.length && availableSlots.includes(slot.key))"
-          :focused="toSlot === slot.key && availableSlots.includes(slot.key)"
-          :armorOverall="getOverallArmorValueBySlot(slot.key, itemsStats)"
-          :invalid="
-            Boolean(
-              availableSlots.length && toSlot === slot.key && !availableSlots.includes(slot.key)
-            )
-          "
-          :remove="fromSlot === slot.key && !toSlot"
-          @dragend="(_e:DragEvent) => onDragEnd(_e, slot.key)"
-          @drop="onDrop(slot.key)"
-          @dragover.prevent="onDragEnter(slot.key)"
-          @dragleave.prevent="onDragLeave"
-          @dragenter.prevent
-          @dragstart="onDragStart(equippedItemsBySlot[slot.key], slot.key)"
-          @unEquip="onUnEquipItem(slot.key)"
-          @click="
+      <CharacterInventoryDollSlot
+        v-for="slot in slotGroup"
+        :key="slot.key"
+        :slot="slot.key"
+        :placeholder="slot.placeholderIcon"
+        :item="equippedItemsBySlot[slot.key]"
+        :notMeetRequirement="
+          slot.key in equippedItemsBySlot &&
+          validateItemNotMeetRequirement(
+            equippedItemsBySlot[slot.key].baseItem,
+            characterCharacteristics
+          )
+        "
+        :available="Boolean(availableSlots.length && availableSlots.includes(slot.key))"
+        :focused="toSlot === slot.key && availableSlots.includes(slot.key)"
+        :armorOverall="getOverallArmorValueBySlot(slot.key, itemsStats)"
+        :invalid="
+          Boolean(
+            availableSlots.length && toSlot === slot.key && !availableSlots.includes(slot.key)
+          )
+        "
+        :remove="fromSlot === slot.key && !toSlot"
+        @dragend="(_e:DragEvent) => onDragEnd(_e, slot.key)"
+        @drop="onDrop(slot.key)"
+        @dragover.prevent="onDragEnter(slot.key)"
+        @dragleave.prevent="onDragLeave"
+        @dragenter.prevent
+        @dragstart="onDragStart(equippedItemsBySlot[slot.key], slot.key)"
+        @unEquip="onUnEquipItem(slot.key)"
+        @click="e=>
             equippedItemsBySlot[slot.key] !== undefined &&
               openItemDetail({
                 id: equippedItemsBySlot[slot.key].baseItem.id,
                 userId: equippedItemsBySlot[slot.key].id,
-                bound: { x, y, width },
+                bound: getElementBounds(e.target as HTMLElement),
               })
           "
-        />
-      </ElementBounding>
+      />
     </div>
   </div>
 </template>
