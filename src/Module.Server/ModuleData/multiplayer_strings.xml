@@ -10,6 +10,11 @@
   <string id="str_multiplayer_official_game_type_explainer.cRPGSkirmish" text="{=*}·   Hold control points on the map to deplete enemy morale{newline}·   Kill the entire enemy team or exhaust their morale to win·   Gain experience and gold while playing" />
   <string id="str_multiplayer_game_type.cRPGSkirmish" text="{=*}cRPG Skirmish" />
 
+  <!-- Conquest -->
+  <string id="str_multiplayer_official_game_type_name.cRPGConquest" text="{=*}cRPG Conquest" />
+  <string id="str_multiplayer_official_game_type_explainer.cRPGConquest" text="{=*}TODO" />
+  <string id="str_multiplayer_game_type.cRPGConquest" text="{=*}cRPG Conquest" />
+
   <!-- Siege -->
   <string id="str_multiplayer_official_game_type_name.cRPGSiege" text="{=*}cRPG Siege" />
   <string id="str_multiplayer_official_game_type_explainer.cRPGSiege" text="{=*}·   Use various siege engines to attack or defend control points{newline}·   Spawn points advance as control points are captured{newline}·   Successfully assault and hold the keep flag or repel the enemy to win" />

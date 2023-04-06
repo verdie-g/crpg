@@ -68,7 +68,8 @@ internal class CrpgHudExtensionVm : ViewModel
         NetworkCommunicator.OnPeerComponentAdded += OnPeerComponentAdded;
         _mission.OnMissionReset += OnMissionReset;
         MissionLobbyComponent missionBehavior = mission.GetMissionBehavior<MissionLobbyComponent>();
-        bool isTeamsEnabled = missionBehavior.MissionType != MissionLobbyComponent.MultiplayerGameType.FreeForAll && missionBehavior.MissionType != MissionLobbyComponent.MultiplayerGameType.Duel;
+        bool isTeamsEnabled = missionBehavior.MissionType != MissionLobbyComponent.MultiplayerGameType.FreeForAll
+                              && missionBehavior.MissionType != MissionLobbyComponent.MultiplayerGameType.Duel;
         IsRoundCountdownAvailable = _gameMode.IsGameModeUsingRoundCountdown;
         IsRoundCountdownSuspended = false;
         _isTeamScoresEnabled = isTeamsEnabled;

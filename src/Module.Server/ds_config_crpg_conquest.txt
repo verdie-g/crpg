@@ -1,0 +1,23 @@
+ServerName cRPG Test
+GameType cRPGConquest
+GamePassword yoyo
+Map crpg_conquest_test
+AllowPollsToKickPlayers True
+AllowPollsToChangeMaps True
+disable_culture_voting
+CultureTeam1 vlandia
+CultureTeam2 battania
+RespawnPeriodTeam1 6
+RespawnPeriodTeam2 24
+RoundPreparationTimeLimit 2
+MaxNumberOfPlayers 120
+FriendlyFireDamageMeleeFriendPercent 50
+FriendlyFireDamageMeleeSelfPercent 0
+FriendlyFireDamageRangedFriendPercent 50
+FriendlyFireDamageRangedSelfPercent 0
+NumberOfBotsTeam1 1
+NumberOfBotsTeam2 1
+MapTimeLimit 30
+RoundTimeLimit 120
+WarmupTimeLimit 1
+start_game_and_mission

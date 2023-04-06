@@ -30,6 +30,7 @@
     <Compile Remove="..\Module.Server\Rating\**" />
     <Compile Remove="..\Module.Server\Api\*Client.cs" />
     <Compile Remove="..\Module.Server\Modes\Battle\CrpgFlagDominationServer.cs" />
+    <Compile Remove="..\Module.Server\Modes\Conquest\CrpgConquestServer.cs" />
     <Compile Remove="..\Module.Server\Modes\Siege\CrpgSiegeServer.cs" />
     <Compile Remove="..\Module.Server\Modes\Duel\CrpgDuelServer.cs" />
     <Compile Remove="..\Module.Server\Modes\Duel\CrpgDuelSpawningBehavior.cs" />
