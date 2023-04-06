@@ -280,7 +280,7 @@ internal class CrpgHudExtensionVm : ViewModel
         }
         set
         {
-            if (!(value != _remainingRoundTime))
+            if (value == _remainingRoundTime)
             {
                 return;
             }

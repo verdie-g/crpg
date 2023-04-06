@@ -133,7 +133,7 @@ public class CrpgCommanderInfoVm : ViewModel
         get => _allyTeamColor;
         set
         {
-            if (!(value != _allyTeamColor))
+            if (value == _allyTeamColor)
             {
                 return;
             }
@@ -149,7 +149,7 @@ public class CrpgCommanderInfoVm : ViewModel
         get => _allyTeamColorSecondary;
         set
         {
-            if (!(value != _allyTeamColorSecondary))
+            if (value == _allyTeamColorSecondary)
             {
                 return;
             }
@@ -389,7 +389,7 @@ public class CrpgCommanderInfoVm : ViewModel
         if (_commanderInfo != null)
         {
             _commanderInfo.OnMoraleChangedEvent -= OnUpdateMorale;
-            _commanderInfo.OnFlagNumberChangedEvent -= InitCapturePoints;
+            _commanderInfo.OnFlagNumberChangedEvent -= OnNumberOfCapturePointsChanged;
         }
 
         Mission.Current.OnMissionReset -= OnMissionReset;
