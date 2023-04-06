@@ -226,12 +226,14 @@ await userStore.fetchUserItems();
     <div class="col-span-5">
       <template v-if="userStore.userItems.length !== 0">
         <div class="inventoryGrid relative grid h-full gap-x-3 gap-y-4">
-          <div ref="aside" class="sticky" style="grid-area: filter" :style="{ top: `${top}px` }">
-            <CharacterInventoryFilter
-              v-model="filterByTypeModel"
-              :buckets="searchResult.data.aggregations.type.buckets"
-              @click="scrollToTop"
-            />
+          <div style="grid-area: filter">
+            <div ref="aside" class="sticky" :style="{ top: `${top}px` }">
+              <CharacterInventoryFilter
+                v-model="filterByTypeModel"
+                :buckets="searchResult.data.aggregations.type.buckets"
+                @click="scrollToTop"
+              />
+            </div>
           </div>
 
           <div class="grid grid-cols-3 gap-4 2xl:grid-cols-4" style="grid-area: sort">
