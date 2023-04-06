@@ -39,6 +39,11 @@ internal class MapPoolComponent : MissionLogic
         }
 
         var votingManager = MultiplayerIntermissionVotingManager.Instance;
+        if (votingManager.MapVoteItems.Count == 0) // When automated_battle_pool is not used.
+        {
+            return;
+        }
+
         _mapVoteItemsIdx = (_mapVoteItemsIdx + 1) % votingManager.MapVoteItems.Count;
 
         string nextMap = _forcedNextMap ?? votingManager.MapVoteItems[_mapVoteItemsIdx].Id;
