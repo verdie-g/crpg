@@ -411,7 +411,7 @@ internal class CrpgRewardServer : MissionBehavior
             var networkPeer = crpgPeer.GetNetworkPeer();
 
             crpgPeer.User = updateResult.User;
-            if (!crpgPeer.User.Character.ForTournament && CrpgFeatureFlags.IsEnabled(CrpgFeatureFlags.FeatureTournament))
+            if (crpgPeer.User.Character.ForTournament && !CrpgFeatureFlags.IsEnabled(CrpgFeatureFlags.FeatureTournament))
             {
                 KickHelper.Kick(networkPeer, DisconnectType.KickedByHost, "tournament_only");
                 continue;
