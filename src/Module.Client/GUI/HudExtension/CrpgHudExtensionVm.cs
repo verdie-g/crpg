@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using Crpg.Module.Helpers;
+using Crpg.Module.Modes.Conquest;
 using Crpg.Module.Modes.Siege;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
@@ -641,7 +642,7 @@ internal class CrpgHudExtensionVm : ViewModel
             && !_mission.HasMissionBehavior<CrpgSiegeClient>()
             && _gameMode.GameType != MissionLobbyComponent.MultiplayerGameType.Battle;
         CommanderInfo = new CrpgCommanderInfoVm();
-        ShowCommanderInfo = true;
+        ShowCommanderInfo = !_mission.HasMissionBehavior<CrpgConquestClient>();
         if (_isTeammateAndEnemiesRelevant)
         {
             OnRefreshTeamMembers();

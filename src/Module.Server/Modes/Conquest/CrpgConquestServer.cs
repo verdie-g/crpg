@@ -127,11 +127,6 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
 
         foreach (var flag in AllCapturePoints)
         {
-            if (flag.IsDeactivated)
-            {
-                continue;
-            }
-
             GameNetwork.BeginModuleEventAsServer(networkPeer);
             GameNetwork.WriteMessage(new FlagDominationCapturePointMessage(flag.FlagIndex, _flagOwners[flag.FlagIndex]));
             GameNetwork.EndModuleEventAsServer();
