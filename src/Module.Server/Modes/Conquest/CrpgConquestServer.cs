@@ -229,7 +229,8 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
 
     private void StartStage(int stageIndex)
     {
-        _currentStageTimer = new MissionTimer(MultiplayerOptions.OptionType.RoundTimeLimit.GetIntValue());
+        float remainingTime = stageIndex > 0 ? _currentStageTimer.GetRemainingTimeInSeconds() : 0;
+        _currentStageTimer = new MissionTimer(remainingTime + MultiplayerOptions.OptionType.RoundTimeLimit.GetIntValue());
 
         GameNetwork.BeginBroadcastModuleEvent();
         GameNetwork.WriteMessage(new CrpgConquestStageStartMessage
