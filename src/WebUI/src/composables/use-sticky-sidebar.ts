@@ -3,7 +3,7 @@ export default (el: Ref<HTMLDivElement | null>, offsetTop = 0, offsetBottom = 0)
   const elHeight = ref<number>(0);
 
   const screenHeight = ref<number>(window.innerHeight);
-  const endScroll = computed(() => screenHeight.value - offsetTop - elHeight.value);
+  const endScroll = computed(() => screenHeight.value - elHeight.value);
   const currPos = ref<number>(window.scrollY);
 
   const active = ref<boolean>(false);
@@ -18,7 +18,7 @@ export default (el: Ref<HTMLDivElement | null>, offsetTop = 0, offsetBottom = 0)
 
     if (!active.value) {
       window.requestAnimationFrame(() => {
-        if (elHeight.value > screenHeight.value - offsetTop) {
+        if (elHeight.value > screenHeight.value) {
           if (newPos < currPos.value) {
             setTop(top.value < offsetTop ? top.value + currPos.value - newPos : offsetTop);
           } else {
