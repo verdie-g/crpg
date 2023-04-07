@@ -39,11 +39,11 @@
     <Compile Remove="..\Module.Server\Common\CrpgServerConfiguration.cs" />
     <Compile Remove="..\Module.Server\Common\CrpgFeatureFlags.cs" />
     <Compile Remove="..\Module.Server\Common\CrpgUserManagerServer.cs" />
-    <Compile Remove="..\Module.Server\Common\CrpgRewardServer.cs" />
     <Compile Remove="..\Module.Server\Common\PlayerStatsComponent.cs" />
     <Compile Remove="..\Module.Server\Common\NotAllPlayersReadyComponent.cs" />
     <Compile Remove="..\Module.Server\Common\MapPoolComponent.cs" />
     <Compile Remove="..\Module.Server\Common\ChatCommands\**\*" />
+    <Compile Remove="..\Module.Server\Rewards\CrpgRewardServer.cs" />
     <Compile Remove="..\Module.Server\HarmonyPatches\**\*" />
   </ItemGroup>
 

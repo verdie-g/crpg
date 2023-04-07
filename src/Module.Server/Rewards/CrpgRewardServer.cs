@@ -1,6 +1,7 @@
 using Crpg.Module.Api;
 using Crpg.Module.Api.Models;
 using Crpg.Module.Api.Models.Characters;
+using Crpg.Module.Common;
 using Crpg.Module.Common.Network;
 using Crpg.Module.Modes.Warmup;
 using Crpg.Module.Rating;
@@ -11,7 +12,7 @@ using TaleWorlds.MountAndBlade.Diamond;
 using TaleWorlds.PlayerServices;
 using MathF = TaleWorlds.Library.MathF;
 
-namespace Crpg.Module.Common;
+namespace Crpg.Module.Rewards;
 
 /// <summary>
 /// Gives xp/gold, update rating and stats.

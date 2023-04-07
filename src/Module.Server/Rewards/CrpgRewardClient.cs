@@ -4,7 +4,7 @@ using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
 
-namespace Crpg.Module.Common;
+namespace Crpg.Module.Rewards;
 
 internal class CrpgRewardClient : MissionNetwork
 {

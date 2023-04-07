@@ -2,6 +2,7 @@ using Crpg.Module.Common;
 using Crpg.Module.Common.HotConstants;
 using Crpg.Module.Modes.Skirmish;
 using Crpg.Module.Modes.Warmup;
+using Crpg.Module.Rewards;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Source.Missions;
