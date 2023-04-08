@@ -357,7 +357,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                     // Rotation Penalty
                     props.WeaponRotationalAccuracyPenaltyInRadians = 0.1f * (150f / (150f + itemSkill));
                     props.BipedalRangedReadySpeedMultiplier = 0.5f;
-                    props.BipedalRangedReloadSpeedMultiplier = 0.75F;
+                    props.BipedalRangedReloadSpeedMultiplier = 0.65F;
                 }
 
                 // Throwing
