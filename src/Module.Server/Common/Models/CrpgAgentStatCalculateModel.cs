@@ -292,7 +292,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         int weaponMaster = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.WeaponMaster);
         props.SwingSpeedMultiplier = 0.85f + 0.008f * (float)Math.Pow(itemSkill, 0.65f);
         props.ThrustOrRangedReadySpeedMultiplier = props.SwingSpeedMultiplier;
-        props.HandlingMultiplier = _constants.HandlingFactorForWeaponMaster[Math.Min(weaponMaster, _constants.HandlingFactorForWeaponMaster.Length - 1)];
+        props.HandlingMultiplier = 1.05f * _constants.HandlingFactorForWeaponMaster[Math.Min(weaponMaster, _constants.HandlingFactorForWeaponMaster.Length - 1)];
         props.ShieldBashStunDurationMultiplier = 1f;
         props.KickStunDurationMultiplier = 1f;
         props.ReloadSpeed = equippedItem == null ? props.SwingSpeedMultiplier : (equippedItem.SwingSpeed / 100f) * (0.6f + 0.0001f * itemSkill + 0.0000125f * itemSkill * itemSkill);
