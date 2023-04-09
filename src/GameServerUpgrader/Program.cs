@@ -68,6 +68,7 @@ namespace RemoteGameServerAutomation
             {
                 File.Delete(zipFilePath);
             }
+
             ZipFile.CreateFromDirectory(sourceFolderPath, zipFilePath);
 
             return zipFilePath;
