@@ -29,6 +29,9 @@
       <XmlName id="CraftingTemplates" path="crafting_templates"/>
     </XmlNode>
     <XmlNode>
+	  <XmlName id="ItemUsageSets" path="item_usage_sets"/>
+    </XmlNode>
+    <XmlNode>
       <XmlName id="Items" path="items/arm_armors"/>
     </XmlNode>
     <XmlNode>
