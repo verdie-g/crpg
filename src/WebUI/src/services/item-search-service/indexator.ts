@@ -17,6 +17,7 @@ import {
   visibleWeaponFlags,
   visibleItemFlags,
   visibleItemUsage,
+  isLargeShield,
 } from '@/services/item-service';
 import { roundFLoat } from '@/utils/math';
 
@@ -189,6 +190,10 @@ const itemToFlat = (item: Item): ItemFlat => {
     ...weaponProps.weaponFlags.filter(wf => visibleWeaponFlags.includes(wf)),
     ...weaponProps.itemUsage.filter(iu => visibleItemUsage.includes(iu)),
   ];
+
+  if (isLargeShield(item.id)) {
+    flags.push(WeaponFlags.CantUsageOnHorseback);
+  }
 
   return {
     id: item.id,

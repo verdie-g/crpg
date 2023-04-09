@@ -405,6 +405,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
   ],
 
   [ItemType.Shield]: [
+    'flags',
     'weight',
     'length',
     'shieldSpeed',

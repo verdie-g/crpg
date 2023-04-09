@@ -52,6 +52,14 @@ vi.mock('@/services/item-search-service/aggregations.ts', () => ({
   } as AggregationConfig,
 }));
 
+const mockedNotify = vi.fn();
+vi.mock('@/services/notification-service', async () => ({
+  ...(await vi.importActual<typeof import('@/services/notification-service')>(
+    '@/services/notification-service'
+  )),
+  notify: mockedNotify,
+}));
+
 // mock Date
 const NOW = '2022-11-27T21:00:00.0000000Z';
 const DateReal = global.Date;
@@ -95,7 +103,7 @@ it('getItemImage', () => {
   );
 });
 
-it.each<[PartialDeep<Item>, PartialDeep<Record<ItemSlot, UserItem>>, ItemSlot[]]>([
+it.only.each<[PartialDeep<Item>, PartialDeep<Record<ItemSlot, UserItem>>, ItemSlot[]]>([
   [
     { type: ItemType.MountHarness, flags: [], armor: { familyType: ItemFamilyType.Horse } },
     {},
@@ -128,7 +136,33 @@ it.each<[PartialDeep<Item>, PartialDeep<Record<ItemSlot, UserItem>>, ItemSlot[]]
   ],
   [{ type: ItemType.Banner, flags: [] }, {}, [ItemSlot.WeaponExtra]],
   [{ type: ItemType.Polearm, flags: [ItemFlags.DropOnWeaponChange] }, {}, [ItemSlot.WeaponExtra]], // Pike
-  // [{ type: ItemType.Polearm, flags: [ItemFlags.DropOnWeaponChange] }, {}, [ItemSlot.WeaponExtra]], // Pike
+
+  // Large shields on horseback, temporary solution
+  [
+    { type: ItemType.Shield, flags: [], id: 'crpg_pavise_shield' },
+    {},
+    [ItemSlot.Weapon0, ItemSlot.Weapon1, ItemSlot.Weapon2, ItemSlot.Weapon3],
+  ],
+  [
+    { type: ItemType.Shield, flags: [], id: 'crpg_pavise_shield' },
+    { [ItemSlot.Mount]: { baseItem: { mount: { familyType: ItemFamilyType.Horse } } } },
+    [],
+  ],
+  [
+    { type: ItemType.Mount, flags: [] },
+    { [ItemSlot.Weapon2]: { baseItem: { type: ItemType.Shield, id: 'crpg_pavise_shield' } } },
+    [],
+  ],
+  [
+    { type: ItemType.Shield, flags: [], id: 'some_small_shield' },
+    { [ItemSlot.Mount]: { baseItem: { mount: { familyType: ItemFamilyType.Horse } } } },
+    [ItemSlot.Weapon0, ItemSlot.Weapon1, ItemSlot.Weapon2, ItemSlot.Weapon3],
+  ],
+  [
+    { type: ItemType.Mount, flags: [] },
+    { [ItemSlot.Weapon2]: { baseItem: { type: ItemType.Shield, id: 'some_small_shield' } } },
+    [ItemSlot.Mount],
+  ],
 ])('getAvailableSlotsByItem - item: %j, equipedItems: %j', (item, equipedItems, expectation) => {
   expect(getAvailableSlotsByItem(item as Item, equipedItems as Record<ItemSlot, UserItem>)).toEqual(
     expectation
