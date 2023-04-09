@@ -4,6 +4,6 @@
   <XMLDirectory>../WOTS/Modules/cRPG/</XMLDirectory>
   <ModuleAssemblyDirectory>../WOTS/bin/</ModuleAssemblyDirectory>
 
-  <file id="crpg_combat_system" name="ModuleData/combat_parameters.xml" type="animation_combat_parameters" />
-  <file id="crpg_combat_system" name="ModuleData/native_parameters.xml" type="native_parameters" />
+  <file id="soln_combat_system" name="ModuleData/combat_parameters.xml" type="animation_combat_parameters" />
+  <file id="soln_combat_system" name="ModuleData/native_parameters.xml" type="native_parameters" />
 </base>
