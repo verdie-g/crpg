@@ -216,7 +216,7 @@ internal class MatchBalancer
             clanGroupsToSwap2 = clanGroupsToSwapUsingDistanceTuple.clanGroupsToSwap2;
         }
 
-        if (!IsSwapValid(strongTeam, weakTeam, swappingFromWeakTeam, clanGroupToSwap1.Size,
+        if (!IsClanGroupsSwapValid(strongClanGroupsTeam, weakClanGroupsTeam, swappingFromWeakTeam, clanGroupToSwap1.Size,
                 clanGroupToSwap1.Weight(), clanGroupsToSwap2.Sum(c => c.Size),
                 WeightHelpers.ClanGroupsWeightSum(clanGroupsToSwap2), sizeScaler))
         {
@@ -415,6 +415,23 @@ internal class MatchBalancer
         return (bestClanGroupToSwapSource, bestClanGroupToSwapDestination, distanceToTargetVector);
     }
 
+    private bool IsClanGroupsSwapValid(List<ClanGroup> strongTeam, List<ClanGroup> weakTeam, bool swappingFromWeakTeam,
+    int sourceGroupSize, float sourceGroupWeight, int destinationGroupSize, float destinationGroupWeight,
+    float sizeScaler)
+    {
+        float newTeamWeightDiff = swappingFromWeakTeam
+            ? strongTeam.Sum(c => c.Weight()) + 2f * sourceGroupWeight - 2f * destinationGroupWeight - weakTeam.Sum(c => c.Weight())
+            : strongTeam.Sum(c => c.Weight()) - 2f * sourceGroupWeight + 2f * destinationGroupWeight - weakTeam.Sum(c => c.Weight());
+        float newTeamSizeDiff = swappingFromWeakTeam
+            ? strongTeam.Count + 2 * sourceGroupSize - 2f * destinationGroupSize - weakTeam.Count
+            : strongTeam.Count - 2 * sourceGroupSize + 2f * destinationGroupSize - weakTeam.Count;
+
+        Vector2 oldDifferenceVector = new((strongTeam.Count - weakTeam.Count) * sizeScaler,
+            strongTeam.Sum(c => c.Weight()) - weakTeam.Sum(c => c.Weight()));
+        Vector2 newDifferenceVector = new(newTeamSizeDiff * sizeScaler, newTeamWeightDiff);
+        return newDifferenceVector.Length() < oldDifferenceVector.Length();
+    }
+
     private bool IsSwapValid(List<WeightedCrpgUser> strongTeam, List<WeightedCrpgUser> weakTeam, bool swappingFromWeakTeam,
         int sourceGroupSize, float sourceGroupWeight, int destinationGroupSize, float destinationGroupWeight,
         float sizeScaler)
@@ -436,7 +453,7 @@ internal class MatchBalancer
     {
         double weightRatio = Math.Abs(
             (WeightHelpers.ComputeTeamWeight(gameMatch.TeamB) - WeightHelpers.ComputeTeamWeight(gameMatch.TeamA))
-            / gameMatch.TeamA.Sum(u => Math.Abs(u.Weight)));
+            / WeightHelpers.ComputeTeamAbsWeight(gameMatch.TeamA));
         return MathHelper.Within((float)weightRatio, 0f, percentageDifference);
     }
 
