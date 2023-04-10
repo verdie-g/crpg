@@ -77,19 +77,20 @@ internal class MatchBalancer
         else
         {
             // This are failcases in case bannerbalance was not enough
-            Debug.Print("Balance is unnacceptable");
-            balancedBannerGameMatch = BalanceTeamOfSimilarSizes(balancedBannerGameMatch, bannerBalance: false, 0.10f);
+            Debug.Print("ratio difference is above 10%");
+            // disabled because does not take in account clangroup penalty yet
+            //balancedBannerGameMatch = BalanceTeamOfSimilarSizes(balancedBannerGameMatch, bannerBalance: false, 0.10f);
 
             if (IsBalanceGoodEnough(balancedBannerGameMatch, maxSizeRatio: 0.75f, maxDifference: 10f, percentageDifference: 0.15f))
             {
                 // A few swaps solved the problem. Most of the clangroups are intact
-                Debug.Print("Balance is now Acceptable");
+                Debug.Print("Ratio Difference is below 15%, we're not nuking.");
             }
             else
             {
                 // A few swaps were not enough. Swaps are a form of gradient descent. Sometimes there are local extremas that are not global extremas
                 // Here we completely abandon banner balance by completely reshuffling the card then redoing swaps
-                Debug.Print("Swaps were not enough. This should really not happen often");
+                Debug.Print("Swaps were not enough. This should really not happen often (ratio difference above 15%)");
                 MatchBalancingHelpers.DumpTeams(balancedBannerGameMatch);
                 Debug.Print("NaiveCaptainBalancing + Balancing Without BannerGrouping");
                 balancedBannerGameMatch = NaiveCaptainBalancing(balancedBannerGameMatch);
