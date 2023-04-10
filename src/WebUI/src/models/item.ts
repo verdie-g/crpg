@@ -76,7 +76,7 @@ export enum WeaponFlags {
   CanPenetrateShield = 'CanPenetrateShield',
   CantReloadOnHorseback = 'CantReloadOnHorseback',
   CanReloadOnHorseback = 'CanReloadOnHorseback', // TODO: custom flag
-  CantUsageOnHorseback = 'CantUsageOnHorseback', // TODO: custom flag
+  CantUseOnHorseback = 'CantUseOnHorseback', // TODO: custom flag
   AutoReload = 'AutoReload',
   TwoHandIdleOnMount = 'TwoHandIdleOnMount',
   NoBlood = 'NoBlood',

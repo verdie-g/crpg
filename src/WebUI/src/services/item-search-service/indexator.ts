@@ -191,8 +191,10 @@ const itemToFlat = (item: Item): ItemFlat => {
     ...weaponProps.itemUsage.filter(iu => visibleItemUsage.includes(iu)),
   ];
 
+  // Banning the use of large shields on horseback
+  // TODO: Temporary solution
   if (isLargeShield(item.id)) {
-    flags.push(WeaponFlags.CantUsageOnHorseback);
+    flags.push(WeaponFlags.CantUseOnHorseback);
   }
 
   return {

@@ -215,7 +215,7 @@ export const getAvailableSlotsByItem = (
     (item.type === ItemType.Mount && isLargeShieldEquipped(equippedItems))
   ) {
     notify(
-      t('character.inventory.item.cantUsageOnHorseback.notify.warning'),
+      t('character.inventory.item.cantUseOnHorseback.notify.warning'),
       NotificationType.Warning
     );
     return [];
@@ -270,7 +270,7 @@ export const visibleWeaponFlags: WeaponFlags[] = [
   WeaponFlags.CantReloadOnHorseback,
   WeaponFlags.CanReloadOnHorseback, // TODO:
   WeaponFlags.MultiplePenetration,
-  WeaponFlags.CantUsageOnHorseback,
+  WeaponFlags.CantUseOnHorseback,
   // WeaponFlags.TwoHandIdleOnMount, TODO:
 ];
 
@@ -370,7 +370,7 @@ export const weaponFlagsToIcon: Partial<Record<WeaponFlags, string | null>> = {
   [WeaponFlags.CanPenetrateShield]: 'item-flag-can-penetrate-shield',
   [WeaponFlags.CantReloadOnHorseback]: 'item-flag-cant-reload-on-horseback',
   [WeaponFlags.CanReloadOnHorseback]: 'item-flag-can-reload-on-horseback',
-  [WeaponFlags.CantUsageOnHorseback]: 'item-flag-cant-reload-on-horseback',
+  [WeaponFlags.CantUseOnHorseback]: 'item-flag-cant-reload-on-horseback',
 };
 
 export const itemUsageToIcon: Partial<Record<ItemUsage, string | null>> = {
