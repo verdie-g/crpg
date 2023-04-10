@@ -55,7 +55,7 @@ internal class MatchBalancer
             // when balanceOnce is true we rebalance the team only in case of extreme differences between both
             // the goal is to keep the team made at warmup so people feel they play for the same team the whole match
             // this works well if bo7 matches.
-            if (balanceOnce & IsBalanceGoodEnough(gameMatch, maxSizeRatio: 0.7f, maxDifference: 15f, percentageDifference: 0.15f))
+            if (balanceOnce & IsBalanceGoodEnough(gameMatch, maxSizeRatio: 0.7f, maxDifference: 15f, percentageDifference: 0.20f))
             {
                 return gameMatch;
             }
