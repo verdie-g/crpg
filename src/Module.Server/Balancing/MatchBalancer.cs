@@ -77,19 +77,20 @@ internal class MatchBalancer
         else
         {
             // This are failcases in case bannerbalance was not enough
-            Debug.Print("Balance is unnacceptable");
-            balancedBannerGameMatch = BalanceTeamOfSimilarSizes(balancedBannerGameMatch, bannerBalance: false, 0.10f);
+            Debug.Print("ratio difference is above 10%");
+            // disabled because does not take in account clangroup penalty yet
+            //balancedBannerGameMatch = BalanceTeamOfSimilarSizes(balancedBannerGameMatch, bannerBalance: false, 0.10f);
 
             if (IsBalanceGoodEnough(balancedBannerGameMatch, maxSizeRatio: 0.75f, maxDifference: 10f, percentageDifference: 0.15f))
             {
                 // A few swaps solved the problem. Most of the clangroups are intact
-                Debug.Print("Balance is now Acceptable");
+                Debug.Print("Ratio Difference is below 15%, we're not nuking.");
             }
             else
             {
                 // A few swaps were not enough. Swaps are a form of gradient descent. Sometimes there are local extremas that are not global extremas
                 // Here we completely abandon banner balance by completely reshuffling the card then redoing swaps
-                Debug.Print("Swaps were not enough. This should really not happen often");
+                Debug.Print("Swaps were not enough. This should really not happen often (ratio difference above 15%)");
                 MatchBalancingHelpers.DumpTeams(balancedBannerGameMatch);
                 Debug.Print("NaiveCaptainBalancing + Balancing Without BannerGrouping");
                 balancedBannerGameMatch = NaiveCaptainBalancing(balancedBannerGameMatch);
@@ -216,7 +217,7 @@ internal class MatchBalancer
             clanGroupsToSwap2 = clanGroupsToSwapUsingDistanceTuple.clanGroupsToSwap2;
         }
 
-        if (!IsSwapValid(strongTeam, weakTeam, swappingFromWeakTeam, clanGroupToSwap1.Size,
+        if (!IsClanGroupsSwapValid(strongClanGroupsTeam, weakClanGroupsTeam, swappingFromWeakTeam, clanGroupToSwap1.Size,
                 clanGroupToSwap1.Weight(), clanGroupsToSwap2.Sum(c => c.Size),
                 WeightHelpers.ClanGroupsWeightSum(clanGroupsToSwap2), sizeScaler))
         {
@@ -415,6 +416,23 @@ internal class MatchBalancer
         return (bestClanGroupToSwapSource, bestClanGroupToSwapDestination, distanceToTargetVector);
     }
 
+    private bool IsClanGroupsSwapValid(List<ClanGroup> strongTeam, List<ClanGroup> weakTeam, bool swappingFromWeakTeam,
+    int sourceGroupSize, float sourceGroupWeight, int destinationGroupSize, float destinationGroupWeight,
+    float sizeScaler)
+    {
+        float newTeamWeightDiff = swappingFromWeakTeam
+            ? strongTeam.Sum(c => c.Weight()) + 2f * sourceGroupWeight - 2f * destinationGroupWeight - weakTeam.Sum(c => c.Weight())
+            : strongTeam.Sum(c => c.Weight()) - 2f * sourceGroupWeight + 2f * destinationGroupWeight - weakTeam.Sum(c => c.Weight());
+        float newTeamSizeDiff = swappingFromWeakTeam
+            ? strongTeam.Count + 2 * sourceGroupSize - 2f * destinationGroupSize - weakTeam.Count
+            : strongTeam.Count - 2 * sourceGroupSize + 2f * destinationGroupSize - weakTeam.Count;
+
+        Vector2 oldDifferenceVector = new((strongTeam.Count - weakTeam.Count) * sizeScaler,
+            strongTeam.Sum(c => c.Weight()) - weakTeam.Sum(c => c.Weight()));
+        Vector2 newDifferenceVector = new(newTeamSizeDiff * sizeScaler, newTeamWeightDiff);
+        return newDifferenceVector.Length() < oldDifferenceVector.Length();
+    }
+
     private bool IsSwapValid(List<WeightedCrpgUser> strongTeam, List<WeightedCrpgUser> weakTeam, bool swappingFromWeakTeam,
         int sourceGroupSize, float sourceGroupWeight, int destinationGroupSize, float destinationGroupWeight,
         float sizeScaler)
@@ -436,7 +454,7 @@ internal class MatchBalancer
     {
         double weightRatio = Math.Abs(
             (WeightHelpers.ComputeTeamWeight(gameMatch.TeamB) - WeightHelpers.ComputeTeamWeight(gameMatch.TeamA))
-            / gameMatch.TeamA.Sum(u => Math.Abs(u.Weight)));
+            / WeightHelpers.ComputeTeamAbsWeight(gameMatch.TeamA));
         return MathHelper.Within((float)weightRatio, 0f, percentageDifference);
     }
 
