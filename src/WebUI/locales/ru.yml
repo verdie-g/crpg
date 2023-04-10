@@ -423,6 +423,9 @@ character:
       requirement:
         tooltip:
           title: У вас недостаточно сил для использования этого предмета. Показатели предмета будут снижены.
+      cantUseOnHorseback:
+        notify:
+          warning: Большой щит нельзя использовать верхом
 
   doll:
     slot:
@@ -796,6 +799,7 @@ item:
     CanPenetrateShield: 'Урон сквозь щит'
     CantReloadOnHorseback: 'Нельзя использовать верхом'
     CanReloadOnHorseback: 'Можно использовать верхом'
+    CantUseOnHorseback: 'Нельзя использовать верхом'
     Consumable: ''
     FirearmAmmo: ''
     HasHitPoints: ''

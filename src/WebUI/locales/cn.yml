@@ -427,6 +427,9 @@ character:
       requirement:
         tooltip:
           title: 你没有足够的力量来使用这个物品。物品状态将被降低。
+      cantUseOnHorseback:
+        notify:
+          warning: 大盾牌不能在马背上使用
 
   doll:
     slot:
@@ -798,6 +801,7 @@ item:
     CanPenetrateShield: '能穿透盾牌'
     CantReloadOnHorseback: '不能再马上装填'
     CanReloadOnHorseback: '可以在马上装填'
+    CantUseOnHorseback: '不能在马背上使用'
     Consumable: ''
     FirearmAmmo: ''
     HasHitPoints: ''

@@ -17,6 +17,7 @@ import {
   visibleWeaponFlags,
   visibleItemFlags,
   visibleItemUsage,
+  isLargeShield,
 } from '@/services/item-service';
 import { roundFLoat } from '@/utils/math';
 
@@ -189,6 +190,12 @@ const itemToFlat = (item: Item): ItemFlat => {
     ...weaponProps.weaponFlags.filter(wf => visibleWeaponFlags.includes(wf)),
     ...weaponProps.itemUsage.filter(iu => visibleItemUsage.includes(iu)),
   ];
+
+  // Banning the use of large shields on horseback
+  // TODO: Temporary solution
+  if (isLargeShield(item.id)) {
+    flags.push(WeaponFlags.CantUseOnHorseback);
+  }
 
   return {
     id: item.id,

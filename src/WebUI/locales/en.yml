@@ -427,6 +427,9 @@ character:
       requirement:
         tooltip:
           title: You do not have enough strength to use this item. Item stats will be degraded.
+      cantUseOnHorseback:
+        notify:
+          warning: A large shield cannot be used on horseback
 
   doll:
     slot:
@@ -798,8 +801,9 @@ item:
     CanHook: 'CanHook'
     CanKnockDown: 'Can knock down'
     CanPenetrateShield: 'Can penetrate shield'
-    CantReloadOnHorseback: 'Cant reload on horseback'
+    CantReloadOnHorseback: "Can't reload on horseback"
     CanReloadOnHorseback: 'Can reload on horseback'
+    CantUseOnHorseback: "Can't use on horseback"
     Consumable: ''
     FirearmAmmo: ''
     HasHitPoints: ''

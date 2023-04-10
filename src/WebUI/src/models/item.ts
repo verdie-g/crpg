@@ -75,7 +75,8 @@ export enum WeaponFlags {
   BonusAgainstShield = 'BonusAgainstShield',
   CanPenetrateShield = 'CanPenetrateShield',
   CantReloadOnHorseback = 'CantReloadOnHorseback',
-  CanReloadOnHorseback = 'CanReloadOnHorseback', // TODO:
+  CanReloadOnHorseback = 'CanReloadOnHorseback', // TODO: custom flag
+  CantUseOnHorseback = 'CantUseOnHorseback', // TODO: custom flag
   AutoReload = 'AutoReload',
   TwoHandIdleOnMount = 'TwoHandIdleOnMount',
   NoBlood = 'NoBlood',
@@ -109,8 +110,8 @@ export interface ItemWeaponComponent {
   stackAmount: number;
   length: number;
   handling: number;
-  bodyArmor: number; // TODO:
-  flags: WeaponFlags[]; // TODO:
+  bodyArmor: number;
+  flags: WeaponFlags[];
 
   thrustDamage: number;
   thrustDamageType: DamageType;

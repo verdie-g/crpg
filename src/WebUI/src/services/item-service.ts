@@ -26,6 +26,7 @@ import { Culture } from '@/models/culture';
 import { get } from '@/services/crpg-client';
 import { aggregationsConfig } from '@/services/item-search-service/aggregations';
 import { n, t } from '@/services/translate-service';
+import { notify, NotificationType } from '@/services/notification-service';
 import { applyPolynomialFunction, roundFLoat } from '@/utils/math';
 
 // TODO: delete mocks
@@ -207,8 +208,46 @@ export const getAvailableSlotsByItem = (
     return [ItemSlot.WeaponExtra];
   }
 
+  // Banning the use of large shields on horseback
+  // TODO: Temporary solution
+  if (
+    (ItemSlot.Mount in equippedItems && isLargeShield(item.id)) ||
+    (item.type === ItemType.Mount && isLargeShieldEquipped(equippedItems))
+  ) {
+    notify(
+      t('character.inventory.item.cantUseOnHorseback.notify.warning'),
+      NotificationType.Warning
+    );
+    return [];
+  }
+
   return itemSlotsByType[item.type]!;
 };
+
+const isLargeShieldEquipped = (equippedItems: EquippedItemsBySlot) =>
+  Object.entries(equippedItems)
+    .filter(
+      ([key, val]) => weaponSlots.includes(key as ItemSlot) && val.baseItem.type === ItemType.Shield
+    )
+    .some(([_key, val]) => isLargeShield(val.baseItem.id));
+
+// TODO: Temporary solution
+export const largeShieldIds: string[] = [
+  'crpg_pavise_shield', // Pavise Shield
+  'crpg_leather_round_shield', // Large Round Shield
+  'crpg_sturgia_old_shield_b', // Simple Large Round Shield
+  'crpg_sturgia_old_shield_a', // Iron Rimmed Large Round Shield
+  'crpg_heavy_round_shield', // Heavy Round Shield
+  'crpg_Heavy_Highland_Tower_Shield', // Heavy Highland Tower Shield
+  'crpg_eastern_wicker_shield', // Wicker Square Shield
+  'crpg_footmans_wicker_shield', // Wicker Shield
+  'crpg_oval_shield', // Wooden Oval Shield
+  'crpg_reinforced_flat_kite_shield', // Reinforced Flat Kite Shield
+  'crpg_tall_heater_shield', // Tall Heater Shield
+];
+
+// TODO: Temporary solution
+export const isLargeShield = (id: string) => largeShieldIds.includes(id);
 
 export const visibleItemFlags: ItemFlags[] = [
   ItemFlags.DropOnWeaponChange,
@@ -222,7 +261,7 @@ export const visibleWeaponFlags: WeaponFlags[] = [
   // WeaponFlags.AutoReload,
   WeaponFlags.BonusAgainstShield,
   // WeaponFlags.Burning,
-  WeaponFlags.CanBlockRanged,
+  // WeaponFlags.CanBlockRanged,
   WeaponFlags.CanCrushThrough,
   WeaponFlags.CanDismount,
   WeaponFlags.CanHook,
@@ -231,6 +270,7 @@ export const visibleWeaponFlags: WeaponFlags[] = [
   WeaponFlags.CantReloadOnHorseback,
   WeaponFlags.CanReloadOnHorseback, // TODO:
   WeaponFlags.MultiplePenetration,
+  WeaponFlags.CantUseOnHorseback,
   // WeaponFlags.TwoHandIdleOnMount, TODO:
 ];
 
@@ -330,6 +370,7 @@ export const weaponFlagsToIcon: Partial<Record<WeaponFlags, string | null>> = {
   [WeaponFlags.CanPenetrateShield]: 'item-flag-can-penetrate-shield',
   [WeaponFlags.CantReloadOnHorseback]: 'item-flag-cant-reload-on-horseback',
   [WeaponFlags.CanReloadOnHorseback]: 'item-flag-can-reload-on-horseback',
+  [WeaponFlags.CantUseOnHorseback]: 'item-flag-cant-reload-on-horseback',
 };
 
 export const itemUsageToIcon: Partial<Record<ItemUsage, string | null>> = {
