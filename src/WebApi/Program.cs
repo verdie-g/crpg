@@ -9,41 +9,46 @@ using Crpg.Application.Common.Services;
 using Crpg.Application.Steam;
 using Crpg.Application.System.Commands;
 using Crpg.Application.Users.Commands;
-using Crpg.Application.Users.Models;
 using Crpg.Common.Helpers;
 using Crpg.Common.Json;
 using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Users;
 using Crpg.Persistence;
 using Crpg.Sdk;
-using Crpg.WebApi.Identity;
+using Crpg.Sdk.Abstractions;
 using Crpg.WebApi.Services;
 using Crpg.WebApi.Workers;
-using IdentityServer4;
-using IdentityServer4.Models;
 using MediatR;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.HttpOverrides;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
+using Microsoft.IdentityModel.Logging;
 using Microsoft.OpenApi.Models;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.IO.Converters;
 using Npgsql;
+using OpenIddict.Abstractions;
+using OpenIddict.Validation.AspNetCore;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 var appEnv = ApplicationEnvironmentProvider.FromEnvironment();
 
+if (appEnv.Environment == HostingEnvironment.Development)
+{
+    IdentityModelEventSource.ShowPII = true;
+}
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
     .AddSdk(builder.Configuration, appEnv)
-    .AddPersistence(builder.Configuration, appEnv)
+    .AddPersistence(builder.Configuration, appEnv, options =>
+    {
+        options.UseOpenIddict();
+    })
     .AddApplication(builder.Configuration, appEnv)
     // .AddHostedService<StrategusWorker>() Disable strategus for now.
     .AddHostedService<DonorSynchronizerWorker>()
@@ -64,23 +69,38 @@ builder.Services
 
 builder.Services.AddHealthChecks();
 
-builder.Services.AddIdentity<UserViewModel, IdentityRole>()
-    .AddRoleStore<NullRoleStore>()
-    .AddUserStore<CustomUserStore>();
+builder.Services.AddOpenIddict()
+    .AddCore(options =>
+    {
+        options.UseEntityFrameworkCore().UseDbContext<CrpgDbContext>();
+    })
+    .AddServer(options =>
+    {
+        options.SetAuthorizationEndpointUris("connect/authorize")
+            .SetLogoutEndpointUris("connect/logout")
+            .SetTokenEndpointUris("connect/token");
 
-builder.Services.AddIdentityServer()
-    .AddAspNetIdentity<UserViewModel>()
-    .AddProfileService<CustomProfileService>()
-    .AddInMemoryClients(builder.Configuration.GetSection("IdentityServer:Clients"))
-    .AddInMemoryPersistedGrants()
-    .AddInMemoryIdentityResources(IdentityServerConfig.GetIdentityResources())
-    .AddInMemoryApiScopes(IdentityServerConfig.GetApiScopes())
-    // DeveloperSigningCredential drawback is that it never get rotated but since new deployment recreate
-    // all files this is fine.
-    .AddDeveloperSigningCredential(filename: Path.Combine(Directory.GetCurrentDirectory(), "crpg.jwk"));
+        options.AllowAuthorizationCodeFlow()
+            .AllowRefreshTokenFlow()
+            .AllowClientCredentialsFlow();
+
+        options.AddDevelopmentEncryptionCertificate()
+            .AddDevelopmentSigningCertificate()
+            .DisableAccessTokenEncryption();
+
+        options.UseAspNetCore()
+            .EnableAuthorizationEndpointPassthrough()
+            .EnableLogoutEndpointPassthrough()
+            .EnableTokenEndpointPassthrough();
+    })
+    .AddValidation(options =>
+    {
+        options.UseLocalServer();
+        options.UseAspNetCore();
+    });
 
 builder.Services.AddAuthentication()
-    .AddJwtBearer(opts => ConfigureJwtBearer(opts, builder.Configuration))
+    .AddCookie()
     .AddSteam(opts => ConfigureSteamAuthentication(opts, builder.Configuration));
 
 builder.Services.AddAuthorization(options =>
@@ -112,7 +132,7 @@ app
     .UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Crpg API"))
     .UseRouting()
     .UseCors()
-    .UseIdentityServer()
+    .UseAuthentication()
     .UseAuthorization()
     .UseEndpoints(endpoints =>
     {
@@ -147,6 +167,19 @@ using (IServiceScope scope = app.Services.CreateScope())
         }
     }
 
+    try
+    {
+        var clientManager = scope.ServiceProvider.GetRequiredService<IOpenIddictApplicationManager>();
+        var scopeManager = scope.ServiceProvider.GetRequiredService<IOpenIddictScopeManager>();
+        await UpdateIdentityServerConfigurationAsync(app.Configuration, clientManager, scopeManager);
+    }
+    catch (Exception ex)
+    {
+        logger.LogCritical(ex, "An error occurred while updating identity server configuration");
+        LoggerFactory.Dispose();
+        return 1;
+    }
+
     var res = await mediator.Send(new SeedDataCommand(), CancellationToken.None);
     if (res.Errors != null)
     {
@@ -160,28 +193,28 @@ return 0;
 
 static AuthorizationPolicy BuildRolePolicy(params Role[] roles) =>
     new AuthorizationPolicyBuilder()
-        .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+        .AddAuthenticationSchemes(OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme)
         .RequireAuthenticatedUser()
-        .RequireClaim("scope", "user_api")
+        .RequireAssertion(c => c.User.HasScope("user_api"))
         .RequireRole(roles.Select(r => r.ToString()))
         .Build();
 
 static AuthorizationPolicy BuildScopePolicy(string scope) =>
     new AuthorizationPolicyBuilder()
-        .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+        .AddAuthenticationSchemes(OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme)
         .RequireAuthenticatedUser()
-        .RequireClaim("scope", scope)
+        .RequireAssertion(c => c.User.HasScope(scope))
         .Build();
 
 static void ConfigureCors(CorsOptions options, IConfiguration configuration)
 {
-    List<Client> clients = new();
-    configuration.GetSection("IdentityServer:Clients").Bind(clients);
+    List<OpenIddictApplicationDescriptor> clients = new();
+    configuration.GetSection("OpenIddict:Clients").Bind(clients);
 
     // Get allowed origins from clients' redirect uris.
     string[] allowedOrigins = clients
         .SelectMany(c => c.RedirectUris)
-        .Select(uri => new Uri(uri).GetLeftPart(UriPartial.Authority))
+        .Select(uri => uri.GetLeftPart(UriPartial.Authority))
         .Distinct()
         .ToArray();
 
@@ -224,21 +257,10 @@ static void ConfigureSwagger(SwaggerGenOptions options)
     });
 }
 
-static void ConfigureJwtBearer(JwtBearerOptions options, IConfiguration configuration)
-{
-    options.Authority = configuration["IdentityServer:Authority"];
-
-    options.TokenValidationParameters = new TokenValidationParameters
-    {
-        // If the audience claim is not used, the audience check can be turned off
-        ValidateAudience = false,
-        ValidTypes = new[] { "at+jwt" },
-    };
-}
-
 static void ConfigureSteamAuthentication(SteamAuthenticationOptions options, IConfiguration configuration)
 {
     options.ApplicationKey = configuration["Steam:ApiKey"];
+    options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
     options.Events.OnAuthenticated = OnSteamUserAuthenticated;
 }
 
@@ -246,9 +268,13 @@ static async Task OnSteamUserAuthenticated(OpenIdAuthenticatedContext ctx)
 {
     var mediator = ctx.HttpContext.RequestServices.GetRequiredService<IMediator>();
     var geoIpService = ctx.HttpContext.RequestServices.GetRequiredService<IGeoIpService>();
-    var logger = ctx.HttpContext.RequestServices.GetRequiredService<ILogger<Program>>();
 
-    var player = ctx.UserPayload!.RootElement
+    if (ctx.UserPayload == null)
+    {
+        throw new InvalidOperationException("Steam API key was not set");
+    }
+
+    var player = ctx.UserPayload.RootElement
         .GetProperty(SteamAuthenticationConstants.Parameters.Response)
         .GetProperty(SteamAuthenticationConstants.Parameters.Players)[0]
         .ToObject<SteamPlayer>(new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
@@ -256,7 +282,7 @@ static async Task OnSteamUserAuthenticated(OpenIdAuthenticatedContext ctx)
     var ipAddress = ctx.HttpContext.Connection.RemoteIpAddress;
     Region? region = ipAddress == null ? null : geoIpService.ResolveRegionFromIp(ipAddress);
 
-    var result = await mediator.Send(new UpsertUserCommand
+    var res = await mediator.Send(new UpsertUserCommand
     {
         PlatformUserId = player.SteamId,
         Name = player.PersonaName,
@@ -266,10 +292,43 @@ static async Task OnSteamUserAuthenticated(OpenIdAuthenticatedContext ctx)
         AvatarFull = player.AvatarFull,
     });
 
-    await ctx.HttpContext.SignInAsync(new IdentityServerUser(result.Data!.Id.ToString()));
+    ctx.Identity!.SetClaim(OpenIddictConstants.Claims.Subject, res.Data!.Id.ToString());
+}
 
-    // Delete temporary cookie used during external authentication
-    await ctx.HttpContext.SignOutAsync(IdentityServerConstants.ExternalCookieAuthenticationScheme);
+static async Task UpdateIdentityServerConfigurationAsync(
+    IConfiguration configuration,
+    IOpenIddictApplicationManager clientManager,
+    IOpenIddictScopeManager scopeManager)
+{
+    List<OpenIddictApplicationDescriptor> clients = new();
+    configuration.GetSection("OpenIddict:Clients").Bind(clients);
 
-    logger.LogInformation("User '{0}' signed in", result.Data!.Id);
+    foreach (var client in clients)
+    {
+        object? existingClient = await clientManager.FindByClientIdAsync(client.ClientId!);
+        if (existingClient == null)
+        {
+            await clientManager.CreateAsync(client);
+        }
+        else
+        {
+            await clientManager.UpdateAsync(existingClient, client);
+        }
+    }
+
+    List<OpenIddictScopeDescriptor> scopes = new();
+    configuration.GetSection("OpenIddict:Scopes").Bind(scopes);
+
+    foreach (var scope in scopes)
+    {
+        object? existingScope = await scopeManager.FindByIdAsync(scope.Name!);
+        if (existingScope == null)
+        {
+            await scopeManager.CreateAsync(scope);
+        }
+        else
+        {
+            await scopeManager.UpdateAsync(existingScope, scope);
+        }
+    }
 }

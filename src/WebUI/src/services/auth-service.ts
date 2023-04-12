@@ -25,6 +25,9 @@ export const userManager = new UserManager({
   post_logout_redirect_uri: window.location.origin,
   response_type: 'code',
   userStore: new WebStorageStateStore({ store: window.localStorage }),
+  extraQueryParams: {
+    identity_provider: 'steam',
+  }
 });
 
 export const getUser = () => userManager.getUser();

@@ -15,44 +15,55 @@
       }
     }
   },
-  "IdentityServer": {
-    "Authority": "https://{{ crpg_api_domain_name }}",
+  "OpenIddict": {
     "Clients": [
       {
         "ClientId": "crpg-web-ui",
-        "ClientName": "cRPG Web UI",
-        "ClientSecrets": [{ "Value": "" }],
-        "RequireClientSecret": false,
-        "AllowedGrantTypes": ["authorization_code"],
-        "AllowedScopes": ["openid", "user_api"],
-        "AllowedCorsOrigins": ["https://{{ crpg_domain_name }}"],
+        "DisplayName": "cRPG Web UI",
+        "ConsentType": "implicit",
+        "Type": "public",
         "RedirectUris": [
           "https://{{ crpg_domain_name }}",
           "https://{{ crpg_domain_name }}/signin-callback",
           "https://{{ crpg_domain_name }}/signin-silent-callback"
         ],
         "PostLogoutRedirectUris": ["https://{{ crpg_domain_name }}"],
-        "AccessTokenType": "Jwt",
-        "RequireConsent": false,
-        "AccessTokenLifetime": 3600,
-        "IdentityTokenLifetime": 300,
-        "RequirePkce": true,
-        "AllowAccessTokensViaBrowser": true,
-        "AllowOfflineAccess": true
+        "Permissions": [
+          "ept:authorization",
+          "ept:logout",
+          "ept:token",
+          "gt:authorization_code",
+          "gt:refresh_token",
+          "rst:code",
+          "scp:user_api"
+        ],
+        "Requirements": ["ft:pkce"]
+      },
+{% for client in crpg_api_game_server_clients %}
+      {
+        "ClientId": "crpg-game-server-{{ client.id }}",
+        "ClientName": "cRPG Game Server",
+        "ClientSecret": "{{ client.secret }}",
+        "Permissions": [
+          "ept:token",
+          "gt:client_credentials",
+          "scp:game_api"
+        ]
+      },
+{% endfor %}
+    ],
+    "Scopes": [
+      {
+        "Name": "user_api",
+        "DisplayName": "cRPG User API",
+        "Resources": ["scp:roles"]
       },
       {
-        "ClientId": "crpg-game-server",
-        "ClientName": "cRPG Game Server",
-        "ClientSecrets": [
-        {% for crpg_api_key in crpg_api_keys %}
-          { "Value": "{{ crpg_api_key }}" },
-        {% endfor %}
-        ],
-        "AllowedGrantTypes": ["client_credentials"],
-        "AllowedScopes": ["openid", "game_api"],
-        "AccessTokenLifetime": 31536000
+        "Name": "game_api",
+        "DisplayName": "cRPG Game API",
+        "Resources": []
       }
-    ],
+    ]
   },
   "Steam": {
     "ApiKey": "{{ steam_api_key }}"
