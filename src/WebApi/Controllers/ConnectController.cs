@@ -52,52 +52,10 @@ public class ConnectController : ControllerBase
                 && result.Properties?.IssuedUtc != null
                 && DateTimeOffset.UtcNow - result.Properties.IssuedUtc > TimeSpan.FromSeconds(request.MaxAge.Value)))
         {
-            // If the client application requested promptless authentication, return an error indicating that the user
-            // is not logged in.
-            if (request.HasPrompt(OpenIddictConstants.Prompts.None))
-            {
-                return Forbid(
-                    authenticationSchemes: OpenIddictServerAspNetCoreDefaults.AuthenticationScheme,
-                    properties: new AuthenticationProperties(new Dictionary<string, string?>
-                    {
-                        [OpenIddictServerAspNetCoreConstants.Properties.Error] = OpenIddictConstants.Errors.LoginRequired,
-                        [OpenIddictServerAspNetCoreConstants.Properties.ErrorDescription] = "The user is not logged in.",
-                    }));
-            }
-
-            if (request.IdentityProvider == null)
-            {
-                return Forbid(
-                    authenticationSchemes: OpenIddictServerAspNetCoreDefaults.AuthenticationScheme,
-                    properties: new AuthenticationProperties(new Dictionary<string, string?>
-                    {
-                        [OpenIddictServerAspNetCoreConstants.Properties.Error] = OpenIddictConstants.Errors.InvalidRequest,
-                        [OpenIddictServerAspNetCoreConstants.Properties.ErrorDescription] = "Invalid identity provider.",
-                    }));
-            }
-
-            // To avoid endless login -> authorization redirects, the prompt=login flag is removed from the
-            // authorization request payload before redirecting the user.
-            string prompt = string.Join(" ", request.GetPrompts().Remove(OpenIddictConstants.Prompts.Login));
-
-            IEnumerable<KeyValuePair<string, StringValues>> query = Request.HasFormContentType
-                    ? Request.Form
-                    : Request.Query;
-            var parameters = query
-                .Where(parameter => parameter.Key != OpenIddictConstants.Parameters.Prompt)
-                .Append(KeyValuePair.Create(OpenIddictConstants.Parameters.Prompt, new StringValues(prompt)));
-
-            return Challenge(
-                authenticationSchemes: CookieAuthenticationDefaults.AuthenticationScheme,
-                properties: new AuthenticationProperties
-                {
-                    RedirectUri = Request.PathBase + Request.Path + QueryString.Create(parameters),
-                    // TODO: pass request.IdentityProvider
-                });
+            return RedirectToLogin(request);
         }
 
         int userId = GetUserIdFromPrincipal(result.Principal);
-
         object application = await _applicationManager.FindByClientIdAsync(request.ClientId!)
                              ?? throw new InvalidOperationException($"Client {request.ClientId} not found");
 
@@ -136,10 +94,7 @@ public class ConnectController : ControllerBase
                 var user = (await GetUserAsync(userId)).Data;
 
                 // Create the claims-based identity that will be used by OpenIddict to generate tokens.
-                var identity = new ClaimsIdentity(
-                    authenticationType: TokenValidationParameters.DefaultAuthenticationType,
-                    nameType: OpenIddictConstants.Claims.Name,
-                    roleType: OpenIddictConstants.Claims.Role);
+                ClaimsIdentity identity = new(TokenValidationParameters.DefaultAuthenticationType);
 
                 // Add the claims that will be persisted in the tokens.
                 identity.SetClaim(OpenIddictConstants.Claims.Subject, user!.Id.ToString());
@@ -207,12 +162,12 @@ public class ConnectController : ControllerBase
 
         if (request.IsClientCredentialsGrantType())
         {
-            return ClientCredentialsGrant(request);
+            return TokenClientCredentialsGrantType(request);
         }
 
         if (request.IsAuthorizationCodeGrantType() || request.IsRefreshTokenGrantType())
         {
-            return AuthorizationCodeGrant();
+            return TokenAuthorizationCodeGrantType();
         }
 
         return Task.FromResult<IActionResult>(Forbid(
@@ -224,7 +179,71 @@ public class ConnectController : ControllerBase
             })));
     }
 
-    private async Task<IActionResult> AuthorizationCodeGrant()
+    private IActionResult RedirectToLogin(OpenIddictRequest request)
+    {
+        // If the client application requested promptless authentication, return an error indicating that the user
+        // is not logged in.
+        if (request.HasPrompt(OpenIddictConstants.Prompts.None))
+        {
+            return Forbid(
+                authenticationSchemes: OpenIddictServerAspNetCoreDefaults.AuthenticationScheme,
+                properties: new AuthenticationProperties(new Dictionary<string, string?>
+                {
+                    [OpenIddictServerAspNetCoreConstants.Properties.Error] = OpenIddictConstants.Errors.LoginRequired,
+                    [OpenIddictServerAspNetCoreConstants.Properties.ErrorDescription] = "The user is not logged in.",
+                }));
+        }
+
+#if false
+        if (request.IdentityProvider == null)
+        {
+            return Forbid(
+                authenticationSchemes: OpenIddictServerAspNetCoreDefaults.AuthenticationScheme,
+                properties: new AuthenticationProperties(new Dictionary<string, string?>
+                {
+                    [OpenIddictServerAspNetCoreConstants.Properties.Error] = OpenIddictConstants.Errors.InvalidRequest,
+                    [OpenIddictServerAspNetCoreConstants.Properties.ErrorDescription] = "The specified identity provider is not valid.",
+                }));
+        }
+#endif
+
+        // To avoid endless login -> authorization redirects, the prompt=login flag is removed from the
+        // authorization request payload before redirecting the user.
+        Dictionary<string, StringValues> parameters = new(Request.Query) { ["prompt"] = "continue" };
+
+        return Challenge(
+            authenticationSchemes: CookieAuthenticationDefaults.AuthenticationScheme,
+            properties: new AuthenticationProperties
+            {
+                RedirectUri = Request.PathBase + Request.Path + QueryString.Create(parameters),
+                // TODO: pass request.IdentityProvider
+            });
+    }
+
+    private async Task<IActionResult> TokenClientCredentialsGrantType(OpenIddictRequest request)
+    {
+        object application = await _applicationManager.FindByClientIdAsync(request.ClientId!)
+                             ?? throw new InvalidOperationException($"Client {request.ClientId} not found");
+
+        // Create the claims-based identity that will be used by OpenIddict to generate tokens.
+        ClaimsIdentity identity = new(TokenValidationParameters.DefaultAuthenticationType);
+
+        // Add the claims that will be persisted in the tokens (use the client_id as the subject identifier).
+        identity.AddClaim(OpenIddictConstants.Claims.Subject, (await _applicationManager.GetClientIdAsync(application))!);
+
+        // Set the list of scopes granted to the client application in access_token.
+        identity.SetScopes(request.GetScopes());
+        await foreach (string scope in _scopeManager.ListResourcesAsync(identity.GetScopes()))
+        {
+            identity.SetResources(scope);
+        }
+
+        identity.SetDestinations(GetDestinations);
+
+        return SignIn(new ClaimsPrincipal(identity), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
+    }
+
+    private async Task<IActionResult> TokenAuthorizationCodeGrantType()
     {
         // Retrieve the claims principal stored in the authorization code/refresh token.
         var result = await HttpContext.AuthenticateAsync(OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
@@ -269,29 +288,6 @@ public class ConnectController : ControllerBase
         identity.SetDestinations(GetDestinations);
 
         // Returning a SignInResult will ask OpenIddict to issue the appropriate access/identity tokens.
-        return SignIn(new ClaimsPrincipal(identity), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
-    }
-
-    private async Task<IActionResult> ClientCredentialsGrant(OpenIddictRequest request)
-    {
-        object application = await _applicationManager.FindByClientIdAsync(request.ClientId!)
-                             ?? throw new InvalidOperationException($"Client {request.ClientId} not found");
-
-        // Create the claims-based identity that will be used by OpenIddict to generate tokens.
-        var identity = new ClaimsIdentity(TokenValidationParameters.DefaultAuthenticationType);
-
-        // Add the claims that will be persisted in the tokens (use the client_id as the subject identifier).
-        identity.SetClaim(OpenIddictConstants.Claims.Subject, await _applicationManager.GetClientIdAsync(application));
-
-        // Set the list of scopes granted to the client application in access_token.
-        identity.SetScopes(request.GetScopes());
-        await foreach (string scope in _scopeManager.ListResourcesAsync(identity.GetScopes()))
-        {
-            identity.SetResources(scope);
-        }
-
-        identity.SetDestinations(GetDestinations);
-
         return SignIn(new ClaimsPrincipal(identity), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
     }
 
