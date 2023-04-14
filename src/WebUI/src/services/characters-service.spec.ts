@@ -12,7 +12,7 @@ import {
   CharacteristicConversion,
   type CharacterLimitations,
 } from '@/models/character';
-import { type Item, ItemType } from '@/models/item';
+import { ItemType, type Item } from '@/models/item';
 
 vi.mock('@/services/auth-service', () => ({
   getToken: vi.fn().mockResolvedValue('mockedToken'),
