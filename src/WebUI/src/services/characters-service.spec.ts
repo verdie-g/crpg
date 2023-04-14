@@ -12,7 +12,7 @@ import {
   CharacteristicConversion,
   type CharacterLimitations,
 } from '@/models/character';
-import { type Item } from '@/models/item';
+import { type Item, ItemType } from '@/models/item';
 
 vi.mock('@/services/auth-service', () => ({
   getToken: vi.fn().mockResolvedValue('mockedToken'),
@@ -57,6 +57,7 @@ import {
   getCharacterKDARatio,
   getRespecCapability,
   validateItemNotMeetRequirement,
+  computeOverallWeight,
 } from './characters-service';
 
 it('getCharacters', async () => {
@@ -370,6 +371,36 @@ it.each<[PartialDeep<Item>, PartialDeep<CharacterCharacteristics>, boolean]>([
         item as Item,
         characterCharacteristics as CharacterCharacteristics
       )
+    ).toEqual(expectation);
+  }
+);
+
+it.each<[PartialDeep<Item[]>, number]>([
+  [
+    [
+      {
+        weight: 0.1,
+        weapons:[{stackAmount: 12}],
+        type: ItemType.Bolts,
+      }
+    ],
+    1.2
+  ],
+  [
+    [
+      {
+        weight: 3.8,
+        weapons:[{stackAmount: 70}],
+        type: ItemType.Shield,
+      }
+    ],
+    3.8
+  ],
+])(
+  'computeOverallWeight - items: %j, expectedWeight: %j, ',
+  (items, expectation) => {
+    expect(
+      computeOverallWeight(items as Item[])
     ).toEqual(expectation);
   }
 );
