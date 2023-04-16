@@ -20,7 +20,7 @@ import {
   computeLongestWeaponLength,
 } from '@/services/characters-service';
 import { computeOverallAverageRepairCostByHour } from '@/services/characters-service';
-import usePollInterval from '@/composables/use-poll-interval';
+import { usePollInterval } from '@/composables/use-poll-interval';
 
 definePage({
   props: true,

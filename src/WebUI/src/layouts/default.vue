@@ -11,7 +11,7 @@ import { getUserActiveJoinRestriction } from '@/services/users-service';
 import { useNavigation } from '@/composables/use-navigation';
 import { useHappyHours } from '@/composables/use-hh';
 import { useGameServerStats } from '@/composables/use-game-server-stats';
-import usePollInterval from '@/composables/use-poll-interval';
+import { usePollInterval } from '@/composables/use-poll-interval';
 
 import { mainHeaderHeightKey } from '@/symbols/common';
 import { scrollToTop } from '@/utils/scroll';
