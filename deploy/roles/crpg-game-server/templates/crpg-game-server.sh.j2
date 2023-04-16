@@ -4,7 +4,6 @@ case "$1" in
 {% for instance in crpg_game_server_instances %}
   {{ instance.name }})
     port={{ instance.port }}
-    token='{{ instance.bannerlord_token }}'
     ;;
 {% endfor %}
   *)
@@ -19,4 +18,4 @@ esac
   USER 0 \
   /playerhosteddedicatedserver \
   /disableerrorreporting \
-  /dedicatedcustomserverauthtoken "$token"
+  /dedicatedcustomserverauthtoken "{{ bannerlord_token }}"
