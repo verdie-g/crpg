@@ -2,6 +2,9 @@
 
 public enum RestrictionType
 {
+    /// <summary>Can't access cRPG.</summary>
+    All,
+
     /// <summary>Can't join a server.</summary>
     Join,
 

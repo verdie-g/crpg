@@ -16,6 +16,7 @@ using Crpg.Domain.Entities.Users;
 using Crpg.Persistence;
 using Crpg.Sdk;
 using Crpg.Sdk.Abstractions;
+using Crpg.WebApi.Identity;
 using Crpg.WebApi.Services;
 using Crpg.WebApi.Workers;
 using MediatR;
@@ -45,10 +46,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
     .AddSdk(builder.Configuration, appEnv)
-    .AddPersistence(builder.Configuration, appEnv, options =>
-    {
-        options.UseOpenIddict();
-    })
+    .AddPersistence(builder.Configuration, appEnv)
     .AddApplication(builder.Configuration, appEnv)
     // .AddHostedService<StrategusWorker>() Disable strategus for now.
     .AddHostedService<DonorSynchronizerWorker>()
@@ -69,10 +67,23 @@ builder.Services
 
 builder.Services.AddHealthChecks();
 
+builder.Services.AddDbContext<OpenIddictDbContext>(options =>
+{
+    // Use in-memory provider just because it's easier to setup. Though @k.chalet says:
+    // > I wouldn't recommend it, as OpenIddict uses the authorizations and tokens
+    // > tables to keep track of individual tokens and logical chains of tokens and
+    // > revoke them if necessary (e.g if you reuse an authorization code or a refresh
+    // > token after the leeway period, the entire chain is revoked). If you don't
+    // > have a persistent storage, you'll eventually get errors indicating the backing
+    // > entries cannot be found and the UX won't be great at all.
+    options.UseInMemoryDatabase("openiddict");
+    options.UseOpenIddict();
+});
+
 builder.Services.AddOpenIddict()
     .AddCore(options =>
     {
-        options.UseEntityFrameworkCore().UseDbContext<CrpgDbContext>();
+        options.UseEntityFrameworkCore().UseDbContext<OpenIddictDbContext>();
     })
     .AddServer(options =>
     {

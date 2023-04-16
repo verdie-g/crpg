@@ -45,7 +45,7 @@ import { type HumanDuration } from '@/models/datetime';
 import { get, put, del } from '@/services/crpg-client';
 import { mapUserItem } from '@/services/users-service';
 import { armorTypes, computeAverageRepairCostPerHour } from '@/services/item-service';
-import { applyPolynomialFunction, clamp } from '@/utils/math';
+import { applyPolynomialFunction, clamp, roundFLoat } from '@/utils/math';
 import { computeLeftMs, parseTimestamp } from '@/utils/date';
 
 export const getCharacters = () => get<Character[]>('/users/self/characters');
@@ -262,10 +262,11 @@ export const updateCharacterItems = (characterId: number, items: EquippedItemId[
 export const computeOverallPrice = (items: Item[]) =>
   items.reduce((total, item) => total + item.price, 0);
 
-export const computeOverallWeight = (items: Item[]) =>
-  items
-    .filter(item => ![ItemType.Mount, ItemType.MountHarness].includes(item.type))
-    .reduce((total, item) => total + item.weight, 0);
+export const computeOverallWeight = (items: Item[]) => items
+  .filter(item => ![ItemType.Mount, ItemType.MountHarness].includes(item.type))
+  .reduce((total, item) => total += [ItemType.Arrows, ItemType.Bolts, ItemType.Bullets, ItemType.Thrown].includes(item.type)
+  ? roundFLoat(item.weight * item.weapons[0].stackAmount)
+  : item.weight, 0);
 
 interface OverallArmor extends Omit<ItemArmorComponent, 'materialType' | 'familyType'> {
   mountArmor: number;
