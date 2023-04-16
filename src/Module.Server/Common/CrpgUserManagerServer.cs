@@ -173,14 +173,14 @@ internal class CrpgUserManagerServer : MissionNetwork
             return;
         }
 
-        if (crpgUser.Restrictions.FirstOrDefault(r => r.Type == CrpgRestrictionType.Join) != null)
+        if (crpgUser.Restrictions.Any(r => r.Type == CrpgRestrictionType.All || r.Type == CrpgRestrictionType.Join))
         {
             Debug.Print($"Kick join restricted user {userName} ({platform}#{platformUserId})");
             KickHelper.Kick(networkPeer, DisconnectType.BannedByPoll, "banned");
             return;
         }
 
-        if (crpgUser.Restrictions.FirstOrDefault(r => r.Type == CrpgRestrictionType.Chat) != null)
+        if (crpgUser.Restrictions.Any(r => r.Type == CrpgRestrictionType.Chat))
         {
             networkPeer.IsMuted = true;
         }

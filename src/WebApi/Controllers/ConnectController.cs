@@ -1,5 +1,6 @@
 ﻿using System.Security.Claims;
 using Crpg.Application.Common.Results;
+using Crpg.Application.Restrictions.Queries;
 using Crpg.Application.Users.Models;
 using Crpg.Application.Users.Queries;
 using MediatR;
@@ -11,12 +12,15 @@ using Microsoft.Extensions.Primitives;
 using Microsoft.IdentityModel.Tokens;
 using OpenIddict.Abstractions;
 using OpenIddict.Server.AspNetCore;
+using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.WebApi.Controllers;
 
 [Route("[controller]")]
 public class ConnectController : ControllerBase
 {
+    private static readonly ILogger Logger = LoggerFactory.CreateLogger<ConnectController>();
+
     private readonly IOpenIddictApplicationManager _applicationManager;
     private readonly IOpenIddictAuthorizationManager _authorizationManager;
     private readonly IOpenIddictScopeManager _scopeManager;
@@ -264,18 +268,19 @@ public class ConnectController : ControllerBase
 
         var user = res.Data!;
 
-        // TODO: check if banned
-#if false
+        if (await IsUserBannedAsync(user.Id))
         {
+            Logger.LogInformation("User '{0}' could not get access token: banned", user.Id);
             return Forbid(
                 authenticationSchemes: OpenIddictServerAspNetCoreDefaults.AuthenticationScheme,
-                properties: new AuthenticationProperties(new Dictionary<string, string>
+                properties: new AuthenticationProperties(new Dictionary<string, string?>
                 {
                     [OpenIddictServerAspNetCoreConstants.Properties.Error] = OpenIddictConstants.Errors.InvalidGrant,
                     [OpenIddictServerAspNetCoreConstants.Properties.ErrorDescription] = "The user is no longer allowed to sign in.",
                 }));
         }
-#endif
+
+        Logger.LogInformation("User '{0}' got access token", user.Id);
 
         var identity = new ClaimsIdentity(result.Principal!.Claims,
             authenticationType: TokenValidationParameters.DefaultAuthenticationType,
@@ -330,5 +335,21 @@ public class ConnectController : ControllerBase
     {
         var mediator = HttpContext.RequestServices.GetRequiredService<IMediator>();
         return mediator.Send(new GetUserQuery { UserId = userId }, CancellationToken.None);
+    }
+
+    private async Task<bool> IsUserBannedAsync(int userId)
+    {
+        var mediator = HttpContext.RequestServices.GetRequiredService<IMediator>();
+        var res = await mediator.Send(new IsUserBannedQuery
+        {
+            UserId = userId,
+        }, CancellationToken.None);
+
+        if (res.Errors != null)
+        {
+            return true;
+        }
+
+        return res.Data;
     }
 }

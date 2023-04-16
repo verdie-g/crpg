@@ -112,7 +112,10 @@ public class UsersController : BaseController
             return Task.FromResult(ResultToAction(res));
         }
 
-        return ResultToActionAsync(Mediator.Send(new GetUserRestrictionsQuery { UserId = id }));
+        return ResultToActionAsync(Mediator.Send(new GetUserRestrictionsQuery
+        {
+            UserId = id,
+        }));
     }
 
     /// <summary>
