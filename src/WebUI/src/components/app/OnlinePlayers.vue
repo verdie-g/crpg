@@ -2,26 +2,30 @@
 import { useTransition } from '@vueuse/core';
 import { type GameServerStats } from '@/models/game-server-stats';
 
+const gameStatsErrorIndicator = "?";
+
 const props = withDefaults(
-  defineProps<{ gameServerStats: GameServerStats; showLabel?: boolean }>(),
+  defineProps<{ gameServerStats: GameServerStats | null; showLabel?: boolean }>(),
   {
     showLabel: false,
   }
 );
 
 const animatedPlayingCount = useTransition(
-  computed(() => props.gameServerStats.total.playingCount)
+  computed(() => props.gameServerStats !== null ? props.gameServerStats.total.playingCount : -1)
 );
 </script>
 
 <template>
-  <VTooltip :disabled="Object.keys(gameServerStats.regions).length === 0">
+  <VTooltip :disabled="gameServerStats === null || Object.keys(gameServerStats.regions).length === 0">
     <div class="flex select-none items-center gap-1.5 hover:text-content-100">
       <OIcon icon="online" size="lg" class="text-[#53BC96]" style="--fa-secondary-opacity: 0.15" />
       <div v-if="showLabel">
         {{
           $t('onlinePlayers.format', {
-            count: $n(Number(animatedPlayingCount.toFixed(0)), 'decimal'),
+            count: props.gameServerStats !== null
+                    ? $n(Number(animatedPlayingCount.toFixed(0)), 'decimal')
+                    : gameStatsErrorIndicator,
           })
         }}
       </div>
@@ -34,7 +38,7 @@ const animatedPlayingCount = useTransition(
         <h5 class="text-content-100">{{ $t('onlinePlayers.tooltip.title') }}</h5>
         <div class="space-y-3">
           <div
-            v-for="(regionServerStats, regionKey) in gameServerStats.regions"
+            v-for="(regionServerStats, regionKey) in gameServerStats?.regions"
             class="flex w-52 items-center justify-between gap-3"
           >
             <div>{{ $t(`region.${regionKey}`, 0) }}</div>
