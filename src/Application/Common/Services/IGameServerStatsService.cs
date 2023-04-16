@@ -10,7 +10,7 @@ namespace Crpg.Application.Common.Services;
 
 public interface IGameServerStatsService
 {
-    Task<GameServerStats> GetGameServerStatsAsync(CancellationToken cancellationToken);
+    Task<GameServerStats?> GetGameServerStatsAsync(CancellationToken cancellationToken);
 }
 
 public class DatadogGameServerStatsService : IGameServerStatsService
@@ -39,22 +39,16 @@ public class DatadogGameServerStatsService : IGameServerStatsService
         }
     }
 
-    public async Task<GameServerStats> GetGameServerStatsAsync(CancellationToken cancellationToken)
+    public async Task<GameServerStats?> GetGameServerStatsAsync(CancellationToken cancellationToken)
     {
-        GameServerStats serverStats = new()
-        {
-            Total = new GameStats { PlayingCount = 0 },
-            Regions = new Dictionary<Region, GameStats>(),
-        };
-
         if (_ddHttpClient == null)
         {
-            return serverStats;
+            return null;
         }
 
         if (DateTime.UtcNow < _lastUpdate + TimeSpan.FromMinutes(2))
         {
-            return _serverStats!;
+            return _serverStats;
         }
 
         var to = DateTimeOffset.UtcNow;
@@ -67,9 +61,17 @@ public class DatadogGameServerStatsService : IGameServerStatsService
         });
         string queryStr = await query.ReadAsStringAsync(cancellationToken);
 
+        GameServerStats? serverStats;
         try
         {
+            serverStats = new()
+            {
+                Total = new GameStats { PlayingCount = 0 },
+                Regions = new Dictionary<Region, GameStats>(),
+            };
+
             var res = await _ddHttpClient.GetFromJsonAsync<DatadogQueryResponse>("api/v1/query?" + queryStr, cancellationToken);
+
             foreach (var series in res!.Series)
             {
                 string regionStr = series.Scope[^2..];
@@ -83,6 +85,7 @@ public class DatadogGameServerStatsService : IGameServerStatsService
         catch (Exception e)
         {
             Logger.LogError(e, "Could not get server stats");
+            serverStats = null;
         }
 
         // Both fields can be updated by several threads but the results is the same.

@@ -29,7 +29,7 @@ public class Result<TData> : Result where TData : class
     /// </summary>
     public TData? Data { get; }
 
-    public Result(TData data) => Data = data;
+    public Result(TData? data) => Data = data;
 
     public Result(Error error)
         : base(error)
