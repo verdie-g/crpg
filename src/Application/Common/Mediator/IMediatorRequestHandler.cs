@@ -10,6 +10,5 @@ internal interface IMediatorRequestHandler<in TRequest> : IRequestHandler<TReque
 
 internal interface IMediatorRequestHandler<in TRequest, TResponse> : IRequestHandler<TRequest, Result<TResponse>>
     where TRequest : IRequest<Result<TResponse>>
-    where TResponse : class
 {
 }

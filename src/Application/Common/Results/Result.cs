@@ -22,7 +22,7 @@ public class Result
 }
 
 /// <inheritdoc />
-public class Result<TData> : Result where TData : class
+public class Result<TData> : Result
 {
     /// <summary>
     /// The document’s primary data.
