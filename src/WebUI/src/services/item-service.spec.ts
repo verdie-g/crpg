@@ -139,28 +139,36 @@ it.only.each<[PartialDeep<Item>, PartialDeep<Record<ItemSlot, UserItem>>, ItemSl
 
   // Large shields on horseback, temporary solution
   [
-    { type: ItemType.Shield, flags: [], id: 'crpg_pavise_shield' },
+    { type: ItemType.Shield, flags: [], weapons: [{ class: WeaponClass.LargeShield }] },
     {},
     [ItemSlot.Weapon0, ItemSlot.Weapon1, ItemSlot.Weapon2, ItemSlot.Weapon3],
   ],
   [
-    { type: ItemType.Shield, flags: [], id: 'crpg_pavise_shield' },
+    { type: ItemType.Shield, flags: [], weapons: [{ class: WeaponClass.LargeShield }] },
     { [ItemSlot.Mount]: { baseItem: { mount: { familyType: ItemFamilyType.Horse } } } },
     [],
   ],
   [
     { type: ItemType.Mount, flags: [] },
-    { [ItemSlot.Weapon2]: { baseItem: { type: ItemType.Shield, id: 'crpg_pavise_shield' } } },
+    {
+      [ItemSlot.Weapon2]: {
+        baseItem: { type: ItemType.Shield, weapons: [{ class: WeaponClass.LargeShield }] },
+      },
+    },
     [],
   ],
   [
-    { type: ItemType.Shield, flags: [], id: 'some_small_shield' },
+    { type: ItemType.Shield, flags: [], weapons: [{ class: WeaponClass.SmallShield }] },
     { [ItemSlot.Mount]: { baseItem: { mount: { familyType: ItemFamilyType.Horse } } } },
     [ItemSlot.Weapon0, ItemSlot.Weapon1, ItemSlot.Weapon2, ItemSlot.Weapon3],
   ],
   [
     { type: ItemType.Mount, flags: [] },
-    { [ItemSlot.Weapon2]: { baseItem: { type: ItemType.Shield, id: 'some_small_shield' } } },
+    {
+      [ItemSlot.Weapon2]: {
+        baseItem: { type: ItemType.Shield, weapons: [{ class: WeaponClass.SmallShield }] },
+      },
+    },
     [ItemSlot.Mount],
   ],
 ])('getAvailableSlotsByItem - item: %j, equipedItems: %j', (item, equipedItems, expectation) => {
@@ -393,7 +401,7 @@ it.each<[Date, boolean]>([
   expect(isGraceTimeExpired(itemGraceTimeEnd)).toEqual(expectation);
 });
 
-it.only.each<[PartialDeep<UserItem>, { price: number; graceTimeEnd: Date | null }]>([
+it.each<[PartialDeep<UserItem>, { price: number; graceTimeEnd: Date | null }]>([
   [
     {
       createdAt: new Date('2022-11-27T20:00:00.0000000Z'),
