@@ -36,9 +36,9 @@ const animatedPlayingCount = useTransition(
     <template #popper>
       <div class="prose prose-invert space-y-5">
         <h5 class="text-content-100">{{ $t('onlinePlayers.tooltip.title') }}</h5>
-        <div class="space-y-3">
+        <div class="space-y-3" v-if="gameServerStats !== null">
           <div
-            v-for="(regionServerStats, regionKey) in gameServerStats?.regions"
+            v-for="(regionServerStats, regionKey) in gameServerStats.regions"
             class="flex w-52 items-center justify-between gap-3"
           >
             <div>{{ $t(`region.${regionKey}`, 0) }}</div>
