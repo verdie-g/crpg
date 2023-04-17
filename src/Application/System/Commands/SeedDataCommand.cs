@@ -666,6 +666,15 @@ public record SeedDataCommand : IMediatorRequest
                 Reason = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat deserunt temporibus consectetur perferendis illo cupiditate, dignissimos fugiat commodi, quibusdam necessitatibus mollitia neque, quam voluptatibus rem quas. Libero sapiente ullam aliquid.z",
                 CreatedAt = DateTime.UtcNow,
             };
+            Restriction orleRestriction2 = new()
+            {
+                RestrictedUser = orle,
+                RestrictedByUser = takeo,
+                Duration = TimeSpan.FromDays(10),
+                Type = RestrictionType.All,
+                Reason = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat deserunt temporibus consectetur perferendis illo cupiditate, dignissimos fugiat commodi, quibusdam necessitatibus mollitia neque, quam voluptatibus rem quas. Libero sapiente ullam aliquid.z",
+                CreatedAt = DateTime.UtcNow,
+            };
 
             Restriction[] newRestrictions =
             {

@@ -610,6 +610,9 @@ user:
         follow: 按照该频道中的指示联系我们
       outro: 请注意，目前我们不接受除Discord以外的任何平台上的投诉。
 
+banned:
+  title: 你被禁止了
+
 restriction:
   title: 限制
   type:

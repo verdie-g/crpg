@@ -1,7 +1,9 @@
 import type { RouteLocationNormalized, NavigationGuard } from 'vue-router/auto';
+import { ErrorResponse } from 'oidc-client-ts';
 
 import { useUserStore } from '@/stores/user';
 import { userManager, signInSilent } from '@/services/auth-service';
+
 import type Role from '@/models/role';
 
 const routeHasAnyRoles = (route: RouteLocationNormalized<any>): boolean =>
@@ -47,12 +49,28 @@ export const authRouterMiddleware: NavigationGuard = async to => {
   return true;
 };
 
+const errorHandler = (error: unknown) => {
+  if (error instanceof ErrorResponse && error?.error === 'invalid_grant') {
+    return { name: 'Banned' };
+  }
+
+  return { name: 'Root' };
+};
+
 export const signInCallback: NavigationGuard = async () => {
-  await userManager.signinCallback();
-  return { name: 'Characters' } as RouteLocationNormalized<'Characters'>;
+  try {
+    await userManager.signinCallback();
+    return { name: 'Characters' } as RouteLocationNormalized<'Characters'>;
+  } catch (error: unknown) {
+    return errorHandler(error);
+  }
 };
 
 export const signInSilentCallback: NavigationGuard = async () => {
-  await userManager.signinSilentCallback();
-  return true;
+  try {
+    await userManager.signinSilentCallback();
+    return true;
+  } catch (error: unknown) {
+    return errorHandler(error);
+  }
 };
