@@ -1,7 +1,11 @@
-ServerName cRPG Test
+ServerName cRPG Conquest Test
 GameType cRPGConquest
-GamePassword yoyo
-Map crpg_conquest_test
+GamePassword conquesttest
+add_map_to_automated_battle_pool crpg_conquest_acre
+add_map_to_automated_battle_pool crpg_conquest_frederiksborg
+add_map_to_automated_battle_pool crpg_conquest_hades
+add_map_to_automated_battle_pool crpg_conquest_neuenburg
+add_map_to_automated_battle_pool crpg_conquest_skalalanding
 AllowPollsToKickPlayers True
 AllowPollsToChangeMaps True
 disable_culture_voting
@@ -20,4 +24,6 @@ NumberOfBotsTeam2 1
 MapTimeLimit 30
 RoundTimeLimit 120
 WarmupTimeLimit 1
-start_game_and_mission
+start_game
+set_automated_battle_count -1
+enable_automated_battle_switching

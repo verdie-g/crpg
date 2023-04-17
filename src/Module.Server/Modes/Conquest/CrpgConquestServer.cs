@@ -101,7 +101,6 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
 
     public override bool CheckForWarmupEnd()
     {
-        return true;
         return false;
     }
 
@@ -178,13 +177,14 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
     private void ResetFlags()
     {
         AllCapturePoints = new MBReadOnlyList<FlagCapturePoint>(Mission.MissionObjects.FindAllWithType<FlagCapturePoint>().ToArray());
-        _flagOwners = new Team[AllCapturePoints.Count];
-
+        var flagOwners = new List<Team?>();
         var stagesFlags = new List<List<FlagCapturePoint>>();
         foreach (FlagCapturePoint flag in AllCapturePoints)
         {
-            _flagOwners[flag.FlagIndex] = Mission.Teams.Defender;
             flag.SetTeamColorsSynched(Mission.Teams.Defender.Color, Mission.Teams.Defender.Color2);
+
+            flagOwners.AddRange(Enumerable.Range(0, Math.Max(flag.FlagIndex - flagOwners.Count + 1, 0)).Select(_ => (Team?)null));
+            flagOwners[flag.FlagIndex] = Mission.Teams.Defender;
 
             int flagStage = ResolveFlagStage(flag);
             stagesFlags.AddRange(Enumerable.Range(0, Math.Max(flagStage - stagesFlags.Count + 1, 0)).Select(_ => new List<FlagCapturePoint>()));
@@ -209,6 +209,7 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
             }
         }
 
+        _flagOwners = flagOwners.ToArray();
         _flagStages = stagesFlags.Select(s => s.ToArray()).ToArray();
         _currentStage = 0;
         _flagTickTimer = new MissionTimer(0.25f);
