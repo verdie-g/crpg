@@ -116,6 +116,7 @@ const WeaponClassByItemType: Partial<Record<ItemType, WeaponClass[]>> = {
     WeaponClass.ThrowingKnife,
     WeaponClass.Stone,
   ],
+  [ItemType.Shield]: [WeaponClass.SmallShield, WeaponClass.LargeShield],
 };
 
 export const hasWeaponClassesByItemType = (type: ItemType) =>
@@ -209,10 +210,10 @@ export const getAvailableSlotsByItem = (
   }
 
   // Banning the use of large shields on horseback
-  // TODO: Temporary solution
   if (
-    (ItemSlot.Mount in equippedItems && isLargeShield(item.id)) ||
-    (item.type === ItemType.Mount && isLargeShieldEquipped(equippedItems))
+    (ItemSlot.Mount in equippedItems && isLargeShield(item)) ||
+    (item.type === ItemType.Mount &&
+      Object.values(equippedItems).some(item => isLargeShield(item.baseItem)))
   ) {
     notify(
       t('character.inventory.item.cantUseOnHorseback.notify.warning'),
@@ -224,30 +225,8 @@ export const getAvailableSlotsByItem = (
   return itemSlotsByType[item.type]!;
 };
 
-const isLargeShieldEquipped = (equippedItems: EquippedItemsBySlot) =>
-  Object.entries(equippedItems)
-    .filter(
-      ([key, val]) => weaponSlots.includes(key as ItemSlot) && val.baseItem.type === ItemType.Shield
-    )
-    .some(([_key, val]) => isLargeShield(val.baseItem.id));
-
-// TODO: Temporary solution
-export const largeShieldIds: string[] = [
-  'crpg_pavise_shield', // Pavise Shield
-  'crpg_leather_round_shield', // Large Round Shield
-  'crpg_sturgia_old_shield_b', // Simple Large Round Shield
-  'crpg_sturgia_old_shield_a', // Iron Rimmed Large Round Shield
-  'crpg_heavy_round_shield', // Heavy Round Shield
-  'crpg_Heavy_Highland_Tower_Shield', // Heavy Highland Tower Shield
-  'crpg_eastern_wicker_shield', // Wicker Square Shield
-  'crpg_footmans_wicker_shield', // Wicker Shield
-  'crpg_oval_shield', // Wooden Oval Shield
-  'crpg_reinforced_flat_kite_shield', // Reinforced Flat Kite Shield
-  'crpg_tall_heater_shield', // Tall Heater Shield
-];
-
-// TODO: Temporary solution
-export const isLargeShield = (id: string) => largeShieldIds.includes(id);
+export const isLargeShield = (item: Item) =>
+  item.type === ItemType.Shield && item.weapons[0].class === WeaponClass.LargeShield;
 
 export const visibleItemFlags: ItemFlags[] = [
   ItemFlags.DropOnWeaponChange,
@@ -334,8 +313,8 @@ export const weaponClassToIcon: Record<WeaponClass, string> = {
   [WeaponClass.Javelin]: 'weapon-class-throwing-spear',
   [WeaponClass.Pistol]: '',
   [WeaponClass.Musket]: '',
-  [WeaponClass.SmallShield]: '',
-  [WeaponClass.LargeShield]: '',
+  [WeaponClass.SmallShield]: 'weapon-class-shield-small',
+  [WeaponClass.LargeShield]: 'weapon-class-shield-large',
   [WeaponClass.Banner]: '',
 };
 
