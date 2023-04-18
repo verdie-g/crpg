@@ -75,7 +75,33 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
 
     public override bool CheckForMatchEnd()
     {
-        return _currentStageTimer.Check() || _currentStage >= _flagStages.Length;
+        if (_currentStage >= _flagStages.Length)
+        {
+            return true;
+        }
+
+        if (!_currentStageTimer.Check())
+        {
+            return false;
+        }
+
+        foreach (var flag in _flagStages[_currentStage])
+        {
+            if (GetFlagOwnerTeam(flag)?.Side != BattleSideEnum.Defender)
+            {
+                continue;
+            }
+
+            foreach (var agent in EnumerateAgentsAroundFlag(flag))
+            {
+                if (!agent.IsMount && agent.IsActive() && agent.Team?.Side == BattleSideEnum.Attacker)
+                {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 
     public override Team GetWinnerTeam()
@@ -265,10 +291,8 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
             Team? flagOwner = GetFlagOwnerTeam(flag);
             Agent? closestAgentToFlag = null;
             float closestAgentDistanceToFlagSquared = float.MaxValue;
-            var proximitySearch = AgentProximityMap.BeginSearch(Mission.Current, flag.Position.AsVec2, FlagCaptureRange);
-            for (; proximitySearch.LastFoundAgent != null; AgentProximityMap.FindNext(Mission.Current, ref proximitySearch))
+            foreach (var agent in EnumerateAgentsAroundFlag(flag))
             {
-                Agent agent = proximitySearch.LastFoundAgent;
                 if (agent.IsMount || !agent.IsActive())
                 {
                     continue;
@@ -397,6 +421,15 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
                 durationRewarded: _rewardTickTimer.GetTimerDuration(),
                 defenderMultiplierGain: 1,
                 attackerMultiplierGain: -1);
+        }
+    }
+
+    private IEnumerable<Agent> EnumerateAgentsAroundFlag(FlagCapturePoint flag)
+    {
+        var proximitySearch = AgentProximityMap.BeginSearch(Mission.Current, flag.Position.AsVec2, FlagCaptureRange);
+        for (; proximitySearch.LastFoundAgent != null; AgentProximityMap.FindNext(Mission.Current, ref proximitySearch))
+        {
+            yield return proximitySearch.LastFoundAgent;
         }
     }
 }
