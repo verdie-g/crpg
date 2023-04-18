@@ -119,7 +119,6 @@ public class RewardCharacterCommandTest : TestBase
         Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
         Mock<IExperienceTable> experienceTableMock = new();
 
-
         RewardCharacterCommand.Handler handler = new(
             characterServiceMock.Object,
             experienceTableMock.Object,

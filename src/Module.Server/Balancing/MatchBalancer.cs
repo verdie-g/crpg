@@ -79,7 +79,7 @@ internal class MatchBalancer
             // This are failcases in case bannerbalance was not enough
             Debug.Print("ratio difference is above 10%");
             // disabled because does not take in account clangroup penalty yet
-            //balancedBannerGameMatch = BalanceTeamOfSimilarSizes(balancedBannerGameMatch, bannerBalance: false, 0.10f);
+            // balancedBannerGameMatch = BalanceTeamOfSimilarSizes(balancedBannerGameMatch, bannerBalance: false, 0.10f);
 
             if (IsBalanceGoodEnough(balancedBannerGameMatch, maxSizeRatio: 0.75f, maxDifference: 10f, percentageDifference: 0.15f))
             {

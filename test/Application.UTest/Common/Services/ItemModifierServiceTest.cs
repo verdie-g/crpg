@@ -83,7 +83,7 @@ public class ItemModifierServiceTest : TestBase
 
             Assert.That(modifiedItems[i].PrimaryWeapon!.Accuracy, Is.GreaterThanOrEqualTo(modifiedItems[i - 1].PrimaryWeapon!.Accuracy));
             Assert.That(modifiedItems[i].PrimaryWeapon!.MissileSpeed, Is.GreaterThanOrEqualTo(modifiedItems[i - 1].PrimaryWeapon!.MissileSpeed));
-            Assert.That(modifiedItems[i].PrimaryWeapon!.StackAmount, Is.GreaterThanOrEqualTo(modifiedItems[i - 1].PrimaryWeapon!.StackAmount));    
+            Assert.That(modifiedItems[i].PrimaryWeapon!.StackAmount, Is.GreaterThanOrEqualTo(modifiedItems[i - 1].PrimaryWeapon!.StackAmount));
             Assert.That(modifiedItems[i].PrimaryWeapon!.Length, Is.GreaterThanOrEqualTo(modifiedItems[i - 1].PrimaryWeapon!.Length));
             Assert.That(modifiedItems[i].PrimaryWeapon!.Handling, Is.GreaterThanOrEqualTo(modifiedItems[i - 1].PrimaryWeapon!.Handling));
             Assert.That(modifiedItems[i].PrimaryWeapon!.BodyArmor, Is.GreaterThanOrEqualTo(modifiedItems[i - 1].PrimaryWeapon!.BodyArmor));

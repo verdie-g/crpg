@@ -63,7 +63,6 @@ public class GetActivityLogsQueryTest : TestBase
         Assert.That(res.Data[2].Id, Is.EqualTo(4));
     }
 
-
     [Test]
     public async Task ShouldReturnLogsForType()
     {

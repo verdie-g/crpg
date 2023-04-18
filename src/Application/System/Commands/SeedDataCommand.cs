@@ -780,7 +780,7 @@ public record SeedDataCommand : IMediatorRequest
                 Level = 25,
                 Experience = _experienceTable.GetExperienceForLevel(25) + (_experienceTable.GetExperienceForLevel(26) - _experienceTable.GetExperienceForLevel(25)) / 2,
             };
-             Character orleCharacter2 = new()
+            Character orleCharacter2 = new()
             {
                 User = orle,
                 Name = "Orle Farmer",

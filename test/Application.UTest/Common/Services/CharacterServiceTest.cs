@@ -50,7 +50,6 @@ public class CharacterServiceTest
         Assert.That(character.Experience, Is.EqualTo(8));
     }
 
-
     [Test]
     public void GiveExperienceShouldGiveExperienceBypassingMultiplier()
     {

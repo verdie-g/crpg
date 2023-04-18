@@ -24,7 +24,9 @@ internal class CrpgConquestClient : MissionMultiplayerGameModeBaseClient, IComma
     public override MissionLobbyComponent.MultiplayerGameType GameType => MissionLobbyComponent.MultiplayerGameType.Siege;
     public bool AreMoralesIndependent => false;
 
+#pragma warning disable CS0067 // False positive
     public event Action<BattleSideEnum, float>? OnMoraleChangedEvent;
+#pragma warning restore CS0067
     public event Action? OnFlagNumberChangedEvent;
     public event Action<FlagCapturePoint, Team>? OnCapturePointOwnerChangedEvent;
 
