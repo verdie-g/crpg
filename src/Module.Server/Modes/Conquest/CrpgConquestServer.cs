@@ -1,4 +1,5 @@
-﻿using NetworkMessages.FromServer;
+﻿using Crpg.Module.Rewards;
+using NetworkMessages.FromServer;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -14,6 +15,7 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
     private const float FlagCaptureRangeSquared = FlagCaptureRange * FlagCaptureRange;
 
     private readonly MissionScoreboardComponent _missionScoreboardComponent;
+    private readonly CrpgRewardServer _rewardServer;
 
     private Team?[] _flagOwners = Array.Empty<Team>();
     private FlagCapturePoint[][] _flagStages = Array.Empty<FlagCapturePoint[]>();
@@ -21,11 +23,14 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
     private int _currentStage;
     private MissionTimer _flagTickTimer = default!;
     private MissionTimer _currentStageTimer = default!;
+    private MissionTimer? _rewardTickTimer;
 
     public CrpgConquestServer(
-        MissionScoreboardComponent missionScoreboardComponent)
+        MissionScoreboardComponent missionScoreboardComponent,
+        CrpgRewardServer rewardServer)
     {
         _missionScoreboardComponent = missionScoreboardComponent;
+        _rewardServer = rewardServer;
     }
 
     public override bool IsGameModeHidingAllAgentVisuals => true;
@@ -64,6 +69,7 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
         }
 
         TickFlags();
+        RewardUsers();
     }
 
     public override bool CheckForMatchEnd()
@@ -232,6 +238,8 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
             StageDuration = (int)_currentStageTimer.GetTimerDuration(),
         });
         GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
+
+        _rewardTickTimer = new MissionTimer(duration: 60);
     }
 
     private void TickFlags()
@@ -300,36 +308,46 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
         bool stageEnded = _flagStages[_currentStage].All(f =>
             _flagOwners[f.FlagIndex] == Mission.AttackerTeam);
 
-        if (!stageEnded)
+        if (stageEnded)
         {
-            NotificationsComponent.FlagXCapturedByTeamX(flag, flagNewOwner);
+            OnStageEnd();
         }
         else
         {
-            int endingStage = _currentStage;
-            _currentStage += 1;
-
-            if (_currentStage >= _flagStages.Length)
-            {
-                return;
-            }
-
-            foreach (var stageFlag in _flagStages[_currentStage])
-            {
-                stageFlag.ResetPointAsServer(Mission.DefenderTeam.Color, Mission.DefenderTeam.Color2);
-            }
-
-            foreach (var stageFlag in _flagStages[endingStage])
-            {
-                stageFlag.RemovePointAsServer();
-                ((SiegeSpawnFrameBehavior)SpawnComponent.SpawnFrameBehavior).OnFlagDeactivated(stageFlag);
-                GameNetwork.BeginBroadcastModuleEvent();
-                GameNetwork.WriteMessage(new FlagDominationFlagsRemovedMessage());
-                GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
-            }
-
-            StartStage(_currentStage);
+            NotificationsComponent.FlagXCapturedByTeamX(flag, flagNewOwner);
         }
+    }
+
+    private void OnStageEnd()
+    {
+        int endingStage = _currentStage;
+        _currentStage += 1;
+
+        if (_currentStage >= _flagStages.Length)
+        {
+            return;
+        }
+
+        foreach (var stageFlag in _flagStages[_currentStage])
+        {
+            stageFlag.ResetPointAsServer(Mission.DefenderTeam.Color, Mission.DefenderTeam.Color2);
+        }
+
+        foreach (var stageFlag in _flagStages[endingStage])
+        {
+            stageFlag.RemovePointAsServer();
+            ((SiegeSpawnFrameBehavior)SpawnComponent.SpawnFrameBehavior).OnFlagDeactivated(stageFlag);
+            GameNetwork.BeginBroadcastModuleEvent();
+            GameNetwork.WriteMessage(new FlagDominationFlagsRemovedMessage());
+            GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
+        }
+
+        _ = _rewardServer.UpdateCrpgUsersAsync(
+            durationRewarded: _rewardTickTimer!.GetRemainingTimeInSeconds(),
+            defenderMultiplierGain: -CrpgRewardServer.ExperienceMultiplierMax,
+            attackerMultiplierGain: CrpgRewardServer.ExperienceMultiplierMax);
+
+        StartStage(_currentStage);
     }
 
     private CaptureTheFlagFlagDirection ComputeFlagDirection(
@@ -368,5 +386,16 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
         }
 
         return CaptureTheFlagFlagDirection.None;
+    }
+
+    private void RewardUsers()
+    {
+        if (_rewardTickTimer!.Check(reset: true))
+        {
+            _ = _rewardServer.UpdateCrpgUsersAsync(
+                durationRewarded: _rewardTickTimer.GetTimerDuration(),
+                defenderMultiplierGain: 1,
+                attackerMultiplierGain: -1);
+        }
     }
 }
