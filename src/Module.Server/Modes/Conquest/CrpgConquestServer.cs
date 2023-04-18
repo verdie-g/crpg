@@ -1,4 +1,5 @@
-﻿using Crpg.Module.Rewards;
+﻿using Crpg.Module.Common;
+using Crpg.Module.Rewards;
 using NetworkMessages.FromServer;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
@@ -239,7 +240,7 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
         });
         GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
 
-        _rewardTickTimer = new MissionTimer(duration: 60);
+        _rewardTickTimer = new MissionTimer(duration: CrpgServerConfiguration.ServerRewardTick);
     }
 
     private void TickFlags()

@@ -25,6 +25,7 @@ internal static class CrpgServerConfiguration
     public static string Service { get; }
     public static string Instance { get; }
     public static float ServerExperienceMultiplier { get; private set; } = 1.0f;
+    public static int ServerRewardTick { get; private set; } = 60;
     public static Tuple<TimeSpan, TimeSpan, TimeZoneInfo>? ServerHappyHours { get; private set; }
 
     [UsedImplicitly]
@@ -41,6 +42,23 @@ internal static class CrpgServerConfiguration
 
         ServerExperienceMultiplier = multiplier;
         Debug.Print($"Set server multiplier to {multiplier}");
+    }
+
+    [UsedImplicitly]
+    [ConsoleCommandMethod("crpg_reward_tick", "Sets the reward tick duration in seconds for Conquest/Siege/Team Deatmatch.")]
+    private static void SetServerRewardTick(string? rewardTickStr)
+    {
+        if (rewardTickStr == null
+            || !int.TryParse(rewardTickStr, out int rewardTick)
+            || rewardTick < 10
+            || rewardTick > 1000)
+        {
+            Debug.Print($"Invalid reward tick: {rewardTickStr}");
+            return;
+        }
+
+        ServerRewardTick = rewardTick;
+        Debug.Print($"Set reward tick to {rewardTick}");
     }
 
     [UsedImplicitly]
