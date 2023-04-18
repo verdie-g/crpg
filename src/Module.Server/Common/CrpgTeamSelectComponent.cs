@@ -407,7 +407,7 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
         foreach (var networkPeer in GameNetwork.NetworkPeers)
         {
             var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
-            if (!networkPeer.IsSynchronized || crpgPeer?.User == null || crpgPeer.SpawnTeamThisRound == null)
+            if (!networkPeer.IsSynchronized || crpgPeer?.User == null || crpgPeer.LastSpawnTeam == null)
             {
                 continue;
             }
@@ -440,11 +440,11 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
                 roundPlayer.Assists = roundStats.Assists;
             }
 
-            if (crpgPeer.SpawnTeamThisRound.Side == BattleSideEnum.Defender)
+            if (crpgPeer.LastSpawnTeam.Side == BattleSideEnum.Defender)
             {
                 roundResult.Defenders.Add(roundPlayer);
             }
-            else if (crpgPeer.SpawnTeamThisRound.Side == BattleSideEnum.Attacker)
+            else if (crpgPeer.LastSpawnTeam.Side == BattleSideEnum.Attacker)
             {
                 roundResult.Attackers.Add(roundPlayer);
             }

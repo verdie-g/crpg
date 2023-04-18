@@ -1,4 +1,5 @@
-﻿using TaleWorlds.Core;
+﻿using Crpg.Module.Rewards;
+using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.MissionRepresentatives;
 using TaleWorlds.ObjectSystem;
@@ -8,13 +9,19 @@ namespace Crpg.Module.Modes.TeamDeathmatch;
 internal class CrpgTeamDeathmatchServer : MissionMultiplayerGameModeBase
 {
     private readonly MissionScoreboardComponent _scoreboardComponent;
+    private readonly CrpgRewardServer _rewardServer;
+
+    private MissionTimer? _rewardTickTimer;
 
     public override bool IsGameModeHidingAllAgentVisuals => true;
     public override bool IsGameModeUsingOpposingTeams => true;
 
-    public CrpgTeamDeathmatchServer(MissionScoreboardComponent scoreboardComponent)
+    public CrpgTeamDeathmatchServer(
+        MissionScoreboardComponent scoreboardComponent,
+        CrpgRewardServer rewardServer)
     {
         _scoreboardComponent = scoreboardComponent;
+        _rewardServer = rewardServer;
     }
 
     public override MissionLobbyComponent.MultiplayerGameType GetMissionType()
@@ -33,6 +40,16 @@ internal class CrpgTeamDeathmatchServer : MissionMultiplayerGameModeBase
         _scoreboardComponent.ClearScores();
         _scoreboardComponent.ResetBotScores();
         ClearPeerCounts();
+    }
+
+    public override void OnMissionTick(float dt)
+    {
+        if (WarmupComponent.IsInWarmup)
+        {
+            return;
+        }
+
+        RewardUsers();
     }
 
     public override void OnAgentRemoved(Agent affectedAgent, Agent? affectorAgent, AgentState agentState, KillingBlow blow)
@@ -94,5 +111,16 @@ internal class CrpgTeamDeathmatchServer : MissionMultiplayerGameModeBase
         BasicCultureObject cultureTeam2 = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam2.GetStrValue());
         Banner bannerTeam2 = new(cultureTeam2.BannerKey, cultureTeam2.BackgroundColor2, cultureTeam2.ForegroundColor2);
         Mission.Teams.Add(BattleSideEnum.Defender, cultureTeam2.BackgroundColor2, cultureTeam2.ForegroundColor2, bannerTeam2, false, true);
+    }
+
+    private void RewardUsers()
+    {
+        _rewardTickTimer ??= new MissionTimer(duration: 60);
+        if (_rewardTickTimer.Check(reset: true))
+        {
+            _ = _rewardServer.UpdateCrpgUsersAsync(
+                durationRewarded: _rewardTickTimer.GetTimerDuration(),
+                constantMultiplier: 2);
+        }
     }
 }

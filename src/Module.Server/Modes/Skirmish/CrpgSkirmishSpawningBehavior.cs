@@ -97,8 +97,6 @@ internal class CrpgSkirmishSpawningBehavior : CrpgSpawningBehaviorBase
     {
         base.OnPeerSpawned(missionPeer);
         UpdateSpawnCount(missionPeer, missionPeer.SpawnCountThisRound + 1);
-        var crpgPeer = missionPeer.GetComponent<CrpgPeer>();
-        crpgPeer.SpawnTeamThisRound ??= missionPeer.Team;
     }
 
     private void ResetSpawnTeams()
@@ -109,12 +107,6 @@ internal class CrpgSkirmishSpawningBehavior : CrpgSpawningBehaviorBase
             if (missionPeer != null)
             {
                 UpdateSpawnCount(missionPeer, 0);
-            }
-
-            var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
-            if (crpgPeer != null)
-            {
-                crpgPeer.SpawnTeamThisRound = null;
             }
         }
 

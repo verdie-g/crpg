@@ -1,10 +1,5 @@
-﻿using Crpg.Module.Api;
-using Crpg.Module.Api.Models;
-using Crpg.Module.Api.Models.Characters;
-using Crpg.Module.Common;
-using Crpg.Module.Common.Network;
+﻿using Crpg.Module.Rewards;
 using TaleWorlds.Core;
-using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Modes.Duel;
@@ -17,13 +12,12 @@ namespace Crpg.Module.Modes.Duel;
 /// </summary>
 internal class CrpgDuelServer : MissionMultiplayerDuel
 {
-    private readonly ICrpgClient _crpgClient;
-    private float _checkUserUpdate;
+    private readonly CrpgRewardServer _rewardServer;
+    private MissionTimer? _rewardTickTimer;
 
-    public CrpgDuelServer(ICrpgClient crpgClient)
+    public CrpgDuelServer(CrpgRewardServer rewardServer)
     {
-        _crpgClient = crpgClient;
-        _checkUserUpdate = 0;
+        _rewardServer = rewardServer;
     }
 
     // If the GameType is duel is crashes after each duel. I was not able to debug it.
@@ -57,11 +51,7 @@ internal class CrpgDuelServer : MissionMultiplayerDuel
     public override void OnMissionTick(float dt)
     {
         base.OnMissionTick(dt);
-        if (Mission.Current.CurrentTime - _checkUserUpdate >= 30f) // Update all character data all 30sec
-        {
-            _checkUserUpdate = Mission.Current.CurrentTime;
-            UpdateCrpgIdleAgentCharacters();
-        }
+        RewardUsers();
     }
 
     protected override void HandleLateNewClientAfterSynchronized(NetworkCommunicator networkPeer)
@@ -76,101 +66,18 @@ internal class CrpgDuelServer : MissionMultiplayerDuel
         }
     }
 
-    private async Task RemoveRemainingAgents(MissionPeer missionPeer, float delay)
+    private void RewardUsers()
+    {
+        _rewardTickTimer ??= new MissionTimer(duration: 60);
+        if (_rewardTickTimer.Check(reset: true))
+        {
+            _ = _rewardServer.UpdateCrpgUsersAsync(durationRewarded: 0, updateUserStats: false);
+        }
+    }
+
+    private async Task RemoveRemainingAgents(MissionPeer? missionPeer, float delay)
     {
         await Task.Delay((int)(delay * 1000) - 100); // After 2 seconds the duel is actually over. So we wait a bit longer before we manually remove the player who is alive.
         missionPeer?.ControlledAgent?.FadeOut(true, true);
-    }
-
-    /// <summary>
-    /// Update all players which are not in a duel and not spectating.
-    /// </summary>
-    private void UpdateCrpgIdleAgentCharacters()
-    {
-        List<NetworkCommunicator> playersToUpdate = new();
-        foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
-        {
-            MissionPeer? missionPeer = networkPeer?.GetComponent<MissionPeer>();
-            CrpgPeer? crpgPeer = networkPeer.GetComponent<CrpgPeer>();
-            if (networkPeer == null || missionPeer == null ||
-                crpgPeer == null || crpgPeer.User == null ||
-                missionPeer.Team != Mission.AttackerTeam) // AttackerTeam = Players which are not spectator and not live in a duel.
-            {
-                continue;
-            }
-
-            playersToUpdate.Add(networkPeer);
-        }
-
-        _ = UpdateCrpgDuelistUsersAsync(playersToUpdate.ToArray());
-    }
-
-    private async Task UpdateCrpgDuelistUsersAsync(NetworkCommunicator[] networkPeers)
-    {
-        List<CrpgUserUpdate> userUpdates = new();
-        Dictionary<int, CrpgPeer> crpgPeerByUserId = new();
-
-        foreach (NetworkCommunicator networkPeer in networkPeers)
-        {
-            var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
-            if (crpgPeer?.User == null)
-            {
-                continue;
-            }
-
-            crpgPeerByUserId[crpgPeer.User.Id] = crpgPeer;
-            CrpgUserUpdate userUpdate = new()
-            {
-                CharacterId = crpgPeer.User.Character.Id,
-                Reward = new CrpgUserReward { Experience = 0, Gold = 0 },
-                Statistics = new CrpgCharacterStatistics { Kills = 0, Deaths = 0, Assists = 0, PlayTime = TimeSpan.Zero },
-                Rating = crpgPeer.User!.Character.Rating,
-                BrokenItems = Array.Empty<CrpgUserDamagedItem>(),
-            };
-
-            userUpdates.Add(userUpdate);
-        }
-
-        if (userUpdates.Count == 0)
-        {
-            return;
-        }
-
-        // TODO: add retry mechanism (the endpoint need to be idempotent though).
-        try
-        {
-            var res = (await _crpgClient.UpdateUsersAsync(new CrpgGameUsersUpdateRequest { Updates = userUpdates })).Data!;
-            ApplyUpdatedPlayerData(res.UpdateResults, crpgPeerByUserId);
-            foreach (NetworkCommunicator networkPeer in networkPeers)
-            {
-                GameNetwork.BeginModuleEventAsServer(networkPeer);
-                GameNetwork.WriteMessage(new CrpgNotification
-                {
-                    Type = CrpgNotificationType.Notification,
-                    Message = "Your character was updated.",
-                    SoundEvent = string.Empty,
-                });
-                GameNetwork.EndModuleEventAsServer();
-            }
-        }
-        catch (Exception e)
-        {
-            Debug.Print("Couldn't update users: " + e);
-        }
-    }
-
-    private void ApplyUpdatedPlayerData(IList<UpdateCrpgUserResult> updateResults,
-        Dictionary<int, CrpgPeer> crpgPeerByUserId)
-    {
-        foreach (var updateResult in updateResults)
-        {
-            if (!crpgPeerByUserId.TryGetValue(updateResult.User.Id, out var crpgPeer))
-            {
-                Debug.Print($"Unknown user with id '{updateResult.User.Id}'");
-                continue;
-            }
-
-            crpgPeer.User = updateResult.User;
-        }
     }
 }

@@ -31,9 +31,10 @@
     <Compile Remove="..\Module.Server\Api\*Client.cs" />
     <Compile Remove="..\Module.Server\Modes\Battle\CrpgFlagDominationServer.cs" />
     <Compile Remove="..\Module.Server\Modes\Conquest\CrpgConquestServer.cs" />
-    <Compile Remove="..\Module.Server\Modes\Siege\CrpgSiegeServer.cs" />
     <Compile Remove="..\Module.Server\Modes\Duel\CrpgDuelServer.cs" />
     <Compile Remove="..\Module.Server\Modes\Duel\CrpgDuelSpawningBehavior.cs" />
+    <Compile Remove="..\Module.Server\Modes\Siege\CrpgSiegeServer.cs" />
+    <Compile Remove="..\Module.Server\Modes\TeamDeathmatch\CrpgTeamDeathmatchServer.cs" />
     <Compile Remove="..\Module.Server\Balancing\**\*" />
     <Compile Remove="..\Module.Server\Common\CrpgActivityLogsBehavior.cs" />
     <Compile Remove="..\Module.Server\Common\CrpgServerConfiguration.cs" />

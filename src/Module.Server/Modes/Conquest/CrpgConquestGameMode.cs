@@ -116,7 +116,7 @@ internal class CrpgConquestGameMode : MissionBasedMultiplayerGameMode
 
 #if CRPG_SERVER
                 new CrpgConquestServer(scoreboardComponent),
-                new CrpgRewardServer(crpgClient, _constants, warmupComponent, roundController: null),
+                new CrpgRewardServer(crpgClient, _constants, warmupComponent),
                 new CrpgUserManagerServer(crpgClient, _constants),
                 new KickInactiveBehavior(inactiveTimeLimit: 90, warmupComponent),
                 new MapPoolComponent(),

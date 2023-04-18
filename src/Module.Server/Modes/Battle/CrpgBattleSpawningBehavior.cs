@@ -63,7 +63,7 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
         _botsSpawned = false;
         _spawnTimer = new MissionTimer(TotalSpawnDuration); // Limit spawning for 30 seconds.
         _cavalrySpawnDelayTimer = new MissionTimer(GetCavalrySpawnDelay()); // Cav will spawn X seconds later.
-        ResetSpawnTeams();
+        _notifiedPlayersAboutSpawnRestriction.Clear();
     }
 
     public bool SpawnDelayEnded()
@@ -81,7 +81,7 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
         var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
         var missionPeer = networkPeer.GetComponent<MissionPeer>();
         if (crpgPeer?.User == null
-            || crpgPeer.SpawnTeamThisRound != null
+            || crpgPeer.LastSpawnTeam != null
             || missionPeer == null
             || missionPeer.HasSpawnedAgentVisuals)
         {
@@ -129,12 +129,10 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
         return true;
     }
 
-    protected override void OnPeerSpawned(MissionPeer component)
+    protected override void OnPeerSpawned(MissionPeer missionPeer)
     {
-        base.OnPeerSpawned(component);
-        component.SpawnCountThisRound += 1;
-        var crpgPeer = component.GetComponent<CrpgPeer>();
-        crpgPeer.SpawnTeamThisRound = component.Team;
+        base.OnPeerSpawned(missionPeer);
+        missionPeer.SpawnCountThisRound += 1;
     }
 
     /// <summary>
@@ -171,19 +169,5 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
         }
 
         return counter;
-    }
-
-    private void ResetSpawnTeams()
-    {
-        foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
-        {
-            var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
-            if (crpgPeer != null)
-            {
-                crpgPeer.SpawnTeamThisRound = null;
-            }
-        }
-
-        _notifiedPlayersAboutSpawnRestriction.Clear();
     }
 }

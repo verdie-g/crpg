@@ -23,6 +23,12 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
         return false;
     }
 
+    public override void RequestStartSpawnSession()
+    {
+        base.RequestStartSpawnSession();
+        ResetSpawnTeams();
+    }
+
     protected virtual bool IsPlayerAllowedToSpawn(NetworkCommunicator networkPeer)
     {
         return true;
@@ -182,8 +188,10 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
         }
     }
 
-    protected virtual void OnPeerSpawned(MissionPeer component)
+    protected virtual void OnPeerSpawned(MissionPeer missionPeer)
     {
+        var crpgPeer = missionPeer.GetComponent<CrpgPeer>();
+        crpgPeer.LastSpawnTeam = missionPeer.Team;
     }
 
     protected Equipment CreateCharacterEquipment(IList<CrpgEquippedItem> equippedItems)
@@ -209,6 +217,18 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
         }
 
         return false;
+    }
+
+    private void ResetSpawnTeams()
+    {
+        foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
+        {
+            var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
+            if (crpgPeer != null)
+            {
+                crpgPeer.LastSpawnTeam = null;
+            }
+        }
     }
 
     private BasicCharacterObject CreateCharacter(CrpgCharacter crpgCharacter, CrpgConstants constants)

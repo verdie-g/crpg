@@ -1,4 +1,5 @@
 ﻿using Crpg.Module.Modes.Skirmish;
+using Crpg.Module.Rewards;
 using NetworkMessages.FromServer;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
@@ -23,6 +24,7 @@ internal class CrpgFlagDominationServer : MissionMultiplayerGameModeBase
 
     private readonly CrpgFlagDominationClient _flagDominationClient;
     private readonly bool _isSkirmish;
+    private readonly CrpgRewardServer _rewardServer;
 
     /// <summary>A number between -1.0 and 1.0. Less than 0 means the defenders are winning. Greater than 0 for attackers.</summary>
     private float _morale;
@@ -39,10 +41,12 @@ internal class CrpgFlagDominationServer : MissionMultiplayerGameModeBase
     public override bool AllowCustomPlayerBanners() => false;
     public override bool UseRoundController() => true;
 
-    public CrpgFlagDominationServer(CrpgFlagDominationClient flagDominationClient, bool isSkirmish)
+    public CrpgFlagDominationServer(CrpgFlagDominationClient flagDominationClient, bool isSkirmish,
+        CrpgRewardServer rewardServer)
     {
         _flagDominationClient = flagDominationClient;
         _isSkirmish = isSkirmish;
+        _rewardServer = rewardServer;
     }
 
     public override MissionLobbyComponent.MultiplayerGameType GetMissionType()
@@ -592,6 +596,14 @@ internal class CrpgFlagDominationServer : MissionMultiplayerGameModeBase
 
         Debug.Print($"Team {RoundController.RoundWinner} won on map {Mission.SceneName} with {GameNetwork.NetworkPeers.Count()} players");
         CheerForRoundEnd(roundResult);
+
+        float roundDuration = MultiplayerOptions.OptionType.RoundTimeLimit.GetIntValue() - RoundController.RemainingRoundTime;
+        var roundWinner = RoundController.RoundWinner;
+        _ = _rewardServer.UpdateCrpgUsersAsync(
+            durationRewarded: roundDuration,
+            defenderMultiplierGain: roundWinner == BattleSideEnum.Defender ? 1 : -CrpgRewardServer.ExperienceMultiplierMax,
+            attackerMultiplierGain: roundWinner == BattleSideEnum.Attacker ? 1 : -CrpgRewardServer.ExperienceMultiplierMax,
+            valourTeamSide: roundWinner.GetOppositeSide());
     }
 
     private void CheerForRoundEnd(CaptureTheFlagCaptureResultEnum roundResult)

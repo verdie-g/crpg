@@ -6,6 +6,7 @@ using TaleWorlds.MountAndBlade.Source.Missions;
 #if CRPG_SERVER
 using Crpg.Module.Api;
 using Crpg.Module.Common.ChatCommands;
+using Crpg.Module.Rewards;
 #else
 using Crpg.Module.GUI;
 using TaleWorlds.MountAndBlade.View;
@@ -70,7 +71,8 @@ internal class CrpgDuelGameMode : MissionBasedMultiplayerGameMode
 #if CRPG_SERVER
         ICrpgClient crpgClient = CrpgClient.Create();
         ChatBox chatBox = Game.Current.GetGameHandler<ChatBox>();
-        CrpgDuelServer duelServer = new(crpgClient);
+        CrpgRewardServer rewardServer = new(crpgClient, _constants, null);
+        CrpgDuelServer duelServer = new(rewardServer);
 #endif
         CrpgDuelMissionMultiplayerClient duelClient = new();
         MissionState.OpenNew(

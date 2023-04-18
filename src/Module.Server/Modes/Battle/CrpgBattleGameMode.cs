@@ -97,6 +97,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                 ? new CrpgSkirmishSpawningBehavior(_constants, roundController)
                 : new CrpgBattleSpawningBehavior(_constants, roundController)));
         CrpgTeamSelectComponent teamSelectComponent = new(warmupComponent, roundController);
+        CrpgRewardServer rewardServer = new(crpgClient, _constants, warmupComponent);
 #else
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent, null);
         CrpgTeamSelectComponent teamSelectComponent = new();
@@ -133,8 +134,8 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new WelcomeMessageBehavior(warmupComponent),
 #if CRPG_SERVER
                     roundController,
-                    new CrpgFlagDominationServer(flagDominationClient, _isSkirmish),
-                    new CrpgRewardServer(crpgClient, _constants, warmupComponent, roundController),
+                    new CrpgFlagDominationServer(flagDominationClient, _isSkirmish, rewardServer),
+                    rewardServer,
                     // SpawnFrameBehaviour: where to spawn, SpawningBehaviour: when to spawn
                     new SpawnComponent(new BattleSpawnFrameBehavior(),
                         _isSkirmish ? new CrpgSkirmishSpawningBehavior(_constants, roundController) : new CrpgBattleSpawningBehavior(_constants, roundController)),

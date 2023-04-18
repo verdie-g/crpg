@@ -77,6 +77,7 @@ internal class CrpgTeamDeathmatchGameMode : MissionBasedMultiplayerGameMode
         ChatBox chatBox = Game.Current.GetGameHandler<ChatBox>();
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent,
             () => (new TeamDeathmatchSpawnFrameBehavior(), new CrpgTeamDeathmatchSpawningBehavior(_constants)));
+        CrpgRewardServer rewardServer = new(crpgClient, _constants, warmupComponent);
 #else
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent, null);
 #endif
@@ -111,9 +112,8 @@ internal class CrpgTeamDeathmatchGameMode : MissionBasedMultiplayerGameMode
                 new MultiplayerMissionAgentVisualSpawnComponent(),
                 new MissionLobbyEquipmentNetworkComponent(),
 #if CRPG_SERVER
-                new CrpgTeamDeathmatchServer(scoreboardComponent),
+                new CrpgTeamDeathmatchServer(scoreboardComponent, rewardServer),
                 new SpawnComponent(new TeamDeathmatchSpawnFrameBehavior(), new CrpgTeamDeathmatchSpawningBehavior(_constants)),
-                new CrpgRewardServer(crpgClient, _constants, warmupComponent, roundController: null),
                 new CrpgUserManagerServer(crpgClient, _constants),
                 new KickInactiveBehavior(inactiveTimeLimit: 30, warmupComponent),
                 new MapPoolComponent(),

@@ -1,4 +1,5 @@
-﻿using NetworkMessages.FromServer;
+﻿using Crpg.Module.Rewards;
+using NetworkMessages.FromServer;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -21,6 +22,7 @@ internal class CrpgSiegeServer : MissionMultiplayerGameModeBase, IAnalyticsFlagI
 
     private readonly CrpgSiegeClient _client;
     private readonly MissionScoreboardComponent _missionScoreboardComponent;
+    private readonly CrpgRewardServer _rewardServer;
 
     private int[] _morales = Array.Empty<int>();
     private Agent? _closestAgentToMasterFlag;
@@ -30,13 +32,16 @@ internal class CrpgSiegeServer : MissionMultiplayerGameModeBase, IAnalyticsFlagI
     private float _dtSumCheckMorales;
     private float _dtSumTickFlags;
     private bool _firstTickDone;
+    private MissionTimer? _rewardTickTimer;
 
     public CrpgSiegeServer(
         CrpgSiegeClient client,
-        MissionScoreboardComponent missionScoreboardComponent)
+        MissionScoreboardComponent missionScoreboardComponent,
+        CrpgRewardServer rewardServer)
     {
         _client = client;
         _missionScoreboardComponent = missionScoreboardComponent;
+        _rewardServer = rewardServer;
     }
 
     public override bool IsGameModeHidingAllAgentVisuals => true;
@@ -92,6 +97,7 @@ internal class CrpgSiegeServer : MissionMultiplayerGameModeBase, IAnalyticsFlagI
             return;
         }
 
+        RewardUsers();
         CheckMorales(dt);
         TickFlags(dt);
     }
@@ -198,6 +204,17 @@ internal class CrpgSiegeServer : MissionMultiplayerGameModeBase, IAnalyticsFlagI
         BasicCultureObject cultureTeam2 = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam2.GetStrValue());
         Banner bannerTeam2 = new(cultureTeam2.BannerKey, cultureTeam2.BackgroundColor2, cultureTeam2.ForegroundColor2);
         Mission.Teams.Add(BattleSideEnum.Defender, cultureTeam2.BackgroundColor2, cultureTeam2.ForegroundColor2, bannerTeam2, false, true);
+    }
+
+    private void RewardUsers()
+    {
+        _rewardTickTimer ??= new MissionTimer(duration: 60);
+        if (_rewardTickTimer.Check(reset: true))
+        {
+            _ = _rewardServer.UpdateCrpgUsersAsync(
+                durationRewarded: _rewardTickTimer.GetTimerDuration(),
+                constantMultiplier: 2);
+        }
     }
 
     private void CheckMorales(float dt)
