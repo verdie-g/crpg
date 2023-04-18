@@ -26,6 +26,7 @@ internal static class CrpgServerConfiguration
     public static string Instance { get; }
     public static float ServerExperienceMultiplier { get; private set; } = 1.0f;
     public static int ServerRewardTick { get; private set; } = 60;
+    public static bool ServerTeamBalanceOnce { get; private set; }
     public static Tuple<TimeSpan, TimeSpan, TimeZoneInfo>? ServerHappyHours { get; private set; }
 
     [UsedImplicitly]
@@ -59,6 +60,21 @@ internal static class CrpgServerConfiguration
 
         ServerRewardTick = rewardTick;
         Debug.Print($"Set reward tick to {rewardTick}");
+    }
+
+    [UsedImplicitly]
+    [ConsoleCommandMethod("crpg_team_balance_once", "Sets if the team balancer should balance only after warmup.")]
+    private static void SetTeamBalanceOnce(string? teamBalanceOnceStr)
+    {
+        if (teamBalanceOnceStr == null
+            || !bool.TryParse(teamBalanceOnceStr, out bool teamBalanceOnce))
+        {
+            Debug.Print($"Invalid team balance once: {teamBalanceOnceStr}");
+            return;
+        }
+
+        ServerTeamBalanceOnce = teamBalanceOnce;
+        Debug.Print($"Set team balance once to {teamBalanceOnce}");
     }
 
     [UsedImplicitly]
