@@ -137,7 +137,7 @@ it.only.each<[PartialDeep<Item>, PartialDeep<Record<ItemSlot, UserItem>>, ItemSl
   [{ type: ItemType.Banner, flags: [] }, {}, [ItemSlot.WeaponExtra]],
   [{ type: ItemType.Polearm, flags: [ItemFlags.DropOnWeaponChange] }, {}, [ItemSlot.WeaponExtra]], // Pike
 
-  // Large shields on horseback, temporary solution
+  // Large shields on horseback
   [
     { type: ItemType.Shield, flags: [], weapons: [{ class: WeaponClass.LargeShield }] },
     {},
