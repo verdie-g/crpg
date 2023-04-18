@@ -83,6 +83,7 @@ declare global {
   const useI18n: typeof import('vue-i18n')['useI18n']
   const useRoute: typeof import('vue-router/auto')['useRoute']
   const useRouter: typeof import('vue-router/auto')['useRouter']
+  const useSeoMeta: typeof import('@vueuse/head')['useSeoMeta']
   const useSlots: typeof import('vue')['useSlots']
   const vi: typeof import('vitest')['vi']
   const vitest: typeof import('vitest')['vitest']
@@ -179,6 +180,7 @@ declare module 'vue' {
     readonly useI18n: UnwrapRef<typeof import('vue-i18n')['useI18n']>
     readonly useRoute: UnwrapRef<typeof import('vue-router/auto')['useRoute']>
     readonly useRouter: UnwrapRef<typeof import('vue-router/auto')['useRouter']>
+    readonly useSeoMeta: UnwrapRef<typeof import('@vueuse/head')['useSeoMeta']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
     readonly vi: UnwrapRef<typeof import('vitest')['vi']>
     readonly vitest: UnwrapRef<typeof import('vitest')['vitest']>
