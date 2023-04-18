@@ -34,7 +34,7 @@ internal class MatchBalancer
         return returnedGameMatch;
     }
 
-    public GameMatch BannerBalancingWithEdgeCases(GameMatch gameMatch, bool firstBalance = true)
+    public GameMatch BannerBalancingWithEdgeCases(GameMatch gameMatch, bool firstBalance = true, bool balanceOnce = true)
     {
         MatchBalancingHelpers.DumpTeamsStatus(gameMatch);
         Debug.Print(nameof(BannerBalancingWithEdgeCases));
@@ -52,14 +52,24 @@ internal class MatchBalancer
         // in this path , the teams already played at least one round , so we do not want to scramble the teams.
         else
         {
-            Debug.Print("--------------------------------------------");
-            Debug.Print("moving clanmates players to their clanmates teams , and moving players isolated from their clan to the opposite team.");
-            balancedBannerGameMatch = MatchBalancingHelpers.RejoinClans(gameMatch);
+            // when balanceOnce is true we rebalance the team only in case of extreme differences between both
+            // the goal is to keep the team made at warmup so people feel they play for the same team the whole match
+            // this works well if bo7 matches.
+            if (balanceOnce & IsBalanceGoodEnough(gameMatch, maxSizeRatio: 0.7f, maxDifference: 15f, percentageDifference: 0.20f))
+            {
+                return gameMatch;
+            }
+            else
+            {
+                Debug.Print("--------------------------------------------");
+                Debug.Print("moving clanmates players to their clanmates teams , and moving players isolated from their clan to the opposite team.");
+                balancedBannerGameMatch = MatchBalancingHelpers.RejoinClans(gameMatch);
+            }
         }
 
         MatchBalancingHelpers.DumpTeamsStatus(balancedBannerGameMatch);
 
-        if (IsBalanceGoodEnough(balancedBannerGameMatch, maxSizeRatio: 0.75f, maxDifference: 10f, percentageDifference: 0.10f))
+        if (IsBalanceGoodEnough(balancedBannerGameMatch, maxSizeRatio: 0.85f, maxDifference: 10f, percentageDifference: 0.10f))
         {
             Debug.Print("Balance was good enough. We're not balancing this round");
             return balancedBannerGameMatch;
@@ -70,7 +80,7 @@ internal class MatchBalancer
         Debug.Print("Banner balancing done");
         MatchBalancingHelpers.DumpTeamsStatus(balancedBannerGameMatch);
 
-        if (IsBalanceGoodEnough(balancedBannerGameMatch, maxSizeRatio: 0.75f, maxDifference: 10f, percentageDifference: 0.10f))
+        if (IsBalanceGoodEnough(balancedBannerGameMatch, maxSizeRatio: 0.85f, maxDifference: 10f, percentageDifference: 0.10f))
         {
             Debug.Print("Balance is acceptable");
         }
@@ -81,7 +91,7 @@ internal class MatchBalancer
             // disabled because does not take in account clangroup penalty yet
             // balancedBannerGameMatch = BalanceTeamOfSimilarSizes(balancedBannerGameMatch, bannerBalance: false, 0.10f);
 
-            if (IsBalanceGoodEnough(balancedBannerGameMatch, maxSizeRatio: 0.75f, maxDifference: 10f, percentageDifference: 0.15f))
+            if (IsBalanceGoodEnough(balancedBannerGameMatch, maxSizeRatio: 0.85f, maxDifference: 10f, percentageDifference: 0.15f))
             {
                 // A few swaps solved the problem. Most of the clangroups are intact
                 Debug.Print("Ratio Difference is below 15%, we're not nuking.");
