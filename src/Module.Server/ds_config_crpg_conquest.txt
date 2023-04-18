@@ -1,6 +1,7 @@
 ServerName cRPG Conquest Test
 GameType cRPGConquest
-GamePassword conquesttest
+GamePassword yoyo
+add_map_to_automated_battle_pool crpg_conquest_test
 add_map_to_automated_battle_pool crpg_conquest_acre
 add_map_to_automated_battle_pool crpg_conquest_frederiksborg
 add_map_to_automated_battle_pool crpg_conquest_hades

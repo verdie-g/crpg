@@ -73,19 +73,7 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
 
     public override Team GetWinnerTeam()
     {
-        Team? winnerTeam;
-        if (_currentStageTimer.Check())
-        {
-            winnerTeam = Mission.Teams.Defender;
-        }
-        else if (_currentStage >= _flagStages.Length)
-        {
-            winnerTeam = Mission.Teams.Attacker;
-        }
-        else
-        {
-            winnerTeam = Mission.Teams.Defender;
-        }
+        var winnerTeam = _currentStage >= _flagStages.Length ? Mission.Teams.Attacker : Mission.Teams.Defender;
 
         _missionScoreboardComponent.ChangeTeamScore(winnerTeam, 1);
 
@@ -230,8 +218,11 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
 
     private void StartStage(int stageIndex)
     {
-        float remainingTime = stageIndex > 0 ? _currentStageTimer.GetRemainingTimeInSeconds() : 0;
-        _currentStageTimer = new MissionTimer(remainingTime + MultiplayerOptions.OptionType.RoundTimeLimit.GetIntValue());
+        float roundLimitOption = MultiplayerOptions.OptionType.RoundTimeLimit.GetIntValue();
+        (float stageDuration, float remainingTime) = stageIndex == 0
+            ? (roundLimitOption * 2f, 0)
+            : (roundLimitOption, _currentStageTimer.GetRemainingTimeInSeconds());
+        _currentStageTimer = new MissionTimer(remainingTime + stageDuration);
 
         GameNetwork.BeginBroadcastModuleEvent();
         GameNetwork.WriteMessage(new CrpgConquestStageStartMessage
