@@ -40,6 +40,7 @@ internal static class CrpgServerConfiguration
         }
 
         ServerExperienceMultiplier = multiplier;
+        Debug.Print($"Set server multiplier to {multiplier}");
     }
 
     [UsedImplicitly]
