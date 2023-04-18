@@ -50,7 +50,7 @@ export const authRouterMiddleware: NavigationGuard = async to => {
 };
 
 const errorHandler = (error: unknown) => {
-  if (error instanceof ErrorResponse && error?.error === 'invalid_grant') {
+  if (error instanceof ErrorResponse && error?.error === 'access_denied') {
     return { name: 'Banned' };
   }
 

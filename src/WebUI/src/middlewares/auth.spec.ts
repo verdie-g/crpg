@@ -126,7 +126,7 @@ describe('signInCallback', () => {
   it('error - invalid grant', async () => {
     mockedSignInCallback.mockRejectedValue(
       new ErrorResponse({
-        error: 'invalid_grant',
+        error: 'access_denied',
       })
     );
 
@@ -149,7 +149,7 @@ describe('signInCallback', () => {
   it('error - invalid grant', async () => {
     mockedSignInSilentCallback.mockRejectedValue(
       new ErrorResponse({
-        error: 'invalid_grant',
+        error: 'access_denied',
       })
     );
 
