@@ -62,7 +62,7 @@ const speedStats = computed(() =>
     <div>{{ (1 - speedStats.weightReductionFactor) * 100 }}</div>
     -->
     <span class="text-xs text-status-danger">
-      {{ $n(1 - (speedStats.weightReductionFactor + 1), 'percent') }}
+      {{ $n(speedStats.weightReductionFactor - 1, 'percent') }}
     </span>
   </SimpleTableRow>
 
