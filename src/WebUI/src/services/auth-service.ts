@@ -27,7 +27,7 @@ export const userManager = new UserManager({
   userStore: new WebStorageStateStore({ store: window.localStorage }),
   extraQueryParams: {
     identity_provider: 'steam',
-  }
+  },
 });
 
 export const getUser = () => userManager.getUser();

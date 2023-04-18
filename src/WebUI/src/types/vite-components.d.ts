@@ -57,6 +57,7 @@ declare module '@vue/runtime-core' {
     Tag: typeof import('./../components/ui/Tag.vue')['default']
     UserMedia: typeof import('./../components/user/UserMedia.vue')['default']
     UserPlatform: typeof import('./../components/user/UserPlatform.vue')['default']
+    UserRestrictionGuide: typeof import('./../components/user/UserRestrictionGuide.vue')['default']
     UserRestrictionNotification: typeof import('./../components/user/UserRestrictionNotification.vue')['default']
   }
 }

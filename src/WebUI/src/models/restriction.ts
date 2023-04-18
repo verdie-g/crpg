@@ -3,6 +3,7 @@ import { UserPublic } from '@/models/user';
 export enum RestrictionType {
   Join = 'Join',
   Chat = 'Chat',
+  All = 'All',
 }
 
 export interface Restriction {

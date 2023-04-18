@@ -1,11 +1,11 @@
 import { createTestingPinia } from '@pinia/testing';
+import { ErrorResponse } from 'oidc-client-ts';
 import Role from '@/models/role';
 import { getRoute, next } from '@/__mocks__/router';
 
 const mockedSignInSilent = vi.fn();
 const mockedSignInCallback = vi.fn();
 const mockedSignInSilentCallback = vi.fn();
-
 vi.mock('@/services/auth-service', () => {
   return {
     signInSilent: mockedSignInSilent,
@@ -117,15 +117,48 @@ describe('with Admin or Moderator role', () => {
   });
 });
 
-it('signInCallback', async () => {
-  const result = await signInCallback(getRoute(), getRoute(), next);
+describe('signInCallback', () => {
+  it('ok', async () => {
+    expect(await signInCallback(getRoute(), getRoute(), next)).toEqual({ name: 'Characters' });
+    expect(mockedSignInCallback).toHaveBeenCalled();
+  });
 
-  expect(mockedSignInCallback).toHaveBeenCalled();
-  expect(result).toEqual({ name: 'Characters' });
+  it('error - invalid grant', async () => {
+    mockedSignInCallback.mockRejectedValue(
+      new ErrorResponse({
+        error: 'access_denied',
+      })
+    );
+
+    expect(await signInCallback(getRoute(), getRoute(), next)).toEqual({ name: 'Banned' });
+  });
+
+  it('error - invalid grant', async () => {
+    mockedSignInCallback.mockRejectedValue({ error: 'some error' });
+
+    expect(await signInCallback(getRoute(), getRoute(), next)).toEqual({ name: 'Root' });
+  });
 });
 
-it('signInSilentCallback', async () => {
-  await signInSilentCallback(getRoute(), getRoute(), next);
+describe('signInCallback', () => {
+  it('ok', async () => {
+    expect(await signInSilentCallback(getRoute(), getRoute(), next)).toStrictEqual(true);
+    expect(mockedSignInSilentCallback).toHaveBeenCalled();
+  });
 
-  expect(mockedSignInSilentCallback).toHaveBeenCalled();
+  it('error - invalid grant', async () => {
+    mockedSignInSilentCallback.mockRejectedValue(
+      new ErrorResponse({
+        error: 'access_denied',
+      })
+    );
+
+    expect(await signInSilentCallback(getRoute(), getRoute(), next)).toEqual({ name: 'Banned' });
+  });
+
+  it('error - invalid grant', async () => {
+    mockedSignInSilentCallback.mockRejectedValue({ error: 'some error' });
+
+    expect(await signInSilentCallback(getRoute(), getRoute(), next)).toEqual({ name: 'Root' });
+  });
 });

@@ -5,9 +5,8 @@
 <template>
   <RouterView v-slot="{ Component }">
     <Suspense>
-      <div>
-        <!-- TODO: to sandbox, only dev mode page -->
-        <!-- <div class="grid grid-cols-12 gap-2">
+      <!-- TODO: to sandbox, only dev mode page -->
+      <!-- <div class="grid grid-cols-12 gap-2">
           <div
             v-for="(key, icon) in library.definitions.crpg"
             class="flex flex-col items-center justify-center gap-2 hover:ring"
@@ -17,10 +16,9 @@
           </div>
         </div> -->
 
-        <ErrorBoundary>
-          <component :is="Component" />
-        </ErrorBoundary>
-      </div>
+      <ErrorBoundary>
+        <component :is="Component" />
+      </ErrorBoundary>
 
       <template #fallback>
         <OLoading fullPage active iconSize="xl" />
