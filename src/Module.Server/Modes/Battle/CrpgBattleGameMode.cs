@@ -102,7 +102,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent, null);
         CrpgTeamSelectComponent teamSelectComponent = new();
 #endif
-        CrpgFlagDominationClient flagDominationClient = new(_isSkirmish);
+        CrpgBattleClient battleClient = new(_isSkirmish);
 
         MissionState.OpenNew(
             Name,
@@ -114,7 +114,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
 #if CRPG_CLIENT
                     new CrpgUserManagerClient(), // Needs to be loaded before the Client mission part.
 #endif
-                    flagDominationClient,
+                    battleClient,
                     new MultiplayerTimerComponent(), // round timer
                     new MultiplayerMissionAgentVisualSpawnComponent(), // expose method to spawn an agent
                     new MissionLobbyEquipmentNetworkComponent(), // logic to change troop or perks
@@ -134,7 +134,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new WelcomeMessageBehavior(warmupComponent),
 #if CRPG_SERVER
                     roundController,
-                    new CrpgFlagDominationServer(flagDominationClient, _isSkirmish, rewardServer),
+                    new CrpgBattleServer(battleClient, _isSkirmish, rewardServer),
                     rewardServer,
                     // SpawnFrameBehaviour: where to spawn, SpawningBehaviour: when to spawn
                     new SpawnComponent(new BattleSpawnFrameBehavior(),

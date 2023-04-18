@@ -9,7 +9,7 @@ using MathF = TaleWorlds.Library.MathF;
 
 namespace Crpg.Module.Modes.Battle;
 
-internal class CrpgFlagDominationClient : MissionMultiplayerGameModeBaseClient, ICommanderInfo
+internal class CrpgBattleClient : MissionMultiplayerGameModeBaseClient, ICommanderInfo
 {
     private const int BattleFlagsRemovalTime = 120;
     private const int SkirmishFlagsRemovalTime = 120;
@@ -27,7 +27,7 @@ internal class CrpgFlagDominationClient : MissionMultiplayerGameModeBaseClient, 
     public event Action? OnFlagNumberChangedEvent;
     public event Action<FlagCapturePoint, Team?>? OnCapturePointOwnerChangedEvent;
 
-    public CrpgFlagDominationClient(bool isSkirmish)
+    public CrpgBattleClient(bool isSkirmish)
     {
         _isSkirmish = isSkirmish;
     }
