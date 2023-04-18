@@ -286,7 +286,7 @@ internal class CrpgRewardServer : MissionLogic
 
     private bool IsHappyHour()
     {
-        var happyHours = CrpgServerConfiguration.ServerHappyHours;
+        var happyHours = CrpgServerConfiguration.HappyHours;
         if (happyHours == null)
         {
             return false;

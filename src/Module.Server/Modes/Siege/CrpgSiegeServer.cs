@@ -209,7 +209,7 @@ internal class CrpgSiegeServer : MissionMultiplayerGameModeBase, IAnalyticsFlagI
 
     private void RewardUsers()
     {
-        _rewardTickTimer ??= new MissionTimer(duration: CrpgServerConfiguration.ServerRewardTick);
+        _rewardTickTimer ??= new MissionTimer(duration: CrpgServerConfiguration.RewardTick);
         if (_rewardTickTimer.Check(reset: true))
         {
             _ = _rewardServer.UpdateCrpgUsersAsync(

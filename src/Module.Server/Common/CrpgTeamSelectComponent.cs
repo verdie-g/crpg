@@ -133,7 +133,7 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
 
         GameMatch gameMath = TeamsToGameMatch();
         GameMatch balancedGameMatch = _balancer.BannerBalancingWithEdgeCases(gameMath, firstBalance,
-            balanceOnce: CrpgServerConfiguration.ServerTeamBalanceOnce);
+            balanceOnce: CrpgServerConfiguration.TeamBalanceOnce);
 
         Dictionary<int, Team> usersToMove = ResolveTeamMoves(current: gameMath, target: balancedGameMatch);
         var crpgNetworkPeers = GetCrpgNetworkPeers();

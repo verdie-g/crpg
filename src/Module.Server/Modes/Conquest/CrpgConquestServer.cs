@@ -240,7 +240,7 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
         });
         GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
 
-        _rewardTickTimer = new MissionTimer(duration: CrpgServerConfiguration.ServerRewardTick);
+        _rewardTickTimer = new MissionTimer(duration: CrpgServerConfiguration.RewardTick);
     }
 
     private void TickFlags()

@@ -25,9 +25,9 @@ internal static class CrpgServerConfiguration
     public static string Service { get; }
     public static string Instance { get; }
     public static float ServerExperienceMultiplier { get; private set; } = 1.0f;
-    public static int ServerRewardTick { get; private set; } = 60;
-    public static bool ServerTeamBalanceOnce { get; private set; }
-    public static Tuple<TimeSpan, TimeSpan, TimeZoneInfo>? ServerHappyHours { get; private set; }
+    public static int RewardTick { get; private set; } = 60;
+    public static bool TeamBalanceOnce { get; private set; }
+    public static Tuple<TimeSpan, TimeSpan, TimeZoneInfo>? HappyHours { get; private set; }
 
     [UsedImplicitly]
     [ConsoleCommandMethod("crpg_experience_multiplier", "Sets a reward multiplier for the server.")]
@@ -47,7 +47,7 @@ internal static class CrpgServerConfiguration
 
     [UsedImplicitly]
     [ConsoleCommandMethod("crpg_reward_tick", "Sets the reward tick duration in seconds for Conquest/Siege/Team Deatmatch.")]
-    private static void SetServerRewardTick(string? rewardTickStr)
+    private static void SetRewardTick(string? rewardTickStr)
     {
         if (rewardTickStr == null
             || !int.TryParse(rewardTickStr, out int rewardTick)
@@ -58,7 +58,7 @@ internal static class CrpgServerConfiguration
             return;
         }
 
-        ServerRewardTick = rewardTick;
+        RewardTick = rewardTick;
         Debug.Print($"Set reward tick to {rewardTick}");
     }
 
@@ -73,13 +73,13 @@ internal static class CrpgServerConfiguration
             return;
         }
 
-        ServerTeamBalanceOnce = teamBalanceOnce;
+        TeamBalanceOnce = teamBalanceOnce;
         Debug.Print($"Set team balance once to {teamBalanceOnce}");
     }
 
     [UsedImplicitly]
     [ConsoleCommandMethod("crpg_happy_hours", "Sets the happy hours. Format: HH:MM-HH:MM,TZ")]
-    private static void SetServerHappyHours(string? happHoursStr)
+    private static void SetHappyHours(string? happHoursStr)
     {
         if (happHoursStr == null)
         {
@@ -101,7 +101,7 @@ internal static class CrpgServerConfiguration
         }
 
         var timeZone = TimeZoneInfo.FindSystemTimeZoneById(match.Groups[3].Value);
-        ServerHappyHours = Tuple.Create(startTime, endTime, timeZone);
+        HappyHours = Tuple.Create(startTime, endTime, timeZone);
         Debug.Print($"Set happy hours from {startTime} to {endTime} in time zone {timeZone.Id}");
     }
 }
