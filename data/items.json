@@ -10890,29 +10890,6 @@
         "swingDamage": 0,
         "swingDamageType": "Undefined",
         "swingSpeed": 15
-      },
-      {
-        "class": "TwoHandedPolearm",
-        "itemUsage": "polearm_bracing",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 225,
-        "balance": 0.0,
-        "handling": 52,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon",
-          "NotUsableWithOneHand",
-          "WideGrip",
-          "TwoHandIdleOnMount"
-        ],
-        "thrustDamage": 25,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 89,
-        "swingDamage": 0,
-        "swingDamageType": "Undefined",
-        "swingSpeed": 60
       }
     ]
   },
@@ -10970,29 +10947,6 @@
         "swingDamage": 0,
         "swingDamageType": "Undefined",
         "swingSpeed": 11
-      },
-      {
-        "class": "TwoHandedPolearm",
-        "itemUsage": "polearm_bracing",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 285,
-        "balance": 0.0,
-        "handling": 44,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon",
-          "NotUsableWithOneHand",
-          "WideGrip",
-          "TwoHandIdleOnMount"
-        ],
-        "thrustDamage": 26,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 85,
-        "swingDamage": 0,
-        "swingDamageType": "Undefined",
-        "swingSpeed": 44
       }
     ]
   },
@@ -30685,29 +30639,6 @@
         "swingDamage": 0,
         "swingDamageType": "Undefined",
         "swingSpeed": 13
-      },
-      {
-        "class": "TwoHandedPolearm",
-        "itemUsage": "polearm_bracing",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 265,
-        "balance": 0.0,
-        "handling": 48,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon",
-          "NotUsableWithOneHand",
-          "WideGrip",
-          "TwoHandIdleOnMount"
-        ],
-        "thrustDamage": 25,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 86,
-        "swingDamage": 0,
-        "swingDamageType": "Undefined",
-        "swingSpeed": 51
       }
     ]
   },
@@ -34032,29 +33963,6 @@
         "swingDamage": 0,
         "swingDamageType": "Undefined",
         "swingSpeed": 14
-      },
-      {
-        "class": "TwoHandedPolearm",
-        "itemUsage": "polearm_bracing",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 250,
-        "balance": 0.0,
-        "handling": 53,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon",
-          "NotUsableWithOneHand",
-          "WideGrip",
-          "TwoHandIdleOnMount"
-        ],
-        "thrustDamage": 25,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 86,
-        "swingDamage": 0,
-        "swingDamageType": "Undefined",
-        "swingSpeed": 57
       }
     ]
   },
