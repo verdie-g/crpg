@@ -17,7 +17,7 @@
   <SpriteCategories>
     <SpriteCategory>
       <Name>ui_mploading</Name>
-      <SpriteSheetCount>104</SpriteSheetCount>
+      <SpriteSheetCount>107</SpriteSheetCount>
       <SpriteSheetSize ID="1" Width="3840" Height="1935" />
       <SpriteSheetSize ID="2" Width="3840" Height="1935" />
       <SpriteSheetSize ID="3" Width="3383" Height="1902" />
@@ -84,27 +84,21 @@
       <SpriteSheetSize ID="65" Width="1920" Height="1080" />
       <SpriteSheetSize ID="66" Width="1920" Height="1080" />
       <SpriteSheetSize ID="68" Width="1920" Height="1080" />
-      <SpriteSheetSize ID="69" Width="1920" Height="1080" />
       <SpriteSheetSize ID="70" Width="1920" Height="1080" />
       <SpriteSheetSize ID="72" Width="1920" Height="1080" />
       <SpriteSheetSize ID="73" Width="1920" Height="1080" />
       <SpriteSheetSize ID="74" Width="1920" Height="1080" />
-      <SpriteSheetSize ID="76" Width="1920" Height="1080" />
       <SpriteSheetSize ID="79" Width="1920" Height="1080" />
       <SpriteSheetSize ID="80" Width="1920" Height="1080" />
-      <SpriteSheetSize ID="81" Width="1920" Height="1080" />
       <SpriteSheetSize ID="82" Width="1920" Height="1080" />
       <SpriteSheetSize ID="83" Width="1920" Height="1080" />
       <SpriteSheetSize ID="84" Width="1920" Height="1080" />
       <SpriteSheetSize ID="85" Width="1920" Height="1080" />
-      <SpriteSheetSize ID="86" Width="1920" Height="1080" />
-      <SpriteSheetSize ID="87" Width="1920" Height="1080" />
       <SpriteSheetSize ID="88" Width="1920" Height="1080" />
       <SpriteSheetSize ID="89" Width="1920" Height="1080" />
       <SpriteSheetSize ID="90" Width="1920" Height="1080" />
       <SpriteSheetSize ID="91" Width="1920" Height="1080" />
       <SpriteSheetSize ID="92" Width="1920" Height="1080" />
-      <SpriteSheetSize ID="93" Width="1920" Height="1080" />
       <SpriteSheetSize ID="94" Width="1920" Height="1080" />
       <SpriteSheetSize ID="95" Width="1920" Height="1080" />
       <SpriteSheetSize ID="96" Width="1920" Height="1080" />
@@ -116,6 +110,9 @@
       <SpriteSheetSize ID="102" Width="1920" Height="1080" />
       <SpriteSheetSize ID="103" Width="1920" Height="1080" />
       <SpriteSheetSize ID="104" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="105" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="106" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="107" Width="1920" Height="1080" />
       <AlwaysLoad />
     </SpriteCategory>
   </SpriteCategories>
@@ -715,15 +712,6 @@
       <CategoryName>ui_mploading</CategoryName>
     </SpritePart>
     <SpritePart>
-      <SheetID>69</SheetID>
-      <Name>crpg_siege_motteandbailey</Name>
-      <Width>1920</Width>
-      <Height>1080</Height>
-      <SheetX>0</SheetX>
-      <SheetY>0</SheetY>
-      <CategoryName>ui_mploading</CategoryName>
-    </SpritePart>
-    <SpritePart>
       <SheetID>70</SheetID>
       <Name>crpg_battle_kingsroad</Name>
       <Width>1920</Width>
@@ -760,15 +748,6 @@
       <CategoryName>ui_mploading</CategoryName>
     </SpritePart>
     <SpritePart>
-      <SheetID>76</SheetID>
-      <Name>crpg_siege_jameyyedcastle</Name>
-      <Width>1920</Width>
-      <Height>1080</Height>
-      <SheetX>0</SheetX>
-      <SheetY>0</SheetY>
-      <CategoryName>ui_mploading</CategoryName>
-    </SpritePart>
-    <SpritePart>
       <SheetID>79</SheetID>
       <Name>crpg_conquest_hades</Name>
       <Width>1920</Width>
@@ -780,24 +759,6 @@
     <SpritePart>
       <SheetID>80</SheetID>
       <Name>crpg_battle_waterwaytojelkala</Name>
-      <Width>1920</Width>
-      <Height>1080</Height>
-      <SheetX>0</SheetX>
-      <SheetY>0</SheetY>
-      <CategoryName>ui_mploading</CategoryName>
-    </SpritePart>
-    <SpritePart>
-      <SheetID>81</SheetID>
-      <Name>crpg_siege_hailescastle</Name>
-      <Width>1920</Width>
-      <Height>1080</Height>
-      <SheetX>0</SheetX>
-      <SheetY>0</SheetY>
-      <CategoryName>ui_mploading</CategoryName>
-    </SpritePart>
-    <SpritePart>
-      <SheetID>82</SheetID>
-      <Name>crpg_conquest_neuenburg_winter</Name>
       <Width>1920</Width>
       <Height>1080</Height>
       <SheetX>0</SheetX>
@@ -825,24 +786,6 @@
     <SpritePart>
       <SheetID>85</SheetID>
       <Name>crpg_battle_persia</Name>
-      <Width>1920</Width>
-      <Height>1080</Height>
-      <SheetX>0</SheetX>
-      <SheetY>0</SheetY>
-      <CategoryName>ui_mploading</CategoryName>
-    </SpritePart>
-    <SpritePart>
-      <SheetID>86</SheetID>
-      <Name>crpg_siege_talmberg</Name>
-      <Width>1920</Width>
-      <Height>1080</Height>
-      <SheetX>0</SheetX>
-      <SheetY>0</SheetY>
-      <CategoryName>ui_mploading</CategoryName>
-    </SpritePart>
-    <SpritePart>
-      <SheetID>87</SheetID>
-      <Name>crpg_siege_stronghold</Name>
       <Width>1920</Width>
       <Height>1080</Height>
       <SheetX>0</SheetX>
@@ -888,15 +831,6 @@
     <SpritePart>
       <SheetID>92</SheetID>
       <Name>crpg_battle_ruinedbattlement</Name>
-      <Width>1920</Width>
-      <Height>1080</Height>
-      <SheetX>0</SheetX>
-      <SheetY>0</SheetY>
-      <CategoryName>ui_mploading</CategoryName>
-    </SpritePart>
-    <SpritePart>
-      <SheetID>93</SheetID>
-      <Name>crpg_siege_silverskalitz</Name>
       <Width>1920</Width>
       <Height>1080</Height>
       <SheetX>0</SheetX>
@@ -996,6 +930,33 @@
     <SpritePart>
       <SheetID>104</SheetID>
       <Name>crpg_battle_lostcathedral</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>105</SheetID>
+      <Name>crpg_battle_pompeii</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>106</SheetID>
+      <Name>crpg_battle_killington</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>107</SheetID>
+      <Name>crpg_battle_ketilsfarm</Name>
       <Width>1920</Width>
       <Height>1080</Height>
       <SheetX>0</SheetX>
@@ -1269,10 +1230,6 @@
       <SpritePartName>crpg_conquest_neuenburg</SpritePartName>
     </GenericSprite>
     <GenericSprite>
-      <Name>crpg_siege_motteandbailey</Name>
-      <SpritePartName>crpg_siege_motteandbailey</SpritePartName>
-    </GenericSprite>
-    <GenericSprite>
       <Name>crpg_battle_kingsroad</Name>
       <SpritePartName>crpg_battle_kingsroad</SpritePartName>
     </GenericSprite>
@@ -1289,24 +1246,12 @@
       <SpritePartName>crpg_battle_ancientworld</SpritePartName>
     </GenericSprite>
     <GenericSprite>
-      <Name>crpg_siege_jameyyedcastle</Name>
-      <SpritePartName>crpg_siege_jameyyedcastle</SpritePartName>
-    </GenericSprite>
-    <GenericSprite>
       <Name>crpg_conquest_hades</Name>
       <SpritePartName>crpg_conquest_hades</SpritePartName>
     </GenericSprite>
     <GenericSprite>
       <Name>crpg_battle_waterwaytojelkala</Name>
       <SpritePartName>crpg_battle_waterwaytojelkala</SpritePartName>
-    </GenericSprite>
-    <GenericSprite>
-      <Name>crpg_siege_hailescastle</Name>
-      <SpritePartName>crpg_siege_hailescastle</SpritePartName>
-    </GenericSprite>
-    <GenericSprite>
-      <Name>crpg_conquest_neuenburg_winter</Name>
-      <SpritePartName>crpg_conquest_neuenburg_winter</SpritePartName>
     </GenericSprite>
     <GenericSprite>
       <Name>crpg_battle_azteca</Name>
@@ -1319,14 +1264,6 @@
     <GenericSprite>
       <Name>crpg_battle_persia</Name>
       <SpritePartName>crpg_battle_persia</SpritePartName>
-    </GenericSprite>
-    <GenericSprite>
-      <Name>crpg_siege_talmberg</Name>
-      <SpritePartName>crpg_siege_talmberg</SpritePartName>
-    </GenericSprite>
-    <GenericSprite>
-      <Name>crpg_siege_stronghold</Name>
-      <SpritePartName>crpg_siege_stronghold</SpritePartName>
     </GenericSprite>
     <GenericSprite>
       <Name>crpg_conquest_acre</Name>
@@ -1347,10 +1284,6 @@
     <GenericSprite>
       <Name>crpg_battle_ruinedbattlement</Name>
       <SpritePartName>crpg_battle_ruinedbattlement</SpritePartName>
-    </GenericSprite>
-    <GenericSprite>
-      <Name>crpg_siege_silverskalitz</Name>
-      <SpritePartName>crpg_siege_silverskalitz</SpritePartName>
     </GenericSprite>
     <GenericSprite>
       <Name>crpg_conquest_frederiksborg</Name>
@@ -1395,6 +1328,18 @@
     <GenericSprite>
       <Name>crpg_battle_lostcathedral</Name>
       <SpritePartName>crpg_battle_lostcathedral</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_pompeii</Name>
+      <SpritePartName>crpg_battle_pompeii</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_killington</Name>
+      <SpritePartName>crpg_battle_killington</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_ketilsfarm</Name>
+      <SpritePartName>crpg_battle_ketilsfarm</SpritePartName>
     </GenericSprite>
   </Sprites>
 </SpriteData>
