@@ -1,6 +1,6 @@
 import { Region } from '@/models/region';
 import { getGameServerStats } from '@/services/game-server-statistics-service';
-import usePollInterval from '@/composables/use-poll-interval';
+import { usePollInterval } from '@/composables/use-poll-interval';
 
 export const useGameServerStats = () => {
   const { state: gameServerStats, execute: loadGameServerStats } = useAsyncState(

@@ -11,7 +11,7 @@ setInterval(() => {
   }
 }, INTERVAL);
 
-export default () => {
+export const usePollInterval = () => {
   const subscribe = (id: symbol, fn: SubscriptionFn) => {
     subscriptions.set(id, fn);
   };
