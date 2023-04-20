@@ -44,6 +44,7 @@ internal class MatchBalancer
         // we do not care of completely scrambling the teams since no round was played yet
         if (firstBalance)
         {
+            Debug.Print("This is the first Round");
             Debug.Print("--------------------------------------------");
             Debug.Print("Now splitting the clan groups between the two team");
             balancedBannerGameMatch = KkMakeTeamOfSimilarSizesWithoutSplittingClanGroups(gameMatch);
@@ -57,10 +58,13 @@ internal class MatchBalancer
             // this works well if bo7 matches.
             if (balanceOnce & IsBalanceGoodEnough(gameMatch, maxSizeRatio: 0.7f, maxDifference: 15f, percentageDifference: 0.20f))
             {
+                Debug.Print("This is not the first Round");
+                Debug.Print("Balance is still good");
                 return gameMatch;
             }
             else
             {
+                Debug.Print("This is not the first Round and Balance was bad");
                 Debug.Print("--------------------------------------------");
                 Debug.Print("moving clanmates players to their clanmates teams , and moving players isolated from their clan to the opposite team.");
                 balancedBannerGameMatch = MatchBalancingHelpers.RejoinClans(gameMatch);
@@ -71,7 +75,7 @@ internal class MatchBalancer
 
         if (IsBalanceGoodEnough(balancedBannerGameMatch, maxSizeRatio: 0.85f, maxDifference: 10f, percentageDifference: 0.10f))
         {
-            Debug.Print("Balance was good enough. We're not balancing this round");
+            Debug.Print("No need to do banner balancing");
             return balancedBannerGameMatch;
         }
 
@@ -82,7 +86,7 @@ internal class MatchBalancer
 
         if (IsBalanceGoodEnough(balancedBannerGameMatch, maxSizeRatio: 0.85f, maxDifference: 10f, percentageDifference: 0.10f))
         {
-            Debug.Print("Balance is acceptable");
+            Debug.Print("Banner Balance was enough.");
         }
         else
         {
