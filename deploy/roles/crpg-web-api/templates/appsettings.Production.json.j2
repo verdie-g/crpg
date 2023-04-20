@@ -39,18 +39,16 @@
         ],
         "Requirements": ["ft:pkce"]
       },
-{% for client in crpg_api_game_server_clients %}
       {
-        "ClientId": "crpg-game-server-{{ client.id }}",
+        "ClientId": "crpg-game-server",
         "ClientName": "cRPG Game Server",
-        "ClientSecret": "{{ client.secret }}",
+        "ClientSecret": "{{ crpg_game_server_api_secret }}",
         "Permissions": [
           "ept:token",
           "gt:client_credentials",
           "scp:game_api"
         ]
-      },
-{% endfor %}
+      }
     ],
     "Scopes": [
       {
