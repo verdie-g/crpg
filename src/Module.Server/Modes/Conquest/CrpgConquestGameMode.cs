@@ -45,7 +45,7 @@ internal class CrpgConquestGameMode : MissionBasedMultiplayerGameMode
             ViewCreator.CreateMissionAgentStatusUIHandler(mission),
             ViewCreator.CreateMissionMainAgentEquipmentController(mission), // Pick/drop items.
             ViewCreator.CreateMissionMainAgentCheerBarkControllerView(mission),
-            ViewCreatorManager.CreateMissionView<CrpgMissionMultiplayerEscapeMenu>(isNetwork: false, null, "Conquest", gameModeClient),
+            ViewCreatorManager.CreateMissionView<CrpgMissionMultiplayerEscapeMenu>(isNetwork: false, null, "cRPGConquest", gameModeClient),
             ViewCreator.CreateMissionAgentLabelUIHandler(mission),
             ViewCreator.CreateMultiplayerTeamSelectUIHandler(),
             ViewCreator.CreateMissionScoreBoardUIHandler(mission, false),
