@@ -181,7 +181,7 @@ internal class CrpgRewardServer : MissionLogic
                     SetStatistics(userUpdate, networkPeer, periodStats);
                 }
 
-                userUpdate.BrokenItems = BreakItems(crpgPeer, durationRewarded * (lowPopulationServer ? 0.5f : 1f));
+                userUpdate.BrokenItems = BreakItems(crpgPeer, durationRewarded * (lowPopulationServer ? 0.2f : 1f));
             }
 
             userUpdates.Add(userUpdate);
