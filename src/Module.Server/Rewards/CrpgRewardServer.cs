@@ -181,7 +181,7 @@ internal class CrpgRewardServer : MissionLogic
                     SetStatistics(userUpdate, networkPeer, periodStats);
                 }
 
-                userUpdate.BrokenItems = BreakItems(crpgPeer, durationRewarded * (lowPopulationServer ? 0.5f : 1f));
+                userUpdate.BrokenItems = BreakItems(crpgPeer, durationRewarded * (lowPopulationServer ? 0.2f : 1f));
             }
 
             userUpdates.Add(userUpdate);
@@ -273,11 +273,11 @@ internal class CrpgRewardServer : MissionLogic
             int rewardMultiplier = crpgPeer.RewardMultiplier;
             if (crpgPeer.LastSpawnTeam.Side == BattleSideEnum.Defender)
             {
-                rewardMultiplier += isValorousPlayer ? Math.Min(defenderMultiplierGain, 1) : defenderMultiplierGain;
+                rewardMultiplier += isValorousPlayer ? Math.Max(defenderMultiplierGain, 1) : defenderMultiplierGain;
             }
             else if (crpgPeer.LastSpawnTeam.Side == BattleSideEnum.Attacker)
             {
-                rewardMultiplier += isValorousPlayer ? Math.Min(attackerMultiplierGain, 1) : attackerMultiplierGain;
+                rewardMultiplier += isValorousPlayer ? Math.Max(attackerMultiplierGain, 1) : attackerMultiplierGain;
             }
 
             crpgPeer.RewardMultiplier = Math.Max(Math.Min(rewardMultiplier, ExperienceMultiplierMax), ExperienceMultiplierMin);

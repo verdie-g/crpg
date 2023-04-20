@@ -43,66 +43,62 @@
   <string id="str_kick_reason.unreachable_server" text="{=*}The cRPG main server is unreachable. Try again later." />
 
   <!-- Battle Maps -->
-  <string id="str_multiplayer_scene_name.crpg_battle_abandoned" text="{=!}Abandoned" />
-  <string id="str_multiplayer_scene_name.crpg_battle_acaciacitadel" text="{=!}Acacia Citadel" />
-  <string id="str_multiplayer_scene_name.crpg_battle_ancientworld" text="{=!}Ancient World" />
-  <string id="str_multiplayer_scene_name.crpg_battle_auglirefortress" text="{=!}Auglire Fortress" />
-  <string id="str_multiplayer_scene_name.crpg_battle_azteca" text="{=!}Azteca" />
-  <string id="str_multiplayer_scene_name.crpg_battle_banditvalley" text="{=!}Bandit valley" />
-  <string id="str_multiplayer_scene_name.crpg_battle_bazaar" text="{=!}Bazaar" />
-  <string id="str_multiplayer_scene_name.crpg_battle_cabbagepatch" text="{=!}Cabbage Patch" />
-  <string id="str_multiplayer_scene_name.crpg_battle_canals" text="{=!}Canals" />
-  <string id="str_multiplayer_scene_name.crpg_battle_canyon" text="{=!}Canyon" />
-  <string id="str_multiplayer_scene_name.crpg_battle_dragonsroost" text="{=!}Dragon's Roost" />
-  <string id="str_multiplayer_scene_name.crpg_battle_fallenaqueduct" text="{=!}Fallen Aqueduct" />
-  <string id="str_multiplayer_scene_name.crpg_battle_ghosttown" text="{=!}Ghost Town" />
-  <string id="str_multiplayer_scene_name.crpg_battle_hadiiqa" text="{=!}Hadiiqa" />
-  <string id="str_multiplayer_scene_name.crpg_battle_helmspoint" text="{=!}Helm's Point" />
-  <string id="str_multiplayer_scene_name.crpg_battle_hexenbrennen" text="{=!}Hexenbrennen" />
-  <string id="str_multiplayer_scene_name.crpg_battle_icelake" text="{=!}Ice Lake" />
-  <string id="str_multiplayer_scene_name.crpg_battle_islandvillage" text="{=!}Island Village" />
-  <string id="str_multiplayer_scene_name.crpg_battle_kalmara" text="{=!}Kalmara" />
-  <string id="str_multiplayer_scene_name.crpg_battle_kingsroad" text="{=!}King's Road" />
-  <string id="str_multiplayer_scene_name.crpg_battle_lostcathedral" text="{=!}Lost Cathedral" />
-  <string id="str_multiplayer_scene_name.crpg_battle_moonlittownship" text="{=!}Moonlit Township" />
-  <string id="str_multiplayer_scene_name.crpg_battle_motte" text="{=!}Motte" />
-  <string id="str_multiplayer_scene_name.crpg_battle_onomasticon" text="{=!}Onomasticon" />
-  <string id="str_multiplayer_scene_name.crpg_battle_orionarena" text="{=!}Orion Arena" />
-  <string id="str_multiplayer_scene_name.crpg_battle_persia" text="{=!}Persia" />
-  <string id="str_multiplayer_scene_name.crpg_battle_quarry" text="{=!}Quarry" />
-  <string id="str_multiplayer_scene_name.crpg_battle_redwoodforest" text="{=!}Red Wood Forest" />
-  <string id="str_multiplayer_scene_name.crpg_battle_ruinedbattlement" text="{=!}Ruined Battlement" />
-  <string id="str_multiplayer_scene_name.crpg_battle_sallyout" text="{=!}Sally Out" />
-  <string id="str_multiplayer_scene_name.crpg_battle_sanctuary" text="{=!}Sanctuary" />
-  <string id="str_multiplayer_scene_name.crpg_battle_sandiboush" text="{=!}Sandiboush" />
-  <string id="str_multiplayer_scene_name.crpg_battle_sandpit" text="{=!}Sandpit" />
-  <string id="str_multiplayer_scene_name.crpg_battle_skolderby" text="{=!}Skolderby" />
-  <string id="str_multiplayer_scene_name.crpg_battle_skyfall" text="{=!}Skyfall" />
-  <string id="str_multiplayer_scene_name.crpg_battle_stonehenge" text="{=!}Stonehenge" />
-  <string id="str_multiplayer_scene_name.crpg_battle_talmberg" text="{=!}Talmberg" />
-  <string id="str_multiplayer_scene_name.crpg_battle_tavernbrawl" text="{=!}Tavern Brawl" />
-  <string id="str_multiplayer_scene_name.crpg_battle_tolstabeach" text="{=!}Tolsta Beach" />
-  <string id="str_multiplayer_scene_name.crpg_battle_vatnborg" text="{=!}Vatnborg" />
-  <string id="str_multiplayer_scene_name.crpg_battle_verloren" text="{=!}Verloren" />
-  <string id="str_multiplayer_scene_name.crpg_battle_waterwaytojelkala" text="{=!}Water Way to Jelkala" />
-  <string id="str_multiplayer_scene_name.crpg_battle_weirwater" text="{=!}Weir Water" />
-  <string id="str_multiplayer_scene_name.crpg_battle_whitebridge" text="{=!}White Bridge" />
-  <string id="str_multiplayer_scene_name.crpg_battle_zemouri" text="{=!}Zemouri" />
+  <string id="str_multiplayer_scene_name.crpg_battle_abandoned" text="{=*}Abandoned" />
+  <string id="str_multiplayer_scene_name.crpg_battle_acaciacitadel" text="{=*}Acacia Citadel" />
+  <string id="str_multiplayer_scene_name.crpg_battle_ancientworld" text="{=*}Ancient World" />
+  <string id="str_multiplayer_scene_name.crpg_battle_auglirefortress" text="{=*}Auglire Fortress" />
+  <string id="str_multiplayer_scene_name.crpg_battle_azteca" text="{=*}Azteca" />
+  <string id="str_multiplayer_scene_name.crpg_battle_banditvalley" text="{=*}Bandit Valley" />
+  <string id="str_multiplayer_scene_name.crpg_battle_bazaar" text="{=*}Bazaar" />
+  <string id="str_multiplayer_scene_name.crpg_battle_cabbagepatch" text="{=*}Cabbage Patch" />
+  <string id="str_multiplayer_scene_name.crpg_battle_canals" text="{=*}Canals" />
+  <string id="str_multiplayer_scene_name.crpg_battle_canyon" text="{=*}Canyon" />
+  <string id="str_multiplayer_scene_name.crpg_battle_dragonsroost" text="{=*}Dragon's Roost" />
+  <string id="str_multiplayer_scene_name.crpg_battle_fallenaqueduct" text="{=*}Fallen Aqueduct" />
+  <string id="str_multiplayer_scene_name.crpg_battle_ghosttown" text="{=*}Ghost Town" />
+  <string id="str_multiplayer_scene_name.crpg_battle_hadiiqa" text="{=*}Hadiiqa" />
+  <string id="str_multiplayer_scene_name.crpg_battle_helmspoint" text="{=*}Helm's Hoint" />
+  <string id="str_multiplayer_scene_name.crpg_battle_hexenbrennen" text="{=*}Hexenbrennen" />
+  <string id="str_multiplayer_scene_name.crpg_battle_icelake" text="{=*}Icelake" />
+  <string id="str_multiplayer_scene_name.crpg_battle_islandvillage" text="{=*}Islandvillage" />
+  <string id="str_multiplayer_scene_name.crpg_battle_kalmara" text="{=*}Kalmara" />
+  <string id="str_multiplayer_scene_name.crpg_battle_ketilsfarm" text="{=*}Ketilsfarm" />
+  <string id="str_multiplayer_scene_name.crpg_battle_killington" text="{=*}Killington" />
+  <string id="str_multiplayer_scene_name.crpg_battle_kingsroad" text="{=*}King's Road" />
+  <string id="str_multiplayer_scene_name.crpg_battle_lostcathedral" text="{=*}Lost Cathedral" />
+  <string id="str_multiplayer_scene_name.crpg_battle_moonlittownship" text="{=*}Moonlit Township" />
+  <string id="str_multiplayer_scene_name.crpg_battle_motte" text="{=*}Motte" />
+  <string id="str_multiplayer_scene_name.crpg_battle_onomasticon" text="{=*}Onomasticon" />
+  <string id="str_multiplayer_scene_name.crpg_battle_orionarena" text="{=*}Orion Arena" />
+  <string id="str_multiplayer_scene_name.crpg_battle_persia" text="{=*}Persia" />
+  <string id="str_multiplayer_scene_name.crpg_battle_pompeii" text="{=*}Pompeii" />
+  <string id="str_multiplayer_scene_name.crpg_battle_quarry" text="{=*}Quarry" />
+  <string id="str_multiplayer_scene_name.crpg_battle_redwoodforest" text="{=*}Red Wood Forest" />
+  <string id="str_multiplayer_scene_name.crpg_battle_ruinedbattlement" text="{=*}Ruined Battlement" />
+  <string id="str_multiplayer_scene_name.crpg_battle_sallyout" text="{=*}Sallyout" />
+  <string id="str_multiplayer_scene_name.crpg_battle_sanctuary" text="{=*}Sanctuary" />
+  <string id="str_multiplayer_scene_name.crpg_battle_sandiboush" text="{=*}Sandiboush" />
+  <string id="str_multiplayer_scene_name.crpg_battle_sandpit" text="{=*}Sandpit" />
+  <string id="str_multiplayer_scene_name.crpg_battle_skolderby" text="{=*}Skolderby" />
+  <string id="str_multiplayer_scene_name.crpg_battle_skyfall" text="{=*}Skyfall" />
+  <string id="str_multiplayer_scene_name.crpg_battle_stonehenge" text="{=*}Stonehenge" />
+  <string id="str_multiplayer_scene_name.crpg_battle_talmberg" text="{=*}Talmberg" />
+  <string id="str_multiplayer_scene_name.crpg_battle_tavernbrawl" text="{=*}Tavernbrawl" />
+  <string id="str_multiplayer_scene_name.crpg_battle_tolstabeach" text="{=*}Tolsta Beach" />
+  <string id="str_multiplayer_scene_name.crpg_battle_vatnborg" text="{=*}Vatnborg" />
+  <string id="str_multiplayer_scene_name.crpg_battle_verloren" text="{=*}Verloren" />
+  <string id="str_multiplayer_scene_name.crpg_battle_waterwaytojelkala" text="{=*}Waterway To Jelkala" />
+  <string id="str_multiplayer_scene_name.crpg_battle_weirwater" text="{=*}Weirwater" />
+  <string id="str_multiplayer_scene_name.crpg_battle_whitebridge" text="{=*}White Bridge" />
+  <string id="str_multiplayer_scene_name.crpg_battle_zemouri" text="{=*}Zemouri" />
+  <string id="str_multiplayer_scene_name.crpg_battle_pompeii" text="{=*}Pompeii" />
+  <string id="str_multiplayer_scene_name.crpg_battle_killington" text="{=*}Killington" />
+  <string id="str_multiplayer_scene_name.crpg_battle_ketilsfarm" text="{=*}Ketil's Farm" />
 
   <!-- Conquest Maps -->
-  <string id="str_multiplayer_scene_name.crpg_conquest_acre" text="{=!}Acre" />
-  <string id="str_multiplayer_scene_name.crpg_conquest_frederiksborg" text="{=!}Frederiksborg" />
-  <string id="str_multiplayer_scene_name.crpg_conquest_hades" text="{=!}Hades" />
-  <string id="str_multiplayer_scene_name.crpg_conquest_neuenburg" text="{=!}Neuenburg" />
-
-  <!-- Siege Maps -->
-  <string id="str_multiplayer_scene_name.crpg_siege_eastcliff" text="{=!}East Cliff" />
-  <string id="str_multiplayer_scene_name.crpg_siege_hailescastle" text="{=!}Hailes Castle" />
-  <string id="str_multiplayer_scene_name.crpg_siege_jameyyedcastle" text="{=!}Jameyyed Castle" />
-  <string id="str_multiplayer_scene_name.crpg_siege_motteandbailey" text="{=!}Motte and Bailey" />
-  <string id="str_multiplayer_scene_name.crpg_conquest_neuenburg_winter" text="{=!}Neuenburg" />
-  <string id="str_multiplayer_scene_name.crpg_siege_silverskalitz" text="{=!}Silver Skalitz" />
-  <string id="str_multiplayer_scene_name.crpg_siege_skalalanding" text="{=!}Skala Landing" />
-  <string id="str_multiplayer_scene_name.crpg_siege_stronghold" text="{=!}Stronghold" />
-  <string id="str_multiplayer_scene_name.crpg_siege_talmberg" text="{=!}Talmberg" />
+  <string id="str_multiplayer_scene_name.crpg_conquest_acre" text="{=*}Acre" />
+  <string id="str_multiplayer_scene_name.crpg_conquest_frederiksborg" text="{=*}Frederiksborg" />
+  <string id="str_multiplayer_scene_name.crpg_conquest_hades" text="{=*}Hades" />
+  <string id="str_multiplayer_scene_name.crpg_conquest_neuenburg" text="{=*}Neuenburg" />
+  <string id="str_multiplayer_scene_name.crpg_conquest_skalalanding" text="{=*}Skala Landing" />
 </strings>

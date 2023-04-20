@@ -28,7 +28,7 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
 {
 #if CRPG_SERVER
     private readonly MultiplayerWarmupComponent _warmupComponent;
-    private readonly MultiplayerRoundController _roundController;
+    private readonly MultiplayerRoundController? _roundController;
     private readonly MatchBalancer _balancer;
     private readonly PeriodStatsHelper _periodStatsHelper;
 
@@ -37,7 +37,7 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
     /// </summary>
     private readonly HashSet<PlayerId> _playersWaitingForTeam;
 
-    public CrpgTeamSelectComponent(MultiplayerWarmupComponent warmupComponent, MultiplayerRoundController roundController)
+    public CrpgTeamSelectComponent(MultiplayerWarmupComponent warmupComponent, MultiplayerRoundController? roundController)
     {
         _warmupComponent = warmupComponent;
         _roundController = roundController;
@@ -53,13 +53,20 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
 
 #if CRPG_SERVER
         _warmupComponent.OnWarmupEnded += OnWarmupEnded;
-        _roundController.OnPostRoundEnded += OnRoundEnded;
+        if (_roundController != null)
+        {
+            _roundController.OnPostRoundEnded += OnRoundEnded;
+        }
     }
 
     public override void OnRemoveBehavior()
     {
         base.OnRemoveBehavior();
-        _roundController.OnPostRoundEnded -= OnRoundEnded;
+        if (_roundController != null)
+        {
+            _roundController.OnPostRoundEnded -= OnRoundEnded;
+        }
+
         _warmupComponent.OnWarmupEnded -= OnWarmupEnded;
     }
 
@@ -113,7 +120,7 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
     private void OnRoundEnded()
     {
         LogRoundResult();
-        if (!_roundController.IsMatchEnding)
+        if (!_roundController!.IsMatchEnding)
         {
             BalanceTeams(firstBalance: false);
         }
@@ -397,7 +404,7 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
     {
         RoundResultData roundResult = new()
         {
-            WinnerSide = _roundController.RoundWinner,
+            WinnerSide = _roundController?.RoundWinner ?? BattleSideEnum.None,
             MapId = Mission.SceneName,
             Version = GetType().Assembly.GetName().Version!,
             Date = DateTime.UtcNow,

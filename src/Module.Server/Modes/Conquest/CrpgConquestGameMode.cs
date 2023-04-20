@@ -79,9 +79,11 @@ internal class CrpgConquestGameMode : MissionBasedMultiplayerGameMode
         ChatBox chatBox = Game.Current.GetGameHandler<ChatBox>();
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent,
             () => (new SiegeSpawnFrameBehavior(), new CrpgSiegeSpawningBehavior(_constants)));
+        CrpgTeamSelectComponent teamSelectComponent = new(warmupComponent, null);
         CrpgRewardServer rewardServer = new(crpgClient, _constants, warmupComponent);
 #else
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent, null);
+        CrpgTeamSelectComponent teamSelectComponent = new();
 #endif
 
         MissionState.OpenNew(GameName,
@@ -96,7 +98,7 @@ internal class CrpgConquestGameMode : MissionBasedMultiplayerGameMode
                 new CrpgConquestClient(),
                 new MultiplayerTimerComponent(),
                 new SpawnComponent(new SiegeSpawnFrameBehavior(), new CrpgSiegeSpawningBehavior(_constants)),
-                new MultiplayerTeamSelectComponent(),
+                teamSelectComponent,
                 new MissionHardBorderPlacer(),
                 new MissionBoundaryPlacer(),
                 new MissionBoundaryCrossingHandler(),
@@ -117,6 +119,7 @@ internal class CrpgConquestGameMode : MissionBasedMultiplayerGameMode
 
 #if CRPG_SERVER
                 new CrpgConquestServer(scoreboardComponent, rewardServer),
+                rewardServer,
                 new CrpgUserManagerServer(crpgClient, _constants),
                 new KickInactiveBehavior(inactiveTimeLimit: 90, warmupComponent),
                 new MapPoolComponent(),
