@@ -298,9 +298,7 @@ static async Task OnSteamUserAuthenticated(OpenIdAuthenticatedContext ctx)
         PlatformUserId = player.SteamId,
         Name = player.PersonaName,
         Region = region,
-        Avatar = player.Avatar,
-        AvatarMedium = player.AvatarMedium,
-        AvatarFull = player.AvatarFull,
+        Avatar = player.AvatarFull,
     });
 
     ctx.Identity!.SetClaim(OpenIddictConstants.Claims.Subject, res.Data!.Id.ToString());

@@ -952,17 +952,9 @@ namespace Crpg.Persistence.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("active_character_id");
 
-                    b.Property<string>("AvatarFull")
+                    b.Property<string>("Avatar")
                         .HasColumnType("text")
-                        .HasColumnName("avatar_full");
-
-                    b.Property<string>("AvatarMedium")
-                        .HasColumnType("text")
-                        .HasColumnName("avatar_medium");
-
-                    b.Property<string>("AvatarSmall")
-                        .HasColumnType("text")
-                        .HasColumnName("avatar_small");
+                        .HasColumnName("avatar");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone")

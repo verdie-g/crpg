@@ -30,20 +30,7 @@ public class User : AuditableEntity
     /// </summary>
     public bool IsDonor { get; set; }
 
-    /// <summary>
-    /// 32x32.
-    /// </summary>
-    public Uri? AvatarSmall { get; set; }
-
-    /// <summary>
-    /// 64x64.
-    /// </summary>
-    public Uri? AvatarMedium { get; set; }
-
-    /// <summary>
-    /// 184x184.
-    /// </summary>
-    public Uri? AvatarFull { get; set; }
+    public Uri? Avatar { get; set; }
 
     /// <summary>
     /// Character the user will play in game.

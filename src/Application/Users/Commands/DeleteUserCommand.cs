@@ -50,9 +50,7 @@ public record DeleteUserCommand : IMediatorRequest
 
             _userService.SetDefaultValuesForUser(user);
             user.Name = string.Empty;
-            user.AvatarSmall = new Uri("https://via.placeholder.com/32x32");
-            user.AvatarMedium = new Uri("https://via.placeholder.com/64x64");
-            user.AvatarFull = new Uri("https://via.placeholder.com/184x184");
+            user.Avatar = new Uri("https://via.placeholder.com/184x184");
             user.DeletedAt = _dateTime.UtcNow; // Deleted users are just marked with a DeletedAt != null
 
             _db.UserItems.RemoveRange(user.Items);

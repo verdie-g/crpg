@@ -20,8 +20,6 @@ public class UpsertUserCommandTest : TestBase
             PlatformUserId = "123",
             Name = "def",
             Avatar = new Uri("http://ghi.klm"),
-            AvatarMedium = new Uri("http://mno.pqr"),
-            AvatarFull = new Uri("http://stu.vwx"),
         }, CancellationToken.None);
 
         var user = result.Data!;
@@ -40,9 +38,7 @@ public class UpsertUserCommandTest : TestBase
             Name = "def",
             Gold = 1000,
             Role = Role.Admin,
-            AvatarSmall = new Uri("http://ghi.klm"),
-            AvatarMedium = new Uri("http://mno.pqr"),
-            AvatarFull = new Uri("http://stu.vwx"),
+            Avatar = new Uri("http://ghi.klm"),
             DeletedAt = null,
         };
         ArrangeDb.Users.Add(user);
@@ -55,8 +51,6 @@ public class UpsertUserCommandTest : TestBase
             PlatformUserId = "13948192759205810",
             Name = "def",
             Avatar = new Uri("http://gh.klm"),
-            AvatarMedium = new Uri("http://mn.pqr"),
-            AvatarFull = new Uri("http://st.vwx"),
         }, CancellationToken.None);
 
         var createdUser = result.Data!;
@@ -69,9 +63,7 @@ public class UpsertUserCommandTest : TestBase
         Assert.That(createdUser.Gold, Is.EqualTo(dbUser.Gold));
         Assert.That(createdUser.Name, Is.EqualTo(dbUser.Name));
         Assert.That(createdUser.Role, Is.EqualTo(dbUser.Role));
-        Assert.That(createdUser.AvatarSmall, Is.EqualTo(new Uri("http://gh.klm")));
-        Assert.That(createdUser.AvatarMedium, Is.EqualTo(new Uri("http://mn.pqr")));
-        Assert.That(createdUser.AvatarFull, Is.EqualTo(new Uri("http://st.vwx")));
+        Assert.That(createdUser.Avatar, Is.EqualTo(new Uri("http://gh.klm")));
         Assert.That(dbUser.DeletedAt, Is.Null);
     }
 
@@ -107,8 +99,6 @@ public class UpsertUserCommandTest : TestBase
             PlatformUserId = "28320184920184918",
             Name = "toto",
             Avatar = new Uri("http://gh.klm"),
-            AvatarMedium = new Uri("http://mn.pqr"),
-            AvatarFull = new Uri("http://st.vwx"),
         });
 
         Assert.That(res.Errors.Count, Is.EqualTo(0));
@@ -124,6 +114,6 @@ public class UpsertUserCommandTest : TestBase
             Name = string.Empty,
         });
 
-        Assert.That(res.Errors.Count, Is.EqualTo(4));
+        Assert.That(res.Errors.Count, Is.EqualTo(2));
     }
 }

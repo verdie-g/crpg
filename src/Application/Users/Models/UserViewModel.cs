@@ -16,8 +16,6 @@ public record UserViewModel : IMapFrom<User>
     public Role Role { get; init; }
     public Region? Region { get; init; }
     public bool IsDonor { get; init; }
-    public Uri? AvatarSmall { get; init; }
-    public Uri? AvatarMedium { get; init; }
-    public Uri? AvatarFull { get; init; }
+    public Uri? Avatar { get; init; }
     public int? ActiveCharacterId { get; init; }
 }

@@ -145,7 +145,7 @@ await userStore.getUserClanMember(); // TODO: get the clan role in the query `us
           <div class="h-8 w-px select-none bg-border-200" />
 
           <UserMedia
-            :user="{ ...userStore.user, avatar: userStore.user.avatarMedium }"
+            :user="{ ...userStore.user, avatar: userStore.user.avatar }"
             :clan="userStore.clan"
             :clanRole="userStore.clanMember?.role"
             hiddenPlatform

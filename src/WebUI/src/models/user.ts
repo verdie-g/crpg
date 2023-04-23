@@ -11,9 +11,7 @@ export interface User {
   gold: number;
   heirloomPoints: number;
   role: Role;
-  avatarSmall: string;
-  avatarMedium: string;
-  avatarFull: string;
+  avatar: string;
   activeCharacterId: number | null;
   region: Region | null;
   experienceMultiplier: number;

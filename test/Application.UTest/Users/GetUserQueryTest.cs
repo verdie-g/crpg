@@ -26,9 +26,7 @@ public class GetUserQueryTest : TestBase
             PlatformUserId = "13948192759205810",
             Name = "def",
             Role = Role.Admin,
-            AvatarSmall = new Uri("http://ghi.klm"),
-            AvatarMedium = new Uri("http://mno.pqr"),
-            AvatarFull = new Uri("http://stu.vwx"),
+            Avatar = new Uri("http://ghi.klm"),
         };
         ArrangeDb.Users.Add(dbUser);
         await ArrangeDb.SaveChangesAsync();

@@ -15,12 +15,10 @@ namespace Crpg.Application.Users.Commands;
 
 public record UpsertUserCommand : IMediatorRequest<UserViewModel>
 {
-    public string PlatformUserId { get; set; } = string.Empty;
-    public string Name { get; set; } = string.Empty;
-    public Region? Region { get; set; }
-    public Uri Avatar { get; set; } = default!;
-    public Uri AvatarMedium { get; set; } = default!;
-    public Uri AvatarFull { get; set; } = default!;
+    public string PlatformUserId { get; init; } = string.Empty;
+    public string Name { get; init; } = string.Empty;
+    public Region? Region { get; init; }
+    public Uri Avatar { get; init; } = default!;
 
     public class Validator : AbstractValidator<UpsertUserCommand>
     {
@@ -28,8 +26,6 @@ public record UpsertUserCommand : IMediatorRequest<UserViewModel>
         {
             RuleFor(u => u.Name).NotNull().NotEmpty();
             RuleFor(u => u.Avatar).NotNull();
-            RuleFor(u => u.AvatarMedium).NotNull();
-            RuleFor(u => u.AvatarFull).NotNull();
         }
     }
 
@@ -74,9 +70,7 @@ public record UpsertUserCommand : IMediatorRequest<UserViewModel>
 
             user.Name = request.Name;
             user.Region = request.Region ?? user.Region;
-            user.AvatarSmall = request.Avatar;
-            user.AvatarMedium = request.AvatarMedium;
-            user.AvatarFull = request.AvatarFull;
+            user.Avatar = request.Avatar;
             // If the user has deleted its account, recreate it.
             user.DeletedAt = null;
 
