@@ -94,7 +94,11 @@ public record RespecializeCharacterCommand : IMediatorRequest<CharacterViewModel
                 return 0;
             }
 
-            return (int)((float)character.Experience / _experienceTable.GetExperienceForLevel(30) * _constants.RespecializePriceForLevel30);
+            TimeSpan timePassed = _dateTime.UtcNow - character.Limitations!.LastFreeRespecializeAt;
+            // 12 Hours half life
+            double decayDivider = Math.Pow(2, timePassed.TotalHours / 12f);
+
+            return (int)((float)character.Experience / _experienceTable.GetExperienceForLevel(30) * _constants.RespecializePriceForLevel30 / decayDivider);
         }
     }
 }

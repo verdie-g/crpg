@@ -263,15 +263,15 @@ export const computeOverallPrice = (items: Item[]) =>
   items.reduce((total, item) => total + item.price, 0);
 
 export const computeOverallWeight = (items: Item[]) => items
-  .filter(item => ![ItemType.Mount, ItemType.MountHarness].includes(item.type))
+    .filter(item => ![ItemType.Mount, ItemType.MountHarness].includes(item.type))
   .reduce((total, item) => total += [ItemType.Arrows, ItemType.Bolts, ItemType.Bullets, ItemType.Thrown].includes(item.type)
-  ? roundFLoat(item.weight * item.weapons[0].stackAmount)
+          ? roundFLoat(item.weight * item.weapons[0].stackAmount)
   : item.weight, 0);
 
 interface OverallArmor extends Omit<ItemArmorComponent, 'materialType' | 'familyType'> {
   mountArmor: number;
 }
-
+  
 export const computeOverallArmor = (items: Item[]): OverallArmor =>
   items.reduce(
     (total, item) => {
@@ -339,17 +339,18 @@ export const getRespecCapability = (
   limitations: CharacterLimitations,
   userGold: number
 ): RespecCapability => {
-  const nextFreeAt = new Date(limitations.lastFreeRespecializeAt);
-  nextFreeAt.setUTCDate(nextFreeAt.getUTCDate() + freeRespecializeIntervalDays);
+  const lastRespecDate = new Date(limitations.lastFreeRespecializeAt);
+  const nextFreeAt = new Date(lastRespecDate.getUTCDate() + freeRespecializeIntervalDays);
   nextFreeAt.setUTCMinutes(nextFreeAt.getUTCMinutes() + 5);
-
   if (nextFreeAt < new Date()) {
     return { price: 0, nextFreeAt: { days: 0, hours: 0, minutes: 0 }, enabled: true };
   }
-
+  const now = Date.now();
+  const decayDivider = (Date.now() - lastRespecDate.getTime()) / (8 * 1000 * 3600);
   const price = character.forTournament
     ? 0
-    : Math.floor((character.experience / getExperienceForLevel(30)) * respecializePriceForLevel30);
+    : Math.floor((character.experience / getExperienceForLevel(30)) * respecializePriceForLevel30) /
+      Math.pow(2, decayDivider);
 
   return {
     price,
