@@ -263,15 +263,14 @@ export const computeOverallPrice = (items: Item[]) =>
   items.reduce((total, item) => total + item.price, 0);
 
 export const computeOverallWeight = (items: Item[]) => items
-    .filter(item => ![ItemType.Mount, ItemType.MountHarness].includes(item.type))
+  .filter(item => ![ItemType.Mount, ItemType.MountHarness].includes(item.type))
   .reduce((total, item) => total += [ItemType.Arrows, ItemType.Bolts, ItemType.Bullets, ItemType.Thrown].includes(item.type)
-          ? roundFLoat(item.weight * item.weapons[0].stackAmount)
+  ? roundFLoat(item.weight * item.weapons[0].stackAmount)
   : item.weight, 0);
 
 interface OverallArmor extends Omit<ItemArmorComponent, 'materialType' | 'familyType'> {
   mountArmor: number;
-}
-  
+} 
 export const computeOverallArmor = (items: Item[]): OverallArmor =>
   items.reduce(
     (total, item) => {
