@@ -270,7 +270,7 @@ export const computeOverallWeight = (items: Item[]) => items
 
 interface OverallArmor extends Omit<ItemArmorComponent, 'materialType' | 'familyType'> {
   mountArmor: number;
-} 
+}
 
 export const computeOverallArmor = (items: Item[]): OverallArmor =>
   items.reduce(
