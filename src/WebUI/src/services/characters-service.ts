@@ -262,11 +262,18 @@ export const updateCharacterItems = (characterId: number, items: EquippedItemId[
 export const computeOverallPrice = (items: Item[]) =>
   items.reduce((total, item) => total + item.price, 0);
 
-export const computeOverallWeight = (items: Item[]) => items
-  .filter(item => ![ItemType.Mount, ItemType.MountHarness].includes(item.type))
-  .reduce((total, item) => total += [ItemType.Arrows, ItemType.Bolts, ItemType.Bullets, ItemType.Thrown].includes(item.type)
-  ? roundFLoat(item.weight * item.weapons[0].stackAmount)
-  : item.weight, 0);
+export const computeOverallWeight = (items: Item[]) =>
+  items
+    .filter(item => ![ItemType.Mount, ItemType.MountHarness].includes(item.type))
+    .reduce(
+      (total, item) =>
+        (total += [ItemType.Arrows, ItemType.Bolts, ItemType.Bullets, ItemType.Thrown].includes(
+          item.type
+        )
+          ? roundFLoat(item.weight * item.weapons[0].stackAmount)
+          : item.weight),
+      0
+    );
 
 interface OverallArmor extends Omit<ItemArmorComponent, 'materialType' | 'familyType'> {
   mountArmor: number;
@@ -331,7 +338,7 @@ export const getExperienceMultiplierBonus = (multiplier: number) => {
 export interface RespecCapability {
   price: number;
   nextFreeAt: HumanDuration;
-  enabled: Boolean;
+  enabled: boolean;
 }
 
 export const getRespecCapability = (
@@ -340,12 +347,16 @@ export const getRespecCapability = (
   userGold: number
 ): RespecCapability => {
   const lastRespecDate = new Date(limitations.lastFreeRespecializeAt);
-  const nextFreeAt = new Date(lastRespecDate.getUTCDate() + freeRespecializeIntervalDays);
-  nextFreeAt.setUTCMinutes(nextFreeAt.getUTCMinutes() + 5);
+
+  const nextFreeAt = new Date(limitations.lastFreeRespecializeAt);
+  nextFreeAt.setUTCDate(nextFreeAt.getUTCDate() + freeRespecializeIntervalDays);
+  nextFreeAt.setUTCMinutes(nextFreeAt.getUTCMinutes() + 5); // 5 minute margin just in case
+
   if (nextFreeAt < new Date()) {
     return { price: 0, nextFreeAt: { days: 0, hours: 0, minutes: 0 }, enabled: true };
   }
-  const decayDivider = ((new Date()).getTime() - lastRespecDate.getTime()) / (8 * 1000 * 3600);
+
+  const decayDivider = (new Date().getTime() - lastRespecDate.getTime()) / (8 * 1000 * 3600);
   const price = character.forTournament
     ? 0
     : Math.floor((character.experience / getExperienceForLevel(30)) * respecializePriceForLevel30) /
