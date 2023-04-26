@@ -1344,7 +1344,7 @@ public class MatchBalancerTest
     }
 
     [Test]
-    public void A()
+    public void RejoinClanDoesNotKeepClanMatesSeparated()
     {
         GameMatch game = new()
         {
@@ -1364,7 +1364,6 @@ public class MatchBalancerTest
             {
                 Jean04,
                 Krilin,
-                Hudax03,
                 Hudax04,
                 Daschyhund,
                 GreatieDane,
@@ -1380,7 +1379,37 @@ public class MatchBalancerTest
                 .Any(),
             Is.True);
     }
+    public void RejoinClanDoesNotLosePlayers()
+    {
+        GameMatch game = new()
+        {
+            TeamA = new List<WeightedCrpgUser>
+            {
+                Hudax01, Hudax02, Sangoku, RolandDeschain,
+            },
+            TeamB = new List<WeightedCrpgUser>
+            {
+                Jean01,
+                Jean02,
+                Hudax03,
+                ProfCharles,
+                Jean03,
+            },
+            Waiting = new List<WeightedCrpgUser>
+            {
+                Jean04,
+                Krilin,
+                Hudax04,
+                Daschyhund,
+                GreatieDane,
+                BassetyHound,
+            },
+        };
 
+        var game2 = MatchBalancingHelpers.RejoinClans(game);
+        Assert.That(game2.Waiting, Is.Empty);
+        Assert.That(game2.TeamA.Count + game2.TeamB.Count + game2.Waiting.Count == 15);
+    }
     private GameMatch PureBannerBalancing(GameMatch gameMatch)
     {
         var matchBalancer = new MatchBalancer();
