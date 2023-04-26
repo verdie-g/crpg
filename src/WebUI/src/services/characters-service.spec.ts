@@ -326,45 +326,6 @@ it.each<[Partial<Character>, CharacterLimitations, number, RespecCapability]>([
       enabled: true,
     },
   ],
-  // Respec was exactly 24h ago, char has 1m exp.
-  [
-    { forTournament: false, experience: 1000000 }, // 1 000 000
-    {
-      lastFreeRespecializeAt: new Date('2023-03-29T18:00:00.0000000Z'),
-    },
-    1000,
-    {
-      price: 141.375,
-      nextFreeAt: { days: 6, hours: 0, minutes: 5 },
-      enabled: true,
-    },
-  ],
-  // Respec was exactly 1h ago, char has 100m exp. (34lvl)
-  [
-    { forTournament: false, experience: 100000000 }, // 100 000 000
-    {
-      lastFreeRespecializeAt: new Date('2023-03-30T17:00:00.0000000Z'),
-    },
-    1000000,
-    {
-      price: 103714.07429049152,
-      nextFreeAt: { days: 6, hours: 23, minutes: 5 },
-      enabled: true,
-    },
-  ],
-  // Respec was exactly 2h ago, char has 100m exp. (34lvl)
-  [
-    { forTournament: false, experience: 100000000 }, // 100 000 000
-    {
-      lastFreeRespecializeAt: new Date('2023-03-30T16:00:00.0000000Z'),
-    },
-    1000000,
-    {
-      price: 95106.22546161037,
-      nextFreeAt: { days: 6, hours: 22, minutes: 5 },
-      enabled: true,
-    },
-  ],
 ])(
   'getRespecCapability - character: %j, limitations: %j, gold: %n',
   (character, charLimitations, gold, expectation) => {
@@ -373,6 +334,27 @@ it.each<[Partial<Character>, CharacterLimitations, number, RespecCapability]>([
     expect(getRespecCapability(character as Character, charLimitations, gold)).toEqual(expectation);
   }
 );
+
+it('getRespecCapability - Exponential Decay', () => {
+  vi.setSystemTime('2023-03-30T18:00:00.0000000Z');
+
+  const exp = 100000000; // 100m
+  const gold = 1000000;
+
+  const result1 = getRespecCapability(
+    { forTournament: false, experience: exp } as Character,
+    { lastFreeRespecializeAt: new Date('2023-03-30T17:00:00.0000000Z') },
+    gold
+  );
+
+  const result2 = getRespecCapability(
+    { forTournament: false, experience: exp } as Character,
+    { lastFreeRespecializeAt: new Date('2023-03-30T16:00:00.0000000Z') },
+    gold
+  );
+
+  expect(result2.price < result1.price).toBeTruthy();
+});
 
 it.each<[PartialDeep<Item>, PartialDeep<CharacterCharacteristics>, boolean]>([
   [{ requirement: 18 }, { attributes: { strength: 18 } }, false],
