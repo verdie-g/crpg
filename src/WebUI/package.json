@@ -9,7 +9,7 @@
     "format": "prettier --write .",
     "lint": "eslint .",
     "typecheck": "vue-tsc --noEmit",
-    "test:unit": "TZ='Europe/Moscow' vitest",
+    "test:unit": "cross-env TZ='Europe/Moscow' vitest",
     "test:unit-c8": "vitest run --coverage",
     "tailwind-config-viewer": "tailwind-config-viewer"
   },
@@ -54,6 +54,7 @@
     "@vue/eslint-config-typescript": "^11.0.2",
     "@vue/test-utils": "^2.3.2",
     "autoprefixer": "^10.4.14",
+    "cross-env": "^7.0.3",
     "cssnano": "^6.0.0",
     "defu": "^6.1.2",
     "eslint": "^8.38.0",

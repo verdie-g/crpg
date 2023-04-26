@@ -345,8 +345,7 @@ export const getRespecCapability = (
   if (nextFreeAt < new Date()) {
     return { price: 0, nextFreeAt: { days: 0, hours: 0, minutes: 0 }, enabled: true };
   }
-  const now = Date.now();
-  const decayDivider = (Date.now() - lastRespecDate.getTime()) / (8 * 1000 * 3600);
+  const decayDivider = ((new Date()).getTime() - lastRespecDate.getTime()) / (8 * 1000 * 3600);
   const price = character.forTournament
     ? 0
     : Math.floor((character.experience / getExperienceForLevel(30)) * respecializePriceForLevel30) /
