@@ -41,12 +41,19 @@ function JSON5(): Plugin {
   };
 }
 
+const watchIgnored: string[] = [];
+
+if (process.env.NODE_ENV !== 'test') {
+  watchIgnored.push('**/*.spec.**');
+}
+
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
     port: 8080,
     watch: {
       usePolling: true,
+      ignored: watchIgnored,
     },
   },
 
