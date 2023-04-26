@@ -363,7 +363,9 @@ character:
       desc: ''
     weightReduction:
       title: Weight reduction
-      desc: The remaining weight after deduction by Free Weight, get reduced by your strength attribute points
+      desc: '
+          <p>The remaining weight after deduction by <strong>Free Weight</strong>.</p>
+          <p>Reduced by your <strong>STR</strong> attribute points</p>'
     perceivedWeight:
       title: Perceived weight
       desc: ''
@@ -378,10 +380,15 @@ character:
       desc: ''
     maxWeaponLength:
       title: Max weapon length
-      desc: Max weapon length without a movement speed penalty when fighting. Depends on strength attribute points
+      desc: '
+          <p>Max weapon length without a movement speed penalty when fighting.</p>
+          <p>Depends on <strong>STR</strong> attribute points</p>'
+
     movementSpeedPenaltyWhenAttacking:
       title: Mov. speed penalty
-      desc: Extra movement speed when attacking penalty. Depends on the length of the weapon and strength attribute points
+      desc: '
+          <p>Extra movement speed when attacking penalty.</p>
+          <p>Depends on the length of the weapon and <strong>STR</strong> attribute points</p>'
     price:
       title: Price
       desc: ''
