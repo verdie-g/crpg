@@ -81,6 +81,66 @@ internal class CrpgAgentApplyDamageModel : MultiplayerAgentApplyDamageModel
         return finalDamage;
     }
 
+    public override float GetDamageMultiplierForBodyPart(BoneBodyPartType bodyPart, DamageTypes type, bool isHuman)
+    {
+        float result = 1f;
+        switch (bodyPart)
+        {
+            case BoneBodyPartType.None:
+                result = 1f;
+                break;
+            case BoneBodyPartType.Head:
+                switch (type)
+                {
+                    case DamageTypes.Invalid:
+                        result = 2f;
+                        break;
+                    case DamageTypes.Cut:
+                        result = 1.2f;
+                        break;
+                    case DamageTypes.Pierce:
+                        result = !isHuman ? 1.2f : 1.6f;
+                        break;
+                    case DamageTypes.Blunt:
+                        result = 1.2f;
+                        break;
+                }
+
+                break;
+            case BoneBodyPartType.Neck:
+                switch (type)
+                {
+                    case DamageTypes.Invalid:
+                        result = 2f;
+                        break;
+                    case DamageTypes.Cut:
+                        result = 1.2f;
+                        break;
+                    case DamageTypes.Pierce:
+                        result = ((!isHuman) ? 1.2f : 2f);
+                        break;
+                    case DamageTypes.Blunt:
+                        result = 1.2f;
+                        break;
+                }
+
+                break;
+            case BoneBodyPartType.Chest:
+            case BoneBodyPartType.Abdomen:
+            case BoneBodyPartType.ShoulderLeft:
+            case BoneBodyPartType.ShoulderRight:
+            case BoneBodyPartType.ArmLeft:
+            case BoneBodyPartType.ArmRight:
+                result = ((!isHuman) ? 0.8f : 1f);
+                break;
+            case BoneBodyPartType.Legs:
+                result = 0.8f;
+                break;
+        }
+
+        return result;
+    }
+
     public override void CalculateCollisionStunMultipliers(
         Agent attackerAgent,
         Agent defenderAgent,
