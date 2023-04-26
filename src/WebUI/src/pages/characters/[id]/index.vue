@@ -11,7 +11,7 @@ import {
 } from '@root/data/constants.json';
 import { useUserStore } from '@/stores/user';
 import { characterKey, characterCharacteristicsKey, characterItemsKey } from '@/symbols/character';
-import { parseTimestamp } from '@/utils/date';
+import { msToHours } from '@/utils/date';
 import { notify } from '@/services/notification-service';
 import { t } from '@/services/translate-service';
 import {
@@ -212,9 +212,7 @@ await fetchPageData(character.value.id);
 
           <SimpleTableRow
             :label="$t('character.statistics.playTime.title')"
-            :value="$t('dateTimeFormat.dd:hh:mm', {
-                ...parseTimestamp(characterStatistics!.playTime),
-              })"
+            :value="$t('dateTimeFormat.hh', { hours: msToHours(characterStatistics.playTime) })"
           />
 
           <div class="col-span-2 mt-12 px-4 py-2.5">
