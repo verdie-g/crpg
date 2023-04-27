@@ -1,8 +1,9 @@
+import { type PartialDeep } from 'type-fest';
 import { type RouteRecordRaw } from 'vue-router/auto';
 import Role from '@/models/role';
 import { useNavigation } from './use-navigation';
 
-it.each<[any[], Role, number]>([
+it.each<[Array<PartialDeep<RouteRecordRaw>>, Role, number]>([
   [
     [
       {
@@ -72,8 +73,8 @@ it.each<[any[], Role, number]>([
     1,
   ],
 ])('filter - routes: %j, role: %s', (routes, role, expectation) => {
-  const { mainNavigation } = useNavigation(routes, role);
-  expect(mainNavigation.length).toEqual(expectation);
+  const { mainNavigation } = useNavigation(routes as RouteRecordRaw[], role);
+  expect(mainNavigation.value.length).toEqual(expectation);
 });
 
 it('sort', () => {
@@ -95,6 +96,6 @@ it('sort', () => {
   ] as RouteRecordRaw[];
 
   const { mainNavigation } = useNavigation(routes, Role.User);
-  expect(mainNavigation[0].name).toEqual('char');
-  expect(mainNavigation[1].name).toEqual('shop');
+  expect(mainNavigation.value[0].name).toEqual('char');
+  expect(mainNavigation.value[1].name).toEqual('shop');
 });

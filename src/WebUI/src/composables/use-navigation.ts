@@ -1,5 +1,6 @@
-import type { RouteRecordRaw, RouteLocationRaw } from 'vue-router/auto';
+import type { RouteRecordRaw } from 'vue-router/auto';
 import Role from '@/models/role';
+import { flatten } from '@/utils/object';
 
 const filterRoute = (role: Role) => (route: RouteRecordRaw) =>
   route.name !== undefined &&
@@ -11,24 +12,9 @@ const sortRoutes = (a: RouteRecordRaw, b: RouteRecordRaw) =>
     ? b.meta.sortInNav - a.meta.sortInNav
     : 0;
 
-const flattenArray = (members: any[]): any[] => {
-  let children: any[] = [];
-
-  return members
-    .map(mem => {
-      const m = { ...mem };
-      if (m.children && m.children.length) {
-        children = [...children, ...m.children];
-      }
-      delete m.children;
-      return m;
-    })
-    .concat(children.length ? flattenArray(children) : children);
-};
-
 export const useNavigation = (routes: RouteRecordRaw[], role: Role) => {
-  const mainNavigation = computed<RouteLocationRaw[]>(() =>
-    flattenArray(routes).filter(filterRoute(role)).sort(sortRoutes)
+  const mainNavigation = computed(() =>
+    flatten<RouteRecordRaw>(routes).filter(filterRoute(role)).sort(sortRoutes)
   );
 
   return {

@@ -107,6 +107,10 @@ region:
 
 region-title: Region
 
+clanBalancingExplanation: "
+ <h3>You're not in any clan</h3>
+ <p>In order to play with friends on the same team, we recommend creating a new clan or joining an existing clan</p>"
+
 character:
   nav:
     overview: Overview
