@@ -803,7 +803,7 @@ item:
     CanCrushThrough: 'Crush through'
     CanDismount: 'Can dismount'
     CanHook: 'CanHook'
-    CanKnockDown: 'Can knock down'
+    CanKnockDown: 'Crush through'
     CanPenetrateShield: 'Can penetrate shield'
     CantReloadOnHorseback: "Can't reload on horseback"
     CanReloadOnHorseback: 'Can reload on horseback'
@@ -815,7 +815,7 @@ item:
     LeavesTrail: ''
     MeleeWeapon: ''
     MissileWithPhysics: ''
-    MultiplePenetration: 'Multiple penetration'
+    MultiplePenetration: 'Knockdown'
     NoBlood: ''
     NotUsableWithOneHand: 'Two hand only'
     NotUsableWithTwoHand: 'One hand only'
