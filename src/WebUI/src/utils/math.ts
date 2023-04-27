@@ -13,7 +13,7 @@ export const clamp = (num: number, min: number, max: number): number => {
 
 export const roundFLoat = (num: number) => Math.round((num + Number.EPSILON) * 100) / 100;
 
-export const isWhatPercentOf = (val: number, of: number) => {
+export const percentOf = (val: number, of: number) => {
   if (of === 0) return 0;
 
   return (val / of) * 100;

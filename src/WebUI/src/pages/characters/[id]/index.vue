@@ -12,7 +12,7 @@ import {
 import { useUserStore } from '@/stores/user';
 import { characterKey, characterCharacteristicsKey } from '@/symbols/character';
 import { msToHours } from '@/utils/date';
-import { isWhatPercentOf } from '@/utils/math';
+import { percentOf } from '@/utils/math';
 import { notify } from '@/services/notification-service';
 import { t, n } from '@/services/translate-service';
 import {
@@ -49,7 +49,7 @@ const animatedCharacterExperience = useTransition(computed(() => character.value
 const currentLevelExperience = computed(() => getExperienceForLevel(character.value.level));
 const nextLevelExperience = computed(() => getExperienceForLevel(character.value.level + 1));
 const experiencePercentToNextLEvel = computed(() =>
-  isWhatPercentOf(
+  percentOf(
     character.value.experience - currentLevelExperience.value,
     nextLevelExperience.value - currentLevelExperience.value
   )
