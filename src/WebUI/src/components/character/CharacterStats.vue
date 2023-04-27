@@ -52,19 +52,12 @@ const speedStats = computed(() =>
 
   <SimpleTableRow
     :label="$t('character.stats.weightReduction.title')"
+    :value="$n(speedStats.weightReductionFactor - 1, 'percent')"
     :tooltip="{
       title: $t('character.stats.weightReduction.title'),
       description: $t('character.stats.weightReduction.desc'),
     }"
-  >
-    <!--
-    <div>{{ speedStats.weightReductionFactor }}</div>
-    <div>{{ (1 - speedStats.weightReductionFactor) * 100 }}</div>
-    -->
-    <span class="text-xs text-status-danger">
-      {{ $n(speedStats.weightReductionFactor - 1, 'percent') }}
-    </span>
-  </SimpleTableRow>
+  />
 
   <SimpleTableRow
     :label="$t('character.stats.perceivedWeight.title')"

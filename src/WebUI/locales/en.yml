@@ -204,10 +204,10 @@ character:
       title: Active
       tooltip:
         title: Active character
-        desc:
+        desc: '
           <p>Switch on to use this character in game.</p>
           <p>If none of your characters was chosen as active, joining a server will create a new character.</p>
-          <p>Beware that you can create only one character per hour. After that you will get automatically kicked by the server.</p>
+          <p>Beware that you can create only one character per hour. After that you will get automatically kicked by the server.</p>'
     respecialize:
       title: Respecialize
       tooltip:
@@ -364,7 +364,9 @@ character:
       desc: ''
     weightReduction:
       title: Weight reduction
-      desc: The remaining weight after deduction by Free Weight, get reduced by your strength attribute points
+      desc: '
+        <p>The remaining weight after deduction by <strong>Free Weight</strong>.</p>
+        <p>Reduced by your <strong>STR</strong> attribute points</p>'
     perceivedWeight:
       title: Perceived weight
       desc: ''
@@ -379,10 +381,15 @@ character:
       desc: ''
     maxWeaponLength:
       title: Max weapon length
-      desc: Max weapon length without a movement speed penalty when fighting. Depends on strength attribute points
+      desc: '
+        <p>Max weapon length without a movement speed penalty when fighting.</p>
+        <p>Depends on <strong>STR</strong> attribute points</p>'
+
     movementSpeedPenaltyWhenAttacking:
       title: Mov. speed penalty
-      desc: Extra movement speed when attacking penalty. Depends on the length of the weapon and strength attribute points
+      desc: '
+        <p>Extra movement speed when attacking penalty.</p>
+        <p>Depends on the length of the weapon and <strong>STR</strong> attribute points</p>'
     price:
       title: Price
       desc: ''
@@ -679,7 +686,6 @@ findUser:
           label: User platform ID
           placeholder: Platform-specific User ID
 
-
 onlinePlayers:
   format: '{count} online'
   tooltip:
@@ -691,9 +697,9 @@ mainpage:
   login: Sign in with Steam
   download: Download
 
-patreon:
+patreon: '
   <p>Do you like our project?</p>
-  <p>You can support us on</p>
+  <p>You can support us on</p>'
 
 hh:
   tooltip-trigger: 'Happy hours for {region}:'
@@ -980,5 +986,3 @@ item:
     shieldArmor:
       title: 'Armor'
       description: ''
-
-
