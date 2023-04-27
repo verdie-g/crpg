@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { itemSellCostCoefs } from '@root/data/constants.json';
-
 import { type CompareItemsResult, type ItemFlat } from '@/models/item';
 import { type UserItem } from '@/models/user';
 import {
@@ -14,6 +13,7 @@ import {
   computeBrokenItemRepairCost,
 } from '@/services/item-service';
 import { parseTimestamp } from '@/utils/date';
+import { omitPredicate } from '@/utils/object';
 
 const props = withDefaults(
   defineProps<{
@@ -51,14 +51,19 @@ const omitEmptyParam = (field: keyof ItemFlat) => {
     return false;
   }
 
+  if (props.item[field] === 0) {
+    return false;
+  }
+
   return true;
 };
 
 const isBroken = computed(() => props.userItem.rank < 0);
 
-const aggregationsConfig = computed(() =>
-  getVisibleAggregationsConfig(getAggregationsConfig(props.item.type, props.item.weaponClass))
-);
+const aggregationsConfig = computed(() => omitPredicate(
+    getVisibleAggregationsConfig(getAggregationsConfig(props.item.type, props.item.weaponClass)),
+    (key: keyof ItemFlat) => omitEmptyParam(key)
+  ));
 </script>
 
 <template>
@@ -73,7 +78,7 @@ const aggregationsConfig = computed(() =>
 
       <div
         v-if="userItem.rank !== 0"
-        class="absolute -top-0.5 -left-0.5 z-10 cursor-default opacity-80 hover:opacity-100"
+        class="absolute -left-0.5 -top-0.5 z-10 cursor-default opacity-80 hover:opacity-100"
       >
         <OIcon
           v-if="isBroken"
@@ -107,12 +112,7 @@ const aggregationsConfig = computed(() =>
         </div>
       </div>
 
-      <!-- TODO: filter aggregationsConfig instead v-show !!! -->
-      <div
-        v-for="(_agg, field) in aggregationsConfig"
-        v-show="omitEmptyParam(field)"
-        class="space-y-1"
-      >
+      <div v-for="(_agg, field) in aggregationsConfig" class="space-y-1">
         <VTooltip :delay="{ show: 600 }">
           <h6 class="text-2xs text-content-300">
             {{ $t(`item.aggregations.${field}.title`) }}

@@ -12,7 +12,7 @@ export const mergeObjectWithSum = (obj1: Record<string, number>, obj2: Record<st
 // TODO: unit
 const pickFunc = <T extends {}, K extends keyof T>(
   obj: T,
-  predicate: (k: string) => boolean
+  predicate: (...args: any[]) => boolean
 ): Pick<T, K> =>
   Object.keys(obj)
     .filter(predicate)
@@ -30,5 +30,10 @@ export const pick = <T extends {}, K extends keyof T>(obj: T, keys: Array<K>): P
 
 export const omit = <T extends {}, K extends keyof T>(obj: T, keys: Array<K>): Pick<T, K> =>
   pickFunc(obj, k => !keys.includes(k as K));
+
+export const omitPredicate = <T extends {}, K extends keyof T>(
+  obj: T,
+  predicate: (...args: any[]) => boolean
+): Pick<T, K> => pickFunc(obj, predicate);
 
 export const getEntries = <T extends object>(obj: T) => Object.entries(obj) as Entries<T>;
