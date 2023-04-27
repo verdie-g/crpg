@@ -39,7 +39,7 @@ const wasChange = computed(() => nameModel.value !== props.character.name);
 </script>
 
 <template>
-  <div class="min-w-[480px] space-y-14 px-12 py-11">
+  <div class="space-y-14">
     <h4 class="text-center text-xl">{{ $t('character.settings.update.title') }}</h4>
 
     <div class="space-y-8">

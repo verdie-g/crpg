@@ -18,8 +18,6 @@ import {
   getExperienceForLevel,
   getCharacterStatistics,
   getCharacterLimitations,
-  deleteCharacter,
-  activateCharacter,
   respecializeCharacter,
   canRetireValidate,
   retireCharacter,
@@ -38,7 +36,6 @@ definePage({
   },
 });
 
-const router = useRouter();
 const userStore = useUserStore();
 
 const character = injectStrict(characterKey);
@@ -48,29 +45,6 @@ const animatedCharacterExperience = useTransition(computed(() => character.value
 
 const currentLevelExperience = computed(() => getExperienceForLevel(character.value.level));
 const nextLevelExperience = computed(() => getExperienceForLevel(character.value.level + 1));
-
-const onDeleteCharacter = async () => {
-  if (character.value.id === userStore.user!.activeCharacterId) {
-    await activateCharacter(character.value.id, false);
-    await userStore.fetchUser();
-  }
-
-  await deleteCharacter(character.value.id);
-  notify(t('character.settings.delete.notify.success'));
-
-  const characters = userStore.characters.filter(char => char.id !== character.value.id);
-
-  if (characters.length === 0) {
-    await router.replace({ name: 'Root' });
-  } else {
-    await router.replace({
-      name: 'CharactersId',
-      params: { id: userStore.user!.activeCharacterId || characters[0].id },
-    });
-  }
-
-  userStore.fetchCharacters();
-};
 
 const respecCapability = computed(() =>
   getRespecCapability(character.value, characterLimitations.value, userStore.user!.gold)
@@ -548,31 +522,5 @@ await fetchPageData(character.value.id);
         </template>
       </div>
     </FormGroup>
-
-    <i18n-t scope="global" keypath="character.settings.delete.title" tag="div" class="text-center">
-      <template #link>
-        <Modal>
-          <span class="cursor-pointer text-status-danger hover:text-opacity-80">
-            {{ $t('character.settings.delete.link') }}
-          </span>
-
-          <template #popper="{ hide }">
-            <ConfirmActionForm
-              :title="$t('character.settings.delete.dialog.title')"
-              :description="$t('character.settings.delete.dialog.desc')"
-              :name="character.name"
-              :confirmLabel="$t('action.delete')"
-              @cancel="hide"
-              @confirm="
-                () => {
-                  onDeleteCharacter();
-                  hide();
-                }
-              "
-            />
-          </template>
-        </Modal>
-      </template>
-    </i18n-t>
   </div>
 </template>

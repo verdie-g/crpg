@@ -3,6 +3,7 @@ import { useUserStore } from '@/stores/user';
 import {
   updateCharacter,
   activateCharacter,
+  deleteCharacter,
   characterClassToIcon,
 } from '@/services/characters-service';
 import { notify } from '@/services/notification-service';
@@ -19,6 +20,7 @@ const userStore = useUserStore();
 const { characters, user } = toRefs(userStore);
 
 const route = useRoute('CharactersId');
+const router = useRouter();
 
 const currentCharacterId = computed(() =>
   route.params.id !== undefined ? Number(route.params.id) : undefined
@@ -39,6 +41,31 @@ const onUpdateCharacter = async ({ name }: { name: string }) => {
   }
 
   notify(t('character.settings.update.notify.success'));
+};
+
+const onDeleteCharacter = async () => {
+  if (currentCharacter.value === undefined) return;
+
+  if (currentCharacter.value.id === userStore.user!.activeCharacterId) {
+    await activateCharacter(currentCharacter.value.id, false);
+    await userStore.fetchUser();
+  }
+
+  await deleteCharacter(currentCharacter.value.id);
+  notify(t('character.settings.delete.notify.success'));
+
+  const characters = userStore.characters.filter(char => char.id !== currentCharacter.value!.id);
+
+  if (characters.length === 0) {
+    await router.replace({ name: 'Root' });
+  } else {
+    await router.replace({
+      name: 'CharactersId',
+      params: { id: userStore.user!.activeCharacterId || characters[0].id },
+    });
+  }
+
+  userStore.fetchCharacters();
 };
 
 const onActivateCharacter = async (id: number) => {
@@ -160,17 +187,49 @@ if (userStore.characters.length === 0) {
             v-tooltip="$t('character.settings.update.title')"
           />
           <template #popper="{ hide }">
-            <CharacterEditForm
-              :character="currentCharacter"
-              :active="currentCharacterIsActive"
-              @cancel="hide"
-              @confirm="
-                data => {
-                  onUpdateCharacter(data);
-                  hide();
-                }
-              "
-            />
+            <div class="min-w-[480px] space-y-14 px-12 py-11">
+              <CharacterEditForm
+                :character="currentCharacter"
+                :active="currentCharacterIsActive"
+                @cancel="hide"
+                @confirm="
+                  data => {
+                    onUpdateCharacter(data);
+                    hide();
+                  }
+                "
+              />
+
+              <i18n-t
+                scope="global"
+                keypath="character.settings.delete.title"
+                tag="div"
+                class="text-center"
+              >
+                <template #link>
+                  <Modal>
+                    <span class="cursor-pointer text-status-danger hover:text-opacity-80">
+                      {{ $t('character.settings.delete.link') }}
+                    </span>
+                    <template #popper="{ hide }">
+                      <ConfirmActionForm
+                        :title="$t('character.settings.delete.dialog.title')"
+                        :description="$t('character.settings.delete.dialog.desc')"
+                        :name="currentCharacter.name"
+                        :confirmLabel="$t('action.delete')"
+                        @cancel="hide"
+                        @confirm="
+                          () => {
+                            onDeleteCharacter();
+                            hide();
+                          }
+                        "
+                      />
+                    </template>
+                  </Modal>
+                </template>
+              </i18n-t>
+            </div>
           </template>
         </Modal>
       </div>
