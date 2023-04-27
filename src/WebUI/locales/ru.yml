@@ -863,9 +863,9 @@ item:
     price:
       title: 'Стоимость'
       description: ''
-    repairCost:
+    upkeep:
       title: 'Стоимость ремонта'
-      description: ''
+      description: 'Средняя стоимость ремонта в час'
     culture:
       title: 'Культура'
       description: ''
@@ -896,7 +896,7 @@ item:
       description: ''
 
     bodyLength:
-      title: 'Длинна'
+      title: 'Длина'
       description: ''
     chargeDamage:
       title: 'Натиск'
@@ -927,7 +927,7 @@ item:
       title: 'Класс оружия'
       description: ''
     length:
-      title: 'Длинна'
+      title: 'Длина'
       description: ''
     handling:
       title: 'Владение'
@@ -986,3 +986,6 @@ item:
     shieldArmor:
       title: 'Броня'
       description: ''
+
+  format:
+    upkeep: '{upkeep} / @:dateTime.hours.short'

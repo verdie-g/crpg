@@ -859,6 +859,9 @@ item:
     price:
       title: '价格'
       description: ''
+    upkeep:
+      title: '服务'
+      description: '平均每小时维护费用'
     culture:
       title: '文化'
       description: ''
@@ -975,3 +978,6 @@ item:
     shieldArmor:
       title: '护甲'
       description: ''
+
+  format:
+    upkeep: '{upkeep} / @:dateTime.hours.short'
