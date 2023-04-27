@@ -9,8 +9,8 @@ import {
 const props = defineProps<{
   itemType: ItemType;
   weaponClass: WeaponClass | null;
-  itemTypeBuckets: itemsjs.Buckets<ItemFlat>;
-  weaponClassBuckets: itemsjs.Buckets<ItemFlat>;
+  itemTypeBuckets: itemsjs.Buckets<ItemFlat[keyof ItemFlat]>;
+  weaponClassBuckets: itemsjs.Buckets<ItemFlat[keyof ItemFlat]>;
 }>();
 
 const emit = defineEmits<{

@@ -79,10 +79,12 @@ export const getSortingConfig = (aggregations: AggregationConfig): SortingConfig
 };
 
 export const getAggregationBy = (items: ItemFlat[], key: keyof ItemFlat) => {
+  const aggregations: Partial<Record<keyof ItemFlat, itemsjs.Aggregation>> = {
+    [key]: aggregationsConfig[key],
+  };
+
   const agg = itemsjs(items, {
-    aggregations: {
-      [key]: aggregationsConfig[key] as itemsjs.Aggregation,
-    },
+    aggregations: aggregations as Record<keyof ItemFlat, itemsjs.Aggregation>,
   }).aggregation({
     name: key,
     per_page: 1000,
@@ -177,7 +179,7 @@ export const filterItemsByType = (items: ItemFlat[], type: ItemType) =>
 export const filterItemsByWeaponClass = (items: ItemFlat[], weaponClass: WeaponClass | null) =>
   weaponClass === null ? items : items.filter(fi => fi.weaponClass === weaponClass);
 
-export const getBucketValues = <I extends {}>(buckets: itemsjs.Buckets<I>): number[] => {
+export const getBucketValues = <I>(buckets: itemsjs.Buckets<I>): number[] => {
   return buckets.filter(b => b.key !== 'null').map(b => Number(b.key));
 };
 
