@@ -402,8 +402,11 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
 
     private void LogRoundResult()
     {
+        MissionScoreboardComponent missionBehavior = Mission.Current.GetMissionBehavior<MissionScoreboardComponent>();
         RoundResultData roundResult = new()
         {
+            LastRound = _roundController?.IsMatchEnding ?? false,
+            RoundScore = (missionBehavior.GetRoundScore((BattleSideEnum)0), missionBehavior.GetRoundScore((BattleSideEnum)1)),
             WinnerSide = _roundController?.RoundWinner ?? BattleSideEnum.None,
             MapId = Mission.SceneName,
             Version = GetType().Assembly.GetName().Version!,
@@ -478,6 +481,8 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
 
     private class RoundResultData
     {
+        public bool LastRound { get; set; }
+        public (int defender, int attacker) RoundScore { get; set; }
         public BattleSideEnum WinnerSide { get; set; }
         public string MapId { get; set; } = string.Empty;
         public Version Version { get; set; } = default!;
