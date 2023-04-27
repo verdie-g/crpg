@@ -160,9 +160,10 @@ character:
         desc:
     experience:
       title: 角色经验
-      tooltip:
-        title: 角色经验
-        desc: '离升级还需：{remainExpToUp}经验'
+      format: '{exp} - {expPercent}'
+      tooltip: '
+        <h3>角色经验</h3>
+        <p>离升级还需：<strong>{remainExpToUp}</strong> 经验</p>'
     expMultiplier:
       title: 经验倍率
       tooltip:

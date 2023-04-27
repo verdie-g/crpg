@@ -160,9 +160,10 @@ character:
         desc:
     experience:
       title: Character experience
-      tooltip:
-        title: Character experience
-        desc: 'Left to the level up: {remainExpToUp} exp'
+      format: '{exp} - {expPercent}'
+      tooltip: '
+        <h3>Character experience</h3>
+        <p>Left until level up: <strong>{remainExpToUp}</strong> exp.</p>'
     expMultiplier:
       title: Exp. multiplier
       tooltip:
