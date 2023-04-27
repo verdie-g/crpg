@@ -9,18 +9,17 @@ const mockSubscribe = vi.fn();
 const mockUnsubscribe = vi.fn();
 const mockUsePollInterval = vi.fn().mockImplementation(() => ({
   subscribe: mockSubscribe,
-  unsubscribe: mockUnsubscribe
+  unsubscribe: mockUnsubscribe,
 }));
 vi.mock('@/composables/use-poll-interval', () => ({
   usePollInterval: mockUsePollInterval,
 }));
 
-
 import { useGameServerStats } from './use-game-server-stats';
 
 it('useGameServerStats composable lifecycle', async () => {
   const TestComponent = defineComponent({
-    template: "<div/>",
+    template: '<div/>',
     setup() {
       return {
         ...useGameServerStats(),
@@ -33,6 +32,6 @@ it('useGameServerStats composable lifecycle', async () => {
   expect(mockSubscribe).toBeCalled();
   expect(mockGetGameServerStats).not.toBeCalled();
 
-  wrapper.unmount()
+  wrapper.unmount();
   expect(mockUnsubscribe).toBeCalled();
 });
