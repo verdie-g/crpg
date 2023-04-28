@@ -159,9 +159,10 @@ character:
         desc:
     experience:
       title: Опыт персонажа
-      tooltip:
-        title: Опыт персонажа
-        desc: 'Осталось до следующего уровня: {remainExpToUp} оп.'
+      format: '{exp} - {expPercent}'
+      tooltip: '
+        <h3>Опыт персонажа</h3>
+        <p>Осталось до следующего уровня: <strong>{remainExpToUp}</strong> оп.</p>'
     expMultiplier:
       title: Множитель опыта
       tooltip:
