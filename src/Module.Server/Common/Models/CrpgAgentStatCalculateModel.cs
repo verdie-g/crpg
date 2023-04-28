@@ -74,10 +74,10 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         {
             WeaponClass.Bow => 1.25f,
             WeaponClass.Crossbow => 0.5f,
-            WeaponClass.Stone => 1f,
-            WeaponClass.ThrowingAxe => 1.55f,
-            WeaponClass.ThrowingKnife => 1.0f,
-            WeaponClass.Javelin => 1.65f,
+            WeaponClass.Stone => (float)Math.Pow(weapon.ThrustDamage / 20f, 2f) * 1f,
+            WeaponClass.ThrowingAxe => (float)Math.Pow(weapon.ThrustDamage / 30f, 2f) * 1.65f,
+            WeaponClass.ThrowingKnife => (float)Math.Pow(weapon.ThrustDamage / 30f, 2f) * 1.65f,
+            WeaponClass.Javelin => (float)Math.Pow(weapon.ThrustDamage / 30f, 2f) * 1.65f,
             _ => 1f,
         };
 
