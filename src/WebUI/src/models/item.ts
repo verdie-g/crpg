@@ -212,6 +212,7 @@ export interface ItemFlat {
   modId: string;
   name: string;
   price: number;
+  upkeep: number;
   type: ItemType;
   culture: Culture;
   requirement: number;

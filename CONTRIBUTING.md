@@ -32,6 +32,7 @@ PRs or PRs with no context might get ignored.
 
 - Install VS Code extension [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 - Run the `Remote-Containers: Open Folder in Container` command from the Command Palette (F1)
+- For frontend development it is recommended to enable [Takeover mode](https://vuejs.org/guide/typescript/overview.html#volar-takeover-mode). Unfortunately, for [now](https://github.com/microsoft/vscode-remote-release/issues/415#issuecomment-1145477164) in manual mode
 
 [More info about dev containers](https://code.visualstudio.com/docs/remote/containers).
 

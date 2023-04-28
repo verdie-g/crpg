@@ -161,11 +161,11 @@ export default {
           invert: {
             css: {
               '--tw-prose-body': theme('colors.content.200'),
+              '--tw-prose-bold': theme('colors.content.100'),
               // TODO:!
               '--tw-prose-headings': 'var(--tw-prose-invert-headings)',
               '--tw-prose-lead': 'var(--tw-prose-invert-lead)',
               '--tw-prose-links': 'var(--tw-prose-invert-links)',
-              '--tw-prose-bold': 'var(--tw-prose-invert-bold)',
               '--tw-prose-counters': 'var(--tw-prose-invert-counters)',
               '--tw-prose-bullets': 'var(--tw-prose-invert-bullets)',
               '--tw-prose-hr': 'var(--tw-prose-invert-hr)',

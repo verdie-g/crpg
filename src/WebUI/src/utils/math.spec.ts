@@ -1,4 +1,4 @@
-import { clamp, roundFLoat } from './math';
+import { clamp, roundFLoat, percentOf } from './math';
 
 it.each([
   [[0, 0, 0], 0],
@@ -23,4 +23,16 @@ it.each([
   [1.1029, 1.1],
 ])('roundFLoat', (num, expectation) => {
   expect(roundFLoat(num)).toEqual(expectation);
+});
+
+it.each([
+  [[0, 0], 0],
+  [[1, 0], 0],
+  [[1, 1], 100],
+  [[0, 1], 0],
+  [[0.5, 1], 50],
+  [[1, 2], 50],
+  [[3, 9], 33.33333333333333],
+])('percentOf', ([val, of], expectation) => {
+  expect(percentOf(val, of)).toEqual(expectation);
 });

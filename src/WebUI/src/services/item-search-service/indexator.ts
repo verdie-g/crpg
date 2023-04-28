@@ -1,5 +1,4 @@
 // TODO: update SPEC!!!
-
 import {
   DamageType,
   ItemFlat,
@@ -18,6 +17,7 @@ import {
   visibleItemFlags,
   visibleItemUsage,
   isLargeShield,
+  computeAverageRepairCostPerHour,
 } from '@/services/item-service';
 import { roundFLoat } from '@/utils/math';
 
@@ -201,6 +201,7 @@ const itemToFlat = (item: Item): ItemFlat => {
     modId: generateModId(item, weaponProps?.weaponClass ?? undefined),
     name: item.name,
     price: item.price,
+    upkeep: computeAverageRepairCostPerHour(item.price),
     type: item.type,
     culture: item.culture,
     requirement: item.requirement,

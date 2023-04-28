@@ -10,10 +10,11 @@ import {
   freeRespecializeIntervalDays,
 } from '@root/data/constants.json';
 import { useUserStore } from '@/stores/user';
-import { characterKey, characterCharacteristicsKey, characterItemsKey } from '@/symbols/character';
-import { parseTimestamp } from '@/utils/date';
+import { characterKey, characterCharacteristicsKey } from '@/symbols/character';
+import { msToHours } from '@/utils/date';
+import { percentOf } from '@/utils/math';
 import { notify } from '@/services/notification-service';
-import { t } from '@/services/translate-service';
+import { t, n } from '@/services/translate-service';
 import {
   getExperienceForLevel,
   getCharacterStatistics,
@@ -42,9 +43,19 @@ const character = injectStrict(characterKey);
 const { loadCharacterCharacteristics } = injectStrict(characterCharacteristicsKey);
 
 const animatedCharacterExperience = useTransition(computed(() => character.value.experience));
-
 const currentLevelExperience = computed(() => getExperienceForLevel(character.value.level));
 const nextLevelExperience = computed(() => getExperienceForLevel(character.value.level + 1));
+const experiencePercentToNextLEvel = computed(() =>
+  percentOf(
+    character.value.experience - currentLevelExperience.value,
+    nextLevelExperience.value - currentLevelExperience.value
+  )
+);
+const experienceTooltipFormatter = (value: number) =>
+  t('character.statistics.experience.format', {
+    exp: n(value),
+    expPercent: n(experiencePercentToNextLEvel.value / 100, 'percent'),
+  });
 
 const respecCapability = computed(() =>
   getRespecCapability(character.value, characterLimitations.value, userStore.user!.gold)
@@ -186,9 +197,7 @@ await fetchPageData(character.value.id);
 
           <SimpleTableRow
             :label="$t('character.statistics.playTime.title')"
-            :value="$t('dateTimeFormat.dd:hh:mm', {
-                ...parseTimestamp(characterStatistics!.playTime),
-              })"
+            :value="$t('dateTimeFormat.hh', { hours: msToHours(characterStatistics.playTime) })"
           />
 
           <div class="col-span-2 mt-12 px-4 py-2.5">
@@ -201,7 +210,7 @@ await fetchPageData(character.value.id);
                 tooltip="always"
                 :min="currentLevelExperience"
                 :max="nextLevelExperience"
-                :tooltipFormatter="$n"
+                :tooltipFormatter="experienceTooltipFormatter"
                 :marks="[currentLevelExperience, nextLevelExperience]"
               >
                 <template #mark="{ pos, value, label }">
@@ -216,22 +225,16 @@ await fetchPageData(character.value.id);
                   </div>
                 </template>
               </VueSlider>
+
               <template #popper>
-                <div class="prose prose-invert">
-                  <h3>{{ $t('character.statistics.experience.tooltip.title') }}</h3>
-                  <i18n-t
-                    scope="global"
-                    keypath="character.statistics.experience.tooltip.desc"
-                    class="text-content-200"
-                    tag="p"
-                  >
-                    <template #remainExpToUp>
-                      <span class="text-content-100">
-                        {{ $n(nextLevelExperience - character.experience) }}
-                      </span>
-                    </template>
-                  </i18n-t>
-                </div>
+                <div
+                  class="prose prose-invert"
+                  v-html="
+                    $t('character.statistics.experience.tooltip', {
+                      remainExpToUp: $n(nextLevelExperience - character.experience),
+                    })
+                  "
+                ></div>
               </template>
             </VTooltip>
           </div>

@@ -18,6 +18,7 @@ dateTimeFormat:
   # TODO: https://github.com/tc39/proposal-intl-duration-format
   countdown: '{hours}:{minutes}:{seconds}'
   'mm': '{minutes} @:dateTime.minutes.short'
+  'hh': '{hours} @:dateTime.hours.short'
   'dd:hh:mm': '{days}@:dateTime.days.short {hours}@:dateTime.hours.short {minutes}@:dateTime.minutes.short'
 
 nav:
@@ -159,9 +160,10 @@ character:
         desc:
     experience:
       title: 角色经验
-      tooltip:
-        title: 角色经验
-        desc: '离升级还需：{remainExpToUp}经验'
+      format: '{exp} - {expPercent}'
+      tooltip: '
+        <h3>角色经验</h3>
+        <p>离升级还需：<strong>{remainExpToUp}</strong> 经验</p>'
     expMultiplier:
       title: 经验倍率
       tooltip:
@@ -203,10 +205,10 @@ character:
       title: 活跃
       tooltip:
         title: 活跃角色
-        desc:
+        desc: '
           <p>选择一个活跃角色以在游戏中使用。</p>
-          <p>如果没有选择任何活跃角色，加入一个服务器将会创建一个新角色。</p>
-          <p>请注意，您每小时只能创建一个角色。否则您将被服务器自动踢出。</p>
+          <p>如果没有选择任何活跃角色，加入一个服务器将会创建一个新角色</p>
+          <p>请注意，您每小时只能创建一个角色。否则您将被服务器自动踢出</p>'
     respecialize:
       title: 重新分配
       tooltip:
@@ -498,9 +500,9 @@ shop:
     title: 显示其他物品
     tooltip:
       title: 次要武器模式
-      desc:
-        <p>某些物品有多种武器模式，例如投掷斧可以作为单手斧在近战中使用。</p>
-        <p>此选项将在商店列表中显示此类武器。</p>
+      desc: '
+        <p>某些物品有多种武器模式，例如投掷斧可以作为单手斧在近战中使用</p>
+        <p>此选项将在商店列表中显示此类武器</p>'
   hideOwnedItems:
     title: 隐藏拥有的物品
 
@@ -603,7 +605,7 @@ user:
   restriction:
     notification: '您被封禁，时长为：{duration}'
     guide:
-      intro: "如果您想进一步讨论您的惩罚，请按照以下步骤操作："
+      intro: '如果您想进一步讨论您的惩罚，请按照以下步骤操作：'
       step:
         join: 加入我们的{discordLink}
         navigate: 导航到我们的{modMailLink}频道
@@ -800,7 +802,7 @@ item:
     CanCrushThrough: '能突破格挡'
     CanDismount: '能卸下坐骑'
     CanHook: '可以钩住'
-    CanKnockDown: '能击倒'
+    CanKnockDown: '能突破格挡'
     CanPenetrateShield: '能穿透盾牌'
     CantReloadOnHorseback: '不能再马上装填'
     CanReloadOnHorseback: '可以在马上装填'
@@ -812,7 +814,7 @@ item:
     LeavesTrail: ''
     MeleeWeapon: ''
     MissileWithPhysics: ''
-    MultiplePenetration: '多重穿透'
+    MultiplePenetration: '能击倒'
     NoBlood: ''
     NotUsableWithOneHand: '只能用于双手'
     NotUsableWithTwoHand: '只能用于单手'
@@ -858,6 +860,9 @@ item:
     price:
       title: '价格'
       description: ''
+    upkeep:
+      title: '服务'
+      description: '平均每小时维护费用'
     culture:
       title: '文化'
       description: ''
@@ -975,3 +980,5 @@ item:
       title: '护甲'
       description: ''
 
+  format:
+    upkeep: '{upkeep} / @:dateTime.hours.short'
