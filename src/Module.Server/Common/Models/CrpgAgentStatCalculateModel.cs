@@ -319,6 +319,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             // Ranged Behavior
             if (equippedItem.IsRangedWeapon)
             {
+                props.TopSpeedReachDuration *= 1.4f;
                 props.ThrustOrRangedReadySpeedMultiplier = equippedItem.ThrustSpeed / 160f + 0.0015f * itemSkill;
                 float maxMovementAccuracyPenaltyMultiplier = Math.Max(0.0f, 1.0f - weaponSkill / 500.0f);
                 float weaponMaxMovementAccuracyPenalty = 0.125f * maxMovementAccuracyPenaltyMultiplier;
