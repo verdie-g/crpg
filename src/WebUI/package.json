@@ -9,7 +9,7 @@
     "format": "prettier --write .",
     "lint": "eslint .",
     "typecheck": "vue-tsc --noEmit",
-    "test:unit": "TZ='Europe/Moscow' vitest",
+    "test:unit": "vitest",
     "test:unit-c8": "vitest run --coverage",
     "tailwind-config-viewer": "tailwind-config-viewer"
   },
