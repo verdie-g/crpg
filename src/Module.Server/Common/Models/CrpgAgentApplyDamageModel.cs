@@ -117,7 +117,7 @@ internal class CrpgAgentApplyDamageModel : MultiplayerAgentApplyDamageModel
                         result = 1.2f;
                         break;
                     case DamageTypes.Pierce:
-                        result = ((!isHuman) ? 1.2f : 2f);
+                        result = !isHuman ? 1.2f : 1.6f;
                         break;
                     case DamageTypes.Blunt:
                         result = 1.2f;
@@ -131,7 +131,7 @@ internal class CrpgAgentApplyDamageModel : MultiplayerAgentApplyDamageModel
             case BoneBodyPartType.ShoulderRight:
             case BoneBodyPartType.ArmLeft:
             case BoneBodyPartType.ArmRight:
-                result = ((!isHuman) ? 0.8f : 1f);
+                result = !isHuman ? 0.8f : 1f;
                 break;
             case BoneBodyPartType.Legs:
                 result = 0.8f;
