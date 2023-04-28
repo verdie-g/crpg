@@ -90,7 +90,7 @@ const buyItem = async (item: ItemFlat) => {
 </script>
 
 <template>
-  <div class="relative space-y-2 px-6 pt-6 pb-6">
+  <div class="relative space-y-2 px-6 pb-6 pt-6">
     <!-- <div class="fixed top-4 right-10 z-20 rounded-lg bg-white p-4 shadow-lg">
      <div>baseFilterModel: type: {{ itemTypeModel }} weaponClass: {{ weaponClassModel }}</div>
       <div>filterModel: {{ filterModel }}</div>
@@ -253,6 +253,7 @@ const buyItem = async (item: ItemFlat) => {
             <template v-if="field === 'price'" #default="{ rawBuckets }">
               <ShopGridItemBuyBtn
                 :price="(rawBuckets as number)"
+                :upkeep="item.upkeep"
                 :inInventory="userBaseItemsIds.includes(item.id)"
                 :notEnoughGold="userStore.user!.gold < item.price"
                 @buy="buyItem(item)"

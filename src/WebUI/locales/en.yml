@@ -867,9 +867,9 @@ item:
     price:
       title: 'Price'
       description: ''
-    repairCost:
-      title: 'Repair cost'
-      description: ''
+    upkeep:
+      title: 'Upkeep'
+      description: 'Avg upkeep per hour'
     culture:
       title: 'Culture'
       description: ''
@@ -986,3 +986,6 @@ item:
     shieldArmor:
       title: 'Armor'
       description: ''
+
+  format:
+    upkeep: '{upkeep} / @:dateTime.hours.short'

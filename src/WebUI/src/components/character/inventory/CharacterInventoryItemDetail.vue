@@ -10,7 +10,6 @@ import {
 import {
   getItemImage,
   computeSalePrice,
-  computeAverageRepairCostPerHour,
   computeBrokenItemRepairCost,
 } from '@/services/item-service';
 import { parseTimestamp } from '@/utils/date';
@@ -37,7 +36,6 @@ const userItemToReplaceSalePrice = computed(() => {
   };
 });
 
-const avgRepairCostPerHour = computed(() => computeAverageRepairCostPerHour(props.item.price));
 const repairCost = computed(() => computeBrokenItemRepairCost(props.item.price));
 
 const emit = defineEmits<{
@@ -73,7 +71,7 @@ const aggregationsConfig = computed(() =>
 
       <div
         v-if="userItem.rank !== 0"
-        class="absolute -top-0.5 -left-0.5 z-10 cursor-default opacity-80 hover:opacity-100"
+        class="absolute -left-0.5 -top-0.5 z-10 cursor-default opacity-80 hover:opacity-100"
       >
         <OIcon
           v-if="isBroken"
@@ -139,15 +137,13 @@ const aggregationsConfig = computed(() =>
           <template v-if="field === 'price'" #default="{ rawBuckets }">
             <Coin :value="(rawBuckets as number)" />
           </template>
-        </ItemParam>
-      </div>
 
-      <div class="space-y-1">
-        <h6 class="text-2xs text-content-300">{{ $t('item.aggregations.repairCost.title') }}</h6>
-        <div class="inline-flex gap-1.5 align-middle font-bold text-primary">
-          <SvgSpriteImg name="coin" viewBox="0 0 18 18" class="w-4" />
-          {{ $n(avgRepairCostPerHour) }} / {{ $t('dateTime.hours.short') }}
-        </div>
+          <template v-if="field === 'upkeep'" #default="{ rawBuckets }">
+            <Coin>
+              {{ $t('item.format.upkeep', { upkeep: $n(rawBuckets as number) }) }}
+            </Coin>
+          </template>
+        </ItemParam>
       </div>
     </div>
 
