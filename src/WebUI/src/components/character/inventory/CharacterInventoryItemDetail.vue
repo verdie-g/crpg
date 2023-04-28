@@ -9,7 +9,6 @@ import {
 import {
   getItemImage,
   computeSalePrice,
-  computeAverageRepairCostPerHour,
   computeBrokenItemRepairCost,
 } from '@/services/item-service';
 import { parseTimestamp } from '@/utils/date';
@@ -37,7 +36,6 @@ const userItemToReplaceSalePrice = computed(() => {
   };
 });
 
-const avgRepairCostPerHour = computed(() => computeAverageRepairCostPerHour(props.item.price));
 const repairCost = computed(() => computeBrokenItemRepairCost(props.item.price));
 
 const emit = defineEmits<{
@@ -139,15 +137,13 @@ const aggregationsConfig = computed(() => omitPredicate(
           <template v-if="field === 'price'" #default="{ rawBuckets }">
             <Coin :value="(rawBuckets as number)" />
           </template>
-        </ItemParam>
-      </div>
 
-      <div class="space-y-1">
-        <h6 class="text-2xs text-content-300">{{ $t('item.aggregations.repairCost.title') }}</h6>
-        <div class="inline-flex gap-1.5 align-middle font-bold text-primary">
-          <SvgSpriteImg name="coin" viewBox="0 0 18 18" class="w-4" />
-          {{ $n(avgRepairCostPerHour) }} / {{ $t('dateTime.hours.short') }}
-        </div>
+          <template v-if="field === 'upkeep'" #default="{ rawBuckets }">
+            <Coin>
+              {{ $t('item.format.upkeep', { upkeep: $n(rawBuckets as number) }) }}
+            </Coin>
+          </template>
+        </ItemParam>
       </div>
     </div>
 

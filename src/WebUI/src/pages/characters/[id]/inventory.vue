@@ -16,7 +16,7 @@ import { notify } from '@/services/notification-service';
 import { t } from '@/services/translate-service';
 import { scrollToTop } from '@/utils/scroll';
 import { useItemDetail } from '@/composables/character/use-item-detail';
-import useStickySidebar from '@/composables/use-sticky-sidebar';
+import { useStickySidebar } from '@/composables/use-sticky-sidebar';
 
 import {
   characterKey,
@@ -191,7 +191,11 @@ const compareItemsResult = computed(() => {
 });
 
 const aside = ref<HTMLDivElement | null>(null);
-const { top } = useStickySidebar(aside, mainHeaderHeight.value + 16, 16);
+const { top: stickySidebarTop,  } = useStickySidebar(
+  aside,
+  mainHeaderHeight.value + 16,
+  16
+);
 
 const computeDetailCardYPosition = (y: number) => {
   // we cannot automatically determine the height of the card, so we take the maximum possible value
@@ -227,7 +231,7 @@ await userStore.fetchUserItems();
       <template v-if="userStore.userItems.length !== 0">
         <div class="inventoryGrid relative grid h-full gap-x-3 gap-y-4">
           <div style="grid-area: filter">
-            <div ref="aside" class="sticky" :style="{ top: `${top}px` }">
+            <div ref="aside" class="sticky" :style="{ top: `${stickySidebarTop}px` }">
               <CharacterInventoryFilter
                 v-model="filterByTypeModel"
                 :buckets="searchResult.data.aggregations.type.buckets"
@@ -286,7 +290,7 @@ await userStore.fetchUserItems();
           </div>
 
           <div
-            class="sticky bottom-4 left-0 flex w-full justify-center rounded-lg bg-base-200 bg-opacity-60 p-4 backdrop-blur-lg"
+            class="sticky bottom-4 left-0 z-10 flex w-full justify-center rounded-lg bg-base-200 bg-opacity-60 p-4 backdrop-blur-lg"
             style="grid-area: footer"
           >
             <i18n-t

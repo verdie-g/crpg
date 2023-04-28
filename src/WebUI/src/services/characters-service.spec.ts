@@ -18,17 +18,6 @@ vi.mock('@/services/auth-service', () => ({
   getToken: vi.fn().mockResolvedValue('mockedToken'),
 }));
 
-// mock Date
-const NOW = '2023-03-30T18:00:00.0000000Z';
-const DateReal = global.Date;
-vi.spyOn(global, 'Date').mockImplementation((...args: any[]) => {
-  if (args.length) {
-    // @ts-ignore
-    return new DateReal(...args);
-  }
-  return new Date(NOW);
-});
-
 import {
   type RespecCapability,
   getCharacters,
@@ -59,6 +48,14 @@ import {
   validateItemNotMeetRequirement,
   computeOverallWeight,
 } from './characters-service';
+
+beforeEach(() => {
+  vi.useFakeTimers();
+});
+
+afterEach(() => {
+  vi.useRealTimers();
+});
 
 it('getCharacters', async () => {
   mockGet('/users/self/characters').willResolve(response(mockCharacters));
@@ -303,42 +300,7 @@ it.each<[Partial<CharacterStatistics>, number]>([
 });
 
 it.each<[Partial<Character>, CharacterLimitations, number, RespecCapability]>([
-  [
-    { forTournament: false, experience: 10 },
-    {
-      lastFreeRespecializeAt: new Date('2023-03-23T18:00:00.0000000Z'), // the current time in the test is mocked, see at the top of the file
-    },
-    100000,
-    {
-      price: 0,
-      nextFreeAt: { days: 0, hours: 0, minutes: 5 },
-      enabled: true,
-    },
-  ],
-  [
-    { forTournament: false, experience: 10 },
-    {
-      lastFreeRespecializeAt: new Date('2023-03-23T17:55:00.0000000Z'),
-    },
-    100000,
-    {
-      price: 0,
-      nextFreeAt: { days: 0, hours: 0, minutes: 0 },
-      enabled: true,
-    },
-  ],
-  [
-    { forTournament: false, experience: 100000 },
-    {
-      lastFreeRespecializeAt: new Date('2023-03-23T18:00:00.0000000Z'),
-    },
-    10,
-    {
-      price: 113,
-      nextFreeAt: { days: 0, hours: 0, minutes: 5 },
-      enabled: false,
-    },
-  ],
+  // tournament char - respec always is free
   [
     { forTournament: true, experience: 100000 },
     {
@@ -351,12 +313,48 @@ it.each<[Partial<Character>, CharacterLimitations, number, RespecCapability]>([
       enabled: true,
     },
   ],
+  // Respec was exactly a week ago + 5 minutes (5 minute margin just in case)
+  [
+    { forTournament: false, experience: 10 },
+    {
+      lastFreeRespecializeAt: new Date('2023-03-23T17:55:00.0000000Z'),
+    },
+    100000,
+    {
+      price: 0,
+      nextFreeAt: { days: 0, hours: 0, minutes: 0 },
+      enabled: true,
+    },
+  ],
 ])(
-  'getCharacterKDARatio - character: %j, charLimitations: %j, gold: %n',
+  'getRespecCapability - character: %j, limitations: %j, gold: %n',
   (character, charLimitations, gold, expectation) => {
+    vi.setSystemTime('2023-03-30T18:00:00.0000000Z');
+
     expect(getRespecCapability(character as Character, charLimitations, gold)).toEqual(expectation);
   }
 );
+
+it('getRespecCapability - Exponential Decay', () => {
+  vi.setSystemTime('2023-03-30T18:00:00.0000000Z');
+
+  const exp = 100000000; // 100m
+  const gold = 1000000;
+
+  const result1 = getRespecCapability(
+    { forTournament: false, experience: exp } as Character,
+    { lastFreeRespecializeAt: new Date('2023-03-30T17:00:00.0000000Z') },
+    gold
+  );
+
+  const result2 = getRespecCapability(
+    { forTournament: false, experience: exp } as Character,
+    { lastFreeRespecializeAt: new Date('2023-03-30T16:00:00.0000000Z') },
+    gold
+  );
+
+  expect(result2.price < result1.price).toBeTruthy();
+});
 
 it.each<[PartialDeep<Item>, PartialDeep<CharacterCharacteristics>, boolean]>([
   [{ requirement: 18 }, { attributes: { strength: 18 } }, false],
@@ -380,27 +378,22 @@ it.each<[PartialDeep<Item[]>, number]>([
     [
       {
         weight: 0.1,
-        weapons:[{stackAmount: 12}],
+        weapons: [{ stackAmount: 12 }],
         type: ItemType.Bolts,
-      }
+      },
     ],
-    1.2
+    1.2,
   ],
   [
     [
       {
         weight: 3.8,
-        weapons:[{stackAmount: 70}],
+        weapons: [{ stackAmount: 70 }],
         type: ItemType.Shield,
-      }
+      },
     ],
-    3.8
+    3.8,
   ],
-])(
-  'computeOverallWeight - items: %j, expectedWeight: %j, ',
-  (items, expectation) => {
-    expect(
-      computeOverallWeight(items as Item[])
-    ).toEqual(expectation);
-  }
-);
+])('computeOverallWeight - items: %j, expectedWeight: %j, ', (items, expectation) => {
+  expect(computeOverallWeight(items as Item[])).toEqual(expectation);
+});

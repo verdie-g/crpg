@@ -4,7 +4,7 @@ import { humanizeBucket } from '@/services/item-service';
 
 const props = defineProps<{
   modelValue: ItemType[];
-  buckets: itemsjs.Buckets<ItemFlat>;
+  buckets: itemsjs.Buckets<ItemFlat[keyof ItemFlat]>;
 }>();
 
 const emit = defineEmits<{

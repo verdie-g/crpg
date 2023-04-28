@@ -1,59 +1,103 @@
 // TODO: SPEC
-export default (el: Ref<HTMLDivElement | null>, offsetTop = 0, offsetBottom = 0) => {
+export const useStickySidebar = (
+  el: Ref<HTMLDivElement | null>,
+  paddingTop = 0,
+  paddingBottom = 0
+) => {
   const elHeight = ref<number>(0);
-
   const screenHeight = ref<number>(window.innerHeight);
   const endScroll = computed(() => screenHeight.value - elHeight.value);
   const currPos = ref<number>(window.scrollY);
+  const top = ref<number>(paddingTop);
 
-  const active = ref<boolean>(false);
-  const top = ref<number>(offsetTop);
+  let timeout = 0; // for debounced scroll
 
-  const setTop = (val: number) => {
+  // observe stickyEl height change
+  const resizeObserver = new ResizeObserver(entries => {
+    const [entry] = entries;
+
+    if (elHeight.value !== entry.contentRect.height) {
+      _handleScrollEventListener();
+    }
+  });
+
+  const _setTop = (val: number) => {
     top.value = val;
   };
 
-  const onScroll = () => {
-    const newPos = window.scrollY;
+  const _updateElHeight = () => {
+    elHeight.value = el.value?.offsetHeight || 0;
+  };
 
-    if (!active.value) {
-      window.requestAnimationFrame(() => {
-        if (elHeight.value > screenHeight.value) {
-          if (newPos < currPos.value) {
-            setTop(top.value < offsetTop ? top.value + currPos.value - newPos : offsetTop);
-          } else {
-            setTop(
-              top.value > endScroll.value
-                ? top.value + currPos.value - newPos
-                : endScroll.value - offsetBottom
-            );
-          }
+  const _onScroll = () => {
+    if (timeout) {
+      window.cancelAnimationFrame(timeout);
+    }
+
+    timeout = window.requestAnimationFrame(() => {
+      const newPos = window.scrollY;
+      // console.table([{ currPos: currPos.value, newPos, endScroll: endScroll.value, top: top.value }]);
+
+      // UP
+      if (newPos < currPos.value) {
+        if (top.value < paddingTop) {
+          _setTop(top.value + currPos.value - newPos);
+          // console.log('[UP] 1', top.value);
         } else {
-          setTop(offsetTop);
+          _setTop(paddingTop);
+          // console.log('[UP] 2', top.value);
         }
+      }
+      // DOWN
+      else {
+        if (top.value > endScroll.value) {
+          _setTop(top.value + currPos.value - newPos);
+          // console.log('[DOWN] 1', top.value);
+        } else {
+          _setTop(endScroll.value - paddingBottom);
+          // console.log('[DOWN] 2', top.value);
+        }
+      }
 
-        currPos.value = window.scrollY;
-        active.value = false;
+      currPos.value = newPos;
+    });
+  };
+
+  const _onResize = () => {
+    screenHeight.value = window.innerHeight;
+
+    _handleScrollEventListener();
+  };
+
+  const _handleScrollEventListener = () => {
+    _updateElHeight();
+
+    if (elHeight.value > screenHeight.value - paddingTop) {
+      // events with the same parameters aren't duplicated, there's no point in checking
+      window.addEventListener('scroll', _onScroll, {
+        capture: false,
+        passive: true,
       });
-
-      active.value = true;
+    } else {
+      window.removeEventListener('scroll', _onScroll);
     }
   };
 
-  const onResize = () => {
-    screenHeight.value = window.innerHeight;
-    elHeight.value = el.value?.offsetHeight || 0;
-  };
-
   onMounted(() => {
-    elHeight.value = el.value?.offsetHeight || 0;
-    window.addEventListener('scroll', onScroll);
-    window.addEventListener('resize', onResize);
+    if (el.value !== null) {
+      window.addEventListener('resize', _onResize);
+      resizeObserver.observe(el.value!);
+
+      _handleScrollEventListener();
+    }
   });
 
   onBeforeUnmount(() => {
-    window.removeEventListener('scroll', onScroll);
-    window.removeEventListener('resize', onResize);
+    if (el.value !== null) {
+      window.removeEventListener('resize', _onResize);
+      window.removeEventListener('scroll', _onScroll);
+      resizeObserver.unobserve(el.value);
+    }
   });
 
   return {

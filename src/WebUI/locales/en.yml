@@ -18,6 +18,7 @@ dateTimeFormat:
   # TODO: https://github.com/tc39/proposal-intl-duration-format
   countdown: '{hours}:{minutes}:{seconds}'
   'mm': '{minutes} @:dateTime.minutes.short'
+  'hh': '{hours} @:dateTime.hours.short'
   'dd:hh:mm': '{days}@:dateTime.days.short {hours}@:dateTime.hours.short {minutes}@:dateTime.minutes.short'
 
 nav:
@@ -159,9 +160,10 @@ character:
         desc:
     experience:
       title: Character experience
-      tooltip:
-        title: Character experience
-        desc: 'Left to the level up: {remainExpToUp} exp'
+      format: '{exp} - {expPercent}'
+      tooltip: '
+        <h3>Character experience</h3>
+        <p>Left until level up: <strong>{remainExpToUp}</strong> exp.</p>'
     expMultiplier:
       title: Exp. multiplier
       tooltip:
@@ -203,10 +205,10 @@ character:
       title: Active
       tooltip:
         title: Active character
-        desc:
+        desc: '
           <p>Switch on to use this character in game.</p>
           <p>If none of your characters was chosen as active, joining a server will create a new character.</p>
-          <p>Beware that you can create only one character per hour. After that you will get automatically kicked by the server.</p>
+          <p>Beware that you can create only one character per hour. After that you will get automatically kicked by the server.</p>'
     respecialize:
       title: Respecialize
       tooltip:
@@ -363,7 +365,9 @@ character:
       desc: ''
     weightReduction:
       title: Weight reduction
-      desc: The remaining weight after deduction by Free Weight, get reduced by your strength attribute points
+      desc: '
+        <p>The remaining weight after deduction by <strong>Free Weight</strong>.</p>
+        <p>Reduced by your <strong>STR</strong> attribute points</p>'
     perceivedWeight:
       title: Perceived weight
       desc: ''
@@ -378,10 +382,15 @@ character:
       desc: ''
     maxWeaponLength:
       title: Max weapon length
-      desc: Max weapon length without a movement speed penalty when fighting. Depends on strength attribute points
+      desc: '
+        <p>Max weapon length without a movement speed penalty when fighting.</p>
+        <p>Depends on <strong>STR</strong> attribute points</p>'
+
     movementSpeedPenaltyWhenAttacking:
       title: Mov. speed penalty
-      desc: Extra movement speed when attacking penalty. Depends on the length of the weapon and strength attribute points
+      desc: '
+        <p>Extra movement speed when attacking penalty.</p>
+        <p>Depends on the length of the weapon and <strong>STR</strong> attribute points</p>'
     price:
       title: Price
       desc: ''
@@ -678,7 +687,6 @@ findUser:
           label: User platform ID
           placeholder: Platform-specific User ID
 
-
 onlinePlayers:
   format: '{count} online'
   tooltip:
@@ -690,9 +698,9 @@ mainpage:
   login: Sign in with Steam
   download: Download
 
-patreon:
+patreon: '
   <p>Do you like our project?</p>
-  <p>You can support us on</p>
+  <p>You can support us on</p>'
 
 hh:
   tooltip-trigger: 'Happy hours for {region}:'
@@ -802,7 +810,7 @@ item:
     CanCrushThrough: 'Crush through'
     CanDismount: 'Can dismount'
     CanHook: 'CanHook'
-    CanKnockDown: 'Can knock down'
+    CanKnockDown: 'Crush through'
     CanPenetrateShield: 'Can penetrate shield'
     CantReloadOnHorseback: "Can't reload on horseback"
     CanReloadOnHorseback: 'Can reload on horseback'
@@ -814,7 +822,7 @@ item:
     LeavesTrail: ''
     MeleeWeapon: ''
     MissileWithPhysics: ''
-    MultiplePenetration: 'Multiple penetration'
+    MultiplePenetration: 'Knockdown'
     NoBlood: ''
     NotUsableWithOneHand: 'Two hand only'
     NotUsableWithTwoHand: 'One hand only'
@@ -860,9 +868,9 @@ item:
     price:
       title: 'Price'
       description: ''
-    repairCost:
-      title: 'Repair cost'
-      description: ''
+    upkeep:
+      title: 'Upkeep'
+      description: 'Avg upkeep per hour'
     culture:
       title: 'Culture'
       description: ''
@@ -980,4 +988,5 @@ item:
       title: 'Armor'
       description: ''
 
-
+  format:
+    upkeep: '{upkeep} / @:dateTime.hours.short'

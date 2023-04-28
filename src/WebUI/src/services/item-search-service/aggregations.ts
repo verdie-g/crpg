@@ -40,6 +40,12 @@ export const aggregationsConfig: AggregationConfig = {
     compareRule: ItemFieldCompareRule.Less,
     width: 200,
   },
+  upkeep: {
+    size,
+    view: AggregationView.Range,
+    format: ItemFieldFormat.Number,
+    compareRule: ItemFieldCompareRule.Less,
+  },
   culture: {
     sort: 'term',
     size,
@@ -309,6 +315,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
     'flags',
     'weight',
     'headArmor',
+    'upkeep',
     'price',
   ],
   [ItemType.BodyArmor]: [
@@ -318,12 +325,14 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
     'bodyArmor',
     'armArmor',
     'legArmor',
+    'upkeep',
     'price',
   ],
   [ItemType.LegArmor]: [
     'culture',
     'weight',
     'legArmor',
+    'upkeep',
     'price',
   ],
   [ItemType.HandArmor]: [
@@ -331,6 +340,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
     'flags',
     'weight',
     'armArmor',
+    'upkeep',
     'price',
   ],
   [ItemType.ShoulderArmor]: [
@@ -339,6 +349,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
     'weight',
     'bodyArmor',
     'armArmor',
+    'upkeep',
     'price',
   ],
 
@@ -349,6 +360,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
     'maneuver',
     'speed',
     'hitPoints',
+    'upkeep',
     'price',
   ],
   [ItemType.MountHarness]: [
@@ -356,6 +368,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
     'mountArmorFamilyType',
     'weight',
     'mountArmor',
+    'upkeep',
     'price',
   ],
 
@@ -368,6 +381,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
     'reloadSpeed',
     'aimSpeed',
     'requirement',
+    'upkeep',
     'price',
   ],
   [ItemType.Bow]: [
@@ -378,6 +392,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
     'missileSpeed',
     'reloadSpeed',
     'aimSpeed',
+    'upkeep',
     'price',
   ],
 
@@ -386,6 +401,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
     'damage',
     'stackWeight',
     'stackAmount',
+    'upkeep',
     'price',
   ],
   [ItemType.Bolts]: [
@@ -393,6 +409,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
     'damage',
     'stackWeight',
     'stackAmount',
+    'upkeep',
     'price',
   ],
 
@@ -401,6 +418,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
     'missileSpeed',
     'stackWeight',
     'stackAmount',
+    'upkeep',
     'price',
   ],
 
@@ -411,6 +429,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
     'shieldSpeed',
     'shieldDurability',
     'shieldArmor',
+    'upkeep',
     'price',
   ],
 
@@ -424,6 +443,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
     'thrustSpeed',
     'swingDamage',
     'swingSpeed',
+    'upkeep',
     'price',
   ],
   [ItemType.TwoHandedWeapon]: [
@@ -435,6 +455,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
     'thrustSpeed',
     'swingDamage',
     'swingSpeed',
+    'upkeep',
     'price',
   ],
   [ItemType.Polearm]: [
@@ -447,6 +468,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
     'thrustSpeed',
     'swingDamage',
     'swingSpeed',
+    'upkeep',
     'price',
   ],
 
@@ -455,6 +477,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
     'flags',
     'weight',
     'culture',
+    'upkeep',
     'price',
   ],
 };
@@ -471,6 +494,7 @@ export const aggregationsKeysByWeaponClass: Partial<Record<WeaponClass, Array<ke
     'thrustSpeed',
     'swingDamage',
     'swingSpeed',
+    'upkeep',
     'price',
   ],
   [WeaponClass.OneHandedAxe]: [
@@ -481,6 +505,7 @@ export const aggregationsKeysByWeaponClass: Partial<Record<WeaponClass, Array<ke
     'handling',
     'swingDamage',
     'swingSpeed',
+    'upkeep',
     'price',
   ],
   [WeaponClass.Mace]: [
@@ -490,6 +515,7 @@ export const aggregationsKeysByWeaponClass: Partial<Record<WeaponClass, Array<ke
     'handling',
     'swingDamage',
     'swingSpeed',
+    'upkeep',
     'price',
   ],
   [WeaponClass.Dagger]: [
@@ -500,6 +526,7 @@ export const aggregationsKeysByWeaponClass: Partial<Record<WeaponClass, Array<ke
     'thrustSpeed',
     'swingDamage',
     'swingSpeed',
+    'upkeep',
     'price',
   ],
   [WeaponClass.TwoHandedAxe]: [
@@ -509,6 +536,7 @@ export const aggregationsKeysByWeaponClass: Partial<Record<WeaponClass, Array<ke
     'handling',
     'swingDamage',
     'swingSpeed',
+    'upkeep',
     'price',
   ],
   [WeaponClass.TwoHandedMace]: [
@@ -518,6 +546,7 @@ export const aggregationsKeysByWeaponClass: Partial<Record<WeaponClass, Array<ke
     'handling',
     'swingDamage',
     'swingSpeed',
+    'upkeep',
     'price',
   ],
 
@@ -527,6 +556,7 @@ export const aggregationsKeysByWeaponClass: Partial<Record<WeaponClass, Array<ke
     'missileSpeed',
     'stackWeight',
     'stackAmount',
+    'upkeep',
     'price',
   ],
 
@@ -536,6 +566,7 @@ export const aggregationsKeysByWeaponClass: Partial<Record<WeaponClass, Array<ke
     'missileSpeed',
     'stackWeight',
     'stackAmount',
+    'upkeep',
     'price',
   ],
 
@@ -545,6 +576,7 @@ export const aggregationsKeysByWeaponClass: Partial<Record<WeaponClass, Array<ke
     'missileSpeed',
     'stackWeight',
     'stackAmount',
+    'upkeep',
     'price',
   ],
 };

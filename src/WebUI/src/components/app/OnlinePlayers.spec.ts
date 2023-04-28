@@ -41,8 +41,6 @@ it('testing api returning gameStats valid', async () => {
 });
 
 it('testing api returning gameStats null/Error', async () => {
-  vi.mocked('@/services/translate-service');
-  console.log(vi.mocked('@/services/translate-service'));
   const wrapper = getWrapper({
     gameServerStats: null,
     showLabel: false,

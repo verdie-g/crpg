@@ -1,3 +1,4 @@
+// FIXME: repair test
 import { createTestingPinia } from '@pinia/testing';
 import { ItemType, WeaponClass } from '@/models/item';
 import { type UserItem } from '@/models/user';

@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { t } from '@/services/translate-service';
-import { computeAverageRepairCostPerHour } from '@/services/item-service';
 import { useUserStore } from '@/stores/user';
 
 const props = defineProps<{
   price: number;
+  upkeep: number;
   inInventory: boolean;
   notEnoughGold: boolean;
 }>();
@@ -15,9 +15,7 @@ const emit = defineEmits<{
   (e: 'buy'): void;
 }>();
 
-const avgRepairCostPerHour = computed(() => computeAverageRepairCostPerHour(props.price));
-
-const isExpensive = computed(() => userStore.user!.gold - props.price < avgRepairCostPerHour.value);
+const isExpensive = computed(() => userStore.user!.gold - props.price < props.upkeep);
 
 const tooltipTitle = computed(() => {
   if (props.inInventory) {
@@ -56,19 +54,16 @@ const tooltipTitle = computed(() => {
       <div class="space-y-4">
         <div>{{ tooltipTitle }}</div>
 
-        <div v-if="isExpensive" class="flex items-start gap-2">
-          <div>
-            <Tag v-if="isExpensive" icon="alert" size="sm" variant="warning" rounded />
-          </div>
-          {{ $t('shop.item.expensive') }}
+        <div class="item-center flex gap-2">
+          {{ $t('item.aggregations.upkeep.title') }}:
+          <Coin>
+            {{ $t('item.format.upkeep', { upkeep: $n(upkeep as number) }) }}
+          </Coin>
         </div>
 
-        <div class="item-center flex gap-2">
-          {{ $t('item.aggregations.repairCost.title') }}:
-          <div class="inline-flex gap-1.5 align-middle font-bold text-primary">
-            <SvgSpriteImg name="coin" viewBox="0 0 18 18" class="w-4" />
-            {{ $n(avgRepairCostPerHour) }} / {{ $t('dateTime.hours.short') }}
-          </div>
+        <div v-if="isExpensive" class="flex items-start gap-2">
+          <Tag icon="alert" size="sm" variant="warning" rounded />
+          {{ $t('shop.item.expensive') }}
         </div>
       </div>
     </template>

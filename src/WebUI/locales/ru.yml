@@ -12,11 +12,12 @@ dateTime:
     long: час | часа | часов
   minutes:
     short: мин
-    long:  минута | минуты | минут
+    long: минута | минуты | минут
 
 dateTimeFormat:
   countdown: '{hours}:{minutes}:{seconds}'
   'mm': '{minutes} @:dateTime.minutes.short'
+  'hh': '{hours} @:dateTime.hours.short'
   'dd:hh:mm': '{days}@:dateTime.days.short {hours}@:dateTime.hours.short {minutes}@:dateTime.minutes.short'
 
 nav:
@@ -158,9 +159,10 @@ character:
         desc:
     experience:
       title: Опыт персонажа
-      tooltip:
-        title: Опыт персонажа
-        desc: 'Осталось до следующего уровня: {remainExpToUp} оп.'
+      format: '{exp} - {expPercent}'
+      tooltip: '
+        <h3>Опыт персонажа</h3>
+        <p>Осталось до следующего уровня: <strong>{remainExpToUp}</strong> оп.</p>'
     expMultiplier:
       title: Множитель опыта
       tooltip:
@@ -199,9 +201,10 @@ character:
     active:
       tooltip:
         title: Активный персонаж
-        desc: <p>Включите, чтобы использовать этого персонажа в игре.</p>
-              <p>Если ни один из ваших персонажей не был выбран в качестве активного, то, присоединившись к серверу, вы создадите нового персонажа.</p>
-              <p>Имейте в виду, что вы можете создать только одного персонажа в час. После этого вы будете автоматически выкинуты с сервера.</p>
+        desc: '
+          <p>Включите, чтобы использовать этого персонажа в игре.</p>
+          <p>Если ни один из ваших персонажей не был выбран в качестве активного, то, присоединившись к серверу, вы создадите нового персонажа.</p>
+          <p>Имейте в виду, что вы можете создать только одного персонажа в час. После этого вы будете автоматически выкинуты с сервера.</p>'
     respecialize:
       title: Сброс навыков
       tooltip:
@@ -247,7 +250,6 @@ character:
         success: Персонаж удален
 
   characteristic:
-
     convert:
       attrsToSkills:
         title: Конвертировать в умения
@@ -359,7 +361,9 @@ character:
       desc: ''
     weightReduction:
       title: Снижение веса
-      desc: ''
+      desc: '
+        <p>Оставшийся вес после вычета <strong>Свободного веса</strong>.</p>
+        <p>Можно уменьшить за счет очков атрибута <strong>силы</strong></p>'
     perceivedWeight:
       title: Воспринимаемый вес
       desc: ''
@@ -374,10 +378,14 @@ character:
       desc: ''
     maxWeaponLength:
       title: Макс. длина оружия
-      desc: Максимальная длина оружия без штрафа к скорости передвижения во время сражения. Зависит от очков атрибута силы
+      desc: '
+        <p>Максимальная длина оружия без штрафа к скорости передвижения во время сражения.</p>
+        <p>Зависит от очков атрибута <strong>силы</strong></p>'
     movementSpeedPenaltyWhenAttacking:
       title: Штраф к скорости передвижения
-      desc: Дополнительный штраф к скорости передвижения во время нанесения удара. Зависит от длины оружия и очков атрибута силы
+      desc: '
+        <p>Дополнительный штраф к скорости передвижения во время нанесения удара.</p>
+        <p>Зависит от длины оружия и очков атрибута <strong>силы</strong></p>'
     price:
       title: Стоимость
       desc: ''
@@ -686,9 +694,9 @@ mainpage:
   login: Войти с помощью Steam
   download: Скачать
 
-patreon:
+patreon: '
   <p>Нравится наш проект?</p>
-  <p>Вы можете поддержать нас на</p>
+  <p>Вы можете поддержать нас на</p>'
 
 hh:
   tooltip-trigger: 'Счастливые часы для {region}:'
@@ -798,7 +806,7 @@ item:
     CanCrushThrough: 'Урон сквозь блок'
     CanDismount: 'Может спешить'
     CanHook: 'CanHook'
-    CanKnockDown: 'Может опрокинуть'
+    CanKnockDown: 'Урон сквозь блок'
     CanPenetrateShield: 'Урон сквозь щит'
     CantReloadOnHorseback: 'Нельзя использовать верхом'
     CanReloadOnHorseback: 'Можно использовать верхом'
@@ -810,7 +818,7 @@ item:
     LeavesTrail: ''
     MeleeWeapon: ''
     MissileWithPhysics: ''
-    MultiplePenetration: 'Урон по неск. целям'
+    MultiplePenetration: 'Может опрокинуть'
     NoBlood: ''
     NotUsableWithOneHand: 'Two hand only'
     NotUsableWithTwoHand: 'One hand only'
@@ -856,9 +864,9 @@ item:
     price:
       title: 'Стоимость'
       description: ''
-    repairCost:
+    upkeep:
       title: 'Стоимость ремонта'
-      description: ''
+      description: 'Средняя стоимость ремонта в час'
     culture:
       title: 'Культура'
       description: ''
@@ -889,7 +897,7 @@ item:
       description: ''
 
     bodyLength:
-      title: 'Длинна'
+      title: 'Длина'
       description: ''
     chargeDamage:
       title: 'Натиск'
@@ -920,7 +928,7 @@ item:
       title: 'Класс оружия'
       description: ''
     length:
-      title: 'Длинна'
+      title: 'Длина'
       description: ''
     handling:
       title: 'Владение'
@@ -979,3 +987,6 @@ item:
     shieldArmor:
       title: 'Броня'
       description: ''
+
+  format:
+    upkeep: '{upkeep} / @:dateTime.hours.short'
