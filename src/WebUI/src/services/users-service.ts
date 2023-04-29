@@ -8,12 +8,12 @@ import {
   type UserItemRank,
 } from '@/models/user';
 import Platform from '@/models/platform';
-import { Clan, type ClanEdition, type ClanMemberRole } from '@/models/clan';
+import { type ClanEdition, type ClanMemberRole } from '@/models/clan';
 import { type RestrictionWithActive } from '@/models/restriction';
 
 import { get, post, put, del } from '@/services/crpg-client';
 import { getActiveJoinRestriction, mapRestrictions } from '@/services/restriction-service';
-import { mapClanResponse } from './clan-service';
+import { mapClanResponse } from '@/services/clan-service';
 
 export const getUser = () => get<User>('/users/self');
 
