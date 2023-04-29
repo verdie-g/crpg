@@ -8,7 +8,7 @@ import {
   type UserItemRank,
 } from '@/models/user';
 import Platform from '@/models/platform';
-import { type ClanEdition } from '@/models/clan';
+import { type UserClan } from '@/models/clan';
 import { type RestrictionWithActive } from '@/models/restriction';
 
 import { get, post, put, del } from '@/services/crpg-client';
@@ -72,10 +72,10 @@ export const groupUserItemsByType = (items: UserItem[]) =>
     .sort((a, b) => a.type.localeCompare(b.type));
 
 export const getUserClan = async () => {
-  const clan = await get<ClanEdition | null>('/users/self/clans');
-  if (clan === null) return null;
+  const userClan = await get<UserClan | null>('/users/self/clans');
+  if (userClan === null || userClan.clan === null) return null;
 
-  return mapClanResponse(clan);
+  return mapClanResponse(userClan.clan);
 };
 
 export const getUserRestrictions = async (id: number) =>

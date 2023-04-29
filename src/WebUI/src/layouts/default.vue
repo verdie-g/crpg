@@ -62,7 +62,7 @@ onBeforeUnmount(() => {
 });
 
 await Promise.all(promises);
-await userStore.getUserClanMember(); // TODO: get the clan role in the query `users/self/clans`
+await userStore.getUserClanMember();
 </script>
 
 <template>
