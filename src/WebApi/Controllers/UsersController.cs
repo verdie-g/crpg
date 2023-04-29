@@ -40,24 +40,24 @@ public class UsersController : BaseController
         [FromQuery] Platform platform,
         [FromQuery] string? platformUserId,
         [FromQuery] string? name)
+    {
+        if (name != null)
         {
-            if (name != null)
-            {
-                return ResultToAction(await Mediator.Send(new GetUsersByNameQuery { Name = name }));
-            }
-
-            if (platformUserId != null)
-            {
-                var res = await Mediator.Send(new GetUserByPlatformIdQuery
-                {
-                    Platform = platform,
-                    PlatformUserId = platformUserId,
-                });
-                return ResultToAction(res.Select(u => new[] { u }));
-            }
-
-            return ResultToAction(new Result<UserPublicViewModel[]>(new Error(ErrorType.Validation, ErrorCode.InvalidField)));
+            return ResultToAction(await Mediator.Send(new GetUsersByNameQuery { Name = name }));
         }
+
+        if (platformUserId != null)
+        {
+            var res = await Mediator.Send(new GetUserByPlatformIdQuery
+            {
+                Platform = platform,
+                PlatformUserId = platformUserId,
+            });
+            return ResultToAction(res.Select(u => new[] { u }));
+        }
+
+        return ResultToAction(new Result<UserPublicViewModel[]>(new Error(ErrorType.Validation, ErrorCode.InvalidField)));
+    }
 
     /// <summary>
     /// Gets current user information.
@@ -168,7 +168,7 @@ public class UsersController : BaseController
     [HttpGet("self/characters/{id}")]
     public Task<ActionResult<Result<CharacterViewModel>>> GetUserCharacter([FromRoute] int id) =>
         ResultToActionAsync(Mediator.Send(new GetUserCharacterQuery
-            { CharacterId = id, UserId = CurrentUser.User!.Id }));
+        { CharacterId = id, UserId = CurrentUser.User!.Id }));
 
     /// <summary>
     /// Gets all current user's characters.
@@ -448,7 +448,7 @@ public class UsersController : BaseController
     /// Gets user clan or null.
     /// </summary>
     [HttpGet("self/clans")]
-    public Task<ActionResult<Result<ClanViewModel>>> GetUserClan()
+    public Task<ActionResult<Result<UserClanViewModel>>> GetUserClan()
     {
         GetUserClanQuery req = new() { UserId = CurrentUser.User!.Id };
         return ResultToActionAsync(Mediator.Send(req));
