@@ -64,16 +64,14 @@ const mapWeaponProps = (item: Item) => {
     stackAmount: originalWeapon.stackAmount,
     length: originalWeapon.length,
     handling: originalWeapon.handling,
-
-    thrustSpeed: originalWeapon.thrustSpeed,
-    thrustDamage: originalWeapon.thrustDamage,
+    thrustSpeed: originalWeapon.thrustDamage !== 0 ? originalWeapon.thrustSpeed : 0,
+    thrustDamage: originalWeapon.thrustSpeed !== 0 ? originalWeapon.thrustDamage : 0,
     thrustDamageType:
       originalWeapon.thrustDamageType === DamageType.Undefined || originalWeapon.thrustDamage === 0
         ? undefined
         : originalWeapon.thrustDamageType,
-
-    swingSpeed: originalWeapon.swingSpeed,
-    swingDamage: originalWeapon.swingDamage,
+    swingSpeed: originalWeapon.swingDamage !== 0 ? originalWeapon.swingSpeed : 0,
+    swingDamage: originalWeapon.swingSpeed !== 0 ? originalWeapon.swingDamage : 0,
     swingDamageType:
       originalWeapon.swingDamageType === DamageType.Undefined || originalWeapon.swingDamage === 0
         ? undefined
