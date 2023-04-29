@@ -8,12 +8,12 @@ import {
   type UserItemRank,
 } from '@/models/user';
 import Platform from '@/models/platform';
-import { type UserClan } from '@/models/clan';
+import { Clan, type ClanEdition, type ClanMemberRole } from '@/models/clan';
 import { type RestrictionWithActive } from '@/models/restriction';
 
 import { get, post, put, del } from '@/services/crpg-client';
 import { getActiveJoinRestriction, mapRestrictions } from '@/services/restriction-service';
-import { mapClanResponse } from '@/services/clan-service';
+import { mapClanResponse } from './clan-service';
 
 export const getUser = () => get<User>('/users/self');
 
@@ -36,6 +36,16 @@ export const mapUserItem = (userItem: UserItem): UserItem => ({
   ...userItem,
   createdAt: new Date(userItem.createdAt),
 });
+
+export const mapUserToUserPublic = (user: User): UserPublic => {
+  return {
+    avatar: user.avatar,
+    id: user.id,
+    platform: user.platform,
+    platformUserId: user.platformUserId,
+    name: user.name,
+  };
+};
 
 export const extractItemFromUserItem = (items: UserItem[]): Item[] => items.map(ui => ui.baseItem);
 
@@ -71,11 +81,26 @@ export const groupUserItemsByType = (items: UserItem[]) =>
     }, [] as UserItemsByType[])
     .sort((a, b) => a.type.localeCompare(b.type));
 
+interface IUserClan {
+  clan: Clan;
+  role: ClanMemberRole;
+}
+
+interface IUserClanResponse {
+  clan: ClanEdition;
+  role: ClanMemberRole;
+}
+
 export const getUserClan = async () => {
-  const userClan = await get<UserClan | null>('/users/self/clans');
+  const userClan = await get<IUserClanResponse | null>('/users/self/clans');
   if (userClan === null || userClan.clan === null) return null;
 
-  return mapClanResponse(userClan.clan);
+  // do conversion since argb values are stored as numbers in db and we need strings
+  const convertedResponse = {} as IUserClan;
+  convertedResponse.clan = mapClanResponse(userClan.clan);
+  convertedResponse.role = userClan.role;
+
+  return convertedResponse;
 };
 
 export const getUserRestrictions = async (id: number) =>

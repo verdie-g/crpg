@@ -7,7 +7,6 @@ import {
   type ClanInvitation,
   ClanInvitationType,
   ClanInvitationStatus,
-  UserClan,
 } from '@/models/clan';
 import { Region } from '@/models/region';
 import { get, post, put, del } from '@/services/crpg-client';

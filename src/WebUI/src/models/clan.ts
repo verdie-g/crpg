@@ -1,11 +1,6 @@
 import { Region } from '@/models/region';
 import { type UserPublic } from '@/models/user';
 
-export interface UserClan {
-  clan: ClanEdition;
-  role: ClanMemberRole;
-}
-
 export interface Clan {
   id: number;
   tag: string;
