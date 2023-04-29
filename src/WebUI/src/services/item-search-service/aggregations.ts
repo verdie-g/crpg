@@ -513,6 +513,8 @@ export const aggregationsKeysByWeaponClass: Partial<Record<WeaponClass, Array<ke
     'weight',
     'length',
     'handling',
+    'thrustDamage',
+    'thrustSpeed',
     'swingDamage',
     'swingSpeed',
     'upkeep',
