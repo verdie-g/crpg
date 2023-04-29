@@ -43,9 +43,9 @@ export const flatten = <T extends { children?: T[] }>(obj: T | T[]) => {
 
   return array.reduce((acc, value) => {
     acc.push(value);
+
     if (value.children !== undefined) {
       acc = acc.concat(flatten(value.children));
-      delete value.children;
     }
     return acc;
   }, [] as T[]);

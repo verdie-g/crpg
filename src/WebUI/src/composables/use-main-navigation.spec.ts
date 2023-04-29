@@ -1,7 +1,19 @@
 import { type PartialDeep } from 'type-fest';
 import { type RouteRecordRaw } from 'vue-router/auto';
+import { createTestingPinia } from '@pinia/testing';
 import Role from '@/models/role';
-import { useNavigation } from './use-navigation';
+import { useUserStore } from '@/stores/user';
+
+const userStore = useUserStore(createTestingPinia());
+
+const mockRoutes = vi.fn();
+vi.mock('vue-router/auto/routes', () => ({
+  get routes() {
+    return mockRoutes();
+  },
+}));
+
+import { useNavigation } from './use-main-navigation';
 
 it.each<[Array<PartialDeep<RouteRecordRaw>>, Role, number]>([
   [
@@ -73,12 +85,16 @@ it.each<[Array<PartialDeep<RouteRecordRaw>>, Role, number]>([
     1,
   ],
 ])('filter - routes: %j, role: %s', (routes, role, expectation) => {
-  const { mainNavigation } = useNavigation(routes as RouteRecordRaw[], role);
+  userStore.$patch({ user: { role } });
+  mockRoutes.mockReturnValue(routes);
+
+  const { mainNavigation } = useNavigation();
   expect(mainNavigation.value.length).toEqual(expectation);
 });
 
 it('sort', () => {
-  const routes = [
+  userStore.$patch({ user: { role: Role.User } });
+  mockRoutes.mockReturnValue([
     {
       name: 'shop',
       meta: {
@@ -93,9 +109,9 @@ it('sort', () => {
         sortInNav: 60,
       },
     },
-  ] as RouteRecordRaw[];
+  ]);
 
-  const { mainNavigation } = useNavigation(routes, Role.User);
+  const { mainNavigation } = useNavigation();
   expect(mainNavigation.value[0].name).toEqual('char');
   expect(mainNavigation.value[1].name).toEqual('shop');
 });

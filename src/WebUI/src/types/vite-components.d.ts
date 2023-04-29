@@ -37,6 +37,7 @@ declare module '@vue/runtime-core' {
     HHTooltip: typeof import('./../components/app/HHTooltip.vue')['default']
     ItemFieldIcon: typeof import('./../components/item/ItemFieldIcon.vue')['default']
     ItemParam: typeof import('./../components/item/ItemParam.vue')['default']
+    MainNavigation: typeof import('./../components/app/MainNavigation.vue')['default']
     Modal: typeof import('./../components/ui/Modal.vue')['default']
     NumericInput: typeof import('./../components/ui/NumericInput.vue')['default']
     OnlinePlayers: typeof import('./../components/app/OnlinePlayers.vue')['default']

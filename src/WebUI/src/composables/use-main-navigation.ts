@@ -1,5 +1,7 @@
+import { routes } from 'vue-router/auto/routes';
 import type { RouteRecordRaw } from 'vue-router/auto';
 import Role from '@/models/role';
+import { useUserStore } from '@/stores/user';
 import { flatten } from '@/utils/object';
 
 const filterRoute = (role: Role) => (route: RouteRecordRaw) =>
@@ -12,9 +14,11 @@ const sortRoutes = (a: RouteRecordRaw, b: RouteRecordRaw) =>
     ? b.meta.sortInNav - a.meta.sortInNav
     : 0;
 
-export const useNavigation = (routes: RouteRecordRaw[], role: Role) => {
+export const useNavigation = () => {
+  const userStore = useUserStore();
+
   const mainNavigation = computed(() =>
-    flatten<RouteRecordRaw>(routes).filter(filterRoute(role)).sort(sortRoutes)
+    flatten<RouteRecordRaw>(routes).filter(filterRoute(userStore.user!.role)).sort(sortRoutes)
   );
 
   return {
