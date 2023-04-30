@@ -1379,6 +1379,7 @@ public class MatchBalancerTest
                 .Any(),
             Is.True);
     }
+
     public void RejoinClanDoesNotLosePlayers()
     {
         GameMatch game = new()
@@ -1410,6 +1411,7 @@ public class MatchBalancerTest
         Assert.That(game2.Waiting, Is.Empty);
         Assert.That(game2.TeamA.Count + game2.TeamB.Count + game2.Waiting.Count == 15);
     }
+
     private GameMatch PureBannerBalancing(GameMatch gameMatch)
     {
         var matchBalancer = new MatchBalancer();

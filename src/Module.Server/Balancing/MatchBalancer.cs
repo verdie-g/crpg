@@ -259,18 +259,19 @@ internal class MatchBalancer
                 teamToSwapFrom.Remove(user);
                 teamToSwapInto.Add(user);
             }
+
             Debug.Print($"Proposed Swap Done");
         }
         else
         {
             // Complimentary set of users for clanGroupsToSwap2
             List<WeightedCrpgUser> originalUsersToSwap2 = clanGroupsToSwap2.SelectMany(c => c.Members).ToList();
-            HashSet<WeightedCrpgUser> crpgUsersToSwap2Set = new HashSet<WeightedCrpgUser>(teamToSwapInto);
+            HashSet<WeightedCrpgUser> crpgUsersToSwap2Set = new(teamToSwapInto);
             crpgUsersToSwap2Set.ExceptWith(originalUsersToSwap2);
             List<WeightedCrpgUser> newUsersToSwap2 = crpgUsersToSwap2Set.ToList();
 
             // Complimentary set of users for clanGroupToSwap1
-            HashSet<WeightedCrpgUser> crpgUsersToSwap1Set = new HashSet<WeightedCrpgUser>(teamToSwapFrom);
+            HashSet<WeightedCrpgUser> crpgUsersToSwap1Set = new(teamToSwapFrom);
             crpgUsersToSwap1Set.ExceptWith(clanGroupToSwap1.Members);
             List<WeightedCrpgUser> newUsersToSwap1 = crpgUsersToSwap1Set.ToList();
 
