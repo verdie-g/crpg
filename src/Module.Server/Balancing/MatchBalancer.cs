@@ -241,20 +241,54 @@ internal class MatchBalancer
         (List<WeightedCrpgUser> teamToSwapFrom, List<WeightedCrpgUser> teamToSwapInto) = swappingFromWeakTeam
             ? (weakTeam, strongTeam)
             : (strongTeam, weakTeam);
-        Debug.Print($"Swapping {clanGroupToSwap1.Size} players  from {(swappingFromWeakTeam ? "Weak Team" : "Strong Team")} in exchange of {clanGroupsToSwap2.Sum(c => c.Size)} players");
-        foreach (var clanGroup in clanGroupsToSwap2)
+        Debug.Print($"Propose Swapping {clanGroupToSwap1.Size} players  from {(swappingFromWeakTeam ? "Weak Team" : "Strong Team")} in exchange of {clanGroupsToSwap2.Sum(c => c.Size)} players");
+        bool isComplimentarySwapBetter = clanGroupToSwap1.Size + clanGroupsToSwap2.Sum(c => c.Size) > (teamToSwapFrom.Count + teamToSwapInto.Count) / 2;
+        if (!isComplimentarySwapBetter)
         {
-            foreach (WeightedCrpgUser user in clanGroup.Members)
+            foreach (var clanGroup in clanGroupsToSwap2)
+            {
+                foreach (WeightedCrpgUser user in clanGroup.Members)
+                {
+                    teamToSwapInto.Remove(user);
+                    teamToSwapFrom.Add(user);
+                }
+            }
+
+            foreach (WeightedCrpgUser user in clanGroupToSwap1.Members)
+            {
+                teamToSwapFrom.Remove(user);
+                teamToSwapInto.Add(user);
+            }
+
+            Debug.Print($"Proposed Swap Done");
+        }
+        else
+        {
+            // Complimentary set of users for clanGroupsToSwap2
+            List<WeightedCrpgUser> originalUsersToSwap2 = clanGroupsToSwap2.SelectMany(c => c.Members).ToList();
+            HashSet<WeightedCrpgUser> crpgUsersToSwap2Set = new(teamToSwapInto);
+            crpgUsersToSwap2Set.ExceptWith(originalUsersToSwap2);
+            List<WeightedCrpgUser> newUsersToSwap2 = crpgUsersToSwap2Set.ToList();
+
+            // Complimentary set of users for clanGroupToSwap1
+            HashSet<WeightedCrpgUser> crpgUsersToSwap1Set = new(teamToSwapFrom);
+            crpgUsersToSwap1Set.ExceptWith(clanGroupToSwap1.Members);
+            List<WeightedCrpgUser> newUsersToSwap1 = crpgUsersToSwap1Set.ToList();
+
+            // New Swaps
+            foreach (WeightedCrpgUser user in newUsersToSwap2)
             {
                 teamToSwapInto.Remove(user);
                 teamToSwapFrom.Add(user);
             }
-        }
 
-        foreach (WeightedCrpgUser user in clanGroupToSwap1.Members)
-        {
-            teamToSwapFrom.Remove(user);
-            teamToSwapInto.Add(user);
+            foreach (WeightedCrpgUser user in newUsersToSwap1)
+            {
+                teamToSwapFrom.Remove(user);
+                teamToSwapInto.Add(user);
+            }
+
+            Debug.Print($"Complimentary Swap done instead :  {newUsersToSwap1.Count} players  from {(swappingFromWeakTeam ? "Weak Team" : "Strong Team")} in exchange of {newUsersToSwap1.Count} players");
         }
 
         return true;
