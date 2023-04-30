@@ -1,8 +1,12 @@
-﻿using System.Security.Claims;
+using System.Net;
+using System.Security.Claims;
+using AspNet.Security.OpenId.Steam;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Restrictions.Queries;
+using Crpg.Application.Users.Commands;
 using Crpg.Application.Users.Models;
 using Crpg.Application.Users.Queries;
+using Crpg.Domain.Entities.Users;
 using MediatR;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Authentication;
@@ -268,6 +272,12 @@ public class ConnectController : ControllerBase
 
         var user = res.Data!;
 
+        var ipAddress = HttpContext.Connection.RemoteIpAddress;
+        if (ipAddress != null)
+        {
+            await UpdateUserRegionAsync(user.Id, ipAddress);
+        }
+
         if (await IsUserBannedAsync(user.Id))
         {
             Logger.LogInformation("User '{0}' could not get access token: banned", user.Id);
@@ -335,6 +345,16 @@ public class ConnectController : ControllerBase
     {
         var mediator = HttpContext.RequestServices.GetRequiredService<IMediator>();
         return mediator.Send(new GetUserQuery { UserId = userId }, CancellationToken.None);
+    }
+
+    private Task UpdateUserRegionAsync(int userId, IPAddress ipAddress)
+    {
+        var mediator = HttpContext.RequestServices.GetRequiredService<IMediator>();
+        return mediator.Send(new UpdateUserRegionCommand
+        {
+            UserId = userId,
+            IpAddress = ipAddress,
+        }, CancellationToken.None);
     }
 
     private async Task<bool> IsUserBannedAsync(int userId)

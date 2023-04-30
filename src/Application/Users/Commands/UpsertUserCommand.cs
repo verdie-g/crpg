@@ -4,7 +4,6 @@ using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Users.Models;
-using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Users;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
@@ -15,15 +14,16 @@ namespace Crpg.Application.Users.Commands;
 
 public record UpsertUserCommand : IMediatorRequest<UserViewModel>
 {
+    public Platform Platform { get; init; }
     public string PlatformUserId { get; init; } = string.Empty;
     public string Name { get; init; } = string.Empty;
-    public Region? Region { get; init; }
     public Uri Avatar { get; init; } = default!;
 
     public class Validator : AbstractValidator<UpsertUserCommand>
     {
         public Validator()
         {
+            RuleFor(u => u.Platform).IsInEnum();
             RuleFor(u => u.Name).NotNull().NotEmpty();
             RuleFor(u => u.Avatar).NotNull();
         }
@@ -51,15 +51,14 @@ public record UpsertUserCommand : IMediatorRequest<UserViewModel>
             bool newUser = false;
             var user = await _db.Users
                 .IgnoreQueryFilters()
-                .FirstOrDefaultAsync(u => u.PlatformUserId == request.PlatformUserId, cancellationToken);
+                .FirstOrDefaultAsync(u => u.Platform == request.Platform && u.PlatformUserId == request.PlatformUserId, cancellationToken);
 
             if (user == null)
             {
                 user = new User
                 {
-                    Platform = Platform.Steam,
+                    Platform = request.Platform,
                     PlatformUserId = request.PlatformUserId,
-                    Region = request.Region,
                 };
                 _userService.SetDefaultValuesForUser(user);
                 _db.Users.Add(user);
@@ -69,7 +68,6 @@ public record UpsertUserCommand : IMediatorRequest<UserViewModel>
             string oldName = user.Name;
 
             user.Name = request.Name;
-            user.Region = request.Region ?? user.Region;
             user.Avatar = request.Avatar;
             // If the user has deleted its account, recreate it.
             user.DeletedAt = null;

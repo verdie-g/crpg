@@ -278,7 +278,6 @@ static void ConfigureSteamAuthentication(SteamAuthenticationOptions options, ICo
 static async Task OnSteamUserAuthenticated(OpenIdAuthenticatedContext ctx)
 {
     var mediator = ctx.HttpContext.RequestServices.GetRequiredService<IMediator>();
-    var geoIpService = ctx.HttpContext.RequestServices.GetRequiredService<IGeoIpService>();
 
     if (ctx.UserPayload == null)
     {
@@ -290,14 +289,11 @@ static async Task OnSteamUserAuthenticated(OpenIdAuthenticatedContext ctx)
         .GetProperty(SteamAuthenticationConstants.Parameters.Players)[0]
         .ToObject<SteamPlayer>(new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
-    var ipAddress = ctx.HttpContext.Connection.RemoteIpAddress;
-    Region? region = ipAddress == null ? null : geoIpService.ResolveRegionFromIp(ipAddress);
-
     var res = await mediator.Send(new UpsertUserCommand
     {
+        Platform = Platform.Steam,
         PlatformUserId = player.SteamId,
         Name = player.PersonaName,
-        Region = region,
         Avatar = player.AvatarFull,
     });
 
