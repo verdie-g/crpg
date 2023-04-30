@@ -15,6 +15,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
 using Microsoft.IdentityModel.Tokens;
 using OpenIddict.Abstractions;
+using OpenIddict.Client.AspNetCore;
+using OpenIddict.Client.WebIntegration;
 using OpenIddict.Server.AspNetCore;
 using LoggerFactory = Crpg.Logging.LoggerFactory;
 
@@ -125,7 +127,7 @@ public class ConnectController : ControllerBase
                     scopes: identity.GetScopes());
 
                 identity.SetAuthorizationId(await _authorizationManager.GetIdAsync(authorization));
-                identity.SetDestinations(GetDestinations);
+                identity.SetDestinations(_ => new[] { OpenIddictConstants.Destinations.AccessToken });
 
                 return SignIn(new ClaimsPrincipal(identity), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
 
@@ -145,19 +147,6 @@ public class ConnectController : ControllerBase
             default:
                 throw new NotImplementedException();
         }
-    }
-
-    [HttpGet("logout")]
-    public async Task<IActionResult> Logout()
-    {
-        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-
-        // Returning a SignOutResult will ask OpenIddict to redirect the user agent to the post_logout_redirect_uri
-        // specified by the client application or to the RedirectUri specified in the authentication properties if none
-        // was set.
-        return SignOut(
-            authenticationSchemes: OpenIddictServerAspNetCoreDefaults.AuthenticationScheme,
-            properties: new AuthenticationProperties { RedirectUri = "/" });
     }
 
     [HttpPost("token")]
@@ -187,6 +176,46 @@ public class ConnectController : ControllerBase
             })));
     }
 
+    [HttpGet("callback-epic-games")]
+    public async Task<IActionResult> CallbackEpicGames()
+    {
+        var result = await HttpContext.AuthenticateAsync(OpenIddictClientAspNetCoreDefaults.AuthenticationScheme);
+        string platformUserId = result.Principal!.FindFirstValue(OpenIddictConstants.Claims.Subject)!;
+        string userName = result.Principal!.FindFirstValue(OpenIddictConstants.Claims.PreferredUsername)!;
+
+        var mediator = HttpContext.RequestServices.GetRequiredService<IMediator>();
+        var res = await mediator.Send(new UpsertUserCommand
+        {
+            Platform = Platform.EpicGames,
+            PlatformUserId = platformUserId,
+            Name = userName,
+            Avatar = new Uri("https://via.placeholder.com/184x184"),
+        });
+
+        ClaimsIdentity identity = new(OpenIddictClientWebIntegrationConstants.Providers.EpicGames);
+        identity.AddClaim(new Claim(OpenIddictConstants.Claims.Subject, res.Data!.Id.ToString()));
+
+        AuthenticationProperties properties = new()
+        {
+            RedirectUri = result.Properties!.RedirectUri,
+        };
+
+        return SignIn(new ClaimsPrincipal(identity), properties, CookieAuthenticationDefaults.AuthenticationScheme);
+    }
+
+    [HttpGet("logout")]
+    public async Task<IActionResult> Logout()
+    {
+        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+        // Returning a SignOutResult will ask OpenIddict to redirect the user agent to the post_logout_redirect_uri
+        // specified by the client application or to the RedirectUri specified in the authentication properties if none
+        // was set.
+        return SignOut(
+            authenticationSchemes: OpenIddictServerAspNetCoreDefaults.AuthenticationScheme,
+            properties: new AuthenticationProperties { RedirectUri = "/" });
+    }
+
     private IActionResult RedirectToLogin(OpenIddictRequest request)
     {
         // If the client application requested promptless authentication, return an error indicating that the user
@@ -202,30 +231,36 @@ public class ConnectController : ControllerBase
                 }));
         }
 
-#if false
-        if (request.IdentityProvider == null)
+        string authenticationScheme;
+        Dictionary<string, string?> items = new();
+        if (request.IdentityProvider == null || !Enum.TryParse(request.IdentityProvider, out Platform platform))
         {
-            return Forbid(
-                authenticationSchemes: OpenIddictServerAspNetCoreDefaults.AuthenticationScheme,
-                properties: new AuthenticationProperties(new Dictionary<string, string?>
-                {
-                    [OpenIddictServerAspNetCoreConstants.Properties.Error] = OpenIddictConstants.Errors.InvalidRequest,
-                    [OpenIddictServerAspNetCoreConstants.Properties.ErrorDescription] = "The specified identity provider is not valid.",
-                }));
+            return Forbid(properties: new AuthenticationProperties(new Dictionary<string, string?>
+            {
+                [OpenIddictServerAspNetCoreConstants.Properties.Error] = OpenIddictConstants.Errors.InvalidRequest,
+                [OpenIddictServerAspNetCoreConstants.Properties.ErrorDescription] = "The specified identity provider is not valid.",
+            }), authenticationSchemes: new[] { OpenIddictServerAspNetCoreDefaults.AuthenticationScheme });
         }
-#endif
+        else if (platform == Platform.Steam) // Special case for Steam that implements Open ID 2.0 only
+        {
+            authenticationScheme = SteamAuthenticationDefaults.AuthenticationScheme;
+        }
+        else
+        {
+            authenticationScheme = OpenIddictClientAspNetCoreDefaults.AuthenticationScheme;
+            items[OpenIddictClientAspNetCoreConstants.Properties.ProviderName] = platform.ToString();
+        }
 
         // To avoid endless login -> authorization redirects, the prompt=login flag is removed from the
         // authorization request payload before redirecting the user.
         Dictionary<string, StringValues> parameters = new(Request.Query) { ["prompt"] = "continue" };
 
         return Challenge(
-            authenticationSchemes: CookieAuthenticationDefaults.AuthenticationScheme,
-            properties: new AuthenticationProperties
+            properties: new AuthenticationProperties(items)
             {
-                RedirectUri = Request.PathBase + Request.Path + QueryString.Create(parameters),
-                // TODO: pass request.IdentityProvider
-            });
+                RedirectUri = HttpContext.Request.PathBase + HttpContext.Request.Path + QueryString.Create(parameters),
+            },
+            authenticationSchemes: new[] { authenticationScheme });
     }
 
     private async Task<IActionResult> TokenClientCredentialsGrantType(OpenIddictRequest request)
@@ -246,7 +281,7 @@ public class ConnectController : ControllerBase
             identity.SetResources(scope);
         }
 
-        identity.SetDestinations(GetDestinations);
+        identity.SetDestinations(_ => new[] { OpenIddictConstants.Destinations.AccessToken });
 
         return SignIn(new ClaimsPrincipal(identity), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
     }
@@ -300,34 +335,10 @@ public class ConnectController : ControllerBase
         // Override the user claims present in the principal in case they changed since the authorization code/refresh
         // token was issued.
         identity.SetClaim(OpenIddictConstants.Claims.Role, user.Role.ToString());
-        identity.SetDestinations(GetDestinations);
+        identity.SetDestinations(_ => new[] { OpenIddictConstants.Destinations.AccessToken });
 
         // Returning a SignInResult will ask OpenIddict to issue the appropriate access/identity tokens.
         return SignIn(new ClaimsPrincipal(identity), OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
-    }
-
-    private IEnumerable<string> GetDestinations(Claim claim)
-    {
-        // Note: by default, claims are NOT automatically included in the access and identity tokens.
-        // To allow OpenIddict to serialize them, you must attach them a destination, that specifies
-        // whether they should be included in access tokens, in identity tokens or in both.
-
-        switch (claim.Type)
-        {
-            case OpenIddictConstants.Claims.Role:
-                yield return OpenIddictConstants.Destinations.AccessToken;
-
-                if (claim.Subject!.HasScope(OpenIddictConstants.Permissions.Scopes.Roles))
-                {
-                    yield return OpenIddictConstants.Destinations.IdentityToken;
-                }
-
-                yield break;
-
-            default:
-                yield return OpenIddictConstants.Destinations.AccessToken;
-                yield break;
-        }
     }
 
     private int GetUserIdFromPrincipal(ClaimsPrincipal principal)

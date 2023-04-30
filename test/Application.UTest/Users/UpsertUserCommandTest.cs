@@ -17,6 +17,7 @@ public class UpsertUserCommandTest : TestBase
         UpsertUserCommand.Handler handler = new(ActDb, Mapper, userServiceMock.Object, activityLogServiceMock.Object);
         var result = await handler.Handle(new UpsertUserCommand
         {
+            Platform = Platform.EpicGames,
             PlatformUserId = "123",
             Name = "def",
             Avatar = new Uri("http://ghi.klm"),
@@ -34,6 +35,7 @@ public class UpsertUserCommandTest : TestBase
     {
         User user = new()
         {
+            Platform = Platform.Steam,
             PlatformUserId = "13948192759205810",
             Name = "def",
             Gold = 1000,
@@ -48,6 +50,7 @@ public class UpsertUserCommandTest : TestBase
         UpsertUserCommand.Handler handler = new(ActDb, Mapper, userServiceMock.Object, Mock.Of<IActivityLogService>());
         var result = await handler.Handle(new UpsertUserCommand
         {
+            Platform = Platform.Steam,
             PlatformUserId = "13948192759205810",
             Name = "def",
             Avatar = new Uri("http://gh.klm"),
@@ -72,6 +75,7 @@ public class UpsertUserCommandTest : TestBase
     {
         User user = new()
         {
+            Platform = Platform.Steam,
             PlatformUserId = "13948192759205810",
             DeletedAt = DateTime.Now, // Deleted user are just marked with a non-null DeletedAt
         };
@@ -82,6 +86,7 @@ public class UpsertUserCommandTest : TestBase
         UpsertUserCommand.Handler handler = new(ActDb, Mapper, userServiceMock.Object, Mock.Of<IActivityLogService>());
         await handler.Handle(new UpsertUserCommand
         {
+            Platform = Platform.Steam,
             PlatformUserId = "13948192759205810",
         }, CancellationToken.None);
 
@@ -96,6 +101,7 @@ public class UpsertUserCommandTest : TestBase
         UpsertUserCommand.Validator validator = new();
         var res = validator.Validate(new UpsertUserCommand
         {
+            Platform = Platform.Steam,
             PlatformUserId = "28320184920184918",
             Name = "toto",
             Avatar = new Uri("http://gh.klm"),
@@ -110,6 +116,7 @@ public class UpsertUserCommandTest : TestBase
         UpsertUserCommand.Validator validator = new();
         var res = validator.Validate(new UpsertUserCommand
         {
+            Platform = Platform.Steam,
             PlatformUserId = "123",
             Name = string.Empty,
         });

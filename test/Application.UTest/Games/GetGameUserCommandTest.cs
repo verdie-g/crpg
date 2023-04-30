@@ -42,13 +42,13 @@ public class GetGameUserCommandTest : TestBase
 
         var result = await handler.Handle(new GetGameUserCommand
         {
-            Platform = Platform.Epic,
+            Platform = Platform.EpicGames,
             PlatformUserId = "1",
         }, CancellationToken.None);
 
         var gameUser = result.Data!;
         Assert.That(gameUser.Id, Is.Not.Zero);
-        Assert.That(gameUser.Platform, Is.EqualTo(Platform.Epic));
+        Assert.That(gameUser.Platform, Is.EqualTo(Platform.EpicGames));
         Assert.That(gameUser.PlatformUserId, Is.EqualTo("1"));
         Assert.That(gameUser.Character.Name, Is.EqualTo("Peasant"));
         Assert.That(gameUser.Character.Class, Is.EqualTo(CharacterClass.Peasant));
@@ -216,7 +216,7 @@ public class GetGameUserCommandTest : TestBase
         Character user1Character = new();
         User user1 = new()
         {
-            Platform = Platform.Epic,
+            Platform = Platform.EpicGames,
             PlatformUserId = user0.PlatformUserId, // Same platform user id but different platform
             ActiveCharacter = user1Character,
             Characters = { user1Character },

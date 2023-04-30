@@ -4,6 +4,5 @@
 public enum Platform
 {
     Steam,
-    Epic,
-    Gog,
+    EpicGames,
 }

@@ -5,13 +5,11 @@ using AspNet.Security.OpenId;
 using AspNet.Security.OpenId.Steam;
 using Crpg.Application;
 using Crpg.Application.Common.Interfaces;
-using Crpg.Application.Common.Services;
 using Crpg.Application.Steam;
 using Crpg.Application.System.Commands;
 using Crpg.Application.Users.Commands;
 using Crpg.Common.Helpers;
 using Crpg.Common.Json;
-using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Users;
 using Crpg.Persistence;
 using Crpg.Sdk;
@@ -103,6 +101,31 @@ builder.Services.AddOpenIddict()
             .EnableAuthorizationEndpointPassthrough()
             .EnableLogoutEndpointPassthrough()
             .EnableTokenEndpointPassthrough();
+    })
+    .AddClient(options =>
+    {
+        options.AllowAuthorizationCodeFlow();
+
+        options.AddDevelopmentEncryptionCertificate()
+            .AddDevelopmentSigningCertificate();
+
+        options.UseAspNetCore()
+            .EnableRedirectionEndpointPassthrough();
+
+        var webIntegrationBuilder = options.UseWebProviders();
+
+        string? epicGamesClientId = builder.Configuration["EpicGames:ClientId"];
+        string? epicGamesClientSecret = builder.Configuration["EpicGames:ClientSecret"];
+
+        if (epicGamesClientId != null && epicGamesClientSecret != null)
+        {
+            webIntegrationBuilder.UseEpicGames(epicGames =>
+            {
+                epicGames.SetClientId(epicGamesClientId)
+                    .SetClientSecret(epicGamesClientSecret)
+                    .SetRedirectUri("connect/callback-epic-games");
+            });
+        }
     })
     .AddValidation(options =>
     {

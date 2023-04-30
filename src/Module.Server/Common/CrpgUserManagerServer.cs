@@ -123,8 +123,7 @@ internal class CrpgUserManagerServer : MissionNetwork
     private async Task SetCrpgComponentAsync(NetworkCommunicator networkPeer)
     {
         VirtualPlayer vp = networkPeer.VirtualPlayer;
-        if (!Enum.TryParse(vp.Id.ProvidedType.ToString(), out Platform platform)
-            || (platform != Platform.Steam && platform != Platform.Epic))
+        if (!TryConvertPlatform(vp.Id.ProvidedType, out Platform platform))
         {
             Debug.Print($"Kick player {vp.UserName} playing on {vp.Id.ProvidedType}");
             KickHelper.Kick(networkPeer, DisconnectType.KickedByHost, "unsupported_platform");
@@ -192,6 +191,22 @@ internal class CrpgUserManagerServer : MissionNetwork
             RewardMultiplierByPlayerId.TryGetValue(vp.Id, out int lastMissionMultiplier)
                 ? lastMissionMultiplier
                 : 1;
+    }
+
+    private bool TryConvertPlatform(PlayerIdProvidedTypes provider, out Platform platform)
+    {
+        switch (provider)
+        {
+            case PlayerIdProvidedTypes.Steam:
+                platform = Platform.Steam;
+                return true;
+            case PlayerIdProvidedTypes.Epic:
+                platform = Platform.EpicGames;
+                return true;
+            default:
+                platform = default;
+                return false;
+        }
     }
 
     private string PlayerIdToPlatformUserId(PlayerId playerId, Platform platform)
