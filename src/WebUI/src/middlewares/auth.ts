@@ -5,6 +5,7 @@ import { useUserStore } from '@/stores/user';
 import { userManager, signInSilent } from '@/services/auth-service';
 
 import type Role from '@/models/role';
+import { Platform } from '@/models/platform';
 
 const routeHasAnyRoles = (route: RouteLocationNormalized<any>): boolean =>
   Boolean(route.meta?.roles?.length);
@@ -29,11 +30,7 @@ export const authRouterMiddleware: NavigationGuard = async to => {
 
   // (2)
   if (!userStore.user) {
-    let token = null;
-
-    token = await signInSilent();
-
-    if (token) {
+    if ((await signInSilent(Platform.Steam)) !== null) {
       await userStore.fetchUser();
     }
   }

@@ -14,7 +14,35 @@
 }
 
 .o-field--addons {
-  @apply flex flex-wrap gap-4;
+  @apply flex flex-wrap;
+}
+
+.o-field--addons > :first-child:not(:only-child) button,
+.o-field--addons > :first-child:not(:only-child) input,
+.o-field--addons > :first-child:not(:only-child) select,
+.o-field--addons > button:first-child,
+.o-field--addons > input:first-child,
+.o-field--addons > select:first-child {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+.o-field--addons > :last-child:not(:only-child) button,
+.o-field--addons > :last-child:not(:only-child) input,
+.o-field--addons > :last-child:not(:only-child) select,
+.o-field--addons > button:last-child,
+.o-field--addons > input:last-child,
+.o-field--addons > select:last-child {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.o-field--addons > :not(:first-child):not(:last-child) button,
+.o-field--addons > :not(:first-child):not(:last-child) input,
+.o-field--addons > :not(:first-child):not(:last-child) select,
+.o-field--addons > button:not(:first-child):not(:last-child),
+.o-field--addons > input:not(:first-child):not(:last-child),
+.o-field--addons > select:not(:first-child):not(:last-child) {
+  border-radius: 0;
 }
 
 .o-field--filled {

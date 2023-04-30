@@ -9,23 +9,23 @@ const props = withDefaults(
     clanRole?: ClanMemberRole | null;
     isSelf?: boolean;
     hiddenPlatform?: boolean;
-    size?: 'md' | 'lg';
+    size?: 'sm' | 'xl';
   }>(),
   {
     isSelf: false,
     hiddenPlatform: false,
-    size: 'md',
+    size: 'sm',
   }
 );
 </script>
 
 <template>
-  <div class="flex select-none items-center gap-2">
+  <div class="flex items-center gap-2">
     <img
       :src="user.avatar"
       alt=""
       class="rounded-full"
-      :class="size === 'lg' ? 'h-10 w-10' : 'h-7 w-7'"
+      :class="size === 'xl' ? 'h-10 w-10' : 'h-7 w-7'"
     />
 
     <div class="flex items-center gap-1">
@@ -53,6 +53,7 @@ const props = withDefaults(
       v-if="!hiddenPlatform"
       :platform="user.platform"
       :platformUserId="user.platformUserId"
+      :size="size"
     />
   </div>
 </template>

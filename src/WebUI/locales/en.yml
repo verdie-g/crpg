@@ -3,6 +3,27 @@ locale:
   ru: Russian
   cn: Chinese
 
+platform:
+  Steam: Steam
+  EpicGames: Epic Games
+
+installation:
+  title: Installation
+  common:
+    bannerlordLauncher: Launch Bannerlord
+    multiplayerModsTab: Navigate to the Multiplayer Mods tab
+    activateMod: Click to select the cRPG Mod and enable it
+    launchMultiplayerGame: Launch the game in Multiplayer!
+  platform:
+    steam:
+      subscribe: Subscribe to the {steamWorkshopsLink}
+      update: To update the mod, you may need to unsub/sub to the mod in Steam Workshops
+    epic:
+      downloadLauncher: Download our {launcherLink}
+      startLauncher: Open the Launcher and wait for the mod to download
+      update: To update the mod it is enough to restart the launcher
+  help: If you have difficulty installing the modification, please contact us on {discordLink}
+
 dateTime:
   days:
     short: d
@@ -696,11 +717,9 @@ onlinePlayers:
   tooltip:
     title: Players online
 
-mainpage:
+homePage:
   intro: cRPG is a mod for {link}
   description: It adds persistence to the multiplayer. You start as a peasant and you'll develop your unique character with different stats and items.
-  login: Sign in with Steam
-  download: Download
 
 patreon: '
   <p>Do you like our project?</p>

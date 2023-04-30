@@ -67,6 +67,7 @@ config.global.plugins = [
 ];
 
 config.global.stubs = {
+  RouterLink: true,
   OButton: FakeBtn,
   OField: {
     template: `<div><div data-aq-o-field-stub-message-slot><slot name="message"/></div> <slot /></div>`,
@@ -76,8 +77,6 @@ config.global.stubs = {
   OCheckbox: FakeCheckBox,
   ORadio: FakeRadioBox,
   OIcon: true,
-  ODropdown: true,
-  ODropdownItem: true,
 
   OPagination: true,
   //
@@ -99,6 +98,7 @@ config.global.stubs = {
   VDropdown: {
     template: `<div data-aq-vdropdown-stub><slot /><slot name="popper" v-bind="{ hide: () => {} }" /></div>`,
   },
+  DropdownItem: true,
 };
 
 config.global.directives = {

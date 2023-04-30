@@ -35,7 +35,7 @@ await Promise.all([loadRestrictions(), loadUser()]);
   <div class="container">
     <h1 class="mb-14 flex items-center justify-center gap-4 text-center text-xl text-content-100">
       {{ $t('restriction.user.title') }}
-      <UserMedia :user="user!" size="lg" />
+      <UserMedia :user="user!" size="xl" />
     </h1>
 
     <section class="max-w-3xl">

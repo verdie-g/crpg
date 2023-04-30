@@ -18,11 +18,8 @@ it('switch lang', async () => {
   const langItems = wrapper.findAll('[data-aq-switch-lang-item]');
 
   // checked icon
-  expect(langItems.at(0)!.findComponent({ name: 'FontAwesomeLayers' }).exists()).toBeTruthy();
-  expect(langItems.at(0)!.classes('dropdown-item_active')).toBeTruthy();
-
-  expect(langItems.at(1)!.findComponent({ name: 'FontAwesomeLayers' }).exists()).toBeFalsy();
-  expect(langItems.at(1)!.classes('dropdown-item_active')).toBeFalsy();
+  expect(langItems.at(0)!.attributes('checked')).toEqual('true');
+  expect(langItems.at(1)!.attributes('checked')).toEqual('false');
 
   await langItems.at(1)!.trigger('click');
 

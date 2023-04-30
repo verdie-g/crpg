@@ -1,5 +1,14 @@
-import { UserManager, WebStorageStateStore, type User } from 'oidc-client-ts';
+import {
+  UserManager,
+  WebStorageStateStore,
+  type User,
+  // Log,
+} from 'oidc-client-ts';
 import Role from '@/models/role';
+import { Platform } from '@/models/platform';
+
+// Log.setLogger(console);
+// Log.setLevel(Log.DEBUG);
 
 interface TokenPayload {
   userId: number;
@@ -8,9 +17,7 @@ interface TokenPayload {
   issuedAt: Date;
 }
 
-interface WithAccesToken extends Pick<User, 'access_token'> {}
-
-export const extractToken = (user: WithAccesToken | null): string | null =>
+export const extractToken = (user: User | null): string | null =>
   user !== null ? user.access_token : null;
 
 export const parseJwt = (token: string) =>
@@ -18,23 +25,24 @@ export const parseJwt = (token: string) =>
 
 export const userManager = new UserManager({
   authority: import.meta.env.VITE_API_BASE_URL,
-  scope: 'openid offline_access user_api',
-  client_id: 'crpg-web-ui',
+  scope: 'openid offline_access user_api', // TODO: to .env/cfg
+  client_id: 'crpg-web-ui', // TODO: to .env/cfg
   redirect_uri: window.location.origin + '/signin-callback',
   silent_redirect_uri: window.location.origin + '/signin-silent-callback',
   post_logout_redirect_uri: window.location.origin,
-  response_type: 'code',
+  response_type: 'code', // TODO: to .env/cfg
   userStore: new WebStorageStateStore({ store: window.localStorage }),
-  extraQueryParams: {
-    identity_provider: 'steam',
-  },
 });
 
 export const getUser = () => userManager.getUser();
 
-export const signInSilent = async () => {
+export const signInSilent = async (platform: Platform) => {
   try {
-    const user = await userManager.signinSilent();
+    const user = await userManager.signinSilent({
+      extraQueryParams: {
+        identity_provider: platform,
+      },
+    });
     return extractToken(user);
   } catch (error) {
     // hide the oidc-client warning - login_require
@@ -42,11 +50,15 @@ export const signInSilent = async () => {
   }
 };
 
-export const login = async (): Promise<void> => {
-  const token = await signInSilent();
+export const login = async (platform: Platform) => {
+  const token = await signInSilent(platform);
 
-  if (!token) {
-    userManager.signinRedirect();
+  if (token === null) {
+    userManager.signinRedirect({
+      extraQueryParams: {
+        identity_provider: platform,
+      },
+    });
   }
 };
 
