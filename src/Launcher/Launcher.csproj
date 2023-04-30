@@ -5,11 +5,14 @@
     <TargetFramework>net7.0-windows</TargetFramework>
     <RootNamespace>Crpg.Launcher</RootNamespace>
     <AssemblyName>Crpg.Launcher</AssemblyName>
-    <ApplicationIcon>crpg_launcher_icon.ico</ApplicationIcon>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <SelfContained>true</SelfContained>
     <PublishTrimmed>true</PublishTrimmed>
     <PublishSingleFile>true</PublishSingleFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="Exists('Resources\crpg_launcher_icon.ico')">
+    <ApplicationIcon>Resources\crpg_launcher_icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>

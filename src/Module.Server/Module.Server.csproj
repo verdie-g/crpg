@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
     <RootNamespace>Crpg.Module</RootNamespace>
     <AssemblyName>Crpg.Module</AssemblyName>
     <ModuleName>cRPG</ModuleName>
