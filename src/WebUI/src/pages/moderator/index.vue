@@ -4,8 +4,6 @@ import { getRestrictions } from '@/services/restriction-service';
 definePage({
   meta: {
     layout: 'default',
-    showInNav: true,
-    sortInNav: 60,
     roles: ['Moderator', 'Admin'],
   },
 });

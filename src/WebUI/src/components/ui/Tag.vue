@@ -59,6 +59,6 @@ const computedClass = computed(() => {
     :class="computedClass"
   >
     <template v-if="label !== undefined">{{ label }}</template>
-    <OIcon v-if="icon !== undefined" :icon="icon" :size="size" />
+    <OIcon v-if="icon !== undefined" :icon="icon" :size="size === 'sm' ? 'xs' : 'sm'" />
   </div>
 </template>

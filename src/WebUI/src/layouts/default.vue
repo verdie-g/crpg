@@ -2,24 +2,18 @@
 import { useTransition } from '@vueuse/core';
 import { useElementSize } from '@vueuse/core';
 import VueCountdown from '@chenfengyuan/vue-countdown';
-import { routes } from 'vue-router/auto/routes';
-
 import { Region } from '@/models/region';
 import { useUserStore } from '@/stores/user';
 import { logout } from '@/services/auth-service';
 import { getUserActiveJoinRestriction } from '@/services/users-service';
-import { useNavigation } from '@/composables/use-navigation';
 import { useHappyHours } from '@/composables/use-hh';
 import { useGameServerStats } from '@/composables/use-game-server-stats';
 import { usePollInterval } from '@/composables/use-poll-interval';
-
 import { mainHeaderHeightKey } from '@/symbols/common';
 import { scrollToTop } from '@/utils/scroll';
 
 const userStore = useUserStore();
 const route = useRoute();
-
-const { mainNavigation } = useNavigation(routes, userStore.user!.role);
 
 const { state: joinRestrictionRemainingDuration, execute: loadJoinRestriction } = useAsyncState(
   () => getUserActiveJoinRestriction(userStore.user!.id),
@@ -54,9 +48,11 @@ provide(mainHeaderHeightKey, mainHeaderHeight);
 
 const { subscribe, unsubscribe } = usePollInterval();
 const id = Symbol('fetchUser');
+
 onMounted(() => {
   subscribe(id, userStore.fetchUser);
 });
+
 onBeforeUnmount(() => {
   unsubscribe(id);
 });
@@ -90,16 +86,7 @@ await userStore.getUserClanMember(); // TODO: get the clan role in the query `us
           <!-- TODO: to divider -->
           <div class="h-8 w-px select-none bg-border-200" />
 
-          <nav class="flex items-center gap-8">
-            <RouterLink
-              v-for="navLink in mainNavigation"
-              activeClass="text-content-100"
-              inactiveClass="text-content-300 hover:text-content-100"
-              :to="{ name: navLink.name }"
-            >
-              {{ $t(`nav.main.${navLink.name}`) }}
-            </RouterLink>
-          </nav>
+          <MainNavigation />
 
           <template v-if="isHHCountdownEnded && HHEventRemaining !== 0">
             <div class="h-8 w-px select-none bg-border-200" />

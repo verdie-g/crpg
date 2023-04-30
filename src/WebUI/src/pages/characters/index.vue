@@ -3,8 +3,6 @@ definePage({
   meta: {
     bg: 'background-2.webp',
     layout: 'default',
-    showInNav: true,
-    sortInNav: 100,
     middleware: 'activeCharacterRedirect',
     roles: ['User', 'Moderator', 'Admin'],
   },

@@ -107,6 +107,10 @@ region:
 
 region-title: 区域
 
+clanBalancingExplanation: "
+ <h3>你不在任何宗族中</h3>
+ <p>为了与同一团队的朋友一起游戏，我们建议创建一个新的宗族或加入一个现有的宗族</p>"
+
 character:
   nav:
     overview: 概述
