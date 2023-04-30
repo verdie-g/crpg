@@ -26,7 +26,7 @@ internal class CrpgItemValueModel : ItemValueModel
         [ItemObject.ItemTypeEnum.Thrown] = (7385, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Arrows] = (4500, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Bolts] = (8200, ItemPriceCoeffs),
-        [ItemObject.ItemTypeEnum.Banner] = (7000, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Banner] = (3000, ItemPriceCoeffs),
     };
 
     public override float CalculateTier(ItemObject item)
