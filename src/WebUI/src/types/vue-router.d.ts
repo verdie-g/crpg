@@ -16,8 +16,6 @@ export enum RouteMiddleware {
 declare module 'vue-router' {
   interface RouteMeta {
     layout?: string;
-    showInNav?: boolean;
-    sortInNav?: number;
     title?: string;
     roles?: Array<`${Role}`>;
     middleware?: `${RouteMiddleware}`;

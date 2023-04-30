@@ -1,4 +1,4 @@
-import { mergeObjectWithSum, flatten } from './object';
+import { mergeObjectWithSum } from './object';
 
 it('mergeObjectWithSum', () => {
   const obj1 = {
@@ -17,25 +17,4 @@ it('mergeObjectWithSum', () => {
   };
 
   expect(mergeObjectWithSum(obj1, obj2)).toEqual(obj3);
-});
-
-interface TreeNode {
-  id: number;
-  children?: TreeNode[];
-}
-
-describe('flatten', () => {
-  it('object', () => {
-    const nested: TreeNode = { id: 1, children: [{ id: 2 }] };
-    const flat = [{ id: 1 }, { id: 2 }];
-
-    expect(flatten(nested)).toEqual(flat);
-  });
-
-  it('array', () => {
-    const nested: TreeNode[] = [{ id: 1, children: [{ id: 2 }] }];
-    const flat = [{ id: 1 }, { id: 2 }];
-
-    expect(flatten(nested)).toEqual(flat);
-  });
 });

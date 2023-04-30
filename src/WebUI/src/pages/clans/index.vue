@@ -9,8 +9,6 @@ import { useUserStore } from '@/stores/user';
 definePage({
   meta: {
     layout: 'default',
-    showInNav: true,
-    sortInNav: 80,
     roles: ['User', 'Moderator', 'Admin'],
   },
 });

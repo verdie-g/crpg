@@ -37,16 +37,3 @@ export const omitPredicate = <T extends {}, K extends keyof T>(
 ): Pick<T, K> => pickFunc(obj, predicate);
 
 export const getEntries = <T extends object>(obj: T) => Object.entries(obj) as Entries<T>;
-
-export const flatten = <T extends { children?: T[] }>(obj: T | T[]) => {
-  const array = Array.isArray(obj) ? obj : [obj];
-
-  return array.reduce((acc, value) => {
-    acc.push(value);
-
-    if (value.children !== undefined) {
-      acc = acc.concat(flatten(value.children));
-    }
-    return acc;
-  }, [] as T[]);
-};

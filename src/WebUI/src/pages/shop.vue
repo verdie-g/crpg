@@ -16,8 +16,6 @@ import { useSearchDebounced } from '@/composables/use-search-debounce';
 definePage({
   meta: {
     layout: 'default',
-    showInNav: true,
-    sortInNav: 90,
     noStickyHeader: true,
     roles: ['User', 'Moderator', 'Admin'],
   },
