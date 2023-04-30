@@ -109,9 +109,7 @@ builder.Services.AddOpenIddict()
         options.AddDevelopmentEncryptionCertificate()
             .AddDevelopmentSigningCertificate();
 
-        options.UseAspNetCore()
-            .EnableRedirectionEndpointPassthrough();
-
+        var aspNetCoreBuilder = options.UseAspNetCore();
         var webIntegrationBuilder = options.UseWebProviders();
 
         string? epicGamesClientId = builder.Configuration["EpicGames:ClientId"];
@@ -119,6 +117,7 @@ builder.Services.AddOpenIddict()
 
         if (epicGamesClientId != null && epicGamesClientSecret != null)
         {
+            aspNetCoreBuilder.EnableRedirectionEndpointPassthrough();
             webIntegrationBuilder.UseEpicGames(epicGames =>
             {
                 epicGames.SetClientId(epicGamesClientId)
