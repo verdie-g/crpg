@@ -12,7 +12,7 @@ namespace Crpg.Module.Modes.Conquest;
 
 internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFlagInfo
 {
-    private const float FlagCaptureRange = 4f;
+    private const float FlagCaptureRange = 8f;
     private const float FlagCaptureRangeSquared = FlagCaptureRange * FlagCaptureRange;
 
     private readonly MissionScoreboardComponent _missionScoreboardComponent;
@@ -310,7 +310,7 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
             CaptureTheFlagFlagDirection flagDirection = ComputeFlagDirection(flag, flagOwner, closestAgentToFlag);
             if (flagDirection != CaptureTheFlagFlagDirection.None)
             {
-                flag.SetMoveFlag(flagDirection);
+                flag.SetMoveFlag(flagDirection, speedMultiplier: 0.5f);
             }
 
             flag.OnAfterTick(closestAgentToFlag != null, out bool flagOwnerChanged);
