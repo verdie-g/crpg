@@ -1,5 +1,4 @@
 using System.Security.Claims;
-using System.Text.Json;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Domain.Entities.Users;
 using OpenIddict.Abstractions;
@@ -23,16 +22,6 @@ public class CurrentUserService : ICurrentUserService
         string? roleStr = claimsPrincipal.FindFirstValue(OpenIddictConstants.Claims.Role);
         if (idStr == null || roleStr == null)
         {
-            string? authorizationHeader = httpContext.Request.Headers.Authorization.FirstOrDefault();
-            if (authorizationHeader != null)
-            {
-                string claimsStr = JsonSerializer.Serialize(claimsPrincipal.Claims.Select(c => $"{c.Type}: {c.Value}"));
-                Logger.Log(LogLevel.Warning,
-                    "User id ({0}) or role ({1}) in request was null. AutenticationType: {3}. Claims: {4}. JWT: {5}. Path: {6}",
-                    idStr, roleStr, claimsPrincipal.Identity?.AuthenticationType,
-                    claimsStr, authorizationHeader, httpContext.Request.Path);
-            }
-
             return;
         }
 
