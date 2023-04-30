@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
     <RootNamespace>Crpg.Module.UTest</RootNamespace>
     <AssemblyName>Crpg.Module.UTest</AssemblyName>
   </PropertyGroup>

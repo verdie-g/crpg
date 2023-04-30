@@ -45,7 +45,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Module.Client", "src\Module
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Launcher", "src\Launcher\Launcher.csproj", "{E95AAA36-EE18-4699-BE42-8AB86A6941F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module.UTest", "test\Module.UTest\Module.UTest.csproj", "{40DFAEE0-0A6D-4349-B6F1-132325F50966}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Module.UTest", "test\Module.UTest\Module.UTest.csproj", "{40DFAEE0-0A6D-4349-B6F1-132325F50966}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
