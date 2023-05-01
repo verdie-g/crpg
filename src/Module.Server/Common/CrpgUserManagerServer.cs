@@ -215,10 +215,9 @@ internal class CrpgUserManagerServer : MissionNetwork
         {
             case Platform.Steam:
                 return playerId.Id2.ToString(CultureInfo.InvariantCulture);
-            case Platform.Epic:
+            case Platform.EpicGames:
                 byte[] guidBytes = new ArraySegment<byte>(playerId.ToByteArray(), offset: 16, count: 16).ToArray();
                 return new Guid(guidBytes).ToString("N");
-            case Platform.Gog:
             default:
                 throw new ArgumentOutOfRangeException(nameof(platform), platform, null);
         }
