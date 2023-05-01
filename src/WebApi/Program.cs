@@ -104,12 +104,7 @@ builder.Services.AddOpenIddict()
     })
     .AddClient(options =>
     {
-        options.AllowAuthorizationCodeFlow();
-
-        options.AddDevelopmentEncryptionCertificate()
-            .AddDevelopmentSigningCertificate();
-
-        var aspNetCoreBuilder = options.UseAspNetCore();
+        bool webProviderAdded = false;
         var webIntegrationBuilder = options.UseWebProviders();
 
         string? epicGamesClientId = builder.Configuration["EpicGames:ClientId"];
@@ -117,14 +112,28 @@ builder.Services.AddOpenIddict()
 
         if (epicGamesClientId != null && epicGamesClientSecret != null)
         {
-            aspNetCoreBuilder.EnableRedirectionEndpointPassthrough();
             webIntegrationBuilder.UseEpicGames(epicGames =>
             {
-                epicGames.SetClientId(epicGamesClientId)
+                epicGames
+                    .SetClientId(epicGamesClientId)
                     .SetClientSecret(epicGamesClientSecret)
                     .SetRedirectUri("connect/callback-epic-games");
             });
+            webProviderAdded = true;
         }
+
+        if (!webProviderAdded)
+        {
+            return;
+        }
+
+        options.AllowAuthorizationCodeFlow();
+
+        options.AddDevelopmentEncryptionCertificate()
+            .AddDevelopmentSigningCertificate();
+
+        options.UseAspNetCore()
+            .EnableRedirectionEndpointPassthrough();
     })
     .AddValidation(options =>
     {
