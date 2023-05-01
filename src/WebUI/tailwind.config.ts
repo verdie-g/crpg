@@ -142,6 +142,17 @@ export default {
         sm: '0.188rem', // 2px
       },
 
+      // https://tailwindcss.com/docs/animation#using-custom-values
+      keyframes: {
+        ping: {
+          '75%, 100%': { transform: 'scale(1.5)', opacity: '0' },
+        },
+      },
+
+      animation: {
+        ping: 'ping 1s linear infinite',
+      },
+
       // ref: https://github.com/tailwindlabs/tailwindcss-typography/blob/master/src/styles.js
       typography: ({ theme }) => {
         // console.log(theme('spacing'));

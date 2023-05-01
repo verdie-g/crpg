@@ -3,7 +3,7 @@ import { useTransition } from '@vueuse/core';
 import { type GameServerStats } from '@/models/game-server-stats';
 import { n } from '@/services/translate-service';
 
-const gameStatsErrorIndicator = "?";
+const gameStatsErrorIndicator = '?';
 
 const props = withDefaults(
   defineProps<{ gameServerStats: GameServerStats | null; showLabel?: boolean }>(),
@@ -13,10 +13,10 @@ const props = withDefaults(
 );
 
 const animatedPlayingCount = useTransition(
-  computed(() => props.gameServerStats !== null ? props.gameServerStats.total.playingCount : -1)
+  computed(() => (props.gameServerStats !== null ? props.gameServerStats.total.playingCount : -1))
 );
 
-const animatedPlayingCountString = computed(()=>
+const animatedPlayingCountString = computed(() =>
   props.gameServerStats !== null
     ? n(Number(animatedPlayingCount.value.toFixed(0)), 'decimal')
     : gameStatsErrorIndicator
@@ -24,11 +24,20 @@ const animatedPlayingCountString = computed(()=>
 </script>
 
 <template>
-  <VTooltip :disabled="gameServerStats === null || Object.keys(gameServerStats.regions).length === 0">
+  <VTooltip
+    :disabled="gameServerStats === null || Object.keys(gameServerStats.regions).length === 0"
+  >
     <div class="flex select-none items-center gap-1.5 hover:text-content-100">
-      <OIcon icon="online" size="lg" class="text-[#53BC96]" style="--fa-secondary-opacity: 0.15" />
+      <FontAwesomeLayers class="fa-lg">
+        <FontAwesomeIcon class="text-[#53BC96]" :icon="['crpg', 'online']" />
+        <FontAwesomeIcon
+          class="animate-ping text-[#53BC96] text-opacity-15"
+          :icon="['crpg', 'online-ring']"
+        />
+      </FontAwesomeLayers>
+
       <div v-if="showLabel" data-aq-online-players-count>
-        {{ $t('onlinePlayers.format', {count: animatedPlayingCountString}) }}
+        {{ $t('onlinePlayers.format', { count: animatedPlayingCountString }) }}
       </div>
       <div v-else class="w-8" data-aq-online-players-count>
         {{ animatedPlayingCountString }}
