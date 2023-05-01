@@ -16,13 +16,6 @@ if (bannerlordPath == null)
 
 Console.WriteLine($"Using Bannerlord installed at '{bannerlordPath}'");
 
-if (!CheckSteamIsRunning())
-{
-    Console.WriteLine("Steam is not running. Run it and try again. Press enter to exit.");
-    Console.Read();
-    return;
-}
-
 try
 {
     await UpdateCrpgAsync(bannerlordPath);
@@ -45,7 +38,13 @@ Process.Start(new ProcessStartInfo
 
 static string? ResolveBannerlordPath()
 {
-    string? bannerlordPath = ResolveBannerlordPathFromRegistry();
+    string? bannerlordPath = ResolveBannerlordPathSteam();
+    if (bannerlordPath != null)
+    {
+        return bannerlordPath;
+    }
+
+    bannerlordPath = ResolveBannerlordPathEpicGames();
     if (bannerlordPath != null)
     {
         return bannerlordPath;
@@ -74,7 +73,7 @@ static string? ResolveBannerlordPath()
     return null;
 }
 
-static string? ResolveBannerlordPathFromRegistry()
+static string? ResolveBannerlordPathSteam()
 {
     string? steamPath = (string?)Registry.GetValue("HKEY_CURRENT_USER\\Software\\Valve\\Steam", "SteamPath", null);
     if (steamPath == null)
@@ -114,6 +113,17 @@ static string? ResolveBannerlordPathFromRegistry()
     return null;
 }
 
+static string? ResolveBannerlordPathEpicGames()
+{
+    const string defaultBannerlordPath = "C:/Program Files/Epic Games/MountAndBlade2";
+    if (File.Exists(Path.Combine(defaultBannerlordPath, "bin/Win64_Shipping_Client/Bannerlord.exe")))
+    {
+        return defaultBannerlordPath;
+    }
+
+    return null;
+}
+
 static string? AskForBannerlordPath()
 {
     string? bannerlordPath = null;
@@ -136,11 +146,6 @@ static string? AskForBannerlordPath()
     }
 
     return bannerlordPath;
-}
-
-static bool CheckSteamIsRunning()
-{
-    return Process.GetProcessesByName("steam").Length != 0;
 }
 
 static async Task UpdateCrpgAsync(string bannerlordPath)
