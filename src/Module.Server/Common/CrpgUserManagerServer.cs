@@ -125,8 +125,9 @@ internal class CrpgUserManagerServer : MissionNetwork
         VirtualPlayer vp = networkPeer.VirtualPlayer;
         if (!TryConvertPlatform(vp.Id.ProvidedType, out Platform platform))
         {
-            Debug.Print($"Kick player {vp.UserName} playing on {vp.Id.ProvidedType}");
+            Debug.Print($"Kick player {vp.UserName} playing on {vp.Id.ProvidedType} (id: {vp.Id})");
             KickHelper.Kick(networkPeer, DisconnectType.KickedByHost, "unsupported_platform");
+            return;
         }
 
         string platformUserId = PlayerIdToPlatformUserId(vp.Id, platform);

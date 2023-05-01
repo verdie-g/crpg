@@ -39,7 +39,7 @@
   <string id="str_kick_reason.tournament_only" text="{=*}Only tournament characters can join this server." />
   <string id="str_kick_reason.bad_player_height" text="{=*}Your character has a weird height. Fix it in the Bannerlord Armory to join a cRPG server." />
   <string id="str_kick_reason.empty_name" text="{=*}Empty names are not allowed on cRPG servers." />
-  <string id="str_kick_reason.unsupported_platform" text="{=*}cRPG servers only support Steam." />
+  <string id="str_kick_reason.unsupported_platform" text="{=*}cRPG servers only support Steam and Epic Games." />
   <string id="str_kick_reason.unreachable_server" text="{=*}The cRPG main server is unreachable. Try again later." />
 
   <!-- Battle Maps -->
