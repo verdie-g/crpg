@@ -22,6 +22,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Logging\Logging.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="$(MB_SERVER_PATH)\bin\Win64_Shipping_Server\TaleWorlds.*.dll">
       <Private>False</Private>
     </Reference>
@@ -46,14 +50,18 @@
 
   <ItemGroup>
     <PackageReference Include="Lib.Harmony" Version="2.2.2" GeneratePathProperty="true" />
-    <PackageReference Include="MonoMod.Common" Version="22.6.3.1" GeneratePathProperty="true" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.31" GeneratePathProperty="true" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.31" GeneratePathProperty="true" />
     <PackageReference Include="Mono.Cecil" Version="0.11.4" GeneratePathProperty="true" />
+    <PackageReference Include="MonoMod.Common" Version="22.6.3.1" GeneratePathProperty="true" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="$(PkgLib_Harmony)\lib\netcoreapp3.1\0Harmony.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" />
     <None Include="$(PkgMonoMod_Common)\lib\netstandard2.0\MonoMod.Common.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" />
     <None Include="$(PkgMono_Cecil)\lib\netstandard2.0\Mono.Cecil.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+    <None Include="$(PkgMicrosoft_Extensions_Logging_Abstractions)\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+    <None Include="$(PkgMicrosoft_Extensions_Logging)\lib\netstandard2.0\Microsoft.Extensions.Logging.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" />
   </ItemGroup>
 
   <ItemGroup>

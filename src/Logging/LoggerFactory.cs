@@ -3,6 +3,8 @@ using Microsoft.Extensions.Logging.Abstractions;
 
 namespace Crpg.Logging;
 
+#nullable enable
+
 /// <summary>
 /// A static class to create <see cref="Microsoft.Extensions.Logging.ILogger"/>s.
 /// </summary>

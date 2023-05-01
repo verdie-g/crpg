@@ -1,15 +1,17 @@
 ﻿using Crpg.Module.Common;
 using Crpg.Module.Common.Models;
+using Crpg.Module.Logging;
 using Crpg.Module.Modes.Battle;
 using Crpg.Module.Modes.Conquest;
 using Crpg.Module.Modes.Duel;
 using Crpg.Module.Modes.Siege;
 using Crpg.Module.Modes.TeamDeathmatch;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using TaleWorlds.Core;
-using TaleWorlds.Library;
 using TaleWorlds.ModuleManager;
 using TaleWorlds.MountAndBlade;
+using LoggerFactory = Microsoft.Extensions.Logging.LoggerFactory;
 
 #if CRPG_SERVER
 using Crpg.Module.HarmonyPatches;
@@ -26,10 +28,33 @@ namespace Crpg.Module;
 
 internal class CrpgSubModule : MBSubModuleBase
 {
+    private static readonly ILogger Logger;
+
     static CrpgSubModule()
     {
+        string crpgVersion = typeof(CrpgSubModule).Assembly.GetName().Version!.Revision.ToString();
+        string? logFolder = Environment.GetEnvironmentVariable("CRPG_LOG_FOLDER");
+        logFolder = "C:/Users/g.verdier/Desktop";
+        string? logPath = logFolder == null ? null : Path.Combine(logFolder, $"crpg-v{crpgVersion}.txt");
+
+        var msLoggerFactory = LoggerFactory.Create(builder =>
+        {
+            if (logPath != null)
+            {
+                builder.AddProvider(new FileLoggerProvider(logPath));
+            }
+
+            builder.AddProvider(new TwLoggerProvider());
+            builder.SetMinimumLevel(LogLevel.Debug);
+        });
+        Crpg.Logging.LoggerFactory.Initialize(msLoggerFactory);
+        Logger = Crpg.Logging.LoggerFactory.CreateLogger<CrpgSubModule>();
+
         AppDomain.CurrentDomain.UnhandledException += (_, args) =>
-            Debug.Print(args.ExceptionObject.ToString(), color: Debug.DebugColor.Red);
+        {
+            Logger.LogCritical("UnhandledException: {0}", args.ExceptionObject);
+            msLoggerFactory.Dispose();
+        };
     }
 
     private CrpgConstants _constants = default!;
