@@ -1,4 +1,4 @@
-﻿ServerName cRPG - Test Duel - c-rpg.eu
+﻿ServerName cRPG - Test Duel - namidaka.fr
 GameType cRPGDuel
 GamePassword yoyo
 Map mp_duel_mode_map_004
