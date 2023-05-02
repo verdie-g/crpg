@@ -73,5 +73,10 @@
   // Use 'postCreateCommand' to run commands after the container is created.
   "postCreateCommand": "bash ./.devcontainer/ubuntu-create-dotnet-devcert.sh",
   // Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-  "remoteUser": "root"
+  "remoteUser": "root",
+
+   // https://code.visualstudio.com/remote/advancedcontainers/persist-bash-history
+  "mounts": [
+    "source=projectname-bashhistory,target=/commandhistory,type=volume"
+]
 }
