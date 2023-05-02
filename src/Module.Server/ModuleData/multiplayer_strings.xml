@@ -2,7 +2,7 @@
 <strings>
   <!-- Battle -->
   <string id="str_multiplayer_official_game_type_name.cRPGBattle" text="{=*}cRPG Battle" />
-  <string id="str_multiplayer_official_game_type_explainer.cRPGBattle" text="{=*}·   Kill the entire enemy team to win{newline}·   Gain experience and gold every minute{newline}·   Upgrade your character on c-rpg.eu" />
+  <string id="str_multiplayer_official_game_type_explainer.cRPGBattle" text="{=*}·   Kill the entire enemy team to win{newline}·   Gain experience and gold every minute{newline}·   Upgrade your character on namidaka.fr" />
   <string id="str_multiplayer_game_type.cRPGBattle" text="{=*}cRPG Battle" />
 
   <!-- Skirmish -->

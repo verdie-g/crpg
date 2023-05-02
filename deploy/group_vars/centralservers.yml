@@ -18,7 +18,7 @@ crpg_api_log_file: "/var/log/crpg/{{ crpg_api_service_name }}.log"
 
 crpg_ui_path: "/var/www/{{ crpg_domain_name }}"
 
-crpg_domain_name: c-rpg.eu
+crpg_domain_name: namidaka.fr
 
 crpg_db_service_name: crpg-db
 crpg_db: crpg
