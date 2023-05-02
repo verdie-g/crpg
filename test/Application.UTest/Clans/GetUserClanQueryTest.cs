@@ -41,7 +41,7 @@ public class GetUserClanQueryTest : TestBase
     [Test]
     public async Task ShouldReturnClanIfUserInAClan()
     {
-        User user = new() { ClanMembership = new ClanMember { Clan = new Clan() } };
+        User user = new() { ClanMembership = new ClanMember { Clan = new Clan(), Role = ClanMemberRole.Member } };
         ArrangeDb.Users.Add(user);
         await ArrangeDb.SaveChangesAsync();
 
@@ -51,8 +51,9 @@ public class GetUserClanQueryTest : TestBase
             UserId = user.Id,
         }, CancellationToken.None);
 
-        var clan = res.Data!;
+        var resData = res.Data!;
         Assert.That(res.Errors, Is.Null);
-        Assert.That(clan.Id, Is.EqualTo(user.ClanMembership.ClanId));
+        Assert.That(resData.Clan.Id, Is.EqualTo(user.ClanMembership.ClanId));
+        Assert.That(resData.Role, Is.EqualTo(user.ClanMembership.Role));
     }
 }

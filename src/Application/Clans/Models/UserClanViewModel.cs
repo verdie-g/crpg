@@ -1,10 +1,7 @@
 using Crpg.Application.Common.Mappings;
-
-namespace Crpg.Application.Clans.Models;
-using Crpg.Application.Common.Mappings;
 using Crpg.Domain.Entities.Clans;
 
-
+namespace Crpg.Application.Clans.Models;
 public record UserClanViewModel : IMapFrom<ClanMember>
 {
     public ClanViewModel Clan { get; init; } = default!;
