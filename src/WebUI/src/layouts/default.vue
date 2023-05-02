@@ -36,10 +36,10 @@ const { gameServerStats, loadGameServerStats } = useGameServerStats();
 
 const animatedUserGold = useTransition(computed(() => userStore.user!.gold));
 
-const promises: any = [loadGameServerStats(), loadJoinRestriction()];
+const promises: Array<Promise<any>> = [loadGameServerStats(), loadJoinRestriction()];
 
 if (userStore.clan === null) {
-  promises.push(userStore.getUserClan());
+  promises.push(userStore.getUserClanAndRole());
 }
 
 const mainHeader = ref(null);
@@ -58,7 +58,6 @@ onBeforeUnmount(() => {
 });
 
 await Promise.all(promises);
-await userStore.getUserClanMember(); // TODO: get the clan role in the query `users/self/clans`
 </script>
 
 <template>
@@ -134,7 +133,7 @@ await userStore.getUserClanMember(); // TODO: get the clan role in the query `us
           <UserMedia
             :user="{ ...userStore.user, avatar: userStore.user.avatar }"
             :clan="userStore.clan"
-            :clanRole="userStore.clanMember?.role"
+            :clanRole="userStore.clanMemberRole"
             hiddenPlatform
             size="lg"
           />

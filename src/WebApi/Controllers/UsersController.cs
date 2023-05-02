@@ -448,7 +448,7 @@ public class UsersController : BaseController
     /// Gets user clan or null.
     /// </summary>
     [HttpGet("self/clans")]
-    public Task<ActionResult<Result<ClanViewModel>>> GetUserClan()
+    public Task<ActionResult<Result<UserClanViewModel>>> GetUserClan()
     {
         GetUserClanQuery req = new() { UserId = CurrentUser.User!.Id };
         return ResultToActionAsync(Mediator.Send(req));

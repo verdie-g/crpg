@@ -191,9 +191,11 @@ describe('getUserClan', () => {
   it('user has a clan', async () => {
     mockGet('/users/self/clans').willResolve(
       response({
-        id: 1,
-        tag: 'mlp',
-        name: 'My Little Pony',
+        clan: {
+          id: 1,
+          tag: 'mlp',
+          name: 'My Little Pony',
+        },
       })
     );
 

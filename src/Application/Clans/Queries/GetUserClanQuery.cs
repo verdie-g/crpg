@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Clans.Queries;
 
-public record GetUserClanQuery : IMediatorRequest<ClanViewModel>
+public record GetUserClanQuery : IMediatorRequest<UserClanViewModel>
 {
     public int UserId { get; init; }
 
-    internal class Handler : IMediatorRequestHandler<GetUserClanQuery, ClanViewModel>
+    internal class Handler : IMediatorRequestHandler<GetUserClanQuery, UserClanViewModel>
     {
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
@@ -22,7 +22,7 @@ public record GetUserClanQuery : IMediatorRequest<ClanViewModel>
             _mapper = mapper;
         }
 
-        public async Task<Result<ClanViewModel>> Handle(GetUserClanQuery req, CancellationToken cancellationToken)
+        public async Task<Result<UserClanViewModel>> Handle(GetUserClanQuery req, CancellationToken cancellationToken)
         {
             var user = await _db.Users
                 .AsNoTracking()
@@ -33,7 +33,7 @@ public record GetUserClanQuery : IMediatorRequest<ClanViewModel>
                 return new(CommonErrors.UserNotFound(req.UserId));
             }
 
-            return new(_mapper.Map<ClanViewModel>(user.ClanMembership?.Clan));
+            return new(_mapper.Map<UserClanViewModel>(user.ClanMembership));
         }
     }
 }

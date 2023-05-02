@@ -1,17 +1,16 @@
 import { type User, type UserItem } from '@/models/user';
 import { type Character } from '@/models/character';
-import { ClanMember, type Clan } from '@/models/clan';
+import { type ClanMemberRole, type Clan } from '@/models/clan';
 
 import { getUser, getUserItems, buyUserItem, getUserClan } from '@/services/users-service';
 import { getCharacters } from '@/services/characters-service';
-import { getClanMembers, getClanMember } from '@/services/clan-service';
 
 interface State {
   user: User | null;
   characters: Character[];
   userItems: UserItem[];
   clan: Clan | null;
-  clanMember: ClanMember | null;
+  clanMemberRole: ClanMemberRole | null;
 }
 
 export const useUserStore = defineStore('user', {
@@ -20,7 +19,7 @@ export const useUserStore = defineStore('user', {
     characters: [],
     userItems: [],
     clan: null,
-    clanMember: null,
+    clanMemberRole: null,
   }),
 
   getters: {
@@ -66,14 +65,12 @@ export const useUserStore = defineStore('user', {
       this.subtractGold(userItem.baseItem.price);
     },
 
-    async getUserClan() {
-      this.clan = await getUserClan();
-    },
+    async getUserClanAndRole() {
+      const userClanAndRole = await getUserClan();
+      if (userClanAndRole === null) return;
 
-    async getUserClanMember() {
-      if (this.clan === null || this.user === null) return;
-
-      this.clanMember = getClanMember(await getClanMembers(this.clan.id), this.user.id);
+      this.clan = userClanAndRole.clan;
+      this.clanMemberRole = userClanAndRole.role;
     },
   },
 });

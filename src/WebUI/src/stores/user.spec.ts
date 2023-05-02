@@ -22,15 +22,6 @@ vi.mock('@/services/characters-service', () => {
   };
 });
 
-const mockedGetClanMembers = vi.fn();
-const mockedGetClanMember = vi.fn();
-vi.mock('@/services/clan-service', () => {
-  return {
-    getClanMembers: mockedGetClanMembers,
-    getClanMember: mockedGetClanMember,
-  };
-});
-
 import { useUserStore } from './user';
 
 describe('userStore', () => {
@@ -140,32 +131,24 @@ describe('userStore', () => {
       expect(store.userItems).toEqual([mockUserItems[0]]);
     });
 
-    it('getUserClan', async () => {
-      const CLAN = { id: 1, tag: 'mlp' };
-      mockedGetUserClan.mockResolvedValue(CLAN);
-
-      await store.getUserClan();
-
-      expect(store.clan).toEqual(CLAN);
-    });
-
-    describe('getUserClanMember', () => {
+    describe('getUserClanAndRole', () => {
       it('not in a clan', async () => {
-        store.$patch({ clan: null, user: null });
+        mockedGetUserClan.mockReturnValue(null);
 
-        await store.getUserClanMember();
+        await store.getUserClanAndRole();
 
-        expect(store.clanMember).toEqual(null);
+        expect(store.clan).toEqual(null);
+        expect(store.clanMemberRole).toEqual(null);
       });
 
-      it('has some clan', async () => {
-        const CLAN = { id: 1, tag: 'mlp' };
-        mockedGetClanMember.mockReturnValue(CLAN);
-        store.$patch({ clan: { id: 1 }, user: { id: 1 } });
+      it('has some clan and role', async () => {
+        const USER_CLAN = { clan: { id: 1, tag: 'mlp' }, role: 'Member' };
+        mockedGetUserClan.mockReturnValue(USER_CLAN);
 
-        await store.getUserClanMember();
+        await store.getUserClanAndRole();
 
-        expect(store.clanMember).toEqual(CLAN);
+        expect(store.clan).toEqual(USER_CLAN.clan);
+        expect(store.clanMemberRole).toEqual(USER_CLAN.role);
       });
     });
   });

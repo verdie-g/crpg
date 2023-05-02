@@ -8,7 +8,7 @@ import {
   type UserItemRank,
 } from '@/models/user';
 import Platform from '@/models/platform';
-import { type ClanEdition } from '@/models/clan';
+import { type ClanEdition, type ClanMemberRole } from '@/models/clan';
 import { type RestrictionWithActive } from '@/models/restriction';
 
 import { get, post, put, del } from '@/services/crpg-client';
@@ -71,11 +71,17 @@ export const groupUserItemsByType = (items: UserItem[]) =>
     }, [] as UserItemsByType[])
     .sort((a, b) => a.type.localeCompare(b.type));
 
-export const getUserClan = async () => {
-  const clan = await get<ClanEdition | null>('/users/self/clans');
-  if (clan === null) return null;
+interface UserClan {
+  clan: ClanEdition;
+  role: ClanMemberRole;
+}
 
-  return mapClanResponse(clan);
+export const getUserClan = async () => {
+  const userClan = await get<UserClan | null>('/users/self/clans');
+  if (userClan === null || userClan.clan === null) return null;
+
+  // do conversion since argb values are stored as numbers in db and we need strings
+  return { clan: mapClanResponse(userClan.clan), role: userClan.role };
 };
 
 export const getUserRestrictions = async (id: number) =>
