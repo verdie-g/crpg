@@ -57,7 +57,7 @@
   <string id="str_multiplayer_scene_name.crpg_battle_fallenaqueduct" text="{=*}Fallen Aqueduct" />
   <string id="str_multiplayer_scene_name.crpg_battle_ghosttown" text="{=*}Ghost Town" />
   <string id="str_multiplayer_scene_name.crpg_battle_hadiiqa" text="{=*}Hadiiqa" />
-  <string id="str_multiplayer_scene_name.crpg_battle_helmspoint" text="{=*}Helm's Hoint" />
+  <string id="str_multiplayer_scene_name.crpg_battle_helmspoint" text="{=*}Helm's Point" />
   <string id="str_multiplayer_scene_name.crpg_battle_hexenbrennen" text="{=*}Hexenbrennen" />
   <string id="str_multiplayer_scene_name.crpg_battle_icelake" text="{=*}Icelake" />
   <string id="str_multiplayer_scene_name.crpg_battle_islandvillage" text="{=*}Islandvillage" />
