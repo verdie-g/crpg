@@ -25,12 +25,12 @@ export const parseJwt = (token: string) =>
 
 export const userManager = new UserManager({
   authority: import.meta.env.VITE_API_BASE_URL,
-  scope: 'openid offline_access user_api', // TODO: to .env/cfg
-  client_id: 'crpg-web-ui', // TODO: to .env/cfg
+  scope: 'openid offline_access user_api',
+  client_id: 'crpg-web-ui',
   redirect_uri: window.location.origin + '/signin-callback',
   silent_redirect_uri: window.location.origin + '/signin-silent-callback',
   post_logout_redirect_uri: window.location.origin,
-  response_type: 'code', // TODO: to .env/cfg
+  response_type: 'code',
   userStore: new WebStorageStateStore({ store: window.localStorage }),
 });
 

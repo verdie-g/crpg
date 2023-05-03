@@ -69,12 +69,7 @@ watch(
                     tag="li"
                   >
                     <template #launcherLink>
-                      <a
-                        target="_blank"
-                        href="https://steamcommunity.com/sharedfiles/filedetails/?id=2878356589"
-                      >
-                        Launcher
-                      </a>
+                      <a target="_blank" href="">Launcher TODO: link</a>
                     </template>
                   </i18n-t>
                   <li>{{ $t('installation.platform.epic.startLauncher') }}</li>
