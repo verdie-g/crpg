@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Platform from '@/models/platform';
+import { Platform } from '@/models/platform';
 import { ClanMemberRole } from '@/models/clan';
 import ClanMemberDetail from './ClanMemberDetail.vue';
 

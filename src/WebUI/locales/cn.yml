@@ -3,6 +3,27 @@ locale:
   ru: 俄语
   cn: 中文
 
+platform:
+  Steam: Steam
+  EpicGames: Epic Games
+
+installation:
+  title: 安装
+  common:
+    bannerlordLauncher: 启动Bannerlord
+    multiplayerModsTab: 导航到多人游戏Mods标签
+    activateMod: 点击选择cRPG Mod并启用它
+    launchMultiplayerGame: 在多人游戏中启动游戏!
+  platform:
+    steam:
+      subscribe: 订阅{steamWorkshopsLink}
+      update: 要更新 你可能需要在Steam Workshops中退订/订阅该MOD
+    epic:
+      downloadLauncher: 下载我们的{launcherLink}
+      startLauncher: 打开启动器 等待MOD的下载
+      update: 要更新 只需重新启动启动器即可
+  help: 如果你在安装修改时遇到困难，请通过{discordLink}联系我们。
+
 dateTime:
   days:
     short: 天
@@ -690,11 +711,9 @@ onlinePlayers:
   tooltip:
     title: 在线玩家
 
-mainpage:
+homePage:
   intro: cRPG是{link}的一个模组
   description: 它为多人游戏添加了持久性。您从一个农民开始，将通过不同的属性和物品发展出独特的角色。
-  login: 使用Steam登录
-  download: 下载
 
 patreon: <p>喜欢我们的项目吗</p><p>您可以在{link}上支持我们</p>
 

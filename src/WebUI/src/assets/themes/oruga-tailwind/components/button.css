@@ -1,5 +1,5 @@
 .o-btn {
-  @apply !inline-flex select-none items-center overflow-hidden rounded-full font-bold;
+  @apply relative !inline-flex select-none items-center overflow-hidden rounded-full font-bold;
 }
 
 .o-btn__wrapper {
@@ -23,9 +23,23 @@
   @apply w-full;
 }
 
+.o-btn--loading {
+  @apply pointer-events-none;
+}
+
+.o-btn--loading::after {
+  content: '';
+  @apply absolute inset-0 m-auto h-5 w-5 animate-spin rounded-full border-4 border-transparent  border-t-content-100;
+}
+
+.o-btn--loading::before {
+  content: '';
+  @apply absolute inset-0 block bg-black bg-opacity-25;
+}
+
 /* SIZES */
 .o-btn--xl {
-  @apply h-13.5 min-w-36 py-4 px-4.5 text-xs;
+  @apply h-13.5 px-4.5 py-4 text-xs;
 }
 
 .o-btn--xl .o-btn__label {
@@ -33,7 +47,7 @@
 }
 
 .o-btn--lg {
-  @apply py-3.5 px-3;
+  @apply px-3 py-3.5;
 }
 
 .o-btn--lg .o-btn__label {
@@ -41,7 +55,7 @@
 }
 
 .o-btn--sm {
-  @apply h-10.5 py-3 px-3 text-2xs;
+  @apply h-10.5 px-3 py-3 text-2xs;
 }
 
 .o-btn--sm .o-btn__label {
@@ -49,7 +63,7 @@
 }
 
 .o-btn--xs {
-  @apply h-9 py-2.5 px-2 text-2xs;
+  @apply h-9 px-2 py-2.5 text-2xs;
 }
 
 .o-btn--xs .o-btn__label {
@@ -57,7 +71,7 @@
 }
 
 .o-btn--2xs {
-  @apply py-1.5 px-2.5 text-2xs;
+  @apply px-2.5 py-1.5 text-2xs;
 }
 
 .o-btn--2xs .o-btn__label {

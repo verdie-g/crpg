@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useUserStore } from '@/stores/user';
-import { login } from '@/services/auth-service';
 import { useGameServerStats } from '@/composables/use-game-server-stats';
 
 definePage({
@@ -9,7 +7,6 @@ definePage({
   },
 });
 
-const { user } = toRefs(useUserStore());
 const { gameServerStats, loadGameServerStats } = useGameServerStats();
 
 await loadGameServerStats();
@@ -20,7 +17,7 @@ await loadGameServerStats();
     <Bg bg="background-1.webp" />
 
     <div class="relative flex h-full items-center border border-border-300 text-content-200">
-      <SwitchLanguageDropdown class="absolute top-6 right-6">
+      <SwitchLanguageDropdown class="absolute right-6 top-6">
         <template #default="{ shown, locale }">
           <OButton :variant="shown ? 'transparent-active' : 'transparent'" size="sm">
             <span class="text-xs font-normal">{{ locale.toUpperCase() }}</span>
@@ -52,7 +49,7 @@ await loadGameServerStats();
         <Divider />
 
         <div class="prose prose-invert mx-auto text-center">
-          <i18n-t keypath="mainpage.intro" tag="p" scope="global">
+          <i18n-t keypath="homePage.intro" tag="p" scope="global">
             <template #link>
               <a
                 class="text-content-link hover:text-content-link-hover"
@@ -65,7 +62,7 @@ await loadGameServerStats();
           </i18n-t>
 
           <p>
-            {{ $t('mainpage.description') }}
+            {{ $t('homePage.description') }}
           </p>
         </div>
 
@@ -74,28 +71,8 @@ await loadGameServerStats();
         </div>
 
         <div class="flex justify-center gap-4">
-          <OButton
-            v-if="user === null"
-            variant="primary"
-            size="xl"
-            iconLeft="steam-transparent"
-            :label="$t('mainpage.login')"
-            @click="login"
-          />
-
-          <RouterLink v-else :to="{ name: 'Characters' }">
-            <OButton variant="primary" size="xl" :label="$t('nav.main.Characters')" />
-          </RouterLink>
-
-          <OButton
-            variant="secondary"
-            size="xl"
-            iconLeft="download"
-            tag="a"
-            href="https://steamcommunity.com/sharedfiles/filedetails/?id=2878356589"
-            target="_blank"
-            :label="$t('mainpage.download')"
-          />
+          <Login />
+          <InstallationGuide />
         </div>
 
         <Divider />

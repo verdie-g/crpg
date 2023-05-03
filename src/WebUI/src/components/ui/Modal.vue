@@ -32,7 +32,7 @@ const onHide = () => {
     <template #popper="popper">
       <OButton
         v-if="closable"
-        class="absolute right-4 top-4"
+        class="!absolute right-4 top-4"
         iconRight="close"
         rounded
         size="sm"

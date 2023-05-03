@@ -39,7 +39,7 @@ const onSave = () => {
     <div
       class="flex items-center justify-center gap-2.5 border-b border-border-200 px-12 pt-11 pb-8 text-content-100"
     >
-      <UserMedia :user="member.user" :clanRole="member.role" size="lg" />
+      <UserMedia :user="member.user" :clanRole="member.role" size="xl" />
     </div>
 
     <div v-if="canUpdate" class="mt-8 border-b border-border-200 px-8 pb-8">
@@ -79,7 +79,7 @@ const onSave = () => {
                   class="mb-8 flex items-center justify-center gap-2 text-xl text-content-100"
                 >
                   <template #memberName>
-                    <UserMedia :user="member.user" hiddenPlatform size="lg" />
+                    <UserMedia :user="member.user" hiddenPlatform size="xl" />
                   </template>
                 </i18n-t>
 

@@ -104,6 +104,7 @@ public record SeedDataCommand : IMediatorRequest
             User orle = new()
             {
                 PlatformUserId = "76561198016876889",
+                Platform = Platform.Steam,
                 Name = "orle",
                 Role = Role.Moderator,
                 Gold = 100000,
@@ -263,6 +264,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             User baronCyborg = new()
             {
+                Platform = Platform.EpicGames,
                 PlatformUserId = "76561198026044780",
                 Name = "Baron Cyborg",
                 Avatar = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/58/5838cfcd99e280d82f63d92472d6d5aecebfb812_full.jpg"),

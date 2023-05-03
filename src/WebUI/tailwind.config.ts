@@ -159,12 +159,18 @@ export default {
         return {
           DEFAULT: {
             css: {
+              '--tw-prose-invert-counters': theme('colors.content.200'),
               fontSize: theme('fontSize.xs[0]'),
               lineHeight: theme('fontSize.xs[1]'),
-              '--tw-prose-invert-counters': theme('colors.content.100'),
               li: {
                 marginTop: theme('spacing')['2.5'],
                 marginBottom: theme('spacing')['2.5'],
+              },
+              a: {
+                color: theme('colors.content.link.DEFAULT'),
+                '&:hover': {
+                  color: theme('colors.content.link.hover'),
+                },
               },
             },
           },

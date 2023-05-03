@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import Platform from '@/models/platform';
-import { getUserById, searchUser } from '@/services/users-service';
+import { Platform } from '@/models/platform';
 import { type UserPublic } from '@/models/user';
+import { getUserById, searchUser } from '@/services/users-service';
+import { platformToIcon } from '@/services/platform-service';
 
 definePage({
   meta: {
@@ -83,24 +84,29 @@ const clearUsers = () => {
               <OField :label="$t('findUser.mode.Platform.field.platform.label')">
                 <VDropdown :triggers="['click']">
                   <template #default="{ shown }">
-                    <!-- TODO: Epic, GoG icons -->
                     <OButton
-                      :label="searchByPlatformModel.platform"
                       variant="secondary"
                       size="lg"
-                      iconLeft="steam"
+                      :iconLeft="platformToIcon[searchByPlatformModel.platform]"
+                      :label="$t(`platform.${searchByPlatformModel.platform}`)"
                       :iconRight="shown ? 'chevron-up' : 'chevron-down'"
                     />
                   </template>
 
-                  <template #popper>
-                    <div class="min-w-60 max-w-xs">
-                      <DropdownItem v-for="platform in Object.keys(Platform)">
-                        <ORadio v-model="searchByPlatformModel.platform" :native-value="platform">
-                          {{ platform }}
-                        </ORadio>
-                      </DropdownItem>
-                    </div>
+                  <template #popper="{ hide }">
+                    <DropdownItem
+                      v-for="p in Object.values(Platform)"
+                      :checked="p === searchByPlatformModel.platform"
+                      :label="$t(`platform.${p}`)"
+                      :icon="platformToIcon[p]"
+                      data-aq-platform-item
+                      @click="
+                        () => {
+                          searchByPlatformModel.platform = p;
+                          hide();
+                        }
+                      "
+                    />
                   </template>
                 </VDropdown>
               </OField>
@@ -110,7 +116,7 @@ const clearUsers = () => {
                   :placeholder="$t('findUser.mode.Platform.field.platformId.placeholder')"
                   v-model="searchByPlatformModel.platformUserId"
                   size="lg"
-                  class="w-72"
+                  class="w-80"
                   required
                   icon="search"
                   clearable
@@ -161,7 +167,7 @@ const clearUsers = () => {
               :to="{ name: 'ModeratorUserRestrictionsId', params: { id: user.id } }"
               class="inline-block hover:text-content-100"
             >
-              <UserMedia :user="user" size="lg" />
+              <UserMedia :user="user" size="xl" />
             </RouterLink>
           </div>
         </div>

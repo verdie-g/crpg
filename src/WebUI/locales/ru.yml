@@ -3,6 +3,27 @@ locale:
   ru: Русский
   cn: Китайский
 
+platform:
+  Steam: Steam
+  EpicGames: Epic Games
+
+installation:
+  title: Установка
+  common:
+    bannerlordLauncher: Запустите Bannerlord
+    multiplayerModsTab: Перейдите на вкладку Многопользовательские моды
+    activateMod: Активируйте мод cRPG
+    launchMultiplayerGame: Запустите игру в многопользовательском режиме!
+  platform:
+    steam:
+      subscribe: Подпишитесь на {steamWorkshopsLink}
+      update: Чтобы обновить мод, вам может потребоваться отписаться/подписаться в Steam Workshops
+    epic:
+      downloadLauncher: Загрузите наш {launcherLink}
+      startLauncher: Откройте Launcher и подождите, пока мод загрузится
+      update: Для обновления мода достаточно перезапустить Launcher
+  help: Если у вас возникли трудности с установкой модификации, пожалуйста, свяжитесь с нами с помощью {discordLink}
+
 dateTime:
   days:
     short: д
@@ -692,11 +713,9 @@ onlinePlayers:
   tooltip:
     title: Игроки онлайн
 
-mainpage:
+homePage:
   intro: cRPG - это мод для {link}
   description: Он добавляет постоянство в многопользовательскую игру. Вы начинаете как крестьянин и будете развивать своего уникального персонажа с различными статами и предметами.
-  login: Войти с помощью Steam
-  download: Скачать
 
 patreon: '
   <p>Нравится наш проект?</p>

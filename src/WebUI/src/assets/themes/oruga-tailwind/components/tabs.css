@@ -26,7 +26,7 @@
 
 /*  */
 .o-tabs__nav-item {
-  @apply flex items-center justify-center;
+  @apply flex items-center justify-center gap-2;
   @apply w-full cursor-pointer appearance-none leading-none outline-none;
   @apply rounded-full py-2.5 px-4;
 }
