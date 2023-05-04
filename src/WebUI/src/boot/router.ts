@@ -11,7 +11,12 @@ import { setupLayouts } from 'virtual:generated-layouts';
 import { type BootModule } from '@/types/boot-module';
 import { RouteMiddleware } from '@/types/vue-router';
 import { authRouterMiddleware, signInCallback, signInSilentCallback } from '@/middlewares/auth';
-import { clanIdParamValidate, clanExistValidate } from '@/middlewares/clan';
+import {
+  clanIdParamValidate,
+  clanExistValidate,
+  canUpdateClan,
+  canManageApplications,
+} from '@/middlewares/clan';
 import { characterValidate, activeCharacterRedirect } from '@/middlewares/character';
 
 const scrollBehavior: RouterScrollBehavior = (to, _from, savedPosition) => {
@@ -87,6 +92,8 @@ const getRouteMiddleware = (name: RouteMiddleware) => {
 
     clanIdParamValidate: clanIdParamValidate,
     clanExistValidate: clanExistValidate,
+    canUpdateClan: canUpdateClan,
+    canManageApplications: canManageApplications,
   };
 
   return middlewareMap[name];

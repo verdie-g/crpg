@@ -90,7 +90,7 @@ config.global.stubs = {
   FontAwesomeIcon: true,
 
   'i18n-t': {
-    template: `<div data-aq-i18n-t-stub><slot /></div>`,
+    template: `<div data-aq-i18n-t-stub><slot /><slot name="link"/></div>`,
   },
   Modal: {
     template: `<div data-aq-modal-stub><slot /><slot name="popper" v-bind="{ hide: () => {} }" /></div>`,

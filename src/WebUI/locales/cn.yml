@@ -536,7 +536,6 @@ clan:
     create: 创建一个新的氏族
     goToMyClan: 我的氏族
     settings: 氏族设置
-    kickMember: 移除成员
   roleTitle: 身份
   role:
     Member: 成员
@@ -572,6 +571,15 @@ clan:
     bannerKeyGeneratorTools: 在{link}上生成一个
     notify:
       success: 氏族设置已更新
+  delete:
+    title: 你可以{link}。你将无法恢复它
+    link: 删除你的部族
+    dialog:
+      title: 删除宗族
+      desc: 你确定要删除你的宗族吗？这一行动不能被撤销
+    required: 要删除一个宗族，必须有一个成员。
+    notify:
+      success: 该部族已被删除
   member:
     update:
       transferRights: 移交控制权
@@ -589,6 +597,7 @@ clan:
       notify:
         success: 氏族成员已被踢出
     leave:
+      title: 离开氏族
       dialog:
         title: 离开氏族
         desc: 您确定要离开 {clanName} 氏族吗？此操作无法撤销。

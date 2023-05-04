@@ -92,14 +92,15 @@ export const respondToClanInvitation = async (
 export const getClanMember = (clanMembers: ClanMember[], userId: number) =>
   clanMembers.find(m => m.user.id === userId) || null;
 
-export const canManageApplicationsValidate = (member: ClanMember) =>
-  [ClanMemberRole.Leader, ClanMemberRole.Officer].includes(member.role);
+export const canManageApplicationsValidate = (role: ClanMemberRole) =>
+  [ClanMemberRole.Leader, ClanMemberRole.Officer].includes(role);
 
-export const canUpdateClanValidate = (member: ClanMember) =>
-  [ClanMemberRole.Leader].includes(member.role);
+export const canUpdateClanValidate = (role: ClanMemberRole) =>
+  [ClanMemberRole.Leader].includes(role);
 
-export const canUpdateMemberValidate = (member: ClanMember) =>
-  [ClanMemberRole.Leader].includes(member.role);
+// TODO: Spec
+export const canUpdateMemberValidate = (role: ClanMemberRole) =>
+  [ClanMemberRole.Leader].includes(role);
 
 export const canKickMemberValidate = (
   selfMember: ClanMember,

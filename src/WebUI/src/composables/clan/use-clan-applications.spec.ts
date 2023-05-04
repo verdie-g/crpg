@@ -1,5 +1,6 @@
-const CLAN_INVINTATIONS = [{ id: 2 }, { id: 3 }];
-const mockedGetClanInvitations = vi.fn().mockResolvedValue(CLAN_INVINTATIONS);
+const { mockedGetClanInvitations } = vi.hoisted(() => ({
+  mockedGetClanInvitations: vi.fn().mockResolvedValue([{ id: 2 }, { id: 3 }]),
+}));
 vi.mock('@/services/clan-service', () => ({
   getClanInvitations: mockedGetClanInvitations,
 }));
@@ -18,7 +19,7 @@ it('initial state', async () => {
 
   await loadClanApplications(0, { id: 2 });
 
-  expect(applications.value).toEqual(CLAN_INVINTATIONS);
+  expect(applications.value).toEqual([{ id: 2 }, { id: 3 }]);
   expect(applicationsCount.value).toEqual(2);
   expect(mockedGetClanInvitations).toBeCalledWith(2, ['Request'], ['Pending']);
 });

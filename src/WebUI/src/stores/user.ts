@@ -67,7 +67,12 @@ export const useUserStore = defineStore('user', {
 
     async getUserClanAndRole() {
       const userClanAndRole = await getUserClan();
-      if (userClanAndRole === null) return;
+
+      if (userClanAndRole === null) {
+        this.clan = null;
+        this.clanMemberRole = null;
+        return;
+      }
 
       this.clan = userClanAndRole.clan;
       this.clanMemberRole = userClanAndRole.role;

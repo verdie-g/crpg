@@ -11,6 +11,8 @@ export enum RouteMiddleware {
 
   'clanIdParamValidate' = 'clanIdParamValidate',
   'clanExistValidate' = 'clanExistValidate',
+  'canUpdateClan' = 'canUpdateClan',
+  'canManageApplications' = 'canManageApplications',
 }
 
 declare module 'vue-router' {

@@ -1,4 +1,3 @@
-import { useAsyncState } from '@vueuse/core';
 import { ClanInvitationStatus, ClanInvitationType } from '@/models/clan';
 import { getClanInvitations } from '@/services/clan-service';
 

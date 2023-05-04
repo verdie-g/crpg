@@ -1,4 +1,3 @@
-import { useAsyncState } from '@vueuse/core';
 import { getClan } from '@/services/clan-service';
 
 export const useClan = (id: string) => {

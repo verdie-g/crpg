@@ -11,7 +11,7 @@ definePage({
   props: true,
   meta: {
     layout: 'default',
-    middleware: 'clanIdParamValidate',
+    middleware: 'canManageApplications',
     roles: ['User', 'Moderator', 'Admin'],
   },
 });

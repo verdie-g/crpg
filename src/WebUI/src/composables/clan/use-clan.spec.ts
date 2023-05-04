@@ -1,4 +1,6 @@
-const mockedGetClan = vi.fn().mockResolvedValue({ id: 2, tag: 'mlp' });
+const { mockedGetClan } = vi.hoisted(() => ({
+  mockedGetClan: vi.fn().mockResolvedValue({ id: 2, tag: 'mlp' }),
+}));
 vi.mock('@/services/clan-service', () => ({
   getClan: mockedGetClan,
 }));

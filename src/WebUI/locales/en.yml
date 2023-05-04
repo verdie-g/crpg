@@ -542,7 +542,6 @@ clan:
     create: Create a new clan
     goToMyClan: My clan
     settings: Clan settings
-    kickMember: Clan settings
   roleTitle: Role
   role:
     Member: Member
@@ -578,6 +577,15 @@ clan:
     bannerKeyGeneratorTools: Generate one on {link}
     notify:
       success: Clan settings updated
+  delete:
+    title: You can {link}. You won't be able to restore it
+    link: delete your clan
+    dialog:
+      title: Deleting clan
+      desc: Are you sure you want to delete your clan? This action cannot be undone
+    required: To delete a clan, it must have one member
+    notify:
+      success: The clan has been deleted
   member:
     update:
       transferRights: Transfer the rights to control
@@ -595,6 +603,7 @@ clan:
       notify:
         success: Clan member kicked
     leave:
+      title: Leave the clan
       dialog:
         title: Leave the clan
         desc: Are you sure you want to leave the {clanName} clan? The action cannot be undone

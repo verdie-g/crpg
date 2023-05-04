@@ -284,20 +284,20 @@ it.each<[PartialDeep<ClanMember[]>, number, PartialDeep<ClanMember> | null]>([
   expect(getClanMember(members as ClanMember[], userId)).toEqual(expectation);
 });
 
-it.each<[Partial<ClanMember>, boolean]>([
-  [{ role: ClanMemberRole.Leader }, true],
-  [{ role: ClanMemberRole.Officer }, true],
-  [{ role: ClanMemberRole.Member }, false],
-])('canManageApplicationsValidate - member: %j', (member, expectation) => {
-  expect(canManageApplicationsValidate(member as ClanMember)).toEqual(expectation);
+it.each<[Partial<ClanMemberRole>, boolean]>([
+  [ClanMemberRole.Leader, true],
+  [ClanMemberRole.Officer, true],
+  [ClanMemberRole.Member, false],
+])('canManageApplicationsValidate - role: %j', (role, expectation) => {
+  expect(canManageApplicationsValidate(role as ClanMemberRole)).toEqual(expectation);
 });
 
-it.each<[Partial<ClanMember>, boolean]>([
-  [{ role: ClanMemberRole.Leader }, true],
-  [{ role: ClanMemberRole.Officer }, false],
-  [{ role: ClanMemberRole.Member }, false],
-])('canUpdateClanValidate - member: %j', (member, expectation) => {
-  expect(canUpdateClanValidate(member as ClanMember)).toEqual(expectation);
+it.each<[Partial<ClanMemberRole>, boolean]>([
+  [ClanMemberRole.Leader, true],
+  [ClanMemberRole.Officer, false],
+  [ClanMemberRole.Member, false],
+])('canUpdateClanValidate - role: %j', (role, expectation) => {
+  expect(canUpdateClanValidate(role as ClanMemberRole)).toEqual(expectation);
 });
 
 it.each<[PartialDeep<ClanMember>, PartialDeep<ClanMember>, number, boolean]>([
