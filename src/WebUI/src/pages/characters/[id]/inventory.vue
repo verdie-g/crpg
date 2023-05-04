@@ -191,11 +191,7 @@ const compareItemsResult = computed(() => {
 });
 
 const aside = ref<HTMLDivElement | null>(null);
-const { top: stickySidebarTop,  } = useStickySidebar(
-  aside,
-  mainHeaderHeight.value + 16,
-  16
-);
+const { top: stickySidebarTop } = useStickySidebar(aside, mainHeaderHeight.value + 16, 16);
 
 const computeDetailCardYPosition = (y: number) => {
   // we cannot automatically determine the height of the card, so we take the maximum possible value
@@ -389,7 +385,7 @@ await userStore.fetchUserItems();
         class="fixed z-50 cursor-move select-none rounded-lg bg-base-300 p-4 shadow-lg"
       >
         <OButton
-          class="absolute right-2 top-2 z-10 cursor-pointer"
+          class="!absolute right-2 top-2 z-10 cursor-pointer"
           iconRight="close"
           rounded
           size="2xs"

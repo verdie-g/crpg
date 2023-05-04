@@ -13,7 +13,7 @@ defineProps<{ region: Region }>();
     <template #popper="{ hide }">
       <div class="px-4 py-3 text-content-200">
         <OButton
-          class="absolute right-2 top-1"
+          class="!absolute right-2 top-1"
           iconRight="close"
           rounded
           size="2xs"
