@@ -359,8 +359,11 @@ export const getRespecCapability = (
   const decayDivider = (new Date().getTime() - lastRespecDate.getTime()) / (12 * 1000 * 3600);
   const price = character.forTournament
     ? 0
-    : Math.floor((character.experience / getExperienceForLevel(30)) * respecializePriceForLevel30) /
-      Math.pow(2, decayDivider);
+    : Math.floor(
+        Math.floor(
+          (character.experience / getExperienceForLevel(30)) * respecializePriceForLevel30
+        ) / Math.pow(2, decayDivider)
+      );
 
   return {
     price,
