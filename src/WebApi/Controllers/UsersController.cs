@@ -211,6 +211,22 @@ public class UsersController : BaseController
     }
 
     /// <summary>
+    /// Get character rating.
+    /// </summary>
+    /// <param name="id">Character id.</param>
+    /// <returns>The character rating.</returns>
+    /// <response code="200">Ok.</response>
+    [HttpGet("self/characters/{id}/ratings")]
+    public Task<ActionResult<Result<CharacterRatingViewModel>>> GetCharacterRating([FromRoute] int id)
+    {
+        return ResultToActionAsync(Mediator.Send(new GetUserCharacterRatingQuery
+        {
+            UserId = CurrentUser.User!.Id,
+            CharacterId = id,
+        }));
+    }
+
+    /// <summary>
     /// Updates character characteristics for the current user.
     /// </summary>
     /// <param name="id">Character id.</param>
