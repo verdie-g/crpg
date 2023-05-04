@@ -6,7 +6,7 @@
     <template #popper="{ hide }">
       <div class="max-w-xs pr-7">
         <OButton
-          class="absolute -right-2 -top-2"
+          class="!absolute -right-2 -top-2"
           iconRight="close"
           rounded
           size="2xs"
