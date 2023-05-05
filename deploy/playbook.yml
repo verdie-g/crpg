@@ -2,12 +2,12 @@
   become: yes
   roles:
     - crpg-web-ui
-    # - nginx
-    # - postgresql
+    #- nginx
+    #- postgresql
     # - datadog
-    # - geoip
-    # - dotnet
-    # - crpg-web-api
+    #- geoip
+    #- dotnet
+    - crpg-web-api
 # - hosts: gameservers
 #   become: yes
 #   roles:
