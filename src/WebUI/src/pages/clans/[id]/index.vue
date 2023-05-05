@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { type RouteLocationNormalized } from 'vue-router/auto';
-import { useAsyncState } from '@vueuse/core';
 import { ClanMemberRole, type ClanMember } from '@/models/clan';
 import {
-  getClanMembers,
   getClanMember,
   canManageApplicationsValidate,
   canUpdateClanValidate,
@@ -17,6 +15,7 @@ import { notify } from '@/services/notification-service';
 import { t } from '@/services/translate-service';
 import { useUserStore } from '@/stores/user';
 import { useClan } from '@/composables/clan/use-clan';
+import { useClanMembers } from '@/composables/clan/use-clan-members';
 import { useClanApplications } from '@/composables/clan/use-clan-applications';
 import { usePagination } from '@/composables/use-pagination';
 
@@ -37,15 +36,8 @@ const props = defineProps<{
 const userStore = useUserStore();
 
 const { clanId, clan, loadClan } = useClan(props.id);
+const { clanMembers, loadClanMembers, clanMembersCount, isLastMember } = useClanMembers();
 const { applicationsCount, loadClanApplications } = useClanApplications();
-const { state: clanMembers, execute: loadClanMembers } = useAsyncState(
-  ({ id }: { id: number }) => getClanMembers(id),
-  [],
-  {
-    immediate: false,
-  }
-);
-const clanMemberCount = computed(() => clanMembers.value.length);
 
 const selfMember = computed(() => getClanMember(clanMembers.value, userStore.user!.id));
 const checkIsSelfMember = (member: ClanMember) => member.user.id === selfMember.value?.user.id;
@@ -138,7 +130,7 @@ await fetchPageData(clanId.value);
 </script>
 
 <template>
-  <div v-if="clan !== null" class="pt-24 pb-12">
+  <div v-if="clan !== null" class="pb-12 pt-24">
     <div class="container mb-8">
       <div class="mb-8 flex justify-center">
         <ClanTagIcon :color="clan.primaryColor" size="4x" />
@@ -179,7 +171,7 @@ await fetchPageData(clanId.value);
           <div class="flex items-center gap-1.5">
             <OIcon icon="member" size="lg" class="text-content-100" />
             <span class="text-content-200" data-aq-clan-info="member-count">
-              {{ clanMemberCount }}
+              {{ clanMembersCount }}
             </span>
           </div>
         </div>
@@ -246,17 +238,17 @@ await fetchPageData(clanId.value);
         />
       </template>
 
-      <Modal v-if="selfMember !== null && canKickMember(selfMember)">
+      <Modal v-if="!isLastMember && selfMember !== null && canKickMember(selfMember)">
         <OButton
           variant="secondary"
           size="xl"
           outlined
-          label="Leave the clan"
+          :label="$t('clan.member.leave.title')"
           data-aq-clan-action="leave-clan"
         />
 
         <template #popper="{ hide }">
-          <div class="space-y-6 py-11 px-12 text-center">
+          <div class="space-y-6 px-12 py-11 text-center">
             <h4 class="text-xl">{{ $t('clan.member.leave.dialog.title') }}</h4>
 
             <i18n-t scope="global" keypath="clan.member.leave.dialog.desc" tag="p">
