@@ -54,7 +54,7 @@ it('emit - submit', async () => {
   await flushPromises();
 
   expect(mockedCreateClan).toBeCalledWith(NEW_CLAN_FORM);
-  expect(userStore.getUserClan).toBeCalled();
+  expect(userStore.getUserClanAndRole).toBeCalled();
   expect(spyRouterReplace).toBeCalledWith({
     name: 'ClansId',
     params: {

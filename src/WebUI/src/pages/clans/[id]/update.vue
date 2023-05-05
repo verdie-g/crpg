@@ -26,7 +26,7 @@ const { clanId, clan, loadClan } = useClan(props.id);
 
 const onSubmit = async (form: Omit<Clan, 'id'>) => {
   const clan = await updateClan(clanId.value, { ...form, id: clanId.value });
-  await userStore.getUserClan();
+  await userStore.getUserClanAndRole();
   notify(t('clan.update.notify.success'));
   router.replace({ name: 'ClansId', params: { id: clan.id } });
 };

@@ -13,7 +13,7 @@ export const clanExistValidate: NavigationGuard = async () => {
   const userStore = useUserStore();
 
   if (userStore.clan === null) {
-    await userStore.getUserClan();
+    await userStore.getUserClanAndRole();
   }
 
   if (userStore.clan !== null) {

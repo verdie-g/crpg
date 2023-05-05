@@ -92,7 +92,7 @@ const kickMember = async (member: ClanMember) => {
   await kickClanMember(clanId.value, member.user.id);
   await loadClanMembers(0, { id: clanId.value });
   if (isSelfMember) {
-    await userStore.getUserClan();
+    await userStore.getUserClanAndRole();
   }
   notify(
     isSelfMember ? t('clan.member.leave.notify.success') : t('clan.member.kick.notify.success')
@@ -138,7 +138,7 @@ await fetchPageData(clanId.value);
 </script>
 
 <template>
-  <div v-if="clan !== null" class="pt-24 pb-12">
+  <div v-if="clan !== null" class="pb-12 pt-24">
     <div class="container mb-8">
       <div class="mb-8 flex justify-center">
         <ClanTagIcon :color="clan.primaryColor" size="4x" />
@@ -256,7 +256,7 @@ await fetchPageData(clanId.value);
         />
 
         <template #popper="{ hide }">
-          <div class="space-y-6 py-11 px-12 text-center">
+          <div class="space-y-6 px-12 py-11 text-center">
             <h4 class="text-xl">{{ $t('clan.member.leave.dialog.title') }}</h4>
 
             <i18n-t scope="global" keypath="clan.member.leave.dialog.desc" tag="p">

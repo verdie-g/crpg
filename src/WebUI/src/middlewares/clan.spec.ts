@@ -48,14 +48,14 @@ describe('clan exist validate', () => {
 
     const result = await clanExistValidate(getRoute(), getRoute(), next);
 
-    expect(userStore.getUserClan).not.toHaveBeenCalled();
+    expect(userStore.getUserClanAndRole).not.toHaveBeenCalled();
     expect(result).toEqual({ name: 'ClansId', params: { id: CLAN_ID } });
   });
 
   it('user already have a clan', async () => {
     const result = await clanExistValidate(getRoute(), getRoute(), next);
 
-    expect(userStore.getUserClan).toHaveBeenCalled();
+    expect(userStore.getUserClanAndRole).toHaveBeenCalled();
     expect(result).toEqual(true);
   });
 });
