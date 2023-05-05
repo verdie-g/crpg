@@ -1,4 +1,4 @@
-import Platform from './platform';
+import { Platform } from './platform';
 import Role from './role';
 import { Region } from './region';
 import { ItemSlot, ItemType, type Item } from './item';
