@@ -142,7 +142,7 @@ internal class CrpgItemValueModel : ItemValueModel
                 WeaponClass.Dagger => 27f,
                 WeaponClass.TwoHandedSword => 27.5f,
                 WeaponClass.TwoHandedMace => 28.5f,
-                WeaponClass.TwoHandedAxe => 29.5f,
+                WeaponClass.TwoHandedAxe => 31.5f,
                 WeaponClass.TwoHandedPolearm => 25f,
                 WeaponClass.OneHandedPolearm => 25f,
                 _ => float.MaxValue,
@@ -156,8 +156,8 @@ internal class CrpgItemValueModel : ItemValueModel
                 WeaponClass.TwoHandedSword => 30f,
                 WeaponClass.TwoHandedMace => 30f,
                 WeaponClass.TwoHandedAxe => 30f,
-                WeaponClass.TwoHandedPolearm => 33f,
-                WeaponClass.OneHandedPolearm => 33f,
+                WeaponClass.TwoHandedPolearm => 32f,
+                WeaponClass.OneHandedPolearm => 30f,
                 _ => float.MaxValue,
             };
             float thrustTier =
@@ -321,6 +321,7 @@ internal class CrpgItemValueModel : ItemValueModel
         WeaponComponentData weapon = weaponComponent.Weapons.MaxBy(a => a.MaxDataValue);
         float scaler = 1600000f;
         float bonusVsShield = weapon.WeaponFlags.HasFlag(WeaponFlags.BonusAgainstShield) ? 1.40f : 1f;
+        float canDismount = weapon.WeaponFlags.HasFlag(WeaponFlags.CanDismount) ? 1.10f : 1f;
         float tier = weapon.ThrustDamage
             * weapon.ThrustDamage
             * weapon.MissileSpeed
@@ -328,6 +329,7 @@ internal class CrpgItemValueModel : ItemValueModel
             * weapon.MaxDataValue
             * CalculateDamageTypeFactorForThrown(weapon.ThrustDamageType == DamageTypes.Invalid ? weapon.SwingDamageType : weapon.ThrustDamageType)
             * bonusVsShield
+            * canDismount
             / scaler;
         return tier * tier / 10f;
     }
