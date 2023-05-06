@@ -319,11 +319,11 @@ internal class CrpgItemValueModel : ItemValueModel
     private float CalculateThrownWeaponTier(WeaponComponent weaponComponent)
     {
         WeaponComponentData weapon = weaponComponent.Weapons.MaxBy(a => a.MaxDataValue);
-        float scaler = 1600000f;
+        float scaler = 4f * 1600000f;
         float bonusVsShield = weapon.WeaponFlags.HasFlag(WeaponFlags.BonusAgainstShield) ? 1.40f : 1f;
         float canDismount = weapon.WeaponFlags.HasFlag(WeaponFlags.CanDismount) ? 1.10f : 1f;
-        float tier = weapon.ThrustDamage
-            * weapon.ThrustDamage
+        float tier =
+              (float) Math.Pow(weapon.ThrustDamage, 2.4f)
             * weapon.MissileSpeed
             * weapon.Accuracy
             * weapon.MaxDataValue
