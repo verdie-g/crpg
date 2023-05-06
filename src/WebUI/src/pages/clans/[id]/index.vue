@@ -50,11 +50,11 @@ const filteredClanMembers = computed(() =>
 );
 
 const canManageApplications = computed(() =>
-  selfMember.value === null ? false : canManageApplicationsValidate(selfMember.value)
+  selfMember.value === null ? false : canManageApplicationsValidate(selfMember.value.role)
 );
 
 const canUpdateClan = computed(() =>
-  selfMember.value === null ? false : canUpdateClanValidate(selfMember.value)
+  selfMember.value === null ? false : canUpdateClanValidate(selfMember.value.role)
 );
 
 const applicationSent = ref<boolean>(false);
@@ -64,7 +64,7 @@ const apply = async () => {
 };
 
 const canUpdateMember = computed(() =>
-  selfMember.value === null ? false : canUpdateMemberValidate(selfMember.value)
+  selfMember.value === null ? false : canUpdateMemberValidate(selfMember.value.role)
 );
 
 const updateMember = async (userId: number, selectedRole: ClanMemberRole) => {

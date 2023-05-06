@@ -7,11 +7,15 @@ import {
 } from 'vue-router/auto';
 import qs from 'qs';
 import { setupLayouts } from 'virtual:generated-layouts';
-
 import { type BootModule } from '@/types/boot-module';
 import { RouteMiddleware } from '@/types/vue-router';
 import { authRouterMiddleware, signInCallback, signInSilentCallback } from '@/middlewares/auth';
-import { clanIdParamValidate, clanExistValidate } from '@/middlewares/clan';
+import {
+  clanIdParamValidate,
+  clanExistValidate,
+  canUpdateClan,
+  canManageApplications,
+} from '@/middlewares/clan';
 import { characterValidate, activeCharacterRedirect } from '@/middlewares/character';
 
 const scrollBehavior: RouterScrollBehavior = (to, _from, savedPosition) => {
@@ -87,15 +91,17 @@ const getRouteMiddleware = (name: RouteMiddleware) => {
 
     clanIdParamValidate: clanIdParamValidate,
     clanExistValidate: clanExistValidate,
+    canUpdateClan: canUpdateClan,
+    canManageApplications: canManageApplications,
   };
 
   return middlewareMap[name];
 };
 
-// TODO: FIXME: SPECCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+// TODO: FIXME: SPEC
 const setRouteMiddleware = (routes: RouteRecordRaw[]) => {
   routes.forEach(route => {
-    if (route.children) {
+    if (route.children !== undefined) {
       setRouteMiddleware(route.children);
     }
 
@@ -107,21 +113,20 @@ const setRouteMiddleware = (routes: RouteRecordRaw[]) => {
 export const install: BootModule = app => {
   const router = createRouter({
     extendRoutes: routes => {
-      // auto-register route guard
-      setRouteMiddleware(routes);
-
+      setRouteMiddleware(routes); // auto-register route guard
       return setupLayouts(routes);
     },
     history: createWebHistory(),
     // routes,
     scrollBehavior,
+
     /* A custom parse/stringify query is needed because by default
     ?types=HeadArmor&types=ShoulderArmor is parsed correctly as ["HeadArmor", "ShoulderArmor"]
     but ?types=HeadArmor is parsed as "HeadArmor" (not an array).
     To solve this issue qs library adds brackets for arrays ?types[]=HeadArmor.
     https://router.vuejs.org/api/interfaces/RouterOptions.html#parsequery
     */
-    parseQuery, // TODO: ts?
+    parseQuery, // TODO: fix ts errors
     stringifyQuery,
   });
 

@@ -11,6 +11,8 @@ export enum RouteMiddleware {
 
   'clanIdParamValidate' = 'clanIdParamValidate',
   'clanExistValidate' = 'clanExistValidate',
+  'canUpdateClan' = 'canUpdateClan',
+  'canManageApplications' = 'canManageApplications',
 }
 
 declare module 'vue-router' {
@@ -18,6 +20,10 @@ declare module 'vue-router' {
     layout?: string;
     title?: string;
     roles?: Array<`${Role}`>;
+    /*
+      TODO: Implement the ability to add multiple routeGuards
+      https://github.com/vuejs/vue-router/issues/2688
+    */
     middleware?: `${RouteMiddleware}`;
     skipAuth?: boolean;
     scrollToTop?: boolean;
