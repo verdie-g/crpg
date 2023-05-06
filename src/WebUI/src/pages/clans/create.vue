@@ -18,7 +18,7 @@ const router = useRouter();
 
 const onSubmit = async (form: Omit<Clan, 'id'>) => {
   const clan = await createClan(form);
-  await userStore.getUserClan();
+  await userStore.getUserClanAndRole();
   notify(t('clan.create.notify.success'));
   return router.replace({ name: 'ClansId', params: { id: clan.id } });
 };
