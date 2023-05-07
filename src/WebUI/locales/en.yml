@@ -603,6 +603,7 @@ clan:
       notify:
         success: Clan member kicked
     leave:
+      title: Leave the clan
       dialog:
         title: Leave the clan
         desc: Are you sure you want to leave the {clanName} clan? The action cannot be undone
