@@ -49,6 +49,7 @@ public class RespecializeCharacterCommandTest : TestBase
             Limitations = new CharacterLimitations
             {
                 LastRespecializeAt = freeRespec
+                LastRespecializeAt = freeRespec
                     ? new DateTime(2023, 3, 9)
                     : new DateTime(2023, 3, 16),
             },
@@ -86,11 +87,12 @@ public class RespecializeCharacterCommandTest : TestBase
         {
             Assert.That(character.User!.Gold, Is.EqualTo(1000));
             Assert.That(characterDb.Limitations!.LastRespecializeAt, Is.EqualTo(dateTimeMock.Object.UtcNow));
+            Assert.That(characterDb.Limitations!.LastRespecializeAt, Is.EqualTo(dateTimeMock.Object.UtcNow));
         }
         else
         {
             Assert.That(character.User!.Gold, Is.LessThan(1000));
-            Assert.That(characterDb.Limitations!.LastRespecializeAt, Is.EqualTo(new DateTime(2023, 3, 17)));
+            Assert.That(characterDb.Limitations!.LastRespecializeAt, Is.EqualTo(new DateTime(2023, 3, 16)));
         }
 
         Assert.That(character.Generation, Is.EqualTo(2));
@@ -128,6 +130,7 @@ public class RespecializeCharacterCommandTest : TestBase
                 PlayTime = TimeSpan.FromSeconds(4),
             },
             User = new() { Gold = 500 },
+            Limitations = new CharacterLimitations { LastRespecializeAt = DateTime.UtcNow - TimeSpan.FromDays(1) },
             Limitations = new CharacterLimitations { LastRespecializeAt = DateTime.UtcNow - TimeSpan.FromDays(1) },
         };
         ArrangeDb.Add(character);
@@ -172,6 +175,7 @@ public class RespecializeCharacterCommandTest : TestBase
             Experience = 150,
             ForTournament = false,
             User = new() { Gold = 0 },
+            Limitations = new CharacterLimitations { LastRespecializeAt = DateTime.UtcNow },
             Limitations = new CharacterLimitations { LastRespecializeAt = DateTime.UtcNow },
         };
         ArrangeDb.Add(character);

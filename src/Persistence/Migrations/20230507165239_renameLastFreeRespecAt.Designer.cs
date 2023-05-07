@@ -20,11 +20,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace Crpg.Persistence.Migrations;
-
+namespace Crpg.Persistence.Migrations
+{
     [DbContext(typeof(CrpgDbContext))]
-    [Migration("20230507165239_RenameLastFreeRespecAt")]
-    partial class RenameLastFreeRespecAt
+    [Migration("20230507165239_renameLastFreeRespecAt")]
+    partial class renameLastFreeRespecAt
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1992,3 +1992,4 @@ namespace Crpg.Persistence.Migrations;
 #pragma warning restore 612, 618
         }
     }
+}
