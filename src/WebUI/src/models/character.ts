@@ -69,7 +69,7 @@ export enum CharacteristicConversion {
 }
 
 export interface CharacterLimitations {
-  lastFreeRespecializeAt: Date;
+  lastRespecializeAt: Date;
 }
 
 export interface CharacterStatistics {

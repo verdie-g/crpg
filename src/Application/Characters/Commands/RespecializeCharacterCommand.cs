@@ -65,10 +65,7 @@ public record RespecializeCharacterCommand : IMediatorRequest<CharacterViewModel
                 }
 
                 character.User.Gold -= price;
-                if (price == 0)
-                {
-                    character.Limitations!.LastFreeRespecializeAt = _dateTime.UtcNow;
-                }
+                character.Limitations!.LastRespecializeAt = _dateTime.UtcNow;
 
                 character.Experience = (int)MathHelper.ApplyPolynomialFunction(character.Experience,
                     _constants.RespecializeExperiencePenaltyCoefs);
@@ -89,12 +86,12 @@ public record RespecializeCharacterCommand : IMediatorRequest<CharacterViewModel
         private int ResolveRespecializationPrice(Character character)
         {
             var freeRespecializeInterval = TimeSpan.FromDays(_constants.FreeRespecializeIntervalDays);
-            if (character.Limitations!.LastFreeRespecializeAt + freeRespecializeInterval < _dateTime.UtcNow)
+            if (character.Limitations!.LastRespecializeAt + freeRespecializeInterval < _dateTime.UtcNow)
             {
                 return 0;
             }
 
-            TimeSpan timePassed = _dateTime.UtcNow - character.Limitations!.LastFreeRespecializeAt;
+            TimeSpan timePassed = _dateTime.UtcNow - character.Limitations!.LastRespecializeAt;
             // 12 Hours half life
             double decayDivider = Math.Pow(2, timePassed.TotalHours / 12f);
 

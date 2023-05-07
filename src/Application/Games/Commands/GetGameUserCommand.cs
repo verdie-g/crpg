@@ -228,7 +228,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
                 },
                 Limitations = new CharacterLimitations
                 {
-                    LastFreeRespecializeAt = _dateTime.UtcNow,
+                    LastRespecializeAt = _dateTime.UtcNow,
                 },
             };
 
