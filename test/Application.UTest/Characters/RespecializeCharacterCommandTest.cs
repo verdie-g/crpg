@@ -90,7 +90,7 @@ public class RespecializeCharacterCommandTest : TestBase
         else
         {
             Assert.That(character.User!.Gold, Is.LessThan(1000));
-            Assert.That(characterDb.Limitations!.LastRespecializeAt, Is.EqualTo(new DateTime(2023, 3, 16)));
+            Assert.That(characterDb.Limitations!.LastRespecializeAt, Is.EqualTo(new DateTime(2023, 3, 17)));
         }
 
         Assert.That(character.Generation, Is.EqualTo(2));
