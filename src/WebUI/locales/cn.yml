@@ -597,6 +597,7 @@ clan:
       notify:
         success: 氏族成员已被踢出
     leave:
+      title: 离开氏族
       dialog:
         title: 离开氏族
         desc: 您确定要离开 {clanName} 氏族吗？此操作无法撤销。
