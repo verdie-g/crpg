@@ -55,10 +55,12 @@ declare module 'vue-router/auto/routes' {
     'Moderator': RouteRecordInfo<'Moderator', '/moderator', Record<never, never>, Record<never, never>>,
     'ModeratorFindUser': RouteRecordInfo<'ModeratorFindUser', '/moderator/find-user', Record<never, never>, Record<never, never>>,
     'ModeratorUserRestrictionsId': RouteRecordInfo<'ModeratorUserRestrictionsId', '/moderator/user-restrictions/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
+    'PrivacyPolicy': RouteRecordInfo<'PrivacyPolicy', '/privacy-policy', Record<never, never>, Record<never, never>>,
     'Settings': RouteRecordInfo<'Settings', '/settings', Record<never, never>, Record<never, never>>,
     'Shop': RouteRecordInfo<'Shop', '/shop', Record<never, never>, Record<never, never>>,
     'SigninCallback': RouteRecordInfo<'SigninCallback', '/signin-callback', Record<never, never>, Record<never, never>>,
     'SigninSilentCallback': RouteRecordInfo<'SigninSilentCallback', '/signin-silent-callback', Record<never, never>, Record<never, never>>,
+    'TermsOfService': RouteRecordInfo<'TermsOfService', '/terms-of-service', Record<never, never>, Record<never, never>>,
   }
 }
 
