@@ -1,17 +1,8 @@
-ServerName cRPG Test
+ServerName cRPG Test3
 GameType cRPGBattle
 GamePassword yoyo
 WelcomeMessage yoyoyooooo
-add_map_to_automated_battle_pool mp_battle_map_001
-add_map_to_automated_battle_pool mp_battle_map_002
-add_map_to_automated_battle_pool mp_battle_map_003
 add_map_to_automated_battle_pool mp_sergeant_map_010
-add_map_to_automated_battle_pool mp_sergeant_map_013
-add_map_to_automated_battle_pool mp_sergeant_map_018
-add_map_to_automated_battle_pool mp_skirmish_map_003_skinc
-add_map_to_automated_battle_pool mp_skirmish_map_009
-add_map_to_automated_battle_pool mp_skirmish_map_014
-add_map_to_automated_battle_pool mp_skirmish_map_020
 AllowPollsToKickPlayers True
 AllowPollsToChangeMaps True
 disable_culture_voting
@@ -25,12 +16,12 @@ FriendlyFireDamageMeleeSelfPercent 0
 FriendlyFireDamageRangedFriendPercent 50
 FriendlyFireDamageRangedSelfPercent 0
 MinNumberOfPlayersForMatchStart 0
-NumberOfBotsTeam1 2
-NumberOfBotsTeam2 2
+NumberOfBotsTeam1 0
+NumberOfBotsTeam2 0
 RoundTotal 10
 MapTimeLimit 8
 RoundTimeLimit 300
-WarmupTimeLimit 1
+WarmupTimeLimit 60
 crpg_happy_hours 19:00-23:00,Central European Standard Time
 start_game
 set_automated_battle_count -1

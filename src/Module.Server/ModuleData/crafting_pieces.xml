@@ -2304,6 +2304,7 @@
     <BuildData piece_offset="-2.966" />
     <BladeData stack_amount="3" blade_length="10.566" blade_width="19.257" physics_material="metal_weapon" body_name="bo_axe_longer_b" holster_mesh="throwing_axe_quiver_1">
       <Swing damage_type="Cut" damage_factor="1.55" />
+      <Thrust damage_type="Cut" damage_factor="1.55" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="3" />

@@ -23,6 +23,7 @@ internal class CrpgAgentApplyDamageModel : MultiplayerAgentApplyDamageModel
         in MissionWeapon weapon,
         float baseDamage)
     {
+        MissionWeapon victimShield = attackInformation.VictimShield;
         float finalDamage = base.CalculateDamage(attackInformation, collisionData, weapon, baseDamage);
         if (weapon.IsEmpty)
         {
@@ -30,19 +31,22 @@ internal class CrpgAgentApplyDamageModel : MultiplayerAgentApplyDamageModel
             int strengthSkill = GetSkillValue(attackInformation.AttackerAgentOrigin, CrpgSkills.Strength);
             return finalDamage * (1 + 0.03f * strengthSkill);
         }
-
+        Console.WriteLine($"{finalDamage} before shield");
         // CalculateShieldDamage only has dmg as parameter. Therefore it cannot be used to get any Skill values.
         if (collisionData.AttackBlockedWithShield && finalDamage > 0)
         {
             int shieldSkill = GetSkillValue(attackInformation.VictimAgentOrigin, CrpgSkills.Shield);
             finalDamage /= MathHelper.RecursivePolynomialFunctionOfDegree2(shieldSkill, _constants.DurabilityFactorForShieldRecursiveCoefs);
+            Console.WriteLine($"{finalDamage} after shield skill");
             if (weapon.CurrentUsageItem.WeaponFlags.HasAnyFlag(WeaponFlags.BonusAgainstShield))
             {
                 // this bonus is on top of the native x2 in MissionCombatMechanicsHelper
                 // so the final bonus is 3.5. We do this instead of nerfing the impact of shield skill so shield can stay virtually unbreakable against sword.
                 // it is the same logic as arrows not dealing a lot of damage to horse but spears dealing extra damage to horses
                 // As we want archer to fear cavs and cavs to fear spears, we want swords to fear shielders and shielders to fear axes.
+              
                 finalDamage *= 1.75f;
+                Console.WriteLine($"{finalDamage} after bvs");
             }
         }
 
@@ -139,6 +143,12 @@ internal class CrpgAgentApplyDamageModel : MultiplayerAgentApplyDamageModel
         }
 
         return result;
+    }
+
+    public override float CalculateShieldDamage(in AttackInformation attackInformation, float baseDamage)
+    {
+        Console.WriteLine($"{baseDamage}");
+        return 0f;
     }
 
     public override void CalculateCollisionStunMultipliers(

@@ -40,50 +40,9 @@ internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
         return result;
     }
 
-    public override float CalculateStrikeMagnitudeForSwing(
-        BasicCharacterObject attackerCharacter,
-        BasicCharacterObject attackerCaptainCharacter,
-        float swingSpeed,
-        float impactPoint,
-        float weaponWeight,
-        WeaponComponentData weaponUsageComponent,
-        float weaponLength,
-        float weaponInertia,
-        float weaponCoM,
-        float extraLinearSpeed,
-        bool doesAttackerHaveMount)
+    public override float ComputeRawDamage(DamageTypes damageType, float magnitude, float armorEffectiveness, float absorbedDamageRatio)
     {
-        float impactPointFactor;
-        float swingSpeedPercentage = swingSpeed * 4.5454545f / weaponUsageComponent.SwingSpeed;
-        switch (weaponUsageComponent.WeaponClass)
-        {
-            case WeaponClass.OneHandedAxe:
-            case WeaponClass.TwoHandedAxe:
-            case WeaponClass.Mace:
-            case WeaponClass.TwoHandedMace:
-            case WeaponClass.OneHandedPolearm:
-            case WeaponClass.TwoHandedPolearm:
-            case WeaponClass.LowGripPolearm:
-                impactPointFactor = (float)Math.Pow(10f, -4f * Math.Pow(impactPoint - 0.93, 2f));
-                return BladeDamageFactorToDamageRatio * (0.4f + 0.6f * impactPointFactor) * ((float)Math.Pow(swingSpeedPercentage, 5f) + extraLinearSpeed / 10f);
-
-            default: // Weapon that do not have a wooden handle
-                impactPointFactor = (float)Math.Pow(10f, -4f * Math.Pow(impactPoint - 0.75, 2f));
-                return BladeDamageFactorToDamageRatio * (0.8f + 0.2f * impactPointFactor) * ((float)Math.Pow(swingSpeedPercentage, 5f) + extraLinearSpeed / 10f);
-        }
-    }
-
-    public override float CalculateStrikeMagnitudeForThrust(
-        BasicCharacterObject attackerCharacter,
-        BasicCharacterObject attackerCaptainCharacter,
-        float thrustWeaponSpeed,
-        float weaponWeight,
-        WeaponComponentData weaponUsageComponent,
-        float extraLinearSpeed,
-        bool doesAttackerHaveMount,
-        bool isThrown = false)
-    {
-        float thrustSpeedPercentage = thrustWeaponSpeed * 11.7647057f / weaponUsageComponent.ThrustSpeed;
-        return BladeDamageFactorToDamageRatio * ((float)Math.Pow(thrustSpeedPercentage, 6f) + extraLinearSpeed / 10f);
+        Console.WriteLine($"{magnitude} from computerawdamage");
+        return magnitude;
     }
 }
