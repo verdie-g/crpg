@@ -231,7 +231,7 @@ public class UsersController : BaseController
     /// </summary>
     /// <returns>The top character competitive ratings.</returns>
     /// <response code="200">Ok.</response>
-    [HttpGet("self/characters/topcompetitiverating")]
+    [HttpGet("characters/topcompetitiverating")]
     public Task<ActionResult<Result<IList<CharacterCompetitiveRatingViewModel>>>> GetTopCharacterCompetitiveRatings()
     {
         return ResultToActionAsync(Mediator.Send(new GetTopUserCharactersByCompetitiveRatingQuery
