@@ -2,7 +2,7 @@
 <Items>
   <Item id="crpg_mount_rouncey_15" name="Kehilan al-Khamsa" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="78" speed="49" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="7" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="78" speed="49" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="7" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -18,7 +18,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_14" name="Unmol Rouncey" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.aserai" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="78" speed="48" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="4" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="78" speed="48" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="4" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -34,7 +34,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_13" name="Karachay Rouncey" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.khuzait" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="78" speed="47" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="1" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="78" speed="47" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="1" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -50,7 +50,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_12" name="Dzhabe Rouncey" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.khuzait" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="77" speed="47" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-2" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="77" speed="47" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-2" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -66,7 +66,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_11" name="Bidet Breton Rouncey" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.vlandia" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="76" speed="46" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-5" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="76" speed="46" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-5" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -82,7 +82,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_10" name="Black Forest Rouncey" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.vlandia" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="75" speed="45" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-8" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="75" speed="45" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-8" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -98,7 +98,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_9" name="Anadolu Rouncey" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.aserai" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="74" speed="45" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-11" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="74" speed="45" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-11" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -114,7 +114,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_8" name="East Anglis Rouncey" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.vlandia" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="72" speed="44" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-14" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="72" speed="44" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-14" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -130,7 +130,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_7" name="Megrelakaya Rouncey" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.empire" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="70" speed="43" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-17" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="70" speed="43" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-17" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -146,7 +146,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_6" name="Sanhe Rouncey" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.khuzait" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="68" speed="42" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-20" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="68" speed="42" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-20" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -162,7 +162,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_5" name="Welsh Cob" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.battania" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="66" speed="41" charge_damage="2" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-23" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="66" speed="41" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-23" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -178,7 +178,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_4" name="Fell Pony" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.vlandia" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="64" speed="40" charge_damage="2" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-26" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="64" speed="40" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-26" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -194,7 +194,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_3" name="Raymond Rouncey" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="62" speed="38" charge_damage="1" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-17" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="62" speed="38" charge_damage="2" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-17" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>

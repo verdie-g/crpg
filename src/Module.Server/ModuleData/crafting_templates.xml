@@ -1641,8 +1641,9 @@
       <UsablePiece piece_id="crpg_khuzait_lance_2_t3_guard" />
       <UsablePiece piece_id="crpg_khuzait_lance_2_t3_handle" />
       <UsablePiece piece_id="crpg_khuzait_lance_3_t4_blade" />
+      <UsablePiece piece_id="crpg_khuzait_lance_3_t4_pommel" />
       <UsablePiece piece_id="crpg_khuzait_lance_3_t4_handle" />
-      <UsablePiece piece_id="crpg_khuzait_lance_2_t5_guard" />
+      <UsablePiece piece_id="crpg_khuzait_lance_3_t4_guard" />
       <UsablePiece piece_id="crpg_khuzait_lance_4_t5_blade" />
       <UsablePiece piece_id="crpg_khuzait_lance_4_t5_guard" />
       <UsablePiece piece_id="crpg_khuzait_lance_4_t5_handle" />
