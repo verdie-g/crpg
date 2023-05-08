@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace Crpg.Persistence.Migrations
-{
+namespace Crpg.Persistence.Migrations;
+
     /// <inheritdoc />
-    public partial class renameLastFreeRespecAt : Migration
+    public partial class RenameLastFreeRespecAt : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -25,4 +25,3 @@ namespace Crpg.Persistence.Migrations
                 newName: "last_free_respecialize_at");
         }
     }
-}

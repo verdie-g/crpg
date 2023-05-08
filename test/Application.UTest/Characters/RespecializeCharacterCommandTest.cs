@@ -24,7 +24,7 @@ public class RespecializeCharacterCommandTest : TestBase
     };
 
     [Theory]
-    public async Task RespecializeCharacterLevel3ShouldMakeItLevel2(bool freeRespec)
+    public async Task RespecializeCharacterShouldReduceGoldAndUpdateLastRespecTime(bool freeRespec)
     {
         Character character = new()
         {
