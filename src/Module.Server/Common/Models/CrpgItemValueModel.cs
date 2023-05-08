@@ -348,6 +348,7 @@ internal class CrpgItemValueModel : ItemValueModel
                 * weapon.Accuracy / 10f
                 * (float)Math.Pow(weapon.ThrustSpeed, 0.5f) / 10f
                 * (weapon.ItemUsage == "crossbow_light" ? 2f : 1f)
+                * (!weapon.WeaponFlags.HasAnyFlag(WeaponFlags.CantReloadOnHorseback) ? 1.85f : 1f)
                 / crossbowscaler;
             return crossbowTier * crossbowTier / 10f;
         }
