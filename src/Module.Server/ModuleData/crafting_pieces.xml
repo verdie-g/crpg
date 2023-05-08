@@ -580,6 +580,11 @@
       <Material id="Iron5" count="1" />
     </Materials>
   </CraftingPiece>
+  <CraftingPiece id="crpg_khuzait_lance_3_t4_pommel" name="{=Telford}Thamaskene Steel Riveted Spear Pommel" tier="5" piece_type="Pommel" mesh="spear_pommel_9" culture="Culture.empire" length="2.9" weight="0">
+    <Materials>
+      <Material id="Iron5" count="1" />
+    </Materials>
+  </CraftingPiece>
   <CraftingPiece id="crpg_northern_spear_4_t5_pommel" name="{=ysby6FNF}Thamaskene Steel Riveted Spear Pommel" tier="5" piece_type="Pommel" mesh="spear_pommel_9" culture="Culture.empire" length="2.9" weight="0">
     <Materials>
       <Material id="Iron5" count="1" />
@@ -779,7 +784,7 @@
       <Material id="Wood" count="1" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_sturgia_lance_2_t4_handle" name="{=Telford}Hardened Pine Long Spear Staff" tier="4" piece_type="Handle" mesh="spear_handle_17" length="190" weight="1.65">
+  <CraftingPiece id="crpg_sturgia_lance_2_t4_handle" name="{=Telford}Hardened Pine Long Spear Staff" tier="4" piece_type="Handle" mesh="spear_handle_17" length="190" weight="1.75">
     <BuildData piece_offset="22.9" />
     <Materials>
       <Material id="Wood" count="1" />
@@ -791,7 +796,7 @@
       <Material id="Wood" count="1" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_khuzait_lance_3_t4_handle" name="{=Telford}Oaken Long Spear Staff" tier="4" piece_type="Handle" mesh="spear_handle_20" length="220" weight="2.15">
+  <CraftingPiece id="crpg_khuzait_lance_3_t4_handle" name="{=Telford}Oaken Long Spear Staff" tier="4" piece_type="Handle" mesh="spear_handle_20" length="220" weight="2.25">
     <BuildData piece_offset="25.9" />
     <Materials>
       <Material id="Wood" count="1" />
@@ -920,7 +925,7 @@
       <Material id="Wood" count="1" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_vlandia_lance_2_t1_handle" name="{=Telford}Decorated Pine Shaft" tier="4" piece_type="Handle" mesh="spear_handle_16" length="180" weight="1.35">
+  <CraftingPiece id="crpg_vlandia_lance_2_t1_handle" name="{=Telford}Decorated Pine Shaft" tier="4" piece_type="Handle" mesh="spear_handle_16" length="180" weight="1.45">
     <BuildData piece_offset="23.9" />
     <Materials>
       <Material id="Wood" count="1" />
@@ -1211,7 +1216,7 @@
       <Material id="Iron2" count="1" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_khuzait_lance_2_t5_guard" name="{=Telford}Blunt Wings" tier="4" piece_type="Guard" mesh="spear_guard_3" culture="Culture.empire" length="12.5" weight="0">
+  <CraftingPiece id="crpg_khuzait_lance_3_t4_guard" name="{=Telford}Blunt Wings" tier="4" piece_type="Guard" mesh="spear_guard_3" culture="Culture.empire" length="12.5" weight="0">
     <Materials>
       <Material id="Iron4" count="1" />
     </Materials>
@@ -1402,7 +1407,7 @@
       <Material id="Iron4" count="1" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_southern_spear_3_t4_blade" name="{=S9zZO7qJ}Fine Steel Pike Head" tier="4" piece_type="Blade" mesh="spear_blade_11" length="34.56" weight="0.3096">
+  <CraftingPiece id="crpg_southern_spear_3_t4_blade" name="{=S9zZO7qJ}Fine Steel Pike Head" tier="4" piece_type="Blade" mesh="spear_blade_11" length="34.56" weight="0.3496">
     <BladeData stack_amount="2" physics_material="wood_weapon" body_name="bo_spear_b">
       <Thrust damage_type="Pierce" damage_factor="2.8" />
       <Swing damage_type="Blunt" damage_factor="1.4" />
@@ -1506,7 +1511,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_western_javelin_3_t4_blade" name="{=emUoygLE}Harpoon Head" tier="2" piece_type="Blade" mesh="spear_blade_10" length="39.775" weight="0.54" excluded_item_usage_features="swing">
     <BladeData stack_amount="3" physics_material="wood_weapon" body_name="bo_spear_b" holster_mesh="throwing_spear_quiver_1" holster_body_name="bo_throwing_spear_quiver_1" holster_mesh_length="68.9">
-      <Thrust damage_type="Pierce" damage_factor="0.689" />
+      <Thrust damage_type="Pierce" damage_factor="0.55" />
     </BladeData>
     <Materials>
       <Material id="Iron3" count="1" />
@@ -1514,7 +1519,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_generic_javelin_1_t3_blade" name="{=emUoygLE}Harpoon Head" tier="2" piece_type="Blade" mesh="spear_blade_10" length="39.775" weight="0.54" excluded_item_usage_features="swing">
     <BladeData stack_amount="3" physics_material="wood_weapon" body_name="bo_spear_b" holster_mesh="throwing_spear_quiver_1" holster_body_name="bo_throwing_spear_quiver_1" holster_mesh_length="68.9">
-      <Thrust damage_type="Pierce" damage_factor="0.714" />
+      <Thrust damage_type="Pierce" damage_factor="0.63" />
     </BladeData>
     <Materials>
       <Material id="Iron3" count="1" />
@@ -1567,7 +1572,7 @@
       <Material id="Iron4" count="2" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_eastern_lance_1_t3_blade" name="{=Telford}Swordstaff Head" tier="5" piece_type="Blade" mesh="spear_blade_18" length="70" weight="0.57">
+  <CraftingPiece id="crpg_eastern_lance_1_t3_blade" name="{=Telford}Swordstaff Head" tier="5" piece_type="Blade" mesh="spear_blade_18" length="70" weight="0.57" excluded_item_usage_features="swing">
     <BladeData stack_amount="2" physics_material="wood_weapon" body_name="bo_spear_b">
       <Thrust damage_type="Pierce" damage_factor="2.5" />
     </BladeData>
@@ -1618,27 +1623,36 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_imperial_throwing_spear_1_t4_blade" name="{=Y4tIQnS4}Short Simple Spear Head" tier="2" piece_type="Blade" mesh="spear_blade_15" length="22.862" weight="0.2136" excluded_item_usage_features="swing">
     <BladeData stack_amount="1" physics_material="wood_weapon" body_name="bo_spear_b" holster_mesh="throwing_spear_quiver_1_1" holster_body_name="bo_throwing_spear_quiver_1_1" holster_mesh_length="68.9">
-      <Thrust damage_type="Pierce" damage_factor="0.833" />
+      <Thrust damage_type="Pierce" damage_factor="0.73" />
     </BladeData>
     <Materials>
       <Material id="Iron2" count="1" />
     </Materials>
+     <Flags>
+      <Flag name="CanDismount" />
+    </Flags>
   </CraftingPiece>
   <CraftingPiece id="crpg_eastern_throwing_spear_2_t4_blade" name="{=Y4tIQnS4}Short Simple Spear Head" tier="2" piece_type="Blade" mesh="spear_blade_15" length="22.862" weight="0.2136" excluded_item_usage_features="swing">
     <BladeData stack_amount="1" physics_material="wood_weapon" body_name="bo_spear_b" holster_mesh="throwing_spear_quiver_1_1" holster_body_name="bo_throwing_spear_quiver_1_1" holster_mesh_length="68.9">
-      <Thrust damage_type="Pierce" damage_factor="0.833" />
+      <Thrust damage_type="Pierce" damage_factor="0.76" />
     </BladeData>
     <Materials>
       <Material id="Iron2" count="1" />
     </Materials>
+     <Flags>
+      <Flag name="CanDismount" />
+    </Flags>
   </CraftingPiece>
   <CraftingPiece id="crpg_eastern_throwing_spear_1_t3_blade" name="{=Y4tIQnS4}Short Simple Spear Head" tier="2" piece_type="Blade" mesh="spear_blade_15" length="22.862" weight="0.2136" excluded_item_usage_features="swing">
     <BladeData stack_amount="1" physics_material="wood_weapon" body_name="bo_spear_b" holster_mesh="throwing_spear_quiver_1_1" holster_body_name="bo_throwing_spear_quiver_1_1" holster_mesh_length="68.9">
-      <Thrust damage_type="Pierce" damage_factor="0.833" />
+      <Thrust damage_type="Pierce" damage_factor="0.71" />
     </BladeData>
     <Materials>
       <Material id="Iron2" count="1" />
     </Materials>
+     <Flags>
+      <Flag name="CanDismount" />
+    </Flags>
   </CraftingPiece>
   <CraftingPiece id="crpg_northern_spear_1_t2_blade" name="{=Y4tIQnS4}Short Simple Spear Head" tier="2" piece_type="Blade" mesh="spear_blade_15" length="22.862" weight="0.2136">
     <BladeData stack_amount="1" physics_material="wood_weapon" body_name="bo_spear_b" holster_mesh="throwing_spear_quiver_1_1" holster_body_name="bo_throwing_spear_quiver_1_1" holster_mesh_length="68.9">
@@ -1649,7 +1663,7 @@
       <Material id="Iron2" count="1" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_western_lance_1_t3_blade" name="{=Telford}Short Simple Pike Head" tier="1" piece_type="Blade" mesh="spear_blade_9" length="23.328" weight="0.204" is_default="true">
+  <CraftingPiece id="crpg_western_lance_1_t3_blade" name="{=Telford}Short Simple Pike Head" tier="1" piece_type="Blade" mesh="spear_blade_9" length="23.328" weight="0.204" is_default="true" excluded_item_usage_features="swing">
     <BladeData stack_amount="2" physics_material="wood_weapon" body_name="bo_spear_b" holster_mesh="throwing_spear_quiver_3_1" holster_body_name="bo_throwing_spear_quiver_3_1" holster_mesh_length="96.8">
       <Thrust damage_type="Pierce" damage_factor="2.4" />
     </BladeData>
@@ -1683,7 +1697,7 @@
       <Material id="Iron4" count="2" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_vlandia_lance_2_t1_blade" name="{=Telford}Jagged Fine Steel Spear Head" tier="4" piece_type="Blade" mesh="spear_blade_36" length="42.5" weight="0.168" >
+  <CraftingPiece id="crpg_vlandia_lance_2_t1_blade" name="{=Telford}Jagged Fine Steel Spear Head" tier="4" piece_type="Blade" mesh="spear_blade_36" length="42.5" weight="0.168" excluded_item_usage_features="swing">
     <BladeData stack_amount="2" physics_material="wood_weapon" body_name="bo_spear_b">
       <Thrust damage_type="Pierce" damage_factor="2.6" />
     </BladeData>
@@ -1707,10 +1721,7 @@
     <Materials>
       <Material id="Iron5" count="2" />
     </Materials>
-    <Flags>
-      <Flag name="CanDismount" />
-    </Flags>
-  </CraftingPiece>
+     </CraftingPiece>
   <CraftingPiece id="crpg_eastern_spear_5_t5_blade" name="{=1rGNXUaJ}Thin Fine Steel Hewing Spear Head" tier="5" piece_type="Blade" mesh="spear_blade_27" length="69.5" weight="0.5" excluded_item_usage_features="swing">
     <BladeData stack_amount="3" physics_material="wood_weapon" body_name="bo_spear_b" holster_mesh="throwing_spear_quiver_2" holster_body_name="bo_throwing_spear_quiver_2" holster_mesh_length="94.6">
       <Thrust damage_type="Pierce" damage_factor="2.5" />
@@ -1737,10 +1748,13 @@
     <Materials>
       <Material id="Iron3" count="2" />
     </Materials>
+     <Flags>
+      <Flag name="CanDismount" />
+    </Flags>
   </CraftingPiece>
   <CraftingPiece id="crpg_northern_javelin_2_t3_blade" name="{=T1aiDuOp}Narrow Menavlon Head" tier="3" piece_type="Blade" mesh="spear_blade_14" length="46.28" weight="0.3768" excluded_item_usage_features="swing:TwoHandedPolearm_Bracing">
     <BladeData stack_amount="3" physics_material="wood_weapon" body_name="bo_spear_b" holster_mesh="throwing_spear_quiver_4" holster_body_name="bo_throwing_spear_quiver_4" holster_mesh_length="96.2">
-      <Thrust damage_type="Pierce" damage_factor="0.84" />
+      <Thrust damage_type="Pierce" damage_factor="0.73" />
     </BladeData>
     <Materials>
       <Material id="Iron3" count="1" />
@@ -1775,7 +1789,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_northern_javelin_3_t4_blade" name="{=9aYBy1RN}Fine Steel Leaf Spear Head" tier="4" piece_type="Blade" mesh="spear_blade_42" length="42" weight="0.2456" excluded_item_usage_features="swing">
     <BladeData stack_amount="3" physics_material="wood_weapon" body_name="bo_spear_b" holster_mesh="throwing_spear_quiver_4_1" holster_body_name="bo_throwing_spear_quiver_4_1" holster_mesh_length="96.2">
-      <Thrust damage_type="Pierce" damage_factor="0.845" />
+      <Thrust damage_type="Cut" damage_factor="0.845" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="2" />
@@ -1882,7 +1896,7 @@
       <Material id="Iron3" count="2" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_western_spear_3_t3_blade" name="{=CdBAvJdP}Kontos Head" tier="3" piece_type="Blade" mesh="spear_blade_8" length="60.153" weight="0.56">
+  <CraftingPiece id="crpg_western_spear_3_t3_blade" name="{=CdBAvJdP}Kontos Head" tier="3" piece_type="Blade" mesh="spear_blade_8" length="60.153" weight="0.62">
     <BladeData stack_amount="2" physics_material="wood_weapon" body_name="bo_spear_b">
       <Thrust damage_type="Pierce" damage_factor="2.8" />
       <Swing damage_type="Blunt" damage_factor="1.7" />
@@ -1909,7 +1923,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_western_javelin_2_t3_blade" name="{=Oxew9WCe}Imperial Simple Spear Head" tier="2" piece_type="Blade" mesh="spear_blade_1" length="48" weight="0.3384" excluded_item_usage_features="swing">
     <BladeData stack_amount="3" physics_material="wood_weapon" body_name="bo_spear_b" holster_mesh="throwing_spear_quiver_4" holster_body_name="bo_throwing_spear_quiver_4" holster_mesh_length="96.2">
-      <Thrust damage_type="Pierce" damage_factor="0.77" />
+      <Thrust damage_type="Pierce" damage_factor="0.58" />
     </BladeData>
     <Materials>
       <Material id="Iron2" count="1" />
@@ -1924,7 +1938,7 @@
       <Material id="Iron2" count="1" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_vlandia_lance_1_t1_blade" name="{=Telford}Imperial Simple Spear Head" tier="2" piece_type="Blade" mesh="spear_blade_1" length="48" weight="0.3">
+  <CraftingPiece id="crpg_vlandia_lance_1_t1_blade" name="{=Telford}Imperial Simple Spear Head" tier="2" piece_type="Blade" mesh="spear_blade_1" length="48" weight="0.3" excluded_item_usage_features="swing">
     <BladeData stack_amount="3" physics_material="wood_weapon" body_name="bo_spear_b" holster_mesh="throwing_spear_quiver_4" holster_body_name="bo_throwing_spear_quiver_4" holster_mesh_length="96.2">
       <Thrust damage_type="Pierce" damage_factor="2.5" />
     </BladeData>
@@ -2418,7 +2432,7 @@
   <CraftingPiece id="crpg_aserai_2haxe_3_t5_blade" name="{=SEsx3kZz}Heavy Bardiche Head" tier="5" piece_type="Blade" mesh="axe_craft_16_head" distance_to_next_piece="28.8" distance_to_previous_piece="6" weight="0.735">
     <BuildData piece_offset="-12" />
     <BladeData stack_amount="2" blade_length="57.435" blade_width="23.337" physics_material="metal_weapon" body_name="bo_axe_longer_b">
-      <Swing damage_type="Cut" damage_factor="4.5" />
+      <Swing damage_type="Cut" damage_factor="4.6" />
     </BladeData>
     <Flags>
       <Flag name="CanBePickedUpFromCorpse" type="ItemFlags" />
@@ -2443,7 +2457,7 @@
   <CraftingPiece id="crpg_aserai_2haxe_1_t3_blade" name="{=0gteBOD7}Bardiche Head" tier="4" piece_type="Blade" mesh="axe_craft_16_head" distance_to_next_piece="28.8" distance_to_previous_piece="6" weight="0.25">
     <BuildData piece_offset="-12" />
     <BladeData stack_amount="2" blade_length="57.435" blade_width="23.337" physics_material="metal_weapon" body_name="bo_axe_longer_b">
-      <Swing damage_type="Cut" damage_factor="3.9" />
+      <Swing damage_type="Cut" damage_factor="4" />
     </BladeData>
     <Flags>
       <Flag name="CanBePickedUpFromCorpse" type="ItemFlags" />
@@ -2482,7 +2496,7 @@
   <CraftingPiece id="crpg_northern_axe_t3_blade" name="{=USWfzbuW}Northern Broad Great Axe Head" tier="3" piece_type="Blade" mesh="axe_craft_7_head" distance_to_next_piece="14.96" distance_to_previous_piece="2.712" weight="0.5">
     <BuildData piece_offset="-5.424" />
     <BladeData stack_amount="0" blade_length="28.366" blade_width="28.192" physics_material="metal_weapon" body_name="bo_axe_longer_b">
-      <Swing damage_type="Cut" damage_factor="3.6" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
     </BladeData>
     <Flags>
       <Flag name="CanBePickedUpFromCorpse" type="ItemFlags" />
@@ -2495,7 +2509,7 @@
   <CraftingPiece id="crpg_avalanche_2haxe_blade" name="{=USWfzbuW}Northern Broad Great Axe Head" tier="3" piece_type="Blade" mesh="axe_craft_7_head" distance_to_next_piece="14.96" distance_to_previous_piece="2.712" weight="0.5">
     <BuildData piece_offset="-5.424" />
     <BladeData stack_amount="0" blade_length="28.366" blade_width="28.192" physics_material="metal_weapon" body_name="bo_axe_longer_b">
-      <Swing damage_type="Cut" damage_factor="3.9" />
+      <Swing damage_type="Cut" damage_factor="4.0" />
     </BladeData>
     <Flags>
       <Flag name="CanBePickedUpFromCorpse" type="ItemFlags" />
@@ -6118,7 +6132,7 @@
 <CraftingPiece id="crpg_greataxe_blade" name="{=}Great Axe Head" tier="3" piece_type="Blade" mesh="greataxe_blade" length="25.5" distance_to_next_piece="14.96" distance_to_previous_piece="2.712" weight="0.65">
 <BuildData piece_offset="-14.0"/>
 <BladeData stack_amount="0" blade_length="28.366" blade_width="28.192" physics_material="metal_weapon" body_name="bo_axe_longer_b">
-<Swing damage_type="Cut" damage_factor="4.2"/>
+<Swing damage_type="Cut" damage_factor="4.3"/>
 </BladeData>
 <Flags>
 <Flag name="CanBePickedUpFromCorpse" type="ItemFlags"/>
@@ -6644,7 +6658,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_bec_de_corbin_blade" name="Bec De Corbin Blade" tier="3" piece_type="Blade" mesh="bec_head" culture="Culture.vlandia" length="104" weight="0.4">
     <BladeData stack_amount="1" physics_material="wood_weapon" body_name="bo_spear_b">
-      <Thrust damage_type="Pierce" damage_factor="2.7"/>
+      <Thrust damage_type="Pierce" damage_factor="2.6"/>
       <Swing damage_type="Pierce" damage_factor="2.9"/>
     </BladeData>
     <Flags>
