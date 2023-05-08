@@ -7,12 +7,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Queries;
 
-public record GetUserCharacterRatingQuery : IMediatorRequest<CharacterRatingViewModel>
+public record GetUserCharacterCompetitiveRatingQuery : IMediatorRequest<CharacterCompetitiveRatingViewModel>
 {
     public int CharacterId { get; init; }
     public int UserId { get; init; }
 
-    internal class Handler : IMediatorRequestHandler<GetUserCharacterRatingQuery, CharacterRatingViewModel>
+    internal class Handler : IMediatorRequestHandler<GetUserCharacterCompetitiveRatingQuery, CharacterCompetitiveRatingViewModel>
     {
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
@@ -23,7 +23,7 @@ public record GetUserCharacterRatingQuery : IMediatorRequest<CharacterRatingView
             _mapper = mapper;
         }
 
-        public async Task<Result<CharacterRatingViewModel>> Handle(GetUserCharacterRatingQuery req, CancellationToken cancellationToken)
+        public async Task<Result<CharacterCompetitiveRatingViewModel>> Handle(GetUserCharacterCompetitiveRatingQuery req, CancellationToken cancellationToken)
         {
             var character = await _db.Characters
                 .AsNoTracking()
@@ -31,7 +31,7 @@ public record GetUserCharacterRatingQuery : IMediatorRequest<CharacterRatingView
 
             return character == null
                 ? new(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId))
-                : new(_mapper.Map<CharacterRatingViewModel>(character.Rating));
+                : new(_mapper.Map<CharacterCompetitiveRatingViewModel>(character));
         }
     }
 }

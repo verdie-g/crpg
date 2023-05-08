@@ -211,20 +211,36 @@ public class UsersController : BaseController
     }
 
     /// <summary>
-    /// Get character rating.
+    /// Get character competitive rating.
     /// </summary>
     /// <param name="id">Character id.</param>
     /// <returns>The character rating.</returns>
     /// <response code="200">Ok.</response>
-    [HttpGet("self/characters/{id}/rating")]
-    public Task<ActionResult<Result<CharacterRatingViewModel>>> GetCharacterRating([FromRoute] int id)
+    [HttpGet("self/characters/{id}/competitiverating")]
+    public Task<ActionResult<Result<CharacterCompetitiveRatingViewModel>>> GetCharacterRating([FromRoute] int id)
     {
-        return ResultToActionAsync(Mediator.Send(new GetUserCharacterRatingQuery
+        return ResultToActionAsync(Mediator.Send(new GetUserCharacterCompetitiveRatingQuery
         {
             UserId = CurrentUser.User!.Id,
             CharacterId = id,
         }));
     }
+
+    /// <summary>
+    /// Get top character competitive ratings.
+    /// </summary>
+    /// <returns>The top character competitive ratings.</returns>
+    /// <response code="200">Ok.</response>
+    [HttpGet("self/characters/topcompetitiverating")]
+    public Task<ActionResult<Result<IList<CharacterCompetitiveRatingViewModel>>>> GetTopCharacterCompetitiveRatings()
+    {
+        return ResultToActionAsync(Mediator.Send(new GetTopUserCharactersByCompetitiveRatingQuery
+        {
+            // You can set the Top property if you want to customize the number of top characters returned.
+            // Top = 50, // for example
+        }));
+    }
+
 
     /// <summary>
     /// Updates character characteristics for the current user.
