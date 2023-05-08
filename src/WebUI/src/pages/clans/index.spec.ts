@@ -4,23 +4,29 @@ import { mountWithRouter } from '@/__test__/unit/utils';
 import { type Clan, type ClanWithMemberCount } from '@/models/clan';
 import { Region } from '@/models/region';
 
-const mockUsePagination = vi.fn().mockImplementation(() => ({
-  perPage: 2,
-  perPageConfig: [1, 2, 3],
+const { mockedUsePagination } = vi.hoisted(() => ({
+  mockedUsePagination: vi.fn().mockImplementation(() => ({
+    perPage: 2,
+    perPageConfig: [1, 2, 3],
+  })),
 }));
 vi.mock('@/composables/use-pagination', () => ({
-  usePagination: mockUsePagination,
+  usePagination: mockedUsePagination,
 }));
 
-const mockUseSearchDebounced = vi.fn().mockImplementation(() => ({
-  searchModel: ref(''),
+const { mockedUseSearchDebounced } = vi.hoisted(() => ({
+  mockedUseSearchDebounced: vi.fn().mockImplementation(() => ({
+    searchModel: ref(''),
+  })),
 }));
 vi.mock('@/composables/use-search-debounce', () => ({
-  useSearchDebounced: mockUseSearchDebounced,
+  useSearchDebounced: mockedUseSearchDebounced,
 }));
 
-const mockedGetClans = vi.fn().mockResolvedValue([]);
-const mockedGetFilteredClans = vi.fn().mockReturnValue([]);
+const { mockedGetClans, mockedGetFilteredClans } = vi.hoisted(() => ({
+  mockedGetClans: vi.fn().mockResolvedValue([]),
+  mockedGetFilteredClans: vi.fn().mockReturnValue([]),
+}));
 vi.mock('@/services/clan-service', () => ({
   getClans: mockedGetClans,
   getFilteredClans: mockedGetFilteredClans,
@@ -33,7 +39,7 @@ const userStore = useUserStore(createTestingPinia());
 
 const routes = [
   {
-    name: 'clans',
+    name: 'Clans',
     path: '/clans',
     component: Page,
   },
@@ -46,7 +52,7 @@ const routes = [
   },
 ];
 const route = {
-  name: 'clans',
+  name: 'Clans',
   query: {},
 };
 

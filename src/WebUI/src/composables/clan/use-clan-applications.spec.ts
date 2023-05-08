@@ -1,5 +1,9 @@
-const CLAN_INVINTATIONS = [{ id: 2 }, { id: 3 }];
-const mockedGetClanInvitations = vi.fn().mockResolvedValue(CLAN_INVINTATIONS);
+const { CLAN_INVINTATIONS } = vi.hoisted(() => ({
+  CLAN_INVINTATIONS: [{ id: 2 }, { id: 3 }],
+}));
+const { mockedGetClanInvitations } = vi.hoisted(() => ({
+  mockedGetClanInvitations: vi.fn().mockResolvedValue(CLAN_INVINTATIONS),
+}));
 vi.mock('@/services/clan-service', () => ({
   getClanInvitations: mockedGetClanInvitations,
 }));

@@ -1,16 +1,19 @@
 import { flushPromises } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 import { mountWithRouter } from '@/__test__/unit/utils';
-import { type Clan } from '@/models/clan';
 
-const NEW_CLAN_ID = 2;
-const NEW_CLAN_FORM = { tag: 'mlp', name: 'My Little Pony' } as Omit<Clan, 'id'>;
-const mockedCreateClan = vi.fn().mockResolvedValue({ id: NEW_CLAN_ID });
+const { NEW_CLAN_ID, NEW_CLAN_FORM } = vi.hoisted(() => ({
+  NEW_CLAN_ID: 2,
+  NEW_CLAN_FORM: { tag: 'mlp', name: 'My Little Pony' },
+}));
+const { mockedCreateClan } = vi.hoisted(() => ({
+  mockedCreateClan: vi.fn().mockResolvedValue({ id: 2 }),
+}));
 vi.mock('@/services/clan-service', () => ({
   createClan: mockedCreateClan,
 }));
 
-const mockedNotify = vi.fn();
+const { mockedNotify } = vi.hoisted(() => ({ mockedNotify: vi.fn() }));
 vi.mock('@/services/notification-service', () => ({
   notify: mockedNotify,
 }));
@@ -21,12 +24,12 @@ const userStore = useUserStore(createTestingPinia());
 
 const routes = [
   {
-    name: 'clans-create',
+    name: 'ClansCreate',
     path: '/clans-create',
     component: Page,
   },
   {
-    name: 'clans-id',
+    name: 'ClansId',
     path: '/clans/:id',
     component: {
       template: `<div></div>`,
@@ -35,7 +38,7 @@ const routes = [
 ];
 
 const route = {
-  name: 'clans-create',
+  name: 'ClansCreate',
 };
 
 const mountOptions = {

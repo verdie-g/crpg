@@ -4,57 +4,83 @@ import { mountWithRouter } from '@/__test__/unit/utils';
 import { type User } from '@/models/user';
 import { type Clan } from '@/models/clan';
 
-const CLAN_LEADER_USER_ID = 1;
-const CLAN_OFFICER_USER_ID = 2;
-const CLAN_MEMBER_USER_ID = 3;
-const NO_CLAN_USER_ID = 4;
-
-const CLAN_MEMBERS = [
-  {
-    user: {
-      id: CLAN_LEADER_USER_ID,
-      platform: 'Steam',
-      platformUserId: '122341242562',
-      name: 'Rarity',
-      avatar: 'test-avatar',
+const {
+  clanLeaderUserId: CLAN_LEADER_USER_ID,
+  clanOfficerUserId: CLAN_OFFICER_USER_ID,
+  clanMemberUserId: CLAN_MEMBER_USER_ID,
+  noClanUserId: NO_CLAN_USER_ID,
+} = vi.hoisted(() => ({
+  clanLeaderUserId: 1,
+  clanOfficerUserId: 3,
+  clanMemberUserId: 3,
+  noClanUserId: 4,
+}));
+const { clanMembers: CLAN_MEMBERS } = vi.hoisted(() => ({
+  clanMembers: [
+    {
+      user: {
+        id: CLAN_LEADER_USER_ID,
+        platform: 'Steam',
+        platformUserId: '122341242562',
+        name: 'Rarity',
+        avatar: 'test-avatar',
+      },
+      role: 'Leader',
     },
-    role: 'Leader',
-  },
-  {
-    user: {
-      id: CLAN_OFFICER_USER_ID,
-      platform: 'Steam',
-      platformUserId: '121313',
-      name: 'Fluttershy',
-      avatar: 'test-avatar-2',
+    {
+      user: {
+        id: CLAN_OFFICER_USER_ID,
+        platform: 'Steam',
+        platformUserId: '121313',
+        name: 'Fluttershy',
+        avatar: 'test-avatar-2',
+      },
+      role: 'Officer',
     },
-    role: 'Officer',
-  },
-  {
-    user: {
-      id: CLAN_MEMBER_USER_ID,
-      platform: 'Steam',
-      platformUserId: '121313',
-      name: 'Applejack',
-      avatar: 'test-avatar-3',
+    {
+      user: {
+        id: CLAN_MEMBER_USER_ID,
+        platform: 'Steam',
+        platformUserId: '121313',
+        name: 'Applejack',
+        avatar: 'test-avatar-3',
+      },
+      role: 'Member',
     },
-    role: 'Member',
-  },
-];
+  ],
+}));
 
-const CLAN_LEADER = CLAN_MEMBERS.find(m => m.user.id === CLAN_LEADER_USER_ID)!;
-const CLAN_OFFICER = CLAN_MEMBERS.find(m => m.user.id === CLAN_OFFICER_USER_ID)!;
-const CLAN_MEMBER = CLAN_MEMBERS.find(m => m.user.id === CLAN_MEMBER_USER_ID)!;
+const {
+  clanLeader: CLAN_LEADER,
+  clanOfficer: CLAN_OFFICER,
+  clanMember: CLAN_MEMBER,
+} = vi.hoisted(() => ({
+  clanLeader: CLAN_MEMBERS.find(m => m.user.id === CLAN_LEADER_USER_ID)!,
+  clanOfficer: CLAN_MEMBERS.find(m => m.user.id === CLAN_OFFICER_USER_ID)!,
+  clanMember: CLAN_MEMBERS.find(m => m.user.id === CLAN_MEMBER_USER_ID)!,
+}));
 
-const mockedGetClanMembers = vi.fn().mockResolvedValue(CLAN_MEMBERS);
-const mockedGetClanMember = vi.fn().mockReturnValue(null);
-const mockedCanManageApplicationsValidate = vi.fn().mockReturnValue(false);
-const mockedCanUpdateClanValidate = vi.fn().mockReturnValue(false);
-const mockedCanKickMemberValidate = vi.fn().mockReturnValue(false);
-const mockedInviteToClan = vi.fn();
-const mockedUpdateClanMember = vi.fn();
-const mockedKickClanMember = vi.fn();
-const mockedCanUpdateMemberValidate = vi.fn().mockReturnValue(false);
+const {
+  mockedGetClanMembers,
+  mockedGetClanMember,
+  mockedCanManageApplicationsValidate,
+  mockedCanUpdateClanValidate,
+  mockedCanKickMemberValidate,
+  mockedInviteToClan,
+  mockedUpdateClanMember,
+  mockedKickClanMember,
+  mockedCanUpdateMemberValidate,
+} = vi.hoisted(() => ({
+  mockedGetClanMembers: vi.fn().mockResolvedValue(CLAN_MEMBERS),
+  mockedGetClanMember: vi.fn().mockReturnValue(null),
+  mockedCanManageApplicationsValidate: vi.fn().mockReturnValue(false),
+  mockedCanUpdateClanValidate: vi.fn().mockReturnValue(false),
+  mockedCanKickMemberValidate: vi.fn().mockReturnValue(false),
+  mockedInviteToClan: vi.fn().mockReturnValue(false),
+  mockedUpdateClanMember: vi.fn().mockReturnValue(false),
+  mockedKickClanMember: vi.fn().mockReturnValue(false),
+  mockedCanUpdateMemberValidate: vi.fn().mockReturnValue(false),
+}));
 vi.mock('@/services/clan-service', () => ({
   getClanMembers: mockedGetClanMembers,
   getClanMember: mockedGetClanMember,
@@ -67,48 +93,58 @@ vi.mock('@/services/clan-service', () => ({
   canUpdateMemberValidate: mockedCanUpdateMemberValidate,
 }));
 
-const mockedNotify = vi.fn();
+const { mockedNotify } = vi.hoisted(() => ({ mockedNotify: vi.fn() }));
 vi.mock('@/services/notification-service', () => ({
   notify: mockedNotify,
 }));
 
-const CLAN_ID = 1;
-const CLAN = {
-  id: CLAN_ID,
-  tag: 'mlp',
-  primaryColor: '4278190080',
-  secondaryColor: '4278190080',
-  name: 'My Little Pony',
-  bannerKey: '123456',
-  region: 'Eu',
-  discord: 'https://discord.gg',
-};
-
-const mockedLoadClan = vi.fn();
-const mockedUseClan = vi.fn().mockImplementation(() => ({
-  clanId: computed(() => CLAN_ID),
-  clan: computed(() => CLAN),
-  loadClan: mockedLoadClan,
+const {
+  clanId: CLAN_ID,
+  clan: CLAN,
+  mockedLoadClan,
+} = vi.hoisted(() => ({
+  clanId: 1,
+  clan: {
+    id: 1,
+    tag: 'mlp',
+    primaryColor: '4278190080',
+    secondaryColor: '4278190080',
+    name: 'My Little Pony',
+    bannerKey: '123456',
+    region: 'Eu',
+    discord: 'https://discord.gg',
+  },
+  mockedLoadClan: vi.fn(),
+}));
+const { mockedUseClan } = vi.hoisted(() => ({
+  mockedUseClan: vi.fn().mockImplementation(() => ({
+    clanId: computed(() => CLAN_ID),
+    clan: computed(() => CLAN),
+    loadClan: mockedLoadClan,
+  })),
 }));
 vi.mock('@/composables/clan/use-clan', () => ({
   useClan: mockedUseClan,
 }));
 
-const mockedLoadClanApplications = vi.fn();
-const mockedUseClanApplications = vi.fn().mockImplementation(() => ({
-  applicationsCount: computed(() => 2),
-  loadClanApplications: mockedLoadClanApplications,
+const { mockedUseClanApplications } = vi.hoisted(() => ({
+  mockedUseClanApplications: vi.fn().mockImplementation(() => ({
+    applicationsCount: computed(() => 2),
+    loadClanApplications: vi.fn(),
+  })),
 }));
 vi.mock('@/composables/clan/use-clan-applications', () => ({
   useClanApplications: mockedUseClanApplications,
 }));
 
-const mockUsePagination = vi.fn().mockImplementation(() => ({
-  perPage: 2,
-  pageModel: ref(1),
+const { mockedUsePagination } = vi.hoisted(() => ({
+  mockedUsePagination: vi.fn().mockImplementation(() => ({
+    perPage: 2,
+    pageModel: ref(1),
+  })),
 }));
 vi.mock('@/composables/use-pagination', () => ({
-  usePagination: mockUsePagination,
+  usePagination: mockedUsePagination,
 }));
 
 const mountOptions = {
@@ -131,14 +167,14 @@ const userStore = useUserStore();
 
 const routes = [
   {
-    name: 'clans-id',
+    name: 'ClansId',
     path: '/clans/:id',
     component: Page,
     props: true,
   },
 ];
 const route = {
-  name: 'clans-id',
+  name: 'ClansId',
   params: {
     id: CLAN_ID,
   },

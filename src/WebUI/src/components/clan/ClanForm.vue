@@ -272,7 +272,7 @@ const onSubmit = async () => {
     </div>
 
     <div class="flex items-center justify-center gap-4">
-      <template v-if="!clanId">
+      <template v-if="clanId === undefined">
         <OButton
           nativeType="submit"
           variant="primary"
@@ -283,14 +283,11 @@ const onSubmit = async () => {
       </template>
 
       <template v-else>
-        <RouterLink :to="{ name: 'ClansId', params: { id: clanId } }">
-          <OButton
-            variant="primary"
-            outlined
-            size="xl"
-            :label="$t('action.cancel')"
-            data-aq-clan-form-action="cancel"
-          />
+        <RouterLink
+          :to="{ name: 'ClansId', params: { id: clanId } }"
+          data-aq-clan-form-action="cancel"
+        >
+          <OButton variant="primary" outlined size="xl" :label="$t('action.cancel')" />
         </RouterLink>
         <OButton
           variant="primary"

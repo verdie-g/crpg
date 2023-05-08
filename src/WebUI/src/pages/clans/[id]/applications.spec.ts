@@ -1,50 +1,58 @@
 import { flushPromises } from '@vue/test-utils';
 import { mountWithRouter } from '@/__test__/unit/utils';
 
-const CLAN_ID = 1;
-const mockedGetClanInvitations = vi.fn().mockResolvedValue([
-  {
-    id: 1,
-    invitee: {
-      id: 13,
-      platform: 'Steam',
-      platformUserId: '',
-      name: 'Applejack',
-      avatar: '',
+const { CLAN_ID, mockedGetClanInvitations } = vi.hoisted(() => ({
+  CLAN_ID: 1,
+  mockedGetClanInvitations: vi.fn().mockResolvedValue([
+    {
+      id: 1,
+      invitee: {
+        id: 13,
+        platform: 'Steam',
+        platformUserId: '',
+        name: 'Applejack',
+        avatar: '',
+      },
+      inviter: {},
+      type: 'Request',
+      status: 'Pending',
     },
-    inviter: {},
-    type: 'Request',
-    status: 'Pending',
-  },
-  {
-    id: 2,
-    invitee: {
-      id: 12,
-      platform: 'Steam',
-      platformUserId: '',
-      name: 'Fluttershy',
-      avatar: '',
+    {
+      id: 2,
+      invitee: {
+        id: 12,
+        platform: 'Steam',
+        platformUserId: '',
+        name: 'Fluttershy',
+        avatar: '',
+      },
+      inviter: {},
+      type: 'Request',
+      status: 'Pending',
     },
-    inviter: {},
-    type: 'Request',
-    status: 'Pending',
-  },
-]);
+  ]),
+}));
 
-const mockedRespondToClanInvitation = vi.fn();
+const { mockedRespondToClanInvitation } = vi.hoisted(() => ({
+  mockedRespondToClanInvitation: vi.fn(),
+}));
 vi.mock('@/services/clan-service', () => ({
   getClanInvitations: mockedGetClanInvitations,
   respondToClanInvitation: mockedRespondToClanInvitation,
 }));
 
-const mockedUseClan = vi.fn().mockImplementation(() => ({
-  clanId: computed(() => CLAN_ID),
+const { mockedUseClan } = vi.hoisted(() => ({
+  mockedUseClan: vi.fn().mockImplementation(() => ({
+    clanId: computed(() => CLAN_ID),
+  })),
 }));
 vi.mock('@/composables/clan/use-clan', () => ({
   useClan: mockedUseClan,
 }));
 
-const mockedNotify = vi.fn();
+const { mockedNotify } = vi.hoisted(() => ({
+  mockedNotify: vi.fn(),
+}));
 vi.mock('@/services/notification-service', () => ({
   notify: mockedNotify,
 }));
@@ -53,14 +61,14 @@ import Page from './applications.vue';
 
 const routes = [
   {
-    name: 'clans-id-applications',
+    name: 'ClansIdApplications',
     path: '/clans/:id/applications',
     component: Page,
     props: true,
   },
 ];
 const route = {
-  name: 'clans-id-applications',
+  name: 'ClansIdApplications',
   params: {
     id: CLAN_ID,
   },

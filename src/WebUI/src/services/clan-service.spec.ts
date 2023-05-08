@@ -17,10 +17,14 @@ vi.mock('@/services/auth-service', () => ({
   getToken: vi.fn().mockResolvedValue('mockedToken'),
 }));
 
-const ARGB_INT = 'ArgbInt';
-const HEX_COLOR = 'HexColor';
-const mockedRgbHexColorToArgbInt = vi.fn(() => 'ArgbInt');
-const mockedArgbIntToRgbHexColor = vi.fn(() => 'HexColor');
+const { ARGB_INT, HEX_COLOR } = vi.hoisted(() => ({
+  ARGB_INT: 'ArgbInt',
+  HEX_COLOR: 'HexColor',
+}));
+const { mockedRgbHexColorToArgbInt, mockedArgbIntToRgbHexColor } = vi.hoisted(() => ({
+  mockedRgbHexColorToArgbInt: vi.fn().mockReturnValue(ARGB_INT),
+  mockedArgbIntToRgbHexColor: vi.fn().mockReturnValue(HEX_COLOR),
+}));
 vi.mock('@/utils/color', () => ({
   rgbHexColorToArgbInt: mockedRgbHexColorToArgbInt,
   argbIntToRgbHexColor: mockedArgbIntToRgbHexColor,

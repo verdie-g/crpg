@@ -6,7 +6,7 @@ import mockUserItems from '@/__mocks__/user-items.json';
 import { type UserItem } from '@/models/user';
 import { type Character } from '@/models/character';
 
-const mockedGetUserClan = vi.fn();
+const { mockedGetUserClan } = vi.hoisted(() => ({ mockedGetUserClan: vi.fn() }));
 vi.mock('@/services/users-service', () => {
   return {
     getUser: vi.fn().mockResolvedValue(mockUser),

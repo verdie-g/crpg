@@ -1,7 +1,7 @@
 import { flushPromises, mount } from '@vue/test-utils';
 import { type Clan } from '@/models/clan';
 
-const mockedNotify = vi.fn();
+const { mockedNotify } = vi.hoisted(() => ({ mockedNotify: vi.fn() }));
 vi.mock('@/services/notification-service', async () => ({
   ...(await vi.importActual<typeof import('@/services/notification-service')>(
     '@/services/notification-service'
@@ -14,7 +14,7 @@ import ClanForm from './ClanForm.vue';
 const CLAN = {
   name: 'My Little Pony',
   tag: 'mlp',
-  region: 'Oce',
+  region: 'Oc',
   description: 'mlp the best',
   primaryColor: '#883e97',
   secondaryColor: '#ee3f96',
