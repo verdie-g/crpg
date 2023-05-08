@@ -20,7 +20,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace Crpg.Persistence.Migrations.
+namespace Crpg.Persistence.Migrations;
 
     [DbContext(typeof(CrpgDbContext))]
     [Migration("20230507165239_renameLastFreeRespecAt")]
