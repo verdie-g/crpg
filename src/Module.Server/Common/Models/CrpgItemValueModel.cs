@@ -142,7 +142,7 @@ internal class CrpgItemValueModel : ItemValueModel
                 WeaponClass.Dagger => 27f,
                 WeaponClass.TwoHandedSword => 27.5f,
                 WeaponClass.TwoHandedMace => 28.5f,
-                WeaponClass.TwoHandedAxe => 29.5f,
+                WeaponClass.TwoHandedAxe => 31.5f,
                 WeaponClass.TwoHandedPolearm => 25f,
                 WeaponClass.OneHandedPolearm => 25f,
                 _ => float.MaxValue,
@@ -156,8 +156,8 @@ internal class CrpgItemValueModel : ItemValueModel
                 WeaponClass.TwoHandedSword => 30f,
                 WeaponClass.TwoHandedMace => 30f,
                 WeaponClass.TwoHandedAxe => 30f,
-                WeaponClass.TwoHandedPolearm => 33f,
-                WeaponClass.OneHandedPolearm => 33f,
+                WeaponClass.TwoHandedPolearm => 32f,
+                WeaponClass.OneHandedPolearm => 30f,
                 _ => float.MaxValue,
             };
             float thrustTier =
@@ -319,15 +319,17 @@ internal class CrpgItemValueModel : ItemValueModel
     private float CalculateThrownWeaponTier(WeaponComponent weaponComponent)
     {
         WeaponComponentData weapon = weaponComponent.Weapons.MaxBy(a => a.MaxDataValue);
-        float scaler = 1600000f;
+        float scaler = 4f * 1600000f;
         float bonusVsShield = weapon.WeaponFlags.HasFlag(WeaponFlags.BonusAgainstShield) ? 1.40f : 1f;
-        float tier = weapon.ThrustDamage
-            * weapon.ThrustDamage
+        float canDismount = weapon.WeaponFlags.HasFlag(WeaponFlags.CanDismount) ? 1.10f : 1f;
+        float tier =
+              (float)Math.Pow(weapon.ThrustDamage, 2.4f)
             * weapon.MissileSpeed
             * weapon.Accuracy
             * weapon.MaxDataValue
             * CalculateDamageTypeFactorForThrown(weapon.ThrustDamageType == DamageTypes.Invalid ? weapon.SwingDamageType : weapon.ThrustDamageType)
             * bonusVsShield
+            * canDismount
             / scaler;
         return tier * tier / 10f;
     }
@@ -346,6 +348,7 @@ internal class CrpgItemValueModel : ItemValueModel
                 * weapon.Accuracy / 10f
                 * (float)Math.Pow(weapon.ThrustSpeed, 0.5f) / 10f
                 * (weapon.ItemUsage == "crossbow_light" ? 2f : 1f)
+                * (!weapon.WeaponFlags.HasAnyFlag(WeaponFlags.CantReloadOnHorseback) ? 1.85f : 1f)
                 / crossbowscaler;
             return crossbowTier * crossbowTier / 10f;
         }
