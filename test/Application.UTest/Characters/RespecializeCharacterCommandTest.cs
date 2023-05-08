@@ -86,7 +86,6 @@ public class RespecializeCharacterCommandTest : TestBase
         {
             Assert.That(character.User!.Gold, Is.EqualTo(1000));
             Assert.That(characterDb.Limitations!.LastRespecializeAt, Is.EqualTo(dateTimeMock.Object.UtcNow));
-            Assert.That(characterDb.Limitations!.LastRespecializeAt, Is.EqualTo(dateTimeMock.Object.UtcNow));
         }
         else
         {
