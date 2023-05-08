@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useVOnboarding, VOnboardingWrapper } from 'v-onboarding';
+
 import { useTransition } from '@vueuse/core';
 import { type RouteLocationNormalized } from 'vue-router/auto';
 import {
@@ -38,7 +40,6 @@ definePage({
 });
 
 const userStore = useUserStore();
-
 const character = injectStrict(characterKey);
 const { loadCharacterCharacteristics } = injectStrict(characterCharacteristicsKey);
 
@@ -131,10 +132,55 @@ onBeforeRouteUpdate(async to => {
 });
 
 await fetchPageData(character.value.id);
+
+//
+
+const wrapper = ref<ComponentPublicInstance<typeof VOnboardingWrapper> | null>(null);
+const { start, goToStep, finish } = useVOnboarding(wrapper);
+const steps = computed(() => {
+  return [
+    {
+      attachTo: {
+        element: '[data-aq-onboarding-level]',
+      },
+      content: {
+        title: 'Level',
+        description:
+          'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem porro repellendus voluptatum ea quis veniam dignissimos quos reiciendis enim non.',
+      },
+    },
+    {
+      attachTo: {
+        element: '[data-aq-onboarding-expMultiplier]',
+      },
+      content: {
+        title: 'Exp. multiplier',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, incidunt.',
+      },
+    },
+  ];
+});
 </script>
 
 <template>
   <div class="mx-auto max-w-2xl space-y-12 pb-12">
+    <VOnboardingWrapper ref="wrapper" :steps="steps" @exit="finish">
+      <template #default="{ previous, next, step, exit, isFirst, isLast, index }">
+        <OnboardingStep
+          :step="step"
+          :isFirst="isFirst"
+          :isLast="isLast"
+          :index="index"
+          :total="steps.length"
+          @previous="previous"
+          @next="next"
+          @exit="exit"
+        />
+      </template>
+    </VOnboardingWrapper>
+
+    <OButton @click="start" size="xl" variant="secondary" label="Onboarding" />
+
     <FormGroup :label="$t('character.settings.group.overview.title')" :collapsable="false">
       <div class="grid grid-cols-2 gap-2 text-2xs">
         <SimpleTableRow
@@ -150,6 +196,7 @@ await fetchPageData(character.value.id);
                   title: $t('character.statistics.level.tooltip.title', { maxLevel: maximumLevel }),
                 }
           "
+          data-aq-onboarding-level
         >
           <div
             class="flex gap-1.5"
@@ -180,6 +227,7 @@ await fetchPageData(character.value.id);
               }),
               description: $t('character.statistics.expMultiplier.tooltip.desc'),
             }"
+            data-aq-onboarding-expMultiplier
           />
 
           <SimpleTableRow

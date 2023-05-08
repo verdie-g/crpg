@@ -49,3 +49,9 @@ path {
   clip-rule: evenodd;
   fill-rule: evenodd;
 }
+
+
+/* TODO: */
+:root {
+  --v-onboarding-step-arrow-background: #272723;
+}

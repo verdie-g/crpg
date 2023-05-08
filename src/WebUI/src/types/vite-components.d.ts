@@ -42,6 +42,7 @@ declare module '@vue/runtime-core' {
     MainNavigation: typeof import('./../components/app/MainNavigation.vue')['default']
     Modal: typeof import('./../components/ui/Modal.vue')['default']
     NumericInput: typeof import('./../components/ui/NumericInput.vue')['default']
+    OnboardingStep: typeof import('./../components/app/OnboardingStep.vue')['default']
     OnlinePlayers: typeof import('./../components/app/OnlinePlayers.vue')['default']
     RestrictionsTable: typeof import('./../components/moderator/RestrictionsTable.vue')['default']
     ResultNotFound: typeof import('./../components/app/ResultNotFound.vue')['default']
