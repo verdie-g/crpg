@@ -2475,7 +2475,7 @@
       <Piece id="crpg_mallet_handle" Type="Handle" scale_factor="100"/>
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_shieldsplitter" name="{=}Shieldsplitter" crafting_template="crpg_TwoHandedMace" modifier_group="cheap_weapon">
+  <CraftedItem id="crpg_shieldsplitter" name="{=}Bone Breaker Splitting Maul?" crafting_template="crpg_TwoHandedMace" modifier_group="cheap_weapon">
    <Pieces>
       <Piece id="crpg_shieldsplitter_head" Type="Blade" scale_factor="100"/>
       <Piece id="crpg_shieldsplitter_handle" Type="Handle" scale_factor="100"/>
