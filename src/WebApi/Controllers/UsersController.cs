@@ -216,7 +216,7 @@ public class UsersController : BaseController
     /// <param name="id">Character id.</param>
     /// <returns>The character rating.</returns>
     /// <response code="200">Ok.</response>
-    [HttpGet("self/characters/{id}/ratings")]
+    [HttpGet("self/characters/{id}/rating")]
     public Task<ActionResult<Result<CharacterRatingViewModel>>> GetCharacterRating([FromRoute] int id)
     {
         return ResultToActionAsync(Mediator.Send(new GetUserCharacterRatingQuery
