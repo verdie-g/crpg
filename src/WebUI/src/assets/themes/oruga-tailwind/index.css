@@ -57,3 +57,9 @@ path {
 input {
   color-scheme: dark;
 }
+
+:root {
+  --v-onboarding-step-arrow-background: #272723;
+  --v-onboarding-overlay-z: 10001;
+  --v-onboarding-step-z: 10002;
+}

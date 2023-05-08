@@ -9,5 +9,7 @@ module.exports = {
   htmlWhitespaceSensitivity: 'ignore',
   arrowParens: 'avoid',
   trailingComma: 'es5',
-  plugins: [require('prettier-plugin-tailwindcss')],
+  pluginSearchDirs: false,
+  //
+  // plugins: [require('prettier-plugin-tailwindcss')],
 };

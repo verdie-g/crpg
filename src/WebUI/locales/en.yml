@@ -168,6 +168,9 @@ character:
     active:
       title: Сharacter is active
       short: active
+    notActive:
+      title: "Сharacter isn't active"
+      short: not-active
     forTournament:
       title: Character is for tournament
       short: trnmt
@@ -1054,3 +1057,42 @@ activityLog:
     ServerJoined: 'The user has joined the server'
     ChatMessageSent: 'Wrote a message: {0}'
     TeamHit: 'Dealt {0} damage to {1}'
+
+onboarding:
+  level:
+    title: 'Level'
+    description: "
+      <p>Your level represents your progress and growth of your character as you gain experience through playing cRPG.</p>
+      <p>As you accumulate experience points (XP), your character's level increases, resulting in higher usable Attribute, Skill and Weapon Proficiency Points.</p>"
+  experience:
+    title: 'Experience'
+    description: '
+      <p>Your experience represents your progress in cRPG, you can monitor your progress and see how close you are to leveling up.</p>
+      <p>The values displayed show your percentage until the next level as well as the current XP.</p>
+      <p>This also displays the minimum XP for your level as well as the max XP for your level.</p>'
+  expMultiplayer:
+    title: 'Exp. multiplier'
+    description: '
+      <p>Your experience multiplier represents how fast you gain experience as you play cRPG</p>
+      <p>At its base you will have a <strong>1.0</strong> multiplier, which can increase up to a maximum of <strong>{maxExpMulti}</strong>, obtained by Retiring your character <strong>{maxRetiringTimes}</strong> times.</p>'
+  generation:
+    title: 'Generation'
+    description: '
+      <p>Your Generation refers to the amount of times you have retired your characters</p>
+      <p>By +1 - which in turn increases your experience multiplier, enabling you to progress faster.</p>'
+  respecialize:
+    title: 'Respecialize'
+    description: "
+      <p>Respecializing is the process of reallocating your character's Attribute, Skill and Weapon Proficiency Points.</p>
+      <p>This allows players to experiment with different builds or adapt their characters to better suit their play style.</p>
+      <p>You get one free respecialization every 7 days but the remainder of the time you will have to pay a fee, this fee is determined by your level and scales down the closer you get to the end of the 7 day period.</p>"
+  retire:
+    title: 'Retire'
+    description: '
+      <p>Retirement resets your character back to level 1 and increases your Generation by 1.</p>
+      <p>Doing this enables you to gain a higher experience multiplier and increases your heirloom count by +1 - The higher your level, the higher the amount of loompoints gained on retirement.</p>'
+  tournament:
+    title: 'Tournament'
+    description: '
+      <p>A Tournament Character is a special type of character used solely for taking part in Tournaments in cRPG.</p>
+      <p>These characters can respecialize infinitely without cost, but are not playable on the normal game servers.</p>'

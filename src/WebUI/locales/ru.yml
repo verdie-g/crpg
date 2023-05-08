@@ -167,6 +167,9 @@ character:
     active:
       title: Активный персонаж
       short: active
+    notActive:
+      title: Персонаж не активный
+      short: not-active
     forTournament:
       title: Турнирный персонаж
       short: trnmt

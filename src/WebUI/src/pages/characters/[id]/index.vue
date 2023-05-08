@@ -38,7 +38,6 @@ definePage({
 });
 
 const userStore = useUserStore();
-
 const character = injectStrict(characterKey);
 const { loadCharacterCharacteristics } = injectStrict(characterCharacteristicsKey);
 
@@ -131,10 +130,81 @@ onBeforeRouteUpdate(async to => {
 });
 
 await fetchPageData(character.value.id);
+
+const steps = [
+  {
+    attachTo: {
+      element: '[data-onboarding-character-stats="level"]',
+    },
+    content: {
+      title: t('onboarding.level.title'),
+      description: t('onboarding.level.description'),
+    },
+  },
+  {
+    attachTo: {
+      element: '[data-onboarding-character-stats="experience"]',
+    },
+    content: {
+      title: t('onboarding.experience.title'),
+      description: t('onboarding.experience.description'),
+    },
+  },
+  {
+    attachTo: {
+      element: '[data-onboarding-character-stats="expMultiplier"]',
+    },
+    content: {
+      title: t('onboarding.expMultiplayer.title'),
+      description: t('onboarding.expMultiplayer.description', {
+        maxExpMulti: maxExperienceMultiplierForGeneration,
+        maxRetiringTimes: 16,
+      }),
+    },
+  },
+  {
+    attachTo: {
+      element: '[data-onboarding-character-stats="generation"]',
+    },
+    content: {
+      title: t('onboarding.generation.title'),
+      description: t('onboarding.generation.description'),
+    },
+  },
+  {
+    attachTo: {
+      element: '[data-onboarding-character-action="respecialize"]',
+    },
+    content: {
+      title: t('onboarding.respecialize.title'),
+      description: t('onboarding.respecialize.description'),
+    },
+  },
+  {
+    attachTo: {
+      element: '[data-onboarding-character-action="retire"]',
+    },
+    content: {
+      title: t('onboarding.retire.title'),
+      description: t('onboarding.retire.description'),
+    },
+  },
+  {
+    attachTo: {
+      element: '[data-onboarding-character-action="tournament"]',
+    },
+    content: {
+      title: t('onboarding.tournament.title'),
+      description: t('onboarding.tournament.description'),
+    },
+  },
+];
 </script>
 
 <template>
   <div class="mx-auto max-w-2xl space-y-12 pb-12">
+    <Onboarding :steps="steps" />
+
     <FormGroup :label="$t('character.settings.group.overview.title')" :collapsable="false">
       <div class="grid grid-cols-2 gap-2 text-2xs">
         <SimpleTableRow
@@ -150,6 +220,7 @@ await fetchPageData(character.value.id);
                   title: $t('character.statistics.level.tooltip.title', { maxLevel: maximumLevel }),
                 }
           "
+          data-onboarding-character-stats="level"
         >
           <div
             class="flex gap-1.5"
@@ -167,6 +238,7 @@ await fetchPageData(character.value.id);
             :tooltip="{
               title: $t('character.statistics.generation.tooltip.title'),
             }"
+            data-onboarding-character-stats="generation"
           />
 
           <SimpleTableRow
@@ -180,6 +252,7 @@ await fetchPageData(character.value.id);
               }),
               description: $t('character.statistics.expMultiplier.tooltip.desc'),
             }"
+            data-onboarding-character-stats="expMultiplier"
           />
 
           <SimpleTableRow
@@ -201,7 +274,7 @@ await fetchPageData(character.value.id);
           />
 
           <div class="col-span-2 mt-12 px-4 py-2.5">
-            <VTooltip placement="bottom">
+            <VTooltip placement="bottom" data-onboarding-character-stats="experience">
               <VueSlider
                 :key="currentLevelExperience"
                 class="!cursor-default !opacity-100"
@@ -260,6 +333,7 @@ await fetchPageData(character.value.id);
                 expanded
                 iconLeft="chevron-down-double"
                 data-aq-character-action="respecialize"
+                data-onboarding-character-action="respecialize"
               >
                 <div class="flex items-center gap-2">
                   <span class="max-w-[100px] overflow-x-hidden text-ellipsis whitespace-nowrap">
@@ -365,8 +439,9 @@ await fetchPageData(character.value.id);
                   size="xl"
                   expanded
                   iconLeft="child"
-                  data-aq-character-action="retire"
                   :label="$t('character.settings.retire.title')"
+                  data-aq-character-action="retire"
+                  data-onboarding-character-action="retire"
                 />
               </div>
 
@@ -469,8 +544,9 @@ await fetchPageData(character.value.id);
                   expanded
                   iconLeft="member"
                   :disabled="!canSetCharacterForTournament"
-                  data-aq-character-action="forTournament"
                   :label="$t('character.settings.tournament.title')"
+                  data-aq-character-action="forTournament"
+                  data-onboarding-character-action="tournament"
                 />
               </div>
               <template #popper>
