@@ -8,6 +8,7 @@ import {
 } from '@/services/characters-service';
 import { notify } from '@/services/notification-service';
 import { t } from '@/services/translate-service';
+import { sleep } from '@/utils/promise';
 
 definePage({
   meta: {
@@ -75,6 +76,8 @@ const onActivateCharacter = async (id: number) => {
   notify(t('character.settings.update.notify.success'));
 };
 
+const shownSelectCharactersDropdown = ref<boolean>(false);
+
 const shownCreateCharacterGuideModal = ref<boolean>(false);
 const onCreateNewCharacter = async () => {
   if (user.value?.activeCharacterId !== null && user.value?.activeCharacterId !== undefined) {
@@ -88,28 +91,142 @@ const onCreateNewCharacter = async () => {
 if (userStore.characters.length === 0) {
   await userStore.fetchCharacters();
 }
+
+const steps = [
+  {
+    attachTo: {
+      element: '[data-onboarding-characters-select]',
+    },
+    content: {
+      title: 'Select Character',
+      description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
+    },
+  },
+  {
+    attachTo: {
+      element: '[data-onboarding-character-class]',
+    },
+    content: {
+      title: 'Character Class',
+      description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
+    },
+  },
+  {
+    attachTo: {
+      element: '[data-onboarding-character-status]',
+    },
+    content: {
+      title: 'Character status',
+      description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
+    },
+  },
+  {
+    attachTo: {
+      element: '[data-onboarding-character-action="switch-active-status"]',
+    },
+    content: {
+      title: 'Change active status',
+      description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
+    },
+    on: {
+      beforeStep: async () => {
+        shownSelectCharactersDropdown.value = true;
+        await sleep(300);
+      },
+    },
+  },
+  {
+    attachTo: {
+      element: '[data-onboarding-characters-create]',
+    },
+    content: {
+      title: 'Create new character',
+      description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
+    },
+    on: {
+      afterStep: () => {
+        shownSelectCharactersDropdown.value = false;
+      },
+    },
+  },
+  {
+    attachTo: {
+      element: '[data-onboarding-character-action="edit"]',
+    },
+    content: {
+      title: 'Rename/Delete',
+      description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
+    },
+  },
+  {
+    attachTo: {
+      element: '[data-onboarding-character-nav="overview"]',
+    },
+    content: {
+      title: 'Character overview',
+      description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
+    },
+  },
+  {
+    attachTo: {
+      element: '[data-onboarding-character-nav="inventory"]',
+    },
+    content: {
+      title: 'Character inventory',
+      description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
+    },
+  },
+  {
+    attachTo: {
+      element: '[data-onboarding-character-nav="characteristic"]',
+    },
+    content: {
+      title: 'Character characteristic',
+      description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
+    },
+  },
+  {
+    attachTo: {
+      element: '[data-onboarding-character-nav="builder"]',
+    },
+    content: {
+      title: 'Character builder',
+      description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
+    },
+  },
+];
 </script>
 
 <template>
   <div class="container relative py-6">
+    <Onboarding :steps="steps" />
+
     <div
       v-if="currentCharacter !== undefined"
       id="character-top-navbar"
       class="mb-16 grid grid-cols-3 items-center justify-between gap-4"
     >
       <div class="order-1 flex items-center gap-4">
-        <VDropdown :triggers="['click']" placement="bottom-end">
+        <VDropdown
+          :shown="shownSelectCharactersDropdown"
+          :triggers="[]"
+          :autoHide="false"
+          placement="bottom-end"
+          data-onboarding-characters-select
+        >
           <template #default="{ shown }">
             <OButton
               variant="primary"
               outlined
               :label="`${currentCharacter.name} (${currentCharacter.level})`"
               size="lg"
+              @click="shownSelectCharactersDropdown = !shownSelectCharactersDropdown"
             >
               <OIcon
                 :icon="characterClassToIcon[currentCharacter.class]"
                 size="lg"
                 v-tooltip="$t(`character.class.${currentCharacter.class}`)"
+                data-onboarding-character-class
               />
 
               <div class="flex items-center gap-1">
@@ -120,14 +237,21 @@ if (userStore.characters.length === 0) {
                 <div>({{ currentCharacter.level }})</div>
               </div>
 
-              <Tag
-                v-if="currentCharacter.id === user?.activeCharacterId"
-                :label="$t('character.status.active.short')"
-                v-tooltip="$t('character.status.active.title')"
-                variant="success"
-                size="sm"
-              />
-
+              <div data-onboarding-character-status>
+                <Tag
+                  v-if="currentCharacter.id === user?.activeCharacterId"
+                  :label="$t('character.status.active.short')"
+                  v-tooltip="$t('character.status.active.title')"
+                  variant="success"
+                  size="sm"
+                />
+                <Tag
+                  v-else
+                  :label="$t('character.status.notActive.short')"
+                  v-tooltip="$t('character.status.notActive.title')"
+                  size="sm"
+                />
+              </div>
               <Tag
                 v-if="currentCharacter.forTournament"
                 :label="$t('character.status.forTournament.short')"
@@ -153,7 +277,11 @@ if (userStore.characters.length === 0) {
               :checked="char.id === currentCharacterId"
               tag="RouterLink"
               :to="{ name: route.name, params: { id: char.id } }"
-              @click="hide"
+              @click="
+                () => {
+                  shownSelectCharactersDropdown = false;
+                }
+              "
             >
               <CharacterSelectItem
                 :character="char"
@@ -164,6 +292,7 @@ if (userStore.characters.length === 0) {
 
             <DropdownItem
               class="text-primary hover:text-primary-hover"
+              data-onboarding-characters-create
               @click="
                 () => {
                   onCreateNewCharacter();
@@ -185,6 +314,7 @@ if (userStore.characters.length === 0) {
             variant="secondary"
             outlined
             v-tooltip="$t('character.settings.update.title')"
+            data-onboarding-character-action="edit"
           />
           <template #popper="{ hide }">
             <div class="min-w-[480px] space-y-14 px-12 py-11">
@@ -246,7 +376,12 @@ if (userStore.characters.length === 0) {
 
     <CharacterCreateModal
       :shown="shownCreateCharacterGuideModal"
-      @apply-hide="shownCreateCharacterGuideModal = false"
+      @apply-hide="
+        () => {
+          shownCreateCharacterGuideModal = false;
+          shownSelectCharactersDropdown = false;
+        }
+      "
     />
   </div>
 </template>

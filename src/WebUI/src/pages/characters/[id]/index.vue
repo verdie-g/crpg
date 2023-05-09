@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useVOnboarding, VOnboardingWrapper } from 'v-onboarding';
-
 import { useTransition } from '@vueuse/core';
 import { type RouteLocationNormalized } from 'vue-router/auto';
 import {
@@ -133,53 +131,77 @@ onBeforeRouteUpdate(async to => {
 
 await fetchPageData(character.value.id);
 
-//
-
-const wrapper = ref<ComponentPublicInstance<typeof VOnboardingWrapper> | null>(null);
-const { start, goToStep, finish } = useVOnboarding(wrapper);
-const steps = computed(() => {
-  return [
-    {
-      attachTo: {
-        element: '[data-aq-onboarding-level]',
-      },
-      content: {
-        title: 'Level',
-        description:
-          'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem porro repellendus voluptatum ea quis veniam dignissimos quos reiciendis enim non.',
-      },
+const steps = [
+  {
+    attachTo: {
+      element: '[data-onboarding-character-stats="level"]',
     },
-    {
-      attachTo: {
-        element: '[data-aq-onboarding-expMultiplier]',
-      },
-      content: {
-        title: 'Exp. multiplier',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, incidunt.',
-      },
+    content: {
+      title: 'Level',
+      description:
+        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem porro repellendus voluptatum ea quis veniam dignissimos quos reiciendis enim non.',
     },
-  ];
-});
+  },
+  {
+    attachTo: {
+      element: '[data-onboarding-character-stats="experience"]',
+    },
+    content: {
+      title: 'Experience',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, incidunt.',
+    },
+  },
+  {
+    attachTo: {
+      element: '[data-onboarding-character-stats="expMultiplier"]',
+    },
+    content: {
+      title: 'Exp. multiplier',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, incidunt.',
+    },
+  },
+  {
+    attachTo: {
+      element: '[data-onboarding-character-stats="generation"]',
+    },
+    content: {
+      title: 'Generation',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, incidunt.',
+    },
+  },
+  {
+    attachTo: {
+      element: '[data-onboarding-character-action="respecialize"]',
+    },
+    content: {
+      title: 'Respecialize',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, incidunt.',
+    },
+  },
+  {
+    attachTo: {
+      element: '[data-onboarding-character-action="retire"]',
+    },
+    content: {
+      title: 'Retire',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, incidunt.',
+    },
+  },
+  {
+    attachTo: {
+      element: '[data-onboarding-character-action="tournament"]',
+    },
+    content: {
+      title: 'Tournament',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, incidunt.',
+    },
+  },
+];
 </script>
 
 <template>
   <div class="mx-auto max-w-2xl space-y-12 pb-12">
-    <VOnboardingWrapper ref="wrapper" :steps="steps" @exit="finish">
-      <template #default="{ previous, next, step, exit, isFirst, isLast, index }">
-        <OnboardingStep
-          :step="step"
-          :isFirst="isFirst"
-          :isLast="isLast"
-          :index="index"
-          :total="steps.length"
-          @previous="previous"
-          @next="next"
-          @exit="exit"
-        />
-      </template>
-    </VOnboardingWrapper>
-
-    <OButton @click="start" size="xl" variant="secondary" label="Onboarding" />
+    <Onboarding :steps="steps" />
 
     <FormGroup :label="$t('character.settings.group.overview.title')" :collapsable="false">
       <div class="grid grid-cols-2 gap-2 text-2xs">
@@ -196,7 +218,7 @@ const steps = computed(() => {
                   title: $t('character.statistics.level.tooltip.title', { maxLevel: maximumLevel }),
                 }
           "
-          data-aq-onboarding-level
+          data-onboarding-character-stats="level"
         >
           <div
             class="flex gap-1.5"
@@ -214,6 +236,7 @@ const steps = computed(() => {
             :tooltip="{
               title: $t('character.statistics.generation.tooltip.title'),
             }"
+            data-onboarding-character-stats="generation"
           />
 
           <SimpleTableRow
@@ -227,7 +250,7 @@ const steps = computed(() => {
               }),
               description: $t('character.statistics.expMultiplier.tooltip.desc'),
             }"
-            data-aq-onboarding-expMultiplier
+            data-onboarding-character-stats="expMultiplier"
           />
 
           <SimpleTableRow
@@ -249,7 +272,7 @@ const steps = computed(() => {
           />
 
           <div class="col-span-2 mt-12 px-4 py-2.5">
-            <VTooltip placement="bottom">
+            <VTooltip placement="bottom" data-onboarding-character-stats="experience">
               <VueSlider
                 :key="currentLevelExperience"
                 class="!cursor-default !opacity-100"
@@ -308,6 +331,7 @@ const steps = computed(() => {
                 expanded
                 iconLeft="chevron-down-double"
                 data-aq-character-action="respecialize"
+                data-onboarding-character-action="respecialize"
               >
                 <div class="flex items-center gap-2">
                   <span class="max-w-[100px] overflow-x-hidden text-ellipsis whitespace-nowrap">
@@ -413,8 +437,9 @@ const steps = computed(() => {
                   size="xl"
                   expanded
                   iconLeft="child"
-                  data-aq-character-action="retire"
                   :label="$t('character.settings.retire.title')"
+                  data-aq-character-action="retire"
+                  data-onboarding-character-action="retire"
                 />
               </div>
 
@@ -517,8 +542,9 @@ const steps = computed(() => {
                   expanded
                   iconLeft="member"
                   :disabled="!canSetCharacterForTournament"
-                  data-aq-character-action="forTournament"
                   :label="$t('character.settings.tournament.title')"
+                  data-aq-character-action="forTournament"
+                  data-onboarding-character-action="tournament"
                 />
               </div>
               <template #popper>

@@ -163,6 +163,9 @@ character:
     active:
       title: Сharacter is active
       short: active
+    notActive:
+      title: "Сharacter isn't active"
+      short: not-active
     forTournament:
       title: Character is for tournament
       short: trnmt

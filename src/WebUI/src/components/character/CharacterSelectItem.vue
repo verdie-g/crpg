@@ -42,7 +42,11 @@ const emit = defineEmits<{
       />
 
       <VTooltip v-else placement="auto">
-        <OSwitch v-model="activeCharacterModel" @click.stop />
+        <OSwitch
+          v-model="activeCharacterModel"
+          data-onboarding-character-action="switch-active-status"
+          @click.stop
+        />
 
         <template #popper>
           <div class="prose prose-invert">

@@ -137,6 +137,7 @@ await fetchPageData(character.value.id);
             :variant="isExactActive ? 'transparent-active' : 'transparent'"
             size="lg"
             :label="$t('character.nav.overview')"
+            data-onboarding-character-nav="overview"
           />
         </RouterLink>
 
@@ -145,6 +146,7 @@ await fetchPageData(character.value.id);
             :variant="isActive ? 'transparent-active' : 'transparent'"
             size="lg"
             :label="$t('character.nav.inventory')"
+            data-onboarding-character-nav="inventory"
           />
         </RouterLink>
 
@@ -156,6 +158,7 @@ await fetchPageData(character.value.id);
             :variant="isActive ? 'transparent-active' : 'transparent'"
             size="lg"
             :label="$t('character.nav.characteristic')"
+            data-onboarding-character-nav="characteristic"
           />
         </RouterLink>
       </div>
@@ -168,6 +171,7 @@ await fetchPageData(character.value.id);
             size="lg"
             iconLeft="calculator"
             :label="$t(`nav.main.Builder`)"
+            data-onboarding-character-nav="builder"
           />
         </RouterLink>
       </div>

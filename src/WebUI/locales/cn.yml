@@ -162,10 +162,13 @@ character:
   status:
     active:
       title: 角色已激活
-      short: 活跃
+      short: active
+    notActive:
+      title: 角色不活跃
+      short: not-active
     forTournament:
       title: 角色为比赛专用
-      short: 比赛
+      short: trnmt
 
   class:
     Peasant: 农民
