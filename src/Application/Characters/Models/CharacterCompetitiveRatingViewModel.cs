@@ -17,6 +17,7 @@ public record CharacterCompetitiveRatingViewModel : IMapFrom<CharacterRating>
             .ForMember(u => u.CompetitiveRating, opt => opt.MapFrom(c => ComputeCompetitiveRating(c.Rating)));
 
     }
+
     private double ComputeCompetitiveRating(CharacterRating rating)
     {
         return 0.03 * Math.Pow(0.01 * rating.Value - 2 * rating.Deviation, 3.98);

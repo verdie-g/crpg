@@ -241,7 +241,6 @@ public class UsersController : BaseController
         }));
     }
 
-
     /// <summary>
     /// Updates character characteristics for the current user.
     /// </summary>

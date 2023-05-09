@@ -30,7 +30,7 @@ public class GetUserCharacterCompetitiveRatingQueryTest : TestBase
             Rating = new()
             {
                 Value = 50,
-                Deviation= 100,
+                Deviation = 100,
                 Volatility = 100,
             },
         };

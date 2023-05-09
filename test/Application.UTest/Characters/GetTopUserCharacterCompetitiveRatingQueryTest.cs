@@ -30,7 +30,6 @@ public class GetTopUserCharacterCompetitiveRatingQueryTest : TestBase
                 Value = 50,
                 Deviation = 100,
                 Volatility = 100,
-
             },
         };
         Character character2 = new()
@@ -42,7 +41,6 @@ public class GetTopUserCharacterCompetitiveRatingQueryTest : TestBase
                 Value = 50,
                 Deviation = 100,
                 Volatility = 100,
-
             },
         };
         Character character3 = new()
@@ -54,7 +52,6 @@ public class GetTopUserCharacterCompetitiveRatingQueryTest : TestBase
                 Value = 50,
                 Deviation = 100,
                 Volatility = 100,
-
             },
         };
         ArrangeDb.Characters.Add(character1);
