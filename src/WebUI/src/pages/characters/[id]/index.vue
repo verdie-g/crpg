@@ -139,7 +139,7 @@ const steps = [
     content: {
       title: 'Level',
       description:
-        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem porro repellendus voluptatum ea quis veniam dignissimos quos reiciendis enim non.',
+        'Your level represents your progress and growth of your character as you gain experience through playing cRPG, as you accumulate experience points (XP), your character's level increases, resulting in higher usable Attribute, Skill and Weapon Proficiency Points.',
     },
   },
   {
@@ -148,7 +148,7 @@ const steps = [
     },
     content: {
       title: 'Experience',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, incidunt.',
+      description: 'Your experience represents your progress in cRPG, you can monitor your progress and see how close you are to leveling up, the values displayed show your percentage until the next level as well as the current XP. This also displays the minimum XP for your level as well as the max XP for your level.',
     },
   },
   {
@@ -157,7 +157,7 @@ const steps = [
     },
     content: {
       title: 'Exp. multiplier',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, incidunt.',
+      description: 'Your experience multiplier represents how fast you gain experience as you play cRPG, at its base you will have a 1.0 multiplier, which can increase up to a maximum of 1.48, obtained by Retiring your character 16 times.',
     },
   },
   {
@@ -166,7 +166,7 @@ const steps = [
     },
     content: {
       title: 'Generation',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, incidunt.',
+      description: 'Your Generation refers to the amount of times you have retired your characters, each retirement increases your generation by +1 - Which in turn increases your experience multiplier, enabling you to progress faster.',
     },
   },
   {
@@ -175,7 +175,7 @@ const steps = [
     },
     content: {
       title: 'Respecialize',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, incidunt.',
+      description: 'Respecializing is the process of reallocating your character's Attribute, Skill and Weapon Proficiency Points. This allows players to experiment with different builds or adapt their characters to better suit their playstyle. You get one free respecialization every 7 days but the remainder of the time you will have to pay a fee, this fee is determined by your level and scales down the closer you get to the end of the 7 day period.',
     },
   },
   {
@@ -184,7 +184,7 @@ const steps = [
     },
     content: {
       title: 'Retire',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, incidunt.',
+      description: 'Retirement resets your character back to level 1 and increases your Generation by 1, doing this enables you to gain a higher experience multiplier and increases your heirloom count by +1 - The higher your level, the higher the amount of loompoints gained on retirement.',
     },
   },
   {
@@ -193,7 +193,7 @@ const steps = [
     },
     content: {
       title: 'Tournament',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, incidunt.',
+      description: 'A Tournament Character is a special type of character used solely for taking part in Tournaments in cRPG. These characters can respecialize infinitely without cost, but are not playable on the normal game servers.',
     },
   },
 ];
