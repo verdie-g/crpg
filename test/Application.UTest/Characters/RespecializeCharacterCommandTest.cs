@@ -24,7 +24,7 @@ public class RespecializeCharacterCommandTest : TestBase
     };
 
     [Theory]
-    public async Task RespecializeCharacterLevel3ShouldMakeItLevel2(bool freeRespec)
+    public async Task RespecializeCharacterShouldReduceGoldAndUpdateLastRespecTime(bool freeRespec)
     {
         Character character = new()
         {
@@ -48,7 +48,7 @@ public class RespecializeCharacterCommandTest : TestBase
             User = new() { Gold = 1000 },
             Limitations = new CharacterLimitations
             {
-                LastFreeRespecializeAt = freeRespec
+                LastRespecializeAt = freeRespec
                     ? new DateTime(2023, 3, 9)
                     : new DateTime(2023, 3, 16),
             },
@@ -85,12 +85,12 @@ public class RespecializeCharacterCommandTest : TestBase
         if (freeRespec)
         {
             Assert.That(character.User!.Gold, Is.EqualTo(1000));
-            Assert.That(characterDb.Limitations!.LastFreeRespecializeAt, Is.EqualTo(dateTimeMock.Object.UtcNow));
+            Assert.That(characterDb.Limitations!.LastRespecializeAt, Is.EqualTo(dateTimeMock.Object.UtcNow));
         }
         else
         {
             Assert.That(character.User!.Gold, Is.LessThan(1000));
-            Assert.That(characterDb.Limitations!.LastFreeRespecializeAt, Is.EqualTo(new DateTime(2023, 3, 16)));
+            Assert.That(characterDb.Limitations!.LastRespecializeAt, Is.EqualTo(new DateTime(2023, 3, 17)));
         }
 
         Assert.That(character.Generation, Is.EqualTo(2));
@@ -128,7 +128,7 @@ public class RespecializeCharacterCommandTest : TestBase
                 PlayTime = TimeSpan.FromSeconds(4),
             },
             User = new() { Gold = 500 },
-            Limitations = new CharacterLimitations { LastFreeRespecializeAt = DateTime.UtcNow - TimeSpan.FromDays(1) },
+            Limitations = new CharacterLimitations { LastRespecializeAt = DateTime.UtcNow - TimeSpan.FromDays(1) },
         };
         ArrangeDb.Add(character);
         await ArrangeDb.SaveChangesAsync();
@@ -172,7 +172,7 @@ public class RespecializeCharacterCommandTest : TestBase
             Experience = 150,
             ForTournament = false,
             User = new() { Gold = 0 },
-            Limitations = new CharacterLimitations { LastFreeRespecializeAt = DateTime.UtcNow },
+            Limitations = new CharacterLimitations { LastRespecializeAt = DateTime.UtcNow },
         };
         ArrangeDb.Add(character);
         await ArrangeDb.SaveChangesAsync();

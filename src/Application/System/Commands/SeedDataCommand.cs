@@ -586,7 +586,7 @@ public record SeedDataCommand : IMediatorRequest
                 },
                 Limitations = new CharacterLimitations
                 {
-                    LastFreeRespecializeAt = DateTime.UtcNow.AddDays(-1).AddMinutes(21),
+                    LastRespecializeAt = DateTime.UtcNow.AddDays(-1).AddMinutes(21),
                 },
             };
             Character takeoCharacter1 = new()
@@ -605,7 +605,7 @@ public record SeedDataCommand : IMediatorRequest
                 },
                 Limitations = new CharacterLimitations
                 {
-                    LastFreeRespecializeAt = DateTime.UtcNow.AddDays(-2),
+                    LastRespecializeAt = DateTime.UtcNow.AddDays(-2),
                 },
             };
             Character takeoCharacter2 = new()
@@ -624,7 +624,7 @@ public record SeedDataCommand : IMediatorRequest
                 },
                 Limitations = new CharacterLimitations
                 {
-                    LastFreeRespecializeAt = DateTime.UtcNow.AddDays(-8),
+                    LastRespecializeAt = DateTime.UtcNow.AddDays(-8),
                 },
             };
             Character namidakaCharacter0 = new()
@@ -656,7 +656,7 @@ public record SeedDataCommand : IMediatorRequest
                 },
                 Limitations = new CharacterLimitations
                 {
-                    LastFreeRespecializeAt = DateTime.UtcNow.AddDays(-8),
+                    LastRespecializeAt = DateTime.UtcNow.AddDays(-8),
                 },
             };
             Character orleCharacter1 = new()
@@ -674,7 +674,7 @@ public record SeedDataCommand : IMediatorRequest
                 Experience = _experienceTable.GetExperienceForLevel(25) + (_experienceTable.GetExperienceForLevel(26) - _experienceTable.GetExperienceForLevel(25)) / 2,
                 Limitations = new CharacterLimitations
                 {
-                    LastFreeRespecializeAt = DateTime.UtcNow.AddDays(-1).AddMinutes(-30),
+                    LastRespecializeAt = DateTime.UtcNow.AddDays(-1).AddMinutes(-30),
                 },
             };
             Character kadseCharacter0 = new()
@@ -698,7 +698,7 @@ public record SeedDataCommand : IMediatorRequest
                 },
                 Limitations = new CharacterLimitations
                 {
-                    LastFreeRespecializeAt = DateTime.UtcNow.AddDays(-8),
+                    LastRespecializeAt = DateTime.UtcNow.AddDays(-8),
                 },
             };
             Character falcomCharacter0 = new()

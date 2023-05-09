@@ -692,9 +692,9 @@ namespace Crpg.Persistence.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("character_id");
 
-                    b.Property<DateTime>("LastFreeRespecializeAt")
+                    b.Property<DateTime>("LastRespecializeAt")
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("last_free_respecialize_at");
+                        .HasColumnName("last_respecialize_at");
 
                     b.HasKey("CharacterId")
                         .HasName("pk_character_limitations");

@@ -304,7 +304,7 @@ it.each<[Partial<Character>, CharacterLimitations, number, RespecCapability]>([
   [
     { forTournament: true, experience: 100000 },
     {
-      lastFreeRespecializeAt: new Date('2023-03-23T18:00:00.0000000Z'),
+      lastRespecializeAt: new Date('2023-03-23T18:00:00.0000000Z'),
     },
     10,
     {
@@ -317,7 +317,7 @@ it.each<[Partial<Character>, CharacterLimitations, number, RespecCapability]>([
   [
     { forTournament: false, experience: 10 },
     {
-      lastFreeRespecializeAt: new Date('2023-03-23T17:55:00.0000000Z'),
+      lastRespecializeAt: new Date('2023-03-23T17:55:00.0000000Z'),
     },
     100000,
     {
@@ -343,13 +343,13 @@ it('getRespecCapability - Exponential Decay', () => {
 
   const result1 = getRespecCapability(
     { forTournament: false, experience: exp } as Character,
-    { lastFreeRespecializeAt: new Date('2023-03-30T17:00:00.0000000Z') },
+    { lastRespecializeAt: new Date('2023-03-30T17:00:00.0000000Z') },
     gold
   );
 
   const result2 = getRespecCapability(
     { forTournament: false, experience: exp } as Character,
-    { lastFreeRespecializeAt: new Date('2023-03-30T16:00:00.0000000Z') },
+    { lastRespecializeAt: new Date('2023-03-30T16:00:00.0000000Z') },
     gold
   );
 

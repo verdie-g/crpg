@@ -81,7 +81,7 @@ export const getCharacterLimitations = async (characterId: number) => {
   const res = await get<CharacterLimitations>(`/users/self/characters/${characterId}/limitations`);
   return {
     ...res,
-    lastFreeRespecializeAt: new Date(res.lastFreeRespecializeAt),
+    lastRespecializeAt: new Date(res.lastRespecializeAt),
   };
 };
 
@@ -346,9 +346,9 @@ export const getRespecCapability = (
   limitations: CharacterLimitations,
   userGold: number
 ): RespecCapability => {
-  const lastRespecDate = new Date(limitations.lastFreeRespecializeAt);
+  const lastRespecDate = new Date(limitations.lastRespecializeAt);
 
-  const nextFreeAt = new Date(limitations.lastFreeRespecializeAt);
+  const nextFreeAt = new Date(limitations.lastRespecializeAt);
   nextFreeAt.setUTCDate(nextFreeAt.getUTCDate() + freeRespecializeIntervalDays);
   nextFreeAt.setUTCMinutes(nextFreeAt.getUTCMinutes() + 5); // 5 minute margin just in case
 
