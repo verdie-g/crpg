@@ -62,9 +62,14 @@ definePage({
           </li>
 
           <li>
-            Changes to this Privacy Policy: We reserve the right to change this Privacy Policy at
+            Changes to this Privacy Policy: We reserve the right to change this privacy policy at
             any time without prior notice. Your continued use of our website after any changes to
             this Privacy Policy constitutes your acceptance of the new Privacy Policy.
+          </li>
+          
+          <li>
+              Contact us: If you have any questions or concerns about this privacy policy, please
+              contact us at <a href="mailto:hello@c-rpg.eu">hello@c-rpg.eu</a>.
           </li>
         </ol>
       </div>
