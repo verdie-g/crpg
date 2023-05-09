@@ -216,7 +216,7 @@ public class UsersController : BaseController
     /// <param name="id">Character id.</param>
     /// <returns>The character rating.</returns>
     /// <response code="200">Ok.</response>
-    [HttpGet("self/characters/{id}/competitiverating")]
+    [HttpGet("self/characters/{id}/competitive-rating")]
     public Task<ActionResult<Result<CharacterCompetitiveRatingViewModel>>> GetCharacterRating([FromRoute] int id)
     {
         return ResultToActionAsync(Mediator.Send(new GetUserCharacterCompetitiveRatingQuery
@@ -231,7 +231,7 @@ public class UsersController : BaseController
     /// </summary>
     /// <returns>The top character competitive ratings.</returns>
     /// <response code="200">Ok.</response>
-    [HttpGet("characters/topcompetitiverating")]
+    [HttpGet("leaderboard")]
     public Task<ActionResult<Result<IList<CharacterCompetitiveRatingViewModel>>>> GetTopCharacterCompetitiveRatings()
     {
         return ResultToActionAsync(Mediator.Send(new GetTopUserCharactersByCompetitiveRatingQuery
