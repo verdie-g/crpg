@@ -23,6 +23,20 @@ internal class CrpgAgentApplyDamageModel : MultiplayerAgentApplyDamageModel
         in MissionWeapon weapon,
         float baseDamage)
     {
+        List<WeaponClass> meleeClass = new()
+        {
+            WeaponClass.Dagger,
+            WeaponClass.Mace,
+            WeaponClass.TwoHandedMace,
+            WeaponClass.OneHandedSword,
+            WeaponClass.TwoHandedSword,
+            WeaponClass.OneHandedAxe,
+            WeaponClass.TwoHandedAxe,
+            WeaponClass.Pick,
+            WeaponClass.LowGripPolearm,
+            WeaponClass.OneHandedPolearm,
+            WeaponClass.TwoHandedPolearm,
+        };
         float finalDamage = base.CalculateDamage(attackInformation, collisionData, weapon, baseDamage);
         if (weapon.IsEmpty)
         {
@@ -36,13 +50,13 @@ internal class CrpgAgentApplyDamageModel : MultiplayerAgentApplyDamageModel
         {
             int shieldSkill = GetSkillValue(attackInformation.VictimAgentOrigin, CrpgSkills.Shield);
             finalDamage /= MathHelper.RecursivePolynomialFunctionOfDegree2(shieldSkill, _constants.DurabilityFactorForShieldRecursiveCoefs);
-            if (weapon.CurrentUsageItem.WeaponFlags.HasAnyFlag(WeaponFlags.BonusAgainstShield))
+            if (weapon.CurrentUsageItem.WeaponFlags.HasAnyFlag(WeaponFlags.BonusAgainstShield) && meleeClass.Contains(weapon.CurrentUsageItem.WeaponClass))
             {
                 // this bonus is on top of the native x2 in MissionCombatMechanicsHelper
                 // so the final bonus is 3.5. We do this instead of nerfing the impact of shield skill so shield can stay virtually unbreakable against sword.
                 // it is the same logic as arrows not dealing a lot of damage to horse but spears dealing extra damage to horses
                 // As we want archer to fear cavs and cavs to fear spears, we want swords to fear shielders and shielders to fear axes.
-                finalDamage *= 1.75f;
+                finalDamage *= 2f;
             }
         }
 

@@ -779,8 +779,9 @@
   <CraftedItem id="crpg_khuzait_lance_3_t4" name="{=Telford}Heavy Cavalry Lance" crafting_template="crpg_TwoHandedPolearm" culture="Culture.khuzait" modifier_group="polearm">
     <Pieces>
       <Piece id="crpg_khuzait_lance_3_t4_blade" Type="Blade" scale_factor="110" />
-      <Piece id="crpg_khuzait_lance_2_t5_guard" Type="Guard" scale_factor="100" />
+      <Piece id="crpg_khuzait_lance_3_t4_guard" Type="Guard" scale_factor="100" />
       <Piece id="crpg_khuzait_lance_3_t4_handle" Type="Handle" scale_factor="102" />
+      <Piece id="crpg_khuzait_lance_3_t4_pommel" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
   <CraftedItem id="crpg_vlandia_lance_3_t5" name="{=Telford}Heavy Knightly Lance" crafting_template="crpg_TwoHandedPolearm" culture="Culture.vlandia" modifier_group="polearm">
@@ -2094,7 +2095,7 @@
       <Piece id="crpg_western_javelin_3_t4_pommel" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_northern_javelin_3_t4" name="{=ppiy9Cwl}Broad Blade Javelin" crafting_template="crpg_Javelin" culture="Culture.sturgia" modifier_group="spear_dart_throwing">
+  <CraftedItem id="crpg_northern_javelin_3_t4v2" name="{=ppiy9Cwl}Broad Blade Javelin" crafting_template="crpg_Javelin" culture="Culture.sturgia" modifier_group="spear_dart_throwing">
     <Pieces>
       <Piece id="crpg_northern_javelin_3_t4_blade" Type="Blade" scale_factor="100" />
       <Piece id="crpg_northern_javelin_3_t4_guard" Type="Guard" scale_factor="100" />
@@ -2474,7 +2475,7 @@
       <Piece id="crpg_mallet_handle" Type="Handle" scale_factor="100"/>
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_shieldsplitter" name="{=}Shieldsplitter" crafting_template="crpg_TwoHandedMace" modifier_group="cheap_weapon">
+  <CraftedItem id="crpg_shieldsplitter" name="{=}Bone Breaker Splitting Maul?" crafting_template="crpg_TwoHandedMace" modifier_group="cheap_weapon">
    <Pieces>
       <Piece id="crpg_shieldsplitter_head" Type="Blade" scale_factor="100"/>
       <Piece id="crpg_shieldsplitter_handle" Type="Handle" scale_factor="100"/>

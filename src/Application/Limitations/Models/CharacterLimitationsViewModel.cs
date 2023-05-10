@@ -5,5 +5,5 @@ namespace Crpg.Application.Limitations.Models;
 
 public record CharacterLimitationsViewModel : IMapFrom<CharacterLimitations>
 {
-    public DateTime LastFreeRespecializeAt { get; init; }
+    public DateTime LastRespecializeAt { get; init; }
 }
