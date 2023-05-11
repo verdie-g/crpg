@@ -5,8 +5,7 @@ import { parseTimestamp, computeLeftMs } from '@/utils/date';
 
 const props = defineProps<{ restrictions: RestrictionWithActive[]; hiddenCols?: string[] }>();
 
-const { pageModel } = usePagination();
-const perPage = 10;
+const { pageModel, perPage } = usePagination();
 </script>
 
 <template>
@@ -74,7 +73,7 @@ const perPage = 10;
       <template #default="{ row: restriction }: { row: RestrictionWithActive }">
         <RouterLink
           :to="{
-            name: 'ModeratorUserRestrictionsId',
+            name: 'ModeratorUserIdRestrictions',
             params: { id: restriction.restrictedUser.id },
           }"
           class="inline-block hover:text-content-100"

@@ -41,7 +41,6 @@
 }
 
 .v-popper--theme-dropdown.v-popper__popper--no-positioning .v-popper__inner {
-  @apply max-w-lg;
   @apply rounded-3xl border border-solid border-border-200 bg-base-100 text-content-200;
 }
 
