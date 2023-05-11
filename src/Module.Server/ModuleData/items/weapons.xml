@@ -742,7 +742,7 @@
   <CraftedItem id="crpg_empire_lance_2_t3" name="{=Telford}Sasanian Light Lance" crafting_template="crpg_TwoHandedPolearm" culture="Culture.empire" modifier_group="polearm">
     <Pieces>
       <Piece id="crpg_empire_lance_2_t3_blade" Type="Blade" scale_factor="100" />
-      <Piece id="crpg_empire_lance_2_t3_handle" Type="Handle" scale_factor="100" />
+      <Piece id="crpg_empire_lance_2_t3_handle" Type="Handle" scale_factor="99" />
     </Pieces>
   </CraftedItem>
   <CraftedItem id="crpg_khuzait_lance_2_t3" name="{=Telford}Decorated Steppe Lance" crafting_template="crpg_TwoHandedPolearm" culture="Culture.khuzait" modifier_group="polearm">
@@ -761,7 +761,7 @@
   <CraftedItem id="crpg_vlandia_lance_3_t4" name="{=Telford}Cavalry Lance" crafting_template="crpg_TwoHandedPolearm" culture="Culture.vlandia" modifier_group="polearm">
     <Pieces>
       <Piece id="crpg_vlandia_lance_3_t4_blade" Type="Blade" scale_factor="110" />
-      <Piece id="crpg_vlandia_lance_3_t4_handle" Type="Handle" scale_factor="104" />
+      <Piece id="crpg_vlandia_lance_3_t4_handle" Type="Handle" scale_factor="105" />
     </Pieces>
   </CraftedItem>
   <CraftedItem id="crpg_empire_lance_2_t4" name="{=Telford}Courser Lance" crafting_template="crpg_TwoHandedPolearm" culture="Culture.empire" modifier_group="polearm">
@@ -2475,7 +2475,7 @@
       <Piece id="crpg_mallet_handle" Type="Handle" scale_factor="100"/>
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_shieldsplitter" name="{=}Bone Breaker Splitting Maul?" crafting_template="crpg_TwoHandedMace" modifier_group="cheap_weapon">
+  <CraftedItem id="crpg_shieldsplitter" name="{=}Shieldsplitter" crafting_template="crpg_TwoHandedMace" modifier_group="cheap_weapon">
    <Pieces>
       <Piece id="crpg_shieldsplitter_head" Type="Blade" scale_factor="100"/>
       <Piece id="crpg_shieldsplitter_handle" Type="Handle" scale_factor="100"/>
