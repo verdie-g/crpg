@@ -986,7 +986,7 @@ item:
       title: '精度'
       description: ''
     missileSpeed:
-      title: '射速'
+      title: '导弹速度'
       description: ''
     reloadSpeed:
       title: '装填速度'

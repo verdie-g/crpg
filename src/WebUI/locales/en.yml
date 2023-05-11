@@ -994,7 +994,7 @@ item:
       title: 'Accuracy'
       description: ''
     missileSpeed:
-      title: 'Fire Rate'
+      title: 'Missile Speed'
       description: ''
     reloadSpeed:
       title: 'Reload speed'

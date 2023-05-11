@@ -995,7 +995,7 @@ item:
       title: 'Точность'
       description: ''
     missileSpeed:
-      title: 'Скорость полета'
+      title: 'Скорость полета снаряда'
       description: ''
     reloadSpeed:
       title: 'Скорость перезарядки'
