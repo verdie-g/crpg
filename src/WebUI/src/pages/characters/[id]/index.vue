@@ -102,7 +102,7 @@ const { state: characterStatistics, execute: loadCharacterStatistics } = useAsyn
 
 const { state: characterLimitations, execute: loadCharacterLimitations } = useAsyncState(
   ({ id }: { id: number }) => getCharacterLimitations(id),
-  { lastFreeRespecializeAt: new Date() },
+  { lastRespecializeAt: new Date() },
   {
     immediate: false,
     resetOnExecute: false,
