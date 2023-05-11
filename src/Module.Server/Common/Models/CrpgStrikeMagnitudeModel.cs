@@ -87,7 +87,13 @@ internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
         return BladeDamageFactorToDamageRatio * ((float)Math.Pow(thrustSpeedPercentage, 6f) + extraLinearSpeed / 10f);
     }
 
-    public override float CalculateAdjustedArmorForBlow(float baseArmor, BasicCharacterObject attackerCharacter, BasicCharacterObject attackerCaptainCharacter, BasicCharacterObject victimCharacter, BasicCharacterObject victimCaptainCharacter, WeaponComponentData weaponComponent)
+    public override float CalculateAdjustedArmorForBlow(
+        float baseArmor,
+        BasicCharacterObject attackerCharacter,
+        BasicCharacterObject attackerCaptainCharacter,
+        BasicCharacterObject victimCharacter,
+        BasicCharacterObject victimCaptainCharacter,
+        WeaponComponentData weaponComponent)
     {
         return baseArmor * weaponComponent.WeaponClass switch
         {
