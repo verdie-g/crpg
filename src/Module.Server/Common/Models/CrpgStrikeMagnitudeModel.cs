@@ -1,5 +1,4 @@
 ﻿using TaleWorlds.Core;
-using TaleWorlds.Core.ViewModelCollection;
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common.Models;
