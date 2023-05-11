@@ -52,63 +52,61 @@ const addRestriction = async () => {
 </script>
 
 <template>
-  <div class="mb-12 space-y-8">
-    <form @submit.prevent="addRestriction" class="space-y-8">
-      <OField>
-        <OField :label="$t('restriction.create.form.field.type.label')">
-          <VDropdown :triggers="['click']">
-            <template #default="{ shown }">
-              <OButton
-                :label="$t(`restriction.type.${newRestrictionModel.type}`)"
-                variant="secondary"
-                size="lg"
-                :iconRight="shown ? 'chevron-up' : 'chevron-down'"
-              />
-            </template>
+  <form @submit.prevent="addRestriction" class="space-y-8">
+    <OField>
+      <OField :label="$t('restriction.create.form.field.type.label')">
+        <VDropdown :triggers="['click']">
+          <template #default="{ shown }">
+            <OButton
+              :label="$t(`restriction.type.${newRestrictionModel.type}`)"
+              variant="secondary"
+              size="lg"
+              :iconRight="shown ? 'chevron-up' : 'chevron-down'"
+            />
+          </template>
 
-            <template #popper="{ hide }">
-              <DropdownItem v-for="rt in Object.keys(RestrictionType)" class="min-w-60 max-w-xs">
-                <ORadio v-model="newRestrictionModel.type" :native-value="rt" @change="hide">
-                  {{ $t(`restriction.type.${rt}`) }}
-                </ORadio>
-              </DropdownItem>
-            </template>
-          </VDropdown>
-        </OField>
-
-        <OField message="Use a duration of 0 to un-restrict">
-          <OField :label="$t('restriction.create.form.field.days.label')">
-            <OInput v-model="durationModel.days" size="lg" class="w-20" required type="number" />
-          </OField>
-
-          <OField :label="$t('restriction.create.form.field.hours.label')">
-            <OInput v-model="durationModel.hours" size="lg" class="w-20" required type="number" />
-          </OField>
-
-          <OField :label="$t('restriction.create.form.field.minutes.label')">
-            <OInput v-model="durationModel.minutes" size="lg" class="w-20" required type="number" />
-          </OField>
-        </OField>
+          <template #popper="{ hide }">
+            <DropdownItem v-for="rt in Object.keys(RestrictionType)" class="min-w-60 max-w-xs">
+              <ORadio v-model="newRestrictionModel.type" :native-value="rt" @change="hide">
+                {{ $t(`restriction.type.${rt}`) }}
+              </ORadio>
+            </DropdownItem>
+          </template>
+        </VDropdown>
       </OField>
 
-      <OField :label="$t('restriction.create.form.field.reason.label')">
-        <OInput
-          placeholder=""
-          v-model="newRestrictionModel.reason"
-          size="lg"
-          class="w-96"
-          required
-          type="textarea"
-          rows="5"
-        />
-      </OField>
+      <OField message="Use a duration of 0 to un-restrict">
+        <OField :label="$t('restriction.create.form.field.days.label')">
+          <OInput v-model="durationModel.days" size="lg" class="w-20" required type="number" />
+        </OField>
 
-      <OButton
-        native-type="submit"
-        variant="primary"
+        <OField :label="$t('restriction.create.form.field.hours.label')">
+          <OInput v-model="durationModel.hours" size="lg" class="w-20" required type="number" />
+        </OField>
+
+        <OField :label="$t('restriction.create.form.field.minutes.label')">
+          <OInput v-model="durationModel.minutes" size="lg" class="w-20" required type="number" />
+        </OField>
+      </OField>
+    </OField>
+
+    <OField :label="$t('restriction.create.form.field.reason.label')">
+      <OInput
+        placeholder=""
+        v-model="newRestrictionModel.reason"
         size="lg"
-        :label="$t('restriction.create.form.action.submit')"
+        class="w-96"
+        required
+        type="textarea"
+        rows="5"
       />
-    </form>
-  </div>
+    </OField>
+
+    <OButton
+      native-type="submit"
+      variant="primary"
+      size="lg"
+      :label="$t('restriction.create.form.action.submit')"
+    />
+  </form>
 </template>

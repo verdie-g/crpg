@@ -1,0 +1,21 @@
+.o-ctrl-sel {
+  @apply relative inline-flex;
+}
+
+.o-ctrl-sel--expanded {
+  @apply w-full flex-shrink flex-grow;
+}
+
+.o-sel {
+  @apply relative inline-block w-full max-w-full appearance-none align-top;
+  @apply cursor-pointer rounded-md border border-border-300 bg-base-300;
+  @apply shadow-none;
+  @apply h-9 p-2;
+}
+
+.o-sel-arrow {
+  @apply bg-no-repeat pr-8;
+  background-size: 1rem;
+  background-position: 90% center;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.5 7L9 12L14.5 7' stroke='%23626262' stroke-width='1.5'/%3E%3C/svg%3E%0A");
+}
