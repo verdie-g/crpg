@@ -1,4 +1,5 @@
 ﻿using TaleWorlds.Core;
+using TaleWorlds.Core.ViewModelCollection;
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common.Models;
@@ -85,5 +86,20 @@ internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
     {
         float thrustSpeedPercentage = thrustWeaponSpeed * 11.7647057f / weaponUsageComponent.ThrustSpeed;
         return BladeDamageFactorToDamageRatio * ((float)Math.Pow(thrustSpeedPercentage, 6f) + extraLinearSpeed / 10f);
+    }
+
+    public override float CalculateAdjustedArmorForBlow(float baseArmor, BasicCharacterObject attackerCharacter, BasicCharacterObject attackerCaptainCharacter, BasicCharacterObject victimCharacter, BasicCharacterObject victimCaptainCharacter, WeaponComponentData weaponComponent)
+    {
+        return baseArmor * weaponComponent.WeaponClass switch
+        {
+            WeaponClass.Arrow => 1.2f,
+            WeaponClass.Bolt => 0.9f,
+            WeaponClass.Stone => 0.95f,
+            WeaponClass.Boulder => 0.9f,
+            WeaponClass.ThrowingAxe => 1.3f,
+            WeaponClass.ThrowingKnife => 1.2f,
+            WeaponClass.Javelin => 1.1f,
+            _ => 1f,
+        };
     }
 }
