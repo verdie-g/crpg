@@ -60,6 +60,16 @@ internal class CrpgRewardClient : MissionNetwork
                     color));
         }
 
+        if (message.TotalCompensation != 0)
+        {
+            (Color color, string verb, string teamhitMessage) = message.TotalCompensation > 0
+                ? (new Color(65, 105, 225), "Gained", "being teamhit")
+                : (new Color(0.74f, 0.28f, 0.01f), "Lost", "teamhitting others");
+            InformationManager.DisplayMessage(
+                new InformationMessage($"{verb} {message.TotalCompensation} gold as compensation for {teamhitMessage}.",
+                    color));
+        }
+
         if (message.Valour)
         {
             string valourMessage = ValourMessages.GetRandomElement();
