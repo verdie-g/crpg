@@ -70,6 +70,7 @@ describe('getActivityLogs', () => {
   const payload = {
     from: new Date('2023-03-22T18:16:42.052359Z'),
     to: new Date('2023-04-01T18:16:42.052359Z'),
+    userId: [],
   };
 
   it('base', async () => {
@@ -128,6 +129,7 @@ it('getActivityLogsWithUsers', async () => {
     },
     {
       type: ActivityLogType.ChatMessageSent,
+      metadata: {},
     },
   ] as Array<Partial<ActivityLog>>;
   mockGet(/\/activity-logs/).willResolve(response(logsResponse));
@@ -135,6 +137,7 @@ it('getActivityLogsWithUsers', async () => {
   const result = await getActivityLogsWithUsers({
     from: new Date(),
     to: new Date(),
+    userId: [],
   });
 
   expect(mockedGetUsersByIds).toBeCalledWith([2, 3]);

@@ -7,7 +7,7 @@ import { getUsersByIds } from '@/services/users-service';
 export interface ActivityLogsPayload {
   from: Date;
   to: Date;
-  userId?: number[];
+  userId: number[];
   type?: ActivityLogType[];
 }
 
@@ -26,7 +26,7 @@ export const getActivityLogs = async (payload: ActivityLogsPayload) => {
 
 const extractUsersFromLogs = (logs: ActivityLog[]) =>
   logs.reduce((out, l) => {
-    if (l.type === ActivityLogType.TeamHit) {
+    if ('targetUserId' in l.metadata) {
       out.push(Number(l.metadata.targetUserId));
     }
 
@@ -34,16 +34,16 @@ const extractUsersFromLogs = (logs: ActivityLog[]) =>
   }, [] as number[]);
 
 export const getActivityLogsWithUsers = async (payload: ActivityLogsPayload) => {
-  const activityLogs = await getActivityLogs(payload);
-  const usersIdsFromLogs = extractUsersFromLogs(activityLogs);
-
-  const users = await getUsersByIds([...new Set([...(payload.userId ?? []), ...usersIdsFromLogs])]);
+  const logs = await getActivityLogs(payload);
+  const users = (
+    await getUsersByIds([...new Set([...payload.userId, ...extractUsersFromLogs(logs)])])
+  ).reduce((out, user) => {
+    out[user.id] = user;
+    return out;
+  }, {} as Record<number, UserPublic>);
 
   return {
-    logs: activityLogs,
-    users: users.reduce((out, user) => {
-      out[user.id] = user;
-      return out;
-    }, {} as Record<number, UserPublic>),
+    logs,
+    users,
   };
 };
