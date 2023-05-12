@@ -246,7 +246,7 @@ internal class CrpgRewardServer : MissionLogic
                 Console.WriteLine($"The compensation% would be " + (affector.Damage / affectedAgent.BaseHealthLimit * 100));
 
                 float compensationRatio = affector.Damage / affectedAgent.BaseHealthLimit;
-                int compensatedRepairCost = (int)Math.Floor(_compensationTable[affectedCrpgPeer].TotalRepairCost / compensationRatio);
+                int compensatedRepairCost = (int)Math.Floor(_compensationTable[affectedCrpgPeer].TotalRepairCost * compensationRatio);
 
                 _compensationTable[affectedCrpgPeer].CompensatedRepairCost += compensatedRepairCost;
                 _compensationTable[affectorCrpgPeer].RepairCostToCompensate += compensatedRepairCost;
