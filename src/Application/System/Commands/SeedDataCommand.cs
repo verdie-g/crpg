@@ -4,6 +4,7 @@ using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Items.Models;
 using Crpg.Domain.Entities;
+using Crpg.Domain.Entities.ActivityLogs;
 using Crpg.Domain.Entities.Battles;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Clans;
@@ -506,6 +507,215 @@ public record SeedDataCommand : IMediatorRequest
                     _db.Users.Add(newUser);
                 }
             }
+
+            ActivityLog activityLogUserCreated1 = new()
+            {
+                Id = 1,
+                Type = ActivityLogType.UserCreated,
+                UserId = 2,
+                Metadata = { },
+            };
+            ActivityLog activityLogUserDeleted1 = new()
+            {
+                Id = 2,
+                Type = ActivityLogType.UserDeleted,
+                UserId = 2,
+                Metadata = { },
+            };
+            ActivityLog activityLogUserRenamed1 = new()
+            {
+                Id = 3,
+                Type = ActivityLogType.UserRenamed,
+                UserId = 2,
+                Metadata = new ActivityLogMetadata[]
+                {
+                    new("newName", "Salt"),
+                    new("oldName", "Duke Salt of Savoy"),
+                }.ToList(),
+            };
+            ActivityLog activityLogUserReward1 = new()
+            {
+                Id = 4,
+                Type = ActivityLogType.UserRewarded,
+                UserId = 2,
+                Metadata = new ActivityLogMetadata[]
+                {
+                    new("gold", "120000"),
+                    new("heirloomPoints", "3"),
+                }.ToList(),
+            };
+            ActivityLog activityLogItemBought1 = new()
+            {
+                Id = 5,
+                Type = ActivityLogType.ItemBought,
+                UserId = 2,
+                Metadata = new ActivityLogMetadata[]
+                {
+                    new("itemId", "crpg_northern_round_shield"),
+                    new("price", "12000"),
+                }.ToList(),
+            };
+            ActivityLog activityLogItemSold1 = new()
+            {
+                Id = 6,
+                Type = ActivityLogType.ItemSold,
+                UserId = 2,
+                Metadata = new ActivityLogMetadata[]
+                {
+                    new("itemId", "crpg_northern_round_shield"),
+                    new("price", "12000"),
+                }.ToList(),
+            };
+            ActivityLog activityLogItemBroke1 = new()
+            {
+                Id = 7,
+                Type = ActivityLogType.ItemBroke,
+                UserId = 2,
+                Metadata = new ActivityLogMetadata[]
+                {
+                    new("itemId", "crpg_northern_round_shield"),
+                }.ToList(),
+            };
+            ActivityLog activityLogItemUpgraded1 = new()
+            {
+                Id = 8,
+                Type = ActivityLogType.ItemUpgraded,
+                UserId = 2,
+                Metadata = new ActivityLogMetadata[]
+                {
+                    new("itemId", "crpg_northern_round_shield"),
+                    new("price", "1000"),
+                    new("heirloomPoints", "1"),
+                }.ToList(),
+            };
+            ActivityLog activityLogCharacterCreated1 = new()
+            {
+                Id = 9,
+                Type = ActivityLogType.CharacterCreated,
+                UserId = 2,
+                Metadata = new ActivityLogMetadata[]
+                {
+                    new("characterId", "123"),
+                }.ToList(),
+            };
+            ActivityLog activityLogCharacterDeleted1 = new()
+            {
+                Id = 10,
+                Type = ActivityLogType.CharacterDeleted,
+                UserId = 2,
+                Metadata = new ActivityLogMetadata[]
+                {
+                    new("characterId", "123"),
+                    new("generation", "13"),
+                    new("level", "36"),
+                }.ToList(),
+            };
+            ActivityLog activityLogCharacterRespecialized1 = new()
+            {
+                Id = 11,
+                Type = ActivityLogType.CharacterRespecialized,
+                UserId = 2,
+                Metadata = new ActivityLogMetadata[]
+                {
+                    new("characterId", "123"),
+                    new("price", "120000"),
+                }.ToList(),
+            };
+            ActivityLog activityLogCharacterRetired1 = new()
+            {
+                Id = 12,
+                Type = ActivityLogType.CharacterRetired,
+                UserId = 2,
+                Metadata = new ActivityLogMetadata[]
+                {
+                    new("characterId", "123"),
+                    new("level", "34"),
+                }.ToList(),
+            };
+            ActivityLog activityLogCharacterRewarded1 = new()
+            {
+                Id = 13,
+                Type = ActivityLogType.CharacterRewarded,
+                UserId = 2,
+                Metadata = new ActivityLogMetadata[]
+                {
+                    new("characterId", "123"),
+                    new("experience", "1000000"),
+                }.ToList(),
+            };
+            ActivityLog activityLogServerJoined1 = new()
+            {
+                Id = 14,
+                Type = ActivityLogType.ServerJoined,
+                UserId = 2,
+                Metadata = { },
+            };
+            ActivityLog activityLogChatMessageSent1 = new()
+            {
+                Id = 15,
+                Type = ActivityLogType.ChatMessageSent,
+                UserId = 2,
+                Metadata = new ActivityLogMetadata[]
+                {
+                    new("message", "Fluttershy is best"),
+                }.ToList(),
+            };
+            ActivityLog activityLogChatMessageSent2 = new()
+            {
+                Id = 16,
+                Type = ActivityLogType.ChatMessageSent,
+                UserId = 1,
+                Metadata = new ActivityLogMetadata[]
+                {
+                    new("message", "No, Rarity the best"),
+                }.ToList(),
+            };
+            ActivityLog activityLogChatMessageSent3 = new()
+            {
+                Id = 17,
+                Type = ActivityLogType.ChatMessageSent,
+                UserId = 1,
+                CreatedAt = DateTime.UtcNow.AddMinutes(-3),
+                Metadata = new ActivityLogMetadata[]
+                {
+                    new("message", "Do you get it?"),
+                }.ToList(),
+            };
+            ActivityLog activityLogTeamHit1 = new()
+            {
+                Id = 18,
+                Type = ActivityLogType.TeamHit,
+                UserId = 2,
+                CreatedAt = DateTime.UtcNow.AddMinutes(+3),
+                Metadata = new ActivityLogMetadata[]
+                {
+                    new("targetUserId", "1"),
+                    new("damage", "123"),
+                }.ToList(),
+            };
+            ActivityLog activityLogTeamHit2 = new()
+            {
+                Id = 19,
+                Type = ActivityLogType.TeamHit,
+                UserId = 1,
+                CreatedAt = DateTime.UtcNow.AddMinutes(-1),
+                Metadata = new ActivityLogMetadata[]
+                {
+                    new("targetUserId", "2"),
+                    new("damage", "18"),
+                }.ToList(),
+            };
+
+            ActivityLog[] newActivityLogs =
+            {
+                activityLogUserCreated1, activityLogUserDeleted1, activityLogUserRenamed1, activityLogUserReward1, activityLogItemBought1,
+                activityLogItemSold1, activityLogItemBroke1, activityLogItemUpgraded1, activityLogCharacterCreated1, activityLogCharacterDeleted1,
+                activityLogCharacterRespecialized1, activityLogCharacterRetired1, activityLogCharacterRewarded1, activityLogServerJoined1,
+                activityLogChatMessageSent1, activityLogChatMessageSent2, activityLogChatMessageSent3, activityLogTeamHit1, activityLogTeamHit2,
+            };
+
+            _db.ActivityLogs.RemoveRange(await _db.ActivityLogs.ToArrayAsync());
+            _db.ActivityLogs.AddRange(newActivityLogs);
 
             Restriction takeoRestriction0 = new()
             {

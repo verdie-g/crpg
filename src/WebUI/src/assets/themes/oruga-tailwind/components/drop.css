@@ -1,0 +1,40 @@
+.o-drop {
+  @apply relative inline-flex align-top;
+}
+
+.o-drop--inline {
+  @apply inline;
+}
+
+.o-drop--inline .o-drop__menu {
+  @apply static inline-block p-0;
+}
+
+.o-drop__trigger {
+  @apply w-full;
+}
+
+.o-drop__menu {
+  @apply absolute left-0 top-full z-10 block min-w-48;
+  @apply rounded bg-base-300 py-2;
+}
+
+.o-drop__menu--top-left {
+  @apply bottom-full left-auto right-0 top-auto;
+}
+
+.o-drop__menu--bottom-left {
+  @apply left-auto right-0;
+}
+
+.o-drop__menu--top-right {
+  @apply bottom-full top-auto;
+}
+
+.o-drop--expanded {
+  @apply w-full;
+}
+
+.o-drop--expanded .o-drop__menu {
+  @apply w-full;
+}

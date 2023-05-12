@@ -97,6 +97,11 @@ validations:
   clanBannerKeyPattern: 值应该只包含数字和小数点
   discordLinkPattern: 值必须是有效的Discord链接
 
+sort:
+  directions:
+    asc: 按递增排序
+    desc: 按递减顺序排序
+
 error:
   title: 出错了...
   intro: 如果您看到此页面，则是因为遇到了某种错误！
@@ -654,6 +659,7 @@ restriction:
   type:
     Join: 加入
     Chat: 聊天
+    All: 全部
   status:
     active: 有效
     inactive: 无效
@@ -980,7 +986,7 @@ item:
       title: '精度'
       description: ''
     missileSpeed:
-      title: '射速'
+      title: '导弹速度'
       description: ''
     reloadSpeed:
       title: '装填速度'
