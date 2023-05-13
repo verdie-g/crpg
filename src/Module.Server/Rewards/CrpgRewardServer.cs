@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using Crpg.Module.Api;
 using Crpg.Module.Api.Models;
 using Crpg.Module.Api.Models.Characters;
+using Crpg.Module.Api.Models.Users;
 using Crpg.Module.Common;
 using Crpg.Module.Common.Network;
 using Crpg.Module.Modes.Warmup;
@@ -10,6 +12,7 @@ using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Diamond;
 using TaleWorlds.PlayerServices;
+using static Crpg.Module.Rewards.CrpgAgent;
 using MathF = TaleWorlds.Library.MathF;
 
 namespace Crpg.Module.Rewards;
@@ -29,7 +32,7 @@ internal class CrpgRewardServer : MissionLogic
     private readonly CrpgRatingPeriodResults _ratingResults;
     private readonly Random _random;
     private readonly PeriodStatsHelper _periodStatsHelper;
-    private readonly Dictionary<CrpgPeer, Agent> _agentsThatGotTeamhitByCrpgPeer;
+    private readonly Dictionary<int, CrpgAgent> _agentsThatGotTeamhitByCharacterId;
 
     private bool _lastRewardDuringHappyHours;
 
@@ -46,7 +49,7 @@ internal class CrpgRewardServer : MissionLogic
         _random = new Random();
         _periodStatsHelper = new PeriodStatsHelper();
         _lastRewardDuringHappyHours = false;
-        _agentsThatGotTeamhitByCrpgPeer = new();
+        _agentsThatGotTeamhitByCharacterId = new();
     }
 
     public override MissionBehaviorType BehaviorType => MissionBehaviorType.Other;
@@ -90,15 +93,16 @@ internal class CrpgRewardServer : MissionLogic
 
         if (affectedAgent.Team == affectorAgent.Team) // Team hit.
         {
-            if (affectedAgent.MissionPeer != null)
+            if (TryGetCharacterIdSafely(affectedAgent, out int affectedUserId) && TryGetCharacterIdSafely(affectorAgent, out int affectorUserId))
             {
-                var affectedCrpgPeer = affectedAgent.MissionPeer.GetNetworkPeer().GetComponent<CrpgPeer>();
-                if (affectedCrpgPeer == null)
+                if (_agentsThatGotTeamhitByCharacterId.TryGetValue(affectedUserId, out CrpgAgent? affectedCrpgAgent) && affectedCrpgAgent != null)
                 {
-                    return;
+                    affectedCrpgAgent.SufferTeamHit(affectorUserId, blow.InflictedDamage);
                 }
-
-                _agentsThatGotTeamhitByCrpgPeer.TryAdd(affectedCrpgPeer, affectedAgent);
+                else
+                {
+                    _agentsThatGotTeamhitByCharacterId.Add(affectedUserId, new CrpgAgent(affectedUserId, (int)affectedAgent.BaseHealthLimit));
+                }
             }
 
             return;
@@ -112,6 +116,34 @@ internal class CrpgRewardServer : MissionLogic
 
         float inflictedRatio = MathF.Clamp(blow.InflictedDamage / affectedAgent.BaseHealthLimit, 0f, 1f);
         _ratingResults.AddResult(affectorRating!, affectedRating!, inflictedRatio);
+    }
+
+    private bool TryGetCharacterIdSafely(Agent agent, out int characterId)
+    {
+        characterId = 0;
+        if (agent.MissionPeer != null)
+        {
+            return false;
+        }
+
+        if (agent.MissionPeer.GetNetworkPeer() == null)
+        {
+            return false;
+        }
+
+        var crpgPeer = agent.MissionPeer.GetNetworkPeer().GetComponent<CrpgPeer>();
+        if (crpgPeer == null)
+        {
+            return false;
+        }
+
+        if (crpgPeer.User == null)
+        {
+            return false;
+        }
+
+        characterId = crpgPeer.User.Id;
+        return true;
     }
 
     /// <summary>
@@ -152,6 +184,27 @@ internal class CrpgRewardServer : MissionLogic
         Dictionary<CrpgPeer, CrpgUserUpkeepCompensation> compensationTable = new();
         Dictionary<int, CrpgPeer> crpgPeerByUserId = new();
         List<CrpgUserUpdate> userUpdates = new();
+        Dictionary<CrpgPeer, IList<CrpgUserDamagedItem>> brokenItems = new();
+
+        foreach (NetworkCommunicator networkPeer in networkPeers)
+        {
+            var missionPeer = networkPeer.GetComponent<MissionPeer>();
+            var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
+            if (missionPeer == null || crpgPeer?.User == null)
+            {
+                continue;
+            }
+
+            if (missionPeer.Team != null && missionPeer.Team.Side != BattleSideEnum.None)
+            {
+                var crpgUserDamagedItems = BreakItems(crpgPeer, durationRewarded * (lowPopulationServer ? 0.2f : 1f));
+                brokenItems[crpgPeer] = crpgUserDamagedItems;
+                compensationTable[crpgPeer] = new CrpgUserUpkeepCompensation { TotalRepairCost = crpgUserDamagedItems.Sum(r => r.RepairCost) };
+            }
+        }
+
+        CalculatePlayerUpkeepCompensations(compensationTable);
+
         foreach (NetworkCommunicator networkPeer in networkPeers)
         {
             var playerId = networkPeer.VirtualPlayer.Id;
@@ -195,8 +248,7 @@ internal class CrpgRewardServer : MissionLogic
                     SetStatistics(userUpdate, networkPeer, periodStats);
                 }
 
-                userUpdate.BrokenItems = BreakItems(crpgPeer, durationRewarded * (lowPopulationServer ? 0.2f : 1f));
-                compensationTable[crpgPeer] = new CrpgUserUpkeepCompensation { TotalRepairCost = userUpdate.BrokenItems.Sum(r => r.RepairCost) };
+                userUpdate.BrokenItems = brokenItems[crpgPeer];
             }
 
             userUpdates.Add(userUpdate);
@@ -210,7 +262,6 @@ internal class CrpgRewardServer : MissionLogic
             return;
         }
 
-        CalculatePlayerUpkeepCompensations(compensationTable);
         userUpdates.AddRange(CompensateTeamhitPlayers(compensationTable));
 
         // TODO: add retry mechanism (the endpoint need to be idempotent though).
