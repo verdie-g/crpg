@@ -255,12 +255,18 @@ character:
       title: Retire
       tooltip:
         title: Retire character
-        desc: 'Reset character to level {resetLevel} to grant a bonus multiplier {multiplierBonus} (max: {maxMultiplierBonus}). You will get heirloom points{heirloom} depending on the level of your character'
+        descTpl: '{desc1} {desc2}'
+        desc1: 'Reset character to level {resetLevel} to grant a bonus multiplier {multiplierBonus} (max: {maxMultiplierBonus}).'
+        desc2: 'You will get heirloom points {heirloom} depending on the level of your character:'
         requiredDesc: '{requiredLevel} level required'
+      loomPointsTable:
+        cols:
+          level: Level
+          loomsPoints: Points
       dialog:
         title: Retire character
         desc: Are you sure you want to retire your character? This action cannot be undone
-        reward: 'You get three: {heirloom} heirloom, {multiplierBonus} exp. multiplier. The char level will become: {resetLevel}'
+        reward: 'You will get: {heirloom} heirloom, {multiplierBonus} exp. multiplier. The char level will become: {resetLevel}'
       notify:
         success: Character retired
     tournament:
