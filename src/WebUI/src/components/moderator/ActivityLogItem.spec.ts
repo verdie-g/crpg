@@ -22,9 +22,28 @@ const getWrapper = (activityLog: ActivityLog, isSelfUser = true) =>
       stubs: {
         VTooltip: {
           template: `<div>
-                    <slot />
-                    <slot name="popper"  />
-                  </div>`,
+                      <slot />
+                      <slot name="popper" />
+                    </div>`,
+        },
+        'i18n-t': {
+          template: `<div data-aq-i18n-t-stub>
+                      <slot />
+                      <slot name="price" />
+                      <slot name="gold" />
+                      <slot name="heirloomPoints" />
+                      <slot name="itemId" />
+                      <slot name="experience" />
+                      <slot name="damage" />
+                      <slot name="targetUserId" />
+                      <slot name="instance" />
+                      <slot name="oldName" />
+                      <slot name="newName" />
+                      <slot name="characterId" />
+                      <slot name="generation" />
+                      <slot name="level" />
+                      <slot name="message" />
+                    </div>`,
         },
       },
     },
@@ -37,7 +56,6 @@ it('gold, heirloomPoints, itemId, experience', () => {
     userId: 2,
     metadata: {
       gold: '10',
-      price: '10',
       heirloomPoints: '100',
       experience: '1000',
       itemId: 'mlp_armor',
@@ -49,12 +67,11 @@ it('gold, heirloomPoints, itemId, experience', () => {
     'activityLog.tpl.ItemUpgraded'
   );
 
-  expect(wrapper.find('[data-aq-addLogItem-tpl-goldPrice]')).toBeDefined();
+  expect(wrapper.find('[data-aq-addLogItem-tpl-goldPrice]').exists()).toBeTruthy();
   expect(wrapper.findComponent({ name: 'Coin' }).props('value')).toEqual(10);
-  expect(wrapper.find('[data-aq-addLogItem-tpl-heirloomPoints]')).toBeDefined();
-
-  expect(wrapper.find('[data-aq-addLogItem-tpl-itemId]')).toBeDefined();
-  expect(wrapper.find('[data-aq-addLogItem-tpl-experience]')).toBeDefined();
+  expect(wrapper.find('[data-aq-addLogItem-tpl-heirloomPoints]').exists()).toBeTruthy();
+  expect(wrapper.find('[data-aq-addLogItem-tpl-itemId]').exists()).toBeTruthy();
+  expect(wrapper.find('[data-aq-addLogItem-tpl-experience]').exists()).toBeTruthy();
 });
 
 it('Team hit', async () => {

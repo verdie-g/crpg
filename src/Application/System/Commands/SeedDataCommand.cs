@@ -658,6 +658,7 @@ public record SeedDataCommand : IMediatorRequest
                 Metadata = new ActivityLogMetadata[]
                 {
                     new("message", "Fluttershy is best"),
+                    new("instance", "crpg01a"),
                 }.ToList(),
             };
             ActivityLog activityLogChatMessageSent2 = new()
@@ -668,6 +669,7 @@ public record SeedDataCommand : IMediatorRequest
                 Metadata = new ActivityLogMetadata[]
                 {
                     new("message", "No, Rarity the best"),
+                    new("instance", "crpg01a"),
                 }.ToList(),
             };
             ActivityLog activityLogChatMessageSent3 = new()
@@ -679,6 +681,7 @@ public record SeedDataCommand : IMediatorRequest
                 Metadata = new ActivityLogMetadata[]
                 {
                     new("message", "Do you get it?"),
+                    new("instance", "crpg01a"),
                 }.ToList(),
             };
             ActivityLog activityLogTeamHit1 = new()
@@ -691,6 +694,7 @@ public record SeedDataCommand : IMediatorRequest
                 {
                     new("targetUserId", "1"),
                     new("damage", "123"),
+                    new("instance", "crpg01a"),
                 }.ToList(),
             };
             ActivityLog activityLogTeamHit2 = new()
@@ -703,6 +707,7 @@ public record SeedDataCommand : IMediatorRequest
                 {
                     new("targetUserId", "2"),
                     new("damage", "18"),
+                    new("instance", "crpg01a"),
                 }.ToList(),
             };
 
