@@ -2,29 +2,21 @@
 internal class CrpgAgent
 {
     public int CharacterId { get; set; }
+    public int CurrentHealth { get; set; }
     public int BaseHealthLimit { get; set; }
-    public Dictionary<int, TeamHitter> TeamHitters { get; set; }
+    public Dictionary<int, Hitter> Hitters { get; set; }
     public CrpgAgent(int characterId, int baseHealthLimit)
     {
         CharacterId = characterId;
+        CurrentHealth = baseHealthLimit;
         BaseHealthLimit = baseHealthLimit;
-        TeamHitters = new();
+        Hitters = new();
     }
 
-    public void SufferTeamHit(int affectorCharacterId, int inflictedDamage)
+    internal class Hitter
     {
-        if (TeamHitters.TryGetValue(affectorCharacterId, out TeamHitter? affector) && affector != null)
-        {
-            affector.Damage = Math.Min(affector.Damage + inflictedDamage, BaseHealthLimit);
-        }
-        else
-        {
-            TeamHitters.Add(affectorCharacterId, new TeamHitter { Damage = inflictedDamage });
-        }
-    }
-
-    internal class TeamHitter
-    {
-        public int Damage { get; set; }
+        public int CharacterId { get; set; }
+        public int TotalDamageDone { get; set; }
+        public bool IsTeamHit { get; set; }
     }
 }
