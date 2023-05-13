@@ -254,11 +254,10 @@ internal class CrpgRewardServer : MissionLogic
 
     private static void RegisterHitForAffectedCrpgAgent(CrpgAgent affectedCrpgAgent, int affectorCrpgUserId, int inflictedDamage, bool isTeamHit)
     {
+        int damageDone = Math.Min(inflictedDamage, affectedCrpgAgent.CurrentHealth);
         if (affectedCrpgAgent.Hitters.TryGetValue(affectorCrpgUserId, out CrpgAgent.Hitter? affectorHitter) && affectorHitter != null)
         {
-            int damageDone = Math.Min(affectorHitter.TotalDamageDone + inflictedDamage, affectedCrpgAgent.CurrentHealth);
             affectorHitter.TotalDamageDone += damageDone;
-            affectedCrpgAgent.CurrentHealth -= damageDone;
         }
         else
         {
@@ -269,6 +268,8 @@ internal class CrpgRewardServer : MissionLogic
                 IsTeamHit = isTeamHit,
             });
         }
+
+        affectedCrpgAgent.CurrentHealth -= damageDone;
     }
 
     private bool TryGetCrpgUserIdSafely(Agent agent, out int crpgUserId)
@@ -327,7 +328,7 @@ internal class CrpgRewardServer : MissionLogic
                     continue;
                 }
 
-                float compensationRatio = affectorHitter.TotalDamageDone / affectedCrpgAgent.BaseHealthLimit;
+                float compensationRatio = affectorHitter.TotalDamageDone / (float)affectedCrpgAgent.BaseHealthLimit;
                 int compensatedRepairCost = (int)Math.Floor(repairCostByCrpgUserId[affectedCharacterId] * compensationRatio);
 
                 if (!netCompensationByCrpgUserId.TryAdd(affectedCharacterId, compensatedRepairCost))
