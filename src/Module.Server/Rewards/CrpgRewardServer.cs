@@ -30,7 +30,7 @@ internal class CrpgRewardServer : MissionLogic
     private readonly CrpgRatingPeriodResults _ratingResults;
     private readonly Random _random;
     private readonly PeriodStatsHelper _periodStatsHelper;
-    private readonly Dictionary<int, CrpgAgent> _agentsThatGotHitByCharacterId;
+    private readonly Dictionary<int, CrpgAgent> _agentsThatGotHitThisRoundByCrpgUserId;
 
     private bool _lastRewardDuringHappyHours;
 
@@ -47,7 +47,7 @@ internal class CrpgRewardServer : MissionLogic
         _random = new Random();
         _periodStatsHelper = new PeriodStatsHelper();
         _lastRewardDuringHappyHours = false;
-        _agentsThatGotHitByCharacterId = new();
+        _agentsThatGotHitThisRoundByCrpgUserId = new();
     }
 
     public override MissionBehaviorType BehaviorType => MissionBehaviorType.Other;
@@ -92,10 +92,10 @@ internal class CrpgRewardServer : MissionLogic
         bool isTeamHit = affectedAgent.Team == affectorAgent.Team;
         if (TryGetCrpgUserIdSafely(affectedAgent, out int affectedCrpgUserId) && TryGetCrpgUserIdSafely(affectorAgent, out int affectorCrpgUserId))
         {
-            if (!_agentsThatGotHitByCharacterId.TryGetValue(affectedCrpgUserId, out var affectedCrpgAgent))
+            if (!_agentsThatGotHitThisRoundByCrpgUserId.TryGetValue(affectedCrpgUserId, out var affectedCrpgAgent))
             {
                 affectedCrpgAgent = new CrpgAgent(affectedCrpgUserId, (int)affectedAgent.BaseHealthLimit);
-                _agentsThatGotHitByCharacterId.Add(affectedCrpgUserId, affectedCrpgAgent);
+                _agentsThatGotHitThisRoundByCrpgUserId.Add(affectedCrpgUserId, affectedCrpgAgent);
             }
 
             RegisterHitForAffectedCrpgAgent(affectedCrpgAgent, affectorCrpgUserId, blow.InflictedDamage, isTeamHit);
@@ -227,8 +227,6 @@ internal class CrpgRewardServer : MissionLogic
         _ratingResults.Clear();
         _characterRatings.Clear();
 
-        // TODO charge/compensate disconnected users
-
         if (userUpdates.Count == 0)
         {
             return;
@@ -240,7 +238,7 @@ internal class CrpgRewardServer : MissionLogic
             var res = (await _crpgClient.UpdateUsersAsync(new CrpgGameUsersUpdateRequest { Updates = userUpdates })).Data!;
             // elements from netCompensationByCrpgUserId will be removed in SendRewardToPeers as soon as the Messages were sent
             SendRewardToPeers(res.UpdateResults, crpgPeerByUserId, valorousPlayerIds, netCompensationByCrpgUserId);
-            // apply compensation for disconnected users (this should not work)
+            // apply compensation for disconnected users
             await _crpgClient.UpdateUsersAsync(new CrpgGameUsersUpdateRequest { Updates = GetCompensationUpdatesForUsers(netCompensationByCrpgUserId) });
         }
         catch (Exception e)
@@ -249,15 +247,15 @@ internal class CrpgRewardServer : MissionLogic
             SendErrorToPeers(crpgPeerByUserId);
         }
 
-        _agentsThatGotHitByCharacterId.Clear();
+        _agentsThatGotHitThisRoundByCrpgUserId.Clear();
     }
 
     private static void RegisterHitForAffectedCrpgAgent(CrpgAgent affectedCrpgAgent, int affectorCrpgUserId, int inflictedDamage, bool isTeamHit)
     {
         int damageDone = Math.Min(inflictedDamage, affectedCrpgAgent.CurrentHealth);
-        if (affectedCrpgAgent.Hitters.TryGetValue(affectorCrpgUserId, out CrpgAgent.Hitter? affectorHitter) && affectorHitter != null)
+        if (affectedCrpgAgent.Hitters.TryGetValue(affectorCrpgUserId, out CrpgAgent.Hitter? affectedCrpgAgentAttacker) && affectedCrpgAgentAttacker != null)
         {
-            affectorHitter.TotalDamageDone += damageDone;
+            affectedCrpgAgentAttacker.TotalDamageDone += damageDone;
         }
         else
         {
@@ -265,7 +263,7 @@ internal class CrpgRewardServer : MissionLogic
             {
                 CharacterId = affectorCrpgUserId,
                 TotalDamageDone = Math.Min(inflictedDamage, affectedCrpgAgent.CurrentHealth),
-                IsTeamHit = isTeamHit,
+                IsSameTeam = isTeamHit,
             });
         }
 
@@ -303,47 +301,43 @@ internal class CrpgRewardServer : MissionLogic
     private Dictionary<int, int> CalculateNetCompensationByCrpgUserId(Dictionary<int, int> repairCostByCrpgUserId)
     {
         Dictionary<int, int> netCompensationByCrpgUserId = new();
-
-        // TODO remove this: DEBUG!!
-        /*if (!netCompensationByCharacterId.TryAdd(repairCostByCharacterId.Keys.First(), 100))
+        foreach (var affectedEntry in _agentsThatGotHitThisRoundByCrpgUserId)
         {
-            netCompensationByCharacterId[repairCostByCharacterId.Keys.First()] += 100;
-        }*/
-
-        foreach (var affectedEntry in _agentsThatGotHitByCharacterId)
-        {
-            int affectedCharacterId = affectedEntry.Key;
+            int affectedCrpgUserId = affectedEntry.Key;
             CrpgAgent affectedCrpgAgent = affectedEntry.Value;
             foreach (var hitterEntry in affectedCrpgAgent.Hitters)
             {
-                int affectorCharacterId = hitterEntry.Key;
-                Hitter affectorHitter = hitterEntry.Value;
-                if (!affectorHitter.IsTeamHit)
+                int attackerCrpgUserId = hitterEntry.Key;
+                Hitter affectedCrpgAgentAttacker = hitterEntry.Value;
+                if (!affectedCrpgAgentAttacker.IsSameTeam)
                 {
                     continue;
                 }
 
-                if (affectedCharacterId == affectorCharacterId)
+                if (affectedCrpgUserId == attackerCrpgUserId)
                 {
                     continue;
                 }
 
-                float compensationRatio = affectorHitter.TotalDamageDone / (float)affectedCrpgAgent.BaseHealthLimit;
-                int compensatedRepairCost = (int)Math.Floor(repairCostByCrpgUserId[affectedCharacterId] * compensationRatio);
+                float compensationRatio = affectedCrpgAgentAttacker.TotalDamageDone / (float)affectedCrpgAgent.BaseHealthLimit;
+                // at the moment logged off user don't break their items but don't also get a reward
+                // this is why we don't not pay compensation to players that logged out
+                int repairCostOfAffectedUser =  repairCostByCrpgUserId.TryGetValue(affectedCrpgUserId, out int repairCost) ? repairCost : 0;
+                int compensatedRepairCost = (int)Math.Floor(repairCostOfAffectedUser * compensationRatio);
 
-                if (!netCompensationByCrpgUserId.TryAdd(affectedCharacterId, compensatedRepairCost))
+                if (!netCompensationByCrpgUserId.TryAdd(affectedCrpgUserId, compensatedRepairCost))
                 {
-                    netCompensationByCrpgUserId[affectedCharacterId] += compensatedRepairCost;
+                    netCompensationByCrpgUserId[affectedCrpgUserId] += compensatedRepairCost;
                 }
 
-                if (!netCompensationByCrpgUserId.TryAdd(affectorCharacterId, compensatedRepairCost * -1))
+                if (!netCompensationByCrpgUserId.TryAdd(attackerCrpgUserId, compensatedRepairCost * -1))
                 {
-                    netCompensationByCrpgUserId[affectorCharacterId] -= compensatedRepairCost;
+                    netCompensationByCrpgUserId[attackerCrpgUserId] -= compensatedRepairCost;
                 }
             }
         }
 
-        _agentsThatGotHitByCharacterId.Clear();
+        _agentsThatGotHitThisRoundByCrpgUserId.Clear();
         return netCompensationByCrpgUserId;
     }
 

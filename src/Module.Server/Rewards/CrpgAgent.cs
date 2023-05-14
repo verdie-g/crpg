@@ -17,6 +17,6 @@ internal class CrpgAgent
     {
         public int CharacterId { get; set; }
         public int TotalDamageDone { get; set; }
-        public bool IsTeamHit { get; set; }
+        public bool IsSameTeam { get; set; }
     }
 }
