@@ -42,6 +42,7 @@ import {
   createCharacteristics,
   computeHealthPoints,
   getHeirloomPointByLevel,
+  getHeirloomPointByLevelAggregation,
   getExperienceMultiplierBonus,
   getCharacterKDARatio,
   getRespecCapability,
@@ -278,6 +279,14 @@ it.each([
   [36, 3],
 ])('getHeirloomPointByLevel - level: %s', (level, expectation) => {
   expect(getHeirloomPointByLevel(level)).toEqual(expectation);
+});
+
+it('getHeirloomPointByLevelAggregation', () => {
+  expect(getHeirloomPointByLevelAggregation()).toEqual([
+    { points: 1, level: [31, 32] },
+    { points: 2, level: [33, 34] },
+    { points: 3, level: [35, 36, 37, 38] },
+  ]);
 });
 
 it.each([

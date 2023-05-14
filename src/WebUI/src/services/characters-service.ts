@@ -47,6 +47,7 @@ import { mapUserItem } from '@/services/users-service';
 import { armorTypes, computeAverageRepairCostPerHour } from '@/services/item-service';
 import { applyPolynomialFunction, clamp, roundFLoat } from '@/utils/math';
 import { computeLeftMs, parseTimestamp } from '@/utils/date';
+import { range } from '@/utils/array';
 
 export const getCharacters = () => get<Character[]>('/users/self/characters');
 
@@ -326,6 +327,22 @@ export const getHeirloomPointByLevel = (level: number) => {
 
   return 3;
 };
+
+export type HeirloomPointByLevelAggregation = { level: number[]; points: number };
+
+export const getHeirloomPointByLevelAggregation = () =>
+  range(minimumRetirementLevel, maximumLevel).reduce((out, level) => {
+    const points = getHeirloomPointByLevel(level);
+    const idx = out.findIndex(item => item.points === points);
+
+    if (idx === -1) {
+      out.push({ points, level: [level] });
+    } else {
+      out[idx].level.push(level);
+    }
+
+    return out;
+  }, [] as HeirloomPointByLevelAggregation[]);
 
 export const getExperienceMultiplierBonus = (multiplier: number) => {
   if (multiplier < maxExperienceMultiplierForGeneration) {

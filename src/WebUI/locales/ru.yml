@@ -251,8 +251,14 @@ character:
       title: Отставка
       tooltip:
         title: Отставка персонажа
-        desc: 'Уровень персонажа сбросится до {resetLevel}. Ваш модификатор опыта увеличится на {multiplierBonus} (макс: {maxMultiplierBonus}). Вы получите очки улучшения предметов {heirloom} в зависимости от уровня персонажа'
+        descTpl: '{desc1} {desc2}'
+        desc1: 'Уровень персонажа сбросится до {resetLevel}. Ваш модификатор опыта увеличится на {multiplierBonus} (макс: {maxMultiplierBonus}).'
+        desc2: 'Вы получите очки улучшения предметов {heirloom} в зависимости от уровня персонажа.'
         requiredDesc: 'Требуется {requiredLevel} уровень'
+      loomPointsTable:
+        cols:
+          level: Уровень
+          loomsPoints: Очки
       dialog:
         title: Отставка персонажа
         desc: Вы уверены что хотите отправить персонажа в отставку? Это действие нельзя отменить

@@ -255,8 +255,14 @@ character:
       title: 退役
       tooltip:
         title: 退役角色
-        desc: '将角色重置为{resetLevel}级，以获得加成倍数{multiplierBonus} (最大值：{maxMultiplierBonus})。您将根据角色级别获得转生点数{heirloom}'
+        descTpl: '{desc1} {desc2}'
+        desc1: '将角色重置为{resetLevel}级，以获得加成倍数{multiplierBonus} (最大值：{maxMultiplierBonus})'
+        desc2: '您将根据角色级别获得转生点数{heirloom}'
         requiredDesc: '需要{requiredLevel}等级'
+      loomPointsTable:
+        cols:
+          level: 级别
+          loomsPoints: 积分
       dialog:
         title: 退役角色
         desc: 您确定要退役您的角色吗？此操作无法撤销

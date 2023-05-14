@@ -25,6 +25,8 @@ import {
   canSetCharacterForTournamentValidate,
   setCharacterForTournament,
   getHeirloomPointByLevel,
+  type HeirloomPointByLevelAggregation,
+  getHeirloomPointByLevelAggregation,
   getExperienceMultiplierBonus,
   getCharacterKDARatio,
   getRespecCapability,
@@ -118,6 +120,7 @@ const experienceMultiplierBonus = computed(() =>
 );
 
 const heirloomPointByLevel = computed(() => getHeirloomPointByLevel(character.value.level));
+const retireTableData = computed(() => getHeirloomPointByLevelAggregation());
 
 const fetchPageData = async (characterId: number) =>
   Promise.all([
@@ -372,35 +375,6 @@ await fetchPageData(character.value.id);
 
               <template #popper>
                 <div class="prose prose-invert">
-                  <h5 class="text-content-100">
-                    {{ $t('character.settings.retire.tooltip.title') }}
-                  </h5>
-                  <i18n-t scope="global" keypath="character.settings.retire.tooltip.desc" tag="p">
-                    <template #resetLevel>
-                      <span class="font-bold text-status-danger">1</span>
-                    </template>
-                    <template #multiplierBonus>
-                      <span class="font-bold text-status-success">
-                        +{{
-                          $n(experienceMultiplierByGeneration, 'percent', {
-                            minimumFractionDigits: 0,
-                          })
-                        }}
-                      </span>
-                    </template>
-                    <template #maxMultiplierBonus>
-                      <span class="text-content-100">
-                        +{{
-                          $n(maxExperienceMultiplierForGeneration - 1, 'percent', {
-                            minimumFractionDigits: 0,
-                          })
-                        }}
-                      </span>
-                    </template>
-                    <template #heirloom>
-                      <OIcon icon="blacksmith" size="sm" class="align-middle text-primary" />
-                    </template>
-                  </i18n-t>
                   <i18n-t
                     v-if="!canRetire"
                     scope="global"
@@ -413,6 +387,76 @@ await fetchPageData(character.value.id);
                       <span class="font-bold">{{ minimumRetirementLevel }}+</span>
                     </template>
                   </i18n-t>
+
+                  <h3 class="text-content-100">
+                    {{ $t('character.settings.retire.tooltip.title') }}
+                  </h3>
+
+                  <i18n-t scope="global" keypath="character.settings.retire.tooltip.descTpl">
+                    <template #desc1>
+                      <i18n-t
+                        scope="global"
+                        keypath="character.settings.retire.tooltip.desc1"
+                        tag="p"
+                      >
+                        <template #resetLevel>
+                          <span class="font-bold text-status-danger">1</span>
+                        </template>
+                        <template #multiplierBonus>
+                          <span class="font-bold text-status-success">
+                            +{{
+                              $n(experienceMultiplierByGeneration, 'percent', {
+                                minimumFractionDigits: 0,
+                              })
+                            }}
+                          </span>
+                        </template>
+                        <template #maxMultiplierBonus>
+                          <span class="text-content-100">
+                            +{{
+                              $n(maxExperienceMultiplierForGeneration - 1, 'percent', {
+                                minimumFractionDigits: 0,
+                              })
+                            }}
+                          </span>
+                        </template>
+                      </i18n-t>
+                    </template>
+
+                    <template #desc2>
+                      <i18n-t
+                        scope="global"
+                        keypath="character.settings.retire.tooltip.desc2"
+                        tag="p"
+                      >
+                        <template #heirloom>
+                          <OIcon icon="blacksmith" size="sm" class="align-top text-primary" />
+                        </template>
+                      </i18n-t>
+                    </template>
+                  </i18n-t>
+
+                  <OTable :data="retireTableData" bordered narrowed>
+                    <OTableColumn
+                      #default="{ row }: { row: HeirloomPointByLevelAggregation }"
+                      field="level"
+                      :label="$t('character.settings.retire.loomPointsTable.cols.level')"
+                    >
+                      <span>{{ row.level.join(', ') }}</span>
+                    </OTableColumn>
+                    <OTableColumn field="points">
+                      <template #header>
+                        <div class="flex items-center gap-1">
+                          {{ $t('character.settings.retire.loomPointsTable.cols.loomsPoints') }}
+                          <OIcon icon="blacksmith" size="sm" class="text-primary" />
+                        </div>
+                      </template>
+
+                      <template #default="{ row }: { row: HeirloomPointByLevelAggregation }">
+                        <span>{{ row.points }}</span>
+                      </template>
+                    </OTableColumn>
+                  </OTable>
                 </div>
               </template>
             </VTooltip>
