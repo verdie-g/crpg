@@ -31,6 +31,7 @@ internal class CrpgRewardServer : MissionLogic
     private readonly Random _random;
     private readonly PeriodStatsHelper _periodStatsHelper;
     private readonly Dictionary<int, CrpgAgent> _agentsThatGotHitThisRoundByCrpgUserId;
+    private bool isBattleMissionType;
 
     private bool _lastRewardDuringHappyHours;
 
@@ -48,6 +49,7 @@ internal class CrpgRewardServer : MissionLogic
         _periodStatsHelper = new PeriodStatsHelper();
         _lastRewardDuringHappyHours = false;
         _agentsThatGotHitThisRoundByCrpgUserId = new();
+        isBattleMissionType = false;
     }
 
     public override MissionBehaviorType BehaviorType => MissionBehaviorType.Other;
@@ -58,6 +60,11 @@ internal class CrpgRewardServer : MissionLogic
 
         if (_warmupComponent != null)
         {
+            if (_warmupComponent.Mission != null)
+            {
+                isBattleMissionType = IsMissionGameTypeBattle(_warmupComponent.Mission);
+            }
+
             _warmupComponent.OnWarmupEnded += OnWarmupEnded;
         }
     }
@@ -173,7 +180,7 @@ internal class CrpgRewardServer : MissionLogic
             }
         }
 
-        var netCompensationByCrpgUserId = CalculateNetCompensationByCrpgUserId(repairCostByCrpgUserId);
+        var netCompensationByCrpgUserId = isBattleMissionType ? CalculateNetCompensationByCrpgUserId(repairCostByCrpgUserId) : new();
         foreach (NetworkCommunicator networkPeer in networkPeers)
         {
             var playerId = networkPeer.VirtualPlayer.Id;
@@ -268,6 +275,17 @@ internal class CrpgRewardServer : MissionLogic
         }
 
         affectedCrpgAgent.CurrentHealth -= damageDone;
+    }
+
+    private bool IsMissionGameTypeBattle(Mission mission)
+    {
+        var missionMultiplayerGameModeBaseClient = mission.GetMissionBehavior<MissionMultiplayerGameModeBaseClient>();
+        if (missionMultiplayerGameModeBaseClient == null)
+        {
+            return false;
+        }
+
+        return missionMultiplayerGameModeBaseClient.GameType == MissionLobbyComponent.MultiplayerGameType.Battle;
     }
 
     private bool TryGetCrpgUserIdSafely(Agent agent, out int crpgUserId)
