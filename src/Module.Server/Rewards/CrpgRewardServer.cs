@@ -322,7 +322,7 @@ internal class CrpgRewardServer : MissionLogic
                 float compensationRatio = affectedCrpgAgentAttacker.TotalDamageDone / (float)affectedCrpgAgent.BaseHealthLimit;
                 // at the moment logged off user don't break their items but don't also get a reward
                 // this is why we don't not pay compensation to players that logged out
-                int repairCostOfAffectedUser =  repairCostByCrpgUserId.TryGetValue(affectedCrpgUserId, out int repairCost) ? repairCost : 0;
+                int repairCostOfAffectedUser = repairCostByCrpgUserId.TryGetValue(affectedCrpgUserId, out int repairCost) ? repairCost : 0;
                 int compensatedRepairCost = (int)Math.Floor(repairCostOfAffectedUser * compensationRatio);
 
                 if (!netCompensationByCrpgUserId.TryAdd(affectedCrpgUserId, compensatedRepairCost))
