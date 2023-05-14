@@ -266,7 +266,7 @@ character:
       dialog:
         title: Retire character
         desc: Are you sure you want to retire your character? This action cannot be undone
-        reward: 'You will get: {heirloom} heirloom, {multiplierBonus} exp. multiplier. The char level will become: {resetLevel}'
+        reward: 'You will get: {heirloom} heirloom, {multiplierBonus} exp. multiplier. The char will be reset to level {resetLevel}'
       notify:
         success: Character retired
     tournament:
