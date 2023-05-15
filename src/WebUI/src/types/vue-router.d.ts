@@ -28,5 +28,6 @@ declare module 'vue-router' {
     scrollToTop?: boolean;
     bg?: string;
     noStickyHeader?: boolean;
+    noFooter?: boolean;
   }
 }

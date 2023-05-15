@@ -46,7 +46,8 @@
 }
 
 body {
-  @apply overflow-y-scroll bg-bg-main text-xs tracking-wider text-content-200;
+  @apply bg-bg-main text-xs tracking-wider text-content-200;
+  /* @apply overflow-y-scroll;  */ /* Strat map scrollbar*/
 }
 
 path {

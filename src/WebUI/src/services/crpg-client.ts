@@ -7,7 +7,7 @@ import { Platform } from '@/models/platform';
 
 export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-async function trySend(method: string, path: string, body?: any): Promise<Result<any>> {
+async function trySend<T = any>(method: string, path: string, body?: any): Promise<Result<T>> {
   const token = await getToken();
 
   const response = await fetch(API_BASE_URL + path, {
@@ -51,8 +51,8 @@ async function send(method: string, path: string, body?: any): Promise<any> {
   }
 }
 
-export function tryGet(path: string): Promise<Result<any>> {
-  return trySend('GET', path);
+export function tryGet<T = any>(path: string): Promise<Result<T>> {
+  return trySend<T>('GET', path);
 }
 
 export function get<T = any>(path: string): Promise<T> {

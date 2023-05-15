@@ -14,7 +14,7 @@ export interface User {
   role: Role;
   avatar: string;
   activeCharacterId: number | null;
-  region: Region | null;
+  region: Region;
   experienceMultiplier: number;
   isDonor: boolean;
 }

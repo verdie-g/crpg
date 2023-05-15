@@ -1230,3 +1230,9 @@ rankTable:
 patchNotes:
   latest: Latest
   showAllPatches: '+ {count} patch | + {count} patches'
+
+strategus:
+  MovementType:
+    Move: Move
+    Follow: Follow
+    Attack: Attack

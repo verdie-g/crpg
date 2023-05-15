@@ -43,7 +43,11 @@ if (userStore.clan === null) {
 }
 
 const mainHeader = ref(null);
-const { height: mainHeaderHeight } = useElementSize(mainHeader);
+const { height: mainHeaderHeight } = useElementSize(
+  mainHeader,
+  { width: 0, height: 0 },
+  { box: 'border-box' }
+);
 provide(mainHeaderHeightKey, mainHeaderHeight);
 
 const { subscribe, unsubscribe } = usePollInterval();
@@ -189,6 +193,7 @@ await Promise.all(promises);
     </main>
 
     <footer
+      v-if="!route.meta.noFooter"
       class="relative mt-auto flex flex-wrap items-center justify-between border-t border-solid border-border-200 px-6 py-5 text-2xs text-content-300"
     >
       <Socials patreonExpanded size="sm" />
