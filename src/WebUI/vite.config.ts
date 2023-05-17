@@ -5,7 +5,7 @@ import { defineConfig, Plugin } from 'vite';
 import Vue from '@vitejs/plugin-vue';
 import Layouts from 'vite-plugin-vue-layouts';
 import Components from 'unplugin-vue-components/vite';
-import VueI18n from '@intlify/vite-plugin-vue-i18n';
+import VueI18n from '@intlify/unplugin-vue-i18n/vite';
 import AutoImport from 'unplugin-auto-import/vite';
 import { VueRouterAutoImports, getPascalCaseRouteName } from 'unplugin-vue-router';
 import VueRouter from 'unplugin-vue-router/vite';
@@ -104,10 +104,12 @@ export default defineConfig({
       brotliSize: true,
     }),
 
-    // https://github.com/intlify/bundle-tools/tree/main/packages/vite-plugin-vue-i18n
+    // https://github.com/intlify/bundle-tools/tree/main/packages/unplugin-vue-i18n
     VueI18n({
       runtimeOnly: true,
       compositionOnly: true,
+      strictMessage: false,
+      escapeHtml: true,
       include: [fileURLToPath(new URL('./locales/**', import.meta.url))],
     }),
 
@@ -135,6 +137,7 @@ export default defineConfig({
     include: ['./src/**/*.spec.ts'],
     setupFiles: ['./src/__test__/unit/setup.ts'],
     coverage: {
+      provider: 'c8',
       reporter: ['json', 'text', 'html'],
       exclude: ['node_modules/', './src/__test__/unit/index.ts', '**/*.spec.ts'],
     },

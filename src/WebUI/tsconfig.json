@@ -12,21 +12,12 @@
     "importHelpers": true,
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
-    "lib": [
-      "esnext",
-      "dom"
-    ],
+    "lib": ["esnext", "dom"],
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "@@/*": [
-        "/*"
-      ],
-      "@root/*": [
-        "../../*"
-      ],
+      "@/*": ["src/*"],
+      "@@/*": ["/*"],
+      "@root/*": ["../../*"]
     },
     "types": [
       "type-fest",
@@ -37,14 +28,8 @@
       "vi-fetch/matchers",
       "@types/body-scroll-lock",
       "vite-plugin-svg-icons/client"
-    ],
+    ]
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.vue",
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue"],
+  "exclude": ["node_modules"]
 }
