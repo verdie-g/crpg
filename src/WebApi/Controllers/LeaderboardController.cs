@@ -30,7 +30,7 @@ public class LeaderboardController : BaseController
     /// <returns>The top character competitive ratings.</returns>
     /// <response code="200">Ok.</response>
     [HttpGet("leaderboard")]
-    public Task<ActionResult<Result<LeaderboardViewModel>>> GetTopCharacterCompetitiveRatings()
+    public Task<ActionResult<Result<LeaderboardViewModel>>> GetLeaderboard()
     {
         return ResultToActionAsync(Mediator.Send(new GetLeaderboardQuery
         {
