@@ -2,13 +2,11 @@
 internal class AgentHitRegistry
 {
     public int CharacterId { get; set; }
-    public int CurrentHealth { get; set; }
     public int BaseHealthLimit { get; set; }
     public Dictionary<int, Hitter> Hitters { get; set; }
     public AgentHitRegistry(int characterId, int baseHealthLimit)
     {
         CharacterId = characterId;
-        CurrentHealth = baseHealthLimit;
         BaseHealthLimit = baseHealthLimit;
         Hitters = new();
     }
