@@ -5,6 +5,7 @@ using Crpg.Domain.Entities.Clans;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Limitations;
 using Crpg.Domain.Entities.Parties;
+using Crpg.Domain.Entities.Rating;
 using Crpg.Domain.Entities.Restrictions;
 using Crpg.Domain.Entities.Settlements;
 using Crpg.Domain.Entities.Users;
@@ -22,6 +23,7 @@ public interface ICrpgDbContext
     DbSet<EquippedItem> EquippedItems { get; }
     DbSet<CharacterLimitations> CharacterLimitations { get; }
     DbSet<Restriction> Restrictions { get; }
+    DbSet<Leaderboard> Leaderboard { get; }
     DbSet<Clan> Clans { get; }
     DbSet<ClanMember> ClanMembers { get; }
     DbSet<ClanInvitation> ClanInvitations { get; }
