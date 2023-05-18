@@ -3,6 +3,7 @@ using Crpg.Application.Characters.Models;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
+using Crpg.Application.Common.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Queries;
@@ -16,11 +17,13 @@ public record GetUserCharacterCompetitiveRatingQuery : IMediatorRequest<Characte
     {
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
+        private readonly ICompetitiveRatingModel _ratingmodel;
 
-        public Handler(ICrpgDbContext db, IMapper mapper)
+        public Handler(ICrpgDbContext db, IMapper mapper, ICompetitiveRatingModel ratingmodel)
         {
             _db = db;
             _mapper = mapper;
+            _ratingmodel = ratingmodel;
         }
 
         public async Task<Result<CharacterCompetitiveRatingViewModel>> Handle(GetUserCharacterCompetitiveRatingQuery req, CancellationToken cancellationToken)
@@ -31,7 +34,7 @@ public record GetUserCharacterCompetitiveRatingQuery : IMediatorRequest<Characte
 
             return character == null
                 ? new(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId))
-                : new(_mapper.Map<CharacterCompetitiveRatingViewModel>(character));
+                : new(_ratingmodel.ComputeCompetitiveRating(_mapper.Map<CharacterRatingViewModel>(character)));
         }
     }
 }
