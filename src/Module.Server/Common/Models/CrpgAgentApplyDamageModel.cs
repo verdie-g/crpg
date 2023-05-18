@@ -49,7 +49,8 @@ internal class CrpgAgentApplyDamageModel : MultiplayerAgentApplyDamageModel
         if (collisionData.AttackBlockedWithShield && finalDamage > 0)
         {
             int shieldSkill = GetSkillValue(attackInformation.VictimAgentOrigin, CrpgSkills.Shield);
-            finalDamage /= MathHelper.RecursivePolynomialFunctionOfDegree2(shieldSkill, _constants.DurabilityFactorForShieldRecursiveCoefs) * 1.25f;
+            finalDamage *= (collisionData.StrikeType == (int)StrikeType.Thrust) ? weapon.CurrentUsageItem.ThrustDamageFactor : weapon.CurrentUsageItem.SwingDamageFactor;
+            finalDamage /= MathHelper.RecursivePolynomialFunctionOfDegree2(shieldSkill, _constants.DurabilityFactorForShieldRecursiveCoefs);
             if (weapon.CurrentUsageItem.WeaponFlags.HasAnyFlag(WeaponFlags.BonusAgainstShield) && meleeClass.Contains(weapon.CurrentUsageItem.WeaponClass))
             {
                 // this bonus is on top of the native x2 in MissionCombatMechanicsHelper
