@@ -227,21 +227,6 @@ public class UsersController : BaseController
     }
 
     /// <summary>
-    /// Get top character competitive ratings.
-    /// </summary>
-    /// <returns>The top character competitive ratings.</returns>
-    /// <response code="200">Ok.</response>
-    [HttpGet("leaderboard")]
-    public Task<ActionResult<Result<IList<CharacterCompetitiveRatingViewModel>>>> GetTopCharacterCompetitiveRatings()
-    {
-        return ResultToActionAsync(Mediator.Send(new GetTopUserCharactersByCompetitiveRatingQuery
-        {
-            // You can set the Top property if you want to customize the number of top characters returned.
-            // Top = 50, // for example
-        }));
-    }
-
-    /// <summary>
     /// Updates character characteristics for the current user.
     /// </summary>
     /// <param name="id">Character id.</param>

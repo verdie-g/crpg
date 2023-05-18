@@ -10,8 +10,8 @@ public class GetTopUserCharacterCompetitiveRatingQueryTest : TestBase
     [Test]
     public async Task ShouldReturnErrorIfCharacterRatingDoesntExist()
     {
-        GetTopUserCharactersByCompetitiveRatingQuery.Handler handler = new(ActDb, Mapper);
-        var result = await handler.Handle(new GetTopUserCharactersByCompetitiveRatingQuery
+        GetLeaderboardQuery.Handler handler = new(ActDb, Mapper);
+        var result = await handler.Handle(new GetLeaderboardQuery
         {
         }, CancellationToken.None);
 
@@ -59,8 +59,8 @@ public class GetTopUserCharacterCompetitiveRatingQueryTest : TestBase
         ArrangeDb.Characters.Add(character3);
         await ArrangeDb.SaveChangesAsync();
 
-        GetTopUserCharactersByCompetitiveRatingQuery.Handler handler = new(ActDb, Mapper);
-        var result = await handler.Handle(new GetTopUserCharactersByCompetitiveRatingQuery
+        GetLeaderboardQuery.Handler handler = new(ActDb, Mapper);
+        var result = await handler.Handle(new GetLeaderboardQuery
         {
         }, CancellationToken.None);
 
