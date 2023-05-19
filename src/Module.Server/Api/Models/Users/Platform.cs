@@ -5,4 +5,5 @@ public enum Platform
 {
     Steam,
     EpicGames,
+    Microsoft,
 }

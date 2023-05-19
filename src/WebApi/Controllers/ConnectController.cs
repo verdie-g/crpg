@@ -7,6 +7,7 @@ using Crpg.Application.Users.Commands;
 using Crpg.Application.Users.Models;
 using Crpg.Application.Users.Queries;
 using Crpg.Domain.Entities.Users;
+using Crpg.WebApi.Services;
 using MediatR;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Authentication;
@@ -30,15 +31,21 @@ public class ConnectController : ControllerBase
     private readonly IOpenIddictApplicationManager _applicationManager;
     private readonly IOpenIddictAuthorizationManager _authorizationManager;
     private readonly IOpenIddictScopeManager _scopeManager;
+    private readonly IMediator _mediator;
+    private readonly XboxService _xboxService;
 
     public ConnectController(
         IOpenIddictApplicationManager applicationManager,
         IOpenIddictAuthorizationManager authorizationManager,
-        IOpenIddictScopeManager scopeManager)
+        IOpenIddictScopeManager scopeManager,
+        IMediator mediator,
+        XboxService xboxService)
     {
         _applicationManager = applicationManager;
         _authorizationManager = authorizationManager;
         _scopeManager = scopeManager;
+        _mediator = mediator;
+        _xboxService = xboxService;
     }
 
     [HttpGet("authorize")]
@@ -183,8 +190,7 @@ public class ConnectController : ControllerBase
         string platformUserId = result.Principal!.FindFirstValue(OpenIddictConstants.Claims.Subject)!;
         string userName = result.Principal!.FindFirstValue(OpenIddictConstants.Claims.PreferredUsername)!;
 
-        var mediator = HttpContext.RequestServices.GetRequiredService<IMediator>();
-        var res = await mediator.Send(new UpsertUserCommand
+        var res = await _mediator.Send(new UpsertUserCommand
         {
             Platform = Platform.EpicGames,
             PlatformUserId = platformUserId,
@@ -193,6 +199,33 @@ public class ConnectController : ControllerBase
         });
 
         ClaimsIdentity identity = new(OpenIddictClientWebIntegrationConstants.Providers.EpicGames);
+        identity.AddClaim(new Claim(OpenIddictConstants.Claims.Subject, res.Data!.Id.ToString()));
+
+        AuthenticationProperties properties = new()
+        {
+            RedirectUri = result.Properties!.RedirectUri,
+        };
+
+        return SignIn(new ClaimsPrincipal(identity), properties, CookieAuthenticationDefaults.AuthenticationScheme);
+    }
+
+    [HttpGet("callback-microsoft")]
+    public async Task<IActionResult> CallbackMicrosoft()
+    {
+        var result = await HttpContext.AuthenticateAsync(OpenIddictClientAspNetCoreDefaults.AuthenticationScheme);
+
+        string accessToken = result.Properties!.GetTokenValue(OpenIddictClientAspNetCoreConstants.Tokens.BackchannelAccessToken)!;
+        var xboxUser = await _xboxService.GetXboxUserAsync(accessToken);
+
+        var res = await _mediator.Send(new UpsertUserCommand
+        {
+            Platform = Platform.Microsoft,
+            PlatformUserId = xboxUser.Id,
+            Name = xboxUser.Name,
+            Avatar = xboxUser.Avatar,
+        });
+
+        ClaimsIdentity identity = new(OpenIddictClientWebIntegrationConstants.Providers.Microsoft);
         identity.AddClaim(new Claim(OpenIddictConstants.Claims.Subject, res.Data!.Id.ToString()));
 
         AuthenticationProperties properties = new()
@@ -354,14 +387,12 @@ public class ConnectController : ControllerBase
 
     private Task<Result<UserViewModel>> GetUserAsync(int userId)
     {
-        var mediator = HttpContext.RequestServices.GetRequiredService<IMediator>();
-        return mediator.Send(new GetUserQuery { UserId = userId }, CancellationToken.None);
+        return _mediator.Send(new GetUserQuery { UserId = userId }, CancellationToken.None);
     }
 
     private Task UpdateUserRegionAsync(int userId, IPAddress ipAddress)
     {
-        var mediator = HttpContext.RequestServices.GetRequiredService<IMediator>();
-        return mediator.Send(new UpdateUserRegionCommand
+        return _mediator.Send(new UpdateUserRegionCommand
         {
             UserId = userId,
             IpAddress = ipAddress,
@@ -370,8 +401,7 @@ public class ConnectController : ControllerBase
 
     private async Task<bool> IsUserBannedAsync(int userId)
     {
-        var mediator = HttpContext.RequestServices.GetRequiredService<IMediator>();
-        var res = await mediator.Send(new IsUserBannedQuery
+        var res = await _mediator.Send(new IsUserBannedQuery
         {
             UserId = userId,
         }, CancellationToken.None);

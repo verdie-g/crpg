@@ -51,6 +51,7 @@ builder.Services
     .AddHostedService<ActivityLogsCleanerWorker>()
     .AddHttpContextAccessor() // Injects IHttpContextAccessor
     .AddScoped<ICurrentUserService, CurrentUserService>()
+    .AddSingleton<XboxService>()
     .AddEndpointsApiExplorer()
     .AddSwaggerGen(ConfigureSwagger)
     .AddCors(opts => ConfigureCors(opts, builder.Configuration))
@@ -119,6 +120,26 @@ builder.Services.AddOpenIddict()
                     .SetClientSecret(epicGamesClientSecret)
                     .SetRedirectUri("connect/callback-epic-games");
             });
+            webProviderAdded = true;
+        }
+
+        string? microsoftClientId = builder.Configuration["Microsoft:ClientId"];
+        string? microsoftClientSecret = builder.Configuration["Microsoft:ClientSecret"];
+
+        if (microsoftClientId != null && microsoftClientSecret != null)
+        {
+            webIntegrationBuilder.UseMicrosoft(microsoft =>
+            {
+                microsoft.SetClientId(microsoftClientId)
+                    .SetClientSecret(microsoftClientSecret)
+                    .SetRedirectUri("connect/callback-microsoft")
+                    // Use "consumers" once https://github.com/openiddict/openiddict-core/pull/1765 is released.
+                    .SetTenant("9188040d-6c67-4c5b-b112-36a304b66dad")
+                    .AddScopes("XboxLive.signin");
+            });
+
+            options.AddEventHandler(XboxUserInfoHandler.Descriptor);
+
             webProviderAdded = true;
         }
 
