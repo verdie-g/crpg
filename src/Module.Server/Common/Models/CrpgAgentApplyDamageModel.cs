@@ -52,7 +52,11 @@ internal class CrpgAgentApplyDamageModel : MultiplayerAgentApplyDamageModel
             finalDamage /= MathHelper.RecursivePolynomialFunctionOfDegree2(shieldSkill, _constants.DurabilityFactorForShieldRecursiveCoefs);
             if (meleeClass.Contains(weapon.CurrentUsageItem.WeaponClass))
             {
-                finalDamage *= (collisionData.StrikeType == (int)StrikeType.Thrust) ? weapon.CurrentUsageItem.ThrustDamageFactor : weapon.CurrentUsageItem.SwingDamageFactor;
+                finalDamage *=
+                    (collisionData.StrikeType == (int)StrikeType.Thrust)
+                        ? weapon.CurrentUsageItem.ThrustDamageFactor
+                        : weapon.CurrentUsageItem.SwingDamageFactor;
+
                 if (weapon.CurrentUsageItem.WeaponFlags.HasAnyFlag(WeaponFlags.BonusAgainstShield))
                 {
                     // this bonus is on top of the native x2 in MissionCombatMechanicsHelper
