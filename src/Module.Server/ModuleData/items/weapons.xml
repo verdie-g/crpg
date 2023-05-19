@@ -426,7 +426,7 @@
       <Piece id="crpg_hooked_axe_t4_handle" Type="Handle" scale_factor="128" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_aserai_2haxe_3_t5" name="{=hTPJXK1w}Chainbreaker" crafting_template="crpg_TwoHandedAxe" culture="Culture.aserai" modifier_group="axe">
+  <CraftedItem id="crpg_aserai_2haxe_3_t5" name="{=hTPJXK1w}Chainbreaker" crafting_template="crpg_TwoHandedAxe" culture="Culture.aserai" modifier_group="masterwork_axe"> <!-- this does not seem to do anything. Putting <modifier_group="lol"> does not even pose a problem-->
     <Pieces>
       <Piece id="crpg_aserai_2haxe_3_t5_blade" Type="Blade" scale_factor="110" />
       <Piece id="crpg_aserai_2haxe_3_t5_handle" Type="Handle" scale_factor="90" />

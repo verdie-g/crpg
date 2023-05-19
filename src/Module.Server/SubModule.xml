@@ -56,6 +56,9 @@
       <XmlName id="Items" path="items/weapons"/>
     </XmlNode>
     <XmlNode>
+      <XmlName id="ItemModifiers" path="item_modifiers"/>
+    </XmlNode>
+    <XmlNode>
       <XmlName id="MPCharacters" path="characters"/>
     </XmlNode>
     <XmlNode>
