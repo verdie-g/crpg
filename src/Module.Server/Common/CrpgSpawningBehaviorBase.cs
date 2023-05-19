@@ -254,16 +254,21 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
 
         var modifer = MBObjectManager.Instance.GetObject<ItemModifier>("masterwork_axe");
 
-        if (itemId == "crpg_sturgia_2haxe_2_t5_heirloom")
+        if (itemId == "crpg_aserai_2haxe_3_t5")
         {
             EquipmentElement equipmentElement = new(itemObject, modifer);
+            equipments.AddEquipmentToSlotWithoutAgent(idx, equipmentElement);
+            Console.WriteLine("modifier added");
+            Console.WriteLine("modifier added");
+            Console.WriteLine("modifier added");
+            Console.WriteLine($"{modifer.ModifyDamage(40)}");
         }
         else
         {
             EquipmentElement equipmentElement = new(itemObject);
+            equipments.AddEquipmentToSlotWithoutAgent(idx, equipmentElement);
         }
 
-        equipments.AddEquipmentToSlotWithoutAgent(idx, equipmentElement);
     }
 
     private static readonly Dictionary<CrpgItemSlot, EquipmentIndex> ItemSlotToIndex = new()
