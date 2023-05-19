@@ -1,20 +1,15 @@
 ﻿namespace Crpg.Module.Rewards;
 internal class AgentHitRegistry
 {
-    public int CharacterId { get; set; }
+    public int UserId { get; set; }
     public int BaseHealthLimit { get; set; }
-    public Dictionary<int, Hitter> Hitters { get; set; }
-    public AgentHitRegistry(int characterId, int baseHealthLimit)
+    public bool IsTeamHit { get; set; }
+    public Dictionary<int, int> DamageByUserId { get; set; }
+    public AgentHitRegistry(int userId, int baseHealthLimit, bool isTeamHit)
     {
-        CharacterId = characterId;
+        UserId = userId;
         BaseHealthLimit = baseHealthLimit;
-        Hitters = new();
-    }
-
-    internal class Hitter
-    {
-        public int CharacterId { get; set; }
-        public int TotalDamageDone { get; set; }
-        public bool IsSameTeam { get; set; }
+        IsTeamHit = isTeamHit;
+        DamageByUserId = new();
     }
 }
