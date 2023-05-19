@@ -251,7 +251,16 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
             Debug.Print($"Cannot equip item '{itemId} on slot {idx}");
             return;
         }
+        if (itemId == "crpg_aserai_2haxe_3_t5")
+        {
+            Console.WriteLine("chainbreaker");
+            Console.WriteLine(itemObject.WeaponComponent.ItemModifierGroup.ItemModifiers.Count);
+            foreach (ItemModifier modifiers in itemObject.WeaponComponent.ItemModifierGroup.ItemModifiers)
+            {
+                Console.WriteLine(modifiers.Name);
+            }
 
+        }
         EquipmentElement equipmentElement = new(itemObject);
         equipments.AddEquipmentToSlotWithoutAgent(idx, equipmentElement);
     }

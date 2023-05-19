@@ -267,8 +267,9 @@
                 speed="-2"
                 price_factor="0.3" />
   <!-- Axes -->
+  <!-- this is what i used for testing -->
   <ItemModifier modifier_group="ItemModifierGroup.axe"
-                id="masterwork_axe" <!-- this is what i used for testing-->
+                id="masterwork_axe" 
                 name="{=8Tal0XIj}Masterwork {ITEMNAME}"
                 loot_drop_score="5"
                 production_drop_score="10"
