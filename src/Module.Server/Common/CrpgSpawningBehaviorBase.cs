@@ -252,6 +252,16 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
             return;
         }
 
+        var modifer = MBObjectManager.Instance.GetObject<ItemModifier>("masterwork_axe");
+        if (modifer == null)
+        {
+            Console.WriteLine("modifier is null");
+        }
+        else
+        {
+            Console.WriteLine($"{modifer.ModifyDamage(50)}");
+        }
+
         EquipmentElement equipmentElement = new(itemObject);
         equipments.AddEquipmentToSlotWithoutAgent(idx, equipmentElement);
     }
