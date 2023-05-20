@@ -25,6 +25,7 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
     private MissionTimer _flagTickTimer = default!;
     private MissionTimer _currentStageTimer = default!;
     private MissionTimer? _rewardTickTimer;
+    private bool _isOddRewardTick;
 
     public CrpgConquestServer(
         MissionScoreboardComponent missionScoreboardComponent,
@@ -44,6 +45,22 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
     public override bool UseRoundController() => false;
 
     public MBReadOnlyList<FlagCapturePoint> AllCapturePoints { get; private set; } = new(new List<FlagCapturePoint>());
+
+    public override void OnPeerChangedTeam(NetworkCommunicator peer, Team oldTeam, Team newTeam)
+    {
+        var crpgPeer = peer.GetComponent<CrpgPeer>();
+        if (crpgPeer?.User == null)
+        {
+            return;
+        }
+
+        // if oldTeam is null then that means that the player just joined and was added to the attackers
+        // this gives a 3x RewardMultiplier to the player to give more fair rewards compared to the defenders
+        if (oldTeam == null && newTeam.Side == BattleSideEnum.Attacker)
+        {
+            crpgPeer.RewardMultiplier = Math.Max(crpgPeer.RewardMultiplier, 3);
+        }
+    }
 
     public override void OnBehaviorInitialize()
     {
@@ -65,6 +82,7 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
 
         if (!_gameStarted)
         {
+            _isOddRewardTick = true;
             StartStage(0);
             _gameStarted = true;
         }
@@ -371,6 +389,7 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
             durationRewarded: _rewardTickTimer!.GetRemainingTimeInSeconds(),
             defenderMultiplierGain: -CrpgRewardServer.ExperienceMultiplierMax,
             attackerMultiplierGain: CrpgRewardServer.ExperienceMultiplierMax);
+        _isOddRewardTick = true;
 
         StartStage(_currentStage);
     }
@@ -417,10 +436,25 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
     {
         if (_rewardTickTimer!.Check(reset: true))
         {
+            int defenderMultiplierGain;
+            int attackerMultiplierGain;
+            if (_isOddRewardTick)
+            {
+                defenderMultiplierGain = 0;
+                attackerMultiplierGain = 0;
+                _isOddRewardTick = false;
+            }
+            else
+            {
+                defenderMultiplierGain = 1;
+                attackerMultiplierGain = -1;
+                _isOddRewardTick = true;
+            }
+
             _ = _rewardServer.UpdateCrpgUsersAsync(
                 durationRewarded: _rewardTickTimer.GetTimerDuration(),
-                defenderMultiplierGain: 1,
-                attackerMultiplierGain: -1);
+                defenderMultiplierGain,
+                attackerMultiplierGain);
         }
     }
 
