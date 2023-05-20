@@ -5,11 +5,21 @@ import { usePlatform } from '@/composables/use-platform';
 
 const { platform } = usePlatform();
 
-const tabsModel = ref<Platform>(platform.value);
+enum PossibleValues {
+  Steam = 'Steam',
+  Other = 'Other',
+}
+
+const tabsModel = ref<PossibleValues>(PossibleValues.Steam);
+
 watch(
   () => platform.value,
   () => {
-    tabsModel.value = platform.value;
+    tabsModel.value =
+      platform.value === Platform.Steam ? PossibleValues.Steam : PossibleValues.Other;
+  },
+  {
+    immediate: true,
   }
 );
 </script>
@@ -33,7 +43,7 @@ watch(
             <OTabItem
               :label="$t(`platform.${Platform.Steam}`)"
               :icon="platformToIcon[Platform.Steam]"
-              :value="Platform.Steam"
+              :value="PossibleValues.Steam"
             >
               <div class="space-y-6">
                 <ol>
@@ -56,29 +66,30 @@ watch(
               </div>
             </OTabItem>
 
-            <OTabItem
-              :label="$t(`platform.${Platform.EpicGames}`)"
-              :icon="platformToIcon[Platform.EpicGames]"
-              :value="Platform.EpicGames"
-            >
+            <OTabItem :value="PossibleValues.Other">
+              <template #header>
+                <OIcon :icon="platformToIcon[Platform.Microsoft]" size="xl" />
+                <OIcon :icon="platformToIcon[Platform.EpicGames]" size="xl" />
+                {{ $t('installation.platform.other.title') }}
+              </template>
               <div>
                 <ol>
                   <i18n-t
                     scope="global"
-                    keypath="installation.platform.epic.downloadLauncher"
+                    keypath="installation.platform.other.downloadLauncher"
                     tag="li"
                   >
                     <template #launcherLink>
                       <a target="_blank" href="">Launcher TODO: link</a>
                     </template>
                   </i18n-t>
-                  <li>{{ $t('installation.platform.epic.startLauncher') }}</li>
+                  <li>{{ $t('installation.platform.other.startLauncher') }}</li>
                   <li>{{ $t('installation.common.bannerlordLauncher') }}</li>
                   <li>{{ $t('installation.common.multiplayerModsTab') }}</li>
                   <li>{{ $t('installation.common.activateMod') }}</li>
                   <li>{{ $t('installation.common.launchMultiplayerGame') }}</li>
                 </ol>
-                <p class="text-content-400">{{ $t('installation.platform.epic.update') }}</p>
+                <p class="text-content-400">{{ $t('installation.platform.other.update') }}</p>
               </div>
             </OTabItem>
           </OTabs>

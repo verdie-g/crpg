@@ -6,6 +6,7 @@ locale:
 platform:
   Steam: Steam
   EpicGames: Epic Games
+  Microsoft: Xbox
 
 installation:
   title: 安装
@@ -18,7 +19,8 @@ installation:
     steam:
       subscribe: 订阅{steamWorkshopsLink}
       update: 要更新 你可能需要在Steam Workshops中退订/订阅该MOD
-    epic:
+    other:
+      title: 其他
       downloadLauncher: 下载我们的{launcherLink}
       startLauncher: 打开启动器 等待MOD的下载
       update: 要更新 只需重新启动启动器即可

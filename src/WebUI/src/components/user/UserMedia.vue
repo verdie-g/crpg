@@ -53,6 +53,7 @@ const props = withDefaults(
       v-if="!hiddenPlatform"
       :platform="user.platform"
       :platformUserId="user.platformUserId"
+      :userName="user.name"
       :size="size"
     />
   </div>

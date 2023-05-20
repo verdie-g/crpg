@@ -6,6 +6,7 @@ locale:
 platform:
   Steam: Steam
   EpicGames: Epic Games
+  Microsoft: Xbox
 
 installation:
   title: Installation
@@ -18,7 +19,8 @@ installation:
     steam:
       subscribe: Subscribe to the {steamWorkshopsLink}
       update: To update the mod, you may need to unsub/sub to the mod in Steam Workshops
-    epic:
+    other:
+      title: Other
       downloadLauncher: Download our {launcherLink}
       startLauncher: Open the Launcher and wait for the mod to download
       update: To update the mod it is enough to restart the launcher
