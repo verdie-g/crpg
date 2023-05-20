@@ -52,6 +52,11 @@ internal class CrpgAgentApplyDamageModel : MultiplayerAgentApplyDamageModel
             finalDamage /= MathHelper.RecursivePolynomialFunctionOfDegree2(shieldSkill, _constants.DurabilityFactorForShieldRecursiveCoefs);
             if (meleeClass.Contains(weapon.CurrentUsageItem.WeaponClass))
             {
+                // in bannerlord/Src/TaleWorlds.MountAndBlade/MissionCombatMechanicsHelper.cs/GetAttackCollisionResults()
+                // ComputeBlowDamageOnShield is fed the basemagnitude from ComputeBlowMagnitude() instead of the specialmagnitude
+                // specialmagnitude takes in account the damagefactor which is the bladesharpness.
+                //  specialmagnitude is the damage you deal to agents , while basemagnitude is the blow from strikemagnitudemodel
+                //  basemagnitude only takes in account both sweetspots and speedbonus , but not the damage multiplicator that each weapon have
                 finalDamage *=
                     (collisionData.StrikeType == (int)StrikeType.Thrust)
                         ? weapon.CurrentUsageItem.ThrustDamageFactor
