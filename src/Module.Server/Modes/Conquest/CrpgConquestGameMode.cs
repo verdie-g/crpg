@@ -80,7 +80,7 @@ internal class CrpgConquestGameMode : MissionBasedMultiplayerGameMode
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent,
             () => (new SiegeSpawnFrameBehavior(), new CrpgSiegeSpawningBehavior(_constants)));
         CrpgTeamSelectComponent teamSelectComponent = new(warmupComponent, null);
-        CrpgRewardServer rewardServer = new(crpgClient, _constants, warmupComponent);
+        CrpgRewardServer rewardServer = new(crpgClient, _constants, warmupComponent, enableTeamHitCompensations: false);
 #else
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent, null);
         CrpgTeamSelectComponent teamSelectComponent = new();
