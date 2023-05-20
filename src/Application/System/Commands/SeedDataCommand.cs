@@ -284,6 +284,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             User manik = new()
             {
+                Platform = Platform.Microsoft,
                 PlatformUserId = "76561198068833541",
                 Name = "Manik",
                 Avatar = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ed/edf5af17958c09a5bbcb12e352d8fa9560c22aac_full.jpg"),

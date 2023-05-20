@@ -5,6 +5,7 @@ const props = withDefaults(
   defineProps<{
     platform: Platform;
     platformUserId: number | string;
+    userName: string;
     size?: 'sm' | 'xl';
   }>(),
   {
@@ -36,5 +37,16 @@ const props = withDefaults(
   <!-- TODO: Epic doesn't have a public profile yet https://trello.com/c/FH3mNJ6b/297-profiles -->
   <template v-else-if="platform === Platform.EpicGames">
     <OIcon icon="epic-games" :size="size" />
+  </template>
+
+  <template v-else-if="platform === Platform.Microsoft">
+    <a
+      :href="`https://account.xbox.com/ru-ru/profile?gamertag=${userName}`"
+      class="inline-flex hover:opacity-80"
+      target="_blank"
+      @click.stop
+    >
+      <OIcon icon="xbox" :size="size" />
+    </a>
   </template>
 </template>

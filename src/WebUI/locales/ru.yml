@@ -6,6 +6,7 @@ locale:
 platform:
   Steam: Steam
   EpicGames: Epic Games
+  Microsoft: Xbox
 
 installation:
   title: Установка
@@ -18,7 +19,8 @@ installation:
     steam:
       subscribe: Подпишитесь на {steamWorkshopsLink}
       update: Чтобы обновить мод, вам может потребоваться отписаться/подписаться в Steam Workshops
-    epic:
+    other:
+      title: Другие
       downloadLauncher: Загрузите наш {launcherLink}
       startLauncher: Откройте Launcher и подождите, пока мод загрузится
       update: Для обновления мода достаточно перезапустить Launcher
