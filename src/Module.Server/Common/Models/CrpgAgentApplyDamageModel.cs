@@ -58,7 +58,7 @@ internal class CrpgAgentApplyDamageModel : MultiplayerAgentApplyDamageModel
                 //  specialmagnitude is the damage you deal to agents , while basemagnitude is the blow from strikemagnitudemodel
                 //  basemagnitude only takes in account both sweetspots and speedbonus , but not the damage multiplicator that each weapon have
                 finalDamage *=
-                    (collisionData.StrikeType == (int)StrikeType.Thrust)
+                    collisionData.StrikeType == (int)StrikeType.Thrust
                         ? weapon.CurrentUsageItem.ThrustDamageFactor
                         : weapon.CurrentUsageItem.SwingDamageFactor;
 
