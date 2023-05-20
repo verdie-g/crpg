@@ -54,6 +54,8 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
             return;
         }
 
+        // if oldTeam is null then that means that the player just joined and was added to the attackers
+        // this gives a 3x RewardMultiplier to the player to give more fair rewards compared to the defenders
         if (oldTeam == null && newTeam.Side == BattleSideEnum.Attacker)
         {
             crpgPeer.RewardMultiplier = Math.Max(crpgPeer.RewardMultiplier, 3);
