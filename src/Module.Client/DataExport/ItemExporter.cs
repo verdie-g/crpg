@@ -39,17 +39,32 @@ internal class ItemExporter : IDataExporter
             itemsDoc.Save(Path.Combine("../../Modules/cRPG/ModuleData/items", Path.GetFileName(filePath)));
         }
     }
+
     public async Task Export(string gitRepoPath)
     {
         var game = Game.CreateGame(new MultiplayerGame(), new MultiplayerGameManager());
         game.Initialize();
+        var craftingPiecesDoc = LoadMbDocument("A:/Repos_Git/crpg/src/Module.Server/ModuleData/crafting_pieces.xml");
+        craftingPiecesDoc.Save("A:/Repos_Git/crpg/src/Module.Server/ModuleData/crafting_pieces_duplicated.xml");
+        var weaponDoc = LoadMbDocument("A:/Repos_Git/crpg/src/Module.Server/ModuleData/items/weapons.xml");
+        weaponDoc.Save("A:/Repos_Git/crpg/src/Module.Server/ModuleData/items/weapons_duplicated.xml");
+        var craftingTemplatesDoc = LoadMbDocument("A:/Repos_Git/crpg/src/Module.Server/ModuleData/crafting_templates.xml");
+        craftingTemplatesDoc.Save("A:/Repos_Git/crpg/src/Module.Server/ModuleData/crafting_templates_duplicated.xml");
+        var weaponDescriptionsDoc = LoadMbDocument("A:/Repos_Git/crpg/src/Module.Server/ModuleData/weapon_descriptions.xml");
+        weaponDescriptionsDoc.Save("A:/Repos_Git/crpg/src/Module.Server/ModuleData/weapon_descriptions_duplicated.xml");
         var mbItems = game.ObjectManager.GetObjectTypeList<ItemObject>()
             .Where(i => i.StringId.StartsWith("crpg_"))
             .DistinctBy(i => i.StringId)
             .OrderBy(i => i.StringId)
             .ToArray();
         var crpgItems = mbItems.Select(MbToCrpgItem);
-        SerializeCrpgItems(crpgItems, Path.Combine("../../Modules/cRPG/ModuleData"));
+        SerializeCrpgItems(crpgItems, Path.Combine(gitRepoPath, "data"));/*
+        const string itemThumbnailsTempPath = "../../crpg-items";
+        string itemThumbnailsPath = Path.Combine(gitRepoPath, "src/WebUI/public/items");
+        Directory.CreateDirectory(itemThumbnailsTempPath);
+        await GenerateItemsThumbnail(mbItems, itemThumbnailsTempPath);
+        Directory.Delete(itemThumbnailsPath, recursive: true);
+        Directory.Move(itemThumbnailsTempPath, itemThumbnailsPath);*/
     }
 
     public async Task ImageExport(string gitRepoPath)
@@ -147,6 +162,7 @@ internal class ItemExporter : IDataExporter
 
         return crpgItem;
     }
+
     private static XmlDocument LoadMbDocument(string filePath)
     {
         XmlDocument itemsDoc = new();
@@ -155,35 +171,164 @@ internal class ItemExporter : IDataExporter
             itemsDoc.Load(r);
         }
 
-        // Prefix all ids with "crpg_" to avoid conflicts with mb objects.
-        var nodes1 = itemsDoc.LastChild.ChildNodes.Cast<XmlNode>().ToArray();
-        for (int i = 0; i < nodes1.Length; i += 1)
+        XmlDocument weaponDoc = new();
+        using (var p = XmlReader.Create("A:/Repos_Git/crpg/src/Module.Server/ModuleData/items/weapons.xml", new XmlReaderSettings { IgnoreComments = true }))
         {
-            var node1 = nodes1[i];
+            weaponDoc.Load(p);
+        }
 
-            if (node1.Name == "Item")
+        var weaponnodes1 = weaponDoc.LastChild.ChildNodes.Cast<XmlNode>().ToArray();
+        var nodes1 = itemsDoc.LastChild.ChildNodes.Cast<XmlNode>().ToArray();
+
+        if (itemsDoc.LastChild.Name == "CraftingPieces")
+        {
+            List<XmlNode> craftingPieceToAdd = new();
+            for (int i = nodes1.Length - 1; i >= 0; i--)
             {
-                // Remove the price attribute so it is recomputed using our model.
-                var valueAttr = node1.Attributes["value"];
-                if (valueAttr != null)
+                var node1 = nodes1[i];
+                if (node1.Name == "CraftingPiece")
                 {
-                    node1.Attributes.Remove(valueAttr);
-                }
+                    for (int p = weaponnodes1.Length - 1; p >= 0; p--)
+                    {
+                        var weaponnode1 = weaponnodes1[p];
+                        if (weaponnode1.Name == "CraftedItem")
+                        {
+                            foreach (var pieceNode in weaponnode1.FirstChild.ChildNodes.Cast<XmlNode>())
+                            {
+                                if (pieceNode.Attributes!["id"].Value == node1.Attributes!["id"].Value)
+                                {
+                                    var newpiece = node1.Clone();
+                                    newpiece.Attributes["id"].Value = "crpg_" + NameToId(weaponnode1.Attributes["name"].Value) + "_" + pieceNode.Attributes!["Type"].Value.ToLower();
+                                    craftingPieceToAdd.Add(newpiece);
 
-                var type = (ItemObject.ItemTypeEnum)Enum.Parse(typeof(ItemObject.ItemTypeEnum), node1.Attributes!["Type"].Value);
-                if (type is ItemObject.ItemTypeEnum.HeadArmor
-                         or ItemObject.ItemTypeEnum.Cape
-                         or ItemObject.ItemTypeEnum.BodyArmor
-                         or ItemObject.ItemTypeEnum.HandArmor
-                         or ItemObject.ItemTypeEnum.LegArmor)
+                                }
+                            }
+                        }
+                    }
+
+                    itemsDoc.LastChild.RemoveChild(node1);
+                }
+                foreach (var node in craftingPieceToAdd)
                 {
-                    ModifyNodeAttribute(node1, "weight",
-                        _ => ModifyArmorWeight(node1, type).ToString(CultureInfo.InvariantCulture));
+                    itemsDoc.LastChild.AppendChild(node);
+                }
+            }
+        }
+        else if (itemsDoc.LastChild.Name == "Items")
+        {
+            for (int i = nodes1.Length - 1; i >= 0; i--)
+            {
+                var node1 = nodes1[i];
+                if (node1.Name == "CraftedItem")
+                {
+                    node1.Attributes!["id"].Value = "crpg_" + NameToId(node1.Attributes["name"].Value);
+                    foreach (var pieceNode in node1.FirstChild.ChildNodes.Cast<XmlNode>())
+                    {
+                        pieceNode.Attributes!["id"].Value = "crpg_" + NameToId(node1.Attributes["name"].Value) + "_" + pieceNode.Attributes!["Type"].Value.ToLower();
+                    }
                 }
             }
         }
 
+        else if (itemsDoc.LastChild.Name == "CraftingTemplates")
+        {
+            for (int i = nodes1.Length - 1; i >= 0; i--)
+            {
+                List<XmlNode> usablePieceToAdd = new();
+                var node1 = nodes1[i];
+                var usablePieces = node1.SelectSingleNode("UsablePieces").ChildNodes.Cast<XmlNode>().ToArray();
+                for (int k = usablePieces.Length - 1; k >= 0; k--)
+                {
+                    XmlNode usablePiece = usablePieces[k];
+                    for (int p = weaponnodes1.Length - 1; p >= 0; p--)
+                    {
+                        var weaponnode1 = weaponnodes1[p];
+                        if (weaponnode1.Name == "CraftedItem")
+                        {
+                            foreach (var pieceNode in weaponnode1.FirstChild.ChildNodes.Cast<XmlNode>())
+                            {
+                                if (pieceNode.Attributes!["id"].Value == usablePiece.Attributes!["piece_id"].Value)
+                                {
+                                    var newusablepiece = usablePiece.Clone();
+                                    newusablepiece.Attributes["piece_id"].Value = "crpg_" + NameToId(weaponnode1.Attributes["name"].Value) + "_" + pieceNode.Attributes!["Type"].Value.ToLower();
+                                    usablePieceToAdd.Add(newusablepiece);
+                                }
+                            }
+                        }
+                    }
+
+                    node1.SelectSingleNode("UsablePieces").RemoveChild(usablePiece);
+                }
+
+                foreach (var node in usablePieceToAdd)
+                {
+                    node1.SelectSingleNode("UsablePieces").AppendChild(node);
+                }
+            }
+        }
+        else if (itemsDoc.LastChild.Name == "WeaponDescriptions")
+        {
+            for (int i = nodes1.Length - 1; i >= 0; i--)
+            {
+                List<XmlNode> availablePieceToAdd = new();
+                var node1 = nodes1[i];
+                var availablePieces = node1.SelectSingleNode("AvailablePieces").ChildNodes.Cast<XmlNode>().ToArray();
+                for (int k = availablePieces.Length - 1; k >= 0; k--)
+                {
+                    XmlNode availablePiece = availablePieces[k];
+                    for (int p = weaponnodes1.Length - 1; p >= 0; p--)
+                    {
+                        var weaponnode1 = weaponnodes1[p];
+                        if (weaponnode1.Name == "CraftedItem")
+                        {
+                            foreach (var pieceNode in weaponnode1.FirstChild.ChildNodes.Cast<XmlNode>())
+                            {
+                                if (pieceNode.Attributes!["id"].Value == availablePiece.Attributes!["id"].Value)
+                                {
+                                    var newavailablepiece = availablePiece.Clone();
+                                    newavailablepiece.Attributes["id"].Value = "crpg_" + NameToId(weaponnode1.Attributes["name"].Value) + "_" + pieceNode.Attributes!["Type"].Value.ToLower();
+                                    availablePieceToAdd.Add(newavailablepiece);
+                                }
+                            }
+                        }
+                    }
+
+                    node1.SelectSingleNode("AvailablePieces").RemoveChild(availablePiece);
+                }
+
+                foreach (var node in availablePieceToAdd)
+                {
+                    node1.SelectSingleNode("AvailablePieces").AppendChild(node);
+                }
+            }
+        }
         return itemsDoc;
+    }
+
+    private static string PrefixWith(string prefix, string s)
+    {
+        return s.StartsWith(prefix, StringComparison.Ordinal) ? s : prefix + s;
+    }
+    public static string NameToId(string input)
+    {
+        string[] splitInput = input.Split('}');
+
+        string partToConvert;
+
+        // If the string contains '}', take the part after '}' else take the full string.
+        if (splitInput.Length > 1)
+        {
+            partToConvert = splitInput[1];
+        }
+        else
+        {
+            partToConvert = splitInput[0];
+        }
+
+        // Trim leading/trailing white spaces, convert to lower case and replace spaces with underscores
+        partToConvert = partToConvert.Trim().ToLower().Replace(' ', '_');
+
+        return partToConvert;
     }
     private static float ModifyArmorWeight(XmlNode node, ItemObject.ItemTypeEnum type)
     {

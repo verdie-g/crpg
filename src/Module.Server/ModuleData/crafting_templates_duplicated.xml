@@ -1,0 +1,2535 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CraftingTemplates>
+  <CraftingTemplate id="crpg_OneHandedSword" item_type="OneHandedWeapon" modifier_group="sword" item_holsters="sword_left_hip_3:sword_left_hip:sword_left_hip_2:sword_back" piece_type_to_scale_holster_with="Blade" hidden_piece_types_on_holster="Blade" default_item_holster_position_offset="0,0,-0.1">
+    <PieceDatas>
+      <PieceData piece_type="Handle" build_order="0" />
+      <PieceData piece_type="Guard" build_order="1" />
+      <PieceData piece_type="Blade" build_order="2" />
+      <PieceData piece_type="Pommel" build_order="-1" />
+    </PieceDatas>
+    <WeaponDescriptions>
+      <WeaponDescription id="crpg_OneHandedSword" />
+    </WeaponDescriptions>
+    <StatsData>
+      <StatData stat_type="Weight" max_value="7.0" />
+      <StatData stat_type="WeaponReach" max_value="300" />
+      <StatData stat_type="ThrustSpeed" max_value="200" />
+      <StatData stat_type="SwingSpeed" max_value="200" />
+      <StatData stat_type="ThrustDamage" max_value="500" />
+      <StatData stat_type="SwingDamage" max_value="500" />
+      <StatData stat_type="Handling" max_value="200" />
+    </StatsData>
+    <UsablePieces>
+      <UsablePiece piece_id="crpg_wooden_sword_pommel" />
+      <UsablePiece piece_id="crpg_wooden_sword_handle" />
+      <UsablePiece piece_id="crpg_wooden_sword_guard" />
+      <UsablePiece piece_id="crpg_wooden_sword_blade" />
+      <UsablePiece piece_id="crpg_longsword_pommel" />
+      <UsablePiece piece_id="crpg_longsword_handle" />
+      <UsablePiece piece_id="crpg_longsword_guard" />
+      <UsablePiece piece_id="crpg_longsword_blade" />
+      <UsablePiece piece_id="crpg_wooden_twohander_pommel" />
+      <UsablePiece piece_id="crpg_wooden_twohander_handle" />
+      <UsablePiece piece_id="crpg_wooden_twohander_guard" />
+      <UsablePiece piece_id="crpg_wooden_twohander_blade" />
+      <UsablePiece piece_id="crpg_winds_fury_pommel" />
+      <UsablePiece piece_id="crpg_winds_fury_handle" />
+      <UsablePiece piece_id="crpg_winds_fury_guard" />
+      <UsablePiece piece_id="crpg_winds_fury_blade" />
+      <UsablePiece piece_id="crpg_broad_two_hander_pommel" />
+      <UsablePiece piece_id="crpg_broad_two_hander_guard" />
+      <UsablePiece piece_id="crpg_broad_two_hander_blade" />
+      <UsablePiece piece_id="crpg_tapered_two-hander_pommel" />
+      <UsablePiece piece_id="crpg_tapered_two-hander_handle" />
+      <UsablePiece piece_id="crpg_tapered_two-hander_guard" />
+      <UsablePiece piece_id="crpg_tapered_two-hander_blade" />
+      <UsablePiece piece_id="crpg_war_razor_pommel" />
+      <UsablePiece piece_id="crpg_war_razor_handle" />
+      <UsablePiece piece_id="crpg_war_razor_guard" />
+      <UsablePiece piece_id="crpg_war_razor_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_sword_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_sword_handle" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_sword_guard" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_sword_blade" />
+      <UsablePiece piece_id="crpg_narrow_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_narrow_arming_sword_handle" />
+      <UsablePiece piece_id="crpg_narrow_arming_sword_guard" />
+      <UsablePiece piece_id="crpg_narrow_arming_sword_blade" />
+      <UsablePiece piece_id="crpg_knightly_cavalry_sword_pommel" />
+      <UsablePiece piece_id="crpg_knightly_cavalry_sword_handle" />
+      <UsablePiece piece_id="crpg_knightly_cavalry_sword_guard" />
+      <UsablePiece piece_id="crpg_knightly_cavalry_sword_blade" />
+      <UsablePiece piece_id="crpg_iron_cavalry_sword_pommel" />
+      <UsablePiece piece_id="crpg_iron_cavalry_sword_handle" />
+      <UsablePiece piece_id="crpg_iron_cavalry_sword_guard" />
+      <UsablePiece piece_id="crpg_iron_cavalry_sword_blade" />
+      <UsablePiece piece_id="crpg_iron_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_iron_arming_sword_handle" />
+      <UsablePiece piece_id="crpg_iron_arming_sword_guard" />
+      <UsablePiece piece_id="crpg_iron_arming_sword_blade" />
+      <UsablePiece piece_id="crpg_crescent_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_crescent_arming_sword_handle" />
+      <UsablePiece piece_id="crpg_crescent_arming_sword_guard" />
+      <UsablePiece piece_id="crpg_crescent_arming_sword_blade" />
+      <UsablePiece piece_id="crpg_engraved_pointed_sword_pommel" />
+      <UsablePiece piece_id="crpg_engraved_pointed_sword_handle" />
+      <UsablePiece piece_id="crpg_engraved_pointed_sword_guard" />
+      <UsablePiece piece_id="crpg_engraved_pointed_sword_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_arming_sword_handle" />
+      <UsablePiece piece_id="crpg_fine_steel_arming_sword_guard" />
+      <UsablePiece piece_id="crpg_fine_steel_arming_sword_blade" />
+      <UsablePiece piece_id="crpg_decorated_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_decorated_arming_sword_handle" />
+      <UsablePiece piece_id="crpg_decorated_arming_sword_guard" />
+      <UsablePiece piece_id="crpg_decorated_arming_sword_blade" />
+      <UsablePiece piece_id="crpg_wide_fullered_broad_two_hander_pommel" />
+      <UsablePiece piece_id="crpg_wide_fullered_broad_two_hander_guard" />
+      <UsablePiece piece_id="crpg_wide_fullered_broad_two_hander_blade" />
+      <UsablePiece piece_id="crpg_tyrhung_pommel" />
+      <UsablePiece piece_id="crpg_tyrhung_handle" />
+      <UsablePiece piece_id="crpg_tyrhung_guard" />
+      <UsablePiece piece_id="crpg_tyrhung_blade" />
+      <UsablePiece piece_id="crpg_scalpel_pommel" />
+      <UsablePiece piece_id="crpg_scalpel_handle" />
+      <UsablePiece piece_id="crpg_scalpel_guard" />
+      <UsablePiece piece_id="crpg_scalpel_blade" />
+      <UsablePiece piece_id="crpg_steel_long_warsword_pommel" />
+      <UsablePiece piece_id="crpg_steel_long_warsword_handle" />
+      <UsablePiece piece_id="crpg_steel_long_warsword_guard" />
+      <UsablePiece piece_id="crpg_steel_long_warsword_blade" />
+      <UsablePiece piece_id="crpg_thamaskene_pointed_warsword_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_pointed_warsword_handle" />
+      <UsablePiece piece_id="crpg_thamaskene_pointed_warsword_guard" />
+      <UsablePiece piece_id="crpg_thamaskene_pointed_warsword_blade" />
+      <UsablePiece piece_id="crpg_iron_long_warsword_pommel" />
+      <UsablePiece piece_id="crpg_iron_long_warsword_handle" />
+      <UsablePiece piece_id="crpg_iron_long_warsword_guard" />
+      <UsablePiece piece_id="crpg_iron_long_warsword_blade" />
+      <UsablePiece piece_id="crpg_pointed_warsword_pommel" />
+      <UsablePiece piece_id="crpg_engraved_thegn_blade_pommel" />
+      <UsablePiece piece_id="crpg_pointed_warsword_handle" />
+      <UsablePiece piece_id="crpg_pointed_warsword_guard" />
+      <UsablePiece piece_id="crpg_pointed_warsword_blade" />
+      <UsablePiece piece_id="crpg_northern_backsword_pommel" />
+      <UsablePiece piece_id="crpg_northern_backsword_handle" />
+      <UsablePiece piece_id="crpg_northern_backsword_guard" />
+      <UsablePiece piece_id="crpg_northern_backsword_blade" />
+      <UsablePiece piece_id="crpg_iron_thegn_blade_pommel" />
+      <UsablePiece piece_id="crpg_engraved_thegn_blade_handle" />
+      <UsablePiece piece_id="crpg_iron_thegn_blade_handle" />
+      <UsablePiece piece_id="crpg_engraved_thegn_blade_guard" />
+      <UsablePiece piece_id="crpg_iron_thegn_blade_guard" />
+      <UsablePiece piece_id="crpg_iron_thegn_blade_blade" />
+      <UsablePiece piece_id="crpg_gold_bound_short_warsword_pommel" />
+      <UsablePiece piece_id="crpg_gold_bound_short_warsword_handle" />
+      <UsablePiece piece_id="crpg_gold_bound_short_warsword_guard" />
+      <UsablePiece piece_id="crpg_gold_bound_short_warsword_blade" />
+      <UsablePiece piece_id="crpg_decorated_northern_backsword_pommel" />
+      <UsablePiece piece_id="crpg_decorated_northern_backsword_handle" />
+      <UsablePiece piece_id="crpg_decorated_northern_backsword_guard" />
+      <UsablePiece piece_id="crpg_decorated_northern_backsword_blade" />
+      <UsablePiece piece_id="crpg_decorated_long_warsword_pommel" />
+      <UsablePiece piece_id="crpg_decorated_long_warsword_handle" />
+      <UsablePiece piece_id="crpg_decorated_long_warsword_guard" />
+      <UsablePiece piece_id="crpg_decorated_long_warsword_blade" />
+      <UsablePiece piece_id="crpg_thamaskene_short_warsword_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_short_warsword_handle" />
+      <UsablePiece piece_id="crpg_thamaskene_short_warsword_guard" />
+      <UsablePiece piece_id="crpg_thamaskene_short_warsword_blade" />
+      <UsablePiece piece_id="crpg_star_falchion_pommel" />
+      <UsablePiece piece_id="crpg_star_falchion_handle" />
+      <UsablePiece piece_id="crpg_star_falchion_guard" />
+      <UsablePiece piece_id="crpg_star_falchion_blade" />
+      <UsablePiece piece_id="crpg_broad_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_broad_kaskara_handle" />
+      <UsablePiece piece_id="crpg_broad_kaskara_guard" />
+      <UsablePiece piece_id="crpg_broad_kaskara_blade" />
+      <UsablePiece piece_id="crpg_simple_saber_pommel" />
+      <UsablePiece piece_id="crpg_simple_saber_handle" />
+      <UsablePiece piece_id="crpg_simple_saber_guard" />
+      <UsablePiece piece_id="crpg_simple_saber_blade" />
+      <UsablePiece piece_id="crpg_simple_scimitar_pommel" />
+      <UsablePiece piece_id="crpg_simple_scimitar_handle" />
+      <UsablePiece piece_id="crpg_simple_scimitar_guard" />
+      <UsablePiece piece_id="crpg_simple_scimitar_blade" />
+      <UsablePiece piece_id="crpg_short_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_short_arming_sword_handle" />
+      <UsablePiece piece_id="crpg_short_arming_sword_guard" />
+      <UsablePiece piece_id="crpg_short_arming_sword_blade" />
+      <UsablePiece piece_id="crpg_seax_pommel" />
+      <UsablePiece piece_id="crpg_seax_handle" />
+      <UsablePiece piece_id="crpg_ridged_saber_pommel" />
+      <UsablePiece piece_id="crpg_ridged_saber_handle" />
+      <UsablePiece piece_id="crpg_ridged_saber_guard" />
+      <UsablePiece piece_id="crpg_ridged_saber_blade" />
+      <UsablePiece piece_id="crpg_ridged_great_saber_pommel" />
+      <UsablePiece piece_id="crpg_ridged_great_saber_handle" />
+      <UsablePiece piece_id="crpg_ridged_great_saber_guard" />
+      <UsablePiece piece_id="crpg_ridged_great_saber_blade" />
+      <UsablePiece piece_id="crpg_reaper_pommel" />
+      <UsablePiece piece_id="crpg_reaper_handle" />
+      <UsablePiece piece_id="crpg_reaper_guard" />
+      <UsablePiece piece_id="crpg_reaper_blade" />
+      <UsablePiece piece_id="crpg_pugio_pommel" />
+      <UsablePiece piece_id="crpg_pugio_handle" />
+      <UsablePiece piece_id="crpg_broad_falchion_pommel" />
+      <UsablePiece piece_id="crpg_broad_falchion_handle" />
+      <UsablePiece piece_id="crpg_broad_falchion_guard" />
+      <UsablePiece piece_id="crpg_broad_falchion_blade" />
+      <UsablePiece piece_id="crpg_wooden_hammer_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_two_handed_sword_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_two_handed_sword_handle" />
+      <UsablePiece piece_id="crpg_fine_steel_two_handed_sword_guard" />
+      <UsablePiece piece_id="crpg_fine_steel_two_handed_sword_blade" />
+      <UsablePiece piece_id="crpg_narrow_sword_pommel" />
+      <UsablePiece piece_id="crpg_narrow_sword_handle" />
+      <UsablePiece piece_id="crpg_narrow_sword_guard" />
+      <UsablePiece piece_id="crpg_narrow_sword_blade" />
+      <UsablePiece piece_id="crpg_morningstar_pommel" />
+      <UsablePiece piece_id="crpg_lowland_throwing_knife_pommel" />
+      <UsablePiece piece_id="crpg_lowland_throwing_knife_handle" />
+      <UsablePiece piece_id="crpg_leafblade_throwing_knife_pommel" />
+      <UsablePiece piece_id="crpg_leafblade_throwing_knife_handle" />
+      <UsablePiece piece_id="crpg_heavy_saber_pommel" />
+      <UsablePiece piece_id="crpg_heavy_saber_handle" />
+      <UsablePiece piece_id="crpg_heavy_saber_guard" />
+      <UsablePiece piece_id="crpg_heavy_saber_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_saber_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_saber_handle" />
+      <UsablePiece piece_id="crpg_fine_steel_saber_guard" />
+      <UsablePiece piece_id="crpg_fine_steel_saber_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_saber_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_saber_handle" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_saber_guard" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_saber_blade" />
+      <UsablePiece piece_id="crpg_straight_saber_pommel" />
+      <UsablePiece piece_id="crpg_straight_saber_handle" />
+      <UsablePiece piece_id="crpg_straight_saber_guard" />
+      <UsablePiece piece_id="crpg_straight_saber_blade" />
+      <UsablePiece piece_id="crpg_iron_saber_pommel" />
+      <UsablePiece piece_id="crpg_iron_saber_handle" />
+      <UsablePiece piece_id="crpg_iron_saber_guard" />
+      <UsablePiece piece_id="crpg_iron_saber_blade" />
+      <UsablePiece piece_id="crpg_tall_gripped_ild_pommel" />
+      <UsablePiece piece_id="crpg_tall_gripped_ild_handle" />
+      <UsablePiece piece_id="crpg_tall_gripped_ild_guard" />
+      <UsablePiece piece_id="crpg_tall_gripped_ild_blade" />
+      <UsablePiece piece_id="crpg_lion_imprinted_saber_pommel" />
+      <UsablePiece piece_id="crpg_lion_imprinted_saber_handle" />
+      <UsablePiece piece_id="crpg_lion_imprinted_saber_guard" />
+      <UsablePiece piece_id="crpg_lion_imprinted_saber_blade" />
+      <UsablePiece piece_id="crpg_decorated_cavalry_saber_pommel" />
+      <UsablePiece piece_id="crpg_decorated_cavalry_saber_handle" />
+      <UsablePiece piece_id="crpg_decorated_cavalry_saber_guard" />
+      <UsablePiece piece_id="crpg_decorated_cavalry_saber_blade" />
+      <UsablePiece piece_id="crpg_heavy_flanged_mace_pommel" />
+      <UsablePiece piece_id="crpg_steppe_light_mace_pommel" />
+      <UsablePiece piece_id="crpg_ridged_long_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_ridged_long_kaskara_handle" />
+      <UsablePiece piece_id="crpg_ridged_long_kaskara_guard" />
+      <UsablePiece piece_id="crpg_ridged_long_kaskara_blade" />
+      <UsablePiece piece_id="crpg_justicier_pommel" />
+      <UsablePiece piece_id="crpg_justicier_guard" />
+      <UsablePiece piece_id="crpg_justicier_blade" />
+      <UsablePiece piece_id="crpg_iron_spatha_pommel" />
+      <UsablePiece piece_id="crpg_iron_spatha_handle" />
+      <UsablePiece piece_id="crpg_iron_spatha_guard" />
+      <UsablePiece piece_id="crpg_iron_spatha_blade" />
+      <UsablePiece piece_id="crpg_falx_knife_pommel" />
+      <UsablePiece piece_id="crpg_falx_knife_handle" />
+      <UsablePiece piece_id="crpg_xiphos_pommel" />
+      <UsablePiece piece_id="crpg_xiphos_handle" />
+      <UsablePiece piece_id="crpg_iron_falchion_pommel" />
+      <UsablePiece piece_id="crpg_iron_falchion_handle" />
+      <UsablePiece piece_id="crpg_iron_falchion_guard" />
+      <UsablePiece piece_id="crpg_iron_falchion_blade" />
+      <UsablePiece piece_id="crpg_broad_bladed_throwing_knives_pommel" />
+      <UsablePiece piece_id="crpg_broad_bladed_throwing_knives_handle" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_spathion_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_spathion_handle" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_spathion_guard" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_spathion_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_paramerion_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_paramerion_handle" />
+      <UsablePiece piece_id="crpg_fine_steel_paramerion_guard" />
+      <UsablePiece piece_id="crpg_fine_steel_paramerion_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_spatha_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_spatha_handle" />
+      <UsablePiece piece_id="crpg_fine_steel_spatha_guard" />
+      <UsablePiece piece_id="crpg_fine_steel_spatha_blade" />
+      <UsablePiece piece_id="crpg_spatha_pommel" />
+      <UsablePiece piece_id="crpg_spatha_handle" />
+      <UsablePiece piece_id="crpg_spatha_guard" />
+      <UsablePiece piece_id="crpg_spatha_blade" />
+      <UsablePiece piece_id="crpg_spatha_with_narrow_fuller_pommel" />
+      <UsablePiece piece_id="crpg_spatha_with_narrow_fuller_handle" />
+      <UsablePiece piece_id="crpg_spatha_with_narrow_fuller_guard" />
+      <UsablePiece piece_id="crpg_spatha_with_narrow_fuller_blade" />
+      <UsablePiece piece_id="crpg_spatha_blade_with_ring_pommel_pommel" />
+      <UsablePiece piece_id="crpg_spatha_blade_with_ring_pommel_handle" />
+      <UsablePiece piece_id="crpg_spatha_blade_with_ring_pommel_guard" />
+      <UsablePiece piece_id="crpg_spatha_blade_with_ring_pommel_blade" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_spatha_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_spatha_handle" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_spatha_guard" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_spatha_blade" />
+      <UsablePiece piece_id="crpg_decorated_short_spatha_pommel" />
+      <UsablePiece piece_id="crpg_decorated_short_spatha_handle" />
+      <UsablePiece piece_id="crpg_decorated_short_spatha_guard" />
+      <UsablePiece piece_id="crpg_decorated_short_spatha_blade" />
+      <UsablePiece piece_id="crpg_light_royal_mace_pommel" />
+      <UsablePiece piece_id="crpg_imperial_light_mace_pommel" />
+      <UsablePiece piece_id="crpg_steel_mace_pommel" />
+      <UsablePiece piece_id="crpg_early_retirement_pommel" />
+      <UsablePiece piece_id="crpg_early_retirement_handle" />
+      <UsablePiece piece_id="crpg_early_retirement_guard" />
+      <UsablePiece piece_id="crpg_early_retirement_blade" />
+      <UsablePiece piece_id="crpg_tribesman_throwing_daggers_pommel" />
+      <UsablePiece piece_id="crpg_tribesman_throwing_daggers_handle" />
+      <UsablePiece piece_id="crpg_desert_longsword_pommel" />
+      <UsablePiece piece_id="crpg_desert_longsword_handle" />
+      <UsablePiece piece_id="crpg_desert_longsword_guard" />
+      <UsablePiece piece_id="crpg_desert_longsword_blade" />
+      <UsablePiece piece_id="crpg_dawnbreaker_pommel" />
+      <UsablePiece piece_id="crpg_dawnbreaker_handle" />
+      <UsablePiece piece_id="crpg_dawnbreaker_guard" />
+      <UsablePiece piece_id="crpg_dawnbreaker_blade" />
+      <UsablePiece piece_id="crpg_iron_cleaver_pommel" />
+      <UsablePiece piece_id="crpg_iron_cleaver_handle" />
+      <UsablePiece piece_id="crpg_iron_cleaver_guard" />
+      <UsablePiece piece_id="crpg_iron_cleaver_blade" />
+      <UsablePiece piece_id="crpg_highland_throwing_dagger_pommel" />
+      <UsablePiece piece_id="crpg_highland_throwing_dagger_handle" />
+      <UsablePiece piece_id="crpg_highland_dagger_pommel" />
+      <UsablePiece piece_id="crpg_highland_dagger_handle" />
+      <UsablePiece piece_id="crpg_broad_ild_pommel" />
+      <UsablePiece piece_id="crpg_broad_ild_handle" />
+      <UsablePiece piece_id="crpg_broad_ild_guard" />
+      <UsablePiece piece_id="crpg_broad_ild_blade" />
+      <UsablePiece piece_id="crpg_pointed_falchion_pommel" />
+      <UsablePiece piece_id="crpg_pointed_falchion_handle" />
+      <UsablePiece piece_id="crpg_pointed_falchion_guard" />
+      <UsablePiece piece_id="crpg_pointed_falchion_blade" />
+      <UsablePiece piece_id="crpg_iron_pointed_sword_pommel" />
+      <UsablePiece piece_id="crpg_iron_pointed_sword_handle" />
+      <UsablePiece piece_id="crpg_iron_pointed_sword_guard" />
+      <UsablePiece piece_id="crpg_iron_pointed_sword_blade" />
+      <UsablePiece piece_id="crpg_bone_crusher_pommel" />
+      <UsablePiece piece_id="crpg_highland_broad_blade_pommel" />
+      <UsablePiece piece_id="crpg_highland_broad_blade_handle" />
+      <UsablePiece piece_id="crpg_highland_broad_blade_guard" />
+      <UsablePiece piece_id="crpg_highland_broad_blade_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_broadsword_handle" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_broadsword_guard" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_broadsword_blade" />
+      <UsablePiece piece_id="crpg_steel_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_steel_broadsword_handle" />
+      <UsablePiece piece_id="crpg_steel_broadsword_guard" />
+      <UsablePiece piece_id="crpg_steel_broadsword_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_broad_shortsword_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_broad_shortsword_handle" />
+      <UsablePiece piece_id="crpg_fine_steel_broad_shortsword_guard" />
+      <UsablePiece piece_id="crpg_fine_steel_broad_shortsword_blade" />
+      <UsablePiece piece_id="crpg_ridged_iron_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_ridged_iron_broadsword_handle" />
+      <UsablePiece piece_id="crpg_ridged_iron_broadsword_guard" />
+      <UsablePiece piece_id="crpg_ridged_iron_broadsword_blade" />
+      <UsablePiece piece_id="crpg_decorated_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_decorated_broadsword_handle" />
+      <UsablePiece piece_id="crpg_decorated_broadsword_guard" />
+      <UsablePiece piece_id="crpg_decorated_broadsword_blade" />
+      <UsablePiece piece_id="crpg_highland_pointed_blade_pommel" />
+      <UsablePiece piece_id="crpg_highland_pointed_blade_handle" />
+      <UsablePiece piece_id="crpg_highland_pointed_blade_guard" />
+      <UsablePiece piece_id="crpg_highland_pointed_blade_blade" />
+      <UsablePiece piece_id="crpg_engraved_backsword_pommel" />
+      <UsablePiece piece_id="crpg_engraved_backsword_handle" />
+      <UsablePiece piece_id="crpg_engraved_backsword_guard" />
+      <UsablePiece piece_id="crpg_engraved_backsword_blade" />
+      <UsablePiece piece_id="crpg_heavy_executioner_long_sword_pommel" />
+      <UsablePiece piece_id="crpg_heavy_executioner_long_sword_handle" />
+      <UsablePiece piece_id="crpg_heavy_executioner_long_sword_guard" />
+      <UsablePiece piece_id="crpg_heavy_executioner_long_sword_blade" />
+      <UsablePiece piece_id="crpg_battanian_mountain_blade_pommel" />
+      <UsablePiece piece_id="crpg_battanian_mountain_blade_handle" />
+      <UsablePiece piece_id="crpg_battanian_mountain_blade_guard" />
+      <UsablePiece piece_id="crpg_battanian_mountain_blade_blade" />
+      <UsablePiece piece_id="crpg_highland_fine_two_handed_sword_pommel" />
+      <UsablePiece piece_id="crpg_highland_fine_two_handed_sword_handle" />
+      <UsablePiece piece_id="crpg_highland_fine_two_handed_sword_guard" />
+      <UsablePiece piece_id="crpg_highland_fine_two_handed_sword_blade" />
+      <UsablePiece piece_id="crpg_northlander_wide_fullered_greatsword_pommel" />
+      <UsablePiece piece_id="crpg_northlander_wide_fullered_greatsword_guard" />
+      <UsablePiece piece_id="crpg_northlander_wide_fullered_greatsword_blade" />
+      <UsablePiece piece_id="crpg_highland_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_highland_broadsword_handle" />
+      <UsablePiece piece_id="crpg_highland_broadsword_guard" />
+      <UsablePiece piece_id="crpg_highland_broadsword_blade" />
+      <UsablePiece piece_id="crpg_iron_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_iron_broadsword_guard" />
+      <UsablePiece piece_id="crpg_iron_broadsword_blade" />
+      <UsablePiece piece_id="crpg_simple_short_warsword_pommel" />
+      <UsablePiece piece_id="crpg_simple_short_warsword_handle" />
+      <UsablePiece piece_id="crpg_simple_short_warsword_guard" />
+      <UsablePiece piece_id="crpg_simple_short_warsword_blade" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_kaskara_handle" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_kaskara_guard" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_kaskara_blade" />
+      <UsablePiece piece_id="crpg_narrow_fine_steel_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_narrow_fine_steel_kaskara_handle" />
+      <UsablePiece piece_id="crpg_narrow_fine_steel_kaskara_guard" />
+      <UsablePiece piece_id="crpg_narrow_fine_steel_kaskara_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_scimitar_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_scimitar_handle" />
+      <UsablePiece piece_id="crpg_fine_steel_scimitar_guard" />
+      <UsablePiece piece_id="crpg_fine_steel_scimitar_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_long_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_long_kaskara_handle" />
+      <UsablePiece piece_id="crpg_fine_steel_long_kaskara_guard" />
+      <UsablePiece piece_id="crpg_fine_steel_long_kaskara_blade" />
+      <UsablePiece piece_id="crpg_slightly_ridged_flyssa_pommel" />
+      <UsablePiece piece_id="crpg_slightly_ridged_flyssa_handle" />
+      <UsablePiece piece_id="crpg_slightly_ridged_flyssa_guard" />
+      <UsablePiece piece_id="crpg_slightly_ridged_flyssa_blade" />
+      <UsablePiece piece_id="crpg_iron_cavalry_scimitar_pommel" />
+      <UsablePiece piece_id="crpg_iron_cavalry_scimitar_handle" />
+      <UsablePiece piece_id="crpg_iron_cavalry_scimitar_guard" />
+      <UsablePiece piece_id="crpg_iron_cavalry_scimitar_blade" />
+      <UsablePiece piece_id="crpg_iron_flyssa_pommel" />
+      <UsablePiece piece_id="crpg_iron_flyssa_handle" />
+      <UsablePiece piece_id="crpg_iron_flyssa_guard" />
+      <UsablePiece piece_id="crpg_iron_flyssa_blade" />
+      <UsablePiece piece_id="crpg_engraved_angular_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_engraved_angular_kaskara_handle" />
+      <UsablePiece piece_id="crpg_engraved_angular_kaskara_guard" />
+      <UsablePiece piece_id="crpg_engraved_angular_kaskara_blade" />
+      <UsablePiece piece_id="crpg_decorated_scimitar_with_wide_grip_pommel" />
+      <UsablePiece piece_id="crpg_decorated_scimitar_with_wide_grip_handle" />
+      <UsablePiece piece_id="crpg_decorated_scimitar_with_wide_grip_guard" />
+      <UsablePiece piece_id="crpg_decorated_scimitar_with_wide_grip_blade" />
+      <UsablePiece piece_id="crpg_decorated_elite_scimitar_pommel" />
+      <UsablePiece piece_id="crpg_decorated_elite_scimitar_handle" />
+      <UsablePiece piece_id="crpg_decorated_elite_scimitar_guard" />
+      <UsablePiece piece_id="crpg_decorated_elite_scimitar_blade" />
+      <UsablePiece piece_id="crpg_decorated_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_decorated_kaskara_handle" />
+      <UsablePiece piece_id="crpg_decorated_kaskara_guard" />
+      <UsablePiece piece_id="crpg_decorated_kaskara_blade" />
+      <UsablePiece piece_id="crpg_the_ambassador_pommel" />
+      <UsablePiece piece_id="crpg_the_ambassador_handle" />
+      <UsablePiece piece_id="crpg_the_ambassador_guard" />
+      <UsablePiece piece_id="crpg_the_ambassador_blade" />
+      <UsablePiece piece_id="crpg_engraved_thegn_blade_blade" />
+      <UsablePiece piece_id="crpg_soldier's_cleaver_pommel" />
+      <UsablePiece piece_id="crpg_soldier's_cleaver_handle" />
+      <UsablePiece piece_id="crpg_soldier's_cleaver_guard" />
+      <UsablePiece piece_id="crpg_soldier's_cleaver_blade" />
+    </UsablePieces>
+  </CraftingTemplate>
+  <CraftingTemplate id="crpg_TwoHandedSword" item_type="TwoHandedWeapon" modifier_group="sword" item_holsters="sword_back:sword_back_2:sword_back_3:sword_back_4" piece_type_to_scale_holster_with="Blade" hidden_piece_types_on_holster="Blade" default_item_holster_position_offset="0,0,-0.1">
+    <PieceDatas>
+      <PieceData piece_type="Handle" build_order="0" />
+      <PieceData piece_type="Guard" build_order="1" />
+      <PieceData piece_type="Blade" build_order="2" />
+      <PieceData piece_type="Pommel" build_order="-1" />
+    </PieceDatas>
+    <WeaponDescriptions>
+      <WeaponDescription id="crpg_OneHandedBastardSword" />
+      <WeaponDescription id="crpg_TwoHandedSword" />
+      <WeaponDescription id="crpg_OneHandedBastardSwordAlternative" />
+    </WeaponDescriptions>
+    <StatsData>
+      <StatData stat_type="Weight" max_value="7.0" />
+      <StatData stat_type="WeaponReach" max_value="300" />
+      <StatData stat_type="ThrustSpeed" max_value="200" />
+      <StatData stat_type="SwingSpeed" max_value="200" />
+      <StatData stat_type="ThrustDamage" max_value="500" />
+      <StatData stat_type="SwingDamage" max_value="500" />
+      <StatData stat_type="Handling" max_value="200" />
+    </StatsData>
+    <UsablePieces>
+      <UsablePiece piece_id="crpg_wooden_sword_pommel" />
+      <UsablePiece piece_id="crpg_wooden_sword_guard" />
+      <UsablePiece piece_id="crpg_wooden_sword_blade" />
+      <UsablePiece piece_id="crpg_wooden_twohander_pommel" />
+      <UsablePiece piece_id="crpg_wooden_twohander_handle" />
+      <UsablePiece piece_id="crpg_wooden_twohander_guard" />
+      <UsablePiece piece_id="crpg_wooden_twohander_blade" />
+      <UsablePiece piece_id="crpg_winds_fury_pommel" />
+      <UsablePiece piece_id="crpg_winds_fury_guard" />
+      <UsablePiece piece_id="crpg_winds_fury_blade" />
+      <UsablePiece piece_id="crpg_broad_two_hander_pommel" />
+      <UsablePiece piece_id="crpg_broad_two_hander_handle" />
+      <UsablePiece piece_id="crpg_broad_two_hander_guard" />
+      <UsablePiece piece_id="crpg_broad_two_hander_blade" />
+      <UsablePiece piece_id="crpg_tapered_two-hander_pommel" />
+      <UsablePiece piece_id="crpg_tapered_two-hander_handle" />
+      <UsablePiece piece_id="crpg_tapered_two-hander_guard" />
+      <UsablePiece piece_id="crpg_tapered_two-hander_blade" />
+      <UsablePiece piece_id="crpg_war_razor_pommel" />
+      <UsablePiece piece_id="crpg_war_razor_handle" />
+      <UsablePiece piece_id="crpg_war_razor_guard" />
+      <UsablePiece piece_id="crpg_war_razor_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_sword_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_sword_guard" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_sword_blade" />
+      <UsablePiece piece_id="crpg_narrow_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_narrow_arming_sword_handle" />
+      <UsablePiece piece_id="crpg_narrow_arming_sword_guard" />
+      <UsablePiece piece_id="crpg_narrow_arming_sword_blade" />
+      <UsablePiece piece_id="crpg_knightly_cavalry_sword_pommel" />
+      <UsablePiece piece_id="crpg_knightly_cavalry_sword_guard" />
+      <UsablePiece piece_id="crpg_knightly_cavalry_sword_blade" />
+      <UsablePiece piece_id="crpg_iron_cavalry_sword_pommel" />
+      <UsablePiece piece_id="crpg_iron_cavalry_sword_guard" />
+      <UsablePiece piece_id="crpg_iron_cavalry_sword_blade" />
+      <UsablePiece piece_id="crpg_iron_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_iron_arming_sword_guard" />
+      <UsablePiece piece_id="crpg_iron_arming_sword_blade" />
+      <UsablePiece piece_id="crpg_wide_fullered_broad_two_hander_pommel" />
+      <UsablePiece piece_id="crpg_wide_fullered_broad_two_hander_handle" />
+      <UsablePiece piece_id="crpg_wide_fullered_broad_two_hander_guard" />
+      <UsablePiece piece_id="crpg_wide_fullered_broad_two_hander_blade" />
+      <UsablePiece piece_id="crpg_tyrhung_pommel" />
+      <UsablePiece piece_id="crpg_tyrhung_guard" />
+      <UsablePiece piece_id="crpg_tyrhung_blade" />
+      <UsablePiece piece_id="crpg_scalpel_pommel" />
+      <UsablePiece piece_id="crpg_scalpel_handle" />
+      <UsablePiece piece_id="crpg_scalpel_guard" />
+      <UsablePiece piece_id="crpg_scalpel_blade" />
+      <UsablePiece piece_id="crpg_steel_long_warsword_pommel" />
+      <UsablePiece piece_id="crpg_steel_long_warsword_guard" />
+      <UsablePiece piece_id="crpg_steel_long_warsword_blade" />
+      <UsablePiece piece_id="crpg_thamaskene_pointed_warsword_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_pointed_warsword_handle" />
+      <UsablePiece piece_id="crpg_thamaskene_pointed_warsword_guard" />
+      <UsablePiece piece_id="crpg_thamaskene_pointed_warsword_blade" />
+      <UsablePiece piece_id="crpg_iron_long_warsword_pommel" />
+      <UsablePiece piece_id="crpg_iron_long_warsword_guard" />
+      <UsablePiece piece_id="crpg_iron_long_warsword_blade" />
+      <UsablePiece piece_id="crpg_pointed_warsword_pommel" />
+      <UsablePiece piece_id="crpg_engraved_thegn_blade_pommel" />
+      <UsablePiece piece_id="crpg_pointed_warsword_guard" />
+      <UsablePiece piece_id="crpg_pointed_warsword_blade" />
+      <UsablePiece piece_id="crpg_northern_backsword_pommel" />
+      <UsablePiece piece_id="crpg_northern_backsword_guard" />
+      <UsablePiece piece_id="crpg_northern_backsword_blade" />
+      <UsablePiece piece_id="crpg_iron_thegn_blade_pommel" />
+      <UsablePiece piece_id="crpg_engraved_thegn_blade_guard" />
+      <UsablePiece piece_id="crpg_iron_thegn_blade_guard" />
+      <UsablePiece piece_id="crpg_iron_thegn_blade_blade" />
+      <UsablePiece piece_id="crpg_decorated_long_warsword_guard" />
+      <UsablePiece piece_id="crpg_thamaskene_short_warsword_guard" />
+      <UsablePiece piece_id="crpg_star_falchion_pommel" />
+      <UsablePiece piece_id="crpg_star_falchion_handle" />
+      <UsablePiece piece_id="crpg_star_falchion_guard" />
+      <UsablePiece piece_id="crpg_star_falchion_blade" />
+      <UsablePiece piece_id="crpg_broad_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_broad_kaskara_handle" />
+      <UsablePiece piece_id="crpg_broad_kaskara_guard" />
+      <UsablePiece piece_id="crpg_broad_kaskara_blade" />
+      <UsablePiece piece_id="crpg_simple_saber_pommel" />
+      <UsablePiece piece_id="crpg_simple_saber_handle" />
+      <UsablePiece piece_id="crpg_simple_saber_guard" />
+      <UsablePiece piece_id="crpg_simple_saber_blade" />
+      <UsablePiece piece_id="crpg_simple_scimitar_pommel" />
+      <UsablePiece piece_id="crpg_simple_scimitar_handle" />
+      <UsablePiece piece_id="crpg_simple_scimitar_guard" />
+      <UsablePiece piece_id="crpg_simple_scimitar_blade" />
+      <UsablePiece piece_id="crpg_short_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_short_arming_sword_guard" />
+      <UsablePiece piece_id="crpg_short_arming_sword_blade" />
+      <UsablePiece piece_id="crpg_seax_pommel" />
+      <UsablePiece piece_id="crpg_ridged_saber_guard" />
+      <UsablePiece piece_id="crpg_ridged_saber_blade" />
+      <UsablePiece piece_id="crpg_ridged_great_saber_pommel" />
+      <UsablePiece piece_id="crpg_ridged_great_saber_handle" />
+      <UsablePiece piece_id="crpg_ridged_great_saber_guard" />
+      <UsablePiece piece_id="crpg_ridged_great_saber_blade" />
+      <UsablePiece piece_id="crpg_reaper_pommel" />
+      <UsablePiece piece_id="crpg_reaper_handle" />
+      <UsablePiece piece_id="crpg_reaper_guard" />
+      <UsablePiece piece_id="crpg_reaper_blade" />
+      <UsablePiece piece_id="crpg_pugio_pommel" />
+      <UsablePiece piece_id="crpg_broad_falchion_pommel" />
+      <UsablePiece piece_id="crpg_broad_falchion_guard" />
+      <UsablePiece piece_id="crpg_broad_falchion_blade" />
+      <UsablePiece piece_id="crpg_wooden_hammer_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_two_handed_sword_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_two_handed_sword_handle" />
+      <UsablePiece piece_id="crpg_fine_steel_two_handed_sword_guard" />
+      <UsablePiece piece_id="crpg_fine_steel_two_handed_sword_blade" />
+      <UsablePiece piece_id="crpg_narrow_sword_pommel" />
+      <UsablePiece piece_id="crpg_narrow_sword_handle" />
+      <UsablePiece piece_id="crpg_narrow_sword_guard" />
+      <UsablePiece piece_id="crpg_narrow_sword_blade" />
+      <UsablePiece piece_id="crpg_morningstar_pommel" />
+      <UsablePiece piece_id="crpg_lowland_throwing_knife_pommel" />
+      <UsablePiece piece_id="crpg_leafblade_throwing_knife_pommel" />
+      <UsablePiece piece_id="crpg_heavy_saber_pommel" />
+      <UsablePiece piece_id="crpg_heavy_saber_guard" />
+      <UsablePiece piece_id="crpg_heavy_saber_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_saber_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_saber_handle" />
+      <UsablePiece piece_id="crpg_fine_steel_saber_guard" />
+      <UsablePiece piece_id="crpg_fine_steel_saber_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_saber_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_saber_guard" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_saber_blade" />
+      <UsablePiece piece_id="crpg_straight_saber_pommel" />
+      <UsablePiece piece_id="crpg_straight_saber_guard" />
+      <UsablePiece piece_id="crpg_straight_saber_blade" />
+      <UsablePiece piece_id="crpg_iron_saber_pommel" />
+      <UsablePiece piece_id="crpg_iron_saber_guard" />
+      <UsablePiece piece_id="crpg_iron_saber_blade" />
+      <UsablePiece piece_id="crpg_steppe_light_mace_pommel" />
+      <UsablePiece piece_id="crpg_ridged_long_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_ridged_long_kaskara_handle" />
+      <UsablePiece piece_id="crpg_ridged_long_kaskara_guard" />
+      <UsablePiece piece_id="crpg_ridged_long_kaskara_blade" />
+      <UsablePiece piece_id="crpg_justicier_pommel" />
+      <UsablePiece piece_id="crpg_justicier_handle" />
+      <UsablePiece piece_id="crpg_justicier_guard" />
+      <UsablePiece piece_id="crpg_justicier_blade" />
+      <UsablePiece piece_id="crpg_iron_spatha_pommel" />
+      <UsablePiece piece_id="crpg_iron_spatha_guard" />
+      <UsablePiece piece_id="crpg_iron_spatha_blade" />
+      <UsablePiece piece_id="crpg_falx_knife_pommel" />
+      <UsablePiece piece_id="crpg_xiphos_pommel" />
+      <UsablePiece piece_id="crpg_iron_falchion_pommel" />
+      <UsablePiece piece_id="crpg_iron_falchion_guard" />
+      <UsablePiece piece_id="crpg_iron_falchion_blade" />
+      <UsablePiece piece_id="crpg_broad_bladed_throwing_knives_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_spathion_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_spathion_guard" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_spathion_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_paramerion_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_paramerion_handle" />
+      <UsablePiece piece_id="crpg_fine_steel_paramerion_guard" />
+      <UsablePiece piece_id="crpg_fine_steel_paramerion_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_spatha_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_spatha_guard" />
+      <UsablePiece piece_id="crpg_fine_steel_spatha_blade" />
+      <UsablePiece piece_id="crpg_spatha_pommel" />
+      <UsablePiece piece_id="crpg_spatha_guard" />
+      <UsablePiece piece_id="crpg_spatha_blade" />
+      <UsablePiece piece_id="crpg_spatha_with_narrow_fuller_pommel" />
+      <UsablePiece piece_id="crpg_spatha_with_narrow_fuller_guard" />
+      <UsablePiece piece_id="crpg_spatha_with_narrow_fuller_blade" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_spatha_blade" />
+      <UsablePiece piece_id="crpg_imperial_light_mace_pommel" />
+      <UsablePiece piece_id="crpg_steel_mace_pommel" />
+      <UsablePiece piece_id="crpg_early_retirement_pommel" />
+      <UsablePiece piece_id="crpg_early_retirement_handle" />
+      <UsablePiece piece_id="crpg_early_retirement_guard" />
+      <UsablePiece piece_id="crpg_early_retirement_blade" />
+      <UsablePiece piece_id="crpg_tribesman_throwing_daggers_pommel" />
+      <UsablePiece piece_id="crpg_desert_longsword_guard" />
+      <UsablePiece piece_id="crpg_desert_longsword_blade" />
+      <UsablePiece piece_id="crpg_dawnbreaker_pommel" />
+      <UsablePiece piece_id="crpg_dawnbreaker_guard" />
+      <UsablePiece piece_id="crpg_dawnbreaker_blade" />
+      <UsablePiece piece_id="crpg_iron_cleaver_pommel" />
+      <UsablePiece piece_id="crpg_iron_cleaver_guard" />
+      <UsablePiece piece_id="crpg_iron_cleaver_blade" />
+      <UsablePiece piece_id="crpg_harvesting_season_pommel" />
+      <UsablePiece piece_id="crpg_harvesting_season_handle" />
+      <UsablePiece piece_id="crpg_harvesting_season_guard" />
+      <UsablePiece piece_id="crpg_harvesting_season_blade" />
+      <UsablePiece piece_id="crpg_highland_throwing_dagger_pommel" />
+      <UsablePiece piece_id="crpg_highland_dagger_pommel" />
+      <UsablePiece piece_id="crpg_broad_ild_pommel" />
+      <UsablePiece piece_id="crpg_broad_ild_handle" />
+      <UsablePiece piece_id="crpg_broad_ild_guard" />
+      <UsablePiece piece_id="crpg_broad_ild_blade" />
+      <UsablePiece piece_id="crpg_pointed_falchion_pommel" />
+      <UsablePiece piece_id="crpg_pointed_falchion_guard" />
+      <UsablePiece piece_id="crpg_pointed_falchion_blade" />
+      <UsablePiece piece_id="crpg_iron_pointed_sword_pommel" />
+      <UsablePiece piece_id="crpg_iron_pointed_sword_guard" />
+      <UsablePiece piece_id="crpg_iron_pointed_sword_blade" />
+      <UsablePiece piece_id="crpg_bone_crusher_pommel" />
+      <UsablePiece piece_id="crpg_highland_broad_blade_pommel" />
+      <UsablePiece piece_id="crpg_highland_broad_blade_guard" />
+      <UsablePiece piece_id="crpg_highland_broad_blade_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_broadsword_guard" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_broadsword_blade" />
+      <UsablePiece piece_id="crpg_steel_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_steel_broadsword_handle" />
+      <UsablePiece piece_id="crpg_steel_broadsword_guard" />
+      <UsablePiece piece_id="crpg_steel_broadsword_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_broad_shortsword_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_broad_shortsword_guard" />
+      <UsablePiece piece_id="crpg_fine_steel_broad_shortsword_blade" />
+      <UsablePiece piece_id="crpg_ridged_iron_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_ridged_iron_broadsword_guard" />
+      <UsablePiece piece_id="crpg_ridged_iron_broadsword_blade" />
+      <UsablePiece piece_id="crpg_highland_pointed_blade_pommel" />
+      <UsablePiece piece_id="crpg_highland_pointed_blade_guard" />
+      <UsablePiece piece_id="crpg_engraved_backsword_pommel" />
+      <UsablePiece piece_id="crpg_heavy_executioner_long_sword_pommel" />
+      <UsablePiece piece_id="crpg_heavy_executioner_long_sword_handle" />
+      <UsablePiece piece_id="crpg_heavy_executioner_long_sword_guard" />
+      <UsablePiece piece_id="crpg_heavy_executioner_long_sword_blade" />
+      <UsablePiece piece_id="crpg_battanian_mountain_blade_pommel" />
+      <UsablePiece piece_id="crpg_battanian_mountain_blade_handle" />
+      <UsablePiece piece_id="crpg_battanian_mountain_blade_guard" />
+      <UsablePiece piece_id="crpg_battanian_mountain_blade_blade" />
+      <UsablePiece piece_id="crpg_highland_fine_two_handed_sword_pommel" />
+      <UsablePiece piece_id="crpg_highland_fine_two_handed_sword_handle" />
+      <UsablePiece piece_id="crpg_highland_fine_two_handed_sword_guard" />
+      <UsablePiece piece_id="crpg_highland_fine_two_handed_sword_blade" />
+      <UsablePiece piece_id="crpg_falx_pommel" />
+      <UsablePiece piece_id="crpg_falx_handle" />
+      <UsablePiece piece_id="crpg_falx_guard" />
+      <UsablePiece piece_id="crpg_falx_blade" />
+      <UsablePiece piece_id="crpg_northlander_wide_fullered_greatsword_pommel" />
+      <UsablePiece piece_id="crpg_northlander_wide_fullered_greatsword_handle" />
+      <UsablePiece piece_id="crpg_northlander_wide_fullered_greatsword_guard" />
+      <UsablePiece piece_id="crpg_northlander_wide_fullered_greatsword_blade" />
+      <UsablePiece piece_id="crpg_highland_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_highland_broadsword_handle" />
+      <UsablePiece piece_id="crpg_highland_broadsword_guard" />
+      <UsablePiece piece_id="crpg_highland_broadsword_blade" />
+      <UsablePiece piece_id="crpg_iron_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_iron_broadsword_handle" />
+      <UsablePiece piece_id="crpg_iron_broadsword_guard" />
+      <UsablePiece piece_id="crpg_iron_broadsword_blade" />
+      <UsablePiece piece_id="crpg_simple_short_warsword_pommel" />
+      <UsablePiece piece_id="crpg_simple_short_warsword_handle" />
+      <UsablePiece piece_id="crpg_simple_short_warsword_guard" />
+      <UsablePiece piece_id="crpg_simple_short_warsword_blade" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_kaskara_guard" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_kaskara_blade" />
+      <UsablePiece piece_id="crpg_narrow_fine_steel_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_narrow_fine_steel_kaskara_guard" />
+      <UsablePiece piece_id="crpg_narrow_fine_steel_kaskara_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_scimitar_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_scimitar_guard" />
+      <UsablePiece piece_id="crpg_fine_steel_scimitar_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_long_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_long_kaskara_guard" />
+      <UsablePiece piece_id="crpg_slightly_ridged_flyssa_pommel" />
+      <UsablePiece piece_id="crpg_slightly_ridged_flyssa_guard" />
+      <UsablePiece piece_id="crpg_slightly_ridged_flyssa_blade" />
+      <UsablePiece piece_id="crpg_iron_cavalry_scimitar_pommel" />
+      <UsablePiece piece_id="crpg_iron_cavalry_scimitar_guard" />
+      <UsablePiece piece_id="crpg_iron_cavalry_scimitar_blade" />
+      <UsablePiece piece_id="crpg_iron_flyssa_pommel" />
+      <UsablePiece piece_id="crpg_iron_flyssa_guard" />
+      <UsablePiece piece_id="crpg_iron_flyssa_blade" />
+      <UsablePiece piece_id="crpg_the_ambassador_pommel" />
+      <UsablePiece piece_id="crpg_the_ambassador_handle" />
+      <UsablePiece piece_id="crpg_the_ambassador_guard" />
+      <UsablePiece piece_id="crpg_the_ambassador_blade" />
+      <UsablePiece piece_id="crpg_desert_longsword_handle" />
+      <UsablePiece piece_id="crpg_desert_longsword_pommel" />
+      <UsablePiece piece_id="crpg_claymore_pommel" />
+      <UsablePiece piece_id="crpg_claymore_handle" />
+      <UsablePiece piece_id="crpg_claymore_guard" />
+      <UsablePiece piece_id="crpg_claymore_blade" />
+      <UsablePiece piece_id="crpg_barmace_handle" />
+      <UsablePiece piece_id="crpg_barmace_blade" />
+      <UsablePiece piece_id="crpg_winter_pommel" />
+      <UsablePiece piece_id="crpg_winter_handle" />
+      <UsablePiece piece_id="crpg_winter_guard" />
+      <UsablePiece piece_id="crpg_winter_blade" />
+      <UsablePiece piece_id="crpg_dawn_pommel" />
+      <UsablePiece piece_id="crpg_dawn_handle" />
+      <UsablePiece piece_id="crpg_dawn_guard" />
+      <UsablePiece piece_id="crpg_dawn_blade" />
+      <UsablePiece piece_id="crpg_heavy_goedendag_handle" />
+      <UsablePiece piece_id="crpg_heavy_goedendag_blade" />
+      <UsablePiece piece_id="crpg_decorated_great_saber_pommel" />
+      <UsablePiece piece_id="crpg_decorated_great_saber_handle" />
+      <UsablePiece piece_id="crpg_decorated_great_saber_guard" />
+      <UsablePiece piece_id="crpg_decorated_great_saber_blade" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_claymore_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_claymore_handle" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_claymore_guard" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_claymore_blade" />
+    </UsablePieces>
+  </CraftingTemplate>
+  <CraftingTemplate id="crpg_SideTwoHandedSword" item_type="TwoHandedWeapon" modifier_group="sword" item_holsters="sword_left_hip_3:sword_left_hip:sword_left_hip_2" piece_type_to_scale_holster_with="Blade" hidden_piece_types_on_holster="Blade" default_item_holster_position_offset="0,0,-0.1">
+    <PieceDatas>
+      <PieceData piece_type="Handle" build_order="0" />
+      <PieceData piece_type="Guard" build_order="1" />
+      <PieceData piece_type="Blade" build_order="2" />
+      <PieceData piece_type="Pommel" build_order="-1" />
+    </PieceDatas>
+    <WeaponDescriptions>
+      <WeaponDescription id="crpg_OneHandedBastardSword" />
+      <WeaponDescription id="crpg_TwoHandedSword" />
+      <WeaponDescription id="crpg_OneHandedBastardSwordAlternative" />
+    </WeaponDescriptions>
+    <StatsData>
+      <StatData stat_type="Weight" max_value="7.0" />
+      <StatData stat_type="WeaponReach" max_value="300" />
+      <StatData stat_type="ThrustSpeed" max_value="200" />
+      <StatData stat_type="SwingSpeed" max_value="200" />
+      <StatData stat_type="ThrustDamage" max_value="500" />
+      <StatData stat_type="SwingDamage" max_value="500" />
+      <StatData stat_type="Handling" max_value="200" />
+    </StatsData>
+    <UsablePieces>
+      <UsablePiece piece_id="crpg_black_katana_pommel" />
+      <UsablePiece piece_id="crpg_yellow_katana_pommel" />
+      <UsablePiece piece_id="crpg_green_katana_pommel" />
+      <UsablePiece piece_id="crpg_blue_katana_pommel" />
+      <UsablePiece piece_id="crpg_red_katana_pommel" />
+      <UsablePiece piece_id="crpg_black_katana_handle" />
+      <UsablePiece piece_id="crpg_yellow_katana_handle" />
+      <UsablePiece piece_id="crpg_green_katana_handle" />
+      <UsablePiece piece_id="crpg_blue_katana_handle" />
+      <UsablePiece piece_id="crpg_red_katana_handle" />
+      <UsablePiece piece_id="crpg_black_katana_guard" />
+      <UsablePiece piece_id="crpg_yellow_katana_guard" />
+      <UsablePiece piece_id="crpg_green_katana_guard" />
+      <UsablePiece piece_id="crpg_blue_katana_guard" />
+      <UsablePiece piece_id="crpg_red_katana_guard" />
+      <UsablePiece piece_id="crpg_black_katana_blade" />
+      <UsablePiece piece_id="crpg_yellow_katana_blade" />
+      <UsablePiece piece_id="crpg_green_katana_blade" />
+      <UsablePiece piece_id="crpg_blue_katana_blade" />
+      <UsablePiece piece_id="crpg_red_katana_blade" />
+      <UsablePiece piece_id="crpg_longsword_pommel" />
+      <UsablePiece piece_id="crpg_longsword_handle" />
+      <UsablePiece piece_id="crpg_longsword_guard" />
+      <UsablePiece piece_id="crpg_longsword_blade" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_two_hander_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_two_hander_handle" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_two_hander_guard" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_two_hander_blade" />
+    </UsablePieces>
+  </CraftingTemplate>
+  <CraftingTemplate id="crpg_Dagger" item_type="OneHandedWeapon" modifier_group="sword" item_holsters="sword_left_hip_3:sword_left_hip_2:sword_left_hip:sword_back" default_item_holster_position_offset="0,0,-0.1" use_weapon_as_holster_mesh="true">
+    <PieceDatas>
+      <PieceData piece_type="Handle" build_order="0" />
+      <PieceData piece_type="Guard" build_order="1" />
+      <PieceData piece_type="Blade" build_order="2" />
+      <PieceData piece_type="Pommel" build_order="-1" />
+    </PieceDatas>
+    <WeaponDescriptions>
+      <WeaponDescription id="crpg_Dagger" />
+      <WeaponDescription id="crpg_ThrowingKnife" />
+    </WeaponDescriptions>
+    <StatsData weapon_description="crpg_Dagger">
+      <StatData stat_type="Weight" max_value="7.0" />
+      <StatData stat_type="WeaponReach" max_value="300" />
+      <StatData stat_type="ThrustSpeed" max_value="200" />
+      <StatData stat_type="SwingSpeed" max_value="200" />
+      <StatData stat_type="ThrustDamage" max_value="500" />
+      <StatData stat_type="SwingDamage" max_value="500" />
+      <StatData stat_type="Handling" max_value="200" />
+    </StatsData>
+    <StatsData weapon_description="crpg_ThrowingKnife">
+      <StatData stat_type="Weight" max_value="2.0" />
+      <StatData stat_type="WeaponReach" max_value="100" />
+      <StatData stat_type="MissileSpeed" max_value="150" />
+      <StatData stat_type="MissileDamage" max_value="200" />
+      <StatData stat_type="Accuracy" max_value="100" />
+    </StatsData>
+    <UsablePieces>
+      <UsablePiece piece_id="crpg_wooden_sword_pommel" />
+      <UsablePiece piece_id="crpg_wooden_sword_handle" />
+      <UsablePiece piece_id="crpg_wooden_twohander_pommel" />
+      <UsablePiece piece_id="crpg_winds_fury_pommel" />
+      <UsablePiece piece_id="crpg_broad_two_hander_pommel" />
+      <UsablePiece piece_id="crpg_tapered_two-hander_pommel" />
+      <UsablePiece piece_id="crpg_war_razor_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_sword_pommel" />
+      <UsablePiece piece_id="crpg_narrow_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_knightly_cavalry_sword_pommel" />
+      <UsablePiece piece_id="crpg_knightly_cavalry_sword_handle" />
+      <UsablePiece piece_id="crpg_iron_cavalry_sword_pommel" />
+      <UsablePiece piece_id="crpg_iron_cavalry_sword_handle" />
+      <UsablePiece piece_id="crpg_iron_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_iron_arming_sword_handle" />
+      <UsablePiece piece_id="crpg_wide_fullered_broad_two_hander_pommel" />
+      <UsablePiece piece_id="crpg_tyrhung_pommel" />
+      <UsablePiece piece_id="crpg_tyrhung_handle" />
+      <UsablePiece piece_id="crpg_scalpel_pommel" />
+      <UsablePiece piece_id="crpg_steel_long_warsword_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_pointed_warsword_pommel" />
+      <UsablePiece piece_id="crpg_iron_long_warsword_pommel" />
+      <UsablePiece piece_id="crpg_iron_long_warsword_handle" />
+      <UsablePiece piece_id="crpg_pointed_warsword_pommel" />
+      <UsablePiece piece_id="crpg_engraved_thegn_blade_pommel" />
+      <UsablePiece piece_id="crpg_pointed_warsword_handle" />
+      <UsablePiece piece_id="crpg_northern_backsword_pommel" />
+      <UsablePiece piece_id="crpg_northern_backsword_handle" />
+      <UsablePiece piece_id="crpg_iron_thegn_blade_pommel" />
+      <UsablePiece piece_id="crpg_engraved_thegn_blade_handle" />
+      <UsablePiece piece_id="crpg_iron_thegn_blade_handle" />
+      <UsablePiece piece_id="crpg_star_falchion_pommel" />
+      <UsablePiece piece_id="crpg_broad_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_simple_saber_pommel" />
+      <UsablePiece piece_id="crpg_simple_scimitar_pommel" />
+      <UsablePiece piece_id="crpg_short_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_short_arming_sword_handle" />
+      <UsablePiece piece_id="crpg_seax_pommel" />
+      <UsablePiece piece_id="crpg_seax_handle" />
+      <UsablePiece piece_id="crpg_seax_guard" />
+      <UsablePiece piece_id="crpg_seax_blade" />
+      <UsablePiece piece_id="crpg_ridged_great_saber_pommel" />
+      <UsablePiece piece_id="crpg_reaper_pommel" />
+      <UsablePiece piece_id="crpg_pugio_pommel" />
+      <UsablePiece piece_id="crpg_pugio_handle" />
+      <UsablePiece piece_id="crpg_pugio_guard" />
+      <UsablePiece piece_id="crpg_pugio_blade" />
+      <UsablePiece piece_id="crpg_broad_falchion_pommel" />
+      <UsablePiece piece_id="crpg_broad_falchion_handle" />
+      <UsablePiece piece_id="crpg_wooden_hammer_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_two_handed_sword_pommel" />
+      <UsablePiece piece_id="crpg_narrow_sword_pommel" />
+      <UsablePiece piece_id="crpg_morningstar_pommel" />
+      <UsablePiece piece_id="crpg_lowland_throwing_knife_pommel" />
+      <UsablePiece piece_id="crpg_lowland_throwing_knife_handle" />
+      <UsablePiece piece_id="crpg_lowland_throwing_knife_guard" />
+      <UsablePiece piece_id="crpg_lowland_throwing_knife_blade" />
+      <UsablePiece piece_id="crpg_leafblade_throwing_knife_pommel" />
+      <UsablePiece piece_id="crpg_leafblade_throwing_knife_handle" />
+      <UsablePiece piece_id="crpg_leafblade_throwing_knife_guard" />
+      <UsablePiece piece_id="crpg_leafblade_throwing_knife_blade" />
+      <UsablePiece piece_id="crpg_heavy_saber_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_saber_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_saber_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_saber_handle" />
+      <UsablePiece piece_id="crpg_straight_saber_pommel" />
+      <UsablePiece piece_id="crpg_straight_saber_handle" />
+      <UsablePiece piece_id="crpg_iron_saber_pommel" />
+      <UsablePiece piece_id="crpg_iron_saber_handle" />
+      <UsablePiece piece_id="crpg_steppe_light_mace_pommel" />
+      <UsablePiece piece_id="crpg_ridged_long_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_justicier_pommel" />
+      <UsablePiece piece_id="crpg_iron_spatha_pommel" />
+      <UsablePiece piece_id="crpg_iron_spatha_handle" />
+      <UsablePiece piece_id="crpg_falx_knife_pommel" />
+      <UsablePiece piece_id="crpg_falx_knife_handle" />
+      <UsablePiece piece_id="crpg_falx_knife_guard" />
+      <UsablePiece piece_id="crpg_falx_knife_blade" />
+      <UsablePiece piece_id="crpg_xiphos_pommel" />
+      <UsablePiece piece_id="crpg_xiphos_handle" />
+      <UsablePiece piece_id="crpg_xiphos_guard" />
+      <UsablePiece piece_id="crpg_xiphos_blade" />
+      <UsablePiece piece_id="crpg_iron_falchion_pommel" />
+      <UsablePiece piece_id="crpg_iron_falchion_handle" />
+      <UsablePiece piece_id="crpg_broad_bladed_throwing_knives_pommel" />
+      <UsablePiece piece_id="crpg_broad_bladed_throwing_knives_handle" />
+      <UsablePiece piece_id="crpg_broad_bladed_throwing_knives_guard" />
+      <UsablePiece piece_id="crpg_broad_bladed_throwing_knives_blade" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_spathion_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_paramerion_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_spatha_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_spatha_handle" />
+      <UsablePiece piece_id="crpg_spatha_pommel" />
+      <UsablePiece piece_id="crpg_spatha_handle" />
+      <UsablePiece piece_id="crpg_spatha_with_narrow_fuller_pommel" />
+      <UsablePiece piece_id="crpg_spatha_with_narrow_fuller_handle" />
+      <UsablePiece piece_id="crpg_imperial_light_mace_pommel" />
+      <UsablePiece piece_id="crpg_steel_mace_pommel" />
+      <UsablePiece piece_id="crpg_early_retirement_pommel" />
+      <UsablePiece piece_id="crpg_tribesman_throwing_daggers_pommel" />
+      <UsablePiece piece_id="crpg_tribesman_throwing_daggers_handle" />
+      <UsablePiece piece_id="crpg_tribesman_throwing_daggers_guard" />
+      <UsablePiece piece_id="crpg_tribesman_throwing_daggers_blade" />
+      <UsablePiece piece_id="crpg_desert_longsword_handle" />
+      <UsablePiece piece_id="crpg_desert_longsword_guard" />
+      <UsablePiece piece_id="crpg_dawnbreaker_pommel" />
+      <UsablePiece piece_id="crpg_iron_cleaver_pommel" />
+      <UsablePiece piece_id="crpg_iron_cleaver_handle" />
+      <UsablePiece piece_id="crpg_highland_throwing_dagger_pommel" />
+      <UsablePiece piece_id="crpg_highland_throwing_dagger_handle" />
+      <UsablePiece piece_id="crpg_highland_throwing_dagger_guard" />
+      <UsablePiece piece_id="crpg_highland_throwing_dagger_blade" />
+      <UsablePiece piece_id="crpg_highland_dagger_pommel" />
+      <UsablePiece piece_id="crpg_highland_dagger_handle" />
+      <UsablePiece piece_id="crpg_highland_dagger_guard" />
+      <UsablePiece piece_id="crpg_highland_dagger_blade" />
+      <UsablePiece piece_id="crpg_broad_ild_pommel" />
+      <UsablePiece piece_id="crpg_pointed_falchion_pommel" />
+      <UsablePiece piece_id="crpg_pointed_falchion_handle" />
+      <UsablePiece piece_id="crpg_iron_pointed_sword_pommel" />
+      <UsablePiece piece_id="crpg_bone_crusher_pommel" />
+      <UsablePiece piece_id="crpg_highland_broad_blade_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_broadsword_handle" />
+      <UsablePiece piece_id="crpg_steel_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_broad_shortsword_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_broad_shortsword_handle" />
+      <UsablePiece piece_id="crpg_ridged_iron_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_highland_pointed_blade_pommel" />
+      <UsablePiece piece_id="crpg_highland_pointed_blade_handle" />
+      <UsablePiece piece_id="crpg_engraved_backsword_pommel" />
+      <UsablePiece piece_id="crpg_battanian_mountain_blade_pommel" />
+      <UsablePiece piece_id="crpg_highland_fine_two_handed_sword_pommel" />
+      <UsablePiece piece_id="crpg_northlander_wide_fullered_greatsword_pommel" />
+      <UsablePiece piece_id="crpg_highland_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_iron_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_simple_short_warsword_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_kaskara_handle" />
+      <UsablePiece piece_id="crpg_narrow_fine_steel_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_narrow_fine_steel_kaskara_handle" />
+      <UsablePiece piece_id="crpg_fine_steel_scimitar_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_scimitar_handle" />
+      <UsablePiece piece_id="crpg_fine_steel_long_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_long_kaskara_handle" />
+      <UsablePiece piece_id="crpg_fine_steel_long_kaskara_guard" />
+      <UsablePiece piece_id="crpg_slightly_ridged_flyssa_pommel" />
+      <UsablePiece piece_id="crpg_slightly_ridged_flyssa_handle" />
+      <UsablePiece piece_id="crpg_iron_cavalry_scimitar_pommel" />
+      <UsablePiece piece_id="crpg_iron_cavalry_scimitar_handle" />
+      <UsablePiece piece_id="crpg_iron_flyssa_pommel" />
+      <UsablePiece piece_id="crpg_iron_flyssa_handle" />
+      <UsablePiece piece_id="crpg_the_ambassador_pommel" />
+    </UsablePieces>
+  </CraftingTemplate>
+  <CraftingTemplate id="crpg_ThrowingKnife" item_type="Thrown" modifier_group="knife_throwing" item_holsters="throwing_knife_2:throwing_knife:throwing_stone:throwing_stone_2" piece_type_to_scale_holster_with="Blade" default_item_holster_position_offset="0,0,-0.1" always_show_holster_with_weapon="true">
+    <PieceDatas>
+      <PieceData piece_type="Handle" build_order="0" />
+      <PieceData piece_type="Guard" build_order="1" />
+      <PieceData piece_type="Blade" build_order="2" />
+      <PieceData piece_type="Pommel" build_order="-1" />
+    </PieceDatas>
+    <WeaponDescriptions>
+      <WeaponDescription id="crpg_ThrowingKnife" />
+    </WeaponDescriptions>
+    <StatsData weapon_description="crpg_ThrowingKnife">
+      <StatData stat_type="Weight" max_value="2.0" />
+      <StatData stat_type="WeaponReach" max_value="100" />
+      <StatData stat_type="MissileSpeed" max_value="150" />
+      <StatData stat_type="MissileDamage" max_value="200" />
+      <StatData stat_type="Accuracy" max_value="100" />
+    </StatsData>
+    <UsablePieces>
+      <UsablePiece piece_id="crpg_wooden_sword_handle" />
+      <UsablePiece piece_id="crpg_broad_two_hander_pommel" />
+      <UsablePiece piece_id="crpg_narrow_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_knightly_cavalry_sword_pommel" />
+      <UsablePiece piece_id="crpg_knightly_cavalry_sword_handle" />
+      <UsablePiece piece_id="crpg_iron_cavalry_sword_pommel" />
+      <UsablePiece piece_id="crpg_iron_cavalry_sword_handle" />
+      <UsablePiece piece_id="crpg_iron_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_iron_arming_sword_handle" />
+      <UsablePiece piece_id="crpg_tyrhung_handle" />
+      <UsablePiece piece_id="crpg_scalpel_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_pointed_warsword_pommel" />
+      <UsablePiece piece_id="crpg_iron_long_warsword_pommel" />
+      <UsablePiece piece_id="crpg_iron_long_warsword_handle" />
+      <UsablePiece piece_id="crpg_pointed_warsword_pommel" />
+      <UsablePiece piece_id="crpg_engraved_thegn_blade_pommel" />
+      <UsablePiece piece_id="crpg_pointed_warsword_handle" />
+      <UsablePiece piece_id="crpg_northern_backsword_pommel" />
+      <UsablePiece piece_id="crpg_northern_backsword_handle" />
+      <UsablePiece piece_id="crpg_iron_thegn_blade_pommel" />
+      <UsablePiece piece_id="crpg_engraved_thegn_blade_handle" />
+      <UsablePiece piece_id="crpg_iron_thegn_blade_handle" />
+      <UsablePiece piece_id="crpg_short_arming_sword_handle" />
+      <UsablePiece piece_id="crpg_seax_pommel" />
+      <UsablePiece piece_id="crpg_seax_handle" />
+      <UsablePiece piece_id="crpg_seax_guard" />
+      <UsablePiece piece_id="crpg_ridged_great_saber_pommel" />
+      <UsablePiece piece_id="crpg_reaper_pommel" />
+      <UsablePiece piece_id="crpg_pugio_pommel" />
+      <UsablePiece piece_id="crpg_pugio_handle" />
+      <UsablePiece piece_id="crpg_pugio_guard" />
+      <UsablePiece piece_id="crpg_pugio_blade" />
+      <UsablePiece piece_id="crpg_broad_falchion_pommel" />
+      <UsablePiece piece_id="crpg_broad_falchion_handle" />
+      <UsablePiece piece_id="crpg_wooden_hammer_pommel" />
+      <UsablePiece piece_id="crpg_narrow_sword_pommel" />
+      <UsablePiece piece_id="crpg_morningstar_pommel" />
+      <UsablePiece piece_id="crpg_lowland_throwing_knife_pommel" />
+      <UsablePiece piece_id="crpg_lowland_throwing_knife_handle" />
+      <UsablePiece piece_id="crpg_lowland_throwing_knife_guard" />
+      <UsablePiece piece_id="crpg_lowland_throwing_knife_blade" />
+      <UsablePiece piece_id="crpg_leafblade_throwing_knife_pommel" />
+      <UsablePiece piece_id="crpg_leafblade_throwing_knife_handle" />
+      <UsablePiece piece_id="crpg_leafblade_throwing_knife_guard" />
+      <UsablePiece piece_id="crpg_leafblade_throwing_knife_blade" />
+      <UsablePiece piece_id="crpg_heavy_saber_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_saber_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_saber_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_saber_handle" />
+      <UsablePiece piece_id="crpg_straight_saber_pommel" />
+      <UsablePiece piece_id="crpg_straight_saber_handle" />
+      <UsablePiece piece_id="crpg_iron_saber_pommel" />
+      <UsablePiece piece_id="crpg_iron_saber_handle" />
+      <UsablePiece piece_id="crpg_steppe_light_mace_pommel" />
+      <UsablePiece piece_id="crpg_ridged_long_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_iron_spatha_handle" />
+      <UsablePiece piece_id="crpg_falx_knife_pommel" />
+      <UsablePiece piece_id="crpg_falx_knife_handle" />
+      <UsablePiece piece_id="crpg_falx_knife_guard" />
+      <UsablePiece piece_id="crpg_xiphos_handle" />
+      <UsablePiece piece_id="crpg_xiphos_guard" />
+      <UsablePiece piece_id="crpg_xiphos_blade" />
+      <UsablePiece piece_id="crpg_iron_falchion_pommel" />
+      <UsablePiece piece_id="crpg_iron_falchion_handle" />
+      <UsablePiece piece_id="crpg_broad_bladed_throwing_knives_pommel" />
+      <UsablePiece piece_id="crpg_broad_bladed_throwing_knives_handle" />
+      <UsablePiece piece_id="crpg_broad_bladed_throwing_knives_guard" />
+      <UsablePiece piece_id="crpg_broad_bladed_throwing_knives_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_spatha_handle" />
+      <UsablePiece piece_id="crpg_spatha_pommel" />
+      <UsablePiece piece_id="crpg_spatha_handle" />
+      <UsablePiece piece_id="crpg_spatha_with_narrow_fuller_pommel" />
+      <UsablePiece piece_id="crpg_spatha_with_narrow_fuller_handle" />
+      <UsablePiece piece_id="crpg_early_retirement_pommel" />
+      <UsablePiece piece_id="crpg_tribesman_throwing_daggers_pommel" />
+      <UsablePiece piece_id="crpg_tribesman_throwing_daggers_handle" />
+      <UsablePiece piece_id="crpg_tribesman_throwing_daggers_guard" />
+      <UsablePiece piece_id="crpg_tribesman_throwing_daggers_blade" />
+      <UsablePiece piece_id="crpg_iron_cleaver_pommel" />
+      <UsablePiece piece_id="crpg_iron_cleaver_handle" />
+      <UsablePiece piece_id="crpg_highland_throwing_dagger_pommel" />
+      <UsablePiece piece_id="crpg_highland_throwing_dagger_handle" />
+      <UsablePiece piece_id="crpg_highland_throwing_dagger_guard" />
+      <UsablePiece piece_id="crpg_highland_throwing_dagger_blade" />
+      <UsablePiece piece_id="crpg_highland_dagger_pommel" />
+      <UsablePiece piece_id="crpg_highland_dagger_handle" />
+      <UsablePiece piece_id="crpg_highland_dagger_blade" />
+      <UsablePiece piece_id="crpg_broad_ild_pommel" />
+      <UsablePiece piece_id="crpg_pointed_falchion_handle" />
+      <UsablePiece piece_id="crpg_iron_pointed_sword_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_broadsword_handle" />
+      <UsablePiece piece_id="crpg_fine_steel_broad_shortsword_handle" />
+      <UsablePiece piece_id="crpg_ridged_iron_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_highland_pointed_blade_handle" />
+      <UsablePiece piece_id="crpg_battanian_mountain_blade_pommel" />
+      <UsablePiece piece_id="crpg_northlander_wide_fullered_greatsword_pommel" />
+      <UsablePiece piece_id="crpg_highland_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_iron_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_simple_short_warsword_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_kaskara_handle" />
+      <UsablePiece piece_id="crpg_slightly_ridged_flyssa_pommel" />
+      <UsablePiece piece_id="crpg_slightly_ridged_flyssa_handle" />
+      <UsablePiece piece_id="crpg_iron_cavalry_scimitar_pommel" />
+      <UsablePiece piece_id="crpg_iron_cavalry_scimitar_handle" />
+      <UsablePiece piece_id="crpg_iron_flyssa_pommel" />
+      <UsablePiece piece_id="crpg_iron_flyssa_handle" />
+    </UsablePieces>
+  </CraftingTemplate>
+  <CraftingTemplate id="crpg_OneHandedAxe" item_type="OneHandedWeapon" modifier_group="axe" item_holsters="axe_right_hip:axe_right_hip_2:mace_right_hip:axe_back" default_item_holster_position_offset="0,0,-0.45" use_weapon_as_holster_mesh="true">
+    <PieceDatas>
+      <PieceData piece_type="Handle" build_order="0" />
+      <PieceData piece_type="Blade" build_order="1" />
+      <PieceData piece_type="Pommel" build_order="-1" />
+    </PieceDatas>
+    <WeaponDescriptions>
+      <WeaponDescription id="crpg_OneHandedAxe" />
+    </WeaponDescriptions>
+    <StatsData>
+      <StatData stat_type="Weight" max_value="7.0" />
+      <StatData stat_type="WeaponReach" max_value="300" />
+      <StatData stat_type="ThrustSpeed" max_value="200" />
+      <StatData stat_type="SwingSpeed" max_value="200" />
+      <StatData stat_type="ThrustDamage" max_value="500" />
+      <StatData stat_type="SwingDamage" max_value="500" />
+      <StatData stat_type="Handling" max_value="200" />
+    </StatsData>
+    <UsablePieces>
+      <UsablePiece piece_id="crpg_saxon_hooked_axe_handle" />
+      <UsablePiece piece_id="crpg_saxon_hooked_axe_blade" />
+      <UsablePiece piece_id="crpg_wooden_sword_pommel" />
+      <UsablePiece piece_id="crpg_wooden_twohander_pommel" />
+      <UsablePiece piece_id="crpg_winds_fury_pommel" />
+      <UsablePiece piece_id="crpg_wide_leaf_spear_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_spear_pommel" />
+      <UsablePiece piece_id="crpg_long_fine_steel_spear_pommel" />
+      <UsablePiece piece_id="crpg_hooked_javelin_pommel" />
+      <UsablePiece piece_id="crpg_lowland_javelin_pommel" />
+      <UsablePiece piece_id="crpg_simple_javelin_pommel" />
+      <UsablePiece piece_id="crpg_broad_two_hander_pommel" />
+      <UsablePiece piece_id="crpg_tapered_two-hander_pommel" />
+      <UsablePiece piece_id="crpg_war_razor_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_sword_pommel" />
+      <UsablePiece piece_id="crpg_narrow_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_knightly_cavalry_sword_pommel" />
+      <UsablePiece piece_id="crpg_iron_cavalry_sword_pommel" />
+      <UsablePiece piece_id="crpg_iron_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_early_halberd_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_pernach_pommel" />
+      <UsablePiece piece_id="crpg_fullered_western_mace_pommel" />
+      <UsablePiece piece_id="crpg_knightly_spiked_battle_axe_handle" />
+      <UsablePiece piece_id="crpg_knightly_spiked_battle_axe_blade" />
+      <UsablePiece piece_id="crpg_steel_footman_axe_handle" />
+      <UsablePiece piece_id="crpg_steel_footman_axe_blade" />
+      <UsablePiece piece_id="crpg_wide_fullered_broad_two_hander_pommel" />
+      <UsablePiece piece_id="crpg_long_tzikourion_axe_handle" />
+      <UsablePiece piece_id="crpg_long_tzikourion_axe_blade" />
+      <UsablePiece piece_id="crpg_scalpel_pommel" />
+      <UsablePiece piece_id="crpg_warrazor_pommel" />
+      <UsablePiece piece_id="crpg_wood_chopper_axe_handle" />
+      <UsablePiece piece_id="crpg_wood_chopper_axe_blade" />
+      <UsablePiece piece_id="crpg_steel_pillager_axe_handle" />
+      <UsablePiece piece_id="crpg_steel_pillager_axe_blade" />
+      <UsablePiece piece_id="crpg_forester_axe_handle" />
+      <UsablePiece piece_id="crpg_forester_axe_blade" />
+      <UsablePiece piece_id="crpg_iron_hand_axe_handle" />
+      <UsablePiece piece_id="crpg_iron_hand_axe_blade" />
+      <UsablePiece piece_id="crpg_star_falchion_pommel" />
+      <UsablePiece piece_id="crpg_long_thamaskene_tipped_spear_pommel" />
+      <UsablePiece piece_id="crpg_desert_crescent_axe_handle" />
+      <UsablePiece piece_id="crpg_desert_crescent_axe_blade" />
+      <UsablePiece piece_id="crpg_broad_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_boarding_axe_handle" />
+      <UsablePiece piece_id="crpg_boarding_axe_blade" />
+      <UsablePiece piece_id="crpg_tabar_axe_handle" />
+      <UsablePiece piece_id="crpg_tabar_axe_blade" />
+      <UsablePiece piece_id="crpg_simple_saber_pommel" />
+      <UsablePiece piece_id="crpg_simple_scimitar_pommel" />
+      <UsablePiece piece_id="crpg_short_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_light_shishpar_mace_pommel" />
+      <UsablePiece piece_id="crpg_seax_pommel" />
+      <UsablePiece piece_id="crpg_reaper_pommel" />
+      <UsablePiece piece_id="crpg_pugio_pommel" />
+      <UsablePiece piece_id="crpg_bludgeon_staff_pommel" />
+      <UsablePiece piece_id="crpg_broad_falchion_pommel" />
+      <UsablePiece piece_id="crpg_militia_pernach_pommel" />
+      <UsablePiece piece_id="crpg_sickle_handle" />
+      <UsablePiece piece_id="crpg_sickle_blade" />
+      <UsablePiece piece_id="crpg_pickaxe_handle" />
+      <UsablePiece piece_id="crpg_pickaxe_blade" />
+      <UsablePiece piece_id="crpg_hatchet_handle" />
+      <UsablePiece piece_id="crpg_hatchet_blade" />
+      <UsablePiece piece_id="crpg_wooden_hammer_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_hewing_spear_pommel" />
+      <UsablePiece piece_id="crpg_broad_blade_javelin_pommel" />
+      <UsablePiece piece_id="crpg_woodland_javelin_pommel" />
+      <UsablePiece piece_id="crpg_fish_harpoon_pommel" />
+      <UsablePiece piece_id="crpg_raider_battle_axe_handle" />
+      <UsablePiece piece_id="crpg_raider_battle_axe_blade" />
+      <UsablePiece piece_id="crpg_narrow_sword_pommel" />
+      <UsablePiece piece_id="crpg_morningstar_pommel" />
+      <UsablePiece piece_id="crpg_lowland_throwing_knife_pommel" />
+      <UsablePiece piece_id="crpg_light_mace_pommel" />
+      <UsablePiece piece_id="crpg_leafblade_throwing_knife_pommel" />
+      <UsablePiece piece_id="crpg_long_franziska_axe_handle" />
+      <UsablePiece piece_id="crpg_long_franziska_axe_blade" />
+      <UsablePiece piece_id="crpg_knight's_fall_pommel" />
+      <UsablePiece piece_id="crpg_iron_saber_pommel" />
+      <UsablePiece piece_id="crpg_long_glaive_pommel" />
+      <UsablePiece piece_id="crpg_glaive_pommel" />
+      <UsablePiece piece_id="crpg_tall_gripped_ild_pommel" />
+      <UsablePiece piece_id="crpg_lion_imprinted_saber_pommel" />
+      <UsablePiece piece_id="crpg_decorated_cavalry_saber_pommel" />
+      <UsablePiece piece_id="crpg_heavy_flanged_mace_pommel" />
+      <UsablePiece piece_id="crpg_steppe_light_mace_pommel" />
+      <UsablePiece piece_id="crpg_ridged_long_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_shepherd's_axe_handle" />
+      <UsablePiece piece_id="crpg_shepherd_axe_handle" />
+      <UsablePiece piece_id="crpg_shepherd's_axe_blade" />
+      <UsablePiece piece_id="crpg_shepherd_axe_blade" />
+      <UsablePiece piece_id="crpg_kama_handle" />
+      <UsablePiece piece_id="crpg_kama_blade" />
+      <UsablePiece piece_id="crpg_justicier_pommel" />
+      <UsablePiece piece_id="crpg_iron_spatha_pommel" />
+      <UsablePiece piece_id="crpg_pilum_pommel" />
+      <UsablePiece piece_id="crpg_tzikourion_axe_handle" />
+      <UsablePiece piece_id="crpg_tzikourion_axe_blade" />
+      <UsablePiece piece_id="crpg_falx_knife_pommel" />
+      <UsablePiece piece_id="crpg_steel_tipped_hooked_spear_pommel" />
+      <UsablePiece piece_id="crpg_xiphos_pommel" />
+      <UsablePiece piece_id="crpg_harpoon_pommel" />
+      <UsablePiece piece_id="crpg_iron_falchion_pommel" />
+      <UsablePiece piece_id="crpg_broad_bladed_throwing_knives_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_spathion_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_paramerion_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_spatha_pommel" />
+      <UsablePiece piece_id="crpg_spatha_pommel" />
+      <UsablePiece piece_id="crpg_spatha_with_narrow_fuller_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_menavlion_pommel" />
+      <UsablePiece piece_id="crpg_menavlion_pommel" />
+      <UsablePiece piece_id="crpg_spatha_blade_with_ring_pommel_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_spatha_pommel" />
+      <UsablePiece piece_id="crpg_decorated_short_spatha_pommel" />
+      <UsablePiece piece_id="crpg_light_royal_mace_pommel" />
+      <UsablePiece piece_id="crpg_calradic_mace_pommel" />
+      <UsablePiece piece_id="crpg_imperial_light_mace_pommel" />
+      <UsablePiece piece_id="crpg_triangular_throwing_spear_pommel" />
+      <UsablePiece piece_id="crpg_steel_mace_pommel" />
+      <UsablePiece piece_id="crpg_thin_fine_steel_hewing_spear_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_leaf_spear_pommel" />
+      <UsablePiece piece_id="crpg_jereed_pommel" />
+      <UsablePiece piece_id="crpg_horseman_javelin_pommel" />
+      <UsablePiece piece_id="crpg_jagged_javelin_pommel" />
+      <UsablePiece piece_id="crpg_polesword_pommel" />
+      <UsablePiece piece_id="crpg_early_retirement_pommel" />
+      <UsablePiece piece_id="crpg_tribesman_throwing_daggers_pommel" />
+      <UsablePiece piece_id="crpg_desert_longsword_pommel" />
+      <UsablePiece piece_id="crpg_dawnbreaker_pommel" />
+      <UsablePiece piece_id="crpg_highland_throwing_dagger_pommel" />
+      <UsablePiece piece_id="crpg_highland_dagger_pommel" />
+      <UsablePiece piece_id="crpg_broad_ild_pommel" />
+      <UsablePiece piece_id="crpg_pointed_falchion_pommel" />
+      <UsablePiece piece_id="crpg_iron_pointed_sword_pommel" />
+      <UsablePiece piece_id="crpg_bone_crusher_pommel" />
+      <UsablePiece piece_id="crpg_billhook_pommel" />
+      <UsablePiece piece_id="crpg_shield_reaver_axe_handle" />
+      <UsablePiece piece_id="crpg_shield_reaver_axe_blade" />
+      <UsablePiece piece_id="crpg_highland_broad_blade_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_steel_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_broad_shortsword_pommel" />
+      <UsablePiece piece_id="crpg_ridged_iron_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_rhomphaia_pommel" />
+      <UsablePiece piece_id="crpg_decorated_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_highland_pointed_blade_pommel" />
+      <UsablePiece piece_id="crpg_engraved_backsword_pommel" />
+      <UsablePiece piece_id="crpg_light_morningstar_pommel" />
+      <UsablePiece piece_id="crpg_steel_round_axe_handle" />
+      <UsablePiece piece_id="crpg_steel_round_axe_blade" />
+      <UsablePiece piece_id="crpg_saxon_bearded_axe_handle" />
+      <UsablePiece piece_id="crpg_saxon_bearded_axe_blade" />
+      <UsablePiece piece_id="crpg_norse_huscarl_axe_handle" />
+      <UsablePiece piece_id="crpg_norse_huscarl_axe_blade" />
+      <UsablePiece piece_id="crpg_battanian_mountain_blade_pommel" />
+      <UsablePiece piece_id="crpg_highland_fine_two_handed_sword_pommel" />
+      <UsablePiece piece_id="crpg_northlander_wide_fullered_greatsword_pommel" />
+      <UsablePiece piece_id="crpg_highland_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_desert_battle_axe_handle" />
+      <UsablePiece piece_id="crpg_desert_battle_axe_blade" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_narrow_fine_steel_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_scimitar_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_long_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_slightly_ridged_flyssa_pommel" />
+      <UsablePiece piece_id="crpg_iron_cavalry_scimitar_pommel" />
+      <UsablePiece piece_id="crpg_iron_flyssa_pommel" />
+      <UsablePiece piece_id="crpg_engraved_angular_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_decorated_scimitar_with_wide_grip_pommel" />
+      <UsablePiece piece_id="crpg_decorated_elite_scimitar_pommel" />
+      <UsablePiece piece_id="crpg_decorated_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_desert_ascia_axe_handle" />
+      <UsablePiece piece_id="crpg_desert_ascia_axe_blade" />
+      <UsablePiece piece_id="crpg_wood_splitter_axe_handle" />
+      <UsablePiece piece_id="crpg_wood_splitter_axe_blade" />
+      <UsablePiece piece_id="crpg_the_ambassador_pommel" />
+    </UsablePieces>
+  </CraftingTemplate>
+  <CraftingTemplate id="crpg_TwoHandedAxe" item_type="TwoHandedWeapon" modifier_group="axe" item_holsters="axe_back:axe_back_2:axe_back_3:axe_back_4" default_item_holster_position_offset="0,0,-0.65" use_weapon_as_holster_mesh="true">
+    <PieceDatas>
+      <PieceData piece_type="Handle" build_order="0" />
+      <PieceData piece_type="Blade" build_order="1" />
+      <PieceData piece_type="Pommel" build_order="-1" />
+    </PieceDatas>
+    <WeaponDescriptions>
+      <WeaponDescription id="crpg_OneHandedBastardAxe" />
+      <WeaponDescription id="crpg_TwoHandedAxe" />
+      <WeaponDescription id="crpg_OneHandedBastardAxeAlternative" />
+    </WeaponDescriptions>
+    <StatsData>
+      <StatData stat_type="Weight" max_value="7.0" />
+      <StatData stat_type="WeaponReach" max_value="300" />
+      <StatData stat_type="ThrustSpeed" max_value="200" />
+      <StatData stat_type="SwingSpeed" max_value="200" />
+      <StatData stat_type="ThrustDamage" max_value="500" />
+      <StatData stat_type="SwingDamage" max_value="500" />
+      <StatData stat_type="Handling" max_value="200" />
+    </StatsData>
+    <UsablePieces>
+      <UsablePiece piece_id="crpg_wooden_sword_pommel" />
+      <UsablePiece piece_id="crpg_wooden_twohander_pommel" />
+      <UsablePiece piece_id="crpg_winds_fury_pommel" />
+      <UsablePiece piece_id="crpg_wide_leaf_spear_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_spear_pommel" />
+      <UsablePiece piece_id="crpg_long_fine_steel_spear_pommel" />
+      <UsablePiece piece_id="crpg_hooked_javelin_pommel" />
+      <UsablePiece piece_id="crpg_lowland_javelin_pommel" />
+      <UsablePiece piece_id="crpg_simple_javelin_pommel" />
+      <UsablePiece piece_id="crpg_broad_two_hander_pommel" />
+      <UsablePiece piece_id="crpg_tapered_two-hander_pommel" />
+      <UsablePiece piece_id="crpg_war_razor_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_sword_pommel" />
+      <UsablePiece piece_id="crpg_narrow_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_knightly_cavalry_sword_pommel" />
+      <UsablePiece piece_id="crpg_iron_cavalry_sword_pommel" />
+      <UsablePiece piece_id="crpg_iron_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_early_halberd_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_pernach_pommel" />
+      <UsablePiece piece_id="crpg_fullered_western_mace_pommel" />
+      <UsablePiece piece_id="crpg_wide_fullered_broad_two_hander_pommel" />
+      <UsablePiece piece_id="crpg_short_bill_handle" />
+      <UsablePiece piece_id="crpg_short_bill_blade" />
+      <UsablePiece piece_id="crpg_scalpel_pommel" />
+      <UsablePiece piece_id="crpg_warrazor_pommel" />
+      <UsablePiece piece_id="crpg_northlander_decorated_two_handed_axe_handle" />
+      <UsablePiece piece_id="crpg_northlander_decorated_two_handed_axe_blade" />
+      <UsablePiece piece_id="crpg_drilled_two_handed_axe_handle" />
+      <UsablePiece piece_id="crpg_drilled_two_handed_axe_blade" />
+      <UsablePiece piece_id="crpg_star_falchion_pommel" />
+      <UsablePiece piece_id="crpg_long_thamaskene_tipped_spear_pommel" />
+      <UsablePiece piece_id="crpg_broad_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_saxon_short_battle_axe_handle" />
+      <UsablePiece piece_id="crpg_saxon_short_battle_axe_blade" />
+      <UsablePiece piece_id="crpg_simple_saber_pommel" />
+      <UsablePiece piece_id="crpg_simple_scimitar_pommel" />
+      <UsablePiece piece_id="crpg_short_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_light_shishpar_mace_pommel" />
+      <UsablePiece piece_id="crpg_seax_pommel" />
+      <UsablePiece piece_id="crpg_reaper_pommel" />
+      <UsablePiece piece_id="crpg_pugio_pommel" />
+      <UsablePiece piece_id="crpg_bludgeon_staff_pommel" />
+      <UsablePiece piece_id="crpg_broad_falchion_pommel" />
+      <UsablePiece piece_id="crpg_militia_pernach_pommel" />
+      <UsablePiece piece_id="crpg_wooden_hammer_pommel" />
+      <UsablePiece piece_id="crpg_hoe_handle" />
+      <UsablePiece piece_id="crpg_hoe_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_hewing_spear_pommel" />
+      <UsablePiece piece_id="crpg_broad_blade_javelin_pommel" />
+      <UsablePiece piece_id="crpg_woodland_javelin_pommel" />
+      <UsablePiece piece_id="crpg_fish_harpoon_pommel" />
+      <UsablePiece piece_id="crpg_broad_two_handed_axe_handle" />
+      <UsablePiece piece_id="crpg_broad_two_handed_axe_blade" />
+      <UsablePiece piece_id="crpg_narrow_sword_pommel" />
+      <UsablePiece piece_id="crpg_morningstar_pommel" />
+      <UsablePiece piece_id="crpg_lowland_throwing_knife_pommel" />
+      <UsablePiece piece_id="crpg_light_mace_pommel" />
+      <UsablePiece piece_id="crpg_leafblade_throwing_knife_pommel" />
+      <UsablePiece piece_id="crpg_knight's_fall_pommel" />
+      <UsablePiece piece_id="crpg_iron_saber_pommel" />
+      <UsablePiece piece_id="crpg_long_glaive_pommel" />
+      <UsablePiece piece_id="crpg_glaive_pommel" />
+      <UsablePiece piece_id="crpg_tall_gripped_ild_pommel" />
+      <UsablePiece piece_id="crpg_lion_imprinted_saber_pommel" />
+      <UsablePiece piece_id="crpg_decorated_cavalry_saber_pommel" />
+      <UsablePiece piece_id="crpg_heavy_flanged_mace_pommel" />
+      <UsablePiece piece_id="crpg_steppe_light_mace_pommel" />
+      <UsablePiece piece_id="crpg_ridged_long_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_justicier_pommel" />
+      <UsablePiece piece_id="crpg_iron_spatha_pommel" />
+      <UsablePiece piece_id="crpg_pilum_pommel" />
+      <UsablePiece piece_id="crpg_falx_knife_pommel" />
+      <UsablePiece piece_id="crpg_hooked_two_handed_axe_handle" />
+      <UsablePiece piece_id="crpg_hooked_two_handed_axe_blade" />
+      <UsablePiece piece_id="crpg_steel_tipped_hooked_spear_pommel" />
+      <UsablePiece piece_id="crpg_xiphos_pommel" />
+      <UsablePiece piece_id="crpg_harpoon_pommel" />
+      <UsablePiece piece_id="crpg_iron_falchion_pommel" />
+      <UsablePiece piece_id="crpg_broad_bladed_throwing_knives_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_spathion_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_paramerion_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_spatha_pommel" />
+      <UsablePiece piece_id="crpg_spatha_pommel" />
+      <UsablePiece piece_id="crpg_spatha_with_narrow_fuller_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_menavlion_pommel" />
+      <UsablePiece piece_id="crpg_menavlion_pommel" />
+      <UsablePiece piece_id="crpg_spatha_blade_with_ring_pommel_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_spatha_pommel" />
+      <UsablePiece piece_id="crpg_decorated_short_spatha_pommel" />
+      <UsablePiece piece_id="crpg_light_royal_mace_pommel" />
+      <UsablePiece piece_id="crpg_calradic_mace_pommel" />
+      <UsablePiece piece_id="crpg_imperial_light_mace_pommel" />
+      <UsablePiece piece_id="crpg_triangular_throwing_spear_pommel" />
+      <UsablePiece piece_id="crpg_steel_mace_pommel" />
+      <UsablePiece piece_id="crpg_thin_fine_steel_hewing_spear_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_leaf_spear_pommel" />
+      <UsablePiece piece_id="crpg_jereed_pommel" />
+      <UsablePiece piece_id="crpg_horseman_javelin_pommel" />
+      <UsablePiece piece_id="crpg_jagged_javelin_pommel" />
+      <UsablePiece piece_id="crpg_polesword_pommel" />
+      <UsablePiece piece_id="crpg_early_retirement_pommel" />
+      <UsablePiece piece_id="crpg_tribesman_throwing_daggers_pommel" />
+      <UsablePiece piece_id="crpg_desert_longsword_pommel" />
+      <UsablePiece piece_id="crpg_dawnbreaker_pommel" />
+      <UsablePiece piece_id="crpg_highland_throwing_dagger_pommel" />
+      <UsablePiece piece_id="crpg_highland_dagger_pommel" />
+      <UsablePiece piece_id="crpg_broad_ild_pommel" />
+      <UsablePiece piece_id="crpg_pointed_falchion_pommel" />
+      <UsablePiece piece_id="crpg_iron_pointed_sword_pommel" />
+      <UsablePiece piece_id="crpg_bone_crusher_pommel" />
+      <UsablePiece piece_id="crpg_black_heart_axe_handle" />
+      <UsablePiece piece_id="crpg_black_heart_axe_blade" />
+      <UsablePiece piece_id="crpg_billhook_pommel" />
+      <UsablePiece piece_id="crpg_dane_axe_handle" />
+      <UsablePiece piece_id="crpg_dane_axe_blade" />
+      <UsablePiece piece_id="crpg_highland_broad_blade_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_steel_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_broad_shortsword_pommel" />
+      <UsablePiece piece_id="crpg_ridged_iron_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_rhomphaia_pommel" />
+      <UsablePiece piece_id="crpg_decorated_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_highland_pointed_blade_pommel" />
+      <UsablePiece piece_id="crpg_engraved_backsword_pommel" />
+      <UsablePiece piece_id="crpg_light_morningstar_pommel" />
+      <UsablePiece piece_id="crpg_battanian_mountain_blade_pommel" />
+      <UsablePiece piece_id="crpg_highland_fine_two_handed_sword_pommel" />
+      <UsablePiece piece_id="crpg_northlander_wide_fullered_greatsword_pommel" />
+      <UsablePiece piece_id="crpg_highland_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_woodsman_two_handed_axe_handle" />
+      <UsablePiece piece_id="crpg_woodsman_two_handed_axe_blade" />
+      <UsablePiece piece_id="crpg_avalanche_handle" />
+      <UsablePiece piece_id="crpg_avalanche_blade" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_narrow_fine_steel_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_scimitar_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_long_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_slightly_ridged_flyssa_pommel" />
+      <UsablePiece piece_id="crpg_iron_cavalry_scimitar_pommel" />
+      <UsablePiece piece_id="crpg_iron_flyssa_pommel" />
+      <UsablePiece piece_id="crpg_engraved_angular_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_decorated_scimitar_with_wide_grip_pommel" />
+      <UsablePiece piece_id="crpg_decorated_elite_scimitar_pommel" />
+      <UsablePiece piece_id="crpg_decorated_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_chainbreaker_handle" />
+      <UsablePiece piece_id="crpg_chainbreaker_blade" />
+      <UsablePiece piece_id="crpg_bardiche_handle" />
+      <UsablePiece piece_id="crpg_bardiche_blade" />
+      <UsablePiece piece_id="crpg_great_bardiche_handle" />
+      <UsablePiece piece_id="crpg_great_bardiche_blade" />
+      <UsablePiece piece_id="crpg_the_ambassador_pommel" />
+      <UsablePiece piece_id="crpg_long_greataxe_handle" />
+      <UsablePiece piece_id="crpg_long_greataxe_blade" />
+      <UsablePiece piece_id="crpg_greataxe_handle" />
+      <UsablePiece piece_id="crpg_greataxe_blade" />
+    </UsablePieces>
+  </CraftingTemplate>
+  <CraftingTemplate id="crpg_ThrowingAxe" item_type="Thrown" modifier_group="axe_throwing" item_holsters="throwing_axe:throwing_axe_2:axe_right_hip_2:axe_back" default_item_holster_position_offset="0,0,0.05" always_show_holster_with_weapon="true">
+    <PieceDatas>
+      <PieceData piece_type="Handle" build_order="0" />
+      <PieceData piece_type="Blade" build_order="1" />
+    </PieceDatas>
+    <WeaponDescriptions>
+      <WeaponDescription id="crpg_ThrowingAxe" />
+      <WeaponDescription id="crpg_OneHandedAxe" />
+      <WeaponDescription id="crpg_ThrowingHammer" />
+      <WeaponDescription id="crpg_Mace" />
+    </WeaponDescriptions>
+    <StatsData weapon_description="crpg_ThrowingAxe">
+      <StatData stat_type="Weight" max_value="7.0" />
+      <StatData stat_type="WeaponReach" max_value="300" />
+      <StatData stat_type="MissileDamage" max_value="500" />
+      <StatData stat_type="MissileSpeed" max_value="200" />
+      <StatData stat_type="Accuracy" max_value="100" />
+    </StatsData>
+    <StatsData weapon_description="crpg_OneHandedAxe">
+      <StatData stat_type="Weight" max_value="7.0" />
+      <StatData stat_type="WeaponReach" max_value="300" />
+      <StatData stat_type="ThrustSpeed" max_value="200" />
+      <StatData stat_type="SwingSpeed" max_value="200" />
+      <StatData stat_type="ThrustDamage" max_value="500" />
+      <StatData stat_type="SwingDamage" max_value="500" />
+      <StatData stat_type="Handling" max_value="200" />
+    </StatsData>
+    <UsablePieces>
+      <UsablePiece piece_id="crpg_francesca_handle" />
+      <UsablePiece piece_id="crpg_francesca_blade" />
+      <UsablePiece piece_id="crpg_tribesman_throwing_axe_handle" />
+      <UsablePiece piece_id="crpg_tribesman_throwing_axe_blade" />
+      <UsablePiece piece_id="crpg_raider_throwing_axe_handle" />
+      <UsablePiece piece_id="crpg_raider_throwing_axe_blade" />
+      <UsablePiece piece_id="crpg_highland_throwing_axe_handle" />
+      <UsablePiece piece_id="crpg_highland_throwing_axe_blade" />
+      <UsablePiece piece_id="crpg_throwing_hammers_handle" />
+      <UsablePiece piece_id="crpg_throwing_hammers_blade" />
+    </UsablePieces>
+  </CraftingTemplate>
+  <CraftingTemplate id="crpg_TwoHandedPolearm" item_type="Polearm" modifier_group="polearm" item_holsters="polearm_back:polearm_back_2:polearm_back_3:polearm_back_4" default_item_holster_position_offset="0,0,-0.30" use_weapon_as_holster_mesh="true">
+    <PieceDatas>
+      <PieceData piece_type="Handle" build_order="0" />
+      <PieceData piece_type="Guard" build_order="1" />
+      <PieceData piece_type="Blade" build_order="2" />
+      <PieceData piece_type="Pommel" build_order="-1" />
+    </PieceDatas>
+    <WeaponDescriptions>
+      <WeaponDescription id="crpg_OneHandedPolearm" />
+      <WeaponDescription id="crpg_TwoHandedPolearm" />
+      <WeaponDescription id="crpg_TwoHandedPolearm_Couchable" />
+      <WeaponDescription id="crpg_TwoHandedPolearm_Bracing" />
+      <WeaponDescription id="crpg_TwoHandedPolearm_Thrown" />
+    </WeaponDescriptions>
+    <StatsData>
+      <StatData stat_type="Weight" max_value="7.0" />
+      <StatData stat_type="WeaponReach" max_value="300" />
+      <StatData stat_type="ThrustSpeed" max_value="200" />
+      <StatData stat_type="SwingSpeed" max_value="200" />
+      <StatData stat_type="ThrustDamage" max_value="500" />
+      <StatData stat_type="SwingDamage" max_value="500" />
+      <StatData stat_type="Handling" max_value="200" />
+    </StatsData>
+    <UsablePieces>
+      <UsablePiece piece_id="crpg_iklwa_blade" />
+      <UsablePiece piece_id="crpg_iklwa_handle" />
+      <UsablePiece piece_id="crpg_hoplite_spear_pommel" />
+      <UsablePiece piece_id="crpg_hoplite_spear_guard" />
+      <UsablePiece piece_id="crpg_hoplite_spear_handle" />
+      <UsablePiece piece_id="crpg_hoplite_spear_blade" />
+      <UsablePiece piece_id="crpg_long_hafted_spiked_mace_handle" />
+      <UsablePiece piece_id="crpg_long_hafted_spiked_mace_blade" />
+      <UsablePiece piece_id="crpg_long_bardiche_handle" />
+      <UsablePiece piece_id="crpg_long_bardiche_blade" />
+      <UsablePiece piece_id="crpg_long_fine_steel_spear_pommel" />
+      <UsablePiece piece_id="crpg_tall_tipped_long_spear_handle" />
+      <UsablePiece piece_id="crpg_tall_tipped_long_spear_blade" />
+      <UsablePiece piece_id="crpg_tall_tipped_war_spear_handle" />
+      <UsablePiece piece_id="crpg_tall_tipped_war_spear_guard" />
+      <UsablePiece piece_id="crpg_tall_tipped_war_spear_blade" />
+      <UsablePiece piece_id="crpg_simple_short_spear_handle" />
+      <UsablePiece piece_id="crpg_simple_short_spear_blade" />
+      <UsablePiece piece_id="crpg_simple_commoner_spear_handle" />
+      <UsablePiece piece_id="crpg_simple_commoner_spear_blade" />
+      <UsablePiece piece_id="crpg_spanish_full_lance_pommel" />
+      <UsablePiece piece_id="crpg_spanish_full_lance_guard" />
+      <UsablePiece piece_id="crpg_spanish_full_lance_handle" />
+      <UsablePiece piece_id="crpg_spanish_full_lance_blade" />
+      <UsablePiece piece_id="crpg_hooked_javelin_pommel" />
+      <UsablePiece piece_id="crpg_hooked_javelin_guard" />
+      <UsablePiece piece_id="crpg_hooked_javelin_blade" />
+      <UsablePiece piece_id="crpg_lowland_javelin_pommel" />
+      <UsablePiece piece_id="crpg_lowland_javelin_guard" />
+      <UsablePiece piece_id="crpg_lowland_javelin_blade" />
+      <UsablePiece piece_id="crpg_simple_javelin_pommel" />
+      <UsablePiece piece_id="crpg_simple_javelin_guard" />
+      <UsablePiece piece_id="crpg_simple_javelin_blade" />
+      <UsablePiece piece_id="crpg_early_halberd_pommel" />
+      <UsablePiece piece_id="crpg_early_halberd_handle" />
+      <UsablePiece piece_id="crpg_early_halberd_guard" />
+      <UsablePiece piece_id="crpg_early_halberd_blade" />
+      <UsablePiece piece_id="crpg_pike_blade" />
+      <UsablePiece piece_id="crpg_pernach_pommel" />
+      <UsablePiece piece_id="crpg_fullered_western_mace_pommel" />
+      <UsablePiece piece_id="crpg_heavy_knightly_lance_handle" />
+      <UsablePiece piece_id="crpg_heavy_knightly_lance_blade" />
+      <UsablePiece piece_id="crpg_cavalry_lance_handle" />
+      <UsablePiece piece_id="crpg_cavalry_lance_blade" />
+      <UsablePiece piece_id="crpg_knightly_lance_handle" />
+      <UsablePiece piece_id="crpg_long_cavalry_lance_handle" />
+      <UsablePiece piece_id="crpg_knightly_lance_blade" />
+      <UsablePiece piece_id="crpg_long_cavalry_lance_blade" />
+      <UsablePiece piece_id="crpg_decorated_demilance_guard" />
+      <UsablePiece piece_id="crpg_decorated_demilance_handle" />
+      <UsablePiece piece_id="crpg_decorated_demilance_blade" />
+      <UsablePiece piece_id="crpg_wrapped_short_lance_handle" />
+      <UsablePiece piece_id="crpg_wrapped_short_lance_blade" />
+      <UsablePiece piece_id="crpg_triangular_headed_spear_handle" />
+      <UsablePiece piece_id="crpg_triangular_headed_spear_blade" />
+      <UsablePiece piece_id="crpg_thamaskene_pike_blade" />
+      <UsablePiece piece_id="crpg_warrazor_pommel" />
+      <UsablePiece piece_id="crpg_warrazor_handle" />
+      <UsablePiece piece_id="crpg_warrazor_guard" />
+      <UsablePiece piece_id="crpg_warrazor_blade" />
+      <UsablePiece piece_id="crpg_heavy_druzhinnik_lance_handle" />
+      <UsablePiece piece_id="crpg_heavy_druzhinnik_lance_blade" />
+      <UsablePiece piece_id="crpg_druzhinnik_lance_handle" />
+      <UsablePiece piece_id="crpg_druzhinnik_lance_blade" />
+      <UsablePiece piece_id="crpg_knob_headed_spear_handle" />
+      <UsablePiece piece_id="crpg_knob_headed_spear_guard" />
+      <UsablePiece piece_id="crpg_knob_headed_spear_blade" />
+      <UsablePiece piece_id="crpg_long_thamaskene_tipped_spear_pommel" />
+      <UsablePiece piece_id="crpg_long_thamaskene_tipped_spear_handle" />
+      <UsablePiece piece_id="crpg_long_thamaskene_tipped_spear_guard" />
+      <UsablePiece piece_id="crpg_long_thamaskene_tipped_spear_blade" />
+      <UsablePiece piece_id="crpg_knob_headed_spear_with_frills_handle" />
+      <UsablePiece piece_id="crpg_knob_headed_spear_with_frills_guard" />
+      <UsablePiece piece_id="crpg_knob_headed_spear_with_frills_blade" />
+      <UsablePiece piece_id="crpg_simple_pike_handle" />
+      <UsablePiece piece_id="crpg_simple_pike_blade" />
+      <UsablePiece piece_id="crpg_light_shishpar_mace_pommel" />
+      <UsablePiece piece_id="crpg_bo_staff_pommel" />
+      <UsablePiece piece_id="crpg_bo_staff_handle" />
+      <UsablePiece piece_id="crpg_bo_staff_guard" />
+      <UsablePiece piece_id="crpg_bo_staff_blade" />
+      <UsablePiece piece_id="crpg_bludgeon_staff_pommel" />
+      <UsablePiece piece_id="crpg_bludgeon_staff_handle" />
+      <UsablePiece piece_id="crpg_bludgeon_staff_guard" />
+      <UsablePiece piece_id="crpg_bludgeon_staff_blade" />
+      <UsablePiece piece_id="crpg_militia_pernach_pommel" />
+      <UsablePiece piece_id="crpg_scythe_handle" />
+      <UsablePiece piece_id="crpg_scythe_blade" />
+      <UsablePiece piece_id="crpg_pitchfork_handle" />
+      <UsablePiece piece_id="crpg_pitchfork_blade" />
+      <UsablePiece piece_id="crpg_iron_pitchfork_handle" />
+      <UsablePiece piece_id="crpg_iron_pitchfork_blade" />
+      <UsablePiece piece_id="crpg_makeshift_sledgehammer_handle" />
+      <UsablePiece piece_id="crpg_sledgehammer_handle" />
+      <UsablePiece piece_id="crpg_short_leaf_shaped_spear_handle" />
+      <UsablePiece piece_id="crpg_short_leaf_shaped_spear_blade" />
+      <UsablePiece piece_id="crpg_short_raider_spear_handle" />
+      <UsablePiece piece_id="crpg_short_raider_spear_blade" />
+      <UsablePiece piece_id="crpg_broad_blade_javelin_pommel" />
+      <UsablePiece piece_id="crpg_broad_blade_javelin_guard" />
+      <UsablePiece piece_id="crpg_broad_blade_javelin_blade" />
+      <UsablePiece piece_id="crpg_woodland_javelin_pommel" />
+      <UsablePiece piece_id="crpg_woodland_javelin_guard" />
+      <UsablePiece piece_id="crpg_woodland_javelin_blade" />
+      <UsablePiece piece_id="crpg_fish_harpoon_pommel" />
+      <UsablePiece piece_id="crpg_fish_harpoon_guard" />
+      <UsablePiece piece_id="crpg_military_fork_handle" />
+      <UsablePiece piece_id="crpg_military_fork_blade" />
+      <UsablePiece piece_id="crpg_notched_military_fork_handle" />
+      <UsablePiece piece_id="crpg_notched_military_fork_blade" />
+      <UsablePiece piece_id="crpg_light_mace_pommel" />
+      <UsablePiece piece_id="crpg_knight's_fall_pommel" />
+      <UsablePiece piece_id="crpg_long_glaive_pommel" />
+      <UsablePiece piece_id="crpg_long_glaive_handle" />
+      <UsablePiece piece_id="crpg_long_glaive_guard" />
+      <UsablePiece piece_id="crpg_long_glaive_blade" />
+      <UsablePiece piece_id="crpg_glaive_pommel" />
+      <UsablePiece piece_id="crpg_glaive_handle" />
+      <UsablePiece piece_id="crpg_glaive_guard" />
+      <UsablePiece piece_id="crpg_glaive_blade" />
+      <UsablePiece piece_id="crpg_noble_cavalry_lance_pommel" />
+      <UsablePiece piece_id="crpg_noble_cavalry_lance_handle" />
+      <UsablePiece piece_id="crpg_noble_cavalry_lance_guard" />
+      <UsablePiece piece_id="crpg_noble_cavalry_lance_blade" />
+      <UsablePiece piece_id="crpg_heavy_cavalry_lance_guard" />
+      <UsablePiece piece_id="crpg_heavy_cavalry_lance_handle" />
+      <UsablePiece piece_id="crpg_heavy_cavalry_lance_pommel" />
+      <UsablePiece piece_id="crpg_heavy_cavalry_lance_blade" />
+      <UsablePiece piece_id="crpg_decorated_steppe_lance_handle" />
+      <UsablePiece piece_id="crpg_decorated_steppe_lance_guard" />
+      <UsablePiece piece_id="crpg_decorated_steppe_lance_blade" />
+      <UsablePiece piece_id="crpg_pilum_pommel" />
+      <UsablePiece piece_id="crpg_pilum_guard" />
+      <UsablePiece piece_id="crpg_pilum_blade" />
+      <UsablePiece piece_id="crpg_short_militia_spear_handle" />
+      <UsablePiece piece_id="crpg_short_militia_spear_blade" />
+      <UsablePiece piece_id="crpg_highland_war_spear_handle" />
+      <UsablePiece piece_id="crpg_highland_war_spear_guard" />
+      <UsablePiece piece_id="crpg_highland_war_spear_blade" />
+      <UsablePiece piece_id="crpg_steel_tipped_hooked_spear_pommel" />
+      <UsablePiece piece_id="crpg_steel_tipped_hooked_spear_handle" />
+      <UsablePiece piece_id="crpg_steel_tipped_hooked_spear_guard" />
+      <UsablePiece piece_id="crpg_steel_tipped_hooked_spear_blade" />
+      <UsablePiece piece_id="crpg_harpoon_pommel" />
+      <UsablePiece piece_id="crpg_harpoon_guard" />
+      <UsablePiece piece_id="crpg_harpoon_blade" />
+      <UsablePiece piece_id="crpg_fine_pike_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_menavlion_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_menavlion_handle" />
+      <UsablePiece piece_id="crpg_fine_steel_menavlion_guard" />
+      <UsablePiece piece_id="crpg_fine_steel_menavlion_blade" />
+      <UsablePiece piece_id="crpg_menavlion_pommel" />
+      <UsablePiece piece_id="crpg_menavlion_handle" />
+      <UsablePiece piece_id="crpg_menavlion_guard" />
+      <UsablePiece piece_id="crpg_menavlion_blade" />
+      <UsablePiece piece_id="crpg_calradic_mace_pommel" />
+      <UsablePiece piece_id="crpg_cataphract_lance_handle" />
+      <UsablePiece piece_id="crpg_cataphract_lance_blade" />
+      <UsablePiece piece_id="crpg_courser_lance_handle" />
+      <UsablePiece piece_id="crpg_courser_lance_blade" />
+      <UsablePiece piece_id="crpg_sasanian_light_lance_handle" />
+      <UsablePiece piece_id="crpg_sasanian_light_lance_blade" />
+      <UsablePiece piece_id="crpg_triangular_throwing_spear_pommel" />
+      <UsablePiece piece_id="crpg_triangular_throwing_spear_guard" />
+      <UsablePiece piece_id="crpg_triangular_throwing_spear_blade" />
+      <UsablePiece piece_id="crpg_jagged_throwing_spear_guard" />
+      <UsablePiece piece_id="crpg_jagged_throwing_spear_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_leaf_spear_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_leaf_spear_handle" />
+      <UsablePiece piece_id="crpg_fine_steel_leaf_spear_guard" />
+      <UsablePiece piece_id="crpg_fine_steel_leaf_spear_blade" />
+      <UsablePiece piece_id="crpg_narrow_long_headed_spear_handle" />
+      <UsablePiece piece_id="crpg_narrow_long_headed_spear_blade" />
+      <UsablePiece piece_id="crpg_chinese_war_lance_handle" />
+      <UsablePiece piece_id="crpg_chinese_war_lance_blade" />
+      <UsablePiece piece_id="crpg_jagged_spear_handle" />
+      <UsablePiece piece_id="crpg_jagged_spear_blade" />
+      <UsablePiece piece_id="crpg_jereed_pommel" />
+      <UsablePiece piece_id="crpg_jereed_guard" />
+      <UsablePiece piece_id="crpg_jereed_blade" />
+      <UsablePiece piece_id="crpg_horseman_javelin_pommel" />
+      <UsablePiece piece_id="crpg_horseman_javelin_guard" />
+      <UsablePiece piece_id="crpg_horseman_javelin_blade" />
+      <UsablePiece piece_id="crpg_jagged_javelin_pommel" />
+      <UsablePiece piece_id="crpg_jagged_javelin_guard" />
+      <UsablePiece piece_id="crpg_jagged_javelin_blade" />
+      <UsablePiece piece_id="crpg_polesword_pommel" />
+      <UsablePiece piece_id="crpg_polesword_handle" />
+      <UsablePiece piece_id="crpg_polesword_guard" />
+      <UsablePiece piece_id="crpg_polesword_blade" />
+      <UsablePiece piece_id="crpg_billhook_pommel" />
+      <UsablePiece piece_id="crpg_billhook_handle" />
+      <UsablePiece piece_id="crpg_billhook_guard" />
+      <UsablePiece piece_id="crpg_billhook_blade" />
+      <UsablePiece piece_id="crpg_rhomphaia_pommel" />
+      <UsablePiece piece_id="crpg_rhomphaia_handle" />
+      <UsablePiece piece_id="crpg_rhomphaia_guard" />
+      <UsablePiece piece_id="crpg_rhomphaia_blade" />
+      <UsablePiece piece_id="crpg_light_morningstar_pommel" />
+      <UsablePiece piece_id="crpg_mamluke_lance_pommel" />
+      <UsablePiece piece_id="crpg_mamluke_lance_handle" />
+      <UsablePiece piece_id="crpg_mamluke_lance_blade" />
+      <UsablePiece piece_id="crpg_az-zaġāyah_handle" />
+      <UsablePiece piece_id="crpg_az-zaġāyah_blade" />
+      <UsablePiece piece_id="crpg_bec_de_corbin_blade" />
+      <UsablePiece piece_id="crpg_bec_de_corbin_handle" />
+      <UsablePiece piece_id="crpg_spiked_polehammer_handle" />
+      <UsablePiece piece_id="crpg_spiked_polehammer_blade" />
+      <UsablePiece piece_id="crpg_simple_poleaxe_handle" />
+      <UsablePiece piece_id="crpg_simple_poleaxe_blade" />
+      <UsablePiece piece_id="crpg_burgundian_poleaxe_handle" />
+      <UsablePiece piece_id="crpg_burgundian_poleaxe_blade" />
+      <UsablePiece piece_id="crpg_burgundian_glaive_handle" />
+      <UsablePiece piece_id="crpg_burgundian_glaive_blade" />
+      <UsablePiece piece_id="crpg_french_voulge_handle" />
+      <UsablePiece piece_id="crpg_french_voulge_blade" />
+      <UsablePiece piece_id="crpg_awlpike_handle" />
+      <UsablePiece piece_id="crpg_awlpike_blade" />
+      <UsablePiece piece_id="crpg_war_scythe_handle" />
+      <UsablePiece piece_id="crpg_war_scythe_blade" />
+    </UsablePieces>
+  </CraftingTemplate>
+  <CraftingTemplate id="crpg_Spear4DMode" item_type="Polearm" modifier_group="polearm" item_holsters="polearm_back:polearm_back_2:polearm_back_3:polearm_back_4" default_item_holster_position_offset="0,0,-0.30" use_weapon_as_holster_mesh="true">
+    <PieceDatas>
+      <PieceData piece_type="Handle" build_order="0" />
+      <PieceData piece_type="Guard" build_order="1" />
+      <PieceData piece_type="Blade" build_order="2" />
+      <PieceData piece_type="Pommel" build_order="-1" />
+    </PieceDatas>
+    <WeaponDescriptions>
+      <WeaponDescription id="crpg_OneHandedPolearm" />
+      <WeaponDescription id="crpg_TwoHandedPolearm" />
+      <WeaponDescription id="crpg_SpearDoubleThrust" />
+    </WeaponDescriptions>
+    <StatsData>
+      <StatData stat_type="Weight" max_value="7.0" />
+      <StatData stat_type="WeaponReach" max_value="300" />
+      <StatData stat_type="ThrustSpeed" max_value="200" />
+      <StatData stat_type="SwingSpeed" max_value="200" />
+      <StatData stat_type="ThrustDamage" max_value="500" />
+      <StatData stat_type="SwingDamage" max_value="500" />
+      <StatData stat_type="Handling" max_value="200" />
+    </StatsData>
+    <UsablePieces>
+      <UsablePiece piece_id="crpg_knob_headed_spear_handle" />
+      <UsablePiece piece_id="crpg_knob_headed_spear_guard" />
+      <UsablePiece piece_id="crpg_knob_headed_spear_blade" />
+      <UsablePiece piece_id="crpg_steel_tipped_hooked_spear_pommel" />
+      <UsablePiece piece_id="crpg_steel_tipped_hooked_spear_handle" />
+      <UsablePiece piece_id="crpg_steel_tipped_hooked_spear_guard" />
+      <UsablePiece piece_id="crpg_steel_tipped_hooked_spear_blade" />
+      <UsablePiece piece_id="crpg_bludgeon_staff_pommel" />
+      <UsablePiece piece_id="crpg_bludgeon_staff_handle" />
+      <UsablePiece piece_id="crpg_bludgeon_staff_guard" />
+      <UsablePiece piece_id="crpg_bludgeon_staff_blade" />
+      <UsablePiece piece_id="crpg_short_leaf_shaped_spear_handle" />
+      <UsablePiece piece_id="crpg_short_leaf_shaped_spear_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_leaf_spear_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_leaf_spear_handle" />
+      <UsablePiece piece_id="crpg_fine_steel_leaf_spear_guard" />
+      <UsablePiece piece_id="crpg_fine_steel_leaf_spear_blade" />
+      <UsablePiece piece_id="crpg_highland_war_spear_handle" />
+      <UsablePiece piece_id="crpg_highland_war_spear_guard" />
+      <UsablePiece piece_id="crpg_highland_war_spear_blade" />
+      <UsablePiece piece_id="crpg_long_thamaskene_tipped_spear_pommel" />
+      <UsablePiece piece_id="crpg_long_thamaskene_tipped_spear_handle" />
+      <UsablePiece piece_id="crpg_long_thamaskene_tipped_spear_guard" />
+      <UsablePiece piece_id="crpg_long_thamaskene_tipped_spear_blade" />
+      <UsablePiece piece_id="crpg_jagged_spear_handle" />
+      <UsablePiece piece_id="crpg_jagged_spear_blade" />
+      <UsablePiece piece_id="crpg_narrow_long_headed_spear_handle" />
+      <UsablePiece piece_id="crpg_narrow_long_headed_spear_blade" />
+      <UsablePiece piece_id="crpg_knob_headed_spear_with_frills_handle" />
+      <UsablePiece piece_id="crpg_knob_headed_spear_with_frills_guard" />
+      <UsablePiece piece_id="crpg_knob_headed_spear_with_frills_blade" />
+      <UsablePiece piece_id="crpg_simple_commoner_spear_handle" />
+      <UsablePiece piece_id="crpg_simple_commoner_spear_blade" />
+      <UsablePiece piece_id="crpg_short_raider_spear_handle" />
+      <UsablePiece piece_id="crpg_short_raider_spear_blade" />
+      <UsablePiece piece_id="crpg_triangular_headed_spear_handle" />
+      <UsablePiece piece_id="crpg_triangular_headed_spear_blade" />
+      <UsablePiece piece_id="crpg_short_militia_spear_handle" />
+      <UsablePiece piece_id="crpg_short_militia_spear_blade" />
+      <UsablePiece piece_id="crpg_tall_tipped_long_spear_handle" />
+      <UsablePiece piece_id="crpg_tall_tipped_long_spear_blade" />
+      <UsablePiece piece_id="crpg_tall_tipped_war_spear_handle" />
+      <UsablePiece piece_id="crpg_tall_tipped_war_spear_guard" />
+      <UsablePiece piece_id="crpg_tall_tipped_war_spear_blade" />
+      <UsablePiece piece_id="crpg_simple_short_spear_handle" />
+      <UsablePiece piece_id="crpg_simple_short_spear_blade" />
+    </UsablePieces>
+  </CraftingTemplate>
+  <CraftingTemplate id="crpg_Pike" item_type="Polearm" modifier_group="polearm" item_holsters="polearm_back:polearm_back_2:polearm_back_3:polearm_back_4" default_item_holster_position_offset="0,0,-0.30" use_weapon_as_holster_mesh="true">
+    <PieceDatas>
+      <PieceData piece_type="Handle" build_order="0" />
+      <PieceData piece_type="Guard" build_order="1" />
+      <PieceData piece_type="Blade" build_order="2" />
+      <PieceData piece_type="Pommel" build_order="-1" />
+    </PieceDatas>
+    <WeaponDescriptions>
+      <WeaponDescription id="crpg_TwoHandedPolearm_Pike" />
+      <WeaponDescription id="crpg_TwoHandedPolearm_Bracing" />
+    </WeaponDescriptions>
+    <StatsData>
+      <StatData stat_type="Weight" max_value="7.0" />
+      <StatData stat_type="WeaponReach" max_value="300" />
+      <StatData stat_type="ThrustSpeed" max_value="200" />
+      <StatData stat_type="SwingSpeed" max_value="200" />
+      <StatData stat_type="ThrustDamage" max_value="500" />
+      <StatData stat_type="SwingDamage" max_value="500" />
+      <StatData stat_type="Handling" max_value="200" />
+    </StatsData>
+    <UsablePieces>
+      <UsablePiece piece_id="crpg_reinforced_highland_spear_handle" />
+      <UsablePiece piece_id="crpg_reinforced_highland_spear_blade" />
+      <UsablePiece piece_id="crpg_thin_fine_steel_hewing_spear_pommel" />
+      <UsablePiece piece_id="crpg_thin_fine_steel_hewing_spear_handle" />
+      <UsablePiece piece_id="crpg_thin_fine_steel_hewing_spear_guard" />
+      <UsablePiece piece_id="crpg_thin_fine_steel_hewing_spear_blade" />
+      <UsablePiece piece_id="crpg_wide_leaf_spear_pommel" />
+      <UsablePiece piece_id="crpg_wide_leaf_spear_handle" />
+      <UsablePiece piece_id="crpg_wide_leaf_spear_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_spear_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_spear_handle" />
+      <UsablePiece piece_id="crpg_fine_steel_spear_guard" />
+      <UsablePiece piece_id="crpg_fine_steel_spear_blade" />
+      <UsablePiece piece_id="crpg_long_fine_steel_spear_pommel" />
+      <UsablePiece piece_id="crpg_long_fine_steel_spear_handle" />
+      <UsablePiece piece_id="crpg_long_fine_steel_spear_guard" />
+      <UsablePiece piece_id="crpg_long_fine_steel_spear_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_hewing_spear_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_hewing_spear_handle" />
+      <UsablePiece piece_id="crpg_fine_steel_hewing_spear_guard" />
+      <UsablePiece piece_id="crpg_fine_steel_hewing_spear_blade" />
+      <UsablePiece piece_id="crpg_tall_tipped_long_spear_blade" />
+      <UsablePiece piece_id="crpg_tall_tipped_war_spear_guard" />
+      <UsablePiece piece_id="crpg_tall_tipped_war_spear_handle" />
+      <UsablePiece piece_id="crpg_tall_tipped_war_spear_blade" />
+      <UsablePiece piece_id="crpg_simple_short_spear_blade" />
+      <UsablePiece piece_id="crpg_simple_commoner_spear_blade" />
+      <UsablePiece piece_id="crpg_hooked_javelin_guard" />
+      <UsablePiece piece_id="crpg_hooked_javelin_blade" />
+      <UsablePiece piece_id="crpg_lowland_javelin_pommel" />
+      <UsablePiece piece_id="crpg_lowland_javelin_guard" />
+      <UsablePiece piece_id="crpg_lowland_javelin_blade" />
+      <UsablePiece piece_id="crpg_simple_javelin_pommel" />
+      <UsablePiece piece_id="crpg_simple_javelin_guard" />
+      <UsablePiece piece_id="crpg_simple_javelin_blade" />
+      <UsablePiece piece_id="crpg_early_halberd_pommel" />
+      <UsablePiece piece_id="crpg_early_halberd_guard" />
+      <UsablePiece piece_id="crpg_pike_handle" />
+      <UsablePiece piece_id="crpg_pike_blade" />
+      <UsablePiece piece_id="crpg_heavy_knightly_lance_blade" />
+      <UsablePiece piece_id="crpg_triangular_headed_spear_handle" />
+      <UsablePiece piece_id="crpg_triangular_headed_spear_blade" />
+      <UsablePiece piece_id="crpg_thamaskene_pike_handle" />
+      <UsablePiece piece_id="crpg_thamaskene_pike_blade" />
+      <UsablePiece piece_id="crpg_warrazor_pommel" />
+      <UsablePiece piece_id="crpg_warrazor_guard" />
+      <UsablePiece piece_id="crpg_heavy_druzhinnik_lance_blade" />
+      <UsablePiece piece_id="crpg_knob_headed_spear_guard" />
+      <UsablePiece piece_id="crpg_knob_headed_spear_blade" />
+      <UsablePiece piece_id="crpg_long_thamaskene_tipped_spear_pommel" />
+      <UsablePiece piece_id="crpg_long_thamaskene_tipped_spear_handle" />
+      <UsablePiece piece_id="crpg_long_thamaskene_tipped_spear_guard" />
+      <UsablePiece piece_id="crpg_long_thamaskene_tipped_spear_blade" />
+      <UsablePiece piece_id="crpg_knob_headed_spear_with_frills_blade" />
+      <UsablePiece piece_id="crpg_simple_pike_handle" />
+      <UsablePiece piece_id="crpg_simple_pike_blade" />
+      <UsablePiece piece_id="crpg_bludgeon_staff_pommel" />
+      <UsablePiece piece_id="crpg_bludgeon_staff_guard" />
+      <UsablePiece piece_id="crpg_pitchfork_blade" />
+      <UsablePiece piece_id="crpg_iron_pitchfork_blade" />
+      <UsablePiece piece_id="crpg_short_leaf_shaped_spear_blade" />
+      <UsablePiece piece_id="crpg_short_raider_spear_blade" />
+      <UsablePiece piece_id="crpg_broad_blade_javelin_guard" />
+      <UsablePiece piece_id="crpg_broad_blade_javelin_blade" />
+      <UsablePiece piece_id="crpg_woodland_javelin_pommel" />
+      <UsablePiece piece_id="crpg_woodland_javelin_guard" />
+      <UsablePiece piece_id="crpg_woodland_javelin_blade" />
+      <UsablePiece piece_id="crpg_fish_harpoon_pommel" />
+      <UsablePiece piece_id="crpg_military_fork_blade" />
+      <UsablePiece piece_id="crpg_notched_military_fork_handle" />
+      <UsablePiece piece_id="crpg_notched_military_fork_blade" />
+      <UsablePiece piece_id="crpg_long_glaive_pommel" />
+      <UsablePiece piece_id="crpg_long_glaive_guard" />
+      <UsablePiece piece_id="crpg_long_glaive_blade" />
+      <UsablePiece piece_id="crpg_glaive_pommel" />
+      <UsablePiece piece_id="crpg_glaive_blade" />
+      <UsablePiece piece_id="crpg_pilum_guard" />
+      <UsablePiece piece_id="crpg_pilum_blade" />
+      <UsablePiece piece_id="crpg_short_militia_spear_blade" />
+      <UsablePiece piece_id="crpg_highland_war_spear_blade" />
+      <UsablePiece piece_id="crpg_steel_tipped_hooked_spear_handle" />
+      <UsablePiece piece_id="crpg_steel_tipped_hooked_spear_blade" />
+      <UsablePiece piece_id="crpg_reinforced_highland_spear_blade" />
+      <UsablePiece piece_id="crpg_harpoon_pommel" />
+      <UsablePiece piece_id="crpg_harpoon_blade" />
+      <UsablePiece piece_id="crpg_fine_pike_handle" />
+      <UsablePiece piece_id="crpg_fine_pike_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_menavlion_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_menavlion_guard" />
+      <UsablePiece piece_id="crpg_fine_steel_menavlion_blade" />
+      <UsablePiece piece_id="crpg_menavlion_pommel" />
+      <UsablePiece piece_id="crpg_menavlion_blade" />
+      <UsablePiece piece_id="crpg_cataphract_lance_blade" />
+      <UsablePiece piece_id="crpg_courser_lance_blade" />
+      <UsablePiece piece_id="crpg_triangular_throwing_spear_guard" />
+      <UsablePiece piece_id="crpg_triangular_throwing_spear_blade" />
+      <UsablePiece piece_id="crpg_jagged_throwing_spear_guard" />
+      <UsablePiece piece_id="crpg_jagged_throwing_spear_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_leaf_spear_blade" />
+      <UsablePiece piece_id="crpg_narrow_long_headed_spear_handle" />
+      <UsablePiece piece_id="crpg_narrow_long_headed_spear_blade" />
+      <UsablePiece piece_id="crpg_jagged_spear_blade" />
+      <UsablePiece piece_id="crpg_jereed_guard" />
+      <UsablePiece piece_id="crpg_jereed_blade" />
+      <UsablePiece piece_id="crpg_horseman_javelin_pommel" />
+      <UsablePiece piece_id="crpg_horseman_javelin_guard" />
+      <UsablePiece piece_id="crpg_horseman_javelin_blade" />
+      <UsablePiece piece_id="crpg_jagged_javelin_pommel" />
+      <UsablePiece piece_id="crpg_jagged_javelin_guard" />
+      <UsablePiece piece_id="crpg_jagged_javelin_blade" />
+      <UsablePiece piece_id="crpg_polesword_pommel" />
+      <UsablePiece piece_id="crpg_polesword_guard" />
+      <UsablePiece piece_id="crpg_polesword_blade" />
+      <UsablePiece piece_id="crpg_billhook_pommel" />
+      <UsablePiece piece_id="crpg_billhook_guard" />
+      <UsablePiece piece_id="crpg_rhomphaia_pommel" />
+    </UsablePieces>
+  </CraftingTemplate>
+  <CraftingTemplate id="crpg_Javelin" item_type="Thrown" modifier_group="spear_dart_throwing" item_holsters="javelins:javelins_2:bow_hip:bow_hip_2" default_item_holster_position_offset="0,0,-0.10" piece_type_to_scale_holster_with="Handle" hidden_piece_types_on_holster="Guard:Handle:Pommel" rotate_weapon_in_holster="true" always_show_holster_with_weapon="true">
+    <PieceDatas>
+      <PieceData piece_type="Handle" build_order="0" />
+      <PieceData piece_type="Guard" build_order="1" />
+      <PieceData piece_type="Blade" build_order="2" />
+      <PieceData piece_type="Pommel" build_order="-1" />
+    </PieceDatas>
+    <WeaponDescriptions>
+      <WeaponDescription id="crpg_Javelin" />
+      <WeaponDescription id="crpg_OneHandedPolearm_JavelinAlternative" />
+    </WeaponDescriptions>
+    <StatsData weapon_description="crpg_Javelin">
+      <StatData stat_type="Weight" max_value="7.0" />
+      <StatData stat_type="WeaponReach" max_value="300" />
+      <StatData stat_type="MissileDamage" max_value="500" />
+      <StatData stat_type="MissileSpeed" max_value="200" />
+      <StatData stat_type="Accuracy" max_value="100" />
+      <StatData stat_type="StackAmount" max_value="5" />
+    </StatsData>
+    <StatsData weapon_description="crpg_OneHandedPolearm_JavelinAlternative">
+      <StatData stat_type="Weight" max_value="7.0" />
+      <StatData stat_type="WeaponReach" max_value="300" />
+      <StatData stat_type="ThrustSpeed" max_value="200" />
+      <StatData stat_type="SwingSpeed" max_value="200" />
+      <StatData stat_type="ThrustDamage" max_value="500" />
+      <StatData stat_type="SwingDamage" max_value="500" />
+      <StatData stat_type="Handling" max_value="200" />
+    </StatsData>
+    <UsablePieces>
+      <UsablePiece piece_id="crpg_simple_short_spear_blade" />
+      <UsablePiece piece_id="crpg_simple_commoner_spear_blade" />
+      <UsablePiece piece_id="crpg_hooked_javelin_pommel" />
+      <UsablePiece piece_id="crpg_hooked_javelin_handle" />
+      <UsablePiece piece_id="crpg_hooked_javelin_guard" />
+      <UsablePiece piece_id="crpg_hooked_javelin_blade" />
+      <UsablePiece piece_id="crpg_lowland_javelin_pommel" />
+      <UsablePiece piece_id="crpg_lowland_javelin_handle" />
+      <UsablePiece piece_id="crpg_lowland_javelin_guard" />
+      <UsablePiece piece_id="crpg_lowland_javelin_blade" />
+      <UsablePiece piece_id="crpg_simple_javelin_pommel" />
+      <UsablePiece piece_id="crpg_simple_javelin_handle" />
+      <UsablePiece piece_id="crpg_simple_javelin_guard" />
+      <UsablePiece piece_id="crpg_simple_javelin_blade" />
+      <UsablePiece piece_id="crpg_early_halberd_pommel" />
+      <UsablePiece piece_id="crpg_early_halberd_guard" />
+      <UsablePiece piece_id="crpg_fullered_western_mace_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_pike_blade" />
+      <UsablePiece piece_id="crpg_warrazor_pommel" />
+      <UsablePiece piece_id="crpg_warrazor_guard" />
+      <UsablePiece piece_id="crpg_knob_headed_spear_guard" />
+      <UsablePiece piece_id="crpg_knob_headed_spear_blade" />
+      <UsablePiece piece_id="crpg_long_thamaskene_tipped_spear_guard" />
+      <UsablePiece piece_id="crpg_knob_headed_spear_with_frills_blade" />
+      <UsablePiece piece_id="crpg_simple_pike_blade" />
+      <UsablePiece piece_id="crpg_light_shishpar_mace_pommel" />
+      <UsablePiece piece_id="crpg_bludgeon_staff_pommel" />
+      <UsablePiece piece_id="crpg_bludgeon_staff_guard" />
+      <UsablePiece piece_id="crpg_fine_steel_hewing_spear_guard" />
+      <UsablePiece piece_id="crpg_short_raider_spear_blade" />
+      <UsablePiece piece_id="crpg_broad_blade_javelin_pommel" />
+      <UsablePiece piece_id="crpg_broad_blade_javelin_handle" />
+      <UsablePiece piece_id="crpg_broad_blade_javelin_guard" />
+      <UsablePiece piece_id="crpg_broad_blade_javelin_blade" />
+      <UsablePiece piece_id="crpg_woodland_javelin_pommel" />
+      <UsablePiece piece_id="crpg_woodland_javelin_handle" />
+      <UsablePiece piece_id="crpg_woodland_javelin_guard" />
+      <UsablePiece piece_id="crpg_woodland_javelin_blade" />
+      <UsablePiece piece_id="crpg_fish_harpoon_pommel" />
+      <UsablePiece piece_id="crpg_fish_harpoon_handle" />
+      <UsablePiece piece_id="crpg_fish_harpoon_guard" />
+      <UsablePiece piece_id="crpg_fish_harpoon_blade" />
+      <UsablePiece piece_id="crpg_light_mace_pommel" />
+      <UsablePiece piece_id="crpg_long_glaive_pommel" />
+      <UsablePiece piece_id="crpg_long_glaive_guard" />
+      <UsablePiece piece_id="crpg_glaive_pommel" />
+      <UsablePiece piece_id="crpg_pilum_pommel" />
+      <UsablePiece piece_id="crpg_pilum_handle" />
+      <UsablePiece piece_id="crpg_pilum_guard" />
+      <UsablePiece piece_id="crpg_pilum_blade" />
+      <UsablePiece piece_id="crpg_harpoon_pommel" />
+      <UsablePiece piece_id="crpg_harpoon_handle" />
+      <UsablePiece piece_id="crpg_harpoon_guard" />
+      <UsablePiece piece_id="crpg_harpoon_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_menavlion_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_menavlion_guard" />
+      <UsablePiece piece_id="crpg_menavlion_pommel" />
+      <UsablePiece piece_id="crpg_triangular_throwing_spear_pommel" />
+      <UsablePiece piece_id="crpg_triangular_throwing_spear_handle" />
+      <UsablePiece piece_id="crpg_triangular_throwing_spear_guard" />
+      <UsablePiece piece_id="crpg_triangular_throwing_spear_blade" />
+      <UsablePiece piece_id="crpg_jagged_throwing_spear_handle" />
+      <UsablePiece piece_id="crpg_jagged_throwing_spear_guard" />
+      <UsablePiece piece_id="crpg_jagged_throwing_spear_blade" />
+      <UsablePiece piece_id="crpg_thin_fine_steel_hewing_spear_pommel" />
+      <UsablePiece piece_id="crpg_thin_fine_steel_hewing_spear_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_leaf_spear_blade" />
+      <UsablePiece piece_id="crpg_narrow_long_headed_spear_blade" />
+      <UsablePiece piece_id="crpg_jagged_spear_blade" />
+      <UsablePiece piece_id="crpg_jereed_pommel" />
+      <UsablePiece piece_id="crpg_jereed_handle" />
+      <UsablePiece piece_id="crpg_jereed_guard" />
+      <UsablePiece piece_id="crpg_jereed_blade" />
+      <UsablePiece piece_id="crpg_horseman_javelin_pommel" />
+      <UsablePiece piece_id="crpg_horseman_javelin_handle" />
+      <UsablePiece piece_id="crpg_horseman_javelin_guard" />
+      <UsablePiece piece_id="crpg_horseman_javelin_blade" />
+      <UsablePiece piece_id="crpg_jagged_javelin_pommel" />
+      <UsablePiece piece_id="crpg_jagged_javelin_handle" />
+      <UsablePiece piece_id="crpg_jagged_javelin_guard" />
+      <UsablePiece piece_id="crpg_jagged_javelin_blade" />
+      <UsablePiece piece_id="crpg_polesword_pommel" />
+      <UsablePiece piece_id="crpg_polesword_guard" />
+      <UsablePiece piece_id="crpg_billhook_pommel" />
+      <UsablePiece piece_id="crpg_billhook_guard" />
+      <UsablePiece piece_id="crpg_rhomphaia_pommel" />
+      <UsablePiece piece_id="crpg_rhomphaia_guard" />
+    </UsablePieces>
+  </CraftingTemplate>
+  <CraftingTemplate id="crpg_Mace" item_type="OneHandedWeapon" modifier_group="mace" item_holsters="mace_right_hip:axe_right_hip_2:axe_right_hip:axe_back" default_item_holster_position_offset="0,0,-0.40" use_weapon_as_holster_mesh="true">
+    <PieceDatas>
+      <PieceData piece_type="Handle" build_order="0" />
+      <PieceData piece_type="Blade" build_order="1" />
+      <PieceData piece_type="Pommel" build_order="-1" />
+    </PieceDatas>
+    <WeaponDescriptions>
+      <WeaponDescription id="crpg_Mace" />
+    </WeaponDescriptions>
+    <StatsData>
+      <StatData stat_type="Weight" max_value="7.0" />
+      <StatData stat_type="WeaponReach" max_value="300" />
+      <StatData stat_type="ThrustSpeed" max_value="200" />
+      <StatData stat_type="SwingSpeed" max_value="200" />
+      <StatData stat_type="ThrustDamage" max_value="500" />
+      <StatData stat_type="SwingDamage" max_value="500" />
+      <StatData stat_type="Handling" max_value="200" />
+    </StatsData>
+    <UsablePieces>
+      <UsablePiece piece_id="crpg_wooden_sword_pommel" />
+      <UsablePiece piece_id="crpg_wooden_twohander_pommel" />
+      <UsablePiece piece_id="crpg_winds_fury_pommel" />
+      <UsablePiece piece_id="crpg_wide_leaf_spear_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_spear_pommel" />
+      <UsablePiece piece_id="crpg_long_fine_steel_spear_pommel" />
+      <UsablePiece piece_id="crpg_hooked_javelin_pommel" />
+      <UsablePiece piece_id="crpg_lowland_javelin_pommel" />
+      <UsablePiece piece_id="crpg_simple_javelin_pommel" />
+      <UsablePiece piece_id="crpg_broad_two_hander_pommel" />
+      <UsablePiece piece_id="crpg_tapered_two-hander_pommel" />
+      <UsablePiece piece_id="crpg_war_razor_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_sword_pommel" />
+      <UsablePiece piece_id="crpg_narrow_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_knightly_cavalry_sword_pommel" />
+      <UsablePiece piece_id="crpg_iron_cavalry_sword_pommel" />
+      <UsablePiece piece_id="crpg_iron_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_early_halberd_pommel" />
+      <UsablePiece piece_id="crpg_crescent_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_engraved_pointed_sword_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_decorated_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_pernach_pommel" />
+      <UsablePiece piece_id="crpg_pernach_handle" />
+      <UsablePiece piece_id="crpg_pernach_blade" />
+      <UsablePiece piece_id="crpg_fullered_western_mace_pommel" />
+      <UsablePiece piece_id="crpg_fullered_western_mace_handle" />
+      <UsablePiece piece_id="crpg_fullered_western_mace_blade" />
+      <UsablePiece piece_id="crpg_spiked_mace_handle" />
+      <UsablePiece piece_id="crpg_spiked_mace_blade" />
+      <UsablePiece piece_id="crpg_wide_fullered_broad_two_hander_pommel" />
+      <UsablePiece piece_id="crpg_tyrhung_pommel" />
+      <UsablePiece piece_id="crpg_scalpel_pommel" />
+      <UsablePiece piece_id="crpg_steel_long_warsword_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_pointed_warsword_pommel" />
+      <UsablePiece piece_id="crpg_iron_long_warsword_pommel" />
+      <UsablePiece piece_id="crpg_pointed_warsword_pommel" />
+      <UsablePiece piece_id="crpg_engraved_thegn_blade_pommel" />
+      <UsablePiece piece_id="crpg_northern_backsword_pommel" />
+      <UsablePiece piece_id="crpg_iron_thegn_blade_pommel" />
+      <UsablePiece piece_id="crpg_warrazor_pommel" />
+      <UsablePiece piece_id="crpg_gold_bound_short_warsword_pommel" />
+      <UsablePiece piece_id="crpg_decorated_northern_backsword_pommel" />
+      <UsablePiece piece_id="crpg_decorated_long_warsword_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_short_warsword_pommel" />
+      <UsablePiece piece_id="crpg_steel_shestopyor_handle" />
+      <UsablePiece piece_id="crpg_steel_shestopyor_blade" />
+      <UsablePiece piece_id="crpg_star_falchion_pommel" />
+      <UsablePiece piece_id="crpg_long_thamaskene_tipped_spear_pommel" />
+      <UsablePiece piece_id="crpg_broad_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_simple_saber_pommel" />
+      <UsablePiece piece_id="crpg_simple_scimitar_pommel" />
+      <UsablePiece piece_id="crpg_short_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_light_shishpar_mace_pommel" />
+      <UsablePiece piece_id="crpg_light_shishpar_mace_handle" />
+      <UsablePiece piece_id="crpg_light_shishpar_mace_blade" />
+      <UsablePiece piece_id="crpg_seax_pommel" />
+      <UsablePiece piece_id="crpg_ridged_saber_pommel" />
+      <UsablePiece piece_id="crpg_ridged_great_saber_pommel" />
+      <UsablePiece piece_id="crpg_reaper_pommel" />
+      <UsablePiece piece_id="crpg_pugio_pommel" />
+      <UsablePiece piece_id="crpg_bludgeon_staff_pommel" />
+      <UsablePiece piece_id="crpg_broad_falchion_pommel" />
+      <UsablePiece piece_id="crpg_militia_pernach_pommel" />
+      <UsablePiece piece_id="crpg_militia_pernach_handle" />
+      <UsablePiece piece_id="crpg_militia_pernach_blade" />
+      <UsablePiece piece_id="crpg_wooden_hammer_pommel" />
+      <UsablePiece piece_id="crpg_wooden_hammer_handle" />
+      <UsablePiece piece_id="crpg_wooden_hammer_blade" />
+      <UsablePiece piece_id="crpg_blacksmith_hammer_handle" />
+      <UsablePiece piece_id="crpg_blacksmith_hammer_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_hewing_spear_pommel" />
+      <UsablePiece piece_id="crpg_broad_blade_javelin_pommel" />
+      <UsablePiece piece_id="crpg_woodland_javelin_pommel" />
+      <UsablePiece piece_id="crpg_fish_harpoon_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_two_handed_sword_pommel" />
+      <UsablePiece piece_id="crpg_narrow_sword_pommel" />
+      <UsablePiece piece_id="crpg_morningstar_pommel" />
+      <UsablePiece piece_id="crpg_morningstar_handle" />
+      <UsablePiece piece_id="crpg_morningstar_blade" />
+      <UsablePiece piece_id="crpg_lowland_throwing_knife_pommel" />
+      <UsablePiece piece_id="crpg_light_mace_pommel" />
+      <UsablePiece piece_id="crpg_light_mace_handle" />
+      <UsablePiece piece_id="crpg_light_mace_blade" />
+      <UsablePiece piece_id="crpg_leafblade_throwing_knife_pommel" />
+      <UsablePiece piece_id="crpg_knight's_fall_pommel" />
+      <UsablePiece piece_id="crpg_knight's_fall_handle" />
+      <UsablePiece piece_id="crpg_knight's_fall_blade" />
+      <UsablePiece piece_id="crpg_heavy_saber_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_saber_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_saber_pommel" />
+      <UsablePiece piece_id="crpg_straight_saber_pommel" />
+      <UsablePiece piece_id="crpg_iron_saber_pommel" />
+      <UsablePiece piece_id="crpg_long_glaive_pommel" />
+      <UsablePiece piece_id="crpg_glaive_pommel" />
+      <UsablePiece piece_id="crpg_tall_gripped_ild_pommel" />
+      <UsablePiece piece_id="crpg_lion_imprinted_saber_pommel" />
+      <UsablePiece piece_id="crpg_decorated_cavalry_saber_pommel" />
+      <UsablePiece piece_id="crpg_heavy_flanged_mace_pommel" />
+      <UsablePiece piece_id="crpg_heavy_flanged_mace_handle" />
+      <UsablePiece piece_id="crpg_heavy_flanged_mace_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_mace_handle" />
+      <UsablePiece piece_id="crpg_fine_steel_mace_blade" />
+      <UsablePiece piece_id="crpg_eastern_heavy_mace_handle" />
+      <UsablePiece piece_id="crpg_eastern_heavy_mace_blade" />
+      <UsablePiece piece_id="crpg_steppe_light_mace_pommel" />
+      <UsablePiece piece_id="crpg_steppe_light_mace_handle" />
+      <UsablePiece piece_id="crpg_steppe_light_mace_blade" />
+      <UsablePiece piece_id="crpg_ridged_long_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_justicier_pommel" />
+      <UsablePiece piece_id="crpg_judgement_handle" />
+      <UsablePiece piece_id="crpg_judgement_blade" />
+      <UsablePiece piece_id="crpg_iron_spatha_pommel" />
+      <UsablePiece piece_id="crpg_pilum_pommel" />
+      <UsablePiece piece_id="crpg_falx_knife_pommel" />
+      <UsablePiece piece_id="crpg_steel_tipped_hooked_spear_pommel" />
+      <UsablePiece piece_id="crpg_xiphos_pommel" />
+      <UsablePiece piece_id="crpg_harpoon_pommel" />
+      <UsablePiece piece_id="crpg_iron_falchion_pommel" />
+      <UsablePiece piece_id="crpg_broad_bladed_throwing_knives_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_spathion_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_paramerion_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_spatha_pommel" />
+      <UsablePiece piece_id="crpg_spatha_pommel" />
+      <UsablePiece piece_id="crpg_spatha_with_narrow_fuller_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_menavlion_pommel" />
+      <UsablePiece piece_id="crpg_menavlion_pommel" />
+      <UsablePiece piece_id="crpg_spatha_blade_with_ring_pommel_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_spatha_pommel" />
+      <UsablePiece piece_id="crpg_decorated_short_spatha_pommel" />
+      <UsablePiece piece_id="crpg_cataphract_mace_handle" />
+      <UsablePiece piece_id="crpg_cataphract_mace_blade" />
+      <UsablePiece piece_id="crpg_light_royal_mace_pommel" />
+      <UsablePiece piece_id="crpg_light_royal_mace_handle" />
+      <UsablePiece piece_id="crpg_light_royal_mace_blade" />
+      <UsablePiece piece_id="crpg_calradic_mace_pommel" />
+      <UsablePiece piece_id="crpg_calradic_mace_handle" />
+      <UsablePiece piece_id="crpg_calradic_mace_blade" />
+      <UsablePiece piece_id="crpg_imperial_light_mace_pommel" />
+      <UsablePiece piece_id="crpg_imperial_light_mace_handle" />
+      <UsablePiece piece_id="crpg_imperial_light_mace_blade" />
+      <UsablePiece piece_id="crpg_spiked_club_handle" />
+      <UsablePiece piece_id="crpg_spiked_club_blade" />
+      <UsablePiece piece_id="crpg_triangular_throwing_spear_pommel" />
+      <UsablePiece piece_id="crpg_steel_mace_pommel" />
+      <UsablePiece piece_id="crpg_steel_mace_handle" />
+      <UsablePiece piece_id="crpg_steel_mace_blade" />
+      <UsablePiece piece_id="crpg_thin_fine_steel_hewing_spear_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_leaf_spear_pommel" />
+      <UsablePiece piece_id="crpg_jereed_pommel" />
+      <UsablePiece piece_id="crpg_horseman_javelin_pommel" />
+      <UsablePiece piece_id="crpg_jagged_javelin_pommel" />
+      <UsablePiece piece_id="crpg_polesword_pommel" />
+      <UsablePiece piece_id="crpg_early_retirement_pommel" />
+      <UsablePiece piece_id="crpg_tribesman_throwing_daggers_pommel" />
+      <UsablePiece piece_id="crpg_desert_longsword_pommel" />
+      <UsablePiece piece_id="crpg_dawnbreaker_pommel" />
+      <UsablePiece piece_id="crpg_iron_cleaver_pommel" />
+      <UsablePiece piece_id="crpg_highland_throwing_dagger_pommel" />
+      <UsablePiece piece_id="crpg_highland_dagger_pommel" />
+      <UsablePiece piece_id="crpg_broad_ild_pommel" />
+      <UsablePiece piece_id="crpg_pointed_falchion_pommel" />
+      <UsablePiece piece_id="crpg_iron_pointed_sword_pommel" />
+      <UsablePiece piece_id="crpg_bone_crusher_pommel" />
+      <UsablePiece piece_id="crpg_bone_crusher_handle" />
+      <UsablePiece piece_id="crpg_bone_crusher_blade" />
+      <UsablePiece piece_id="crpg_billhook_pommel" />
+      <UsablePiece piece_id="crpg_highland_broad_blade_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_steel_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_broad_shortsword_pommel" />
+      <UsablePiece piece_id="crpg_ridged_iron_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_rhomphaia_pommel" />
+      <UsablePiece piece_id="crpg_decorated_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_highland_pointed_blade_pommel" />
+      <UsablePiece piece_id="crpg_engraved_backsword_pommel" />
+      <UsablePiece piece_id="crpg_highland_spiked_club_handle" />
+      <UsablePiece piece_id="crpg_highland_spiked_club_blade" />
+      <UsablePiece piece_id="crpg_light_morningstar_pommel" />
+      <UsablePiece piece_id="crpg_light_morningstar_handle" />
+      <UsablePiece piece_id="crpg_light_morningstar_blade" />
+      <UsablePiece piece_id="crpg_knobbed_club_handle" />
+      <UsablePiece piece_id="crpg_knobbed_club_blade" />
+      <UsablePiece piece_id="crpg_battanian_mountain_blade_pommel" />
+      <UsablePiece piece_id="crpg_highland_fine_two_handed_sword_pommel" />
+      <UsablePiece piece_id="crpg_northlander_wide_fullered_greatsword_pommel" />
+      <UsablePiece piece_id="crpg_highland_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_iron_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_simple_short_warsword_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_narrow_fine_steel_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_scimitar_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_long_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_slightly_ridged_flyssa_pommel" />
+      <UsablePiece piece_id="crpg_iron_cavalry_scimitar_pommel" />
+      <UsablePiece piece_id="crpg_iron_flyssa_pommel" />
+      <UsablePiece piece_id="crpg_engraved_angular_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_decorated_scimitar_with_wide_grip_pommel" />
+      <UsablePiece piece_id="crpg_decorated_elite_scimitar_pommel" />
+      <UsablePiece piece_id="crpg_decorated_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_spiralled_mace_handle" />
+      <UsablePiece piece_id="crpg_spiralled_mace_blade" />
+      <UsablePiece piece_id="crpg_heavy_horsemans_mace_handle" />
+      <UsablePiece piece_id="crpg_heavy_horsemans_mace_blade" />
+      <UsablePiece piece_id="crpg_fullered_light_mace_handle" />
+      <UsablePiece piece_id="crpg_fullered_light_mace_blade" />
+      <UsablePiece piece_id="crpg_militia_mace_handle" />
+      <UsablePiece piece_id="crpg_militia_mace_blade" />
+      <UsablePiece piece_id="crpg_the_ambassador_pommel" />
+      <UsablePiece piece_id="crpg_knightly_spiked_battle_axe_handle" />
+      <UsablePiece piece_id="crpg_knightly_spiked_battle_axe_blade" />
+      <UsablePiece piece_id="crpg_military_hammer_blade" />
+      <UsablePiece piece_id="crpg_military_hammer_handle" />
+      <UsablePiece piece_id="crpg_warhammer_handle" />
+      <UsablePiece piece_id="crpg_warhammer_blade" />
+      <UsablePiece piece_id="crpg_light_goedendag_handle" />
+      <UsablePiece piece_id="crpg_medium_goedendag_handle" />
+      <UsablePiece piece_id="crpg_light_goedendag_blade" />
+      <UsablePiece piece_id="crpg_medium_goedendag_blade" />
+      <UsablePiece piece_id="crpg_blacksmith_warhammer_blade" />
+      <UsablePiece piece_id="crpg_blacksmith_warhammer_handle" />
+    </UsablePieces>
+  </CraftingTemplate>
+  <CraftingTemplate id="crpg_TwoHandedMace" item_type="TwoHandedWeapon" modifier_group="mace" item_holsters="axe_back:axe_back_2:axe_back_3:axe_back_4" default_item_holster_position_offset="0,0,-0.75" use_weapon_as_holster_mesh="true">
+    <PieceDatas>
+      <PieceData piece_type="Handle" build_order="0" />
+      <PieceData piece_type="Blade" build_order="1" />
+      <PieceData piece_type="Pommel" build_order="-1" />
+    </PieceDatas>
+    <WeaponDescriptions>
+      <WeaponDescription id="crpg_TwoHandedMace" />
+    </WeaponDescriptions>
+    <StatsData>
+      <StatData stat_type="Weight" max_value="7.0" />
+      <StatData stat_type="WeaponReach" max_value="300" />
+      <StatData stat_type="ThrustSpeed" max_value="200" />
+      <StatData stat_type="SwingSpeed" max_value="200" />
+      <StatData stat_type="ThrustDamage" max_value="500" />
+      <StatData stat_type="SwingDamage" max_value="500" />
+      <StatData stat_type="Handling" max_value="200" />
+    </StatsData>
+    <UsablePieces>
+      <UsablePiece piece_id="crpg_wooden_sword_pommel" />
+      <UsablePiece piece_id="crpg_wooden_twohander_pommel" />
+      <UsablePiece piece_id="crpg_winds_fury_pommel" />
+      <UsablePiece piece_id="crpg_wide_leaf_spear_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_spear_pommel" />
+      <UsablePiece piece_id="crpg_long_fine_steel_spear_pommel" />
+      <UsablePiece piece_id="crpg_hooked_javelin_pommel" />
+      <UsablePiece piece_id="crpg_lowland_javelin_pommel" />
+      <UsablePiece piece_id="crpg_simple_javelin_pommel" />
+      <UsablePiece piece_id="crpg_broad_two_hander_pommel" />
+      <UsablePiece piece_id="crpg_tapered_two-hander_pommel" />
+      <UsablePiece piece_id="crpg_war_razor_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_sword_pommel" />
+      <UsablePiece piece_id="crpg_narrow_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_knightly_cavalry_sword_pommel" />
+      <UsablePiece piece_id="crpg_iron_cavalry_sword_pommel" />
+      <UsablePiece piece_id="crpg_iron_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_early_halberd_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_pernach_pommel" />
+      <UsablePiece piece_id="crpg_fullered_western_mace_pommel" />
+      <UsablePiece piece_id="crpg_wide_fullered_broad_two_hander_pommel" />
+      <UsablePiece piece_id="crpg_short_bill_handle" />
+      <UsablePiece piece_id="crpg_scalpel_pommel" />
+      <UsablePiece piece_id="crpg_warrazor_pommel" />
+      <UsablePiece piece_id="crpg_star_falchion_pommel" />
+      <UsablePiece piece_id="crpg_long_thamaskene_tipped_spear_pommel" />
+      <UsablePiece piece_id="crpg_broad_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_simple_saber_pommel" />
+      <UsablePiece piece_id="crpg_simple_scimitar_pommel" />
+      <UsablePiece piece_id="crpg_short_arming_sword_pommel" />
+      <UsablePiece piece_id="crpg_light_shishpar_mace_pommel" />
+      <UsablePiece piece_id="crpg_seax_pommel" />
+      <UsablePiece piece_id="crpg_reaper_pommel" />
+      <UsablePiece piece_id="crpg_pugio_pommel" />
+      <UsablePiece piece_id="crpg_bludgeon_staff_pommel" />
+      <UsablePiece piece_id="crpg_bludgeon_staff_handle" />
+      <UsablePiece piece_id="crpg_broad_falchion_pommel" />
+      <UsablePiece piece_id="crpg_militia_pernach_pommel" />
+      <UsablePiece piece_id="crpg_scythe_handle" />
+      <UsablePiece piece_id="crpg_pitchfork_handle" />
+      <UsablePiece piece_id="crpg_iron_pitchfork_handle" />
+      <UsablePiece piece_id="crpg_makeshift_sledgehammer_handle" />
+      <UsablePiece piece_id="crpg_makeshift_sledgehammer_blade" />
+      <UsablePiece piece_id="crpg_sledgehammer_handle" />
+      <UsablePiece piece_id="crpg_sledgehammer_blade" />
+      <UsablePiece piece_id="crpg_wooden_hammer_pommel" />
+      <UsablePiece piece_id="crpg_wooden_hammer_blade" />
+      <UsablePiece piece_id="crpg_fine_steel_hewing_spear_pommel" />
+      <UsablePiece piece_id="crpg_broad_blade_javelin_pommel" />
+      <UsablePiece piece_id="crpg_woodland_javelin_pommel" />
+      <UsablePiece piece_id="crpg_fish_harpoon_pommel" />
+      <UsablePiece piece_id="crpg_narrow_sword_pommel" />
+      <UsablePiece piece_id="crpg_morningstar_pommel" />
+      <UsablePiece piece_id="crpg_lowland_throwing_knife_pommel" />
+      <UsablePiece piece_id="crpg_light_mace_pommel" />
+      <UsablePiece piece_id="crpg_leafblade_throwing_knife_pommel" />
+      <UsablePiece piece_id="crpg_knight's_fall_pommel" />
+      <UsablePiece piece_id="crpg_iron_saber_pommel" />
+      <UsablePiece piece_id="crpg_long_glaive_pommel" />
+      <UsablePiece piece_id="crpg_glaive_pommel" />
+      <UsablePiece piece_id="crpg_tall_gripped_ild_pommel" />
+      <UsablePiece piece_id="crpg_lion_imprinted_saber_pommel" />
+      <UsablePiece piece_id="crpg_decorated_cavalry_saber_pommel" />
+      <UsablePiece piece_id="crpg_heavy_flanged_mace_pommel" />
+      <UsablePiece piece_id="crpg_steppe_light_mace_pommel" />
+      <UsablePiece piece_id="crpg_ridged_long_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_justicier_pommel" />
+      <UsablePiece piece_id="crpg_iron_spatha_pommel" />
+      <UsablePiece piece_id="crpg_pilum_pommel" />
+      <UsablePiece piece_id="crpg_falx_knife_pommel" />
+      <UsablePiece piece_id="crpg_steel_tipped_hooked_spear_pommel" />
+      <UsablePiece piece_id="crpg_xiphos_pommel" />
+      <UsablePiece piece_id="crpg_harpoon_pommel" />
+      <UsablePiece piece_id="crpg_iron_falchion_pommel" />
+      <UsablePiece piece_id="crpg_broad_bladed_throwing_knives_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_spathion_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_paramerion_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_spatha_pommel" />
+      <UsablePiece piece_id="crpg_spatha_pommel" />
+      <UsablePiece piece_id="crpg_spatha_with_narrow_fuller_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_menavlion_pommel" />
+      <UsablePiece piece_id="crpg_menavlion_pommel" />
+      <UsablePiece piece_id="crpg_spatha_blade_with_ring_pommel_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_spatha_pommel" />
+      <UsablePiece piece_id="crpg_decorated_short_spatha_pommel" />
+      <UsablePiece piece_id="crpg_light_royal_mace_pommel" />
+      <UsablePiece piece_id="crpg_calradic_mace_pommel" />
+      <UsablePiece piece_id="crpg_imperial_light_mace_pommel" />
+      <UsablePiece piece_id="crpg_triangular_throwing_spear_pommel" />
+      <UsablePiece piece_id="crpg_steel_mace_pommel" />
+      <UsablePiece piece_id="crpg_thin_fine_steel_hewing_spear_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_leaf_spear_pommel" />
+      <UsablePiece piece_id="crpg_jereed_pommel" />
+      <UsablePiece piece_id="crpg_horseman_javelin_pommel" />
+      <UsablePiece piece_id="crpg_jagged_javelin_pommel" />
+      <UsablePiece piece_id="crpg_polesword_pommel" />
+      <UsablePiece piece_id="crpg_early_retirement_pommel" />
+      <UsablePiece piece_id="crpg_tribesman_throwing_daggers_pommel" />
+      <UsablePiece piece_id="crpg_desert_longsword_pommel" />
+      <UsablePiece piece_id="crpg_dawnbreaker_pommel" />
+      <UsablePiece piece_id="crpg_highland_throwing_dagger_pommel" />
+      <UsablePiece piece_id="crpg_highland_dagger_pommel" />
+      <UsablePiece piece_id="crpg_broad_ild_pommel" />
+      <UsablePiece piece_id="crpg_pointed_falchion_pommel" />
+      <UsablePiece piece_id="crpg_iron_pointed_sword_pommel" />
+      <UsablePiece piece_id="crpg_bone_crusher_pommel" />
+      <UsablePiece piece_id="crpg_billhook_pommel" />
+      <UsablePiece piece_id="crpg_highland_broad_blade_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_cavalry_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_steel_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_broad_shortsword_pommel" />
+      <UsablePiece piece_id="crpg_ridged_iron_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_rhomphaia_pommel" />
+      <UsablePiece piece_id="crpg_decorated_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_highland_pointed_blade_pommel" />
+      <UsablePiece piece_id="crpg_engraved_backsword_pommel" />
+      <UsablePiece piece_id="crpg_light_morningstar_pommel" />
+      <UsablePiece piece_id="crpg_battanian_mountain_blade_pommel" />
+      <UsablePiece piece_id="crpg_highland_fine_two_handed_sword_pommel" />
+      <UsablePiece piece_id="crpg_northlander_wide_fullered_greatsword_pommel" />
+      <UsablePiece piece_id="crpg_highland_broadsword_pommel" />
+      <UsablePiece piece_id="crpg_thamaskene_steel_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_narrow_fine_steel_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_scimitar_pommel" />
+      <UsablePiece piece_id="crpg_fine_steel_long_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_slightly_ridged_flyssa_pommel" />
+      <UsablePiece piece_id="crpg_iron_cavalry_scimitar_pommel" />
+      <UsablePiece piece_id="crpg_iron_flyssa_pommel" />
+      <UsablePiece piece_id="crpg_engraved_angular_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_decorated_scimitar_with_wide_grip_pommel" />
+      <UsablePiece piece_id="crpg_decorated_elite_scimitar_pommel" />
+      <UsablePiece piece_id="crpg_decorated_kaskara_pommel" />
+      <UsablePiece piece_id="crpg_chainbreaker_handle" />
+      <UsablePiece piece_id="crpg_the_ambassador_pommel" />
+      <UsablePiece piece_id="crpg_long_steel_mace_pommel" />
+      <UsablePiece piece_id="crpg_long_steel_mace_handle" />
+      <UsablePiece piece_id="crpg_long_steel_mace_blade" />
+      <UsablePiece piece_id="crpg_long_maul_handle" />
+      <UsablePiece piece_id="crpg_long_maul_blade" />
+      <UsablePiece piece_id="crpg_great_maul_handle" />
+      <UsablePiece piece_id="crpg_great_maul_handle" />
+      <UsablePiece piece_id="crpg_great_maul_blade" />
+      <UsablePiece piece_id="crpg_great_maul_blade" />
+      <UsablePiece piece_id="crpg_shieldsplitter_handle" />
+      <UsablePiece piece_id="crpg_shieldsplitter_handle" />
+      <UsablePiece piece_id="crpg_shieldsplitter_blade" />
+      <UsablePiece piece_id="crpg_shieldsplitter_blade" />
+      <UsablePiece piece_id="crpg_mallet_handle" />
+      <UsablePiece piece_id="crpg_mallet_handle" />
+      <UsablePiece piece_id="crpg_mallet_blade" />
+      <UsablePiece piece_id="crpg_mallet_blade" />
+      <UsablePiece piece_id="crpg_heavy_blacksmith_hammer_handle" />
+      <UsablePiece piece_id="crpg_heavy_blacksmith_hammer_blade" />
+      <UsablePiece piece_id="crpg_gada_handle" />
+      <UsablePiece piece_id="crpg_gada_blade" />
+      <UsablePiece piece_id="crpg_boulder_on_a_stick_handle" />
+      <UsablePiece piece_id="crpg_boulder_on_a_stick_blade" />
+      <UsablePiece piece_id="crpg_heavy_morningstar_pommel" />
+      <UsablePiece piece_id="crpg_heavy_morningstar_handle" />
+      <UsablePiece piece_id="crpg_heavy_morningstar_blade" />
+    </UsablePieces>
+  </CraftingTemplate>
+</CraftingTemplates>
