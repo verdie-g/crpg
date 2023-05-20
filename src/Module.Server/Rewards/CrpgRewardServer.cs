@@ -135,7 +135,7 @@ internal class CrpgRewardServer : MissionLogic
             return;
         }
 
-        bool lowPopulationServer = networkPeers.Length < 4;
+        bool lowPopulationServer = false;
 
         // Force constant multiplier if there is low population.
         constantMultiplier = lowPopulationServer ? ExperienceMultiplierMin : constantMultiplier;
