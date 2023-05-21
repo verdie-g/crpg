@@ -11,13 +11,11 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Parties.Commands;
 
-public record UpdateEveryCharacterCompetitiveRating : IMediatorRequest
+public record UpdateEveryCharacterCompetitiveRatingCommand : IMediatorRequest
 {
-    public TimeSpan DeltaTime { get; init; }
-
-    internal class Handler : IMediatorRequestHandler<UpdateEveryCharacterCompetitiveRating>
+    internal class Handler : IMediatorRequestHandler<UpdateEveryCharacterCompetitiveRatingCommand>
     {
-        private static readonly ILogger Logger = LoggerFactory.CreateLogger<UpdateEveryCharacterCompetitiveRating>();
+        private static readonly ILogger Logger = LoggerFactory.CreateLogger<UpdateEveryCharacterCompetitiveRatingCommand>();
         private readonly ICrpgDbContext _db;
         private readonly ICompetitiveRatingModel _competitiveRatingModel;
         private readonly Mapper _mapper;
@@ -29,7 +27,7 @@ public record UpdateEveryCharacterCompetitiveRating : IMediatorRequest
             _mapper = mapper;
         }
 
-        public async Task<Result> Handle(UpdateEveryCharacterCompetitiveRating req, CancellationToken cancellationToken)
+        public async Task<Result> Handle(UpdateEveryCharacterCompetitiveRatingCommand req, CancellationToken cancellationToken)
         {
             var characters = await _db.Characters.ToListAsync();
 
