@@ -31,7 +31,6 @@ public record GetLeaderboardQuery : IMediatorRequest<List<CharacterViewModel>>
                 .Select(c => _mapper.Map<CharacterViewModel>(c))
                 .ToList();
 
-
             return new(topCharacters);
         }
     }

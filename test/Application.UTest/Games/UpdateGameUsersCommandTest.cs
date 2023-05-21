@@ -18,7 +18,8 @@ public class UpdateGameUsersCommandTest : TestBase
     {
         Mock<ICharacterService> characterServiceMock = new();
         Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
-        UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, activityLogServiceMock.Object);
+        Mock<CompetitiveRatingModel> competitiveRatingModelMock = new() { DefaultValue = DefaultValue.Mock };
+        UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, activityLogServiceMock.Object, competitiveRatingModelMock.Object);
         Assert.That(() => handler.Handle(new UpdateGameUsersCommand(), CancellationToken.None), Throws.Nothing);
     }
 
@@ -72,7 +73,9 @@ public class UpdateGameUsersCommandTest : TestBase
 
         Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
 
-        UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, activityLogServiceMock.Object);
+        Mock<CompetitiveRatingModel> competitiveRatingModelMock = new() { DefaultValue = DefaultValue.Mock };
+
+        UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, activityLogServiceMock.Object, competitiveRatingModelMock.Object);
         var result = await handler.Handle(new UpdateGameUsersCommand
         {
             Updates = new[]
@@ -164,7 +167,9 @@ public class UpdateGameUsersCommandTest : TestBase
 
         Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
 
-        UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, activityLogServiceMock.Object);
+        Mock<CompetitiveRatingModel> competitiveRatingModelMock = new() { DefaultValue = DefaultValue.Mock };
+
+        UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, activityLogServiceMock.Object, competitiveRatingModelMock.Object);
         var result = await handler.Handle(new UpdateGameUsersCommand
         {
             Updates = new[]
@@ -254,7 +259,9 @@ public class UpdateGameUsersCommandTest : TestBase
 
         Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
 
-        UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, activityLogServiceMock.Object);
+        Mock<CompetitiveRatingModel> competitiveRatingModelMock = new() { DefaultValue = DefaultValue.Mock };
+
+        UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, activityLogServiceMock.Object, competitiveRatingModelMock.Object);
         var result = await handler.Handle(new UpdateGameUsersCommand
         {
             Updates = new[]
