@@ -9,7 +9,6 @@ using Crpg.Domain.Entities.Clans;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Limitations;
 using Crpg.Domain.Entities.Parties;
-using Crpg.Domain.Entities.Rating;
 using Crpg.Domain.Entities.Restrictions;
 using Crpg.Domain.Entities.Settlements;
 using Crpg.Domain.Entities.Users;
@@ -69,7 +68,6 @@ public class CrpgDbContext : DbContext, ICrpgDbContext
     public DbSet<EquippedItem> EquippedItems { get; set; } = default!;
     public DbSet<CharacterLimitations> CharacterLimitations { get; set; } = default!;
     public DbSet<Restriction> Restrictions { get; set; } = default!;
-    public DbSet<Leaderboard> Leaderboard { get; } = default!;
     public DbSet<Clan> Clans { get; set; } = default!;
     public DbSet<ClanMember> ClanMembers { get; set; } = default!;
     public DbSet<ClanInvitation> ClanInvitations { get; set; } = default!;

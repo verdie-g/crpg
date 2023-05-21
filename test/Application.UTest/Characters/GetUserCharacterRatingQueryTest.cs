@@ -7,13 +7,13 @@ using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Characters;
 
-public class GetUserCharacterCompetitiveRatingQueryTest : TestBase
+public class GetUserCharacterRatingQueryTest : TestBase
 {
     [Test]
     public async Task ShouldReturnErrorIfCharacterRatingDoesntExist()
     {
-        GetUserCharacterCompetitiveRatingQuery.Handler handler = new(ActDb, Mapper, Mock.Of<CompetitiveRatingModel>());
-        var result = await handler.Handle(new GetUserCharacterCompetitiveRatingQuery
+        GetUserCharacterRatingQuery.Handler handler = new(ActDb, Mapper);
+        var result = await handler.Handle(new GetUserCharacterRatingQuery
         {
             CharacterId = 1,
             UserId = 2,
@@ -39,8 +39,8 @@ public class GetUserCharacterCompetitiveRatingQueryTest : TestBase
         ArrangeDb.Characters.Add(character);
         await ArrangeDb.SaveChangesAsync();
 
-        GetUserCharacterCompetitiveRatingQuery.Handler handler = new(ActDb, Mapper, Mock.Of<CompetitiveRatingModel>());
-        var result = await handler.Handle(new GetUserCharacterCompetitiveRatingQuery
+        GetUserCharacterRatingQuery.Handler handler = new(ActDb, Mapper);
+        var result = await handler.Handle(new GetUserCharacterRatingQuery
         {
             CharacterId = character.Id,
             UserId = 2,

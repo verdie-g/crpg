@@ -3,13 +3,14 @@ using Crpg.Application.Characters.Models;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
+using Crpg.Application.Parties.Commands;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Queries;
 
-public record GetLeaderboardQuery : IMediatorRequest<LeaderboardViewModel>
+public record GetLeaderboardQuery : IMediatorRequest<List<CharacterViewModel>>
 {
-    internal class Handler : IMediatorRequestHandler<GetLeaderboardQuery, LeaderboardViewModel>
+    internal class Handler : IMediatorRequestHandler<GetLeaderboardQuery, List<CharacterViewModel>>
     {
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
@@ -20,11 +21,18 @@ public record GetLeaderboardQuery : IMediatorRequest<LeaderboardViewModel>
             _mapper = mapper;
         }
 
-        public async Task<Result<LeaderboardViewModel>> Handle(GetLeaderboardQuery req, CancellationToken cancellationToken)
+        public async Task<Result<List<CharacterViewModel>>> Handle(GetLeaderboardQuery req, CancellationToken cancellationToken)
         {
-            var leaderboard = await _db.Leaderboard.FirstOrDefaultAsync(cancellationToken);
+            var characters = await _db.Characters.ToListAsync();
 
-            return new(_mapper.Map<LeaderboardViewModel>(leaderboard));
+            var topCharacters = characters
+                .OrderByDescending(c => c.Rating.CompetitiveRating)
+                .Take(50)
+                .Select(c => _mapper.Map<CharacterViewModel>(c))
+                .ToList();
+
+
+            return new(topCharacters);
         }
     }
 }
