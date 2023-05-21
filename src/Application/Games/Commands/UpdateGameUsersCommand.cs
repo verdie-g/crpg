@@ -28,13 +28,15 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
         private readonly IMapper _mapper;
         private readonly ICharacterService _characterService;
         private readonly IActivityLogService _activityLogService;
+        private readonly CompetitiveRatingModel _competitiveRatingModel;
 
-        public Handler(ICrpgDbContext db, IMapper mapper, ICharacterService characterService, IActivityLogService activityLogService)
+        public Handler(ICrpgDbContext db, IMapper mapper, ICharacterService characterService, IActivityLogService activityLogService, CompetitiveRatingModel competitiveRatingModel)
         {
             _db = db;
             _mapper = mapper;
             _characterService = characterService;
             _activityLogService = activityLogService;
+            _competitiveRatingModel = competitiveRatingModel;
         }
 
         public async Task<Result<UpdateGameUsersResult>> Handle(UpdateGameUsersCommand req,
@@ -111,11 +113,12 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
             character.Statistics.PlayTime += statistics.PlayTime;
         }
 
-        private void UpdateRating(Character character, CharacterRatingViewModel rating)
+        private void UpdateRating(Character character, CharacterRatingViewModel rating, CompetitiveRatingModel competitiveRatingModel)
         {
             character.Rating.Value = rating.Value;
             character.Rating.Deviation = rating.Deviation;
             character.Rating.Volatility = rating.Volatility;
+            character.Rating.CompetitiveRating = _competitiveRatingModel.ComputeCompetitiveRating(rating);
         }
 
         private async Task<List<GameRepairedItem>> RepairOrBreakItems(Character character,
