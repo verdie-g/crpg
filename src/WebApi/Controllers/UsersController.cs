@@ -232,6 +232,7 @@ public class UsersController : BaseController
     /// </summary>>
     /// <response code="200">Updated.</response>
     /// <response code="400">Bad Request.</response>
+    [Authorize(AdminPolicy)]
     [HttpPut("characters/updatecompetitiveratings")]
     public Task UpdateEveryCharacterCompetitiveRating()
     {
