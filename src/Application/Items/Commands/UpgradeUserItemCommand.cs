@@ -46,7 +46,7 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
 
             if (userItem.Rank >= 3)
             {
-                return new(CommonErrors.UserItemMaxRankReached(req.UserItemId, 3));
+                return new(CommonErrors.UserItemMaxHeirloomLevelReached(req.UserItemId, 3));
             }
 
             if (userItem.Rank < 0) // repair

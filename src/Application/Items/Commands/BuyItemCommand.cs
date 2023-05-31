@@ -54,7 +54,7 @@ public record BuyItemCommand : IMediatorRequest<UserItemViewModel>
                 return new(CommonErrors.ItemDisabled(req.ItemId));
             }
 
-            if (item.Type == ItemType.Banner && user.Role == Role.User && !user.IsDonor)
+            if (item.Type == ItemType.Banner && user.Role == Role.User && !user.IsDonor && item.HeirloomLevel != 0)
             {
                 return new(CommonErrors.ItemNotBuyable(req.ItemId));
             }
