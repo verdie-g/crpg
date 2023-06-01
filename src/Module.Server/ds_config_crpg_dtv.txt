@@ -1,0 +1,26 @@
+﻿ServerName cRPG - Test - c-rpg.eu
+GameType cRPGDTV
+GamePassword droob
+add_map_to_automated_battle_pool mp_battle_map_001
+AllowPollsToKickPlayers True
+disable_map_voting
+disable_culture_voting
+CultureTeam1 vlandia
+CultureTeam2 battania
+RoundPreparationTimeLimit 2
+MapTimeLimit 60
+MaxNumberOfPlayers 32
+FriendlyFireDamageMeleeFriendPercent 50
+FriendlyFireDamageMeleeSelfPercent 0
+FriendlyFireDamageRangedFriendPercent 50
+FriendlyFireDamageRangedSelfPercent 0
+MinNumberOfPlayersForMatchStart 1
+NumberOfBotsTeam1 4
+NumberOfBotsTeam2 1
+RoundTotal 10
+MapTimeLimit 8
+RoundTimeLimit 300
+WarmupTimeLimit 1
+start_game
+set_automated_battle_count -1
+enable_automated_battle_switching
