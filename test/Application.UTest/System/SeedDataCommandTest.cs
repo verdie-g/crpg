@@ -98,7 +98,7 @@ public class SeedDataCommandTest : TestBase
 
         // Users buy the new item and equip it.
         User user0 = new() { Gold = 100, HeirloomPoints = 0 };
-        UserItem userItemRank0ForUser0 = new() { ItemId = items.First().Id, Rank = 0, User = user0 };
+        UserItem userItemRank0ForUser0 = new() { ItemId = items.First().Id, User = user0 };
         Character character0 = new()
         {
             User = user0,
@@ -110,8 +110,8 @@ public class SeedDataCommandTest : TestBase
         };
 
         User user1 = new() { Gold = 200, HeirloomPoints = 0 };
-        UserItem userItemRank0ForUser1 = new() { ItemId = items.First().Id, Rank = 0, User = user1 };
-        UserItem userItemRank1ForUser1 = new() { ItemId = items.First().Id, Rank = 1, User = user1 };
+        UserItem userItemRank0ForUser1 = new() { ItemId = items.First().Id, User = user1 };
+        UserItem userItemRank1ForUser1 = new() { ItemId = "crpg_hoe_h1", User = user1 };
         Character character1 = new()
         {
             User = user1,

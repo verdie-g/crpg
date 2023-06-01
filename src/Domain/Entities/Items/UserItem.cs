@@ -16,7 +16,6 @@ public class UserItem : AuditableEntity
     /// 0 by default. { -1, -2, -3 } for levels of broken. { 1, 2, 3 } for levels of looming.
     /// </summary>
     public int BrokenState { get; set; }
-    public int Rank { get; set; }
 
     public User? User { get; set; }
     public Item? Item { get; set; }

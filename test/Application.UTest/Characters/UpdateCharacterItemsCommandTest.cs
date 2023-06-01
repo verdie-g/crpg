@@ -264,7 +264,7 @@ public class UpdateCharacterItemsCommandTest : TestBase
     [Test]
     public async Task ItemBroken()
     {
-        UserItem userItem = new() { Rank = -1, Item = new Item { Type = ItemType.HeadArmor, Enabled = true } };
+        UserItem userItem = new() { BrokenState = -1, Item = new Item { Type = ItemType.HeadArmor, Enabled = true } };
         Character character = new();
         User user = new()
         {

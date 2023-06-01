@@ -61,6 +61,11 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
                 return new(CommonErrors.UserItemNotFound(req.UserItemId));
             }
 
+            if (userItem.BrokenState < 0)
+            {
+                return new(CommonErrors.ItemBroken(userItem.ItemId));
+            }
+
             if (userItem.Item.Rank >= 3)
             {
                 return new(CommonErrors.UserItemMaxRankReached(req.UserItemId, 3));
@@ -80,7 +85,6 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
             var heirloomedUserItem = new UserItem
             {
                 UserId = req.UserId,
-                Rank = userItem.Item.Rank + 1,
                 Item = heirloomedItem,
             };
 
@@ -92,7 +96,7 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
 
             await _db.SaveChangesAsync(cancellationToken);
 
-            Logger.LogInformation("User '{0}' upgraded user item '{1}' to rank {2}", req.UserId, req.UserItemId, userItem.Rank);
+            Logger.LogInformation("User '{0}' upgraded user item '{1}' to rank {2}", req.UserId, req.UserItemId, userItem.Item.Rank);
             return new(_mapper.Map<UserItemViewModel>(userItem));
         }
     }

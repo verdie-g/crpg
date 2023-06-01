@@ -62,7 +62,7 @@ public record RepairUserItemCommand : IMediatorRequest<UserItemViewModel>
             userItem.BrokenState += 1;
             await _db.SaveChangesAsync(cancellationToken);
 
-            Logger.LogInformation("User '{0}' Repaired user item '{1}' to rank {2}", req.UserId, req.UserItemId, userItem.Rank);
+            Logger.LogInformation("User '{0}' Repaired user item '{1}' to rank {2}", req.UserId, req.UserItemId, userItem.Item!.Rank);
             return new(_mapper.Map<UserItemViewModel>(userItem));
         }
     }
