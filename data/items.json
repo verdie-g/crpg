@@ -1622,7 +1622,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 1,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -7559,7 +7559,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 1,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -7596,7 +7596,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 3,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -7633,7 +7633,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 2,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -7670,7 +7670,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 1,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -7707,7 +7707,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 2,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -7744,7 +7744,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 1,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -7781,7 +7781,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 2,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -7818,7 +7818,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 3,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -7855,7 +7855,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 3,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -7892,7 +7892,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 1,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -7929,7 +7929,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 3,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -7966,7 +7966,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 2,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -16943,7 +16943,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 2,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -19412,7 +19412,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 2,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -25061,7 +25061,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 1,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -32246,7 +32246,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 1,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -45455,7 +45455,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 2,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -58936,7 +58936,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 3,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -61769,7 +61769,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 2,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -75726,7 +75726,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 3,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -81779,7 +81779,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 3,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -101832,7 +101832,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 1,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -102489,7 +102489,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 3,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -106066,7 +106066,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 2,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -113079,7 +113079,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 1,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -114432,7 +114432,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 2,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -120857,7 +120857,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 1,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -120894,7 +120894,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 2,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -121839,7 +121839,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 2,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -121876,7 +121876,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 3,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -121913,7 +121913,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 1,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -121950,7 +121950,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 1,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -121987,7 +121987,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 2,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -122024,7 +122024,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 3,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -122197,7 +122197,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 3,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -126030,7 +126030,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 1,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -126663,7 +126663,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 3,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -137984,7 +137984,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 2,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -138021,7 +138021,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 2,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -138058,7 +138058,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 3,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -138095,7 +138095,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 1,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -138132,7 +138132,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 3,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -138169,7 +138169,7 @@
     "type": "Banner",
     "price": 3000,
     "weight": 0.2,
-    "rank": 1,
+    "rank": 0,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
