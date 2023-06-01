@@ -1950,6 +1950,7 @@ public record SeedDataCommand : IMediatorRequest
                 Type = item.Type,
                 Price = item.Price,
                 Weight = item.Weight,
+                Rank= item.Rank,
                 Tier = item.Tier,
                 Requirement = item.Requirement,
                 Flags = item.Flags,
