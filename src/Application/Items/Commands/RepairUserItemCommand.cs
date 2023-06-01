@@ -44,7 +44,6 @@ public record RepairUserItemCommand : IMediatorRequest<UserItemViewModel>
                 return new(CommonErrors.UserItemNotFound(req.UserItemId));
             }
 
-
             if (userItem.BrokenState < 0) // repair
             {
                 int repairCost = (int)(userItem.Item!.Price

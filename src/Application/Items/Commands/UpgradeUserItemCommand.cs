@@ -92,7 +92,7 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
 
             userItem.User!.HeirloomPoints -= 1;
 
-            // to do _db.ActivityLogs.Add(_activityLogService.CreateItemUpgradedLog(userItem.UserId, userItem.BaseItemId, 0, 1)); 
+            _db.ActivityLogs.Add(_activityLogService.CreateItemUpgradedLog(userItem.UserId, userItem.ItemId, 0, 1));
 
             await _db.SaveChangesAsync(cancellationToken);
 
