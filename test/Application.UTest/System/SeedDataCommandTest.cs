@@ -86,7 +86,7 @@ public class SeedDataCommandTest : TestBase
     {
         Mock<IItemsSource> itemsSource = new();
         itemsSource.SetupSequence(s => s.LoadItems())
-            .ReturnsAsync(new[] { new ItemCreation { Id = "crpg_headarmor_h0", Type = ItemType.HeadArmor, Price = 20, Armor = new ItemArmorComponentViewModel(), Rank = 0 }, new ItemCreation { Id = "crpg_headarmor_h1", Type = ItemType.HeadArmor, Price = 20, Armor = new ItemArmorComponentViewModel(), Rank = 1, Weight = 999 } })
+            .ReturnsAsync(new[] { new ItemCreation { Id = "crpg_headarmor_h0", Type = ItemType.HeadArmor, Price = 20, Armor = new ItemArmorComponentViewModel(), Rank = 0 }, new ItemCreation { Id = "crpg_headarmor_h1", Type = ItemType.HeadArmor, Price = 20, Armor = new ItemArmorComponentViewModel(), Rank = 1, Weight = 999 } }) // i need help here , even if i do rank = 1 , rank == 0 when debugging
             .ReturnsAsync(Array.Empty<ItemCreation>());
 
         SeedDataCommand.Handler seedDataCommandHandler = new(ActDb, itemsSource.Object, CreateAppEnv(),
