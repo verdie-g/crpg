@@ -18,9 +18,9 @@ public class BuyItemCommandTest : TestBase
         User user = new()
         {
             Gold = 100,
-            Items = { new UserItem {} },
         };
         ArrangeDb.Users.Add(user);
+        ArrangeDb.Items.Add(item);
         await ArrangeDb.SaveChangesAsync();
 
         Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
