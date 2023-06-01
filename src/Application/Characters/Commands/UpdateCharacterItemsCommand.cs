@@ -61,7 +61,7 @@ public record UpdateCharacterItemsCommand : IMediatorRequest<IList<EquippedItemV
             CancellationToken cancellationToken)
         {
             var character = await _db.Characters
-                .Include(c => c.EquippedItems).ThenInclude(ei => ei.UserItem!.BaseItem)
+                .Include(c => c.EquippedItems).ThenInclude(ei => ei.UserItem!.Item)
                 .FirstOrDefaultAsync(c => c.Id == req.CharacterId && c.UserId == req.UserId, cancellationToken);
 
             if (character == null)
@@ -74,7 +74,7 @@ public record UpdateCharacterItemsCommand : IMediatorRequest<IList<EquippedItemV
                 .Select(ei => ei.UserItemId!.Value)
                 .ToArray();
             Dictionary<int, UserItem> userItemsById = await _db.UserItems
-                .Include(ui => ui.BaseItem)
+                .Include(ui => ui.Item)
                 .Where(ui => ui.UserId == req.UserId && newUserItemIds.Contains(ui.Id))
                 .ToDictionaryAsync(ui => ui.Id, cancellationToken);
 
@@ -98,26 +98,26 @@ public record UpdateCharacterItemsCommand : IMediatorRequest<IList<EquippedItemV
                     return new(CommonErrors.UserItemNotFound(newEquippedItem.UserItemId.Value));
                 }
 
-                if (!userItem.BaseItem!.Enabled)
+                if (!userItem.Item!.Enabled)
                 {
-                    return new(CommonErrors.ItemDisabled(userItem.BaseItemId));
+                    return new(CommonErrors.ItemDisabled(userItem.ItemId));
                 }
 
                 if (userItem.Rank < 0)
                 {
-                    return new(CommonErrors.ItemBroken(userItem.BaseItemId));
+                    return new(CommonErrors.ItemBroken(userItem.ItemId));
                 }
 
-                if ((userItem.BaseItem!.Flags & (ItemFlags.DropOnAnyAction | ItemFlags.DropOnWeaponChange)) != 0)
+                if ((userItem.Item!.Flags & (ItemFlags.DropOnAnyAction | ItemFlags.DropOnWeaponChange)) != 0)
                 {
                     if (newEquippedItem.Slot != ItemSlot.WeaponExtra)
                     {
-                        return new(CommonErrors.ItemBadSlot(userItem.BaseItemId, newEquippedItem.Slot));
+                        return new(CommonErrors.ItemBadSlot(userItem.ItemId, newEquippedItem.Slot));
                     }
                 }
-                else if (!ItemSlotsByType[userItem.BaseItem!.Type].Contains(newEquippedItem.Slot))
+                else if (!ItemSlotsByType[userItem.Item!.Type].Contains(newEquippedItem.Slot))
                 {
-                    return new(CommonErrors.ItemBadSlot(userItem.BaseItemId, newEquippedItem.Slot));
+                    return new(CommonErrors.ItemBadSlot(userItem.ItemId, newEquippedItem.Slot));
                 }
 
                 if (oldItemsBySlot.TryGetValue(newEquippedItem.Slot, out equippedItem))

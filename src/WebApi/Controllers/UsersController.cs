@@ -430,7 +430,7 @@ public class UsersController : BaseController
     /// <response code="400">Bad Request.</response>
     [HttpPut("self/items/{id}/upgrade")]
     public Task<ActionResult<Result<UserItemViewModel>>> UpgradeUserItem([FromRoute] int id) =>
-        ResultToActionAsync(Mediator.Send(new UpgradeUserItemCommand { UserItemId = id, UserId = CurrentUser.User!.Id }));
+        ResultToActionAsync(Mediator.Send(new RepairUserItemCommand { UserItemId = id, UserId = CurrentUser.User!.Id }));
 
     /// <summary>
     /// Sells item for the current user.

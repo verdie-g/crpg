@@ -7,7 +7,7 @@ namespace Crpg.Application.Common.Services;
 
 internal interface IItemService
 {
-    /// <summary>Sells a user item. <see cref="UserItem.BaseItem"/> and <see cref="UserItem.EquippedItems"/> should be loaded.</summary>
+    /// <summary>Sells a user item. <see cref="UserItem.Item"/> and <see cref="UserItem.EquippedItems"/> should be loaded.</summary>
     int SellUserItem(ICrpgDbContext db, UserItem userItem);
 }
 
@@ -25,7 +25,7 @@ internal class ItemService : IItemService
     /// <inheritdoc />
     public int SellUserItem(ICrpgDbContext db, UserItem userItem)
     {
-        int price = userItem.BaseItem!.Price;
+        int price = userItem.Item!.Price;
         // If the item was recently bought it is sold at 100% of its original price.
         int sellPrice = userItem.CreatedAt + TimeSpan.FromHours(1) < _dateTime.UtcNow
             ? (int)MathHelper.ApplyPolynomialFunction(price, _constants.ItemSellCostCoefs)

@@ -290,11 +290,11 @@ internal static class CommonErrors
         Detail = $"User with id '{userId}' has already registered to strategus",
     };
 
-    public static Error UserItemMaxHeirloomLevelReached(int userItemId, int maxHeirloomLevel) =>
+    public static Error UserItemMaxRankReached(int userItemId, int maxRank) =>
         new(ErrorType.Validation, ErrorCode.UserItemMaxRankReached)
         {
             Title = "User item has reached its heirloom level",
-            Detail = $"User item with id '{userItemId}' has reached its max heirloom level ({maxHeirloomLevel})",
+            Detail = $"User item with id '{userItemId}' has reached its max heirloom level ({maxRank})",
         };
 
     public static Error UserItemNotFound(int userItemId) => new(ErrorType.NotFound, ErrorCode.UserItemNotFound)

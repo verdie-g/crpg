@@ -10,15 +10,16 @@ public class UserItem : AuditableEntity
 {
     public int Id { get; set; }
     public int UserId { get; set; }
-    public string BaseItemId { get; set; } = string.Empty;
+    public string ItemId { get; set; } = string.Empty;
 
     /// <summary>
     /// 0 by default. { -1, -2, -3 } for levels of broken. { 1, 2, 3 } for levels of looming.
     /// </summary>
+    public int BrokenState { get; set; }
     public int Rank { get; set; }
 
     public User? User { get; set; }
-    public Item? BaseItem { get; set; }
+    public Item? Item { get; set; }
 
     /// <summary>
     /// Characters with that item equipped.

@@ -30,65 +30,65 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
             // aserai
             new[]
             {
-                ("crpg_turban", ItemSlot.Head),
-                ("crpg_aserai_civil_e", ItemSlot.Body),
-                ("crpg_southern_moccasins", ItemSlot.Leg),
-                ("crpg_peasant_2haxe_1_t1", ItemSlot.Weapon0),
-                ("crpg_throwing_stone", ItemSlot.Weapon1),
+                ("crpg_turban_h0", ItemSlot.Head),
+                ("crpg_aserai_civil_e_h0", ItemSlot.Body),
+                ("crpg_southern_moccasins_h0", ItemSlot.Leg),
+                ("crpg_hoe_h0", ItemSlot.Weapon0),
+                ("crpg_throwing_stone_h0", ItemSlot.Weapon1),
             },
             // vlandia
             new[]
             {
-                ("crpg_leather_apron", ItemSlot.Body),
-                ("crpg_leather_gloves", ItemSlot.Hand),
-                ("crpg_leather_shoes", ItemSlot.Leg),
-                ("crpg_peasant_pitchfork_2_t1", ItemSlot.Weapon0),
-                ("crpg_throwing_stone", ItemSlot.Weapon1),
+                ("crpg_leather_apron_h0", ItemSlot.Body),
+                ("crpg_leather_gloves_h0", ItemSlot.Hand),
+                ("crpg_leather_shoes_h0", ItemSlot.Leg),
+                ("crpg_iron_pitchfork_h0", ItemSlot.Weapon0),
+                ("crpg_throwing_stone_h0", ItemSlot.Weapon1),
             },
             // empire
             new[]
             {
-                ("crpg_pilgrim_hood", ItemSlot.Head),
-                ("crpg_tied_cloth_tunic", ItemSlot.Body),
-                ("crpg_leather_shoes", ItemSlot.Leg),
-                ("crpg_peasant_pitchfork_2_t1", ItemSlot.Weapon0),
-                ("crpg_throwing_stone", ItemSlot.Weapon1),
+                ("crpg_pilgrim_hood_h0", ItemSlot.Head),
+                ("crpg_tied_cloth_tunic_h0", ItemSlot.Body),
+                ("crpg_leather_shoes_h0", ItemSlot.Leg),
+                ("crpg_iron_pitchfork_h0", ItemSlot.Weapon0),
+                ("crpg_throwing_stone_h0", ItemSlot.Weapon1),
             },
             // sturgia
             new[]
             {
-                ("crpg_scarf", ItemSlot.Shoulder),
-                ("crpg_light_tunic", ItemSlot.Body),
-                ("crpg_leather_shoes", ItemSlot.Leg),
-                ("crpg_peasant_2haxe_1_t1", ItemSlot.Weapon0),
-                ("crpg_bound_adarga", ItemSlot.Weapon1),
+                ("crpg_scarf_h0", ItemSlot.Shoulder),
+                ("crpg_light_tunic_h0", ItemSlot.Body),
+                ("crpg_leather_shoes_h0", ItemSlot.Leg),
+                ("crpg_hoe_h0", ItemSlot.Weapon0),
+                ("crpg_bound_adarga_h0", ItemSlot.Weapon1),
             },
             // khuzait
             new[]
             {
-                ("crpg_nomad_cap", ItemSlot.Head),
-                ("crpg_steppe_robe", ItemSlot.Body),
-                ("crpg_leather_boots", ItemSlot.Leg),
-                ("crpg_peasant_hatchet_1_t1", ItemSlot.Weapon0),
-                ("crpg_throwing_stone", ItemSlot.Weapon1),
+                ("crpg_nomad_cap_h0", ItemSlot.Head),
+                ("crpg_steppe_robe_h0", ItemSlot.Body),
+                ("crpg_leather_boots_h0", ItemSlot.Leg),
+                ("crpg_hatchet_h0", ItemSlot.Weapon0),
+                ("crpg_throwing_stone_h0", ItemSlot.Weapon1),
             },
             // battania
             new[]
             {
-                ("crpg_baggy_trunks", ItemSlot.Body),
-                ("crpg_armwraps", ItemSlot.Hand),
-                ("crpg_ragged_boots", ItemSlot.Leg),
-                ("crpg_peasant_maul_t1", ItemSlot.Weapon0),
-                ("crpg_throwing_stone", ItemSlot.Weapon1),
+                ("crpg_baggy_trunks_h0", ItemSlot.Body),
+                ("crpg_armwraps_h0", ItemSlot.Hand),
+                ("crpg_ragged_boots_h0", ItemSlot.Leg),
+                ("crpg_makeshift_sledgehammer_h0", ItemSlot.Weapon0),
+                ("crpg_throwing_stone_h0", ItemSlot.Weapon1),
             },
             // looters
             new[]
             {
-                ("crpg_vlandia_bandit_cape_b", ItemSlot.Head),
-                ("crpg_vlandia_bandit_c", ItemSlot.Body),
-                ("crpg_rough_tied_boots", ItemSlot.Leg),
-                ("crpg_light_mace_t3", ItemSlot.Weapon0),
-                ("crpg_bound_adarga", ItemSlot.Weapon1),
+                ("crpg_vlandia_bandit_cape_b_h0", ItemSlot.Head),
+                ("crpg_vlandia_bandit_c_h0", ItemSlot.Body),
+                ("crpg_rough_tied_boots_h0", ItemSlot.Leg),
+                ("crpg_light_mace_h0", ItemSlot.Weapon0),
+                ("crpg_bound_adarga_h0", ItemSlot.Weapon1),
             },
         };
         private static readonly ILogger Logger = LoggerFactory.CreateLogger<GetGameUserCommand>();
@@ -264,7 +264,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
                 {
                     userItem = new UserItem
                     {
-                        BaseItemId = item.Id,
+                        ItemId = item.Id,
                         User = user,
                         Rank = 0,
                     };
