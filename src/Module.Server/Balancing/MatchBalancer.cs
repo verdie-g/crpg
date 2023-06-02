@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System.Collections.Generic;
+using System.Numerics;
 using Crpg.Module.Helpers;
 using TaleWorlds.Library;
 
@@ -114,6 +115,20 @@ internal class MatchBalancer
 
         MatchBalancingHelpers.DumpTeamsStatus(balancedBannerGameMatch);
         return balancedBannerGameMatch;
+    }
+
+    public GameMatch MovePlayersToDefenderTeam(GameMatch gameMatch)
+    {
+        List<WeightedCrpgUser> allUsers = new();
+        allUsers.AddRange(gameMatch.TeamA);
+        allUsers.AddRange(gameMatch.TeamB);
+        allUsers.AddRange(gameMatch.Waiting);
+
+        return new GameMatch
+        {
+        TeamA = allUsers,
+        Waiting = new List<WeightedCrpgUser>(),
+        };
     }
 
     public GameMatch KkMakeTeamOfSimilarSizesWithoutSplittingClanGroups(GameMatch gameMatch)

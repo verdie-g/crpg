@@ -74,7 +74,6 @@ internal class CrpgDTVGameMode : MissionBasedMultiplayerGameMode
         };
     }
 #endif
-
     public override void StartMultiplayerGame(string scene)
     {
         // Inherits the MultiplayerGameNotificationsComponent component.
@@ -90,11 +89,11 @@ internal class CrpgDTVGameMode : MissionBasedMultiplayerGameMode
             (new FlagDominationSpawnFrameBehavior(), _isSkirmish
                 ? new CrpgSkirmishSpawningBehavior(_constants, roundController)
                 : new CrpgDTVSpawningBehavior(_constants, roundController)));
-        CrpgTeamSelectComponent teamSelectComponent = new(warmupComponent, roundController);
+        CrpgDTVTeamSelectComponent teamSelectComponent = new(warmupComponent, roundController);
         CrpgRewardServer rewardServer = new(crpgClient, _constants, warmupComponent, enableTeamHitCompensations: true);
 #else
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent, null);
-        CrpgTeamSelectComponent teamSelectComponent = new();
+        CrpgDTVTeamSelectComponent teamSelectComponent = new();
 #endif
         CrpgDTVClient dtvClient = new(_isSkirmish);
 

@@ -1,7 +1,7 @@
 ﻿ServerName cRPG - Test - c-rpg.eu
 GameType cRPGDTV
 GamePassword droob
-add_map_to_automated_battle_pool mp_battle_map_003
+add_map_to_automated_battle_pool crpg_dtv_test
 AllowPollsToKickPlayers True
 disable_map_voting
 disable_culture_voting
@@ -16,7 +16,7 @@ FriendlyFireDamageRangedFriendPercent 50
 FriendlyFireDamageRangedSelfPercent 0
 MinNumberOfPlayersForMatchStart 1
 NumberOfBotsTeam1 4
-NumberOfBotsTeam2 1
+NumberOfBotsTeam2 10
 RoundTotal 10
 MapTimeLimit 8
 RoundTimeLimit 300

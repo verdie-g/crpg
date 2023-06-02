@@ -48,6 +48,9 @@
   <string id="str_kick_reason.unreachable_server" text="{=*}The cRPG main server is unreachable. Try again later." />
   <string id="str_kick_reason.unsupported_platform" text="{=*}cRPG servers only support Steam, Epic Games and Xbox." />
 
+  <!-- DTV Maps -->
+  <string id="str_multiplayer_scene_name.crpg_dtv_test" text="{=*}Test Map" />
+  
   <!-- Battle Maps -->
   <string id="str_multiplayer_scene_name.crpg_battle_abandoned" text="{=*}Abandoned" />
   <string id="str_multiplayer_scene_name.crpg_battle_acaciacitadel" text="{=*}Acacia Citadel" />
