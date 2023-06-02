@@ -49,7 +49,7 @@
   </NPCCharacter>
 
   <NPCCharacter id="crpg_bot_narutofan"
-                name="{=}Naruto Fan">
+             name="{=}Naruto Fan">
     <face>
       <BodyProperties version="4"
                       age="23"

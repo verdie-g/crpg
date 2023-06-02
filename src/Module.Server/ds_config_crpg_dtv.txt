@@ -1,7 +1,7 @@
 ﻿ServerName cRPG - Test - c-rpg.eu
 GameType cRPGDTV
 GamePassword droob
-add_map_to_automated_battle_pool mp_battle_map_001
+add_map_to_automated_battle_pool mp_battle_map_003
 AllowPollsToKickPlayers True
 disable_map_voting
 disable_culture_voting

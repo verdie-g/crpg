@@ -559,6 +559,7 @@ internal class CrpgDTVServer : MissionMultiplayerGameModeBase
             bool virginDead = !Mission.DefenderTeam.HasBots;
             if (virginDead)
                 {
+                Debug.Print("The Virgin has died");
                 roundResult = CaptureTheFlagCaptureResultEnum.AttackersWin;
                 RoundController.RoundWinner = BattleSideEnum.Attacker;
                 RoundController.RoundEndReason = RoundEndReason.GameModeSpecificEnded;
