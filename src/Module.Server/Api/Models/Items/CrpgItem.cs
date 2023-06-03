@@ -4,6 +4,7 @@
 internal class CrpgItem
 {
     public string Id { get; set; } = string.Empty;
+    public string BaseId { get; set; } = string.Empty;
     public string Name { get; set; } = string.Empty;
     public CrpgCulture Culture { get; set; }
     public CrpgItemType Type { get; set; }
