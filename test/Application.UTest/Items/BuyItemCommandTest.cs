@@ -38,7 +38,7 @@ public class BuyItemCommandTest : TestBase
 
         var boughtUserItem = result.Data!;
         Assert.That(boughtUserItem.Rank, Is.EqualTo(0));
-        Assert.That(boughtUserItem.BaseItem.Id, Is.EqualTo(item.Id));
+        Assert.That(boughtUserItem.Item.Id, Is.EqualTo(item.Id));
         Assert.That(userDb.Gold, Is.EqualTo(0));
         Assert.That(userDb.Items, Has.Some.Matches<UserItem>(ui => ui.Id == boughtUserItem.Id));
     }
