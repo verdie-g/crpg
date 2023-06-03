@@ -10,10 +10,10 @@ internal interface IItemModifierService
     /// <summary>
     /// Create a new item from an rank 0 item and given rank.
     /// </summary>
-    /// <param name="baseItem">Rank 0 item.</param>
+    /// <param name="Item">Rank 0 item.</param>
     /// <param name="rank">Result rank.</param>
     /// <returns>A new item instance of rank <paramref name="rank"/>.</returns>
-    Item ModifyItem(Item baseItem, int rank);
+    Item ModifyItem(Item Item, int rank);
 }
 
 /// <inheritdoc />
@@ -47,20 +47,20 @@ internal class ItemModifierService : IItemModifierService
     }
 
     /// <inheritdoc />
-    public Item ModifyItem(Item baseItem, int rank)
+    public Item ModifyItem(Item Item, int rank)
     {
         if (rank < -3 || rank > 3)
         {
             throw new ArgumentException("Rank should be between -3 and 3");
         }
 
-        var clone = (Item)baseItem.Clone();
+        var clone = (Item)Item.Clone();
         if (rank == 0)
         {
             return clone;
         }
 
-        if (!_itemModifiers.TryGetValue(baseItem.Type, out ItemModifier[]? typeItemModifiers))
+        if (!_itemModifiers.TryGetValue(Item.Type, out ItemModifier[]? typeItemModifiers))
         {
             // For banners and firearms use a random type for now.
             typeItemModifiers = _itemModifiers[ItemType.OneHandedWeapon];

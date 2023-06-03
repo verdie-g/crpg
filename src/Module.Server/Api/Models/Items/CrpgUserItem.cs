@@ -6,6 +6,6 @@
 internal class CrpgUserItem
 {
     public int Id { get; set; }
-    public string BaseItemId { get; set; } = default!;
+    public string ItemId { get; set; } = default!;
     public int Rank { get; set; }
 }

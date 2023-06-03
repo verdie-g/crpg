@@ -1882,8 +1882,8 @@ public record SeedDataCommand : IMediatorRequest
 
             foreach (ItemCreation item in itemsById.Values)
             {
-                Item baseItem = ItemCreationToItem(item);
-                CreateOrUpdateItem(dbItemsById, baseItem);
+                Item Item = ItemCreationToItem(item);
+                CreateOrUpdateItem(dbItemsById, Item);
             }
 
             // Remove items that were deleted from the item source

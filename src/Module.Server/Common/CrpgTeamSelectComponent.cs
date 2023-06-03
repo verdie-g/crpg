@@ -366,7 +366,7 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
         int weaponMaxPrice = 0;
         foreach (var ei in equippedItems)
         {
-            var itemObject = MBObjectManager.Instance.GetObject<ItemObject>(ei.UserItem.BaseItemId);
+            var itemObject = MBObjectManager.Instance.GetObject<ItemObject>(ei.UserItem.ItemId);
             if (itemObject == null)
             {
                 continue;
