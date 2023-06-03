@@ -37,7 +37,7 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
         {
             var userItem = await _db.UserItems
                 .Include(ui => ui.User!)
-                .Include(ui => ui.BaseItem!)
+                .Include(ui => ui.Item!)
                 .FirstOrDefaultAsync(ui => ui.UserId == req.UserId && ui.Id == req.UserItemId, cancellationToken);
             if (userItem == null)
             {
@@ -51,7 +51,7 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
 
             if (userItem.Rank < 0) // repair
             {
-                int repairCost = (int)(userItem.BaseItem!.Price
+                int repairCost = (int)(userItem.Item!.Price
                                        * _constants.ItemRepairCostPerSecond
                                        * _constants.BrokenItemRepairPenaltySeconds);
                 if (userItem.User!.Gold < repairCost)
@@ -61,7 +61,7 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
 
                 userItem.User!.Gold -= repairCost;
 
-                _db.ActivityLogs.Add(_activityLogService.CreateItemUpgradedLog(userItem.UserId, userItem.BaseItemId, repairCost, 0));
+                _db.ActivityLogs.Add(_activityLogService.CreateItemUpgradedLog(userItem.UserId, userItem.ItemId, repairCost, 0));
             }
             else // looming
             {

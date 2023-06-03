@@ -18,7 +18,7 @@ public class BuyItemCommandTest : TestBase
         User user = new()
         {
             Gold = 100,
-            Items = { new UserItem { Rank = 1, BaseItem = item } },
+            Items = { new UserItem { Rank = 1, Item = item } },
         };
         ArrangeDb.Users.Add(user);
         await ArrangeDb.SaveChangesAsync();
@@ -141,7 +141,7 @@ public class BuyItemCommandTest : TestBase
         User user = new()
         {
             Gold = 100,
-            Items = new List<UserItem> { new() { Rank = 0, BaseItemId = item.Id } },
+            Items = new List<UserItem> { new() { Rank = 0, ItemId = item.Id } },
         };
         ArrangeDb.Items.Add(item);
         ArrangeDb.Users.Add(user);

@@ -24,8 +24,8 @@ public class GetUserCharacterItemsQueryTest : TestBase
     [Test]
     public async Task ShouldReturnCharacterItems()
     {
-        UserItem userItem1 = new() { BaseItem = new Item { Id = "1" } };
-        UserItem userItem2 = new() { BaseItem = new Item { Id = "2" } };
+        UserItem userItem1 = new() { Item = new Item { Id = "1" } };
+        UserItem userItem2 = new() { Item = new Item { Id = "2" } };
         Character character = new()
         {
             Name = "toto",

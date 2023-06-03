@@ -32,7 +32,7 @@ public record SellUserItemCommand : IMediatorRequest
         {
             var userItem = await _db.UserItems
                 .Include(ui => ui.User)
-                .Include(ui => ui.BaseItem)
+                .Include(ui => ui.Item)
                 .Include(ui => ui.EquippedItems)
                 .FirstOrDefaultAsync(ui => ui.UserId == req.UserId && ui.Id == req.UserItemId, cancellationToken);
 
@@ -41,18 +41,18 @@ public record SellUserItemCommand : IMediatorRequest
                 return new Result(CommonErrors.UserItemNotFound(req.UserItemId));
             }
 
-            if (!userItem.BaseItem!.Enabled)
+            if (!userItem.Item!.Enabled)
             {
-                return new(CommonErrors.ItemDisabled(userItem.BaseItem.Id));
+                return new(CommonErrors.ItemDisabled(userItem.Item.Id));
             }
 
             int sellPrice = _itemService.SellUserItem(_db, userItem);
 
-            _db.ActivityLogs.Add(_activityLogService.CreateItemSoldLog(userItem.UserId, userItem.BaseItemId, sellPrice));
+            _db.ActivityLogs.Add(_activityLogService.CreateItemSoldLog(userItem.UserId, userItem.ItemId, sellPrice));
 
             await _db.SaveChangesAsync(cancellationToken);
 
-            Logger.LogInformation("User '{0}' sold item '{1}'", req.UserId, userItem.BaseItemId);
+            Logger.LogInformation("User '{0}' sold item '{1}'", req.UserId, userItem.ItemId);
             return new Result();
         }
     }

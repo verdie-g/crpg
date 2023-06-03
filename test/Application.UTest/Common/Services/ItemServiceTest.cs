@@ -24,7 +24,7 @@ public class ItemServiceTest : TestBase
             {
                 new()
                 {
-                    BaseItem = new Item { Price = 100 },
+                    Item = new Item { Price = 100 },
                     CreatedAt = recentlyBought ? new DateTime(2000, 01, 02) : new DateTime(2000, 01, 01),
                 },
             },
@@ -38,7 +38,7 @@ public class ItemServiceTest : TestBase
         ItemService itemService = new(dateTimeMock.Object, Constants);
         var userItem = await ActDb.UserItems
             .Include(ui => ui.User)
-            .Include(ui => ui.BaseItem)
+            .Include(ui => ui.Item)
             .Include(ui => ui.EquippedItems)
             .FirstAsync();
         itemService.SellUserItem(ActDb, userItem);
@@ -55,7 +55,7 @@ public class ItemServiceTest : TestBase
     public async Task SellItemEquipped()
     {
         Item item = new() { Id = "0", Price = 100 };
-        UserItem userItem = new() { Rank = 1, BaseItem = item };
+        UserItem userItem = new() { Rank = 1, Item = item };
         List<Character> characters = new()
         {
             new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Head } } },
@@ -86,7 +86,7 @@ public class ItemServiceTest : TestBase
         ItemService itemService = new(dateTimeMock.Object, Constants);
         userItem = await ActDb.UserItems
             .Include(ui => ui.User)
-            .Include(ui => ui.BaseItem)
+            .Include(ui => ui.Item)
             .Include(ui => ui.EquippedItems)
             .FirstAsync();
         itemService.SellUserItem(ActDb, userItem);

@@ -25,8 +25,8 @@ public record GetUserItemsQuery : IMediatorRequest<IList<UserItemViewModel>>
         public async Task<Result<IList<UserItemViewModel>>> Handle(GetUserItemsQuery req, CancellationToken cancellationToken)
         {
             var userItems = await _db.UserItems
-                .Where(ui => ui.UserId == req.UserId && ui.BaseItem!.Enabled)
-                .Include(ui => ui.BaseItem)
+                .Where(ui => ui.UserId == req.UserId && ui.Item!.Enabled)
+                .Include(ui => ui.Item)
                 .ToArrayAsync(cancellationToken);
 
             return new(_mapper.Map<IList<UserItemViewModel>>(userItems));

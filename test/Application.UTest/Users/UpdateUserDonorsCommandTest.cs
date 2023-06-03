@@ -27,8 +27,8 @@ public class UpdateUserDonorsCommandTest : TestBase
                 IsDonor = true,
                 Items =
                 {
-                    new UserItem { BaseItem = new Item { Id = "b", Type = ItemType.Banner } },
-                    new UserItem { BaseItem = new Item { Id = "1h", Type = ItemType.OneHandedWeapon } },
+                    new UserItem { Item = new Item { Id = "b", Type = ItemType.Banner } },
+                    new UserItem { Item = new Item { Id = "1h", Type = ItemType.OneHandedWeapon } },
                 },
             },
             new()
