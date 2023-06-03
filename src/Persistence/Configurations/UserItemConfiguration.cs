@@ -8,6 +8,6 @@ public class UserItemConfiguration : IEntityTypeConfiguration<UserItem>
 {
     public void Configure(EntityTypeBuilder<UserItem> builder)
     {
-        builder.HasIndex(ui => new { ui.UserId, ui.BaseItemId, ui.Rank }).IsUnique();
+        builder.HasIndex(ui => new { ui.UserId, ui.ItemId, ui.Rank }).IsUnique();
     }
 }

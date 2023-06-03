@@ -54,7 +54,7 @@ public class EnableItemCommandTest : TestBase
         ArrangeDb.Items.Add(item);
 
         User user0 = new();
-        UserItem user0Item = new() { BaseItem = item };
+        UserItem user0Item = new() { Item = item };
         user0.Items.Add(user0Item);
         Character user0Character = new()
         {
@@ -66,14 +66,14 @@ public class EnableItemCommandTest : TestBase
         user0.Characters.Add(user0Character);
 
         User user1 = new();
-        UserItem user1Item = new() { BaseItem = item };
+        UserItem user1Item = new() { Item = item };
         user1.Items.Add(user1Item);
         Character user1Character = new()
         {
             EquippedItems =
             {
                 new EquippedItem { Slot = ItemSlot.Head, UserItem = user1Item },
-                new EquippedItem { Slot = ItemSlot.Body, UserItem = new UserItem { BaseItem = new Item { Id = "b" } } },
+                new EquippedItem { Slot = ItemSlot.Body, UserItem = new UserItem { Item = new Item { Id = "b" } } },
             },
         };
         user1.Characters.Add(user1Character);
@@ -93,6 +93,6 @@ public class EnableItemCommandTest : TestBase
 
         var equippedItems = await AssertDb.EquippedItems.Include(ei => ei.UserItem).ToArrayAsync();
         Assert.That(equippedItems.Length, Is.EqualTo(1));
-        Assert.That(equippedItems[0].UserItem!.BaseItemId, Is.EqualTo("b"));
+        Assert.That(equippedItems[0].UserItem!.ItemId, Is.EqualTo("b"));
     }
 }

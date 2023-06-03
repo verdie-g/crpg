@@ -173,7 +173,7 @@ public class GetGameUserCommandTest : TestBase
             Items =
             {
                 // Already owned item
-                new UserItem { BaseItemId = ArrangeDb.Items.First(i => i.Id == GetGameUserCommand.Handler.DefaultItemSets[1][0].id).Id },
+                new UserItem { ItemId = ArrangeDb.Items.First(i => i.Id == GetGameUserCommand.Handler.DefaultItemSets[1][0].id).Id },
             },
         };
         ArrangeDb.Users.Add(user);

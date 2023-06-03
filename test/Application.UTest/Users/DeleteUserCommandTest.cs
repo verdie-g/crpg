@@ -22,7 +22,7 @@ public class DeleteUserCommandTest : TestBase
         User user = new()
         {
             Characters = new List<Character> { new() { EquippedItems = new List<EquippedItem> { new() } } },
-            Items = new List<UserItem> { new() { BaseItem = new Item { Id = "1" } } },
+            Items = new List<UserItem> { new() { Item = new Item { Id = "1" } } },
             Restrictions = new List<Restriction> { new() },
             ClanMembership = new ClanMember { Clan = new Clan() },
             Party = new Party
@@ -34,7 +34,7 @@ public class DeleteUserCommandTest : TestBase
         await ArrangeDb.SaveChangesAsync();
 
         // Save ids before they get deleted.
-        string itemId = user.Items[0].BaseItemId;
+        string itemId = user.Items[0].ItemId;
         int clanId = user.ClanMembership.ClanId;
         string partyItemId = user.Party.Items[0].ItemId;
 

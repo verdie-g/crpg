@@ -62,7 +62,7 @@ public class GetGameUserTournamentCommandTest : TestBase
                     ForTournament = true,
                     EquippedItems =
                     {
-                        new EquippedItem { UserItem = new UserItem { BaseItem = new Item() } },
+                        new EquippedItem { UserItem = new UserItem { Item = new Item() } },
                     },
                 },
             },

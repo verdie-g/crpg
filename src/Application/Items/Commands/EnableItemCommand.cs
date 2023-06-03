@@ -41,7 +41,7 @@ public record EnableItemCommand : IMediatorRequest
             {
                 item.Enabled = false;
                 var equippedItems = await _db.EquippedItems
-                    .Where(ei => ei.UserItem!.BaseItemId == req.ItemId)
+                    .Where(ei => ei.UserItem!.ItemId == req.ItemId)
                     .ToArrayAsync(cancellationToken);
                 _db.EquippedItems.RemoveRange(equippedItems);
             }

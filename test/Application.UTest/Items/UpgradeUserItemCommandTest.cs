@@ -41,7 +41,7 @@ public class UpgradeUserItemCommandTest : TestBase
     [Test]
     public async Task NotEnoughGoldToRepair()
     {
-        UserItem userItem = new() { Rank = -1, BaseItem = new Item { Id = "0", Price = 33333 } };
+        UserItem userItem = new() { Rank = -1, Item = new Item { Id = "0", Price = 33333 } };
         User user = new()
         {
             Gold = 100,
@@ -66,7 +66,7 @@ public class UpgradeUserItemCommandTest : TestBase
     [Test]
     public async Task Repair()
     {
-        UserItem userItem = new() { Rank = -1, BaseItem = new Item { Id = "0", Price = 33333 } };
+        UserItem userItem = new() { Rank = -1, Item = new Item { Id = "0", Price = 33333 } };
         User user = new()
         {
             Gold = 1000,
