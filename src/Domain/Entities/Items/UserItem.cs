@@ -14,10 +14,10 @@ public class UserItem : AuditableEntity
     public string BaseItemId { get; set; } = string.Empty;
 
     /// <summary>
-    /// 0 by default. { -1, -2, -3 } for levels of broken. { 1, 2, 3 } for levels of looming.
+    /// { 1, 2, 3 } for levels of looming.
     /// </summary>
     public int Rank { get; set; }
-
+    public bool IsBroken { get; set; }
     public User? User { get; set; }
     public Item? Item { get; set; }
 

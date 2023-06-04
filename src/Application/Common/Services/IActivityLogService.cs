@@ -11,6 +11,7 @@ internal interface IActivityLogService
     ActivityLog CreateItemBoughtLog(int userId, string itemId, int price);
     ActivityLog CreateItemSoldLog(int userId, string itemId, int price);
     ActivityLog CreateItemBrokeLog(int userId, string itemId);
+    ActivityLog CreateItemRepairedLog(int userId, string itemId, int price);
     ActivityLog CreateItemUpgradedLog(int userId, string itemId, int price, int heirloomPoints);
     ActivityLog CreateCharacterCreatedLog(int userId, int characterId);
     ActivityLog CreateCharacterDeletedLog(int userId, int characterId, int generation, int level);
