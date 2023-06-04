@@ -11,7 +11,6 @@ public class UserItem : AuditableEntity
     public int Id { get; set; }
     public int UserId { get; set; }
     public string ItemId { get; set; } = string.Empty;
-    public string BaseItemId { get; set; } = string.Empty;
 
     /// <summary>
     /// 0 by default. { -1, -2, -3 } for levels of broken. { 1, 2, 3 } for levels of looming.
