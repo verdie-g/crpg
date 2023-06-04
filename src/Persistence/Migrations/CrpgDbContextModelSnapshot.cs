@@ -592,6 +592,11 @@ namespace Crpg.Persistence.Migrations
                         .HasColumnType("text")
                         .HasColumnName("id");
 
+                    b.Property<string>("BaseId")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("base_id");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at");
@@ -652,14 +657,14 @@ namespace Crpg.Persistence.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("BaseItemId")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("base_item_id");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at");
+
+                    b.Property<string>("ItemId")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("item_id");
 
                     b.Property<int>("Rank")
                         .HasColumnType("integer")
@@ -676,12 +681,12 @@ namespace Crpg.Persistence.Migrations
                     b.HasKey("Id")
                         .HasName("pk_user_items");
 
-                    b.HasIndex("BaseItemId")
-                        .HasDatabaseName("ix_user_items_base_item_id");
+                    b.HasIndex("ItemId")
+                        .HasDatabaseName("ix_user_items_item_id");
 
-                    b.HasIndex("UserId", "BaseItemId", "Rank")
+                    b.HasIndex("UserId", "ItemId", "Rank")
                         .IsUnique()
-                        .HasDatabaseName("ix_user_items_user_id_base_item_id_rank");
+                        .HasDatabaseName("ix_user_items_user_id_item_id_rank");
 
                     b.ToTable("user_items", (string)null);
                 });
@@ -1782,12 +1787,12 @@ namespace Crpg.Persistence.Migrations
 
             modelBuilder.Entity("Crpg.Domain.Entities.Items.UserItem", b =>
                 {
-                    b.HasOne("Crpg.Domain.Entities.Items.Item", "BaseItem")
+                    b.HasOne("Crpg.Domain.Entities.Items.Item", "Item")
                         .WithMany("UserItems")
-                        .HasForeignKey("BaseItemId")
+                        .HasForeignKey("ItemId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_user_items_items_base_item_id");
+                        .HasConstraintName("fk_user_items_items_item_id");
 
                     b.HasOne("Crpg.Domain.Entities.Users.User", "User")
                         .WithMany("Items")
@@ -1796,7 +1801,7 @@ namespace Crpg.Persistence.Migrations
                         .IsRequired()
                         .HasConstraintName("fk_user_items_users_user_id");
 
-                    b.Navigation("BaseItem");
+                    b.Navigation("Item");
 
                     b.Navigation("User");
                 });
