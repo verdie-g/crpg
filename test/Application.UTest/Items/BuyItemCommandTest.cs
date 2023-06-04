@@ -18,7 +18,7 @@ public class BuyItemCommandTest : TestBase
         User user = new()
         {
             Gold = 100,
-            Items = { new UserItem { Rank = 1, BaseItem = item } },
+            Items = { new UserItem { Rank = 1, Item = item } },
         };
         ArrangeDb.Users.Add(user);
         await ArrangeDb.SaveChangesAsync();
@@ -38,7 +38,7 @@ public class BuyItemCommandTest : TestBase
 
         var boughtUserItem = result.Data!;
         Assert.That(boughtUserItem.Rank, Is.EqualTo(0));
-        Assert.That(boughtUserItem.BaseItem.Id, Is.EqualTo(item.Id));
+        Assert.That(boughtUserItem.Item.Id, Is.EqualTo(item.Id));
         Assert.That(userDb.Gold, Is.EqualTo(0));
         Assert.That(userDb.Items, Has.Some.Matches<UserItem>(ui => ui.Id == boughtUserItem.Id));
     }
@@ -141,7 +141,7 @@ public class BuyItemCommandTest : TestBase
         User user = new()
         {
             Gold = 100,
-            Items = new List<UserItem> { new() { Rank = 0, BaseItemId = item.Id } },
+            Items = new List<UserItem> { new() { Rank = 0, ItemId = item.Id } },
         };
         ArrangeDb.Items.Add(item);
         ArrangeDb.Users.Add(user);

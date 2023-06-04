@@ -127,7 +127,7 @@ internal class StubCrpgClient : ICrpgClient
             UserItem = new CrpgUserItem
             {
                 Id = Random.Next(),
-                BaseItemId = GetRandomItemId(itemType),
+                ItemId = GetRandomItemId(itemType),
                 Rank = 0,
             },
         };

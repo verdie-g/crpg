@@ -160,11 +160,11 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
                 _db.EquippedItems.RemoveRange(userItem.EquippedItems);
                 repairedItems.Add(new GameRepairedItem
                 {
-                    ItemId = userItem.BaseItemId,
+                    ItemId = userItem.ItemId,
                     RepairCost = 0,
                     Broke = true,
                 });
-                _db.ActivityLogs.Add(_activityLogService.CreateItemBrokeLog(character.UserId, userItem.BaseItemId));
+                _db.ActivityLogs.Add(_activityLogService.CreateItemBrokeLog(character.UserId, userItem.ItemId));
             }
 
             return repairedItems;

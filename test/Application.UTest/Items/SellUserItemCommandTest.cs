@@ -20,7 +20,7 @@ public class SellUserItemCommandTest : TestBase
             {
                 new()
                 {
-                    BaseItem = new Item { Price = 100, Enabled = true },
+                    Item = new Item { Price = 100, Enabled = true },
                 },
             },
         };
@@ -83,7 +83,7 @@ public class SellUserItemCommandTest : TestBase
             {
                 new()
                 {
-                    BaseItem = new Item { Enabled = false },
+                    Item = new Item { Enabled = false },
                 },
             },
         };

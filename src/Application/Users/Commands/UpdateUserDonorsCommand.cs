@@ -52,7 +52,7 @@ public record UpdateUserDonorsCommand : IMediatorRequest
             if (donorsRemoved.Count > 0)
             {
                 var bannerUserItems = await _db.UserItems
-                    .Where(ui => donorsRemoved.Contains(ui.UserId) && ui.BaseItem!.Type == ItemType.Banner)
+                    .Where(ui => donorsRemoved.Contains(ui.UserId) && ui.Item!.Type == ItemType.Banner)
                     .ToArrayAsync(cancellationToken);
                 _db.UserItems.RemoveRange(bannerUserItems);
             }

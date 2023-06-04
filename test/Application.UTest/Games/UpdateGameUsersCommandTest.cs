@@ -42,7 +42,7 @@ public class UpdateGameUsersCommandTest : TestBase
                     {
                         new EquippedItem
                         {
-                            UserItem = new UserItem { BaseItem = new Item() },
+                            UserItem = new UserItem { Item = new Item() },
                             Slot = ItemSlot.Body,
                         },
                     },
@@ -141,18 +141,18 @@ public class UpdateGameUsersCommandTest : TestBase
                     Name = "b",
                     EquippedItems =
                     {
-                        new EquippedItem { UserItem = new UserItem { BaseItem = new Item { Id = "0" } }, Slot = ItemSlot.Head },
-                        new EquippedItem { UserItem = new UserItem { BaseItem = new Item { Id = "1" } }, Slot = ItemSlot.Shoulder },
-                        new EquippedItem { UserItem = new UserItem { BaseItem = new Item { Id = "2" } }, Slot = ItemSlot.Body },
-                        new EquippedItem { UserItem = new UserItem { BaseItem = new Item { Id = "3" } }, Slot = ItemSlot.Hand },
-                        new EquippedItem { UserItem = new UserItem { BaseItem = new Item { Id = "4" } }, Slot = ItemSlot.Leg },
-                        new EquippedItem { UserItem = new UserItem { BaseItem = new Item { Id = "5" } }, Slot = ItemSlot.MountHarness },
-                        new EquippedItem { UserItem = new UserItem { BaseItem = new Item { Id = "6" } }, Slot = ItemSlot.Mount },
-                        new EquippedItem { UserItem = new UserItem { BaseItem = new Item { Id = "7" } }, Slot = ItemSlot.Weapon0 },
-                        new EquippedItem { UserItem = new UserItem { BaseItem = new Item { Id = "8" } }, Slot = ItemSlot.Weapon1 },
-                        new EquippedItem { UserItem = new UserItem { BaseItem = new Item { Id = "9" } }, Slot = ItemSlot.Weapon2 },
-                        new EquippedItem { UserItem = new UserItem { BaseItem = new Item { Id = "10" } }, Slot = ItemSlot.Weapon3 },
-                        new EquippedItem { UserItem = new UserItem { BaseItem = new Item { Id = "11" } }, Slot = ItemSlot.WeaponExtra },
+                        new EquippedItem { UserItem = new UserItem { Item = new Item { Id = "0" } }, Slot = ItemSlot.Head },
+                        new EquippedItem { UserItem = new UserItem { Item = new Item { Id = "1" } }, Slot = ItemSlot.Shoulder },
+                        new EquippedItem { UserItem = new UserItem { Item = new Item { Id = "2" } }, Slot = ItemSlot.Body },
+                        new EquippedItem { UserItem = new UserItem { Item = new Item { Id = "3" } }, Slot = ItemSlot.Hand },
+                        new EquippedItem { UserItem = new UserItem { Item = new Item { Id = "4" } }, Slot = ItemSlot.Leg },
+                        new EquippedItem { UserItem = new UserItem { Item = new Item { Id = "5" } }, Slot = ItemSlot.MountHarness },
+                        new EquippedItem { UserItem = new UserItem { Item = new Item { Id = "6" } }, Slot = ItemSlot.Mount },
+                        new EquippedItem { UserItem = new UserItem { Item = new Item { Id = "7" } }, Slot = ItemSlot.Weapon0 },
+                        new EquippedItem { UserItem = new UserItem { Item = new Item { Id = "8" } }, Slot = ItemSlot.Weapon1 },
+                        new EquippedItem { UserItem = new UserItem { Item = new Item { Id = "9" } }, Slot = ItemSlot.Weapon2 },
+                        new EquippedItem { UserItem = new UserItem { Item = new Item { Id = "10" } }, Slot = ItemSlot.Weapon3 },
+                        new EquippedItem { UserItem = new UserItem { Item = new Item { Id = "11" } }, Slot = ItemSlot.WeaponExtra },
                     },
                 },
             },
@@ -214,11 +214,11 @@ public class UpdateGameUsersCommandTest : TestBase
     [Test]
     public async Task BreakingCharacterItemsShouldRepairUntilThereIsNotEnoughGold()
     {
-        UserItem userItem0 = new() { Rank = 0, BaseItem = new Item { Id = "0" } };
-        UserItem userItem1 = new() { Rank = 0, BaseItem = new Item { Id = "1" } };
-        UserItem userItem2 = new() { Rank = 0, BaseItem = new Item { Id = "2" } };
-        UserItem userItem3 = new() { Rank = 0, BaseItem = new Item { Id = "3" } };
-        UserItem userItem4 = new() { Rank = 0, BaseItem = new Item { Id = "4" } };
+        UserItem userItem0 = new() { Rank = 0, Item = new Item { Id = "0" } };
+        UserItem userItem1 = new() { Rank = 0, Item = new Item { Id = "1" } };
+        UserItem userItem2 = new() { Rank = 0, Item = new Item { Id = "2" } };
+        UserItem userItem3 = new() { Rank = 0, Item = new Item { Id = "3" } };
+        UserItem userItem4 = new() { Rank = 0, Item = new Item { Id = "4" } };
 
         User user = new()
         {

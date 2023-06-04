@@ -494,7 +494,7 @@ internal class CrpgRewardServer : MissionLogic
         List<CrpgUserDamagedItem> brokenItems = new();
         foreach (var equippedItem in crpgPeer.User!.Character.EquippedItems)
         {
-            var mbItem = Game.Current.ObjectManager.GetObject<ItemObject>(equippedItem.UserItem.BaseItemId);
+            var mbItem = Game.Current.ObjectManager.GetObject<ItemObject>(equippedItem.UserItem.ItemId);
             if (_random.NextDouble() >= _constants.ItemBreakChance)
             {
                 continue;

@@ -1882,8 +1882,8 @@ public record SeedDataCommand : IMediatorRequest
 
             foreach (ItemCreation item in itemsById.Values)
             {
-                Item baseItem = ItemCreationToItem(item);
-                CreateOrUpdateItem(dbItemsById, baseItem);
+                Item Item = ItemCreationToItem(item);
+                CreateOrUpdateItem(dbItemsById, Item);
             }
 
             // Remove items that were deleted from the item source
@@ -1896,12 +1896,12 @@ public record SeedDataCommand : IMediatorRequest
 
                 var userItems = await _db.UserItems
                     .Include(ui => ui.User)
-                    .Include(ui => ui.BaseItem)
-                    .Where(ui => ui.BaseItemId == dbItem.Id)
+                    .Include(ui => ui.Item)
+                    .Where(ui => ui.ItemId == dbItem.Id)
                     .ToArrayAsync(cancellationToken);
                 foreach (var userItem in userItems)
                 {
-                    int price = _itemModifierService.ModifyItem(userItem.BaseItem!, userItem.Rank).Price;
+                    int price = _itemModifierService.ModifyItem(userItem.Item!, userItem.Rank).Price;
                     userItem.User!.Gold += price;
                     if (userItem.Rank > 0)
                     {

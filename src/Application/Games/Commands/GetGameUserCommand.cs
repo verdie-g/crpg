@@ -264,7 +264,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
                 {
                     userItem = new UserItem
                     {
-                        BaseItemId = item.Id,
+                        ItemId = item.Id,
                         User = user,
                         Rank = 0,
                     };
