@@ -41,7 +41,7 @@ public class RepairUserItemCommandTest : TestBase
     [Test]
     public async Task NotEnoughGoldToRepair()
     {
-        UserItem userItem = new() { Rank = -1, Item = new Item { Id = "0", Price = 33333 } };
+        UserItem userItem = new() { IsBroken = true, Item = new Item { Id = "0", Price = 33333 } };
         User user = new()
         {
             Gold = 100,
