@@ -31,7 +31,7 @@ import {
   extractItemFromUserItem,
   getUserItems,
   buyUserItem,
-  upgradeUserItem,
+  repairUserItem,
   sellUserItem,
   getItemRanks,
   getUserClan,
@@ -108,10 +108,10 @@ it('buyUserItem', async () => {
   expect(mock).toHaveFetchedWithBody({ itemId: '123' });
 });
 
-it('upgradeUserItem', async () => {
-  mockPut('/users/self/items/123/upgrade').willResolve(response(mockUserItems[0]));
+it('repairUserItem', async () => {
+  mockPut('/users/self/items/123/repair').willResolve(response(mockUserItems[0]));
 
-  expect(await upgradeUserItem(123)).toEqual({
+  expect(await repairUserItem(123)).toEqual({
     ...mockUserItems[0],
     createdAt: new Date(mockUserItems[0].createdAt),
   });
