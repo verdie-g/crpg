@@ -24,7 +24,7 @@ namespace Crpg.Persistence.Migrations;
 
 [DbContext(typeof(CrpgDbContext))]
 [Migration("20230604201330_BaseId")]
-partial class BaseId
+partial class AddedBaseIdToItem
 {
     /// <inheritdoc />
     protected override void BuildTargetModel(ModelBuilder modelBuilder)

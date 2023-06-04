@@ -5,7 +5,7 @@
 namespace Crpg.Persistence.Migrations;
 
 /// <inheritdoc />
-public partial class BaseId : Migration
+public partial class AddedBaseIdToItem : Migration
 {
     /// <inheritdoc />
     protected override void Up(MigrationBuilder migrationBuilder)
