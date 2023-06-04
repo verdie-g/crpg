@@ -49,12 +49,9 @@ const rarityColor = computed(() => {
         data-aq-item-card-thumb
       />
 
-      <div
-        v-if="item.rank !== 0"
-        class="absolute top-0 left-0 z-10 cursor-default opacity-80 hover:opacity-100"
-      >
+      <div class="absolute left-0 top-0 z-10 cursor-default opacity-80 hover:opacity-100">
         <Tag
-          v-if="item.rank < 0"
+          v-if="item.isBroken"
           rounded
           variant="danger"
           icon="error"
@@ -63,7 +60,7 @@ const rarityColor = computed(() => {
 
         <!-- TODO: i18n -->
         <OIcon
-          v-else
+          v-if="item.rank > 0"
           icon="rare-duotone"
           size="xs"
           v-tooltip="'Item rarity'"
