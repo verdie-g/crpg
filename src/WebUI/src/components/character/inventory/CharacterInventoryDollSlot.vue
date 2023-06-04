@@ -9,7 +9,7 @@ const props = withDefaults(
   defineProps<{
     slot: ItemSlot;
     placeholder: string;
-    item?: UserItem;
+    userItem?: UserItem;
     armorOverall?: CharacterArmorOverall;
     notMeetRequirement: boolean;
     // slot state
@@ -44,11 +44,11 @@ const emit = defineEmits<{
       },
     ]"
   >
-    <template v-if="props.item">
+    <template v-if="userItem !== undefined">
       <img
         class="h-full w-full cursor-grab select-none object-contain"
-        :src="getItemImage(props.item.baseItem.id)"
-        :alt="props.item.baseItem.name"
+        :src="getItemImage(userItem.item.id)"
+        :alt="userItem.item.name"
         data-aq-character-slot-item-thumb
       />
 

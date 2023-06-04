@@ -77,7 +77,7 @@ it('extractItemFromUserItem', () => {
     extractItemFromUserItem([
       {
         id: 1,
-        baseItem: {
+        item: {
           id: '123',
         },
       } as UserItem,
@@ -132,7 +132,7 @@ describe('userItems: filterBy, sortBy, groupBy', () => {
     {
       id: 1,
       rank: 0,
-      baseItem: {
+      item: {
         type: 'HeadArmor',
         name: 'Fluttershy',
       },
@@ -140,7 +140,7 @@ describe('userItems: filterBy, sortBy, groupBy', () => {
     {
       id: 2,
       rank: 1,
-      baseItem: {
+      item: {
         type: 'Thrown',
         name: 'Rainbow Dash',
       },
@@ -148,7 +148,7 @@ describe('userItems: filterBy, sortBy, groupBy', () => {
     {
       id: 3,
       rank: 1,
-      baseItem: {
+      item: {
         type: 'Thrown',
         name: 'Rarity',
       },

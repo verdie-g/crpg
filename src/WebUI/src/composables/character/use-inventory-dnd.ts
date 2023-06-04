@@ -28,7 +28,7 @@ export const useInventoryDnD = (equippedItemsBySlot: Ref<EquippedItemsBySlot>) =
     }
 
     focusedItemId.value = item.id;
-    availableSlots.value = getAvailableSlotsByItem(item.baseItem, equippedItemsBySlot.value);
+    availableSlots.value = getAvailableSlotsByItem(item.item, equippedItemsBySlot.value);
 
     if (slot) {
       fromSlot.value = slot;

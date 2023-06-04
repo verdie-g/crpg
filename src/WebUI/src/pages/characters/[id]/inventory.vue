@@ -113,7 +113,7 @@ const aggregationConfig = {
 const searchResult = computed(() =>
   getSearchResult({
     items: flatItems.value,
-    userBaseItemsIds: [],
+    userItemsIds: [],
     aggregationConfig: aggregationConfig,
     sortingConfig: sortingConfig,
     sort: sortingModel.value,
@@ -129,12 +129,12 @@ const searchResult = computed(() =>
 const filteredUserItems = computed(() => {
   const foundedItemIds = searchResult.value.data.items.map(item => item.id);
   return userStore.userItems
-    .filter(item => foundedItemIds.includes(item.baseItem.id))
-    .sort((a, b) => foundedItemIds.indexOf(a.baseItem.id) - foundedItemIds.indexOf(b.baseItem.id));
+    .filter(item => foundedItemIds.includes(item.item.id))
+    .sort((a, b) => foundedItemIds.indexOf(a.item.id) - foundedItemIds.indexOf(b.item.id));
 });
 
 const totalItemsCost = computed(() =>
-  filteredUserItems.value.reduce((out, item) => out + item.baseItem.price, 0)
+  filteredUserItems.value.reduce((out, item) => out + item.item.price, 0)
 );
 
 const equippedItemsBySlot = computed(() =>

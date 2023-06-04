@@ -38,11 +38,11 @@ const applyRangeFilters = (
 export const applyFilters = (
   item: ItemFlat,
   filtersModel: FiltersModel<string[] | number[]>,
-  userBaseItemsIds: string[]
+  userItemsIds: string[]
 ) => {
   let result = applyRangeFilters(item, filtersModel);
 
-  if (userBaseItemsIds.includes(item.id)) {
+  if (userItemsIds.includes(item.id)) {
     result = false;
   }
 
