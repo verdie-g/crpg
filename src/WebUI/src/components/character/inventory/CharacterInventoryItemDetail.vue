@@ -56,12 +56,12 @@ const omitEmptyParam = (field: keyof ItemFlat) => {
   return true;
 };
 
-const isBroken = computed(() => props.userItem.rank < 0);
-
-const aggregationsConfig = computed(() => omitPredicate(
+const aggregationsConfig = computed(() =>
+  omitPredicate(
     getVisibleAggregationsConfig(getAggregationsConfig(props.item.type, props.item.weaponClass)),
     (key: keyof ItemFlat) => omitEmptyParam(key)
-  ));
+  )
+);
 </script>
 
 <template>
@@ -79,7 +79,7 @@ const aggregationsConfig = computed(() => omitPredicate(
         class="absolute -left-0.5 -top-0.5 z-10 cursor-default opacity-80 hover:opacity-100"
       >
         <OIcon
-          v-if="isBroken"
+          v-if="userItem.isBroken"
           icon="error"
           size="2xl"
           class="text-status-danger"
@@ -211,7 +211,7 @@ const aggregationsConfig = computed(() => omitPredicate(
         </OButton>
       </ConfirmActionTooltip>
 
-      <ConfirmActionTooltip v-if="isBroken" @confirm="emit('repair')">
+      <ConfirmActionTooltip v-if="userItem.isBroken" @confirm="emit('repair')">
         <VTooltip>
           <OButton iconRight="repair" variant="secondary" size="lg" rounded />
 

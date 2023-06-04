@@ -25,6 +25,7 @@
         "weapons": []
       },
       "rank": 0,
+      "isBroken": false,
       "createdAt": "2022-12-16T23:57:56.486125Z"
     }
   ]
