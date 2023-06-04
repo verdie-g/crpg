@@ -70,6 +70,33 @@ internal class CrpgDTVTeamSelectComponent : MultiplayerTeamSelectComponent
         _warmupComponent.OnWarmupEnded -= OnWarmupEnded;
     }
 
+    public void SetPlayerAgentsTeam()
+    {
+        if (IsNativeBalancerEnabled())
+        {
+            return;
+        }
+
+        Debug.Print("Setting player agents' team");
+
+        GameMatch gameMatch = TeamsToGameMatch();
+        GameMatch balancedGameMatch = _balancer.MovePlayersToDefenderTeam(gameMatch);
+
+        Dictionary<int, Team> usersToMove = ResolveTeamMoves(current: gameMatch, target: balancedGameMatch);
+        var crpgNetworkPeers = GetCrpgNetworkPeers();
+        SendSwapNotification(usersToMove, crpgNetworkPeers);
+
+        foreach (var userToMove in usersToMove)
+        {
+            if (!crpgNetworkPeers.TryGetValue(userToMove.Key, out var networkPeer))
+            {
+                continue;
+            }
+
+            ChangeTeamServer(networkPeer, userToMove.Value);
+        }
+    }
+
     protected override void AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegistererContainer registerer)
     {
         registerer.Register<TeamChange>(HandleTeamChange);
@@ -129,31 +156,6 @@ internal class CrpgDTVTeamSelectComponent : MultiplayerTeamSelectComponent
     private void OnWarmupEnded()
     {
         SetPlayerAgentsTeam();
-    }
-
-    private void SetPlayerAgentsTeam()
-    {
-        if (IsNativeBalancerEnabled())
-        {
-            return;
-        }
-
-        GameMatch gameMatch = TeamsToGameMatch();
-        GameMatch balancedGameMatch = _balancer.MovePlayersToDefenderTeam(gameMatch);
-
-        Dictionary<int, Team> usersToMove = ResolveTeamMoves(current: gameMatch, target: balancedGameMatch);
-        var crpgNetworkPeers = GetCrpgNetworkPeers();
-        SendSwapNotification(usersToMove, crpgNetworkPeers);
-
-        foreach (var userToMove in usersToMove)
-        {
-            if (!crpgNetworkPeers.TryGetValue(userToMove.Key, out var networkPeer))
-            {
-                continue;
-            }
-
-            ChangeTeamServer(networkPeer, userToMove.Value);
-        }
     }
 
     /// <summary>Create a <see cref="GameMatch"/> object used as input for the balancing from the current teams.</summary>

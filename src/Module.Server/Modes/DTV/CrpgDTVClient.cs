@@ -11,21 +11,19 @@ namespace Crpg.Module.Modes.DTV;
 
 internal class CrpgDTVClient : MissionMultiplayerGameModeBaseClient
 {
-    private readonly bool _isSkirmish;
     private MissionPeer? _missionPeer;
     private TeamDeathmatchMissionRepresentative? _myRepresentative;
 
-    public CrpgDTVClient(bool isSkirmish)
+    public CrpgDTVClient()
     {
-        _isSkirmish = isSkirmish;
+
     }
 
     public override bool IsGameModeUsingGold => false;
     public override bool IsGameModeTactical => false;
     public override bool IsGameModeUsingRoundCountdown => true;
-    public override MissionLobbyComponent.MultiplayerGameType GameType => _isSkirmish
-        ? MissionLobbyComponent.MultiplayerGameType.Skirmish
-        : MissionLobbyComponent.MultiplayerGameType.Battle;
+    public override MissionLobbyComponent.MultiplayerGameType GameType =>
+        MissionLobbyComponent.MultiplayerGameType.Battle;
     public override bool IsGameModeUsingCasualGold => false;
     public bool AreMoralesIndependent => false;
 

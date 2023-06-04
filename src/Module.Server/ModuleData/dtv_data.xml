@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DTVData>
+
+  <Round number ="1">
+    <npc_id>crpg_dtv_virgin</npc_id>
+    <Reward gold ="50"
+            experience ="1000"/>
+    <wave1>1</wave1>
+    <wave2>2</wave2>
+    <wave3>3</wave3>
+  </Round>
+
+  <Round number ="2">
+    <npc_id>crpg_dtv_virgin</npc_id>
+    <Reward gold ="50"
+            experience ="1000"/>
+    <wave1>1</wave1>
+    <wave2>2</wave2>
+    <wave3>3</wave3>
+  </Round>
+
+  <Round number ="3">
+    <npc_id>crpg_dtv_virgin</npc_id>
+    <Reward gold ="50"
+            experience ="1000"/>
+    <wave1>1</wave1>
+    <wave2>2</wave2>
+    <wave3>3</wave3>
+  </Round>
+
+  <Round number ="4">
+    <npc_id>crpg_dtv_virgin</npc_id>
+    <Reward gold ="50"
+            experience ="1000"/>
+    <wave1>1</wave1>
+    <wave2>2</wave2>
+    <wave3>3</wave3>
+  </Round>
+  
+</DTVData>

@@ -1,8 +1,11 @@
-﻿using Crpg.Module.Modes.Skirmish;
+﻿using System.Runtime.CompilerServices;
+using System.Xml;
+using Crpg.Module.Common;
 using Crpg.Module.Rewards;
 using NetworkMessages.FromServer;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
+using TaleWorlds.ModuleManager;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.MissionRepresentatives;
 using TaleWorlds.MountAndBlade.Objects;
@@ -15,20 +18,28 @@ namespace Crpg.Module.Modes.DTV;
 internal class CrpgDTVServer : MissionMultiplayerGameModeBase
 {
     private readonly CrpgDTVClient _dtvClient;
-    private readonly bool _isSkirmish;
     private readonly CrpgRewardServer _rewardServer;
+    private readonly CrpgDTVTeamSelectComponent _teamSelectComponent;
+    private readonly int totalRounds = 3;
+    private readonly int totalWaves = 3;
+    private readonly int _botRespawnTime = 3;
+    private readonly int _newRoundRespawnTime = 20;
+    private int currentWave = 1;
+    private int currentRound = 1;
+    private MissionTimer? _botRespawnTimer;
+    private bool _waitingForBotSpawn = false;
+    private bool _arePlayersSpawning = false;
 
     public override bool IsGameModeHidingAllAgentVisuals => true;
     public override bool IsGameModeUsingOpposingTeams => true;
     public override bool AllowCustomPlayerBanners() => false;
     public override bool UseRoundController() => true;
 
-    public CrpgDTVServer(CrpgDTVClient dtvClient, bool isSkirmish,
-        CrpgRewardServer rewardServer)
+    public CrpgDTVServer(CrpgDTVClient dtvClient, CrpgRewardServer rewardServer, CrpgDTVTeamSelectComponent teamSelectComponent)
     {
         _dtvClient = dtvClient;
-        _isSkirmish = isSkirmish;
         _rewardServer = rewardServer;
+        _teamSelectComponent = teamSelectComponent;
     }
 
     public override MissionLobbyComponent.MultiplayerGameType GetMissionType()
@@ -40,7 +51,6 @@ internal class CrpgDTVServer : MissionMultiplayerGameModeBase
     {
         base.AfterStart();
         RoundController.OnPreRoundEnding += OnPreRoundEnding;
-
         AddTeams();
     }
 
@@ -84,6 +94,88 @@ internal class CrpgDTVServer : MissionMultiplayerGameModeBase
         {
             return;
         }
+
+        CheckForAttackers();
+
+        if (BotRespawnDelayEnded())
+        {
+            SpawnWave(currentRound, currentWave);
+            _waitingForBotSpawn = false;
+        }
+    }
+
+    public void CheckForAttackers()
+    {
+        bool attackersDepleted = !Mission.AttackerTeam.HasBots;
+
+        if (attackersDepleted && !_waitingForBotSpawn)
+        {
+            Debug.Print("Attackers depleted");
+            currentWave += 1;
+            if (currentWave >= totalWaves + 1)
+            {
+                OnRoundEnd();
+            }
+            else
+            {
+                OnWaveEnd();
+            }
+
+            if (currentRound >= totalRounds)
+            {
+                Debug.Print("Match complete");
+                // end match
+            }
+
+            Debug.Print($"Current Round: {currentRound}");
+            Debug.Print($"Current Wave: {currentWave}");
+        }
+    }
+
+
+    public void SpawnWave(int round, int wave)
+    {
+        Debug.Print("Setting BotsSpawned to false");
+        if (SpawnComponent.SpawningBehavior is CrpgDTVSpawningBehavior s)
+        {
+            s.BotsSpawned = false;
+            Debug.Print($"BotsSpawned set to: {s.BotsSpawned}");
+        }
+    }
+
+    public void OnWaveEnd()
+    {
+        Debug.Print("Advancing to next wave");
+        _botRespawnTimer = new MissionTimer(_botRespawnTime); // Spawn bots after timer
+        _waitingForBotSpawn = true;
+    }
+
+    public void OnRoundEnd()
+    {
+        // award players
+
+        currentRound += 1; // next round
+        currentWave = 1;
+        Debug.Print("Advancing to next round");
+        _botRespawnTimer = new MissionTimer(_newRoundRespawnTime); // Spawn bots after timer
+        _waitingForBotSpawn = true;
+
+        if (SpawnComponent.SpawningBehavior is CrpgDTVSpawningBehavior s)
+        {
+            s.RequestNewWaveSpawnSession();        // allow players to respawn
+        }
+
+        foreach (Agent agent in Mission.DefenderTeam.ActiveAgents) // fill HP & ammo
+        {
+            agent.Health = agent.HealthLimit; // refill to max HP
+        }
+
+        _teamSelectComponent.SetPlayerAgentsTeam(); // move players to defender's team
+    }
+
+    public bool BotRespawnDelayEnded()
+    {
+        return _botRespawnTimer != null && _botRespawnTimer!.Check() && _waitingForBotSpawn;
     }
 
     public override bool CheckForRoundEnd()
@@ -99,35 +191,10 @@ internal class CrpgDTVServer : MissionMultiplayerGameModeBase
         }
 
         bool defenderTeamDepleted = Mission.DefenderTeam.ActiveAgents.Count == 0;
-        bool attackerTeamDepleted = Mission.AttackerTeam.ActiveAgents.Count == 0;
         bool virginDead = !Mission.DefenderTeam.HasBots;
+        bool missionComplete = totalRounds == currentRound;
 
-        if (!_isSkirmish)
-        {
-            return defenderTeamDepleted || attackerTeamDepleted || virginDead;
-        }
-
-        bool defenderCanSpawn = false;
-        bool attackerCanSpawn = false;
-        foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
-        {
-            MissionPeer missionPeer = networkPeer.GetComponent<MissionPeer>();
-            if (missionPeer?.Team == null || missionPeer.SpawnCountThisRound >= CrpgSkirmishSpawningBehavior.MaxSpawns)
-            {
-                continue;
-            }
-
-            if (missionPeer.Team.Side == BattleSideEnum.Defender)
-            {
-                defenderCanSpawn = true;
-            }
-            else if (missionPeer.Team.Side == BattleSideEnum.Attacker)
-            {
-                attackerCanSpawn = true;
-            }
-        }
-
-        return (defenderTeamDepleted && !defenderCanSpawn) || (attackerTeamDepleted && !attackerCanSpawn);
+        return defenderTeamDepleted || virginDead || missionComplete;
     }
 
     public override void OnAgentBuild(Agent agent, Banner banner)
@@ -178,6 +245,7 @@ internal class CrpgDTVServer : MissionMultiplayerGameModeBase
             bool defenderTeamAlive = Mission.DefenderTeam.ActiveAgents.Count > 0;
             bool attackerTeamAlive = Mission.AttackerTeam.ActiveAgents.Count > 0;
             bool virginDead = !Mission.DefenderTeam.HasBots;
+            bool missionComplete = totalRounds == currentRound;
             if (virginDead)
             {
                 Debug.Print("The Virgin has died");
@@ -185,7 +253,7 @@ internal class CrpgDTVServer : MissionMultiplayerGameModeBase
                 RoundController.RoundWinner = BattleSideEnum.Attacker;
                 RoundController.RoundEndReason = RoundEndReason.GameModeSpecificEnded;
             }
-            else if (defenderTeamAlive)
+            else if (missionComplete)
             {
                 roundResult = CaptureTheFlagCaptureResultEnum.DefendersWin;
                 RoundController.RoundWinner = BattleSideEnum.Defender;

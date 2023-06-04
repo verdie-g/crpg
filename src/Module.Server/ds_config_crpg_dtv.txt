@@ -15,11 +15,11 @@ FriendlyFireDamageMeleeSelfPercent 0
 FriendlyFireDamageRangedFriendPercent 50
 FriendlyFireDamageRangedSelfPercent 0
 MinNumberOfPlayersForMatchStart 1
-NumberOfBotsTeam1 4
-NumberOfBotsTeam2 10
-RoundTotal 10
+NumberOfBotsTeam1 1
+NumberOfBotsTeam2 2
+RoundTotal 1
 MapTimeLimit 8
-RoundTimeLimit 300
+RoundTimeLimit 3600
 WarmupTimeLimit 1
 start_game
 set_automated_battle_count -1

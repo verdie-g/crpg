@@ -25,8 +25,7 @@
     <Reference Include="$(MB_SERVER_PATH)\bin\Win64_Shipping_Server\TaleWorlds.*.dll">
       <Private>False</Private>
     </Reference>
-    <ContentWithTargetPath Remove="ModuleData\dtv_characters.xml" />
-    <ContentWithTargetPath Remove="ModuleData\dtv_class_divisions.xml" />
+    <ContentWithTargetPath Remove="ModuleData\dtv_data.xml" />
 
     <Reference Include="$(MB_SERVER_PATH)\bin\Win64_Shipping_Server\Newtonsoft.Json.dll">
       <Private>False</Private>

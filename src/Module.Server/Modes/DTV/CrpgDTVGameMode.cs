@@ -1,6 +1,5 @@
 using Crpg.Module.Common;
 using Crpg.Module.Common.HotConstants;
-using Crpg.Module.Modes.Skirmish;
 using Crpg.Module.Modes.Warmup;
 using Crpg.Module.Rewards;
 using TaleWorlds.Core;
@@ -26,13 +25,10 @@ internal class CrpgDTVGameMode : MissionBasedMultiplayerGameMode
 
     private static CrpgConstants _constants = default!; // Static so it's accessible from the views.
 
-    private readonly bool _isSkirmish;
-
-    public CrpgDTVGameMode(CrpgConstants constants, bool isSkirmish)
+    public CrpgDTVGameMode(CrpgConstants constants)
         : base(GameName)
     {
         _constants = constants;
-        _isSkirmish = isSkirmish;
     }
 
 #if CRPG_CLIENT
@@ -86,17 +82,16 @@ internal class CrpgDTVGameMode : MissionBasedMultiplayerGameMode
 
         MultiplayerRoundController roundController = new(); // starts/stops round, ends match
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent, () =>
-            (new FlagDominationSpawnFrameBehavior(), _isSkirmish
-                ? new CrpgSkirmishSpawningBehavior(_constants, roundController)
-                : new CrpgDTVSpawningBehavior(_constants, roundController)));
+            (new FlagDominationSpawnFrameBehavior(),
+            new CrpgDTVSpawningBehavior(_constants, roundController)));
         CrpgDTVTeamSelectComponent teamSelectComponent = new(warmupComponent, roundController);
         CrpgRewardServer rewardServer = new(crpgClient, _constants, warmupComponent, enableTeamHitCompensations: true);
+        CrpgDTVSpawningBehavior spawnBehaviour = new(_constants, roundController);
 #else
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent, null);
         CrpgDTVTeamSelectComponent teamSelectComponent = new();
 #endif
-        CrpgDTVClient dtvClient = new(_isSkirmish);
-
+        CrpgDTVClient dtvClient = new();
         MissionState.OpenNew(
             Name,
             new MissionInitializerRecord(scene),
@@ -118,7 +113,7 @@ internal class CrpgDTVGameMode : MissionBasedMultiplayerGameMode
                     new MissionBoundaryCrossingHandler(), // kills agent out of mission boundaries
                     new MultiplayerPollComponent(), // poll logic to kick player, ban player, change game
                     new MissionOptionsComponent(),
-                    new CrpgScoreboardComponent(_isSkirmish ? new CrpgSkirmishScoreboardData() : new BattleScoreboardData()),
+                    new CrpgScoreboardComponent(new BattleScoreboardData()),
                     new MissionAgentPanicHandler(),
                     new EquipmentControllerLeaveLogic(),
                     new MultiplayerPreloadHelper(),
@@ -127,11 +122,10 @@ internal class CrpgDTVGameMode : MissionBasedMultiplayerGameMode
                     new WelcomeMessageBehavior(warmupComponent),
 #if CRPG_SERVER
                     roundController,
-                    new CrpgDTVServer(dtvClient, _isSkirmish, rewardServer),
+                    new CrpgDTVServer(dtvClient, rewardServer, teamSelectComponent),
                     rewardServer,
                     // SpawnFrameBehaviour: where to spawn, SpawningBehaviour: when to spawn
-                    new SpawnComponent(new BattleSpawnFrameBehavior(),
-                        _isSkirmish ? new CrpgSkirmishSpawningBehavior(_constants, roundController) : new CrpgDTVSpawningBehavior(_constants, roundController)),
+                    new SpawnComponent(new BattleSpawnFrameBehavior(), spawnBehaviour),
                     new AgentHumanAILogic(), // bot intelligence
                     new MultiplayerAdminComponent(), // admin UI to kick player or restart game
                     new CrpgUserManagerServer(crpgClient, _constants),
