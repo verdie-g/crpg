@@ -295,7 +295,7 @@ public class UpdateGameUsersCommandTest : TestBase
             .ToArrayAsync();
         foreach (var userItem in userItemsDb)
         {
-            Assert.That(userItem.Rank, Is.EqualTo(-1));
+            Assert.That(userItem.IsBroken, Is.True);
         }
     }
 }

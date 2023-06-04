@@ -10,7 +10,7 @@ using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Items;
 
-public class UpgradeUserItemCommandTest : TestBase
+public class RepairUserItemCommandTest : TestBase
 {
     private static readonly Constants Constants = new()
     {
@@ -27,8 +27,8 @@ public class UpgradeUserItemCommandTest : TestBase
 
         Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
 
-        UpgradeUserItemCommand.Handler handler = new(ActDb, Mapper, activityLogServiceMock.Object, Constants);
-        var result = await handler.Handle(new UpgradeUserItemCommand
+        RepairUserItemCommand.Handler handler = new(ActDb, Mapper, activityLogServiceMock.Object, Constants);
+        var result = await handler.Handle(new RepairUserItemCommand
         {
             UserItemId = 1,
             UserId = user.Id,
@@ -52,8 +52,8 @@ public class UpgradeUserItemCommandTest : TestBase
 
         Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
 
-        UpgradeUserItemCommand.Handler handler = new(ActDb, Mapper, activityLogServiceMock.Object, Constants);
-        var result = await handler.Handle(new UpgradeUserItemCommand
+        RepairUserItemCommand.Handler handler = new(ActDb, Mapper, activityLogServiceMock.Object, Constants);
+        var result = await handler.Handle(new RepairUserItemCommand
         {
             UserItemId = userItem.Id,
             UserId = user.Id,
@@ -66,7 +66,7 @@ public class UpgradeUserItemCommandTest : TestBase
     [Test]
     public async Task Repair()
     {
-        UserItem userItem = new() { Rank = -1, Item = new Item { Id = "0", Price = 33333 } };
+        UserItem userItem = new() { IsBroken = true, Item = new Item { Id = "0", Price = 33333 } };
         User user = new()
         {
             Gold = 1000,
@@ -77,15 +77,15 @@ public class UpgradeUserItemCommandTest : TestBase
 
         Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
 
-        UpgradeUserItemCommand.Handler handler = new(ActDb, Mapper, activityLogServiceMock.Object, Constants);
-        var result = await handler.Handle(new UpgradeUserItemCommand
+        RepairUserItemCommand.Handler handler = new(ActDb, Mapper, activityLogServiceMock.Object, Constants);
+        var result = await handler.Handle(new RepairUserItemCommand
         {
             UserItemId = userItem.Id,
             UserId = user.Id,
         }, CancellationToken.None);
 
         Assert.That(result.Errors, Is.Null);
-        Assert.That(result.Data!.Rank, Is.EqualTo(0));
+        Assert.That(result.Data!.IsBroken, Is.False);
 
         var userDb = await AssertDb.Users.FirstAsync(u => u.Id == user.Id);
         Assert.That(userDb.Gold, Is.EqualTo(667));
