@@ -56,8 +56,8 @@ export const getUserItems = async () =>
 export const buyUserItem = async (itemId: string) =>
   mapUserItem(await post<UserItem>('/users/self/items', { itemId }));
 
-export const upgradeUserItem = async (userItemId: number) =>
-  mapUserItem(await put<UserItem>(`/users/self/items/${userItemId}/upgrade`));
+export const repairUserItem = async (userItemId: number) =>
+  mapUserItem(await put<UserItem>(`/users/self/items/${userItemId}/repair`));
 
 export const sellUserItem = (userItemId: number) => del(`/users/self/items/${userItemId}`);
 
