@@ -11,14 +11,14 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Items.Commands;
 
-public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
+public record RepairUserItemCommand : IMediatorRequest<UserItemViewModel>
 {
     public int UserItemId { get; init; }
     public int UserId { get; init; }
 
-    internal class Handler : IMediatorRequestHandler<UpgradeUserItemCommand, UserItemViewModel>
+    internal class Handler : IMediatorRequestHandler<RepairUserItemCommand, UserItemViewModel>
     {
-        private static readonly ILogger Logger = LoggerFactory.CreateLogger<UpgradeUserItemCommand>();
+        private static readonly ILogger Logger = LoggerFactory.CreateLogger<RepairUserItemCommand>();
 
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
@@ -33,7 +33,7 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
             _constants = constants;
         }
 
-        public async Task<Result<UserItemViewModel>> Handle(UpgradeUserItemCommand req, CancellationToken cancellationToken)
+        public async Task<Result<UserItemViewModel>> Handle(RepairUserItemCommand req, CancellationToken cancellationToken)
         {
             var userItem = await _db.UserItems
                 .Include(ui => ui.User!)
@@ -49,7 +49,7 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
                 return new(CommonErrors.UserItemMaxRankReached(req.UserItemId, 3));
             }
 
-            if (userItem.Rank < 0) // repair
+            if (userItem.IsBroken) // repair
             {
                 int repairCost = (int)(userItem.Item!.Price
                                        * _constants.ItemRepairCostPerSecond
@@ -61,7 +61,7 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
 
                 userItem.User!.Gold -= repairCost;
 
-                _db.ActivityLogs.Add(_activityLogService.CreateItemUpgradedLog(userItem.UserId, userItem.ItemId, repairCost, 0));
+                _db.ActivityLogs.Add(_activityLogService.CreateItemRepairedLog(userItem.UserId, userItem.ItemId, repairCost));
             }
             else // looming
             {
@@ -78,10 +78,10 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
 #endif
             }
 
-            userItem.Rank += 1;
+            userItem.IsBroken = false;
             await _db.SaveChangesAsync(cancellationToken);
 
-            Logger.LogInformation("User '{0}' upgraded user item '{1}' to rank {2}", req.UserId, req.UserItemId, userItem.Rank);
+            Logger.LogInformation("User '{0}' repaired user item '{1}'", req.UserId, req.UserItemId);
             return new(_mapper.Map<UserItemViewModel>(userItem));
         }
     }

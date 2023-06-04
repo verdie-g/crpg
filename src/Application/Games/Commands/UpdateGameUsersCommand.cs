@@ -156,7 +156,7 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
                 .ToArrayAsync(cancellationToken);
             foreach (var userItem in userItemsToBreak)
             {
-                userItem.Rank = -1;
+                userItem.IsBroken = true;
                 _db.EquippedItems.RemoveRange(userItem.EquippedItems);
                 repairedItems.Add(new GameRepairedItem
                 {

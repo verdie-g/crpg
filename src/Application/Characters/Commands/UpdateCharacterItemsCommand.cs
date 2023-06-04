@@ -103,7 +103,7 @@ public record UpdateCharacterItemsCommand : IMediatorRequest<IList<EquippedItemV
                     return new(CommonErrors.ItemDisabled(userItem.ItemId));
                 }
 
-                if (userItem.Rank < 0)
+                if (userItem.IsBroken)
                 {
                     return new(CommonErrors.ItemBroken(userItem.ItemId));
                 }
