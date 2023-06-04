@@ -62,7 +62,7 @@ export const useUserStore = defineStore('user', {
     async buyItem(itemId: string) {
       const userItem = await buyUserItem(itemId);
       this.addUserItem(userItem);
-      this.subtractGold(userItem.baseItem.price);
+      this.subtractGold(userItem.item.price);
     },
 
     async getUserClanAndRole() {

@@ -19,33 +19,32 @@ const emit = defineEmits<{
 }>();
 
 const { onDragStart, onDragEnd } = useInventoryDnD(equippedItemsBySlot);
-const { openItemDetail, closeItemDetail,getElementBounds } = useItemDetail();
+const { openItemDetail, closeItemDetail, getElementBounds } = useItemDetail();
 
 const onSellItem = (item: UserItem) => {
   emit('sell', item.id);
-  closeItemDetail(item.baseItem.id);
+  closeItemDetail(item.item.id);
 };
-
 </script>
 
 <template>
   <div class="grid grid-cols-3 gap-2 2xl:grid-cols-4" style="grid-area: items">
     <CharacterInventoryItemCard
-      v-for="item in items"
-      :key="item.id"
+      v-for="userItem in items"
+      :key="userItem.id"
       class="h-20"
-      :item="item"
-      :equipped="equippedItemsIds.includes(item.id)"
-      :notMeetRequirement="validateItemNotMeetRequirement(item.baseItem, characterCharacteristics)"
-      :isNew="!isGraceTimeExpired(getItemGraceTimeEnd(item))"
-      @dragstart="onDragStart(item)"
+      :userItem="userItem"
+      :equipped="equippedItemsIds.includes(userItem.id)"
+      :notMeetRequirement="validateItemNotMeetRequirement(userItem.item, characterCharacteristics)"
+      :isNew="!isGraceTimeExpired(getItemGraceTimeEnd(userItem))"
+      @dragstart="onDragStart(userItem)"
       @dragend="onDragEnd"
-      @sell="onSellItem(item)"
+      @sell="onSellItem(userItem)"
       @click="
         e =>
           openItemDetail({
-            id: item.baseItem.id,
-            userId: item.id,
+            id: userItem.item.id,
+            userId: userItem.id,
             bound: getElementBounds(e.target as HTMLElement),
           })
       "

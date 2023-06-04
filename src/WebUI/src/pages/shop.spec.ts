@@ -216,7 +216,7 @@ describe('shop item', () => {
   });
 
   it('pass prop - disabled', async () => {
-    userStore.userItems = [{ baseItem: { id: '2' } } as UserItem];
+    userStore.userItems = [{ item: { id: '2' } } as UserItem];
     const { wrapper } = await mountWithRouter(mountOptions, routes, route);
 
     const itemsComponents = wrapper.findAllComponents({ name: 'ShopGridItem' });

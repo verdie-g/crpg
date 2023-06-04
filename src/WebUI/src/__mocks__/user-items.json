@@ -1,7 +1,7 @@
 [
     {
       "id": 1,
-      "baseItem": {
+      "item": {
         "id": "crpg_aserai_female_civil_hscarf",
         "name": "Desert Headscarf",
         "culture": "Aserai",

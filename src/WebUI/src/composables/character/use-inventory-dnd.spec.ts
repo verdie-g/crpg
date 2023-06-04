@@ -33,13 +33,13 @@ import { useInventoryDnD } from './use-inventory-dnd';
 const userItemsBySlot: PartialDeep<UserItemsBySlot> = {
   [ItemSlot.Head]: {
     id: 4,
-    baseItem: {
+    item: {
       type: ItemType.HeadArmor,
     },
   },
   [ItemSlot.Weapon0]: {
     id: 3,
-    baseItem: {
+    item: {
       type: ItemType.OneHandedWeapon,
     },
   },
@@ -70,7 +70,7 @@ describe('useInventoryDnD', () => {
     it('weapon: from inventory, to doll', () => {
       const userItem: PartialDeep<UserItem> = {
         id: 1,
-        baseItem: { type: ItemType.TwoHandedWeapon, flags: [] },
+        item: { type: ItemType.TwoHandedWeapon, flags: [] },
       };
 
       const AVAILABLE_SLOTS = [
@@ -98,7 +98,7 @@ describe('useInventoryDnD', () => {
     it('weapon: from doll, to doll (another slot)', () => {
       const userItem: PartialDeep<UserItem> = {
         id: 1,
-        baseItem: { type: ItemType.TwoHandedWeapon, flags: [] },
+        item: { type: ItemType.TwoHandedWeapon, flags: [] },
       };
 
       const AVAILABLE_SLOTS = [
@@ -127,7 +127,7 @@ describe('useInventoryDnD', () => {
       const userItem: PartialDeep<UserItem> = {
         id: 42,
         rank: -1,
-        baseItem: { type: ItemType.HeadArmor, flags: [] },
+        item: { type: ItemType.HeadArmor, flags: [] },
       };
 
       const { focusedItemId, availableSlots, fromSlot, onDragStart, onDragEnd } = useInventoryDnD(
@@ -211,7 +211,7 @@ describe('useInventoryDnD', () => {
 
       const userItem: PartialDeep<UserItem> = {
         id: 1,
-        baseItem: { type: ItemType.Mount, flags: [] },
+        item: { type: ItemType.Mount, flags: [] },
       };
 
       const { onDragStart, onDrop, onDragEnd } = useInventoryDnD(
@@ -232,7 +232,7 @@ describe('useInventoryDnD', () => {
 
       const userItem: PartialDeep<UserItem> = {
         id: 1,
-        baseItem: { type: ItemType.Mount, flags: [] },
+        item: { type: ItemType.Mount, flags: [] },
       };
 
       const { onDragStart, onDrop, onDragEnd } = useInventoryDnD(
@@ -253,7 +253,7 @@ describe('useInventoryDnD', () => {
 
       const userItem: PartialDeep<UserItem> = {
         id: 1,
-        baseItem: { type: ItemType.HeadArmor, flags: [] },
+        item: { type: ItemType.HeadArmor, flags: [] },
       };
 
       const { onDragStart, onDrop, onDragEnd } = useInventoryDnD(
@@ -281,20 +281,20 @@ describe('useInventoryDnD', () => {
 
       const userItem: PartialDeep<UserItem> = {
         id: 2,
-        baseItem: { type: ItemType.TwoHandedWeapon, flags: [] },
+        item: { type: ItemType.TwoHandedWeapon, flags: [] },
       };
 
       const { onDragStart, onDrop, onDragEnd } = useInventoryDnD(
         ref({
           [ItemSlot.Weapon0]: {
             id: 1,
-            baseItem: {
+            item: {
               type: ItemType.OneHandedWeapon,
             },
           },
           [ItemSlot.Weapon1]: {
             id: 2,
-            baseItem: {
+            item: {
               type: ItemType.TwoHandedWeapon,
             },
           },

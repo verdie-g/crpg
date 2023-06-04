@@ -22,7 +22,7 @@ definePage({
 });
 
 const userStore = useUserStore();
-const userBaseItemsIds = computed(() => userStore.userItems.map(ui => ui.baseItem.id));
+const userItemsIds = computed(() => userStore.userItems.map(ui => ui.item.id));
 
 const { state: items, execute: loadItems } = useAsyncState(() => getItems(), [], {
   immediate: false,
@@ -60,7 +60,7 @@ const {
 const searchResult = computed(() =>
   getSearchResult({
     items: filteredByClassFlatItems.value,
-    userBaseItemsIds: hideOwnedItemsModel.value ? userBaseItemsIds.value : [],
+    userItemsIds: hideOwnedItemsModel.value ? userItemsIds.value : [],
     aggregationConfig: aggregationsConfig.value,
     sortingConfig: sortingConfig.value,
     sort: sortingModel.value,
@@ -252,7 +252,7 @@ const buyItem = async (item: ItemFlat) => {
               <ShopGridItemBuyBtn
                 :price="(rawBuckets as number)"
                 :upkeep="item.upkeep"
-                :inInventory="userBaseItemsIds.includes(item.id)"
+                :inInventory="userItemsIds.includes(item.id)"
                 :notEnoughGold="userStore.user!.gold < item.price"
                 @buy="buyItem(item)"
               />
