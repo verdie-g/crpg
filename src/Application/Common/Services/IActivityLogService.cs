@@ -76,6 +76,15 @@ internal class ActivityLogService : IActivityLogService
         });
     }
 
+    public ActivityLog CreateItemRepairedLog(int userId, string itemId, int price)
+    {
+        return CreateLog(ActivityLogType.ItemBroke, userId, new ActivityLogMetadata[]
+        {
+            new("itemId", itemId),
+            new("price", price.ToString()),
+        });
+    }
+
     public ActivityLog CreateItemUpgradedLog(int userId, string itemId, int price, int heirloomPoints)
     {
         return CreateLog(ActivityLogType.ItemUpgraded, userId, new ActivityLogMetadata[]
