@@ -28,6 +28,7 @@ export interface UserItem {
   id: number;
   baseItem: Item;
   rank: UserItemRank;
+  isBroken: boolean;
   createdAt: Date;
 }
 
