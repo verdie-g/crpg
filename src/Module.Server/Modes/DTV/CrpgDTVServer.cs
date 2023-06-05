@@ -20,6 +20,7 @@ internal class CrpgDTVServer : MissionMultiplayerGameModeBase
     private readonly CrpgDTVClient _dtvClient;
     private readonly CrpgRewardServer _rewardServer;
     private readonly CrpgDTVTeamSelectComponent _teamSelectComponent;
+    private readonly CrpgDTVSpawningBehavior _spawningBehavior;
     private readonly int totalRounds = 3;
     private readonly int totalWaves = 3;
     private readonly int _botRespawnTime = 3;
@@ -28,18 +29,21 @@ internal class CrpgDTVServer : MissionMultiplayerGameModeBase
     private int currentRound = 1;
     private MissionTimer? _botRespawnTimer;
     private bool _waitingForBotSpawn = false;
-    private bool _arePlayersSpawning = false;
 
     public override bool IsGameModeHidingAllAgentVisuals => true;
     public override bool IsGameModeUsingOpposingTeams => true;
     public override bool AllowCustomPlayerBanners() => false;
     public override bool UseRoundController() => true;
 
-    public CrpgDTVServer(CrpgDTVClient dtvClient, CrpgRewardServer rewardServer, CrpgDTVTeamSelectComponent teamSelectComponent)
+    public CrpgDTVServer(CrpgDTVClient dtvClient,
+        CrpgRewardServer rewardServer,
+        CrpgDTVTeamSelectComponent teamSelectComponent,
+        CrpgDTVSpawningBehavior spawningBehavior)
     {
         _dtvClient = dtvClient;
         _rewardServer = rewardServer;
         _teamSelectComponent = teamSelectComponent;
+        _spawningBehavior = spawningBehavior;
     }
 
     public override MissionLobbyComponent.MultiplayerGameType GetMissionType()
@@ -139,6 +143,8 @@ internal class CrpgDTVServer : MissionMultiplayerGameModeBase
         if (SpawnComponent.SpawningBehavior is CrpgDTVSpawningBehavior s)
         {
             s.BotsSpawned = false;
+            s.Round = round;
+            s.Wave = wave;
             Debug.Print($"BotsSpawned set to: {s.BotsSpawned}");
         }
     }

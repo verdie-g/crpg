@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System.Text;
+using System.Xml.Linq;
 using Crpg.Module.Common;
 using Crpg.Module.Common.Network;
 using TaleWorlds.Core;
@@ -15,11 +16,13 @@ internal class CrpgDTVSpawningBehavior : CrpgSpawningBehaviorBase
     public bool BotsSpawned { get; set; }
 
     private const float TotalSpawnDuration = 15f;
-
-    private readonly XmlDocument? _dtvData;
-    private readonly XmlNodeList _rounds;
+    
+    private readonly XDocument? _dtvData;
     private readonly MultiplayerRoundController _roundController;
     private readonly HashSet<PlayerId> _notifiedPlayersAboutSpawnRestriction;
+
+    public int Wave { get; set; }
+    public int Round { get; set; }
     private MissionTimer? _spawnTimer;
     private MissionTimer? _cavalrySpawnDelayTimer;
     private bool _virginSpawned;
@@ -29,9 +32,8 @@ internal class CrpgDTVSpawningBehavior : CrpgSpawningBehaviorBase
     {
         _roundController = roundController;
         _notifiedPlayersAboutSpawnRestriction = new HashSet<PlayerId>();
-        _dtvData = new XmlDocument();
-        _dtvData.Load(ModuleHelper.GetXmlPath("Crpg", "dtv_data"));
-        _rounds = _dtvData.SelectNodes("//Round");
+        _dtvData = new XDocument();
+        _dtvData = XDocument.Load(ModuleHelper.GetXmlPath("Crpg", "dtv_data"));
     }
 
     public override void Initialize(SpawnComponent spawnComponent)
@@ -39,6 +41,8 @@ internal class CrpgDTVSpawningBehavior : CrpgSpawningBehaviorBase
         base.Initialize(spawnComponent);
         _roundController.OnPreparationEnded += RequestStartSpawnSession;
         _roundController.OnRoundEnding += RequestStopSpawnSession;
+        Wave = 1;
+        Round = 1;
     }
 
     public override void Clear()
@@ -52,8 +56,8 @@ internal class CrpgDTVSpawningBehavior : CrpgSpawningBehaviorBase
     {
         if (!BotsSpawned && _virginSpawned)
         {
-            Debug.Print("Attempting to spawn attacking bots!");
-            SpawnAttackingBots(1, 2);
+            Debug.Print($"Attempting to spawn attacking bots for Wave: {Wave} Round:{Round}");
+            SpawnAttackingBots(Wave, Round);
             BotsSpawned = true;
         }
 
@@ -177,22 +181,40 @@ internal class CrpgDTVSpawningBehavior : CrpgSpawningBehaviorBase
         }
     }
 
-    protected void SpawnAttackingBots(int wave, int round)
+    protected void SpawnAttackingBots(int currentWave, int currentRound)
     {
         BasicCultureObject cultureTeam1 = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam1.GetStrValue());
         BasicCultureObject cultureTeam2 = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam2.GetStrValue());
         int botsTeam1 = MultiplayerOptions.OptionType.NumberOfBotsTeam1.GetIntValue();
         int botsTeam2 = MultiplayerOptions.OptionType.NumberOfBotsTeam2.GetIntValue();
         int numberOfBots = 0;
-        foreach (XmlNode? roundNode in _rounds)
+        string botID = "crpg_dtv_";
+
+        if (_dtvData is not null)
         {
-            if (roundNode != null && int.Parse(roundNode.Attributes["number"].Value) == round)
+            var waveValue = _dtvData.Descendants("Round")
+                .Where(round => (int)round.Attribute("number") == currentRound)
+                .Elements($"wave{currentWave}")
+                .FirstOrDefault()?.Value;
+
+            Debug.Print($"Number of bots this wave: {waveValue}");
+            if (waveValue != null)
             {
-                Debug.Print($"Found XML NODE WITH NUMBER VALUE OF: {roundNode.Attributes["number"].Value}");
-/*                Debug.Print($"Found XML NODE WITH wave1 count OF: {roundNode["wave1"].InnerText}");
-                numberOfBots = int.Parse(roundNode["wave1"].InnerText);*/
+                numberOfBots = int.Parse(waveValue);
+            }
+
+            var npcID = _dtvData.Descendants("Round")
+                .Where(round => (int)round.Attribute("number") == currentRound)
+                .Elements("npc_id")
+                .FirstOrDefault()?.Value;
+
+            Debug.Print($"Type of bot this wave: {npcID}");
+            if (npcID != null)
+            {
+                botID = npcID;
             }
         }
+
 
         if (botsTeam1 <= 0 && botsTeam2 <= 0)
         {
@@ -208,7 +230,6 @@ internal class CrpgDTVSpawningBehavior : CrpgSpawningBehaviorBase
             }
 
             BasicCultureObject teamCulture;
-            
             if (team.Side == BattleSideEnum.Attacker)
             {
                 teamCulture = cultureTeam1;
@@ -225,7 +246,7 @@ internal class CrpgDTVSpawningBehavior : CrpgSpawningBehaviorBase
             {
                 MultiplayerClassDivisions.MPHeroClass botClass = MultiplayerClassDivisions
                     .GetMPHeroClasses()
-                    .GetRandomElementWithPredicate<MultiplayerClassDivisions.MPHeroClass>(x => x.StringId.StartsWith("crpg_dtv_virgin"));
+                    .GetRandomElementWithPredicate<MultiplayerClassDivisions.MPHeroClass>(x => x.StringId.StartsWith(botID));
                 BasicCharacterObject character = botClass.HeroCharacter;
                 Debug.Print($"Attempting to spawn {character.Name}");
 
