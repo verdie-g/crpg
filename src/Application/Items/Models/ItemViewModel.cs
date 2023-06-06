@@ -8,6 +8,7 @@ namespace Crpg.Application.Items.Models;
 public record ItemViewModel : IMapFrom<Item>
 {
     public string Id { get; init; } = string.Empty;
+    public string BaseId { get; init; } = string.Empty;
     public string Name { get; init; } = string.Empty;
     public Culture Culture { get; init; }
     public ItemType Type { get; init; }
