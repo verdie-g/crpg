@@ -176,7 +176,17 @@ internal class CrpgDTVServer : MissionMultiplayerGameModeBase
 
         foreach (Agent agent in Mission.DefenderTeam.ActiveAgents) // fill HP & ammo
         {
-            agent.Health = agent.HealthLimit; // refill to max HP
+            agent.Health = agent.HealthLimit;
+            for (EquipmentIndex equipmentIndex = EquipmentIndex.WeaponItemBeginSlot; equipmentIndex < EquipmentIndex.NumAllWeaponSlots; equipmentIndex++)
+            {
+                if (!agent.Equipment[equipmentIndex].IsEmpty && (agent.Equipment[equipmentIndex].CurrentUsageItem.WeaponClass == WeaponClass.Arrow ||
+                                                                 agent.Equipment[equipmentIndex].CurrentUsageItem.WeaponClass == WeaponClass.Bolt ||
+                                                                 agent.Equipment[equipmentIndex].CurrentUsageItem.WeaponClass == WeaponClass.Javelin)
+                                                                 && agent.Equipment[equipmentIndex].Amount < agent.Equipment[equipmentIndex].ModifiedMaxAmount)
+                {
+                    agent.SetWeaponAmountInSlot(equipmentIndex, agent.Equipment[equipmentIndex].ModifiedMaxAmount, true);
+                }
+            }
         }
 
         _teamSelectComponent.SetPlayerAgentsTeam(); // move players to defender's team
