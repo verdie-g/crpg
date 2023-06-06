@@ -21,7 +21,7 @@ internal class CrpgDTVServer : MissionMultiplayerGameModeBase
     private readonly CrpgRewardServer _rewardServer;
     private readonly CrpgDTVTeamSelectComponent _teamSelectComponent;
     private readonly CrpgDTVSpawningBehavior _spawningBehavior;
-    private readonly int totalRounds = 3;
+    private readonly int totalRounds = 7;
     private readonly int totalWaves = 3;
     private readonly int _botRespawnTime = 3;
     private readonly int _newRoundRespawnTime = 20;
@@ -125,7 +125,7 @@ internal class CrpgDTVServer : MissionMultiplayerGameModeBase
                 OnWaveEnd();
             }
 
-            if (currentRound >= totalRounds)
+            if (currentRound > totalRounds)
             {
                 Debug.Print("Match complete");
                 // end match

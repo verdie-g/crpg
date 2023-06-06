@@ -2,7 +2,7 @@
 <DTVData>
   <Rounds>
     <Round number ="1">
-      <npc_id>crpg_dtv_virgin</npc_id>
+      <npc_id>crpg_dtv_peasant</npc_id>
       <Reward gold ="50"
               experience ="1000"/>
       <wave1>1</wave1>
@@ -11,16 +11,16 @@
     </Round>
 
     <Round number ="2">
-      <npc_id>crpg_dtv_virgin</npc_id>
+      <npc_id>crpg_dtv_squire</npc_id>
       <Reward gold ="50"
               experience ="1000"/>
       <wave1>1</wave1>
-      <wave2>5</wave2>
+      <wave2>2</wave2>
       <wave3>3</wave3>
     </Round>
 
     <Round number ="3">
-      <npc_id>crpg_bot_theflash</npc_id>
+      <npc_id>crpg_dtv_looter</npc_id>
       <Reward gold ="50"
               experience ="1000"/>
       <wave1>1</wave1>
@@ -29,12 +29,40 @@
     </Round>
 
     <Round number ="4">
-      <npc_id>crpg_dtv_virgin</npc_id>
+      <npc_id>crpg_dtv_deserter</npc_id>
       <Reward gold ="50"
               experience ="1000"/>
       <wave1>1</wave1>
       <wave2>2</wave2>
       <wave3>3</wave3>
     </Round>
+
+    <Round number ="5">
+      <npc_id>crpg_dtv_viking</npc_id>
+      <Reward gold ="50"
+              experience ="1000"/>
+      <wave1>1</wave1>
+      <wave2>2</wave2>
+      <wave3>3</wave3>
+    </Round>
+
+    <Round number ="6">
+      <npc_id>crpg_dtv_samurai</npc_id>
+      <Reward gold ="50"
+              experience ="1000"/>
+      <wave1>1</wave1>
+      <wave2>2</wave2>
+      <wave3>3</wave3>
+    </Round>
+
+    <Round number ="7">
+      <npc_id>crpg_dtv_legionary</npc_id>
+      <Reward gold ="50"
+              experience ="1000"/>
+      <wave1>1</wave1>
+      <wave2>2</wave2>
+      <wave3>3</wave3>
+    </Round>
+
   </Rounds>
 </DTVData>
