@@ -1,15 +1,20 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Xml;
+using Crpg.Module.Api.Models;
 using Crpg.Module.Common;
+using Crpg.Module.Common.Network;
 using Crpg.Module.Rewards;
 using NetworkMessages.FromServer;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.ModuleManager;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.Diamond;
 using TaleWorlds.MountAndBlade.MissionRepresentatives;
 using TaleWorlds.MountAndBlade.Objects;
 using TaleWorlds.ObjectSystem;
+using TaleWorlds.PlayerServices;
 using MathF = TaleWorlds.Library.MathF;
 using Timer = TaleWorlds.Core.Timer;
 
@@ -21,7 +26,7 @@ internal class CrpgDTVServer : MissionMultiplayerGameModeBase
     private readonly CrpgRewardServer _rewardServer;
     private readonly CrpgDTVTeamSelectComponent _teamSelectComponent;
     private readonly CrpgDTVSpawningBehavior _spawningBehavior;
-    private readonly int totalRounds = 7;
+    private readonly int totalRounds = 8;
     private readonly int totalWaves = 3;
     private readonly int _botRespawnTime = 3;
     private readonly int _newRoundRespawnTime = 20;
@@ -137,7 +142,6 @@ internal class CrpgDTVServer : MissionMultiplayerGameModeBase
         }
     }
 
-
     public void SpawnWave(int round, int wave)
     {
         Debug.Print("Setting BotsSpawned to false");
@@ -152,6 +156,7 @@ internal class CrpgDTVServer : MissionMultiplayerGameModeBase
 
     public void OnWaveEnd()
     {
+        SendRoundDataToPeers();
         Debug.Print("Advancing to next wave");
         _botRespawnTimer = new MissionTimer(_botRespawnTime); // Spawn bots after timer
         _waitingForBotSpawn = true;
@@ -161,10 +166,10 @@ internal class CrpgDTVServer : MissionMultiplayerGameModeBase
 
     public void OnRoundEnd()
     {
-        //TODO: award players
-
+        // TODO: award players
         currentRound += 1; // next round
         currentWave = 1;
+        SendRoundDataToPeers();
         Debug.Print("Advancing to next round");
         _botRespawnTimer = new MissionTimer(_newRoundRespawnTime); // Spawn bots after timer
         _waitingForBotSpawn = true;
@@ -314,6 +319,24 @@ internal class CrpgDTVServer : MissionMultiplayerGameModeBase
         else if (roundResult == CaptureTheFlagCaptureResultEnum.DefendersWin)
         {
             missionBehavior.SetTimersOfVictoryReactionsOnBattleEnd(BattleSideEnum.Defender);
+        }
+    }
+
+    private void SendRoundDataToPeers()
+    {
+        foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
+        {
+            GameNetwork.BeginModuleEventAsServer(networkPeer);
+            GameNetwork.WriteMessage(new CrpgDTVRoundMessage
+            {
+                RoundData = new CrpgDTVRoundData
+                {
+                    Round = currentRound,
+                    Wave = currentWave,
+                },
+            });
+            GameNetwork.EndModuleEventAsServer();
+
         }
     }
 }

@@ -142,6 +142,7 @@ internal class CrpgDTVGameMode : MissionBasedMultiplayerGameMode
                     new MissionMatchHistoryComponent(),
                     new MissionRecentPlayersComponent(),
                     new CrpgRewardClient(),
+                    new CrpgDTVDataClient(),
                     new HotConstantsClient(),
 #endif
                 });
