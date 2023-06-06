@@ -768,6 +768,30 @@
     </Perks>
   </MPClassDivision>
 
+  <MPClassDivision id="crpg_dtv_fancylad"
+                   hero="crpg_dtv_fancylad"
+                   troop="crpg_dtv_fancylad"
+                   hero_idle_anim="act_vlandia_mp_voulgier_idle"
+                   troop_idle_anim="act_idle_spear_1_left_stance"
+                   multiplier="0"
+                   cost="0"
+                   icon="Special_Swordsman"
+                   melee_ai="50"
+                   ranged_ai="0"
+                   armor="0"
+                   movement_speed="0"
+                   combat_movement_speed="0"
+                   acceleration="0">
+    <Perks>
+      <Perk game_mode="all"
+            name="{=}None"
+            description="{=}None."
+            icon="PerkToughness"
+            perk_list="1">
+      </Perk>
+    </Perks>
+  </MPClassDivision>
+
   <MPClassDivision id="crpg_dtv_viking"
                    hero="crpg_dtv_viking"
                    troop="crpg_dtv_viking"

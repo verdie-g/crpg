@@ -31,9 +31,9 @@
   <string id="str_multiplayer_game_type.cRPGDuel" text="{=*}cRPG Duel" />
 
   <!-- DTV -->
-  <string id="str_multiplayer_official_game_type_name.cRPGDTV" text="{=*}cRPG -" />
+  <string id="str_multiplayer_official_game_type_name.cRPGDTV" text="{=*}cRPG DTV" />
   <string id="str_multiplayer_official_game_type_explainer.cRPGDTV" text="{=*}·   Defend the Virgin from enemies!{newline}·   Earn rewards for protection!{newline}·   Upgrade your character on c-rpg.eu" />
-  <string id="str_multiplayer_game_type.cRPGDTV" text="{=*}cRPG -" />
+  <string id="str_multiplayer_game_type.cRPGDTV" text="{=*}cRPG DTV" />
 
   <!-- Scoreboard -->
   <string id="str_scoreboard_header.life" text="{=*}Life" />
@@ -49,7 +49,7 @@
   <string id="str_kick_reason.unsupported_platform" text="{=*}cRPG servers only support Steam, Epic Games and Xbox." />
 
   <!-- DTV Maps -->
-  <string id="str_multiplayer_scene_name.crpg_dtv_test" text="{=*}Test Map" />
+  <string id="str_multiplayer_scene_name.crpg_dtv_test" text="{=*}DTV Test Map" />
   
   <!-- Battle Maps -->
   <string id="str_multiplayer_scene_name.crpg_battle_abandoned" text="{=*}Abandoned" />

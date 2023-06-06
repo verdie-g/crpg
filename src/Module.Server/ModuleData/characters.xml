@@ -1039,7 +1039,7 @@
                       age="23"
                       weight="0.3333"
                       build="0"
-                      key="00000C07000000010011111211151111000701000010000000111011000101000000500202111110000000000000000000000000000000000000000000A00000" />
+                      key="00026C0094FC300B78495C75178588756676A7368679B873ABBA698735DB468B014776130485B47400000000000000000000000000000000000000007E842104" />
     </face>
     <skills>
       <skill id="Strength" value="15" />
@@ -1076,7 +1076,7 @@
                       age="23"
                       weight="0.3333"
                       build="0"
-                      key="00000C07000000010011111211151111000701000010000000111011000101000000500202111110000000000000000000000000000000000000000000A00000" />
+                      key="00156C0C401432DA653955B64DAA2966751694753A65788B748A8C5645834B7504B776460BC65A8700000000000000000000000000000000000000004F640002" />
     </face>
     <skills>
       <skill id="Strength" value="6" />
@@ -1115,7 +1115,7 @@
                       age="23"
                       weight="0.3333"
                       build="0"
-                      key="00000C07000000010011111211151111000701000010000000111011000101000000500202111110000000000000000000000000000000000000000000A00000" />
+                      key="00086C0080143006653955B64DAA2966751694753A65788B748A8C5645834B750177761307C65A8700000000000000000000000000000000000000003EE40002" />
     </face>
     <skills>
       <skill id="Strength" value="9" />
@@ -1152,7 +1152,7 @@
                       age="23"
                       weight="0.3333"
                       build="0"
-                      key="00000C07000000010011111211151111000701000010000000111011000101000000500202111110000000000000000000000000000000000000000000A00000" />
+                      key="0013A00D8058194498E5C68B7736E78264A38BDB9677785457AA4D638181AA5904B776460B83556C000000000000000000000000000000000000000025644002" />
     </face>
     <skills>
       <skill id="Strength" value="9" />
@@ -1192,7 +1192,7 @@
                       age="23"
                       weight="0.3333"
                       build="0"
-                      key="00000C07000000010011111211151111000701000010000000111011000101000000500202111110000000000000000000000000000000000000000000A00000" />
+                      key="000D74035DCC001C5488975AA655A86A4AC876579935DCA589288765B84596680777767907288414000000000000000000000000000000000000000046EC70C2" />
     </face>
     <skills>
       <skill id="Strength" value="15" />
@@ -1224,6 +1224,44 @@
     </Equipments>
   </NPCCharacter>
 
+  <NPCCharacter id="crpg_dtv_fancylad"
+            name="{=}Fancy Lad">
+    <face>
+      <BodyProperties version="4"
+                      age="23"
+                      weight="0.3333"
+                      build="0"
+                      key="000A6C0FC0A0010B8BBA57A785486654A75DB2477ADD8C35B36578A75899CDA40157761305967849000000000000000000000000000000000000000078AC7104" />
+    </face>
+    <skills>
+      <skill id="Strength" value="15" />
+      <skill id="Agility" value="15" />
+      <skill id="IronFlesh" value="5" />
+      <skill id="PowerStrike" value="5" />
+      <skill id="PowerDraw" value="0" />
+      <skill id="PowerThrow" value="0" />
+      <skill id="Athletics" value="130" />
+      <skill id="Riding" value="0" />
+      <skill id="WeaponMaster" value="5" />
+      <skill id="MountedArchery" value="0" />
+      <skill id="Shield" value="0" />
+      <skill id="OneHanded" value="147" />
+      <skill id="TwoHanded" value="0" />
+      <skill id="Polearm" value="0" />
+      <skill id="Bow" value="0" />
+      <skill id="Crossbow" value="0" />
+      <skill id="Throwing" value="0" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Head" id="Item.crpg_merchants_hat" />
+        <equipment slot="Body" id="Item.crpg_khuzait_civil_coat" />
+        <equipment slot="Leg" id="Item.crpg_sturgia_boots_d" />
+        <equipment slot="Item0" id="Item.crpg_aserai_sword_5_t4" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+
   <NPCCharacter id="crpg_dtv_viking"
               name="{=}Viking">
     <face>
@@ -1231,7 +1269,7 @@
                       age="23"
                       weight="0.3333"
                       build="0"
-                      key="00000C07000000010011111211151111000701000010000000111011000101000000500202111110000000000000000000000000000000000000000000A00000" />
+                      key="00102C041B2C3940E99664884754BAB5A35E8E6B95A9967C78463B498C8336860075560307A7B7A500000000000000000000000000000000000000004CE45004" />
     </face>
     <skills>
       <skill id="Strength" value="15" />
@@ -1265,15 +1303,15 @@
       </EquipmentRoster>
     </Equipments>
   </NPCCharacter>
-
-  <NPCCharacter id="crpg_dtv_samurai"
+  
+ <NPCCharacter id="crpg_dtv_samurai"
               name="{=}Samurai">
     <face>
       <BodyProperties version="4"
                       age="23"
                       weight="0.3333"
                       build="0"
-                      key="00000C07000000010011111211151111000701000010000000111011000101000000500202111110000000000000000000000000000000000000000000A00000" />
+                      key="0013B00F00442689A5A734C677162363366C6993967E388B6CA8A89448556A450567765706B28848000000000000000000000000000000000000000040D40142" />
     </face>
     <skills>
       <skill id="Strength" value="15" />
@@ -1315,7 +1353,7 @@
                       age="23"
                       weight="0.3333"
                       build="0"
-                      key="00000C07000000010011111211151111000701000010000000111011000101000000500202111110000000000000000000000000000000000000000000A00000" />
+                      key="001B6C0D80E4004F9B7858A78395A75B4CC89566CD4C4663547728689BD869C604977646096CB77500000000000000000000000000000000000000003D2C4102" />
     </face>
     <skills>
       <skill id="Strength" value="15" />

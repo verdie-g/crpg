@@ -6,8 +6,8 @@
       <Reward gold ="50"
               experience ="1000"/>
       <wave1>1</wave1>
-      <wave2>2</wave2>
-      <wave3>3</wave3>
+      <wave2>1</wave2>
+      <wave3>1</wave3>
     </Round>
 
     <Round number ="2">
@@ -15,8 +15,8 @@
       <Reward gold ="50"
               experience ="1000"/>
       <wave1>1</wave1>
-      <wave2>2</wave2>
-      <wave3>3</wave3>
+      <wave2>1</wave2>
+      <wave3>1</wave3>
     </Round>
 
     <Round number ="3">
@@ -24,8 +24,8 @@
       <Reward gold ="50"
               experience ="1000"/>
       <wave1>1</wave1>
-      <wave2>2</wave2>
-      <wave3>3</wave3>
+      <wave2>1</wave2>
+      <wave3>1</wave3>
     </Round>
 
     <Round number ="4">
@@ -33,35 +33,44 @@
       <Reward gold ="50"
               experience ="1000"/>
       <wave1>1</wave1>
-      <wave2>2</wave2>
-      <wave3>3</wave3>
+      <wave2>1</wave2>
+      <wave3>1</wave3>
     </Round>
 
     <Round number ="5">
+      <npc_id>crpg_dtv_fancylad</npc_id>
+      <Reward gold ="50"
+              experience ="1000"/>
+      <wave1>1</wave1>
+      <wave2>1</wave2>
+      <wave3>1</wave3>
+    </Round>
+
+    <Round number ="6">
       <npc_id>crpg_dtv_viking</npc_id>
       <Reward gold ="50"
               experience ="1000"/>
       <wave1>1</wave1>
-      <wave2>2</wave2>
-      <wave3>3</wave3>
+      <wave2>1</wave2>
+      <wave3>1</wave3>
     </Round>
 
-    <Round number ="6">
+    <Round number ="7">
       <npc_id>crpg_dtv_samurai</npc_id>
       <Reward gold ="50"
               experience ="1000"/>
       <wave1>1</wave1>
-      <wave2>2</wave2>
-      <wave3>3</wave3>
+      <wave2>1</wave2>
+      <wave3>1</wave3>
     </Round>
 
-    <Round number ="7">
+    <Round number ="8">
       <npc_id>crpg_dtv_legionary</npc_id>
       <Reward gold ="50"
               experience ="1000"/>
       <wave1>1</wave1>
-      <wave2>2</wave2>
-      <wave3>3</wave3>
+      <wave2>1</wave2>
+      <wave3>1</wave3>
     </Round>
 
   </Rounds>

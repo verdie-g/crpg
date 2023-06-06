@@ -16,7 +16,7 @@ FriendlyFireDamageRangedFriendPercent 50
 FriendlyFireDamageRangedSelfPercent 0
 MinNumberOfPlayersForMatchStart 1
 NumberOfBotsTeam1 1
-NumberOfBotsTeam2 2
+NumberOfBotsTeam2 1
 RoundTotal 1
 MapTimeLimit 8
 RoundTimeLimit 3600
