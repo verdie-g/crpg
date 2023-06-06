@@ -3,6 +3,7 @@ using System.Xml.Linq;
 using Crpg.Module.Common;
 using Crpg.Module.Common.Network;
 using TaleWorlds.Core;
+using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.ModuleManager;
 using TaleWorlds.MountAndBlade;
@@ -16,10 +17,10 @@ internal class CrpgDTVSpawningBehavior : CrpgSpawningBehaviorBase
     public bool BotsSpawned { get; set; }
 
     private const float TotalSpawnDuration = 15f;
-    
     private readonly XDocument? _dtvData;
     private readonly MultiplayerRoundController _roundController;
     private readonly HashSet<PlayerId> _notifiedPlayersAboutSpawnRestriction;
+    private GameEntity? _virginSpawnPoint;
 
     public int Wave { get; set; }
     public int Round { get; set; }
@@ -39,6 +40,7 @@ internal class CrpgDTVSpawningBehavior : CrpgSpawningBehaviorBase
     public override void Initialize(SpawnComponent spawnComponent)
     {
         base.Initialize(spawnComponent);
+        _virginSpawnPoint = Mission.Current.Scene.FindEntityWithTag("virgin");
         _roundController.OnPreparationEnded += RequestStartSpawnSession;
         _roundController.OnRoundEnding += RequestStopSpawnSession;
         Wave = 1;
@@ -106,7 +108,6 @@ internal class CrpgDTVSpawningBehavior : CrpgSpawningBehaviorBase
     protected void SpawnVirgin()
     {
         Debug.Print("Attempting to spawn Virgin");
-        BasicCultureObject cultureTeam1 = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam1.GetStrValue());
         BasicCultureObject cultureTeam2 = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam2.GetStrValue());
         int botsTeam1 = MultiplayerOptions.OptionType.NumberOfBotsTeam1.GetIntValue();
         int botsTeam2 = MultiplayerOptions.OptionType.NumberOfBotsTeam2.GetIntValue();
@@ -146,9 +147,8 @@ internal class CrpgDTVSpawningBehavior : CrpgSpawningBehaviorBase
                     .GetRandomElementWithPredicate<MultiplayerClassDivisions.MPHeroClass>(x => x.StringId.StartsWith("crpg_dtv_virgin"));
                 BasicCharacterObject character = botClass.HeroCharacter;
 
-                MatrixFrame spawnFrame = SpawnComponent.GetSpawnFrame(team, false, true);
+                MatrixFrame spawnFrame = GetVirginSpawnFrame(team);
                 Vec2 initialDirection = spawnFrame.rotation.f.AsVec2.Normalized();
-
                 AgentBuildData agentBuildData = new AgentBuildData(character)
                     .Equipment(character.Equipment)
                     .TroopOrigin(new BasicBattleAgentOrigin(character))
@@ -174,10 +174,25 @@ internal class CrpgDTVSpawningBehavior : CrpgSpawningBehaviorBase
                 agentBuildData.BodyProperties(bodyProperties);
 
                 Agent agent = Mission.SpawnAgent(agentBuildData);
-                agent.AIStateFlags = Agent.AIStateFlag.Paused; // TODO: prevent bumping / pushing
+                agent.AIStateFlags = Agent.AIStateFlag.Paused;
+                agent.SetTargetPosition(new Vec2(spawnFrame.origin.x, spawnFrame.origin.y)); // stops virgin from being bumped
                 agent.WieldInitialWeapons();
                 Debug.Print("Spawned Virgin");
             }
+        }
+    }
+
+    private MatrixFrame GetVirginSpawnFrame(Team team)
+    {
+        if (_virginSpawnPoint != null)
+        {
+            MatrixFrame globalFrame = _virginSpawnPoint.GetGlobalFrame();
+            globalFrame.rotation.OrthonormalizeAccordingToForwardAndKeepUpAsZAxis();
+            return globalFrame;
+        }
+        else
+        {
+            return SpawnComponent.GetSpawnFrame(team, false, true);
         }
     }
 
