@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Numerics;
+using Crpg.Module.Api.Models.Users;
 using Crpg.Module.Helpers;
 using TaleWorlds.Library;
 
@@ -117,17 +118,17 @@ internal class MatchBalancer
         return balancedBannerGameMatch;
     }
 
-    public GameMatch MovePlayersToDefenderTeam(GameMatch gameMatch)
+    public DTVGameMatch MovePlayersToDefenderTeam(DTVGameMatch gameMatch)
     {
-        List<WeightedCrpgUser> allUsers = new();
+        List<CrpgUser> allUsers = new();
         allUsers.AddRange(gameMatch.TeamA);
         allUsers.AddRange(gameMatch.TeamB);
         allUsers.AddRange(gameMatch.Waiting);
 
-        return new GameMatch
+        return new DTVGameMatch
         {
         TeamA = allUsers,
-        Waiting = new List<WeightedCrpgUser>(),
+        Waiting = new List<CrpgUser>(),
         };
     }
 

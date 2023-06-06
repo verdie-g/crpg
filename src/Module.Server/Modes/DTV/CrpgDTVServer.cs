@@ -94,7 +94,7 @@ internal class CrpgDTVServer : MissionMultiplayerGameModeBase
         base.OnMissionTick(dt);
         if (MissionLobbyComponent.CurrentMultiplayerState != MissionLobbyComponent.MultiplayerGameState.Playing
             || !RoundController.IsRoundInProgress
-            || !CanGameModeSystemsTickThisFrame) // Protection against scene with no flags.
+            || !CanGameModeSystemsTickThisFrame)
         {
             return;
         }
@@ -201,7 +201,7 @@ internal class CrpgDTVServer : MissionMultiplayerGameModeBase
 
         bool defenderTeamDepleted = Mission.DefenderTeam.ActiveAgents.Count == 0;
         bool virginDead = !Mission.DefenderTeam.HasBots;
-        bool missionComplete = totalRounds == currentRound;
+        bool missionComplete = totalRounds < currentRound;
 
         return defenderTeamDepleted || virginDead || missionComplete;
     }
