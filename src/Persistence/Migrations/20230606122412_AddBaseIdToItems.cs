@@ -13,7 +13,7 @@ public partial class AddBaseIdToItems : Migration
             table: "items",
             type: "text",
             nullable: false,
-            defaultValue: "");
+            defaultValue: string.Empty);
     }
 
     /// <inheritdoc />
