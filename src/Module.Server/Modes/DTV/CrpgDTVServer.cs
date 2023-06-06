@@ -103,6 +103,7 @@ internal class CrpgDTVServer : MissionMultiplayerGameModeBase
 
         if (BotRespawnDelayEnded())
         {
+            _teamSelectComponent.SetPlayerAgentsTeam();
             SpawnWave(currentRound, currentWave);
             _waitingForBotSpawn = false;
         }
@@ -154,11 +155,13 @@ internal class CrpgDTVServer : MissionMultiplayerGameModeBase
         Debug.Print("Advancing to next wave");
         _botRespawnTimer = new MissionTimer(_botRespawnTime); // Spawn bots after timer
         _waitingForBotSpawn = true;
+
+        _teamSelectComponent.SetPlayerAgentsTeam();
     }
 
     public void OnRoundEnd()
     {
-        // award players
+        //TODO: award players
 
         currentRound += 1; // next round
         currentWave = 1;
