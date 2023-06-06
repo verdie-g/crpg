@@ -12,6 +12,7 @@ public class Item : AuditableEntity, ICloneable
     /// </summary>
     public string Id { get; set; } = string.Empty;
     public string BaseId { get; set; } = string.Empty;
+
     public string Name { get; set; } = string.Empty;
     public Culture Culture { get; set; }
     public ItemType Type { get; set; }
