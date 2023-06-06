@@ -56,7 +56,6 @@ internal class CrpgDTVSpawningBehavior : CrpgSpawningBehaviorBase
     {
         if (!BotsSpawned && _virginSpawned)
         {
-            Debug.Print($"Attempting to spawn attacking bots for Wave: {Wave} Round:{Round}");
             SpawnAttackingBots(Wave, Round);
             BotsSpawned = true;
         }
@@ -76,6 +75,7 @@ internal class CrpgDTVSpawningBehavior : CrpgSpawningBehaviorBase
             SpawnVirgin();
             _virginSpawned = true;
         }
+
         SpawnAgents();
     }
 
@@ -183,8 +183,8 @@ internal class CrpgDTVSpawningBehavior : CrpgSpawningBehaviorBase
 
     protected void SpawnAttackingBots(int currentWave, int currentRound)
     {
+        Debug.Print($"Attempting to spawn attacking bots for Wave: {Wave} Round:{Round}");
         BasicCultureObject cultureTeam1 = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam1.GetStrValue());
-        BasicCultureObject cultureTeam2 = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam2.GetStrValue());
         int botsTeam1 = MultiplayerOptions.OptionType.NumberOfBotsTeam1.GetIntValue();
         int botsTeam2 = MultiplayerOptions.OptionType.NumberOfBotsTeam2.GetIntValue();
         int numberOfBots = 0;
@@ -215,7 +215,6 @@ internal class CrpgDTVSpawningBehavior : CrpgSpawningBehaviorBase
             }
         }
 
-
         if (botsTeam1 <= 0 && botsTeam2 <= 0)
         {
             return;
@@ -233,7 +232,6 @@ internal class CrpgDTVSpawningBehavior : CrpgSpawningBehaviorBase
             if (team.Side == BattleSideEnum.Attacker)
             {
                 teamCulture = cultureTeam1;
-                //numberOfBots = MultiplayerOptions.OptionType.NumberOfBotsTeam1.GetIntValue();
             }
             else // Bots are attackers
             {
