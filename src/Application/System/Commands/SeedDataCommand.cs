@@ -1945,6 +1945,7 @@ public record SeedDataCommand : IMediatorRequest
             Item res = new()
             {
                 Id = item.Id,
+                BaseId = item.BaseId,
                 Name = item.Name,
                 Culture = item.Culture,
                 Type = item.Type,

@@ -592,6 +592,11 @@ namespace Crpg.Persistence.Migrations
                         .HasColumnType("text")
                         .HasColumnName("id");
 
+                    b.Property<string>("BaseId")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("base_id");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at");
