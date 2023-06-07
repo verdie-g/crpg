@@ -68,13 +68,13 @@ internal class CrpgDTVTeamSelectComponent : MultiplayerTeamSelectComponent
 
     private bool HandleTeamChange(NetworkCommunicator peer, TeamChange message)
     {
-        if (message.Team == Mission.SpectatorTeam)
+        if (message.Team != Mission.SpectatorTeam | message.AutoAssign)
         {
-            ChangeTeamServer(peer, message.Team);
+            ChangeTeamServer(peer, Mission.DefenderTeam);
         }
         else
         {
-            ChangeTeamServer(peer, Mission.DefenderTeam);
+            ChangeTeamServer(peer, message.Team);
         }
 
         var missionPeer = peer.GetComponent<MissionPeer>();
