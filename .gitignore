@@ -453,6 +453,3 @@ src/WebUI/public/items/
 
 # cRPG Launcher
 !src/cRPGUpdater/Properties/PublishProfiles/FolderProfile.pubxml
-/src/Module.Client/AssetPackages
-/src/Module.Server/SceneObj
-/src/Module.Client/SceneObj
