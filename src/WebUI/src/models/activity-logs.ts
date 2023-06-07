@@ -6,6 +6,7 @@ export enum ActivityLogType {
   ItemBought = 'ItemBought',
   ItemSold = 'ItemSold',
   ItemBroke = 'ItemBroke',
+  ItemRepaired = 'ItemRepaired',
   ItemUpgraded = 'ItemUpgraded',
   CharacterCreated = 'CharacterCreated',
   CharacterDeleted = 'CharacterDeleted',

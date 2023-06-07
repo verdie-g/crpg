@@ -59,11 +59,11 @@ const { openItemDetail, getElementBounds } = useItemDetail();
         :key="slot.key"
         :slot="slot.key"
         :placeholder="slot.placeholderIcon"
-        :item="equippedItemsBySlot[slot.key]"
+        :userItem="equippedItemsBySlot[slot.key]"
         :notMeetRequirement="
           slot.key in equippedItemsBySlot &&
           validateItemNotMeetRequirement(
-            equippedItemsBySlot[slot.key].baseItem,
+            equippedItemsBySlot[slot.key].item,
             characterCharacteristics
           )
         "
@@ -86,7 +86,7 @@ const { openItemDetail, getElementBounds } = useItemDetail();
         @click="e=>
             equippedItemsBySlot[slot.key] !== undefined &&
               openItemDetail({
-                id: equippedItemsBySlot[slot.key].baseItem.id,
+                id: equippedItemsBySlot[slot.key].item.id,
                 userId: equippedItemsBySlot[slot.key].id,
                 bound: getElementBounds(e.target as HTMLElement),
               })

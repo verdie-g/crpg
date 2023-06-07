@@ -111,7 +111,7 @@ it.only.each<[PartialDeep<Item>, PartialDeep<Record<ItemSlot, UserItem>>, ItemSl
   ],
   [
     { type: ItemType.MountHarness, flags: [], armor: { familyType: ItemFamilyType.Horse } },
-    { [ItemSlot.Mount]: { baseItem: { mount: { familyType: ItemFamilyType.Horse } } } },
+    { [ItemSlot.Mount]: { item: { mount: { familyType: ItemFamilyType.Horse } } } },
     [ItemSlot.MountHarness],
   ],
   [
@@ -121,12 +121,12 @@ it.only.each<[PartialDeep<Item>, PartialDeep<Record<ItemSlot, UserItem>>, ItemSl
   ],
   [
     { type: ItemType.MountHarness, flags: [], armor: { familyType: ItemFamilyType.Camel } },
-    { [ItemSlot.Mount]: { baseItem: { mount: { familyType: ItemFamilyType.Horse } } } },
+    { [ItemSlot.Mount]: { item: { mount: { familyType: ItemFamilyType.Horse } } } },
     [],
   ],
   [
     { type: ItemType.MountHarness, flags: [], armor: { familyType: ItemFamilyType.Horse } },
-    { [ItemSlot.Mount]: { baseItem: { mount: { familyType: ItemFamilyType.Camel } } } },
+    { [ItemSlot.Mount]: { item: { mount: { familyType: ItemFamilyType.Camel } } } },
     [],
   ],
   [
@@ -145,28 +145,28 @@ it.only.each<[PartialDeep<Item>, PartialDeep<Record<ItemSlot, UserItem>>, ItemSl
   ],
   [
     { type: ItemType.Shield, flags: [], weapons: [{ class: WeaponClass.LargeShield }] },
-    { [ItemSlot.Mount]: { baseItem: { mount: { familyType: ItemFamilyType.Horse } } } },
+    { [ItemSlot.Mount]: { item: { mount: { familyType: ItemFamilyType.Horse } } } },
     [],
   ],
   [
     { type: ItemType.Mount, flags: [] },
     {
       [ItemSlot.Weapon2]: {
-        baseItem: { type: ItemType.Shield, weapons: [{ class: WeaponClass.LargeShield }] },
+        item: { type: ItemType.Shield, weapons: [{ class: WeaponClass.LargeShield }] },
       },
     },
     [],
   ],
   [
     { type: ItemType.Shield, flags: [], weapons: [{ class: WeaponClass.SmallShield }] },
-    { [ItemSlot.Mount]: { baseItem: { mount: { familyType: ItemFamilyType.Horse } } } },
+    { [ItemSlot.Mount]: { item: { mount: { familyType: ItemFamilyType.Horse } } } },
     [ItemSlot.Weapon0, ItemSlot.Weapon1, ItemSlot.Weapon2, ItemSlot.Weapon3],
   ],
   [
     { type: ItemType.Mount, flags: [] },
     {
       [ItemSlot.Weapon2]: {
-        baseItem: { type: ItemType.Shield, weapons: [{ class: WeaponClass.SmallShield }] },
+        item: { type: ItemType.Shield, weapons: [{ class: WeaponClass.SmallShield }] },
       },
     },
     [ItemSlot.Mount],
@@ -405,7 +405,7 @@ it.each<[PartialDeep<UserItem>, { price: number; graceTimeEnd: Date | null }]>([
   [
     {
       createdAt: new Date('2022-11-27T20:00:00.0000000Z'),
-      baseItem: {
+      item: {
         price: 1100,
       },
     },
@@ -417,7 +417,7 @@ it.each<[PartialDeep<UserItem>, { price: number; graceTimeEnd: Date | null }]>([
   [
     {
       createdAt: new Date('2022-11-27T19:00:00.0000000Z'),
-      baseItem: {
+      item: {
         price: 1100,
       },
     },

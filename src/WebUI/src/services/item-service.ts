@@ -191,7 +191,7 @@ export const getAvailableSlotsByItem = (
   if (
     item.type === ItemType.MountHarness &&
     ItemSlot.Mount in equippedItems &&
-    item.armor!.familyType !== equippedItems[ItemSlot.Mount].baseItem.mount!.familyType
+    item.armor!.familyType !== equippedItems[ItemSlot.Mount].item.mount!.familyType
   ) {
     return [];
   }
@@ -199,7 +199,7 @@ export const getAvailableSlotsByItem = (
   if (
     item.type === ItemType.Mount &&
     ItemSlot.MountHarness in equippedItems &&
-    item.mount!.familyType !== equippedItems[ItemSlot.MountHarness].baseItem.armor!.familyType
+    item.mount!.familyType !== equippedItems[ItemSlot.MountHarness].item.armor!.familyType
   ) {
     return [];
   }
@@ -213,7 +213,7 @@ export const getAvailableSlotsByItem = (
   if (
     (ItemSlot.Mount in equippedItems && isLargeShield(item)) ||
     (item.type === ItemType.Mount &&
-      Object.values(equippedItems).some(item => isLargeShield(item.baseItem)))
+      Object.values(equippedItems).some(item => isLargeShield(item.item)))
   ) {
     notify(
       t('character.inventory.item.cantUseOnHorseback.notify.warning'),
@@ -575,13 +575,13 @@ export const computeSalePrice = (userItem: UserItem) => {
 
   if (isGraceTimeExpired(graceTimeEnd)) {
     return {
-      price: Math.floor(applyPolynomialFunction(userItem.baseItem.price, itemSellCostCoefs)),
+      price: Math.floor(applyPolynomialFunction(userItem.item.price, itemSellCostCoefs)),
       graceTimeEnd: null,
     };
   }
 
   // If the item was recently bought it is sold at 100% of its original price.
-  return { price: userItem.baseItem.price, graceTimeEnd };
+  return { price: userItem.item.price, graceTimeEnd };
 };
 
 export const computeAverageRepairCostPerHour = (price: number) =>

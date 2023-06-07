@@ -65,7 +65,7 @@ const healthPoints = computed(() =>
 );
 
 const itemsStats = computed((): CharacterOverallItemsStats => {
-  const items = characterItems.value.map(ei => ei.userItem.baseItem);
+  const items = characterItems.value.map(ei => ei.userItem.item);
   return {
     averageRepairCostByHour: computeOverallAverageRepairCostByHour(items),
     weight: computeOverallWeight(items),

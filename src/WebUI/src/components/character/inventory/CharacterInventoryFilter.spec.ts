@@ -27,7 +27,7 @@ it.todo('TODO:', () => {});
 //         items: [
 //           {
 //             id: 1,
-//             baseItem: {
+//             item: {
 //               type: 'OneHandedWeapon',
 //             },
 //           },

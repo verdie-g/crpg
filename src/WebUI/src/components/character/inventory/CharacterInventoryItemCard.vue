@@ -4,7 +4,7 @@ import { getItemImage } from '@/services/item-service';
 
 const props = withDefaults(
   defineProps<{
-    item: UserItem;
+    userItem: UserItem;
     equipped: boolean;
     notMeetRequirement: boolean;
     isNew: boolean;
@@ -42,19 +42,16 @@ const rarityColor = computed(() => {
   >
     <div class="group relative h-full w-full cursor-grab">
       <img
-        :src="getItemImage(item.baseItem.id)"
-        :alt="item.baseItem.name"
+        :src="getItemImage(userItem.item.id)"
+        :alt="userItem.item.name"
         class="h-full w-full select-none object-contain"
-        v-tooltip.bottom="item.baseItem.name"
+        v-tooltip.bottom="userItem.item.name"
         data-aq-item-card-thumb
       />
 
-      <div
-        v-if="item.rank !== 0"
-        class="absolute top-0 left-0 z-10 cursor-default opacity-80 hover:opacity-100"
-      >
+      <div class="absolute left-0 top-0 z-10 cursor-default opacity-80 hover:opacity-100">
         <Tag
-          v-if="item.rank < 0"
+          v-if="userItem.isBroken"
           rounded
           variant="danger"
           icon="error"
@@ -63,7 +60,7 @@ const rarityColor = computed(() => {
 
         <!-- TODO: i18n -->
         <OIcon
-          v-else
+          v-if="userItem.rank > 0"
           icon="rare-duotone"
           size="xs"
           v-tooltip="'Item rarity'"

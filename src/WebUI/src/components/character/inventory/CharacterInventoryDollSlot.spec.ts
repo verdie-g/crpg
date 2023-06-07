@@ -11,7 +11,7 @@ it.todo('TODO:', () => {});
 
 // const userItem = {
 //   id: 1,
-//   baseItem: {
+//   item: {
 //     id: 'super-item',
 //     name: 'Flax Seed',
 //   },
@@ -56,10 +56,10 @@ it.todo('TODO:', () => {});
 //     expect(itemThumb.exists()).toBeTruthy();
 //     expect(wrapper.find('[data-aq-character-slot-placeholder]').exists()).toBeFalsy();
 
-//     expect(itemThumb.attributes('alt')).toEqual(userItem.baseItem.name);
-//     expect(itemThumb.attributes('title')).toEqual(userItem.baseItem.name);
+//     expect(itemThumb.attributes('alt')).toEqual(userItem.item.name);
+//     expect(itemThumb.attributes('title')).toEqual(userItem.item.name);
 
-//     expect(itemThumb.attributes('src')).toEqual(`PATH_TO_CDN/images/${userItem.baseItem.id}.png`);
+//     expect(itemThumb.attributes('src')).toEqual(`PATH_TO_CDN/images/${userItem.item.id}.png`);
 //   });
 
 //   it('emit', async () => {

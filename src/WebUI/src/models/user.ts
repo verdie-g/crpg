@@ -26,8 +26,9 @@ export type UserItemRank = -1 | 0 | 1 | 2 | 3;
 
 export interface UserItem {
   id: number;
-  baseItem: Item;
+  item: Item;
   rank: UserItemRank;
+  isBroken: boolean;
   createdAt: Date;
 }
 

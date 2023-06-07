@@ -48,7 +48,7 @@ export const mapUserItem = (userItem: UserItem): UserItem => ({
   createdAt: new Date(userItem.createdAt),
 });
 
-export const extractItemFromUserItem = (items: UserItem[]): Item[] => items.map(ui => ui.baseItem);
+export const extractItemFromUserItem = (items: UserItem[]): Item[] => items.map(ui => ui.item);
 
 export const getUserItems = async () =>
   (await get<UserItem[]>('/users/self/items')).map(mapUserItem);
@@ -56,8 +56,8 @@ export const getUserItems = async () =>
 export const buyUserItem = async (itemId: string) =>
   mapUserItem(await post<UserItem>('/users/self/items', { itemId }));
 
-export const upgradeUserItem = async (userItemId: number) =>
-  mapUserItem(await put<UserItem>(`/users/self/items/${userItemId}/upgrade`));
+export const repairUserItem = async (userItemId: number) =>
+  mapUserItem(await put<UserItem>(`/users/self/items/${userItemId}/repair`));
 
 export const sellUserItem = (userItemId: number) => del(`/users/self/items/${userItemId}`);
 
@@ -66,7 +66,7 @@ export const getItemRanks = (): UserItemRank[] => [0, 1, 2, 3];
 export const groupUserItemsByType = (items: UserItem[]) =>
   items
     .reduce((itemsGroup, ui) => {
-      const type = ui.baseItem.type;
+      const type = ui.item.type;
       const currentGroup = itemsGroup.find(item => item.type === type);
 
       if (currentGroup) {

@@ -31,7 +31,7 @@ import {
   extractItemFromUserItem,
   getUserItems,
   buyUserItem,
-  upgradeUserItem,
+  repairUserItem,
   sellUserItem,
   getItemRanks,
   getUserClan,
@@ -77,7 +77,7 @@ it('extractItemFromUserItem', () => {
     extractItemFromUserItem([
       {
         id: 1,
-        baseItem: {
+        item: {
           id: '123',
         },
       } as UserItem,
@@ -108,10 +108,10 @@ it('buyUserItem', async () => {
   expect(mock).toHaveFetchedWithBody({ itemId: '123' });
 });
 
-it('upgradeUserItem', async () => {
-  mockPut('/users/self/items/123/upgrade').willResolve(response(mockUserItems[0]));
+it('repairUserItem', async () => {
+  mockPut('/users/self/items/123/repair').willResolve(response(mockUserItems[0]));
 
-  expect(await upgradeUserItem(123)).toEqual({
+  expect(await repairUserItem(123)).toEqual({
     ...mockUserItems[0],
     createdAt: new Date(mockUserItems[0].createdAt),
   });
@@ -132,7 +132,7 @@ describe('userItems: filterBy, sortBy, groupBy', () => {
     {
       id: 1,
       rank: 0,
-      baseItem: {
+      item: {
         type: 'HeadArmor',
         name: 'Fluttershy',
       },
@@ -140,7 +140,7 @@ describe('userItems: filterBy, sortBy, groupBy', () => {
     {
       id: 2,
       rank: 1,
-      baseItem: {
+      item: {
         type: 'Thrown',
         name: 'Rainbow Dash',
       },
@@ -148,7 +148,7 @@ describe('userItems: filterBy, sortBy, groupBy', () => {
     {
       id: 3,
       rank: 1,
-      baseItem: {
+      item: {
         type: 'Thrown',
         name: 'Rarity',
       },

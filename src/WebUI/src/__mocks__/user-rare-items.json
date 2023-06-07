@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "baseItem": {
+    "item": {
       "id": "crpg_khuzait_noble_sword_2_t5",
       "name": "Lion Imprinted Saber",
       "culture": "Khuzait",
@@ -39,7 +39,7 @@
   },
   {
     "id": 9,
-    "baseItem": {
+    "item": {
       "id": "crpg_aserai_noble_sword_2_t5",
       "name": "Decorated Elite Scimitar",
       "culture": "Aserai",
@@ -77,7 +77,7 @@
   },
   {
     "id": 10,
-    "baseItem": {
+    "item": {
       "id": "crpg_aserai_sword_7_t5",
       "name": "Thamaskene Steel Kaskara",
       "culture": "Aserai",

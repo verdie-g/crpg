@@ -130,7 +130,7 @@ const sortAggregationBuckets = (aggKey: keyof ItemFlat, buckets: any[]) => {
 
 export const getSearchResult = ({
   items,
-  userBaseItemsIds,
+  userItemsIds,
   aggregationConfig,
   sortingConfig,
   sort,
@@ -140,7 +140,7 @@ export const getSearchResult = ({
   filter,
 }: {
   items: ItemFlat[];
-  userBaseItemsIds: string[];
+  userItemsIds: string[];
   aggregationConfig: AggregationConfig;
   sortingConfig: SortingConfig;
   sort: string;
@@ -159,7 +159,7 @@ export const getSearchResult = ({
     page,
     sort,
     filters: excludeRangeFilters(filter),
-    filter: item => applyFilters(item, filter, userBaseItemsIds), // there will be a more beautiful solution when migrating Orama search
+    filter: item => applyFilters(item, filter, userItemsIds), // there will be a more beautiful solution when migrating Orama search
   });
 
   // TODO: FIXME: SPEC

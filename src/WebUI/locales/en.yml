@@ -1053,6 +1053,7 @@ activityLog:
     ItemBought: 'User bought {itemId} for {price}'
     ItemSold: 'User sold item {itemId} for {price}'
     ItemBroke: 'The item {itemId} was broken'
+    ItemRepaired: 'The item {itemId} was repaired for {price}'
     ItemUpgraded: 'The item {itemId} was upgraded for {price} {heirloomPoints}'
     CharacterCreated: 'The character {characterId} was created'
     CharacterDeleted: 'The character {characterId}, level {level}, generation {generation}, was deleted'
