@@ -1,4 +1,5 @@
 ﻿using TaleWorlds.MountAndBlade;
+using Crpg.Module.Api.Models.Users;
 
 #if CRPG_SERVER
 using System.Text;
@@ -21,7 +22,6 @@ internal class CrpgDTVTeamSelectComponent : MultiplayerTeamSelectComponent
 #if CRPG_SERVER
     private readonly MultiplayerWarmupComponent _warmupComponent;
     private readonly MultiplayerRoundController? _roundController;
-    private readonly MatchBalancer _balancer;
     private readonly PeriodStatsHelper _periodStatsHelper;
 
     /// <summary>
@@ -33,7 +33,6 @@ internal class CrpgDTVTeamSelectComponent : MultiplayerTeamSelectComponent
     {
         _warmupComponent = warmupComponent;
         _roundController = roundController;
-        _balancer = new MatchBalancer();
         _periodStatsHelper = new PeriodStatsHelper();
         _playersWaitingForTeam = new HashSet<PlayerId>();
     }
@@ -67,7 +66,7 @@ internal class CrpgDTVTeamSelectComponent : MultiplayerTeamSelectComponent
         Debug.Print("Setting player agents' team");
 
         DTVGameMatch gameMatch = TeamsToGameMatch();
-        DTVGameMatch balancedGameMatch = _balancer.MovePlayersToDefenderTeam(gameMatch);
+        DTVGameMatch balancedGameMatch = MovePlayersToDefenderTeam(gameMatch);
 
         Dictionary<int, Team> usersToMove = ResolveTeamMoves(current: gameMatch, target: balancedGameMatch);
         var crpgNetworkPeers = GetCrpgNetworkPeers();
@@ -160,6 +159,20 @@ internal class CrpgDTVTeamSelectComponent : MultiplayerTeamSelectComponent
 
         _playersWaitingForTeam.Clear();
         return gameMatch;
+    }
+
+    private DTVGameMatch MovePlayersToDefenderTeam(DTVGameMatch gameMatch)
+    {
+        List<CrpgUser> allUsers = new();
+        allUsers.AddRange(gameMatch.TeamA);
+        allUsers.AddRange(gameMatch.TeamB);
+        allUsers.AddRange(gameMatch.Waiting);
+
+        return new DTVGameMatch
+        {
+            TeamA = allUsers,
+            Waiting = new List<CrpgUser>(),
+        };
     }
 
     /// <summary>Find the difference between <see cref="DTVGameMatch"/>es, and generates the moves accordingly.</summary>

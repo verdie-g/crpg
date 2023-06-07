@@ -117,20 +117,6 @@ internal class MatchBalancer
         return balancedBannerGameMatch;
     }
 
-    public DTVGameMatch MovePlayersToDefenderTeam(DTVGameMatch gameMatch)
-    {
-        List<CrpgUser> allUsers = new();
-        allUsers.AddRange(gameMatch.TeamA);
-        allUsers.AddRange(gameMatch.TeamB);
-        allUsers.AddRange(gameMatch.Waiting);
-
-        return new DTVGameMatch
-        {
-        TeamA = allUsers,
-        Waiting = new List<CrpgUser>(),
-        };
-    }
-
     public GameMatch KkMakeTeamOfSimilarSizesWithoutSplittingClanGroups(GameMatch gameMatch)
     {
         List<WeightedCrpgUser> allUsers = new();
