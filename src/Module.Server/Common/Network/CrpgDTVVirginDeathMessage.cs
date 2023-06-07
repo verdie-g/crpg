@@ -5,22 +5,20 @@ using TaleWorlds.MountAndBlade.Network.Messages;
 namespace Crpg.Module.Common.Network;
 
 [DefineGameNetworkMessageTypeForMod(GameNetworkMessageSendType.FromServer)]
-internal sealed class CrpgDTVRoundEndMessage : GameNetworkMessage
+internal sealed class CrpgDTVVirginDeathMessage : GameNetworkMessage
 {
-    private static readonly CompressionInfo.Integer Int32CompressionInfo = new(int.MinValue, int.MaxValue, true);
-
     public CrpgDTVRoundData RoundData { get; set; } = default!;
 
     protected override void OnWrite()
     {
-        WriteIntToPacket(RoundData.Round, Int32CompressionInfo);
+        WriteBoolToPacket(RoundData.IsVirginDead);
     }
 
     protected override bool OnRead()
     {
         bool bufferReadValid = true;
-        int round = ReadIntFromPacket(Int32CompressionInfo, ref bufferReadValid);
-        RoundData = new CrpgDTVRoundData { Round = round };
+        bool isVirginDead = ReadBoolFromPacket(ref bufferReadValid);
+        RoundData = new CrpgDTVRoundData { IsVirginDead = isVirginDead };
 
         return bufferReadValid;
     }
@@ -32,6 +30,6 @@ internal sealed class CrpgDTVRoundEndMessage : GameNetworkMessage
 
     protected override string OnGetLogFormat()
     {
-        return "cRPG DTV Wave Data";
+        return "cRPG DTV Virgin Death Data";
     }
 }
