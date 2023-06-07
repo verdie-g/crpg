@@ -14,11 +14,6 @@ internal class CrpgDTVClient : MissionMultiplayerGameModeBaseClient
     private MissionPeer? _missionPeer;
     private TeamDeathmatchMissionRepresentative? _myRepresentative;
 
-    public CrpgDTVClient()
-    {
-
-    }
-
     public override bool IsGameModeUsingGold => false;
     public override bool IsGameModeTactical => false;
     public override bool IsGameModeUsingRoundCountdown => true;
