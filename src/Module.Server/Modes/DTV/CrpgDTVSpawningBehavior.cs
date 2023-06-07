@@ -20,7 +20,6 @@ internal class CrpgDTVSpawningBehavior : CrpgSpawningBehaviorBase
     private readonly XDocument? _dtvData;
     private readonly MultiplayerRoundController _roundController;
     private readonly HashSet<PlayerId> _notifiedPlayersAboutSpawnRestriction;
-    private GameEntity? _virginSpawnPoint;
 
     public int Wave { get; set; }
     public int Round { get; set; }
@@ -40,7 +39,6 @@ internal class CrpgDTVSpawningBehavior : CrpgSpawningBehaviorBase
     public override void Initialize(SpawnComponent spawnComponent)
     {
         base.Initialize(spawnComponent);
-        _virginSpawnPoint = Mission.Current.Scene.FindEntityWithTag("virgin");
         _roundController.OnPreparationEnded += RequestStartSpawnSession;
         _roundController.OnRoundEnding += RequestStopSpawnSession;
         Wave = 1;
@@ -147,7 +145,8 @@ internal class CrpgDTVSpawningBehavior : CrpgSpawningBehaviorBase
                     .GetRandomElementWithPredicate<MultiplayerClassDivisions.MPHeroClass>(x => x.StringId.StartsWith("crpg_dtv_virgin"));
                 BasicCharacterObject character = botClass.HeroCharacter;
 
-                MatrixFrame spawnFrame = GetVirginSpawnFrame(team);
+                GameEntity? virginSpawnPoint = Mission.Current.Scene.FindEntityWithTag("virgin");
+                MatrixFrame spawnFrame = GetVirginSpawnFrame(team, virginSpawnPoint);
                 Vec2 initialDirection = spawnFrame.rotation.f.AsVec2.Normalized();
                 AgentBuildData agentBuildData = new AgentBuildData(character)
                     .Equipment(character.Equipment)
@@ -174,25 +173,11 @@ internal class CrpgDTVSpawningBehavior : CrpgSpawningBehaviorBase
                 agentBuildData.BodyProperties(bodyProperties);
 
                 Agent agent = Mission.SpawnAgent(agentBuildData);
-                agent.AIStateFlags = Agent.AIStateFlag.Paused;
+                agent.AIStateFlags = Agent.AIStateFlag.Alarmed;
                 agent.SetTargetPosition(new Vec2(spawnFrame.origin.x, spawnFrame.origin.y)); // stops virgin from being bumped
                 agent.WieldInitialWeapons();
                 Debug.Print("Spawned Virgin");
             }
-        }
-    }
-
-    private MatrixFrame GetVirginSpawnFrame(Team team)
-    {
-        if (_virginSpawnPoint != null)
-        {
-            MatrixFrame globalFrame = _virginSpawnPoint.GetGlobalFrame();
-            globalFrame.rotation.OrthonormalizeAccordingToForwardAndKeepUpAsZAxis();
-            return globalFrame;
-        }
-        else
-        {
-            return SpawnComponent.GetSpawnFrame(team, false, true);
         }
     }
 
@@ -359,6 +344,20 @@ internal class CrpgDTVSpawningBehavior : CrpgSpawningBehaviorBase
     {
         base.OnPeerSpawned(missionPeer);
         missionPeer.SpawnCountThisRound += 1;
+    }
+
+    private MatrixFrame GetVirginSpawnFrame(Team team, GameEntity spawnPoint)
+    {
+        if (spawnPoint != null)
+        {
+            MatrixFrame globalFrame = spawnPoint.GetGlobalFrame();
+            globalFrame.rotation.OrthonormalizeAccordingToForwardAndKeepUpAsZAxis();
+            return globalFrame;
+        }
+        else
+        {
+            return SpawnComponent.GetSpawnFrame(team, false, true);
+        }
     }
 
     /// <summary>

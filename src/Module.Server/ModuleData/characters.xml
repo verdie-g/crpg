@@ -1065,6 +1065,7 @@
         <equipment slot="Head" id="Item.crpg_female_head_wrap" />
         <equipment slot="Body" id="Item.crpg_vlandian_corset_dress" />
         <equipment slot="Leg" id="Item.crpg_ladys_shoe" />
+        <equipment slot="Item0" id="Item.crpg_empire_mace_3_t4" />
       </EquipmentRoster>
     </Equipments>
   </NPCCharacter>
