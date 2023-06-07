@@ -44,7 +44,7 @@ public record RepairUserItemCommand : IMediatorRequest<UserItemViewModel>
                 return new(CommonErrors.UserItemNotFound(req.UserItemId));
             }
 
-            if (userItem.Rank >= 3)
+            if (userItem.Item!.Rank >= 3)
             {
                 return new(CommonErrors.UserItemMaxRankReached(req.UserItemId, 3));
             }

@@ -14,6 +14,7 @@ public record ItemViewModel : IMapFrom<Item>
     public ItemType Type { get; init; }
     public int Price { get; init; }
     public float Tier { get; init; }
+    public int Rank { get; init; }
     public int Requirement { get; init; }
     public float Weight { get; init; }
     public ItemFlags Flags { get; init; }

@@ -14,13 +14,14 @@ public class BuyItemCommandTest : TestBase
     [Test]
     public async Task Basic()
     {
-        Item item = new() { Id = "0", Price = 100, Enabled = true };
+        Item item = new() { Id = "0", Price = 100, Enabled = true, Rank = 0 };
         User user = new()
         {
             Gold = 100,
-            Items = { new UserItem { Rank = 1, Item = item } },
+            Items = { },
         };
         ArrangeDb.Users.Add(user);
+        ArrangeDb.Items.Add(item);
         await ArrangeDb.SaveChangesAsync();
 
         Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
@@ -37,7 +38,7 @@ public class BuyItemCommandTest : TestBase
             .FirstAsync(u => u.Id == user.Id);
 
         var boughtUserItem = result.Data!;
-        Assert.That(boughtUserItem.Rank, Is.EqualTo(0));
+        Assert.That(boughtUserItem.Item.Rank, Is.EqualTo(0));
         Assert.That(boughtUserItem.IsBroken, Is.False);
         Assert.That(boughtUserItem.Item.Id, Is.EqualTo(item.Id));
         Assert.That(userDb.Gold, Is.EqualTo(0));
@@ -138,11 +139,11 @@ public class BuyItemCommandTest : TestBase
     [Test]
     public async Task AlreadyOwningItem()
     {
-        Item item = new() { Price = 100, Enabled = true };
+        Item item = new() { Rank = 0, Price = 100, Enabled = true };
         User user = new()
         {
             Gold = 100,
-            Items = new List<UserItem> { new() { Rank = 0, ItemId = item.Id } },
+            Items = new List<UserItem> { new() { ItemId = item.Id } },
         };
         ArrangeDb.Items.Add(item);
         ArrangeDb.Users.Add(user);

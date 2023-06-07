@@ -214,11 +214,11 @@ public class UpdateGameUsersCommandTest : TestBase
     [Test]
     public async Task BreakingCharacterItemsShouldRepairUntilThereIsNotEnoughGold()
     {
-        UserItem userItem0 = new() { Rank = 0, Item = new Item { Id = "0" } };
-        UserItem userItem1 = new() { Rank = 0, Item = new Item { Id = "1" } };
-        UserItem userItem2 = new() { Rank = 0, Item = new Item { Id = "2" } };
-        UserItem userItem3 = new() { Rank = 0, Item = new Item { Id = "3" } };
-        UserItem userItem4 = new() { Rank = 0, Item = new Item { Id = "4" } };
+        UserItem userItem0 = new() { Item = new Item { Id = "0", Rank = 0 } };
+        UserItem userItem1 = new() { Item = new Item { Id = "1", Rank = 0 } };
+        UserItem userItem2 = new() { Item = new Item { Id = "2" , Rank = 0 } };
+        UserItem userItem3 = new() { Item = new Item { Id = "3" , Rank = 0 } };
+        UserItem userItem4 = new() { Item = new Item { Id = "4" , Rank = 0 } };
 
         User user = new()
         {
