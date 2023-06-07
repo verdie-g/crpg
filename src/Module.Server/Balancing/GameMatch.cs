@@ -1,6 +1,4 @@
-﻿using Crpg.Module.Api.Models.Users;
-
-namespace Crpg.Module.Balancing;
+﻿namespace Crpg.Module.Balancing;
 
 internal class GameMatch
 {
