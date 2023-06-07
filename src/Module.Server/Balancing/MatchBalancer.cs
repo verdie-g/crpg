@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Numerics;
+﻿using System.Numerics;
 using Crpg.Module.Api.Models.Users;
 using Crpg.Module.Helpers;
 using TaleWorlds.Library;

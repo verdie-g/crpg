@@ -1,5 +1,4 @@
-﻿using System.Text;
-using System.Xml.Linq;
+﻿using System.Xml.Linq;
 using Crpg.Module.Common;
 using Crpg.Module.Common.Network;
 using TaleWorlds.Core;

@@ -1,22 +1,12 @@
-﻿using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Xml;
-using Crpg.Module.Api.Models;
+﻿using Crpg.Module.Api.Models;
 using Crpg.Module.Common;
 using Crpg.Module.Common.Network;
 using Crpg.Module.Rewards;
-using NetworkMessages.FromServer;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
-using TaleWorlds.ModuleManager;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.MountAndBlade.Diamond;
 using TaleWorlds.MountAndBlade.MissionRepresentatives;
-using TaleWorlds.MountAndBlade.Objects;
 using TaleWorlds.ObjectSystem;
-using TaleWorlds.PlayerServices;
-using MathF = TaleWorlds.Library.MathF;
-using Timer = TaleWorlds.Core.Timer;
 
 namespace Crpg.Module.Modes.DTV;
 

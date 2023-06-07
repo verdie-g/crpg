@@ -1,20 +1,12 @@
-﻿using System.IO.Compression;
-using Newtonsoft.Json.Converters;
-using TaleWorlds.MountAndBlade;
+﻿using TaleWorlds.MountAndBlade;
 
 #if CRPG_SERVER
 using System.Text;
-using Crpg.Module.Api.Models.Characters;
-using Crpg.Module.Api.Models.Items;
-using Crpg.Module.Api.Models.Users;
 using Crpg.Module.Balancing;
 using Crpg.Module.Common.Network;
-using Crpg.Module.Rating;
 using NetworkMessages.FromClient;
-using Newtonsoft.Json;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
-using TaleWorlds.ObjectSystem;
 using TaleWorlds.PlayerServices;
 #endif
 
