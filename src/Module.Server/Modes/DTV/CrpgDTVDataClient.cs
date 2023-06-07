@@ -11,10 +11,10 @@ internal class CrpgDTVDataClient : MissionNetwork
 {
     protected override void AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegistererContainer registerer)
     {
-        registerer.Register<CrpgDTVRoundMessage>(HandleDTVRound);
+        registerer.Register<CrpgDTVRoundEndMessage>(HandleDTVRoundEnd);
     }
 
-    private void HandleDTVRound(CrpgDTVRoundMessage message)
+    private void HandleDTVRoundEnd(CrpgDTVRoundEndMessage message)
     {
         var roundData = message.RoundData;
         InformationManager.DisplayMessage(new InformationMessage($"Wave cleared!",

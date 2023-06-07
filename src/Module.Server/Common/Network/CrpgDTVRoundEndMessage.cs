@@ -5,15 +5,11 @@ using TaleWorlds.MountAndBlade.Network.Messages;
 namespace Crpg.Module.Common.Network;
 
 [DefineGameNetworkMessageTypeForMod(GameNetworkMessageSendType.FromServer)]
-internal sealed class CrpgDTVRoundMessage : GameNetworkMessage
+internal sealed class CrpgDTVRoundEndMessage : GameNetworkMessage
 {
     private static readonly CompressionInfo.Integer Int32CompressionInfo = new(int.MinValue, int.MaxValue, true);
 
     public CrpgDTVRoundData RoundData { get; set; } = default!;
-    public bool Valour { get; set; }
-    public int RepairCost { get; set; }
-    public int Compensation { get; set; }
-    public List<string> BrokeItemIds { get; set; } = new();
 
     protected override void OnWrite()
     {
