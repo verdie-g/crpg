@@ -22,18 +22,20 @@ namespace Crpg.Module.Modes.DTV;
 
 internal class CrpgDTVServer : MissionMultiplayerGameModeBase
 {
+    private const int totalRounds = 7;
+    private const int totalWaves = 3;
+    private const int _botRespawnTime = 3;
+    private const int _newRoundRespawnTime = 20;
+
     private readonly CrpgDTVClient _dtvClient;
     private readonly CrpgRewardServer _rewardServer;
     private readonly CrpgDTVTeamSelectComponent _teamSelectComponent;
     private readonly CrpgDTVSpawningBehavior _spawningBehavior;
-    private readonly int totalRounds = 8;
-    private readonly int totalWaves = 3;
-    private readonly int _botRespawnTime = 3;
-    private readonly int _newRoundRespawnTime = 20;
+
     private int currentWave = 1;
     private int currentRound = 1;
-    private MissionTimer? _botRespawnTimer;
     private bool _waitingForBotSpawn = false;
+    private MissionTimer? _botRespawnTimer;
 
     public override bool IsGameModeHidingAllAgentVisuals => true;
     public override bool IsGameModeUsingOpposingTeams => true;
@@ -144,13 +146,11 @@ internal class CrpgDTVServer : MissionMultiplayerGameModeBase
 
     public void SpawnWave(int round, int wave)
     {
-        Debug.Print("Setting BotsSpawned to false");
         if (SpawnComponent.SpawningBehavior is CrpgDTVSpawningBehavior s)
         {
             s.BotsSpawned = false;
             s.Round = round;
             s.Wave = wave;
-            Debug.Print($"BotsSpawned set to: {s.BotsSpawned}");
         }
     }
 
