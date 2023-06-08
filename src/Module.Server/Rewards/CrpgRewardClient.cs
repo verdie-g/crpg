@@ -43,6 +43,12 @@ internal class CrpgRewardClient : MissionNetwork
     private void HandleRewardUser(CrpgRewardUser message)
     {
         var reward = message.Reward;
+        if (message.LowPopulation)
+        {
+            InformationManager.DisplayMessage(new InformationMessage("Low Population! Repair Are Free!",
+                new Color(65, 105, 225)));
+        }
+
         if (reward.Experience != 0)
         {
             InformationManager.DisplayMessage(new InformationMessage($"Gained {reward.Experience} experience.",

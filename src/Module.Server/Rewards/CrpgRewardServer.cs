@@ -219,7 +219,7 @@ internal class CrpgRewardServer : MissionLogic
         try
         {
             var res = (await _crpgClient.UpdateUsersAsync(new CrpgGameUsersUpdateRequest { Updates = userUpdates })).Data!;
-            SendRewardToPeers(res.UpdateResults, crpgPeerByCrpgUserId, valorousPlayerIds, compensationByCrpgUserId);
+            SendRewardToPeers(res.UpdateResults, crpgPeerByCrpgUserId, valorousPlayerIds, compensationByCrpgUserId, lowPopulationServer);
         }
         catch (Exception e)
         {
@@ -527,7 +527,7 @@ internal class CrpgRewardServer : MissionLogic
     }
 
     private void SendRewardToPeers(IList<UpdateCrpgUserResult> updateResults,
-        Dictionary<int, CrpgPeer> crpgPeerByCrpgUserId, HashSet<PlayerId> valorousPlayerIds, Dictionary<int, int> compensationByCrpgUserId)
+        Dictionary<int, CrpgPeer> crpgPeerByCrpgUserId, HashSet<PlayerId> valorousPlayerIds, Dictionary<int, int> compensationByCrpgUserId, bool lowPopulation)
     {
         foreach (var updateResult in updateResults)
         {
@@ -559,6 +559,7 @@ internal class CrpgRewardServer : MissionLogic
             {
                 Reward = updateResult.EffectiveReward,
                 Valour = valorousPlayerIds.Contains(networkPeer.VirtualPlayer.Id),
+                LowPopulation = lowPopulation,
                 RepairCost = updateResult.RepairedItems.Sum(r => r.RepairCost),
                 Compensation = compensationForCrpgUser,
                 BrokeItemIds = updateResult.RepairedItems.Where(r => r.Broke).Select(r => r.ItemId).ToList(),

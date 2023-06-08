@@ -11,6 +11,7 @@ internal sealed class CrpgRewardUser : GameNetworkMessage
 
     public CrpgUserEffectiveReward Reward { get; set; } = default!;
     public bool Valour { get; set; }
+    public bool LowPopulation { get; set; }
     public int RepairCost { get; set; }
     public int Compensation { get; set; }
     public List<string> BrokeItemIds { get; set; } = new();
@@ -21,6 +22,7 @@ internal sealed class CrpgRewardUser : GameNetworkMessage
         WriteIntToPacket(Reward.Experience, Int32CompressionInfo);
         WriteBoolToPacket(Reward.LevelUp);
         WriteBoolToPacket(Valour);
+        WriteBoolToPacket(LowPopulation);
         WriteIntToPacket(RepairCost, Int32CompressionInfo);
         WriteIntToPacket(Compensation, Int32CompressionInfo);
         WriteIntToPacket(BrokeItemIds.Count, Int32CompressionInfo);
@@ -38,6 +40,7 @@ internal sealed class CrpgRewardUser : GameNetworkMessage
         bool levelUp = ReadBoolFromPacket(ref bufferReadValid);
         Reward = new CrpgUserEffectiveReward { Gold = gold, Experience = experience, LevelUp = levelUp };
         Valour = ReadBoolFromPacket(ref bufferReadValid);
+        LowPopulation = ReadBoolFromPacket(ref bufferReadValid);
         RepairCost = ReadIntFromPacket(Int32CompressionInfo, ref bufferReadValid);
         Compensation = ReadIntFromPacket(Int32CompressionInfo, ref bufferReadValid);
         int brokeItemIds = ReadIntFromPacket(Int32CompressionInfo, ref bufferReadValid);
