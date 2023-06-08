@@ -157,4 +157,31 @@ public class BuyItemCommandTest : TestBase
         }, CancellationToken.None);
         Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.ItemAlreadyOwned));
     }
+
+    [Test]
+    public async Task BuyingAHeirloomedItem()
+    {
+        Item item = new() { Rank = 1, Price = 100, Enabled = true };
+        User user = new()
+        {
+            Gold = 100,
+            Items = new List<UserItem> { },
+        };
+        ArrangeDb.Items.Add(item);
+        ArrangeDb.Users.Add(user);
+        await ArrangeDb.SaveChangesAsync();
+        BuyItemCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IActivityLogService>());
+        var result = await handler.Handle(new BuyItemCommand
+        {
+            ItemId = item.Id,
+            UserId = user.Id,
+        }, CancellationToken.None);
+        var userDb = await AssertDb.Users
+            .Include(u => u.Items)
+            .FirstAsync(u => u.Id == user.Id);
+
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.ItemNotBuyable));
+        Assert.That(userDb.Gold, Is.EqualTo(100));
+        Assert.That(userDb.Items, Is.Empty);
+    }
 }

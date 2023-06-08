@@ -64,7 +64,7 @@ public record BuyItemCommand : IMediatorRequest<UserItemViewModel>
                 return new(CommonErrors.ItemAlreadyOwned(req.ItemId));
             }
 
-            if (user.Items.Any(ui => ui.Item!.Rank > 0))
+            if (item.Rank > 0)
             {
                 return new(CommonErrors.ItemNotBuyable(req.ItemId));
             }
