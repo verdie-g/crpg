@@ -742,7 +742,7 @@ onlinePlayers:
 
 homePage:
   intro: cRPG is a mod for {link}
-  description: It adds persistence to the multiplayer. You start as a peasant and you'll develop your unique character with different stats and items.
+  description: cRPG for Mount and Blade: Bannerlord transitions you from a humble peasant to a distinct warrior. Engage in gripping combat-focused gameplay, earning gold and loompoints. Use these rewards to amplify your stats and upgrade equipment. This mod subtly blends persistent character growth with riveting battles, where each fight advances your warrior's saga.
 
 patreon: '
   <p>Do you like our project?</p>
