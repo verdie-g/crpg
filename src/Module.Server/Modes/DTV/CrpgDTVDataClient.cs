@@ -28,7 +28,7 @@ internal class CrpgDTVDataClient : MissionNetwork
         var roundData = message.RoundData;
         InformationManager.DisplayMessage(new InformationMessage
         {
-            Information = $"Round {roundData.Round - 1} cleared!",
+            Information = $"Round {roundData.Round} cleared!",
             Color = new Color(0.48f, 0f, 1f),
             SoundEventPath = "event:/ui/notification/quest_finished",
         });

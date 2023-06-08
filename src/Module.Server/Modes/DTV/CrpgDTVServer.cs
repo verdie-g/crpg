@@ -6,6 +6,7 @@ using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.MissionRepresentatives;
+using TaleWorlds.MountAndBlade.Network.Messages;
 using TaleWorlds.ObjectSystem;
 
 namespace Crpg.Module.Modes.DTV;
@@ -21,6 +22,9 @@ internal class CrpgDTVServer : MissionMultiplayerGameModeBase
     private readonly CrpgRewardServer _rewardServer;
     private readonly CrpgDTVTeamSelectComponent _teamSelectComponent;
     private readonly CrpgDTVSpawningBehavior _spawningBehavior;
+    private readonly CrpgDTVVirginDeathMessage _virginDeathMessage = new() { RoundData = new CrpgDTVRoundData { IsVirginDead = true } };
+    private readonly CrpgDTVRoundEndMessage _roundEndMessage = new() { RoundData = new CrpgDTVRoundData { Round = 1 } };
+    private readonly CrpgDTVWaveEndMessage _waveEndMessage = new() { RoundData = new CrpgDTVRoundData { Wave = 1 } };
 
     private int currentWave = 1;
     private int currentRound = 1;
@@ -113,6 +117,7 @@ internal class CrpgDTVServer : MissionMultiplayerGameModeBase
         {
             Debug.Print("Attackers depleted");
             currentWave += 1;
+            UpdateMessages();
             if (currentWave >= TotalWaves + 1)
             {
                 OnRoundEnd();
@@ -145,7 +150,7 @@ internal class CrpgDTVServer : MissionMultiplayerGameModeBase
 
     public void OnWaveEnd()
     {
-        SendWaveEndDataToPeers();
+        SendDataToPeers(_waveEndMessage);
         Debug.Print("Advancing to next wave");
         _botRespawnTimer = new MissionTimer(BotRespawnTime); // Spawn bots after timer
         _waitingForBotSpawn = true;
@@ -156,7 +161,7 @@ internal class CrpgDTVServer : MissionMultiplayerGameModeBase
         // TODO: award players
         currentRound += 1; // next round
         currentWave = 1;
-        SendRoundEndDataToPeers();
+        SendDataToPeers(_roundEndMessage);
         Debug.Print("Advancing to next round");
         _botRespawnTimer = new MissionTimer(NewRoundRespawnTime); // Spawn bots after timer
         _waitingForBotSpawn = true;
@@ -207,7 +212,8 @@ internal class CrpgDTVServer : MissionMultiplayerGameModeBase
 
         if (virginDead)
         {
-            SendDeadVirginDataToPeers();
+            SendDataToPeers(_virginDeathMessage);
+
             return true;
         }
 
@@ -309,52 +315,19 @@ internal class CrpgDTVServer : MissionMultiplayerGameModeBase
         }
     }
 
-    private void SendWaveEndDataToPeers()
+    private void SendDataToPeers(GameNetworkMessage message)
     {
         foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
         {
             GameNetwork.BeginModuleEventAsServer(networkPeer);
-            GameNetwork.WriteMessage(new CrpgDTVWaveEndMessage
-            {
-                RoundData = new CrpgDTVRoundData
-                {
-                    Wave = currentWave,
-                },
-            });
+            GameNetwork.WriteMessage(message);
             GameNetwork.EndModuleEventAsServer();
         }
     }
 
-    private void SendRoundEndDataToPeers()
+    private void UpdateMessages()
     {
-        foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
-        {
-            GameNetwork.BeginModuleEventAsServer(networkPeer);
-            GameNetwork.WriteMessage(new CrpgDTVRoundEndMessage
-            {
-                RoundData = new CrpgDTVRoundData
-                {
-                    Round = currentRound,
-                },
-            });
-            GameNetwork.EndModuleEventAsServer();
-        }
+        _roundEndMessage.RoundData.Round = currentRound;
+        _waveEndMessage.RoundData.Wave = currentWave;
     }
-
-    private void SendDeadVirginDataToPeers()
-    {
-        foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
-        {
-            GameNetwork.BeginModuleEventAsServer(networkPeer);
-            GameNetwork.WriteMessage(new CrpgDTVVirginDeathMessage
-            {
-                RoundData = new CrpgDTVRoundData
-                {
-                    IsVirginDead = true,
-                },
-            });
-            GameNetwork.EndModuleEventAsServer();
-        }
-    }
-
 }
