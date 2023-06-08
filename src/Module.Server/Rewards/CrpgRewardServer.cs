@@ -135,15 +135,15 @@ internal class CrpgRewardServer : MissionLogic
             return;
         }
 
-        bool lowPopulationServer = networkPeers.Length < 4;
-
+        bool verylowPopulationServer = networkPeers.Length < 2;
+        bool lowPopulationServer = networkPeers.Length < 12;
         // Force constant multiplier if there is low population.
-        constantMultiplier = lowPopulationServer ? ExperienceMultiplierMin : constantMultiplier;
+        constantMultiplier = verylowPopulationServer ? ExperienceMultiplierMin : constantMultiplier;
 
         CrpgRatingCalculator.UpdateRatings(_ratingResults);
         Dictionary<PlayerId, PeriodStats> periodStats = _periodStatsHelper.ComputePeriodStats();
 
-        var valorousPlayerIds = lowPopulationServer || !valourTeamSide.HasValue
+        var valorousPlayerIds = verylowPopulationServer || !valourTeamSide.HasValue
             ? new HashSet<PlayerId>()
             : GetValorousPlayers(networkPeers, periodStats, valourTeamSide.Value);
 
@@ -243,7 +243,7 @@ internal class CrpgRewardServer : MissionLogic
             if (missionPeer.Team != null && missionPeer.Team.Side != BattleSideEnum.None)
             {
                 int crpgUserId = crpgPeer.User.Id;
-                var crpgUserDamagedItems = BreakItems(crpgPeer, durationRewarded * (isLowPopulationServer ? 0.2f : 1f));
+                var crpgUserDamagedItems = BreakItems(crpgPeer, durationRewarded * (isLowPopulationServer ? 0f : 1f));
                 brokenItems[crpgUserId] = crpgUserDamagedItems;
             }
         }
