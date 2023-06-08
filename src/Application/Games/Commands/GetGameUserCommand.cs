@@ -266,6 +266,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
                     {
                         ItemId = item.Id,
                         User = user,
+                        IsBroken = false,
                     };
 
                     _db.UserItems.Add(userItem);
