@@ -44,28 +44,26 @@ public record RepairUserItemCommand : IMediatorRequest<UserItemViewModel>
                 return new(CommonErrors.UserItemNotFound(req.UserItemId));
             }
 
-            if (userItem.IsBroken) // repair
-            {
-                int repairCost = (int)(userItem.Item!.Price
-                                       * _constants.ItemRepairCostPerSecond
-                                       * _constants.BrokenItemRepairPenaltySeconds);
-                if (userItem.User!.Gold < repairCost)
-                {
-                    return new(CommonErrors.NotEnoughGold(repairCost, userItem.User!.Gold));
-                }
-
-                userItem.User!.Gold -= repairCost;
-
-                _db.ActivityLogs.Add(_activityLogService.CreateItemRepairedLog(userItem.UserId, userItem.ItemId, repairCost));
-                userItem.IsBroken = false;
-                await _db.SaveChangesAsync(cancellationToken);
-                Logger.LogInformation("User '{0}' repaired user item '{1}'", req.UserId, req.UserItemId);
-                return new(_mapper.Map<UserItemViewModel>(userItem));
-            }
-            else
+            if (!userItem.IsBroken) // repair
             {
                 return new(CommonErrors.UserItemIsNotBroken(req.UserItemId));
+
             }
+
+            int repairCost = (int)(userItem.Item!.Price
+                                       * _constants.ItemRepairCostPerSecond
+                                       * _constants.BrokenItemRepairPenaltySeconds);
+            if (userItem.User!.Gold < repairCost)
+            {
+                return new(CommonErrors.NotEnoughGold(repairCost, userItem.User!.Gold));
+            }
+
+            userItem.User!.Gold -= repairCost;
+            _db.ActivityLogs.Add(_activityLogService.CreateItemRepairedLog(userItem.UserId, userItem.ItemId, repairCost));
+            userItem.IsBroken = false;
+            await _db.SaveChangesAsync(cancellationToken);
+            Logger.LogInformation("User '{0}' repaired user item '{1}'", req.UserId, req.UserItemId);
+            return new(_mapper.Map<UserItemViewModel>(userItem));
         }
     }
 }
