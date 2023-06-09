@@ -293,7 +293,7 @@ internal static class CommonErrors
     public static Error UserItemIsNotBroken(int userItemId) =>
         new(ErrorType.Validation, ErrorCode.UserItemMaxRankReached)
         {
-            Title = "User item has reached its max rank",
+            Title = "User item is not broken",
             Detail = $"User item with id '{userItemId}' cannot be repaired as it is not broken",
         };
 
