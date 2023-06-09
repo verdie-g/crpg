@@ -43,11 +43,6 @@ internal class CrpgRewardClient : MissionNetwork
     private void HandleRewardUser(CrpgRewardUser message)
     {
         var reward = message.Reward;
-        if (message.LowPopulation)
-        {
-            InformationManager.DisplayMessage(new InformationMessage("Low Population! Repair Are Free!",
-                new Color(65, 105, 225)));
-        }
 
         if (reward.Experience != 0)
         {
@@ -61,9 +56,11 @@ internal class CrpgRewardClient : MissionNetwork
             (Color color, string verb) = gain > 0
                 ? (new Color(65, 105, 225), "Gained")
                 : (new Color(0.74f, 0.28f, 0.01f), "Lost");
+            string rewardMessage = message.LowPopulation
+                ? $"{verb} {gain} gold (reward: {reward.Gold}, upkeep: free , low population server)."
+                : $"{verb} {gain} gold (reward: {reward.Gold}, upkeep: {message.RepairCost}).";
             InformationManager.DisplayMessage(
-                new InformationMessage($"{verb} {gain} gold (reward: {reward.Gold}, upkeep: {message.RepairCost}).",
-                    color));
+                new InformationMessage(rewardMessage, color));
         }
 
         if (message.Compensation != 0)

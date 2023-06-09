@@ -135,21 +135,21 @@ internal class CrpgRewardServer : MissionLogic
             return;
         }
 
-        bool verylowPopulationServer = networkPeers.Length < 2;
+        bool veryLowPopulationServer = networkPeers.Length < 2;
         bool lowPopulationServer = networkPeers.Length < 12;
         // Force constant multiplier if there is low population.
-        constantMultiplier = verylowPopulationServer ? ExperienceMultiplierMin : constantMultiplier;
+        constantMultiplier = veryLowPopulationServer ? ExperienceMultiplierMin : constantMultiplier;
 
         CrpgRatingCalculator.UpdateRatings(_ratingResults);
         Dictionary<PlayerId, PeriodStats> periodStats = _periodStatsHelper.ComputePeriodStats();
 
-        var valorousPlayerIds = verylowPopulationServer || !valourTeamSide.HasValue
+        var valorousPlayerIds = veryLowPopulationServer || !valourTeamSide.HasValue
             ? new HashSet<PlayerId>()
             : GetValorousPlayers(networkPeers, periodStats, valourTeamSide.Value);
 
         Dictionary<int, CrpgPeer> crpgPeerByCrpgUserId = new();
         List<CrpgUserUpdate> userUpdates = new();
-        Dictionary<int, IList<CrpgUserDamagedItem>> brokenItems = GetBrokenItemsByCrpgUserId(networkPeers, durationRewarded, lowPopulationServer);
+        Dictionary<int, IList<CrpgUserDamagedItem>> brokenItems = lowPopulationServer ? new() : GetBrokenItemsByCrpgUserId(networkPeers, durationRewarded);
 
         var compensationByCrpgUserId = _isTeamHitCompensationsEnabled ? CalculateCompensationByCrpgUserId(brokenItems) : new();
         foreach (NetworkCommunicator networkPeer in networkPeers)
@@ -228,7 +228,7 @@ internal class CrpgRewardServer : MissionLogic
         }
     }
 
-    private Dictionary<int, IList<CrpgUserDamagedItem>> GetBrokenItemsByCrpgUserId(NetworkCommunicator[] networkPeers, float durationRewarded, bool isLowPopulationServer)
+    private Dictionary<int, IList<CrpgUserDamagedItem>> GetBrokenItemsByCrpgUserId(NetworkCommunicator[] networkPeers, float durationRewarded)
     {
         Dictionary<int, IList<CrpgUserDamagedItem>> brokenItems = new();
         foreach (NetworkCommunicator networkPeer in networkPeers)
@@ -243,7 +243,7 @@ internal class CrpgRewardServer : MissionLogic
             if (missionPeer.Team != null && missionPeer.Team.Side != BattleSideEnum.None)
             {
                 int crpgUserId = crpgPeer.User.Id;
-                var crpgUserDamagedItems = BreakItems(crpgPeer, durationRewarded * (isLowPopulationServer ? 0f : 1f));
+                var crpgUserDamagedItems = BreakItems(crpgPeer, durationRewarded);
                 brokenItems[crpgUserId] = crpgUserDamagedItems;
             }
         }
