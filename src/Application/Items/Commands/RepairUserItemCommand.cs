@@ -44,11 +44,6 @@ public record RepairUserItemCommand : IMediatorRequest<UserItemViewModel>
                 return new(CommonErrors.UserItemNotFound(req.UserItemId));
             }
 
-            if (userItem.Item!.Rank >= 3)
-            {
-                return new(CommonErrors.UserItemMaxRankReached(req.UserItemId, 3));
-            }
-
             if (userItem.IsBroken) // repair
             {
                 int repairCost = (int)(userItem.Item!.Price
@@ -62,27 +57,15 @@ public record RepairUserItemCommand : IMediatorRequest<UserItemViewModel>
                 userItem.User!.Gold -= repairCost;
 
                 _db.ActivityLogs.Add(_activityLogService.CreateItemRepairedLog(userItem.UserId, userItem.ItemId, repairCost));
+                userItem.IsBroken = false;
+                await _db.SaveChangesAsync(cancellationToken);
+                Logger.LogInformation("User '{0}' repaired user item '{1}'", req.UserId, req.UserItemId);
+                return new(_mapper.Map<UserItemViewModel>(userItem));
             }
-            else // looming
+            else
             {
-                return new(CommonErrors.NotEnoughHeirloomPoints(9999, userItem.User!.HeirloomPoints));
-#if false
-                if (userItem.User!.HeirloomPoints == 0)
-                {
-                    return new(CommonErrors.NotEnoughHeirloomPoints(1, userItem.User.HeirloomPoints));
-                }
-
-                userItem.User!.HeirloomPoints -= 1;
-
-                _db.ActivityLogs.Add(_activityLogService.CreateItemUpgradedLog(userItem.UserId, userItem.BaseItemId, 0, 1));
-#endif
+                return new(CommonErrors.UserItemIsNotBroken(req.UserItemId));
             }
-
-            userItem.IsBroken = false;
-            await _db.SaveChangesAsync(cancellationToken);
-
-            Logger.LogInformation("User '{0}' repaired user item '{1}'", req.UserId, req.UserItemId);
-            return new(_mapper.Map<UserItemViewModel>(userItem));
         }
     }
 }
