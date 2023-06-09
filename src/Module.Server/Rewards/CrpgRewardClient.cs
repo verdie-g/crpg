@@ -57,11 +57,11 @@ internal class CrpgRewardClient : MissionNetwork
                 ? (new Color(65, 105, 225), "Gained")
                 : (new Color(0.74f, 0.28f, 0.01f), "Lost");
             string upkeepMessage = message.LowPopulation
-                ? "upkeep: free , low population server."
-                : $"upkeep: {message.RepairCost}.";
+                ? "free , low population server"
+                : message.RepairCost.ToString();
             InformationManager.DisplayMessage(
                 new InformationMessage(
-                    $"{verb} {gain} gold (reward: {reward.Gold}, {upkeepMessage})",
+                    $"{verb} {gain} gold (reward: {reward.Gold}, upkeep: {upkeepMessage}) .",
                     color));
         }
 
