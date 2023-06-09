@@ -291,7 +291,7 @@ internal static class CommonErrors
     };
 
     public static Error UserItemIsNotBroken(int userItemId) =>
-        new(ErrorType.Validation, ErrorCode.UserItemMaxRankReached)
+        new(ErrorType.Validation, ErrorCode.UserItemIsNotBroken)
         {
             Title = "User item is not broken",
             Detail = $"User item with id '{userItemId}' cannot be repaired as it is not broken",
