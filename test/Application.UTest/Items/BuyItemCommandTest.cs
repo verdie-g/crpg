@@ -14,14 +14,16 @@ public class BuyItemCommandTest : TestBase
     [Test]
     public async Task Basic()
     {
-        Item item = new() { Id = "0", Price = 100, Enabled = true, Rank = 0 };
+        Item item0 = new() { Id = "a_h0", Price = 100, Enabled = true, Rank = 0 };
+        Item item1 = new() { Id = "a_h1", Price = 100, Enabled = true, Rank = 1 };
         User user = new()
         {
             Gold = 100,
-            Items = { },
+            Items = { new UserItem { Item = item1 } },
         };
         ArrangeDb.Users.Add(user);
-        ArrangeDb.Items.Add(item);
+        ArrangeDb.Items.Add(item0);
+        ArrangeDb.Items.Add(item1);
         await ArrangeDb.SaveChangesAsync();
 
         Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
@@ -29,7 +31,7 @@ public class BuyItemCommandTest : TestBase
         BuyItemCommand.Handler handler = new(ActDb, Mapper, activityLogServiceMock.Object);
         var result = await handler.Handle(new BuyItemCommand
         {
-            ItemId = item.Id,
+            ItemId = item0.Id,
             UserId = user.Id,
         }, CancellationToken.None);
 
@@ -40,7 +42,7 @@ public class BuyItemCommandTest : TestBase
         var boughtUserItem = result.Data!;
         Assert.That(boughtUserItem.Item.Rank, Is.EqualTo(0));
         Assert.That(boughtUserItem.IsBroken, Is.False);
-        Assert.That(boughtUserItem.Item.Id, Is.EqualTo(item.Id));
+        Assert.That(boughtUserItem.Item.Id, Is.EqualTo(item0.Id));
         Assert.That(userDb.Gold, Is.EqualTo(0));
         Assert.That(userDb.Items, Has.Some.Matches<UserItem>(ui => ui.Id == boughtUserItem.Id));
     }
