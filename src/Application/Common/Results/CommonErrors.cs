@@ -294,8 +294,9 @@ internal static class CommonErrors
         new(ErrorType.Validation, ErrorCode.UserItemMaxRankReached)
         {
             Title = "User item has reached its max rank",
-            Detail = $"User item with id '{userItemId}' has reached its max rank ({maxRank})",
+            Detail = $"User item with id '{userItemId}' cannot be repaired as it is not broken",
         };
+
     public static Error UserItemMaxRankReached(int userItemId, int maxRank) =>
         new(ErrorType.Validation, ErrorCode.UserItemMaxRankReached)
         {
