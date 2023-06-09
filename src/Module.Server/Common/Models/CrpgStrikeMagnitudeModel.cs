@@ -95,7 +95,7 @@ internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
         BasicCharacterObject victimCaptainCharacter,
         WeaponComponentData weaponComponent)
     {
-        if (weaponComponent == null || weaponComponent.WeaponClass == null)
+        if (weaponComponent == null)
         {
             return baseArmor;
         }
