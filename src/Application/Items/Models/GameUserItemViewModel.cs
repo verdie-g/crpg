@@ -7,5 +7,4 @@ public record GameUserItemViewModel : IMapFrom<UserItem>
 {
     public int Id { get; init; }
     public string ItemId { get; init; } = default!;
-    public int Rank { get; init; }
 }

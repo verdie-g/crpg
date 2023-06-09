@@ -290,6 +290,13 @@ internal static class CommonErrors
         Detail = $"User with id '{userId}' has already registered to strategus",
     };
 
+    public static Error UserItemIsNotBroken(int userItemId) =>
+        new(ErrorType.Validation, ErrorCode.UserItemIsNotBroken)
+        {
+            Title = "User item is not broken",
+            Detail = $"User item with id '{userItemId}' cannot be repaired as it is not broken",
+        };
+
     public static Error UserItemMaxRankReached(int userItemId, int maxRank) =>
         new(ErrorType.Validation, ErrorCode.UserItemMaxRankReached)
         {

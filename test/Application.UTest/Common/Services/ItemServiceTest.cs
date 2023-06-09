@@ -55,7 +55,7 @@ public class ItemServiceTest : TestBase
     public async Task SellItemEquipped()
     {
         Item item = new() { Id = "0", Price = 100 };
-        UserItem userItem = new() { Rank = 1, Item = item };
+        UserItem userItem = new() { Item = item };
         List<Character> characters = new()
         {
             new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Head } } },

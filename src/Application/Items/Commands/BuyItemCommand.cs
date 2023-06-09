@@ -59,9 +59,14 @@ public record BuyItemCommand : IMediatorRequest<UserItemViewModel>
                 return new(CommonErrors.ItemNotBuyable(req.ItemId));
             }
 
-            if (user.Items.Any(ui => ui.ItemId == req.ItemId && ui.Rank == 0))
+            if (user.Items.Any(ui => ui.ItemId == req.ItemId && ui.Item!.Rank == 0))
             {
                 return new(CommonErrors.ItemAlreadyOwned(req.ItemId));
+            }
+
+            if (item.Rank > 0)
+            {
+                return new(CommonErrors.ItemNotBuyable(req.ItemId));
             }
 
             if (user.Gold < item.Price)
@@ -73,7 +78,6 @@ public record BuyItemCommand : IMediatorRequest<UserItemViewModel>
             var userItem = new UserItem
             {
                 UserId = req.UserId,
-                Rank = 0,
                 Item = item,
             };
             user.Items.Add(userItem);
