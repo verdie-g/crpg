@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <DtvData>
-  <Rounds>
+  <Rounds totalRounds="8"
+          totalWaves="3">
     <Round number="1">
       <ClassDivisionId>crpg_dtv_peasant</ClassDivisionId>
       <Reward gold="50"

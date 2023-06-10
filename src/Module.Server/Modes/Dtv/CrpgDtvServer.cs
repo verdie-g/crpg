@@ -1,9 +1,11 @@
 ﻿using System.Text;
+using System.Xml.Linq;
 using Crpg.Module.Api.Models;
 using Crpg.Module.Common;
 using Crpg.Module.Rewards;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
+using TaleWorlds.ModuleManager;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.MissionRepresentatives;
 using TaleWorlds.MountAndBlade.Network.Messages;
@@ -13,11 +15,14 @@ namespace Crpg.Module.Modes.Dtv;
 
 internal class CrpgDtvServer : MissionMultiplayerGameModeBase
 {
-    private const int TotalRounds = 8;
-    private const int TotalWaves = 3;
+
     private const int BotRespawnTime = 3;
     private const int NewRoundRespawnTime = 20;
 
+    private readonly int totalRounds;
+    private readonly int totalWaves;
+
+    private readonly XDocument? _dtvData;
     private readonly CrpgDtvClient _dtvClient;
     private readonly CrpgRewardServer _rewardServer;
     private readonly CrpgDtvVirginDeathMessage _virginDeathMessage = new();
@@ -39,6 +44,29 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
     {
         _dtvClient = dtvClient;
         _rewardServer = rewardServer;
+        _dtvData = new XDocument();
+        _dtvData = XDocument.Load(ModuleHelper.GetXmlPath("Crpg", "dtv_data"));
+
+        if (_dtvData is not null)
+        {
+            try
+            {
+                totalWaves = _dtvData.Descendants("Rounds")
+                .Select(rounds => (int)rounds.Attribute("totalWaves"))
+                .FirstOrDefault();
+
+                totalRounds = _dtvData.Descendants("Rounds")
+                     .Select(rounds => (int)rounds.Attribute("totalRounds"))
+                     .FirstOrDefault();
+            }
+            catch (Exception e)
+            {
+                Debug.Print(e.Message);
+                totalRounds = 1;
+                totalWaves = 1;
+                Debug.Print("Failed to parse wave/round count from dtvData");
+            }
+        }
     }
 
     public override MissionLobbyComponent.MultiplayerGameType GetMissionType()
@@ -97,7 +125,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
 
         bool defenderTeamDepleted = Mission.DefenderTeam.ActiveAgents.Count == 0;
         bool virginDead = !Mission.DefenderTeam.HasBots;
-        bool missionComplete = currentRound > TotalRounds;
+        bool missionComplete = currentRound > totalRounds;
 
         if (virginDead)
         {
@@ -156,7 +184,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         {
             bool attackerTeamAlive = Mission.AttackerTeam.ActiveAgents.Count > 0;
             bool virginDead = !Mission.DefenderTeam.HasBots;
-            bool missionComplete = currentRound > TotalRounds;
+            bool missionComplete = currentRound > totalRounds;
             if (virginDead)
             {
                 Debug.Print("The Virgin has died");
@@ -213,7 +241,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
             Debug.Print("Attackers depleted");
             currentWave += 1;
             UpdateMessages();
-            if (currentWave >= TotalWaves + 1)
+            if (currentWave >= totalWaves + 1)
             {
                 OnRoundEnd();
             }
@@ -222,7 +250,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
                 OnWaveEnd();
             }
 
-            if (currentRound > TotalRounds)
+            if (currentRound > totalRounds)
             {
                 Debug.Print("Match complete");
                 // end match
