@@ -94,21 +94,14 @@ public class UpgradeItemCommandTest : TestBase
     {
         Item item0 = new() { Id = "a_h0", BaseId = "a", Price = 100, Enabled = true, Rank = 0 };
         Item item1 = new() { Id = "a_h1", BaseId = "a", Price = 100, Enabled = true, Rank = 1 };
-        UserItem userItem0 = new()
-        { Item = item0 };
-        UserItem userItem1 = new()
-        { Item = item1 };
-
         User user = new()
         {
             Gold = 100,
-            Items = { userItem0, userItem1 },
+            Items = { new() { Item = item0 }, new() { Item = item1 } },
         };
         ArrangeDb.Users.Add(user);
         ArrangeDb.Items.Add(item0);
         ArrangeDb.Items.Add(item1);
-        ArrangeDb.UserItems.Add(userItem0);
-        ArrangeDb.UserItems.Add(userItem1);
         await ArrangeDb.SaveChangesAsync();
 
         Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };

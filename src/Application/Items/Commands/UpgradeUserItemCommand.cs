@@ -49,6 +49,11 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
                 return new(CommonErrors.UserNotFound(req.UserId));
             }
 
+            var userUserItems = await _db.UserItems
+                .Where(ui => user.Items.Contains(ui))
+                .Include(ui => ui.Item)
+                .ToListAsync();
+
             if (userItem == null)
             {
                 return new(CommonErrors.UserItemNotFound(req.UserItemId));
@@ -59,7 +64,7 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
                 return new(CommonErrors.ItemNotUpgradable(userItem.ItemId));
             }
 
-            if (user.Items.Any(ui => ui.Item!.BaseId == userItem.Item.BaseId && ui.Item!.Rank == userItem.Item.Rank + 1))
+            if (userUserItems.Any(ui => ui.Item!.BaseId == userItem.Item.BaseId && ui.Item!.Rank == userItem.Item.Rank + 1))
             {
                 return new(CommonErrors.ItemAlreadyOwned($"{userItem.ItemId} +1 version"));
             }
