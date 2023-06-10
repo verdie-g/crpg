@@ -20,6 +20,7 @@ public class UpgradeItemCommandTest : TestBase
         {
             Gold = 100,
             Items = { new UserItem { Item = item0 } },
+            HeirloomPoints = 5,
         };
         ArrangeDb.Users.Add(user);
         ArrangeDb.Items.Add(item0);
@@ -39,11 +40,11 @@ public class UpgradeItemCommandTest : TestBase
             .Include(u => u.Items)
             .FirstAsync(u => u.Id == user.Id);
 
-        var boughtUserItem = result.Data!;
-        Assert.That(boughtUserItem.Item.Rank, Is.EqualTo(1));
-        Assert.That(boughtUserItem.Item.BaseId, Is.EqualTo(item0.BaseId));
-        Assert.That(userDb.Gold, Is.EqualTo(100));
-        Assert.That(userDb.Items, Has.Some.Matches<UserItem>(ui => ui.Id == boughtUserItem.Id));
+        var upgradedUserItem = result.Data!;
+        Assert.That(upgradedUserItem.Item.Rank, Is.EqualTo(1));
+        Assert.That(upgradedUserItem.Item.BaseId, Is.EqualTo(item0.BaseId));
+        Assert.That(userDb.HeirloomPoints, Is.EqualTo(4));
+        Assert.That(userDb.Items, Has.Some.Matches<UserItem>(ui => ui.Id == upgradedUserItem.Id));
     }
 
     [Test]
@@ -54,6 +55,8 @@ public class UpgradeItemCommandTest : TestBase
         {
             Gold = 100,
             Items = { new UserItem { Item = item0 } },
+            HeirloomPoints = 5,
+
         };
         ArrangeDb.Users.Add(user);
         ArrangeDb.Items.Add(item0);
@@ -98,6 +101,7 @@ public class UpgradeItemCommandTest : TestBase
         {
             Gold = 100,
             Items = { new() { Item = item0 }, new() { Item = item1 } },
+            HeirloomPoints = 5,
         };
         ArrangeDb.Users.Add(user);
         ArrangeDb.Items.Add(item0);
@@ -115,5 +119,34 @@ public class UpgradeItemCommandTest : TestBase
 
         var errorCode = result.Errors![0].Code;
         Assert.That(errorCode, Is.EqualTo(ErrorCode.ItemAlreadyOwned));
+    }
+
+    [Test]
+    public async Task CannotUpgradeWithNoHeirloomPoints()
+    {
+        Item item0 = new() { Id = "a_h0", BaseId = "a", Price = 100, Enabled = true, Rank = 0 };
+        Item item1 = new() { Id = "a_h1", BaseId = "a", Price = 100, Enabled = true, Rank = 1 };
+        User user = new()
+        {
+            Gold = 100,
+            Items = { new() { Item = item0 } },
+            HeirloomPoints = 0,
+        };
+        ArrangeDb.Users.Add(user);
+        ArrangeDb.Items.Add(item0);
+        ArrangeDb.Items.Add(item1);
+        await ArrangeDb.SaveChangesAsync();
+
+        Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
+
+        UpgradeUserItemCommand.Handler handler = new(ActDb, Mapper, activityLogServiceMock.Object);
+        var result = await handler.Handle(new UpgradeUserItemCommand
+        {
+            UserItemId = user.Items[0].Id,
+            UserId = user.Id,
+        }, CancellationToken.None);
+
+        var errorCode = result.Errors![0].Code;
+        Assert.That(errorCode, Is.EqualTo(ErrorCode.NotEnoughHeirloomPoints));
     }
 }
