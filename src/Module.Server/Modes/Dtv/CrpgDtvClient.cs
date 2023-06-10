@@ -104,7 +104,6 @@ internal class CrpgDtvDataClient : MissionNetwork
 
     private void HandleVirginDeath(CrpgDtvVirginDeathMessage message)
     {
-        var roundData = message.RoundData;
         InformationManager.DisplayMessage(new InformationMessage
         {
             Information = $"The Innocent Virgin has been slaughtered!",

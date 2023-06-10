@@ -1,4 +1,5 @@
-﻿using Crpg.Module.Api.Models;
+﻿using System.Text;
+using Crpg.Module.Api.Models;
 using Crpg.Module.Common;
 using Crpg.Module.Rewards;
 using TaleWorlds.Core;
@@ -19,9 +20,9 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
 
     private readonly CrpgDtvClient _dtvClient;
     private readonly CrpgRewardServer _rewardServer;
-    private readonly CrpgDtvVirginDeathMessage _virginDeathMessage = new() { RoundData = new CrpgDtvRoundData { IsVirginDead = true } };
-    private readonly CrpgDtvRoundEndMessage _roundEndMessage = new() { RoundData = new CrpgDtvRoundData { Round = 1 } };
-    private readonly CrpgDtvWaveEndMessage _waveEndMessage = new() { RoundData = new CrpgDtvRoundData { Wave = 1 } };
+    private readonly CrpgDtvVirginDeathMessage _virginDeathMessage = new();
+    private readonly CrpgDtvRoundEndMessage _roundEndMessage = new();
+    private readonly CrpgDtvWaveEndMessage _waveEndMessage = new();
 
     private int currentWave = 1;
     private int currentRound = 1;
@@ -203,7 +204,6 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         }
     }
 
-
     private void CheckForWaveEnd()
     {
         bool attackersDepleted = !Mission.AttackerTeam.HasBots;
@@ -301,7 +301,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
 
     private void UpdateMessages()
     {
-        _roundEndMessage.RoundData.Round = currentRound;
-        _waveEndMessage.RoundData.Wave = currentWave;
+        _roundEndMessage.RoundData = new CrpgDtvRoundData { Round = currentRound };
+        _waveEndMessage.RoundData = new CrpgDtvRoundData { Wave = currentWave };
     }
 }

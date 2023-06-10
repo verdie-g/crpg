@@ -6,20 +6,13 @@ namespace Crpg.Module.Modes.Dtv;
 [DefineGameNetworkMessageTypeForMod(GameNetworkMessageSendType.FromServer)]
 internal sealed class CrpgDtvVirginDeathMessage : GameNetworkMessage
 {
-    public CrpgDtvRoundData RoundData { get; set; } = default!;
-
     protected override void OnWrite()
     {
-        WriteBoolToPacket(RoundData.IsVirginDead);
     }
 
     protected override bool OnRead()
     {
-        bool bufferReadValid = true;
-        bool isVirginDead = ReadBoolFromPacket(ref bufferReadValid);
-        RoundData = new CrpgDtvRoundData { IsVirginDead = isVirginDead };
-
-        return bufferReadValid;
+        return true;
     }
 
     protected override MultiplayerMessageFilter OnGetLogFilter()
