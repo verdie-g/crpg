@@ -48,7 +48,7 @@ public record SellUserItemCommand : IMediatorRequest
 
             if (userItem.Item!.Rank > 0)
             {
-                return new(CommonErrors.ItemIsNotSellable);
+                return new(CommonErrors.ItemIsNotSellable(userItem.Item.Id));
             }
 
             int sellPrice = _itemService.SellUserItem(_db, userItem);
