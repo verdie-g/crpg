@@ -74,6 +74,11 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
                 return new(CommonErrors.UserItemMaxRankReached(userItem.Id, 3));
             }
 
+            if (user.HeirloomPoints < 1)
+            {
+                return new(CommonErrors.NotEnoughHeirloomPoints(1, user.HeirloomPoints));
+            }
+
             Item? heirloomedItem = await _db.Items
                 .Where(i => i.BaseId == userItem.Item!.BaseId)
                 .Where(i => i.Rank == userItem.Item!.Rank + 1)
@@ -93,6 +98,7 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
 
             user.Items.Remove(userItem);
             user.Items.Add(heirloomedUserItem);
+            user.HeirloomPoints -= 1;
             _db.ActivityLogs.Add(_activityLogService.CreateItemUpgradedLog(user.Id, userItem.ItemId, 1));
             await _db.SaveChangesAsync(cancellationToken);
 
