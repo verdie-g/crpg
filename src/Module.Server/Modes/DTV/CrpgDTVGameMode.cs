@@ -16,16 +16,16 @@ using TaleWorlds.MountAndBlade.View;
 using TaleWorlds.MountAndBlade.View.MissionViews;
 #endif
 
-namespace Crpg.Module.Modes.DTV;
+namespace Crpg.Module.Modes.Dtv;
 
 [ViewCreatorModule] // Exposes methods with ViewMethod attribute.
-internal class CrpgDTVGameMode : MissionBasedMultiplayerGameMode
+internal class CrpgDtvGameMode : MissionBasedMultiplayerGameMode
 {
     private const string GameName = "cRPGDTV";
 
     private static CrpgConstants _constants = default!; // Static so it's accessible from the views.
 
-    public CrpgDTVGameMode(CrpgConstants constants)
+    public CrpgDtvGameMode(CrpgConstants constants)
         : base(GameName)
     {
         _constants = constants;
@@ -35,7 +35,7 @@ internal class CrpgDTVGameMode : MissionBasedMultiplayerGameMode
     // Used by MissionState.OpenNew that finds all methods having a ViewMethod attribute contained in class
     // having a ViewCreatorModule attribute.
     [ViewMethod(GameName)]
-    private static MissionView[] OpenCrpgDTV(Mission mission)
+    private static MissionView[] OpenCrpgDtv(Mission mission)
     {
         CrpgExperienceTable experienceTable = new(_constants);
         MissionMultiplayerGameModeBaseClient gameModeClient = mission.GetMissionBehavior<MissionMultiplayerGameModeBaseClient>();
@@ -83,15 +83,15 @@ internal class CrpgDTVGameMode : MissionBasedMultiplayerGameMode
         MultiplayerRoundController roundController = new(); // starts/stops round, ends match
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent, () =>
             (new FlagDominationSpawnFrameBehavior(),
-            new CrpgDTVSpawningBehavior(_constants, roundController)));
-        CrpgDTVTeamSelectComponent teamSelectComponent = new(warmupComponent, roundController);
+            new CrpgDtvSpawningBehavior(_constants, roundController)));
+        CrpgDtvTeamSelectComponent teamSelectComponent = new(warmupComponent, roundController);
         CrpgRewardServer rewardServer = new(crpgClient, _constants, warmupComponent, enableTeamHitCompensations: true);
-        CrpgDTVSpawningBehavior spawnBehaviour = new(_constants, roundController);
+        CrpgDtvSpawningBehavior spawnBehaviour = new(_constants, roundController);
 #else
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent, null);
-        CrpgDTVTeamSelectComponent teamSelectComponent = new();
+        CrpgDtvTeamSelectComponent teamSelectComponent = new();
 #endif
-        CrpgDTVClient dtvClient = new();
+        CrpgDtvClient dtvClient = new();
         MissionState.OpenNew(
             Name,
             new MissionInitializerRecord(scene),
@@ -122,7 +122,7 @@ internal class CrpgDTVGameMode : MissionBasedMultiplayerGameMode
                     new WelcomeMessageBehavior(warmupComponent),
 #if CRPG_SERVER
                     roundController,
-                    new CrpgDTVServer(dtvClient, rewardServer, teamSelectComponent, spawnBehaviour),
+                    new CrpgDtvServer(dtvClient, rewardServer),
                     rewardServer,
                     // SpawnFrameBehaviour: where to spawn, SpawningBehaviour: when to spawn
                     new SpawnComponent(new BattleSpawnFrameBehavior(), spawnBehaviour),
@@ -142,7 +142,7 @@ internal class CrpgDTVGameMode : MissionBasedMultiplayerGameMode
                     new MissionMatchHistoryComponent(),
                     new MissionRecentPlayersComponent(),
                     new CrpgRewardClient(),
-                    new CrpgDTVDataClient(),
+                    new CrpgDtvDataClient(),
                     new HotConstantsClient(),
 #endif
                 });

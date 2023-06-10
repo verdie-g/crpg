@@ -1,13 +1,12 @@
-﻿using Crpg.Module.Api.Models;
-using TaleWorlds.MountAndBlade;
+﻿using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Network.Messages;
 
-namespace Crpg.Module.Common.Network;
+namespace Crpg.Module.Modes.Dtv;
 
 [DefineGameNetworkMessageTypeForMod(GameNetworkMessageSendType.FromServer)]
-internal sealed class CrpgDTVVirginDeathMessage : GameNetworkMessage
+internal sealed class CrpgDtvVirginDeathMessage : GameNetworkMessage
 {
-    public CrpgDTVRoundData RoundData { get; set; } = default!;
+    public CrpgDtvRoundData RoundData { get; set; } = default!;
 
     protected override void OnWrite()
     {
@@ -18,7 +17,7 @@ internal sealed class CrpgDTVVirginDeathMessage : GameNetworkMessage
     {
         bool bufferReadValid = true;
         bool isVirginDead = ReadBoolFromPacket(ref bufferReadValid);
-        RoundData = new CrpgDTVRoundData { IsVirginDead = isVirginDead };
+        RoundData = new CrpgDtvRoundData { IsVirginDead = isVirginDead };
 
         return bufferReadValid;
     }

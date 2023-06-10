@@ -9,9 +9,9 @@ using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
 using TaleWorlds.PlayerServices;
 
-namespace Crpg.Module.Modes.DTV;
+namespace Crpg.Module.Modes.Dtv;
 
-internal class CrpgDTVSpawningBehavior : CrpgSpawningBehaviorBase
+internal class CrpgDtvSpawningBehavior : CrpgSpawningBehaviorBase
 {
     public bool BotsSpawned { get; set; }
 
@@ -26,7 +26,7 @@ internal class CrpgDTVSpawningBehavior : CrpgSpawningBehaviorBase
     private MissionTimer? _cavalrySpawnDelayTimer;
     private bool _virginSpawned;
 
-    public CrpgDTVSpawningBehavior(CrpgConstants constants, MultiplayerRoundController roundController)
+    public CrpgDtvSpawningBehavior(CrpgConstants constants, MultiplayerRoundController roundController)
         : base(constants)
     {
         _roundController = roundController;

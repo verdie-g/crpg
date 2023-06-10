@@ -4,20 +4,20 @@ using Crpg.Module.Api.Models.Users;
 #if CRPG_SERVER
 using System.Text;
 using Crpg.Module.Balancing;
-using Crpg.Module.Common.Network;
+using Crpg.Module.Common;
 using NetworkMessages.FromClient;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.PlayerServices;
 #endif
 
-namespace Crpg.Module.Common;
+namespace Crpg.Module.Modes.Dtv;
 
 /// <summary>
 /// Disables team selection and randomly assign teams if the native balancer is enabled. Else use the cRPG balancer
 /// to balance teams after each round.
 /// </summary>
-internal class CrpgDTVTeamSelectComponent : MultiplayerTeamSelectComponent
+internal class CrpgDtvTeamSelectComponent : MultiplayerTeamSelectComponent
 {
 #if CRPG_SERVER
     private readonly MultiplayerWarmupComponent _warmupComponent;
@@ -29,7 +29,7 @@ internal class CrpgDTVTeamSelectComponent : MultiplayerTeamSelectComponent
     /// </summary>
     private readonly HashSet<PlayerId> _playersWaitingForTeam;
 
-    public CrpgDTVTeamSelectComponent(MultiplayerWarmupComponent warmupComponent, MultiplayerRoundController? roundController)
+    public CrpgDtvTeamSelectComponent(MultiplayerWarmupComponent warmupComponent, MultiplayerRoundController? roundController)
     {
         _warmupComponent = warmupComponent;
         _roundController = roundController;

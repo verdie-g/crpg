@@ -1,15 +1,14 @@
-﻿using Crpg.Module.Api.Models;
-using TaleWorlds.MountAndBlade;
+﻿using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Network.Messages;
 
-namespace Crpg.Module.Common.Network;
+namespace Crpg.Module.Modes.Dtv;
 
 [DefineGameNetworkMessageTypeForMod(GameNetworkMessageSendType.FromServer)]
-internal sealed class CrpgDTVWaveEndMessage : GameNetworkMessage
+internal sealed class CrpgDtvWaveEndMessage : GameNetworkMessage
 {
     private static readonly CompressionInfo.Integer Int32CompressionInfo = new(int.MinValue, int.MaxValue, true);
 
-    public CrpgDTVRoundData RoundData { get; set; } = default!;
+    public CrpgDtvRoundData RoundData { get; set; } = default!;
 
     protected override void OnWrite()
     {
@@ -20,7 +19,7 @@ internal sealed class CrpgDTVWaveEndMessage : GameNetworkMessage
     {
         bool bufferReadValid = true;
         int wave = ReadIntFromPacket(Int32CompressionInfo, ref bufferReadValid);
-        RoundData = new CrpgDTVRoundData { Wave = wave };
+        RoundData = new CrpgDtvRoundData { Wave = wave };
 
         return bufferReadValid;
     }

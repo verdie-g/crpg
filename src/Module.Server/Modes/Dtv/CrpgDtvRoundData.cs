@@ -1,6 +1,6 @@
-﻿namespace Crpg.Module.Api.Models;
+﻿namespace Crpg.Module.Modes.Dtv;
 
-internal class CrpgDTVRoundData
+internal class CrpgDtvRoundData
 {
     public int Round { get; set; }
     public int Wave { get; set; }

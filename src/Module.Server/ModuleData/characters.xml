@@ -12,7 +12,7 @@
   </NPCCharacter>
 
   <NPCCharacter id="crpg_bot_narutofan"
-             name="{=}Naruto Fan">
+                name="{=}Naruto Fan">
     <face>
       <BodyProperties version="4"
                       age="23"
@@ -1033,7 +1033,7 @@
   </NPCCharacter>
 
   <NPCCharacter id="crpg_dtv_virgin"
-                  name="{=}Innocent Virgin">
+                name="{=}Innocent Virgin">
     <face>
       <BodyProperties version="4"
                       age="23"
