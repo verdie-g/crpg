@@ -216,7 +216,7 @@ internal static class CommonErrors
     public static Error ItemIsNotSellable(string itemId) => new(ErrorType.Validation, ErrorCode.ItemNotSellable)
     {
         Title = "Item is not sellable",
-        Detail = $"Item with id '{itemId}' is not selleable",
+        Detail = $"Item with id '{itemId}' is not sellable",
     };
 
     public static Error ItemNotFound(string itemId) => new(ErrorType.NotFound, ErrorCode.ItemNotFound)
