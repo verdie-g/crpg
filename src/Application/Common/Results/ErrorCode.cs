@@ -32,6 +32,8 @@ public enum ErrorCode
     ItemBadSlot,
     ItemBroken,
     ItemDisabled,
+    ItemUpgradedVersionNotFound,
+    ItemNotUpgradable,
     ItemNotBuyable,
     ItemNotFound,
     ItemNotOwned,

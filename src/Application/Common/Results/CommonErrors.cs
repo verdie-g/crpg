@@ -207,6 +207,18 @@ internal static class CommonErrors
         Detail = $"Item with id '{itemId}' is disabled so the action cannot be performed",
     };
 
+    public static Error ItemUpgradedVersionNotFound(string itemId) => new(ErrorType.Validation, ErrorCode.ItemUpgradedVersionNotFound)
+    {
+        Title = "Item ugraded version not found",
+        Detail = $"Item with id '{itemId}' has no upgraded version",
+    };
+
+    public static Error ItemNotUpgradable(string itemId) => new(ErrorType.Validation, ErrorCode.ItemNotUpgradable)
+    {
+        Title = "Item is not upgradable",
+        Detail = $"Item with id '{itemId}' is not upgradable",
+    };
+
     public static Error ItemNotBuyable(string itemId) => new(ErrorType.Validation, ErrorCode.ItemNotBuyable)
     {
         Title = "Item is not buyable",
