@@ -49,7 +49,6 @@ internal class CrpgDtvGameMode : MissionBasedMultiplayerGameMode
             ViewCreator.CreateMissionMainAgentCheerBarkControllerView(mission),
             crpgEscapeMenu,
             ViewCreator.CreateMissionAgentLabelUIHandler(mission),
-            ViewCreator.CreateMultiplayerTeamSelectUIHandler(),
             ViewCreator.CreateMissionScoreBoardUIHandler(mission, false),
             ViewCreator.CreateMultiplayerEndOfRoundUIHandler(),
             ViewCreator.CreateMultiplayerEndOfBattleUIHandler(),
@@ -84,12 +83,12 @@ internal class CrpgDtvGameMode : MissionBasedMultiplayerGameMode
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent, () =>
             (new FlagDominationSpawnFrameBehavior(),
             new CrpgDtvSpawningBehavior(_constants, roundController)));
-        CrpgDtvTeamSelectComponent teamSelectComponent = new(warmupComponent, roundController);
+        CrpgTeamSelectComponent teamSelectComponent = new(warmupComponent, roundController);
         CrpgRewardServer rewardServer = new(crpgClient, _constants, warmupComponent, enableTeamHitCompensations: true);
         CrpgDtvSpawningBehavior spawnBehaviour = new(_constants, roundController);
 #else
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent, null);
-        CrpgDtvTeamSelectComponent teamSelectComponent = new();
+        CrpgTeamSelectComponent teamSelectComponent = new();
 #endif
         CrpgDtvClient dtvClient = new();
         MissionState.OpenNew(

@@ -1,5 +1,6 @@
 ﻿using System.Xml.Linq;
 using Crpg.Module.Rewards;
+using NetworkMessages.FromClient;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.ModuleManager;
@@ -145,6 +146,8 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
 
     protected override void HandleNewClientAfterLoadingFinished(NetworkCommunicator networkPeer)
     {
+        var missionPeer = networkPeer.GetComponent<MissionPeer>();
+        missionPeer.Team = Mission.DefenderTeam;
     }
 
     protected override void HandleEarlyNewClientAfterLoadingFinished(NetworkCommunicator networkPeer)
