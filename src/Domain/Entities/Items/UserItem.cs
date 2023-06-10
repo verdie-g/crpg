@@ -11,11 +11,6 @@ public class UserItem : AuditableEntity
     public int Id { get; set; }
     public int UserId { get; set; }
     public string ItemId { get; set; } = string.Empty;
-
-    /// <summary>
-    /// { 1, 2, 3 } for levels of looming.
-    /// </summary>
-    public int Rank { get; set; }
     public bool IsBroken { get; set; }
     public User? User { get; set; }
     public Item? Item { get; set; }

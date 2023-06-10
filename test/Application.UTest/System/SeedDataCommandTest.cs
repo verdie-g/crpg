@@ -86,7 +86,11 @@ public class SeedDataCommandTest : TestBase
     {
         Mock<IItemsSource> itemsSource = new();
         itemsSource.SetupSequence(s => s.LoadItems())
-            .ReturnsAsync(new[] { new ItemCreation { Id = "a", Type = ItemType.HeadArmor, Price = 20, Armor = new ItemArmorComponentViewModel() } })
+            .ReturnsAsync(new[]
+            {
+                new ItemCreation { Id = "a", Type = ItemType.HeadArmor, Price = 20, Armor = new ItemArmorComponentViewModel(), Rank = 0 },
+                new ItemCreation { Id = "b", Type = ItemType.HeadArmor, Price = 20, Armor = new ItemArmorComponentViewModel(), Rank = 1 },
+            })
             .ReturnsAsync(Array.Empty<ItemCreation>());
 
         SeedDataCommand.Handler seedDataCommandHandler = new(ActDb, itemsSource.Object, CreateAppEnv(),
@@ -94,11 +98,11 @@ public class SeedDataCommandTest : TestBase
             ItemModifierService);
         await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
         var items = await AssertDb.Items.ToArrayAsync();
-        Assert.That(items.Length, Is.EqualTo(1));
+        Assert.That(items.Length, Is.EqualTo(2));
 
         // Users buy the new item and equip it.
         User user0 = new() { Gold = 100, HeirloomPoints = 0 };
-        UserItem userItemRank0ForUser0 = new() { ItemId = items.First().Id, Rank = 0, User = user0 };
+        UserItem userItemRank0ForUser0 = new() { ItemId = items.First().Id, User = user0 };
         Character character0 = new()
         {
             User = user0,
@@ -110,8 +114,8 @@ public class SeedDataCommandTest : TestBase
         };
 
         User user1 = new() { Gold = 200, HeirloomPoints = 0 };
-        UserItem userItemRank0ForUser1 = new() { ItemId = items.First().Id, Rank = 0, User = user1 };
-        UserItem userItemRank1ForUser1 = new() { ItemId = items.First().Id, Rank = 1, User = user1 };
+        UserItem userItemRank0ForUser1 = new() { ItemId = items.First().Id, User = user1 };
+        UserItem userItemRank1ForUser1 = new() { ItemId = items.Last().Id, User = user1 };
         Character character1 = new()
         {
             User = user1,

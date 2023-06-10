@@ -17,6 +17,7 @@ public class Item : AuditableEntity, ICloneable
     public ItemType Type { get; set; }
     public int Price { get; set; }
     public float Tier { get; set; }
+    public int Rank { get; set; }
     public int Requirement { get; set; }
     public float Weight { get; set; }
     public ItemFlags Flags { get; set; }
@@ -84,6 +85,7 @@ public class Item : AuditableEntity, ICloneable
         Culture = Culture,
         Type = Type,
         Tier = Tier,
+        Rank = Rank,
         Requirement = Requirement,
         Price = Price,
         Weight = Weight,

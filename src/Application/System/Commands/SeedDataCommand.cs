@@ -1901,11 +1901,11 @@ public record SeedDataCommand : IMediatorRequest
                     .ToArrayAsync(cancellationToken);
                 foreach (var userItem in userItems)
                 {
-                    int price = _itemModifierService.ModifyItem(userItem.Item!, userItem.Rank).Price;
+                    int price = _itemModifierService.ModifyItem(userItem.Item!, userItem.Item!.Rank).Price;
                     userItem.User!.Gold += price;
-                    if (userItem.Rank > 0)
+                    if (userItem.Item!.Rank > 0)
                     {
-                        userItem.User.HeirloomPoints += userItem.Rank;
+                        userItem.User.HeirloomPoints += userItem.Item!.Rank;
                     }
 
                     _db.UserItems.Remove(userItem);
@@ -1952,6 +1952,7 @@ public record SeedDataCommand : IMediatorRequest
                 Price = item.Price,
                 Weight = item.Weight,
                 Tier = item.Tier,
+                Rank = item.Rank,
                 Requirement = item.Requirement,
                 Flags = item.Flags,
                 Enabled = true,

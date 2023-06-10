@@ -55,6 +55,7 @@ public enum ErrorCode
     UserAlreadyInAClan,
     UserAlreadyInTheClan,
     UserAlreadyRegisteredToStrategus,
+    UserItemIsNotBroken,
     UserItemMaxRankReached,
     UserItemNotFound,
     UserNotAClanMember,

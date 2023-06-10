@@ -11,6 +11,7 @@ internal class CrpgItem
     public int Price { get; set; }
     public float Weight { get; set; }
     public float Tier { get; set; }
+    public int Rank { get; set; }
     public int Requirement { get; set; }
     public CrpgItemFlags Flags { get; set; }
 

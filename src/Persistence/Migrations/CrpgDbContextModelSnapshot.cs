@@ -622,6 +622,10 @@ namespace Crpg.Persistence.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("price");
 
+                    b.Property<int>("Rank")
+                        .HasColumnType("integer")
+                        .HasColumnName("rank");
+
                     b.Property<int>("Requirement")
                         .HasColumnType("integer")
                         .HasColumnName("requirement");
@@ -670,10 +674,6 @@ namespace Crpg.Persistence.Migrations
                         .HasColumnType("text")
                         .HasColumnName("item_id");
 
-                    b.Property<int>("Rank")
-                        .HasColumnType("integer")
-                        .HasColumnName("rank");
-
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("updated_at");
@@ -688,9 +688,9 @@ namespace Crpg.Persistence.Migrations
                     b.HasIndex("ItemId")
                         .HasDatabaseName("ix_user_items_item_id");
 
-                    b.HasIndex("UserId", "ItemId", "Rank")
+                    b.HasIndex("UserId", "ItemId")
                         .IsUnique()
-                        .HasDatabaseName("ix_user_items_user_id_item_id_rank");
+                        .HasDatabaseName("ix_user_items_user_id_item_id");
 
                     b.ToTable("user_items", (string)null);
                 });

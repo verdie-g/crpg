@@ -55,5 +55,4 @@ public class XboxUserInfoHandler : IOpenIddictClientHandler<OpenIddictClientEven
                 return false;
         }
     }
-
 }
