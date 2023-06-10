@@ -1,77 +1,78 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTVData>
+<DtvData>
   <Rounds>
-    <Round number ="1">
-      <npc_id>crpg_dtv_peasant</npc_id>
-      <Reward gold ="50"
-              experience ="1000"/>
-      <wave1>1</wave1>
-      <wave2>1</wave2>
-      <wave3>1</wave3>
+    <Round number="1">
+      <ClassDivisionId>crpg_dtv_peasant</ClassDivisionId>
+      <Reward gold="50"
+              experience="1000"/>
+      <Wave1EnemyCount>1</Wave1EnemyCount>
+      <Wave2EnemyCount>1</Wave2EnemyCount>
+      <Wave3EnemyCount>1</Wave3EnemyCount>
     </Round>
 
-    <Round number ="2">
-      <npc_id>crpg_dtv_squire</npc_id>
-      <Reward gold ="50"
-              experience ="1000"/>
-      <wave1>1</wave1>
-      <wave2>1</wave2>
-      <wave3>1</wave3>
+    <Round number="2">
+      <ClassDivisionId>crpg_dtv_squire</ClassDivisionId>
+      <Reward gold="50"
+              experience="1000"/>
+      <Wave1EnemyCount>1</Wave1EnemyCount>
+      <Wave2EnemyCount>1</Wave2EnemyCount>
+      <Wave3EnemyCount>1</Wave3EnemyCount>
     </Round>
 
-    <Round number ="3">
-      <npc_id>crpg_dtv_looter</npc_id>
-      <Reward gold ="50"
-              experience ="1000"/>
-      <wave1>1</wave1>
-      <wave2>1</wave2>
-      <wave3>1</wave3>
+    <Round number="3">
+      <ClassDivisionId>crpg_dtv_looter</ClassDivisionId>
+      <Reward gold="50"
+              experience="1000"/>
+      <Wave1EnemyCount>1</Wave1EnemyCount>
+      <Wave2EnemyCount>1</Wave2EnemyCount>
+      <Wave3EnemyCount>1</Wave3EnemyCount>
+    
+  </Round>
+
+    <Round number="4">
+      <ClassDivisionId>crpg_dtv_deserter</ClassDivisionId>
+      <Reward gold="50"
+              experience="1000"/>
+      <Wave1EnemyCount>1</Wave1EnemyCount>
+      <Wave2EnemyCount>1</Wave2EnemyCount>
+      <Wave3EnemyCount>1</Wave3EnemyCount>
     </Round>
 
-    <Round number ="4">
-      <npc_id>crpg_dtv_deserter</npc_id>
-      <Reward gold ="50"
-              experience ="1000"/>
-      <wave1>1</wave1>
-      <wave2>1</wave2>
-      <wave3>1</wave3>
+    <Round number="5">
+      <ClassDivisionId>crpg_dtv_fancylad</ClassDivisionId>
+      <Reward gold="50"
+              experience="1000"/>
+      <Wave1EnemyCount>1</Wave1EnemyCount>
+      <Wave2EnemyCount>1</Wave2EnemyCount>
+      <Wave3EnemyCount>1</Wave3EnemyCount>
     </Round>
 
-    <Round number ="5">
-      <npc_id>crpg_dtv_fancylad</npc_id>
-      <Reward gold ="50"
+    <Round number="6">
+      <ClassDivisionId>crpg_dtv_viking</ClassDivisionId>
+      <Reward gold="50"
               experience ="1000"/>
-      <wave1>1</wave1>
-      <wave2>1</wave2>
-      <wave3>1</wave3>
+      <Wave1EnemyCount>1</Wave1EnemyCount>
+      <Wave2EnemyCount>1</Wave2EnemyCount>
+      <Wave3EnemyCount>1</Wave3EnemyCount>
     </Round>
 
-    <Round number ="6">
-      <npc_id>crpg_dtv_viking</npc_id>
-      <Reward gold ="50"
+    <Round number="7">
+      <ClassDivisionId>crpg_dtv_samurai</ClassDivisionId>
+      <Reward gold="50"
               experience ="1000"/>
-      <wave1>1</wave1>
-      <wave2>1</wave2>
-      <wave3>1</wave3>
-    </Round>
+      <Wave1EnemyCount>1</Wave1EnemyCount>
+      <Wave2EnemyCount>1</Wave2EnemyCount>
+      <Wave3EnemyCount>1</Wave3EnemyCount>
+  </Round>
 
-    <Round number ="7">
-      <npc_id>crpg_dtv_samurai</npc_id>
-      <Reward gold ="50"
+    <Round number="8">
+      <ClassDivisionId>crpg_dtv_legionary</ClassDivisionId>
+      <Reward gold="50"
               experience ="1000"/>
-      <wave1>1</wave1>
-      <wave2>1</wave2>
-      <wave3>1</wave3>
-    </Round>
-
-    <Round number ="8">
-      <npc_id>crpg_dtv_legionary</npc_id>
-      <Reward gold ="50"
-              experience ="1000"/>
-      <wave1>1</wave1>
-      <wave2>1</wave2>
-      <wave3>1</wave3>
+      <Wave1EnemyCount>1</Wave1EnemyCount>
+      <Wave2EnemyCount>1</Wave2EnemyCount>
+      <Wave3EnemyCount>1</Wave3EnemyCount>
     </Round>
 
   </Rounds>
-</DTVData>
+</DtvData>

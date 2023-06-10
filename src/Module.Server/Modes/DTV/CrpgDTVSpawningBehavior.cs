@@ -187,13 +187,13 @@ internal class CrpgDTVSpawningBehavior : CrpgSpawningBehaviorBase
         int botsTeam1 = MultiplayerOptions.OptionType.NumberOfBotsTeam1.GetIntValue();
         int botsTeam2 = MultiplayerOptions.OptionType.NumberOfBotsTeam2.GetIntValue();
         int numberOfBots = 0;
-        string botID = "crpg_dtv_";
+        string botDivisionID = "crpg_dtv_";
 
         if (_dtvData is not null)
         {
             var waveValue = _dtvData.Descendants("Round")
                 .Where(round => (int)round.Attribute("number") == currentRound)
-                .Elements($"wave{currentWave}")
+                .Elements($"Wave{currentWave}EnemyCount")
                 .FirstOrDefault()?.Value;
 
             Debug.Print($"Number of bots this wave: {waveValue}");
@@ -202,15 +202,15 @@ internal class CrpgDTVSpawningBehavior : CrpgSpawningBehaviorBase
                 numberOfBots = int.Parse(waveValue);
             }
 
-            var npcID = _dtvData.Descendants("Round")
+            var divisionID = _dtvData.Descendants("Round")
                 .Where(round => (int)round.Attribute("number") == currentRound)
-                .Elements("npc_id")
+                .Elements("ClassDivisionId")
                 .FirstOrDefault()?.Value;
 
-            Debug.Print($"Type of bot this wave: {npcID}");
-            if (npcID != null)
+            Debug.Print($"Type of bot this wave: {divisionID}");
+            if (divisionID != null)
             {
-                botID = npcID;
+                botDivisionID = divisionID;
             }
         }
 
@@ -243,7 +243,7 @@ internal class CrpgDTVSpawningBehavior : CrpgSpawningBehaviorBase
             {
                 MultiplayerClassDivisions.MPHeroClass botClass = MultiplayerClassDivisions
                     .GetMPHeroClasses()
-                    .GetRandomElementWithPredicate<MultiplayerClassDivisions.MPHeroClass>(x => x.StringId.StartsWith(botID));
+                    .GetRandomElementWithPredicate<MultiplayerClassDivisions.MPHeroClass>(x => x.StringId.StartsWith(botDivisionID));
                 BasicCharacterObject character = botClass.HeroCharacter;
                 Debug.Print($"Attempting to spawn {character.Name}");
 
