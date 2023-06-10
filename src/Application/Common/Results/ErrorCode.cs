@@ -33,6 +33,7 @@ public enum ErrorCode
     ItemBroken,
     ItemDisabled,
     ItemNotBuyable,
+    ItemNotSellabe,
     ItemNotFound,
     ItemNotOwned,
     NotEnoughAttributePoints,
