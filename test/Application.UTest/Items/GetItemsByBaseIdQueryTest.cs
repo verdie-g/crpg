@@ -92,8 +92,8 @@ public class GetItemsByBaseIdQueryTest : TestBase
                 Type = ItemType.Bolts,
                 Enabled = true,
             },
-
         };
+
         ArrangeDb.Items.AddRange(items);
         await ArrangeDb.SaveChangesAsync();
 
