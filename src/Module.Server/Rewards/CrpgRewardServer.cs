@@ -135,21 +135,21 @@ internal class CrpgRewardServer : MissionLogic
             return;
         }
 
-        bool lowPopulationServer = networkPeers.Length < 4;
-
+        bool veryLowPopulationServer = networkPeers.Length < 2;
+        bool lowPopulationServer = networkPeers.Length < 12;
         // Force constant multiplier if there is low population.
-        constantMultiplier = lowPopulationServer ? ExperienceMultiplierMin : constantMultiplier;
+        constantMultiplier = veryLowPopulationServer ? ExperienceMultiplierMin : constantMultiplier;
 
         CrpgRatingCalculator.UpdateRatings(_ratingResults);
         Dictionary<PlayerId, PeriodStats> periodStats = _periodStatsHelper.ComputePeriodStats();
 
-        var valorousPlayerIds = lowPopulationServer || !valourTeamSide.HasValue
+        var valorousPlayerIds = veryLowPopulationServer || !valourTeamSide.HasValue
             ? new HashSet<PlayerId>()
             : GetValorousPlayers(networkPeers, periodStats, valourTeamSide.Value);
 
         Dictionary<int, CrpgPeer> crpgPeerByCrpgUserId = new();
         List<CrpgUserUpdate> userUpdates = new();
-        Dictionary<int, IList<CrpgUserDamagedItem>> brokenItems = GetBrokenItemsByCrpgUserId(networkPeers, durationRewarded, lowPopulationServer);
+        Dictionary<int, IList<CrpgUserDamagedItem>> brokenItems = lowPopulationServer ? new() : GetBrokenItemsByCrpgUserId(networkPeers, durationRewarded);
 
         var compensationByCrpgUserId = _isTeamHitCompensationsEnabled ? CalculateCompensationByCrpgUserId(brokenItems) : new();
         foreach (NetworkCommunicator networkPeer in networkPeers)
@@ -219,7 +219,7 @@ internal class CrpgRewardServer : MissionLogic
         try
         {
             var res = (await _crpgClient.UpdateUsersAsync(new CrpgGameUsersUpdateRequest { Updates = userUpdates })).Data!;
-            SendRewardToPeers(res.UpdateResults, crpgPeerByCrpgUserId, valorousPlayerIds, compensationByCrpgUserId);
+            SendRewardToPeers(res.UpdateResults, crpgPeerByCrpgUserId, valorousPlayerIds, compensationByCrpgUserId, lowPopulationServer);
         }
         catch (Exception e)
         {
@@ -228,7 +228,7 @@ internal class CrpgRewardServer : MissionLogic
         }
     }
 
-    private Dictionary<int, IList<CrpgUserDamagedItem>> GetBrokenItemsByCrpgUserId(NetworkCommunicator[] networkPeers, float durationRewarded, bool isLowPopulationServer)
+    private Dictionary<int, IList<CrpgUserDamagedItem>> GetBrokenItemsByCrpgUserId(NetworkCommunicator[] networkPeers, float durationRewarded)
     {
         Dictionary<int, IList<CrpgUserDamagedItem>> brokenItems = new();
         foreach (NetworkCommunicator networkPeer in networkPeers)
@@ -243,7 +243,7 @@ internal class CrpgRewardServer : MissionLogic
             if (missionPeer.Team != null && missionPeer.Team.Side != BattleSideEnum.None)
             {
                 int crpgUserId = crpgPeer.User.Id;
-                var crpgUserDamagedItems = BreakItems(crpgPeer, durationRewarded * (isLowPopulationServer ? 0.2f : 1f));
+                var crpgUserDamagedItems = BreakItems(crpgPeer, durationRewarded);
                 brokenItems[crpgUserId] = crpgUserDamagedItems;
             }
         }
@@ -527,7 +527,7 @@ internal class CrpgRewardServer : MissionLogic
     }
 
     private void SendRewardToPeers(IList<UpdateCrpgUserResult> updateResults,
-        Dictionary<int, CrpgPeer> crpgPeerByCrpgUserId, HashSet<PlayerId> valorousPlayerIds, Dictionary<int, int> compensationByCrpgUserId)
+        Dictionary<int, CrpgPeer> crpgPeerByCrpgUserId, HashSet<PlayerId> valorousPlayerIds, Dictionary<int, int> compensationByCrpgUserId, bool lowPopulation)
     {
         foreach (var updateResult in updateResults)
         {
@@ -559,6 +559,7 @@ internal class CrpgRewardServer : MissionLogic
             {
                 Reward = updateResult.EffectiveReward,
                 Valour = valorousPlayerIds.Contains(networkPeer.VirtualPlayer.Id),
+                LowPopulation = lowPopulation,
                 RepairCost = updateResult.RepairedItems.Sum(r => r.RepairCost),
                 Compensation = compensationForCrpgUser,
                 BrokeItemIds = updateResult.RepairedItems.Where(r => r.Broke).Select(r => r.ItemId).ToList(),
