@@ -1,13 +1,8 @@
 ﻿using TaleWorlds.MountAndBlade;
-using Crpg.Module.Api.Models.Users;
 
 #if CRPG_SERVER
-using System.Text;
-using Crpg.Module.Balancing;
 using Crpg.Module.Common;
 using NetworkMessages.FromClient;
-using TaleWorlds.Core;
-using TaleWorlds.Library;
 using TaleWorlds.PlayerServices;
 #endif
 

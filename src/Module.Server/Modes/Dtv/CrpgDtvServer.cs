@@ -1,7 +1,4 @@
-﻿using System.Text;
-using System.Xml.Linq;
-using Crpg.Module.Api.Models;
-using Crpg.Module.Common;
+﻿using System.Xml.Linq;
 using Crpg.Module.Rewards;
 using TaleWorlds.Core;
 using TaleWorlds.Library;

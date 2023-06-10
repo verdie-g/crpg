@@ -1,15 +1,11 @@
 ﻿using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.MountAndBlade.MissionRepresentatives;
 
 namespace Crpg.Module.Modes.Dtv;
 
 internal class CrpgDtvClient : MissionMultiplayerGameModeBaseClient
 {
-/*    private MissionPeer? _missionPeer;
-    private TeamDeathmatchMissionRepresentative? _myRepresentative;*/
-
     public override bool IsGameModeUsingGold => false;
     public override bool IsGameModeTactical => false;
     public override bool IsGameModeUsingRoundCountdown => true;
@@ -70,8 +66,6 @@ internal class CrpgDtvClient : MissionMultiplayerGameModeBaseClient
 
     private void OnMyClientSynchronized()
     {
-/*        _missionPeer = GameNetwork.MyPeer.GetComponent<MissionPeer>();
-        _myRepresentative = GameNetwork.MyPeer.GetComponent<TeamDeathmatchMissionRepresentative>();*/
     }
 }
 
