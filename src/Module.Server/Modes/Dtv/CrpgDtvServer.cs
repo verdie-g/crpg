@@ -214,9 +214,6 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
 
         Debug.Print($"Team {RoundController.RoundWinner} won on map {Mission.SceneName} with {GameNetwork.NetworkPeers.Count()} players");
         CheerForRoundEnd(roundResult);
-
-        float roundDuration = MultiplayerOptions.OptionType.RoundTimeLimit.GetIntValue() - RoundController.RemainingRoundTime;
-        var roundWinner = RoundController.RoundWinner;
     }
 
     private void CheerForRoundEnd(CaptureTheFlagCaptureResultEnum roundResult)
@@ -248,12 +245,6 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
             else
             {
                 OnWaveEnd();
-            }
-
-            if (currentRound > totalRounds)
-            {
-                Debug.Print("Match complete");
-                // end match
             }
 
             Debug.Print($"Current Round: {currentRound}");
