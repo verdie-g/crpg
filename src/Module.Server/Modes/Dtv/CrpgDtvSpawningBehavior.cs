@@ -105,87 +105,53 @@ internal class CrpgDtvSpawningBehavior : CrpgSpawningBehaviorBase
     protected void SpawnVirgin()
     {
         Debug.Print("Attempting to spawn Virgin");
-        BasicCultureObject cultureTeam2 = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam2.GetStrValue());
-        int botsTeam1 = MultiplayerOptions.OptionType.NumberOfBotsTeam1.GetIntValue();
-        int botsTeam2 = MultiplayerOptions.OptionType.NumberOfBotsTeam2.GetIntValue();
-
-        if (botsTeam1 <= 0 && botsTeam2 <= 0)
-        {
-            return;
-        }
-
+        BasicCultureObject teamCulture = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam2.GetStrValue());
         Mission.Current.AllowAiTicking = false;
-        foreach (Team team in Mission.Teams)
-        {
-            if (Mission.AttackerTeam != team && Mission.DefenderTeam != team)
-            {
-                continue;
-            }
+        Team team = Mission.DefenderTeam; // virgin is a defender
+        MultiplayerClassDivisions.MPHeroClass botClass = MultiplayerClassDivisions
+            .GetMPHeroClasses()
+            .GetRandomElementWithPredicate<MultiplayerClassDivisions.MPHeroClass>(x => x.StringId.StartsWith("crpg_dtv_virgin"));
+        BasicCharacterObject character = botClass.HeroCharacter;
 
-            BasicCultureObject teamCulture;
-            int numberOfBots;
-            if (team.Side != BattleSideEnum.Attacker)
-            {
-                teamCulture = cultureTeam2;
-                numberOfBots = MultiplayerOptions.OptionType.NumberOfBotsTeam2.GetIntValue();
-            }
-            else // The virgin has to be a defender
-            {
-                continue;
-            }
+        GameEntity? virginSpawnPoint = Mission.Current.Scene.FindEntityWithTag("virgin");
+        MatrixFrame spawnFrame = GetVirginSpawnFrame(team, virginSpawnPoint);
+        Vec2 initialDirection = spawnFrame.rotation.f.AsVec2.Normalized();
+        AgentBuildData agentBuildData = new AgentBuildData(character)
+            .Equipment(character.Equipment)
+            .TroopOrigin(new BasicBattleAgentOrigin(character))
+            .EquipmentSeed(MissionLobbyComponent.GetRandomFaceSeedForCharacter(character))
+            .Team(team)
+            .VisualsIndex(0)
+            .InitialPosition(in spawnFrame.origin)
+            .InitialDirection(in initialDirection)
+            .IsFemale(true)
+            .ClothingColor1(teamCulture.ClothAlternativeColor)
+            .ClothingColor2(teamCulture.ClothAlternativeColor2);
 
-            int numberOfPlayers = GameNetwork.NetworkPeers.Count(p => p.IsSynchronized && p.GetComponent<MissionPeer>()?.Team == team);
-            int botsAlive = team.ActiveAgents.Count(a => a.IsAIControlled && a.IsHuman);
+        var bodyProperties = BodyProperties.GetRandomBodyProperties(
+            character.Race,
+            character.IsFemale,
+            character.GetBodyPropertiesMin(),
+            character.GetBodyPropertiesMax(),
+            (int)agentBuildData.AgentOverridenSpawnEquipment.HairCoverType,
+            agentBuildData.AgentEquipmentSeed,
+            character.HairTags,
+            character.BeardTags,
+            character.TattooTags);
+        agentBuildData.BodyProperties(bodyProperties);
 
-            for (int i = 0 + botsAlive; i < numberOfBots; i += 1)
-            {
-                MultiplayerClassDivisions.MPHeroClass botClass = MultiplayerClassDivisions
-                    .GetMPHeroClasses()
-                    .GetRandomElementWithPredicate<MultiplayerClassDivisions.MPHeroClass>(x => x.StringId.StartsWith("crpg_dtv_virgin"));
-                BasicCharacterObject character = botClass.HeroCharacter;
-
-                GameEntity? virginSpawnPoint = Mission.Current.Scene.FindEntityWithTag("virgin");
-                MatrixFrame spawnFrame = GetVirginSpawnFrame(team, virginSpawnPoint);
-                Vec2 initialDirection = spawnFrame.rotation.f.AsVec2.Normalized();
-                AgentBuildData agentBuildData = new AgentBuildData(character)
-                    .Equipment(character.Equipment)
-                    .TroopOrigin(new BasicBattleAgentOrigin(character))
-                    .EquipmentSeed(MissionLobbyComponent.GetRandomFaceSeedForCharacter(character))
-                    .Team(team)
-                    .VisualsIndex(0)
-                    .InitialPosition(in spawnFrame.origin)
-                    .InitialDirection(in initialDirection)
-                    .IsFemale(true)
-                    .ClothingColor1(team.Side == BattleSideEnum.Attacker ? teamCulture.Color : teamCulture.ClothAlternativeColor)
-                    .ClothingColor2(team.Side == BattleSideEnum.Attacker ? teamCulture.Color2 : teamCulture.ClothAlternativeColor2);
-
-                var bodyProperties = BodyProperties.GetRandomBodyProperties(
-                    character.Race,
-                    character.IsFemale,
-                    character.GetBodyPropertiesMin(),
-                    character.GetBodyPropertiesMax(),
-                    (int)agentBuildData.AgentOverridenSpawnEquipment.HairCoverType,
-                    agentBuildData.AgentEquipmentSeed,
-                    character.HairTags,
-                    character.BeardTags,
-                    character.TattooTags);
-                agentBuildData.BodyProperties(bodyProperties);
-
-                Agent agent = Mission.SpawnAgent(agentBuildData);
-                agent.AIStateFlags = Agent.AIStateFlag.Alarmed;
-                agent.SetTargetPosition(new Vec2(spawnFrame.origin.x, spawnFrame.origin.y)); // stops virgin from being bumped
-                agent.WieldInitialWeapons();
-                Debug.Print("Spawned Virgin");
-            }
-        }
+        Agent agent = Mission.SpawnAgent(agentBuildData);
+        agent.AIStateFlags = Agent.AIStateFlag.Alarmed;
+        agent.SetTargetPosition(new Vec2(spawnFrame.origin.x, spawnFrame.origin.y)); // stops virgin from being bumped
+        agent.WieldInitialWeapons();
+        Debug.Print("Spawned Virgin");
     }
 
     protected void SpawnAttackingBots(int currentWave, int currentRound)
     {
         Debug.Print($"Attempting to spawn attacking bots for Wave: {Wave} Round:{Round}");
-        BasicCultureObject cultureTeam1 = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam1.GetStrValue());
-        int botsTeam1 = MultiplayerOptions.OptionType.NumberOfBotsTeam1.GetIntValue();
-        int botsTeam2 = MultiplayerOptions.OptionType.NumberOfBotsTeam2.GetIntValue();
+        BasicCultureObject teamCulture = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam1.GetStrValue());
+        Team team = Mission.AttackerTeam;
         int numberOfBots = 0;
         string botDivisionID = "crpg_dtv_";
 
@@ -214,71 +180,48 @@ internal class CrpgDtvSpawningBehavior : CrpgSpawningBehaviorBase
             }
         }
 
-        if (botsTeam1 <= 0 && botsTeam2 <= 0)
-        {
-            return;
-        }
-
         Mission.Current.AllowAiTicking = false;
-        foreach (Team team in Mission.Teams)
+        int botsAlive = team.ActiveAgents.Count(a => a.IsAIControlled && a.IsHuman);
+
+        for (int i = 0 + botsAlive; i < numberOfBots; i += 1)
         {
-            if (Mission.AttackerTeam != team && Mission.DefenderTeam != team)
-            {
-                continue;
-            }
+            MultiplayerClassDivisions.MPHeroClass botClass = MultiplayerClassDivisions
+                .GetMPHeroClasses()
+                .GetRandomElementWithPredicate<MultiplayerClassDivisions.MPHeroClass>(x => x.StringId.StartsWith(botDivisionID));
+            BasicCharacterObject character = botClass.HeroCharacter;
+            Debug.Print($"Attempting to spawn {character.Name}");
 
-            BasicCultureObject teamCulture;
-            if (team.Side == BattleSideEnum.Attacker)
-            {
-                teamCulture = cultureTeam1;
-            }
-            else // Bots are attackers
-            {
-                continue;
-            }
+            bool hasMount = character.Equipment[EquipmentIndex.Horse].Item != null;
+            MatrixFrame spawnFrame = SpawnComponent.GetSpawnFrame(team, hasMount, true);
+            Vec2 initialDirection = spawnFrame.rotation.f.AsVec2.Normalized();
 
-            int botsAlive = team.ActiveAgents.Count(a => a.IsAIControlled && a.IsHuman);
+            AgentBuildData agentBuildData = new AgentBuildData(character)
+                .Equipment(character.Equipment)
+                .TroopOrigin(new BasicBattleAgentOrigin(character))
+                .EquipmentSeed(MissionLobbyComponent.GetRandomFaceSeedForCharacter(character))
+                .Team(team)
+                .VisualsIndex(0)
+                .InitialPosition(in spawnFrame.origin)
+                .InitialDirection(in initialDirection)
+                .IsFemale(character.IsFemale)
+                .ClothingColor1(teamCulture.Color)
+                .ClothingColor2(teamCulture.Color2);
 
-            for (int i = 0 + botsAlive; i < numberOfBots; i += 1)
-            {
-                MultiplayerClassDivisions.MPHeroClass botClass = MultiplayerClassDivisions
-                    .GetMPHeroClasses()
-                    .GetRandomElementWithPredicate<MultiplayerClassDivisions.MPHeroClass>(x => x.StringId.StartsWith(botDivisionID));
-                BasicCharacterObject character = botClass.HeroCharacter;
-                Debug.Print($"Attempting to spawn {character.Name}");
+            var bodyProperties = BodyProperties.GetRandomBodyProperties(
+                character.Race,
+                character.IsFemale,
+                character.GetBodyPropertiesMin(),
+                character.GetBodyPropertiesMax(),
+                (int)agentBuildData.AgentOverridenSpawnEquipment.HairCoverType,
+                agentBuildData.AgentEquipmentSeed,
+                character.HairTags,
+                character.BeardTags,
+                character.TattooTags);
+            agentBuildData.BodyProperties(bodyProperties);
 
-                bool hasMount = character.Equipment[EquipmentIndex.Horse].Item != null;
-                MatrixFrame spawnFrame = SpawnComponent.GetSpawnFrame(team, hasMount, true);
-                Vec2 initialDirection = spawnFrame.rotation.f.AsVec2.Normalized();
-
-                AgentBuildData agentBuildData = new AgentBuildData(character)
-                    .Equipment(character.Equipment)
-                    .TroopOrigin(new BasicBattleAgentOrigin(character))
-                    .EquipmentSeed(MissionLobbyComponent.GetRandomFaceSeedForCharacter(character))
-                    .Team(team)
-                    .VisualsIndex(0)
-                    .InitialPosition(in spawnFrame.origin)
-                    .InitialDirection(in initialDirection)
-                    .IsFemale(character.IsFemale)
-                    .ClothingColor1(team.Side == BattleSideEnum.Attacker ? teamCulture.Color : teamCulture.ClothAlternativeColor)
-                    .ClothingColor2(team.Side == BattleSideEnum.Attacker ? teamCulture.Color2 : teamCulture.ClothAlternativeColor2);
-
-                var bodyProperties = BodyProperties.GetRandomBodyProperties(
-                    character.Race,
-                    character.IsFemale,
-                    character.GetBodyPropertiesMin(),
-                    character.GetBodyPropertiesMax(),
-                    (int)agentBuildData.AgentOverridenSpawnEquipment.HairCoverType,
-                    agentBuildData.AgentEquipmentSeed,
-                    character.HairTags,
-                    character.BeardTags,
-                    character.TattooTags);
-                agentBuildData.BodyProperties(bodyProperties);
-
-                Agent agent = Mission.SpawnAgent(agentBuildData);
-                agent.SetWatchState(Agent.WatchState.Alarmed);
-                agent.WieldInitialWeapons();
-            }
+            Agent agent = Mission.SpawnAgent(agentBuildData);
+            agent.SetWatchState(Agent.WatchState.Alarmed);
+            agent.WieldInitialWeapons();
         }
     }
 
