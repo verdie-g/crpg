@@ -26,6 +26,7 @@ public record GetItemsQuery : IMediatorRequest<IList<ItemViewModel>>
                 .AsNoTracking()
                 .OrderBy(i => i.Price)
                 .Where(i => i.Enabled)
+                .Where(i => i.Rank == 0)
                 .ToListAsync(cancellationToken);
 
             return new(_mapper.Map<IList<ItemViewModel>>(items));

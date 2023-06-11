@@ -43,6 +43,15 @@ public class GetItemsQueryTest : TestBase
                 Type = ItemType.Bolts,
                 Enabled = false,
             },
+            new()
+            {
+                Id = "5",
+                Name = "titi_1",
+                Price = 300,
+                Type = ItemType.Bolts,
+                Enabled = true,
+                Rank = 1,
+            },
         };
         ArrangeDb.Items.AddRange(items);
         await ArrangeDb.SaveChangesAsync();

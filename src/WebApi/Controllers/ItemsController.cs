@@ -11,7 +11,7 @@ namespace Crpg.WebApi.Controllers;
 public class ItemsController : BaseController
 {
     /// <summary>
-    /// Gets all enabled items.
+    /// Gets all enabled items of rank 0.
     /// </summary>
     /// <response code="200">Ok.</response>
     [HttpGet]
