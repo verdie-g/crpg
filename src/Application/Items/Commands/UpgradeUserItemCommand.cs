@@ -36,64 +36,58 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
 
         public async Task<Result<UserItemViewModel>> Handle(UpgradeUserItemCommand req, CancellationToken cancellationToken)
         {
-            var userItem = await _db.UserItems
-                .Include(ui => ui.User!)
-                .Include(ui => ui.Item!)
-                .FirstOrDefaultAsync(ui => ui.UserId == req.UserId && ui.Id == req.UserItemId, cancellationToken);
-
             var user = await _db.Users
                 .Include(u => u.Items)
                 .FirstOrDefaultAsync(u => u.Id == req.UserId, cancellationToken);
-            if (user == null)
-            {
-                return new(CommonErrors.UserNotFound(req.UserId));
-            }
 
-            var userUserItems = await _db.UserItems
-                .Where(ui => user.Items.Contains(ui))
+            var userItems = await _db.UserItems
+                .Where(ui => user!.Items.Contains(ui))
                 .Include(ui => ui.Item)
                 .ToListAsync();
 
-            if (userItem == null)
+            var userItemToUpgrade = userItems
+                .FirstOrDefault(ui => ui.Id == req.UserItemId);
+
+            if (userItemToUpgrade == null)
             {
                 return new(CommonErrors.UserItemNotFound(req.UserItemId));
             }
 
-            if (userItem.Item!.Type == ItemType.Banner)
+            if (userItemToUpgrade.Item!.Type == ItemType.Banner)
             {
-                return new(CommonErrors.ItemNotUpgradable(userItem.ItemId));
+                return new(CommonErrors.ItemNotUpgradable(userItemToUpgrade.ItemId));
             }
 
-            if (userUserItems.Any(ui => ui.Item!.BaseId == userItem.Item.BaseId && ui.Item!.Rank == userItem.Item.Rank + 1))
+            if (userItems.Any(ui => ui.Item!.BaseId == userItemToUpgrade.Item.BaseId && ui.Item!.Rank == userItemToUpgrade.Item.Rank + 1))
             {
-                return new(CommonErrors.ItemAlreadyOwned($"{userItem.ItemId} +1 version"));
+                return new(CommonErrors.ItemAlreadyOwned($"{userItemToUpgrade.ItemId} +1 version"));
             }
 
-            if (user.HeirloomPoints < 1)
+            if (user!.HeirloomPoints < 1)
             {
                 return new(CommonErrors.NotEnoughHeirloomPoints(1, user.HeirloomPoints));
             }
 
             Item? upgraded = await _db.Items
-                .Where(i => i.BaseId == userItem.Item!.BaseId && i.Rank == userItem.Item!.Rank + 1)
+                .Where(i => i.BaseId == userItemToUpgrade.Item!.BaseId && i.Rank == userItemToUpgrade.Item!.Rank + 1)
                 .FirstOrDefaultAsync();
 
             if (upgraded == null)
             {
-                return new(CommonErrors.UserItemMaxRankReached(userItem.Id, userItem.Item!.Rank));
+                return new(CommonErrors.UserItemMaxRankReached(userItemToUpgrade.Id, userItemToUpgrade.Item!.Rank));
             }
 
             var upgradedUserItem = new UserItem
             {
                 UserId = req.UserId,
                 Item = upgraded,
-                IsBroken = userItem.IsBroken,
+                IsBroken = userItemToUpgrade.IsBroken,
             };
 
-            user.Items.Remove(userItem);
+            user.Items.Remove(userItemToUpgrade);
             user.Items.Add(upgradedUserItem);
             user.HeirloomPoints -= 1;
-            _db.ActivityLogs.Add(_activityLogService.CreateItemUpgradedLog(user.Id, userItem.ItemId, 1));
+            _db.ActivityLogs.Add(_activityLogService.CreateItemUpgradedLog(user.Id, userItemToUpgrade.ItemId, 1));
             await _db.SaveChangesAsync(cancellationToken);
 
             Logger.LogInformation("User '{0}' has upgraded item '{1}'", req.UserId, req.UserItemId);

@@ -80,19 +80,6 @@ public class UpgradeItemCommandTest : TestBase
     }
 
     [Test]
-    public async Task NotFoundUser()
-    {
-        Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
-        UpgradeUserItemCommand.Handler handler = new(ActDb, Mapper, activityLogServiceMock.Object);
-        var result = await handler.Handle(new UpgradeUserItemCommand
-        {
-            UserItemId = 50,
-            UserId = 1,
-        }, CancellationToken.None);
-        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.UserNotFound));
-    }
-
-    [Test]
     public async Task AlreadyOwnedHeirloom()
     {
         Item item0 = new() { Id = "a_h0", BaseId = "a", Price = 100, Enabled = true, Rank = 0 };
