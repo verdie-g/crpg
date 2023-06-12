@@ -97,8 +97,8 @@ public class GetItemsByBaseIdQueryTest : TestBase
         ArrangeDb.Items.AddRange(items);
         await ArrangeDb.SaveChangesAsync();
 
-        var result = await new GetItemsByBaseIdQuery.Handler(ActDb, Mapper).Handle(
-            new GetItemsByBaseIdQuery { BaseId = "a" }, CancellationToken.None);
+        var result = await new GetItemUpgrades.Handler(ActDb, Mapper).Handle(
+            new GetItemUpgrades { BaseId = "a" }, CancellationToken.None);
 
         Assert.That(result.Data!.Count, Is.EqualTo(4));
     }

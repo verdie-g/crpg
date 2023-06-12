@@ -28,10 +28,10 @@ public class ItemsController : BaseController
     /// <returns>The items sharing the same BaseId.</returns>
     /// <response code="200">Ok.</response>
     /// response code="400">Bad Request.</response>
-    [HttpGet("{baseid}")]
-    public Task<ActionResult<Result<IList<ItemViewModel>>>> GetItemsByBaseIdQuery([FromRoute] string baseid)
+    [HttpGet("upgrades/{baseid}")]
+    public Task<ActionResult<Result<IList<ItemViewModel>>>> GetItemUpgrades([FromRoute] string baseid)
     {
-        return ResultToActionAsync(Mediator.Send(new GetItemsByBaseIdQuery
+        return ResultToActionAsync(Mediator.Send(new GetItemUpgrades
         {
             BaseId = baseid,
         }));
