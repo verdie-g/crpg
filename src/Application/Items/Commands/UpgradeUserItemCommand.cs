@@ -64,7 +64,7 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
                 return new(CommonErrors.ItemAlreadyOwned($"{userItemToUpgrade.ItemId} +1 version"));
             }
 
-            if (user!.HeirloomPoints < 1)
+            if (user.HeirloomPoints < 1)
             {
                 return new(CommonErrors.NotEnoughHeirloomPoints(1, user.HeirloomPoints));
             }
