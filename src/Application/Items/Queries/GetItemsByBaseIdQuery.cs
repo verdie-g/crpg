@@ -27,7 +27,7 @@ public record GetItemsByBaseIdQuery : IMediatorRequest<IList<ItemViewModel>>
                 .AsNoTracking()
                 .Where(i => i.BaseId == req.BaseId)
                 .OrderBy(i => i.Rank)
-                .ToListAsync(cancellationToken);
+                .ToArrayAsync(cancellationToken);
 
             return new(_mapper.Map<IList<ItemViewModel>>(items));
         }
