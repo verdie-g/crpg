@@ -28,7 +28,7 @@ public class ItemsController : BaseController
     /// <returns>The items sharing the same BaseId.</returns>
     /// <response code="200">Ok.</response>
     /// response code="400">Bad Request.</response>
-    [HttpGet("upgrades/{baseid}")]
+    [HttpGet("upgrades/{baseId}")]
     public Task<ActionResult<Result<IList<ItemViewModel>>>> GetItemUpgrades([FromRoute] string baseId)
     {
         return ResultToActionAsync(Mediator.Send(new GetItemUpgradesQuery
