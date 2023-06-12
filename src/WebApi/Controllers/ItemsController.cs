@@ -24,7 +24,7 @@ public class ItemsController : BaseController
     /// <summary>
     /// Get items sharing the same BaseId.
     /// </summary>
-    /// <param name="baseid">Item BaseId.</param>
+    /// <param name="baseId">Item BaseId.</param>
     /// <returns>The items sharing the same BaseId.</returns>
     /// <response code="200">Ok.</response>
     /// response code="400">Bad Request.</response>
