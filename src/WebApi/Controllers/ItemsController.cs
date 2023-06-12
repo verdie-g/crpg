@@ -1,3 +1,5 @@
+using Crpg.Application.Characters.Models;
+using Crpg.Application.Characters.Queries;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Items.Commands;
 using Crpg.Application.Items.Models;
@@ -18,6 +20,22 @@ public class ItemsController : BaseController
     [ResponseCache(Duration = 60 * 60 * 1)] // 1 hours
     public Task<ActionResult<Result<IList<ItemViewModel>>>> GetItemsList() =>
         ResultToActionAsync(Mediator.Send(new GetItemsQuery()));
+
+    /// <summary>
+    /// Get items sharing the same BaseId.
+    /// </summary>
+    /// <param name="baseId">Item BaseId.</param>
+    /// <returns>The items sharing the same BaseId.</returns>
+    /// <response code="200">Ok.</response>
+    /// response code="400">Bad Request.</response>
+    [HttpGet("upgrades/{baseId}")]
+    public Task<ActionResult<Result<IList<ItemViewModel>>>> GetItemUpgrades([FromRoute] string baseId)
+    {
+        return ResultToActionAsync(Mediator.Send(new GetItemUpgradesQuery
+        {
+            BaseId = baseId,
+        }));
+    }
 
     /// <summary>
     /// Enable/Disable item.
