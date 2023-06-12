@@ -25,14 +25,12 @@ public record GetItemUpgrades : IMediatorRequest<IList<ItemViewModel>>
 
         public async Task<Result<IList<ItemViewModel>>> Handle(GetItemUpgrades req, CancellationToken cancellationToken)
         {
-            var items = await _db.Items
+            return new(await _db.Items
                 .AsNoTracking()
-                .ProjectTo<ItemViewModel>(_mapper.ConfigurationProvider)
                 .Where(i => i.BaseId == req.BaseId)
                 .OrderBy(i => i.Rank)
-                .ToArrayAsync(cancellationToken);
-
-            return new(items);
+                .ProjectTo<ItemViewModel>(_mapper.ConfigurationProvider)
+                .ToArrayAsync(cancellationToken));
         }
     }
 }
