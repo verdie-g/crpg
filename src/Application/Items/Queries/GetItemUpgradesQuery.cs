@@ -9,10 +9,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Items.Queries;
 
-public record GetItemUpgrades : IMediatorRequest<IList<ItemViewModel>>
+public record GetItemUpgradesQuery : IMediatorRequest<IList<ItemViewModel>>
 {
     public string BaseId { get; init; } = string.Empty;
-    internal class Handler : IMediatorRequestHandler<GetItemUpgrades, IList<ItemViewModel>>
+    internal class Handler : IMediatorRequestHandler<GetItemUpgradesQuery, IList<ItemViewModel>>
     {
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
@@ -23,7 +23,7 @@ public record GetItemUpgrades : IMediatorRequest<IList<ItemViewModel>>
             _mapper = mapper;
         }
 
-        public async Task<Result<IList<ItemViewModel>>> Handle(GetItemUpgrades req, CancellationToken cancellationToken)
+        public async Task<Result<IList<ItemViewModel>>> Handle(GetItemUpgradesQuery req, CancellationToken cancellationToken)
         {
             var itemUpgrades = await _db.Items
                 .Where(i => i.BaseId == req.BaseId)

@@ -31,7 +31,7 @@ public class ItemsController : BaseController
     [HttpGet("upgrades/{baseid}")]
     public Task<ActionResult<Result<IList<ItemViewModel>>>> GetItemUpgrades([FromRoute] string baseId)
     {
-        return ResultToActionAsync(Mediator.Send(new GetItemUpgrades
+        return ResultToActionAsync(Mediator.Send(new GetItemUpgradesQuery
         {
             BaseId = baseId,
         }));

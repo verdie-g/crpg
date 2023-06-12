@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Items;
 
-public class GetItemsByBaseIdQueryTest : TestBase
+public class GetItemUpgradesQueryTest : TestBase
 {
     [Test]
     public async Task Basic()
@@ -97,8 +97,8 @@ public class GetItemsByBaseIdQueryTest : TestBase
         ArrangeDb.Items.AddRange(items);
         await ArrangeDb.SaveChangesAsync();
 
-        var result = await new GetItemUpgrades.Handler(ActDb, Mapper).Handle(
-            new GetItemUpgrades { BaseId = "a" }, CancellationToken.None);
+        var result = await new GetItemUpgradesQuery.Handler(ActDb, Mapper).Handle(
+            new GetItemUpgradesQuery { BaseId = "a" }, CancellationToken.None);
 
         Assert.That(result.Data!.Count, Is.EqualTo(4));
     }
