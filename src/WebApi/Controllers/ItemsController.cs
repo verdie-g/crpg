@@ -45,7 +45,7 @@ public class ItemsController : BaseController
     /// <response code="204">Updated.</response>
     /// <response code="400">Bad Request.</response>
     [Authorize(Policy = ModeratorPolicy)]
-    [HttpGet("{id}/enable")]
+    [HttpPut("{id}/enable")]
     public Task<ActionResult> EnableItem([FromRoute] string id, [FromBody] EnableItemCommand req)
     {
         req = req with { ItemId = id, UserId = CurrentUser.User!.Id };
