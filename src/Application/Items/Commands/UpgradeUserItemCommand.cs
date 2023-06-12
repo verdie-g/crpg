@@ -69,11 +69,6 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
                 return new(CommonErrors.ItemAlreadyOwned($"{userItem.ItemId} +1 version"));
             }
 
-            if (userItem.Item!.Rank == 3)
-            {
-                return new(CommonErrors.UserItemMaxRankReached(userItem.Id, 3));
-            }
-
             if (user.HeirloomPoints < 1)
             {
                 return new(CommonErrors.NotEnoughHeirloomPoints(1, user.HeirloomPoints));
@@ -85,7 +80,7 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
 
             if (upgraded == null)
             {
-                return new(CommonErrors.ItemUpgradedVersionNotFound(userItem.Item.Id));
+                return new(CommonErrors.UserItemMaxRankReached(userItem.Id, userItem.Item!.Rank));
             }
 
             var upgradedUserItem = new UserItem
