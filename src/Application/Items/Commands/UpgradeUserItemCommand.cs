@@ -79,30 +79,30 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
                 return new(CommonErrors.NotEnoughHeirloomPoints(1, user.HeirloomPoints));
             }
 
-            Item? heirloomedItem = await _db.Items
+            Item? upgraded = await _db.Items
                 .Where(i => i.BaseId == userItem.Item!.BaseId && i.Rank == userItem.Item!.Rank + 1)
                 .FirstOrDefaultAsync();
 
-            if (heirloomedItem == null)
+            if (upgraded == null)
             {
                 return new(CommonErrors.ItemUpgradedVersionNotFound(userItem.Item.Id));
             }
 
-            var heirloomedUserItem = new UserItem
+            var upgradedUserItem = new UserItem
             {
                 UserId = req.UserId,
-                Item = heirloomedItem,
+                Item = upgraded,
                 IsBroken = userItem.IsBroken,
             };
 
             user.Items.Remove(userItem);
-            user.Items.Add(heirloomedUserItem);
+            user.Items.Add(upgradedUserItem);
             user.HeirloomPoints -= 1;
             _db.ActivityLogs.Add(_activityLogService.CreateItemUpgradedLog(user.Id, userItem.ItemId, 1));
             await _db.SaveChangesAsync(cancellationToken);
 
             Logger.LogInformation("User '{0}' has upgraded item '{1}'", req.UserId, req.UserItemId);
-            return new(_mapper.Map<UserItemViewModel>(heirloomedUserItem));
+            return new(_mapper.Map<UserItemViewModel>(upgradedUserItem));
         }
     }
 }
