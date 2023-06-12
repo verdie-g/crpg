@@ -46,6 +46,11 @@ public record SellUserItemCommand : IMediatorRequest
                 return new(CommonErrors.ItemDisabled(userItem.Item.Id));
             }
 
+            if (userItem.Item!.Rank > 0)
+            {
+                return new(CommonErrors.ItemNotSellable(userItem.Item.Id));
+            }
+
             int sellPrice = _itemService.SellUserItem(_db, userItem);
 
             _db.ActivityLogs.Add(_activityLogService.CreateItemSoldLog(userItem.UserId, userItem.ItemId, sellPrice));

@@ -99,4 +99,33 @@ public class SellUserItemCommandTest : TestBase
         }, CancellationToken.None);
         Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.ItemDisabled));
     }
+
+    [Test]
+    public async Task HeirloomShouldNotBeSellable()
+    {
+        Item heirloomedItem = new() { Id = "heirloomedItem_h1", Rank = 1, Enabled = true };
+        User user = new()
+        {
+            Gold = 0,
+            Items = new List<UserItem>
+            {
+                new()
+                {
+                    Id = 1,
+                    Item = heirloomedItem,
+                },
+            },
+        };
+        ArrangeDb.Users.Add(user);
+        await ArrangeDb.SaveChangesAsync();
+
+        IItemService itemService = Mock.Of<IItemService>();
+        SellUserItemCommand.Handler handler = new(ActDb, itemService, Mock.Of<IActivityLogService>());
+        var result = await handler.Handle(new SellUserItemCommand
+        {
+            UserItemId = user.Items[0].Id,
+            UserId = user.Id,
+        }, CancellationToken.None);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.ItemNotSellable));
+    }
 }

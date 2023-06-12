@@ -225,6 +225,12 @@ internal static class CommonErrors
         Detail = $"Item with id '{itemId}' is not owned by the user",
     };
 
+    public static Error ItemNotSellable(string itemId) => new(ErrorType.Validation, ErrorCode.ItemNotSellable)
+    {
+        Title = "Item is not sellable",
+        Detail = $"Item with id '{itemId}' is not sellable",
+    };
+
     public static Error NotEnoughAttributePoints(int requiredPoints, int actualPoints) => new(ErrorType.Validation, ErrorCode.NotEnoughAttributePoints)
     {
         Title = "Not enough attribute points",
