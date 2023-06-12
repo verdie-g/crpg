@@ -80,8 +80,7 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
             }
 
             Item? heirloomedItem = await _db.Items
-                .Where(i => i.BaseId == userItem.Item!.BaseId)
-                .Where(i => i.Rank == userItem.Item!.Rank + 1)
+                .Where(i => i.BaseId == userItem.Item!.BaseId && i.Rank == userItem.Item!.Rank + 1)
                 .FirstOrDefaultAsync();
 
             if (heirloomedItem == null)
