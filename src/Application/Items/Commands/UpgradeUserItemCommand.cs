@@ -40,6 +40,7 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
                 .Include(u => u.Items)
                 .ThenInclude(ui => ui.Item)
                 .FirstOrDefaultAsync(u => u.Id == req.UserId, cancellationToken);
+
             if (user == null)
             {
                 return new(CommonErrors.UserNotFound(req.UserId));
