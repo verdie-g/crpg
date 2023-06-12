@@ -29,11 +29,11 @@ public class ItemsController : BaseController
     /// <response code="200">Ok.</response>
     /// response code="400">Bad Request.</response>
     [HttpGet("upgrades/{baseid}")]
-    public Task<ActionResult<Result<IList<ItemViewModel>>>> GetItemUpgrades([FromRoute] string baseid)
+    public Task<ActionResult<Result<IList<ItemViewModel>>>> GetItemUpgrades([FromRoute] string baseId)
     {
         return ResultToActionAsync(Mediator.Send(new GetItemUpgrades
         {
-            BaseId = baseid,
+            BaseId = baseId,
         }));
     }
 

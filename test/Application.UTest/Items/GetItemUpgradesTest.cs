@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Items;
 
-public class GetItemsQueryTest : TestBase
+public class GetItemUpgradesTest : TestBase
 {
     [Test]
     public async Task Basic()
