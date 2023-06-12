@@ -436,8 +436,8 @@ public class UsersController : BaseController
     /// Upgrade item.
     /// </summary>
     /// <param name="id">User item id.</param>
-    /// <returns>The Upgraded item.</returns>
-    /// <response code="200">upgraded.</response>
+    /// <returns>The upgraded item.</returns>
+    /// <response code="200">Upgraded.</response>
     /// <response code="400">Bad Request.</response>
     [HttpPut("self/items/{id}/upgrade")]
     public Task<ActionResult<Result<UserItemViewModel>>> UpgradeUserItem([FromRoute] int id) =>
