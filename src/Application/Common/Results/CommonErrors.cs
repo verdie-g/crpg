@@ -225,7 +225,7 @@ internal static class CommonErrors
         Detail = $"Item with id '{itemId}' is not owned by the user",
     };
 
-    public static Error ItemIsNotSellable(string itemId) => new(ErrorType.Validation, ErrorCode.ItemNotSellable)
+    public static Error ItemNotSellable(string itemId) => new(ErrorType.Validation, ErrorCode.ItemNotSellable)
     {
         Title = "Item is not sellable",
         Detail = $"Item with id '{itemId}' is not sellable",
