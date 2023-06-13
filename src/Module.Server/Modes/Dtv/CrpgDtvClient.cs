@@ -55,9 +55,9 @@ internal class CrpgDtvClient : MissionMultiplayerGameModeBaseClient
         GameNetwork.NetworkMessageHandlerRegistererContainer registerer)
     {
         base.AddRemoveMessageHandlers(registerer);
-        if (GameNetwork.IsClientOrReplay)
-        {
-        }
+        registerer.Register<CrpgDtvWaveEndMessage>(HandleWaveEnd);
+        registerer.Register<CrpgDtvRoundEndMessage>(HandleRoundEnd);
+        registerer.Register<CrpgDtvViscountDeathMessage>(HandleViscountDeath);
     }
 
     private void OnPreparationEnded()
@@ -66,16 +66,6 @@ internal class CrpgDtvClient : MissionMultiplayerGameModeBaseClient
 
     private void OnMyClientSynchronized()
     {
-    }
-}
-
-internal class CrpgDtvDataClient : MissionNetwork
-{
-    protected override void AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegistererContainer registerer)
-    {
-        registerer.Register<CrpgDtvWaveEndMessage>(HandleWaveEnd);
-        registerer.Register<CrpgDtvRoundEndMessage>(HandleRoundEnd);
-        registerer.Register<CrpgDtvViscountDeathMessage>(HandleViscountDeath);
     }
 
     private void HandleWaveEnd(CrpgDtvWaveEndMessage message)

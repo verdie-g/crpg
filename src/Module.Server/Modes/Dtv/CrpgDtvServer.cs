@@ -1,4 +1,5 @@
-﻿using System.Xml.Linq;
+﻿using System.Runtime.CompilerServices;
+using System.Xml.Linq;
 using Crpg.Module.Rewards;
 using NetworkMessages.FromClient;
 using TaleWorlds.Core;
@@ -17,15 +18,14 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
     private const int BotRespawnTime = 3;
     private const int NewRoundRespawnTime = 20;
 
-    private readonly int totalRounds;
-    private readonly int totalWaves;
+    private readonly int _totalRounds;
+    private readonly int _totalWaves;
 
     private readonly XDocument? _dtvData;
     private readonly CrpgDtvClient _dtvClient;
     private readonly CrpgRewardServer _rewardServer;
-    private readonly CrpgDtvViscountDeathMessage _viscountDeathMessage = new();
-    private readonly CrpgDtvRoundEndMessage _roundEndMessage = new();
-    private readonly CrpgDtvWaveEndMessage _waveEndMessage = new();
+    private CrpgDtvRoundEndMessage? _roundEndMessage;
+    private CrpgDtvWaveEndMessage? _waveEndMessage;
 
     private int currentWave = 1;
     private int currentRound = 1;
@@ -49,19 +49,19 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         {
             try
             {
-                totalWaves = _dtvData.Descendants("Rounds")
+                _totalWaves = _dtvData.Descendants("Rounds")
                 .Select(rounds => (int)rounds.Attribute("totalWaves"))
                 .FirstOrDefault();
 
-                totalRounds = _dtvData.Descendants("Rounds")
+                _totalRounds = _dtvData.Descendants("Rounds")
                      .Select(rounds => (int)rounds.Attribute("totalRounds"))
                      .FirstOrDefault();
             }
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                totalRounds = 1;
-                totalWaves = 1;
+                _totalRounds = 1;
+                _totalWaves = 1;
                 Debug.Print("Failed to parse wave/round count from dtvData");
             }
         }
@@ -123,11 +123,12 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
 
         bool defenderTeamDepleted = Mission.DefenderTeam.ActiveAgents.Count == 0;
         bool viscountDead = !Mission.DefenderTeam.HasBots;
-        bool missionComplete = currentRound > totalRounds;
+        bool missionComplete = currentRound > _totalRounds;
 
         if (viscountDead)
         {
-            SendDataToPeers(_viscountDeathMessage);
+            CrpgDtvViscountDeathMessage viscountDeathMessage = new();
+            SendDataToPeers(viscountDeathMessage);
 
             return true;
         }
@@ -184,7 +185,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         {
             bool attackerTeamAlive = Mission.AttackerTeam.ActiveAgents.Count > 0;
             bool viscountDead = !Mission.DefenderTeam.HasBots;
-            bool missionComplete = currentRound > totalRounds;
+            bool missionComplete = currentRound > _totalRounds;
             if (viscountDead)
             {
                 Debug.Print("The Viscount has died");
@@ -237,8 +238,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         {
             Debug.Print("Attackers depleted");
             currentWave += 1;
-            UpdateMessages();
-            if (currentWave >= totalWaves + 1)
+            if (currentWave >= _totalWaves + 1)
             {
                 OnRoundEnd();
             }
@@ -264,6 +264,9 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
 
     private void OnWaveEnd()
     {
+        _waveEndMessage = _waveEndMessage ?? new() { RoundData = new CrpgDtvRoundData() };
+        ;
+        _waveEndMessage.RoundData.Wave = currentWave;
         SendDataToPeers(_waveEndMessage);
         Debug.Print("Advancing to next wave");
         _botRespawnTimer = new MissionTimer(BotRespawnTime); // Spawn bots after timer
@@ -273,9 +276,11 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
     private void OnRoundEnd()
     {
         // TODO: award players
+        _roundEndMessage = _roundEndMessage ?? new() { RoundData = new CrpgDtvRoundData() };
+        _roundEndMessage.RoundData.Round = currentRound;
+        SendDataToPeers(_roundEndMessage);
         currentRound += 1; // next round
         currentWave = 1;
-        SendDataToPeers(_roundEndMessage);
         Debug.Print("Advancing to next round");
         _botRespawnTimer = new MissionTimer(NewRoundRespawnTime); // Spawn bots after timer
         _waitingForBotSpawn = true;
@@ -316,11 +321,5 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
             GameNetwork.WriteMessage(message);
             GameNetwork.EndModuleEventAsServer();
         }
-    }
-
-    private void UpdateMessages()
-    {
-        _roundEndMessage.RoundData = new CrpgDtvRoundData { Round = currentRound };
-        _waveEndMessage.RoundData = new CrpgDtvRoundData { Wave = currentWave };
     }
 }
