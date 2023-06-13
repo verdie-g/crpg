@@ -39,6 +39,7 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
             var user = await _db.Users
                 .Include(u => u.Items)
                 .ThenInclude(ui => ui.Item)
+                .AsSplitQuery()
                 .FirstOrDefaultAsync(u => u.Id == req.UserId, cancellationToken);
 
             if (user == null)
