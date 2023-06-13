@@ -36,6 +36,7 @@ public enum ErrorCode
     ItemNotFound,
     ItemNotOwned,
     ItemNotSellable,
+    ItemNotUpgradable,
     NotEnoughAttributePoints,
     NotEnoughGold,
     NotEnoughHeirloomPoints,
