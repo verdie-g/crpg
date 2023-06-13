@@ -73,8 +73,9 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
             }
 
             Item? upgradedItem = await _db.Items
-                .Where(i => i.BaseId == userItemToUpgrade.Item!.BaseId && i.Rank == userItemToUpgrade.Item!.Rank + 1)
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync(
+                    i => i.BaseId == userItemToUpgrade.Item!.BaseId && i.Rank == userItemToUpgrade.Item!.Rank + 1,
+                    cancellationToken);
 
             if (upgradedItem == null)
             {
