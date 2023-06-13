@@ -1,15 +1,12 @@
 using AutoMapper;
-using Crpg.Application.Common;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Items.Models;
 using Crpg.Domain.Entities.Items;
-using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using NetTopologySuite.Index.HPRtree;
 using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Items.Commands;
