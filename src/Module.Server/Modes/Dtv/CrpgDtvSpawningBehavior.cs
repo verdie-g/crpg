@@ -24,7 +24,7 @@ internal class CrpgDtvSpawningBehavior : CrpgSpawningBehaviorBase
     public int Round { get; set; }
     private MissionTimer? _spawnTimer;
     private MissionTimer? _cavalrySpawnDelayTimer;
-    private bool _virginSpawned;
+    private bool _viscountSpawned;
 
     public CrpgDtvSpawningBehavior(CrpgConstants constants, MultiplayerRoundController roundController)
         : base(constants)
@@ -53,7 +53,7 @@ internal class CrpgDtvSpawningBehavior : CrpgSpawningBehaviorBase
 
     public override void OnTick(float dt)
     {
-        if (!BotsSpawned && _virginSpawned)
+        if (!BotsSpawned && _viscountSpawned)
         {
             SpawnAttackingBots(Wave, Round);
             BotsSpawned = true;
@@ -69,10 +69,10 @@ internal class CrpgDtvSpawningBehavior : CrpgSpawningBehaviorBase
             return;
         }
 
-        if (!_virginSpawned)
+        if (!_viscountSpawned)
         {
-            SpawnVirgin();
-            _virginSpawned = true;
+            SpawnViscount();
+            _viscountSpawned = true;
         }
 
         SpawnAgents();
@@ -81,7 +81,7 @@ internal class CrpgDtvSpawningBehavior : CrpgSpawningBehaviorBase
     public override void RequestStartSpawnSession()
     {
         base.RequestStartSpawnSession();
-        _virginSpawned = false;
+        _viscountSpawned = false;
         BotsSpawned = false;
         _spawnTimer = new MissionTimer(TotalSpawnDuration); // Limit spawning within timer
         _cavalrySpawnDelayTimer = new MissionTimer(GetCavalrySpawnDelay()); // Cav will spawn X seconds later.
@@ -102,19 +102,19 @@ internal class CrpgDtvSpawningBehavior : CrpgSpawningBehaviorBase
         return _cavalrySpawnDelayTimer != null && _cavalrySpawnDelayTimer!.Check();
     }
 
-    protected void SpawnVirgin()
+    protected void SpawnViscount()
     {
-        Debug.Print("Attempting to spawn Virgin");
+        Debug.Print("Attempting to spawn viscount");
         BasicCultureObject teamCulture = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam2.GetStrValue());
         Mission.Current.AllowAiTicking = false;
-        Team team = Mission.DefenderTeam; // virgin is a defender
+        Team team = Mission.DefenderTeam; // viscount is a defender
         MultiplayerClassDivisions.MPHeroClass botClass = MultiplayerClassDivisions
             .GetMPHeroClasses()
-            .GetRandomElementWithPredicate<MultiplayerClassDivisions.MPHeroClass>(x => x.StringId.StartsWith("crpg_dtv_virgin"));
+            .GetRandomElementWithPredicate<MultiplayerClassDivisions.MPHeroClass>(x => x.StringId.StartsWith("crpg_dtv_viscount"));
         BasicCharacterObject character = botClass.HeroCharacter;
 
-        GameEntity? virginSpawnPoint = Mission.Current.Scene.FindEntityWithTag("virgin");
-        MatrixFrame spawnFrame = GetVirginSpawnFrame(team, virginSpawnPoint);
+        GameEntity? viscountSpawnPoint = Mission.Current.Scene.FindEntityWithTag("viscount");
+        MatrixFrame spawnFrame = GetviscountSpawnFrame(team, viscountSpawnPoint);
         Vec2 initialDirection = spawnFrame.rotation.f.AsVec2.Normalized();
         AgentBuildData agentBuildData = new AgentBuildData(character)
             .Equipment(character.Equipment)
@@ -124,7 +124,7 @@ internal class CrpgDtvSpawningBehavior : CrpgSpawningBehaviorBase
             .VisualsIndex(0)
             .InitialPosition(in spawnFrame.origin)
             .InitialDirection(in initialDirection)
-            .IsFemale(true)
+            .IsFemale(false)
             .ClothingColor1(teamCulture.ClothAlternativeColor)
             .ClothingColor2(teamCulture.ClothAlternativeColor2);
 
@@ -142,9 +142,9 @@ internal class CrpgDtvSpawningBehavior : CrpgSpawningBehaviorBase
 
         Agent agent = Mission.SpawnAgent(agentBuildData);
         agent.AIStateFlags = Agent.AIStateFlag.Alarmed;
-        agent.SetTargetPosition(new Vec2(spawnFrame.origin.x, spawnFrame.origin.y)); // stops virgin from being bumped
+        agent.SetTargetPosition(new Vec2(spawnFrame.origin.x, spawnFrame.origin.y)); // stops viscount from being bumped
         agent.WieldInitialWeapons();
-        Debug.Print("Spawned Virgin");
+        Debug.Print("Spawned viscount");
     }
 
     protected void SpawnAttackingBots(int currentWave, int currentRound)
@@ -288,7 +288,7 @@ internal class CrpgDtvSpawningBehavior : CrpgSpawningBehaviorBase
         missionPeer.SpawnCountThisRound += 1;
     }
 
-    private MatrixFrame GetVirginSpawnFrame(Team team, GameEntity spawnPoint)
+    private MatrixFrame GetviscountSpawnFrame(Team team, GameEntity spawnPoint)
     {
         if (spawnPoint != null)
         {

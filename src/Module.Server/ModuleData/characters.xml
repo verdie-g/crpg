@@ -1032,14 +1032,14 @@
     </Equipments>
   </NPCCharacter>
 
-  <NPCCharacter id="crpg_dtv_virgin"
-                name="{=}Innocent Virgin">
+  <NPCCharacter id="crpg_dtv_viscount"
+                name="{=}The Viscount">
     <face>
       <BodyProperties version="4"
-                      age="23"
-                      weight="0.3333"
-                      build="0"
-                      key="00026C0094FC300B78495C75178588756676A7368679B873ABBA698735DB468B014776130485B47400000000000000000000000000000000000000007E842104" />
+                      age="71.41"
+                      weight="0.5"
+                      build="0.5"
+                      key="000A780FC0FC380E55FFFFF0FE0F0FFF5754779993D89B9359483859B79745A70747767804457C32000000000000000000000000000000000000000078843004"  />
     </face>
     <skills>
       <skill id="Strength" value="15" />
@@ -1062,9 +1062,9 @@
     </skills>
     <Equipments>
       <EquipmentRoster>
-        <equipment slot="Head" id="Item.crpg_headscarf_c_h0" />
-        <equipment slot="Body" id="Item.crpg_vlandian_noble_woman_dress_h0" />
-        <equipment slot="Leg" id="Item.crpg_ladys_shoe_h0" />
+        <equipment slot="Head" id="Item.crpg_khuzait_crown_h0." />
+        <equipment slot="Body" id="Item.crpg_fur_trimmed_tunic_h0" />
+        <equipment slot="Leg" id="Item.crpg_fine_town_boots_h0" />
         <equipment slot="Item0" id="Item.crpg_calradic_mace_h0" />
       </EquipmentRoster>
     </Equipments>

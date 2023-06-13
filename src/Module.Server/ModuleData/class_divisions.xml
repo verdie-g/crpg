@@ -648,9 +648,9 @@
     </Perks>
   </MPClassDivision>
 
-  <MPClassDivision id="crpg_dtv_virgin"
-                   hero="crpg_dtv_virgin"
-                   troop="crpg_dtv_virgin"
+  <MPClassDivision id="crpg_dtv_viscount"
+                   hero="crpg_dtv_viscount"
+                   troop="crpg_dtv_viscount"
                    hero_idle_anim="act_vlandia_mp_voulgier_idle"
                    troop_idle_anim="act_idle_spear_1_left_stance"
                    multiplier="0"

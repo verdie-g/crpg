@@ -4,7 +4,7 @@ using TaleWorlds.MountAndBlade.Network.Messages;
 namespace Crpg.Module.Modes.Dtv;
 
 [DefineGameNetworkMessageTypeForMod(GameNetworkMessageSendType.FromServer)]
-internal sealed class CrpgDtvVirginDeathMessage : GameNetworkMessage
+internal sealed class CrpgDtvViscountDeathMessage : GameNetworkMessage
 {
     protected override void OnWrite()
     {
@@ -22,6 +22,6 @@ internal sealed class CrpgDtvVirginDeathMessage : GameNetworkMessage
 
     protected override string OnGetLogFormat()
     {
-        return "cRPG DTV Virgin Death Data";
+        return "cRPG DTV Viscount Death Data";
     }
 }

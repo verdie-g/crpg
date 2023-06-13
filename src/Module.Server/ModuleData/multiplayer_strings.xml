@@ -32,7 +32,7 @@
 
   <!-- DTV -->
   <string id="str_multiplayer_official_game_type_name.cRPGDTV" text="{=*}cRPG DTV" />
-  <string id="str_multiplayer_official_game_type_explainer.cRPGDTV" text="{=*}·   Defend the Virgin from enemies!{newline}·   Earn rewards for protection!{newline}·   Upgrade your character on c-rpg.eu" />
+  <string id="str_multiplayer_official_game_type_explainer.cRPGDTV" text="{=*}·   Defend the Viscount from enemies!{newline}·   Earn rewards for protection!{newline}·   Upgrade your character on c-rpg.eu" />
   <string id="str_multiplayer_game_type.cRPGDTV" text="{=*}cRPG DTV" />
 
   <!-- Scoreboard -->

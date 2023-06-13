@@ -75,7 +75,7 @@ internal class CrpgDtvDataClient : MissionNetwork
     {
         registerer.Register<CrpgDtvWaveEndMessage>(HandleWaveEnd);
         registerer.Register<CrpgDtvRoundEndMessage>(HandleRoundEnd);
-        registerer.Register<CrpgDtvVirginDeathMessage>(HandleVirginDeath);
+        registerer.Register<CrpgDtvViscountDeathMessage>(HandleViscountDeath);
     }
 
     private void HandleWaveEnd(CrpgDtvWaveEndMessage message)
@@ -96,11 +96,11 @@ internal class CrpgDtvDataClient : MissionNetwork
         });
     }
 
-    private void HandleVirginDeath(CrpgDtvVirginDeathMessage message)
+    private void HandleViscountDeath(CrpgDtvViscountDeathMessage message)
     {
         InformationManager.DisplayMessage(new InformationMessage
         {
-            Information = $"The Innocent Virgin has been slaughtered!",
+            Information = $"The Viscount has been slaughtered!",
             Color = new Color(0.90f, 0.25f, 0.25f),
             SoundEventPath = "event:/ui/notification/death",
         });

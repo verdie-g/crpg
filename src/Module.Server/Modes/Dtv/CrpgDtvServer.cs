@@ -23,7 +23,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
     private readonly XDocument? _dtvData;
     private readonly CrpgDtvClient _dtvClient;
     private readonly CrpgRewardServer _rewardServer;
-    private readonly CrpgDtvVirginDeathMessage _virginDeathMessage = new();
+    private readonly CrpgDtvViscountDeathMessage _viscountDeathMessage = new();
     private readonly CrpgDtvRoundEndMessage _roundEndMessage = new();
     private readonly CrpgDtvWaveEndMessage _waveEndMessage = new();
 
@@ -122,12 +122,12 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         }
 
         bool defenderTeamDepleted = Mission.DefenderTeam.ActiveAgents.Count == 0;
-        bool virginDead = !Mission.DefenderTeam.HasBots;
+        bool viscountDead = !Mission.DefenderTeam.HasBots;
         bool missionComplete = currentRound > totalRounds;
 
-        if (virginDead)
+        if (viscountDead)
         {
-            SendDataToPeers(_virginDeathMessage);
+            SendDataToPeers(_viscountDeathMessage);
 
             return true;
         }
@@ -183,11 +183,11 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         else
         {
             bool attackerTeamAlive = Mission.AttackerTeam.ActiveAgents.Count > 0;
-            bool virginDead = !Mission.DefenderTeam.HasBots;
+            bool viscountDead = !Mission.DefenderTeam.HasBots;
             bool missionComplete = currentRound > totalRounds;
-            if (virginDead)
+            if (viscountDead)
             {
-                Debug.Print("The Virgin has died");
+                Debug.Print("The Viscount has died");
                 roundResult = CaptureTheFlagCaptureResultEnum.AttackersWin;
                 RoundController.RoundWinner = BattleSideEnum.Attacker;
                 RoundController.RoundEndReason = RoundEndReason.GameModeSpecificEnded;
