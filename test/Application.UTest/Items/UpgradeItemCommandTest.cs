@@ -48,6 +48,46 @@ public class UpgradeItemCommandTest : TestBase
     }
 
     [Test]
+    public async Task CannotUpgradeNonExistingItem()
+    {
+        Item item0 = new() { Id = "a_h12", BaseId = "a", Price = 100, Enabled = true, Rank = 12 };
+        User user = new()
+        {
+            Gold = 100,
+            Items = { new() },
+            HeirloomPoints = 10,
+        };
+        ArrangeDb.Users.Add(user);
+        ArrangeDb.Items.Add(item0);
+        await ArrangeDb.SaveChangesAsync();
+
+        Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
+
+        UpgradeUserItemCommand.Handler handler = new(ActDb, Mapper, activityLogServiceMock.Object);
+        var result = await handler.Handle(new UpgradeUserItemCommand
+        {
+            UserItemId = 15,
+            UserId = user.Id,
+        }, CancellationToken.None);
+
+        var errorCode = result.Errors![0].Code;
+        Assert.That(errorCode, Is.EqualTo(ErrorCode.UserItemNotFound));
+    }
+
+    [Test]
+    public async Task NotFoundUser()
+    {
+        Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
+        UpgradeUserItemCommand.Handler handler = new(ActDb, Mapper, activityLogServiceMock.Object);
+        var result = await handler.Handle(new UpgradeUserItemCommand
+        {
+            UserItemId = 50,
+            UserId = 1,
+        }, CancellationToken.None);
+        Assert.That(result.Errors![0].Code, Is.EqualTo(ErrorCode.UserNotFound));
+    }
+
+    [Test]
     public async Task BannerCannotBeUpgraded()
     {
         Item item0 = new() { Id = "a_h0", BaseId = "a", Price = 100, Enabled = true, Rank = 0, Type = ItemType.Banner };
@@ -56,8 +96,8 @@ public class UpgradeItemCommandTest : TestBase
             Gold = 100,
             Items = { new UserItem { Item = item0 } },
             HeirloomPoints = 5,
-
         };
+
         ArrangeDb.Users.Add(user);
         ArrangeDb.Items.Add(item0);
         await ArrangeDb.SaveChangesAsync();
@@ -135,5 +175,32 @@ public class UpgradeItemCommandTest : TestBase
 
         var errorCode = result.Errors![0].Code;
         Assert.That(errorCode, Is.EqualTo(ErrorCode.NotEnoughHeirloomPoints));
+    }
+
+    [Test]
+    public async Task CannotUpgradeMaxRankItem()
+    {
+        Item item0 = new() { Id = "a_h12", BaseId = "a", Price = 100, Enabled = true, Rank = 12 };
+        User user = new()
+        {
+            Gold = 100,
+            Items = { new() { Item = item0 } },
+            HeirloomPoints = 10,
+        };
+        ArrangeDb.Users.Add(user);
+        ArrangeDb.Items.Add(item0);
+        await ArrangeDb.SaveChangesAsync();
+
+        Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
+
+        UpgradeUserItemCommand.Handler handler = new(ActDb, Mapper, activityLogServiceMock.Object);
+        var result = await handler.Handle(new UpgradeUserItemCommand
+        {
+            UserItemId = user.Items[0].Id,
+            UserId = user.Id,
+        }, CancellationToken.None);
+
+        var errorCode = result.Errors![0].Code;
+        Assert.That(errorCode, Is.EqualTo(ErrorCode.UserItemMaxRankReached));
     }
 }

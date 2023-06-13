@@ -47,12 +47,22 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
                 return new(CommonErrors.UserNotFound(req.UserId));
             }
 
+            if (user.HeirloomPoints < 1)
+            {
+                return new(CommonErrors.NotEnoughHeirloomPoints(1, user.HeirloomPoints));
+            }
+
             var userItemToUpgrade = user.Items
                 .FirstOrDefault(ui => ui.Id == req.UserItemId);
 
             if (userItemToUpgrade == null)
             {
                 return new(CommonErrors.UserItemNotFound(req.UserItemId));
+            }
+
+            if (userItemToUpgrade.IsBroken)
+            {
+                return new(CommonErrors.ItemBroken(userItemToUpgrade.Id.ToString()));
             }
 
             if (userItemToUpgrade.Item!.Type == ItemType.Banner)
@@ -62,19 +72,14 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
 
             if (user.Items.Any(ui => ui.Item!.BaseId == userItemToUpgrade.Item.BaseId && ui.Item!.Rank == userItemToUpgrade.Item.Rank + 1))
             {
-                return new(CommonErrors.ItemAlreadyOwned($"{userItemToUpgrade.ItemId} +1 version"));
+                return new(CommonErrors.ItemAlreadyOwned($"{userItemToUpgrade.Id} +1 version"));
             }
 
-            if (user.HeirloomPoints < 1)
-            {
-                return new(CommonErrors.NotEnoughHeirloomPoints(1, user.HeirloomPoints));
-            }
-
-            Item? upgraded = await _db.Items
+            Item? upgradedItem = await _db.Items
                 .Where(i => i.BaseId == userItemToUpgrade.Item!.BaseId && i.Rank == userItemToUpgrade.Item!.Rank + 1)
                 .FirstOrDefaultAsync();
 
-            if (upgraded == null)
+            if (upgradedItem == null)
             {
                 return new(CommonErrors.UserItemMaxRankReached(userItemToUpgrade.Id, userItemToUpgrade.Item!.Rank));
             }
@@ -82,8 +87,8 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
             var upgradedUserItem = new UserItem
             {
                 UserId = req.UserId,
-                Item = upgraded,
-                IsBroken = userItemToUpgrade.IsBroken,
+                Item = upgradedItem,
+                IsBroken = false,
             };
 
             user.Items.Remove(userItemToUpgrade);
