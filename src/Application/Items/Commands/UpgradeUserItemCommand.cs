@@ -59,7 +59,7 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
 
             if (userItemToUpgrade.IsBroken)
             {
-                return new(CommonErrors.ItemBroken(userItemToUpgrade.Id.ToString()));
+                return new(CommonErrors.ItemBroken(userItemToUpgrade.ItemId));
             }
 
             if (userItemToUpgrade.Item!.Type == ItemType.Banner)
@@ -69,7 +69,7 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
 
             if (user.Items.Any(ui => ui.Item!.BaseId == userItemToUpgrade.Item.BaseId && ui.Item!.Rank == userItemToUpgrade.Item.Rank + 1))
             {
-                return new(CommonErrors.ItemAlreadyOwned($"{userItemToUpgrade.Id} +1 version"));
+                return new(CommonErrors.ItemAlreadyOwned($"{userItemToUpgrade.Item.Id} +1 version"));
             }
 
             Item? upgradedItem = await _db.Items
