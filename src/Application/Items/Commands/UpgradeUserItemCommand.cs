@@ -67,11 +67,6 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
                 return new(CommonErrors.ItemNotUpgradable(userItemToUpgrade.ItemId));
             }
 
-            if (user.Items.Any(ui => ui.Item!.BaseId == userItemToUpgrade.Item.BaseId && ui.Item!.Rank == userItemToUpgrade.Item.Rank + 1))
-            {
-                return new(CommonErrors.ItemAlreadyOwned($"{userItemToUpgrade.Item.Id} +1 version"));
-            }
-
             Item? upgradedItem = await _db.Items
                 .FirstOrDefaultAsync(
                     i => i.BaseId == userItemToUpgrade.Item!.BaseId && i.Rank == userItemToUpgrade.Item!.Rank + 1,
@@ -80,6 +75,11 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
             if (upgradedItem == null)
             {
                 return new(CommonErrors.UserItemMaxRankReached(userItemToUpgrade.Id, userItemToUpgrade.Item!.Rank));
+            }
+
+            if (user.Items.Any(ui => ui.Item!.Id == upgradedItem.Id))
+            {
+                return new(CommonErrors.ItemAlreadyOwned(upgradedItem.Id));
             }
 
             var upgradedUserItem = new UserItem
