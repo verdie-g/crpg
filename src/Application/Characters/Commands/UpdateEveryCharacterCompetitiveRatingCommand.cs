@@ -16,6 +16,7 @@ public record UpdateEveryCharacterCompetitiveRatingCommand : IMediatorRequest
     internal class Handler : IMediatorRequestHandler<UpdateEveryCharacterCompetitiveRatingCommand>
     {
         private static readonly ILogger Logger = LoggerFactory.CreateLogger<UpdateEveryCharacterCompetitiveRatingCommand>();
+
         private readonly ICrpgDbContext _db;
         private readonly ICompetitiveRatingModel _competitiveRatingModel;
         private readonly Mapper _mapper;
