@@ -18,8 +18,6 @@ public static class DependencyInjection
         IConfiguration configuration, IApplicationEnvironment appEnv)
     {
         var constants = new FileConstantsSource().LoadConstants();
-        var itemModifiers = new FileItemModifiersSource().LoadItemModifiers();
-        ItemModifierService itemModifierService = new(itemModifiers);
         ExperienceTable experienceTable = new(constants);
         CharacterService characterService = new(experienceTable, constants);
         ClanService clanService = new();
@@ -29,7 +27,6 @@ public static class DependencyInjection
             .AddMediatR(Assembly.GetExecutingAssembly())
             .AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestInstrumentationBehavior<,>))
             .AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>))
-            .AddSingleton<IItemModifierService>(itemModifierService)
             .AddSingleton<IExperienceTable>(experienceTable)
             .AddSingleton<ICharacterService>(characterService)
             .AddSingleton<IUserService, UserService>()

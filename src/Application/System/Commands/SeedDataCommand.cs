@@ -38,11 +38,10 @@ public record SeedDataCommand : IMediatorRequest
         private readonly IExperienceTable _experienceTable;
         private readonly IStrategusMap _strategusMap;
         private readonly ISettlementsSource _settlementsSource;
-        private readonly IItemModifierService _itemModifierService;
 
         public Handler(ICrpgDbContext db, IItemsSource itemsSource, IApplicationEnvironment appEnv,
             ICharacterService characterService, IExperienceTable experienceTable, IStrategusMap strategusMap,
-            ISettlementsSource settlementsSource, IItemModifierService itemModifierService)
+            ISettlementsSource settlementsSource)
         {
             _db = db;
             _itemsSource = itemsSource;
@@ -51,7 +50,6 @@ public record SeedDataCommand : IMediatorRequest
             _experienceTable = experienceTable;
             _strategusMap = strategusMap;
             _settlementsSource = settlementsSource;
-            _itemModifierService = itemModifierService;
         }
 
         public async Task<Result> Handle(SeedDataCommand request, CancellationToken cancellationToken)
@@ -1901,8 +1899,7 @@ public record SeedDataCommand : IMediatorRequest
                     .ToArrayAsync(cancellationToken);
                 foreach (var userItem in userItems)
                 {
-                    int price = _itemModifierService.ModifyItem(userItem.Item!, userItem.Item!.Rank).Price;
-                    userItem.User!.Gold += price;
+                    userItem.User!.Gold += userItem.Item!.Price;
                     if (userItem.Item!.Rank > 0)
                     {
                         userItem.User.HeirloomPoints += userItem.Item!.Rank;
