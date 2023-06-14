@@ -16,12 +16,9 @@ internal class CrpgDtvSpawningBehavior : CrpgSpawningBehaviorBase
     public bool BotsSpawned { get; set; }
 
     private const float TotalSpawnDuration = 15f;
-    private readonly XDocument? _dtvData;
     private readonly MultiplayerRoundController _roundController;
     private readonly HashSet<PlayerId> _notifiedPlayersAboutSpawnRestriction;
 
-    public int Wave { get; set; }
-    public int Round { get; set; }
     private MissionTimer? _spawnTimer;
     private MissionTimer? _cavalrySpawnDelayTimer;
     private bool _viscountSpawned;
@@ -31,8 +28,6 @@ internal class CrpgDtvSpawningBehavior : CrpgSpawningBehaviorBase
     {
         _roundController = roundController;
         _notifiedPlayersAboutSpawnRestriction = new HashSet<PlayerId>();
-        _dtvData = new XDocument();
-        _dtvData = XDocument.Load(ModuleHelper.GetXmlPath("Crpg", "dtv_data"));
     }
 
     public override void Initialize(SpawnComponent spawnComponent)
@@ -40,8 +35,6 @@ internal class CrpgDtvSpawningBehavior : CrpgSpawningBehaviorBase
         base.Initialize(spawnComponent);
         _roundController.OnPreparationEnded += RequestStartSpawnSession;
         _roundController.OnRoundEnding += RequestStopSpawnSession;
-        Wave = 1;
-        Round = 1;
     }
 
     public override void Clear()
@@ -53,25 +46,9 @@ internal class CrpgDtvSpawningBehavior : CrpgSpawningBehaviorBase
 
     public override void OnTick(float dt)
     {
-        if (!BotsSpawned && _viscountSpawned)
-        {
-            SpawnAttackingBots(Wave, Round);
-            BotsSpawned = true;
-        }
-
-        if (!IsSpawningEnabled)
-        {
-            return;
-        }
-
-        if (_spawnTimer!.Check())
-        {
-            return;
-        }
-
         if (!_viscountSpawned)
         {
-            SpawnViscount();
+            SpawnBotAgent("crpg_dtv_viscount", Mission.DefenderTeam, true);
             _viscountSpawned = true;
         }
 
@@ -102,126 +79,18 @@ internal class CrpgDtvSpawningBehavior : CrpgSpawningBehaviorBase
         return _cavalrySpawnDelayTimer != null && _cavalrySpawnDelayTimer!.Check();
     }
 
-    protected void SpawnViscount()
+    public void SpawnAttackingBots(CrpgDtvWave wave)
     {
-        Debug.Print("Attempting to spawn viscount");
-        BasicCultureObject teamCulture = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam2.GetStrValue());
-        Mission.Current.AllowAiTicking = false;
-        Team team = Mission.DefenderTeam; // viscount is a defender
-        MultiplayerClassDivisions.MPHeroClass botClass = MultiplayerClassDivisions
-            .GetMPHeroClasses()
-            .GetRandomElementWithPredicate<MultiplayerClassDivisions.MPHeroClass>(x => x.StringId.StartsWith("crpg_dtv_viscount"));
-        BasicCharacterObject character = botClass.HeroCharacter;
-
-        GameEntity? viscountSpawnPoint = Mission.Current.Scene.FindEntityWithTag("viscount");
-        MatrixFrame spawnFrame = GetviscountSpawnFrame(team, viscountSpawnPoint);
-        Vec2 initialDirection = spawnFrame.rotation.f.AsVec2.Normalized();
-        AgentBuildData agentBuildData = new AgentBuildData(character)
-            .Equipment(character.Equipment)
-            .TroopOrigin(new BasicBattleAgentOrigin(character))
-            .EquipmentSeed(MissionLobbyComponent.GetRandomFaceSeedForCharacter(character))
-            .Team(team)
-            .VisualsIndex(0)
-            .InitialPosition(in spawnFrame.origin)
-            .InitialDirection(in initialDirection)
-            .IsFemale(false)
-            .ClothingColor1(teamCulture.ClothAlternativeColor)
-            .ClothingColor2(teamCulture.ClothAlternativeColor2);
-
-        var bodyProperties = BodyProperties.GetRandomBodyProperties(
-            character.Race,
-            character.IsFemale,
-            character.GetBodyPropertiesMin(),
-            character.GetBodyPropertiesMax(),
-            (int)agentBuildData.AgentOverridenSpawnEquipment.HairCoverType,
-            agentBuildData.AgentEquipmentSeed,
-            character.HairTags,
-            character.BeardTags,
-            character.TattooTags);
-        agentBuildData.BodyProperties(bodyProperties);
-
-        Agent agent = Mission.SpawnAgent(agentBuildData);
-        agent.AIStateFlags = Agent.AIStateFlag.Alarmed;
-        agent.SetTargetPosition(new Vec2(spawnFrame.origin.x, spawnFrame.origin.y)); // stops viscount from being bumped
-        agent.WieldInitialWeapons();
-        Debug.Print("Spawned viscount");
-    }
-
-    protected void SpawnAttackingBots(int currentWave, int currentRound)
-    {
-        Debug.Print($"Attempting to spawn attacking bots for Wave: {Wave} Round:{Round}");
-        BasicCultureObject teamCulture = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam1.GetStrValue());
-        Team team = Mission.AttackerTeam;
-        int numberOfBots = 0;
-        string botDivisionID = "crpg_dtv_";
-
-        if (_dtvData is not null)
+        foreach (CrpgDtvGroup group in wave.Groups ?? Enumerable.Empty<CrpgDtvGroup>())
         {
-            var waveValue = _dtvData.Descendants("Round")
-                .Where(round => (int)round.Attribute("number") == currentRound)
-                .Elements($"Wave{currentWave}EnemyCount")
-                .FirstOrDefault()?.Value;
-
-            Debug.Print($"Number of bots this wave: {waveValue}");
-            if (waveValue != null)
+            if (group.ClassDivisionId != null)
             {
-                numberOfBots = int.Parse(waveValue);
+                Debug.Print($"Spawning {group.Count} {group.ClassDivisionId}(s)");
+                for (int i = 0; i < group.Count; i++)
+                {
+                    SpawnBotAgent(group.ClassDivisionId, Mission.AttackerTeam);
+                }
             }
-
-            var divisionID = _dtvData.Descendants("Round")
-                .Where(round => (int)round.Attribute("number") == currentRound)
-                .Elements("ClassDivisionId")
-                .FirstOrDefault()?.Value;
-
-            Debug.Print($"Type of bot this wave: {divisionID}");
-            if (divisionID != null)
-            {
-                botDivisionID = divisionID;
-            }
-        }
-
-        Mission.Current.AllowAiTicking = false;
-        int botsAlive = team.ActiveAgents.Count(a => a.IsAIControlled && a.IsHuman);
-
-        for (int i = 0 + botsAlive; i < numberOfBots; i += 1)
-        {
-            MultiplayerClassDivisions.MPHeroClass botClass = MultiplayerClassDivisions
-                .GetMPHeroClasses()
-                .GetRandomElementWithPredicate<MultiplayerClassDivisions.MPHeroClass>(x => x.StringId.StartsWith(botDivisionID));
-            BasicCharacterObject character = botClass.HeroCharacter;
-            Debug.Print($"Attempting to spawn {character.Name}");
-
-            bool hasMount = character.Equipment[EquipmentIndex.Horse].Item != null;
-            MatrixFrame spawnFrame = SpawnComponent.GetSpawnFrame(team, hasMount, true);
-            Vec2 initialDirection = spawnFrame.rotation.f.AsVec2.Normalized();
-
-            AgentBuildData agentBuildData = new AgentBuildData(character)
-                .Equipment(character.Equipment)
-                .TroopOrigin(new BasicBattleAgentOrigin(character))
-                .EquipmentSeed(MissionLobbyComponent.GetRandomFaceSeedForCharacter(character))
-                .Team(team)
-                .VisualsIndex(0)
-                .InitialPosition(in spawnFrame.origin)
-                .InitialDirection(in initialDirection)
-                .IsFemale(character.IsFemale)
-                .ClothingColor1(teamCulture.Color)
-                .ClothingColor2(teamCulture.Color2);
-
-            var bodyProperties = BodyProperties.GetRandomBodyProperties(
-                character.Race,
-                character.IsFemale,
-                character.GetBodyPropertiesMin(),
-                character.GetBodyPropertiesMax(),
-                (int)agentBuildData.AgentOverridenSpawnEquipment.HairCoverType,
-                agentBuildData.AgentEquipmentSeed,
-                character.HairTags,
-                character.BeardTags,
-                character.TattooTags);
-            agentBuildData.BodyProperties(bodyProperties);
-
-            Agent agent = Mission.SpawnAgent(agentBuildData);
-            agent.SetWatchState(Agent.WatchState.Alarmed);
-            agent.WieldInitialWeapons();
         }
     }
 
@@ -286,20 +155,6 @@ internal class CrpgDtvSpawningBehavior : CrpgSpawningBehaviorBase
     {
         base.OnPeerSpawned(missionPeer);
         missionPeer.SpawnCountThisRound += 1;
-    }
-
-    private MatrixFrame GetviscountSpawnFrame(Team team, GameEntity spawnPoint)
-    {
-        if (spawnPoint != null)
-        {
-            MatrixFrame globalFrame = spawnPoint.GetGlobalFrame();
-            globalFrame.rotation.OrthonormalizeAccordingToForwardAndKeepUpAsZAxis();
-            return globalFrame;
-        }
-        else
-        {
-            return SpawnComponent.GetSpawnFrame(team, false, true);
-        }
     }
 
     /// <summary>

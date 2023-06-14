@@ -1,7 +1,5 @@
-﻿using System.Runtime.CompilerServices;
-using System.Xml.Linq;
+﻿using System.Xml.Serialization;
 using Crpg.Module.Rewards;
-using NetworkMessages.FromClient;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.ModuleManager;
@@ -17,19 +15,24 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
 
     private const int BotRespawnTime = 3;
     private const int NewRoundRespawnTime = 20;
+    private const int GameStartTime = 10;
 
-    private readonly int _totalRounds;
-    private readonly int _totalWaves;
-
-    private readonly XDocument? _dtvData;
+    private readonly CrpgDtvData? _dtvData;
     private readonly CrpgDtvClient _dtvClient;
     private readonly CrpgRewardServer _rewardServer;
+    private readonly int _totalRounds;
+    private int _totalWaves;
+
     private CrpgDtvRoundEndMessage? _roundEndMessage;
     private CrpgDtvWaveEndMessage? _waveEndMessage;
 
-    private int currentWave = 1;
-    private int currentRound = 1;
-    private bool _waitingForBotSpawn = false;
+    private int _currentWaveCount = 1;
+    private CrpgDtvWave _currentWave;
+    private int _currentRoundCount = 1;
+    private CrpgDtvRound _currentRound;
+    private bool _waitingForGameStart = true;
+    private bool _waitingForBotSpawn = true;
+    private MissionTimer? _gameStartTimer;
     private MissionTimer? _botRespawnTimer;
 
     public override bool IsGameModeHidingAllAgentVisuals => true;
@@ -42,29 +45,10 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
     {
         _dtvClient = dtvClient;
         _rewardServer = rewardServer;
-        _dtvData = new XDocument();
-        _dtvData = XDocument.Load(ModuleHelper.GetXmlPath("Crpg", "dtv_data"));
-
-        if (_dtvData is not null)
-        {
-            try
-            {
-                _totalWaves = _dtvData.Descendants("Rounds")
-                .Select(rounds => (int)rounds.Attribute("totalWaves"))
-                .FirstOrDefault();
-
-                _totalRounds = _dtvData.Descendants("Rounds")
-                     .Select(rounds => (int)rounds.Attribute("totalRounds"))
-                     .FirstOrDefault();
-            }
-            catch (Exception e)
-            {
-                Debug.Print(e.Message);
-                _totalRounds = 1;
-                _totalWaves = 1;
-                Debug.Print("Failed to parse wave/round count from dtvData");
-            }
-        }
+        _dtvData = DeserializeToObject<CrpgDtvData>(ModuleHelper.GetXmlPath("Crpg", "dtv_data"));
+        _totalRounds = _dtvData.Rounds.Count();
+        _currentRound = GetCurrentRound();
+        _currentWave = GetCurrentWave();
     }
 
     public override MissionLobbyComponent.MultiplayerGameType GetMissionType()
@@ -100,12 +84,23 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
             return;
         }
 
-        CheckForWaveEnd();
-
-        if (BotRespawnDelayEnded())
+        if (_waitingForGameStart)
         {
-            SpawnWave(currentRound, currentWave);
-            _waitingForBotSpawn = false;
+            _gameStartTimer = _gameStartTimer ?? new(GameStartTime);
+            if (_gameStartTimer.Check())
+            {
+                SpawnWave(_currentWave);
+                _waitingForGameStart = false;
+            }
+        }
+        else
+        {
+            CheckForWaveEnd();
+
+            if (BotRespawnDelayEnded())
+            {
+                SpawnWave(_currentWave);
+            }
         }
     }
 
@@ -123,7 +118,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
 
         bool defenderTeamDepleted = Mission.DefenderTeam.ActiveAgents.Count == 0;
         bool viscountDead = !Mission.DefenderTeam.HasBots;
-        bool missionComplete = currentRound > _totalRounds;
+        bool missionComplete = _currentRoundCount > _totalRounds;
 
         if (viscountDead)
         {
@@ -185,7 +180,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         {
             bool attackerTeamAlive = Mission.AttackerTeam.ActiveAgents.Count > 0;
             bool viscountDead = !Mission.DefenderTeam.HasBots;
-            bool missionComplete = currentRound > _totalRounds;
+            bool missionComplete = _currentRoundCount > _totalRounds;
             if (viscountDead)
             {
                 Debug.Print("The Viscount has died");
@@ -237,8 +232,8 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         if (attackersDepleted && !_waitingForBotSpawn)
         {
             Debug.Print("Attackers depleted");
-            currentWave += 1;
-            if (currentWave >= _totalWaves + 1)
+            _currentWaveCount += 1;
+            if (_currentWaveCount >= _totalWaves + 1)
             {
                 OnRoundEnd();
             }
@@ -246,29 +241,30 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
             {
                 OnWaveEnd();
             }
-
-            Debug.Print($"Current Round: {currentRound}");
-            Debug.Print($"Current Wave: {currentWave}");
         }
     }
 
-    private void SpawnWave(int round, int wave)
+    private void SpawnWave(CrpgDtvWave wave)
     {
         if (SpawnComponent.SpawningBehavior is CrpgDtvSpawningBehavior s)
         {
-            s.BotsSpawned = false;
-            s.Round = round;
-            s.Wave = wave;
+            Debug.Print($"Spawning wave for round: {_currentRound.Id} wave: {_currentWave.Id}!");
+            s.SpawnAttackingBots(wave);
+            _waitingForBotSpawn = false;
+        }
+        else
+        {
+            Debug.Print("Failed to spawn wave!");
         }
     }
 
     private void OnWaveEnd()
     {
         _waveEndMessage = _waveEndMessage ?? new() { RoundData = new CrpgDtvRoundData() };
-        ;
-        _waveEndMessage.RoundData.Wave = currentWave;
+        _waveEndMessage.RoundData.Wave = _currentWaveCount;
         SendDataToPeers(_waveEndMessage);
         Debug.Print("Advancing to next wave");
+        _currentWave = GetCurrentWave();
         _botRespawnTimer = new MissionTimer(BotRespawnTime); // Spawn bots after timer
         _waitingForBotSpawn = true;
     }
@@ -277,32 +273,37 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
     {
         // TODO: award players
         _roundEndMessage = _roundEndMessage ?? new() { RoundData = new CrpgDtvRoundData() };
-        _roundEndMessage.RoundData.Round = currentRound;
+        _roundEndMessage.RoundData.Round = _currentRoundCount;
         SendDataToPeers(_roundEndMessage);
-        currentRound += 1; // next round
-        currentWave = 1;
-        Debug.Print("Advancing to next round");
-        _botRespawnTimer = new MissionTimer(NewRoundRespawnTime); // Spawn bots after timer
-        _waitingForBotSpawn = true;
-
-        if (SpawnComponent.SpawningBehavior is CrpgDtvSpawningBehavior s)
+        _currentRoundCount += 1; // next round
+        _currentWaveCount = 1;
+        if (_currentRoundCount <= _totalRounds) // Continue to next round
         {
-            s.RequestNewWaveSpawnSession();        // allow players to respawn
-        }
+            Debug.Print("Advancing to next round");
+            _currentRound = GetCurrentRound();
+            _currentWave = GetCurrentWave();
+            _botRespawnTimer = new MissionTimer(NewRoundRespawnTime); // Spawn bots after timer
+            _waitingForBotSpawn = true;
 
-        foreach (Agent agent in Mission.DefenderTeam.ActiveAgents) // fill HP & ammo
-        {
-            agent.Health = agent.HealthLimit;
-            for (EquipmentIndex equipmentIndex = EquipmentIndex.WeaponItemBeginSlot; equipmentIndex < EquipmentIndex.NumAllWeaponSlots; equipmentIndex++)
+            if (SpawnComponent.SpawningBehavior is CrpgDtvSpawningBehavior s)
             {
-                if (!agent.Equipment[equipmentIndex].IsEmpty && (agent.Equipment[equipmentIndex].CurrentUsageItem.WeaponClass == WeaponClass.Arrow ||
-                                                                 agent.Equipment[equipmentIndex].CurrentUsageItem.WeaponClass == WeaponClass.Bolt ||
-                                                                 agent.Equipment[equipmentIndex].CurrentUsageItem.WeaponClass == WeaponClass.Javelin ||
-                                                                 agent.Equipment[equipmentIndex].CurrentUsageItem.WeaponClass == WeaponClass.ThrowingAxe ||
-                                                                 agent.Equipment[equipmentIndex].CurrentUsageItem.WeaponClass == WeaponClass.ThrowingKnife)
-                                                                 && agent.Equipment[equipmentIndex].Amount < agent.Equipment[equipmentIndex].ModifiedMaxAmount)
+                s.RequestNewWaveSpawnSession();        // allow players to respawn
+            }
+
+            foreach (Agent agent in Mission.DefenderTeam.ActiveAgents) // fill HP & ammo
+            {
+                agent.Health = agent.HealthLimit;
+                for (EquipmentIndex equipmentIndex = EquipmentIndex.WeaponItemBeginSlot; equipmentIndex < EquipmentIndex.NumAllWeaponSlots; equipmentIndex++)
                 {
-                    agent.SetWeaponAmountInSlot(equipmentIndex, agent.Equipment[equipmentIndex].ModifiedMaxAmount, true);
+                    if (!agent.Equipment[equipmentIndex].IsEmpty && (agent.Equipment[equipmentIndex].CurrentUsageItem.WeaponClass == WeaponClass.Arrow ||
+                                                                     agent.Equipment[equipmentIndex].CurrentUsageItem.WeaponClass == WeaponClass.Bolt ||
+                                                                     agent.Equipment[equipmentIndex].CurrentUsageItem.WeaponClass == WeaponClass.Javelin ||
+                                                                     agent.Equipment[equipmentIndex].CurrentUsageItem.WeaponClass == WeaponClass.ThrowingAxe ||
+                                                                     agent.Equipment[equipmentIndex].CurrentUsageItem.WeaponClass == WeaponClass.ThrowingKnife)
+                                                                     && agent.Equipment[equipmentIndex].Amount < agent.Equipment[equipmentIndex].ModifiedMaxAmount)
+                    {
+                        agent.SetWeaponAmountInSlot(equipmentIndex, agent.Equipment[equipmentIndex].ModifiedMaxAmount, true);
+                    }
                 }
             }
         }
@@ -320,6 +321,50 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
             GameNetwork.BeginModuleEventAsServer(networkPeer);
             GameNetwork.WriteMessage(message);
             GameNetwork.EndModuleEventAsServer();
+        }
+    }
+
+    private CrpgDtvRound GetCurrentRound()
+    {
+        if (_dtvData != null)
+        {
+            if (_dtvData.Rounds != null)
+            {
+                Debug.Print("Now on round: " + _currentRoundCount);
+                CrpgDtvRound currentRound = _dtvData.Rounds[_currentRoundCount - 1];
+                if (currentRound.Waves != null)
+                {
+                    _totalWaves = currentRound.Waves.Count;
+                }
+
+                return currentRound;
+            }
+        }
+
+        return new();
+    }
+
+    private CrpgDtvWave GetCurrentWave()
+    {
+        if (_currentRound != null)
+        {
+            if (_currentRound.Waves != null)
+            {
+                Debug.Print("Now on wave: " + _currentWaveCount);
+                return _currentRound.Waves[_currentWaveCount - 1];
+            }
+        }
+
+        return new();
+    }
+
+    private T DeserializeToObject<T>(string filepath) where T : class
+    {
+        XmlSerializer ser = new(typeof(T));
+
+        using (StreamReader sr = new(filepath))
+        {
+            return (T)ser.Deserialize(sr);
         }
     }
 }
