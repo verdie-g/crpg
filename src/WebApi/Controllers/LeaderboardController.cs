@@ -32,10 +32,6 @@ public class LeaderboardController : BaseController
     [HttpGet("leaderboard")]
     public Task<ActionResult<Result<IList<CharacterViewModel>>>> GetLeaderboard()
     {
-        return ResultToActionAsync(
-            Mediator.Send(
-                new GetLeaderboardQuery
-                {
-                }));
+        return ResultToActionAsync(Mediator.Send(new GetLeaderboardQuery()));
     }
 }
