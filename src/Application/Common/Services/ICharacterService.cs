@@ -89,19 +89,7 @@ internal class CharacterService : ICharacterService
             return CommonErrors.CharacterLevelRequirementNotMet(_constants.MinimumRetirementLevel, character.Level);
         }
 
-        int heirloomPoints;
-        if (character.Level < _constants.MinimumRetirementLevel + 2)
-        {
-            heirloomPoints = 1;
-        }
-        else if (character.Level < _constants.MinimumRetirementLevel + 4)
-        {
-            heirloomPoints = 2;
-        }
-        else
-        {
-            heirloomPoints = 3;
-        }
+        int heirloomPoints = (int)Math.Pow(2, character.Level - _constants.MinimumRetirementLevel); // to update if level above 31 do not follow the x2 pattern anymore
 
         character.User!.HeirloomPoints += heirloomPoints;
         character.User.ExperienceMultiplier = Math.Min(

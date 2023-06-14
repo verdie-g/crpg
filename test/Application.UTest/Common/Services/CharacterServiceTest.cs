@@ -203,11 +203,11 @@ public class CharacterServiceTest
     }
 
     [TestCase(31, 1.00f, 1, 1.03f)]
-    [TestCase(32, 1.00f, 1, 1.03f)]
-    [TestCase(33, 1.00f, 2, 1.03f)]
-    [TestCase(34, 1.00f, 2, 1.03f)]
-    [TestCase(35, 1.00f, 3, 1.03f)]
-    [TestCase(36, 1.00f, 3, 1.03f)]
+    [TestCase(32, 1.00f, 2, 1.03f)]
+    [TestCase(33, 1.00f, 4, 1.03f)]
+    [TestCase(34, 1.00f, 8, 1.03f)]
+    [TestCase(35, 1.00f, 16, 1.03f)]
+    [TestCase(36, 1.00f, 32, 1.03f)]
     [TestCase(31, 1.06f, 1, 1.09f)]
     [TestCase(31, 1.06f, 1, 1.09f)]
     [TestCase(31, 1.45f, 1, 1.48f)]
