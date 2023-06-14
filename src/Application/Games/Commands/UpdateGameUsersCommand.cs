@@ -28,9 +28,9 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
         private readonly IMapper _mapper;
         private readonly ICharacterService _characterService;
         private readonly IActivityLogService _activityLogService;
-        private readonly CompetitiveRatingModel _competitiveRatingModel;
+        private readonly ICompetitiveRatingModel _competitiveRatingModel;
 
-        public Handler(ICrpgDbContext db, IMapper mapper, ICharacterService characterService, IActivityLogService activityLogService, CompetitiveRatingModel competitiveRatingModel)
+        public Handler(ICrpgDbContext db, IMapper mapper, ICharacterService characterService, IActivityLogService activityLogService, ICompetitiveRatingModel competitiveRatingModel)
         {
             _db = db;
             _mapper = mapper;
