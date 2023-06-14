@@ -30,9 +30,13 @@ public record UpdateEveryCharacterCompetitiveRatingCommand : IMediatorRequest
 
         public async Task<Result> Handle(UpdateEveryCharacterCompetitiveRatingCommand req, CancellationToken cancellationToken)
         {
-            var characters = await _db.Characters.ToListAsync();
+            var characters = await _db.Characters.ToArrayAsync();
 
-            characters.ForEach(c => c.Rating.CompetitiveRating = _competitiveRatingModel.ComputeCompetitiveRating(_mapper.Map<CharacterRatingViewModel>(c.Rating)));
+            foreach (var character in characters)
+            {
+                character.Rating.CompetitiveRating = _competitiveRatingModel.ComputeCompetitiveRating(_mapper.Map<CharacterRatingViewModel>(character.Rating));
+            }
+
             await _db.SaveChangesAsync(cancellationToken);
             return Result.NoErrors;
         }
