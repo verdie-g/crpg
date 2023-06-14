@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Crpg.Application.Characters.Models;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
@@ -26,7 +27,7 @@ public record GetLeaderboardQuery : IMediatorRequest<IList<CharacterViewModel>>
             var topCharacters = await _db.Characters
                 .OrderByDescending(c => c.Rating.CompetitiveRating)
                 .Take(50)
-                .Select(c => _mapper.Map<CharacterViewModel>(c))
+                .ProjectTo<CharacterViewModel>(_mapper.ConfigurationProvider)
                 .ToArrayAsync();
 
             return new(topCharacters.ToList());
