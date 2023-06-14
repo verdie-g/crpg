@@ -20,11 +20,11 @@ public record UpdateEveryCharacterCompetitiveRatingCommand : IMediatorRequest
         private readonly ICompetitiveRatingModel _competitiveRatingModel;
         private readonly Mapper _mapper;
 
-        public Handler(ICrpgDbContext db, ICompetitiveRatingModel competitiveRatingModel, Mapper mapper)
+        public Handler(ICrpgDbContext db, Mapper mapper, ICompetitiveRatingModel competitiveRatingModel)
         {
             _db = db;
-            _competitiveRatingModel = competitiveRatingModel;
             _mapper = mapper;
+            _competitiveRatingModel = competitiveRatingModel;
         }
 
         public async Task<Result> Handle(UpdateEveryCharacterCompetitiveRatingCommand req, CancellationToken cancellationToken)
