@@ -212,7 +212,7 @@ public class UsersController : BaseController
     }
 
     /// <summary>
-    /// Get character competitive rating.
+    /// Get character rating.
     /// </summary>
     /// <param name="id">Character id.</param>
     /// <returns>The character rating.</returns>
