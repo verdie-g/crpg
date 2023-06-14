@@ -113,7 +113,7 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
             character.Statistics.PlayTime += statistics.PlayTime;
         }
 
-        private void UpdateRating(Character character, CharacterRatingViewModel rating, CompetitiveRatingModel competitiveRatingModel)
+        private void UpdateRating(Character character, CharacterRatingViewModel rating, ICompetitiveRatingModel competitiveRatingModel)
         {
             character.Rating.Value = rating.Value;
             character.Rating.Deviation = rating.Deviation;
