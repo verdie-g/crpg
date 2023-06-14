@@ -2,6 +2,7 @@
   @apply table w-full border-separate border-spacing-0;
 }
 
+
 .o-table--bordered thead tr th {
   @apply border-b border-t border-border-200;
 }
