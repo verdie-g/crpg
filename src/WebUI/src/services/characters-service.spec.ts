@@ -272,20 +272,25 @@ it.each([
   [1, 0],
   [30, 0],
   [31, 1],
-  [32, 1],
-  [33, 2],
-  [34, 2],
-  [35, 3],
-  [36, 3],
+  [32, 2],
+  [33, 4],
+  [34, 8],
+  [35, 16],
+  [36, 32],
 ])('getHeirloomPointByLevel - level: %s', (level, expectation) => {
   expect(getHeirloomPointByLevel(level)).toEqual(expectation);
 });
 
 it('getHeirloomPointByLevelAggregation', () => {
   expect(getHeirloomPointByLevelAggregation()).toEqual([
-    { points: 1, level: [31, 32] },
-    { points: 2, level: [33, 34] },
-    { points: 3, level: [35, 36, 37, 38] },
+    { points: 1, level: [31] },
+    { points: 2, level: [32] },
+    { points: 4, level: [33] },
+    { points: 8, level: [34] },
+    { points: 16, level: [35] },
+    { points: 32, level: [36] },
+    { points: 64, level: [37] },
+    { points: 128, level: [38] },
   ]);
 });
 
