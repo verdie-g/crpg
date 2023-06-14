@@ -54,7 +54,7 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
 
                 var reward = GiveReward(character, update.Reward);
                 UpdateStatistics(character, update.Statistics);
-                UpdateRating(character, update.Rating, _competitiveRatingModel);
+                UpdateRating(character, update.Rating);
                 var brokenItems = await RepairOrBreakItems(character, update.BrokenItems, cancellationToken);
                 results.Add((character.User!, reward, brokenItems));
             }
@@ -113,7 +113,7 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
             character.Statistics.PlayTime += statistics.PlayTime;
         }
 
-        private void UpdateRating(Character character, CharacterRatingViewModel rating, ICompetitiveRatingModel competitiveRatingModel)
+        private void UpdateRating(Character character, CharacterRatingViewModel rating)
         {
             character.Rating.Value = rating.Value;
             character.Rating.Deviation = rating.Deviation;
