@@ -33,7 +33,7 @@ internal class CrpgExperienceTable
 
         for (int lvl = 31; lvl <= _constants.MaximumLevel; lvl += 1)
         {
-            table[lvl - _constants.MinimumLevel] = table[lvl - _constants.MinimumLevel - 1] * 2;
+            table[lvl - _constants.MinimumLevel] = table[lvl - _constants.MinimumLevel - 1] * 2; // changing this require to change how much heirloompoint you get above level 31
         }
 
         return table;
