@@ -41,7 +41,7 @@ const repairCost = computed(() => computeBrokenItemRepairCost(props.item.price))
 const emit = defineEmits<{
   (e: 'sell'): void;
   (e: 'repair'): void;
-  // (e: 'upgrade'): void; // TODO:
+  (e: 'upgrade'): void;
 }>();
 
 const omitEmptyParam = (field: keyof ItemFlat) => {
@@ -65,7 +65,7 @@ const aggregationsConfig = computed(() =>
 </script>
 
 <template>
-  <article class="relative">
+  <article>
     <div class="relative mb-3">
       <img
         :src="getItemImage(props.item.id)"
@@ -74,10 +74,8 @@ const aggregationsConfig = computed(() =>
         class="pointer-events-none w-full select-none object-contain"
       />
 
-      <div
-        v-if="userItem.rank !== 0"
-        class="absolute -left-0.5 -top-0.5 z-10 cursor-default opacity-80 hover:opacity-100"
-      >
+      <!-- TODO: wut? -->
+      <div class="absolute -left-0.5 -top-0.5 z-10 cursor-default opacity-80 hover:opacity-100">
         <OIcon
           v-if="userItem.isBroken"
           icon="error"
@@ -85,6 +83,8 @@ const aggregationsConfig = computed(() =>
           class="text-status-danger"
           v-tooltip="'Item is broken'"
         />
+
+        <ItemRankIcon v-if="userItem.item.rank > 0" :rank="userItem.item.rank" />
       </div>
 
       <Tag
@@ -229,6 +229,25 @@ const aggregationsConfig = computed(() =>
           </template>
         </VTooltip>
       </ConfirmActionTooltip>
+
+      <Modal closable :autoHide="false">
+        <OButton
+          variant="secondary"
+          rounded
+          size="lg"
+          iconLeft="blacksmith"
+          v-tooltip="$t('character.inventory.item.upgrade.upgradesTitle')"
+        />
+        <template #popper>
+          <div class="container pb-4 pt-10">
+            <CharacterInventoryItemUpgrades
+              :item="item"
+              :cols="aggregationsConfig"
+              @upgrade="emit('upgrade')"
+            />
+          </div>
+        </template>
+      </Modal>
     </div>
   </article>
 </template>

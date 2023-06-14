@@ -84,7 +84,7 @@ const innerModel = computed({
           </template>
 
           <template v-else-if="aggregationConfig.view === AggregationView.Range">
-            <div class="py-3 px-8">
+            <div class="px-8 py-3">
               <SliderInput
                 v-model="innerModel"
                 :min="getMinRange(getBucketValues(scopeAggregation.buckets))"

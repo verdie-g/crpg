@@ -59,9 +59,10 @@ export const buyUserItem = async (itemId: string) =>
 export const repairUserItem = async (userItemId: number) =>
   mapUserItem(await put<UserItem>(`/users/self/items/${userItemId}/repair`));
 
-export const sellUserItem = (userItemId: number) => del(`/users/self/items/${userItemId}`);
+export const upgradeUserItem = async (userItemId: number) =>
+  mapUserItem(await put<UserItem>(`/users/self/items/${userItemId}/upgrade`));
 
-export const getItemRanks = (): UserItemRank[] => [0, 1, 2, 3];
+export const sellUserItem = (userItemId: number) => del(`/users/self/items/${userItemId}`);
 
 export const groupUserItemsByType = (items: UserItem[]) =>
   items

@@ -15,25 +15,6 @@ const props = withDefaults(
     isNew: false,
   }
 );
-
-// TODO: colors
-const rarityColor = computed(() => {
-  if (props.item.rank === 1) {
-    return '#1eff00';
-  }
-
-  if (props.item.rank === 2) {
-    return '#0070dd';
-  }
-
-  if (props.item.rank === 3) {
-    return '#a335ee';
-  }
-
-  return;
-});
-
-// computed
 </script>
 
 <template>
@@ -58,19 +39,7 @@ const rarityColor = computed(() => {
           v-tooltip="$t('character.inventory.item.broken.tooltip.title')"
         />
 
-        <!-- TODO: i18n -->
-        <OIcon
-          v-if="userItem.rank > 0"
-          icon="rare-duotone"
-          size="xs"
-          v-tooltip="'Item rarity'"
-          :style="{
-            '--fa-primary-opacity': 0.15,
-            '--fa-primary-color': '#fff',
-            '--fa-secondary-opacity': 0.75,
-            '--fa-secondary-color': rarityColor,
-          }"
-        />
+        <ItemRankIcon v-if="userItem.item.rank > 0" :rank="userItem.item.rank" />
       </div>
 
       <div class="absolute bottom-0 left-0 z-10 cursor-default opacity-80 hover:opacity-100">

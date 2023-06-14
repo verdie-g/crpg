@@ -52,6 +52,13 @@ const emit = defineEmits<{
         data-aq-character-slot-item-thumb
       />
 
+      <div class="absolute left-1.5 top-1.5 z-10 cursor-default opacity-80 hover:opacity-100">
+        <ItemRankIcon
+          v-if="userItem !== undefined && userItem.item.rank > 1"
+          :rank="userItem.item.rank"
+        />
+      </div>
+
       <div class="absolute bottom-1.5 right-1.5 z-10 cursor-default opacity-80 hover:opacity-100">
         <Tag
           v-if="notMeetRequirement"

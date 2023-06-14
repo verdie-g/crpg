@@ -196,6 +196,8 @@ const itemToFlat = (item: Item): ItemFlat => {
 
   return {
     id: item.id,
+    baseId: item.baseId,
+    rank: item.rank,
     modId: generateModId(item, weaponProps?.weaponClass ?? undefined),
     name: item.name,
     price: item.price,
