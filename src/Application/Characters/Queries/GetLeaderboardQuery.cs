@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Queries;
 
-public record GetLeaderboardQuery : IMediatorRequest<List<CharacterViewModel>>
+public record GetLeaderboardQuery : IMediatorRequest<IList<CharacterViewModel>>
 {
-    internal class Handler : IMediatorRequestHandler<GetLeaderboardQuery, List<CharacterViewModel>>
+    internal class Handler : IMediatorRequestHandler<GetLeaderboardQuery, IList<CharacterViewModel>>
     {
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
@@ -21,9 +21,9 @@ public record GetLeaderboardQuery : IMediatorRequest<List<CharacterViewModel>>
             _mapper = mapper;
         }
 
-        public async Task<Result<List<CharacterViewModel>>> Handle(GetLeaderboardQuery req, CancellationToken cancellationToken)
+        public async Task<Result<IList<CharacterViewModel>>> Handle(GetLeaderboardQuery req, CancellationToken cancellationToken)
         {
-            var characters = await _db.Characters.ToListAsync();
+            var characters = await _db.Characters.ToArrayAsync();
 
             var topCharacters = characters
                 .OrderByDescending(c => c.Rating.CompetitiveRating)
