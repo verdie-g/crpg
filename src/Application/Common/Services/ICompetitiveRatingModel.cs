@@ -4,11 +4,11 @@ using Crpg.Domain.Entities.Parties;
 namespace Crpg.Application.Common.Services;
 
 /// <summary>
-/// Service to compute the speed of a <see cref="Party"/>.
+/// Service to compute the Competitive Rating <see cref="CharacterRatingViewModel"/>.
 /// </summary>
 internal interface ICompetitiveRatingModel
 {
-    /// <summary>Compute the Party Speed.</summary>
+    /// <summary>Compute the Competitive Rating.</summary>
     float ComputeCompetitiveRating(CharacterRatingViewModel ratingViewModel);
 }
 
