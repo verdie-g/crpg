@@ -37,48 +37,6 @@ public class FileItemsSourceTest
     }
 
     [Test]
-    public async Task CheckNoConflictingNameWithModifiedItems()
-    {
-        List<string> errors = new();
-
-        var items = (await new FileItemsSource().LoadItems()).ToArray();
-        Dictionary<string, ItemCreation> itemsByName = new(StringComparer.Ordinal);
-        foreach (var item in items)
-        {
-            if (itemsByName.TryGetValue(item.Name, out var conflictingItem))
-            {
-                errors.Add($"Conflicting item name between {conflictingItem.Id} and {item.Id}");
-            }
-
-            itemsByName[item.Name] = item;
-        }
-
-        var itemModifiers = new FileItemModifiersSource().LoadItemModifiers();
-        ItemModifierService itemModifier = new(itemModifiers);
-        foreach (var item in items)
-        {
-            foreach (int rank in new[] { -3, -2, -1, 1, 2, 3 })
-            {
-                var modifiedItem = itemModifier.ModifyItem(new Item
-                {
-                    Name = item.Name,
-                    Type = item.Type,
-                    Armor = new ItemArmorComponent(),
-                    Mount = new ItemMountComponent(),
-                    PrimaryWeapon = new ItemWeaponComponent(),
-                }, rank);
-                if (itemsByName.TryGetValue(modifiedItem.Name, out var conflictingItem))
-                {
-                    errors.Add($"Conflicting item name between {conflictingItem.Id} and {item.Id} rank {rank}");
-                }
-            }
-        }
-
-        Assert.That(errors, Is.Empty,
-            "- " + string.Join($"{Environment.NewLine}- ", errors));
-    }
-
-    [Test]
     public async Task CheckNoTestItems()
     {
         var items = await new FileItemsSource().LoadItems();

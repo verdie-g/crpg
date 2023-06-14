@@ -34,7 +34,6 @@
 
   <ItemGroup>
     <Content Include="..\..\data\constants.json" Link="Common\Files\constants.json" CopyToOutputDirectory="PreserveNewest" />
-    <Content Include="..\..\data\item-modifiers.json" Link="Common\Files\item-modifiers.json" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="..\..\data\items.json" Link="Common\Files\items.json" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="..\..\data\settlements.json" Link="Common\Files\settlements.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>

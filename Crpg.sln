@@ -32,7 +32,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{5C7B1CBA-1CE0-4E05-B9B4-53EF21B17746}"
 	ProjectSection(SolutionItems) = preProject
 		data\constants.json = data\constants.json
-		data\item-modifiers.json = data\item-modifiers.json
 		data\items.json = data\items.json
 		data\settlements.json = data\settlements.json
 	EndProjectSection
