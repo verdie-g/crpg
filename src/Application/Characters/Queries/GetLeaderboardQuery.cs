@@ -23,15 +23,13 @@ public record GetLeaderboardQuery : IMediatorRequest<IList<CharacterViewModel>>
 
         public async Task<Result<IList<CharacterViewModel>>> Handle(GetLeaderboardQuery req, CancellationToken cancellationToken)
         {
-            var characters = await _db.Characters.ToArrayAsync();
-
-            var topCharacters = characters
+            var topCharacters = await _db.Characters
                 .OrderByDescending(c => c.Rating.CompetitiveRating)
                 .Take(50)
                 .Select(c => _mapper.Map<CharacterViewModel>(c))
-                .ToList();
+                .ToArrayAsync();
 
-            return new(topCharacters);
+            return new(topCharacters.ToList());
         }
     }
 }
