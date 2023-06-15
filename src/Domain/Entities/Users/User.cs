@@ -19,6 +19,7 @@ public class User : AuditableEntity
     public string Name { get; set; } = string.Empty;
     public int Gold { get; set; }
     public int HeirloomPoints { get; set; }
+    public int Generation { get; set; }
 
     /// <summary>Experience multiplier given my retiring.</summary>
     public float ExperienceMultiplier { get; set; }

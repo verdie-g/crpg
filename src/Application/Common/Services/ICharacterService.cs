@@ -95,7 +95,7 @@ internal class CharacterService : ICharacterService
         character.User.ExperienceMultiplier = Math.Min(
             character.User.ExperienceMultiplier + _constants.ExperienceMultiplierByGeneration,
             _constants.MaxExperienceMultiplierForGeneration);
-
+        character.User.Generation += 1;
         character.Generation += 1;
         character.Level = _constants.MinimumLevel;
         character.Experience = 0;

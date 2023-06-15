@@ -16,6 +16,7 @@ public record GameUserViewModel : IMapFrom<User>
     public string Name { get; init; } = string.Empty;
     public int Gold { get; init; }
     public int HeirloomPoints { get; set; }
+    public int Generation { get; set; }
     public float ExperienceMultiplier { get; init; }
     public Role Role { get; set; }
     public Region? Region { get; set; }

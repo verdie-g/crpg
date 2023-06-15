@@ -977,6 +977,10 @@ namespace Crpg.Persistence.Migrations
                         .HasColumnType("real")
                         .HasColumnName("experience_multiplier");
 
+                    b.Property<int>("Generation")
+                        .HasColumnType("integer")
+                        .HasColumnName("generation");
+
                     b.Property<int>("Gold")
                         .HasColumnType("integer")
                         .HasColumnName("gold");
