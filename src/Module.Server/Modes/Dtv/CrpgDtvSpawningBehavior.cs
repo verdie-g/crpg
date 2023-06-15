@@ -13,8 +13,6 @@ namespace Crpg.Module.Modes.Dtv;
 
 internal class CrpgDtvSpawningBehavior : CrpgSpawningBehaviorBase
 {
-    public bool BotsSpawned { get; set; }
-
     private const float TotalSpawnDuration = 15f;
     private readonly MultiplayerRoundController _roundController;
     private readonly HashSet<PlayerId> _notifiedPlayersAboutSpawnRestriction;
@@ -52,14 +50,16 @@ internal class CrpgDtvSpawningBehavior : CrpgSpawningBehaviorBase
             _viscountSpawned = true;
         }
 
-        SpawnAgents();
+        if (_spawnTimer != null && !_spawnTimer.Check())
+        {
+            SpawnAgents();
+        }
     }
 
     public override void RequestStartSpawnSession()
     {
         base.RequestStartSpawnSession();
         _viscountSpawned = false;
-        BotsSpawned = false;
         _spawnTimer = new MissionTimer(TotalSpawnDuration); // Limit spawning within timer
         _cavalrySpawnDelayTimer = new MissionTimer(GetCavalrySpawnDelay()); // Cav will spawn X seconds later.
         _notifiedPlayersAboutSpawnRestriction.Clear();
