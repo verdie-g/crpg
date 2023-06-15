@@ -1,236 +1,938 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Items>
-  <Item id="crpg_battania_fur_boots" name="{=jVK5B86k}Fur Boots" mesh="battania_fur_boot_a" culture="Culture.battania" weight="0.1396242" appearance="1" Type="LegArmor" difficulty="0">
+  <Item id="crpg_wrapped_shoes_h0" name="{=4YxbZlbi}Wrapped Shoes" mesh="wrapped_shoes" culture="Culture.aserai" weight="0.06729711" appearance="1" Type="LegArmor">
     <ItemComponent>
-      <Armor leg_armor="6" covers_legs="true" modifier_group="leather" material_type="Leather" />
+      <Armor leg_armor="4" covers_legs="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_battania_leather_boots" name="{=4Ygp7P0Y}Highborn Leather Boots" mesh="battania_leather_boots_a" culture="Culture.battania" weight="0.1005621" appearance="1" Type="LegArmor" difficulty="0">
-    <ItemComponent>
-      <Armor leg_armor="5" covers_legs="true" modifier_group="leather" material_type="Leather" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_battania_warlord_boots" name="{=UuWPfE1x}Scaled Boots" mesh="battania_warlord_boots" culture="Culture.battania" weight="1.955422" appearance="3" Type="LegArmor" difficulty="0">
-    <ItemComponent>
-      <Armor leg_armor="26" covers_legs="true" modifier_group="plate" material_type="Plate" />
-    </ItemComponent>
-    <Flags />
-  </Item>
-  <Item id="crpg_battania_woodland_boots" name="{=L7qYlJqn}Woodland Boots" mesh="battania_woodland_boots" culture="Culture.battania" weight="0.1396242" appearance="1" Type="LegArmor" difficulty="0">
-    <ItemComponent>
-      <Armor leg_armor="6" covers_legs="true" modifier_group="leather" material_type="Leather" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_belted_leather_boots" name="{=bFm9jOft}Belted Leather Boots" mesh="bandit_11_boots" culture="Culture.battania" weight="0.1005621" appearance="1" Type="LegArmor">
-    <ItemComponent>
-      <Armor leg_armor="5" covers_legs="false" modifier_group="leather" material_type="Leather" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_decorated_imperial_boots" name="{=XXGZLTN6}Decorated Plate Boots" mesh="empire_plate_armor_boots" culture="Culture.empire" weight="1.219389" appearance="3" Type="LegArmor">
-    <ItemComponent>
-      <Armor leg_armor="20" covers_legs="true" modifier_group="plate" material_type="Plate" />
-    </ItemComponent>
-    <Flags />
-  </Item>
-  <Item id="crpg_eastern_leather_boots" name="{=Ga5mCiLp}Leather Riding Boots" mesh="plated_leather_armor_boot" culture="Culture.khuzait" weight="0.1396242" appearance="1" Type="LegArmor">
-    <ItemComponent>
-      <Armor leg_armor="6" covers_legs="true" modifier_group="leather" material_type="Leather" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_empire_horseman_boots" name="{=uvSXUgT8}Horseman Boots" mesh="empire_horseman_boots" culture="Culture.empire" weight="0.1005621" appearance="1.3" Type="LegArmor" difficulty="0">
-    <ItemComponent>
-      <Armor leg_armor="5" covers_legs="true" modifier_group="leather" material_type="Leather" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_fine_town_boots" name="{=uUGAMReu}Fine Town Boots" mesh="casual_02_boots" culture="Culture.empire" weight="0.06729711" appearance="2" Type="LegArmor">
-    <ItemComponent>
-      <Armor leg_armor="4" covers_legs="true" modifier_group="leather" material_type="Leather" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_folded_town_boots" name="{=oH8iFEv7}Folded Town Boots" mesh="casual_01_boots" culture="Culture.empire" weight="0.06729711" appearance="1" Type="LegArmor">
-    <ItemComponent>
-      <Armor leg_armor="4" covers_legs="true" modifier_group="leather" material_type="Leather" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_highland_boots" name="{=FQqaVHq2}Forester Boots" mesh="pict_armor_boot" culture="Culture.battania" weight="0.1005621" appearance="1" Type="LegArmor" difficulty="0">
-    <ItemComponent>
-      <Armor leg_armor="5" covers_legs="true" modifier_group="leather" material_type="Leather" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_highland_leg_wrappings" name="{=xqE9aycc}Woodland Leg Wrappings" mesh="battania_boot_a" culture="Culture.battania" weight="0.2343422" appearance="1" Type="LegArmor" difficulty="0">
-    <ItemComponent>
-      <Armor leg_armor="8" covers_legs="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_khuzait_curved_boots" name="{=D9JrTpwU}Curved Boots" mesh="khuzait_leather_boots" culture="Culture.khuzait" weight="0.1005621" appearance="1" Type="LegArmor">
-    <ItemComponent>
-      <Armor leg_armor="5" covers_legs="true" modifier_group="leather" material_type="Leather" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_ladys_shoe" name="{=RU2EppgI}Ladies Shoes" mesh="woman_shoe_a" culture="Culture.neutral_culture" weight="0.005549942" appearance="1" Type="LegArmor">
-    <ItemComponent>
-      <Armor leg_armor="1" covers_legs="false" modifier_group="cloth_unarmoured" material_type="Cloth" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_lamellar_plate_boots" name="{=9cHyHQ7a}Lamellar Plate Boots" mesh="imperial_boots" culture="Culture.empire" weight="1.111847" appearance="3" Type="LegArmor" difficulty="0">
-    <ItemComponent>
-      <Armor leg_armor="19" covers_legs="true" modifier_group="plate" material_type="Plate" />
-    </ItemComponent>
-    <Flags />
-  </Item>
-  <Item id="crpg_leather_boots" name="{=IOOTPpYj}Fur Rimmed Curved Boots" mesh="boot_f" culture="Culture.khuzait" weight="0.06729711" appearance="1" Type="LegArmor" difficulty="0">
-    <ItemComponent>
-      <Armor leg_armor="4" covers_legs="true" modifier_group="leather" material_type="Leather" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_leather_cavalier_boots" name="{=oEvhhNNR}Leather Cavalier Boots" mesh="cav_boots" culture="Culture.vlandia" weight="0.1396242" appearance="1" Type="LegArmor">
-    <ItemComponent>
-      <Armor leg_armor="6" covers_legs="true" modifier_group="leather" material_type="Leather" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_leather_shoes" name="{=Kgnm0FkE}Leather Shoes" mesh="boot_e" culture="Culture.neutral_culture" weight="0.04009653" appearance="0.3" Type="LegArmor" difficulty="0">
-    <ItemComponent>
-      <Armor leg_armor="3" covers_legs="true" modifier_group="leather" material_type="Leather" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_mail_cavalier_boots" name="{=tWfAPrPa}Mail Cavalier Boots" mesh="cav_boots_reinforced" culture="Culture.vlandia" weight="0.4861997" appearance="1" Type="LegArmor" difficulty="0">
-    <ItemComponent>
-      <Armor leg_armor="12" covers_legs="true" modifier_group="chain" material_type="Chainmail" />
-    </ItemComponent>
-    <Flags />
-  </Item>
-  <Item id="crpg_mail_chausses" name="{=DoiwC1Qa}Mail Chausses" mesh="mail_chausses_a" culture="Culture.vlandia" weight="1.447602" appearance="1.6" Type="LegArmor">
-    <ItemComponent>
-      <Armor leg_armor="22" covers_legs="true" modifier_group="chain" material_type="Chainmail" />
-    </ItemComponent>
-    <Flags />
-  </Item>
-  <Item id="crpg_northern_plated_boots" name="{=18ZFPXsO}Huscarl Plated Boots" mesh="sturgia_plate_boot" culture="Culture.sturgia" weight="1.008739" appearance="3" Type="LegArmor">
-    <ItemComponent>
-      <Armor leg_armor="18" covers_legs="true" modifier_group="plate" material_type="Plate" />
-    </ItemComponent>
-    <Flags />
-  </Item>
-  <Item id="crpg_plated_strip_boots" name="{=Fb7PrJuc}Splint Boots" mesh="empire_plated_boots" culture="Culture.empire" weight="1.447602" appearance="2" Type="LegArmor">
-    <ItemComponent>
-      <Armor leg_armor="22" covers_legs="true" modifier_group="plate" material_type="Plate" />
-    </ItemComponent>
-    <Flags />
-  </Item>
-  <Item id="crpg_ragged_boots" name="{=Szuxa9Bs}Ragged Boots" mesh="sneak_costume_foot" culture="Culture.neutral_culture" weight="0.1005621" appearance="0.3" Type="LegArmor" difficulty="0">
+  <Item id="crpg_wrapped_shoes_h1" name="{=4YxbZlbi}Wrapped Shoes +1" mesh="wrapped_shoes" culture="Culture.aserai" weight="0.06729711" appearance="1" Type="LegArmor">
     <ItemComponent>
       <Armor leg_armor="5" covers_legs="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_reinforced_suede_boots" name="{=9Eyd2qGo}Reinforced Suede Boots" mesh="khuzait_suede_leather_foot" culture="Culture.khuzait" weight="1.219389" appearance="1" Type="LegArmor" difficulty="0">
+  <Item id="crpg_wrapped_shoes_h2" name="{=4YxbZlbi}Wrapped Shoes +2" mesh="wrapped_shoes" culture="Culture.aserai" weight="0.06729711" appearance="1" Type="LegArmor">
     <ItemComponent>
-      <Armor leg_armor="20" covers_legs="true" modifier_group="leather" material_type="Leather" />
+      <Armor leg_armor="7" covers_legs="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_rough_tied_boots" name="{=Oo0baNaq}Rough Tied Boots" mesh="bandit_3_boot" culture="Culture.battania" weight="0.1396242" appearance="1" Type="LegArmor">
+  <Item id="crpg_wrapped_shoes_h3" name="{=4YxbZlbi}Wrapped Shoes +3" mesh="wrapped_shoes" culture="Culture.aserai" weight="0.06729711" appearance="1" Type="LegArmor">
     <ItemComponent>
-      <Armor leg_armor="6" covers_legs="true" modifier_group="leather" material_type="Leather" />
+      <Armor leg_armor="9" covers_legs="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_sa_1ChurburghBoots" name="Plate Boots" mesh="sa_1churburghboots" culture="Culture.vlandia" weight="2.529919" appearance="1" Type="LegArmor" difficulty="0">
-    <ItemComponent>
-      <Armor leg_armor="30" covers_legs="true" modifier_group="plate" material_type="Plate" />
-    </ItemComponent>
-    <Flags />
-  </Item>
-  <Item id="crpg_southern_moccasins" name="{=SxqSJK8h}Moccasins" mesh="aserai_female_costume_shoe" culture="Culture.aserai" weight="0.01932602" appearance="1" Type="LegArmor">
-    <ItemComponent>
-      <Armor leg_armor="2" covers_legs="false" modifier_group="cloth_unarmoured" material_type="Cloth" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_steppe_leather_boots" name="{=VpxHysbZ}Sturdy Leather Boots" mesh="khuzait_leather_armor_foot" culture="Culture.khuzait" weight="0.06729711" appearance="1" Type="LegArmor" difficulty="0">
-    <ItemComponent>
-      <Armor leg_armor="4" covers_legs="true" modifier_group="leather" material_type="Leather" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_strapped_leather_boots" name="{=tMwsE9IR}Strapped Leather Boots" mesh="boot_g" culture="Culture.empire" weight="0.1005621" appearance="1" Type="LegArmor" difficulty="0">
-    <ItemComponent>
-      <Armor leg_armor="5" covers_legs="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_strapped_mail_chausses" name="{=aYoIrpe0}Strapped Mail Chausses" mesh="mail_chausses_b" culture="Culture.vlandia" weight="1.568189" appearance="1.6" Type="LegArmor" difficulty="0">
-    <ItemComponent>
-      <Armor leg_armor="23" covers_legs="true" modifier_group="chain" material_type="Chainmail" />
-    </ItemComponent>
-    <Flags />
-  </Item>
-  <Item id="crpg_strapped_shoes" name="{=LOPavWRp}Strapped Shoes" mesh="strapped_shoes" culture="Culture.neutral_culture" weight="0.1005621" appearance="1" Type="LegArmor" difficulty="0">
-    <ItemComponent>
-      <Armor leg_armor="5" covers_legs="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_sturgia_boots_a" name="{=DhHBBpPf}Simple Leather Boots" mesh="sturgia_boots_a" culture="Culture.sturgia" weight="0.1005621" appearance="1" Type="LegArmor">
-    <ItemComponent>
-      <Armor leg_armor="5" covers_legs="true" modifier_group="leather" material_type="Leather" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_sturgia_boots_b" name="{=6QNQosHv}Tied Leather Boots" mesh="sturgia_boots_b" culture="Culture.sturgia" weight="0.1396242" appearance="1" Type="LegArmor">
-    <ItemComponent>
-      <Armor leg_armor="6" covers_legs="true" modifier_group="leather" material_type="Leather" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_sturgia_boots_c" name="{=4KZekKff}Tied Boots" mesh="sturgia_boots_c" culture="Culture.sturgia" weight="0.06729711" appearance="1" Type="LegArmor">
-    <ItemComponent>
-      <Armor leg_armor="4" covers_legs="true" modifier_group="leather" material_type="Leather" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_sturgia_boots_d" name="{=FptcHNb9}Wrapped Boots" mesh="sturgia_boots_d" culture="Culture.sturgia" weight="0.04009653" appearance="1" Type="LegArmor">
-    <ItemComponent>
-      <Armor leg_armor="3" covers_legs="true" modifier_group="leather" material_type="Leather" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_turndown_leather_boots" name="{=xwWYJb5A}Folded Leather Boots" mesh="sea_raider_leather_boot" culture="Culture.battania" weight="0.2896843" appearance="1" Type="LegArmor">
-    <ItemComponent>
-      <Armor leg_armor="9" covers_legs="true" modifier_group="leather" material_type="Leather" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_woven_leather_boots" name="{=J00AF9Qv}Woven Leather Boots" mesh="bandit_10_boots" culture="Culture.khuzait" weight="0.1005621" appearance="1" Type="LegArmor">
-    <ItemComponent>
-      <Armor leg_armor="5" covers_legs="true" modifier_group="leather" material_type="Leather" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_wrapped_leather_boots" name="{=WahziEXA}Wrapped Leather Boots" mesh="bandit_leather_boots" culture="Culture.battania" weight="0.1842743" appearance="1" Type="LegArmor">
+  <Item id="crpg_wrapped_leather_boots_h0" name="{=WahziEXA}Wrapped Leather Boots" mesh="bandit_leather_boots" culture="Culture.battania" weight="0.1842743" appearance="1" Type="LegArmor">
     <ItemComponent>
       <Armor leg_armor="7" covers_legs="true" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_wrapped_shoes" name="{=4YxbZlbi}Wrapped Shoes" mesh="wrapped_shoes" culture="Culture.aserai" weight="0.06729711" appearance="1" Type="LegArmor">
+  <Item id="crpg_wrapped_leather_boots_h1" name="{=WahziEXA}Wrapped Leather Boots +1" mesh="bandit_leather_boots" culture="Culture.battania" weight="0.1842743" appearance="1" Type="LegArmor">
     <ItemComponent>
-      <Armor leg_armor="4" covers_legs="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
+      <Armor leg_armor="8" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_wrapped_leather_boots_h2" name="{=WahziEXA}Wrapped Leather Boots +2" mesh="bandit_leather_boots" culture="Culture.battania" weight="0.1842743" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="10" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_wrapped_leather_boots_h3" name="{=WahziEXA}Wrapped Leather Boots +3" mesh="bandit_leather_boots" culture="Culture.battania" weight="0.1842743" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="12" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_woven_leather_boots_h0" name="{=J00AF9Qv}Woven Leather Boots" mesh="bandit_10_boots" culture="Culture.khuzait" weight="0.1005621" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="5" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_woven_leather_boots_h1" name="{=J00AF9Qv}Woven Leather Boots +1" mesh="bandit_10_boots" culture="Culture.khuzait" weight="0.1005621" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="6" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_woven_leather_boots_h2" name="{=J00AF9Qv}Woven Leather Boots +2" mesh="bandit_10_boots" culture="Culture.khuzait" weight="0.1005621" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="8" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_woven_leather_boots_h3" name="{=J00AF9Qv}Woven Leather Boots +3" mesh="bandit_10_boots" culture="Culture.khuzait" weight="0.1005621" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="10" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_turndown_leather_boots_h0" name="{=xwWYJb5A}Folded Leather Boots" mesh="sea_raider_leather_boot" culture="Culture.battania" weight="0.2896843" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="9" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_turndown_leather_boots_h1" name="{=xwWYJb5A}Folded Leather Boots +1" mesh="sea_raider_leather_boot" culture="Culture.battania" weight="0.2896843" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="10" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_turndown_leather_boots_h2" name="{=xwWYJb5A}Folded Leather Boots +2" mesh="sea_raider_leather_boot" culture="Culture.battania" weight="0.2896843" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="12" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_turndown_leather_boots_h3" name="{=xwWYJb5A}Folded Leather Boots +3" mesh="sea_raider_leather_boot" culture="Culture.battania" weight="0.2896843" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="14" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_sturgia_boots_d_h0" name="{=FptcHNb9}Wrapped Boots" mesh="sturgia_boots_d" culture="Culture.sturgia" weight="0.04009653" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="3" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_sturgia_boots_d_h1" name="{=FptcHNb9}Wrapped Boots +1" mesh="sturgia_boots_d" culture="Culture.sturgia" weight="0.04009653" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="4" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_sturgia_boots_d_h2" name="{=FptcHNb9}Wrapped Boots +2" mesh="sturgia_boots_d" culture="Culture.sturgia" weight="0.04009653" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="6" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_sturgia_boots_d_h3" name="{=FptcHNb9}Wrapped Boots +3" mesh="sturgia_boots_d" culture="Culture.sturgia" weight="0.04009653" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="8" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_sturgia_boots_c_h0" name="{=4KZekKff}Tied Boots" mesh="sturgia_boots_c" culture="Culture.sturgia" weight="0.06729711" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="4" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_sturgia_boots_c_h1" name="{=4KZekKff}Tied Boots +1" mesh="sturgia_boots_c" culture="Culture.sturgia" weight="0.06729711" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="5" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_sturgia_boots_c_h2" name="{=4KZekKff}Tied Boots +2" mesh="sturgia_boots_c" culture="Culture.sturgia" weight="0.06729711" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="7" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_sturgia_boots_c_h3" name="{=4KZekKff}Tied Boots +3" mesh="sturgia_boots_c" culture="Culture.sturgia" weight="0.06729711" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="9" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_sturgia_boots_b_h0" name="{=6QNQosHv}Tied Leather Boots" mesh="sturgia_boots_b" culture="Culture.sturgia" weight="0.1396242" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="6" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_sturgia_boots_b_h1" name="{=6QNQosHv}Tied Leather Boots +1" mesh="sturgia_boots_b" culture="Culture.sturgia" weight="0.1396242" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="7" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_sturgia_boots_b_h2" name="{=6QNQosHv}Tied Leather Boots +2" mesh="sturgia_boots_b" culture="Culture.sturgia" weight="0.1396242" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="9" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_sturgia_boots_b_h3" name="{=6QNQosHv}Tied Leather Boots +3" mesh="sturgia_boots_b" culture="Culture.sturgia" weight="0.1396242" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="11" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_sturgia_boots_a_h0" name="{=DhHBBpPf}Simple Leather Boots" mesh="sturgia_boots_a" culture="Culture.sturgia" weight="0.1005621" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="5" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_sturgia_boots_a_h1" name="{=DhHBBpPf}Simple Leather Boots +1" mesh="sturgia_boots_a" culture="Culture.sturgia" weight="0.1005621" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="6" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_sturgia_boots_a_h2" name="{=DhHBBpPf}Simple Leather Boots +2" mesh="sturgia_boots_a" culture="Culture.sturgia" weight="0.1005621" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="8" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_sturgia_boots_a_h3" name="{=DhHBBpPf}Simple Leather Boots +3" mesh="sturgia_boots_a" culture="Culture.sturgia" weight="0.1005621" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="10" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_strapped_shoes_h0" name="{=LOPavWRp}Strapped Shoes" mesh="strapped_shoes" culture="Culture.neutral_culture" weight="0.1005621" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="5" covers_legs="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_strapped_shoes_h1" name="{=LOPavWRp}Strapped Shoes +1" mesh="strapped_shoes" culture="Culture.neutral_culture" weight="0.1005621" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="6" covers_legs="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_strapped_shoes_h2" name="{=LOPavWRp}Strapped Shoes +2" mesh="strapped_shoes" culture="Culture.neutral_culture" weight="0.1005621" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="8" covers_legs="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_strapped_shoes_h3" name="{=LOPavWRp}Strapped Shoes +3" mesh="strapped_shoes" culture="Culture.neutral_culture" weight="0.1005621" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="10" covers_legs="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_strapped_mail_chausses_h0" name="{=aYoIrpe0}Strapped Mail Chausses" mesh="mail_chausses_b" culture="Culture.vlandia" weight="1.568189" appearance="1.6" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="23" covers_legs="true" modifier_group="chain" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_strapped_mail_chausses_h1" name="{=aYoIrpe0}Strapped Mail Chausses +1" mesh="mail_chausses_b" culture="Culture.vlandia" weight="1.568189" appearance="1.6" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="24" covers_legs="true" modifier_group="chain" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_strapped_mail_chausses_h2" name="{=aYoIrpe0}Strapped Mail Chausses +2" mesh="mail_chausses_b" culture="Culture.vlandia" weight="1.568189" appearance="1.6" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="26" covers_legs="true" modifier_group="chain" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_strapped_mail_chausses_h3" name="{=aYoIrpe0}Strapped Mail Chausses +3" mesh="mail_chausses_b" culture="Culture.vlandia" weight="1.568189" appearance="1.6" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="28" covers_legs="true" modifier_group="chain" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_strapped_leather_boots_h0" name="{=tMwsE9IR}Strapped Leather Boots" mesh="boot_g" culture="Culture.empire" weight="0.1005621" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="5" covers_legs="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_strapped_leather_boots_h1" name="{=tMwsE9IR}Strapped Leather Boots +1" mesh="boot_g" culture="Culture.empire" weight="0.1005621" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="6" covers_legs="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_strapped_leather_boots_h2" name="{=tMwsE9IR}Strapped Leather Boots +2" mesh="boot_g" culture="Culture.empire" weight="0.1005621" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="8" covers_legs="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_strapped_leather_boots_h3" name="{=tMwsE9IR}Strapped Leather Boots +3" mesh="boot_g" culture="Culture.empire" weight="0.1005621" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="10" covers_legs="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_steppe_leather_boots_h0" name="{=VpxHysbZ}Sturdy Leather Boots" mesh="khuzait_leather_armor_foot" culture="Culture.khuzait" weight="0.06729711" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="4" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_steppe_leather_boots_h1" name="{=VpxHysbZ}Sturdy Leather Boots +1" mesh="khuzait_leather_armor_foot" culture="Culture.khuzait" weight="0.06729711" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="5" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_steppe_leather_boots_h2" name="{=VpxHysbZ}Sturdy Leather Boots +2" mesh="khuzait_leather_armor_foot" culture="Culture.khuzait" weight="0.06729711" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="7" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_steppe_leather_boots_h3" name="{=VpxHysbZ}Sturdy Leather Boots +3" mesh="khuzait_leather_armor_foot" culture="Culture.khuzait" weight="0.06729711" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="9" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_southern_moccasins_h0" name="{=SxqSJK8h}Moccasins" mesh="aserai_female_costume_shoe" culture="Culture.aserai" weight="0.01932602" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="2" covers_legs="false" modifier_group="cloth_unarmoured" material_type="Cloth" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_southern_moccasins_h1" name="{=SxqSJK8h}Moccasins +1" mesh="aserai_female_costume_shoe" culture="Culture.aserai" weight="0.01932602" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="3" covers_legs="false" modifier_group="cloth_unarmoured" material_type="Cloth" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_southern_moccasins_h2" name="{=SxqSJK8h}Moccasins +2" mesh="aserai_female_costume_shoe" culture="Culture.aserai" weight="0.01932602" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="5" covers_legs="false" modifier_group="cloth_unarmoured" material_type="Cloth" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_southern_moccasins_h3" name="{=SxqSJK8h}Moccasins +3" mesh="aserai_female_costume_shoe" culture="Culture.aserai" weight="0.01932602" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="7" covers_legs="false" modifier_group="cloth_unarmoured" material_type="Cloth" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_sa_1ChurburghBoots_h0" name="Plate Boots" mesh="sa_1churburghboots" culture="Culture.vlandia" weight="2.529919" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="30" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_sa_1ChurburghBoots_h1" name="Plate Boots +1" mesh="sa_1churburghboots" culture="Culture.vlandia" weight="2.529919" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="31" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_sa_1ChurburghBoots_h2" name="Plate Boots +2" mesh="sa_1churburghboots" culture="Culture.vlandia" weight="2.529919" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="33" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_sa_1ChurburghBoots_h3" name="Plate Boots +3" mesh="sa_1churburghboots" culture="Culture.vlandia" weight="2.529919" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="35" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_rough_tied_boots_h0" name="{=Oo0baNaq}Rough Tied Boots" mesh="bandit_3_boot" culture="Culture.battania" weight="0.1396242" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="6" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_rough_tied_boots_h1" name="{=Oo0baNaq}Rough Tied Boots +1" mesh="bandit_3_boot" culture="Culture.battania" weight="0.1396242" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="7" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_rough_tied_boots_h2" name="{=Oo0baNaq}Rough Tied Boots +2" mesh="bandit_3_boot" culture="Culture.battania" weight="0.1396242" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="9" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_rough_tied_boots_h3" name="{=Oo0baNaq}Rough Tied Boots +3" mesh="bandit_3_boot" culture="Culture.battania" weight="0.1396242" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="11" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_reinforced_suede_boots_h0" name="{=9Eyd2qGo}Reinforced Suede Boots" mesh="khuzait_suede_leather_foot" culture="Culture.khuzait" weight="1.219389" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="20" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_reinforced_suede_boots_h1" name="{=9Eyd2qGo}Reinforced Suede Boots +1" mesh="khuzait_suede_leather_foot" culture="Culture.khuzait" weight="1.219389" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="21" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_reinforced_suede_boots_h2" name="{=9Eyd2qGo}Reinforced Suede Boots +2" mesh="khuzait_suede_leather_foot" culture="Culture.khuzait" weight="1.219389" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="23" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_reinforced_suede_boots_h3" name="{=9Eyd2qGo}Reinforced Suede Boots +3" mesh="khuzait_suede_leather_foot" culture="Culture.khuzait" weight="1.219389" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="25" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_ragged_boots_h0" name="{=Szuxa9Bs}Ragged Boots" mesh="sneak_costume_foot" culture="Culture.neutral_culture" weight="0.1005621" appearance="0.3" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="5" covers_legs="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_ragged_boots_h1" name="{=Szuxa9Bs}Ragged Boots +1" mesh="sneak_costume_foot" culture="Culture.neutral_culture" weight="0.1005621" appearance="0.3" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="6" covers_legs="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_ragged_boots_h2" name="{=Szuxa9Bs}Ragged Boots +2" mesh="sneak_costume_foot" culture="Culture.neutral_culture" weight="0.1005621" appearance="0.3" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="8" covers_legs="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_ragged_boots_h3" name="{=Szuxa9Bs}Ragged Boots +3" mesh="sneak_costume_foot" culture="Culture.neutral_culture" weight="0.1005621" appearance="0.3" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="10" covers_legs="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_plated_strip_boots_h0" name="{=Fb7PrJuc}Splint Boots" mesh="empire_plated_boots" culture="Culture.empire" weight="1.447602" appearance="2" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="22" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_plated_strip_boots_h1" name="{=Fb7PrJuc}Splint Boots +1" mesh="empire_plated_boots" culture="Culture.empire" weight="1.447602" appearance="2" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="23" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_plated_strip_boots_h2" name="{=Fb7PrJuc}Splint Boots +2" mesh="empire_plated_boots" culture="Culture.empire" weight="1.447602" appearance="2" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="25" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_plated_strip_boots_h3" name="{=Fb7PrJuc}Splint Boots +3" mesh="empire_plated_boots" culture="Culture.empire" weight="1.447602" appearance="2" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="27" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_northern_plated_boots_h0" name="{=18ZFPXsO}Huscarl Plated Boots" mesh="sturgia_plate_boot" culture="Culture.sturgia" weight="1.008739" appearance="3" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="18" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_northern_plated_boots_h1" name="{=18ZFPXsO}Huscarl Plated Boots +1" mesh="sturgia_plate_boot" culture="Culture.sturgia" weight="1.008739" appearance="3" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="19" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_northern_plated_boots_h2" name="{=18ZFPXsO}Huscarl Plated Boots +2" mesh="sturgia_plate_boot" culture="Culture.sturgia" weight="1.008739" appearance="3" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="21" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_northern_plated_boots_h3" name="{=18ZFPXsO}Huscarl Plated Boots +3" mesh="sturgia_plate_boot" culture="Culture.sturgia" weight="1.008739" appearance="3" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="23" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_mail_chausses_h0" name="{=DoiwC1Qa}Mail Chausses" mesh="mail_chausses_a" culture="Culture.vlandia" weight="1.447602" appearance="1.6" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="22" covers_legs="true" modifier_group="chain" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_mail_chausses_h1" name="{=DoiwC1Qa}Mail Chausses +1" mesh="mail_chausses_a" culture="Culture.vlandia" weight="1.447602" appearance="1.6" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="23" covers_legs="true" modifier_group="chain" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_mail_chausses_h2" name="{=DoiwC1Qa}Mail Chausses +2" mesh="mail_chausses_a" culture="Culture.vlandia" weight="1.447602" appearance="1.6" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="25" covers_legs="true" modifier_group="chain" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_mail_chausses_h3" name="{=DoiwC1Qa}Mail Chausses +3" mesh="mail_chausses_a" culture="Culture.vlandia" weight="1.447602" appearance="1.6" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="27" covers_legs="true" modifier_group="chain" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_mail_cavalier_boots_h0" name="{=tWfAPrPa}Mail Cavalier Boots" mesh="cav_boots_reinforced" culture="Culture.vlandia" weight="0.4861997" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="12" covers_legs="true" modifier_group="chain" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_mail_cavalier_boots_h1" name="{=tWfAPrPa}Mail Cavalier Boots +1" mesh="cav_boots_reinforced" culture="Culture.vlandia" weight="0.4861997" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="13" covers_legs="true" modifier_group="chain" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_mail_cavalier_boots_h2" name="{=tWfAPrPa}Mail Cavalier Boots +2" mesh="cav_boots_reinforced" culture="Culture.vlandia" weight="0.4861997" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="15" covers_legs="true" modifier_group="chain" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_mail_cavalier_boots_h3" name="{=tWfAPrPa}Mail Cavalier Boots +3" mesh="cav_boots_reinforced" culture="Culture.vlandia" weight="0.4861997" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="17" covers_legs="true" modifier_group="chain" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_leather_shoes_h0" name="{=Kgnm0FkE}Leather Shoes" mesh="boot_e" culture="Culture.neutral_culture" weight="0.04009653" appearance="0.3" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="3" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_leather_shoes_h1" name="{=Kgnm0FkE}Leather Shoes +1" mesh="boot_e" culture="Culture.neutral_culture" weight="0.04009653" appearance="0.3" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="4" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_leather_shoes_h2" name="{=Kgnm0FkE}Leather Shoes +2" mesh="boot_e" culture="Culture.neutral_culture" weight="0.04009653" appearance="0.3" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="6" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_leather_shoes_h3" name="{=Kgnm0FkE}Leather Shoes +3" mesh="boot_e" culture="Culture.neutral_culture" weight="0.04009653" appearance="0.3" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="8" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_leather_cavalier_boots_h0" name="{=oEvhhNNR}Leather Cavalier Boots" mesh="cav_boots" culture="Culture.vlandia" weight="0.1396242" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="6" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_leather_cavalier_boots_h1" name="{=oEvhhNNR}Leather Cavalier Boots +1" mesh="cav_boots" culture="Culture.vlandia" weight="0.1396242" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="7" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_leather_cavalier_boots_h2" name="{=oEvhhNNR}Leather Cavalier Boots +2" mesh="cav_boots" culture="Culture.vlandia" weight="0.1396242" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="9" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_leather_cavalier_boots_h3" name="{=oEvhhNNR}Leather Cavalier Boots +3" mesh="cav_boots" culture="Culture.vlandia" weight="0.1396242" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="11" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_leather_boots_h0" name="{=IOOTPpYj}Fur Rimmed Curved Boots" mesh="boot_f" culture="Culture.khuzait" weight="0.06729711" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="4" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_leather_boots_h1" name="{=IOOTPpYj}Fur Rimmed Curved Boots +1" mesh="boot_f" culture="Culture.khuzait" weight="0.06729711" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="5" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_leather_boots_h2" name="{=IOOTPpYj}Fur Rimmed Curved Boots +2" mesh="boot_f" culture="Culture.khuzait" weight="0.06729711" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="7" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_leather_boots_h3" name="{=IOOTPpYj}Fur Rimmed Curved Boots +3" mesh="boot_f" culture="Culture.khuzait" weight="0.06729711" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="9" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_lamellar_plate_boots_h0" name="{=9cHyHQ7a}Lamellar Plate Boots" mesh="imperial_boots" culture="Culture.empire" weight="1.111847" appearance="3" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="19" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_lamellar_plate_boots_h1" name="{=9cHyHQ7a}Lamellar Plate Boots +1" mesh="imperial_boots" culture="Culture.empire" weight="1.111847" appearance="3" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="20" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_lamellar_plate_boots_h2" name="{=9cHyHQ7a}Lamellar Plate Boots +2" mesh="imperial_boots" culture="Culture.empire" weight="1.111847" appearance="3" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="22" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_lamellar_plate_boots_h3" name="{=9cHyHQ7a}Lamellar Plate Boots +3" mesh="imperial_boots" culture="Culture.empire" weight="1.111847" appearance="3" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="24" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_ladys_shoe_h0" name="{=RU2EppgI}Ladies Shoes" mesh="woman_shoe_a" culture="Culture.neutral_culture" weight="0.005549942" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="1" covers_legs="false" modifier_group="cloth_unarmoured" material_type="Cloth" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_ladys_shoe_h1" name="{=RU2EppgI}Ladies Shoes +1" mesh="woman_shoe_a" culture="Culture.neutral_culture" weight="0.005549942" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="2" covers_legs="false" modifier_group="cloth_unarmoured" material_type="Cloth" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_ladys_shoe_h2" name="{=RU2EppgI}Ladies Shoes +2" mesh="woman_shoe_a" culture="Culture.neutral_culture" weight="0.005549942" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="4" covers_legs="false" modifier_group="cloth_unarmoured" material_type="Cloth" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_ladys_shoe_h3" name="{=RU2EppgI}Ladies Shoes +3" mesh="woman_shoe_a" culture="Culture.neutral_culture" weight="0.005549942" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="6" covers_legs="false" modifier_group="cloth_unarmoured" material_type="Cloth" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_khuzait_curved_boots_h0" name="{=D9JrTpwU}Curved Boots" mesh="khuzait_leather_boots" culture="Culture.khuzait" weight="0.1005621" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="5" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_khuzait_curved_boots_h1" name="{=D9JrTpwU}Curved Boots +1" mesh="khuzait_leather_boots" culture="Culture.khuzait" weight="0.1005621" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="6" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_khuzait_curved_boots_h2" name="{=D9JrTpwU}Curved Boots +2" mesh="khuzait_leather_boots" culture="Culture.khuzait" weight="0.1005621" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="8" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_khuzait_curved_boots_h3" name="{=D9JrTpwU}Curved Boots +3" mesh="khuzait_leather_boots" culture="Culture.khuzait" weight="0.1005621" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="10" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_highland_leg_wrappings_h0" name="{=xqE9aycc}Woodland Leg Wrappings" mesh="battania_boot_a" culture="Culture.battania" weight="0.2343422" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="8" covers_legs="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_highland_leg_wrappings_h1" name="{=xqE9aycc}Woodland Leg Wrappings +1" mesh="battania_boot_a" culture="Culture.battania" weight="0.2343422" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="9" covers_legs="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_highland_leg_wrappings_h2" name="{=xqE9aycc}Woodland Leg Wrappings +2" mesh="battania_boot_a" culture="Culture.battania" weight="0.2343422" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="11" covers_legs="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_highland_leg_wrappings_h3" name="{=xqE9aycc}Woodland Leg Wrappings +3" mesh="battania_boot_a" culture="Culture.battania" weight="0.2343422" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="13" covers_legs="true" modifier_group="cloth_unarmoured" material_type="Cloth" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_highland_boots_h0" name="{=FQqaVHq2}Forester Boots" mesh="pict_armor_boot" culture="Culture.battania" weight="0.1005621" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="5" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_highland_boots_h1" name="{=FQqaVHq2}Forester Boots +1" mesh="pict_armor_boot" culture="Culture.battania" weight="0.1005621" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="6" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_highland_boots_h2" name="{=FQqaVHq2}Forester Boots +2" mesh="pict_armor_boot" culture="Culture.battania" weight="0.1005621" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="8" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_highland_boots_h3" name="{=FQqaVHq2}Forester Boots +3" mesh="pict_armor_boot" culture="Culture.battania" weight="0.1005621" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="10" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_folded_town_boots_h0" name="{=oH8iFEv7}Folded Town Boots" mesh="casual_01_boots" culture="Culture.empire" weight="0.06729711" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="4" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_folded_town_boots_h1" name="{=oH8iFEv7}Folded Town Boots +1" mesh="casual_01_boots" culture="Culture.empire" weight="0.06729711" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="5" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_folded_town_boots_h2" name="{=oH8iFEv7}Folded Town Boots +2" mesh="casual_01_boots" culture="Culture.empire" weight="0.06729711" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="7" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_folded_town_boots_h3" name="{=oH8iFEv7}Folded Town Boots +3" mesh="casual_01_boots" culture="Culture.empire" weight="0.06729711" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="9" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_fine_town_boots_h0" name="{=uUGAMReu}Fine Town Boots" mesh="casual_02_boots" culture="Culture.empire" weight="0.06729711" appearance="2" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="4" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_fine_town_boots_h1" name="{=uUGAMReu}Fine Town Boots +1" mesh="casual_02_boots" culture="Culture.empire" weight="0.06729711" appearance="2" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="5" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_fine_town_boots_h2" name="{=uUGAMReu}Fine Town Boots +2" mesh="casual_02_boots" culture="Culture.empire" weight="0.06729711" appearance="2" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="7" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_fine_town_boots_h3" name="{=uUGAMReu}Fine Town Boots +3" mesh="casual_02_boots" culture="Culture.empire" weight="0.06729711" appearance="2" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="9" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_empire_horseman_boots_h0" name="{=uvSXUgT8}Horseman Boots" mesh="empire_horseman_boots" culture="Culture.empire" weight="0.1005621" appearance="1.3" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="5" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_empire_horseman_boots_h1" name="{=uvSXUgT8}Horseman Boots +1" mesh="empire_horseman_boots" culture="Culture.empire" weight="0.1005621" appearance="1.3" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="6" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_empire_horseman_boots_h2" name="{=uvSXUgT8}Horseman Boots +2" mesh="empire_horseman_boots" culture="Culture.empire" weight="0.1005621" appearance="1.3" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="8" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_empire_horseman_boots_h3" name="{=uvSXUgT8}Horseman Boots +3" mesh="empire_horseman_boots" culture="Culture.empire" weight="0.1005621" appearance="1.3" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="10" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_eastern_leather_boots_h0" name="{=Ga5mCiLp}Leather Riding Boots" mesh="plated_leather_armor_boot" culture="Culture.khuzait" weight="0.1396242" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="6" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_eastern_leather_boots_h1" name="{=Ga5mCiLp}Leather Riding Boots +1" mesh="plated_leather_armor_boot" culture="Culture.khuzait" weight="0.1396242" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="7" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_eastern_leather_boots_h2" name="{=Ga5mCiLp}Leather Riding Boots +2" mesh="plated_leather_armor_boot" culture="Culture.khuzait" weight="0.1396242" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="9" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_eastern_leather_boots_h3" name="{=Ga5mCiLp}Leather Riding Boots +3" mesh="plated_leather_armor_boot" culture="Culture.khuzait" weight="0.1396242" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="11" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_decorated_imperial_boots_h0" name="{=XXGZLTN6}Decorated Plate Boots" mesh="empire_plate_armor_boots" culture="Culture.empire" weight="1.219389" appearance="3" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="20" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_decorated_imperial_boots_h1" name="{=XXGZLTN6}Decorated Plate Boots +1" mesh="empire_plate_armor_boots" culture="Culture.empire" weight="1.219389" appearance="3" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="21" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_decorated_imperial_boots_h2" name="{=XXGZLTN6}Decorated Plate Boots +2" mesh="empire_plate_armor_boots" culture="Culture.empire" weight="1.219389" appearance="3" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="23" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_decorated_imperial_boots_h3" name="{=XXGZLTN6}Decorated Plate Boots +3" mesh="empire_plate_armor_boots" culture="Culture.empire" weight="1.219389" appearance="3" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="25" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_belted_leather_boots_h0" name="{=bFm9jOft}Belted Leather Boots" mesh="bandit_11_boots" culture="Culture.battania" weight="0.1005621" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="5" covers_legs="false" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_belted_leather_boots_h1" name="{=bFm9jOft}Belted Leather Boots +1" mesh="bandit_11_boots" culture="Culture.battania" weight="0.1005621" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="6" covers_legs="false" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_belted_leather_boots_h2" name="{=bFm9jOft}Belted Leather Boots +2" mesh="bandit_11_boots" culture="Culture.battania" weight="0.1005621" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="8" covers_legs="false" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_belted_leather_boots_h3" name="{=bFm9jOft}Belted Leather Boots +3" mesh="bandit_11_boots" culture="Culture.battania" weight="0.1005621" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="10" covers_legs="false" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_battania_woodland_boots_h0" name="{=L7qYlJqn}Woodland Boots" mesh="battania_woodland_boots" culture="Culture.battania" weight="0.1396242" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="6" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_battania_woodland_boots_h1" name="{=L7qYlJqn}Woodland Boots +1" mesh="battania_woodland_boots" culture="Culture.battania" weight="0.1396242" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="7" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_battania_woodland_boots_h2" name="{=L7qYlJqn}Woodland Boots +2" mesh="battania_woodland_boots" culture="Culture.battania" weight="0.1396242" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="9" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_battania_woodland_boots_h3" name="{=L7qYlJqn}Woodland Boots +3" mesh="battania_woodland_boots" culture="Culture.battania" weight="0.1396242" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="11" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_battania_warlord_boots_h0" name="{=UuWPfE1x}Scaled Boots" mesh="battania_warlord_boots" culture="Culture.battania" weight="1.955422" appearance="3" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="26" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_battania_warlord_boots_h1" name="{=UuWPfE1x}Scaled Boots +1" mesh="battania_warlord_boots" culture="Culture.battania" weight="1.955422" appearance="3" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="27" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_battania_warlord_boots_h2" name="{=UuWPfE1x}Scaled Boots +2" mesh="battania_warlord_boots" culture="Culture.battania" weight="1.955422" appearance="3" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="29" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_battania_warlord_boots_h3" name="{=UuWPfE1x}Scaled Boots +3" mesh="battania_warlord_boots" culture="Culture.battania" weight="1.955422" appearance="3" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="31" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_battania_leather_boots_h0" name="{=4Ygp7P0Y}Highborn Leather Boots" mesh="battania_leather_boots_a" culture="Culture.battania" weight="0.1005621" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="5" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_battania_leather_boots_h1" name="{=4Ygp7P0Y}Highborn Leather Boots +1" mesh="battania_leather_boots_a" culture="Culture.battania" weight="0.1005621" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="6" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_battania_leather_boots_h2" name="{=4Ygp7P0Y}Highborn Leather Boots +2" mesh="battania_leather_boots_a" culture="Culture.battania" weight="0.1005621" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="8" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_battania_leather_boots_h3" name="{=4Ygp7P0Y}Highborn Leather Boots +3" mesh="battania_leather_boots_a" culture="Culture.battania" weight="0.1005621" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="10" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_battania_fur_boots_h0" name="{=jVK5B86k}Fur Boots" mesh="battania_fur_boot_a" culture="Culture.battania" weight="0.1396242" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="6" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_battania_fur_boots_h1" name="{=jVK5B86k}Fur Boots +1" mesh="battania_fur_boot_a" culture="Culture.battania" weight="0.1396242" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="7" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_battania_fur_boots_h2" name="{=jVK5B86k}Fur Boots +2" mesh="battania_fur_boot_a" culture="Culture.battania" weight="0.1396242" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="9" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_battania_fur_boots_h3" name="{=jVK5B86k}Fur Boots +3" mesh="battania_fur_boot_a" culture="Culture.battania" weight="0.1396242" appearance="1" Type="LegArmor" difficulty="0">
+    <ItemComponent>
+      <Armor leg_armor="11" covers_legs="true" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
