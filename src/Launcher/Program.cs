@@ -27,12 +27,12 @@ catch (Exception e)
     Console.Read();
 }
 
-string bannerlordExePath = Path.Combine(bannerlordPath, "bin/Win64_Shipping_Client/Bannerlord.exe");
+string bannerlordExePath = ResolveBannerlordExePath(bannerlordPath)!;
 Process.Start(new ProcessStartInfo
 {
     WorkingDirectory = Path.GetDirectoryName(bannerlordExePath),
-    FileName = "Bannerlord.exe",
-    Arguments = "_MODULES_*Native*cRPG*_MODULES_ /multiplayer",
+    FileName = Path.GetFileName(bannerlordExePath),
+    Arguments = "_MODULES_*Native*cRPG*_MODULES_ /multiplayer", // For Xbox it will run the launcher and those args are getting ignored.
     UseShellExecute = true,
 });
 
@@ -45,6 +45,12 @@ static string? ResolveBannerlordPath()
     }
 
     bannerlordPath = ResolveBannerlordPathEpicGames();
+    if (bannerlordPath != null)
+    {
+        return bannerlordPath;
+    }
+
+    bannerlordPath = ResolveBannerlordPathXbox();
     if (bannerlordPath != null)
     {
         return bannerlordPath;
@@ -104,7 +110,7 @@ static string? ResolveBannerlordPathSteam()
         }
 
         string bannerlordPath = Path.Combine(path, "steamapps/common/Mount & Blade II Bannerlord");
-        if (File.Exists(Path.Combine(bannerlordPath, "bin/Win64_Shipping_Client/Bannerlord.exe")))
+        if (ResolveBannerlordExePath(bannerlordPath) != null)
         {
             return bannerlordPath;
         }
@@ -115,8 +121,19 @@ static string? ResolveBannerlordPathSteam()
 
 static string? ResolveBannerlordPathEpicGames()
 {
-    const string defaultBannerlordPath = "C:/Program Files/Epic Games/MountAndBlade2";
-    if (File.Exists(Path.Combine(defaultBannerlordPath, "bin/Win64_Shipping_Client/Bannerlord.exe")))
+    const string defaultBannerlordPath = "C:/Program Files/Epic Games/Chickadee";
+    if (ResolveBannerlordExePath(defaultBannerlordPath) != null)
+    {
+        return defaultBannerlordPath;
+    }
+
+    return null;
+}
+
+static string? ResolveBannerlordPathXbox()
+{
+    const string defaultBannerlordPath = "C:/XboxGames/Mount & Blade II- Bannerlord/Content";
+    if (ResolveBannerlordExePath(defaultBannerlordPath) != null)
     {
         return defaultBannerlordPath;
     }
@@ -137,15 +154,32 @@ static string? AskForBannerlordPath()
         }
 
         bannerlordPath = bannerlordPath.Trim();
-        string bannerlordExePath = Path.Combine(bannerlordPath, "bin/Win64_Shipping_Client/Bannerlord.exe");
-        if (!File.Exists(bannerlordExePath))
+        if (ResolveBannerlordExePath(bannerlordPath) == null)
         {
-            Console.WriteLine($"Could not find Bannerlord at '{bannerlordExePath}'");
+            Console.WriteLine($"Could not find Bannerlord at '{bannerlordPath}'");
             bannerlordPath = null;
         }
     }
 
     return bannerlordPath;
+}
+
+static string? ResolveBannerlordExePath(string bannerlordPath)
+{
+    string bannerlordExePath = Path.Combine(bannerlordPath, "bin/Win64_Shipping_Client/Bannerlord.exe");
+    if (File.Exists(bannerlordExePath))
+    {
+        return bannerlordExePath;
+    }
+
+    bannerlordExePath = Path.Combine(bannerlordPath, "bin/Gaming.Desktop.x64_Shipping_Client/Launcher.Native.exe");
+    if (File.Exists(bannerlordExePath))
+    {
+        return bannerlordExePath;
+    }
+
+
+    return null;
 }
 
 static async Task UpdateCrpgAsync(string bannerlordPath)
