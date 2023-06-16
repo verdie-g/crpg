@@ -30,6 +30,6 @@ internal class CrpgItemRequirementModel
             throw new ArgumentException(item.Name.ToString() + " is not a crossbow");
         }
 
-        return ((int)(item.Tierf * (strengthRequirementForTierTenCrossbow / 10f)) / 3) * 3;
+        return ((int)(item.Tierf * (strengthRequirementForTierTenCrossbow / 9.9f)) / 3) * 3;
     }
 }
