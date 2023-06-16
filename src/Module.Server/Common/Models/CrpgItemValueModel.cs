@@ -1,6 +1,7 @@
 ﻿using Crpg.Module.Helpers;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
+using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common.Models;
 
@@ -34,7 +35,7 @@ internal class CrpgItemValueModel : ItemValueModel
         return item.ItemComponent switch
         {
             ArmorComponent armorComponent => CalculateArmorTier(armorComponent),
-            HorseComponent horseComponent => CalculateHorseTier(horseComponent),
+            HorseComponent horseComponent => CalculateHorseTier(item, horseComponent),
             BannerComponent bannerComponent => CalculateBannerTier(bannerComponent),
             WeaponComponent weaponComponent => CalculateWeaponTier(weaponComponent),
             _ => 0f,
@@ -68,6 +69,7 @@ internal class CrpgItemValueModel : ItemValueModel
 
     private float CalculateArmorTier(ArmorComponent armorComponent)
     {
+        float heirloomLevel = ItemToHeirloomLevel(armorComponent.Item);
         float armorPower =
               1.2f * armorComponent.HeadArmor
             + 1.1f * armorComponent.BodyArmor
@@ -86,20 +88,24 @@ internal class CrpgItemValueModel : ItemValueModel
 
         return armorComponent.Item.ItemType switch
         {
-            ItemObject.ItemTypeEnum.HorseHarness => 10 * armorPower / bestArmorPower,
-            _ => 10 * armorPower / (bestArmorPower * (float)Math.Pow(armorComponent.Item.Weight + 8, 0.5f)),
+
+            ItemObject.ItemTypeEnum.HorseHarness => 10 * armorPower / bestArmorPower / (float)Math.Pow(1 + heirloomLevel / 10f, 1f),
+            _ => (10 * armorPower) / (bestArmorPower * (float)Math.Pow(armorComponent.Item.Weight + 8, 0.5f)) / (float)Math.Pow(1 + heirloomLevel / 20f, 1f),
         };
     }
 
-    private float CalculateHorseTier(HorseComponent horseComponent)
+    private float CalculateHorseTier(ItemObject item, HorseComponent horseComponent)
     {
         float horsePower =
-          (float)Math.Pow(horseComponent.Speed, 1.60f)
-        * (float)Math.Pow(horseComponent.Maneuver, 1.65f)
-        * (float)Math.Pow(horseComponent.HitPoints + horseComponent.HitPointBonus, 1.26f)
+          (float)Math.Pow(horseComponent.Speed, 1.75f)
+        * (float)Math.Pow(horseComponent.Maneuver, 1.81f)
+        * (float)Math.Pow(horseComponent.HitPoints + horseComponent.HitPointBonus, 1.02f)
         + 300f * (float)Math.Pow(horseComponent.ChargeDamage, 5f) + 2500000f * horseComponent.ChargeDamage;
         float bestHorsePower = 487438929.1f;
         float horseTier = 10f * horsePower / bestHorsePower;
+
+        float heirloomLevel = ItemToHeirloomLevel(item);
+        horseTier /= (float)Math.Pow(1 + heirloomLevel / 12f, 1f);
         return horseTier * horseTier / 12.2f;
     }
 
@@ -142,7 +148,7 @@ internal class CrpgItemValueModel : ItemValueModel
                 WeaponClass.Dagger => 27f,
                 WeaponClass.TwoHandedSword => 27.5f,
                 WeaponClass.TwoHandedMace => 28.5f,
-                WeaponClass.TwoHandedAxe => 31.5f,
+                WeaponClass.TwoHandedAxe => 36f,
                 WeaponClass.TwoHandedPolearm => 25f,
                 WeaponClass.OneHandedPolearm => 25f,
                 _ => float.MaxValue,
@@ -160,16 +166,19 @@ internal class CrpgItemValueModel : ItemValueModel
                 WeaponClass.OneHandedPolearm => 30f,
                 _ => float.MaxValue,
             };
+            float heirloomLevel = ItemToHeirloomLevel(weaponComponent.Item);
             float thrustTier =
                   (float)Math.Pow(CrpgStrikeMagnitudeModel.BladeDamageFactorToDamageRatio * weapon.ThrustDamageFactor, 4.27f)
                 * CalculateDamageTypeFactor(weapon.ThrustDamageType)
                 * (float)Math.Pow(weapon.ThrustSpeed * 0.1f, 2f)
-                / 62000f;
+                / 62000f
+                / (float)Math.Pow(1 + heirloomLevel / 10f, 1f);
             float swingTier =
                   (float)Math.Pow(CrpgStrikeMagnitudeModel.BladeDamageFactorToDamageRatio * weapon.SwingDamageFactor, 2.15f)
                 * CalculateDamageTypeFactor(weapon.SwingDamageType)
                 * (float)Math.Pow(weapon.SwingSpeed, 4.4f)
-                / 390000000f;
+                / 390000000f
+                / (float)Math.Pow(1 + heirloomLevel / 10f, 1f);
 
             if (!weapon.WeaponFlags.HasAnyFlag(WeaponFlags.NotUsableWithOneHand))
             {
@@ -279,7 +288,7 @@ internal class CrpgItemValueModel : ItemValueModel
         {
             DamageTypes.Blunt => 2f,
             DamageTypes.Pierce => 1.75f,
-            _ => 1.35f,
+            _ => 1.175f,
         };
     }
 
@@ -331,6 +340,9 @@ internal class CrpgItemValueModel : ItemValueModel
             * bonusVsShield
             * canDismount
             / scaler;
+
+        float heirloomLevel = ItemToHeirloomLevel(weaponComponent.Item);
+        tier /= (float)Math.Pow(1 + heirloomLevel / 10f, 1f);
         return tier * tier / 10f;
     }
 
@@ -338,7 +350,7 @@ internal class CrpgItemValueModel : ItemValueModel
     {
         WeaponComponentData weapon = weaponComponent.Weapons[0];
         float scaler = 1.560284f;
-
+        float heirloomLevel = ItemToHeirloomLevel(weaponComponent.Item);
         if (weaponComponent.Item is { ItemType: ItemObject.ItemTypeEnum.Crossbow })
         {
             float crossbowscaler = 2.479958463230f;
@@ -350,6 +362,8 @@ internal class CrpgItemValueModel : ItemValueModel
                 * (weapon.ItemUsage == "crossbow_light" ? 2f : 1f)
                 * (!weapon.WeaponFlags.HasAnyFlag(WeaponFlags.CantReloadOnHorseback) ? 1.85f : 1f)
                 / crossbowscaler;
+
+            crossbowTier /= (float)Math.Pow(1 + heirloomLevel / 10f, 1f);
             return crossbowTier * crossbowTier / 10f;
         }
 
@@ -360,6 +374,8 @@ internal class CrpgItemValueModel : ItemValueModel
             * weapon.ThrustSpeed / 10f
             * (weapon.ItemUsage == "long_bow" ? 0.668f : 1f)
             / scaler;
+
+        bowTier /= (float)Math.Pow(1 + heirloomLevel / 10f, 1f);
         return bowTier * bowTier / 10f;
     }
 
@@ -367,12 +383,14 @@ internal class CrpgItemValueModel : ItemValueModel
     {
         WeaponComponentData weapon = weaponComponent.Weapons[0];
         float shieldTier = (1.0f * weapon.MaxDataValue
-                * (1.0f + weapon.BodyArmor / 10f)
-                + 1.0f * weapon.ThrustSpeed)
+                * (1.0f + weapon.BodyArmor / 10f))
                 * (0.14f + weapon.GetRealWeaponLength())
                 / (6f + weaponComponent.Item.Weight)
-                / 25f
+                / 100f
                 * 10f;
+
+        float heirloomLevel = ItemToHeirloomLevel(weaponComponent.Item);
+        shieldTier /= (float)Math.Pow(1 + heirloomLevel / 10f, 1f);
         return shieldTier * shieldTier / 10f;
     }
 
@@ -382,13 +400,17 @@ internal class CrpgItemValueModel : ItemValueModel
         float arrowsTier = 10f
           * CalculateDamageTypeFactorForAmmo(weapon.ThrustDamageType) * CalculateDamageTypeFactorForAmmo(weapon.ThrustDamageType)
           * (10 + weapon.MissileDamage) * (10 + weapon.MissileDamage)
-          * (float)Math.Pow(weapon.MaxDataValue, 0.3f)
-          / 1537.6f;
+          * (float)Math.Pow(weapon.MaxDataValue, 0.4f)
+          / 1537.6f
+          / 1.35f;
         float boltsTier = 10f
           * CalculateDamageTypeFactorForAmmo(weapon.ThrustDamageType) * CalculateDamageTypeFactorForAmmo(weapon.ThrustDamageType)
           * (22 + weapon.MissileDamage) * (22 + weapon.MissileDamage)
           * (float)Math.Pow(weapon.MaxDataValue, 0.3f)
           / 6606.34f;
+        float heirloomLevel = ItemToHeirloomLevel(weaponComponent.Item);
+        arrowsTier /= (float)Math.Pow(1 + heirloomLevel / 10f, 1f);
+        boltsTier /= (float)Math.Pow(1 + heirloomLevel / 10f, 1f);
         return weaponComponent.Item.ItemType switch
         {
             ItemObject.ItemTypeEnum.Arrows => arrowsTier * arrowsTier / 10f,
@@ -396,5 +418,29 @@ internal class CrpgItemValueModel : ItemValueModel
             ItemObject.ItemTypeEnum.Bolts => boltsTier * boltsTier / 10f,
             _ => 10f,
         };
+    }
+
+    private float ItemToHeirloomLevel(ItemObject item)
+    {
+        if (item == null)
+        {
+            return 0;
+        }
+
+        if (item.StringId.StartsWith("crpg_"))
+        {
+            if (int.TryParse(item.StringId.Split('_').Last().Substring(1), out int heirloomlevel))
+            {
+                return heirloomlevel;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        else
+        {
+            return 0;
+        }
     }
 }
