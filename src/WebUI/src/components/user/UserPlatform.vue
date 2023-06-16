@@ -41,7 +41,7 @@ const props = withDefaults(
 
   <template v-else-if="platform === Platform.Microsoft">
     <a
-      :href="`https://account.xbox.com/ru-ru/profile?gamertag=${userName}`"
+      :href="`https://account.xbox.com/en-us/profile?gamertag=${userName}`"
       class="inline-flex hover:opacity-80"
       target="_blank"
       @click.stop
