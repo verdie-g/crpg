@@ -1,3 +1,4 @@
+using System.Threading;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Items.Commands;
@@ -40,11 +41,15 @@ public class UpgradeItemCommandTest : TestBase
             .Include(u => u.Items)
             .FirstAsync(u => u.Id == user.Id);
 
+        var equippedItems = await AssertDb.EquippedItems
+                .ToListAsync();
+
         var upgradedUserItem = result.Data!;
         Assert.That(upgradedUserItem.Item.Rank, Is.EqualTo(1));
         Assert.That(upgradedUserItem.Item.BaseId, Is.EqualTo(item0.BaseId));
         Assert.That(userDb.HeirloomPoints, Is.EqualTo(4));
         Assert.That(userDb.Items, Has.Some.Matches<UserItem>(ui => ui.Id == upgradedUserItem.Id));
+        Assert.That(!equippedItems.Any(ei => ei.UserItemId == user.Items[0].Id));
     }
 
     [Test]

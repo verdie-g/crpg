@@ -5,6 +5,7 @@ using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Items.Models;
 using Crpg.Domain.Entities.Items;
+using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using LoggerFactory = Crpg.Logging.LoggerFactory;
@@ -49,8 +50,11 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
                 return new(CommonErrors.NotEnoughHeirloomPoints(1, user.HeirloomPoints));
             }
 
-            var userItemToUpgrade = user.Items
-                .FirstOrDefault(ui => ui.Id == req.UserItemId);
+            var userItemToUpgrade = await _db.UserItems
+                .Include(ui => ui.User)
+                .Include(ui => ui.Item)
+                .Include(ui => ui.EquippedItems)
+                .FirstOrDefaultAsync(ui => ui.UserId == req.UserId && ui.Id == req.UserItemId, cancellationToken);
 
             if (userItemToUpgrade == null)
             {
