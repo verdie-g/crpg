@@ -188,7 +188,10 @@ static async Task UpdateCrpgAsync(string bannerlordPath)
     string tagPath = Path.Combine(crpgPath, "Tag.txt");
     string? tag = File.Exists(tagPath) ? File.ReadAllText(tagPath) : null;
 
-    using HttpClient httpClient = new();
+    using HttpClient httpClient = new(new SocketsHttpHandler
+    {
+        AllowAutoRedirect = true,
+    });
     HttpRequestMessage req = new(HttpMethod.Get, "https://c-rpg.eu/cRPG.zip");
     if (tag != null)
     {
