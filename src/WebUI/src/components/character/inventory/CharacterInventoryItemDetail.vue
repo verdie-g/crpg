@@ -12,7 +12,6 @@ import {
   computeBrokenItemRepairCost,
   canUpgrade,
 } from '@/services/item-service';
-import { createItemIndex } from '@/services/item-search-service/indexator';
 import { parseTimestamp } from '@/utils/date';
 import { omitPredicate } from '@/utils/object';
 
@@ -27,34 +26,6 @@ const props = withDefaults(
     equipped: false,
   }
 );
-
-//
-//
-//
-//
-//
-//
-//
-
-const { state: itemUpgrades, execute: loadItemUpgrades } = useAsyncState(
-  () => getItemUpgrades(props.userItem.item.baseId),
-  [],
-  {
-    immediate: false,
-  }
-);
-const upgradesFlatItems = computed((): ItemFlat[] => createItemIndex(itemUpgrades.value, true));
-
-const compareItemsResult = computed(() =>
-  getCompareItemsResult(upgradesFlatItems.value, aggregationsConfig.value)
-);
-
-//
-//
-//
-//
-//
-//
 
 const userItemToReplaceSalePrice = computed(() => {
   const { price, graceTimeEnd } = computeSalePrice(props.userItem);
@@ -121,8 +92,6 @@ const isUpgradable = computed(() => canUpgrade(props.item.type));
           :rank="userItem.item.rank"
           class="cursor-default opacity-80 hover:opacity-100"
         />
-
-        <ItemRankIcon v-if="userItem.item.rank > 0" :rank="userItem.item.rank" />
       </div>
 
       <Tag
