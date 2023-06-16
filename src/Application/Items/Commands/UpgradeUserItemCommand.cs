@@ -89,6 +89,7 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
                 IsBroken = false,
             };
 
+            _db.EquippedItems.RemoveRange(userItemToUpgrade.EquippedItems);
             user.Items.Remove(userItemToUpgrade);
             user.Items.Add(upgradedUserItem);
             user.HeirloomPoints -= 1;
