@@ -2,6 +2,7 @@ using System.Threading;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Items.Commands;
+using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
@@ -49,7 +50,64 @@ public class UpgradeItemCommandTest : TestBase
         Assert.That(upgradedUserItem.Item.BaseId, Is.EqualTo(item0.BaseId));
         Assert.That(userDb.HeirloomPoints, Is.EqualTo(4));
         Assert.That(userDb.Items, Has.Some.Matches<UserItem>(ui => ui.Id == upgradedUserItem.Id));
-        Assert.That(!equippedItems.Any(ei => ei.UserItemId == user.Items[0].Id));
+    }
+
+    [Test]
+    public async Task UpgradedItemShouldReplaceItemToUpgradeInEquippedItems()
+    {
+        // Arrange
+        Item item0 = new() { Id = "a_h0", BaseId = "a", Price = 100, Enabled = true, Rank = 0 };
+        Item item1 = new() { Id = "a_h1", BaseId = "a", Price = 100, Enabled = true, Rank = 1 };
+
+        User user = new()
+        {
+            Gold = 100,
+            HeirloomPoints = 5,
+            Characters = new[] { new Character() },
+        };
+
+        UserItem userItem0 = new UserItem { Item = item0, User = user };
+
+        EquippedItem equippedItem = new()
+        {
+            CharacterId = user.Characters[0].Id,
+            UserItemId = userItem0.Id,
+            Slot = 0,
+        };
+
+        userItem0.EquippedItems = new List<EquippedItem> { equippedItem };
+        user.Characters[0].EquippedItems.Add(equippedItem);
+        user.Items.Add(userItem0);
+
+        ArrangeDb.Users.Add(user);
+        ArrangeDb.Items.AddRange(item0, item1);
+        ArrangeDb.EquippedItems.Add(equippedItem);
+        await ArrangeDb.SaveChangesAsync();
+
+        // Act
+        Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
+
+        UpgradeUserItemCommand.Handler handler = new(ActDb, Mapper, activityLogServiceMock.Object);
+        var result = await handler.Handle(new UpgradeUserItemCommand
+        {
+            UserItemId = user.Items[0].Id,
+            UserId = user.Id,
+        }, CancellationToken.None);
+
+        // Assert
+        var userDb = await AssertDb.Users
+            .Include(u => u.Items)
+            .ThenInclude(u => u.EquippedItems)
+            .Include(u => u.Characters)
+            .ThenInclude(c => c.EquippedItems)
+            .FirstAsync(u => u.Id == user.Id);
+
+        var equippedItems = await AssertDb.EquippedItems
+                .Include(ei => ei.UserItem)
+                .ThenInclude(ui => ui!.Item)
+                .ToListAsync();
+
+        Assert.That(equippedItems.Any(ei => ei.UserItem!.Item!.Id == item1.Id));
     }
 
     [Test]

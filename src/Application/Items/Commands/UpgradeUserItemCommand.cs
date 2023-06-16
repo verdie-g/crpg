@@ -92,10 +92,22 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
                 Item = upgradedItem,
                 IsBroken = false,
             };
-
-            _db.EquippedItems.RemoveRange(userItemToUpgrade.EquippedItems);
-            user.Items.Remove(userItemToUpgrade);
             user.Items.Add(upgradedUserItem);
+            
+            foreach (var ei in userItemToUpgrade.EquippedItems)
+            {
+                var newEquippedItem = new EquippedItem
+                {
+                    CharacterId = ei.CharacterId,
+                    Slot = ei.Slot,
+                    UserItemId = upgradedUserItem.Id,
+                };
+
+                _db.EquippedItems.Remove(ei);
+                _db.EquippedItems.Add(newEquippedItem);
+            }
+
+            user.Items.Remove(userItemToUpgrade);
             user.HeirloomPoints -= 1;
             _db.ActivityLogs.Add(_activityLogService.CreateItemUpgradedLog(user.Id, userItemToUpgrade.ItemId, 1));
             await _db.SaveChangesAsync(cancellationToken);
