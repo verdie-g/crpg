@@ -109,7 +109,6 @@ export default defineConfig({
       runtimeOnly: true,
       compositionOnly: true,
       strictMessage: false,
-      escapeHtml: true,
       include: [fileURLToPath(new URL('./locales/**', import.meta.url))],
     }),
 
