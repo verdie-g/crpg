@@ -1,6 +1,7 @@
 ﻿using Crpg.Module.Api.Models.Clans;
 using Crpg.Module.Common.Network;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.PlatformService;
 
 namespace Crpg.Module.Common;
 
@@ -66,5 +67,15 @@ internal class CrpgUserManagerClient : MissionNetwork
     private void OnMyClientSynchronized()
     {
         _crpgPeer = GameNetwork.MyPeer.GetComponent<CrpgPeer>();
+
+        if (PlatformServices.ProviderName == "GDK")
+        {
+            PlatformServices.Instance.GetPlatformId(GameNetwork.MyPeer.VirtualPlayer.Id, static xboxId =>
+            {
+                GameNetwork.BeginModuleEventAsClient();
+                GameNetwork.WriteMessage(new XboxIdMessage { XboxId = xboxId.ToString()! });
+                GameNetwork.EndModuleEventAsClient();
+            });
+        }
     }
 }

@@ -5,6 +5,7 @@ using Crpg.Module.Api.Models;
 using Crpg.Module.Api.Models.Clans;
 using Crpg.Module.Api.Models.Restrictions;
 using Crpg.Module.Api.Models.Users;
+using Crpg.Module.Common.Network;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -36,6 +37,11 @@ internal class CrpgUserManagerServer : MissionNetwork
     public override void OnPlayerDisconnectedFromServer(NetworkCommunicator networkPeer)
     {
         RewardMultiplierByPlayerId.Remove(networkPeer.VirtualPlayer.Id);
+    }
+
+    protected override void AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegistererContainer registerer)
+    {
+        registerer.Register<XboxIdMessage>(OnXboxIdMessage);
     }
 
     protected override void HandleEarlyNewClientAfterLoadingFinished(NetworkCommunicator networkPeer)
@@ -120,17 +126,36 @@ internal class CrpgUserManagerServer : MissionNetwork
         }
     }
 
-    private async Task SetCrpgComponentAsync(NetworkCommunicator networkPeer)
+    private bool OnXboxIdMessage(NetworkCommunicator networkPeer, XboxIdMessage message)
+    {
+        _ = SetCrpgComponentAsync(networkPeer, Platform.Microsoft, message.XboxId);
+        return true;
+    }
+
+    private Task SetCrpgComponentAsync(NetworkCommunicator networkPeer)
     {
         VirtualPlayer vp = networkPeer.VirtualPlayer;
         if (!TryConvertPlatform(vp.Id.ProvidedType, out Platform platform))
         {
             Debug.Print($"Kick player {vp.UserName} playing on {vp.Id.ProvidedType} (id: {vp.Id})");
             KickHelper.Kick(networkPeer, DisconnectType.KickedByHost, "unsupported_platform");
-            return;
+            return Task.CompletedTask;
+        }
+
+        // We can't resolve the xbox id from the player id so we wait for the player to send their xbox id. This is
+        // as insecure as stupid but it is what it is.
+        if (platform == Platform.Microsoft)
+        {
+            return Task.CompletedTask;
         }
 
         string platformUserId = PlayerIdToPlatformUserId(vp.Id, platform);
+        return SetCrpgComponentAsync(networkPeer, platform, platformUserId);
+    }
+
+    private async Task SetCrpgComponentAsync(NetworkCommunicator networkPeer, Platform platform, string platformUserId)
+    {
+        VirtualPlayer vp = networkPeer.VirtualPlayer;
         string userName = vp.UserName;
 
         CrpgUser crpgUser;
@@ -203,6 +228,9 @@ internal class CrpgUserManagerServer : MissionNetwork
                 return true;
             case PlayerIdProvidedTypes.Epic:
                 platform = Platform.EpicGames;
+                return true;
+            case PlayerIdProvidedTypes.GDK:
+                platform = Platform.Microsoft;
                 return true;
             default:
                 platform = default;
