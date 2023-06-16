@@ -321,7 +321,7 @@ export const computeOverallAverageRepairCostByHour = (items: Item[]) =>
   Math.floor(items.reduce((total, item) => total + computeAverageRepairCostPerHour(item.price), 0));
 
 export const getHeirloomPointByLevel = (level: number) => {
-  return Math.pow(level - minimumRetirementLevel,2)
+  return Math.pow(2,level - minimumRetirementLevel)
 };
 
 export type HeirloomPointByLevelAggregation = { level: number[]; points: number };
