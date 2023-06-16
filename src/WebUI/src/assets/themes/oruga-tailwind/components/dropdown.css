@@ -58,5 +58,5 @@
 
 /* TODO: */
 .v-popper--has-tooltip {
-  display: inherit;
+  /* display: inherit; */
 }

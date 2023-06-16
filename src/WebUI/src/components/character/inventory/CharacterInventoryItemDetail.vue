@@ -74,17 +74,20 @@ const aggregationsConfig = computed(() =>
         class="pointer-events-none w-full select-none object-contain"
       />
 
-      <!-- TODO: wut? -->
-      <div class="absolute -left-0.5 -top-0.5 z-10 cursor-default opacity-80 hover:opacity-100">
+      <div class="absolute -left-0.5 -top-0.5 z-10">
         <OIcon
           v-if="userItem.isBroken"
           icon="error"
           size="2xl"
-          class="text-status-danger"
-          v-tooltip="'Item is broken'"
+          class="cursor-default text-status-danger opacity-80 hover:opacity-100"
+          v-tooltip="$t('character.inventory.item.broken.tooltip.title')"
         />
 
-        <ItemRankIcon v-if="userItem.item.rank > 0" :rank="userItem.item.rank" />
+        <ItemRankIcon
+          v-if="userItem.item.rank > 0"
+          :rank="userItem.item.rank"
+          class="cursor-default opacity-80 hover:opacity-100"
+        />
       </div>
 
       <Tag

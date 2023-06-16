@@ -594,8 +594,6 @@ export const computeBrokenItemRepairCost = (price: number) =>
   Math.floor(price * itemRepairCostPerSecond * brokenItemRepairPenaltySeconds);
 
 export const getRankColor = (rank: ItemRank) => {
-  // TODO: colors
-
   switch (rank) {
     case 1:
       return '#1eff00';
@@ -606,8 +604,7 @@ export const getRankColor = (rank: ItemRank) => {
     case 3:
       return '#a335ee';
 
-    // TODO:
     default:
-      return '';
+      return '#fff';
   }
 };

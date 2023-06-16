@@ -38,7 +38,7 @@ const onConfirm = async () => {
 </script>
 
 <template>
-  <div class="space-y-6 px-12 py-11 text-center">
+  <div class="max-w-lg space-y-6 px-12 py-11 text-center">
     <h4 class="text-xl">{{ title }}</h4>
 
     <div class="space-y-4">
@@ -59,12 +59,13 @@ const onConfirm = async () => {
           }),
         }"
         data-aq-confirm-field
+        class="mx-auto max-w-sm"
       >
         <OInput
           v-model="confirmNameModel"
           :placeholder="$t('confirm.placeholder')"
           size="sm"
-          class="w-full"
+          expanded
           data-aq-confirm-input
           @blur="$v.$touch"
           @focus="$v.$reset"

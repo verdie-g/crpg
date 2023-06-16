@@ -78,16 +78,13 @@ const onRepairUserItem = async (itemId: number) => {
 };
 
 const onUpgradeUserItem = async (itemId: number) => {
-  //
   await upgradeUserItem(itemId);
   await Promise.all([
     userStore.fetchUser(),
     userStore.fetchUserItems(),
     loadCharacterItems(0, { id: character.value.id }),
   ]);
-  // TODO:
-  // notify(t('character.inventory.item.repair.notify.success'));
-  notify('Upgraded,   Bro');
+  notify(t('character.inventory.item.upgrade.notify.success'));
 };
 
 const flatItems = computed(() => createItemIndex(extractItemFromUserItem(userStore.userItems)));

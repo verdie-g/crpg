@@ -482,6 +482,7 @@ character:
         upgradesTitle: Item Upgrades
         confirm:
           title: Are you sure you want to upgrade the item?
+          description: 'Are you sure you want to upgrade this item for {loomPoints}? Your item {oldItem} will be changed to {newItem}'
           value: Upgrade item
         currentItem: Current item
         notify:
@@ -1043,8 +1044,13 @@ item:
       title: 'Armor'
       description: ''
 
+    rank:
+      title: 'Rank'
+      description: ''
+
   format:
     upkeep: '{upkeep} / @:dateTime.hours.short'
+    rank: 'Item rank {rank}'
 
 activityLog:
   form:

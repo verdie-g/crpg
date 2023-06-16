@@ -30,16 +30,21 @@ const props = withDefaults(
         data-aq-item-card-thumb
       />
 
-      <div class="absolute left-0 top-0 z-10 cursor-default opacity-80 hover:opacity-100">
+      <div class="absolute left-0 top-0 z-10">
         <Tag
           v-if="userItem.isBroken"
           rounded
           variant="danger"
           icon="error"
           v-tooltip="$t('character.inventory.item.broken.tooltip.title')"
+          class="cursor-default opacity-80 hover:opacity-100"
         />
 
-        <ItemRankIcon v-if="userItem.item.rank > 0" :rank="userItem.item.rank" />
+        <ItemRankIcon
+          v-if="userItem.item.rank > 0"
+          :rank="userItem.item.rank"
+          class="cursor-default opacity-80 hover:opacity-100"
+        />
       </div>
 
       <div class="absolute bottom-0 left-0 z-10 cursor-default opacity-80 hover:opacity-100">

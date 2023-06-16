@@ -20,11 +20,11 @@ const rankColor = computed(() => getRankColor(rank));
       }"
     />
     <template #popper>
-      <!-- TODO: i18n -->
-      <div>
-        Item rank
-        <span class="font-semibold" :style="{ color: rankColor }">+{{ rank }}</span>
-      </div>
+      <i18n-t scope="global" keypath="item.format.rank" tag="span">
+        <template #rank>
+          <span class="font-semibold" :style="{ color: rankColor }">+{{ rank }}</span>
+        </template>
+      </i18n-t>
     </template>
   </VTooltip>
 </template>

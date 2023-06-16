@@ -3,6 +3,8 @@ import { type ItemFlat } from '@/models/item';
 import { type AggregationConfig } from '@/models/item-search';
 import { useItemUpgrades } from '@/composables/item/use-item-upgrades';
 import { useUserStore } from '@/stores/user';
+import { getRankColor } from '@/services/item-service';
+import { clamp } from '@/utils/math';
 
 const userStore = useUserStore();
 
@@ -18,6 +20,10 @@ const emit = defineEmits<{
 const { compareItemsResult, itemUpgrades } = useItemUpgrades(item, cols);
 
 const currentItem = computed(() => itemUpgrades.value.find(iu => iu.id === item.id));
+const nextItem = computed(() => {
+  const currItemIdx = itemUpgrades.value.findIndex(iu => iu.id === item.id);
+  return itemUpgrades.value[clamp(currItemIdx + 1, 0, 3)];
+});
 
 const canUpgrade = computed(() => item.rank !== 3 && userStore.user!.heirloomPoints! > 0);
 </script>
@@ -37,7 +43,6 @@ const canUpgrade = computed(() => item.rank !== 3 && userStore.user!.heirloomPoi
         {{ userStore.user!.heirloomPoints }}
       </div>
 
-      <!-- TODO: i18n -->
       <Modal v-if="canUpgrade">
         <OButton variant="primary" size="sm" :label="'Upgrade'" />
         <template #popper="{ hide }">
@@ -53,7 +58,31 @@ const canUpgrade = computed(() => item.rank !== 3 && userStore.user!.heirloomPoi
                 emit('upgrade');
               }
             "
-          />
+          >
+            <template #description>
+              <i18n-t
+                scope="global"
+                keypath="character.inventory.item.upgrade.confirm.description"
+                tag="div"
+              >
+                <template #loomPoints>
+                  <Loom :point="1" />
+                </template>
+
+                <template #oldItem>
+                  <span class="font-bold" :style="{ color: getRankColor(item.rank) }">
+                    {{ item.name }}
+                  </span>
+                </template>
+
+                <template #newItem>
+                  <span class="font-bold" :style="{ color: getRankColor(nextItem.rank) }">
+                    {{ nextItem.name }}
+                  </span>
+                </template>
+              </i18n-t>
+            </template>
+          </ConfirmActionForm>
         </template>
       </Modal>
     </div>
