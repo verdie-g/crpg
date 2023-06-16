@@ -10,11 +10,18 @@ export const useItemUpgrades = (
 ) => {
   const { state } = useAsyncState(() => getItemUpgrades(item.baseId), []);
 
-  const itemUpgrades = computed((): ItemFlat[] =>
-    createItemIndex(
-      excludeBaseItem ? state.value.filter(itemUpgrade => itemUpgrade.id !== item.id) : state.value
-    )
-  );
+  const itemUpgrades = computed((): ItemFlat[] => {
+    return (
+      createItemIndex(
+        excludeBaseItem
+          ? state.value.filter(itemUpgrade => itemUpgrade.id !== item.id)
+          : state.value,
+        false
+      )
+        // TODO: hotfix, avoid duplicate items with multiply weaponUsage
+        .filter((value, index, self) => index === self.findIndex(t => t.id === value.id))
+    );
+  });
 
   const compareItemsResult = computed(() => getCompareItemsResult(itemUpgrades.value, cols));
 
