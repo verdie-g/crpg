@@ -17,7 +17,7 @@
   <SpriteCategories>
     <SpriteCategory>
       <Name>ui_mploading</Name>
-      <SpriteSheetCount>107</SpriteSheetCount>
+      <SpriteSheetCount>111</SpriteSheetCount>
       <SpriteSheetSize ID="1" Width="3840" Height="1935" />
       <SpriteSheetSize ID="2" Width="3840" Height="1935" />
       <SpriteSheetSize ID="3" Width="3383" Height="1902" />
@@ -113,6 +113,10 @@
       <SpriteSheetSize ID="105" Width="1920" Height="1080" />
       <SpriteSheetSize ID="106" Width="1920" Height="1080" />
       <SpriteSheetSize ID="107" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="108" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="109" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="110" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="111" Width="1920" Height="1080" />
       <AlwaysLoad />
     </SpriteCategory>
   </SpriteCategories>
@@ -963,6 +967,42 @@
       <SheetY>0</SheetY>
       <CategoryName>ui_mploading</CategoryName>
     </SpritePart>
+    <SpritePart>
+      <SheetID>108</SheetID>
+      <Name>crpg_battle_ugor</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>109</SheetID>
+      <Name>crpg_conquest_orlghelovar</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>110</SheetID>
+      <Name>crpg_battle_drakenburg</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>111</SheetID>
+      <Name>crpg_battle_fieldbytheriver</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
   </SpriteParts>
   <Sprites>
     <GenericSprite>
@@ -1340,6 +1380,22 @@
     <GenericSprite>
       <Name>crpg_battle_ketilsfarm</Name>
       <SpritePartName>crpg_battle_ketilsfarm</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_ugor</Name>
+      <SpritePartName>crpg_battle_ugor</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_conquest_orlghelovar</Name>
+      <SpritePartName>crpg_conquest_orlghelovar</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_drakenburg</Name>
+      <SpritePartName>crpg_battle_drakenburg</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_fieldbytheriver</Name>
+      <SpritePartName>crpg_battle_fieldbytheriver</SpritePartName>
     </GenericSprite>
   </Sprites>
 </SpriteData>

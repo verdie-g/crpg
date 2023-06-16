@@ -54,7 +54,9 @@
   <string id="str_multiplayer_scene_name.crpg_battle_canals" text="{=*}Canals" />
   <string id="str_multiplayer_scene_name.crpg_battle_canyon" text="{=*}Canyon" />
   <string id="str_multiplayer_scene_name.crpg_battle_dragonsroost" text="{=*}Dragon's Roost" />
+  <string id="str_multiplayer_scene_name.crpg_battle_drakenburg" text="{=*}Drakenburg" />
   <string id="str_multiplayer_scene_name.crpg_battle_fallenaqueduct" text="{=*}Fallen Aqueduct" />
+  <string id="str_multiplayer_scene_name.crpg_battle_fieldbytheriver" text="{=*}Field by the River" />
   <string id="str_multiplayer_scene_name.crpg_battle_ghosttown" text="{=*}Ghost Town" />
   <string id="str_multiplayer_scene_name.crpg_battle_hadiiqa" text="{=*}Hadiiqa" />
   <string id="str_multiplayer_scene_name.crpg_battle_helmspoint" text="{=*}Helm's Point" />
@@ -62,7 +64,9 @@
   <string id="str_multiplayer_scene_name.crpg_battle_icelake" text="{=*}Icelake" />
   <string id="str_multiplayer_scene_name.crpg_battle_islandvillage" text="{=*}Islandvillage" />
   <string id="str_multiplayer_scene_name.crpg_battle_kalmara" text="{=*}Kalmara" />
+  <string id="str_multiplayer_scene_name.crpg_battle_ketilsfarm" text="{=*}Ketil's Farm" />
   <string id="str_multiplayer_scene_name.crpg_battle_ketilsfarm" text="{=*}Ketilsfarm" />
+  <string id="str_multiplayer_scene_name.crpg_battle_killington" text="{=*}Killington" />
   <string id="str_multiplayer_scene_name.crpg_battle_killington" text="{=*}Killington" />
   <string id="str_multiplayer_scene_name.crpg_battle_kingsroad" text="{=*}King's Road" />
   <string id="str_multiplayer_scene_name.crpg_battle_lostcathedral" text="{=*}Lost Cathedral" />
@@ -71,6 +75,7 @@
   <string id="str_multiplayer_scene_name.crpg_battle_onomasticon" text="{=*}Onomasticon" />
   <string id="str_multiplayer_scene_name.crpg_battle_orionarena" text="{=*}Orion Arena" />
   <string id="str_multiplayer_scene_name.crpg_battle_persia" text="{=*}Persia" />
+  <string id="str_multiplayer_scene_name.crpg_battle_pompeii" text="{=*}Pompeii" />
   <string id="str_multiplayer_scene_name.crpg_battle_pompeii" text="{=*}Pompeii" />
   <string id="str_multiplayer_scene_name.crpg_battle_quarry" text="{=*}Quarry" />
   <string id="str_multiplayer_scene_name.crpg_battle_redwoodforest" text="{=*}Red Wood Forest" />
@@ -85,20 +90,19 @@
   <string id="str_multiplayer_scene_name.crpg_battle_talmberg" text="{=*}Talmberg" />
   <string id="str_multiplayer_scene_name.crpg_battle_tavernbrawl" text="{=*}Tavernbrawl" />
   <string id="str_multiplayer_scene_name.crpg_battle_tolstabeach" text="{=*}Tolsta Beach" />
+  <string id="str_multiplayer_scene_name.crpg_battle_ugor" text="{=*}Ugor" />
   <string id="str_multiplayer_scene_name.crpg_battle_vatnborg" text="{=*}Vatnborg" />
   <string id="str_multiplayer_scene_name.crpg_battle_verloren" text="{=*}Verloren" />
   <string id="str_multiplayer_scene_name.crpg_battle_waterwaytojelkala" text="{=*}Waterway To Jelkala" />
   <string id="str_multiplayer_scene_name.crpg_battle_weirwater" text="{=*}Weirwater" />
   <string id="str_multiplayer_scene_name.crpg_battle_whitebridge" text="{=*}White Bridge" />
   <string id="str_multiplayer_scene_name.crpg_battle_zemouri" text="{=*}Zemouri" />
-  <string id="str_multiplayer_scene_name.crpg_battle_pompeii" text="{=*}Pompeii" />
-  <string id="str_multiplayer_scene_name.crpg_battle_killington" text="{=*}Killington" />
-  <string id="str_multiplayer_scene_name.crpg_battle_ketilsfarm" text="{=*}Ketil's Farm" />
 
   <!-- Conquest Maps -->
   <string id="str_multiplayer_scene_name.crpg_conquest_acre" text="{=*}Acre" />
   <string id="str_multiplayer_scene_name.crpg_conquest_frederiksborg" text="{=*}Frederiksborg" />
   <string id="str_multiplayer_scene_name.crpg_conquest_hades" text="{=*}Hades" />
   <string id="str_multiplayer_scene_name.crpg_conquest_neuenburg" text="{=*}Neuenburg" />
+  <string id="str_multiplayer_scene_name.crpg_conquest_orlghelovar" text="{=*}Orlghelovar" />
   <string id="str_multiplayer_scene_name.crpg_conquest_skalalanding" text="{=*}Skala Landing" />
 </strings>
