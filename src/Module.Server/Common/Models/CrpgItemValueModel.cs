@@ -427,20 +427,13 @@ internal class CrpgItemValueModel : ItemValueModel
             return 0;
         }
 
-        if (item.StringId.StartsWith("crpg_"))
-        {
-            if (int.TryParse(item.StringId.Split('_').Last().Substring(1), out int heirloomlevel))
-            {
-                return heirloomlevel;
-            }
-            else
-            {
-                return 0;
-            }
-        }
-        else
+        if (!item.StringId.StartsWith("crpg_")
+            || !int.TryParse(item.StringId.Split('_').Last().Substring(1), out int heirloomLevel))
         {
             return 0;
         }
+
+        return heirloomLevel;
     }
+
 }
