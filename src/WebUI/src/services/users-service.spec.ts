@@ -4,7 +4,7 @@ import mockUser from '@/__mocks__/user.json';
 import mockUserPublic from '@/__mocks__/user-public.json';
 import mockUserItems from '@/__mocks__/user-items.json';
 
-import type { User, UserItem, UserItemRank, UserPublic } from '@/models/user';
+import type { User, UserItem, UserPublic } from '@/models/user';
 import { ItemType } from '@/models/item';
 
 vi.mock('@/services/auth-service', () => ({
@@ -33,7 +33,6 @@ import {
   buyUserItem,
   repairUserItem,
   sellUserItem,
-  getItemRanks,
   getUserClan,
   getUserRestrictions,
   getUserActiveJoinRestriction,
@@ -121,10 +120,6 @@ it('sellUserItem', async () => {
   mockDelete('/users/self/items/123').willResolve(null, 204);
 
   expect(await sellUserItem(123)).toEqual(null);
-});
-
-it('getItemRanks', () => {
-  expect(getItemRanks()).toEqual([0, 1, 2, 3]);
 });
 
 describe('userItems: filterBy, sortBy, groupBy', () => {

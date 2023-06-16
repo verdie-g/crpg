@@ -187,8 +187,12 @@ export enum ItemFamilyType {
   Camel = 2,
 }
 
+export type ItemRank = 0 | 1 | 2 | 3;
+
 export interface Item {
+  baseId: string;
   id: string;
+  rank: ItemRank;
   name: string;
   price: number;
   type: ItemType;
@@ -209,6 +213,8 @@ export enum WeaponUsage {
 
 export interface ItemFlat {
   id: string;
+  baseId: string;
+  rank: ItemRank;
   modId: string;
   name: string;
   price: number;

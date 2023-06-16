@@ -18,6 +18,7 @@ import {
   ItemFieldCompareRule,
   type CompareItemsResult,
   ItemFamilyType,
+  type ItemRank,
 } from '@/models/item';
 import { type UserItem } from '@/models/user';
 import { type AggregationConfig } from '@/models/item-search';
@@ -54,6 +55,8 @@ import { applyPolynomialFunction, roundFLoat } from '@/utils/math';
 export const getItems = () => get<Item[]>('/items');
 
 export const getItemImage = (name: string) => `/items/${name}.png`;
+
+export const getItemUpgrades = (baseId: string) => get<Item[]>(`/items/upgrades/${baseId}`);
 
 export const armorTypes: ItemType[] = [
   ItemType.HeadArmor,
@@ -589,3 +592,19 @@ export const computeAverageRepairCostPerHour = (price: number) =>
 
 export const computeBrokenItemRepairCost = (price: number) =>
   Math.floor(price * itemRepairCostPerSecond * brokenItemRepairPenaltySeconds);
+
+export const getRankColor = (rank: ItemRank) => {
+  switch (rank) {
+    case 1:
+      return '#1eff00';
+
+    case 2:
+      return '#0070dd';
+
+    case 3:
+      return '#a335ee';
+
+    default:
+      return '#fff';
+  }
+};

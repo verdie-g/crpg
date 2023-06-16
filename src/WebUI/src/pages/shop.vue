@@ -164,39 +164,46 @@ const buyItem = async (item: ItemFlat) => {
       sortIcon="chevron-up"
       sortIconSize="xs"
       sticky-header
+      detailed
+      detailKey="id"
     >
-      <OTableColumn field="compare" :width="50">
+      <OTableColumn field="compare" :width="36">
         <template #header>
-          <OCheckbox
-            v-tooltip="
-              compareList.length ? $t('shop.compare.removeAll') : $t('shop.compare.addAll')
-            "
-            :modelValue="compareList.length >= 1"
-            :nativeValue="true"
-            @update:modelValue="
-              () =>
-                compareList.length
-                  ? removeAllFromCompareList()
-                  : addAllToCompareList(searchResult.data.items.map(item => item.modId))
-            "
-          />
+          <span class="inline-flex items-center">
+            <OCheckbox
+              v-tooltip="
+                compareList.length ? $t('shop.compare.removeAll') : $t('shop.compare.addAll')
+              "
+              :modelValue="compareList.length >= 1"
+              :nativeValue="true"
+              @update:modelValue="
+                () =>
+                  compareList.length
+                    ? removeAllFromCompareList()
+                    : addAllToCompareList(searchResult.data.items.map(item => item.modId))
+              "
+            />
+          </span>
         </template>
         <template #default="{ row: item }: { row: ItemFlat }">
-          <OCheckbox
-            v-tooltip="
-              compareList.includes(item.modId) ? $t('shop.compare.remove') : $t('shop.compare.add')
-            "
-            :modelValue="compareList.includes(item.modId)"
-            :nativeValue="true"
-            @update:modelValue="() => toggleToCompareList(item.modId)"
-          />
+          <span class="inline-flex items-center">
+            <OCheckbox
+              v-tooltip="
+                compareList.includes(item.modId)
+                  ? $t('shop.compare.remove')
+                  : $t('shop.compare.add')
+              "
+              :modelValue="compareList.includes(item.modId)"
+              :nativeValue="true"
+              @update:modelValue="() => toggleToCompareList(item.modId)"
+            />
+          </span>
         </template>
       </OTableColumn>
 
-      <OTableColumn field="name" label="Name">
+      <OTableColumn field="name">
         <template #header>
-          <div class="max-w-[220px] pr-6">
-            <!-- TODO: unit -->
+          <div class="max-w-[220px]">
             <OInput
               v-model="searchModel"
               type="text"
@@ -211,17 +218,22 @@ const buyItem = async (item: ItemFlat) => {
             />
           </div>
         </template>
+
         <template #default="{ row: item }: { row: ItemFlat }">
-          <ShopGridItemName class="pr-6" :item="item" />
+          <ShopGridItemName :item="item" showTier />
         </template>
       </OTableColumn>
 
       <OTableColumn
         v-for="field in (Object.keys(aggregationsConfigVisible) as Array<keyof ItemFlat>)"
         :field="field"
-        :width="aggregationsConfigVisible[field]?.width ?? 100"
+        :width="aggregationsConfigVisible[field]?.width ?? 140"
+        :thAttrs="
+          () => ({
+            style: `max-width: ${aggregationsConfigVisible[field]?.width ?? 140}px`,
+          })
+        "
       >
-        <!--  -->
         <template #header>
           <div class="relative mr-2 flex items-center gap-1">
             <ShopGridFilter
@@ -260,6 +272,10 @@ const buyItem = async (item: ItemFlat) => {
           </ItemParam>
         </template>
       </OTableColumn>
+
+      <template #detail="{ row: item }: { row: ItemFlat }">
+        <ShopGridUpgradesTable :item="item" :cols="aggregationsConfigVisible" />
+      </template>
 
       <template #empty>
         <ResultNotFound />

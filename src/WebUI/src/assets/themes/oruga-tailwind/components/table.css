@@ -1,5 +1,5 @@
 .o-table {
-  @apply table w-full border-separate border-spacing-0 rounded-2xl;
+  @apply table w-full border-separate border-spacing-0;
 }
 
 .o-table--bordered thead tr th {
@@ -42,6 +42,10 @@
   @apply rounded-br-2xl;
 }
 
+.o-table__tr--selected {
+  @apply bg-base-200;
+}
+
 /*  */
 .o-table--striped tbody tr:not(.o-table__tr--selected):nth-child(2n) {
 }
@@ -52,11 +56,11 @@
 }
 
 .o-table__th--detailed {
-  @apply w-16;
+  @apply w-9;
 }
 
 .o-table__td-chevron {
-  @apply w-16;
+  @apply w-9  hover:text-white;
 }
 
 .o-table--narrowed .o-table__th,
