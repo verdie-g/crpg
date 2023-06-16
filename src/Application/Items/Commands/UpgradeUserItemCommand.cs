@@ -34,9 +34,8 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
         public async Task<Result<UserItemViewModel>> Handle(UpgradeUserItemCommand req, CancellationToken cancellationToken)
         {
             var user = await _db.Users
-                .Include(u => u.Items)
-                .ThenInclude(ui => ui.Item)
                 .AsSplitQuery()
+                .Include(u => u.Items).ThenInclude(ui => ui.Item)
                 .FirstOrDefaultAsync(u => u.Id == req.UserId, cancellationToken);
 
             if (user == null)
@@ -82,21 +81,14 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
                 return new(CommonErrors.ItemAlreadyOwned(upgradedItem.Id));
             }
 
-            var upgradedUserItem = new UserItem
-            {
-                UserId = req.UserId,
-                Item = upgradedItem,
-                IsBroken = false,
-            };
-
-            user.Items.Remove(userItemToUpgrade);
-            user.Items.Add(upgradedUserItem);
+            userItemToUpgrade.Item = upgradedItem;
             user.HeirloomPoints -= 1;
+
             _db.ActivityLogs.Add(_activityLogService.CreateItemUpgradedLog(user.Id, userItemToUpgrade.ItemId, 1));
             await _db.SaveChangesAsync(cancellationToken);
 
             Logger.LogInformation("User '{0}' has upgraded item '{1}'", req.UserId, req.UserItemId);
-            return new(_mapper.Map<UserItemViewModel>(upgradedUserItem));
+            return new(_mapper.Map<UserItemViewModel>(userItemToUpgrade));
         }
     }
 }
