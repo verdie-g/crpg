@@ -35,7 +35,7 @@ internal class CrpgItemValueModel : ItemValueModel
         return item.ItemComponent switch
         {
             ArmorComponent armorComponent => CalculateArmorTier(armorComponent),
-            HorseComponent horseComponent => CalculateHorseTier(item, horseComponent),
+            HorseComponent horseComponent => CalculateHorseTier(item, horseComponent), // horseComponent.Item throws so item needs to be passed here
             BannerComponent bannerComponent => CalculateBannerTier(bannerComponent),
             WeaponComponent weaponComponent => CalculateWeaponTier(weaponComponent),
             _ => 0f,
