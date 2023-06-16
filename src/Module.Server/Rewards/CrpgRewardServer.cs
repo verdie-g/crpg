@@ -198,7 +198,10 @@ internal class CrpgRewardServer : MissionLogic
                     SetStatistics(userUpdate, networkPeer, periodStats);
                 }
 
-                userUpdate.BrokenItems = brokenItems[crpgUserId];
+                if (brokenItems.TryGetValue(crpgUserId, out var userBrokenItems))
+                {
+                    userUpdate.BrokenItems = userBrokenItems;
+                }
 
                 // TODO should probably implement compensation for disconnected users here
             }
