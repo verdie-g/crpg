@@ -18,8 +18,8 @@ export const useItemUpgrades = (
           : state.value,
         false
       )
-        // TODO: hotfix, avoid duplicate items with multiply weaponUsage
-        .filter((value, index, self) => index === self.findIndex(t => t.id === value.id))
+        // TODO: hotfix, avoid duplicate items with multiply weaponClass
+        .filter(el => el.weaponClass === item.weaponClass)
     );
   });
 
