@@ -76,7 +76,7 @@ action:
   share: 分享
   sell: 出售
   confirmation: 确认
-  upgrade: 完善
+  upgrade: 升级
 
 confirmAction: 请确认此操作
 
@@ -475,11 +475,11 @@ character:
       upgrade:
         upgradesTitle: 项目升级
         confirm:
-          description: '你确定你要为{loomPoints}升级这个物品吗？你的物品{oldItem}将被改变为{newItem}。'
-          value: 升级项目
-        currentItem: 当前项目
+          description: '您确定要使用{loomPoints}来升级此物品吗？您的物品{oldItem}将会变成{newItem}。'
+          value: 升级物品
+        currentItem: 当前物品
         notify:
-          success: 项目成功升级
+          success: 物品成功升级
 
   doll:
     slot:
@@ -529,7 +529,7 @@ shop:
       desc: 该武器有多种使用模式
       secondary: '当前模式 (次要)：{weaponClass}'
       primary: '主要模式：{weaponClass}'
-    expensive: 你负担不起这个项目的维护费用
+    expensive: 你负担不起这个物品的维护费用
 
   filter:
     reset: 重置过滤器
@@ -926,7 +926,7 @@ item:
       title: '需求'
       description: '’您的力量不足以使用此物品‘'
     tier:
-      title: '物品等级'
+      title: '物品品阶'
       description: '<p>TODO: cRPG有一个称为物品价值模型的东西，它旨在预测和量化游戏中任何物品的效率。它使用公式计算每个物品的0到10级别，使用物品统计数据。价值模型已经完全重构，以更好地预测哪些武器和物品表现最佳。计算出的物品级别将决定物品的要求和价格。这就是为什么您会看到定价列表中物品的顺序已经改变，因为价值模型的评估已经改变。最好的武器现在应该是最贵的武器。物品价值模型不是物品平衡的形式，而仅仅是平衡游戏物品的指标。我们将在进一步更新中平衡物品，以实现更平衡的游戏环境。</p>'
     flags:
       title: '特性'
@@ -1037,9 +1037,9 @@ item:
       description: ''
 
     rank:
-      title: '级别'
+      title: '阶级'
       description: ''
 
   format:
     upkeep: '{upkeep} / @:dateTime.hours.short'
-    rank: '课程等级 {rank}'
+    rank: '物品阶级 {rank}'
