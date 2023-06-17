@@ -1,0 +1,49 @@
+---
+
+- name: get Bannerlord installation path
+  set_fact:
+    crpg_game_client_local_path: "{{ lookup('env', 'MB_CLIENT_PATH') }}"
+
+- name: assert Bannerlord installation path is defined
+  assert:
+    that: crpg_game_client_local_path | length > 0
+
+- name: check game client files
+  stat:
+    path: "{{ crpg_game_client_local_path }}/Modules/cRPG/{{ item }}"
+  loop:
+    - "AssetPackages"
+    - "SceneObj"
+    - "bin/Win64_Shipping_Client/Crpg.Module.dll"
+    - "bin/Gaming.Desktop.x64_Shipping_Client/Crpg.Module.dll"
+  register: file_stats
+  delegate_to: localhost
+  become: false
+
+- name: assert game client files are present
+  assert:
+    that: item.stat.exists
+    fail_msg: "{{ item.item }} was not found"
+  loop: "{{ file_stats.results }}"
+  delegate_to: localhost
+  become: false
+
+- name: compress locally game client
+  archive:
+    path: "{{ crpg_game_client_local_path }}/Modules/cRPG/*"
+    dest: /tmp/crpg-client.zip
+    format: zip
+  delegate_to: localhost
+  become: false
+
+- name: copy game client to host
+  copy:
+    src: /tmp/crpg-client.zip
+    dest: "{{ crpg_ui_path }}/cRPG.zip"
+    owner: nginx
+    group: nginx
+
+- name: remove temporary archive
+  file:
+    path: /tmp/crpg-client.zip
+    state: absent

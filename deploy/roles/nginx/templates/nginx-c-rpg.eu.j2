@@ -36,11 +36,6 @@ server {
         add_header Cache-Control max-age=86400; # 1 day
     }
 
-    location = /cRPG.zip {
-        # Redirect requests for cRPG.zip to a new location
-        return 302 http://pecores.fr/cRPG.zip;
-    }
-    
     location / {
         # Because the static files other than /index.html and assets contain
         # fingerprints (hashes) in their filenames and they serve as the cache
