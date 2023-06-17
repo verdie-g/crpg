@@ -444,6 +444,7 @@ character:
       price_asc: 价格（升序）
       price_desc: 价格（降序）
       type_asc: 按类型排序
+      rank_desc: 按等级划分
 
     item:
       sell:

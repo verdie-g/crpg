@@ -446,6 +446,7 @@ character:
       price_asc: Дешевле
       price_desc: Дороже
       type_asc: По типу
+      rank_desc: По рангу
 
     item:
       sell:
