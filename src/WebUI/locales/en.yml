@@ -76,6 +76,7 @@ action:
   share: Share
   sell: Sell
   confirmation: Confirmation
+  upgrade: Upgrade
 
 confirmAction: Please confirm action
 
@@ -481,7 +482,6 @@ character:
       upgrade:
         upgradesTitle: Item Upgrades
         confirm:
-          title: Are you sure you want to upgrade the item?
           description: 'Are you sure you want to upgrade this item for {loomPoints}? Your item {oldItem} will be changed to {newItem}'
           value: Upgrade item
         currentItem: Current item

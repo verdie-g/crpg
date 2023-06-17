@@ -44,11 +44,10 @@ const canUpgrade = computed(() => item.rank !== 3 && userStore.user!.heirloomPoi
       </div>
 
       <Modal v-if="canUpgrade">
-        <OButton variant="primary" size="sm" :label="'Upgrade'" />
+        <OButton variant="primary" size="sm" :label="$t('action.upgrade')" />
         <template #popper="{ hide }">
           <ConfirmActionForm
             :title="$t('action.confirmation')"
-            :description="$t('character.inventory.item.upgrade.confirm.title')"
             :name="$t('character.inventory.item.upgrade.confirm.value')"
             :confirmLabel="$t('action.confirm')"
             @cancel="hide"

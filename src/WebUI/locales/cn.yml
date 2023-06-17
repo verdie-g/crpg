@@ -75,6 +75,8 @@ action:
   sort: 分类
   share: 分享
   sell: 出售
+  confirmation: 确认
+  upgrade: 完善
 
 confirmAction: 请确认此操作
 
@@ -470,6 +472,14 @@ character:
       cantUseOnHorseback:
         notify:
           warning: 大盾牌不能在马背上使用
+      upgrade:
+        upgradesTitle: 项目升级
+        confirm:
+          description: '你确定你要为{loomPoints}升级这个物品吗？你的物品{oldItem}将被改变为{newItem}。'
+          value: 升级项目
+        currentItem: 当前项目
+        notify:
+          success: 项目成功升级
 
   doll:
     slot:
@@ -1026,5 +1036,10 @@ item:
       title: '护甲'
       description: ''
 
+    rank:
+      title: '级别'
+      description: ''
+
   format:
     upkeep: '{upkeep} / @:dateTime.hours.short'
+    rank: '课程等级 {rank}'
