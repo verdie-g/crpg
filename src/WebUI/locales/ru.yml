@@ -73,7 +73,8 @@ action:
   commit: Сохранить
   sort: Сортировать
   share: Поделиться
-  sell: Продать
+  confirmation: Подтверждение
+  upgrade: Улучшить
 
 confirmAction: Пожалуйста подтвердите действие
 
@@ -450,7 +451,7 @@ character:
 
     item:
       sell:
-        title: Продать за {price}
+        title: Продать {price}
         confirm: Вы уверены что хотите продать предмет?
         freeRefund: Возврат без штрафа в течении {dateTime}
         penaltyRefund: 'Предмет будет продан со штрафом {penalty}'
@@ -464,7 +465,7 @@ character:
           warning: Предмет сломан и не может быть экипирован
       repair:
         tooltip:
-          title: Починить за {price}
+          title: Починить {price}
         notify:
           success: Предмет успешно отремонтирован
       requirement:
@@ -473,6 +474,14 @@ character:
       cantUseOnHorseback:
         notify:
           warning: Большой щит нельзя использовать верхом
+      upgrade:
+        upgradesTitle: Улучшения
+        confirm:
+          description: 'Вы уверены, что хотите улучшить этот предмет за {loomPoints}? {oldItem} будет заменен на {newItem}'
+          value: Улучшить предмет
+        currentItem: Текущий предмет
+        notify:
+          success: Предмет успешно улучшен
 
   doll:
     slot:
@@ -1037,5 +1046,10 @@ item:
       title: 'Броня'
       description: ''
 
+    rank:
+      title: 'Ранг'
+      description: ''
+
   format:
     upkeep: '{upkeep} / @:dateTime.hours.short'
+    rank: 'Ранг предмета {rank}'
