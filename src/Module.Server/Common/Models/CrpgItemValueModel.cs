@@ -353,7 +353,7 @@ internal class CrpgItemValueModel : ItemValueModel
         float heirloomLevel = ItemToHeirloomLevel(weaponComponent.Item);
         if (weaponComponent.Item is { ItemType: ItemObject.ItemTypeEnum.Crossbow })
         {
-            float crossbowscaler = 2.479958463230f;
+            float crossbowscaler = 1.5f;
             float crossbowTier = weapon.ThrustDamage / 100f * weapon.ThrustDamage / 100f
                 * weapon.SwingSpeed / 100f
                 * weapon.MissileSpeed / 10f
@@ -367,13 +367,13 @@ internal class CrpgItemValueModel : ItemValueModel
             return crossbowTier * crossbowTier / 10f;
         }
 
-        float bowTier = weapon.ThrustDamage / 100f * weapon.ThrustDamage / 100f
-            * weapon.SwingSpeed / 100f
-            * weapon.MissileSpeed / 10f
-            * weapon.Accuracy / 10f
-            * weapon.ThrustSpeed / 10f
-            * (weapon.ItemUsage == "long_bow" ? 0.668f : 1f)
-            / scaler;
+        float bowTier = (float)(Math.Pow(weapon.ThrustDamage, 2.5) / 1335f
+            * Math.Pow(weapon.SwingSpeed, 0.5) / 10f
+            * Math.Pow(weapon.MissileSpeed, 0.5f) / 10f
+            * Math.Pow(weapon.Accuracy, 1.5f) / 100f
+            * Math.Pow(weapon.ThrustSpeed / 10f, 1.5f) / 10f
+            * (weapon.ItemUsage == "long_bow" ? 0.668f : 0.84f)
+            / scaler);
 
         bowTier /= (float)Math.Pow(1 + heirloomLevel / 10f, 1f);
         return bowTier * bowTier / 10f;
@@ -432,8 +432,5 @@ internal class CrpgItemValueModel : ItemValueModel
         {
             return 0;
         }
-
-        return heirloomLevel;
     }
-
 }
