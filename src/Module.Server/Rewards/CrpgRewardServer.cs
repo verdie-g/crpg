@@ -186,7 +186,7 @@ internal class CrpgRewardServer : MissionLogic
                 userUpdate.Rating = GetNewRating(crpgPeer);
             }
 
-            if (missionPeer.Team != null && missionPeer.Team.Side != BattleSideEnum.None)
+            if (crpgPeer.LastSpawnTeam != null)
             {
                 bool isValorousPlayer = valorousPlayerIds.Contains(playerId);
                 int compensationForCrpgUser = compensationByCrpgUserId.TryGetValue(crpgUserId, out int compensation) ? compensation : 0;
@@ -243,7 +243,7 @@ internal class CrpgRewardServer : MissionLogic
                 continue;
             }
 
-            if (missionPeer.Team != null && missionPeer.Team.Side != BattleSideEnum.None)
+            if (crpgPeer.LastSpawnTeam != null)
             {
                 int crpgUserId = crpgPeer.User.Id;
                 var crpgUserDamagedItems = BreakItems(crpgPeer, durationRewarded);
