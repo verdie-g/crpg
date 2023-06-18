@@ -56,10 +56,11 @@ internal class MatchBalancer
             // when balanceOnce is true we rebalance the team only in case of extreme differences between both
             // the goal is to keep the team made at warmup so people feel they play for the same team the whole match
             // this works well if bo7 matches.
-            if (balanceOnce & IsBalanceGoodEnough(gameMatch, maxSizeRatio: 0.7f, maxDifference: 15f, percentageDifference: 0.20f))
+            if (balanceOnce && IsBalanceGoodEnough(gameMatch, maxSizeRatio: 0.7f, maxDifference: 15f, percentageDifference: 0.20f))
             {
                 Debug.Print("This is not the first Round");
                 Debug.Print("Balance is still good");
+                RandomlyAssignWaitingPlayersTeam(gameMatch);
                 return gameMatch;
             }
             else
@@ -76,6 +77,7 @@ internal class MatchBalancer
         if (IsBalanceGoodEnough(balancedBannerGameMatch, maxSizeRatio: 0.85f, maxDifference: 10f, percentageDifference: 0.10f))
         {
             Debug.Print("No need to do banner balancing");
+            RandomlyAssignWaitingPlayersTeam(gameMatch);
             return balancedBannerGameMatch;
         }
 
@@ -520,5 +522,25 @@ internal class MatchBalancer
     private bool IsBalanceGoodEnough(GameMatch gameMatch, float maxSizeRatio, float maxDifference, float percentageDifference)
     {
         return IsTeamSizeDifferenceAcceptable(gameMatch, maxSizeRatio, maxDifference) && IsWeightRatioAcceptable(gameMatch, percentageDifference);
+    }
+
+    private void RandomlyAssignWaitingPlayersTeam(GameMatch gameMatch)
+    {
+        int i = 0;
+        foreach (var user in gameMatch.Waiting)
+        {
+            if (i % 2 == 0)
+            {
+                gameMatch.TeamA.Add(user);
+            }
+            else
+            {
+                gameMatch.TeamB.Add(user);
+            }
+
+            i += 1;
+        }
+
+        gameMatch.Waiting.Clear();
     }
 }
