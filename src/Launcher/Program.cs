@@ -2,23 +2,27 @@
 using System.IO.Compression;
 using System.Net;
 using System.Net.Http.Headers;
+using System.Text.Json;
+using System.Web;
 using Gameloop.Vdf;
 using Gameloop.Vdf.Linq;
 using Microsoft.Win32;
 
-string? bannerlordPath = ResolveBannerlordPath();
-if (bannerlordPath == null)
+Console.WriteLine("Make sure Steam/Epic Games/Xbox is running and that Bannerlord is up-to-date");
+
+var bannerlordInstallation = ResolveBannerlordInstallation();
+if (bannerlordInstallation == null)
 {
     Console.WriteLine("Could not find the location of your Bannerlord installation. Contact a moderator on discord. Press enter to exit.");
     Console.Read();
     return;
 }
 
-Console.WriteLine($"Using Bannerlord installed at '{bannerlordPath}'");
+Console.WriteLine($"Using Bannerlord installed at '{bannerlordInstallation.InstallationPath}'");
 
 try
 {
-    await UpdateCrpgAsync(bannerlordPath);
+    await UpdateCrpgAsync(bannerlordInstallation.InstallationPath);
 }
 catch (Exception e)
 {
@@ -27,59 +31,38 @@ catch (Exception e)
     Console.Read();
 }
 
-string bannerlordExePath = ResolveBannerlordExePath(bannerlordPath)!;
 Process.Start(new ProcessStartInfo
 {
-    WorkingDirectory = Path.GetDirectoryName(bannerlordExePath),
-    FileName = Path.GetFileName(bannerlordExePath),
-    Arguments = "_MODULES_*Native*cRPG*_MODULES_ /multiplayer", // For Xbox it will run the launcher and those args are getting ignored.
+    WorkingDirectory = bannerlordInstallation.ProgramWorkingDirectory,
+    FileName = bannerlordInstallation.Program,
+    Arguments = bannerlordInstallation.ProgramArguments ?? string.Empty,
     UseShellExecute = true,
 });
 
-static string? ResolveBannerlordPath()
+static GameInstallationInfo? ResolveBannerlordInstallation()
 {
-    string? bannerlordPath = ResolveBannerlordPathSteam();
-    if (bannerlordPath != null)
+    GameInstallationInfo? bannerlordInstallation = ResolveBannerlordSteamInstallation();
+    if (bannerlordInstallation != null)
     {
-        return bannerlordPath;
+        return bannerlordInstallation;
     }
 
-    bannerlordPath = ResolveBannerlordPathEpicGames();
-    if (bannerlordPath != null)
+    bannerlordInstallation = ResolveBannerlordEpicGamesInstallation();
+    if (bannerlordInstallation != null)
     {
-        return bannerlordPath;
+        return bannerlordInstallation;
     }
 
-    bannerlordPath = ResolveBannerlordPathXbox();
-    if (bannerlordPath != null)
+    bannerlordInstallation = ResolveBannerlordXboxInstallation();
+    if (bannerlordInstallation != null)
     {
-        return bannerlordPath;
-    }
-
-    string bannerlordPathFile = Path.Combine(
-        Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-        "Mount and Blade II Bannerlord/cRPG/BannerlordPath.txt");
-    if (File.Exists(bannerlordPathFile))
-    {
-        bannerlordPath = File.ReadAllText(bannerlordPathFile);
-        if (File.Exists(bannerlordPath))
-        {
-            return bannerlordPath;
-        }
-    }
-
-    bannerlordPath = AskForBannerlordPath();
-    if (bannerlordPath != null)
-    {
-        Directory.CreateDirectory(Directory.GetParent(bannerlordPathFile)!.FullName);
-        File.WriteAllText(bannerlordPathFile, bannerlordPath);
-        return bannerlordPath;
+        return bannerlordInstallation;
     }
 
     return null;
 }
 
-static string? ResolveBannerlordPathSteam()
+static GameInstallationInfo? ResolveBannerlordSteamInstallation()
 {
     string? steamPath = (string?)Registry.GetValue("HKEY_CURRENT_USER\\Software\\Valve\\Steam", "SteamPath", null);
     if (steamPath == null)
@@ -110,74 +93,62 @@ static string? ResolveBannerlordPathSteam()
         }
 
         string bannerlordPath = Path.Combine(path, "steamapps/common/Mount & Blade II Bannerlord");
-        if (ResolveBannerlordExePath(bannerlordPath) != null)
+        string bannerlordExePath = Path.Combine(bannerlordPath, "bin/Win64_Shipping_Client/Bannerlord.exe");
+        if (File.Exists(bannerlordExePath))
         {
-            return bannerlordPath;
+            return new GameInstallationInfo(
+                bannerlordPath,
+                bannerlordExePath,
+                "_MODULES_*Native*cRPG*_MODULES_ /multiplayer",
+                Path.GetDirectoryName(bannerlordExePath));
         }
     }
 
     return null;
 }
 
-static string? ResolveBannerlordPathEpicGames()
+static GameInstallationInfo? ResolveBannerlordEpicGamesInstallation()
 {
-    const string defaultBannerlordPath = "C:/Program Files/Epic Games/Chickadee";
-    if (ResolveBannerlordExePath(defaultBannerlordPath) != null)
+    const string appName = "Chickadee";
+
+    string manifestsFolderPath = Path.Combine(
+        Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData),
+        "Epic/EpicGamesLauncher/Data/Manifests");
+    foreach (string manifestPath in Directory.EnumerateFiles(manifestsFolderPath, "*.item"))
     {
-        return defaultBannerlordPath;
+        var manifestDoc = JsonSerializer.Deserialize<JsonDocument>(File.ReadAllText(manifestPath));
+        if (manifestDoc == null
+            || !manifestDoc.RootElement.TryGetProperty("AppName", out var appNameEl)
+            || appNameEl.GetString() != appName)
+        {
+            continue;
+        }
+
+        string bannerlordPath = manifestDoc.RootElement.GetProperty("InstallLocation").GetString()!;
+        string catalogNamespace = manifestDoc.RootElement.GetProperty("CatalogNamespace").GetString()!;
+        string catalogItemId = manifestDoc.RootElement.GetProperty("CatalogItemId").GetString()!;
+
+        string app = $"{catalogNamespace}:{catalogItemId}:{appName}";
+        string program = $"com.epicgames.launcher://apps/{HttpUtility.UrlEncode(app)}?action=launch&silent=true";
+
+        string bannerlordExePath = Path.Combine(bannerlordPath, "bin/Win64_Shipping_Client/Bannerlord.exe");
+        if (File.Exists(bannerlordExePath))
+        {
+            return new GameInstallationInfo(bannerlordPath, program, null, null);
+        }
     }
 
     return null;
 }
 
-static string? ResolveBannerlordPathXbox()
+static GameInstallationInfo? ResolveBannerlordXboxInstallation()
 {
     const string defaultBannerlordPath = "C:/XboxGames/Mount & Blade II- Bannerlord/Content";
-    if (ResolveBannerlordExePath(defaultBannerlordPath) != null)
-    {
-        return defaultBannerlordPath;
-    }
-
-    return null;
-}
-
-static string? AskForBannerlordPath()
-{
-    string? bannerlordPath = null;
-    while (bannerlordPath == null)
-    {
-        Console.WriteLine("Enter your Mount & Blade II Bannerlord location (e.g. D:\\Steam\\steamapps\\common\\Mount & Blade II Bannerlord):");
-        bannerlordPath = Console.ReadLine();
-        if (bannerlordPath == null)
-        {
-            break;
-        }
-
-        bannerlordPath = bannerlordPath.Trim();
-        if (ResolveBannerlordExePath(bannerlordPath) == null)
-        {
-            Console.WriteLine($"Could not find Bannerlord at '{bannerlordPath}'");
-            bannerlordPath = null;
-        }
-    }
-
-    return bannerlordPath;
-}
-
-static string? ResolveBannerlordExePath(string bannerlordPath)
-{
-    string bannerlordExePath = Path.Combine(bannerlordPath, "bin/Win64_Shipping_Client/Bannerlord.exe");
+    string bannerlordExePath = Path.Combine(defaultBannerlordPath, "bin/Gaming.Desktop.x64_Shipping_Client/Launcher.Native.exe");
     if (File.Exists(bannerlordExePath))
     {
-        return bannerlordExePath;
+        return new GameInstallationInfo(defaultBannerlordPath, bannerlordExePath, null, null);
     }
-
-    bannerlordExePath = Path.Combine(bannerlordPath, "bin/Gaming.Desktop.x64_Shipping_Client/Launcher.Native.exe");
-    if (File.Exists(bannerlordExePath))
-    {
-        return bannerlordExePath;
-    }
-
 
     return null;
 }
@@ -208,9 +179,14 @@ static async Task UpdateCrpgAsync(string bannerlordPath)
 
     long contentLength = res.Content.Headers.ContentLength!.Value;
     await using var contentStream = await res.Content.ReadAsStreamAsync();
-    using MemoryStream ms = await DownloadWithProgressBarAsync(contentStream, contentLength);
 
-    using (ZipArchive archive = new(ms))
+    string temporaryFilePath = Path.GetTempFileName() + ".zip";
+    await using var temporaryFileStream = File.Create(temporaryFilePath);
+
+    await CopyToWithProgressBarAsync(contentStream, contentLength, temporaryFileStream);
+
+    temporaryFileStream.Seek(0, SeekOrigin.Begin);
+    using (ZipArchive archive = new(temporaryFileStream))
     {
         if (Directory.Exists(crpgPath))
         {
@@ -226,24 +202,31 @@ static async Task UpdateCrpgAsync(string bannerlordPath)
     {
         File.WriteAllText(tagPath, tag);
     }
+
+    File.Delete(temporaryFilePath);
 }
 
-static async Task<MemoryStream> DownloadWithProgressBarAsync(Stream stream, long length)
+static async Task CopyToWithProgressBarAsync(
+    Stream inputStream,
+    long inputStreamLength,
+    Stream outputStream)
 {
-    MemoryStream ms = new();
     byte[] buffer = new byte[100 * 1000];
     int totalBytesRead = 0;
     int bytesRead;
-    while ((bytesRead = await stream.ReadAsync(buffer)) != 0)
+
+    while ((bytesRead = await inputStream.ReadAsync(buffer)) != 0)
     {
-        ms.Write(buffer, 0, bytesRead);
+        outputStream.Write(buffer, 0, bytesRead);
 
         totalBytesRead += bytesRead;
-        float progression = (float)Math.Round(100 * (float)totalBytesRead / length, 2);
-        string lengthStr = length.ToString();
+        float progression = (float)Math.Round(100 * (float)totalBytesRead / inputStreamLength, 2);
+        string lengthStr = inputStreamLength.ToString();
         string totalBytesReadStr = totalBytesRead.ToString().PadLeft(lengthStr.Length);
-        Console.WriteLine($"Downloading {totalBytesReadStr} / {lengthStr} ({progression}%)");
+        Console.Write($"\rDownloading {totalBytesReadStr} / {lengthStr} ({progression:00.00}%)");
     }
 
-    return ms;
+    Console.WriteLine();
 }
+
+record GameInstallationInfo(string InstallationPath, string Program, string? ProgramArguments, string? ProgramWorkingDirectory);
