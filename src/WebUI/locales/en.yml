@@ -452,6 +452,7 @@ character:
       price_asc: Price (asc)
       price_desc: Price (desc)
       type_asc: By type
+      rank_desc: By rank
 
     item:
       sell:

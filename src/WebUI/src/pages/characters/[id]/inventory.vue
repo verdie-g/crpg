@@ -90,6 +90,14 @@ const onUpgradeUserItem = async (itemId: number) => {
 const flatItems = computed(() => createItemIndex(extractItemFromUserItem(userStore.userItems)));
 
 const sortingConfig: SortingConfig = {
+  rank_desc: {
+    field: 'rank',
+    order: 'desc',
+  },
+  type_asc: {
+    field: 'type',
+    order: 'asc',
+  },
   price_asc: {
     field: 'price',
     order: 'asc',
@@ -98,15 +106,11 @@ const sortingConfig: SortingConfig = {
     field: 'price',
     order: 'desc',
   },
-  type_asc: {
-    field: 'type',
-    order: 'asc',
-  },
 };
 
 const filterByTypeModel = ref<ItemType[]>([]);
 const filterByNameModel = ref<string>('');
-const sortingModel = ref<string>('type_asc');
+const sortingModel = ref<string>('rank_desc');
 
 const aggregationConfig = {
   type: {
