@@ -432,5 +432,7 @@ internal class CrpgItemValueModel : ItemValueModel
         {
             return 0;
         }
+
+        return heirloomLevel;
     }
 }
