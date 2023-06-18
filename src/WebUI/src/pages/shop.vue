@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { WeaponUsage, type ItemFlat } from '@/models/item';
-import { getItems, getCompareItemsResult } from '@/services/item-service';
+import { getItems, getCompareItemsResult, canUpgrade } from '@/services/item-service';
 import { getSearchResult } from '@/services/item-search-service';
 import { notify } from '@/services/notification-service';
 import { t } from '@/services/translate-service';
@@ -85,6 +85,8 @@ const buyItem = async (item: ItemFlat) => {
 
   notify(t('shop.item.buy.notify.success'));
 };
+
+const isUpgradableCategory = computed(() => canUpgrade(itemTypeModel.value));
 </script>
 
 <template>
@@ -164,7 +166,7 @@ const buyItem = async (item: ItemFlat) => {
       sortIcon="chevron-up"
       sortIconSize="xs"
       sticky-header
-      detailed
+      :detailed="isUpgradableCategory"
       detailKey="id"
     >
       <OTableColumn field="compare" :width="36">

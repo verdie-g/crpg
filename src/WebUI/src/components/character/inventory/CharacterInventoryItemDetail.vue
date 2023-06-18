@@ -10,6 +10,7 @@ import {
   getItemImage,
   computeSalePrice,
   computeBrokenItemRepairCost,
+  canUpgrade,
 } from '@/services/item-service';
 import { parseTimestamp } from '@/utils/date';
 import { omitPredicate } from '@/utils/object';
@@ -62,6 +63,8 @@ const aggregationsConfig = computed(() =>
     (key: keyof ItemFlat) => omitEmptyParam(key)
   )
 );
+
+const isUpgradable = computed(() => canUpgrade(props.item.type));
 </script>
 
 <template>
@@ -233,7 +236,7 @@ const aggregationsConfig = computed(() =>
         </VTooltip>
       </ConfirmActionTooltip>
 
-      <Modal closable :autoHide="false">
+      <Modal v-if="isUpgradable" closable :autoHide="false">
         <OButton
           variant="secondary"
           rounded

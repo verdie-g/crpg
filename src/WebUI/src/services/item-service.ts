@@ -608,3 +608,5 @@ export const getRankColor = (rank: ItemRank) => {
       return '#fff';
   }
 };
+
+export const canUpgrade = (type: ItemType) => type !== ItemType.Banner;
