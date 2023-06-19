@@ -80,11 +80,11 @@ vi.mock('@/composables/shop/use-sort', () => ({
   useItemsSort: mockUseItemsSort,
 }));
 
-const mockToggleCompareMode = vi.fn();
+const mockToggleCompare = vi.fn();
 const mockToggleToCompareList = vi.fn();
 const mockUseItemsCompare = vi.fn().mockImplementation(() => ({
-  compareMode: computed(() => false),
-  toggleCompareMode: mockToggleCompareMode,
+  isCompare: computed(() => false),
+  toggleCompare: mockToggleCompare,
   compareList: computed(() => []),
   toggleToCompareList: mockToggleToCompareList,
 }));
@@ -164,7 +164,7 @@ describe('Toggle compare mode', () => {
     }));
 
     const { wrapper } = await mountWithRouter(mountOptions, routes, route);
-    expect(wrapper.find('[data-aq-shop-handler="toggle-compare-mode"]').exists()).toBeFalsy();
+    expect(wrapper.find('[data-aq-shop-handler="toggle-compare"]').exists()).toBeFalsy();
   });
 
   it('there are a couple of items for comparison :)', async () => {
@@ -176,9 +176,9 @@ describe('Toggle compare mode', () => {
 
     const { wrapper } = await mountWithRouter(mountOptions, routes, route);
 
-    await wrapper.find('[data-aq-shop-handler="toggle-compare-mode"]').trigger('click');
+    await wrapper.find('[data-aq-shop-handler="toggle-compare"]').trigger('click');
 
-    expect(mockToggleCompareMode).toBeCalled();
+    expect(mockToggleCompare).toBeCalled();
   });
 });
 
@@ -258,28 +258,28 @@ describe('shop item', () => {
     expect(itemsComponent.attributes('fields')).toEqual('price,handling');
   });
 
-  describe('pass prop - compareMode, comparedResult', () => {
-    it('compareMode:false', async () => {
+  describe('pass prop - isCompare, comparedResult', () => {
+    it('isCompare:false', async () => {
       const { wrapper } = await mountWithRouter(mountOptions, routes, route);
 
       const itemComponent = wrapper.findComponent({ name: 'ShopGridItem' });
 
-      expect(itemComponent.attributes('comparemode')).toEqual('false');
+      expect(itemComponent.attributes('iscompare')).toEqual('false');
       expect(itemComponent.attributes('comparedresult')).not.toBeDefined();
     });
 
-    it('compareMode:true', async () => {
+    it('isCompare:true', async () => {
       const originalMock = mockUseItemsCompare.getMockImplementation()!();
       mockUseItemsCompare.mockImplementation(() => ({
         ...originalMock,
-        compareMode: computed(() => true),
+        isCompare: computed(() => true),
       }));
 
       const { wrapper } = await mountWithRouter(mountOptions, routes, route);
 
       const itemComponent = wrapper.findComponent({ name: 'ShopGridItem' });
 
-      expect(itemComponent.attributes('comparemode')).toEqual('true');
+      expect(itemComponent.attributes('iscompare')).toEqual('true');
       expect(itemComponent.attributes('comparedresult')).toEqual('[object Object]');
     });
   });

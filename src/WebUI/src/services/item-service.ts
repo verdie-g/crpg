@@ -536,7 +536,7 @@ export const getCompareItemsResult = (items: ItemFlat[], aggregationsConfig: Agg
   return (Object.keys(aggregationsConfig) as Array<keyof ItemFlat>)
     .filter(k => aggregationsConfig[k]?.compareRule !== undefined)
     .reduce((out, k) => {
-      const values = items.map(fi => fi[k] as number);
+      const values = items.map(fi => fi[k]).filter(v => typeof v === 'number') as number[];
       out[k] =
         aggregationsConfig[k]!.compareRule === ItemFieldCompareRule.Less
           ? Math.min(...values)
@@ -545,7 +545,19 @@ export const getCompareItemsResult = (items: ItemFlat[], aggregationsConfig: Agg
     }, {} as CompareItemsResult);
 };
 
-export const getItemFieldDiffStr = (
+// TODO: spec
+export const getRelativeEntries = (item: ItemFlat, aggregationsConfig: AggregationConfig) => {
+  return (Object.keys(aggregationsConfig) as Array<keyof ItemFlat>)
+    .filter(k => aggregationsConfig[k]?.compareRule !== undefined)
+    .reduce((out, k) => {
+      if (typeof item[k] === 'number') {
+        out[k] = item[k] as number;
+      }
+      return out;
+    }, {} as CompareItemsResult);
+};
+
+export const getItemFieldAbsoluteDiffStr = (
   compareRule: ItemFieldCompareRule,
   value: number,
   bestValue: number
@@ -561,6 +573,23 @@ export const getItemFieldDiffStr = (
   if (bestValue < value) return '';
 
   return `-${n(roundFLoat(Math.abs(bestValue - value)))}`;
+};
+
+// TODO: spec
+export const getItemFieldRelativeDiffStr = (
+  compareRule: ItemFieldCompareRule,
+  value: number,
+  relativeValue: number
+) => {
+  if (value === relativeValue) return '';
+
+  if (compareRule === ItemFieldCompareRule.Less) {
+    if (relativeValue > value) return `-${n(roundFLoat(Math.abs(value - relativeValue)))}`;
+
+    return `+${n(roundFLoat(Math.abs(value - relativeValue)))}`;
+  }
+
+  return `+${n(roundFLoat(Math.abs(value - relativeValue)))}`;
 };
 
 export const getItemGraceTimeEnd = (userItem: UserItem) => {

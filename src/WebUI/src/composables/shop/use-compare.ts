@@ -2,35 +2,35 @@ export const useItemsCompare = () => {
   const route = useRoute();
   const router = useRouter();
 
-  const compareMode = computed({
+  const isCompare = computed({
     set(val: boolean) {
       router.push({
         query: {
           ...route.query,
-          compareMode: !val ? undefined : String(val),
+          isCompare: !val ? undefined : String(val),
         },
       });
     },
 
     get() {
-      return route.query?.compareMode ? true : false;
+      return route.query?.isCompare ? true : false;
     },
   });
 
-  const toggleCompareMode = () => {
-    compareMode.value = !compareMode.value;
+  const toggleCompare = () => {
+    isCompare.value = !isCompare.value;
   };
 
   const compareList = computed({
     set(val: string[]) {
-      const needDisableCompareMode = compareMode.value && val.length <= 1;
+      const needDisableCompare = isCompare.value && val.length <= 1;
 
       router.push({
         query: {
           ...route.query,
           compareList: val,
-          ...(needDisableCompareMode && {
-            compareMode: undefined,
+          ...(needDisableCompare && {
+            isCompare: undefined,
           }),
         },
       });
@@ -59,8 +59,8 @@ export const useItemsCompare = () => {
   };
 
   return {
-    compareMode,
-    toggleCompareMode,
+    isCompare,
+    toggleCompare,
     compareList,
     toggleToCompareList,
     addAllToCompareList,

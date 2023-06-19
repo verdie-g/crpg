@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { itemSellCostCoefs } from '@root/data/constants.json';
-import { type CompareItemsResult, type ItemFlat } from '@/models/item';
+import { ItemCompareMode, type CompareItemsResult, type ItemFlat } from '@/models/item';
 import { type UserItem } from '@/models/user';
 import {
   getAggregationsConfig,
@@ -137,7 +137,8 @@ const isUpgradable = computed(() => canUpgrade(props.item.type));
         <ItemParam
           :item="item"
           :field="field"
-          :compareMode="compareResult !== undefined"
+          :isCompare="compareResult !== undefined"
+          :compareMode="ItemCompareMode.Absolute"
           :bestValue="compareResult !== undefined ? compareResult[field] : undefined"
         >
           <template v-if="field === 'price'" #default="{ rawBuckets }">

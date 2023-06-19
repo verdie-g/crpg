@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type ItemFlat } from '@/models/item';
+import { ItemCompareMode, type ItemFlat } from '@/models/item';
 import { type AggregationConfig } from '@/models/item-search';
 import { useItemUpgrades } from '@/composables/item/use-item-upgrades';
 
@@ -8,7 +8,7 @@ const { item, cols } = defineProps<{
   cols: AggregationConfig;
 }>();
 
-const { compareItemsResult, itemUpgrades } = useItemUpgrades(item, cols, true);
+const { itemUpgrades, relativeEntries } = useItemUpgrades(item, cols, true);
 </script>
 
 <template>
@@ -31,8 +31,9 @@ const { compareItemsResult, itemUpgrades } = useItemUpgrades(item, cols, true);
       <ItemParam
         :item="rowItem"
         :field="field"
-        :bestValue="compareItemsResult[field]"
-        compareMode
+        isCompare
+        :compareMode="ItemCompareMode.Relative"
+        :relativeValue="relativeEntries[field]"
       />
     </OTableColumn>
 

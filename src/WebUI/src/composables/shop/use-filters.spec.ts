@@ -317,7 +317,7 @@ describe('filter model', () => {
           length: [1, 2],
           handling: [1, 5],
         },
-        compareMode: true,
+        isCompareActive: true,
         compareList: ['1', '2'],
       },
     }));
@@ -334,7 +334,7 @@ describe('filter model', () => {
         perPage: 25,
         type: ItemType.OneHandedWeapon,
         weaponClass: WeaponClass.OneHandedAxe,
-        compareMode: true,
+        isCompareActive: true,
         compareList: ['1', '2'],
       },
     });

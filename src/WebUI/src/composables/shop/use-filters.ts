@@ -112,7 +112,7 @@ export const useItemsFilter = (items: Item[]) => {
           'perPage',
 
           // TODO: need to be purged?
-          'compareMode',
+          'isCompareActive',
           'compareList',
 
           'hideOwnedItems',

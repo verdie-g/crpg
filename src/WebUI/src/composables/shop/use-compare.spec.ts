@@ -9,27 +9,27 @@ vi.mock('vue-router', () => ({
 
 import { useItemsCompare } from './use-compare';
 
-describe('compare mode model', () => {
+describe('isCompare model', () => {
   it('empty query', () => {
     mockedUseRoute.mockImplementation(() => ({
       query: {},
     }));
 
-    const { compareMode } = useItemsCompare();
+    const { isCompare } = useItemsCompare();
 
-    expect(compareMode.value).toEqual(false);
+    expect(isCompare.value).toEqual(false);
   });
 
   it('with query', () => {
     mockedUseRoute.mockImplementation(() => ({
       query: {
-        compareMode: true,
+        isCompare: true,
       },
     }));
 
-    const { compareMode } = useItemsCompare();
+    const { isCompare } = useItemsCompare();
 
-    expect(compareMode.value).toEqual(true);
+    expect(isCompare.value).toEqual(true);
   });
 
   it('change', () => {
@@ -40,33 +40,33 @@ describe('compare mode model', () => {
       },
     }));
 
-    const { compareMode } = useItemsCompare();
+    const { isCompare } = useItemsCompare();
 
-    compareMode.value = true;
+    isCompare.value = true;
 
     expect(mockedPush).toBeCalledWith({
       query: {
         page: 3,
         sort: 'price_desc',
-        compareMode: 'true',
+        isCompare: 'true',
       },
     });
   });
 
-  it('toggle compare mode', () => {
+  it('toggle compare', () => {
     mockedUseRoute.mockImplementation(() => ({
       query: {},
     }));
 
-    const { compareMode, toggleCompareMode } = useItemsCompare();
+    const { isCompare, toggleCompare } = useItemsCompare();
 
-    expect(compareMode.value).toEqual(false);
+    expect(isCompare.value).toEqual(false);
 
-    toggleCompareMode();
+    toggleCompare();
 
     expect(mockedPush).toBeCalledWith({
       query: {
-        compareMode: 'true',
+        isCompare: 'true',
       },
     });
   });
@@ -107,10 +107,10 @@ describe('compare list', () => {
     expect(compareList.value).toEqual(['1', '2', '3']);
   });
 
-  it('change - compareMode should be reset, if length of compareList less than 2', () => {
+  it('change - isCompare should be reset, if length of compareList less than 2', () => {
     mockedUseRoute.mockImplementation(() => ({
       query: {
-        compareMode: true,
+        isCompare: true,
         compareList: ['3', '4'],
       },
     }));
