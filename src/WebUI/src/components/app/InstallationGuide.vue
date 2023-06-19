@@ -80,7 +80,7 @@ watch(
                     tag="li"
                   >
                     <template #launcherLink>
-                      <a target="_blank" href="">Launcher TODO: link</a>
+                      <a target="_blank" href="https://www.moddb.com/mods/crpg/downloads/crpg-launcher1">launcher</a>
                     </template>
                   </i18n-t>
                   <li>{{ $t('installation.platform.other.startLauncher') }}</li>
