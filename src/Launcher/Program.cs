@@ -143,11 +143,15 @@ static GameInstallationInfo? ResolveBannerlordEpicGamesInstallation()
 
 static GameInstallationInfo? ResolveBannerlordXboxInstallation()
 {
-    const string defaultBannerlordPath = "C:/XboxGames/Mount & Blade II- Bannerlord/Content";
-    string bannerlordExePath = Path.Combine(defaultBannerlordPath, "bin/Gaming.Desktop.x64_Shipping_Client/Launcher.Native.exe");
-    if (File.Exists(bannerlordExePath))
+    // I couldn't find a smart way to find an xbox game so let's just try to find a XboxGames folder in single letter disks.
+    for (char disk = 'A'; disk <= 'Z'; disk += (char)1)
     {
-        return new GameInstallationInfo(defaultBannerlordPath, bannerlordExePath, null, null);
+        string bannerlordPath = disk + ":/XboxGames/Mount & Blade II- Bannerlord/Content";
+        string bannerlordExePath = Path.Combine(bannerlordPath, "bin/Gaming.Desktop.x64_Shipping_Client/Launcher.Native.exe");
+        if (File.Exists(bannerlordExePath))
+        {
+            return new GameInstallationInfo(bannerlordPath, bannerlordExePath, null, null);
+        }
     }
 
     return null;
