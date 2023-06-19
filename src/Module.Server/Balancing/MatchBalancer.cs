@@ -526,21 +526,23 @@ internal class MatchBalancer
 
     private void RandomlyAssignWaitingPlayersTeam(GameMatch gameMatch)
     {
+        GameMatch newGameMatch = new();
+        newGameMatch.TeamA.AddRange(gameMatch.TeamA);
+        newGameMatch.TeamA.AddRange(gameMatch.TeamB);
+
         int i = 0;
         foreach (var user in gameMatch.Waiting)
         {
             if (i % 2 == 0)
             {
-                gameMatch.TeamA.Add(user);
+                newGameMatch.TeamA.Add(user);
             }
             else
             {
-                gameMatch.TeamB.Add(user);
+                newGameMatch.TeamB.Add(user);
             }
 
             i += 1;
         }
-
-        gameMatch.Waiting.Clear();
     }
 }
