@@ -1,7 +1,7 @@
 import { type ItemFlat } from '@/models/item';
-import { getItemUpgrades, getCompareItemsResult } from '@/services/item-service';
-import { createItemIndex } from '@/services/item-search-service/indexator';
 import { type AggregationConfig } from '@/models/item-search';
+import { getItemUpgrades, getRelativeEntries } from '@/services/item-service';
+import { createItemIndex } from '@/services/item-search-service/indexator';
 
 export const useItemUpgrades = (
   item: ItemFlat,
@@ -23,10 +23,12 @@ export const useItemUpgrades = (
     );
   });
 
-  const compareItemsResult = computed(() => getCompareItemsResult(itemUpgrades.value, cols));
+  const relativeEntries = computed(() =>
+    getRelativeEntries(excludeBaseItem ? item : itemUpgrades.value[0], cols)
+  );
 
   return {
-    compareItemsResult,
     itemUpgrades,
+    relativeEntries,
   };
 };

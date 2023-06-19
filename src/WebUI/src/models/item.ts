@@ -315,3 +315,8 @@ export enum ItemFieldCompareRule {
 }
 
 export type CompareItemsResult = Partial<Record<keyof ItemFlat, number>>;
+
+export enum ItemCompareMode {
+  Absolute = 'Absolute', // The items compared to each other, and the best one is chosen.
+  Relative = 'Relative', // The items compared relative to the selected
+}

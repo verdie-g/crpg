@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type ItemFlat } from '@/models/item';
+import { ItemCompareMode, type ItemFlat } from '@/models/item';
 import { type AggregationConfig } from '@/models/item-search';
 import { useItemUpgrades } from '@/composables/item/use-item-upgrades';
 import { useUserStore } from '@/stores/user';
@@ -17,13 +17,12 @@ const emit = defineEmits<{
   upgrade: [];
 }>();
 
-const { compareItemsResult, itemUpgrades } = useItemUpgrades(item, cols);
+const { itemUpgrades, relativeEntries } = useItemUpgrades(item, cols);
 
 const currentItem = computed(() => itemUpgrades.value.find(iu => iu.id === item.id));
-const nextItem = computed(() => {
-  const currItemIdx = itemUpgrades.value.findIndex(iu => iu.id === item.id);
-  return itemUpgrades.value[clamp(currItemIdx + 1, 0, 3)];
-});
+const nextItem = computed(
+  () => itemUpgrades.value[clamp(itemUpgrades.value.findIndex(iu => iu.id === item.id) + 1, 0, 3)]
+);
 
 const canUpgrade = computed(() => item.rank !== 3 && userStore.user!.heirloomPoints! > 0);
 </script>
@@ -119,8 +118,9 @@ const canUpgrade = computed(() => item.rank !== 3 && userStore.user!.heirloomPoi
         <ItemParam
           :item="rowItem"
           :field="field"
-          :bestValue="compareItemsResult[field]"
-          compareMode
+          isCompare
+          :compareMode="ItemCompareMode.Relative"
+          :relativeValue="relativeEntries[field]"
         />
       </OTableColumn>
 

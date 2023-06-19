@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { WeaponUsage, type ItemFlat } from '@/models/item';
+import { WeaponUsage, type ItemFlat, ItemCompareMode } from '@/models/item';
 import { getItems, getCompareItemsResult, canUpgrade } from '@/services/item-service';
 import { getSearchResult } from '@/services/item-search-service';
 import { notify } from '@/services/notification-service';
@@ -49,8 +49,8 @@ const { pageModel, perPageModel, perPageConfig } = usePagination();
 const { sortingModel, sortingConfig, getSortingConfigByField } = useItemsSort(aggregationsConfig);
 
 const {
-  compareMode,
-  toggleCompareMode,
+  isCompare,
+  toggleCompare,
   compareList,
   toggleToCompareList,
   addAllToCompareList,
@@ -69,13 +69,13 @@ const searchResult = computed(() =>
     query: searchModel.value,
     filter: {
       ...filterModel.value,
-      ...(compareMode.value && { modId: compareList.value }),
+      ...(isCompare.value && { modId: compareList.value }),
     },
   })
 );
 
 const compareItemsResult = computed(() =>
-  !compareMode.value
+  !isCompare.value
     ? null
     : getCompareItemsResult(searchResult.value.data.items, aggregationsConfig.value)
 );
@@ -260,7 +260,7 @@ const isUpgradableCategory = computed(() => canUpgrade(itemTypeModel.value));
             :item="item"
             :field="field"
             :bestValue="compareItemsResult !== null ? compareItemsResult[field] : undefined"
-            :compareMode="compareMode"
+            :isCompare="isCompare"
           >
             <template v-if="field === 'price'" #default="{ rawBuckets }">
               <ShopGridItemBuyBtn
@@ -315,10 +315,10 @@ const isUpgradableCategory = computed(() => canUpgrade(itemTypeModel.value));
                 variant="primary"
                 size="lg"
                 outlined
-                :iconRight="compareMode ? 'close' : null"
-                data-aq-shop-handler="toggle-compare-mode"
+                :iconRight="isCompare ? 'close' : null"
+                data-aq-shop-handler="toggle-compare"
                 :label="$t('shop.compare.title')"
-                @click="toggleCompareMode"
+                @click="toggleCompare"
               />
             </div>
 

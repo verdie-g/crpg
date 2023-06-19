@@ -81,7 +81,7 @@ import {
   getWeaponClassesByItemType,
   getCompareItemsResult,
   humanizeBucket,
-  getItemFieldDiffStr,
+  getItemFieldAbsoluteDiffStr,
   type HumanBucket,
   IconBucketType,
   getItemGraceTimeEnd,
@@ -376,9 +376,9 @@ it.each<[ItemFieldCompareRule, number, number, string]>([
   [ItemFieldCompareRule.Less, 1, 2, ''],
   [ItemFieldCompareRule.Less, 2, 1, '+1'],
 ])(
-  'getItemFieldDiffStr - compareRule: %s, value: %s, bestValue: %s',
+  'getItemFieldAbsoluteDiffStr - compareRule: %s, value: %s, bestValue: %s',
   (compareRule, value, bestValue, expectation) => {
-    expect(getItemFieldDiffStr(compareRule, value, bestValue)).toEqual(expectation);
+    expect(getItemFieldAbsoluteDiffStr(compareRule, value, bestValue)).toEqual(expectation);
   }
 );
 
