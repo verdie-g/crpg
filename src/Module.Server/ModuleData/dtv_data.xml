@@ -1,21 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <DtvData>
-  
+
   <Round id="1">
     <!-- Round 1 -->
     <Wave id="1">
       <!-- Wave 1 of round 1 -->
-      <Group classDivisionId="crpg_dtv_peasant" count="1" />
+      <Group classDivisionId="crpg_dtv_peasant_sickle" count="1" />
+      <Group classDivisionId="crpg_dtv_peasant_pitchfork" count="1" />
     </Wave>
     <Wave id="2">
       <!-- Wave 2 of round 1 -->
-      <Group classDivisionId="crpg_dtv_peasant" count="1" />
-      <Group classDivisionId="crpg_dtv_peasant" count="1" />
+      <Group classDivisionId="crpg_dtv_peasant_sickle" count="1" />
+      <Group classDivisionId="crpg_dtv_peasant_pitchfork" count="1" />
     </Wave>
     <Wave id="3">
       <!-- Wave 3 of round 1 -->
-      <Group classDivisionId="crpg_dtv_peasant" count="1" />
-      <Group classDivisionId="crpg_dtv_peasant" count="1" />
+      <Group classDivisionId="crpg_dtv_peasant_sickle" count="1" />
+      <Group classDivisionId="crpg_dtv_peasant_pitchfork" count="1" />
+      <Group classDivisionId="crpg_dtv_peasant_boss" count="1" />
     </Wave>
   </Round>
 
@@ -23,15 +25,19 @@
     <!-- Round 1 -->
     <Wave id="1">
       <!-- Wave 1 of round 2 -->
-      <Group classDivisionId="crpg_dtv_squire" count="1" />
+      <Group classDivisionId="crpg_dtv_recruit_squire" count="1" />
+      <Group classDivisionId="crpg_dtv_recruit_archer" count="1" />
     </Wave>
     <Wave id="2">
       <!-- Wave 2 of round 2 -->
-      <Group classDivisionId="crpg_dtv_squire" count="1" />
+      <Group classDivisionId="crpg_dtv_recruit_squire" count="1" />
+      <Group classDivisionId="crpg_dtv_recruit_archer" count="1" />
     </Wave>
     <Wave id="3">
       <!-- Wave 3 of round 2 -->
-      <Group classDivisionId="crpg_dtv_squire" count="1" />
+      <Group classDivisionId="crpg_dtv_recruit_squire" count="1" />
+      <Group classDivisionId="crpg_dtv_recruit_archer" count="1" />
+      <Group classDivisionId="crpg_dtv_recruit_boss" count="1" />
     </Wave>
   </Round>
 
@@ -39,15 +45,19 @@
     <!-- Round 1 -->
     <Wave id="1">
       <!-- Wave 1 of round 3 -->
-      <Group classDivisionId="crpg_dtv_looter" count="1" />
+      <Group classDivisionId="crpg_dtv_looter_shield" count="1" />
+      <Group classDivisionId="crpg_dtv_looter_marksman" count="1" />
     </Wave>
     <Wave id="2">
       <!-- Wave 2 of round 3 -->
-      <Group classDivisionId="crpg_dtv_looter" count="1" />
+      <Group classDivisionId="crpg_dtv_looter_shield" count="1" />
+      <Group classDivisionId="crpg_dtv_looter_marksman" count="1" />
     </Wave>
     <Wave id="3">
       <!-- Wave 3 of round 3 -->
-      <Group classDivisionId="crpg_dtv_looter" count="1" />
+      <Group classDivisionId="crpg_dtv_looter_shield" count="1" />
+      <Group classDivisionId="crpg_dtv_looter_marksman" count="1" />
+      <Group classDivisionId="crpg_dtv_looter_boss" count="1" />
     </Wave>
   </Round>
 
@@ -55,15 +65,19 @@
     <!-- Round 4 -->
     <Wave id="1">
       <!-- Wave 1 of round 4 -->
-      <Group classDivisionId="crpg_dtv_fancylad" count="1" />
+      <Group classDivisionId="crpg_dtv_fancy_lad" count="1" />
+      <Group classDivisionId="crpg_dtv_fancy_noble" count="1" />
     </Wave>
     <Wave id="2">
       <!-- Wave 2 of round 4 -->
-      <Group classDivisionId="crpg_dtv_fancylad" count="1" />
+      <Group classDivisionId="crpg_dtv_fancy_lad" count="1" />
+      <Group classDivisionId="crpg_dtv_fancy_noble" count="1" />
     </Wave>
     <Wave id="3">
       <!-- Wave 3 of round 4 -->
-      <Group classDivisionId="crpg_dtv_fancylad" count="1" />
+      <Group classDivisionId="crpg_dtv_fancy_lad" count="1" />
+      <Group classDivisionId="crpg_dtv_fancy_noble" count="1" />
+      <Group classDivisionId="crpg_dtv_fancy_boss" count="1" />
     </Wave>
   </Round>
 
@@ -71,15 +85,19 @@
     <!-- Round 5 -->
     <Wave id="1">
       <!-- Wave 1 of round 5 -->
-      <Group classDivisionId="crpg_dtv_viking" count="1" />
+      <Group classDivisionId="crpg_dtv_viking_huscarl" count="1" />
+      <Group classDivisionId="crpg_dtv_viking_raider" count="1" />
     </Wave>
     <Wave id="2">
       <!-- Wave 2 of round 5 -->
-      <Group classDivisionId="crpg_dtv_viking" count="1" />
+      <Group classDivisionId="crpg_dtv_viking_huscarl" count="1" />
+      <Group classDivisionId="crpg_dtv_viking_raider" count="1" />
     </Wave>
     <Wave id="3">
       <!-- Wave 3 of round 5 -->
-      <Group classDivisionId="crpg_dtv_viking" count="1" />
+      <Group classDivisionId="crpg_dtv_viking_huscarl" count="1" />
+      <Group classDivisionId="crpg_dtv_viking_raider" count="1" />
+      <Group classDivisionId="crpg_dtv_viking_boss" count="1" />
     </Wave>
   </Round>
 
@@ -87,15 +105,19 @@
     <!-- Round 6 -->
     <Wave id="1">
       <!-- Wave 1 of round 6 -->
-      <Group classDivisionId="crpg_dtv_samurai" count="1" />
+      <Group classDivisionId="crpg_dtv_samurai_warrior" count="1" />
+      <Group classDivisionId="crpg_dtv_samurai_ashigaru" count="1" />
     </Wave>
     <Wave id="2">
       <!-- Wave 2 of round 6 -->
-      <Group classDivisionId="crpg_dtv_samurai" count="1" />
+      <Group classDivisionId="crpg_dtv_samurai_warrior" count="1" />
+      <Group classDivisionId="crpg_dtv_samurai_ashigaru" count="1" />
     </Wave>
     <Wave id="3">
       <!-- Wave 3 of round 6 -->
-      <Group classDivisionId="crpg_dtv_samurai" count="1" />
+      <Group classDivisionId="crpg_dtv_samurai_warrior" count="1" />
+      <Group classDivisionId="crpg_dtv_samurai_ashigaru" count="1" />
+      <Group classDivisionId="crpg_dtv_samurai_boss" count="1" />
     </Wave>
   </Round>
   
@@ -103,16 +125,80 @@
     <!-- Round 7 -->
     <Wave id="1">
       <!-- Wave 1 of round 7 -->
-      <Group classDivisionId="crpg_dtv_legionary" count="1" />
+      <Group classDivisionId="crpg_dtv_legion_soldier" count="1" />
+      <Group classDivisionId="crpg_dtv_legion_centurion" count="1" />
     </Wave>
     <Wave id="2">
       <!-- Wave 2 of round 7 -->
-      <Group classDivisionId="crpg_dtv_legionary" count="1" />
+      <Group classDivisionId="crpg_dtv_legion_soldier" count="1" />
+      <Group classDivisionId="crpg_dtv_legion_centurion" count="1" />
     </Wave>
     <Wave id="3">
       <!-- Wave 3 of round 7 -->
-      <Group classDivisionId="crpg_dtv_legionary" count="1" />
+      <Group classDivisionId="crpg_dtv_legion_soldier" count="1" />
+      <Group classDivisionId="crpg_dtv_legion_centurion" count="1" />
+      <Group classDivisionId="crpg_dtv_legion_boss" count="1" />
     </Wave>
   </Round>
-  
+
+  <Round id="8">
+    <!-- Round 8 -->
+    <Wave id="1">
+      <!-- Wave 1 of round 8 -->
+      <Group classDivisionId="crpg_dtv_highland_ranger" count="1" />
+      <Group classDivisionId="crpg_dtv_highland_warrior" count="1" />
+      <Group classDivisionId="crpg_dtv_highland_soldier" count="1" />
+    </Wave>
+    <Wave id="2">
+      <!-- Wave 2 of round 8 -->
+      <Group classDivisionId="crpg_dtv_highland_ranger" count="1" />
+      <Group classDivisionId="crpg_dtv_highland_warrior" count="1" />
+      <Group classDivisionId="crpg_dtv_highland_soldier" count="1" />
+    </Wave>
+    <Wave id="3">
+      <!-- Wave 3 of round 8 -->
+      <Group classDivisionId="crpg_dtv_highland_ranger" count="1" />
+      <Group classDivisionId="crpg_dtv_highland_warrior" count="1" />
+      <Group classDivisionId="crpg_dtv_highland_soldier" count="1" />
+      <Group classDivisionId="crpg_dtv_highland_boss" count="1" />
+    </Wave>
+  </Round>
+
+  <Round id="9">
+    <!-- Round 9 -->
+    <Wave id="1">
+      <!-- Wave 1 of round 9 -->
+      <Group classDivisionId="crpg_dtv_dwarven_engineer" count="1" />
+      <Group classDivisionId="crpg_dtv_dwarven_axelord" count="1" />
+    </Wave>
+    <Wave id="2">
+      <!-- Wave 2 of round 9 -->
+      <Group classDivisionId="crpg_dtv_dwarven_engineer" count="1" />
+      <Group classDivisionId="crpg_dtv_dwarven_axelord" count="1" />
+    </Wave>
+    <Wave id="3">
+      <!-- Wave 3 of round 9 -->
+      <Group classDivisionId="crpg_dtv_dwarven_engineer" count="1" />
+      <Group classDivisionId="crpg_dtv_dwarven_axelord" count="1" />
+      <Group classDivisionId="crpg_dtv_dwarven_boss" count="1" />
+    </Wave>
+  </Round>
+
+  <Round id="10">
+    <!-- Round 10 -->
+    <Wave id="1">
+      <!-- Wave 1 of round 10 -->
+      <Group classDivisionId="crpg_dtv_tincan_soldier" count="1" />
+    </Wave>
+    <Wave id="2">
+      <!-- Wave 2 of round 10 -->
+      <Group classDivisionId="crpg_dtv_tincan_soldier" count="1" />
+    </Wave>
+    <Wave id="3">
+      <!-- Wave 3 of round 10 -->
+      <Group classDivisionId="crpg_dtv_tincan_soldier" count="1" />
+      <Group classDivisionId="crpg_dtv_tincan_boss" count="1" />
+    </Wave>
+  </Round>
+
 </DtvData>
