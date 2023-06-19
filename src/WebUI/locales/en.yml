@@ -22,7 +22,7 @@ installation:
     other:
       title: Other
       downloadLauncher: Download our {launcherLink}
-      startLauncher: Open the Launcher and wait for the mod to download
+      startLauncher: Open the launcher and wait for the mod to download
       update: To update the mod it is enough to restart the launcher
   help: If you have difficulty installing the modification, please contact us on {discordLink}
 
