@@ -16,41 +16,27 @@ internal sealed class UpdateCrpgUser : GameNetworkMessage
     private static readonly CompressionInfo.Integer SkillCompressionInfo = new(0, 16384, true);
     private static readonly CompressionInfo.Integer ClanIdCompressionInfo = new(-1, int.MaxValue, true);
 
-    public CrpgUser User { get; set; } = default!;
     public VirtualPlayer? Peer { get; set; }
+    public CrpgUser User { get; set; } = default!;
 
     protected override void OnWrite()
     {
         WriteVirtualPlayerReferenceToPacket(Peer);
-        WriteIntToPacket(User.Character.Generation, GenerationCompressionInfo);
-        WriteIntToPacket(User.Character.Level, LevelCompressionInfo);
-        WriteIntToPacket(User.Character.Experience, ExperienceCompressionInfo);
-        WriteCharacterCharacteristics(User.Character.Characteristics);
-        WriteIntToPacket(User.ClanMembership?.ClanId ?? -1, ClanIdCompressionInfo);
+        WriteCharacterToPacket(User.Character);
+        WriteClanMemberToPacket(User.ClanMembership);
     }
 
     protected override bool OnRead()
     {
         bool bufferReadValid = true;
         Peer = ReadVirtualPlayerReferenceToPacket(ref bufferReadValid);
-        int generation = ReadIntFromPacket(GenerationCompressionInfo, ref bufferReadValid);
-        int level = ReadIntFromPacket(LevelCompressionInfo, ref bufferReadValid);
-        int exp = ReadIntFromPacket(ExperienceCompressionInfo, ref bufferReadValid);
-        CrpgCharacterCharacteristics characteristics = ReadCharacterCharacteristics(ref bufferReadValid);
-        int clanId = ReadIntFromPacket(ClanIdCompressionInfo, ref bufferReadValid);
-        CrpgClanMember? clanMembership = clanId != -1 ? new CrpgClanMember { ClanId = clanId } : null;
+        var character = ReadCharacterFromPacket(ref bufferReadValid);
+        var clanMember = ReadClanMemberFromPacket(ref bufferReadValid);
 
-        // Build Crpg Character
         User = new CrpgUser
         {
-            Character = new CrpgCharacter
-            {
-                Generation = generation,
-                Level = level,
-                Experience = exp,
-                Characteristics = characteristics,
-            },
-            ClanMembership = clanMembership,
+            Character = character,
+            ClanMembership = clanMember,
         };
 
         return bufferReadValid;
@@ -66,7 +52,30 @@ internal sealed class UpdateCrpgUser : GameNetworkMessage
         return "Update cRPG User";
     }
 
-    private void WriteCharacterCharacteristics(CrpgCharacterCharacteristics characteristics)
+    private void WriteCharacterToPacket(CrpgCharacter character)
+    {
+        WriteIntToPacket(character.Generation, GenerationCompressionInfo);
+        WriteIntToPacket(character.Level, LevelCompressionInfo);
+        WriteIntToPacket(character.Experience, ExperienceCompressionInfo);
+        WriteCharacterCharacteristicsToPacket(character.Characteristics);
+    }
+
+    private CrpgCharacter ReadCharacterFromPacket(ref bool bufferReadValid)
+    {
+        int generation = ReadIntFromPacket(GenerationCompressionInfo, ref bufferReadValid);
+        int level = ReadIntFromPacket(LevelCompressionInfo, ref bufferReadValid);
+        int exp = ReadIntFromPacket(ExperienceCompressionInfo, ref bufferReadValid);
+        var characteristics = ReadCharacterCharacteristicsFromPacket(ref bufferReadValid);
+        return new CrpgCharacter
+        {
+            Generation = generation,
+            Level = level,
+            Experience = exp,
+            Characteristics = characteristics,
+        };
+    }
+
+    private void WriteCharacterCharacteristicsToPacket(CrpgCharacterCharacteristics characteristics)
     {
         WriteIntToPacket(characteristics.Attributes.Points, SkillCompressionInfo);
         WriteIntToPacket(characteristics.Attributes.Strength, SkillCompressionInfo);
@@ -92,7 +101,7 @@ internal sealed class UpdateCrpgUser : GameNetworkMessage
         WriteIntToPacket(characteristics.WeaponProficiencies.Crossbow, SkillCompressionInfo);
     }
 
-    private CrpgCharacterCharacteristics ReadCharacterCharacteristics(ref bool bufferReadValid)
+    private CrpgCharacterCharacteristics ReadCharacterCharacteristicsFromPacket(ref bool bufferReadValid)
     {
         return new CrpgCharacterCharacteristics
         {
@@ -126,5 +135,16 @@ internal sealed class UpdateCrpgUser : GameNetworkMessage
                 Crossbow = ReadIntFromPacket(SkillCompressionInfo, ref bufferReadValid),
             },
         };
+    }
+
+    private void WriteClanMemberToPacket(CrpgClanMember? clanMember)
+    {
+        WriteIntToPacket(clanMember?.ClanId ?? -1, ClanIdCompressionInfo);
+    }
+
+    private CrpgClanMember? ReadClanMemberFromPacket(ref bool bufferReadValid)
+    {
+        int clanId = ReadIntFromPacket(ClanIdCompressionInfo, ref bufferReadValid);
+        return clanId != -1 ? new CrpgClanMember { ClanId = clanId } : null;
     }
 }
