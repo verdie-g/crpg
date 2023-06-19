@@ -165,6 +165,11 @@ datadog_checks:
               content_match: ^Healthy$
               service: "{{ crpg_api_service_name }}"
               min_collection_interval: 60
+            - name: cRPG Launcher
+              method: HEAD
+              url: "https://{{ crpg_domain_name }}/cRPG.zip"
+              allow_redirects: true
+              min_collection_interval: 60
             - name: Steam Open-ID
               url: https://steamcommunity.com/openid
               service: steam
