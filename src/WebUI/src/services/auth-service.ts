@@ -54,7 +54,7 @@ export const login = async (platform: Platform) => {
   const token = await signInSilent(platform);
 
   if (token === null) {
-    userManager.signinRedirect({
+    await userManager.signinRedirect({
       extraQueryParams: {
         identity_provider: platform,
       },
