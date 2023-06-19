@@ -6,8 +6,8 @@
     - datadog
     - geoip
     - dotnet
-    - crpg-game-client
     - crpg-web-ui
+    - crpg-game-client
     - crpg-web-api
 # - hosts: gameservers
 #   become: yes
