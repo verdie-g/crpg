@@ -243,7 +243,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             if (crpgUser != null && agent.Origin is not CrpgBattleAgentOrigin)
             {
                 var characteristics = crpgUser.Character.Characteristics;
-                var mbSkills = CrpgSpawningBehaviorBase.CreateCharacterSkills(characteristics);
+                var mbSkills = CrpgCharacterBuilder.CreateCharacterSkills(characteristics);
                 agent.Origin = new CrpgBattleAgentOrigin(agent.Origin?.Troop, mbSkills);
                 InitializeAgentStats(agent, agent.SpawnEquipment, props, null!);
             }

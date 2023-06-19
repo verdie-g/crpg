@@ -50,7 +50,7 @@ internal class CrpgSiegeSpawningBehavior : CrpgSpawningBehaviorBase
             return false;
         }
 
-        var characterEquipment = CreateCharacterEquipment(crpgPeer.User.Character.EquippedItems);
+        var characterEquipment = CrpgCharacterBuilder.CreateCharacterEquipment(crpgPeer.User.Character.EquippedItems);
         if (!DoesEquipmentContainWeapon(characterEquipment)) // Disallow spawning without weapons.
         {
             KickHelper.Kick(networkPeer, DisconnectType.KickedByHost, "no_weapon");

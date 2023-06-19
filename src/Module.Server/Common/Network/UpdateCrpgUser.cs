@@ -1,5 +1,6 @@
 ﻿using Crpg.Module.Api.Models.Characters;
 using Crpg.Module.Api.Models.Clans;
+using Crpg.Module.Api.Models.Items;
 using Crpg.Module.Api.Models.Users;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
@@ -14,6 +15,9 @@ internal sealed class UpdateCrpgUser : GameNetworkMessage
     private static readonly CompressionInfo.Integer ExperienceCompressionInfo = new(0, int.MaxValue, true);
     private static readonly CompressionInfo.Integer LevelCompressionInfo = new(0, 50, true);
     private static readonly CompressionInfo.Integer SkillCompressionInfo = new(0, 16384, true);
+    private static readonly CompressionInfo.Integer EquippedItemsLengthCompressionInfo = new(0, 32, true);
+    private static readonly CompressionInfo.Integer EquippedItemSlotCompressionInfo =
+        new(0, Enum.GetValues(typeof(CrpgItemSlot)).Length, true);
     private static readonly CompressionInfo.Integer ClanIdCompressionInfo = new(-1, int.MaxValue, true);
 
     public VirtualPlayer? Peer { get; set; }
@@ -58,6 +62,7 @@ internal sealed class UpdateCrpgUser : GameNetworkMessage
         WriteIntToPacket(character.Level, LevelCompressionInfo);
         WriteIntToPacket(character.Experience, ExperienceCompressionInfo);
         WriteCharacterCharacteristicsToPacket(character.Characteristics);
+        WriteCharacterEquippedItemsToPacket(character.EquippedItems);
     }
 
     private CrpgCharacter ReadCharacterFromPacket(ref bool bufferReadValid)
@@ -66,12 +71,14 @@ internal sealed class UpdateCrpgUser : GameNetworkMessage
         int level = ReadIntFromPacket(LevelCompressionInfo, ref bufferReadValid);
         int exp = ReadIntFromPacket(ExperienceCompressionInfo, ref bufferReadValid);
         var characteristics = ReadCharacterCharacteristicsFromPacket(ref bufferReadValid);
+        var equippedItems = ReadCharacterEquippedItemsFromPacket(ref bufferReadValid);
         return new CrpgCharacter
         {
             Generation = generation,
             Level = level,
             Experience = exp,
             Characteristics = characteristics,
+            EquippedItems = equippedItems,
         };
     }
 
@@ -135,6 +142,40 @@ internal sealed class UpdateCrpgUser : GameNetworkMessage
                 Crossbow = ReadIntFromPacket(SkillCompressionInfo, ref bufferReadValid),
             },
         };
+    }
+
+    private void WriteCharacterEquippedItemsToPacket(IList<CrpgEquippedItem> equippedItems)
+    {
+        WriteIntToPacket(equippedItems.Count, EquippedItemsLengthCompressionInfo);
+        foreach (var equippedItem in equippedItems)
+        {
+            // This is probably dangerous to write up to 12 strings that can go up to 54 characters at the time
+            // of writing. The total number of bytes (~700) is making us very close to the ~1K packet limit size.
+            WriteStringToPacket(equippedItem.UserItem.ItemId);
+            WriteIntToPacket((int)equippedItem.Slot, EquippedItemSlotCompressionInfo);
+        }
+    }
+
+    private IList<CrpgEquippedItem> ReadCharacterEquippedItemsFromPacket(ref bool bufferReadValid)
+    {
+        int equippedItemsLength = ReadIntFromPacket(EquippedItemsLengthCompressionInfo, ref bufferReadValid);
+        List<CrpgEquippedItem> equippedItems = new(equippedItemsLength);
+        for (int i = 0; i < equippedItemsLength; i += 1)
+        {
+            string itemId = ReadStringFromPacket(ref bufferReadValid);
+            CrpgItemSlot slot = (CrpgItemSlot)ReadIntFromPacket(EquippedItemSlotCompressionInfo, ref bufferReadValid);
+            equippedItems.Add(new CrpgEquippedItem
+            {
+                UserItem = new CrpgUserItem
+                {
+                    Id = 0,
+                    ItemId = itemId,
+                },
+                Slot = slot,
+            });
+        }
+
+        return equippedItems;
     }
 
     private void WriteClanMemberToPacket(CrpgClanMember? clanMember)

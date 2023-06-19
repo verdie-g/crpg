@@ -88,7 +88,7 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
             return false;
         }
 
-        var characterEquipment = CreateCharacterEquipment(crpgPeer.User.Character.EquippedItems);
+        var characterEquipment = CrpgCharacterBuilder.CreateCharacterEquipment(crpgPeer.User.Character.EquippedItems);
         if (!DoesEquipmentContainWeapon(characterEquipment)) // Disallow spawning without weapons.
         {
             if (_notifiedPlayersAboutSpawnRestriction.Add(networkPeer.VirtualPlayer.Id))

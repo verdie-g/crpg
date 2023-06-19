@@ -1,8 +1,5 @@
-﻿using Crpg.Module.Api.Models.Characters;
-using Crpg.Module.Api.Models.Items;
-using TaleWorlds.Core;
+﻿using TaleWorlds.Core;
 using TaleWorlds.Library;
-using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
 using MathF = TaleWorlds.Library.MathF;
@@ -57,10 +54,10 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
             BasicCultureObject teamCulture = missionPeer.Team == Mission.AttackerTeam ? cultureTeam1 : cultureTeam2;
             var peerClass = MBObjectManager.Instance.GetObject<MultiplayerClassDivisions.MPHeroClass>("crpg_class_division");
             // var character = CreateCharacter(crpgPeer.User.Character, _constants);
-            var characterSkills = CreateCharacterSkills(crpgPeer.User!.Character.Characteristics);
+            var characterSkills = CrpgCharacterBuilder.CreateCharacterSkills(crpgPeer.User!.Character.Characteristics);
             var character = peerClass.HeroCharacter;
 
-            var characterEquipment = CreateCharacterEquipment(crpgPeer.User.Character.EquippedItems);
+            var characterEquipment = CrpgCharacterBuilder.CreateCharacterEquipment(crpgPeer.User.Character.EquippedItems);
             bool hasMount = characterEquipment[EquipmentIndex.Horse].Item != null;
 
             bool firstSpawn = missionPeer.SpawnCountThisRound == 0;
@@ -194,18 +191,6 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
         crpgPeer.LastSpawnTeam = missionPeer.Team;
     }
 
-    protected Equipment CreateCharacterEquipment(IList<CrpgEquippedItem> equippedItems)
-    {
-        Equipment equipment = new();
-        foreach (var equippedItem in equippedItems)
-        {
-            var index = ItemSlotToIndex[equippedItem.Slot];
-            AddEquipment(equipment, index, equippedItem.UserItem.ItemId);
-        }
-
-        return equipment;
-    }
-
     protected bool DoesEquipmentContainWeapon(Equipment equipment)
     {
         for (var i = EquipmentIndex.Weapon0; i <= EquipmentIndex.ExtraWeaponSlot; i += 1)
@@ -230,73 +215,4 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
             }
         }
     }
-
-    private BasicCharacterObject CreateCharacter(CrpgCharacter crpgCharacter, CrpgConstants constants)
-    {
-        var skills = CreateCharacterSkills(crpgCharacter.Characteristics);
-        return CrpgCharacterObject.New(new TextObject(crpgCharacter.Name), skills, constants);
-    }
-
-    private void AddEquipment(Equipment equipments, EquipmentIndex idx, string itemId)
-    {
-        var itemObject = MBObjectManager.Instance.GetObject<ItemObject>(itemId);
-        if (itemObject == null)
-        {
-            Debug.Print($"Cannot equip unknown item '{itemId}'");
-            return;
-        }
-
-        if (!Equipment.IsItemFitsToSlot(idx, itemObject))
-        {
-            Debug.Print($"Cannot equip item '{itemId} on slot {idx}");
-            return;
-        }
-
-        EquipmentElement equipmentElement = new(itemObject);
-        equipments.AddEquipmentToSlotWithoutAgent(idx, equipmentElement);
-    }
-
-    private static readonly Dictionary<CrpgItemSlot, EquipmentIndex> ItemSlotToIndex = new()
-    {
-        [CrpgItemSlot.Head] = EquipmentIndex.Head,
-        [CrpgItemSlot.Shoulder] = EquipmentIndex.Cape,
-        [CrpgItemSlot.Body] = EquipmentIndex.Body,
-        [CrpgItemSlot.Hand] = EquipmentIndex.Gloves,
-        [CrpgItemSlot.Leg] = EquipmentIndex.Leg,
-        [CrpgItemSlot.MountHarness] = EquipmentIndex.HorseHarness,
-        [CrpgItemSlot.Mount] = EquipmentIndex.Horse,
-        [CrpgItemSlot.Weapon0] = EquipmentIndex.Weapon0,
-        [CrpgItemSlot.Weapon1] = EquipmentIndex.Weapon1,
-        [CrpgItemSlot.Weapon2] = EquipmentIndex.Weapon2,
-        [CrpgItemSlot.Weapon3] = EquipmentIndex.Weapon3,
-        [CrpgItemSlot.WeaponExtra] = EquipmentIndex.ExtraWeaponSlot,
-    };
-
-#pragma warning disable SA1202 // Suppress the static warning.
-    internal static CharacterSkills CreateCharacterSkills(CrpgCharacterCharacteristics characteristics)
-    {
-        CharacterSkills skills = new();
-        skills.SetPropertyValue(CrpgSkills.Strength, characteristics.Attributes.Strength);
-        skills.SetPropertyValue(CrpgSkills.Agility, characteristics.Attributes.Agility);
-
-        skills.SetPropertyValue(CrpgSkills.IronFlesh, characteristics.Skills.IronFlesh);
-        skills.SetPropertyValue(CrpgSkills.PowerStrike, characteristics.Skills.PowerStrike);
-        skills.SetPropertyValue(CrpgSkills.PowerDraw, characteristics.Skills.PowerDraw);
-        skills.SetPropertyValue(CrpgSkills.PowerThrow, characteristics.Skills.PowerThrow);
-        skills.SetPropertyValue(DefaultSkills.Athletics, characteristics.Skills.Athletics * 20 + 2 * characteristics.Attributes.Agility);
-        skills.SetPropertyValue(DefaultSkills.Riding, characteristics.Skills.Riding * 20);
-        skills.SetPropertyValue(CrpgSkills.WeaponMaster, characteristics.Skills.WeaponMaster);
-        skills.SetPropertyValue(CrpgSkills.MountedArchery, characteristics.Skills.MountedArchery);
-        skills.SetPropertyValue(CrpgSkills.Shield, characteristics.Skills.Shield);
-
-        skills.SetPropertyValue(DefaultSkills.OneHanded, characteristics.WeaponProficiencies.OneHanded);
-        skills.SetPropertyValue(DefaultSkills.TwoHanded, characteristics.WeaponProficiencies.TwoHanded);
-        skills.SetPropertyValue(DefaultSkills.Polearm, characteristics.WeaponProficiencies.Polearm);
-        skills.SetPropertyValue(DefaultSkills.Bow, characteristics.WeaponProficiencies.Bow);
-        skills.SetPropertyValue(DefaultSkills.Crossbow, characteristics.WeaponProficiencies.Crossbow);
-        skills.SetPropertyValue(DefaultSkills.Throwing, characteristics.WeaponProficiencies.Throwing);
-
-        return skills;
-    }
-#pragma warning restore SA1202
 }
