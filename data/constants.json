@@ -25,14 +25,14 @@
   "experienceForLevelCoefs": [13, 200],
   "defaultStrength": 3,
   "defaultAgility": 3,
-  "defaultHealthPoints": 60, /* A 33 STR, 3 AGI character with 11 IF would reach 115 HP. */
+  "defaultHealthPoints": 60, /* A 33 STR, 3 AGI character with 11 IF would reach 137 HP. */
   "defaultGeneration": 0,
   "defaultAttributePoints": 0,
   "attributePointsPerLevel": 1,
   "defaultSkillPoints": 2,
   "skillPointsPerLevel": 1,
   "healthPointsForStrengthCoefs": [1.0, 0.0],
-  "healthPointsForIronFleshCoefs": [3.0, 0.0],
+  "healthPointsForIronFleshCoefs": [4.0, 0.0],
   "damageFactorForPowerStrikeCoefs": [0.08, 1.0],
   "damageFactorForPowerDrawCoefs": [0.14, 1.0],
   "damageFactorForPowerThrowCoefs": [0.10, 1.0],
