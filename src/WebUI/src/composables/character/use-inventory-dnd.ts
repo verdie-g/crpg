@@ -1,8 +1,4 @@
-import type {
-  EquippedItemsBySlot,
-  EquippedItemId,
-  CharacterCharacteristics,
-} from '@/models/character';
+import type { EquippedItemsBySlot, EquippedItemId } from '@/models/character';
 import { ItemSlot } from '@/models/item';
 import { type UserItem } from '@/models/user';
 import { getAvailableSlotsByItem } from '@/services/item-service';
@@ -22,7 +18,7 @@ export const useInventoryDnD = (equippedItemsBySlot: Ref<EquippedItemsBySlot>) =
     if (!item) return;
 
     // TODO: to service
-    if (item.rank < 0) {
+    if (item.isBroken) {
       notify(t('character.inventory.item.broken.notify.warning'), NotificationType.Warning);
       return;
     }
