@@ -37,6 +37,7 @@ const onSellItem = (item: UserItem) => {
       :equipped="equippedItemsIds.includes(userItem.id)"
       :notMeetRequirement="validateItemNotMeetRequirement(userItem.item, characterCharacteristics)"
       :isNew="!isGraceTimeExpired(getItemGraceTimeEnd(userItem))"
+      :draggable="true"
       @dragstart="onDragStart(userItem)"
       @dragend="onDragEnd"
       @sell="onSellItem(userItem)"
