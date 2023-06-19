@@ -26,6 +26,7 @@ internal class CrpgDuelServer : MissionMultiplayerDuel
 
     public override void OnAgentRemoved(Agent? affectedAgent, Agent? affectorAgent, AgentState agentState, KillingBlow blow)
     {
+        RewardUsers();
         if (affectorAgent == null
             || affectedAgent == null
             || !affectedAgent.IsHuman
@@ -51,7 +52,6 @@ internal class CrpgDuelServer : MissionMultiplayerDuel
     public override void OnMissionTick(float dt)
     {
         base.OnMissionTick(dt);
-        RewardUsers();
     }
 
     protected override void HandleLateNewClientAfterSynchronized(NetworkCommunicator networkPeer)
@@ -68,11 +68,7 @@ internal class CrpgDuelServer : MissionMultiplayerDuel
 
     private void RewardUsers()
     {
-        _rewardTickTimer ??= new MissionTimer(duration: 60);
-        if (_rewardTickTimer.Check(reset: true))
-        {
-            _ = _rewardServer.UpdateCrpgUsersAsync(durationRewarded: 0, updateUserStats: false);
-        }
+        _ = _rewardServer.UpdateCrpgUsersAsync(durationRewarded: 0, updateUserStats: false);
     }
 
     private async Task RemoveRemainingAgents(MissionPeer? missionPeer, float delay)
