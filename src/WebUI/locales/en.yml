@@ -77,6 +77,10 @@ action:
   sell: Sell
   confirmation: Confirmation
   upgrade: Upgrade
+  enter: Enter
+
+login:
+  label: Login with
 
 confirmAction: Please confirm action
 

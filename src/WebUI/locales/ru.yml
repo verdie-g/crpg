@@ -75,6 +75,10 @@ action:
   share: Поделиться
   confirmation: Подтверждение
   upgrade: Улучшить
+  enter: Войти
+
+login:
+  label: Вход
 
 confirmAction: Пожалуйста подтвердите действие
 

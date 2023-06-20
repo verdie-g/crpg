@@ -21,7 +21,12 @@ const { execute: loginUser, loading: logging } = useAsyncCallback(() => login(pl
       :loading="logging"
       data-aq-login-btn
       @click="loginUser"
-    />
+    >
+      <div class="flex flex-col text-left leading-tight">
+        <span class="text-[10px]">{{ $t('login.label') }}</span>
+        <span>{{ $t(`platform.${platform}`) }}</span>
+      </div>
+    </OButton>
 
     <VDropdown :triggers="['click']" placement="bottom-end">
       <template #default="{ shown }">
@@ -47,6 +52,6 @@ const { execute: loginUser, loading: logging } = useAsyncCallback(() => login(pl
   </OField>
 
   <RouterLink v-else :to="{ name: 'Characters' }" data-aq-character-link>
-    <OButton variant="primary" size="xl" :label="$t('nav.main.Characters')" />
+    <OButton variant="primary" size="xl" iconLeft="member" :label="$t('action.enter')" />
   </RouterLink>
 </template>
