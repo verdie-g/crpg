@@ -76,6 +76,7 @@ const { openItemDetail, getElementBounds } = useItemDetail();
           )
         "
         :remove="fromSlot === slot.key && !toSlot"
+        :draggable="true"
         @dragend="(_e:DragEvent) => onDragEnd(_e, slot.key)"
         @drop="onDrop(slot.key)"
         @dragover.prevent="onDragEnter(slot.key)"
