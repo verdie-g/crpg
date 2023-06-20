@@ -77,6 +77,10 @@ action:
   sell: 出售
   confirmation: 确认
   upgrade: 升级
+  enter: 进入
+
+login:
+  label: 登录
 
 confirmAction: 请确认此操作
 
