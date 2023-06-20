@@ -30,7 +30,7 @@ public record GetLeaderboardQuery : IMediatorRequest<IList<CharacterViewModel>>
                 .ProjectTo<CharacterViewModel>(_mapper.ConfigurationProvider)
                 .ToArrayAsync();
 
-            return new(topCharacters.ToList());
+            return new(topCharacters);
         }
     }
 }
