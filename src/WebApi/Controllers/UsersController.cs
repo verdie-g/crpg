@@ -10,6 +10,7 @@ using Crpg.Application.Items.Models;
 using Crpg.Application.Items.Queries;
 using Crpg.Application.Limitations.Models;
 using Crpg.Application.Limitations.Queries;
+using Crpg.Application.Parties.Commands;
 using Crpg.Application.Restrictions.Models;
 using Crpg.Application.Restrictions.Queries;
 using Crpg.Application.Users.Commands;
@@ -208,6 +209,35 @@ public class UsersController : BaseController
             UserId = CurrentUser.User!.Id,
             CharacterId = id,
         }));
+    }
+
+    /// <summary>
+    /// Get character rating.
+    /// </summary>
+    /// <param name="id">Character id.</param>
+    /// <returns>The character rating.</returns>
+    /// <response code="200">Ok.</response>
+    [HttpGet("self/characters/{id}/rating")]
+    public Task<ActionResult<Result<CharacterRatingViewModel>>> GetCharacterRating([FromRoute] int id)
+    {
+        return ResultToActionAsync(Mediator.Send(new GetUserCharacterRatingQuery
+        {
+            UserId = CurrentUser.User!.Id,
+            CharacterId = id,
+        }));
+    }
+
+    /// <summary>
+    /// Updates every character competitive rating.
+    /// </summary>>
+    /// <response code="200">Updated.</response>
+    /// <response code="400">Bad Request.</response>
+    [Authorize(AdminPolicy)]
+    [HttpPut("characters/competitive-ratings")]
+    public Task UpdateEveryCharacterCompetitiveRating()
+    {
+        UpdateEveryCharacterCompetitiveRatingCommand cmd = new();
+        return ResultToActionAsync(Mediator.Send(cmd));
     }
 
     /// <summary>
