@@ -13,9 +13,9 @@ namespace Crpg.Module.Modes.Dtv;
 internal class CrpgDtvServer : MissionMultiplayerGameModeBase
 {
 
-    private const int BotRespawnTime = 3;
-    private const int NewRoundRespawnTime = 20;
-    private const int GameStartTime = 10;
+    private const int BotRespawnTime = 1;
+    private const int NewRoundRespawnTime = 5;
+    private const int GameStartTime = 5;
 
     private readonly CrpgDtvData? _dtvData;
     private readonly CrpgDtvClient _dtvClient;
@@ -107,11 +107,6 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
     public override bool CheckForRoundEnd()
     {
         if (!CanGameModeSystemsTickThisFrame)
-        {
-            return false;
-        }
-
-        if (SpawnComponent.SpawningBehavior is CrpgDtvSpawningBehavior s && !s.SpawnDelayEnded())
         {
             return false;
         }
