@@ -19,9 +19,9 @@ public record UpdateEveryCharacterCompetitiveRatingCommand : IMediatorRequest
 
         private readonly ICrpgDbContext _db;
         private readonly ICompetitiveRatingModel _competitiveRatingModel;
-        private readonly Mapper _mapper;
+        private readonly IMapper _mapper;
 
-        public Handler(ICrpgDbContext db, Mapper mapper, ICompetitiveRatingModel competitiveRatingModel)
+        public Handler(ICrpgDbContext db, IMapper mapper, ICompetitiveRatingModel competitiveRatingModel)
         {
             _db = db;
             _mapper = mapper;
