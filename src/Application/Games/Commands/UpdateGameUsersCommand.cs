@@ -118,7 +118,7 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
             character.Rating.Value = rating.Value;
             character.Rating.Deviation = rating.Deviation;
             character.Rating.Volatility = rating.Volatility;
-            character.Rating.CompetitiveValue = _competitiveRatingModel.ComputeCompetitiveRating(rating);
+            character.Rating.CompetitiveValue = _competitiveRatingModel.ComputeCompetitiveRating(character.Rating);
         }
 
         private async Task<List<GameRepairedItem>> RepairOrBreakItems(Character character,

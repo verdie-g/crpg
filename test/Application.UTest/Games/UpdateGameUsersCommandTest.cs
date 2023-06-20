@@ -75,7 +75,7 @@ public class UpdateGameUsersCommandTest : TestBase
 
         Mock<ICompetitiveRatingModel> competitiveRatingModelMock = new() { DefaultValue = DefaultValue.Mock };
         competitiveRatingModelMock
-            .Setup(m => m.ComputeCompetitiveRating(It.IsAny<CharacterRatingViewModel>()))
+            .Setup(m => m.ComputeCompetitiveRating(It.IsAny<CharacterRating>()))
             .Returns(100);
 
         UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, activityLogServiceMock.Object, competitiveRatingModelMock.Object);
