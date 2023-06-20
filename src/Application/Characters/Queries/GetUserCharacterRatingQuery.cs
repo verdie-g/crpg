@@ -1,4 +1,6 @@
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using Crpg.Application.Battles.Models;
 using Crpg.Application.Characters.Models;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
@@ -26,12 +28,14 @@ public record GetUserCharacterRatingQuery : IMediatorRequest<CharacterRatingView
 
         public async Task<Result<CharacterRatingViewModel>> Handle(GetUserCharacterRatingQuery req, CancellationToken cancellationToken)
         {
-            var character = await _db.Characters
-                .AsNoTracking()
-                .FirstOrDefaultAsync(c => c.Id == req.CharacterId && c.UserId == req.UserId, cancellationToken);
-            return character == null
+            var characterRatingViewModel = await _db.Characters
+                .Where(c => c.Id == req.CharacterId && c.UserId == req.UserId)
+                .ProjectTo<CharacterRatingViewModel>(_mapper.ConfigurationProvider)
+                .FirstOrDefaultAsync(cancellationToken);
+
+            return characterRatingViewModel == null
                 ? new(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId))
-                : new(_mapper.Map<CharacterRatingViewModel>(character.Rating));
+                : new(characterRatingViewModel);
         }
     }
 }
