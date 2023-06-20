@@ -30,6 +30,7 @@ public static class DependencyInjection
             .AddSingleton<IExperienceTable>(experienceTable)
             .AddSingleton<ICharacterService>(characterService)
             .AddSingleton<IUserService, UserService>()
+            .AddSingleton<ICompetitiveRatingModel, CompetitiveRatingModel>()
             .AddSingleton<IItemService, ItemService>()
             .AddSingleton<IClanService>(clanService)
             .AddSingleton<IActivityLogService, ActivityLogService>()
