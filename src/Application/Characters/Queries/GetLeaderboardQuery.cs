@@ -25,7 +25,7 @@ public record GetLeaderboardQuery : IMediatorRequest<IList<CharacterViewModel>>
         public async Task<Result<IList<CharacterViewModel>>> Handle(GetLeaderboardQuery req, CancellationToken cancellationToken)
         {
             var topCharacters = await _db.Characters
-                .OrderByDescending(c => c.Rating.CompetitiveRating)
+                .OrderByDescending(c => c.Rating.CompetitiveValue)
                 .Take(50)
                 .ProjectTo<CharacterViewModel>(_mapper.ConfigurationProvider)
                 .ToArrayAsync();

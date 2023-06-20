@@ -9,7 +9,7 @@ public partial class CompetitiveRatingMigration : Migration
     protected override void Up(MigrationBuilder migrationBuilder)
     {
         migrationBuilder.AddColumn<float>(
-            name: "rating_competitive_rating",
+            name: "rating_competitive_value",
             table: "characters",
             type: "real",
             nullable: false,
@@ -20,7 +20,7 @@ public partial class CompetitiveRatingMigration : Migration
     protected override void Down(MigrationBuilder migrationBuilder)
     {
         migrationBuilder.DropColumn(
-            name: "rating_competitive_rating",
+            name: "rating_competitive_value",
             table: "characters");
     }
 }

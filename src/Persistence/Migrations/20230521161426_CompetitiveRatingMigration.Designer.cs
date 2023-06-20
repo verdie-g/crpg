@@ -1311,9 +1311,9 @@ partial class CompetitiveRatingMigration
                             .HasColumnType("integer")
                             .HasColumnName("id");
 
-                        b1.Property<float>("CompetitiveRating")
+                        b1.Property<float>("CompetitiveValue")
                             .HasColumnType("real")
-                            .HasColumnName("rating_competitive_rating");
+                            .HasColumnName("rating_competitive_value");
 
                         b1.Property<float>("Deviation")
                             .HasColumnType("real")

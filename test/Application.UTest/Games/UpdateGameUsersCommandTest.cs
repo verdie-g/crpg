@@ -130,7 +130,7 @@ public class UpdateGameUsersCommandTest : TestBase
         Assert.That(dbCharacter.Rating.Value, Is.EqualTo(4));
         Assert.That(dbCharacter.Rating.Deviation, Is.EqualTo(5));
         Assert.That(dbCharacter.Rating.Volatility, Is.EqualTo(6));
-        Assert.That(dbCharacter.Rating.CompetitiveRating, Is.EqualTo(100));
+        Assert.That(dbCharacter.Rating.CompetitiveValue, Is.EqualTo(100));
 
         characterServiceMock.VerifyAll();
     }

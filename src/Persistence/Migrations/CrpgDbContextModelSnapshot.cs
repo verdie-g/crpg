@@ -1322,9 +1322,9 @@ namespace Crpg.Persistence.Migrations
                                 .HasColumnType("integer")
                                 .HasColumnName("id");
 
-                            b1.Property<float>("competitive_rating")
+                            b1.Property<float>("competitive_value")
                                 .HasColumnType("real")
-                                .HasColumnName("rating_competitive_rating");
+                                .HasColumnName("rating_competitive_value");
 
                             b1.Property<float>("Deviation")
                                 .HasColumnType("real")

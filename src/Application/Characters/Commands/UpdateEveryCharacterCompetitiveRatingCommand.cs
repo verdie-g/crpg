@@ -34,7 +34,7 @@ public record UpdateEveryCharacterCompetitiveRatingCommand : IMediatorRequest
 
             foreach (var character in characters)
             {
-                character.Rating.CompetitiveRating = _competitiveRatingModel.ComputeCompetitiveRating(_mapper.Map<CharacterRatingViewModel>(character.Rating));
+                character.Rating.CompetitiveValue = _competitiveRatingModel.ComputeCompetitiveRating(_mapper.Map<CharacterRatingViewModel>(character.Rating));
             }
 
             await _db.SaveChangesAsync(cancellationToken);

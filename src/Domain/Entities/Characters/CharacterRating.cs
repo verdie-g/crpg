@@ -12,5 +12,5 @@ public class CharacterRating
     /// (source: http://www.glicko.net/glicko/glicko2.pdf).
     /// </summary>
     public float Volatility { get; set; }
-    public float CompetitiveRating { get; set; }
+    public float CompetitiveValue { get; set; }
 }
