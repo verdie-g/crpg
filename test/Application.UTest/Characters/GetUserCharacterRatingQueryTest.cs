@@ -34,6 +34,7 @@ public class GetUserCharacterRatingQueryTest : TestBase
                 Value = 50,
                 Deviation = 100,
                 Volatility = 100,
+                CompetitiveValue = 100,
             },
         };
         ArrangeDb.Characters.Add(character);
