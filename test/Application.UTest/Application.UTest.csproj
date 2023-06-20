@@ -21,4 +21,8 @@
     <ProjectReference Include="..\..\src\Persistence\Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="..\..\src\Module.Server\ModuleData\characters.xml" Link="ModuleData\characters.xml" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,5 @@
-﻿using Crpg.Application.Common.Files;
+﻿using System.Xml.Linq;
+using Crpg.Application.Common.Files;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Items.Models;
 using Crpg.Domain.Entities.Items;
@@ -85,5 +86,32 @@ public class FileItemsSourceTest
 
         Assert.That(errors, Is.Empty,
             $"Items with zero, or negative price or price too high:{Environment.NewLine}- " + string.Join($"{Environment.NewLine}- ", errors));
+    }
+
+    [Test]
+    public async Task CheckBotItemsExist()
+    {
+        var items = (await new FileItemsSource().LoadItems())
+            .Select(i => i.Id)
+            .ToHashSet();
+
+        string charactersXmlPath = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory)
+                                   + "/ModuleData/characters.xml";
+        XDocument charactersDoc = XDocument.Load(charactersXmlPath);
+        string[] itemIdsFromXml = charactersDoc
+            .Descendants("equipment")
+            .Select(el => el.Attribute("id")!.Value["Item.".Length..])
+            .ToArray();
+
+        Assert.Multiple(() =>
+        {
+            foreach (string itemId in itemIdsFromXml)
+            {
+                if (!items.Contains(itemId))
+                {
+                    Assert.Fail($"Character item {itemId} was not found in items.json");
+                }
+            }
+        });
     }
 }
