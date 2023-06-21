@@ -30,7 +30,7 @@ public class LeaderboardController : BaseController
     /// <returns>The top character competitive ratings.</returns>
     /// <response code="200">Ok.</response>
     [HttpGet("leaderboard")]
-    [ResponseCache(Duration = 10 * 60 * 1)] // 10 minutes
+    [ResponseCache(Duration = 1 * 60 * 1)] // 1 minutes
     public Task<ActionResult<Result<IList<CharacterPublicViewModel>>>> GetLeaderboard()
     {
         return ResultToActionAsync(Mediator.Send(new GetLeaderboardQuery()));
