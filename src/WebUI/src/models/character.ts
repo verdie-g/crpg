@@ -79,6 +79,13 @@ export interface CharacterStatistics {
   playTime: number;
 }
 
+export interface CharacterRating {
+  value: number;
+  deviation: number;
+  volatility: number;
+  competitiveValue: number;
+}
+
 export interface CharacterSpeedStats {
   weightReductionFactor: number;
   freeWeight: number;

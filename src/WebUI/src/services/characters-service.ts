@@ -38,6 +38,7 @@ import {
   type CharacterArmorOverall,
   CharacterArmorOverallKey,
   type CharacterLimitations,
+  CharacterRating,
 } from '@/models/character';
 import { ItemSlot, ItemType, type Item, type ItemArmorComponent } from '@/models/item';
 import { type HumanDuration } from '@/models/datetime';
@@ -76,6 +77,9 @@ export const deleteCharacter = (characterId: number) =>
 
 export const getCharacterStatistics = (characterId: number) =>
   get<CharacterStatistics>(`/users/self/characters/${characterId}/statistics`);
+
+export const getCharacterRating = (characterId: number) =>
+  get<CharacterRating>(`/users/self/characters/${characterId}/rating`);
 
 // TODO: spec
 export const getCharacterLimitations = async (characterId: number) => {
@@ -321,7 +325,7 @@ export const computeOverallAverageRepairCostByHour = (items: Item[]) =>
   Math.floor(items.reduce((total, item) => total + computeAverageRepairCostPerHour(item.price), 0));
 
 export const getHeirloomPointByLevel = (level: number) => {
-  return Math.pow(2, level - minimumRetirementLevel)
+  return Math.pow(2, level - minimumRetirementLevel);
 };
 
 export type HeirloomPointByLevelAggregation = { level: number[]; points: number };

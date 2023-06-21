@@ -18,6 +18,7 @@ import { t, n } from '@/services/translate-service';
 import {
   getExperienceForLevel,
   getCharacterStatistics,
+  getCharacterRating,
   getCharacterLimitations,
   respecializeCharacter,
   canRetireValidate,
@@ -102,6 +103,20 @@ const { state: characterStatistics, execute: loadCharacterStatistics } = useAsyn
   }
 );
 
+const { state: characterRating, execute: loadCharacterRating } = useAsyncState(
+  ({ id }: { id: number }) => getCharacterRating(id),
+  {
+    value: 0,
+    deviation: 0,
+    volatility: 0,
+    competitiveValue: 0,
+  },
+  {
+    immediate: false,
+    resetOnExecute: false,
+  }
+);
+
 const { state: characterLimitations, execute: loadCharacterLimitations } = useAsyncState(
   ({ id }: { id: number }) => getCharacterLimitations(id),
   { lastRespecializeAt: new Date() },
@@ -125,6 +140,7 @@ const retireTableData = computed(() => getHeirloomPointByLevelAggregation());
 const fetchPageData = async (characterId: number) =>
   Promise.all([
     loadCharacterStatistics(0, { id: characterId }),
+    loadCharacterRating(0, { id: characterId }),
     loadCharacterLimitations(0, { id: characterId }),
   ]);
 
