@@ -1,4 +1,3 @@
-using AutoMapper;
 using Crpg.Application.Common.Mappings;
 using Crpg.Application.Users.Models;
 using Crpg.Domain.Entities.Characters;

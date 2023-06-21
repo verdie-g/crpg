@@ -1,9 +1,6 @@
 ﻿using Crpg.Application.Characters.Queries;
-using Crpg.Application.Common.Results;
-using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Users;
-using Moq;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Characters;

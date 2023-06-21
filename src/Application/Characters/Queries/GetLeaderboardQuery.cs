@@ -4,7 +4,6 @@ using Crpg.Application.Characters.Models;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
-using Crpg.Application.Parties.Commands;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Queries;
