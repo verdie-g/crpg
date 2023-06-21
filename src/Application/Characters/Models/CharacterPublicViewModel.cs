@@ -9,6 +9,6 @@ public record CharacterPublicViewModel: IMapFrom<Character>
         public int Id { get; init; }
         public int Level { get; init; }
         public CharacterClass Class { get; init; }
-        public CharacterRatingViewModel? Rating { get; init; }
-        public UserPublicViewModel? User { get; init; }
+        public CharacterRatingViewModel Rating { get; init; } = new();
+        public UserPublicViewModel User { get; init; } = new();
 }
