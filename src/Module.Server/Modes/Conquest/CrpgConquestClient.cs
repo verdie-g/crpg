@@ -82,13 +82,19 @@ internal class CrpgConquestClient : MissionMultiplayerGameModeBaseClient, IComma
             _bellSoundEvent.Stop();
             _bellSoundEvent = null;
         }
-        else if (_bellSoundEvent == null && attackerLosing && _myMissionPeer?.Team != null)
+        else if (_bellSoundEvent == null && attackerLosing)
         {
-            string bellSoundEventId = _myMissionPeer.Team.Side == BattleSideEnum.Defender
-                ? "event:/multiplayer/warning_bells_defender"
-                : "event:/multiplayer/warning_bells_attacker";
-            _bellSoundEvent = SoundEvent.CreateEventFromString(bellSoundEventId, Mission.Scene);
-            _bellSoundEvent.Play();
+            var randomDefenderFlag = _flags.FirstOrDefault(f =>
+                !f.IsDeactivated && GetFlagOwner(f)?.Side == BattleSideEnum.Defender);
+            if (randomDefenderFlag != null && _myMissionPeer?.Team != null)
+            {
+                string bellSoundEventId = _myMissionPeer!.Team.Side == BattleSideEnum.Defender
+                    ? "event:/multiplayer/warning_bells_defender"
+                    : "event:/multiplayer/warning_bells_attacker";
+                _bellSoundEvent = SoundEvent.CreateEventFromString(bellSoundEventId, Mission.Scene);
+                var flagGlobalFrame = randomDefenderFlag.GameEntity.GetGlobalFrame();
+                _bellSoundEvent.PlayInPosition(flagGlobalFrame.origin + flagGlobalFrame.rotation.u * 3f);
+            }
         }
     }
 
