@@ -12,7 +12,7 @@
 
   <!-- Conquest -->
   <string id="str_multiplayer_official_game_type_name.cRPGConquest" text="{=*}cRPG Conquest" />
-  <string id="str_multiplayer_official_game_type_explainer.cRPGConquest" text="{=*}TODO" />
+  <string id="str_multiplayer_official_game_type_explainer.cRPGConquest" text="{=*}·   Capture all flags of a stage to advance to the next one{newline}·   Defenders' reward multipler increases over time and is reset on a new stage{newline}·   Attackers' reward multiplier decreases over time and is set to max on a new stage" />
   <string id="str_multiplayer_game_type.cRPGConquest" text="{=*}cRPG Conquest" />
 
   <!-- Siege -->
