@@ -1,7 +1,6 @@
 ServerName cRPG Conquest Test
 GameType cRPGConquest
 GamePassword yoyo
-add_map_to_automated_battle_pool crpg_conquest_test
 add_map_to_automated_battle_pool crpg_conquest_acre
 add_map_to_automated_battle_pool crpg_conquest_frederiksborg
 add_map_to_automated_battle_pool crpg_conquest_hades
@@ -16,6 +15,7 @@ RespawnPeriodTeam1 6
 RespawnPeriodTeam2 24
 RoundPreparationTimeLimit 2
 MaxNumberOfPlayers 120
+AutoTeamBalanceThreshold 2
 FriendlyFireDamageMeleeFriendPercent 50
 FriendlyFireDamageMeleeSelfPercent 0
 FriendlyFireDamageRangedFriendPercent 50

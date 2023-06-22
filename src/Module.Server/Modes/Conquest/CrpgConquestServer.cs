@@ -299,6 +299,12 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
             return;
         }
 
+        // Disable flags 30 seconds to avoid back-capping.
+        if (MissionTime.Now - _currentStageTimer.GetStartTime() < MissionTime.Seconds(30))
+        {
+            return;
+        }
+
         foreach (FlagCapturePoint flag in AllCapturePoints)
         {
             if (flag.IsDeactivated)
