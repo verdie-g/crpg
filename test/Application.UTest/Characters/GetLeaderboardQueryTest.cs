@@ -10,25 +10,25 @@ public class GetLeaderboardQueryTest : TestBase
     [Test]
     public async Task Basic()
     {
-        User orle = new User()
+        User orle = new()
         {
             Name = "Orle",
             Region = Domain.Entities.Region.Eu,
         };
 
-        User takeo = new User()
+        User takeo = new()
         {
             Name = "Takeo",
             Region = Domain.Entities.Region.Eu,
         };
 
-        User namidaka = new User()
+        User namidaka = new()
         {
             Name = "Namidaka",
             Region = Domain.Entities.Region.Eu,
         };
 
-        User lemon = new User()
+        User lemon = new()
         {
             Name = "Namidaka",
             Region = Domain.Entities.Region.Na,
@@ -80,8 +80,8 @@ public class GetLeaderboardQueryTest : TestBase
         Character lemonCharacter = new()
         {
             Name = "Salty Lemon",
-            UserId = namidaka.Id,
-            User = namidaka,
+            UserId = lemon.Id,
+            User = lemon,
             Class = CharacterClass.Crossbowman,
             Rating = new()
             {
@@ -94,9 +94,11 @@ public class GetLeaderboardQueryTest : TestBase
         ArrangeDb.Users.Add(orle);
         ArrangeDb.Users.Add(takeo);
         ArrangeDb.Users.Add(namidaka);
+        ArrangeDb.Users.Add(lemon);
         ArrangeDb.Characters.Add(takeoCharacter);
         ArrangeDb.Characters.Add(orleCharacter);
         ArrangeDb.Characters.Add(namidakaCharacter);
+        ArrangeDb.Characters.Add(lemonCharacter);
         await ArrangeDb.SaveChangesAsync();
 
         GetLeaderboardQuery.Handler handler = new(ActDb, Mapper);
