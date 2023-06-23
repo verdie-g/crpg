@@ -7,11 +7,6 @@ const userStore = useUserStore();
 
 <template>
   <nav class="flex items-center gap-8">
-    <RouterLink :to="{ name: 'Leaderboard' }" class="inline-flex items-center gap-2">
-      Leaderboard
-      <OIcon icon="trophy-cup" size="xl" class="text-more-support" />
-    </RouterLink>
-
     <RouterLink
       activeClass="text-content-100"
       inactiveClass="text-content-300 hover:text-content-100"
@@ -44,6 +39,11 @@ const userStore = useUserStore();
         </template>
       </VTooltip>
     </div>
+
+    <RouterLink :to="{ name: 'Leaderboard' }" class="inline-flex items-center gap-2">
+      Leaderboard
+      <OIcon icon="trophy-cup" size="xl" class="text-more-support" />
+    </RouterLink>
 
     <RouterLink
       v-if="[Role.Moderator, Role.Admin].includes(userStore.user!.role)"
