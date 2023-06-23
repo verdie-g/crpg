@@ -32,6 +32,7 @@ import {
   getCharacterKDARatio,
   getRespecCapability,
 } from '@/services/characters-service';
+import { createRankTable } from '@/services/leaderboard-service';
 
 definePage({
   meta: {
@@ -117,6 +118,8 @@ const { state: characterRating, execute: loadCharacterRating } = useAsyncState(
   }
 );
 
+const rankTable = computed(() => createRankTable());
+
 const { state: characterLimitations, execute: loadCharacterLimitations } = useAsyncState(
   ({ id }: { id: number }) => getCharacterLimitations(id),
   { lastRespecializeAt: new Date() },
@@ -200,6 +203,10 @@ await fetchPageData(character.value.id);
               description: $t('character.statistics.expMultiplier.tooltip.desc'),
             }"
           />
+
+          <SimpleTableRow :label="'Rank'">
+            <Rank :rankTable="rankTable" :competitiveValue="characterRating.competitiveValue" />
+          </SimpleTableRow>
 
           <SimpleTableRow
             :label="$t('character.statistics.kda.title')"

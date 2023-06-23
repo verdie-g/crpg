@@ -1,8 +1,5 @@
 import { createRankTable, getRankByCompetitiveValue } from './leaderboard-service';
 
-// it('d', () => {
-//   console.log('dd', createRankTable());
-// });
 /*
   Champion 1	1950	9999
   Champion 2	1900	1950
@@ -54,12 +51,12 @@ import { createRankTable, getRankByCompetitiveValue } from './leaderboard-servic
 
 */
 it.each([
-  [-1, 'Peasant 5'],
-  [0, 'Peasant 5'],
-  [49, 'Peasant 5'],
-  [50, 'Peasant 5'],
-  [51, 'Peasant 4'],
-  [9999, 'Emperor 1'],
+  [-1, 'Iron 5'],
+  [0, 'Iron 5'],
+  [49, 'Iron 5'],
+  [50, 'Iron 5'],
+  [51, 'Iron 4'],
+  [9999, 'Champion 1'],
 ])('getRankByCompetitiveValue - competitiveValue: %n', (competitiveValue, expectation) => {
   expect(getRankByCompetitiveValue(createRankTable(), competitiveValue).title).toEqual(expectation);
 });

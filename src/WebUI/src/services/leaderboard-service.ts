@@ -1,110 +1,46 @@
-import { type Character } from '@/models/character';
-import { type Rank } from '@/models/competitive';
+import qs from 'qs';
+import {
+  type Rank,
+  type CharacterCompetitive,
+  type CharacterCompetitiveNumbered,
+} from '@/models/competitive';
+import { Region } from '@/models/region';
 import { get } from '@/services/crpg-client';
 import { inRange } from '@/utils/math';
 
-// export const getLeaderBoard = () => get<Character[]>('/leaderboard/leaderboard');
-const meow = {
-  // TODO:
-  //
-  name: 'Nami Legodaklas',
-  userId: 11,
-  level: 35,
-  user: {
-    name: 'orle',
-    avatar:
-      'https://avatars.akamai.steamstatic.com/d51d5155b1a564421c0b3fd5fb7eed7c4474e73d_full.jpg',
-    region: 'Eu',
-    platformUserId: 11,
-    platform: 'Steam',
-  },
-  class: 'Archer',
-  rating: {
-    value: 50,
-    deviation: 100,
-    volatility: 100,
-    competitiveValue: 1800,
-  },
+// TODO: spec
+export const getLeaderBoard = async (region?: Region): Promise<CharacterCompetitiveNumbered[]> => {
+  // TODO: realize GET params in crpg-client
+  const params = qs.stringify(
+    { region },
+    {
+      strictNullHandling: true,
+      arrayFormat: 'brackets',
+      skipNulls: true,
+    }
+  );
+
+  return (await get<CharacterCompetitive[]>(`/leaderboard/leaderboard?${params}`)).map(
+    (cr, idx) => ({
+      position: idx + 1,
+      ...cr,
+    })
+  );
 };
 
-export const getLeaderBoard = () =>
-  new Promise(res => {
-    res(
-      [
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-        meow,
-      ].map((d, idx) => ({ idx: idx + 1, ...d }))
-    );
-  });
+const rankGroups: [string, string][] = [
+  ['Iron', '#555756'],
+  ['Copper', '#B87333'],
+  ['Bronze', '#CD7F32'],
+  ['Silver', '#C7CCCA'],
+  ['Gold', '#EABC40'],
+  ['Platinum', '#40A7B9'],
+  ['Diamond', '#C289F5'],
+  ['Champion', '#B73E6C'],
+];
 
 const step = 50;
 const rankSubGroupCount = 5;
-const rankGroups: [string, string][] = [
-  // ['Iron', '#555756'],
-  // ['Copper', '#B87333'],
-  // ['Bronze', '#CD7F32'],
-  // ['Silver', '#C7CCCA'],
-  // ['Gold', '#EABC40'],
-  // ['Platinum', '#40A7B9'],
-  // ['Diamond', '#C289F5'],
-  // ['Champion', '#B73E6C'],
-  ['Peasant', '#555756'],
-  ['Squire', '#B87333'],
-  ['Knight', '#CD7F32'],
-  ['Viscount', '#C7CCCA'],
-  ['Earl', '#EABC40'],
-  ['Duke', '#40A7B9'],
-  ['King', '#C289F5'],
-  ['Emperor', '#B73E6C'],
-];
 
 const createRankGroup = (baseRank: [string, string]) =>
   [...Array(rankSubGroupCount).keys()]

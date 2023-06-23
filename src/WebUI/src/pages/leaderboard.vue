@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import { Region } from '@/models/region';
+import { type CharacterCompetitiveNumbered } from '@/models/competitive';
 import { getLeaderBoard, createRankTable } from '@/services/leaderboard-service';
 import { characterClassToIcon } from '@/services/characters-service';
+import { useUserStore } from '@/stores/user';
 
 definePage({
   meta: {
@@ -10,14 +13,43 @@ definePage({
   },
 });
 
-const { state: leaderBoard } = useAsyncState(() => getLeaderBoard(), []);
+const userStore = useUserStore();
+
+const route = useRoute();
+const router = useRouter();
+
+// TODO: to composable (merge with clans page)
+const regionModel = computed({
+  get() {
+    return (route.query?.region as Region) || Region.Eu;
+  },
+
+  async set(region: Region) {
+    await router.replace({
+      query: {
+        ...route.query,
+        region,
+      },
+    });
+
+    await loadLeaderBoard();
+  },
+});
+
+const { state: leaderBoard, execute: loadLeaderBoard } = useAsyncState(
+  () => getLeaderBoard(regionModel.value),
+  [],
+  {
+    resetOnExecute: false,
+  }
+);
 
 const rankTable = computed(() => createRankTable());
 </script>
 
 <template>
   <div class="container">
-    <div class="mx-auto max-w-3xl py-8 md:py-16">
+    <div class="mx-auto max-w-4xl py-8 md:py-16">
       <div class="container mb-20">
         <div class="mb-5 flex justify-center">
           <OIcon icon="trophy-cup" size="5x" class="text-more-support" />
@@ -34,6 +66,14 @@ const rankTable = computed(() => createRankTable());
         </div>
       </div>
 
+      <OTabs v-model="regionModel" contentClass="hidden" class="mb-6">
+        <OTabItem
+          v-for="region in Object.keys(Region)"
+          :label="$t(`region.${region}`, 0)"
+          :value="region"
+        />
+      </OTabs>
+
       <OTable
         :data="leaderBoard"
         hoverable
@@ -42,19 +82,42 @@ const rankTable = computed(() => createRankTable());
         sortIconSize="xs"
         :defaultSort="['idx', 'asc']"
       >
-        <OTableColumn #default="{ row }" field="idx" label="Top" :width="60" sortable>
-          {{ row.idx }}
+        <OTableColumn
+          #default="{ row }: { row: CharacterCompetitiveNumbered }"
+          field="position"
+          label="Top"
+          :width="120"
+          sortable
+        >
+          {{ row.position }}
+          <span v-if="userStore.user!.id === row.user.id">({{ $t('you') }})</span>
         </OTableColumn>
 
-        <OTableColumn #default="{ row }" field="rating" label="Rank" :width="210">
+        <OTableColumn
+          #default="{ row }: { row: CharacterCompetitiveNumbered }"
+          field="rating"
+          label="Rank"
+          :width="210"
+        >
           <Rank :rankTable="rankTable" :competitiveValue="row.rating.competitiveValue" />
         </OTableColumn>
 
-        <OTableColumn #default="{ row }" field="user.name" label="Player" :width="140">
+        <OTableColumn
+          #default="{ row }: { row: CharacterCompetitiveNumbered }"
+          field="user.name"
+          label="Player"
+          :width="180"
+        >
           <UserMedia :user="row.user" hiddenPlatform />
         </OTableColumn>
 
-        <OTableColumn #default="{ row }" field="class" label="Class" :width="60" sortable>
+        <OTableColumn
+          #default="{ row }: { row: CharacterCompetitiveNumbered }"
+          field="class"
+          label="Class"
+          :width="60"
+          sortable
+        >
           <OIcon
             :icon="characterClassToIcon[row.class]"
             size="lg"
@@ -62,11 +125,20 @@ const rankTable = computed(() => createRankTable());
           />
         </OTableColumn>
 
-        <OTableColumn #default="{ row }" field="level" label="Lvl" :width="60">
+        <OTableColumn
+          #default="{ row }: { row: CharacterCompetitiveNumbered }"
+          field="level"
+          label="Lvl"
+          :width="60"
+        >
           {{ row.level }}
         </OTableColumn>
 
-        <OTableColumn #default="{ row }" field="user.region" label="Region" sortable>
+        <OTableColumn
+          #default="{ row }: { row: CharacterCompetitiveNumbered }"
+          field="user.region"
+          label="Region"
+        >
           {{ $t(`region.${row.user.region}`, 0) }}
         </OTableColumn>
 

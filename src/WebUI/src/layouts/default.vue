@@ -83,7 +83,11 @@ await Promise.all(promises);
           <div class="flex items-center gap-2">
             <OnlinePlayers :gameServerStats="gameServerStats" />
 
-            <RouterLink :to="{ name: 'Leaderboard' }" class="inline-flex hover:opacity-80">
+            <RouterLink
+              :to="{ name: 'Leaderboard' }"
+              class="inline-flex hover:opacity-80"
+              v-tooltip="'Leaderboard'"
+            >
               <OIcon icon="trophy-cup" size="xl" class="text-more-support" />
             </RouterLink>
           </div>

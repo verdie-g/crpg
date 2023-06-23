@@ -872,6 +872,13 @@ public record SeedDataCommand : IMediatorRequest
                 {
                     LastRespecializeAt = DateTime.UtcNow.AddDays(-8),
                 },
+                Rating = new()
+                {
+                    Value = 50,
+                    Deviation = 100,
+                    Volatility = 100,
+                    CompetitiveValue = 1900,
+                },
             };
             Character orleCharacter1 = new()
             {

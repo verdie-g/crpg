@@ -18,7 +18,8 @@ export interface User {
   isDonor: boolean;
 }
 
-export interface UserPublic extends Pick<User, 'id' | 'platform' | 'platformUserId' | 'name'> {
+export interface UserPublic
+  extends Pick<User, 'id' | 'platform' | 'platformUserId' | 'name' | 'region'> {
   avatar: string;
 }
 
