@@ -124,33 +124,43 @@ internal class DonorSynchronizerWorker : BackgroundService
 
         using HttpClient httpClient = new() { BaseAddress = new Uri("https://afdian.net/"), };
 
-        const string reqParams = "{\"page\":1}";
-        long timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-        string signature = $"{accessToken}params{reqParams}ts{timestamp}user_id{userId}";
-        string sign = Convert.ToHexString(MD5.HashData(Encoding.UTF8.GetBytes(signature))).ToLowerInvariant();
-        string reqContentStr = $"{{\"user_id\":\"{userId}\",\"params\":\"{reqParams.Replace("\"", "\\\"")}\",\"ts\":{timestamp},\"sign\":\"{sign}\"}}";
-        StringContent reqContent = new(reqContentStr, Encoding.UTF8, MediaTypeNames.Application.Json);
-        using var res = await httpClient.PostAsync("api/open/query-sponsor", reqContent, cancellationToken);
-        string resContent = await res.Content.ReadAsStringAsync(cancellationToken);
-        var sponsorsRes = JsonSerializer.Deserialize<AfdianResponse<AfdianSponsor>>(resContent, new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true,
-        })!;
-
         List<string> steamIds = new();
-        foreach (var sponsor in sponsorsRes.Data.List)
+        int page = 1;
+        while (true)
         {
-            if (sponsor.CurrentPlan == null || !float.TryParse(sponsor.CurrentPlan.Price, out float price) || price < MinAfdianAmountYuanForRewards * 0.95) // Allow a little margin.
+            string reqParams = $"{{\"page\":{page}}}";
+            long timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            string signature = $"{accessToken}params{reqParams}ts{timestamp}user_id{userId}";
+            string sign = Convert.ToHexString(MD5.HashData(Encoding.UTF8.GetBytes(signature))).ToLowerInvariant();
+            string reqContentStr = $"{{\"user_id\":\"{userId}\",\"params\":\"{reqParams.Replace("\"", "\\\"")}\",\"ts\":{timestamp},\"sign\":\"{sign}\"}}";
+            StringContent reqContent = new(reqContentStr, Encoding.UTF8, MediaTypeNames.Application.Json);
+            using var res = await httpClient.PostAsync("api/open/query-sponsor", reqContent, cancellationToken);
+            string resContent = await res.Content.ReadAsStringAsync(cancellationToken);
+            var sponsorsRes = JsonSerializer.Deserialize<AfdianResponse<AfdianSponsor>>(resContent,
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true })!;
+
+            foreach (var sponsor in sponsorsRes.Data.List)
             {
-                continue;
+                if (sponsor.CurrentPlan == null
+                    || !float.TryParse(sponsor.CurrentPlan.Price, out float price) ||
+                    price < MinAfdianAmountYuanForRewards * 0.95) // Allow a little margin.
+                {
+                    continue;
+                }
+
+                if (!afdianToSteamIds.TryGetValue(sponsor.User.UserId, out string? steamId))
+                {
+                    continue;
+                }
+
+                steamIds.Add(steamId);
             }
 
-            if (!afdianToSteamIds.TryGetValue(sponsor.User.UserId, out string? steamId))
+            page += 1;
+            if (page > sponsorsRes.Data.TotalPage)
             {
-                continue;
+                break;
             }
-
-            steamIds.Add(steamId);
         }
 
         return steamIds;
