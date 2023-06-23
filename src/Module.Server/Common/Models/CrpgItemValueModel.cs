@@ -97,11 +97,11 @@ internal class CrpgItemValueModel : ItemValueModel
     private float CalculateHorseTier(ItemObject item, HorseComponent horseComponent)
     {
         float horsePower =
-          (float)Math.Pow(horseComponent.Speed, 1.75f)
-        * (float)Math.Pow(horseComponent.Maneuver, 1.81f)
-        * (float)Math.Pow(horseComponent.HitPoints + horseComponent.HitPointBonus, 1.02f)
-        + 300f * (float)Math.Pow(horseComponent.ChargeDamage, 5f) + 2500000f * horseComponent.ChargeDamage;
-        float bestHorsePower = 487438929.1f;
+          (float)Math.Pow(horseComponent.Speed, 1.65f)
+        * (float)Math.Pow(horseComponent.Maneuver, 1.9f)
+        * (float)Math.Pow((horseComponent.HitPoints + horseComponent.HitPointBonus) / 100f, 0.8f) * 123f
+        + (float)((300f * Math.Pow(horseComponent.ChargeDamage, 5f) + 2500000f * horseComponent.ChargeDamage) * Math.Pow(horseComponent.Speed / 47f, 2f));
+        float bestHorsePower = 472000000f;
         float horseTier = 10f * horsePower / bestHorsePower;
 
         float heirloomLevel = ItemToHeirloomLevel(item);
@@ -298,7 +298,7 @@ internal class CrpgItemValueModel : ItemValueModel
         {
             DamageTypes.Blunt => 3.5f,
             DamageTypes.Pierce => 1.75f,
-            _ => 1.35f,
+            _ => 1.175f,
         };
     }
 
@@ -329,7 +329,7 @@ internal class CrpgItemValueModel : ItemValueModel
     {
         WeaponComponentData weapon = weaponComponent.Weapons.MaxBy(a => a.MaxDataValue);
         float scaler = 4f * 1600000f;
-        float bonusVsShield = weapon.WeaponFlags.HasFlag(WeaponFlags.BonusAgainstShield) ? 1.40f : 1f;
+        float bonusVsShield = weapon.WeaponFlags.HasFlag(WeaponFlags.BonusAgainstShield) ? 1.10f : 1f;
         float canDismount = weapon.WeaponFlags.HasFlag(WeaponFlags.CanDismount) ? 1.10f : 1f;
         float tier =
               (float)Math.Pow(weapon.ThrustDamage, 2.4f)
@@ -383,10 +383,9 @@ internal class CrpgItemValueModel : ItemValueModel
     {
         WeaponComponentData weapon = weaponComponent.Weapons[0];
         float shieldTier = (1.0f * weapon.MaxDataValue
-                * (1.0f + weapon.BodyArmor / 10f))
-                * (0.14f + weapon.GetRealWeaponLength())
-                / (6f + weaponComponent.Item.Weight)
-                / 100f
+                * (1.0f + weapon.BodyArmor / 25f))
+                * (1.6f + weapon.GetRealWeaponLength())
+                / 1300f
                 * 10f;
 
         float heirloomLevel = ItemToHeirloomLevel(weaponComponent.Item);
