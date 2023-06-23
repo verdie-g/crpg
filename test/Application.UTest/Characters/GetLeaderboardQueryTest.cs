@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Characters;
 
-public class GetUserLeaderboardQueryTest : TestBase
+public class GetLeaderboardQueryTest : TestBase
 {
     [Test]
     public async Task Basic()
