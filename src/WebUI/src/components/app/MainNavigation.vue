@@ -40,6 +40,11 @@ const userStore = useUserStore();
       </VTooltip>
     </div>
 
+    <RouterLink :to="{ name: 'Leaderboard' }" class="inline-flex items-center gap-2">
+      Leaderboard
+      <OIcon icon="trophy-cup" size="xl" class="text-more-support" />
+    </RouterLink>
+
     <RouterLink
       v-if="[Role.Moderator, Role.Admin].includes(userStore.user!.role)"
       activeClass="text-content-100"

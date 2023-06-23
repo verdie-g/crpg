@@ -54,6 +54,7 @@ declare module 'vue-router/auto/routes' {
     'ClansIdApplications': RouteRecordInfo<'ClansIdApplications', '/clans/:id/applications', { id: ParamValue<true> }, { id: ParamValue<false> }>,
     'ClansIdUpdate': RouteRecordInfo<'ClansIdUpdate', '/clans/:id/update', { id: ParamValue<true> }, { id: ParamValue<false> }>,
     'ClansCreate': RouteRecordInfo<'ClansCreate', '/clans/create', Record<never, never>, Record<never, never>>,
+    'Leaderboard': RouteRecordInfo<'Leaderboard', '/leaderboard', Record<never, never>, Record<never, never>>,
     'ModeratorParent': RouteRecordInfo<'ModeratorParent', '/moderator', Record<never, never>, Record<never, never>>,
     'Moderator': RouteRecordInfo<'Moderator', '/moderator', Record<never, never>, Record<never, never>>,
     'ModeratorFindUser': RouteRecordInfo<'ModeratorFindUser', '/moderator/find-user', Record<never, never>, Record<never, never>>,

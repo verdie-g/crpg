@@ -80,7 +80,9 @@ await Promise.all(promises);
             <SvgSpriteImg name="logo" viewBox="0 0 162 124" class="w-16" />
           </RouterLink>
 
-          <OnlinePlayers :gameServerStats="gameServerStats" />
+          <div class="flex items-center gap-2">
+            <OnlinePlayers :gameServerStats="gameServerStats" />
+          </div>
 
           <!-- TODO: to divider -->
           <div class="h-8 w-px select-none bg-border-200" />

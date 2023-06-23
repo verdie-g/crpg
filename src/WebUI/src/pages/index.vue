@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { useGameServerStats } from '@/composables/use-game-server-stats';
 
+import { getLeaderBoard } from '@/services/leaderboard-service';
+
+const { state: leaderBoard } = useAsyncState(() => getLeaderBoard(), [], {
+  // immediate: false,
+});
+
 definePage({
   meta: {
     layout: 'empty',
