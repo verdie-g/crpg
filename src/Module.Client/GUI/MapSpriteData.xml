@@ -17,7 +17,7 @@
   <SpriteCategories>
     <SpriteCategory>
       <Name>ui_mploading</Name>
-      <SpriteSheetCount>111</SpriteSheetCount>
+      <SpriteSheetCount>112</SpriteSheetCount>
       <SpriteSheetSize ID="1" Width="3840" Height="1935" />
       <SpriteSheetSize ID="2" Width="3840" Height="1935" />
       <SpriteSheetSize ID="3" Width="3383" Height="1902" />
@@ -117,6 +117,7 @@
       <SpriteSheetSize ID="109" Width="1920" Height="1080" />
       <SpriteSheetSize ID="110" Width="1920" Height="1080" />
       <SpriteSheetSize ID="111" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="112" Width="1920" Height="1080" />
       <AlwaysLoad />
     </SpriteCategory>
   </SpriteCategories>
@@ -1003,6 +1004,15 @@
       <SheetY>0</SheetY>
       <CategoryName>ui_mploading</CategoryName>
     </SpritePart>
+    <SpritePart>
+      <SheetID>112</SheetID>
+      <Name>crpg_battle_howlingmeadow</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
   </SpriteParts>
   <Sprites>
     <GenericSprite>
@@ -1396,6 +1406,10 @@
     <GenericSprite>
       <Name>crpg_battle_fieldbytheriver</Name>
       <SpritePartName>crpg_battle_fieldbytheriver</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_howlingmeadow</Name>
+      <SpritePartName>crpg_battle_howlingmeadow</SpritePartName>
     </GenericSprite>
   </Sprites>
 </SpriteData>

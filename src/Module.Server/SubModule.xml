@@ -5,7 +5,7 @@
   <Version value="v1.1.5.69"/>
   <ModuleCategory value="Multiplayer"/>
   <DependedModules>
-    <DependedModule Id="Native" DependentVersion="v1.1.4" Optional="false"/>
+    <DependedModule Id="Native" DependentVersion="v1.1.5" Optional="false"/>
   </DependedModules>
   <SubModules>
     <SubModule>
