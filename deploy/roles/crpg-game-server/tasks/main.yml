@@ -85,7 +85,7 @@
     update_cache: yes
 
 - name: install/update Bannerlord
-  command: "/usr/games/steamcmd +force_install_dir {{ bannerlord_server_path }} +login {{ steam_user_name }} +app_update 1863440 +exit"
+  command:  "/usr/games/steamcmd +force_install_dir {{ bannerlord_server_path }} +login anonymous +app_update 1863440 +exit"
   become_user: "{{ crpg_game_server_user }}"
 
 - name: download .NET runtime
