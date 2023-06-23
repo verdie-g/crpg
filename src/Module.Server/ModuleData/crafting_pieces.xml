@@ -1956,17 +1956,17 @@
       <Material id="Iron4" count="2" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_militia_pernach_blade_h1" name="{=cag70E1F}Pernach Head" tier="5" piece_type="Blade" mesh="mace_head_2" length="17" weight="0.29" full_scale="true" excluded_item_usage_features="thrust">
+  <CraftingPiece id="crpg_militia_pernach_blade_h1" name="{=cag70E1F}Pernach Head" tier="5" piece_type="Blade" mesh="mace_head_2" length="17" weight="0.32" full_scale="true" excluded_item_usage_features="thrust">
     <BladeData stack_amount="2" physics_material="wood_weapon" body_name="bo_mace_a">
-      <Swing damage_type="Blunt" damage_factor="2.4" />
+      <Swing damage_type="Blunt" damage_factor="2.5" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="2" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_militia_pernach_blade_h2" name="{=cag70E1F}Pernach Head" tier="5" piece_type="Blade" mesh="mace_head_2" length="17" weight="0.29" full_scale="true" excluded_item_usage_features="thrust">
+  <CraftingPiece id="crpg_militia_pernach_blade_h2" name="{=cag70E1F}Pernach Head" tier="5" piece_type="Blade" mesh="mace_head_2" length="17" weight="0.32" full_scale="true" excluded_item_usage_features="thrust">
     <BladeData stack_amount="2" physics_material="wood_weapon" body_name="bo_mace_a">
-      <Swing damage_type="Blunt" damage_factor="2.5" />
+      <Swing damage_type="Blunt" damage_factor="2.6" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="2" />
@@ -6990,7 +6990,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_broad_blade_javelin_blade_h0" name="{=9aYBy1RN}Fine Steel Leaf Spear Head" tier="4" piece_type="Blade" mesh="spear_blade_42" length="42" weight="0.2456" excluded_item_usage_features="swing">
     <BladeData stack_amount="3" physics_material="wood_weapon" body_name="bo_spear_b" holster_mesh="throwing_spear_quiver_4_1" holster_body_name="bo_throwing_spear_quiver_4_1" holster_mesh_length="96.2">
-      <Thrust damage_type="Cut" damage_factor="0.845" />
+      <Thrust damage_type="Cut" damage_factor="1" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="2" />
@@ -6998,7 +6998,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_broad_blade_javelin_blade_h1" name="{=9aYBy1RN}Fine Steel Leaf Spear Head" tier="4" piece_type="Blade" mesh="spear_blade_42" length="42" weight="0.2456" excluded_item_usage_features="swing">
     <BladeData stack_amount="3" physics_material="wood_weapon" body_name="bo_spear_b" holster_mesh="throwing_spear_quiver_4_1" holster_body_name="bo_throwing_spear_quiver_4_1" holster_mesh_length="96.2">
-      <Thrust damage_type="Cut" damage_factor="0.87" />
+      <Thrust damage_type="Cut" damage_factor="1.03" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="2" />
@@ -7006,7 +7006,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_broad_blade_javelin_blade_h2" name="{=9aYBy1RN}Fine Steel Leaf Spear Head" tier="4" piece_type="Blade" mesh="spear_blade_42" length="42" weight="0.2456" excluded_item_usage_features="swing">
     <BladeData stack_amount="3" physics_material="wood_weapon" body_name="bo_spear_b" holster_mesh="throwing_spear_quiver_4_1" holster_body_name="bo_throwing_spear_quiver_4_1" holster_mesh_length="96.2">
-      <Thrust damage_type="Cut" damage_factor="0.92" />
+      <Thrust damage_type="Cut" damage_factor="1.06" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="2" />
@@ -7014,7 +7014,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_broad_blade_javelin_blade_h3" name="{=9aYBy1RN}Fine Steel Leaf Spear Head" tier="4" piece_type="Blade" mesh="spear_blade_42" length="42" weight="0.2456" excluded_item_usage_features="swing">
     <BladeData stack_amount="3" physics_material="wood_weapon" body_name="bo_spear_b" holster_mesh="throwing_spear_quiver_4_1" holster_body_name="bo_throwing_spear_quiver_4_1" holster_mesh_length="96.2">
-      <Thrust damage_type="Cut" damage_factor="0.96" />
+      <Thrust damage_type="Cut" damage_factor="1.11" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="2" />
@@ -8959,7 +8959,7 @@
   <CraftingPiece id="crpg_raider_throwing_axe_blade_h0" name="{=hSSk6tTn}Throwing Axe Head" tier="4" piece_type="Blade" mesh="axe_craft_13_head" distance_to_next_piece="2.7" distance_to_previous_piece="1.6" weight="0.7">
     <BuildData piece_offset="-3.2" />
     <BladeData stack_amount="4" blade_length="8.707" blade_width="16.898" physics_material="metal_weapon" body_name="bo_axe_longer_b" holster_mesh="throwing_axe_quiver_1">
-      <Swing damage_type="Cut" damage_factor="1.2" />
+      <Swing damage_type="Cut" damage_factor="1.425" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="3" />
@@ -8972,7 +8972,7 @@
   <CraftingPiece id="crpg_raider_throwing_axe_blade_h1" name="{=hSSk6tTn}Throwing Axe Head" tier="4" piece_type="Blade" mesh="axe_craft_13_head" distance_to_next_piece="2.7" distance_to_previous_piece="1.6" weight="0.7">
     <BuildData piece_offset="-3.2" />
     <BladeData stack_amount="4" blade_length="8.707" blade_width="16.898" physics_material="metal_weapon" body_name="bo_axe_longer_b" holster_mesh="throwing_axe_quiver_1">
-      <Swing damage_type="Cut" damage_factor="1.24" />
+      <Swing damage_type="Cut" damage_factor="1.485" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="3" />
@@ -8985,7 +8985,7 @@
   <CraftingPiece id="crpg_raider_throwing_axe_blade_h2" name="{=hSSk6tTn}Throwing Axe Head" tier="4" piece_type="Blade" mesh="axe_craft_13_head" distance_to_next_piece="2.7" distance_to_previous_piece="1.6" weight="0.7">
     <BuildData piece_offset="-3.2" />
     <BladeData stack_amount="4" blade_length="8.707" blade_width="16.898" physics_material="metal_weapon" body_name="bo_axe_longer_b" holster_mesh="throwing_axe_quiver_1">
-      <Swing damage_type="Cut" damage_factor="1.29" />
+      <Swing damage_type="Cut" damage_factor="1.545" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="3" />
@@ -8998,7 +8998,7 @@
   <CraftingPiece id="crpg_raider_throwing_axe_blade_h3" name="{=hSSk6tTn}Throwing Axe Head" tier="4" piece_type="Blade" mesh="axe_craft_13_head" distance_to_next_piece="2.7" distance_to_previous_piece="1.6" weight="0.7">
     <BuildData piece_offset="-3.2" />
     <BladeData stack_amount="4" blade_length="8.707" blade_width="16.898" physics_material="metal_weapon" body_name="bo_axe_longer_b" holster_mesh="throwing_axe_quiver_1">
-      <Swing damage_type="Cut" damage_factor="1.34" />
+      <Swing damage_type="Cut" damage_factor="1.605" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="3" />
@@ -9063,59 +9063,55 @@
   <CraftingPiece id="crpg_tribesman_throwing_axe_blade_h0" name="{=fdR6zYiP}Franziska Head" tier="4" piece_type="Blade" mesh="axe_craft_4_head" distance_to_next_piece="5.787" distance_to_previous_piece="1.483" weight="0.20" is_default="true">
     <BuildData piece_offset="-2.966" />
     <BladeData stack_amount="3" blade_length="10.566" blade_width="19.257" physics_material="metal_weapon" body_name="bo_axe_longer_b" holster_mesh="throwing_axe_quiver_1">
-      <Swing damage_type="Cut" damage_factor="1.55" />
+      <Swing damage_type="Cut" damage_factor="1.85" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="3" />
     </Materials>
     <Flags>
       <Flag name="CanBePickedUpFromCorpse" type="ItemFlags" />
-      <Flag name="BonusAgainstShield" />
     </Flags>
   </CraftingPiece>
   <CraftingPiece id="crpg_tribesman_throwing_axe_blade_h1" name="{=fdR6zYiP}Franziska Head" tier="4" piece_type="Blade" mesh="axe_craft_4_head" distance_to_next_piece="5.787" distance_to_previous_piece="1.483" weight="0.20" is_default="true">
     <BuildData piece_offset="-2.966" />
     <BladeData stack_amount="3" blade_length="10.566" blade_width="19.257" physics_material="metal_weapon" body_name="bo_axe_longer_b" holster_mesh="throwing_axe_quiver_1">
-      <Swing damage_type="Cut" damage_factor="1.60" />
+      <Swing damage_type="Cut" damage_factor="1.94" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="3" />
     </Materials>
     <Flags>
       <Flag name="CanBePickedUpFromCorpse" type="ItemFlags" />
-      <Flag name="BonusAgainstShield" />
     </Flags>
   </CraftingPiece>
   <CraftingPiece id="crpg_tribesman_throwing_axe_blade_h2" name="{=fdR6zYiP}Franziska Head" tier="4" piece_type="Blade" mesh="axe_craft_4_head" distance_to_next_piece="5.787" distance_to_previous_piece="1.483" weight="0.20" is_default="true">
     <BuildData piece_offset="-2.966" />
     <BladeData stack_amount="3" blade_length="10.566" blade_width="19.257" physics_material="metal_weapon" body_name="bo_axe_longer_b" holster_mesh="throwing_axe_quiver_1">
-      <Swing damage_type="Cut" damage_factor="1.69" />
+      <Swing damage_type="Cut" damage_factor="2.01" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="3" />
     </Materials>
     <Flags>
       <Flag name="CanBePickedUpFromCorpse" type="ItemFlags" />
-      <Flag name="BonusAgainstShield" />
     </Flags>
   </CraftingPiece>
   <CraftingPiece id="crpg_tribesman_throwing_axe_blade_h3" name="{=fdR6zYiP}Franziska Head" tier="4" piece_type="Blade" mesh="axe_craft_4_head" distance_to_next_piece="5.787" distance_to_previous_piece="1.483" weight="0.20" is_default="true">
     <BuildData piece_offset="-2.966" />
     <BladeData stack_amount="3" blade_length="10.566" blade_width="19.257" physics_material="metal_weapon" body_name="bo_axe_longer_b" holster_mesh="throwing_axe_quiver_1">
-      <Swing damage_type="Cut" damage_factor="1.74" />
+      <Swing damage_type="Cut" damage_factor="2.09" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="3" />
     </Materials>
     <Flags>
       <Flag name="CanBePickedUpFromCorpse" type="ItemFlags" />
-      <Flag name="BonusAgainstShield" />
     </Flags>
   </CraftingPiece>
   <CraftingPiece id="crpg_highland_throwing_axe_blade_h0" name="{=fdR6zYiP}Franziska Head" tier="4" piece_type="Blade" mesh="axe_craft_4_head" distance_to_next_piece="5.787" distance_to_previous_piece="1.483" weight="0.25" is_default="true">
     <BuildData piece_offset="-2.966" />
     <BladeData stack_amount="3" blade_length="10.566" blade_width="19.257" physics_material="metal_weapon" body_name="bo_axe_longer_b" holster_mesh="throwing_axe_quiver_1">
-      <Swing damage_type="Cut" damage_factor="1.64" />
+      <Swing damage_type="Cut" damage_factor="1.95" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="3" />
@@ -9128,7 +9124,7 @@
   <CraftingPiece id="crpg_highland_throwing_axe_blade_h1" name="{=fdR6zYiP}Franziska Head" tier="4" piece_type="Blade" mesh="axe_craft_4_head" distance_to_next_piece="5.787" distance_to_previous_piece="1.483" weight="0.25" is_default="true">
     <BuildData piece_offset="-2.966" />
     <BladeData stack_amount="3" blade_length="10.566" blade_width="19.257" physics_material="metal_weapon" body_name="bo_axe_longer_b" holster_mesh="throwing_axe_quiver_1">
-      <Swing damage_type="Cut" damage_factor="1.7" />
+      <Swing damage_type="Cut" damage_factor="2.0" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="3" />
@@ -9141,7 +9137,7 @@
   <CraftingPiece id="crpg_highland_throwing_axe_blade_h2" name="{=fdR6zYiP}Franziska Head" tier="4" piece_type="Blade" mesh="axe_craft_4_head" distance_to_next_piece="5.787" distance_to_previous_piece="1.483" weight="0.25" is_default="true">
     <BuildData piece_offset="-2.966" />
     <BladeData stack_amount="3" blade_length="10.566" blade_width="19.257" physics_material="metal_weapon" body_name="bo_axe_longer_b" holster_mesh="throwing_axe_quiver_1">
-      <Swing damage_type="Cut" damage_factor="1.74" />
+      <Swing damage_type="Cut" damage_factor="2.06" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="3" />
@@ -9154,7 +9150,7 @@
   <CraftingPiece id="crpg_highland_throwing_axe_blade_h3" name="{=fdR6zYiP}Franziska Head" tier="4" piece_type="Blade" mesh="axe_craft_4_head" distance_to_next_piece="5.787" distance_to_previous_piece="1.483" weight="0.25" is_default="true">
     <BuildData piece_offset="-2.966" />
     <BladeData stack_amount="3" blade_length="10.566" blade_width="19.257" physics_material="metal_weapon" body_name="bo_axe_longer_b" holster_mesh="throwing_axe_quiver_1">
-      <Swing damage_type="Cut" damage_factor="1.82" />
+      <Swing damage_type="Cut" damage_factor="2.12" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="3" />
@@ -9909,7 +9905,7 @@
   <CraftingPiece id="crpg_hoe_blade_h2" name="{=LSrJljDL}Adze Head" tier="1" piece_type="Blade" mesh="axe_craft_15_head" distance_to_next_piece="4.1" distance_to_previous_piece="3.2" weight="0.315" is_default="true">
     <BuildData piece_offset="-6.4" />
     <BladeData stack_amount="2" blade_length="4.552" blade_width="25.764" physics_material="metal_weapon" body_name="bo_axe_longer_b">
-      <Swing damage_type="Cut" damage_factor="3.8" />
+      <Swing damage_type="Cut" damage_factor="2.8" />
     </BladeData>
     <Flags>
       <Flag name="CanBePickedUpFromCorpse" type="ItemFlags" />
@@ -11374,7 +11370,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_tribesman_throwing_daggers_blade_h0" name="{=5o5DaSHZ}Broad Dagger Blade" tier="2" piece_type="Blade" mesh="dagger_blade_13" length="29" weight="0.03">
     <BladeData stack_amount="9" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="throwing_dagger_quiver_1" holster_mesh_length="35.8">
-      <Thrust damage_type="Pierce" damage_factor="8" />
+      <Thrust damage_type="Pierce" damage_factor="8.4" />
       <Swing damage_type="Cut" damage_factor="2.45" />
     </BladeData>
     <Flags>
@@ -11386,7 +11382,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_tribesman_throwing_daggers_blade_h1" name="{=5o5DaSHZ}Broad Dagger Blade" tier="2" piece_type="Blade" mesh="dagger_blade_13" length="29" weight="0.03">
     <BladeData stack_amount="9" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="throwing_dagger_quiver_1" holster_mesh_length="35.8">
-      <Thrust damage_type="Pierce" damage_factor="8.4" />
+      <Thrust damage_type="Pierce" damage_factor="8.8" />
       <Swing damage_type="Cut" damage_factor="2.45" />
     </BladeData>
     <Flags>
@@ -11398,7 +11394,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_tribesman_throwing_daggers_blade_h2" name="{=5o5DaSHZ}Broad Dagger Blade" tier="2" piece_type="Blade" mesh="dagger_blade_13" length="29" weight="0.03">
     <BladeData stack_amount="9" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="throwing_dagger_quiver_1" holster_mesh_length="35.8">
-      <Thrust damage_type="Pierce" damage_factor="8.8" />
+      <Thrust damage_type="Pierce" damage_factor="9.2" />
       <Swing damage_type="Cut" damage_factor="2.45" />
     </BladeData>
     <Flags>
@@ -11410,7 +11406,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_tribesman_throwing_daggers_blade_h3" name="{=5o5DaSHZ}Broad Dagger Blade" tier="2" piece_type="Blade" mesh="dagger_blade_13" length="29" weight="0.03">
     <BladeData stack_amount="9" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="throwing_dagger_quiver_1" holster_mesh_length="35.8">
-      <Thrust damage_type="Pierce" damage_factor="9.2" />
+      <Thrust damage_type="Pierce" damage_factor="9.7" />
       <Swing damage_type="Cut" damage_factor="2.45" />
     </BladeData>
     <Flags>
@@ -11518,7 +11514,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_leafblade_throwing_knife_blade_h0" name="{=HysmKS5a}Ridged Wide Dagger Blade" tier="1" piece_type="Blade" mesh="dagger_blade_12" length="25.2" weight="0.06" is_default="true">
     <BladeData stack_amount="5" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="throwing_dagger_quiver_3" holster_mesh_length="35.8">
-      <Thrust damage_type="Pierce" damage_factor="8.5" />
+      <Thrust damage_type="Pierce" damage_factor="8.9" />
       <Swing damage_type="Cut" damage_factor="1.225" />
     </BladeData>
     <Flags>
@@ -11530,7 +11526,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_leafblade_throwing_knife_blade_h1" name="{=HysmKS5a}Ridged Wide Dagger Blade" tier="1" piece_type="Blade" mesh="dagger_blade_12" length="25.2" weight="0.06" is_default="true">
     <BladeData stack_amount="5" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="throwing_dagger_quiver_3" holster_mesh_length="35.8">
-      <Thrust damage_type="Pierce" damage_factor="8.9" />
+      <Thrust damage_type="Pierce" damage_factor="9.3" />
       <Swing damage_type="Cut" damage_factor="1.225" />
     </BladeData>
     <Flags>
@@ -11542,7 +11538,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_leafblade_throwing_knife_blade_h2" name="{=HysmKS5a}Ridged Wide Dagger Blade" tier="1" piece_type="Blade" mesh="dagger_blade_12" length="25.2" weight="0.06" is_default="true">
     <BladeData stack_amount="5" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="throwing_dagger_quiver_3" holster_mesh_length="35.8">
-      <Thrust damage_type="Pierce" damage_factor="9.3" />
+      <Thrust damage_type="Pierce" damage_factor="9.7" />
       <Swing damage_type="Cut" damage_factor="1.225" />
     </BladeData>
     <Flags>
@@ -11554,7 +11550,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_leafblade_throwing_knife_blade_h3" name="{=HysmKS5a}Ridged Wide Dagger Blade" tier="1" piece_type="Blade" mesh="dagger_blade_12" length="25.2" weight="0.06" is_default="true">
     <BladeData stack_amount="5" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="throwing_dagger_quiver_3" holster_mesh_length="35.8">
-      <Thrust damage_type="Pierce" damage_factor="9.7 " />
+      <Thrust damage_type="Pierce" damage_factor="10.1 " />
       <Swing damage_type="Cut" damage_factor="1.225" />
     </BladeData>
     <Flags>
@@ -11710,7 +11706,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_highland_throwing_dagger_blade_h0" name="{=TLtaGEcB}Wide Makhaira Blade" tier="2" piece_type="Blade" mesh="dagger_blade_10" length="30" weight="0.03">
     <BladeData stack_amount="6" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="throwing_dagger_quiver_2" holster_mesh_length="35.8">
-      <Thrust damage_type="Pierce" damage_factor="10" />
+      <Thrust damage_type="Pierce" damage_factor="10.5" />
       <Swing damage_type="Cut" damage_factor="2.45" />
     </BladeData>
     <Flags>
@@ -11722,7 +11718,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_highland_throwing_dagger_blade_h1" name="{=TLtaGEcB}Wide Makhaira Blade" tier="2" piece_type="Blade" mesh="dagger_blade_10" length="30" weight="0.03">
     <BladeData stack_amount="6" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="throwing_dagger_quiver_2" holster_mesh_length="35.8">
-      <Thrust damage_type="Pierce" damage_factor="10.5" />
+      <Thrust damage_type="Pierce" damage_factor="11" />
       <Swing damage_type="Cut" damage_factor="2.45" />
     </BladeData>
     <Flags>
@@ -11734,7 +11730,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_highland_throwing_dagger_blade_h2" name="{=TLtaGEcB}Wide Makhaira Blade" tier="2" piece_type="Blade" mesh="dagger_blade_10" length="30" weight="0.03">
     <BladeData stack_amount="6" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="throwing_dagger_quiver_2" holster_mesh_length="35.8">
-      <Thrust damage_type="Pierce" damage_factor="11" />
+      <Thrust damage_type="Pierce" damage_factor="11.5" />
       <Swing damage_type="Cut" damage_factor="2.45" />
     </BladeData>
     <Flags>
@@ -11746,7 +11742,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_highland_throwing_dagger_blade_h3" name="{=TLtaGEcB}Wide Makhaira Blade" tier="2" piece_type="Blade" mesh="dagger_blade_10" length="30" weight="0.03">
     <BladeData stack_amount="6" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="throwing_dagger_quiver_2" holster_mesh_length="35.8">
-      <Thrust damage_type="Pierce" damage_factor="11.5" />
+      <Thrust damage_type="Pierce" damage_factor="12" />
       <Swing damage_type="Cut" damage_factor="2.45" />
     </BladeData>
     <Flags>
