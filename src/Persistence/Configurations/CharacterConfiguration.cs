@@ -68,5 +68,6 @@ public class CharacterConfiguration : IEntityTypeConfiguration<Character>
     private void ConfigureCharacterRating(OwnedNavigationBuilder<Character, CharacterRating> builder)
     {
         builder.Property(r => r.Value).HasColumnName("rating");
+        builder.Property(r => r.CompetitiveValue).HasColumnName("competitive_rating");
     }
 }
