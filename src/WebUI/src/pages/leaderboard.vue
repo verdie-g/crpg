@@ -39,12 +39,15 @@ const regionModel = computed({
 const { state: leaderBoard, execute: loadLeaderBoard } = useAsyncState(
   () => getLeaderBoard(regionModel.value),
   [],
-  {
-    resetOnExecute: false,
-  }
+  { resetOnExecute: false }
 );
 
 const rankTable = computed(() => createRankTable());
+
+const isSelfUser = (row: CharacterCompetitiveNumbered) => row.user.id === userStore.user!.id;
+
+const rowClass = (row: CharacterCompetitiveNumbered) =>
+  isSelfUser(row) ? 'text-primary' : 'text-content-100';
 </script>
 
 <template>
@@ -80,6 +83,7 @@ const rankTable = computed(() => createRankTable());
         bordered
         sortIcon="chevron-up"
         sortIconSize="xs"
+        :rowClass="rowClass"
         :defaultSort="['idx', 'asc']"
       >
         <OTableColumn
@@ -90,7 +94,7 @@ const rankTable = computed(() => createRankTable());
           sortable
         >
           {{ row.position }}
-          <span v-if="userStore.user!.id === row.user.id">({{ $t('you') }})</span>
+          <span v-if="isSelfUser(row)">({{ $t('you') }})</span>
         </OTableColumn>
 
         <OTableColumn
@@ -115,7 +119,6 @@ const rankTable = computed(() => createRankTable());
           #default="{ row }: { row: CharacterCompetitiveNumbered }"
           field="class"
           label="Class"
-          :width="60"
           sortable
         >
           <OIcon
@@ -129,7 +132,6 @@ const rankTable = computed(() => createRankTable());
           #default="{ row }: { row: CharacterCompetitiveNumbered }"
           field="level"
           label="Lvl"
-          :width="60"
         >
           {{ row.level }}
         </OTableColumn>
