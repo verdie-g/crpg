@@ -1,6 +1,8 @@
 using Crpg.Application.Characters.Models;
 using Crpg.Application.Characters.Queries;
 using Crpg.Application.Common.Results;
+using Crpg.Application.Games.Commands;
+using Crpg.Application.Games.Models;
 using Crpg.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -15,9 +17,9 @@ public class LeaderboardController : BaseController
     /// </summary>
     /// <returns>The top character competitive ratings.</returns>
     /// <response code="200">Ok.</response>
-    [HttpGet("leaderboard/{region}")]
+    [HttpGet("leaderboard")]
     [ResponseCache(Duration = 1 * 60 * 1)] // 1 minutes
-    public Task<ActionResult<Result<IList<CharacterPublicViewModel>>>> GetLeaderboard([FromRoute] Region? region)
+    public Task<ActionResult<Result<IList<CharacterPublicViewModel>>>> GetLeaderboard([FromQuery] Region? region)
     {
         return ResultToActionAsync(Mediator.Send(new GetLeaderboardQuery
         {

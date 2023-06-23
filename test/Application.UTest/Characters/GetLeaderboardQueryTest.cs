@@ -102,10 +102,7 @@ public class GetLeaderboardQueryTest : TestBase
         await ArrangeDb.SaveChangesAsync();
 
         GetLeaderboardQuery.Handler handler = new(ActDb, Mapper);
-        var result = await handler.Handle(new GetLeaderboardQuery
-        {
-            Region = null,
-        }, CancellationToken.None);
+        var result = await handler.Handle(new GetLeaderboardQuery(), CancellationToken.None);
 
         Assert.That(result.Errors, Is.Null);
         Assert.That(result.Data, Is.Not.Null);
