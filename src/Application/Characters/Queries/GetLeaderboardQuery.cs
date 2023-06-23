@@ -25,7 +25,19 @@ public record GetLeaderboardQuery : IMediatorRequest<IList<CharacterPublicViewMo
 
         public async Task<Result<IList<CharacterPublicViewModel>>> Handle(GetLeaderboardQuery req, CancellationToken cancellationToken)
         {
-            var topRatedCharacters = await _db.Characters
+            if (req.Region == null)
+            {
+                var topRatedCharacters = await _db.Characters
+                .OrderByDescending(c => c.Rating.CompetitiveValue)
+                .Take(50)
+                .ProjectTo<CharacterPublicViewModel>(_mapper.ConfigurationProvider)
+                .AsSplitQuery()
+                .ToArrayAsync();
+
+                return new(topRatedCharacters);
+            }
+
+            var topRatedCharactersByRegion = await _db.Characters
                 .OrderByDescending(c => c.Rating.CompetitiveValue)
                 .Where(c => c.User!.Region == req.Region)
                 .Take(50)
@@ -33,7 +45,7 @@ public record GetLeaderboardQuery : IMediatorRequest<IList<CharacterPublicViewMo
                 .AsSplitQuery()
                 .ToArrayAsync();
 
-            return new(topRatedCharacters);
+            return new(topRatedCharactersByRegion);
         }
     }
 }
