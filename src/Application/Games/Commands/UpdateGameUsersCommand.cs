@@ -28,15 +28,13 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
         private readonly IMapper _mapper;
         private readonly ICharacterService _characterService;
         private readonly IActivityLogService _activityLogService;
-        private readonly ICompetitiveRatingModel _competitiveRatingModel;
 
-        public Handler(ICrpgDbContext db, IMapper mapper, ICharacterService characterService, IActivityLogService activityLogService, ICompetitiveRatingModel competitiveRatingModel)
+        public Handler(ICrpgDbContext db, IMapper mapper, ICharacterService characterService, IActivityLogService activityLogService)
         {
             _db = db;
             _mapper = mapper;
             _characterService = characterService;
             _activityLogService = activityLogService;
-            _competitiveRatingModel = competitiveRatingModel;
         }
 
         public async Task<Result<UpdateGameUsersResult>> Handle(UpdateGameUsersCommand req,
@@ -54,7 +52,7 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
 
                 var reward = GiveReward(character, update.Reward);
                 UpdateStatistics(character, update.Statistics);
-                UpdateRating(character, update.Rating);
+                _characterService.UpdateRating(character, update.Rating.Value, update.Rating.Deviation, update.Rating.Volatility);
                 var brokenItems = await RepairOrBreakItems(character, update.BrokenItems, cancellationToken);
                 results.Add((character.User!, reward, brokenItems));
             }
@@ -111,14 +109,6 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
             character.Statistics.Deaths += statistics.Deaths;
             character.Statistics.Assists += statistics.Assists;
             character.Statistics.PlayTime += statistics.PlayTime;
-        }
-
-        private void UpdateRating(Character character, CharacterRatingViewModel rating)
-        {
-            character.Rating.Value = rating.Value;
-            character.Rating.Deviation = rating.Deviation;
-            character.Rating.Volatility = rating.Volatility;
-            character.Rating.CompetitiveValue = _competitiveRatingModel.ComputeCompetitiveRating(character.Rating);
         }
 
         private async Task<List<GameRepairedItem>> RepairOrBreakItems(Character character,

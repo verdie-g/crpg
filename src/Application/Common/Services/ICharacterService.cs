@@ -19,6 +19,8 @@ internal interface ICharacterService
     /// <param name="respecialization">If the stats points should be redistributed.</param>
     void ResetCharacterCharacteristics(Character character, bool respecialization = false);
 
+    void UpdateRating(Character character, float value, float deviation, float volatility);
+
     void ResetRating(Character character);
 
     Error? Retire(Character character);
@@ -30,11 +32,16 @@ internal interface ICharacterService
 internal class CharacterService : ICharacterService
 {
     private readonly IExperienceTable _experienceTable;
+    private readonly ICompetitiveRatingModel _competitiveRatingModel;
     private readonly Constants _constants;
 
-    public CharacterService(IExperienceTable experienceTable, Constants constants)
+    public CharacterService(
+        IExperienceTable experienceTable,
+        ICompetitiveRatingModel competitiveRatingModel,
+        Constants constants)
     {
         _experienceTable = experienceTable;
+        _competitiveRatingModel = competitiveRatingModel;
         _constants = constants;
     }
 
@@ -72,14 +79,21 @@ internal class CharacterService : ICharacterService
         character.Class = CharacterClass.Peasant;
     }
 
-    public void ResetRating(Character character)
+    public void UpdateRating(Character character, float value, float deviation, float volatility)
     {
         character.Rating = new CharacterRating
         {
-            Value = _constants.DefaultRating,
-            Deviation = _constants.DefaultRatingDeviation,
-            Volatility = _constants.DefaultRatingVolatility,
+            Value = value,
+            Deviation = deviation,
+            Volatility = volatility,
         };
+        character.Rating.CompetitiveValue = _competitiveRatingModel.ComputeCompetitiveRating(character.Rating);
+    }
+
+    public void ResetRating(Character character)
+    {
+        UpdateRating(character, _constants.DefaultRating, _constants.DefaultRatingDeviation,
+            _constants.DefaultRatingVolatility);
     }
 
     public Error? Retire(Character character)

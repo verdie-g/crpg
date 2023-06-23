@@ -19,8 +19,6 @@ public static class DependencyInjection
     {
         var constants = new FileConstantsSource().LoadConstants();
         ExperienceTable experienceTable = new(constants);
-        CharacterService characterService = new(experienceTable, constants);
-        ClanService clanService = new();
         BattleScheduler strategusBattleScheduler = new();
 
         services.AddAutoMapper(Assembly.GetExecutingAssembly())
@@ -28,11 +26,11 @@ public static class DependencyInjection
             .AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestInstrumentationBehavior<,>))
             .AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>))
             .AddSingleton<IExperienceTable>(experienceTable)
-            .AddSingleton<ICharacterService>(characterService)
+            .AddSingleton<ICharacterService, CharacterService>()
             .AddSingleton<IUserService, UserService>()
             .AddSingleton<ICompetitiveRatingModel, CompetitiveRatingModel>()
             .AddSingleton<IItemService, ItemService>()
-            .AddSingleton<IClanService>(clanService)
+            .AddSingleton<IClanService, ClanService>()
             .AddSingleton<IActivityLogService, ActivityLogService>()
             .AddSingleton<IGameServerStatsService, DatadogGameServerStatsService>()
             .AddSingleton<IGeoIpService>(CreateGeoIpService())

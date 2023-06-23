@@ -74,8 +74,9 @@ public class RewardCharacterCommandTest : TestBase
         await ArrangeDb.SaveChangesAsync();
 
         Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
+        Mock<ICompetitiveRatingModel> competitiveRatingModelMock = new();
 
-        CharacterService characterService = new(experienceTableMock.Object, Constants);
+        CharacterService characterService = new(experienceTableMock.Object, competitiveRatingModelMock.Object, Constants);
 
         RewardCharacterCommand.Handler handler = new(
             characterService,

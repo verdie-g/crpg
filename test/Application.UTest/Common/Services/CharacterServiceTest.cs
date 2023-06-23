@@ -4,6 +4,7 @@ using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
+using Moq;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Common.Services;
@@ -36,7 +37,8 @@ public class CharacterServiceTest
     [Test]
     public void GiveExperienceShouldGiveExperience()
     {
-        CharacterService characterService = new(ExperienceTable, Constants);
+        Mock<ICompetitiveRatingModel> competitiveRatingModelMock = new();
+        CharacterService characterService = new(ExperienceTable, competitiveRatingModelMock.Object, Constants);
         Character character = new()
         {
             Level = 1,
@@ -53,7 +55,8 @@ public class CharacterServiceTest
     [Test]
     public void GiveExperienceShouldGiveExperienceBypassingMultiplier()
     {
-        CharacterService characterService = new(ExperienceTable, Constants);
+        Mock<ICompetitiveRatingModel> competitiveRatingModelMock = new();
+        CharacterService characterService = new(ExperienceTable, competitiveRatingModelMock.Object, Constants);
         Character character = new()
         {
             Level = 1,
@@ -70,7 +73,8 @@ public class CharacterServiceTest
     [Test]
     public void GiveExperienceShouldntGiveExperienceIfTournamentCharacter()
     {
-        CharacterService characterService = new(ExperienceTable, Constants);
+        Mock<ICompetitiveRatingModel> competitiveRatingModelMock = new();
+        CharacterService characterService = new(ExperienceTable, competitiveRatingModelMock.Object, Constants);
         Character character = new()
         {
             Level = 1,
@@ -87,7 +91,8 @@ public class CharacterServiceTest
     [Test]
     public void GiveExperienceShouldMakeCharacterLevelUpIfEnoughExperience()
     {
-        CharacterService characterService = new(ExperienceTable, Constants);
+        Mock<ICompetitiveRatingModel> competitiveRatingModelMock = new();
+        CharacterService characterService = new(ExperienceTable, competitiveRatingModelMock.Object, Constants);
         Character character = new()
         {
             Level = 1,
@@ -108,7 +113,8 @@ public class CharacterServiceTest
     [Theory]
     public void ResetCharacterStatsShouldResetStats(bool respecialization)
     {
-        CharacterService characterService = new(ExperienceTable, Constants);
+        Mock<ICompetitiveRatingModel> competitiveRatingModelMock = new();
+        CharacterService characterService = new(ExperienceTable, competitiveRatingModelMock.Object, Constants);
         Character character = new()
         {
             Level = 5,
@@ -182,6 +188,33 @@ public class CharacterServiceTest
     }
 
     [Test]
+    public void UpdateRatingTest()
+    {
+        Character character = new()
+        {
+            Rating = new CharacterRating
+            {
+                Value = 1,
+                Deviation = 2,
+                Volatility = 3,
+            },
+        };
+
+        Mock<ICompetitiveRatingModel> competitiveRatingModelMock = new();
+        competitiveRatingModelMock
+            .Setup(m => m.ComputeCompetitiveRating(It.IsAny<CharacterRating>()))
+            .Returns(4);
+
+        CharacterService characterService = new(ExperienceTable, competitiveRatingModelMock.Object, Constants);
+        characterService.UpdateRating(character, 4, 5, 6);
+
+        Assert.That(character.Rating.Value, Is.EqualTo(4));
+        Assert.That(character.Rating.Deviation, Is.EqualTo(5));
+        Assert.That(character.Rating.Volatility, Is.EqualTo(6));
+        Assert.That(character.Rating.CompetitiveValue, Is.EqualTo(4));
+    }
+
+    [Test]
     public void ResetRatingTest()
     {
         Character character = new()
@@ -194,12 +227,18 @@ public class CharacterServiceTest
             },
         };
 
-        CharacterService characterService = new(ExperienceTable, Constants);
+        Mock<ICompetitiveRatingModel> competitiveRatingModelMock = new();
+        competitiveRatingModelMock
+            .Setup(m => m.ComputeCompetitiveRating(It.IsAny<CharacterRating>()))
+            .Returns(4);
+
+        CharacterService characterService = new(ExperienceTable, competitiveRatingModelMock.Object, Constants);
         characterService.ResetRating(character);
 
         Assert.That(character.Rating.Value, Is.EqualTo(Constants.DefaultRating));
         Assert.That(character.Rating.Deviation, Is.EqualTo(Constants.DefaultRatingDeviation));
         Assert.That(character.Rating.Volatility, Is.EqualTo(Constants.DefaultRatingVolatility));
+        Assert.That(character.Rating.CompetitiveValue, Is.EqualTo(4));
     }
 
     [TestCase(31, 1.00f, 1, 1.03f)]
@@ -231,7 +270,8 @@ public class CharacterServiceTest
             },
         };
 
-        CharacterService characterService = new(ExperienceTable, Constants);
+        Mock<ICompetitiveRatingModel> competitiveRatingModelMock = new();
+        CharacterService characterService = new(ExperienceTable, competitiveRatingModelMock.Object, Constants);
         var error = characterService.Retire(character);
 
         Assert.That(error, Is.Null);
@@ -247,7 +287,8 @@ public class CharacterServiceTest
     public void RetireShouldFailIfLevelTooLow()
     {
         Character character = new() { Level = 30 };
-        CharacterService characterService = new(ExperienceTable, Constants);
+        Mock<ICompetitiveRatingModel> competitiveRatingModelMock = new();
+        CharacterService characterService = new(ExperienceTable, competitiveRatingModelMock.Object, Constants);
         var error = characterService.Retire(character);
 
         Assert.That(error, Is.Not.Null);
@@ -257,7 +298,8 @@ public class CharacterServiceTest
     [Test]
     public void SetDefaultValuesShouldSetDefaultValues()
     {
-        CharacterService characterService = new(ExperienceTable, Constants);
+        Mock<ICompetitiveRatingModel> competitiveRatingModelMock = new();
+        CharacterService characterService = new(ExperienceTable, competitiveRatingModelMock.Object, Constants);
         Character character = new() { Level = 2, Experience = 2, ForTournament = false };
         characterService.SetDefaultValuesForCharacter(character);
 
