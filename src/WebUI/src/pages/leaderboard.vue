@@ -97,7 +97,7 @@ const rankTable = computed(() => createRankTable());
           #default="{ row }: { row: CharacterCompetitiveNumbered }"
           field="rating"
           label="Rank"
-          :width="210"
+          :width="220"
         >
           <Rank :rankTable="rankTable" :competitiveValue="row.rating.competitiveValue" />
         </OTableColumn>
