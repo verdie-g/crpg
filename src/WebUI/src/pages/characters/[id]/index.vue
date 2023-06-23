@@ -33,6 +33,7 @@ import {
   getRespecCapability,
 } from '@/services/characters-service';
 import { createRankTable } from '@/services/leaderboard-service';
+import { type Rank } from '@/models/competitive';
 
 definePage({
   meta: {
@@ -206,6 +207,43 @@ await fetchPageData(character.value.id);
 
           <SimpleTableRow :label="'Rank'">
             <Rank :rankTable="rankTable" :competitiveValue="characterRating.competitiveValue" />
+            <Modal placement="auto" closable>
+              <Tag icon="alert" variant="primary" rounded size="sm" />
+
+              <template #popper>
+                <div class="w-screen max-w-xl px-12 pb-11 pt-16 text-center">
+                  <div class="space-y-6">
+                    <h4 class="text-xl">Rank table</h4>
+
+                    <div class="max-h-[70vh] overflow-y-auto">
+                      <OTable :data="rankTable" bordered narrowed>
+                        <OTableColumn
+                          #default="{ row }: { row: Rank }"
+                          field="level"
+                          :label="'Name'"
+                        >
+                          <span :style="{ color: row.color }">
+                            {{ row.title }}
+                          </span>
+                        </OTableColumn>
+
+                        <OTableColumn #default="{ row }: { row: Rank }" field="min" :label="'Min'">
+                          <span :style="{ color: row.color }">
+                            {{ row.min }}
+                          </span>
+                        </OTableColumn>
+
+                        <OTableColumn #default="{ row }: { row: Rank }" field="max" :label="'Max'">
+                          <span :style="{ color: row.color }">
+                            {{ row.max }}
+                          </span>
+                        </OTableColumn>
+                      </OTable>
+                    </div>
+                  </div>
+                </div>
+              </template>
+            </Modal>
           </SimpleTableRow>
 
           <SimpleTableRow
