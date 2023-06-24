@@ -13,7 +13,7 @@ public class CompetitiveRatingModelTest
         float cr1 = competitiveRatingModel.ComputeCompetitiveRating(
             new CharacterRating { Value = 100, Deviation = 500 });
         float cr2 = competitiveRatingModel.ComputeCompetitiveRating(
-            new CharacterRating { Value = 200, Deviation = 10 });
+            new CharacterRating { Value = 200, Deviation = 500 });
         Assert.That(cr1, Is.LessThan(cr2));
     }
 }
