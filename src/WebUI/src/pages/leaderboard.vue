@@ -36,11 +36,11 @@ const regionModel = computed({
   },
 });
 
-const { state: leaderBoard, execute: loadLeaderBoard } = useAsyncState(
-  () => getLeaderBoard(regionModel.value),
-  [],
-  { resetOnExecute: false }
-);
+const {
+  state: leaderBoard,
+  execute: loadLeaderBoard,
+  isLoading: leaderBoardLoading,
+} = useAsyncState(() => getLeaderBoard(regionModel.value), [], {});
 
 const rankTable = computed(() => createRankTable());
 
@@ -83,6 +83,7 @@ const rowClass = (row: CharacterCompetitiveNumbered) =>
         bordered
         sortIcon="chevron-up"
         sortIconSize="xs"
+        :loading="leaderBoardLoading"
         :rowClass="rowClass"
         :defaultSort="['idx', 'asc']"
       >
