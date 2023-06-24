@@ -16,6 +16,11 @@ internal class CompetitiveRatingModel : ICompetitiveRatingModel
     /// <inheritdoc />
     public float ComputeCompetitiveRating(CharacterRating rating)
     {
-        return (float)(0.03f * Math.Pow((0.01 * rating.Value) - (2 * rating.Deviation), 3.98));
+        double ratingWithUncertainty = 0.01 * (rating.Value - 2 * rating.Deviation);
+        double competitiveRating = ratingWithUncertainty < 0
+            ? 0.03f * -Math.Pow(-ratingWithUncertainty, 3.98)
+            : 0.03f * Math.Pow(ratingWithUncertainty, 3.98);
+
+        return (float)competitiveRating;
     }
 }
