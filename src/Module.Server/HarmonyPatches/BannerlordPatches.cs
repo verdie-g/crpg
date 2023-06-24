@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using HarmonyLib;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.DedicatedCustomServer;
 
 namespace Crpg.Module.HarmonyPatches;
 
@@ -21,6 +22,7 @@ internal static class BannerlordPatches
         AddPrefix(harmony, typeof(MissionNetworkComponent), "SendSpawnedMissionObjectsToPeer",
             BindingFlags.NonPublic | BindingFlags.Instance, typeof(MissionNetworkComponentPatch),
             nameof(MissionNetworkComponentPatch.Prefix));
+        AddPrefix(harmony, typeof(DedicatedCustomServerSubModule), "GetUnsentGameLogs", BindingFlags.NonPublic | BindingFlags.Instance, typeof(GetUnsentGameLogsPatch), nameof(GetUnsentGameLogsPatch.Prefix));
     }
 
     private static void AddPrefix(Harmony harmony, Type classToPatch, string functionToPatchName, BindingFlags flags, Type patchClass, string functionPatchName)
