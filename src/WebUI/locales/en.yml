@@ -51,6 +51,7 @@ nav:
     Clans: Clans
     Moderator: Moderator
     Builder: Builder
+    LeaderBoard: Leaderboard
   back: Back
 
 action:
@@ -1083,3 +1084,14 @@ activityLog:
     ServerJoined: 'The user has joined the server'
     ChatMessageSent: 'Wrote a message: {message} {instance}'
     TeamHit: 'Dealt {damage} damage to {targetUserId} {instance}'
+
+leaderBoard:
+  title: Leaderboard
+  table:
+    cols:
+      top: Top
+      rank: Rank
+      player: Player
+      class: Class
+      level: Lvl
+      region: Region

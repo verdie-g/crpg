@@ -50,6 +50,7 @@ nav:
     Clans: Кланы
     Moderator: Модератор
     Builder: Калькулятор
+    LeaderBoard: Лидеры
   back: Назад
 
 action:
@@ -1057,3 +1058,14 @@ item:
   format:
     upkeep: '{upkeep} / @:dateTime.hours.short'
     rank: 'Ранг предмета {rank}'
+
+leaderBoard:
+  title: Таблица лидеров
+  table:
+    cols:
+      top: Топ
+      rank: Ранг
+      player: Игрок
+      class: Класс
+      level: Ур.
+      region: Регион

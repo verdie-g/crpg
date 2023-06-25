@@ -51,6 +51,7 @@ nav:
     Clans: 家族
     Moderator: 管理员
     Builder: 生成器
+    LeaderBoard: 排行榜
   back: 返回
 
 action:
@@ -1048,3 +1049,14 @@ item:
   format:
     upkeep: '{upkeep} / @:dateTime.hours.short'
     rank: '物品阶级 {rank}'
+
+leaderBoard:
+  title: 排行榜
+  table:
+    cols:
+      top: 前
+      rank: 级别
+      player: 队员
+      class: 级别
+      level: 级别
+      region: 地区

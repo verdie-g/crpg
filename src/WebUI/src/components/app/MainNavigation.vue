@@ -41,7 +41,7 @@ const userStore = useUserStore();
     </div>
 
     <RouterLink :to="{ name: 'Leaderboard' }" class="inline-flex items-center gap-2">
-      Leaderboard
+      {{ $t('nav.main.LeaderBoard') }}
       <OIcon icon="trophy-cup" size="xl" class="text-more-support" />
     </RouterLink>
 
