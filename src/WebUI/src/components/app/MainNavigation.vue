@@ -8,26 +8,26 @@ const userStore = useUserStore();
 <template>
   <nav class="flex items-center gap-8">
     <RouterLink
-      activeClass="text-content-100"
-      inactiveClass="text-content-300 hover:text-content-100"
       :to="{ name: 'Characters' }"
+      class="text-content-300 hover:text-content-100"
+      activeClass="!text-content-100"
     >
       {{ $t('nav.main.Characters') }}
     </RouterLink>
 
     <RouterLink
-      activeClass="text-content-100"
-      inactiveClass="text-content-300 hover:text-content-100"
       :to="{ name: 'Shop' }"
+      class="text-content-300 hover:text-content-100"
+      activeClass="!text-content-100"
     >
       {{ $t('nav.main.Shop') }}
     </RouterLink>
 
     <div class="flex items-center gap-2">
       <RouterLink
-        activeClass="text-content-100"
-        inactiveClass="text-content-300 hover:text-content-100"
         :to="{ name: 'Clans' }"
+        class="text-content-300 hover:text-content-100"
+        activeClass="!text-content-100"
       >
         {{ $t('nav.main.Clans') }}
       </RouterLink>
@@ -40,16 +40,20 @@ const userStore = useUserStore();
       </VTooltip>
     </div>
 
-    <RouterLink :to="{ name: 'Leaderboard' }" class="inline-flex items-center gap-2">
+    <RouterLink
+      :to="{ name: 'Leaderboard' }"
+      class="inline-flex items-center gap-2 text-content-300 hover:text-content-100"
+      activeClass="!text-content-100"
+    >
       {{ $t('nav.main.LeaderBoard') }}
       <OIcon icon="trophy-cup" size="xl" class="text-more-support" />
     </RouterLink>
 
     <RouterLink
       v-if="[Role.Moderator, Role.Admin].includes(userStore.user!.role)"
-      activeClass="text-content-100"
-      inactiveClass="text-content-300 hover:text-content-100"
       :to="{ name: 'Moderator' }"
+      class="text-content-300 hover:text-content-100"
+      activeClass="!text-content-100"
       data-aq-main-nav-link="Moderator"
     >
       {{ $t('nav.main.Moderator') }}
