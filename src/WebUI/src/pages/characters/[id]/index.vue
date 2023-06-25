@@ -204,17 +204,15 @@ await fetchPageData(character.value.id);
             }"
           />
 
-          <SimpleTableRow
-            :label="$t('character.statistics.rank.title')"
-            :tooltip="{
-              title: $t('character.statistics.rank.tooltip.title'),
-              description: $t('character.statistics.rank.tooltip.desc'),
-            }"
-          >
-            <Rank :rankTable="rankTable" :competitiveValue="characterRating.competitiveValue" />
-            <Modal placement="auto" closable>
+          <SimpleTableRow :label="$t('character.statistics.rank.title')">
+            <Tooltip
+              :title="$t('character.statistics.rank.tooltip.title')"
+              :description="$t('character.statistics.rank.tooltip.desc')"
+            >
+              <Rank :rankTable="rankTable" :competitiveValue="characterRating.competitiveValue" />
+            </Tooltip>
+            <Modal closable>
               <Tag icon="popup" variant="primary" rounded size="sm" />
-
               <template #popper>
                 <div class="px-12 pb-11 pt-16 text-center">
                   <div class="space-y-6">

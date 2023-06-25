@@ -228,8 +228,19 @@ character:
     rank:
       title: Rank
       tooltip:
-        title: 'TODO: Lorem ipsum'
-        desc: 'TODO: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste, officiis?'
+        title: Rank
+        # prettier-ignore
+        desc: "
+          <p>Your MMR assigns you a rank, which is tied directly to the autobalancer, using this it decides which team to place you on. The system we use is <strong>*Glicko2</strong>.</p>
+          <p>Don't fret over your rank! At the end of the day, it's a tool we use to balance teams, it is not necessarily a perfect indicator of skill in Bannerlord.</p>
+          <p>You can increase your rank by damaging and engaging stronger players and playing consistently well.</p>
+          <p>
+            <small>
+              <strong>*Glicko2</strong>
+              <br />
+              The Glicko-2 rating system is a method for estimating the skill levels of players in zero-sum games such as chess. It's an extension of the Elo rating system, adding a reliability rating to improve the system. It adjusts ratings based on not just win-loss outcomes, but also the consistency of a player's performance.
+            </small>
+          </p>"
 
   settings:
     group:
