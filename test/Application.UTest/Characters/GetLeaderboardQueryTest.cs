@@ -1,6 +1,7 @@
 ﻿using Crpg.Application.Characters.Queries;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Users;
+using Crpg.Domain.Entities.Clans;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Characters;
@@ -214,5 +215,55 @@ public class GetLeaderboardQueryTest : TestBase
         Assert.That(result.Data, Is.Not.Null);
         Assert.That(result.Data!.First().Class, Is.EqualTo(CharacterClass.Infantry));
         Assert.That(result.Data!.Last().Class, Is.EqualTo(CharacterClass.Archer));
+    }
+
+    [Test]
+    public async Task ClanShouldbeAvailableInLeaderBoardTest()
+    {
+        Clan? OrleClan = new()
+        {
+            Name = "Orle Clan",
+        };
+        ClanMember orleMemberShip = new()
+        {
+            Clan = OrleClan,
+            ClanId = OrleClan.Id,
+        };
+
+        User orle = new()
+        {
+            Name = "Orle",
+            Region = Domain.Entities.Region.Eu,
+            ClanMembership = orleMemberShip,
+        };
+
+        Character orleCharacter = new()
+        {
+            Name = "shielder",
+            UserId = orle.Id,
+            User = orle,
+            Class = CharacterClass.Infantry,
+            Rating = new()
+            {
+                Value = 50,
+                Deviation = 100,
+                Volatility = 100,
+                CompetitiveValue = 1800,
+            },
+        };
+        ArrangeDb.Users.Add(orle);
+        ArrangeDb.Characters.Add(orleCharacter);
+        await ArrangeDb.SaveChangesAsync();
+
+        GetLeaderboardQuery.Handler handler = new(ActDb, Mapper);
+        var result = await handler.Handle(new GetLeaderboardQuery
+        {
+            Region = Domain.Entities.Region.Eu,
+        }, CancellationToken.None);
+
+        Assert.That(result.Errors, Is.Null);
+        Assert.That(result.Data, Is.Not.Null);
+        Assert.That(result.Data!.First().Class, Is.EqualTo(CharacterClass.Infantry));
+        Assert.That(result.Data!.First().User.ClanMembership!.Clan!.Name, Is.EqualTo("Orle Clan"));
     }
 }

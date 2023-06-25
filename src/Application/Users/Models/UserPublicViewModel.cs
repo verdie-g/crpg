@@ -1,4 +1,5 @@
-﻿using Crpg.Application.Common.Mappings;
+﻿using Crpg.Application.Clans.Models;
+using Crpg.Application.Common.Mappings;
 using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Users;
 
@@ -12,4 +13,5 @@ public record UserPublicViewModel : IMapFrom<User>
     public string Name { get; init; } = string.Empty;
     public Uri? Avatar { get; init; }
     public Region? Region { get; init; }
+    public ClanMemberViewModel ClanMembership { get; init; } = new();
 }
