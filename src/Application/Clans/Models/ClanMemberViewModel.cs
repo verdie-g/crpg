@@ -9,5 +9,4 @@ public record ClanMemberViewModel : IMapFrom<ClanMember>
     public UserPublicViewModel User { get; init; } = default!;
     public ClanMemberRole Role { get; init; }
     public Clan? Clan { get; set; }
-
 }
