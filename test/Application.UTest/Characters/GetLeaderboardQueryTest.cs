@@ -1,7 +1,7 @@
 ﻿using Crpg.Application.Characters.Queries;
 using Crpg.Domain.Entities.Characters;
-using Crpg.Domain.Entities.Users;
 using Crpg.Domain.Entities.Clans;
+using Crpg.Domain.Entities.Users;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Characters;
@@ -220,14 +220,14 @@ public class GetLeaderboardQueryTest : TestBase
     [Test]
     public async Task ClanShouldbeAvailableInLeaderBoardTest()
     {
-        Clan? OrleClan = new()
+        Clan? orleClan = new()
         {
             Name = "Orle Clan",
         };
         ClanMember orleMemberShip = new()
         {
-            Clan = OrleClan,
-            ClanId = OrleClan.Id,
+            Clan = orleClan,
+            ClanId = orleClan.Id,
         };
 
         User orle = new()
