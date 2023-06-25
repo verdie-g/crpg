@@ -65,17 +65,27 @@ const rowClass = (row: CharacterCompetitiveNumbered) =>
             class="w-16 rotate-180 transform md:w-28"
           />
           <h1 class="text-2xl text-content-100">{{ $t('leaderBoard.title') }}</h1>
+
           <SvgSpriteImg name="logo-decor" viewBox="0 0 108 10" class="w-16 md:w-28" />
         </div>
       </div>
 
-      <OTabs v-model="regionModel" contentClass="hidden" class="mb-6">
-        <OTabItem
-          v-for="region in Object.keys(Region)"
-          :label="$t(`region.${region}`, 0)"
-          :value="region"
-        />
-      </OTabs>
+      <div class="flex items-center justify-between gap-4">
+        <OTabs v-model="regionModel" contentClass="hidden" class="mb-6">
+          <OTabItem
+            v-for="region in Object.keys(Region)"
+            :label="$t(`region.${region}`, 0)"
+            :value="region"
+          />
+        </OTabs>
+
+        <Modal closable>
+          <Tag icon="popup" variant="primary" rounded size="lg" />
+          <template #popper>
+            <RankTable :rankTable="rankTable" />
+          </template>
+        </Modal>
+      </div>
 
       <OTable
         :data="leaderBoard"

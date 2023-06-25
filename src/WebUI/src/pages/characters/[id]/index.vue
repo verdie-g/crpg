@@ -214,15 +214,10 @@ await fetchPageData(character.value.id);
             <Modal closable>
               <Tag icon="popup" variant="primary" rounded size="sm" />
               <template #popper>
-                <div class="px-12 pb-11 pt-16 text-center">
-                  <div class="space-y-6">
-                    <h4 class="text-xl">{{ $t('rankTable.title') }}</h4>
-                    <RankTable
-                      :rankTable="rankTable"
-                      :competitiveValue="characterRating.competitiveValue"
-                    />
-                  </div>
-                </div>
+                <RankTable
+                  :rankTable="rankTable"
+                  :competitiveValue="characterRating.competitiveValue"
+                />
               </template>
             </Modal>
           </SimpleTableRow>
