@@ -31,9 +31,9 @@ export const getLeaderBoard = async (region?: Region): Promise<CharacterCompetit
 };
 
 const rankColors: Record<RankGroup, string> = {
-  [RankGroup.Iron]: '#555756',
+  [RankGroup.Iron]: '#A19D94',
   [RankGroup.Copper]: '#B87333',
-  [RankGroup.Bronze]: '#CD7F32',
+  [RankGroup.Bronze]: '#CC6633',
   [RankGroup.Silver]: '#C7CCCA',
   [RankGroup.Gold]: '#EABC40',
   [RankGroup.Platinum]: '#40A7B9',
