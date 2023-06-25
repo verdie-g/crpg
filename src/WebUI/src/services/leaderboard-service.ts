@@ -1,5 +1,6 @@
 import qs from 'qs';
 import {
+  RankGroup,
   type Rank,
   type CharacterCompetitive,
   type CharacterCompetitiveNumbered,
@@ -7,6 +8,7 @@ import {
 import { Region } from '@/models/region';
 import { get } from '@/services/crpg-client';
 import { inRange } from '@/utils/math';
+import { getEntries } from '@/utils/object';
 
 // TODO: spec
 export const getLeaderBoard = async (region?: Region): Promise<CharacterCompetitiveNumbered[]> => {
@@ -28,28 +30,30 @@ export const getLeaderBoard = async (region?: Region): Promise<CharacterCompetit
   );
 };
 
-const rankGroups: [string, string][] = [
-  ['Iron', '#555756'],
-  ['Copper', '#B87333'],
-  ['Bronze', '#CD7F32'],
-  ['Silver', '#C7CCCA'],
-  ['Gold', '#EABC40'],
-  ['Platinum', '#40A7B9'],
-  ['Diamond', '#C289F5'],
-  ['Champion', '#B73E6C'],
-];
+const rankColors: Record<RankGroup, string> = {
+  [RankGroup.Iron]: '#555756',
+  [RankGroup.Copper]: '#B87333',
+  [RankGroup.Bronze]: '#CD7F32',
+  [RankGroup.Silver]: '#C7CCCA',
+  [RankGroup.Gold]: '#EABC40',
+  [RankGroup.Platinum]: '#40A7B9',
+  [RankGroup.Diamond]: '#C289F5',
+  [RankGroup.Champion]: '#B73E6C',
+};
 
 const step = 50;
 const rankSubGroupCount = 5;
 
-const createRankGroup = (baseRank: [string, string]) =>
-  [...Array(rankSubGroupCount).keys()]
-    .reverse()
-    .map(subRank => ({ title: `${baseRank[0]} ${subRank + 1}`, color: baseRank[1] }));
+const createRank = (baseRank: [RankGroup, string]) =>
+  [...Array(rankSubGroupCount).keys()].reverse().map(subRank => ({
+    groupTitle: baseRank[0],
+    title: `${baseRank[0]} ${subRank + 1}`,
+    color: baseRank[1],
+  }));
 
 export const createRankTable = (): Rank[] =>
-  rankGroups
-    .flatMap(createRankGroup)
+  getEntries<Record<RankGroup, string>>(rankColors)
+    .flatMap(createRank)
     .map((baseRank, idx) => ({ ...baseRank, min: idx * step, max: idx * step + step }));
 
 export const getRankByCompetitiveValue = (rankTable: Rank[], competitiveValue: number) => {

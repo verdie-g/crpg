@@ -33,7 +33,6 @@ import {
   getRespecCapability,
 } from '@/services/characters-service';
 import { createRankTable } from '@/services/leaderboard-service';
-import { type Rank } from '@/models/competitive';
 
 definePage({
   meta: {
@@ -141,7 +140,7 @@ const experienceMultiplierBonus = computed(() =>
 const heirloomPointByLevel = computed(() => getHeirloomPointByLevel(character.value.level));
 const retireTableData = computed(() => getHeirloomPointByLevelAggregation());
 
-const fetchPageData = async (characterId: number) =>
+const fetchPageData = (characterId: number) =>
   Promise.all([
     loadCharacterStatistics(0, { id: characterId }),
     loadCharacterRating(0, { id: characterId }),
@@ -205,41 +204,25 @@ await fetchPageData(character.value.id);
             }"
           />
 
-          <SimpleTableRow :label="'Rank'">
+          <SimpleTableRow
+            :label="$t('character.statistics.rank.title')"
+            :tooltip="{
+              title: $t('character.statistics.rank.tooltip.title'),
+              description: $t('character.statistics.rank.tooltip.desc'),
+            }"
+          >
             <Rank :rankTable="rankTable" :competitiveValue="characterRating.competitiveValue" />
             <Modal placement="auto" closable>
-              <Tag icon="alert" variant="primary" rounded size="sm" />
+              <Tag icon="popup" variant="primary" rounded size="sm" />
 
               <template #popper>
-                <div class="w-screen max-w-xl px-12 pb-11 pt-16 text-center">
+                <div class="px-12 pb-11 pt-16 text-center">
                   <div class="space-y-6">
-                    <h4 class="text-xl">Rank table</h4>
-
-                    <div class="max-h-[70vh] overflow-y-auto">
-                      <OTable :data="rankTable" bordered narrowed>
-                        <OTableColumn
-                          #default="{ row }: { row: Rank }"
-                          field="level"
-                          :label="'Name'"
-                        >
-                          <span :style="{ color: row.color }">
-                            {{ row.title }}
-                          </span>
-                        </OTableColumn>
-
-                        <OTableColumn #default="{ row }: { row: Rank }" field="min" :label="'Min'">
-                          <span :style="{ color: row.color }">
-                            {{ row.min }}
-                          </span>
-                        </OTableColumn>
-
-                        <OTableColumn #default="{ row }: { row: Rank }" field="max" :label="'Max'">
-                          <span :style="{ color: row.color }">
-                            {{ row.max }}
-                          </span>
-                        </OTableColumn>
-                      </OTable>
-                    </div>
+                    <h4 class="text-xl">{{ $t('rankTable.title') }}</h4>
+                    <RankTable
+                      :rankTable="rankTable"
+                      :competitiveValue="characterRating.competitiveValue"
+                    />
                   </div>
                 </div>
               </template>

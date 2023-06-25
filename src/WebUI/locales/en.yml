@@ -225,6 +225,11 @@ character:
       title: Play Time
     name:
       title: Level
+    rank:
+      title: Rank
+      tooltip:
+        title: 'TODO: Lorem ipsum'
+        desc: 'TODO: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste, officiis?'
 
   settings:
     group:
@@ -1095,3 +1100,6 @@ leaderBoard:
       class: Class
       level: Lvl
       region: Region
+
+rankTable:
+  title: Rank table
