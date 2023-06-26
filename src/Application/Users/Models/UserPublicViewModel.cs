@@ -14,4 +14,5 @@ public record UserPublicViewModel : IMapFrom<User>
     public Uri? Avatar { get; init; }
     public Region? Region { get; init; }
     public ClanMemberViewModel ClanMembership { get; init; } = new();
+            .ForMember(u => u.Clan, opt => opt.MapFrom(c => c.ClanMembership != null : c.ClanMembership.Clan!))
 }
