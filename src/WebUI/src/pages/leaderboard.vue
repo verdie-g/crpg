@@ -36,15 +36,18 @@ const regionModel = computed({
   },
 });
 
-const { state: leaderBoard, execute: loadLeaderBoard } = useAsyncState(
-  () => getLeaderBoard(regionModel.value),
-  [],
-  {
-    resetOnExecute: false,
-  }
-);
+const {
+  state: leaderboard,
+  execute: loadLeaderBoard,
+  isLoading: leaderBoardLoading,
+} = useAsyncState(() => getLeaderBoard(regionModel.value), [], {});
 
 const rankTable = computed(() => createRankTable());
+
+const isSelfUser = (row: CharacterCompetitiveNumbered) => row.user.id === userStore.user!.id;
+
+const rowClass = (row: CharacterCompetitiveNumbered) =>
+  isSelfUser(row) ? 'text-primary' : 'text-content-100';
 </script>
 
 <template>
@@ -61,43 +64,55 @@ const rankTable = computed(() => createRankTable());
             viewBox="0 0 108 10"
             class="w-16 rotate-180 transform md:w-28"
           />
-          <h1 class="text-2xl text-content-100">Leader Board</h1>
+          <h1 class="text-2xl text-content-100">{{ $t('leaderboard.title') }}</h1>
+
           <SvgSpriteImg name="logo-decor" viewBox="0 0 108 10" class="w-16 md:w-28" />
         </div>
       </div>
 
-      <OTabs v-model="regionModel" contentClass="hidden" class="mb-6">
-        <OTabItem
-          v-for="region in Object.keys(Region)"
-          :label="$t(`region.${region}`, 0)"
-          :value="region"
-        />
-      </OTabs>
+      <div class="flex items-center justify-between gap-4">
+        <OTabs v-model="regionModel" contentClass="hidden" class="mb-6">
+          <OTabItem
+            v-for="region in Object.keys(Region)"
+            :label="$t(`region.${region}`, 0)"
+            :value="region"
+          />
+        </OTabs>
+
+        <Modal closable>
+          <Tag icon="popup" variant="primary" rounded size="lg" />
+          <template #popper>
+            <RankTable :rankTable="rankTable" />
+          </template>
+        </Modal>
+      </div>
 
       <OTable
-        :data="leaderBoard"
+        :data="leaderboard"
         hoverable
         bordered
         sortIcon="chevron-up"
         sortIconSize="xs"
-        :defaultSort="['idx', 'asc']"
+        :loading="leaderBoardLoading"
+        :rowClass="rowClass"
+        :defaultSort="['position', 'asc']"
       >
         <OTableColumn
           #default="{ row }: { row: CharacterCompetitiveNumbered }"
           field="position"
-          label="Top"
+          :label="$t('leaderboard.table.cols.top')"
           :width="120"
           sortable
         >
           {{ row.position }}
-          <span v-if="userStore.user!.id === row.user.id">({{ $t('you') }})</span>
+          <span v-if="isSelfUser(row)">({{ $t('you') }})</span>
         </OTableColumn>
 
         <OTableColumn
           #default="{ row }: { row: CharacterCompetitiveNumbered }"
-          field="rating"
-          label="Rank"
-          :width="210"
+          field="rating.competitiveValue"
+          :label="$t('leaderboard.table.cols.rank')"
+          :width="220"
         >
           <Rank :rankTable="rankTable" :competitiveValue="row.rating.competitiveValue" />
         </OTableColumn>
@@ -105,7 +120,7 @@ const rankTable = computed(() => createRankTable());
         <OTableColumn
           #default="{ row }: { row: CharacterCompetitiveNumbered }"
           field="user.name"
-          label="Player"
+          :label="$t('leaderboard.table.cols.player')"
           :width="180"
         >
           <UserMedia :user="row.user" hiddenPlatform />
@@ -114,8 +129,7 @@ const rankTable = computed(() => createRankTable());
         <OTableColumn
           #default="{ row }: { row: CharacterCompetitiveNumbered }"
           field="class"
-          label="Class"
-          :width="60"
+          :label="$t('leaderboard.table.cols.class')"
           sortable
         >
           <OIcon
@@ -128,8 +142,7 @@ const rankTable = computed(() => createRankTable());
         <OTableColumn
           #default="{ row }: { row: CharacterCompetitiveNumbered }"
           field="level"
-          label="Lvl"
-          :width="60"
+          :label="$t('leaderboard.table.cols.level')"
         >
           {{ row.level }}
         </OTableColumn>
@@ -137,7 +150,7 @@ const rankTable = computed(() => createRankTable());
         <OTableColumn
           #default="{ row }: { row: CharacterCompetitiveNumbered }"
           field="user.region"
-          label="Region"
+          :label="$t('leaderboard.table.cols.region')"
         >
           {{ $t(`region.${row.user.region}`, 0) }}
         </OTableColumn>

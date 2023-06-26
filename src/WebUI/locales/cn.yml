@@ -51,6 +51,7 @@ nav:
     Clans: 家族
     Moderator: 管理员
     Builder: 生成器
+    Leaderboard: 排行榜
   back: 返回
 
 action:
@@ -224,6 +225,22 @@ character:
       title: 游戏时间
     name:
       title: 等级
+    rank:
+      title: 级别
+      tooltip:
+        title: 级别
+        # prettier-ignore
+        desc: "
+          <p>你的评级为你分配了一个等级，这个等级直接与自动平衡器挂钩，利用这个等级来决定将你放在哪个团队中。我们使用的系统是 <strong>*Glicko2</strong>.</p>
+          <p>不要为你的等级而烦恼! 在一天结束时，它是我们用来平衡团队的一个工具，它不一定是旗手技能的完美指标。</p>
+          <p>你可以通过伤害和吸引更强的球员，并持续发挥良好的作用来提高你的排名。</p>
+          <p>
+            <small>
+              <strong>*Glicko2</strong>
+              <br />
+              Glicko-2评级系统是一种估计象棋等零和游戏中棋手技能水平的方法。它是Elo评级系统的延伸，增加了一个可靠性评级来改进该系统。它不仅根据输赢结果来调整评级，而且还根据棋手表现的一致性来调整。
+            </small>
+          </p>"
 
   settings:
     group:
@@ -1048,3 +1065,17 @@ item:
   format:
     upkeep: '{upkeep} / @:dateTime.hours.short'
     rank: '物品阶级 {rank}'
+
+leaderboard:
+  title: 排行榜
+  table:
+    cols:
+      top: 前
+      rank: 级别
+      player: 队员
+      class: 级别
+      level: 级别
+      region: 地区
+
+rankTable:
+  title: 排名表
