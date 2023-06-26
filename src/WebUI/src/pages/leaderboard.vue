@@ -37,7 +37,7 @@ const regionModel = computed({
 });
 
 const {
-  state: leaderBoard,
+  state: leaderboard,
   execute: loadLeaderBoard,
   isLoading: leaderBoardLoading,
 } = useAsyncState(() => getLeaderBoard(regionModel.value), [], {});
@@ -64,7 +64,7 @@ const rowClass = (row: CharacterCompetitiveNumbered) =>
             viewBox="0 0 108 10"
             class="w-16 rotate-180 transform md:w-28"
           />
-          <h1 class="text-2xl text-content-100">{{ $t('leaderBoard.title') }}</h1>
+          <h1 class="text-2xl text-content-100">{{ $t('leaderboard.title') }}</h1>
 
           <SvgSpriteImg name="logo-decor" viewBox="0 0 108 10" class="w-16 md:w-28" />
         </div>
@@ -88,7 +88,7 @@ const rowClass = (row: CharacterCompetitiveNumbered) =>
       </div>
 
       <OTable
-        :data="leaderBoard"
+        :data="leaderboard"
         hoverable
         bordered
         sortIcon="chevron-up"
@@ -100,7 +100,7 @@ const rowClass = (row: CharacterCompetitiveNumbered) =>
         <OTableColumn
           #default="{ row }: { row: CharacterCompetitiveNumbered }"
           field="position"
-          :label="$t('leaderBoard.table.cols.top')"
+          :label="$t('leaderboard.table.cols.top')"
           :width="120"
           sortable
         >
@@ -111,7 +111,7 @@ const rowClass = (row: CharacterCompetitiveNumbered) =>
         <OTableColumn
           #default="{ row }: { row: CharacterCompetitiveNumbered }"
           field="rating.competitiveValue"
-          :label="$t('leaderBoard.table.cols.rank')"
+          :label="$t('leaderboard.table.cols.rank')"
           :width="220"
         >
           <Rank :rankTable="rankTable" :competitiveValue="row.rating.competitiveValue" />
@@ -120,7 +120,7 @@ const rowClass = (row: CharacterCompetitiveNumbered) =>
         <OTableColumn
           #default="{ row }: { row: CharacterCompetitiveNumbered }"
           field="user.name"
-          :label="$t('leaderBoard.table.cols.player')"
+          :label="$t('leaderboard.table.cols.player')"
           :width="180"
         >
           <UserMedia :user="row.user" hiddenPlatform />
@@ -129,7 +129,7 @@ const rowClass = (row: CharacterCompetitiveNumbered) =>
         <OTableColumn
           #default="{ row }: { row: CharacterCompetitiveNumbered }"
           field="class"
-          :label="$t('leaderBoard.table.cols.class')"
+          :label="$t('leaderboard.table.cols.class')"
           sortable
         >
           <OIcon
@@ -142,7 +142,7 @@ const rowClass = (row: CharacterCompetitiveNumbered) =>
         <OTableColumn
           #default="{ row }: { row: CharacterCompetitiveNumbered }"
           field="level"
-          :label="$t('leaderBoard.table.cols.level')"
+          :label="$t('leaderboard.table.cols.level')"
         >
           {{ row.level }}
         </OTableColumn>
@@ -150,7 +150,7 @@ const rowClass = (row: CharacterCompetitiveNumbered) =>
         <OTableColumn
           #default="{ row }: { row: CharacterCompetitiveNumbered }"
           field="user.region"
-          :label="$t('leaderBoard.table.cols.region')"
+          :label="$t('leaderboard.table.cols.region')"
         >
           {{ $t(`region.${row.user.region}`, 0) }}
         </OTableColumn>

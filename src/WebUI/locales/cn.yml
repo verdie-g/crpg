@@ -51,7 +51,7 @@ nav:
     Clans: 家族
     Moderator: 管理员
     Builder: 生成器
-    LeaderBoard: 排行榜
+    Leaderboard: 排行榜
   back: 返回
 
 action:
@@ -231,7 +231,7 @@ character:
         title: 级别
         # prettier-ignore
         desc: "
-          <p>你的MMR给你分配了一个等级，这个等级直接与自动平衡器挂钩，利用这个等级来决定把你放在哪个队伍里。我们使用的系统是 <strong>*Glicko2</strong>.</p>
+          <p>你的评级为你分配了一个等级，这个等级直接与自动平衡器挂钩，利用这个等级来决定将你放在哪个团队中。我们使用的系统是 <strong>*Glicko2</strong>.</p>
           <p>不要为你的等级而烦恼! 在一天结束时，它是我们用来平衡团队的一个工具，它不一定是旗手技能的完美指标。</p>
           <p>你可以通过伤害和吸引更强的球员，并持续发挥良好的作用来提高你的排名。</p>
           <p>
@@ -1066,7 +1066,7 @@ item:
     upkeep: '{upkeep} / @:dateTime.hours.short'
     rank: '物品阶级 {rank}'
 
-leaderBoard:
+leaderboard:
   title: 排行榜
   table:
     cols:

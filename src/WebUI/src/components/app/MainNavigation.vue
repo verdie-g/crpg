@@ -45,7 +45,7 @@ const userStore = useUserStore();
       class="inline-flex items-center gap-2 text-content-300 hover:text-content-100"
       activeClass="!text-content-100"
     >
-      {{ $t('nav.main.LeaderBoard') }}
+      {{ $t('nav.main.Leaderboard') }}
       <OIcon icon="trophy-cup" size="xl" class="text-more-support" />
     </RouterLink>
 
