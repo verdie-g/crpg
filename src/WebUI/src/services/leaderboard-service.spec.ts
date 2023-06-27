@@ -54,9 +54,9 @@ it.each([
   [-1, 'Iron 5'],
   [0, 'Iron 5'],
   [49, 'Iron 5'],
-  [50, 'Iron 5'],
+  [50, 'Iron 4'],
   [51, 'Iron 4'],
   [9999, 'Champion 1'],
-])('getRankByCompetitiveValue - competitiveValue: %n', (competitiveValue, expectation) => {
+])('getRankByCompetitiveValue - competitiveValue: %s', (competitiveValue, expectation) => {
   expect(getRankByCompetitiveValue(createRankTable(), competitiveValue).title).toEqual(expectation);
 });
