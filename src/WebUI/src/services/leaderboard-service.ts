@@ -21,7 +21,6 @@ interface CharacterCompetitiveRaw extends Omit<CharacterCompetitive, 'user'> {
   user: UserPublicRaw;
 }
 
-// TODO: spec
 export const getLeaderBoard = async (region?: Region): Promise<CharacterCompetitiveNumbered[]> => {
   // TODO: realize GET params in crpg-client
   const params = qs.stringify(
