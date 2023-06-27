@@ -1,5 +1,5 @@
 import { CharacterClass, type CharacterRating } from '@/models/character';
-import { UserPublic } from '@/models/user';
+import { type UserPublic } from '@/models/user';
 
 export interface CharacterCompetitive {
   id: number;
