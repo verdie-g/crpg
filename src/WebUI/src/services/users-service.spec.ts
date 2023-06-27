@@ -5,23 +5,24 @@ import mockUserPublic from '@/__mocks__/user-public.json';
 import mockUserItems from '@/__mocks__/user-items.json';
 
 import type { User, UserItem, UserPublic } from '@/models/user';
-import { ItemType } from '@/models/item';
 
 vi.mock('@/services/auth-service', () => ({
   getToken: vi.fn().mockResolvedValue('mockedToken'),
 }));
 
-const mockGetActiveJoinRestriction = vi.fn();
-const mockMapRestrictions = vi.fn();
+const { mockedMapRestrictions, mockedGetActiveJoinRestriction } = vi.hoisted(() => ({
+  mockedMapRestrictions: vi.fn(),
+  mockedGetActiveJoinRestriction: vi.fn(),
+}));
 vi.mock('@/services/restriction-service', () => ({
-  getActiveJoinRestriction: mockGetActiveJoinRestriction,
-  mapRestrictions: mockMapRestrictions,
+  getActiveJoinRestriction: mockedGetActiveJoinRestriction,
+  mapRestrictions: mockedMapRestrictions,
 }));
 
-const mockMapClanResponse = vi.fn();
-vi.mock('@/services/clan-service', () => ({
-  mapClanResponse: mockMapClanResponse,
+const { mockedMapClanResponse } = vi.hoisted(() => ({
+  mockedMapClanResponse: vi.fn(),
 }));
+vi.mock('@/services/clan-service', () => ({ mapClanResponse: mockedMapClanResponse }));
 
 import {
   getUser,
@@ -126,7 +127,6 @@ describe('userItems: filterBy, sortBy, groupBy', () => {
   const userItems = [
     {
       id: 1,
-      rank: 0,
       item: {
         type: 'HeadArmor',
         name: 'Fluttershy',
@@ -134,7 +134,6 @@ describe('userItems: filterBy, sortBy, groupBy', () => {
     },
     {
       id: 2,
-      rank: 1,
       item: {
         type: 'Thrown',
         name: 'Rainbow Dash',
@@ -142,7 +141,6 @@ describe('userItems: filterBy, sortBy, groupBy', () => {
     },
     {
       id: 3,
-      rank: 1,
       item: {
         type: 'Thrown',
         name: 'Rarity',
@@ -180,7 +178,7 @@ describe('getUserClan', () => {
     mockGet('/users/self/clans').willResolve(response(null));
 
     expect(await getUserClan()).toEqual(null);
-    expect(mockMapClanResponse).not.toBeCalled();
+    expect(mockedMapClanResponse).not.toBeCalled();
   });
 
   it('user has a clan', async () => {
@@ -195,7 +193,7 @@ describe('getUserClan', () => {
     );
 
     await getUserClan();
-    expect(mockMapClanResponse).toBeCalled();
+    expect(mockedMapClanResponse).toBeCalled();
   });
 });
 
@@ -206,7 +204,7 @@ it('getUserRestrictions', async () => {
 
   await getUserRestrictions(USER_ID);
 
-  expect(mockMapRestrictions).toBeCalledWith(USER_RESTRICTIONS);
+  expect(mockedMapRestrictions).toBeCalledWith(USER_RESTRICTIONS);
 });
 
 it('getUserActiveJoinRestriction', async () => {
@@ -216,7 +214,7 @@ it('getUserActiveJoinRestriction', async () => {
 
   await getUserActiveJoinRestriction(USER_ID);
 
-  expect(mockGetActiveJoinRestriction).toBeCalled();
+  expect(mockedGetActiveJoinRestriction).toBeCalled();
 });
 
 it('searchUser', async () => {

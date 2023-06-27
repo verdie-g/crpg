@@ -118,6 +118,7 @@ public record SeedDataCommand : IMediatorRequest
                 Platform = Platform.Steam,
                 Name = "Kadse",
                 Role = Role.Moderator,
+                Region = Region.Eu,
                 Gold = 100000,
                 HeirloomPoints = 2,
                 ExperienceMultiplier = 1.09f,
@@ -192,7 +193,8 @@ public record SeedDataCommand : IMediatorRequest
             };
             User brainfart = new()
             {
-                PlatformUserId = "76561198007258336", Name = "Brainfart",
+                PlatformUserId = "76561198007258336",
+                Name = "Brainfart",
                 Avatar = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/06/06be92280c028dbf83951ccaa7857d1b46f50401_full.jpg"),
             };
             User kiwi = new()

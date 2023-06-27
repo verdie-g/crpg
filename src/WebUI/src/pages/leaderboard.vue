@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { Region } from '@/models/region';
 import { type CharacterCompetitiveNumbered } from '@/models/competitive';
 import { getLeaderBoard, createRankTable } from '@/services/leaderboard-service';
 import { characterClassToIcon } from '@/services/characters-service';
 import { useUserStore } from '@/stores/user';
+import { useRegion } from '@/composables/use-region';
 
 definePage({
   meta: {
@@ -15,32 +15,17 @@ definePage({
 
 const userStore = useUserStore();
 
-const route = useRoute();
-const router = useRouter();
-
-// TODO: to composable (merge with clans page)
-const regionModel = computed({
-  get() {
-    return (route.query?.region as Region) || Region.Eu;
-  },
-
-  async set(region: Region) {
-    await router.replace({
-      query: {
-        ...route.query,
-        region,
-      },
-    });
-
-    await loadLeaderBoard();
-  },
-});
+const { regionModel, regions } = useRegion();
 
 const {
   state: leaderboard,
   execute: loadLeaderBoard,
   isLoading: leaderBoardLoading,
 } = useAsyncState(() => getLeaderBoard(regionModel.value), [], {});
+
+watch(regionModel, () => {
+  loadLeaderBoard();
+});
 
 const rankTable = computed(() => createRankTable());
 
@@ -72,11 +57,7 @@ const rowClass = (row: CharacterCompetitiveNumbered) =>
 
       <div class="flex items-center justify-between gap-4">
         <OTabs v-model="regionModel" contentClass="hidden" class="mb-6">
-          <OTabItem
-            v-for="region in Object.keys(Region)"
-            :label="$t(`region.${region}`, 0)"
-            :value="region"
-          />
+          <OTabItem v-for="region in regions" :label="$t(`region.${region}`, 0)" :value="region" />
         </OTabs>
 
         <Modal closable>
@@ -123,7 +104,7 @@ const rowClass = (row: CharacterCompetitiveNumbered) =>
           :label="$t('leaderboard.table.cols.player')"
           :width="180"
         >
-          <UserMedia :user="row.user" hiddenPlatform />
+          <UserMedia :user="row.user" :clan="row.user.clan" hiddenPlatform />
         </OTableColumn>
 
         <OTableColumn

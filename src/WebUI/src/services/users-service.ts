@@ -1,12 +1,6 @@
 import qs from 'qs';
 import { type Item } from '@/models/item';
-import {
-  type User,
-  type UserPublic,
-  type UserItem,
-  type UserItemsByType,
-  type UserItemRank,
-} from '@/models/user';
+import { type User, type UserPublic, type UserItem, type UserItemsByType } from '@/models/user';
 import { Platform } from '@/models/platform';
 import { type ClanEdition, type ClanMemberRole } from '@/models/clan';
 import { type RestrictionWithActive } from '@/models/restriction';

@@ -2,6 +2,7 @@ import { Platform } from './platform';
 import Role from './role';
 import { Region } from './region';
 import { ItemSlot, ItemType, type Item } from './item';
+import { type Clan } from './clan';
 
 export interface User {
   id: number;
@@ -21,6 +22,7 @@ export interface User {
 export interface UserPublic
   extends Pick<User, 'id' | 'platform' | 'platformUserId' | 'name' | 'region'> {
   avatar: string;
+  clan: Clan | null;
 }
 
 export interface UserItem {

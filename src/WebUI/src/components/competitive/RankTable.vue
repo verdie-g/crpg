@@ -25,7 +25,7 @@ const groupedRankTable = computed(() => groupBy([...rankTable].reverse(), r => r
       <OTableColumn
         v-for="(col, idx) in 5"
         #default="{ row }: { row: [string, Rank[]] }"
-        :label="col"
+        :label="String(col)"
       >
         <span
           v-if="

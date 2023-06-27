@@ -2,21 +2,21 @@
 import { type Clan, ClanMemberRole } from '@/models/clan';
 import { type UserPublic } from '@/models/user';
 
-const props = withDefaults(
-  defineProps<{
-    user: UserPublic;
-    clan?: Clan | null;
-    clanRole?: ClanMemberRole | null;
-    isSelf?: boolean;
-    hiddenPlatform?: boolean;
-    size?: 'sm' | 'xl';
-  }>(),
-  {
-    isSelf: false,
-    hiddenPlatform: false,
-    size: 'sm',
-  }
-);
+const {
+  user,
+  clan = null,
+  clanRole = null,
+  isSelf = false,
+  hiddenPlatform = false,
+  size = 'sm',
+} = defineProps<{
+  user: UserPublic;
+  clan?: Clan | null;
+  clanRole?: ClanMemberRole | null;
+  isSelf?: boolean;
+  hiddenPlatform?: boolean;
+  size?: 'sm' | 'xl';
+}>();
 </script>
 
 <template>
@@ -29,13 +29,16 @@ const props = withDefaults(
     />
 
     <div class="flex items-center gap-1">
-      <template v-if="clan && clanRole">
+      <template v-if="clan">
         <RouterLink
           class="group flex items-center gap-1 hover:opacity-75"
           :to="{ name: 'ClansId', params: { id: clan.id } }"
         >
           <ClanRoleIcon
-            v-if="[ClanMemberRole.Leader, ClanMemberRole.Officer].includes(clanRole)"
+            v-if="
+              clanRole !== null &&
+              [ClanMemberRole.Leader, ClanMemberRole.Officer].includes(clanRole)
+            "
             :role="clanRole"
           />
           <ClanTagIcon :color="clan.primaryColor" />

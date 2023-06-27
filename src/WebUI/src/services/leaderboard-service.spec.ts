@@ -1,4 +1,12 @@
-import { createRankTable, getRankByCompetitiveValue } from './leaderboard-service';
+import { type FetchSpyInstance, mockGet } from 'vi-fetch';
+import { response } from '@/__mocks__/crpg-client';
+import { Region } from '@/models/region';
+import { createRankTable, getRankByCompetitiveValue, getLeaderBoard } from './leaderboard-service';
+
+const { mockedMapClanResponse } = vi.hoisted(() => ({
+  mockedMapClanResponse: vi.fn(),
+}));
+vi.mock('@/services/clan-service', () => ({ mapClanResponse: mockedMapClanResponse }));
 
 /*
   Champion 1	1950	9999
@@ -54,9 +62,60 @@ it.each([
   [-1, 'Iron 5'],
   [0, 'Iron 5'],
   [49, 'Iron 5'],
-  [50, 'Iron 5'],
+  [50, 'Iron 4'],
   [51, 'Iron 4'],
   [9999, 'Champion 1'],
-])('getRankByCompetitiveValue - competitiveValue: %n', (competitiveValue, expectation) => {
+])('getRankByCompetitiveValue - competitiveValue: %s', (competitiveValue, expectation) => {
   expect(getRankByCompetitiveValue(createRankTable(), competitiveValue).title).toEqual(expectation);
+});
+
+describe.only('getLeaderBoard', () => {
+  let mock: FetchSpyInstance;
+
+  beforeEach(() => {
+    mock = mockGet(/\/leaderboard\/leaderboard/).willDo(_url => {
+      return {
+        body: response([
+          {
+            id: 5,
+            user: {
+              name: 'orle',
+              clan: {
+                id: 1,
+                primaryColor: '4278190318',
+                secondaryColor: '4278190318',
+              },
+            },
+          },
+          {
+            id: 12,
+            user: {
+              name: 'Kadse',
+              clan: null,
+            },
+          },
+        ]),
+      };
+    });
+  });
+
+  it('set position', async () => {
+    const res = await getLeaderBoard(Region.Eu);
+
+    expect(mock).toHaveFetchedWithQuery('region=Eu');
+
+    expect(res[0].position).toEqual(1);
+    expect(res[1].position).toEqual(2);
+  });
+
+  it('normalize clan color', async () => {
+    await getLeaderBoard(Region.Eu);
+
+    expect(mockedMapClanResponse).toBeCalledTimes(1);
+    expect(mockedMapClanResponse).toBeCalledWith({
+      id: 1,
+      primaryColor: '4278190318',
+      secondaryColor: '4278190318',
+    });
+  });
 });

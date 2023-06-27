@@ -6,11 +6,21 @@ import {
   type CharacterCompetitiveNumbered,
 } from '@/models/competitive';
 import { Region } from '@/models/region';
+import { type ClanEdition } from '@/models/clan';
+import { type UserPublic } from '@/models/user';
 import { get } from '@/services/crpg-client';
 import { inRange } from '@/utils/math';
 import { getEntries } from '@/utils/object';
+import { mapClanResponse } from '@/services/clan-service';
 
-// TODO: spec
+interface UserPublicRaw extends Omit<UserPublic, 'clan'> {
+  clan: ClanEdition | null;
+}
+
+interface CharacterCompetitiveRaw extends Omit<CharacterCompetitive, 'user'> {
+  user: UserPublicRaw;
+}
+
 export const getLeaderBoard = async (region?: Region): Promise<CharacterCompetitiveNumbered[]> => {
   // TODO: realize GET params in crpg-client
   const params = qs.stringify(
@@ -22,12 +32,16 @@ export const getLeaderBoard = async (region?: Region): Promise<CharacterCompetit
     }
   );
 
-  return (await get<CharacterCompetitive[]>(`/leaderboard/leaderboard?${params}`)).map(
-    (cr, idx) => ({
-      position: idx + 1,
-      ...cr,
-    })
-  );
+  const res = await get<CharacterCompetitiveRaw[]>(`/leaderboard/leaderboard?${params}`);
+
+  return res.map((cr, idx) => ({
+    ...cr,
+    user: {
+      ...cr.user,
+      clan: cr.user.clan === null ? null : mapClanResponse(cr.user.clan),
+    },
+    position: idx + 1,
+  }));
 };
 
 const rankColors: Record<RankGroup, string> = {
