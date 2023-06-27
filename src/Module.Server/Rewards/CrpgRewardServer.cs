@@ -25,7 +25,7 @@ internal class CrpgRewardServer : MissionLogic
     private readonly ICrpgClient _crpgClient;
     private readonly CrpgConstants _constants;
     private readonly CrpgWarmupComponent? _warmupComponent;
-    private readonly Dictionary<PlayerId, CrpgPlayerRating> _characterRatings;
+    private readonly Dictionary<int, CrpgPlayerRating> _characterRatings;
     private readonly CrpgRatingPeriodResults _ratingResults;
     private readonly Random _random;
     private readonly PeriodStatsHelper _periodStatsHelper;
@@ -43,7 +43,7 @@ internal class CrpgRewardServer : MissionLogic
         _crpgClient = crpgClient;
         _constants = constants;
         _warmupComponent = warmupComponent;
-        _characterRatings = new Dictionary<PlayerId, CrpgPlayerRating>();
+        _characterRatings = new Dictionary<int, CrpgPlayerRating>();
         _ratingResults = new CrpgRatingPeriodResults();
         _random = new Random();
         _periodStatsHelper = new PeriodStatsHelper();
@@ -183,7 +183,11 @@ internal class CrpgRewardServer : MissionLogic
 
             if (updateUserStats)
             {
-                userUpdate.Rating = GetNewRating(crpgPeer);
+                var rating = GetNewRating(crpgPeer, out int ratedCharacterId);
+                if (userUpdate.CharacterId == ratedCharacterId)
+                {
+                    userUpdate.Rating = rating;
+                }
             }
 
             if (crpgPeer.LastSpawnTeam != null)
@@ -334,14 +338,15 @@ internal class CrpgRewardServer : MissionLogic
             return false;
         }
 
-        if (!_characterRatings.TryGetValue(agent.MissionPeer.Peer.Id, out rating))
+        var crpgPeer = agent.MissionPeer.Peer.GetComponent<CrpgPeer>();
+        if (crpgPeer?.User == null)
         {
-            var crpgPeer = agent.MissionPeer.Peer.GetComponent<CrpgPeer>();
-            if (crpgPeer?.User == null)
-            {
-                return false;
-            }
+            return false;
+        }
 
+        int characterId = crpgPeer.User.Character.Id;
+        if (!_characterRatings.TryGetValue(characterId, out rating))
+        {
             // If the user has no region yet or they are not playing locally, act like they weren't there. That is, don't
             // change their rating or their opponent rating.
             if (crpgPeer.User.Region != CrpgServerConfiguration.Region)
@@ -351,7 +356,7 @@ internal class CrpgRewardServer : MissionLogic
 
             var characterRating = crpgPeer.User.Character.Rating;
             rating = new CrpgPlayerRating(characterRating.Value, characterRating.Deviation, characterRating.Volatility);
-            _characterRatings[agent.MissionPeer.Peer.Id] = rating;
+            _characterRatings[characterId] = rating;
             _ratingResults.AddParticipant(rating);
         }
 
@@ -476,9 +481,11 @@ internal class CrpgRewardServer : MissionLogic
             .ToHashSet();
     }
 
-    private CrpgCharacterRating GetNewRating(CrpgPeer crpgPeer)
+    private CrpgCharacterRating GetNewRating(CrpgPeer crpgPeer, out int ratedCharactedId)
     {
-        if (!_characterRatings.TryGetValue(crpgPeer.Peer.Id, out var rating))
+        int characterId = crpgPeer.User!.Character.Id;
+        ratedCharactedId = characterId;
+        if (!_characterRatings.TryGetValue(characterId, out var rating))
         {
             return crpgPeer.User!.Character.Rating;
         }
