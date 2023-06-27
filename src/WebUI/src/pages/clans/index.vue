@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { Region } from '@/models/region';
 import { type Clan, type ClanWithMemberCount } from '@/models/clan';
 import { getClans, getFilteredClans } from '@/services/clan-service';
 import { usePagination } from '@/composables/use-pagination';
 import { useSearchDebounced } from '@/composables/use-search-debounce';
 import { useUserStore } from '@/stores/user';
+import { useRegion } from '@/composables/use-region';
 
 definePage({
   meta: {
@@ -25,20 +25,7 @@ const { state: clans, execute: loadClans } = useAsyncState(() => getClans(), [],
   immediate: false,
 });
 
-const regionModel = computed({
-  get() {
-    return (route.query?.region as Region) || Region.Eu;
-  },
-
-  set(region: Region) {
-    router.replace({
-      query: {
-        ...route.query,
-        region,
-      },
-    });
-  },
-});
+const { regionModel, regions } = useRegion();
 
 const filteredClans = computed(() =>
   getFilteredClans(clans.value, regionModel.value, searchModel.value)
@@ -58,11 +45,7 @@ await loadClans();
     <div class="mx-auto max-w-3xl py-8 md:py-16">
       <div class="mb-6 flex flex-wrap items-center justify-between gap-4">
         <OTabs v-model="regionModel" contentClass="hidden">
-          <OTabItem
-            v-for="region in Object.keys(Region)"
-            :label="$t(`region.${region}`, 0)"
-            :value="region"
-          />
+          <OTabItem v-for="region in regions" :label="$t(`region.${region}`, 0)" :value="region" />
         </OTabs>
 
         <div class="flex items-center gap-2">
