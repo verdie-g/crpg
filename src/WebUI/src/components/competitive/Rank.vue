@@ -12,6 +12,6 @@ const rank = computed(() => getRankByCompetitiveValue(rankTable, competitiveValu
 
 <template>
   <div class="font-black" :style="{ color: rank.color }">
-    {{ rank.title }} ({{ competitiveValue }})
+    {{ rank.title }} - {{ $n(competitiveValue, { maximumFractionDigits: 0 }) }}
   </div>
 </template>

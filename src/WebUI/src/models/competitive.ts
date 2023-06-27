@@ -14,8 +14,20 @@ export interface CharacterCompetitiveNumbered extends CharacterCompetitive {
 }
 
 export interface Rank {
+  groupTitle: string;
   title: string;
   color: string;
   min: number;
   max: number;
+}
+
+export enum RankGroup {
+  'Iron' = 'Iron',
+  'Copper' = 'Copper',
+  'Bronze' = 'Bronze',
+  'Silver' = 'Silver',
+  'Gold' = 'Gold',
+  'Platinum' = 'Platinum',
+  'Diamond' = 'Diamond',
+  'Champion' = 'Champion',
 }
