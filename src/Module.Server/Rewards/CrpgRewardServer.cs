@@ -183,7 +183,7 @@ internal class CrpgRewardServer : MissionLogic
 
             if (updateUserStats)
             {
-                    userUpdate.Rating = GetNewRating(crpgPeer);
+                userUpdate.Rating = GetNewRating(crpgPeer);
             }
 
             if (crpgPeer.LastSpawnTeam != null)
