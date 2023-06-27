@@ -1,7 +1,9 @@
 {
-    "id": 2,
-    "platform": "Steam",
-    "platformUserId": 76561198016876889,
-    "name": "Applejack",
-    "avatar": "https://avatars.akamai.steamstatic.com/d51d5155b1a564421c0b3fd5fb7eed7c4474e73d.jpg"
+  "id": 2,
+  "platform": "Steam",
+  "platformUserId": "76561198016876889",
+  "name": "Applejack",
+  "avatar": "https://avatars.akamai.steamstatic.com/d51d5155b1a564421c0b3fd5fb7eed7c4474e73d.jpg",
+  "region": null,
+  "clan": null
 }
