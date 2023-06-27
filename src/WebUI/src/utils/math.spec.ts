@@ -38,12 +38,12 @@ it.each([
 });
 
 it.each([
-  [[2, 0, 3], true],
-  [[0, 0, 0], true],
-  [[0, -1, 0], true],
-  [[0, -1, 1], true],
-  [[0, -2, -1], false],
-  [[10, 9, 11], true],
-])('inRange', ([val, min, max], expectation) => {
+  [2, 0, 3, true],
+  [0, 0, 0, false],
+  [0, -1, 0, false],
+  [0, -1, 1, true],
+  [0, -2, -1, false],
+  [10, 9, 11, true],
+])('inRange %s, %s, %s', (val, min, max, expectation) => {
   expect(inRange(val, min, max)).toEqual(expectation);
 });
