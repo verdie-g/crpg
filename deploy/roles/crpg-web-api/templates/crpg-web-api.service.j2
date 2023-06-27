@@ -12,6 +12,7 @@ StandardOutput=file:{{ crpg_api_log_file }}
 StandardError=inherit
 Environment=ASPNETCORE_ENVIRONMENT=Production
 Environment=DOTNET_PRINT_TELEMETRY_MESSAGE=false
+Environment=DOTNET_PerfMapEnabled=1
 Environment=CORECLR_ENABLE_PROFILING=1
 Environment=CORECLR_PROFILER={846F5F1C-F9AE-4B07-969E-05C26BC060D8}
 Environment=CORECLR_PROFILER_PATH=/opt/datadog/Datadog.Trace.ClrProfiler.Native.so
