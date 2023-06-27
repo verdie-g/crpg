@@ -183,11 +183,7 @@ internal class CrpgRewardServer : MissionLogic
 
             if (updateUserStats)
             {
-                var rating = GetNewRating(crpgPeer, out int ratedCharacterId);
-                if (userUpdate.CharacterId == ratedCharacterId)
-                {
-                    userUpdate.Rating = rating;
-                }
+                    userUpdate.Rating = GetNewRating(crpgPeer);
             }
 
             if (crpgPeer.LastSpawnTeam != null)
@@ -481,10 +477,10 @@ internal class CrpgRewardServer : MissionLogic
             .ToHashSet();
     }
 
-    private CrpgCharacterRating GetNewRating(CrpgPeer crpgPeer, out int ratedCharactedId)
+    private CrpgCharacterRating GetNewRating(CrpgPeer crpgPeer)
     {
         int characterId = crpgPeer.User!.Character.Id;
-        ratedCharactedId = characterId;
+
         if (!_characterRatings.TryGetValue(characterId, out var rating))
         {
             return crpgPeer.User!.Character.Rating;
