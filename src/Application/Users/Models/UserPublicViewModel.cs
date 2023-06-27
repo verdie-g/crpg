@@ -16,6 +16,7 @@ public record UserPublicViewModel : IMapFrom<User>
     public Uri? Avatar { get; init; }
     public Region? Region { get; init; }
     public ClanPublicViewModel? Clan { get; init; }
+
     public void Mapping(Profile profile)
     {
         profile.CreateMap<User, UserPublicViewModel>()
