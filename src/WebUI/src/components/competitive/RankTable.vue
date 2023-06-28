@@ -8,7 +8,7 @@ const { competitiveValue = null, rankTable } = defineProps<{
   rankTable: Rank[];
 }>();
 
-const groupedRankTable = computed(() => groupBy([...rankTable].reverse(), r => r.groupTitle));
+const groupedRankTable = computed(() => groupBy([...rankTable], r => r.groupTitle));
 </script>
 
 <template>
