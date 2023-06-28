@@ -253,7 +253,6 @@ internal class CrpgItemValueModel : ItemValueModel
                 case WeaponClass.OneHandedPolearm:
                 case WeaponClass.TwoHandedPolearm:
                     swingLengthTier = 1.775f * (float)Math.Pow(0.43f + weapon.WeaponLength * 0.00409f, 3 * (200 + weapon.WeaponLength) / (200 + 3f * weapon.WeaponLength));
-                    Debug.Print($"{weapon.WeaponLength}");
                     break;
                 case WeaponClass.LowGripPolearm:
                 case WeaponClass.Pick:
