@@ -7,6 +7,14 @@ namespace Crpg.Module.Common.Models;
 
 internal class CrpgItemValueModel : ItemValueModel
 {
+    private readonly CrpgConstants _constants;
+    private readonly CrpgStrikeMagnitudeModel _strikeMagnitudeModel;
+    public CrpgItemValueModel(CrpgConstants constants)
+    {
+        _constants = constants;
+        _strikeMagnitudeModel = new(constants);
+    }
+
     private static readonly float[] ItemPriceCoeffs = new float[] { 300f, 700f, 0f };
     private static readonly float[] ArmorPriceCoeffs = new float[] { 1f, 4f, 0f, 0f, 0f };
     private static readonly Dictionary<ItemObject.ItemTypeEnum, (int desiredMaxPrice, float[] priceCoeffs)> PricesAndCoeffs = new()
@@ -187,7 +195,17 @@ internal class CrpgItemValueModel : ItemValueModel
 
             if (weapon.WeaponFlags.HasAnyFlag(WeaponFlags.BonusAgainstShield))
             {
-                swingTier *= 1.1f;
+                switch (weapon.WeaponClass)
+                {
+                    case WeaponClass.Dagger:
+                    case WeaponClass.OneHandedSword:
+                    case WeaponClass.TwoHandedSword:
+                        swingTier *= 1.2f;
+                        break;
+                    default:
+                        swingTier *= 1.1f;
+                        break;
+                }
             }
 
             if (weapon.WeaponFlags.HasAnyFlag(WeaponFlags.CanCrushThrough))
@@ -234,7 +252,8 @@ internal class CrpgItemValueModel : ItemValueModel
                     break;
                 case WeaponClass.OneHandedPolearm:
                 case WeaponClass.TwoHandedPolearm:
-                    swingLengthTier = 0.82f * (float)Math.Pow(0.8f + weapon.WeaponLength * 0.00409f, 2f);
+                    swingLengthTier = 1.775f * (float)Math.Pow(0.43f + weapon.WeaponLength * 0.00409f, 3 * (200 + weapon.WeaponLength) / (200 + 3f * weapon.WeaponLength));
+                    Debug.Print($"{weapon.WeaponLength}");
                     break;
                 case WeaponClass.LowGripPolearm:
                 case WeaponClass.Pick:
@@ -383,10 +402,14 @@ internal class CrpgItemValueModel : ItemValueModel
     {
         WeaponComponentData weapon = weaponComponent.Weapons[0];
         float shieldTier = (1.0f * weapon.MaxDataValue
-                * (1.0f + weapon.BodyArmor / 25f))
-                * (1.6f + weapon.GetRealWeaponLength())
+                * (1.0f + ArmorVsCutToHpEffectivenessRatio(weapon.BodyArmor) * 1.75f))
+                * 2.1f
                 / 1300f
                 * 10f;
+        if (weapon.WeaponClass == WeaponClass.LargeShield)
+        {
+            shieldTier *= 0.9f;
+        }
 
         float heirloomLevel = ItemToHeirloomLevel(weaponComponent.Item);
         shieldTier /= (float)Math.Pow(1 + heirloomLevel / 10f, 1f);
@@ -433,5 +456,10 @@ internal class CrpgItemValueModel : ItemValueModel
         }
 
         return heirloomLevel;
+    }
+
+    private float ArmorVsCutToHpEffectivenessRatio(float armor)
+    {
+        return 1000f / _strikeMagnitudeModel.ComputeRawDamage(DamageTypes.Cut, 1000, armor, 1) - 1;
     }
 }
