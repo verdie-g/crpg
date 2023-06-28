@@ -34,7 +34,7 @@ const {
 
 const { gameServerStats, loadGameServerStats } = useGameServerStats();
 
-const animatedUserGold = useTransition(computed(() => userStore.user!.gold));
+const animatedUserGold = useTransition(toRef(() => userStore.user!.gold));
 
 const promises: Array<Promise<any>> = [loadGameServerStats(), loadJoinRestriction()];
 

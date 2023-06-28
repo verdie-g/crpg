@@ -33,6 +33,7 @@ import {
   getRespecCapability,
 } from '@/services/characters-service';
 import { createRankTable } from '@/services/leaderboard-service';
+import { usePollInterval } from '@/composables/use-poll-interval';
 
 definePage({
   meta: {
@@ -117,6 +118,17 @@ const { state: characterRating, execute: loadCharacterRating } = useAsyncState(
     resetOnExecute: false,
   }
 );
+
+const { subscribe, unsubscribe } = usePollInterval();
+const loadCharacterRatingSymbol = Symbol('loadCharacterRating');
+
+onMounted(() => {
+  subscribe(loadCharacterRatingSymbol, () => loadCharacterRating(0, { id: character.value.id }));
+});
+
+onBeforeUnmount(() => {
+  unsubscribe(loadCharacterRatingSymbol);
+});
 
 const rankTable = computed(() => createRankTable());
 
