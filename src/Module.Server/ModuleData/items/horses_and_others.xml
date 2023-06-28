@@ -602,322 +602,322 @@
   </Item>
   <Item id="crpg_mount1_camel_2_h0" name="Pack Camel" mesh="camel_mesh" item_category="sumpter_horse" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="72" speed="30" charge_damage="2" body_length="105" extra_health="10" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="72" speed="31" charge_damage="2" body_length="105" extra_health="10" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_2_h1" name="Pack Camel +1" mesh="camel_mesh" item_category="sumpter_horse" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="72" speed="31" charge_damage="2" body_length="110" extra_health="24" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="72" speed="32" charge_damage="2" body_length="110" extra_health="24" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_2_h2" name="Pack Camel +2" mesh="camel_mesh" item_category="sumpter_horse" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="73" speed="31" charge_damage="2" body_length="110" extra_health="38" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="73" speed="32" charge_damage="2" body_length="110" extra_health="38" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_2_h3" name="Pack Camel +3" mesh="camel_mesh" item_category="sumpter_horse" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="74" speed="31" charge_damage="2" body_length="110" extra_health="52" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="74" speed="32" charge_damage="2" body_length="110" extra_health="52" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_3_h0" name="Pratihara Camel" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="76" speed="31" charge_damage="2" body_length="109" extra_health="16" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="76" speed="32" charge_damage="2" body_length="109" extra_health="16" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_3_h1" name="Pratihara Camel +1" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="76" speed="32" charge_damage="2" body_length="110" extra_health="30" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="76" speed="33" charge_damage="2" body_length="110" extra_health="30" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_3_h2" name="Pratihara Camel +2" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="77" speed="32" charge_damage="2" body_length="110" extra_health="45" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="77" speed="33" charge_damage="2" body_length="110" extra_health="45" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_3_h3" name="Pratihara Camel +3" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="78" speed="32" charge_damage="2" body_length="110" extra_health="59" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="78" speed="33" charge_damage="2" body_length="110" extra_health="59" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_4_h0" name="Qedarite Camel" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="77" speed="32" charge_damage="3" body_length="109" extra_health="22" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="77" speed="33" charge_damage="3" body_length="109" extra_health="22" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_4_h1" name="Qedarite Camel +1" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="77" speed="33" charge_damage="3" body_length="110" extra_health="36" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="77" speed="34" charge_damage="3" body_length="110" extra_health="36" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_4_h2" name="Qedarite Camel +2" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="78" speed="33" charge_damage="3" body_length="110" extra_health="51" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="78" speed="34" charge_damage="3" body_length="110" extra_health="51" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_4_h3" name="Qedarite Camel +3" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="79" speed="33" charge_damage="3" body_length="110" extra_health="66" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="79" speed="34" charge_damage="3" body_length="110" extra_health="66" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_5_h0" name="Palmyrene Camel" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="78" speed="33" charge_damage="4" body_length="109" extra_health="28" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="78" speed="34" charge_damage="4" body_length="109" extra_health="28" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_5_h1" name="Palmyrene Camel +1" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="78" speed="34" charge_damage="4" body_length="110" extra_health="43" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="78" speed="35" charge_damage="4" body_length="110" extra_health="43" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_5_h2" name="Palmyrene Camel +2" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="79" speed="34" charge_damage="4" body_length="110" extra_health="58" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="79" speed="35" charge_damage="4" body_length="110" extra_health="58" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_5_h3" name="Palmyrene Camel +3" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="80" speed="34" charge_damage="4" body_length="110" extra_health="74" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="80" speed="35" charge_damage="4" body_length="110" extra_health="74" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_6_h0" name="Sargonid Light Camel" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="80" speed="35" charge_damage="4" body_length="105" extra_health="16" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="80" speed="36" charge_damage="4" body_length="105" extra_health="16" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_6_h1" name="Sargonid Light Camel +1" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="80" speed="36" charge_damage="4" body_length="105" extra_health="30" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="80" speed="37" charge_damage="4" body_length="105" extra_health="30" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_6_h2" name="Sargonid Light Camel +2" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="81" speed="36" charge_damage="4" body_length="105" extra_health="45" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="81" speed="37" charge_damage="4" body_length="105" extra_health="45" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_6_h3" name="Sargonid Light Camel +3" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="82" speed="36" charge_damage="4" body_length="105" extra_health="59" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="82" speed="37" charge_damage="4" body_length="105" extra_health="59" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_7_h0" name="Sargonid Heavy Camel" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="79" speed="34" charge_damage="5" body_length="109" extra_health="34" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="79" speed="35" charge_damage="5" body_length="109" extra_health="34" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_7_h1" name="Sargonid Heavy Camel +1" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="79" speed="35" charge_damage="5" body_length="110" extra_health="49" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="79" speed="36" charge_damage="5" body_length="110" extra_health="49" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_7_h2" name="Sargonid Heavy Camel +2" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="80" speed="35" charge_damage="5" body_length="110" extra_health="65" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="80" speed="36" charge_damage="5" body_length="110" extra_health="65" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_7_h3" name="Sargonid Heavy Camel +3" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="81" speed="35" charge_damage="5" body_length="110" extra_health="81" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="81" speed="36" charge_damage="5" body_length="110" extra_health="81" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_8_h0" name="Nabatean Light Camel" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="81" speed="36" charge_damage="4" body_length="105" extra_health="16" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="81" speed="37" charge_damage="4" body_length="105" extra_health="16" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_8_h1" name="Nabatean Light Camel +1" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="81" speed="37" charge_damage="4" body_length="105" extra_health="30" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="81" speed="38" charge_damage="4" body_length="105" extra_health="30" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_8_h2" name="Nabatean Light Camel +2" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="82" speed="37" charge_damage="4" body_length="105" extra_health="45" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="82" speed="38" charge_damage="4" body_length="105" extra_health="45" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_8_h3" name="Nabatean Light Camel +3" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="83" speed="37" charge_damage="4" body_length="105" extra_health="59" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="83" speed="38" charge_damage="4" body_length="105" extra_health="59" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_9_h0" name="Nabatean Heavy Camel" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="80" speed="35" charge_damage="5" body_length="109" extra_health="34" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="80" speed="36" charge_damage="5" body_length="109" extra_health="34" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_9_h1" name="Nabatean Heavy Camel +1" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="80" speed="36" charge_damage="5" body_length="110" extra_health="49" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="80" speed="37" charge_damage="5" body_length="110" extra_health="49" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_9_h2" name="Nabatean Heavy Camel +2" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="81" speed="36" charge_damage="5" body_length="110" extra_health="65" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="81" speed="37" charge_damage="5" body_length="110" extra_health="65" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_9_h3" name="Nabatean Heavy Camel +3" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="82" speed="36" charge_damage="5" body_length="110" extra_health="81" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="82" speed="37" charge_damage="5" body_length="110" extra_health="81" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_10_h0" name="Seleucid Light Camel" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.empire" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="82" speed="37" charge_damage="4" body_length="105" extra_health="25" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="82" speed="38" charge_damage="4" body_length="105" extra_health="25" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_10_h1" name="Seleucid Light Camel +1" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.empire" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="82" speed="38" charge_damage="4" body_length="105" extra_health="39" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="82" speed="39" charge_damage="4" body_length="105" extra_health="39" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_10_h2" name="Seleucid Light Camel +2" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.empire" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="83" speed="38" charge_damage="4" body_length="105" extra_health="55" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="83" speed="39" charge_damage="4" body_length="105" extra_health="55" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_10_h3" name="Seleucid Light Camel +3" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.empire" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="84" speed="38" charge_damage="4" body_length="105" extra_health="70" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="84" speed="39" charge_damage="4" body_length="105" extra_health="70" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_11_h0" name="Seleucid Heavy Camel" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.empire" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="81" speed="36" charge_damage="5" body_length="109" extra_health="43" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="81" speed="37" charge_damage="5" body_length="109" extra_health="43" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_11_h1" name="Seleucid Heavy Camel +1" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.empire" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="81" speed="37" charge_damage="5" body_length="110" extra_health="59" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="81" speed="38" charge_damage="5" body_length="110" extra_health="59" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_11_h2" name="Seleucid Heavy Camel +2" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.empire" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="82" speed="37" charge_damage="5" body_length="110" extra_health="75" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="82" speed="38" charge_damage="5" body_length="110" extra_health="75" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_11_h3" name="Seleucid Heavy Camel +3" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.empire" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="83" speed="37" charge_damage="5" body_length="110" extra_health="92" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="83" speed="38" charge_damage="5" body_length="110" extra_health="92" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_12_h0" name="Parthian Light Camel" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="83" speed="38" charge_damage="4" body_length="105" extra_health="25" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="83" speed="39" charge_damage="4" body_length="105" extra_health="25" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_12_h1" name="Parthian Light Camel +1" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="83" speed="39" charge_damage="4" body_length="105" extra_health="39" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="83" speed="40" charge_damage="4" body_length="105" extra_health="39" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_12_h2" name="Parthian Light Camel +2" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="84" speed="39" charge_damage="4" body_length="105" extra_health="55" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="84" speed="40" charge_damage="4" body_length="105" extra_health="55" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_12_h3" name="Parthian Light Camel +3" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="85" speed="39" charge_damage="4" body_length="105" extra_health="70" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="85" speed="40" charge_damage="4" body_length="105" extra_health="70" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_13_h0" name="Parthian Heavy Camel" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="82" speed="37" charge_damage="5" body_length="109" extra_health="43" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="82" speed="38" charge_damage="5" body_length="109" extra_health="43" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_13_h1" name="Parthian Heavy Camel +1" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="82" speed="38" charge_damage="5" body_length="110" extra_health="59" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="82" speed="39" charge_damage="5" body_length="110" extra_health="59" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_13_h2" name="Parthian Heavy Camel +2" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="83" speed="38" charge_damage="5" body_length="110" extra_health="75" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="83" speed="39" charge_damage="5" body_length="110" extra_health="75" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_13_h3" name="Parthian Heavy Camel +3" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="84" speed="38" charge_damage="5" body_length="110" extra_health="92" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="84" speed="39" charge_damage="5" body_length="110" extra_health="92" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_14_h0" name="Achaemenian Light Camel" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="84" speed="39" charge_damage="5" body_length="105" extra_health="34" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="84" speed="40" charge_damage="5" body_length="105" extra_health="34" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_14_h1" name="Achaemenian Light Camel +1" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="84" speed="40" charge_damage="5" body_length="105" extra_health="49" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="84" speed="41" charge_damage="5" body_length="105" extra_health="49" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_14_h2" name="Achaemenian Light Camel +2" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="85" speed="40" charge_damage="5" body_length="105" extra_health="65" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="85" speed="41" charge_damage="5" body_length="105" extra_health="65" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_14_h3" name="Achaemenian Light Camel +3" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="86" speed="40" charge_damage="5" body_length="105" extra_health="81" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="86" speed="41" charge_damage="5" body_length="105" extra_health="81" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_15_h0" name="Achaemenian Heavy Camel" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="83" speed="38" charge_damage="6" body_length="110" extra_health="52" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="83" speed="39" charge_damage="6" body_length="110" extra_health="52" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_15_h1" name="Achaemenian Heavy Camel +1" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="83" speed="39" charge_damage="6" body_length="109" extra_health="68" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="83" speed="40" charge_damage="6" body_length="109" extra_health="68" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_15_h2" name="Achaemenian Heavy Camel +2" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="84" speed="39" charge_damage="6" body_length="110" extra_health="85" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="84" speed="40" charge_damage="6" body_length="110" extra_health="85" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_15_h3" name="Achaemenian Heavy Camel +3" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="85" speed="39" charge_damage="6" body_length="110" extra_health="102" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="85" speed="40" charge_damage="6" body_length="110" extra_health="102" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_16_h0" name="Safinat al-Barr" mesh="camel_mesh" item_category="sumpter_horse" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="85" speed="38" charge_damage="7" body_length="109" extra_health="52" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="85" speed="39" charge_damage="7" body_length="109" extra_health="52" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_16_h1" name="Safinat al-Barr +1" mesh="camel_mesh" item_category="sumpter_horse" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="85" speed="39" charge_damage="7" body_length="110" extra_health="68" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="85" speed="40" charge_damage="7" body_length="110" extra_health="68" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_16_h2" name="Safinat al-Barr +2" mesh="camel_mesh" item_category="sumpter_horse" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="86" speed="39" charge_damage="7" body_length="110" extra_health="85" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="86" speed="40" charge_damage="7" body_length="110" extra_health="85" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_16_h3" name="Safinat al-Barr +3" mesh="camel_mesh" item_category="sumpter_horse" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="87" speed="39" charge_damage="7" body_length="110" extra_health="102" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="87" speed="40" charge_damage="7" body_length="110" extra_health="102" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_17_h0" name="Padishah" mesh="camel_mesh" item_category="sumpter_horse" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="86" speed="39" charge_damage="7" body_length="109" extra_health="52" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="86" speed="40" charge_damage="7" body_length="109" extra_health="52" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_17_h1" name="Padishah +1" mesh="camel_mesh" item_category="sumpter_horse" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="86" speed="40" charge_damage="7" body_length="110" extra_health="68" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="86" speed="41" charge_damage="7" body_length="110" extra_health="68" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_17_h2" name="Padishah +2" mesh="camel_mesh" item_category="sumpter_horse" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="87" speed="40" charge_damage="7" body_length="110" extra_health="85" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="87" speed="41" charge_damage="7" body_length="110" extra_health="85" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mount1_camel_17_h3" name="Padishah +3" mesh="camel_mesh" item_category="sumpter_horse" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="88" speed="40" charge_damage="7" body_length="110" extra_health="102" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="88" speed="41" charge_damage="7" body_length="110" extra_health="102" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
   </Item>
   <Item id="crpg_mule1_2_h0" name="Chadz" mesh="mule_mesh" item_category="sumpter_horse" weight="300" Type="Horse">
@@ -1642,7 +1642,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_5_h0" name="Murgese Destrier" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="70" speed="37" charge_damage="4" body_length="102" is_mountable="true" extra_health="-11" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="70" speed="37" charge_damage="4" body_length="102" is_mountable="true" extra_health="-8" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -1659,7 +1659,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_5_h1" name="Murgese Destrier +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="70" speed="38" charge_damage="4" body_length="105" is_mountable="true" extra_health="1" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="70" speed="38" charge_damage="4" body_length="105" is_mountable="true" extra_health="4" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -1676,7 +1676,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_5_h2" name="Murgese Destrier +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="71" speed="38" charge_damage="4" body_length="105" is_mountable="true" extra_health="14" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="71" speed="38" charge_damage="4" body_length="105" is_mountable="true" extra_health="17" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -1693,7 +1693,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_5_h3" name="Murgese Destrier +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="72" speed="38" charge_damage="4" body_length="105" is_mountable="true" extra_health="27" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="72" speed="38" charge_damage="4" body_length="105" is_mountable="true" extra_health="31" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -1710,7 +1710,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_6_h0" name="Holsteiner Destrier" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="72" speed="38" charge_damage="4" body_length="102" is_mountable="true" extra_health="-8" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="72" speed="38" charge_damage="4" body_length="102" is_mountable="true" extra_health="-5" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -1727,7 +1727,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_6_h1" name="Holsteiner Destrier +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="72" speed="39" charge_damage="4" body_length="105" is_mountable="true" extra_health="4" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="72" speed="39" charge_damage="4" body_length="105" is_mountable="true" extra_health="8" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -1744,7 +1744,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_6_h2" name="Holsteiner Destrier +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="73" speed="39" charge_damage="4" body_length="105" is_mountable="true" extra_health="17" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="73" speed="39" charge_damage="4" body_length="105" is_mountable="true" extra_health="21" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -1761,7 +1761,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_6_h3" name="Holsteiner Destrier +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="74" speed="39" charge_damage="4" body_length="105" is_mountable="true" extra_health="31" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="74" speed="39" charge_damage="4" body_length="105" is_mountable="true" extra_health="34" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -1778,7 +1778,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_7_h0" name="Kathiawadi Destrier" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.aserai" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="74" speed="39" charge_damage="5" body_length="102" is_mountable="true" extra_health="-5" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="74" speed="39" charge_damage="5" body_length="102" is_mountable="true" extra_health="-2" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -1795,7 +1795,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_7_h1" name="Kathiawadi Destrier +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.aserai" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="74" speed="40" charge_damage="5" body_length="105" is_mountable="true" extra_health="8" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="74" speed="40" charge_damage="5" body_length="105" is_mountable="true" extra_health="11" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -1812,7 +1812,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_7_h2" name="Kathiawadi Destrier +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.aserai" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="75" speed="40" charge_damage="5" body_length="105" is_mountable="true" extra_health="21" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="75" speed="40" charge_damage="5" body_length="105" is_mountable="true" extra_health="24" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -1829,7 +1829,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_7_h3" name="Kathiawadi Destrier +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.aserai" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="76" speed="40" charge_damage="5" body_length="105" is_mountable="true" extra_health="34" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="76" speed="40" charge_damage="5" body_length="105" is_mountable="true" extra_health="38" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -1846,7 +1846,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_8_h0" name="Friesian Destrier" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="76" speed="40" charge_damage="5" body_length="102" is_mountable="true" extra_health="-2" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="76" speed="40" charge_damage="5" body_length="102" is_mountable="true" extra_health="1" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -1863,7 +1863,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_8_h1" name="Friesian Destrier +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="76" speed="41" charge_damage="5" body_length="100" is_mountable="true" extra_health="11" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="76" speed="41" charge_damage="5" body_length="100" is_mountable="true" extra_health="14" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -1880,7 +1880,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_8_h2" name="Friesian Destrier +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="77" speed="41" charge_damage="5" body_length="100" is_mountable="true" extra_health="24" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="77" speed="41" charge_damage="5" body_length="100" is_mountable="true" extra_health="28" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -1897,7 +1897,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_8_h3" name="Friesian Destrier +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="78" speed="41" charge_damage="5" body_length="100" is_mountable="true" extra_health="38" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="78" speed="41" charge_damage="5" body_length="100" is_mountable="true" extra_health="41" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -1914,7 +1914,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_9_h0" name="Carthusian Destrier" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="78" speed="41" charge_damage="6" body_length="102" is_mountable="true" extra_health="1" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="78" speed="41" charge_damage="6" body_length="102" is_mountable="true" extra_health="4" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -1931,7 +1931,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_9_h1" name="Carthusian Destrier +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="78" speed="42" charge_damage="6" body_length="100" is_mountable="true" extra_health="14" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="78" speed="42" charge_damage="6" body_length="100" is_mountable="true" extra_health="17" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -1948,7 +1948,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_9_h2" name="Carthusian Destrier +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="79" speed="42" charge_damage="6" body_length="100" is_mountable="true" extra_health="28" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="79" speed="42" charge_damage="6" body_length="100" is_mountable="true" extra_health="31" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -1965,7 +1965,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_9_h3" name="Carthusian Destrier +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="80" speed="42" charge_damage="6" body_length="100" is_mountable="true" extra_health="41" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="80" speed="42" charge_damage="6" body_length="100" is_mountable="true" extra_health="45" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -1982,7 +1982,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_10_h0" name="Yunnan Destrier" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="79" speed="42" charge_damage="6" body_length="102" is_mountable="true" extra_health="4" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="79" speed="42" charge_damage="6" body_length="102" is_mountable="true" extra_health="7" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -1999,7 +1999,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_10_h1" name="Yunnan Destrier +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="79" speed="43" charge_damage="6" body_length="100" is_mountable="true" extra_health="17" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="79" speed="43" charge_damage="6" body_length="100" is_mountable="true" extra_health="20" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2016,7 +2016,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_10_h2" name="Yunnan Destrier +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="80" speed="43" charge_damage="6" body_length="100" is_mountable="true" extra_health="31" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="80" speed="43" charge_damage="6" body_length="100" is_mountable="true" extra_health="34" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2033,7 +2033,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_10_h3" name="Yunnan Destrier +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="81" speed="43" charge_damage="6" body_length="100" is_mountable="true" extra_health="45" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="81" speed="43" charge_damage="6" body_length="100" is_mountable="true" extra_health="48" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2050,7 +2050,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_11_h0" name="Auvergne Destrier" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="80" speed="42" charge_damage="7" body_length="102" is_mountable="true" extra_health="7" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="80" speed="42" charge_damage="7" body_length="102" is_mountable="true" extra_health="10" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2067,7 +2067,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_11_h1" name="Auvergne Destrier +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="80" speed="43" charge_damage="7" body_length="100" is_mountable="true" extra_health="20" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="80" speed="43" charge_damage="7" body_length="100" is_mountable="true" extra_health="24" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2084,7 +2084,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_11_h2" name="Auvergne Destrier +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="81" speed="43" charge_damage="7" body_length="100" is_mountable="true" extra_health="34" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="81" speed="43" charge_damage="7" body_length="100" is_mountable="true" extra_health="38" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2101,7 +2101,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_11_h3" name="Auvergne Destrier +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="82" speed="43" charge_damage="7" body_length="100" is_mountable="true" extra_health="48" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="82" speed="43" charge_damage="7" body_length="100" is_mountable="true" extra_health="52" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2118,7 +2118,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_12_h0" name="Lusitano Pureblood Destrier" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="81" speed="43" charge_damage="7" body_length="102" is_mountable="true" extra_health="10" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="81" speed="43" charge_damage="7" body_length="102" is_mountable="true" extra_health="13" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2135,7 +2135,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_12_h1" name="Lusitano Pureblood Destrier +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="81" speed="44" charge_damage="7" body_length="100" is_mountable="true" extra_health="24" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="81" speed="44" charge_damage="7" body_length="100" is_mountable="true" extra_health="27" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2152,7 +2152,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_12_h2" name="Lusitano Pureblood Destrier +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="82" speed="44" charge_damage="7" body_length="100" is_mountable="true" extra_health="38" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="82" speed="44" charge_damage="7" body_length="100" is_mountable="true" extra_health="41" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2169,7 +2169,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_12_h3" name="Lusitano Pureblood Destrier +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="83" speed="44" charge_damage="7" body_length="100" is_mountable="true" extra_health="52" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="83" speed="44" charge_damage="7" body_length="100" is_mountable="true" extra_health="56" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2186,7 +2186,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_13_h0" name="Bohemond" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="82" speed="44" charge_damage="8" body_length="102" is_mountable="true" extra_health="13" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="82" speed="44" charge_damage="8" body_length="102" is_mountable="true" extra_health="16" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2203,7 +2203,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_13_h1" name="Bohemond +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="82" speed="45" charge_damage="8" body_length="100" is_mountable="true" extra_health="27" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="82" speed="45" charge_damage="8" body_length="100" is_mountable="true" extra_health="30" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2220,7 +2220,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_13_h2" name="Bohemond +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="83" speed="45" charge_damage="8" body_length="100" is_mountable="true" extra_health="41" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="83" speed="45" charge_damage="8" body_length="100" is_mountable="true" extra_health="45" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2237,7 +2237,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_13_h3" name="Bohemond +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="84" speed="45" charge_damage="8" body_length="100" is_mountable="true" extra_health="56" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="84" speed="45" charge_damage="8" body_length="100" is_mountable="true" extra_health="59" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2254,7 +2254,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_14_h0" name="Llamrei" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="82" speed="45" charge_damage="8" body_length="102" is_mountable="true" extra_health="16" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="82" speed="45" charge_damage="8" body_length="102" is_mountable="true" extra_health="19" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2271,7 +2271,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_14_h1" name="Llamrei +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="82" speed="46" charge_damage="8" body_length="100" is_mountable="true" extra_health="30" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="82" speed="46" charge_damage="8" body_length="100" is_mountable="true" extra_health="33" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2288,7 +2288,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_14_h2" name="Llamrei +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="83" speed="46" charge_damage="8" body_length="100" is_mountable="true" extra_health="45" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="83" speed="46" charge_damage="8" body_length="100" is_mountable="true" extra_health="48" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2305,7 +2305,7 @@
   </Item>
   <Item id="crpg_mount1_balanced_14_h3" name="Llamrei +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" weight="430" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="84" speed="46" charge_damage="8" body_length="100" is_mountable="true" extra_health="59" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="84" speed="46" charge_damage="8" body_length="100" is_mountable="true" extra_health="63" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2322,7 +2322,7 @@
   </Item>
   <Item id="crpg_mount1_charger_5_h0" name="Norwegian Fjord Draught" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.sturgia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="64" speed="39" charge_damage="3" body_length="105" is_mountable="true" extra_health="-2" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="64" speed="39" charge_damage="3" body_length="105" is_mountable="true" extra_health="4" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2339,7 +2339,7 @@
   </Item>
   <Item id="crpg_mount1_charger_5_h1" name="Norwegian Fjord Draught +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.sturgia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="64" speed="40" charge_damage="3" body_length="105" is_mountable="true" extra_health="11" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="64" speed="40" charge_damage="3" body_length="105" is_mountable="true" extra_health="17" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2356,7 +2356,7 @@
   </Item>
   <Item id="crpg_mount1_charger_5_h2" name="Norwegian Fjord Draught +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.sturgia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="65" speed="40" charge_damage="3" body_length="105" is_mountable="true" extra_health="24" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="65" speed="40" charge_damage="3" body_length="105" is_mountable="true" extra_health="31" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2373,7 +2373,7 @@
   </Item>
   <Item id="crpg_mount1_charger_5_h3" name="Norwegian Fjord Draught +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.sturgia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="66" speed="40" charge_damage="3" body_length="105" is_mountable="true" extra_health="38" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="66" speed="40" charge_damage="3" body_length="105" is_mountable="true" extra_health="45" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2390,7 +2390,7 @@
   </Item>
   <Item id="crpg_mount1_charger_6_h0" name="Icelandic Charger" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.sturgia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="66" speed="40" charge_damage="4" body_length="105" is_mountable="true" extra_health="1" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="66" speed="40" charge_damage="4" body_length="105" is_mountable="true" extra_health="7" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2407,7 +2407,7 @@
   </Item>
   <Item id="crpg_mount1_charger_6_h1" name="Icelandic Charger +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.sturgia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="66" speed="41" charge_damage="4" body_length="105" is_mountable="true" extra_health="14" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="66" speed="41" charge_damage="4" body_length="105" is_mountable="true" extra_health="20" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2424,7 +2424,7 @@
   </Item>
   <Item id="crpg_mount1_charger_6_h2" name="Icelandic Charger +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.sturgia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="67" speed="41" charge_damage="4" body_length="105" is_mountable="true" extra_health="28" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="67" speed="41" charge_damage="4" body_length="105" is_mountable="true" extra_health="34" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2441,7 +2441,7 @@
   </Item>
   <Item id="crpg_mount1_charger_6_h3" name="Icelandic Charger +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.sturgia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="68" speed="41" charge_damage="4" body_length="105" is_mountable="true" extra_health="41" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="68" speed="41" charge_damage="4" body_length="105" is_mountable="true" extra_health="48" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2458,7 +2458,7 @@
   </Item>
   <Item id="crpg_mount1_charger_7_h0" name="Shire Charger" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="68" speed="41" charge_damage="5" body_length="105" is_mountable="true" extra_health="4" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="68" speed="41" charge_damage="5" body_length="105" is_mountable="true" extra_health="10" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2475,7 +2475,7 @@
   </Item>
   <Item id="crpg_mount1_charger_7_h1" name="Shire Charger +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="68" speed="42" charge_damage="5" body_length="105" is_mountable="true" extra_health="17" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="68" speed="42" charge_damage="5" body_length="105" is_mountable="true" extra_health="24" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2492,7 +2492,7 @@
   </Item>
   <Item id="crpg_mount1_charger_7_h2" name="Shire Charger +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="69" speed="42" charge_damage="5" body_length="105" is_mountable="true" extra_health="31" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="69" speed="42" charge_damage="5" body_length="105" is_mountable="true" extra_health="38" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2509,7 +2509,7 @@
   </Item>
   <Item id="crpg_mount1_charger_7_h3" name="Shire Charger +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="70" speed="42" charge_damage="5" body_length="105" is_mountable="true" extra_health="45" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="70" speed="42" charge_damage="5" body_length="105" is_mountable="true" extra_health="52" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2526,7 +2526,7 @@
   </Item>
   <Item id="crpg_mount1_charger_8_h0" name="Ardennes Charger" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="70" speed="42" charge_damage="6" body_length="105" is_mountable="true" extra_health="7" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="70" speed="42" charge_damage="6" body_length="105" is_mountable="true" extra_health="13" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2543,7 +2543,7 @@
   </Item>
   <Item id="crpg_mount1_charger_8_h1" name="Ardennes Charger +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="70" speed="43" charge_damage="6" body_length="105" is_mountable="true" extra_health="20" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="70" speed="43" charge_damage="6" body_length="105" is_mountable="true" extra_health="27" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2560,7 +2560,7 @@
   </Item>
   <Item id="crpg_mount1_charger_8_h2" name="Ardennes Charger +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="71" speed="43" charge_damage="6" body_length="105" is_mountable="true" extra_health="34" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="71" speed="43" charge_damage="6" body_length="105" is_mountable="true" extra_health="41" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2577,7 +2577,7 @@
   </Item>
   <Item id="crpg_mount1_charger_8_h3" name="Ardennes Charger +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="72" speed="43" charge_damage="6" body_length="105" is_mountable="true" extra_health="48" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="72" speed="43" charge_damage="6" body_length="105" is_mountable="true" extra_health="56" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2594,7 +2594,7 @@
   </Item>
   <Item id="crpg_mount1_charger_9_h0" name="Andalusian Charger" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="72" speed="43" charge_damage="7" body_length="105" is_mountable="true" extra_health="10" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="72" speed="43" charge_damage="7" body_length="105" is_mountable="true" extra_health="16" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2611,7 +2611,7 @@
   </Item>
   <Item id="crpg_mount1_charger_9_h1" name="Andalusian Charger +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="72" speed="44" charge_damage="7" body_length="105" is_mountable="true" extra_health="24" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="72" speed="44" charge_damage="7" body_length="105" is_mountable="true" extra_health="30" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2628,7 +2628,7 @@
   </Item>
   <Item id="crpg_mount1_charger_9_h2" name="Andalusian Charger +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="73" speed="44" charge_damage="7" body_length="105" is_mountable="true" extra_health="38" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="73" speed="44" charge_damage="7" body_length="105" is_mountable="true" extra_health="45" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2645,7 +2645,7 @@
   </Item>
   <Item id="crpg_mount1_charger_9_h3" name="Andalusian Charger +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="74" speed="44" charge_damage="7" body_length="105" is_mountable="true" extra_health="52" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="74" speed="44" charge_damage="7" body_length="105" is_mountable="true" extra_health="59" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2662,7 +2662,7 @@
   </Item>
   <Item id="crpg_mount1_charger_10_h0" name="Desert Norman Charger" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="73" speed="44" charge_damage="7" body_length="105" is_mountable="true" extra_health="13" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="73" speed="44" charge_damage="7" body_length="105" is_mountable="true" extra_health="19" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2679,7 +2679,7 @@
   </Item>
   <Item id="crpg_mount1_charger_10_h1" name="Desert Norman Charger +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="73" speed="45" charge_damage="7" body_length="105" is_mountable="true" extra_health="27" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="73" speed="45" charge_damage="7" body_length="105" is_mountable="true" extra_health="33" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2696,7 +2696,7 @@
   </Item>
   <Item id="crpg_mount1_charger_10_h2" name="Desert Norman Charger +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="74" speed="45" charge_damage="7" body_length="105" is_mountable="true" extra_health="41" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="74" speed="45" charge_damage="7" body_length="105" is_mountable="true" extra_health="48" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2713,7 +2713,7 @@
   </Item>
   <Item id="crpg_mount1_charger_10_h3" name="Desert Norman Charger +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="75" speed="45" charge_damage="7" body_length="105" is_mountable="true" extra_health="56" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="75" speed="45" charge_damage="7" body_length="105" is_mountable="true" extra_health="63" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2730,7 +2730,7 @@
   </Item>
   <Item id="crpg_mount1_charger_11_h0" name="Andravida Charger" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.empire" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="74" speed="44" charge_damage="8" body_length="105" is_mountable="true" extra_health="16" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="74" speed="44" charge_damage="8" body_length="105" is_mountable="true" extra_health="22" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2747,7 +2747,7 @@
   </Item>
   <Item id="crpg_mount1_charger_11_h1" name="Andravida Charger +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.empire" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="74" speed="45" charge_damage="8" body_length="105" is_mountable="true" extra_health="30" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="74" speed="45" charge_damage="8" body_length="105" is_mountable="true" extra_health="36" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2764,7 +2764,7 @@
   </Item>
   <Item id="crpg_mount1_charger_11_h2" name="Andravida Charger +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.empire" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="75" speed="45" charge_damage="8" body_length="105" is_mountable="true" extra_health="45" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="75" speed="45" charge_damage="8" body_length="105" is_mountable="true" extra_health="51" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2781,7 +2781,7 @@
   </Item>
   <Item id="crpg_mount1_charger_11_h3" name="Andravida Charger +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.empire" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="76" speed="45" charge_damage="8" body_length="105" is_mountable="true" extra_health="59" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="76" speed="45" charge_damage="8" body_length="105" is_mountable="true" extra_health="66" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2798,7 +2798,7 @@
   </Item>
   <Item id="crpg_mount1_charger_12_h0" name="Neapolitan Charger" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="75" speed="45" charge_damage="8" body_length="105" is_mountable="true" extra_health="19" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="75" speed="45" charge_damage="8" body_length="105" is_mountable="true" extra_health="25" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2815,7 +2815,7 @@
   </Item>
   <Item id="crpg_mount1_charger_12_h1" name="Neapolitan Charger +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="75" speed="46" charge_damage="8" body_length="105" is_mountable="true" extra_health="33" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="75" speed="46" charge_damage="8" body_length="105" is_mountable="true" extra_health="39" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2832,7 +2832,7 @@
   </Item>
   <Item id="crpg_mount1_charger_12_h2" name="Neapolitan Charger +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="76" speed="46" charge_damage="8" body_length="105" is_mountable="true" extra_health="48" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="76" speed="46" charge_damage="8" body_length="105" is_mountable="true" extra_health="55" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2849,7 +2849,7 @@
   </Item>
   <Item id="crpg_mount1_charger_12_h3" name="Neapolitan Charger +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="77" speed="46" charge_damage="8" body_length="105" is_mountable="true" extra_health="63" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="77" speed="46" charge_damage="8" body_length="105" is_mountable="true" extra_health="70" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2866,7 +2866,7 @@
   </Item>
   <Item id="crpg_mount1_charger_13_h0" name="Hengeron" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="76" speed="46" charge_damage="9" body_length="105" is_mountable="true" extra_health="22" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="76" speed="46" charge_damage="9" body_length="105" is_mountable="true" extra_health="28" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2883,7 +2883,7 @@
   </Item>
   <Item id="crpg_mount1_charger_13_h1" name="Hengeron +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="76" speed="47" charge_damage="9" body_length="105" is_mountable="true" extra_health="36" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="76" speed="47" charge_damage="9" body_length="105" is_mountable="true" extra_health="43" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2900,7 +2900,7 @@
   </Item>
   <Item id="crpg_mount1_charger_13_h2" name="Hengeron +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="77" speed="47" charge_damage="9" body_length="105" is_mountable="true" extra_health="51" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="77" speed="47" charge_damage="9" body_length="105" is_mountable="true" extra_health="58" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2917,7 +2917,7 @@
   </Item>
   <Item id="crpg_mount1_charger_13_h3" name="Hengeron +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="78" speed="47" charge_damage="9" body_length="105" is_mountable="true" extra_health="66" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="78" speed="47" charge_damage="9" body_length="105" is_mountable="true" extra_health="74" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2934,7 +2934,7 @@
   </Item>
   <Item id="crpg_mount1_charger_14_h0" name="Bucephalus" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="76" speed="47" charge_damage="9" body_length="105" is_mountable="true" extra_health="25" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="76" speed="47" charge_damage="9" body_length="105" is_mountable="true" extra_health="31" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2951,7 +2951,7 @@
   </Item>
   <Item id="crpg_mount1_charger_14_h1" name="Bucephalus +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="76" speed="48" charge_damage="9" body_length="105" is_mountable="true" extra_health="39" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="76" speed="48" charge_damage="9" body_length="105" is_mountable="true" extra_health="46" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2968,7 +2968,7 @@
   </Item>
   <Item id="crpg_mount1_charger_14_h2" name="Bucephalus +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="77" speed="48" charge_damage="9" body_length="105" is_mountable="true" extra_health="55" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="77" speed="48" charge_damage="9" body_length="105" is_mountable="true" extra_health="62" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -2985,7 +2985,7 @@
   </Item>
   <Item id="crpg_mount1_charger_14_h3" name="Bucephalus +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="78" speed="48" charge_damage="9" body_length="105" is_mountable="true" extra_health="70" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="78" speed="48" charge_damage="9" body_length="105" is_mountable="true" extra_health="77" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3002,7 +3002,7 @@
   </Item>
   <Item id="crpg_mount1_fast_5_h0" name="Turkoman Courser" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.khuzait" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="62" speed="44" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-17" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="62" speed="44" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-14" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3018,7 +3018,7 @@
   </Item>
   <Item id="crpg_mount1_fast_5_h1" name="Turkoman Courser +1" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.khuzait" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="62" speed="45" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-5" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="62" speed="45" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-2" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3034,7 +3034,7 @@
   </Item>
   <Item id="crpg_mount1_fast_5_h2" name="Turkoman Courser +2" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.khuzait" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="63" speed="45" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="7" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="63" speed="45" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="11" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3050,7 +3050,7 @@
   </Item>
   <Item id="crpg_mount1_fast_5_h3" name="Turkoman Courser +3" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.khuzait" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="64" speed="45" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="20" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="64" speed="45" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="23" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3066,7 +3066,7 @@
   </Item>
   <Item id="crpg_mount1_fast_6_h0" name="Menorquín Courser" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.vlandia" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="64" speed="45" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-14" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="64" speed="45" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-11" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3082,7 +3082,7 @@
   </Item>
   <Item id="crpg_mount1_fast_6_h1" name="Menorquín Courser +1" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.vlandia" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="64" speed="46" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-2" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="64" speed="46" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="1" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3098,7 +3098,7 @@
   </Item>
   <Item id="crpg_mount1_fast_6_h2" name="Menorquín Courser +2" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.vlandia" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="65" speed="46" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="11" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="65" speed="46" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="14" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3114,7 +3114,7 @@
   </Item>
   <Item id="crpg_mount1_fast_6_h3" name="Menorquín Courser +3" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.vlandia" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="66" speed="46" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="23" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="66" speed="46" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="27" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3130,7 +3130,7 @@
   </Item>
   <Item id="crpg_mount1_fast_7_h0" name="Nisean Courser" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.aserai" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="66" speed="46" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-11" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="66" speed="46" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-8" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3146,7 +3146,7 @@
   </Item>
   <Item id="crpg_mount1_fast_7_h1" name="Nisean Courser +1" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.aserai" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="66" speed="47" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="1" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="66" speed="47" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="4" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3162,7 +3162,7 @@
   </Item>
   <Item id="crpg_mount1_fast_7_h2" name="Nisean Courser +2" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.aserai" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="67" speed="47" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="14" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="67" speed="47" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="17" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3178,7 +3178,7 @@
   </Item>
   <Item id="crpg_mount1_fast_7_h3" name="Nisean Courser +3" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.aserai" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="68" speed="47" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="27" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="68" speed="47" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="31" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3194,7 +3194,7 @@
   </Item>
   <Item id="crpg_mount1_fast_8_h0" name="Thessalian Courser" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.empire" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="68" speed="47" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-8" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="68" speed="47" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-5" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3210,7 +3210,7 @@
   </Item>
   <Item id="crpg_mount1_fast_8_h1" name="Thessalian Courser +1" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.empire" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="68" speed="48" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="4" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="68" speed="48" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="8" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3226,7 +3226,7 @@
   </Item>
   <Item id="crpg_mount1_fast_8_h2" name="Thessalian Courser +2" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.empire" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="69" speed="48" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="17" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="69" speed="48" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="21" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3242,7 +3242,7 @@
   </Item>
   <Item id="crpg_mount1_fast_8_h3" name="Thessalian Courser +3" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.empire" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="70" speed="48" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="31" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="70" speed="48" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="34" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3258,7 +3258,7 @@
   </Item>
   <Item id="crpg_mount1_fast_9_h0" name="Einsiedler Courser" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.vlandia" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="70" speed="48" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-5" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="70" speed="48" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-2" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3274,7 +3274,7 @@
   </Item>
   <Item id="crpg_mount1_fast_9_h1" name="Einsiedler Courser +1" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.vlandia" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="70" speed="49" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="8" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="70" speed="49" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="11" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3290,7 +3290,7 @@
   </Item>
   <Item id="crpg_mount1_fast_9_h2" name="Einsiedler Courser +2" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.vlandia" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="71" speed="49" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="21" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="71" speed="49" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="24" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3306,7 +3306,7 @@
   </Item>
   <Item id="crpg_mount1_fast_9_h3" name="Einsiedler Courser +3" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.vlandia" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="72" speed="49" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="34" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="72" speed="49" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="38" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3322,7 +3322,7 @@
   </Item>
   <Item id="crpg_mount1_fast_10_h0" name="Ahalteke Courser" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.khuzait" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="71" speed="49" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-2" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="71" speed="49" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="1" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3338,7 +3338,7 @@
   </Item>
   <Item id="crpg_mount1_fast_10_h1" name="Ahalteke Courser +1" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.khuzait" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="71" speed="50" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="11" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="71" speed="50" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="14" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3354,7 +3354,7 @@
   </Item>
   <Item id="crpg_mount1_fast_10_h2" name="Ahalteke Courser +2" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.khuzait" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="72" speed="50" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="24" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="72" speed="50" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="28" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3370,7 +3370,7 @@
   </Item>
   <Item id="crpg_mount1_fast_10_h3" name="Ahalteke Courser +3" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.khuzait" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="73" speed="50" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="38" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="73" speed="50" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="41" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3386,7 +3386,7 @@
   </Item>
   <Item id="crpg_mount1_fast_11_h0" name="Datong Courser" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.khuzait" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="72" speed="49" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="1" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="72" speed="49" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="4" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3402,7 +3402,7 @@
   </Item>
   <Item id="crpg_mount1_fast_11_h1" name="Datong Courser +1" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.khuzait" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="72" speed="50" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="14" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="72" speed="50" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="17" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3418,7 +3418,7 @@
   </Item>
   <Item id="crpg_mount1_fast_11_h2" name="Datong Courser +2" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.khuzait" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="73" speed="50" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="28" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="73" speed="50" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="31" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3434,7 +3434,7 @@
   </Item>
   <Item id="crpg_mount1_fast_11_h3" name="Datong Courser +3" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.khuzait" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="74" speed="50" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="41" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="74" speed="50" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="45" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3450,7 +3450,7 @@
   </Item>
   <Item id="crpg_mount1_fast_12_h0" name="Darashouri Courser" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.aserai" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="73" speed="50" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="4" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="73" speed="50" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="7" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3466,7 +3466,7 @@
   </Item>
   <Item id="crpg_mount1_fast_12_h1" name="Darashouri Courser +1" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.aserai" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="73" speed="51" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="17" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="73" speed="51" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="20" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3482,7 +3482,7 @@
   </Item>
   <Item id="crpg_mount1_fast_12_h2" name="Darashouri Courser +2" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.aserai" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="74" speed="51" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="31" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="74" speed="51" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="34" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3498,7 +3498,7 @@
   </Item>
   <Item id="crpg_mount1_fast_12_h3" name="Darashouri Courser +3" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.aserai" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="75" speed="51" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="45" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="75" speed="51" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="48" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3514,7 +3514,7 @@
   </Item>
   <Item id="crpg_mount1_fast_13_h0" name="Muniqi al-Khamsa" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="74" speed="51" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="7" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="74" speed="51" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="10" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3530,7 +3530,7 @@
   </Item>
   <Item id="crpg_mount1_fast_13_h1" name="Muniqi al-Khamsa +1" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="74" speed="52" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="20" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="74" speed="52" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="24" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3546,7 +3546,7 @@
   </Item>
   <Item id="crpg_mount1_fast_13_h2" name="Muniqi al-Khamsa +2" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="75" speed="52" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="34" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="75" speed="52" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="38" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3562,7 +3562,7 @@
   </Item>
   <Item id="crpg_mount1_fast_13_h3" name="Muniqi al-Khamsa +3" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="76" speed="52" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="48" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="76" speed="52" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="52" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3578,7 +3578,7 @@
   </Item>
   <Item id="crpg_mount1_fast_14_h0" name="Shadowfax" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="74" speed="52" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="10" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="74" speed="52" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="13" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3594,7 +3594,7 @@
   </Item>
   <Item id="crpg_mount1_fast_14_h1" name="Shadowfax +1" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="74" speed="53" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="24" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="74" speed="53" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="27" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3610,7 +3610,7 @@
   </Item>
   <Item id="crpg_mount1_fast_14_h2" name="Shadowfax +2" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="75" speed="53" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="38" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="75" speed="53" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="41" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3626,7 +3626,7 @@
   </Item>
   <Item id="crpg_mount1_fast_14_h3" name="Shadowfax +3" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="76" speed="53" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="52" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="76" speed="53" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="56" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3642,7 +3642,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_5_h0" name="Suffolk Punch Draught" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="72" speed="34" charge_damage="4" body_length="107" is_mountable="true" extra_health="10" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="72" speed="35" charge_damage="4" body_length="107" is_mountable="true" extra_health="10" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3659,7 +3659,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_5_h1" name="Suffolk Punch Draught +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="72" speed="35" charge_damage="4" body_length="105" is_mountable="true" extra_health="24" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="72" speed="36" charge_damage="4" body_length="105" is_mountable="true" extra_health="24" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3676,7 +3676,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_5_h2" name="Suffolk Punch Draught +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="73" speed="35" charge_damage="4" body_length="105" is_mountable="true" extra_health="38" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="73" speed="36" charge_damage="4" body_length="105" is_mountable="true" extra_health="38" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3693,7 +3693,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_5_h3" name="Suffolk Punch Draught +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="74" speed="35" charge_damage="4" body_length="105" is_mountable="true" extra_health="52" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="74" speed="36" charge_damage="4" body_length="105" is_mountable="true" extra_health="52" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3710,7 +3710,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_6_h0" name="Boulonnais Great Horse" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="74" speed="35" charge_damage="5" body_length="107" is_mountable="true" extra_health="13" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="74" speed="36" charge_damage="5" body_length="107" is_mountable="true" extra_health="13" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3727,7 +3727,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_6_h1" name="Boulonnais Great Horse +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="74" speed="36" charge_damage="5" body_length="105" is_mountable="true" extra_health="27" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="74" speed="37" charge_damage="5" body_length="105" is_mountable="true" extra_health="27" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3744,7 +3744,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_6_h2" name="Boulonnais Great Horse +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="75" speed="36" charge_damage="5" body_length="105" is_mountable="true" extra_health="41" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="75" speed="37" charge_damage="5" body_length="105" is_mountable="true" extra_health="41" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3761,7 +3761,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_6_h3" name="Boulonnais Great Horse +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="76" speed="36" charge_damage="5" body_length="105" is_mountable="true" extra_health="56" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="76" speed="37" charge_damage="5" body_length="105" is_mountable="true" extra_health="56" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3778,7 +3778,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_7_h0" name="Galloway Great Horse" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.battania" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="76" speed="36" charge_damage="6" body_length="107" is_mountable="true" extra_health="16" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="76" speed="37" charge_damage="6" body_length="107" is_mountable="true" extra_health="16" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3795,7 +3795,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_7_h1" name="Galloway Great Horse +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.battania" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="76" speed="37" charge_damage="6" body_length="105" is_mountable="true" extra_health="30" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="76" speed="38" charge_damage="6" body_length="105" is_mountable="true" extra_health="30" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3812,7 +3812,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_7_h2" name="Galloway Great Horse +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.battania" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="77" speed="37" charge_damage="6" body_length="105" is_mountable="true" extra_health="45" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="77" speed="38" charge_damage="6" body_length="105" is_mountable="true" extra_health="45" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3829,7 +3829,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_7_h3" name="Galloway Great Horse +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.battania" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="78" speed="37" charge_damage="6" body_length="105" is_mountable="true" extra_health="59" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="78" speed="38" charge_damage="6" body_length="105" is_mountable="true" extra_health="59" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3846,7 +3846,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_8_h0" name="Poitevin Great Horse" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="78" speed="37" charge_damage="6" body_length="107" is_mountable="true" extra_health="19" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="78" speed="38" charge_damage="6" body_length="107" is_mountable="true" extra_health="19" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3863,7 +3863,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_8_h1" name="Poitevin Great Horse +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="78" speed="38" charge_damage="6" body_length="105" is_mountable="true" extra_health="33" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="78" speed="39" charge_damage="6" body_length="105" is_mountable="true" extra_health="33" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3880,7 +3880,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_8_h2" name="Poitevin Great Horse +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="79" speed="38" charge_damage="6" body_length="105" is_mountable="true" extra_health="48" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="79" speed="39" charge_damage="6" body_length="105" is_mountable="true" extra_health="48" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3897,7 +3897,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_8_h3" name="Poitevin Great Horse +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="80" speed="38" charge_damage="6" body_length="105" is_mountable="true" extra_health="63" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="80" speed="39" charge_damage="6" body_length="105" is_mountable="true" extra_health="63" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3914,7 +3914,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_9_h0" name="Oberlander Great Horse" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="80" speed="37" charge_damage="7" body_length="107" is_mountable="true" extra_health="22" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="80" speed="38" charge_damage="7" body_length="107" is_mountable="true" extra_health="22" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3931,7 +3931,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_9_h1" name="Oberlander Great Horse +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="80" speed="38" charge_damage="7" body_length="105" is_mountable="true" extra_health="36" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="80" speed="39" charge_damage="7" body_length="105" is_mountable="true" extra_health="36" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3948,7 +3948,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_9_h2" name="Oberlander Great Horse +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="81" speed="38" charge_damage="7" body_length="105" is_mountable="true" extra_health="51" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="81" speed="39" charge_damage="7" body_length="105" is_mountable="true" extra_health="51" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3965,7 +3965,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_9_h3" name="Oberlander Great Horse +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="82" speed="38" charge_damage="7" body_length="105" is_mountable="true" extra_health="66" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="82" speed="39" charge_damage="7" body_length="105" is_mountable="true" extra_health="66" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3982,7 +3982,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_10_h0" name="Barthais Great Horse" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="81" speed="38" charge_damage="7" body_length="107" is_mountable="true" extra_health="25" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="81" speed="39" charge_damage="7" body_length="107" is_mountable="true" extra_health="25" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3999,7 +3999,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_10_h1" name="Barthais Great Horse +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="81" speed="39" charge_damage="7" body_length="105" is_mountable="true" extra_health="39" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="81" speed="40" charge_damage="7" body_length="105" is_mountable="true" extra_health="39" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4016,7 +4016,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_10_h2" name="Barthais Great Horse +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="82" speed="39" charge_damage="7" body_length="105" is_mountable="true" extra_health="55" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="82" speed="40" charge_damage="7" body_length="105" is_mountable="true" extra_health="55" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4033,7 +4033,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_10_h3" name="Barthais Great Horse +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="83" speed="39" charge_damage="7" body_length="105" is_mountable="true" extra_health="70" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="83" speed="40" charge_damage="7" body_length="105" is_mountable="true" extra_health="70" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4050,7 +4050,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_11_h0" name="Brabant Great Horse" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="82" speed="38" charge_damage="8" body_length="107" is_mountable="true" extra_health="28" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="82" speed="39" charge_damage="8" body_length="107" is_mountable="true" extra_health="28" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4067,7 +4067,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_11_h1" name="Brabant Great Horse +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="82" speed="39" charge_damage="8" body_length="105" is_mountable="true" extra_health="43" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="82" speed="40" charge_damage="8" body_length="105" is_mountable="true" extra_health="43" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4084,7 +4084,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_11_h2" name="Brabant Great Horse +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="83" speed="39" charge_damage="8" body_length="105" is_mountable="true" extra_health="58" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="83" speed="40" charge_damage="8" body_length="105" is_mountable="true" extra_health="58" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4101,7 +4101,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_11_h3" name="Brabant Great Horse +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="84" speed="39" charge_damage="8" body_length="105" is_mountable="true" extra_health="74" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="84" speed="40" charge_damage="8" body_length="105" is_mountable="true" extra_health="74" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4118,7 +4118,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_12_h0" name="Comtois Great Horse" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="83" speed="39" charge_damage="8" body_length="107" is_mountable="true" extra_health="31" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="83" speed="40" charge_damage="8" body_length="107" is_mountable="true" extra_health="31" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4135,7 +4135,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_12_h1" name="Comtois Great Horse +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="83" speed="40" charge_damage="8" body_length="105" is_mountable="true" extra_health="46" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="83" speed="41" charge_damage="8" body_length="105" is_mountable="true" extra_health="46" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4152,7 +4152,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_12_h2" name="Comtois Great Horse +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="84" speed="40" charge_damage="8" body_length="105" is_mountable="true" extra_health="62" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="84" speed="41" charge_damage="8" body_length="105" is_mountable="true" extra_health="62" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4169,7 +4169,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_12_h3" name="Comtois Great Horse +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="85" speed="40" charge_damage="8" body_length="105" is_mountable="true" extra_health="77" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="85" speed="41" charge_damage="8" body_length="105" is_mountable="true" extra_health="77" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4186,7 +4186,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_13_h0" name="English Black Great Horse" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="84" speed="39" charge_damage="8" body_length="107" is_mountable="true" extra_health="34" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="84" speed="40" charge_damage="8" body_length="107" is_mountable="true" extra_health="34" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4203,7 +4203,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_13_h1" name="English Black Great Horse +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="84" speed="40" charge_damage="8" body_length="105" is_mountable="true" extra_health="49" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="84" speed="41" charge_damage="8" body_length="105" is_mountable="true" extra_health="49" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4220,7 +4220,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_13_h2" name="English Black Great Horse +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="85" speed="40" charge_damage="8" body_length="105" is_mountable="true" extra_health="65" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="85" speed="41" charge_damage="8" body_length="105" is_mountable="true" extra_health="65" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4237,7 +4237,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_13_h3" name="English Black Great Horse +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="86" speed="40" charge_damage="8" body_length="105" is_mountable="true" extra_health="81" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="86" speed="41" charge_damage="8" body_length="105" is_mountable="true" extra_health="81" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4254,7 +4254,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_14_h0" name="Percheron Great Horse" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="84" speed="40" charge_damage="9" body_length="107" is_mountable="true" extra_health="37" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="84" speed="41" charge_damage="9" body_length="107" is_mountable="true" extra_health="37" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4271,7 +4271,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_14_h1" name="Percheron Great Horse +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="84" speed="41" charge_damage="9" body_length="105" is_mountable="true" extra_health="52" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="84" speed="42" charge_damage="9" body_length="105" is_mountable="true" extra_health="52" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4288,7 +4288,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_14_h2" name="Percheron Great Horse +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="85" speed="41" charge_damage="9" body_length="105" is_mountable="true" extra_health="68" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="85" speed="42" charge_damage="9" body_length="105" is_mountable="true" extra_health="68" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4305,7 +4305,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_14_h3" name="Percheron Great Horse +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.vlandia" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="86" speed="41" charge_damage="9" body_length="105" is_mountable="true" extra_health="84" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="86" speed="42" charge_damage="9" body_length="105" is_mountable="true" extra_health="84" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4322,7 +4322,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_15_h0" name="Lionheart" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="84" speed="41" charge_damage="9" body_length="107" is_mountable="true" extra_health="40" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="84" speed="42" charge_damage="9" body_length="107" is_mountable="true" extra_health="40" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4339,7 +4339,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_15_h1" name="Lionheart +1" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="84" speed="42" charge_damage="9" body_length="105" is_mountable="true" extra_health="55" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="84" speed="43" charge_damage="9" body_length="105" is_mountable="true" extra_health="55" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4356,7 +4356,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_15_h2" name="Lionheart +2" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="85" speed="42" charge_damage="9" body_length="105" is_mountable="true" extra_health="72" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="85" speed="43" charge_damage="9" body_length="105" is_mountable="true" extra_health="72" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4373,7 +4373,7 @@
   </Item>
   <Item id="crpg_mount_greathorse_15_h3" name="Lionheart +3" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" weight="450" difficulty="0" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="86" speed="42" charge_damage="9" body_length="105" is_mountable="true" extra_health="88" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="86" speed="43" charge_damage="9" body_length="105" is_mountable="true" extra_health="88" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4390,7 +4390,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_2_h0" name="Sumpter Horse" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="60" speed="34" charge_damage="1" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-2" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="60" speed="34" charge_damage="1" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="1" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4406,7 +4406,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_2_h1" name="Sumpter Horse +1" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="60" speed="35" charge_damage="1" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="11" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="60" speed="35" charge_damage="1" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="14" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4422,7 +4422,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_2_h2" name="Sumpter Horse +2" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="61" speed="35" charge_damage="1" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="24" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="61" speed="35" charge_damage="1" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="28" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4438,7 +4438,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_2_h3" name="Sumpter Horse +3" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="62" speed="35" charge_damage="1" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="38" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="62" speed="35" charge_damage="1" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="41" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4454,7 +4454,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_3_h0" name="Raymond Rouncey" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="62" speed="38" charge_damage="2" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-14" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="62" speed="38" charge_damage="2" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-11" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4470,7 +4470,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_3_h1" name="Raymond Rouncey +1" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="62" speed="39" charge_damage="2" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-2" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="62" speed="39" charge_damage="2" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="1" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4486,7 +4486,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_3_h2" name="Raymond Rouncey +2" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="63" speed="39" charge_damage="2" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="11" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="63" speed="39" charge_damage="2" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="14" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4502,7 +4502,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_3_h3" name="Raymond Rouncey +3" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="64" speed="39" charge_damage="2" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="23" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="64" speed="39" charge_damage="2" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="27" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4518,7 +4518,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_4_h0" name="Fell Pony" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.vlandia" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="64" speed="40" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-23" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="64" speed="40" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-20" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4534,7 +4534,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_4_h1" name="Fell Pony +1" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.vlandia" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="64" speed="41" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-12" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="64" speed="41" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-8" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4550,7 +4550,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_4_h2" name="Fell Pony +2" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.vlandia" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="65" speed="41" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="1" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="65" speed="41" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="4" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4566,7 +4566,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_4_h3" name="Fell Pony +3" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.vlandia" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="66" speed="41" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="13" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="66" speed="41" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="16" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4582,7 +4582,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_5_h0" name="Welsh Cob" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.battania" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="66" speed="41" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-20" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="66" speed="41" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-17" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4598,7 +4598,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_5_h1" name="Welsh Cob +1" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.battania" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="66" speed="42" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-8" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="66" speed="42" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-5" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4614,7 +4614,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_5_h2" name="Welsh Cob +2" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.battania" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="67" speed="42" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="4" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="67" speed="42" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="7" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4630,7 +4630,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_5_h3" name="Welsh Cob +3" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.battania" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="68" speed="42" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="16" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="68" speed="42" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="20" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4646,7 +4646,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_6_h0" name="Sanhe Rouncey" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.khuzait" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="68" speed="42" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-17" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="68" speed="42" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-14" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4662,7 +4662,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_6_h1" name="Sanhe Rouncey +1" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.khuzait" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="68" speed="43" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-5" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="68" speed="43" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-2" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4678,7 +4678,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_6_h2" name="Sanhe Rouncey +2" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.khuzait" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="69" speed="43" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="7" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="69" speed="43" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="11" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4694,7 +4694,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_6_h3" name="Sanhe Rouncey +3" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.khuzait" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="70" speed="43" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="20" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="70" speed="43" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="23" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4710,7 +4710,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_7_h0" name="Megrelakaya Rouncey" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.empire" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="70" speed="43" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-14" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="70" speed="43" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-11" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4726,7 +4726,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_7_h1" name="Megrelakaya Rouncey +1" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.empire" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="70" speed="44" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-2" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="70" speed="44" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="1" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4742,7 +4742,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_7_h2" name="Megrelakaya Rouncey +2" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.empire" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="71" speed="44" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="11" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="71" speed="44" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="14" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4758,7 +4758,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_7_h3" name="Megrelakaya Rouncey +3" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.empire" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="72" speed="44" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="23" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="72" speed="44" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="27" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4774,7 +4774,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_8_h0" name="East Anglis Rouncey" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.vlandia" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="72" speed="44" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-11" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="72" speed="44" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-8" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4790,7 +4790,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_8_h1" name="East Anglis Rouncey +1" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.vlandia" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="72" speed="45" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="1" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="72" speed="45" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="4" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4806,7 +4806,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_8_h2" name="East Anglis Rouncey +2" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.vlandia" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="73" speed="45" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="14" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="73" speed="45" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="17" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4822,7 +4822,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_8_h3" name="East Anglis Rouncey +3" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.vlandia" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="74" speed="45" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="27" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="74" speed="45" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="31" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4838,7 +4838,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_9_h0" name="Anadolu Rouncey" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.aserai" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="74" speed="45" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-8" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="74" speed="45" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-5" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4854,7 +4854,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_9_h1" name="Anadolu Rouncey +1" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.aserai" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="74" speed="46" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="4" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="74" speed="46" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="8" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4870,7 +4870,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_9_h2" name="Anadolu Rouncey +2" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.aserai" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="75" speed="46" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="17" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="75" speed="46" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="21" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4886,7 +4886,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_9_h3" name="Anadolu Rouncey +3" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.aserai" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="76" speed="46" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="31" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="76" speed="46" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="34" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4902,7 +4902,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_10_h0" name="Black Forest Rouncey" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.vlandia" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="75" speed="45" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-5" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="75" speed="45" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-2" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4918,7 +4918,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_10_h1" name="Black Forest Rouncey +1" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.vlandia" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="75" speed="46" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="8" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="75" speed="46" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="11" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4934,7 +4934,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_10_h2" name="Black Forest Rouncey +2" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.vlandia" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="76" speed="46" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="21" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="76" speed="46" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="24" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4950,7 +4950,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_10_h3" name="Black Forest Rouncey +3" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.vlandia" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="77" speed="46" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="34" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="77" speed="46" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="38" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4966,7 +4966,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_11_h0" name="Bidet Breton Rouncey" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.vlandia" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="76" speed="46" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-2" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="76" speed="46" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="1" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4982,7 +4982,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_11_h1" name="Bidet Breton Rouncey +1" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.vlandia" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="76" speed="47" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="11" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="76" speed="47" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="14" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4998,7 +4998,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_11_h2" name="Bidet Breton Rouncey +2" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.vlandia" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="77" speed="47" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="24" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="77" speed="47" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="28" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -5014,7 +5014,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_11_h3" name="Bidet Breton Rouncey +3" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.vlandia" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="78" speed="47" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="38" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="78" speed="47" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="41" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -5030,7 +5030,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_12_h0" name="Dzhabe Rouncey" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.khuzait" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="77" speed="47" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="1" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="77" speed="47" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="4" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -5046,7 +5046,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_12_h1" name="Dzhabe Rouncey +1" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.khuzait" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="77" speed="48" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="14" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="77" speed="48" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="17" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -5062,7 +5062,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_12_h2" name="Dzhabe Rouncey +2" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.khuzait" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="78" speed="48" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="28" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="78" speed="48" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="31" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -5078,7 +5078,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_12_h3" name="Dzhabe Rouncey +3" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.khuzait" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="79" speed="48" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="41" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="79" speed="48" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="45" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -5094,7 +5094,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_13_h0" name="Karachay Rouncey" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.khuzait" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="78" speed="47" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="4" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="78" speed="47" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="7" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -5110,7 +5110,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_13_h1" name="Karachay Rouncey +1" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.khuzait" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="78" speed="48" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="17" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="78" speed="48" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="20" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -5126,7 +5126,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_13_h2" name="Karachay Rouncey +2" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.khuzait" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="79" speed="48" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="31" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="79" speed="48" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="34" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -5142,7 +5142,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_13_h3" name="Karachay Rouncey +3" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.khuzait" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="80" speed="48" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="45" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="80" speed="48" charge_damage="4" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="48" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -5158,7 +5158,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_14_h0" name="Unmol Rouncey" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.aserai" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="78" speed="48" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="7" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="78" speed="48" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="10" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -5174,7 +5174,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_14_h1" name="Unmol Rouncey +1" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.aserai" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="78" speed="49" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="20" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="78" speed="49" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="24" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -5190,7 +5190,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_14_h2" name="Unmol Rouncey +2" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.aserai" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="79" speed="49" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="34" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="79" speed="49" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="38" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -5206,7 +5206,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_14_h3" name="Unmol Rouncey +3" mesh="horse_brown" item_category="noble_horse" difficulty="0" culture="Culture.aserai" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="80" speed="49" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="48" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="80" speed="49" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="52" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -5222,7 +5222,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_15_h0" name="Kehilan al-Khamsa" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="78" speed="49" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="10" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="78" speed="49" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="13" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -5238,7 +5238,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_15_h1" name="Kehilan al-Khamsa +1" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="78" speed="50" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="24" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="78" speed="50" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="27" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -5254,7 +5254,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_15_h2" name="Kehilan al-Khamsa +2" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="79" speed="50" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="38" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="79" speed="50" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="41" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -5270,7 +5270,7 @@
   </Item>
   <Item id="crpg_mount_rouncey_15_h3" name="Kehilan al-Khamsa +3" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="80" speed="50" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="52" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="80" speed="50" charge_damage="5" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="56" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
