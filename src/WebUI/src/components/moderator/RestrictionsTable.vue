@@ -78,7 +78,7 @@ const { pageModel, perPage } = usePagination();
           }"
           class="inline-block hover:text-content-100"
         >
-          <UserMedia :user="restriction.restrictedUser" />
+          <UserMedia :user="restriction.restrictedUser" class="max-w-[10rem]" />
         </RouterLink>
       </template>
     </OTableColumn>
@@ -156,9 +156,9 @@ const { pageModel, perPage } = usePagination();
       #default="{ row: restriction }: { row: RestrictionWithActive }"
       field="restrictedByUser.name"
       :label="$t('restriction.table.column.restrictedBy')"
-      :width="180"
+      :width="224"
     >
-      <UserMedia :user="restriction.restrictedByUser" />
+      <UserMedia :user="restriction.restrictedByUser" class="max-w-[14rem]" />
     </OTableColumn>
 
     <template #empty>

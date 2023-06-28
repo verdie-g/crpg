@@ -82,18 +82,17 @@ const rowClass = (row: CharacterCompetitiveNumbered) =>
           #default="{ row }: { row: CharacterCompetitiveNumbered }"
           field="position"
           :label="$t('leaderboard.table.cols.top')"
-          :width="120"
+          :width="80"
           sortable
         >
           {{ row.position }}
-          <span v-if="isSelfUser(row)">({{ $t('you') }})</span>
         </OTableColumn>
 
         <OTableColumn
           #default="{ row }: { row: CharacterCompetitiveNumbered }"
           field="rating.competitiveValue"
           :label="$t('leaderboard.table.cols.rank')"
-          :width="220"
+          :width="230"
         >
           <Rank :rankTable="rankTable" :competitiveValue="row.rating.competitiveValue" />
         </OTableColumn>
@@ -102,9 +101,8 @@ const rowClass = (row: CharacterCompetitiveNumbered) =>
           #default="{ row }: { row: CharacterCompetitiveNumbered }"
           field="user.name"
           :label="$t('leaderboard.table.cols.player')"
-          :width="180"
         >
-          <UserMedia :user="row.user" :clan="row.user.clan" hiddenPlatform />
+          <UserMedia :user="row.user" :clan="row.user.clan" hiddenPlatform class="max-w-[20rem]" />
         </OTableColumn>
 
         <OTableColumn
@@ -124,16 +122,9 @@ const rowClass = (row: CharacterCompetitiveNumbered) =>
           #default="{ row }: { row: CharacterCompetitiveNumbered }"
           field="level"
           :label="$t('leaderboard.table.cols.level')"
+          sortable
         >
           {{ row.level }}
-        </OTableColumn>
-
-        <OTableColumn
-          #default="{ row }: { row: CharacterCompetitiveNumbered }"
-          field="user.region"
-          :label="$t('leaderboard.table.cols.region')"
-        >
-          {{ $t(`region.${row.user.region}`, 0) }}
         </OTableColumn>
 
         <template #empty>

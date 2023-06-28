@@ -280,6 +280,7 @@ public record SeedDataCommand : IMediatorRequest
                 Platform = Platform.EpicGames,
                 PlatformUserId = "76561198026044780",
                 Name = "Baron Cyborg",
+                Region = Region.Eu,
                 Avatar = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/58/5838cfcd99e280d82f63d92472d6d5aecebfb812_full.jpg"),
             };
             User manik = new()
@@ -340,7 +341,8 @@ public record SeedDataCommand : IMediatorRequest
             User noobAmphetamine = new()
             {
                 PlatformUserId = "76561198140492451",
-                Name = "Noobamphetamine",
+                Name = "NoobamphetaminenoobAmphetamine",
+                Region = Region.Eu,
                 Avatar = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/fe/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg"),
             };
             User mundete = new()
@@ -948,11 +950,20 @@ public record SeedDataCommand : IMediatorRequest
                 Name = krog.Name,
                 Limitations = new CharacterLimitations(),
             };
-
+            Character noobAmphetamine0 = new()
+            {
+                User = noobAmphetamine,
+                Name = noobAmphetamine.Name,
+            };
+            Character baronCyborg0 = new()
+            {
+                User = baronCyborg,
+                Name = baronCyborg.Name,
+            };
             Character[] newCharacters =
             {
                 takeoCharacter0, takeoCharacter1, takeoCharacter2, namidakaCharacter0, orleCharacter0, orleCharacter1, orleCharacter2,
-                falcomCharacter0, victorhh888Character0, sellkaCharacter0, krogCharacter0, kadseCharacter0,
+                falcomCharacter0, victorhh888Character0, sellkaCharacter0, krogCharacter0, kadseCharacter0, noobAmphetamine0, baronCyborg0,
             };
 
             var existingCharacters = await _db.Characters.ToDictionaryAsync(c => c.Name);
@@ -1133,6 +1144,7 @@ public record SeedDataCommand : IMediatorRequest
             ClanMember knitlerMember = new() { User = knitler, Clan = jklClan, Role = ClanMemberRole.Leader };
             ClanMember magnucleanMember = new() { User = magnuclean, Clan = mnoClan, Role = ClanMemberRole.Leader };
             ClanMember baronCyborgMember = new() { User = baronCyborg, Clan = pqrClan, Role = ClanMemberRole.Leader, };
+            ClanMember noobAmphetamineMember = new() { User = noobAmphetamine, Clan = pecores, Role = ClanMemberRole.Member };
 
             ClanMember[] newClanMembers =
             {
@@ -1140,7 +1152,7 @@ public record SeedDataCommand : IMediatorRequest
                 eckoMember, firebatMember, sellkaMember, leanirMember, opsetMember,
                 falcomMember, brainfartMember, kiwiMember, ikaroozMember, brygganMember, schumetzqMember,
                 victorhh888Member, distanceMember, bakhratMember, lancelotMember,
-                buddhaMember, lerchMember, tjensMember, knitlerMember, magnucleanMember, baronCyborgMember,
+                buddhaMember, lerchMember, tjensMember, knitlerMember, magnucleanMember, baronCyborgMember, noobAmphetamineMember,
             };
             var existingClanMembers = await _db.ClanMembers.ToDictionaryAsync(cm => cm.UserId);
             foreach (var newClanMember in newClanMembers)
