@@ -5,19 +5,17 @@ import { n } from '@/services/translate-service';
 
 const gameStatsErrorIndicator = '?';
 
-const props = withDefaults(
-  defineProps<{ gameServerStats: GameServerStats | null; showLabel?: boolean }>(),
-  {
-    showLabel: false,
-  }
-);
+const { gameServerStats, showLabel = false } = defineProps<{
+  gameServerStats: GameServerStats | null;
+  showLabel?: boolean;
+}>();
 
 const animatedPlayingCount = useTransition(
-  computed(() => (props.gameServerStats !== null ? props.gameServerStats.total.playingCount : -1))
+  toRef(() => (gameServerStats !== null ? gameServerStats.total.playingCount : -1))
 );
 
 const animatedPlayingCountString = computed(() =>
-  props.gameServerStats !== null
+  gameServerStats !== null
     ? n(Number(animatedPlayingCount.value.toFixed(0)), 'decimal')
     : gameStatsErrorIndicator
 );
