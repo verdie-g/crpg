@@ -79,7 +79,7 @@ internal class ActivityLogService : IActivityLogService
 
     public ActivityLog CreateItemReforgedLog(int userId, string itemId, int heirloomPoints)
     {
-        return CreateLog(ActivityLogType.ItemUpgraded, userId, new ActivityLogMetadata[]
+        return CreateLog(ActivityLogType.ItemReforged, userId, new ActivityLogMetadata[]
         {
             new("itemId", itemId),
             new("heirloomPoints", heirloomPoints.ToString()),
