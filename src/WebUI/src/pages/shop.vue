@@ -290,8 +290,8 @@ const isUpgradableCategory = computed(() => canUpgrade(itemTypeModel.value));
               <OPagination
                 v-model:current="pageModel"
                 :total="searchResult.pagination.total"
-                :rangeBefore="1"
-                :rangeAfter="1"
+                :rangeBefore="2"
+                :rangeAfter="2"
                 :perPage="searchResult.pagination.per_page"
                 order="left"
                 aria-next-label="Next page"
@@ -307,6 +307,8 @@ const isUpgradableCategory = computed(() => canUpgrade(itemTypeModel.value));
                   <span></span>
                 </template>
               </OPagination>
+
+              <OInput v-model="pageModel" size="sm" rounded class="w-20" clearable />
             </div>
 
             <div class="flex justify-center">
