@@ -20,7 +20,7 @@ const {
 </script>
 
 <template>
-  <div class="flex items-center gap-2">
+  <div class="flex items-center gap-1">
     <img
       :src="user.avatar"
       alt=""
@@ -28,28 +28,28 @@ const {
       :class="size === 'xl' ? 'h-10 w-10' : 'h-7 w-7'"
     />
 
-    <div class="flex items-center gap-1">
-      <template v-if="clan">
-        <RouterLink
-          class="group flex items-center gap-1 hover:opacity-75"
-          :to="{ name: 'ClansId', params: { id: clan.id } }"
-        >
-          <ClanRoleIcon
-            v-if="
-              clanRole !== null &&
-              [ClanMemberRole.Leader, ClanMemberRole.Officer].includes(clanRole)
-            "
-            :role="clanRole"
-          />
-          <ClanTagIcon :color="clan.primaryColor" />
-          [{{ clan.tag }}]
-        </RouterLink>
-      </template>
+    <template v-if="clan">
+      <RouterLink
+        class="group flex items-center gap-1 hover:opacity-75"
+        :to="{ name: 'ClansId', params: { id: clan.id } }"
+      >
+        <ClanRoleIcon
+          v-if="
+            clanRole !== null && [ClanMemberRole.Leader, ClanMemberRole.Officer].includes(clanRole)
+          "
+          :role="clanRole"
+        />
+        <ClanTagIcon :color="clan.primaryColor" />
+        [{{ clan.tag }}]
+      </RouterLink>
+    </template>
 
-      <span>
-        {{ user.name }}
-        <template v-if="isSelf">({{ $t('you') }})</template>
-      </span>
+    <div
+      class="max-w-full overflow-x-hidden overflow-ellipsis whitespace-nowrap"
+      :title="user.name"
+    >
+      {{ user.name }}
+      <template v-if="isSelf">({{ $t('you') }})</template>
     </div>
 
     <UserPlatform
