@@ -77,8 +77,18 @@ internal class CrpgDtvSpawningBehavior : CrpgSpawningBehaviorBase
         {
             if (group.ClassDivisionId != null)
             {
-                // TODO: Scale group.Count with GetCurrentPlayerCount()
-                Debug.Print($"Spawning {group.Count} {group.ClassDivisionId}(s)");
+                int playerCount = GetCurrentPlayerCount();
+                double botCount;
+                if (group.ClassDivisionId.Contains("boss"))
+                {
+                    botCount = group.Count;
+                }
+                else
+                {
+                    botCount = Math.Round(playerCount * group.Count);
+                }
+
+                Debug.Print($"Spawning {botCount} {group.ClassDivisionId}(s)");
                 for (int i = 0; i < group.Count; i++)
                 {
                     SpawnBotAgent(group.ClassDivisionId, Mission.AttackerTeam);

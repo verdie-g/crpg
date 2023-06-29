@@ -50,6 +50,7 @@
 
   <!-- DTV Maps -->
   <string id="str_multiplayer_scene_name.crpg_dtv_test" text="{=*}DTV Test Map" />
+  <string id="str_multiplayer_scene_name.crpg_dtv_weepinghill" text="{=*}Weeping Hill" />
   
   <!-- Battle Maps -->
   <string id="str_multiplayer_scene_name.crpg_battle_abandoned" text="{=*}Abandoned" />

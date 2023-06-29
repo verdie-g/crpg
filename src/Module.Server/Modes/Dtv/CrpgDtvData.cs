@@ -61,5 +61,5 @@ public class CrpgDtvGroup
     public string? ClassDivisionId { get; set; }
 
     [XmlAttribute(AttributeName = "count")]
-    public int Count { get; set; }
+    public double Count { get; set; }
 }
