@@ -356,6 +356,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
   [ItemType.Mount]: [
     'culture',
     'mountFamilyType',
+    'bodyLength',
     'chargeDamage',
     'maneuver',
     'speed',
