@@ -231,6 +231,12 @@ internal static class CommonErrors
         Detail = $"Item with id '{itemId}' is not owned by the user",
     };
 
+    public static Error ItemNotReforgeable(string itemId) => new(ErrorType.Validation, ErrorCode.ItemNotReforgeable)
+    {
+        Title = "Item is not reforgeable",
+        Detail = $"Item with id '{itemId}' is not reforgeable",
+    };
+
     public static Error ItemNotSellable(string itemId) => new(ErrorType.Validation, ErrorCode.ItemNotSellable)
     {
         Title = "Item is not sellable",
