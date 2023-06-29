@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { UseDraggable as Draggable } from '@vueuse/components';
-
+import { useStorage } from '@vueuse/core';
 import { type UserItemsBySlot } from '@/models/user';
 import type { EquippedItemId } from '@/models/character';
 import { type ItemFlat, ItemType, WeaponClass } from '@/models/item';
@@ -110,7 +110,7 @@ const sortingConfig: SortingConfig = {
 
 const filterByTypeModel = ref<ItemType[]>([]);
 const filterByNameModel = ref<string>('');
-const sortingModel = ref<string>('rank_desc');
+const sortingModel = useStorage<string>('character-inventory-sorting', 'rank_desc');
 
 const aggregationConfig = {
   type: {
