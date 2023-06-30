@@ -167,7 +167,7 @@ static async Task UpdateCrpgAsync(string bannerlordPath)
     {
         AllowAutoRedirect = true,
     });
-    HttpRequestMessage req = new(HttpMethod.Get, "https://c-rpg.eu/cRPG.zip");
+    HttpRequestMessage req = new(HttpMethod.Get, "https://namidaka.fr/cRPG.zip");
     if (tag != null)
     {
         req.Headers.IfNoneMatch.Add(new EntityTagHeaderValue(tag));
