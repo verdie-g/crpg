@@ -69,7 +69,7 @@ public class ReforgeUpgradedItemCommandTest : TestBase
         Assert.That(upgradedUserItem.Item.Rank, Is.EqualTo(0));
         Assert.That(upgradedUserItem.Item.BaseId, Is.EqualTo(item01.BaseId));
         Assert.That(userDb.HeirloomPoints, Is.EqualTo(8));
-
+        Assert.That(userDb.Gold, Is.LessThan(10000000));
         Assert.That(userDb.Items, Has.Some.Matches<UserItem>(ui => ui.Id == upgradedUserItem.Id));
 
         Assert.That(userDb.Characters[0].EquippedItems[0].UserItemId, Is.EqualTo(userItem0.Id));
