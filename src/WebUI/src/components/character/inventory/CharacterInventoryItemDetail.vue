@@ -40,9 +40,10 @@ const userItemToReplaceSalePrice = computed(() => {
 const repairCost = computed(() => computeBrokenItemRepairCost(props.item.price));
 
 const emit = defineEmits<{
-  (e: 'sell'): void;
-  (e: 'repair'): void;
-  (e: 'upgrade'): void;
+  sell: [];
+  repair: [];
+  upgrade: [];
+  reforge: [];
 }>();
 
 const omitEmptyParam = (field: keyof ItemFlat) => {
@@ -246,11 +247,12 @@ const isUpgradable = computed(() => canUpgrade(props.item.type));
           v-tooltip="$t('character.inventory.item.upgrade.upgradesTitle')"
         />
         <template #popper>
-          <div class="container pb-4 pt-10">
+          <div class="container pb-2 pt-12">
             <CharacterInventoryItemUpgrades
               :item="item"
               :cols="aggregationsConfig"
               @upgrade="emit('upgrade')"
+              @reforge="emit('reforge')"
             />
           </div>
         </template>
