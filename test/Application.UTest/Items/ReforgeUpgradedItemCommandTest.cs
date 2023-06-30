@@ -205,6 +205,7 @@ public class ReforgeUpgradedItemCommandTest : TestBase
         var errorCode = result.Errors![0].Code;
         Assert.That(errorCode, Is.EqualTo(ErrorCode.ItemNotReforgeable));
     }
+
     [Test]
     public async Task CannotReforgeIfNotEnoughGold()
     {
@@ -261,5 +262,4 @@ public class ReforgeUpgradedItemCommandTest : TestBase
         var errorCode = result.Errors![0].Code;
         Assert.That(errorCode, Is.EqualTo(ErrorCode.NotEnoughGold));
     }
-
 }
