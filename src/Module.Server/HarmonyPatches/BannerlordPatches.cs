@@ -21,6 +21,9 @@ internal static class BannerlordPatches
         AddPrefix(harmony, typeof(MissionNetworkComponent), "SendSpawnedMissionObjectsToPeer",
             BindingFlags.NonPublic | BindingFlags.Instance, typeof(MissionNetworkComponentPatch),
             nameof(MissionNetworkComponentPatch.Prefix));
+        AddPostfix(harmony, typeof(Mission), "DecideWeaponCollisionReaction",
+        BindingFlags.NonPublic | BindingFlags.Instance, typeof(DecideWeaponCollisionReactionPatch),
+        nameof(DecideWeaponCollisionReactionPatch.Postfix));
     }
 
     private static void AddPrefix(Harmony harmony, Type classToPatch, string functionToPatchName, BindingFlags flags, Type patchClass, string functionPatchName)
@@ -28,5 +31,12 @@ internal static class BannerlordPatches
         var functionToPatch = classToPatch.GetMethod(functionToPatchName, flags);
         var newHarmonyPatch = patchClass.GetMethod(functionPatchName);
         harmony.Patch(functionToPatch, prefix: new HarmonyMethod(newHarmonyPatch));
+    }
+
+    private static void AddPostfix(Harmony harmony, Type classToPatch, string functionToPatchName, BindingFlags flags, Type patchClass, string functionPatchName)
+    {
+        var functionToPatch = classToPatch.GetMethod(functionToPatchName, flags);
+        var newHarmonyPatch = patchClass.GetMethod(functionPatchName);
+        harmony.Patch(functionToPatch, postfix: new HarmonyMethod(newHarmonyPatch));
     }
 }
