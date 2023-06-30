@@ -24,7 +24,7 @@ public class ReforgeUpgradedItemCommandTest : TestBase
 
         User user = new()
         {
-            Gold = 100,
+            Gold = 10000000,
             HeirloomPoints = 5,
             Items = { userItem0, userItem1 },
             Characters =
@@ -88,7 +88,7 @@ public class ReforgeUpgradedItemCommandTest : TestBase
         Item item0 = new() { Id = "a_h12", BaseId = "a", Price = 100, Enabled = true, Rank = 12 };
         User user = new()
         {
-            Gold = 100,
+            Gold = 1000000,
             Items = { new() },
             HeirloomPoints = 10,
         };
@@ -128,7 +128,7 @@ public class ReforgeUpgradedItemCommandTest : TestBase
         Item item0 = new() { Id = "a_h0", BaseId = "a", Price = 100, Enabled = true, Rank = 0, Type = ItemType.Banner };
         User user = new()
         {
-            Gold = 100,
+            Gold = 10000000,
             Items = { new UserItem { Item = item0 } },
             HeirloomPoints = 5,
         };
@@ -157,7 +157,7 @@ public class ReforgeUpgradedItemCommandTest : TestBase
         Item item1 = new() { Id = "a_h1", BaseId = "a", Price = 100, Enabled = true, Rank = 1 };
         User user = new()
         {
-            Gold = 100,
+            Gold = 1000000,
             Items = { new() { Item = item0 }, new() { Item = item1 } },
             HeirloomPoints = 5,
         };
@@ -205,4 +205,61 @@ public class ReforgeUpgradedItemCommandTest : TestBase
         var errorCode = result.Errors![0].Code;
         Assert.That(errorCode, Is.EqualTo(ErrorCode.ItemNotReforgeable));
     }
+    [Test]
+    public async Task CannotReforgeIfNotEnoughGold()
+    {
+        Item item00 = new() { Id = "a_h0", BaseId = "a", Price = 100, Enabled = true, Rank = 0 };
+        Item item01 = new() { Id = "a_h3", BaseId = "a", Price = 100, Enabled = true, Rank = 3 };
+        Item item10 = new() { Id = "b_h0", BaseId = "b", Price = 100, Enabled = true, Rank = 1 };
+
+        UserItem userItem0 = new() { Item = item01 };
+        UserItem userItem1 = new() { Item = item10 };
+
+        User user = new()
+        {
+            Gold = 100,
+            HeirloomPoints = 5,
+            Items = { userItem0, userItem1 },
+            Characters =
+            {
+                new Character
+                {
+                    EquippedItems =
+                    {
+                        new EquippedItem { Slot = ItemSlot.Head, UserItem = userItem0 },
+                        new EquippedItem { Slot = ItemSlot.Shoulder, UserItem = userItem0 },
+                        new EquippedItem { Slot = ItemSlot.Body, UserItem = userItem1 },
+                    },
+                },
+                new Character
+                {
+                    EquippedItems =
+                    {
+                        new EquippedItem { Slot = ItemSlot.Head, UserItem = userItem0 },
+                    },
+                },
+            },
+        };
+        ArrangeDb.Users.Add(user);
+        ArrangeDb.Items.AddRange(item00, item01, item10);
+        await ArrangeDb.SaveChangesAsync();
+
+        Mock<IActivityLogService> activityLogServiceMock = new() { DefaultValue = DefaultValue.Mock };
+
+        ReforgeUpgradedUserItemCommand.Handler handler = new(ActDb, Mapper, activityLogServiceMock.Object);
+        var result = await handler.Handle(new ReforgeUpgradedUserItemCommand
+        {
+            UserItemId = userItem0.Id,
+            UserId = user.Id,
+        }, CancellationToken.None);
+
+        var userDb = await AssertDb.Users
+            .Include(u => u.Items)
+            .Include(u => u.Characters).ThenInclude(c => c.EquippedItems).ThenInclude(ei => ei.UserItem)
+            .FirstAsync(u => u.Id == user.Id);
+
+        var errorCode = result.Errors![0].Code;
+        Assert.That(errorCode, Is.EqualTo(ErrorCode.NotEnoughGold));
+    }
+
 }

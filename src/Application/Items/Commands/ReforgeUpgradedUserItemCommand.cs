@@ -13,6 +13,13 @@ namespace Crpg.Application.Items.Commands;
 
 public record ReforgeUpgradedUserItemCommand : IMediatorRequest<UserItemViewModel>
 {
+    private static readonly Dictionary<int, int> ReforgePriceForRank = new()
+    {
+        [1] = 40000,
+        [2] = 90000,
+        [3] = 150000,
+    };
+
     public int UserItemId { get; init; }
     public int UserId { get; init; }
 
@@ -64,6 +71,16 @@ public record ReforgeUpgradedUserItemCommand : IMediatorRequest<UserItemViewMode
             if (userItemToReforge.Item.Rank == 0)
             {
                 return new(CommonErrors.ItemNotReforgeable(userItemToReforge.ItemId));
+            }
+
+            if (!ReforgePriceForRank.TryGetValue(userItemToReforge.Item.Rank, out int price))
+            {
+                return new(CommonErrors.ItemNotReforgeable(userItemToReforge.ItemId));
+            }
+
+            if (user.Gold < price)
+            {
+                return new(CommonErrors.NotEnoughGold(price, user.Gold));
             }
 
             Item? baseItem = await _db.Items
