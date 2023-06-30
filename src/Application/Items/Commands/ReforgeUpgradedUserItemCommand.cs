@@ -73,14 +73,14 @@ public record ReforgeUpgradedUserItemCommand : IMediatorRequest<UserItemViewMode
                 return new(CommonErrors.ItemNotReforgeable(userItemToReforge.ItemId));
             }
 
-            if (!ReforgePriceForRank.TryGetValue(userItemToReforge.Item.Rank, out int price))
+            if (!ReforgePriceForRank.TryGetValue(userItemToReforge.Item.Rank, out int reforgePrice))
             {
                 return new(CommonErrors.ItemNotReforgeable(userItemToReforge.ItemId));
             }
 
-            if (user.Gold < price)
+            if (user.Gold < reforgePrice)
             {
-                return new(CommonErrors.NotEnoughGold(price, user.Gold));
+                return new(CommonErrors.NotEnoughGold(reforgePrice, user.Gold));
             }
 
             Item? baseItem = await _db.Items
@@ -100,7 +100,7 @@ public record ReforgeUpgradedUserItemCommand : IMediatorRequest<UserItemViewMode
 
             _db.ActivityLogs.Add(_activityLogService.CreateItemReforgedLog(user.Id, userItemToReforge.ItemId, userItemToReforge.Item.Rank));
             user.HeirloomPoints += userItemToReforge.Item.Rank;
-            user.Gold -= price;
+            user.Gold -= reforgePrice;
             userItemToReforge.Item = baseItem;
 
             await _db.SaveChangesAsync(cancellationToken);
