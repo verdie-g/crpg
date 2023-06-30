@@ -8,14 +8,14 @@ const { competitiveValue = null, rankTable } = defineProps<{
   rankTable: Rank[];
 }>();
 
-const groupedRankTable = computed(() => groupBy([...rankTable], r => r.groupTitle));
+const groupedRankTable = computed(() => groupBy([...rankTable].reverse(), r => r.groupTitle));
 </script>
 
 <template>
   <div class="max-h-[90vh] space-y-8 overflow-y-auto px-12 pb-6 pt-8 text-center">
     <h4 class="text-xl">{{ $t('rankTable.title') }}</h4>
 
-    <OTable :data="Object.entries(groupedRankTable)" bordered>
+    <OTable :data="Object.entries(groupedRankTable)" bordered hoverable>
       <OTableColumn #default="{ row }: { row: [string, Rank[]] }">
         <span :style="{ color: row[1][0].color }">
           {{ row[0] }}
@@ -23,22 +23,23 @@ const groupedRankTable = computed(() => groupBy([...rankTable], r => r.groupTitl
       </OTableColumn>
 
       <OTableColumn
-        v-for="(col, idx) in 5"
+        v-for="(_col, idx) in 5"
         #default="{ row }: { row: [string, Rank[]] }"
-        :label="String(col)"
+        :label="String(5 - idx)"
       >
         <span
           v-if="
-            competitiveValue !== null && inRange(competitiveValue, row[1][idx].min, row[1][idx].max)
+            competitiveValue !== null &&
+            inRange(competitiveValue, row[1][4 - idx].min, row[1][4 - idx].max)
           "
-          :style="{ color: row[1][idx].color }"
+          :style="{ color: row[1][4 - idx].color }"
           class="font-black"
         >
-          {{ row[1][idx].min }} - {{ row[1][idx].max }} ({{ $t('you') }})
+          {{ row[1][4 - idx].min }} - {{ row[1][4 - idx].max }} ({{ $t('you') }})
         </span>
 
-        <span v-else :style="{ color: row[1][idx].color }">
-          {{ row[1][idx].min }} - {{ row[1][idx].max }}
+        <span v-else :style="{ color: row[1][4 - idx].color }" v-tooltip="`${row[0]} ${5 - idx}`">
+          {{ row[1][4 - idx].min }} - {{ row[1][4 - idx].max }}
         </span>
       </OTableColumn>
     </OTable>
