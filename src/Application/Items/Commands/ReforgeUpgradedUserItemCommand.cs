@@ -100,6 +100,7 @@ public record ReforgeUpgradedUserItemCommand : IMediatorRequest<UserItemViewMode
 
             _db.ActivityLogs.Add(_activityLogService.CreateItemReforgedLog(user.Id, userItemToReforge.ItemId, userItemToReforge.Item.Rank));
             user.HeirloomPoints += userItemToReforge.Item.Rank;
+            user.Gold -= price;
             userItemToReforge.Item = baseItem;
 
             await _db.SaveChangesAsync(cancellationToken);
