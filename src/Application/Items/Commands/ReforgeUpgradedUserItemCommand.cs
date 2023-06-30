@@ -1,9 +1,11 @@
 using AutoMapper;
+using Crpg.Application.Common;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Items.Models;
+using Crpg.Common.Helpers;
 using Crpg.Domain.Entities.Items;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -13,13 +15,6 @@ namespace Crpg.Application.Items.Commands;
 
 public record ReforgeUpgradedUserItemCommand : IMediatorRequest<UserItemViewModel>
 {
-    private static readonly Dictionary<int, int> ReforgePriceForRank = new()
-    {
-        [1] = 40000,
-        [2] = 90000,
-        [3] = 150000,
-    };
-
     public int UserItemId { get; init; }
     public int UserId { get; init; }
 
@@ -30,12 +25,14 @@ public record ReforgeUpgradedUserItemCommand : IMediatorRequest<UserItemViewMode
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
         private readonly IActivityLogService _activityLogService;
+        private readonly Constants _constants;
 
-        public Handler(ICrpgDbContext db, IMapper mapper, IActivityLogService activityLogService)
+        public Handler(ICrpgDbContext db, IMapper mapper, IActivityLogService activityLogService, Constants constants)
         {
             _db = db;
             _mapper = mapper;
             _activityLogService = activityLogService;
+            _constants = constants;
         }
 
         public async Task<Result<UserItemViewModel>> Handle(ReforgeUpgradedUserItemCommand req, CancellationToken cancellationToken)
@@ -73,10 +70,7 @@ public record ReforgeUpgradedUserItemCommand : IMediatorRequest<UserItemViewMode
                 return new(CommonErrors.ItemNotReforgeable(userItemToReforge.ItemId));
             }
 
-            if (!ReforgePriceForRank.TryGetValue(userItemToReforge.Item.Rank, out int reforgePrice))
-            {
-                return new(CommonErrors.ItemNotReforgeable(userItemToReforge.ItemId));
-            }
+            int reforgePrice = (int)MathHelper.RecursivePolynomialFunctionOfDegree2(userItemToReforge.Item.Rank, _constants.ItemReforgeCostCoefs);
 
             if (user.Gold < reforgePrice)
             {

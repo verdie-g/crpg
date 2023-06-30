@@ -19,6 +19,7 @@
   "itemBreakChance": 0.5,
   "brokenItemRepairPenaltySeconds": 300,
   "itemSellCostCoefs": [0.5, 0.0],
+  "itemReforgeCostRecursiveCoefs": [0.0 ,40000.0, 10000.0],
   "minimumLevel": 1,
   "maximumLevel": 38,
   "tournamentLevel": 30,
@@ -65,7 +66,7 @@
   "strategusEquivalentDistance": 0.2, /* Distance at which two points are consider equivalent. */
   "strategusInteractionDistance": 1, /* Distance to attack, trade, ... */
   "strategusViewDistance": 8,
-  "strategusSpawningPositionCenter": [122, -105],
+  "strategusSpawningPositionCenter": [ 122, -105 ],
   "strategusSpawningPositionRadius": 20,
   "strategusTroopRecruitmentPerHour": 5,
   "strategusMinPartyTroops": 1,
