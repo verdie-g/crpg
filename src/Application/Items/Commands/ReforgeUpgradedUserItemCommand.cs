@@ -60,12 +60,7 @@ public record ReforgeUpgradedUserItemCommand : IMediatorRequest<UserItemViewMode
                 return new(CommonErrors.ItemBroken(userItemToReforge.ItemId));
             }
 
-            if (userItemToReforge.Item!.Type == ItemType.Banner)
-            {
-                return new(CommonErrors.ItemNotReforgeable(userItemToReforge.ItemId));
-            }
-
-            if (userItemToReforge.Item.Rank == 0)
+            if (userItemToReforge.Item!.Rank == 0)
             {
                 return new(CommonErrors.ItemNotReforgeable(userItemToReforge.ItemId));
             }
