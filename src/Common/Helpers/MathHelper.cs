@@ -12,15 +12,4 @@ public static class MathHelper
 
         return r;
     }
-
-    // this is a solution for RecursivePolynomialFunction with firstTermsOfEachSequence.Length = 3
-    // i have no intention of solving it for firstTermsOfEachSequence.Length = n
-    public static float RecursivePolynomialFunctionOfDegree2(int level, float[] recursiveCoeffs)
-    {
-        float initialValue = recursiveCoeffs[0];
-        float initialSpeed = recursiveCoeffs[1];
-        float initialAcceleration = recursiveCoeffs[2];
-        float[] coeffs = { initialAcceleration / 2f, initialSpeed - initialAcceleration / 2f, initialValue };
-        return ApplyPolynomialFunction(level, coeffs);
-    }
 }

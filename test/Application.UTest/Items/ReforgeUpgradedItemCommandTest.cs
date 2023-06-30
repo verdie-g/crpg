@@ -15,14 +15,14 @@ public class ReforgeUpgradedItemCommandTest : TestBase
 {
     private static readonly Constants Constants = new()
     {
-        ItemReforgeCostCoefs = new[] { 0f, 40000f, 10000f },
+        ItemReforgeCostCoefs = new[] { 0f, 40000f, 90000f, 150000f },
     };
 
     [Test]
     public async Task Basic()
     {
         Item item00 = new() { Id = "a_h0", BaseId = "a", Price = 100, Enabled = true, Rank = 0 };
-        Item item01 = new() { Id = "a_h3", BaseId = "a", Price = 100, Enabled = true, Rank = 4 };
+        Item item01 = new() { Id = "a_h3", BaseId = "a", Price = 100, Enabled = true, Rank = 3 };
         Item item10 = new() { Id = "b_h0", BaseId = "b", Price = 100, Enabled = true, Rank = 1 };
 
         UserItem userItem0 = new() { Item = item01 };
@@ -74,8 +74,8 @@ public class ReforgeUpgradedItemCommandTest : TestBase
         var upgradedUserItem = result.Data!;
         Assert.That(upgradedUserItem.Item.Rank, Is.EqualTo(0));
         Assert.That(upgradedUserItem.Item.BaseId, Is.EqualTo(item01.BaseId));
-        Assert.That(userDb.HeirloomPoints, Is.EqualTo(9));
-        Assert.That(userDb.Gold, Is.EqualTo(1000000 - 220000));
+        Assert.That(userDb.HeirloomPoints, Is.EqualTo(8));
+        Assert.That(userDb.Gold, Is.EqualTo(1000000 - 150000));
         Assert.That(userDb.Items, Has.Some.Matches<UserItem>(ui => ui.Id == upgradedUserItem.Id));
 
         Assert.That(userDb.Characters[0].EquippedItems[0].UserItemId, Is.EqualTo(userItem0.Id));

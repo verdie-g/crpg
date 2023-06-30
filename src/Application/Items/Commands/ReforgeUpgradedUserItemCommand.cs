@@ -65,7 +65,7 @@ public record ReforgeUpgradedUserItemCommand : IMediatorRequest<UserItemViewMode
                 return new(CommonErrors.ItemNotReforgeable(userItemToReforge.ItemId));
             }
 
-            int reforgePrice = (int)MathHelper.RecursivePolynomialFunctionOfDegree2(userItemToReforge.Item.Rank, _constants.ItemReforgeCostCoefs);
+            int reforgePrice = (int)_constants.ItemReforgeCostCoefs[userItemToReforge.Item.Rank];
 
             if (user.Gold < reforgePrice)
             {
