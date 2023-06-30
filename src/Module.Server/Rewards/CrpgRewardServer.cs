@@ -141,7 +141,10 @@ internal class CrpgRewardServer : MissionLogic
         constantMultiplier = veryLowPopulationServer ? ExperienceMultiplierMin : constantMultiplier;
 
         CrpgRatingCalculator.UpdateRatings(_ratingResults);
-        Dictionary<PlayerId, PeriodStats> periodStats = _periodStatsHelper.ComputePeriodStats();
+
+        Dictionary<PlayerId, PeriodStats> periodStats = updateUserStats
+            ? _periodStatsHelper.ComputePeriodStats()
+            : new Dictionary<PlayerId, PeriodStats>();
 
         var valorousPlayerIds = veryLowPopulationServer || !valourTeamSide.HasValue
             ? new HashSet<PlayerId>()
