@@ -56,6 +56,9 @@ export const repairUserItem = async (userItemId: number) =>
 export const upgradeUserItem = async (userItemId: number) =>
   mapUserItem(await put<UserItem>(`/users/self/items/${userItemId}/upgrade`));
 
+export const reforgeUserItem = async (userItemId: number) =>
+  mapUserItem(await put<UserItem>(`/users/self/items/${userItemId}/reforge`));
+
 export const sellUserItem = (userItemId: number) => del(`/users/self/items/${userItemId}`);
 
 export const groupUserItemsByType = (items: UserItem[]) =>

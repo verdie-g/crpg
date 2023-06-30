@@ -76,6 +76,7 @@ action:
   share: Поделиться
   confirmation: Подтверждение
   upgrade: Улучшить
+  reforge: Расплавить
   enter: Войти
 
 login:
@@ -499,7 +500,6 @@ character:
         upgradesTitle: Улучшения
         confirm:
           description: 'Вы уверены, что хотите улучшить этот предмет за {loomPoints}? {oldItem} будет заменен на {newItem}'
-          value: Улучшить предмет
         currentItem: Текущий предмет
         notify:
           success: Предмет успешно улучшен

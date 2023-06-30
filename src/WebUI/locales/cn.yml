@@ -78,6 +78,7 @@ action:
   sell: 出售
   confirmation: 确认
   upgrade: 升级
+  reforge: 融化
   enter: 进入
 
 login:
@@ -498,7 +499,6 @@ character:
         upgradesTitle: 项目升级
         confirm:
           description: '您确定要使用{loomPoints}来升级此物品吗？您的物品{oldItem}将会变成{newItem}。'
-          value: 升级物品
         currentItem: 当前物品
         notify:
           success: 物品成功升级

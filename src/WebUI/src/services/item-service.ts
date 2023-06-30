@@ -639,3 +639,10 @@ export const getRankColor = (rank: ItemRank) => {
 };
 
 export const canUpgrade = (type: ItemType) => type !== ItemType.Banner;
+
+export const reforgeCostByRank: Record<ItemRank, number> = {
+  0: 0,
+  1: 40000,
+  2: 90000,
+  3: 150000,
+};
