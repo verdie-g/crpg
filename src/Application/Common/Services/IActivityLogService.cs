@@ -83,7 +83,8 @@ internal class ActivityLogService : IActivityLogService
         {
             new("itemId", itemId),
             new("heirloomPoints", heirloomPoints.ToString()),
-            new("heirloomPoints", price.ToString()),
+            new("price", price.ToString()),
+
         });
     }
 
