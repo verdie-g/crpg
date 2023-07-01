@@ -24,7 +24,7 @@ public class Constants
     public float ItemBreakChance { get; set; }
     public int BrokenItemRepairPenaltySeconds { get; set; }
     public float[] ItemSellCostCoefs { get; set; } = Array.Empty<float>();
-    public float[] ItemReforgePerRank { get; set; } = Array.Empty<float>();
+    public float[] ItemReforgeCostPerRank { get; set; } = Array.Empty<float>();
     public int MinimumLevel { get; set; }
     public int MaximumLevel { get; set; }
     public int TournamentLevel { get; set; }
