@@ -49,7 +49,6 @@ public record ReforgeUpgradedUserItemCommand : IMediatorRequest<UserItemViewMode
 
             var userItemToReforge = user.Items
                 .FirstOrDefault(ui => ui.Id == req.UserItemId);
-            
 
             if (userItemToReforge == null)
             {
@@ -60,8 +59,6 @@ public record ReforgeUpgradedUserItemCommand : IMediatorRequest<UserItemViewMode
             {
                 return new(CommonErrors.ItemBroken(userItemToReforge.ItemId));
             }
-
-            string itemToReforgeItemId = userItemToReforge.ItemId;
 
             if (userItemToReforge.Item!.Rank == 0)
             {
@@ -97,7 +94,7 @@ public record ReforgeUpgradedUserItemCommand : IMediatorRequest<UserItemViewMode
 
             await _db.SaveChangesAsync(cancellationToken);
 
-            Logger.LogInformation("User '{0}' has reforged item '{1}'", req.UserId, itemToReforgeItemId);
+            Logger.LogInformation("User '{0}' has reforged item '{1}'", req.UserId, userItemToReforge.ItemId);
             return new(_mapper.Map<UserItemViewModel>(userItemToReforge));
         }
     }
