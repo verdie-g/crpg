@@ -49,6 +49,7 @@ public record ReforgeUpgradedUserItemCommand : IMediatorRequest<UserItemViewMode
 
             var userItemToReforge = user.Items
                 .FirstOrDefault(ui => ui.Id == req.UserItemId);
+            
 
             if (userItemToReforge == null)
             {
@@ -59,6 +60,8 @@ public record ReforgeUpgradedUserItemCommand : IMediatorRequest<UserItemViewMode
             {
                 return new(CommonErrors.ItemBroken(userItemToReforge.ItemId));
             }
+
+            string itemToReforgeItemId = userItemToReforge.ItemId;
 
             if (userItemToReforge.Item!.Rank == 0)
             {
@@ -87,14 +90,14 @@ public record ReforgeUpgradedUserItemCommand : IMediatorRequest<UserItemViewMode
                 return new(CommonErrors.ItemAlreadyOwned(baseItem.Id));
             }
 
-            _db.ActivityLogs.Add(_activityLogService.CreateItemReforgedLog(user.Id, userItemToReforge.ItemId, userItemToReforge.Item.Rank));
+            _db.ActivityLogs.Add(_activityLogService.CreateItemReforgedLog(user.Id, userItemToReforge.ItemId, userItemToReforge.Item.Rank, reforgePrice));
             user.HeirloomPoints += userItemToReforge.Item.Rank;
             user.Gold -= reforgePrice;
             userItemToReforge.Item = baseItem;
 
             await _db.SaveChangesAsync(cancellationToken);
 
-            Logger.LogInformation("User '{0}' has Reforged item '{1}'", req.UserId, req.UserItemId);
+            Logger.LogInformation("User '{0}' has reforged item '{1}'", req.UserId, itemToReforgeItemId);
             return new(_mapper.Map<UserItemViewModel>(userItemToReforge));
         }
     }

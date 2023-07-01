@@ -15,7 +15,7 @@ public class ReforgeUpgradedItemCommandTest : TestBase
 {
     private static readonly Constants Constants = new()
     {
-        ItemReforgeCostCoefs = new[] { 0f, 40000f, 90000f, 150000f },
+        ItemReforgeCostPerRank = new[] { 0f, 40000f, 90000f, 150000f },
     };
 
     [Test]
