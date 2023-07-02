@@ -44,7 +44,7 @@ public record RetireCharacterCommand : IMediatorRequest<CharacterViewModel>
                 return new(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
             }
 
-            int characterLevel = character.Level;
+            int oldCharacterLevel = character.Level;
             _characterService.ResetRating(character);
             var error = _characterService.Retire(character);
             if (error != null)
@@ -52,7 +52,7 @@ public record RetireCharacterCommand : IMediatorRequest<CharacterViewModel>
                 return new(error);
             }
 
-            _db.ActivityLogs.Add(_activityLogService.CreateCharacterRetiredLog(character.UserId, character.Id, characterLevel));
+            _db.ActivityLogs.Add(_activityLogService.CreateCharacterRetiredLog(character.UserId, character.Id, oldCharacterLevel));
 
             await _db.SaveChangesAsync(cancellationToken);
 
