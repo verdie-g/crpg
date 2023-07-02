@@ -26,6 +26,8 @@ public record UpdateEveryCharacterCompetitiveRatingCommand : IMediatorRequest
             foreach (var character in characters)
             {
                 character.Rating.CompetitiveValue = _competitiveRatingModel.ComputeCompetitiveRating(character.Rating);
+                // Trick to avoid UpdatedAt to be updated.
+                character.UpdatedAt = character.UpdatedAt;
             }
 
             await _db.SaveChangesAsync(cancellationToken);

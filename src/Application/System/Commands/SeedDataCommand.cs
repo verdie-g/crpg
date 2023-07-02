@@ -1921,6 +1921,8 @@ public record SeedDataCommand : IMediatorRequest
                 foreach (var userItem in userItems)
                 {
                     userItem.User!.Gold += userItem.Item!.Price;
+                    // Trick to avoid UpdatedAt to be updated.
+                    userItem.User.UpdatedAt = userItem.User.UpdatedAt;
                     if (userItem.Item!.Rank > 0)
                     {
                         userItem.User.HeirloomPoints += userItem.Item!.Rank;
