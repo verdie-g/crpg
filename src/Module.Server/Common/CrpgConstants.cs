@@ -3,14 +3,13 @@
 // To synchronize with Crpg.Application.Common.Constants.
 internal class CrpgConstants
 {
-    public float[] WeaponProficiencyPointsForAgilityCoefs { get; set; } = Array.Empty<float>();
+    public int WeaponProficiencyPointsForAgility { get; set; }
     public float[] WeaponProficiencyPointsForWeaponMasterCoefs { get; set; } = Array.Empty<float>();
     public float[] WeaponProficiencyPointsForLevelCoefs { get; set; } = Array.Empty<float>();
     public float[] WeaponProficiencyCostCoefs { get; set; } = Array.Empty<float>();
     public float DefaultExperienceMultiplier { get; set; }
     public float ExperienceMultiplierByGeneration { get; set; }
     public float MaxExperienceMultiplierForGeneration { get; set; }
-    public float[] RespecializeExperiencePenaltyCoefs { get; set; } = Array.Empty<float>();
     public int RespecializePriceForLevel30 { get; set; }
     public int FreeRespecializeIntervalDays { get; set; }
     public int MinimumRetirementLevel { get; set; }
@@ -21,7 +20,7 @@ internal class CrpgConstants
     public float ItemRepairCostPerSecond { get; set; }
     public float ItemBreakChance { get; set; }
     public int BrokenItemRepairPenaltySeconds { get; set; }
-    public float[] ItemSellCostCoefs { get; set; } = Array.Empty<float>();
+    public float ItemSellCostPenalty { get; set; }
     public float[] ItemReforgeCostPerRank { get; set; } = Array.Empty<float>();
     public int MinimumLevel { get; set; }
     public int MaximumLevel { get; set; }
@@ -35,23 +34,21 @@ internal class CrpgConstants
     public int AttributePointsPerLevel { get; set; }
     public int DefaultSkillPoints { get; set; }
     public int SkillPointsPerLevel { get; set; }
-    public float[] HealthPointsForStrengthCoefs { get; set; } = Array.Empty<float>();
-    public float[] HealthPointsForIronFleshCoefs { get; set; } = Array.Empty<float>();
-    public float[] DamageFactorForPowerStrikeCoefs { get; set; } = Array.Empty<float>();
-    public float[] DamageFactorForPowerDrawCoefs { get; set; } = Array.Empty<float>();
-    public float[] DamageFactorForPowerThrowCoefs { get; set; } = Array.Empty<float>();
+    public int HealthPointsForStrength { get; set; }
+    public int HealthPointsForIronFlesh { get; set; }
+    public float DamageFactorForPowerStrike { get; set; }
+    public float DamageFactorForPowerDraw { get; set; }
+    public float DamageFactorForPowerThrow { get; set; }
     public float[] HandlingFactorForWeaponMaster { get; set; } = Array.Empty<float>();
     public float[] DurabilityFactorForShieldRecursiveCoefs { get; set; } = Array.Empty<float>();
-    public float[] SpeedFactorForShieldCoefs { get; set; } = Array.Empty<float>();
-    public float[] InfantryCoverageFactorForShieldCoefs { get; set; } = Array.Empty<float>();
-    public float[] CavCoverageFactorForShieldCoefs { get; set; } = Array.Empty<float>();
-    public float[] MountedRangedSkillInaccurary { get; set; } = Array.Empty<float>();
+    public float InfantryCoverageFactorForShieldCoef { get; set; }
+    public float CavalryCoverageFactorForShieldCoef { get; set; }
+    public float[] MountedRangedSkillInaccuracy { get; set; } = Array.Empty<float>();
     public float[] ShieldDefendStunMultiplierForSkillRecursiveCoefs { get; set; } = Array.Empty<float>();
     public float ArmorSetRequirementPowerMeanPValue { get; set; }
     public float DefaultRating { get; set; }
     public float DefaultRatingDeviation { get; set; }
     public float DefaultRatingVolatility { get; set; }
-    public string DefaultRole { get; set; } = string.Empty;
     public int DefaultGold { get; set; }
     public int DefaultHeirloomPoints { get; set; }
     public int ClanTagMinLength { get; set; }
@@ -76,4 +73,6 @@ internal class CrpgConstants
     public int StrategusMaxPartyTroops { get; set; }
     public int StrategusBattleInitiationDurationHours { get; set; }
     public int StrategusBattleHiringDurationHours { get; set; }
+    public int StrategusMercenaryMaxWage { get; set; }
+    public int StrategusMercenaryNoteMaxLength { get; set; }
 }

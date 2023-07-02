@@ -18,7 +18,6 @@ public class RespecializeCharacterCommandTest : TestBase
 {
     private static readonly Constants Constants = new()
     {
-        RespecializeExperiencePenaltyCoefs = new[] { 0.5f, 0f },
         RespecializePriceForLevel30 = 5000,
         FreeRespecializeIntervalDays = 7,
     };
@@ -94,8 +93,8 @@ public class RespecializeCharacterCommandTest : TestBase
         }
 
         Assert.That(character.Generation, Is.EqualTo(2));
-        Assert.That(character.Level, Is.EqualTo(2));
-        Assert.That(character.Experience, Is.EqualTo(75));
+        Assert.That(character.Level, Is.EqualTo(3));
+        Assert.That(character.Experience, Is.EqualTo(150));
         Assert.That(character.EquippedItems.Count, Is.EqualTo(3));
         Assert.That(character.Statistics.Kills, Is.EqualTo(1));
         Assert.That(character.Statistics.Deaths, Is.EqualTo(2));

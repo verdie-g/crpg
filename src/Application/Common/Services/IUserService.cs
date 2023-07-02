@@ -28,7 +28,7 @@ internal class UserService : IUserService
         user.Gold = user.CreatedAt == default || user.CreatedAt + TimeSpan.FromDays(30) < _dateTime.UtcNow
             ? _constants.DefaultGold
             : Math.Min(_constants.DefaultGold, user.Gold);
-        user.Role = _constants.DefaultRole;
+        user.Role = Role.User;
         user.HeirloomPoints = _constants.DefaultHeirloomPoints;
         user.ExperienceMultiplier = _constants.DefaultExperienceMultiplier;
     }

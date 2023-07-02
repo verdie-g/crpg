@@ -5,7 +5,6 @@ using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
-using Crpg.Common.Helpers;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Sdk.Abstractions;
 using Microsoft.EntityFrameworkCore;
@@ -66,10 +65,6 @@ public record RespecializeCharacterCommand : IMediatorRequest<CharacterViewModel
 
                 character.User.Gold -= price;
                 character.Limitations!.LastRespecializeAt = _dateTime.UtcNow;
-
-                character.Experience = (int)MathHelper.ApplyPolynomialFunction(character.Experience,
-                    _constants.RespecializeExperiencePenaltyCoefs);
-                character.Level = _experienceTable.GetLevelForExperience(character.Experience);
             }
 
             _characterService.ResetCharacterCharacteristics(character, true);

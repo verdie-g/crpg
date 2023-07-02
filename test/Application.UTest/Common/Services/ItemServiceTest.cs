@@ -12,7 +12,10 @@ namespace Crpg.Application.UTest.Common.Services;
 
 public class ItemServiceTest : TestBase
 {
-    private static readonly Constants Constants = new() { ItemSellCostCoefs = new[] { 0.5f, 0.0f } };
+    private static readonly Constants Constants = new()
+    {
+        ItemSellCostPenalty = 0.5f,
+    };
 
     [Theory]
     public async Task SellItemUnequipped(bool recentlyBought)

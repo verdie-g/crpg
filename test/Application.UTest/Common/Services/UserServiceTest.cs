@@ -12,7 +12,6 @@ public class UserServiceTest
     private static readonly Constants Constants = new()
     {
         DefaultGold = 300,
-        DefaultRole = Role.User,
         DefaultHeirloomPoints = 0,
         DefaultExperienceMultiplier = 1.0f,
     };
@@ -25,7 +24,7 @@ public class UserServiceTest
         userService.SetDefaultValuesForUser(user);
 
         Assert.That(user.Gold, Is.EqualTo(Constants.DefaultGold));
-        Assert.That(user.Role, Is.EqualTo(Constants.DefaultRole));
+        Assert.That(user.Role, Is.EqualTo(Role.User));
         Assert.That(user.HeirloomPoints, Is.EqualTo(Constants.DefaultHeirloomPoints));
         Assert.That(user.ExperienceMultiplier, Is.EqualTo(Constants.DefaultExperienceMultiplier));
     }

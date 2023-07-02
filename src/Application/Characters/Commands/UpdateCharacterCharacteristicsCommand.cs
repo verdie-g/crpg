@@ -162,8 +162,7 @@ public record UpdateCharacterCharacteristicsCommand : IMediatorRequest<Character
                    && stats.Skills.Shield <= stats.Attributes.Agility / 6;
         }
 
-        private int WeaponProficienciesPointsForAgility(int agility) =>
-            (int)MathHelper.ApplyPolynomialFunction(agility, _constants.WeaponProficiencyPointsForAgilityCoefs);
+        private int WeaponProficienciesPointsForAgility(int agility) => agility * _constants.WeaponProficiencyPointsForAgility;
 
         private int WeaponProficienciesPointsForWeaponMaster(int weaponMaster) =>
             (int)MathHelper.ApplyPolynomialFunction(weaponMaster, _constants.WeaponProficiencyPointsForWeaponMasterCoefs);

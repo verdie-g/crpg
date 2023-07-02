@@ -14,7 +14,7 @@ public class UpdateCharacterCharacteristicsCommandTest : TestBase
 {
     private static readonly Constants Constants = new()
     {
-        WeaponProficiencyPointsForAgilityCoefs = new[] { 14f, 0f }, // wpp = agi * 14
+        WeaponProficiencyPointsForAgility = 14,
         WeaponProficiencyPointsForWeaponMasterCoefs = new[] { 10f, 0f }, // wpp = wm * 10
         WeaponProficiencyCostCoefs = new[] { 3f, 0f }, // wpp cost = wp * 3
     };
