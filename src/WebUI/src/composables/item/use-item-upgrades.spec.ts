@@ -2,16 +2,13 @@ import { createTestingPinia } from '@pinia/testing';
 import { type ItemFlat } from '@/models/item';
 import { useUserStore } from '@/stores/user';
 
-const { mockedReforgeCostByRank } = vi.hoisted(() => ({
-  mockedReforgeCostByRank: {
-    0: 0,
-    1: 40000,
-    2: 90000,
-    3: 150000,
-  },
+const { mockedGetItemUpgrades, mockedGetRelativeEntries } = vi.hoisted(() => ({
+  mockedGetItemUpgrades: vi.fn().mockResolvedValue([]),
+  mockedGetRelativeEntries: vi.fn().mockReturnValue({}),
 }));
 vi.mock('@/services/item-service', () => ({
-  reforgeCostByRank: mockedReforgeCostByRank,
+  getItemUpgrades: mockedGetItemUpgrades,
+  getRelativeEntries: mockedGetRelativeEntries,
 }));
 
 const userStore = useUserStore(createTestingPinia());
