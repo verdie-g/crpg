@@ -17,7 +17,7 @@
   "itemBreakChance": 0.5,
   "brokenItemRepairPenaltySeconds": 300,
   "itemSellCostPenalty": 0.5,
-  "itemReforgeCostPerRank": [0.0 ,40000.0, 90000.0, 150000.0],
+  "itemReforgeCostPerRank": [0.0, 40000.0, 90000.0, 150000.0],
   "minimumLevel": 1,
   "maximumLevel": 38,
   "tournamentLevel": 30,

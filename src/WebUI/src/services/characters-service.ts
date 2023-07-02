@@ -2,14 +2,14 @@ import { defu } from 'defu';
 import { type PartialDeep } from 'type-fest';
 import {
   weaponProficiencyPointsForLevelCoefs,
-  weaponProficiencyPointsForAgilityCoefs,
+  weaponProficiencyPointsForAgility,
   weaponProficiencyPointsForWeaponMasterCoefs,
   experienceForLevelCoefs,
   defaultStrength,
   defaultAgility,
   defaultHealthPoints,
-  healthPointsForStrengthCoefs,
-  healthPointsForIronFleshCoefs,
+  healthPointsForStrength,
+  healthPointsForIronFlesh,
   defaultAttributePoints,
   attributePointsPerLevel,
   defaultSkillPoints,
@@ -140,7 +140,7 @@ export const wppForLevel = (level: number): number =>
   Math.floor(applyPolynomialFunction(level, weaponProficiencyPointsForLevelCoefs));
 
 export const wppForAgility = (agility: number): number =>
-  Math.floor(applyPolynomialFunction(agility, weaponProficiencyPointsForAgilityCoefs));
+  agility * weaponProficiencyPointsForAgility;
 
 export const wppForWeaponMaster = (weaponMaster: number): number =>
   Math.floor(applyPolynomialFunction(weaponMaster, weaponProficiencyPointsForWeaponMasterCoefs));
@@ -194,9 +194,7 @@ export const createDefaultCharacteristic = (): CharacterCharacteristics =>
   });
 
 export const computeHealthPoints = (ironFlesh: number, strength: number): number =>
-  defaultHealthPoints +
-  applyPolynomialFunction(ironFlesh, healthPointsForIronFleshCoefs) +
-  applyPolynomialFunction(strength, healthPointsForStrengthCoefs);
+  defaultHealthPoints + ironFlesh * healthPointsForIronFlesh + strength * healthPointsForStrength;
 
 // TODO: unit?
 export const computeSpeedStats = (
