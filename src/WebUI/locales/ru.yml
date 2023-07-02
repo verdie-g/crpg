@@ -497,12 +497,31 @@ character:
         notify:
           warning: Большой щит нельзя использовать верхом
       upgrade:
-        upgradesTitle: Улучшения
+        upgradesTitle: "Улучшения предмета"
+        tooltip:
+          title: "Улучшить предмет"
+          description: "Вы можете улучшить предмет за очки наследственности (Heirloom)"
+        validation:
+          maxRank: "Предмет уже имеет максимальный ранг"
+          loomPoints: "У вас недостаточно очков наследственности"
+          exist: "У вас уже есть улучшенная версия этого предмета"
         confirm:
           description: 'Вы уверены, что хотите улучшить этот предмет за {loomPoints}? {oldItem} будет заменен на {newItem}'
         currentItem: Текущий предмет
         notify:
           success: Предмет успешно улучшен
+      reforge:
+        tooltip:
+          title: "Рассплавить предмет"
+          description: "Вы можете перековать свои предметы за золото"
+        validation:
+          rank: "Предмет должен иметь ранг больше, чем {minimumRank}"
+          gold: "У вас недостаточно золота"
+          exist: "У вас уже есть {existItem} в инвентаре. Сначала продайте его"
+        confirm:
+          description: "Вы уверены, что хотите рассплавить этот предмет за {gold}? Вы получите {loomPoints}, также предмет {oldItem} будет заменен на {newItem}."
+        notify:
+          success: "Предмет успешно рассплавлен"
 
   doll:
     slot:

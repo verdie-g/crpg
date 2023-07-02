@@ -497,11 +497,30 @@ character:
           warning: 大盾牌不能在马背上使用
       upgrade:
         upgradesTitle: 项目升级
+        tooltip:
+          title: "Upgrade item"
+          description: "You can upgrade your item for a heirloom point"
+        validation:
+          maxRank: "The item already has a maximum rank"
+          loomPoints: "You don't have enough heirloom points"
+          exist: "You already have an improved version of this item"
         confirm:
           description: '您确定要使用{loomPoints}来升级此物品吗？您的物品{oldItem}将会变成{newItem}。'
         currentItem: 当前物品
         notify:
           success: 物品成功升级
+      reforge:
+        tooltip:
+          title: "Reforge item"
+          description: "You can reforge your items for a gold"
+        validation:
+          rank: "The item must have a rank greater than {minimumRank}"
+          gold: "You don't have enough gold"
+          exist: "You already have the {existItem} in your inventory. Sell it first"
+        confirm:
+          description: "Are you sure you want to reforge this item for {gold}? You will get {loomPoints}, also item {oldItem} will be changed to {newItem}"
+        notify:
+          success: "Item successfully reforged"
 
   doll:
     slot:
