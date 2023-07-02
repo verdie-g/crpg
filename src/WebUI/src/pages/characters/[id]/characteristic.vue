@@ -120,9 +120,9 @@ onBeforeRouteUpdate(() => {
             />
             <template #popper>
               <div class="prose prose-invert">
-                <h5 class="text-content-100">
+                <h4>
                   {{ $t('character.characteristic.convert.attrsToSkills.title') }}
-                </h5>
+                </h4>
                 <i18n-t
                   scope="global"
                   keypath="character.characteristic.convert.attrsToSkills.tooltip"
@@ -156,9 +156,9 @@ onBeforeRouteUpdate(() => {
             />
             <template #popper>
               <div class="prose prose-invert">
-                <h5 class="text-content-100">
+                <h4>
                   {{ $t('character.characteristic.convert.skillsToAttrs.title') }}
-                </h5>
+                </h4>
                 <i18n-t
                   scope="global"
                   keypath="character.characteristic.convert.skillsToAttrs.tooltip"
