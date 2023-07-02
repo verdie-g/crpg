@@ -348,19 +348,19 @@ character:
       children:
         ironFlesh:
           title: Iron flesh
-          desc: Increases your health
+          desc: Increases your health by +4
           requires: '@:character.characteristic.requires.linked.threeStr'
         powerStrike:
           title: Power strike
-          desc: Increases melee damage
+          desc: Increases melee weapon damage by +8%
           requires: '@:character.characteristic.requires.linked.threeStr'
         powerDraw:
           title: Power draw
-          desc: Increases bow damage
+          desc: Increases bow damage by +14%
           requires: '@:character.characteristic.requires.linked.threeStr'
         powerThrow:
           title: Power throw
-          desc: Increases throw damage
+          desc: Increases throwing weapon damage by +10%
           requires: '@:character.characteristic.requires.linked.threeStr'
         athletics:
           title: Athletics
@@ -372,7 +372,7 @@ character:
           requires: '@:character.characteristic.requires.linked.threeAgi'
         weaponMaster:
           title: Weapon master
-          desc: Gives weapon points
+          desc: Gives weapon proficiency points
           requires: '@:character.characteristic.requires.linked.threeAgi'
         mountedArchery:
           title: Mounted archery
@@ -380,7 +380,7 @@ character:
           requires: '@:character.characteristic.requires.linked.sixAgi'
         shield:
           title: Shield
-          desc: Improves shield durability. Increases coverage from ranged attacks
+          desc: Improves shield durability. Increases coverage from ranged attacks. Reduces stun from weapons when hit
           requires: '@:character.characteristic.requires.linked.sixAgi'
 
     weaponProficiencies:
