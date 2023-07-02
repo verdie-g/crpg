@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="combat_parameters">
   <native_parameters>
+    <native_parameter id="mounted_passive_action_minimum_speed" value="12"/> <!-- minimum speed threshold in m/s to start couching native is 9-->
+    <native_parameter id="quadrupedal_acceleration_multiplier" value="5"/> <!-- mount acceleration. 4 makes the horse soapy.  native is 9-->
   </native_parameters>
 </base>
