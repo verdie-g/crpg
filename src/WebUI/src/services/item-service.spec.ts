@@ -360,7 +360,7 @@ it('compareItemsResult', () => {
   });
 });
 
-it.only('getRelativeEntries', () => {
+it('getRelativeEntries', () => {
   const item = {
     weight: 2.22,
     length: 105,
