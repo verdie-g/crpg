@@ -48,22 +48,6 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
 
     public MBReadOnlyList<FlagCapturePoint> AllCapturePoints { get; private set; } = new(new List<FlagCapturePoint>());
 
-    public override void OnPeerChangedTeam(NetworkCommunicator peer, Team? oldTeam, Team newTeam)
-    {
-        var crpgPeer = peer.GetComponent<CrpgPeer>();
-        if (crpgPeer?.User == null)
-        {
-            return;
-        }
-
-        // If oldTeam is null then that means that the player just joined and was added to the attackers.
-        // This gives a 2x RewardMultiplier to the player to give more fair rewards compared to the defenders.
-        if (oldTeam == null && newTeam.Side == BattleSideEnum.Attacker)
-        {
-            crpgPeer.RewardMultiplier = Math.Max(crpgPeer.RewardMultiplier, 2);
-        }
-    }
-
     public override void OnBehaviorInitialize()
     {
         base.OnBehaviorInitialize();
