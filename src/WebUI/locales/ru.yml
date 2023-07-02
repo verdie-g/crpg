@@ -360,11 +360,11 @@ character:
           requires: '@:character.characteristic.requires.linked.threeStr'
         athletics:
           title: Атлетика
-          desc: Увеличивает скорость бега
+          desc: Увеличивает вашу максимальную скорость бега и уменьшает время ее достижения
           requires: '@:character.characteristic.requires.linked.threeAgi'
         riding:
           title: Верховая езда
-          desc: Увеличивает скорость езды, ускорение и маневренность
+          desc: Увеличивает скорость езды, ускорение, маневренность и спопротивление спешиванию
           requires: '@:character.characteristic.requires.linked.threeAgi'
         weaponMaster:
           title: Оружейный мастер

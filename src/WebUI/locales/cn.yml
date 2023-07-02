@@ -337,7 +337,7 @@ character:
       children:
         strength:
           title: 力量
-          desc: 增加你的生命值
+          desc: 增加你的生命值{value}点。
           requires: '@:character.characteristic.requires.linked.oneAttrs'
         agility:
           title: 敏捷
@@ -349,39 +349,39 @@ character:
       children:
         ironFlesh:
           title: 铁骨
-          desc: 增加你的生命值
+          desc: 增加你的生命值{value}点。
           requires: '@:character.characteristic.requires.linked.threeStr'
         powerStrike:
           title: 强力打击
-          desc: 增加近战伤害
+          desc: 使用近战武器时增加{value}的伤害
           requires: '@:character.characteristic.requires.linked.threeStr'
         powerDraw:
           title: 强力射击
-          desc: 增加弓箭伤害
+          desc: 使用弓时增加{value}的伤害和稳定性
           requires: '@:character.characteristic.requires.linked.threeStr'
         powerThrow:
           title: 强力投掷
-          desc: 增加投掷伤害
+          desc: 使用投掷武器时增加{value}的伤害和稳定性
           requires: '@:character.characteristic.requires.linked.threeStr'
         athletics:
           title: 跑动
-          desc: 增加奔跑速度
+          desc: 增加你的最大奔跑速度并减少达到最大速度的时间
           requires: '@:character.characteristic.requires.linked.threeAgi'
         riding:
           title: 骑术
-          desc: 增加骑行速度，加速度和机动性
+          desc: 增加骑行速度、加速度、操控能力和抵抗卸下效果
           requires: '@:character.characteristic.requires.linked.threeAgi'
         weaponMaster:
           title: 武器专精
-          desc: 提供武器点数
+          desc: 获得武器熟练度点数
           requires: '@:character.characteristic.requires.linked.threeAgi'
         mountedArchery:
           title: 骑射
-          desc: 每级降低在移动状态下使用远程武器惩罚的10%
+          desc: 减少在移动坐骑上使用远程武器的惩罚
           requires: '@:character.characteristic.requires.linked.sixAgi'
         shield:
           title: 盾牌
-          desc: 提高盾牌耐久度。增加对远程攻击的防护面积
+          desc: 提高盾牌耐久性。增加对远程攻击的防护。被武器击中时减少晕眩效果
           requires: '@:character.characteristic.requires.linked.sixAgi'
 
     weaponProficiencies:
