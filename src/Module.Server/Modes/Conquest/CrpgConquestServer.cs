@@ -14,6 +14,8 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
 {
     private const float FlagCaptureRange = 8f;
     private const float FlagCaptureRangeSquared = FlagCaptureRange * FlagCaptureRange;
+    private const int StageDuration = 2 * 60;
+    private const int FirstStageDuration = 9 * 60;
 
     private readonly MissionScoreboardComponent _missionScoreboardComponent;
     private readonly CrpgRewardServer _rewardServer;
@@ -46,7 +48,7 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
 
     public MBReadOnlyList<FlagCapturePoint> AllCapturePoints { get; private set; } = new(new List<FlagCapturePoint>());
 
-    public override void OnPeerChangedTeam(NetworkCommunicator peer, Team oldTeam, Team newTeam)
+    public override void OnPeerChangedTeam(NetworkCommunicator peer, Team? oldTeam, Team newTeam)
     {
         var crpgPeer = peer.GetComponent<CrpgPeer>();
         if (crpgPeer?.User == null)
@@ -54,11 +56,11 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
             return;
         }
 
-        // if oldTeam is null then that means that the player just joined and was added to the attackers
-        // this gives a 3x RewardMultiplier to the player to give more fair rewards compared to the defenders
+        // If oldTeam is null then that means that the player just joined and was added to the attackers.
+        // This gives a 2x RewardMultiplier to the player to give more fair rewards compared to the defenders.
         if (oldTeam == null && newTeam.Side == BattleSideEnum.Attacker)
         {
-            crpgPeer.RewardMultiplier = Math.Max(crpgPeer.RewardMultiplier, 3);
+            crpgPeer.RewardMultiplier = Math.Max(crpgPeer.RewardMultiplier, 2);
         }
     }
 
@@ -269,11 +271,9 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
 
     private void StartStage(int stageIndex)
     {
-        float roundLimitOption = MultiplayerOptions.OptionType.RoundTimeLimit.GetIntValue();
-        (float stageDuration, float remainingTime) = stageIndex == 0
-            ? (roundLimitOption * 2f, 0)
-            : (roundLimitOption, _currentStageTimer.GetRemainingTimeInSeconds());
-        _currentStageTimer = new MissionTimer(remainingTime + stageDuration);
+        _currentStageTimer = new MissionTimer(stageIndex == 0
+            ? FirstStageDuration
+            : StageDuration + _currentStageTimer.GetRemainingTimeInSeconds());
 
         GameNetwork.BeginBroadcastModuleEvent();
         GameNetwork.WriteMessage(new CrpgConquestStageStartMessage
@@ -334,7 +334,7 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
             CaptureTheFlagFlagDirection flagDirection = ComputeFlagDirection(flag, flagOwner, closestAgentToFlag);
             if (flagDirection != CaptureTheFlagFlagDirection.None)
             {
-                flag.SetMoveFlag(flagDirection, speedMultiplier: 0.5f);
+                flag.SetMoveFlag(flagDirection, speedMultiplier: 0.4f);
             }
 
             flag.OnAfterTick(closestAgentToFlag != null, out bool flagOwnerChanged);

@@ -23,7 +23,6 @@ FriendlyFireDamageRangedSelfPercent 0
 NumberOfBotsTeam1 1
 NumberOfBotsTeam2 1
 MapTimeLimit 30
-RoundTimeLimit 180
 crpg_reward_tick 30
 WarmupTimeLimit 1
 start_game
