@@ -546,7 +546,6 @@ export const getCompareItemsResult = (items: ItemFlat[], aggregationsConfig: Agg
     }, {} as CompareItemsResult);
 };
 
-// TODO: spec
 export const getRelativeEntries = (item: ItemFlat, aggregationsConfig: AggregationConfig) => {
   return (Object.keys(aggregationsConfig) as Array<keyof ItemFlat>)
     .filter(k => aggregationsConfig[k]?.compareRule !== undefined)
