@@ -3,6 +3,7 @@ import {
   itemRepairCostPerSecond,
   itemBreakChance,
   brokenItemRepairPenaltySeconds,
+  itemReforgeCostPerRank,
 } from '@root/data/constants.json';
 import {
   type Item,
@@ -641,8 +642,8 @@ export const getRankColor = (rank: ItemRank) => {
 export const canUpgrade = (type: ItemType) => type !== ItemType.Banner;
 
 export const reforgeCostByRank: Record<ItemRank, number> = {
-  0: 0,
-  1: 40000,
-  2: 90000,
-  3: 150000,
+  0: itemReforgeCostPerRank[0],
+  1: itemReforgeCostPerRank[1],
+  2: itemReforgeCostPerRank[2],
+  3: itemReforgeCostPerRank[3],
 };
