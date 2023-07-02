@@ -83,9 +83,9 @@ internal class CrpgItemValueModel : ItemValueModel
             + 1.1f * armorComponent.BodyArmor
             + 1.15f * armorComponent.ArmArmor
             + 0.75f * armorComponent.LegArmor;
-        float bestArmorPower = armorComponent.Item.ItemType switch
+        float bestArmorPower = 0.931878f * armorComponent.Item.ItemType switch
         {
-            ItemObject.ItemTypeEnum.HeadArmor => 21.25f,
+            ItemObject.ItemTypeEnum.HeadArmor => 21.8288f,
             ItemObject.ItemTypeEnum.Cape => 11.36f,
             ItemObject.ItemTypeEnum.BodyArmor => 19.492481f,
             ItemObject.ItemTypeEnum.HandArmor => 10.1992f,
