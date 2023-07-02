@@ -93,16 +93,13 @@ const onUpgradeUserItem = async (itemId: number) => {
 };
 
 const onReforgeUserItem = async (itemId: number) => {
-  console.log('sdsdsd');
-
   await reforgeUserItem(itemId);
   await Promise.all([
     userStore.fetchUser(),
     userStore.fetchUserItems(),
     loadCharacterItems(0, { id: character.value.id }),
   ]);
-  notify('Item reforged!');
-  // notify(t('character.inventory.item.upgrade.notify.success'));
+  notify(t('character.inventory.item.reforge.notify.success'));
 };
 
 const flatItems = computed(() => createItemIndex(extractItemFromUserItem(userStore.userItems)));
