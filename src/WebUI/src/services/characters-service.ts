@@ -22,6 +22,9 @@ import {
   maxExperienceMultiplierForGeneration,
   respecializePriceForLevel30,
   freeRespecializeIntervalDays,
+  damageFactorForPowerStrike,
+  damageFactorForPowerDraw,
+  damageFactorForPowerThrow,
 } from '@root/data/constants.json';
 
 import {
@@ -38,7 +41,8 @@ import {
   type CharacterArmorOverall,
   CharacterArmorOverallKey,
   type CharacterLimitations,
-  CharacterRating,
+  type CharacterRating,
+  type CharacteristicKey,
 } from '@/models/character';
 import { ItemSlot, ItemType, type Item, type ItemArmorComponent } from '@/models/item';
 import { type HumanDuration } from '@/models/datetime';
@@ -192,6 +196,31 @@ export const createDefaultCharacteristic = (): CharacterCharacteristics =>
       points: wppForLevel(minimumLevel),
     },
   });
+
+export const characteristicBonusByKey: Partial<
+  Record<CharacteristicKey, { value: number; style: 'percent' | 'decimal' }>
+> = {
+  strength: {
+    value: healthPointsForStrength,
+    style: 'decimal',
+  },
+  ironFlesh: {
+    value: healthPointsForIronFlesh,
+    style: 'decimal',
+  },
+  powerStrike: {
+    value: damageFactorForPowerStrike,
+    style: 'percent',
+  },
+  powerDraw: {
+    value: damageFactorForPowerDraw,
+    style: 'percent',
+  },
+  powerThrow: {
+    value: damageFactorForPowerThrow,
+    style: 'percent',
+  },
+};
 
 export const computeHealthPoints = (ironFlesh: number, strength: number): number =>
   defaultHealthPoints + ironFlesh * healthPointsForIronFlesh + strength * healthPointsForStrength;

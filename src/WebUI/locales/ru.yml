@@ -332,7 +332,7 @@ character:
       children:
         strength:
           title: Сила
-          desc: Увеличивает количество очков здоровья
+          desc: Увеличивает количество очков здоровья на {value}
           requires: '@:character.characteristic.requires.linked.oneAttrs'
         agility:
           title: Ловкость
@@ -344,27 +344,27 @@ character:
       children:
         ironFlesh:
           title: Железная кожа
-          desc: Повышает ваши очки здоровья
+          desc: Увеличивает количество очков здоровья на {value}
           requires: '@:character.characteristic.requires.linked.threeStr'
         powerStrike:
           title: Мощный удар
-          desc: Увеличивает урон в ближнем бою
+          desc: Увеличивает урон в ближнем бою на {value}
           requires: '@:character.characteristic.requires.linked.threeStr'
         powerDraw:
           title: Мощный выстрел
-          desc: Увеличивает урон от луков
+          desc: Увеличивает урон от луков на {value}
           requires: '@:character.characteristic.requires.linked.threeStr'
         powerThrow:
           title: Мощный бросок
-          desc: Увеличивает урон от метательного оружия
+          desc: Увеличивает урон от метательного оружия на {value}
           requires: '@:character.characteristic.requires.linked.threeStr'
         athletics:
           title: Атлетика
-          desc: Увеличивает скорость бега
+          desc: Увеличивает вашу максимальную скорость бега и уменьшает время ее достижения
           requires: '@:character.characteristic.requires.linked.threeAgi'
         riding:
           title: Верховая езда
-          desc: Увеличивает скорость езды, ускорение и маневренность
+          desc: Увеличивает скорость езды, ускорение, маневренность и спопротивление спешиванию
           requires: '@:character.characteristic.requires.linked.threeAgi'
         weaponMaster:
           title: Оружейный мастер
@@ -376,7 +376,7 @@ character:
           requires: '@:character.characteristic.requires.linked.sixAgi'
         shield:
           title: Щит
-          desc: Повышает прочность щита. Увеличивает зону покрытия от дальнобойных атак
+          desc: Повышает прочность щита. Увеличивает зону покрытия от дальнобойных атак. Уменьшает оглушение от ближнего оружия при попадании
           requires: '@:character.characteristic.requires.linked.sixAgi'
 
     weaponProficiencies:

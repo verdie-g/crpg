@@ -337,7 +337,7 @@ character:
       children:
         strength:
           title: Strength
-          desc: Increases your health points
+          desc: Increases your health by {value}
           requires: '@:character.characteristic.requires.linked.oneAttrs'
         agility:
           title: Agility
@@ -349,39 +349,39 @@ character:
       children:
         ironFlesh:
           title: Iron flesh
-          desc: Increases your health
+          desc: Increases your health by {value}
           requires: '@:character.characteristic.requires.linked.threeStr'
         powerStrike:
           title: Power strike
-          desc: Increases melee damage
+          desc: Increases damage by {value} with melee weapons
           requires: '@:character.characteristic.requires.linked.threeStr'
         powerDraw:
           title: Power draw
-          desc: Increases bow damage
+          desc: Increases damage by {value} and your steadiness with bows
           requires: '@:character.characteristic.requires.linked.threeStr'
         powerThrow:
           title: Power throw
-          desc: Increases throw damage
+          desc: Increases damage by {value} and your steadiness with throwing weapons
           requires: '@:character.characteristic.requires.linked.threeStr'
         athletics:
           title: Athletics
-          desc: Increases running speed
+          desc: Increases your maximum running speed and decreases the time to reach it
           requires: '@:character.characteristic.requires.linked.threeAgi'
         riding:
           title: Riding
-          desc: Increases riding speed, acceleration and maneuver
+          desc: Increases riding speed, acceleration, maneuver, and dismount resistance
           requires: '@:character.characteristic.requires.linked.threeAgi'
         weaponMaster:
           title: Weapon master
-          desc: Gives weapon points
+          desc: Gives weapon proficiency points
           requires: '@:character.characteristic.requires.linked.threeAgi'
         mountedArchery:
           title: Mounted archery
-          desc: Reduces penalty for using ranged weapons on a moving mount by 10% per level
+          desc: Reduces penalty for using ranged weapons on a moving mount
           requires: '@:character.characteristic.requires.linked.sixAgi'
         shield:
           title: Shield
-          desc: Improves shield durability. Increases coverage from ranged attacks
+          desc: Improves shield durability. Increases coverage from ranged attacks. Reduces stun from weapons when hit
           requires: '@:character.characteristic.requires.linked.sixAgi'
 
     weaponProficiencies:

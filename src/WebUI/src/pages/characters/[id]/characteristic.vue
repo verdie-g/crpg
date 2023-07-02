@@ -4,6 +4,7 @@ import {
   convertCharacterCharacteristics,
   updateCharacterCharacteristics,
   computeHealthPoints,
+  characteristicBonusByKey,
 } from '@/services/characters-service';
 import {
   characterKey,
@@ -119,9 +120,9 @@ onBeforeRouteUpdate(() => {
             />
             <template #popper>
               <div class="prose prose-invert">
-                <h5 class="text-content-100">
+                <h4>
                   {{ $t('character.characteristic.convert.attrsToSkills.title') }}
-                </h5>
+                </h4>
                 <i18n-t
                   scope="global"
                   keypath="character.characteristic.convert.attrsToSkills.tooltip"
@@ -155,9 +156,9 @@ onBeforeRouteUpdate(() => {
             />
             <template #popper>
               <div class="prose prose-invert">
-                <h5 class="text-content-100">
+                <h4>
                   {{ $t('character.characteristic.convert.skillsToAttrs.title') }}
-                </h5>
+                </h4>
                 <i18n-t
                   scope="global"
                   keypath="character.characteristic.convert.skillsToAttrs.tooltip"
@@ -198,14 +199,28 @@ onBeforeRouteUpdate(() => {
 
               <template #popper>
                 <div class="prose prose-invert">
-                  <!-- prettier-ignore -->
-                  <h5 class="text-content-100">
+                  <h4>
+                    <!-- prettier-ignore -->
                     {{ $t(`character.characteristic.${fieldsGroup.key}.children.${field.key}.title`) }}
-                  </h5>
-                  <!-- prettier-ignore -->
-                  <p v-if="$t(`character.characteristic.${fieldsGroup.key}.children.${field.key}.desc`) !== ''">
-                    {{ $t(`character.characteristic.${fieldsGroup.key}.children.${field.key}.desc`) }}
-                  </p>
+                  </h4>
+
+                  <i18n-t
+                    scope="global"
+                    :keypath="`character.characteristic.${fieldsGroup.key}.children.${field.key}.desc`"
+                    tag="p"
+                  >
+                    <template v-if="field.key in characteristicBonusByKey" #value>
+                      <span class="font-bold text-content-100">
+                        {{
+                          $n(characteristicBonusByKey[field.key]!.value, {
+                            style: characteristicBonusByKey[field.key]!.style,
+                            minimumFractionDigits: 0,
+                          })
+                        }}
+                      </span>
+                    </template>
+                  </i18n-t>
+
                   <!-- prettier-ignore -->
                   <p
                     v-if="$t(`character.characteristic.${fieldsGroup.key}.children.${field.key}.requires`) !== ''"
@@ -243,7 +258,7 @@ onBeforeRouteUpdate(() => {
     </div>
 
     <div
-      class="sticky left-0 bottom-0 flex w-full grid-cols-3 items-center justify-center gap-2 bg-bg-main bg-opacity-10 py-4 backdrop-blur-sm"
+      class="sticky bottom-0 left-0 flex w-full grid-cols-3 items-center justify-center gap-2 bg-bg-main bg-opacity-10 py-4 backdrop-blur-sm"
     >
       <OButton
         :disabled="!wasChangeMade"
