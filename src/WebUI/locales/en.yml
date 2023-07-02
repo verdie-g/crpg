@@ -78,6 +78,7 @@ action:
   sell: Sell
   confirmation: Confirmation
   upgrade: Upgrade
+  reforge: Reforge
   enter: Enter
 
 login:
@@ -502,13 +503,31 @@ character:
         notify:
           warning: A large shield cannot be used on horseback
       upgrade:
-        upgradesTitle: Item Upgrades
+        upgradesTitle: 'Item upgrades'
+        tooltip:
+          title: 'Upgrade item'
+          description: 'You can upgrade your item by spending one heirloom point'
+        validation:
+          maxRank: 'This item has already been upgraded to the highest point possible'
+          loomPoints: "You don't have enough heirloom points"
+          exist: 'You already have an improved version of this item'
         confirm:
           description: 'Are you sure you want to upgrade this item for {loomPoints}? Your item {oldItem} will be changed to {newItem}'
-          value: Upgrade item
         currentItem: Current item
         notify:
           success: Item successfully upgraded
+      reforge:
+        tooltip:
+          title: 'Reforge item'
+          description: 'You can reforge your items for gold'
+        validation:
+          rank: 'The item must have a rank greater than {minimumRank}'
+          gold: 'Not enough gold to perform this action'
+          exist: 'You already have the {existItem} in your inventory. Sell it first'
+        confirm:
+          description: 'Are you sure you want to reforge this item for {gold}? You will get {loomPoints} back, in exchange {oldItem} will be changed to {newItem}'
+        notify:
+          success: 'Item successfully reforged'
 
   doll:
     slot:
@@ -1092,6 +1111,7 @@ activityLog:
     ItemBroke: 'The item {itemId} was broken'
     ItemRepaired: 'The item {itemId} was repaired for {price}'
     ItemUpgraded: 'The item {itemId} was upgraded for {price} {heirloomPoints}'
+    ItemReforged: 'The item {itemId} was reforged for {price}. {heirloomPoints} were received'
     CharacterCreated: 'The character {characterId} was created'
     CharacterDeleted: 'The character {characterId}, level {level}, generation {generation}, was deleted'
     CharacterRespecialized: 'The character {characterId} was respecialized for {price}'

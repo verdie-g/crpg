@@ -48,7 +48,7 @@ nav:
   main:
     Characters: 角色
     Shop: 商店
-    Clans: 家族
+    Clans: 氏族
     Moderator: 管理员
     Builder: 生成器
     Leaderboard: 排行榜
@@ -78,6 +78,7 @@ action:
   sell: 出售
   confirmation: 确认
   upgrade: 升级
+  reforge: 重铸
   enter: 进入
 
 login:
@@ -263,17 +264,17 @@ character:
         desc: '
           <p>选择一个活跃角色以在游戏中使用。</p>
           <p>如果没有选择任何活跃角色，加入一个服务器将会创建一个新角色</p>
-          <p>请注意，您每小时只能创建一个角色。否则您将被服务器自动踢出</p>'
+          <p>请注意，你每小时只能创建一个角色。否则你将被服务器自动踢出</p>'
     respecialize:
       title: 重新分配
       tooltip:
         title: 重新分配角色
-        desc: '花费{respecializationPrice}重新分配您的属性点'
-        free: 每{days}天您可以免费重新分配属性点一次
+        desc: '花费{respecializationPrice}重新分配你的属性点'
+        free: 每{days}天你可以免费重新分配属性点一次
         nextFreeAt: '下次免费重新分配属性点将在：{nextFreeAt}后'
       dialog:
         title: 重新分配角色
-        desc: 您确定要花费{respecializationPrice}重新分配您的属性点吗? 此操作无法撤销。
+        desc: 你确定要花费{respecializationPrice}重新分配你的属性点吗? 此操作无法撤销。
       notify:
         success: 成功重新分配角色属性点
     retire:
@@ -282,7 +283,7 @@ character:
         title: 退役角色
         descTpl: '{desc1} {desc2}'
         desc1: '将角色重置为{resetLevel}级，以获得加成倍数{multiplierBonus} (最大值：{maxMultiplierBonus})'
-        desc2: '您将根据角色级别获得转生点数{heirloom}'
+        desc2: '你将根据角色级别获得转生点数{heirloom}'
         requiredDesc: '需要{requiredLevel}等级'
       loomPointsTable:
         cols:
@@ -290,8 +291,8 @@ character:
           loomsPoints: 积分
       dialog:
         title: 退役角色
-        desc: 您确定要退役您的角色吗？此操作无法撤销
-        reward: '您获得三个奖励：{heirloom}个转生点，{multiplierBonus} 经验倍数。角色等级将变为：{resetLevel}'
+        desc: 你确定要退役你的角色吗？此操作无法撤销
+        reward: '你获得三个奖励：{heirloom}个转生点，{multiplierBonus} 经验倍数。角色等级将变为：{resetLevel}'
       notify:
         success: 角色已退役
     tournament:
@@ -302,15 +303,15 @@ character:
         requiredDesc: '需要{requiredLevel}等级'
       dialog:
         title: 锦标赛角色
-        desc: 您确定要创建一个锦标赛角色吗？此操作无法撤消
+        desc: 你确定要创建一个锦标赛角色吗？此操作无法撤消
       notify:
         success: 角色已更新
     delete:
-      title: 您可以{link}。您将无法恢复它
-      link: 删除您的角色
+      title: 你可以{link}。你将无法恢复它
+      link: 删除你的角色
       dialog:
         title: 删除角色
-        desc: 您确定要删除您的角色吗？此操作无法撤消
+        desc: 你确定要删除你的角色吗？此操作无法撤消
       notify:
         success: 角色已删除
 
@@ -457,7 +458,7 @@ character:
     desc: <p>如果你在回合结束时不能支付维持费，你的物品将被打破</p><p>你可以在你的库存中付费修理你的物品</p>
 
   inventory:
-    empty: 背包空空如也...
+    empty: 物品栏空空如也...
     total:
       tpl: '{count} {sum}'
       count: '... | {count} 件物品 | {count} 件物品'
@@ -495,13 +496,31 @@ character:
         notify:
           warning: 大盾牌不能在马背上使用
       upgrade:
-        upgradesTitle: 项目升级
+        upgradesTitle: 物品升级
+        tooltip:
+          title: '升级物品'
+          description: '你可以花费一个转生点来升级你的物品'
+        validation:
+          maxRank: '该物品已经升级到最高阶'
+          loomPoints: '你没有足够的转生点'
+          exist: '你已经拥有该物品的改进版本'
         confirm:
-          description: '您确定要使用{loomPoints}来升级此物品吗？您的物品{oldItem}将会变成{newItem}。'
-          value: 升级物品
+          description: '你确定要使用{loomPoints}转生点来升级此物品吗？你的物品{oldItem}将会变成{newItem}。'
         currentItem: 当前物品
         notify:
           success: 物品成功升级
+      reforge:
+        tooltip:
+          title: '重铸物品'
+          description: '你可以使用金币来重铸你的物品'
+        validation:
+          rank: '该物品必须拥有大于{minimumRank}的阶级'
+          gold: '你没有足够的金币来执行此操作'
+          exist: '你的物品栏中已经有了{existItem}。请先出售它'
+        confirm:
+          description: '你确定要用{gold}的金币来重铸该物品吗？你将会获得{loomPoints}转生点作为回报，同时物品{oldItem}将变成{newItem}'
+        notify:
+          success: '物品重铸成功'
 
   doll:
     slot:
@@ -634,7 +653,7 @@ clan:
       notify:
         success: 成员已更新
     kick:
-      title: 您可以{memberLink}。此操作无法撤销。
+      title: 你可以{memberLink}。此操作无法撤销。
       memberLink: 踢出此用户
       dialog:
         title: 踢出{memberName} ？
@@ -645,9 +664,9 @@ clan:
       title: 离开氏族
       dialog:
         title: 离开氏族
-        desc: 您确定要离开 {clanName} 氏族吗？此操作无法撤销。
+        desc: 你确定要离开 {clanName} 氏族吗？此操作无法撤销。
       notify:
-        success: 您已经离开了氏族
+        success: 你已经离开了氏族
   application:
     title: 申请
     apply: 申请加入
@@ -674,17 +693,17 @@ user:
   settings:
     title: 账号设置
     delete:
-      title: 您可以 {link}。该操作无法被恢复。
-      link: 删除您的账号
+      title: 你可以 {link}。该操作无法被恢复。
+      link: 删除你的账号
       dialog:
         title: 正在删除账号
-        desc: 您确定要删除您的账号吗？这个操作不可撤回。
+        desc: 你确定要删除你的账号吗？这个操作不可撤回。
       notify:
         success: 账号已删除
   restriction:
-    notification: '您被封禁，时长为：{duration}'
+    notification: '你被封禁，时长为：{duration}'
     guide:
-      intro: '如果您想进一步讨论您的惩罚，请按照以下步骤操作：'
+      intro: '如果你想进一步讨论你的惩罚，请按照以下步骤操作：'
       step:
         join: 加入我们的{discordLink}
         navigate: 导航到我们的{modMailLink}频道
@@ -770,7 +789,7 @@ homePage:
   intro: cRPG是{link}的一个模组
   description: 《骑马与砍杀：霸主》的cRPG模组将带领你从一个谦卑的农民蜕变为一名独特的战士。使用这些奖励来提高你的状态和升级装备。利用这些奖励来增强你的属性并升级装备。这个模组巧妙地融合了持续的角色成长和引人入胜的战斗，每一次战斗都推进着你战士的传奇故事。
 
-patreon: <p>喜欢我们的项目吗</p><p>您可以在{link}上支持我们</p>
+patreon: <p>喜欢我们的项目吗</p><p>你可以在{link}上支持我们</p>
 
 hh:
   tooltip-trigger: '{region}的快乐时光:'
@@ -778,8 +797,8 @@ hh:
     template: '{title}{desc}{region}'
     title: 快乐时光！
     desc: '快乐时光是每日促销活动，期间{descHighlight}'
-    descHighlight: 您的所有经验值收益将增加50％。
-    region: 促销活动持续时间为您的地区指定的时间 - {currentRegion}。自动检测地区。
+    descHighlight: 你的所有经验值收益将增加50％。
+    region: 促销活动持续时间为你的地区指定的时间 - {currentRegion}。自动检测地区。
   notify:
     started: 快乐时光开始咯🙂
     ended: 快乐时光结束了😭
@@ -929,7 +948,7 @@ item:
     Blunt:
       long: '钝伤'
       short: '钝'
-  requirementFormat: '{value} str'
+  requirementFormat: '{value} 力'
 
   aggregations:
     type:
@@ -939,17 +958,17 @@ item:
       title: '价格'
       description: ''
     upkeep:
-      title: '服务'
+      title: '维修费'
       description: '平均每小时维护费用'
     culture:
       title: '文化'
       description: ''
     requirement:
       title: '需求'
-      description: '’您的力量不足以使用此物品‘'
+      description: '’你的力量不足以使用此物品‘'
     tier:
       title: '物品品阶'
-      description: '<p>TODO: cRPG有一个称为物品价值模型的东西，它旨在预测和量化游戏中任何物品的效率。它使用公式计算每个物品的0到10级别，使用物品统计数据。价值模型已经完全重构，以更好地预测哪些武器和物品表现最佳。计算出的物品级别将决定物品的要求和价格。这就是为什么您会看到定价列表中物品的顺序已经改变，因为价值模型的评估已经改变。最好的武器现在应该是最贵的武器。物品价值模型不是物品平衡的形式，而仅仅是平衡游戏物品的指标。我们将在进一步更新中平衡物品，以实现更平衡的游戏环境。</p>'
+      description: '<p>TODO: cRPG有一个称为物品价值模型的东西，它旨在预测和量化游戏中任何物品的效率。它使用公式计算每个物品的0到10级别，使用物品统计数据。价值模型已经完全重构，以更好地预测哪些武器和物品表现最佳。计算出的物品级别将决定物品的要求和价格。这就是为什么你会看到定价列表中物品的顺序已经改变，因为价值模型的评估已经改变。最好的武器现在应该是最贵的武器。物品价值模型不是物品平衡的形式，而仅仅是平衡游戏物品的指标。我们将在进一步更新中平衡物品，以实现更平衡的游戏环境。</p>'
     flags:
       title: '特性'
       description: ''

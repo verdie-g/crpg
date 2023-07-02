@@ -1,6 +1,8 @@
 [
   {
     "id": "crpg_sturgia_axe_5_t5",
+    "baseId": "crpg_sturgia_axe_5_t5",
+    "rank": 0,
     "name": "Wood Chopper Axe",
     "culture": "Sturgia",
     "type": "OneHandedWeapon",
@@ -34,6 +36,8 @@
   },
   {
     "id": "crpg_peasant_sickle_1_t1",
+    "baseId": "crpg_peasant_sickle_1_t1",
+    "rank": 0,
     "name": "Sickle",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
@@ -67,6 +71,8 @@
   },
   {
     "id": "crpg_northern_leather_tabard",
+    "baseId": "crpg_northern_leather_tabard",
+    "rank": 0,
     "name": "Leather Tabard",
     "culture": "Sturgia",
     "type": "BodyArmor",
@@ -87,6 +93,8 @@
   },
   {
     "id": "crpg_leatherlame_roundkettle_over_imperial_leather",
+    "baseId": "crpg_leatherlame_roundkettle_over_imperial_leather",
+    "rank": 0,
     "name": "Roundkettle over Leather",
     "culture": "Empire",
     "type": "HeadArmor",
@@ -107,6 +115,8 @@
   },
   {
     "id": "crpg_vlandia_lance_1_t3",
+    "baseId": "crpg_vlandia_lance_1_t3",
+    "rank": 0,
     "name": "Light Lance",
     "culture": "Vlandia",
     "type": "Polearm",
@@ -158,6 +168,8 @@
   },
   {
     "id": "crpg_mountain_hunting_bow",
+    "baseId": "crpg_mountain_hunting_bow",
+    "rank": 0,
     "name": "Mountain Hunting Bow",
     "culture": "Battania",
     "type": "Bow",

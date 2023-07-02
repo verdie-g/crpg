@@ -3,6 +3,7 @@ import {
   itemRepairCostPerSecond,
   itemBreakChance,
   brokenItemRepairPenaltySeconds,
+  itemReforgeCostPerRank,
 } from '@root/data/constants.json';
 import {
   type Item,
@@ -545,7 +546,6 @@ export const getCompareItemsResult = (items: ItemFlat[], aggregationsConfig: Agg
     }, {} as CompareItemsResult);
 };
 
-// TODO: spec
 export const getRelativeEntries = (item: ItemFlat, aggregationsConfig: AggregationConfig) => {
   return (Object.keys(aggregationsConfig) as Array<keyof ItemFlat>)
     .filter(k => aggregationsConfig[k]?.compareRule !== undefined)
@@ -639,3 +639,10 @@ export const getRankColor = (rank: ItemRank) => {
 };
 
 export const canUpgrade = (type: ItemType) => type !== ItemType.Banner;
+
+export const reforgeCostByRank: Record<ItemRank, number> = {
+  0: itemReforgeCostPerRank[0],
+  1: itemReforgeCostPerRank[1],
+  2: itemReforgeCostPerRank[2],
+  3: itemReforgeCostPerRank[3],
+};

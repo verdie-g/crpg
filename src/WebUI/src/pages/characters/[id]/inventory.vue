@@ -8,7 +8,12 @@ import { AggregationConfig, AggregationView, SortingConfig } from '@/models/item
 import { extractItemFromUserItem } from '@/services/users-service';
 import { updateCharacterItems, checkUpkeepIsHigh } from '@/services/characters-service';
 import { useUserStore } from '@/stores/user';
-import { sellUserItem, repairUserItem, upgradeUserItem } from '@/services/users-service';
+import {
+  sellUserItem,
+  repairUserItem,
+  upgradeUserItem,
+  reforgeUserItem,
+} from '@/services/users-service';
 import { getCompareItemsResult } from '@/services/item-service';
 import { createItemIndex } from '@/services/item-search-service/indexator';
 import { getSearchResult, getAggregationsConfig } from '@/services/item-search-service';
@@ -85,6 +90,16 @@ const onUpgradeUserItem = async (itemId: number) => {
     loadCharacterItems(0, { id: character.value.id }),
   ]);
   notify(t('character.inventory.item.upgrade.notify.success'));
+};
+
+const onReforgeUserItem = async (itemId: number) => {
+  await reforgeUserItem(itemId);
+  await Promise.all([
+    userStore.fetchUser(),
+    userStore.fetchUserItems(),
+    loadCharacterItems(0, { id: character.value.id }),
+  ]);
+  notify(t('character.inventory.item.reforge.notify.success'));
 };
 
 const flatItems = computed(() => createItemIndex(extractItemFromUserItem(userStore.userItems)));
@@ -429,6 +444,12 @@ await userStore.fetchUserItems();
             () => {
               closeItemDetail(oi.id);
               onUpgradeUserItem(oi.userId);
+            }
+          "
+          @reforge="
+            () => {
+              closeItemDetail(oi.id);
+              onReforgeUserItem(oi.userId);
             }
           "
         />

@@ -52,24 +52,15 @@ vi.mock('@/services/item-search-service/aggregations.ts', () => ({
   } as AggregationConfig,
 }));
 
-const mockedNotify = vi.fn();
+const { mockedNotify } = vi.hoisted(() => ({
+  mockedNotify: vi.fn(),
+}));
 vi.mock('@/services/notification-service', async () => ({
   ...(await vi.importActual<typeof import('@/services/notification-service')>(
     '@/services/notification-service'
   )),
   notify: mockedNotify,
 }));
-
-// mock Date
-const NOW = '2022-11-27T21:00:00.0000000Z';
-const DateReal = global.Date;
-vi.spyOn(global, 'Date').mockImplementation((...args: any[]) => {
-  if (args.length) {
-    // @ts-ignore
-    return new DateReal(...args);
-  }
-  return new Date(NOW);
-});
 
 import mockItems from '@/__mocks__/items.json';
 
@@ -80,6 +71,7 @@ import {
   hasWeaponClassesByItemType,
   getWeaponClassesByItemType,
   getCompareItemsResult,
+  getRelativeEntries,
   humanizeBucket,
   getItemFieldAbsoluteDiffStr,
   type HumanBucket,
@@ -90,6 +82,15 @@ import {
   computeBrokenItemRepairCost,
   computeAverageRepairCostPerHour,
 } from './item-service';
+
+beforeEach(() => {
+  vi.useFakeTimers();
+  vi.setSystemTime('2022-11-27T21:00:00.0000000Z');
+});
+
+afterEach(() => {
+  vi.useRealTimers();
+});
 
 it('getItems', async () => {
   mockGet('/items').willResolve(response<Item[]>(mockItems as Item[]));
@@ -103,7 +104,7 @@ it('getItemImage', () => {
   );
 });
 
-it.only.each<[PartialDeep<Item>, PartialDeep<Record<ItemSlot, UserItem>>, ItemSlot[]]>([
+it.each<[PartialDeep<Item>, PartialDeep<Record<ItemSlot, UserItem>>, ItemSlot[]]>([
   [
     { type: ItemType.MountHarness, flags: [], armor: { familyType: ItemFamilyType.Horse } },
     {},
@@ -359,6 +360,39 @@ it('compareItemsResult', () => {
   });
 });
 
+it('getRelativeEntries', () => {
+  const item = {
+    weight: 2.22,
+    length: 105,
+    handling: 82,
+    flags: ['UseTeamColor'],
+  } as ItemFlat;
+
+  const aggregationConfig = {
+    length: {
+      title: 'Length',
+      compareRule: 'Bigger',
+    },
+    flags: {
+      title: 'Flags',
+    },
+    handling: {
+      title: 'Handling',
+      compareRule: 'Bigger',
+    },
+    weight: {
+      title: 'Thrust damage',
+      compareRule: 'Less',
+    },
+  } as AggregationConfig;
+
+  expect(getRelativeEntries(item, aggregationConfig)).toEqual({
+    length: 105,
+    handling: 82,
+    weight: 2.22,
+  });
+});
+
 it.each<[ItemFieldCompareRule, number, number, string]>([
   [ItemFieldCompareRule.Bigger, 0, 0, ''],
   [ItemFieldCompareRule.Bigger, -1, 0, '-1'],
@@ -430,7 +464,7 @@ it.each<[PartialDeep<UserItem>, { price: number; graceTimeEnd: Date | null }]>([
   expect(computeSalePrice(userItem as UserItem)).toEqual(expectation);
 });
 
-it.only.each<[number, number]>([
+it.each<[number, number]>([
   [1, 0],
   [10, 0],
   [100, 1],
