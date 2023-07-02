@@ -83,9 +83,9 @@ internal class CrpgItemValueModel : ItemValueModel
             + 1.1f * armorComponent.BodyArmor
             + 1.15f * armorComponent.ArmArmor
             + 0.75f * armorComponent.LegArmor;
-        float bestArmorPower = armorComponent.Item.ItemType switch
+        float bestArmorPower = 0.931878f * armorComponent.Item.ItemType switch
         {
-            ItemObject.ItemTypeEnum.HeadArmor => 21.25f,
+            ItemObject.ItemTypeEnum.HeadArmor => 21.8288f,
             ItemObject.ItemTypeEnum.Cape => 11.36f,
             ItemObject.ItemTypeEnum.BodyArmor => 19.492481f,
             ItemObject.ItemTypeEnum.HandArmor => 10.1992f,
@@ -253,6 +253,7 @@ internal class CrpgItemValueModel : ItemValueModel
                 case WeaponClass.OneHandedPolearm:
                 case WeaponClass.TwoHandedPolearm:
                     swingLengthTier = 1.775f * (float)Math.Pow(0.43f + weapon.WeaponLength * 0.00409f, 3 * (200 + weapon.WeaponLength) / (200 + 3f * weapon.WeaponLength));
+                    Debug.Print($"{weapon.WeaponLength}");
                     break;
                 case WeaponClass.LowGripPolearm:
                 case WeaponClass.Pick:
