@@ -143,19 +143,19 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         if (WeaponClassesAffectedByPowerStrike.Contains(weaponComponent.WeaponClass))
         {
             int powerStrike = GetEffectiveSkill(character, agentOrigin, agentFormation, CrpgSkills.PowerStrike);
-            return MathHelper.ApplyPolynomialFunction(powerStrike, _constants.DamageFactorForPowerStrikeCoefs);
+            return 1 + powerStrike * _constants.DamageFactorForPowerStrike;
         }
 
         if (WeaponClassesAffectedByPowerDraw.Contains(weaponComponent.WeaponClass))
         {
             int powerDraw = GetEffectiveSkill(character, agentOrigin, agentFormation, CrpgSkills.PowerDraw);
-            return MathHelper.ApplyPolynomialFunction(powerDraw, _constants.DamageFactorForPowerDrawCoefs);
+            return 1 + powerDraw * _constants.DamageFactorForPowerDraw;
         }
 
         if (WeaponClassesAffectedByPowerThrow.Contains(weaponComponent.WeaponClass))
         {
             int powerThrow = GetEffectiveSkill(character, agentOrigin, agentFormation, CrpgSkills.PowerThrow);
-            return MathHelper.ApplyPolynomialFunction(powerThrow, _constants.DamageFactorForPowerThrowCoefs);
+            return 1 + powerThrow * _constants.DamageFactorForPowerThrow;
         }
 
         return 1;
@@ -198,9 +198,9 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
         int strengthAttribute = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
         int ironFleshSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.IronFlesh);
-        agent.BaseHealthLimit = (int)(_constants.DefaultHealthPoints
-                                      + MathHelper.ApplyPolynomialFunction(strengthAttribute, _constants.HealthPointsForStrengthCoefs)
-                                      + MathHelper.ApplyPolynomialFunction(ironFleshSkill, _constants.HealthPointsForIronFleshCoefs));
+        agent.BaseHealthLimit = _constants.DefaultHealthPoints
+                                + strengthAttribute * _constants.HealthPointsForStrength
+                                + ironFleshSkill * _constants.HealthPointsForIronFlesh;
         agent.HealthLimit = agent.BaseHealthLimit;
         agent.Health = agent.HealthLimit;
     }
@@ -403,8 +403,8 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             {
                 int mountedArcherySkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.MountedArchery);
 
-                float weaponMaxMovementAccuracyPenalty = 0.03f / _constants.MountedRangedSkillInaccurary[mountedArcherySkill];
-                float weaponMaxUnsteadyAccuracyPenalty = 0.15f / _constants.MountedRangedSkillInaccurary[mountedArcherySkill];
+                float weaponMaxMovementAccuracyPenalty = 0.03f / _constants.MountedRangedSkillInaccuracy[mountedArcherySkill];
+                float weaponMaxUnsteadyAccuracyPenalty = 0.15f / _constants.MountedRangedSkillInaccuracy[mountedArcherySkill];
                 if (equippedItem.RelevantSkill == DefaultSkills.Crossbow)
                 {
                     weaponMaxUnsteadyAccuracyPenalty /= ImpactOfStrReqOnCrossbows(agent, 0.2f, primaryItem);
@@ -413,15 +413,15 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
                 props.WeaponMaxMovementAccuracyPenalty = Math.Min(weaponMaxMovementAccuracyPenalty, 1f);
                 props.WeaponMaxUnsteadyAccuracyPenalty = Math.Min(weaponMaxUnsteadyAccuracyPenalty, 1f);
-                props.WeaponInaccuracy /= _constants.MountedRangedSkillInaccurary[mountedArcherySkill];
+                props.WeaponInaccuracy /= _constants.MountedRangedSkillInaccuracy[mountedArcherySkill];
             }
         }
 
         int shieldSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.Shield);
-        float[] coverageFactorForShieldCoefs = agent.HasMount
-            ? _constants.CavCoverageFactorForShieldCoefs
-            : _constants.InfantryCoverageFactorForShieldCoefs;
-        props.AttributeShieldMissileCollisionBodySizeAdder = MathHelper.ApplyPolynomialFunction(shieldSkill, coverageFactorForShieldCoefs);
+        float coverageFactorForShieldCoef = agent.HasMount
+            ? _constants.CavalryCoverageFactorForShieldCoef
+            : _constants.InfantryCoverageFactorForShieldCoef;
+        props.AttributeShieldMissileCollisionBodySizeAdder = shieldSkill * coverageFactorForShieldCoef;
         float ridingAttribute = agent.MountAgent?.GetAgentDrivenPropertyValue(DrivenProperty.AttributeRiding) ?? 1f;
         props.AttributeRiding = ridingSkill * ridingAttribute;
         // TODO: AttributeHorseArchery doesn't seem to have any effect for now.

@@ -1,5 +1,4 @@
 ﻿using Crpg.Application.Common.Interfaces;
-using Crpg.Common.Helpers;
 using Crpg.Domain.Entities.Items;
 using Crpg.Sdk.Abstractions;
 
@@ -28,7 +27,7 @@ internal class ItemService : IItemService
         int price = userItem.Item!.Price;
         // If the item was recently bought it is sold at 100% of its original price.
         int sellPrice = userItem.CreatedAt + TimeSpan.FromHours(1) < _dateTime.UtcNow
-            ? (int)MathHelper.ApplyPolynomialFunction(price, _constants.ItemSellCostCoefs)
+            ? (int)(price * _constants.ItemSellCostPenalty)
             : price;
         userItem.User!.Gold += sellPrice;
         db.EquippedItems.RemoveRange(userItem.EquippedItems);

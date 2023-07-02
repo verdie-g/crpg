@@ -1,5 +1,5 @@
 import {
-  itemSellCostCoefs,
+  itemSellCostPenalty,
   itemRepairCostPerSecond,
   itemBreakChance,
   brokenItemRepairPenaltySeconds,
@@ -607,7 +607,7 @@ export const computeSalePrice = (userItem: UserItem) => {
 
   if (isGraceTimeExpired(graceTimeEnd)) {
     return {
-      price: Math.floor(applyPolynomialFunction(userItem.item.price, itemSellCostCoefs)),
+      price: Math.floor(userItem.item.price * itemSellCostPenalty),
       graceTimeEnd: null,
     };
   }

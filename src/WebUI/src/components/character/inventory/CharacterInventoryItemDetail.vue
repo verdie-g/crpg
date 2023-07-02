@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { itemSellCostCoefs } from '@root/data/constants.json';
+import { itemSellCostPenalty } from '@root/data/constants.json';
 import { ItemCompareMode, type CompareItemsResult, type ItemFlat } from '@/models/item';
 import { type UserItem } from '@/models/user';
 import {
@@ -185,7 +185,7 @@ const isUpgradable = computed(() => canUpgrade(props.item.type));
               v-else
               size="sm"
               variant="danger"
-              :label="$n(itemSellCostCoefs[0] - 1, 'percent', { minimumFractionDigits: 0 })"
+              :label="$n(itemSellCostPenalty, 'percent', { minimumFractionDigits: 0 })"
             />
 
             <template #popper>
@@ -210,7 +210,7 @@ const isUpgradable = computed(() => canUpgrade(props.item.type));
               >
                 <template #penalty>
                   <span class="font-bold text-status-danger">
-                    {{ $n(itemSellCostCoefs[0], 'percent', { minimumFractionDigits: 0 }) }}
+                    {{ $n(itemSellCostPenalty, 'percent', { minimumFractionDigits: 0 }) }}
                   </span>
                 </template>
               </i18n-t>
