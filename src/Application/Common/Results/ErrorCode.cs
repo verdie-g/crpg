@@ -35,6 +35,7 @@ public enum ErrorCode
     ItemNotBuyable,
     ItemNotFound,
     ItemNotOwned,
+    ItemNotReforgeable,
     ItemNotSellable,
     ItemNotUpgradable,
     NotEnoughAttributePoints,

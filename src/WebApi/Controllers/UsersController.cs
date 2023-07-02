@@ -452,6 +452,17 @@ public class UsersController : BaseController
     }
 
     /// <summary>
+    /// Reforge item.
+    /// </summary>
+    /// <param name="id">User item id.</param>
+    /// <returns>The reforged item.</returns>
+    /// <response code="200">Reforged.</response>
+    /// <response code="400">Bad Request.</response>
+    [HttpPut("self/items/{id}/reforge")]
+    public Task<ActionResult<Result<UserItemViewModel>>> ReforgeUpgradedUserItem([FromRoute] int id) =>
+        ResultToActionAsync(Mediator.Send(new ReforgeUpgradedUserItemCommand { UserItemId = id, UserId = CurrentUser.User!.Id }));
+
+    /// <summary>
     /// Repair item.
     /// </summary>
     /// <param name="id">User item id.</param>

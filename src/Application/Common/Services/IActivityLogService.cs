@@ -11,6 +11,7 @@ internal interface IActivityLogService
     ActivityLog CreateItemBoughtLog(int userId, string itemId, int price);
     ActivityLog CreateItemSoldLog(int userId, string itemId, int price);
     ActivityLog CreateItemBrokeLog(int userId, string itemId);
+    ActivityLog CreateItemReforgedLog(int userId, string itemId, int heirloomPoints, int price);
     ActivityLog CreateItemRepairedLog(int userId, string itemId, int price);
     ActivityLog CreateItemUpgradedLog(int userId, string itemId, int heirloomPoints);
     ActivityLog CreateCharacterCreatedLog(int userId, int characterId);
@@ -73,6 +74,16 @@ internal class ActivityLogService : IActivityLogService
         return CreateLog(ActivityLogType.ItemBroke, userId, new ActivityLogMetadata[]
         {
             new("itemId", itemId),
+        });
+    }
+
+    public ActivityLog CreateItemReforgedLog(int userId, string itemId, int heirloomPoints, int price)
+    {
+        return CreateLog(ActivityLogType.ItemReforged, userId, new ActivityLogMetadata[]
+        {
+            new("itemId", itemId),
+            new("heirloomPoints", heirloomPoints.ToString()),
+            new("price", price.ToString()),
         });
     }
 

@@ -9,6 +9,7 @@ public enum ActivityLogType
     ItemBought,
     ItemSold,
     ItemBroke,
+    ItemReforged,
     ItemRepaired,
     ItemUpgraded,
     CharacterCreated,
