@@ -1111,6 +1111,7 @@ activityLog:
     ItemBroke: 'The item {itemId} was broken'
     ItemRepaired: 'The item {itemId} was repaired for {price}'
     ItemUpgraded: 'The item {itemId} was upgraded for {price} {heirloomPoints}'
+    ItemReforged: 'The item {itemId} was reforged for {price}. {heirloomPoints} were received'
     CharacterCreated: 'The character {characterId} was created'
     CharacterDeleted: 'The character {characterId}, level {level}, generation {generation}, was deleted'
     CharacterRespecialized: 'The character {characterId} was respecialized for {price}'
