@@ -231,7 +231,7 @@ const {
                   </template>
 
                   <template #loomPoints>
-                    <Loom :point="1" />
+                    <Loom :point="item.rank" />
                   </template>
 
                   <template #oldItem>
