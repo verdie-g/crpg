@@ -89,7 +89,7 @@ internal class ActivityLogService : IActivityLogService
 
     public ActivityLog CreateItemRepairedLog(int userId, string itemId, int price)
     {
-        return CreateLog(ActivityLogType.ItemBroke, userId, new ActivityLogMetadata[]
+        return CreateLog(ActivityLogType.ItemRepaired, userId, new ActivityLogMetadata[]
         {
             new("itemId", itemId),
             new("price", price.ToString()),
