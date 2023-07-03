@@ -224,7 +224,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         int ridingSkill = agent.RiderAgent != null
             ? GetEffectiveSkill(agent.RiderAgent.Character, agent.RiderAgent.Origin, agent.RiderAgent.Formation, DefaultSkills.Riding)
             : 100;
-        props.MountManeuver = mount.GetModifiedMountManeuver(in mountHarness) * (0.5f + ridingSkill * 0.0025f) * 1.1f ;
+        props.MountManeuver = mount.GetModifiedMountManeuver(in mountHarness) * (0.5f + ridingSkill * 0.0025f);
         props.MountSpeed = (mount.GetModifiedMountSpeed(in mountHarness) + 1) * 0.3f * (1.0f + ridingSkill * 0.00275f);
         props.TopSpeedReachDuration = Game.Current.BasicModels.RidingModel.CalculateAcceleration(in mount, in mountHarness, ridingSkill);
         float weightFactor = mount.Weight / 2.0f + (mountHarness.IsEmpty ? 0.0f : mountHarness.Weight);
