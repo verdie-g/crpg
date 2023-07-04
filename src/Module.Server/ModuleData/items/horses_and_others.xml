@@ -3578,7 +3578,7 @@
   </Item>
   <Item id="crpg_mount1_fast_14_h0" name="Shadowfax" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="74" speed="52" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="13" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="74" speed="70" charge_damage="2" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-80" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3594,7 +3594,7 @@
   </Item>
   <Item id="crpg_mount1_fast_14_h1" name="Shadowfax +1" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="74" speed="53" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="27" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="74" speed="71" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-72" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3610,7 +3610,7 @@
   </Item>
   <Item id="crpg_mount1_fast_14_h2" name="Shadowfax +2" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="75" speed="53" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="41" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="75" speed="71" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-64" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -3626,7 +3626,7 @@
   </Item>
   <Item id="crpg_mount1_fast_14_h3" name="Shadowfax +3" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="76" speed="53" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="56" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="76" speed="71" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-56" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
