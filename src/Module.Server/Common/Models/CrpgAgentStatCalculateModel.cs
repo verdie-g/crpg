@@ -228,9 +228,9 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         float harnessArmorHpMultiplierApprox = 1f + 1.8f * harnessArmor / 60f;
         float armoredPercentage = harnessArmorHpMultiplierApprox / 2.8f;
         props.MountManeuver = mount.GetModifiedMountManeuver(in mountHarness) * (0.5f + ridingSkill * 0.0025f);
-        props.MountSpeed = (mount.GetModifiedMountSpeed(in mountHarness) + 1) * 0.33f * (1.0f + ridingSkill * 0.0008f) * (1 / (1 + armoredPercentage)); // speed divided by 2 for full armor
+        props.MountSpeed = (mount.GetModifiedMountSpeed(in mountHarness) + 1) * 0.33f * (1.0f + ridingSkill * 0.0008f) * (1f / (1f + armoredPercentage)); // speed divided by 2 for full armor
         props.TopSpeedReachDuration = Game.Current.BasicModels.RidingModel.CalculateAcceleration(in mount, in mountHarness, ridingSkill);
-        props.MountDashAccelerationMultiplier = 1 / (2 + 8 * armoredPercentage);
+        props.MountDashAccelerationMultiplier = 1f / (2f + 8f * armoredPercentage);
     }
 
     private void UpdateHumanAgentStats(Agent agent, AgentDrivenProperties props)
