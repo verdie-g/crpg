@@ -224,13 +224,13 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         int ridingSkill = agent.RiderAgent != null
             ? GetEffectiveSkill(agent.RiderAgent.Character, agent.RiderAgent.Origin, agent.RiderAgent.Formation, DefaultSkills.Riding)
             : 100;
+        int harnessArmor = mountHarness.Item?.ArmorComponent?.BodyArmor ?? 0;
+        float harnessArmorHpMultiplierApprox = 1f + 1.8f * harnessArmor / 60f;
+        float armoredPercentage = harnessArmorHpMultiplierApprox / 2.8f;
         props.MountManeuver = mount.GetModifiedMountManeuver(in mountHarness) * (0.5f + ridingSkill * 0.0025f);
-        props.MountSpeed = (mount.GetModifiedMountSpeed(in mountHarness) + 1) * 0.33f * (1.0f + ridingSkill * 0.0008f);
+        props.MountSpeed = (mount.GetModifiedMountSpeed(in mountHarness) + 1) * 0.33f * (1.0f + ridingSkill * 0.0008f) * (1 / (1 + armoredPercentage)); // speed divided by 2 for full armor
         props.TopSpeedReachDuration = Game.Current.BasicModels.RidingModel.CalculateAcceleration(in mount, in mountHarness, ridingSkill);
-        float weightFactor = mount.Weight / 2.0f + (mountHarness.IsEmpty ? 0.0f : mountHarness.Weight);
-        props.MountDashAccelerationMultiplier = weightFactor > 200.0
-            ? weightFactor < 300.0 ? 1.0f - (weightFactor - 200.0f) / 111.0f : 0.1f
-            : 1f;
+        props.MountDashAccelerationMultiplier = 1 / (2 + 8 * armoredPercentage);
     }
 
     private void UpdateHumanAgentStats(Agent agent, AgentDrivenProperties props)
