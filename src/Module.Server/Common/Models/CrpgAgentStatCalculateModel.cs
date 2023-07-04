@@ -226,9 +226,12 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             : 100;
         int harnessArmor = mountHarness.Item?.ArmorComponent?.BodyArmor ?? 0;
         float harnessArmorHpMultiplierApprox = 1f + 1.8f * harnessArmor / 60f;
-        float armoredPercentage = harnessArmorHpMultiplierApprox / 2.8f;
+        float armoredPercentage = (harnessArmorHpMultiplierApprox - 1f) / 1.8f;
+        InformationManager.DisplayMessage(new InformationMessage($"armor : {harnessArmor}"));
+        InformationManager.DisplayMessage(new InformationMessage($"armoredPercentage : {armoredPercentage}"));
         props.MountManeuver = mount.GetModifiedMountManeuver(in mountHarness) * (0.5f + ridingSkill * 0.0025f);
-        props.MountSpeed = (mount.GetModifiedMountSpeed(in mountHarness) + 1) * 0.33f * (1.0f + ridingSkill * 0.0008f) * (1f / (1f + armoredPercentage)); // speed divided by 2 for full armor
+        props.MountSpeed = (mount.GetModifiedMountSpeed(in mountHarness) + 1) * 0.33f * (1.0f + ridingSkill * 0.0008f) * (1f / (1f + 0.6f * armoredPercentage)); // speed divided by 2 for full armor
+        InformationManager.DisplayMessage(new InformationMessage($"(1f / (1f + armoredPercentage)) : {(1f / (1f + armoredPercentage))}"));
         props.TopSpeedReachDuration = Game.Current.BasicModels.RidingModel.CalculateAcceleration(in mount, in mountHarness, ridingSkill);
         props.MountDashAccelerationMultiplier = 1f / (2f + 8f * armoredPercentage);
     }
