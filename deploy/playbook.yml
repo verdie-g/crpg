@@ -9,8 +9,3 @@
     - crpg-web-ui
     - crpg-game-client
     - crpg-web-api
-- hosts: gameservers
-  become: yes
-  roles:
-    - datadog
-    - crpg-game-server
