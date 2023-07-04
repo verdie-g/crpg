@@ -1,48 +1,32 @@
-﻿using Crpg.Module.Api.Models.Characters;
+﻿using System.IO.Compression;
+using Crpg.Module.Api.Models.Characters;
 using Crpg.Module.Api.Models.Clans;
 using Crpg.Module.Api.Models.Items;
 using Crpg.Module.Api.Models.Users;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Network.Messages;
+using TaleWorlds.ObjectSystem;
 
 namespace Crpg.Module.Common.Network;
 
 [DefineGameNetworkMessageTypeForMod(GameNetworkMessageSendType.FromServer)]
 internal sealed class UpdateCrpgUser : GameNetworkMessage
 {
-    private static readonly CompressionInfo.Integer GenerationCompressionInfo = new(0, 100, true);
-    private static readonly CompressionInfo.Integer ExperienceCompressionInfo = new(0, int.MaxValue, true);
-    private static readonly CompressionInfo.Integer LevelCompressionInfo = new(0, 50, true);
-    private static readonly CompressionInfo.Integer SkillCompressionInfo = new(0, 16384, true);
-    private static readonly CompressionInfo.Integer EquippedItemsLengthCompressionInfo = new(0, 32, true);
-    private static readonly CompressionInfo.Integer EquippedItemSlotCompressionInfo =
-        new(0, Enum.GetValues(typeof(CrpgItemSlot)).Length, true);
-    private static readonly CompressionInfo.Integer ClanIdCompressionInfo = new(-1, int.MaxValue, true);
-
     public VirtualPlayer? Peer { get; set; }
     public CrpgUser User { get; set; } = default!;
 
     protected override void OnWrite()
     {
         WriteVirtualPlayerReferenceToPacket(Peer);
-        WriteCharacterToPacket(User.Character);
-        WriteClanMemberToPacket(User.ClanMembership);
+        WriteUserToPacket(User);
     }
 
     protected override bool OnRead()
     {
         bool bufferReadValid = true;
         Peer = ReadVirtualPlayerReferenceToPacket(ref bufferReadValid);
-        var character = ReadCharacterFromPacket(ref bufferReadValid);
-        var clanMember = ReadClanMemberFromPacket(ref bufferReadValid);
-
-        User = new CrpgUser
-        {
-            Character = character,
-            ClanMembership = clanMember,
-        };
-
+        User = ReadUserFromPacket(ref bufferReadValid);
         return bufferReadValid;
     }
 
@@ -56,22 +40,55 @@ internal sealed class UpdateCrpgUser : GameNetworkMessage
         return "Update cRPG User";
     }
 
-    private void WriteCharacterToPacket(CrpgCharacter character)
+    private void WriteUserToPacket(CrpgUser user)
     {
-        WriteIntToPacket(character.Generation, GenerationCompressionInfo);
-        WriteIntToPacket(character.Level, LevelCompressionInfo);
-        WriteIntToPacket(character.Experience, ExperienceCompressionInfo);
-        WriteCharacterCharacteristicsToPacket(character.Characteristics);
-        WriteCharacterEquippedItemsToPacket(character.EquippedItems);
+        using MemoryStream stream = new();
+
+        // This packet is very large so it's compressed.
+        using (GZipStream gZipStream = new(stream, CompressionMode.Compress, leaveOpen: true))
+        using (BinaryWriter writer = new(gZipStream))
+        {
+            WriteCharacterToPacket(writer, user.Character);
+            WriteClanMemberToPacket(writer, user.ClanMembership);
+        }
+
+        WriteByteArrayToPacket(stream.ToArray(), 0, (int)stream.Length);
     }
 
-    private CrpgCharacter ReadCharacterFromPacket(ref bool bufferReadValid)
+    private CrpgUser ReadUserFromPacket(ref bool bufferReadValid)
     {
-        int generation = ReadIntFromPacket(GenerationCompressionInfo, ref bufferReadValid);
-        int level = ReadIntFromPacket(LevelCompressionInfo, ref bufferReadValid);
-        int exp = ReadIntFromPacket(ExperienceCompressionInfo, ref bufferReadValid);
-        var characteristics = ReadCharacterCharacteristicsFromPacket(ref bufferReadValid);
-        var equippedItems = ReadCharacterEquippedItemsFromPacket(ref bufferReadValid);
+        byte[] buffer = new byte[1024];
+        int bufferLength = ReadByteArrayFromPacket(buffer, 0, buffer.Length, ref bufferReadValid);
+
+        using MemoryStream stream = new(buffer, 0, bufferLength);
+        using GZipStream gZipStream = new(stream, CompressionMode.Decompress);
+        using BinaryReader reader = new(gZipStream);
+
+        var character = ReadCharacterFromPacket(reader);
+        var clanMember = ReadClanMemberFromPacket(reader);
+        return new CrpgUser
+        {
+            Character = character,
+            ClanMembership = clanMember,
+        };
+    }
+
+    private void WriteCharacterToPacket(BinaryWriter writer, CrpgCharacter character)
+    {
+        writer.Write(character.Generation);
+        writer.Write(character.Level);
+        writer.Write(character.Experience);
+        WriteCharacterCharacteristicsToPacket(writer, character.Characteristics);
+        WriteCharacterEquippedItemsToPacket(writer, character.EquippedItems);
+    }
+
+    private CrpgCharacter ReadCharacterFromPacket(BinaryReader reader)
+    {
+        int generation = reader.ReadInt32();
+        int level = reader.ReadInt32();
+        int exp = reader.ReadInt32();
+        var characteristics = ReadCharacterCharacteristicsFromPacket(reader);
+        var equippedItems = ReadCharacterEquippedItemsFromPacket(reader);
         return new CrpgCharacter
         {
             Generation = generation,
@@ -82,110 +99,114 @@ internal sealed class UpdateCrpgUser : GameNetworkMessage
         };
     }
 
-    private void WriteCharacterCharacteristicsToPacket(CrpgCharacterCharacteristics characteristics)
+    private void WriteCharacterCharacteristicsToPacket(BinaryWriter writer, CrpgCharacterCharacteristics characteristics)
     {
-        WriteIntToPacket(characteristics.Attributes.Points, SkillCompressionInfo);
-        WriteIntToPacket(characteristics.Attributes.Strength, SkillCompressionInfo);
-        WriteIntToPacket(characteristics.Attributes.Agility, SkillCompressionInfo);
+        writer.Write((short)characteristics.Attributes.Points);
+        writer.Write((short)characteristics.Attributes.Strength);
+        writer.Write((short)characteristics.Attributes.Agility);
 
-        WriteIntToPacket(characteristics.Skills.Points, SkillCompressionInfo);
-        WriteIntToPacket(characteristics.Skills.IronFlesh, SkillCompressionInfo);
-        WriteIntToPacket(characteristics.Skills.PowerStrike, SkillCompressionInfo);
-        WriteIntToPacket(characteristics.Skills.PowerDraw, SkillCompressionInfo);
-        WriteIntToPacket(characteristics.Skills.PowerThrow, SkillCompressionInfo);
-        WriteIntToPacket(characteristics.Skills.Athletics, SkillCompressionInfo);
-        WriteIntToPacket(characteristics.Skills.Riding, SkillCompressionInfo);
-        WriteIntToPacket(characteristics.Skills.WeaponMaster, SkillCompressionInfo);
-        WriteIntToPacket(characteristics.Skills.MountedArchery, SkillCompressionInfo);
-        WriteIntToPacket(characteristics.Skills.Shield, SkillCompressionInfo);
+        writer.Write((short)characteristics.Skills.Points);
+        writer.Write((short)characteristics.Skills.IronFlesh);
+        writer.Write((short)characteristics.Skills.PowerStrike);
+        writer.Write((short)characteristics.Skills.PowerDraw);
+        writer.Write((short)characteristics.Skills.PowerThrow);
+        writer.Write((short)characteristics.Skills.Athletics);
+        writer.Write((short)characteristics.Skills.Riding);
+        writer.Write((short)characteristics.Skills.WeaponMaster);
+        writer.Write((short)characteristics.Skills.MountedArchery);
+        writer.Write((short)characteristics.Skills.Shield);
 
-        WriteIntToPacket(characteristics.WeaponProficiencies.Points, SkillCompressionInfo);
-        WriteIntToPacket(characteristics.WeaponProficiencies.OneHanded, SkillCompressionInfo);
-        WriteIntToPacket(characteristics.WeaponProficiencies.TwoHanded, SkillCompressionInfo);
-        WriteIntToPacket(characteristics.WeaponProficiencies.Polearm, SkillCompressionInfo);
-        WriteIntToPacket(characteristics.WeaponProficiencies.Bow, SkillCompressionInfo);
-        WriteIntToPacket(characteristics.WeaponProficiencies.Throwing, SkillCompressionInfo);
-        WriteIntToPacket(characteristics.WeaponProficiencies.Crossbow, SkillCompressionInfo);
+        writer.Write((short)characteristics.WeaponProficiencies.Points);
+        writer.Write((short)characteristics.WeaponProficiencies.OneHanded);
+        writer.Write((short)characteristics.WeaponProficiencies.TwoHanded);
+        writer.Write((short)characteristics.WeaponProficiencies.Polearm);
+        writer.Write((short)characteristics.WeaponProficiencies.Bow);
+        writer.Write((short)characteristics.WeaponProficiencies.Throwing);
+        writer.Write((short)characteristics.WeaponProficiencies.Crossbow);
     }
 
-    private CrpgCharacterCharacteristics ReadCharacterCharacteristicsFromPacket(ref bool bufferReadValid)
+    private CrpgCharacterCharacteristics ReadCharacterCharacteristicsFromPacket(BinaryReader reader)
     {
         return new CrpgCharacterCharacteristics
         {
             Attributes =
             {
-                Points = ReadIntFromPacket(SkillCompressionInfo, ref bufferReadValid),
-                Strength = ReadIntFromPacket(SkillCompressionInfo, ref bufferReadValid),
-                Agility = ReadIntFromPacket(SkillCompressionInfo, ref bufferReadValid),
+                Points = reader.ReadInt16(),
+                Strength = reader.ReadInt16(),
+                Agility = reader.ReadInt16(),
             },
             Skills =
             {
-                Points = ReadIntFromPacket(SkillCompressionInfo, ref bufferReadValid),
-                IronFlesh = ReadIntFromPacket(SkillCompressionInfo, ref bufferReadValid),
-                PowerStrike = ReadIntFromPacket(SkillCompressionInfo, ref bufferReadValid),
-                PowerDraw = ReadIntFromPacket(SkillCompressionInfo, ref bufferReadValid),
-                PowerThrow = ReadIntFromPacket(SkillCompressionInfo, ref bufferReadValid),
-                Athletics = ReadIntFromPacket(SkillCompressionInfo, ref bufferReadValid),
-                Riding = ReadIntFromPacket(SkillCompressionInfo, ref bufferReadValid),
-                WeaponMaster = ReadIntFromPacket(SkillCompressionInfo, ref bufferReadValid),
-                MountedArchery = ReadIntFromPacket(SkillCompressionInfo, ref bufferReadValid),
-                Shield = ReadIntFromPacket(SkillCompressionInfo, ref bufferReadValid),
+                Points = reader.ReadInt16(),
+                IronFlesh = reader.ReadInt16(),
+                PowerStrike = reader.ReadInt16(),
+                PowerDraw = reader.ReadInt16(),
+                PowerThrow = reader.ReadInt16(),
+                Athletics = reader.ReadInt16(),
+                Riding = reader.ReadInt16(),
+                WeaponMaster = reader.ReadInt16(),
+                MountedArchery = reader.ReadInt16(),
+                Shield = reader.ReadInt16(),
             },
             WeaponProficiencies =
             {
-                Points = ReadIntFromPacket(SkillCompressionInfo, ref bufferReadValid),
-                OneHanded = ReadIntFromPacket(SkillCompressionInfo, ref bufferReadValid),
-                TwoHanded = ReadIntFromPacket(SkillCompressionInfo, ref bufferReadValid),
-                Polearm = ReadIntFromPacket(SkillCompressionInfo, ref bufferReadValid),
-                Bow = ReadIntFromPacket(SkillCompressionInfo, ref bufferReadValid),
-                Throwing = ReadIntFromPacket(SkillCompressionInfo, ref bufferReadValid),
-                Crossbow = ReadIntFromPacket(SkillCompressionInfo, ref bufferReadValid),
+                Points = reader.ReadInt16(),
+                OneHanded = reader.ReadInt16(),
+                TwoHanded = reader.ReadInt16(),
+                Polearm = reader.ReadInt16(),
+                Bow = reader.ReadInt16(),
+                Throwing = reader.ReadInt16(),
+                Crossbow = reader.ReadInt16(),
             },
         };
     }
 
-    private void WriteCharacterEquippedItemsToPacket(IList<CrpgEquippedItem> equippedItems)
+    private void WriteCharacterEquippedItemsToPacket(BinaryWriter writer, IList<CrpgEquippedItem> equippedItems)
     {
-        WriteIntToPacket(equippedItems.Count, EquippedItemsLengthCompressionInfo);
+        writer.Write(equippedItems.Count);
         foreach (var equippedItem in equippedItems)
         {
-            // This is probably dangerous to write up to 12 strings that can go up to 54 characters at the time
-            // of writing. The total number of bytes (~700) is making us very close to the ~1K packet limit size.
-            WriteStringToPacket(equippedItem.UserItem.ItemId);
-            WriteIntToPacket((int)equippedItem.Slot, EquippedItemSlotCompressionInfo);
+            // Use the internal id of the item that is smaller that the item id.
+            var itemObject = MBObjectManager.Instance.GetObject<ItemObject>(equippedItem.UserItem.ItemId);
+            writer.Write(itemObject != null ? itemObject.Id.InternalValue : 0);
+            writer.Write((byte)equippedItem.Slot);
         }
     }
 
-    private IList<CrpgEquippedItem> ReadCharacterEquippedItemsFromPacket(ref bool bufferReadValid)
+    private IList<CrpgEquippedItem> ReadCharacterEquippedItemsFromPacket(BinaryReader reader)
     {
-        int equippedItemsLength = ReadIntFromPacket(EquippedItemsLengthCompressionInfo, ref bufferReadValid);
+        int equippedItemsLength = reader.ReadInt32();
         List<CrpgEquippedItem> equippedItems = new(equippedItemsLength);
         for (int i = 0; i < equippedItemsLength; i += 1)
         {
-            string itemId = ReadStringFromPacket(ref bufferReadValid);
-            CrpgItemSlot slot = (CrpgItemSlot)ReadIntFromPacket(EquippedItemSlotCompressionInfo, ref bufferReadValid);
-            equippedItems.Add(new CrpgEquippedItem
+            uint internalItemId = reader.ReadUInt32();
+            CrpgItemSlot slot = (CrpgItemSlot)reader.ReadByte();
+
+            var itemObject = internalItemId == 0 ? null : MBObjectManager.Instance.GetObject(new MBGUID(internalItemId));
+            if (itemObject != null)
             {
-                UserItem = new CrpgUserItem
+                equippedItems.Add(new CrpgEquippedItem
                 {
-                    Id = 0,
-                    ItemId = itemId,
-                },
-                Slot = slot,
-            });
+                    UserItem = new CrpgUserItem
+                    {
+                        Id = 0,
+                        ItemId = ((ItemObject)itemObject).StringId,
+                    }, Slot = slot,
+                });
+            }
         }
 
         return equippedItems;
     }
 
-    private void WriteClanMemberToPacket(CrpgClanMember? clanMember)
+    private void WriteClanMemberToPacket(BinaryWriter writer, CrpgClanMember? clanMember)
     {
-        WriteIntToPacket(clanMember?.ClanId ?? -1, ClanIdCompressionInfo);
+        writer.Write(clanMember?.ClanId ?? -1);
     }
 
-    private CrpgClanMember? ReadClanMemberFromPacket(ref bool bufferReadValid)
+    private CrpgClanMember? ReadClanMemberFromPacket(BinaryReader reader)
     {
-        int clanId = ReadIntFromPacket(ClanIdCompressionInfo, ref bufferReadValid);
+        int clanId = reader.ReadInt32();
         return clanId != -1 ? new CrpgClanMember { ClanId = clanId } : null;
     }
 }
