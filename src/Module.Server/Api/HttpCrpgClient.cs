@@ -32,14 +32,17 @@ internal class HttpCrpgClient : ICrpgClient
             AutomaticDecompression = DecompressionMethods.GZip,
             ConnectTimeout = TimeSpan.FromSeconds(30),
         };
+        string version = typeof(HttpCrpgClient).Assembly.GetName().Version!.ToString();
         _httpClient = new HttpClient(socketsHttpHandler)
         {
             BaseAddress = new Uri(apiUrl),
             Timeout = TimeSpan.FromSeconds(10),
+            DefaultRequestHeaders =
+            {
+                { "Accept", "application/json" },
+                { "User-Agent",  "cRPG/" + version },
+            },
         };
-        _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
-        string version = typeof(HttpCrpgClient).Assembly.GetName().Version!.ToString();
-        _httpClient.DefaultRequestHeaders.Add("User-Agent",  "cRPG/" + version);
 
         _apiKey = apiKey;
 
