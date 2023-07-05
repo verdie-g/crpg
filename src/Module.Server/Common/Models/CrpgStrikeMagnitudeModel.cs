@@ -65,11 +65,11 @@ internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
             case WeaponClass.TwoHandedPolearm:
             case WeaponClass.LowGripPolearm:
                 impactPointFactor = (float)Math.Pow(10f, -4f * Math.Pow(impactPoint - 0.93, 2f));
-                return BladeDamageFactorToDamageRatio * (0.4f + 0.6f * impactPointFactor) * ((float)Math.Pow(swingSpeedPercentage, 5f) + extraLinearSpeed / 10f);
+                return BladeDamageFactorToDamageRatio * (0.4f + 0.6f * impactPointFactor) * (float)(Math.Pow(swingSpeedPercentage, 5f) + Math.Pow(extraLinearSpeed / 20f, 0.7f) + Math.Pow(extraLinearSpeed / 22f, 4f));
 
             default: // Weapon that do not have a wooden handle
                 impactPointFactor = (float)Math.Pow(10f, -4f * Math.Pow(impactPoint - 0.75, 2f));
-                return BladeDamageFactorToDamageRatio * (0.8f + 0.2f * impactPointFactor) * ((float)Math.Pow(swingSpeedPercentage, 5f) + extraLinearSpeed / 10f);
+                return BladeDamageFactorToDamageRatio * (0.8f + 0.2f * impactPointFactor) * (float)(Math.Pow(swingSpeedPercentage, 5f) + Math.Pow(extraLinearSpeed / 20f, 0.7f) + Math.Pow(extraLinearSpeed / 22f, 4f));
         }
     }
 
@@ -88,9 +88,9 @@ internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
         {
             case WeaponClass.OneHandedSword:
             case WeaponClass.Dagger:
-                 return BladeDamageFactorToDamageRatio * ((float)Math.Pow(thrustSpeedPercentage, 2f) + extraLinearSpeed / 10f);
+                 return BladeDamageFactorToDamageRatio * (float)(Math.Pow(thrustSpeedPercentage, 2f) + Math.Pow(extraLinearSpeed / 20f, 0.7f) + Math.Pow(extraLinearSpeed / 22f, 4f));
             default:
-                 return BladeDamageFactorToDamageRatio * ((float)Math.Pow(thrustSpeedPercentage, 6f) + extraLinearSpeed / 10f);
+                 return BladeDamageFactorToDamageRatio * (float)(Math.Pow(thrustSpeedPercentage, 6f) + Math.Pow(extraLinearSpeed / 20f, 0.7f) + Math.Pow(extraLinearSpeed / 22f, 4f));
         }
     }
 
