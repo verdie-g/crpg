@@ -25,5 +25,5 @@ If applicable, add screenshots/videos to help explain your problem.
 **Context**
  - OS: [e.g. Windows]
  - Browser (in case of a bug on the website) [e.g. chrome, firefox]
- - Bannerlord version (in case of a bug in game) [e.g. e1.5.4]
- - cRPG version (in case of a bug in game) [e.g. 0.1.2]
+ - Bannerlord version (in case of a bug in game) [e.g. v1.2.0]
+ - cRPG version (in case of a bug in game) [e.g. v75]
