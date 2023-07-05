@@ -19,7 +19,24 @@ internal class MaxMindGeoIpService : IGeoIpService
     // https://en.wikipedia.org/wiki/ISO_3166-1
     private static readonly Dictionary<string, Region> CountryRegions = new()
     {
+        ["AE"] = Region.Eu,
+        ["BH"] = Region.Eu,
+        ["CY"] = Region.Eu,
+        ["EG"] = Region.Eu,
+        ["GE"] = Region.Eu,
+        ["IL"] = Region.Eu,
+        ["IQ"] = Region.Eu,
+        ["IR"] = Region.Eu,
+        ["JO"] = Region.Eu,
+        ["KW"] = Region.Eu,
+        ["LB"] = Region.Eu,
+        ["OM"] = Region.Eu,
+        ["PS"] = Region.Eu,
+        ["QA"] = Region.Eu,
+        ["SA"] = Region.Eu,
+        ["SY"] = Region.Eu,
         ["TR"] = Region.Eu,
+        ["YE"] = Region.Eu,
     };
 
     private static readonly Dictionary<string, Region> ContinentRegions = new()
