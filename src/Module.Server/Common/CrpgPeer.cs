@@ -22,32 +22,8 @@ internal class CrpgPeer : PeerComponent
         set
         {
             _user = value ?? throw new ArgumentNullException();
-            SynchronizeToEveryone(); // Synchronize the property with the client.
+            SynchronizeUserToEveryone(); // Synchronize the property with the client.
         }
-    }
-
-    public void SynchronizeToPlayer(VirtualPlayer targetPeer)
-    {
-        if (_user == null || !GameNetwork.IsServerOrRecorder)
-        {
-            return;
-        }
-
-        GameNetwork.BeginModuleEventAsServer(targetPeer);
-        GameNetwork.WriteMessage(new UpdateCrpgUser { Peer = Peer, User = _user });
-        GameNetwork.EndModuleEventAsServer();
-    }
-
-    public void SynchronizeToEveryone()
-    {
-        if (_user == null || !GameNetwork.IsServerOrRecorder)
-        {
-            return;
-        }
-
-        GameNetwork.BeginBroadcastModuleEvent();
-        GameNetwork.WriteMessage(new UpdateCrpgUser { Peer = Peer, User = _user });
-        GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
     }
 
     public int RewardMultiplier
@@ -63,5 +39,17 @@ internal class CrpgPeer : PeerComponent
                 GameNetwork.EndModuleEventAsServer();
             }
         }
+    }
+
+    private void SynchronizeUserToEveryone()
+    {
+        if (_user == null || !GameNetwork.IsServerOrRecorder)
+        {
+            return;
+        }
+
+        GameNetwork.BeginBroadcastModuleEvent();
+        GameNetwork.WriteMessage(new UpdateCrpgUser { Peer = Peer, User = _user });
+        GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
     }
 }
