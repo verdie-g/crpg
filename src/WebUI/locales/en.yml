@@ -303,7 +303,7 @@ character:
         requiredDesc: '{requiredLevel} level required'
       dialog:
         title: Tournament character
-        desc: Are you sure you wish to convert your character into a Tournament Event character? You CANNOT use this character on cRPG's Main Servers and THIS ACTION CANNOT BE UNDONE.
+        desc: Are you sure you wish to convert your character into a tournament event character? You CANNOT use this character on cRPG's main servers and THIS ACTION CANNOT BE UNDONE.
       notify:
         success: Character updated
     delete:
