@@ -24,7 +24,7 @@ internal class CrpgItemValueModel : ItemValueModel
         [ItemObject.ItemTypeEnum.BodyArmor] = (34000, ArmorPriceCoeffs),
         [ItemObject.ItemTypeEnum.HandArmor] = (6750, ArmorPriceCoeffs),
         [ItemObject.ItemTypeEnum.LegArmor] = (5150, ArmorPriceCoeffs),
-        [ItemObject.ItemTypeEnum.HorseHarness] = (27500, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.HorseHarness] = (15000, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Horse] = (15000, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Shield] = (9235, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Bow] = (14000, ItemPriceCoeffs),
@@ -83,14 +83,15 @@ internal class CrpgItemValueModel : ItemValueModel
             + 1.1f * armorComponent.BodyArmor
             + 1.15f * armorComponent.ArmArmor
             + 0.75f * armorComponent.LegArmor;
-        float bestArmorPower = 0.931878f * armorComponent.Item.ItemType switch
+
+        float bestArmorPower = armorComponent.Item.ItemType switch
         {
-            ItemObject.ItemTypeEnum.HeadArmor => 21.8288f,
-            ItemObject.ItemTypeEnum.Cape => 11.36f,
-            ItemObject.ItemTypeEnum.BodyArmor => 19.492481f,
-            ItemObject.ItemTypeEnum.HandArmor => 10.1992f,
-            ItemObject.ItemTypeEnum.LegArmor => 6.94f,
-            ItemObject.ItemTypeEnum.HorseHarness => 60f,
+            ItemObject.ItemTypeEnum.HeadArmor => 21.8288f * 0.931878f,
+            ItemObject.ItemTypeEnum.Cape => 11.36f * 0.931878f,
+            ItemObject.ItemTypeEnum.BodyArmor => 19.492481f * 0.931878f,
+            ItemObject.ItemTypeEnum.HandArmor => 10.1992f * 0.931878f,
+            ItemObject.ItemTypeEnum.LegArmor => 6.94f * 0.931878f,
+            ItemObject.ItemTypeEnum.HorseHarness => 45f * 1.1f,
             _ => throw new ArgumentOutOfRangeException(),
         };
 
