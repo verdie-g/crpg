@@ -133,6 +133,9 @@ internal class CrpgUserManagerServer : MissionNetwork
 
     private async Task SetCrpgComponentAsync(NetworkCommunicator networkPeer, Platform platform, string platformUserId)
     {
+        var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
+        crpgPeer.UserLoading = true;
+
         VirtualPlayer vp = networkPeer.VirtualPlayer;
         string userName = vp.UserName;
 
@@ -173,6 +176,7 @@ internal class CrpgUserManagerServer : MissionNetwork
         {
             Debug.Print($"Couldn't get user {userName} ({platform}#{platformUserId}): {e}");
             KickHelper.Kick(networkPeer, DisconnectType.ServerNotResponding, "unreachable_server");
+            crpgPeer.UserLoading = false;
             return;
         }
 
@@ -180,6 +184,7 @@ internal class CrpgUserManagerServer : MissionNetwork
         {
             Debug.Print($"Kick join restricted user {userName} ({platform}#{platformUserId})");
             KickHelper.Kick(networkPeer, DisconnectType.BannedByPoll, "banned");
+            crpgPeer.UserLoading = false;
             return;
         }
 
@@ -188,13 +193,13 @@ internal class CrpgUserManagerServer : MissionNetwork
             networkPeer.IsMuted = true;
         }
 
-        var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
         crpgPeer.User = crpgUser;
         crpgPeer.Clan = crpgClan;
         crpgPeer.RewardMultiplier =
             RewardMultiplierByPlayerId.TryGetValue(vp.Id, out int lastMissionMultiplier)
                 ? lastMissionMultiplier
                 : 1;
+        crpgPeer.UserLoading = false;
     }
 
     private bool TryConvertPlatform(PlayerIdProvidedTypes provider, out Platform platform)

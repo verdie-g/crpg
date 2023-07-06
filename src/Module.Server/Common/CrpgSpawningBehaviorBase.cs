@@ -45,7 +45,9 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
                 || missionPeer.ControlledAgent != null
                 || missionPeer.Team == null
                 || missionPeer.Team == Mission.SpectatorTeam
-                || crpgPeer?.User == null
+                || crpgPeer == null
+                || crpgPeer.UserLoading
+                || crpgPeer.User == null
                 || !IsPlayerAllowedToSpawn(networkPeer))
             {
                 continue;

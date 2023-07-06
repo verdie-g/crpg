@@ -26,6 +26,12 @@ internal class CrpgPeer : PeerComponent
         }
     }
 
+    /// <summary>
+    /// True if the <see cref="User"/> is currently being fetched from the cRPG backend. <see cref="User"/> can still
+    /// be non-null but it won't be the freshest data.
+    /// </summary>
+    public bool UserLoading { get; set; }
+
     public int RewardMultiplier
     {
         get => _rewardMultiplier;
