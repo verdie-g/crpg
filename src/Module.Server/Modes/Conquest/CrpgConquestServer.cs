@@ -81,12 +81,13 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
     {
         if (userAgent.Team.IsDefender && usedObject.InteractionEntity.Name.Equals("open_inside"))
         {
+            var networkPeer = userAgent.MissionPeer.GetNetworkPeer();
             GameNetwork.BeginBroadcastModuleEvent();
             GameNetwork.WriteMessage(new CrpgConquestOpenGateMessage
             {
-                Peer = userAgent.MissionPeer.GetNetworkPeer(),
+                Peer = networkPeer,
             });
-            GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
+            GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.ExcludeOtherTeamPlayers, networkPeer);
         }
     }
 
