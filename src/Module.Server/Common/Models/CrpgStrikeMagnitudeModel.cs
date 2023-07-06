@@ -1,4 +1,5 @@
 ﻿using TaleWorlds.Core;
+using TaleWorlds.GauntletUI.BaseTypes;
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common.Models;
@@ -55,6 +56,8 @@ internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
     {
         float impactPointFactor;
         float swingSpeedPercentage = swingSpeed * 4.5454545f / weaponUsageComponent.SwingSpeed;
+        float extraLinearSpeedSign = Math.Sign(extraLinearSpeed);
+        float magnitudeBonusFromExtraSpeed = extraLinearSpeedSign * (float)(Math.Pow(extraLinearSpeedSign * extraLinearSpeed / 20f, 0.7f) + Math.Pow(extraLinearSpeed / 22f, 4f));
         switch (weaponUsageComponent.WeaponClass)
         {
             case WeaponClass.OneHandedAxe:
@@ -65,11 +68,11 @@ internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
             case WeaponClass.TwoHandedPolearm:
             case WeaponClass.LowGripPolearm:
                 impactPointFactor = (float)Math.Pow(10f, -4f * Math.Pow(impactPoint - 0.93, 2f));
-                return BladeDamageFactorToDamageRatio * (0.4f + 0.6f * impactPointFactor) * (float)(Math.Pow(swingSpeedPercentage, 5f) + Math.Pow(extraLinearSpeed / 20f, 0.7f) + Math.Pow(extraLinearSpeed / 22f, 4f));
+                return BladeDamageFactorToDamageRatio * (0.4f + 0.6f * impactPointFactor) * (float)(Math.Pow(swingSpeedPercentage, 5f) + magnitudeBonusFromExtraSpeed);
 
             default: // Weapon that do not have a wooden handle
                 impactPointFactor = (float)Math.Pow(10f, -4f * Math.Pow(impactPoint - 0.75, 2f));
-                return BladeDamageFactorToDamageRatio * (0.8f + 0.2f * impactPointFactor) * (float)(Math.Pow(swingSpeedPercentage, 5f) + Math.Pow(extraLinearSpeed / 20f, 0.7f) + Math.Pow(extraLinearSpeed / 22f, 4f));
+                return BladeDamageFactorToDamageRatio * (0.8f + 0.2f * impactPointFactor) * (float)(Math.Pow(swingSpeedPercentage, 5f) + magnitudeBonusFromExtraSpeed);
         }
     }
 
@@ -85,13 +88,14 @@ internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
     {
         float thrustSpeedPercentage = thrustWeaponSpeed * 11.7647057f / weaponUsageComponent.ThrustSpeed;
         float extraLinearSpeedSign = Math.Sign(extraLinearSpeed);
+        float magnitudeBonusFromExtraSpeed = extraLinearSpeedSign * (float)(Math.Pow(extraLinearSpeedSign * extraLinearSpeed / 20f, 0.7f) + Math.Pow(extraLinearSpeed / 22f, 4f));
         switch (weaponUsageComponent.WeaponClass)
         {
             case WeaponClass.OneHandedSword:
             case WeaponClass.Dagger:
-                 return BladeDamageFactorToDamageRatio * (float)(Math.Pow(thrustSpeedPercentage, 2f) + extraLinearSpeedSign * Math.Pow(extraLinearSpeedSign * extraLinearSpeed / 20f, 0.7f) + extraLinearSpeedSign * Math.Pow(extraLinearSpeed / 22f, 4f));
+                 return BladeDamageFactorToDamageRatio * (float)(Math.Pow(thrustSpeedPercentage, 2f) + magnitudeBonusFromExtraSpeed);
             default:
-                 return BladeDamageFactorToDamageRatio * (float)(Math.Pow(thrustSpeedPercentage, 6f) + extraLinearSpeedSign * Math.Pow(extraLinearSpeedSign * extraLinearSpeed / 20f, 0.7f) + extraLinearSpeedSign * Math.Pow(extraLinearSpeed / 22f, 4f));
+                 return BladeDamageFactorToDamageRatio * (float)(Math.Pow(thrustSpeedPercentage, 6f) + magnitudeBonusFromExtraSpeed);
         }
     }
 
