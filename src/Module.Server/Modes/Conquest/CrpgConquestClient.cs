@@ -107,7 +107,7 @@ internal class CrpgConquestClient : MissionMultiplayerGameModeBaseClient, IComma
 
         registerer.Register<FlagDominationCapturePointMessage>(HandleCapturePointMessage);
         registerer.Register<CrpgConquestStageStartMessage>(HandleConquestStageStartMessage);
-        registerer.Register<CrpgConquestOpenGateMessage>(HandleBroadCastOpenGateUser);
+        registerer.Register<CrpgConquestOpenGateMessage>(HandleOpenGateMessage);
     }
 
     private void OnMyClientSynchronized()
@@ -162,7 +162,8 @@ internal class CrpgConquestClient : MissionMultiplayerGameModeBaseClient, IComma
         TimerComponent.StartTimerAsClient(message.StageStartTime, message.StageDuration);
         MBInformationManager.AddQuickInformation(new TextObject($"Stage {message.StageIndex + 1} started"), soundEventPath: soundEventPath);
     }
-    private void HandleBroadCastOpenGateUser(CrpgConquestOpenGateMessage message)
+
+    private void HandleOpenGateMessage(CrpgConquestOpenGateMessage message)
     {
         if (message.Peer != null)
         {
