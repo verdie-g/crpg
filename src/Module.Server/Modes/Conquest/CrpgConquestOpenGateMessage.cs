@@ -6,17 +6,17 @@ namespace Crpg.Module.Modes.Conquest;
 [DefineGameNetworkMessageTypeForMod(GameNetworkMessageSendType.FromServer)]
 internal sealed class CrpgConquestOpenGateMessage : GameNetworkMessage
 {
-    public string CrpgUserName { get; set; } = string.Empty;
+    public NetworkCommunicator Peer { get; set; } = default!;
 
     protected override void OnWrite()
     {
-        WriteStringToPacket(CrpgUserName);
+        WriteNetworkPeerReferenceToPacket(Peer);
     }
 
     protected override bool OnRead()
     {
         bool bufferReadValid = true;
-        CrpgUserName = ReadStringFromPacket(ref bufferReadValid);
+        Peer = ReadNetworkPeerReferenceFromPacket(ref bufferReadValid);
         return bufferReadValid;
     }
 

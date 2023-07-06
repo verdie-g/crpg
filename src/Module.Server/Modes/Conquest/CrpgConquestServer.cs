@@ -84,7 +84,7 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
             GameNetwork.BeginBroadcastModuleEvent();
             GameNetwork.WriteMessage(new CrpgConquestOpenGateMessage
             {
-                CrpgUserName = $"{userAgent.Name}",
+                Peer = userAgent.MissionPeer.GetNetworkPeer(),
             });
             GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
         }

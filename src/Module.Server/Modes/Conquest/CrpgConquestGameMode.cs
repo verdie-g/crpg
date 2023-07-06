@@ -111,7 +111,6 @@ internal class CrpgConquestGameMode : MissionBasedMultiplayerGameMode
                 new EquipmentControllerLeaveLogic(),
                 new MultiplayerPreloadHelper(),
                 new WelcomeMessageBehavior(warmupComponent),
-                new CrpgConquestOpenGateClient(),
 
                 // Shit that need to stay because BL code is extremely coupled to the visual spawning.
                 new MultiplayerMissionAgentVisualSpawnComponent(),
