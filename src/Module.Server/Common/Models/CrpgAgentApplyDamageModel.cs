@@ -102,7 +102,7 @@ internal class CrpgAgentApplyDamageModel : MultiplayerAgentApplyDamageModel
 
         if (attackInformation.DoesAttackerHaveMountAgent && attackInformation.IsAttackerAgentDoingPassiveAttack)
         {
-            finalDamage *= 0.25f; // Decrease damage from couched lance.
+            finalDamage *= 0.23f; // Decrease damage from couched lance.
         }
 
         return finalDamage;
