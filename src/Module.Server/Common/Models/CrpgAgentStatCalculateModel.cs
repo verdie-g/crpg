@@ -211,7 +211,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         EquipmentElement mountHarness = equipment[EquipmentIndex.HorseHarness];
 
         props.AiSpeciesIndex = agent.Monster.FamilyType;
-        props.AttributeRiding = 0.8f + (mountHarness.Item != null ? 0.2f : 0.0f);
+        props.AttributeRiding = 1f;
         props.ArmorTorso = mountHarness.Item != null ? mountHarness.GetModifiedMountBodyArmor() : 0;
         props.MountChargeDamage = mount.GetModifiedMountCharge(in mountHarness) * 0.01f;
         props.MountDifficulty = mount.Item.Difficulty;
@@ -221,16 +221,21 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
     {
         EquipmentElement mount = agent.SpawnEquipment[EquipmentIndex.ArmorItemEndSlot];
         EquipmentElement mountHarness = agent.SpawnEquipment[EquipmentIndex.HorseHarness];
+        const float maxHarnessArmor = 60f;
         int ridingSkill = agent.RiderAgent != null
             ? GetEffectiveSkill(agent.RiderAgent.Character, agent.RiderAgent.Origin, agent.RiderAgent.Formation, DefaultSkills.Riding)
             : 100;
-        int harnessArmor = mountHarness.Item?.ArmorComponent?.BodyArmor ?? 0;
-        float armoredPercentage = harnessArmor / 60f;
-        float armorImpactOnSpeed = 1f / (1f + 0.6f * armoredPercentage);
         props.MountManeuver = mount.GetModifiedMountManeuver(in mountHarness) * (0.5f + ridingSkill * 0.0025f);
-        props.MountSpeed = (mount.GetModifiedMountSpeed(in mountHarness) + 1) * 0.3f * (float)(0.55f + ridingSkill * 0.0008f + 1 / (2.2f + Math.Pow(2, -0.08f * (ridingSkill - 70f)))) * armorImpactOnSpeed; // speed reduced by 37.5% for full armor
+        int harnessArmor = mountHarness.Item?.ArmorComponent?.BodyArmor ?? 0;
+
+        float armoredPercentage = harnessArmor / maxHarnessArmor;
+        float armorImpactOnSpeed = 1f / (1f + 0.6f * armoredPercentage); // speed reduced by 37.5% for full armor
+        float ridingImpactOnSpeed = (float)(0.55f
+            + ridingSkill * 0.0008f
+            + 1 / (2.2f + Math.Pow(2, -0.08f * (ridingSkill - 70f))));
+        props.MountSpeed = (mount.GetModifiedMountSpeed(in mountHarness) + 1) * 0.3f * ridingImpactOnSpeed * armorImpactOnSpeed;
         props.TopSpeedReachDuration = Game.Current.BasicModels.RidingModel.CalculateAcceleration(in mount, in mountHarness, ridingSkill);
-        props.MountDashAccelerationMultiplier = 1f / (2f + 8f * armoredPercentage);
+        props.MountDashAccelerationMultiplier = 1f / (2f + 8f * armoredPercentage); // native between 1 and 0.1 . cRPG between 0.5 and 0.1
     }
 
     private void UpdateHumanAgentStats(Agent agent, AgentDrivenProperties props)
