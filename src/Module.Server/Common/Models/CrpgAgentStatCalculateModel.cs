@@ -225,11 +225,10 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             ? GetEffectiveSkill(agent.RiderAgent.Character, agent.RiderAgent.Origin, agent.RiderAgent.Formation, DefaultSkills.Riding)
             : 100;
         int harnessArmor = mountHarness.Item?.ArmorComponent?.BodyArmor ?? 0;
-        float harnessArmorHpMultiplierApprox = 1f + 1.8f * harnessArmor / 60f;
-        float armoredPercentage = (harnessArmorHpMultiplierApprox - 1f) / 1.8f;
+        float armoredPercentage = harnessArmor / 60f;
         float armorImpactOnSpeed = 1f / (1f + 0.6f * armoredPercentage);
         props.MountManeuver = mount.GetModifiedMountManeuver(in mountHarness) * (0.5f + ridingSkill * 0.0025f);
-        props.MountSpeed = (mount.GetModifiedMountSpeed(in mountHarness) + 1) * 0.3f * (float)(0.5f + ridingSkill * 0.0008f + 1 / (2f + Math.Pow(2, -0.08f * ridingSkill))) * armorImpactOnSpeed; // speed reduced by 37.5% for full armor
+        props.MountSpeed = (mount.GetModifiedMountSpeed(in mountHarness) + 1) * 0.3f * (float)(0.55f + ridingSkill * 0.0008f + 1 / (2.2f + Math.Pow(2, -0.08f * (ridingSkill - 70f)))) * armorImpactOnSpeed; // speed reduced by 37.5% for full armor
         props.TopSpeedReachDuration = Game.Current.BasicModels.RidingModel.CalculateAcceleration(in mount, in mountHarness, ridingSkill);
         props.MountDashAccelerationMultiplier = 1f / (2f + 8f * armoredPercentage);
     }

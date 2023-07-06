@@ -84,13 +84,14 @@ internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
         bool isThrown = false)
     {
         float thrustSpeedPercentage = thrustWeaponSpeed * 11.7647057f / weaponUsageComponent.ThrustSpeed;
+        float extraLinearSpeedSign = Math.Sign(extraLinearSpeed);
         switch (weaponUsageComponent.WeaponClass)
         {
             case WeaponClass.OneHandedSword:
             case WeaponClass.Dagger:
-                 return BladeDamageFactorToDamageRatio * (float)(Math.Pow(thrustSpeedPercentage, 2f) + Math.Pow(extraLinearSpeed / 20f, 0.7f) + Math.Pow(extraLinearSpeed / 22f, 4f));
+                 return BladeDamageFactorToDamageRatio * (float)(Math.Pow(thrustSpeedPercentage, 2f) + extraLinearSpeedSign * Math.Pow(extraLinearSpeedSign * extraLinearSpeed / 20f, 0.7f) + extraLinearSpeedSign * Math.Pow(extraLinearSpeed / 22f, 4f));
             default:
-                 return BladeDamageFactorToDamageRatio * (float)(Math.Pow(thrustSpeedPercentage, 6f) + Math.Pow(extraLinearSpeed / 20f, 0.7f) + Math.Pow(extraLinearSpeed / 22f, 4f));
+                 return BladeDamageFactorToDamageRatio * (float)(Math.Pow(thrustSpeedPercentage, 6f) + extraLinearSpeedSign * Math.Pow(extraLinearSpeedSign * extraLinearSpeed / 20f, 0.7f) + extraLinearSpeedSign * Math.Pow(extraLinearSpeed / 22f, 4f));
         }
     }
 
