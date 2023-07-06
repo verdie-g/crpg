@@ -420,17 +420,6 @@ internal class CrpgRewardServer : MissionLogic
         TimeSpan timeOfDay = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, happyHours.Item3).TimeOfDay;
         if (timeOfDay < happyHours.Item1 || happyHours.Item2 < timeOfDay)
         {
-            if (_lastRewardDuringHappyHours)
-            {
-                GameNetwork.BeginBroadcastModuleEvent();
-                GameNetwork.WriteMessage(new CrpgNotification
-                {
-                    Type = CrpgNotificationType.Announcement,
-                    Message = "Happy hours ended!",
-                });
-                GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
-            }
-
             _lastRewardDuringHappyHours = false;
             return false;
         }
