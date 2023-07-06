@@ -75,6 +75,11 @@ internal abstract class ChatCommand
         return true;
     }
 
+    protected string FormatTimeSpan(TimeSpan t)
+    {
+        return string.Format("{0:%d} days {0:%h} hours {0:%m} minutes", t);
+    }
+
     private List<NetworkCommunicator> GetNetworkPeerByName(string name)
     {
         List<NetworkCommunicator> peerList = new();
