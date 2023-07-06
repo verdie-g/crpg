@@ -1,5 +1,4 @@
 ﻿using TaleWorlds.Core;
-using TaleWorlds.GauntletUI.BaseTypes;
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common.Models;
