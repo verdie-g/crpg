@@ -299,11 +299,11 @@ character:
       title: Tournament
       tooltip:
         title: Tournament character
-        desc: Set this character to be used in tournament ONLY. Upgrade its level to {tournamentLevel} and locks its experience permanently
+        desc: Sets this character to be usable in tournament events ONLY. Upgrades its level to {tournamentLevel} and locks its experience permanently.
         requiredDesc: '{requiredLevel} level required'
       dialog:
         title: Tournament character
-        desc: Are you sure you want to make a character for the tournament? This action cannot be undone
+        desc: Are you sure you wish to convert your character into a tournament event character? You CANNOT use this character on cRPG's main servers and THIS ACTION CANNOT BE UNDONE.
       notify:
         success: Character updated
     delete:
