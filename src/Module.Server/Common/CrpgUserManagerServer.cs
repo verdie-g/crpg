@@ -48,7 +48,6 @@ internal class CrpgUserManagerServer : MissionNetwork
     {
         base.HandleEarlyNewClientAfterLoadingFinished(networkPeer);
         networkPeer.AddComponent<CrpgPeer>();
-        SendExistingCrpgPeers(networkPeer); // Add CrpgPeer component for all other players for new client.
     }
 
     protected override void HandleNewClientAfterSynchronized(NetworkCommunicator networkPeer)
@@ -105,27 +104,6 @@ internal class CrpgUserManagerServer : MissionNetwork
         return true;
     }
 
-    /// <summary>
-    /// Used to synchronize existing CrpgPeers to the new client.
-    /// </summary>
-    private void SendExistingCrpgPeers(NetworkCommunicator newPlayerNetworkPeer)
-    {
-        foreach (NetworkCommunicator networkPeers in GameNetwork.NetworkPeers)
-        {
-            CrpgPeer crpgPeer = networkPeers.GetComponent<CrpgPeer>();
-            if (!networkPeers.IsConnectionActive
-                || !networkPeers.IsSynchronized
-                || crpgPeer?.User == null
-                || newPlayerNetworkPeer == networkPeers)
-            {
-                continue;
-            }
-
-            // Update all CrpgPeers to current values.
-            crpgPeer.SynchronizeToPlayer(newPlayerNetworkPeer.VirtualPlayer);
-        }
-    }
-
     private bool OnXboxIdMessage(NetworkCommunicator networkPeer, XboxIdMessage message)
     {
         _ = SetCrpgComponentAsync(networkPeer, Platform.Microsoft, message.XboxId);
@@ -155,6 +133,9 @@ internal class CrpgUserManagerServer : MissionNetwork
 
     private async Task SetCrpgComponentAsync(NetworkCommunicator networkPeer, Platform platform, string platformUserId)
     {
+        var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
+        crpgPeer.UserLoading = true;
+
         VirtualPlayer vp = networkPeer.VirtualPlayer;
         string userName = vp.UserName;
 
@@ -195,6 +176,7 @@ internal class CrpgUserManagerServer : MissionNetwork
         {
             Debug.Print($"Couldn't get user {userName} ({platform}#{platformUserId}): {e}");
             KickHelper.Kick(networkPeer, DisconnectType.ServerNotResponding, "unreachable_server");
+            crpgPeer.UserLoading = false;
             return;
         }
 
@@ -202,6 +184,7 @@ internal class CrpgUserManagerServer : MissionNetwork
         {
             Debug.Print($"Kick join restricted user {userName} ({platform}#{platformUserId})");
             KickHelper.Kick(networkPeer, DisconnectType.BannedByPoll, "banned");
+            crpgPeer.UserLoading = false;
             return;
         }
 
@@ -210,13 +193,13 @@ internal class CrpgUserManagerServer : MissionNetwork
             networkPeer.IsMuted = true;
         }
 
-        var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
         crpgPeer.User = crpgUser;
         crpgPeer.Clan = crpgClan;
         crpgPeer.RewardMultiplier =
             RewardMultiplierByPlayerId.TryGetValue(vp.Id, out int lastMissionMultiplier)
                 ? lastMissionMultiplier
                 : 1;
+        crpgPeer.UserLoading = false;
     }
 
     private bool TryConvertPlatform(PlayerIdProvidedTypes provider, out Platform platform)

@@ -65,8 +65,9 @@ internal class BanCommand : AdminCommand
             return;
         }
 
-        ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorFatal, $"You banned {targetPeer.UserName} for {duration}.");
-        ChatComponent.ServerSendServerMessageToEveryone(ColorFatal, $"{targetPeer.UserName} was banned by {fromPeer.UserName} for {duration}. Reason: {reason}");
+        string durationStr = FormatTimeSpan(duration);
+        ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorFatal, $"You banned {targetPeer.UserName} for {durationStr}.");
+        ChatComponent.ServerSendServerMessageToEveryone(ColorFatal, $"{targetPeer.UserName} was banned by {fromPeer.UserName} for {durationStr}. Reason: {reason}");
 
         KickHelper.Kick(targetPeer, DisconnectType.BannedByPoll, "banned");
     }

@@ -25,6 +25,8 @@ internal class HttpCrpgClient : ICrpgClient
     private readonly string _apiKey;
     private readonly JsonSerializerSettings _serializerSettings;
 
+    private Task? _refreshAccessTokenTask;
+
     public HttpCrpgClient(string apiUrl, string apiKey)
     {
         SocketsHttpHandler socketsHttpHandler = new()
@@ -32,14 +34,17 @@ internal class HttpCrpgClient : ICrpgClient
             AutomaticDecompression = DecompressionMethods.GZip,
             ConnectTimeout = TimeSpan.FromSeconds(30),
         };
+        string version = typeof(HttpCrpgClient).Assembly.GetName().Version!.ToString();
         _httpClient = new HttpClient(socketsHttpHandler)
         {
             BaseAddress = new Uri(apiUrl),
             Timeout = TimeSpan.FromSeconds(10),
+            DefaultRequestHeaders =
+            {
+                { "Accept", "application/json" },
+                { "User-Agent",  "cRPG/" + version },
+            },
         };
-        _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
-        string version = typeof(HttpCrpgClient).Assembly.GetName().Version!.ToString();
-        _httpClient.DefaultRequestHeaders.Add("User-Agent",  "cRPG/" + version);
 
         _apiKey = apiKey;
 
@@ -166,26 +171,36 @@ internal class HttpCrpgClient : ICrpgClient
         throw new Exception("Couldn't send request even after refreshing access token");
     }
 
-    private async Task RefreshAccessToken()
+    private Task RefreshAccessToken()
     {
-        Debug.Print("Refreshing access token");
-        var tokenRequest = new[]
+        if (_refreshAccessTokenTask == null || _refreshAccessTokenTask.IsCompleted)
         {
-            new KeyValuePair<string, string>("grant_type", "client_credentials"),
-            new KeyValuePair<string, string>("scope", "game_api"),
-            new KeyValuePair<string, string>("client_id", "crpg-game-server"),
-            new KeyValuePair<string, string>("client_secret", _apiKey),
-        };
-
-        var tokenResponse = await _httpClient.PostAsync("connect/token", new FormUrlEncodedContent(tokenRequest));
-        string tokenResponseBody = await tokenResponse.Content.ReadAsStringAsync();
-        if (!tokenResponse.IsSuccessStatusCode)
-        {
-            throw new Exception("Couldn't get token: " + tokenResponseBody);
+            _refreshAccessTokenTask = DoRefreshAccessToken();
         }
 
-        string accessToken = JObject.Parse(tokenResponseBody)["access_token"]!.ToString();
-        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-        Debug.Print("Access token successfully refreshed");
+        return _refreshAccessTokenTask;
+
+        async Task DoRefreshAccessToken()
+        {
+            Debug.Print("Refreshing access token");
+            var tokenRequest = new[]
+            {
+                new KeyValuePair<string, string>("grant_type", "client_credentials"),
+                new KeyValuePair<string, string>("scope", "game_api"),
+                new KeyValuePair<string, string>("client_id", "crpg-game-server"),
+                new KeyValuePair<string, string>("client_secret", _apiKey),
+            };
+
+            var tokenResponse = await _httpClient.PostAsync("connect/token", new FormUrlEncodedContent(tokenRequest));
+            string tokenResponseBody = await tokenResponse.Content.ReadAsStringAsync();
+            if (!tokenResponse.IsSuccessStatusCode)
+            {
+                throw new Exception("Couldn't get token: " + tokenResponseBody);
+            }
+
+            string accessToken = JObject.Parse(tokenResponseBody)["access_token"]!.ToString();
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            Debug.Print("Access token successfully refreshed");
+        }
     }
 }

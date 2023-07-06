@@ -80,8 +80,9 @@ internal class MuteCommand : AdminCommand
         }
         else
         {
-            ChatComponent.ServerSendMessageToPlayer(targetPeer, ColorFatal, $"You were muted by {fromPeer.UserName} for {duration}.");
-            ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorFatal, $"You muted {targetPeer.UserName} for {duration}.");
+            string durationStr = FormatTimeSpan(duration);
+            ChatComponent.ServerSendMessageToPlayer(targetPeer, ColorFatal, $"You were muted by {fromPeer.UserName} for {durationStr}.");
+            ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorFatal, $"You muted {targetPeer.UserName} for {durationStr}.");
             targetPeer.IsMuted = true;
         }
     }

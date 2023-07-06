@@ -210,6 +210,7 @@ internal class CrpgRewardServer : MissionLogic
             }
 
             userUpdates.Add(userUpdate);
+            crpgPeer.UserLoading = true;
         }
 
         _ratingResults.Clear();
@@ -545,6 +546,8 @@ internal class CrpgRewardServer : MissionLogic
                 Debug.Print($"Unknown user with id '{updateResult.User.Id}'");
                 continue;
             }
+
+            crpgPeer.UserLoading = false;
 
             var networkPeer = crpgPeer.GetNetworkPeer();
             if (!networkPeer.IsConnectionActive)

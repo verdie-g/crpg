@@ -114,6 +114,11 @@ static GameInstallationInfo? ResolveBannerlordEpicGamesInstallation()
     string manifestsFolderPath = Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData),
         "Epic/EpicGamesLauncher/Data/Manifests");
+    if (!Directory.Exists(manifestsFolderPath))
+    {
+        return null;
+    }
+
     foreach (string manifestPath in Directory.EnumerateFiles(manifestsFolderPath, "*.item"))
     {
         var manifestDoc = JsonSerializer.Deserialize<JsonDocument>(File.ReadAllText(manifestPath));

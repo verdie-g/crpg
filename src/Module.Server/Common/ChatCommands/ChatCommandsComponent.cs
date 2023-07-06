@@ -121,7 +121,7 @@ internal class ChatCommandsComponent : MissionLogic
 
     private void OnMessageReceivedAtDedicatedServer(NetworkCommunicator fromPeer, string message)
     {
-        if (message[0] != CommandPrefix)
+        if (message.Length == 0 || message[0] != CommandPrefix)
         {
             return;
         }
