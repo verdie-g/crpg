@@ -77,6 +77,20 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
         RewardUsers();
     }
 
+    public override void OnObjectUsed(Agent userAgent, UsableMissionObject usedObject)
+    {
+        if (userAgent.Team.IsDefender && usedObject.InteractionEntity.Name.Equals("open_inside"))
+        {
+            var networkPeer = userAgent.MissionPeer.GetNetworkPeer();
+            GameNetwork.BeginBroadcastModuleEvent();
+            GameNetwork.WriteMessage(new CrpgConquestOpenGateMessage
+            {
+                Peer = networkPeer,
+            });
+            GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.ExcludeOtherTeamPlayers, networkPeer);
+        }
+    }
+
     public override bool CheckForMatchEnd()
     {
         if (_currentStage >= _flagStages.Length)
