@@ -221,13 +221,14 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
     {
         EquipmentElement mount = agent.SpawnEquipment[EquipmentIndex.ArmorItemEndSlot];
         EquipmentElement mountHarness = agent.SpawnEquipment[EquipmentIndex.HorseHarness];
-        const float maxHarnessArmor = 60f;
+
         int ridingSkill = agent.RiderAgent != null
             ? GetEffectiveSkill(agent.RiderAgent.Character, agent.RiderAgent.Origin, agent.RiderAgent.Formation, DefaultSkills.Riding)
             : 100;
         props.MountManeuver = mount.GetModifiedMountManeuver(in mountHarness) * (0.5f + ridingSkill * 0.0025f);
         int harnessArmor = mountHarness.Item?.ArmorComponent?.BodyArmor ?? 0;
 
+        const float maxHarnessArmor = 60f;
         float armoredPercentage = harnessArmor / maxHarnessArmor;
         float armorImpactOnSpeed = 1f / (1f + 0.6f * armoredPercentage); // speed reduced by 37.5% for full armor
         float ridingImpactOnSpeed = (float)(0.55f
