@@ -976,7 +976,7 @@ item:
       description: 'There is a requirement for a minimum value of the strength attribute for this item'
     tier:
       title: 'Item Tier'
-      description: '<p>TODO: cRPG has what is called an item value model. This model aims to predict and quantify the efficiency of any items in the game. It does so using formulas to calculate  a tier between 0 and 10 for each item, using the item stats. The value model has been completely reworked in order to better predict which weapons and items performs the best. The tier calculated for each item is what will determine the item requirements, and the item price. That is why you will see that the order of item in the pricing list will have changed because the value model appraisal has changed. The best weapons should now be the one that cost the more. The item value model is not a form of item balancing, but merely an indicator of the balancing game items. We will in further updates balance items in order to have a more even play field.</p>'
+      description: '<p>cRPG features an item value model that predicts and quantifies item efficiency in-game. It assigns each item a tier from 0 to 10 based on stats, informing requirements and price. The model overhaul performed a while back reshuffled the pricing list to better reflect item performance, typically making top-tier weapons more expensive. However, remember the model serves as an indicator, not a perfect gauge, of item balance. Future updates will further fine-tune item balance to ensure fair gameplay.</p>'
     flags:
       title: 'Features'
       description: ''
