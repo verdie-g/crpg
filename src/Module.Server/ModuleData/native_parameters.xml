@@ -4,5 +4,7 @@
     <native_parameter id="mounted_passive_action_minimum_speed" value="9"/> <!-- minimum speed threshold in m/s to start couching native is 9-->
     <native_parameter id="quadrupedal_acceleration_multiplier" value="5"/> <!-- mount acceleration. 4 makes the horse soapy.  native is 9-->
     <native_parameter id="quadrupedal_delta_rotation_threshold_for_keeping_local_velocity" value="1"/> <!-- this removes slidiness -->
+    <native_parameter id="minimum_anim_strength_for_chamber_block" value="0.01"/>
+    <native_parameter id="maximum_anim_strength_for_chamber_block" value="0.99"/>
   </native_parameters>
 </base>
