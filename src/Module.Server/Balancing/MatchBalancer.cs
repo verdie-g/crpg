@@ -526,7 +526,7 @@ internal class MatchBalancer
     {
         GameMatch newGameMatch = new();
         newGameMatch.TeamA.AddRange(gameMatch.TeamA);
-        newGameMatch.TeamA.AddRange(gameMatch.TeamB);
+        newGameMatch.TeamB.AddRange(gameMatch.TeamB);
 
         int i = 0;
         foreach (var user in gameMatch.Waiting)
