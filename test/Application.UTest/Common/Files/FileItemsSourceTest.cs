@@ -109,7 +109,8 @@ public class FileItemsSourceTest
             {
                 if (!items.Contains(itemId))
                 {
-                    Assert.Fail($"Character item {itemId} was not found in items.json");
+                    string closestItemId = TestHelper.FindClosestString(itemId, items);
+                    Assert.Fail($"Character item {itemId} was not found in items.json. Did you mean {closestItemId}?");
                 }
             }
         });

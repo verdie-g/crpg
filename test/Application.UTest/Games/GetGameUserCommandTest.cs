@@ -406,7 +406,8 @@ public class GetGameUserCommandTest : TestBase
             {
                 if (!items.TryGetValue(mbId, out var item))
                 {
-                    Assert.That(items, Does.ContainKey(mbId), $"Item '{mbId}' doesn't exist");
+                    string closestMbId = TestHelper.FindClosestString(mbId, items.Keys);
+                    Assert.That(items, Does.ContainKey(mbId), $"Item '{mbId}' doesn't exist. Did you mean {closestMbId}?");
                     continue;
                 }
 
