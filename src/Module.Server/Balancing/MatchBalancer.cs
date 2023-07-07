@@ -60,8 +60,7 @@ internal class MatchBalancer
             {
                 Debug.Print("This is not the first Round");
                 Debug.Print("Balance is still good");
-                RandomlyAssignWaitingPlayersTeam(gameMatch);
-                return gameMatch;
+                return RandomlyAssignWaitingPlayersTeam(gameMatch);
             }
             else
             {
@@ -77,8 +76,7 @@ internal class MatchBalancer
         if (IsBalanceGoodEnough(balancedBannerGameMatch, maxSizeRatio: 0.85f, maxDifference: 10f, percentageDifference: 0.10f))
         {
             Debug.Print("No need to do banner balancing");
-            RandomlyAssignWaitingPlayersTeam(gameMatch);
-            return balancedBannerGameMatch;
+            return RandomlyAssignWaitingPlayersTeam(gameMatch);
         }
 
         Debug.Print("Banner balancing now");
@@ -524,7 +522,7 @@ internal class MatchBalancer
         return IsTeamSizeDifferenceAcceptable(gameMatch, maxSizeRatio, maxDifference) && IsWeightRatioAcceptable(gameMatch, percentageDifference);
     }
 
-    private void RandomlyAssignWaitingPlayersTeam(GameMatch gameMatch)
+    private GameMatch RandomlyAssignWaitingPlayersTeam(GameMatch gameMatch)
     {
         GameMatch newGameMatch = new();
         newGameMatch.TeamA.AddRange(gameMatch.TeamA);
@@ -544,5 +542,7 @@ internal class MatchBalancer
 
             i += 1;
         }
+
+        return newGameMatch;
     }
 }
