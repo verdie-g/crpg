@@ -976,7 +976,7 @@ item:
       description: 'There is a requirement for a minimum value of the strength attribute for this item'
     tier:
       title: 'Item Tier'
-      description: '<p>cRPG features an item value model that predicts and quantifies item efficiency in-game. It assigns each item a tier from 0 to 10 based on stats, informing requirements and price. The model overhaul performed a while back reshuffled the pricing list to better reflect item performance, typically making top-tier weapons more expensive. However, remember the model serves as an indicator, not a perfect gauge, of item balance. Future updates will further fine-tune item balance to ensure fair gameplay.</p>'
+      description: '<p>cRPG features an item value model that predicts and quantifies item efficiency in-game. It assigns each item a tier from 0 to 10 based on stats, informing requirements and price. The model overhaul performed a while back reshuffled the pricing list to better reflect item performance, typically making top-tier weapons more expensive. However, remember the model serves as an indicator, not a perfect gauge, of item balance.</p>'
     flags:
       title: 'Features'
       description: ''
