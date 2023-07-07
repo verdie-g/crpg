@@ -47,6 +47,18 @@ internal class CrpgPeer : PeerComponent
         }
     }
 
+    public void SynchronizeUserToPeer(NetworkCommunicator networkPeer)
+    {
+        if (User == null)
+        {
+            return;
+        }
+
+        GameNetwork.BeginModuleEventAsServer(networkPeer);
+        GameNetwork.WriteMessage(new UpdateCrpgUser { Peer = Peer, User = User });
+        GameNetwork.EndModuleEventAsServer();
+    }
+
     private void SynchronizeUserToEveryone()
     {
         if (_user == null || !GameNetwork.IsServerOrRecorder)

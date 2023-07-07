@@ -48,6 +48,7 @@ internal class CrpgUserManagerServer : MissionNetwork
     {
         base.HandleEarlyNewClientAfterLoadingFinished(networkPeer);
         networkPeer.AddComponent<CrpgPeer>();
+        SynchronizeCrpgUsersToPeer(networkPeer);
     }
 
     protected override void HandleNewClientAfterSynchronized(NetworkCommunicator networkPeer)
@@ -102,6 +103,23 @@ internal class CrpgUserManagerServer : MissionNetwork
         Debug.Print($"Kick player with an empty name \"{vp.UserName}\"");
         KickHelper.Kick(networkPeer, DisconnectType.KickedByHost, "empty_name");
         return true;
+    }
+
+    private void SynchronizeCrpgUsersToPeer(NetworkCommunicator networkPeer)
+    {
+        foreach (NetworkCommunicator networkPeers in GameNetwork.NetworkPeers)
+        {
+            CrpgPeer crpgPeer = networkPeers.GetComponent<CrpgPeer>();
+            if (!networkPeers.IsConnectionActive
+                || !networkPeers.IsSynchronized
+                || networkPeer == networkPeers
+                || crpgPeer == null)
+            {
+                continue;
+            }
+
+            crpgPeer.SynchronizeUserToPeer(networkPeer);
+        }
     }
 
     private bool OnXboxIdMessage(NetworkCommunicator networkPeer, XboxIdMessage message)
