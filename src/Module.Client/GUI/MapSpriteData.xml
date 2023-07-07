@@ -17,7 +17,7 @@
   <SpriteCategories>
     <SpriteCategory>
       <Name>ui_mploading</Name>
-      <SpriteSheetCount>112</SpriteSheetCount>
+      <SpriteSheetCount>115</SpriteSheetCount>
       <SpriteSheetSize ID="1" Width="3840" Height="1935" />
       <SpriteSheetSize ID="2" Width="3840" Height="1935" />
       <SpriteSheetSize ID="3" Width="3383" Height="1902" />
@@ -118,6 +118,9 @@
       <SpriteSheetSize ID="110" Width="1920" Height="1080" />
       <SpriteSheetSize ID="111" Width="1920" Height="1080" />
       <SpriteSheetSize ID="112" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="113" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="114" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="115" Width="1920" Height="1080" />
       <AlwaysLoad />
     </SpriteCategory>
   </SpriteCategories>
@@ -1013,6 +1016,33 @@
       <SheetY>0</SheetY>
       <CategoryName>ui_mploading</CategoryName>
     </SpritePart>
+    <SpritePart>
+      <SheetID>113</SheetID>
+      <Name>crpg_conquest_ironhale</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>114</SheetID>
+      <Name>crpg_conquest_silverskalitz</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>115</SheetID>
+      <Name>crpg_battle_skalhills</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
   </SpriteParts>
   <Sprites>
     <GenericSprite>
@@ -1410,6 +1440,18 @@
     <GenericSprite>
       <Name>crpg_battle_howlingmeadow</Name>
       <SpritePartName>crpg_battle_howlingmeadow</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_conquest_ironhale</Name>
+      <SpritePartName>crpg_conquest_ironhale</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_conquest_silverskalitz</Name>
+      <SpritePartName>crpg_conquest_silverskalitz</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_skalhills</Name>
+      <SpritePartName>crpg_battle_skalhills</SpritePartName>
     </GenericSprite>
   </Sprites>
 </SpriteData>

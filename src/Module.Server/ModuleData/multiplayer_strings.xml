@@ -85,6 +85,7 @@
   <string id="str_multiplayer_scene_name.crpg_battle_sanctuary" text="{=*}Sanctuary" />
   <string id="str_multiplayer_scene_name.crpg_battle_sandiboush" text="{=*}Sandiboush" />
   <string id="str_multiplayer_scene_name.crpg_battle_sandpit" text="{=*}Sandpit" />
+  <string id="str_multiplayer_scene_name.crpg_battle_skalhills" text="{=*}Skalhills" />
   <string id="str_multiplayer_scene_name.crpg_battle_skolderby" text="{=*}Skolderby" />
   <string id="str_multiplayer_scene_name.crpg_battle_skyfall" text="{=*}Skyfall" />
   <string id="str_multiplayer_scene_name.crpg_battle_stonehenge" text="{=*}Stonehenge" />
@@ -103,7 +104,9 @@
   <string id="str_multiplayer_scene_name.crpg_conquest_acre" text="{=*}Acre" />
   <string id="str_multiplayer_scene_name.crpg_conquest_frederiksborg" text="{=*}Frederiksborg" />
   <string id="str_multiplayer_scene_name.crpg_conquest_hades" text="{=*}Hades" />
+  <string id="str_multiplayer_scene_name.crpg_conquest_ironhale" text="{=*}Ironhale" />
   <string id="str_multiplayer_scene_name.crpg_conquest_neuenburg" text="{=*}Neuenburg" />
   <string id="str_multiplayer_scene_name.crpg_conquest_orlghelovar" text="{=*}Orlghelovar" />
+  <string id="str_multiplayer_scene_name.crpg_conquest_silverskalitz" text="{=*}Silver Skalitz" />
   <string id="str_multiplayer_scene_name.crpg_conquest_skalalanding" text="{=*}Skala Landing" />
 </strings>
