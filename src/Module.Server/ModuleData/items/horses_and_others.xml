@@ -3576,7 +3576,7 @@
       </Horse>
     </ItemComponent>
   </Item>
-  <Item id="crpg_mount1_fast_14_h0" name="Shadowfax" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
+  <Item id="crpg_mount1_fast_14_h0" name="Courser" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="74" speed="52" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="13" modifier_group="horse">
         <AdditionalMeshes>
@@ -3592,7 +3592,7 @@
       </Horse>
     </ItemComponent>
   </Item>
-  <Item id="crpg_mount1_fast_14_h1" name="Shadowfax +1" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
+  <Item id="crpg_mount1_fast_14_h1" name="Courser +1" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="74" speed="53" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="27" modifier_group="horse">
         <AdditionalMeshes>
@@ -3608,7 +3608,7 @@
       </Horse>
     </ItemComponent>
   </Item>
-  <Item id="crpg_mount1_fast_14_h2" name="Shadowfax +2" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
+  <Item id="crpg_mount1_fast_14_h2" name="Courser +2" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="75" speed="53" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="41" modifier_group="horse">
         <AdditionalMeshes>
@@ -3624,9 +3624,73 @@
       </Horse>
     </ItemComponent>
   </Item>
-  <Item id="crpg_mount1_fast_14_h3" name="Shadowfax +3" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
+  <Item id="crpg_mount1_fast_14_h3" name="Courser +3" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="76" speed="53" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="56" modifier_group="horse">
+        <AdditionalMeshes>
+          <Mesh name="horse_mane" affected_by_cover="true" />
+        </AdditionalMeshes>
+        <Materials>
+          <Material name="horse_white_mat">
+            <MeshMultipliers>
+              <MeshMultiplier mesh_multiplier="FF303030" percentage="1.0" />
+            </MeshMultipliers>
+          </Material>
+        </Materials>
+      </Horse>
+    </ItemComponent>
+  </Item>
+  <Item id="crpg_mount1_veryfast_14_h0" name="Shadowfax" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
+    <ItemComponent>
+      <Horse monster="Monster.horse" maneuver="74" speed="64" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-57" modifier_group="horse">
+        <AdditionalMeshes>
+          <Mesh name="horse_mane" affected_by_cover="true" />
+        </AdditionalMeshes>
+        <Materials>
+          <Material name="horse_white_mat">
+            <MeshMultipliers>
+              <MeshMultiplier mesh_multiplier="FF303030" percentage="1.0" />
+            </MeshMultipliers>
+          </Material>
+        </Materials>
+      </Horse>
+    </ItemComponent>
+  </Item>
+  <Item id="crpg_mount1_veryfast_14_h1" name="Shadowfax +1" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
+    <ItemComponent>
+      <Horse monster="Monster.horse" maneuver="74" speed="65" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-48" modifier_group="horse">
+        <AdditionalMeshes>
+          <Mesh name="horse_mane" affected_by_cover="true" />
+        </AdditionalMeshes>
+        <Materials>
+          <Material name="horse_white_mat">
+            <MeshMultipliers>
+              <MeshMultiplier mesh_multiplier="FF303030" percentage="1.0" />
+            </MeshMultipliers>
+          </Material>
+        </Materials>
+      </Horse>
+    </ItemComponent>
+  </Item>
+  <Item id="crpg_mount1_veryfast_14_h2" name="Shadowfax +2" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
+    <ItemComponent>
+      <Horse monster="Monster.horse" maneuver="75" speed="65" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-38" modifier_group="horse">
+        <AdditionalMeshes>
+          <Mesh name="horse_mane" affected_by_cover="true" />
+        </AdditionalMeshes>
+        <Materials>
+          <Material name="horse_white_mat">
+            <MeshMultipliers>
+              <MeshMultiplier mesh_multiplier="FF303030" percentage="1.0" />
+            </MeshMultipliers>
+          </Material>
+        </Materials>
+      </Horse>
+    </ItemComponent>
+  </Item>
+  <Item id="crpg_mount1_veryfast_14_h3" name="Shadowfax +3" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
+    <ItemComponent>
+      <Horse monster="Monster.horse" maneuver="76" speed="65" charge_damage="6" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-28" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>

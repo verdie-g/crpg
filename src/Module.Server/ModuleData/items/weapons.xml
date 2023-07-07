@@ -784,7 +784,7 @@
       <Piece id="crpg_iklwa_handle_h3" Type="Handle" scale_factor="30" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_hoplite_spear_h0" name="{=}Hoplite Spear" crafting_template="crpg_TwoHandedPolearm" culture="Culture.vlandia" modifier_group="polearm">
+  <CraftedItem id="crpg_hoplite_spear_v2_h0" name="{=}Hoplite Spear" crafting_template="crpg_TwoHandedPolearm" culture="Culture.vlandia" modifier_group="polearm">
     <Pieces>
       <Piece id="crpg_hoplite_spear_blade_h0" Type="Blade" scale_factor="90" />
       <Piece id="crpg_hoplite_spear_guard_h0" Type="Guard" scale_factor="90" />
@@ -792,7 +792,7 @@
       <Piece id="crpg_hoplite_spear_pommel_h0" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_hoplite_spear_h1" name="{=}Hoplite Spear +1" crafting_template="crpg_TwoHandedPolearm" culture="Culture.vlandia" modifier_group="polearm">
+  <CraftedItem id="crpg_hoplite_spear_v2_h1" name="{=}Hoplite Spear +1" crafting_template="crpg_TwoHandedPolearm" culture="Culture.vlandia" modifier_group="polearm">
     <Pieces>
       <Piece id="crpg_hoplite_spear_blade_h1" Type="Blade" scale_factor="90" />
       <Piece id="crpg_hoplite_spear_guard_h1" Type="Guard" scale_factor="90" />
@@ -800,7 +800,7 @@
       <Piece id="crpg_hoplite_spear_pommel_h1" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_hoplite_spear_h2" name="{=}Hoplite Spear +2" crafting_template="crpg_TwoHandedPolearm" culture="Culture.vlandia" modifier_group="polearm">
+  <CraftedItem id="crpg_hoplite_spear_v2_h2" name="{=}Hoplite Spear +2" crafting_template="crpg_TwoHandedPolearm" culture="Culture.vlandia" modifier_group="polearm">
     <Pieces>
       <Piece id="crpg_hoplite_spear_blade_h2" Type="Blade" scale_factor="90" />
       <Piece id="crpg_hoplite_spear_guard_h2" Type="Guard" scale_factor="90" />
@@ -808,7 +808,7 @@
       <Piece id="crpg_hoplite_spear_pommel_h2" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_hoplite_spear_v1_h3" name="{=}Hoplite Spear +3" crafting_template="crpg_TwoHandedPolearm" culture="Culture.vlandia" modifier_group="polearm">
+  <CraftedItem id="crpg_hoplite_spear_v2_h3" name="{=}Hoplite Spear +3" crafting_template="crpg_TwoHandedPolearm" culture="Culture.vlandia" modifier_group="polearm">
     <Pieces>
       <Piece id="crpg_hoplite_spear_blade_h3" Type="Blade" scale_factor="90" />
       <Piece id="crpg_hoplite_spear_guard_h3" Type="Guard" scale_factor="90" />
