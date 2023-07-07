@@ -19,7 +19,6 @@ internal class PlayerListCommand : AdminCommand
     private void Execute(NetworkCommunicator fromPeer, object[] arguments)
     {
         string? filter = arguments.Length > 0 ? ((string)arguments[0]).ToLower() : null;
-        ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorInfo, "- Players -");
         foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
         {
             if (filter != null && !networkPeer.UserName.ToLower().Contains(filter))
@@ -30,7 +29,12 @@ internal class PlayerListCommand : AdminCommand
             var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
             if (networkPeer.IsSynchronized && crpgPeer.User != null)
             {
-                ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorWarning, $"{crpgPeer.User.Id} | '{networkPeer.UserName}'");
+                string message = $"{crpgPeer.User.Id}. {networkPeer.UserName}"
+                                 + $" | lvl {crpgPeer.User.Character.Level}"
+                                 + $" | gen {crpgPeer.User.Character.Generation}"
+                                 + $" | mmr {(int)crpgPeer.User.Character.Rating.CompetitiveValue}"
+                                 + $" | clan {crpgPeer.Clan?.Tag ?? "none"}";
+                ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorWarning, message);
             }
         }
     }
