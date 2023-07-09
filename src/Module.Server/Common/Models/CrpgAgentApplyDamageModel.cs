@@ -204,4 +204,32 @@ internal class CrpgAgentApplyDamageModel : MultiplayerAgentApplyDamageModel
 
         return 0;
     }
+
+    public override bool DecideCrushedThrough(Agent attackerAgent, Agent defenderAgent, float totalAttackEnergy, Agent.UsageDirection attackDirection, StrikeType strikeType, WeaponComponentData defendItem, bool isPassiveUsage)
+    {
+        EquipmentIndex wieldedItemIndex = attackerAgent.GetWieldedItemIndex(Agent.HandIndex.OffHand);
+        if (wieldedItemIndex == EquipmentIndex.None)
+        {
+            wieldedItemIndex = attackerAgent.GetWieldedItemIndex(Agent.HandIndex.MainHand);
+        }
+
+        WeaponComponentData? weaponComponentData = (wieldedItemIndex != EquipmentIndex.None) ? attackerAgent.Equipment[wieldedItemIndex].CurrentUsageItem : null;
+        if (weaponComponentData == null || isPassiveUsage || !weaponComponentData.WeaponFlags.HasAnyFlag(WeaponFlags.CanCrushThrough) || strikeType != 0 || attackDirection != 0)
+        {
+            return false;
+        }
+
+        int defenderStrengthSkill = GetSkillValue(defenderAgent.Origin, CrpgSkills.Strength);
+        int attackerPowerStrikeSkill = GetSkillValue(defenderAgent.Origin, CrpgSkills.PowerStrike);
+        int defenderShieldSkill = GetSkillValue(defenderAgent.Origin, CrpgSkills.Shield);
+        float defenderDefendPower = Math.Max(defenderShieldSkill * 6 + 3, defenderStrengthSkill);
+        Random rand = new Random();
+        int randomNumber = rand.Next(0, 1001);
+        if (defendItem != null && defendItem.IsShield)
+        {
+            return (randomNumber / 10f) > Math.Pow(attackerPowerStrikeSkill / defenderDefendPower, 2) * 100f;
+        }
+
+        return (randomNumber / 10f) > Math.Pow(attackerPowerStrikeSkill / defenderStrengthSkill, 2) * 100f;
+    }
 }
