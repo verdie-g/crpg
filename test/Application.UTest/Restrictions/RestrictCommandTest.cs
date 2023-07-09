@@ -1,12 +1,24 @@
+using System.Runtime.Intrinsics.X86;
+using Crpg.Application.Characters.Queries;
+using Crpg.Application.Common;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Restrictions.Commands;
+using Crpg.Domain.Entities.Characters;
+using Crpg.Domain.Entities.Restrictions;
 using Crpg.Domain.Entities.Users;
 using NUnit.Framework;
+using RTools_NTS.Util;
 
 namespace Crpg.Application.UTest.Restrictions;
 
 public class RestrictCommandTest : TestBase
 {
+    private static readonly Constants Constants = new()
+    {
+        DefaultRating = 1500,
+        DefaultRatingDeviation = 350,
+        DefaultRatingVolatility = 0.06f,
+    };
     [Test]
     public async Task RestrictExistingUser()
     {
@@ -14,7 +26,7 @@ public class RestrictCommandTest : TestBase
         var user2 = ArrangeDb.Users.Add(new User { PlatformUserId = "1234", Name = "toto" });
         await ArrangeDb.SaveChangesAsync();
 
-        var result = await new RestrictCommand.Handler(ActDb, Mapper).Handle(new RestrictCommand
+        var result = await new RestrictCommand.Handler(ActDb, Mapper, Constants).Handle(new RestrictCommand
         {
             RestrictedUserId = user1.Entity.Id,
             Duration = TimeSpan.FromDays(1),
@@ -37,7 +49,7 @@ public class RestrictCommandTest : TestBase
         var user2 = ArrangeDb.Users.Add(new User());
         await ArrangeDb.SaveChangesAsync();
 
-        var result = await new RestrictCommand.Handler(ActDb, Mapper).Handle(new RestrictCommand
+        var result = await new RestrictCommand.Handler(ActDb, Mapper, Constants).Handle(new RestrictCommand
         {
             RestrictedUserId = 10,
             Duration = TimeSpan.FromDays(1),
@@ -54,7 +66,7 @@ public class RestrictCommandTest : TestBase
         var user1 = ArrangeDb.Users.Add(new User());
         await ArrangeDb.SaveChangesAsync();
 
-        var result = await new RestrictCommand.Handler(ActDb, Mapper).Handle(new RestrictCommand
+        var result = await new RestrictCommand.Handler(ActDb, Mapper, Constants).Handle(new RestrictCommand
         {
             RestrictedUserId = user1.Entity.Id,
             Duration = TimeSpan.FromDays(1),
@@ -80,6 +92,67 @@ public class RestrictCommandTest : TestBase
     }
 
     [Test]
+    public async Task ResetRatingRestrictionShouldResetRating()
+    {
+        User orle = new()
+        {
+            Name = "Orle",
+            Region = Domain.Entities.Region.Eu,
+        };
+
+        User takeo = new()
+        {
+            Name = "Takeo",
+            Region = Domain.Entities.Region.Eu,
+        };
+
+        var character1 = new Character
+        {
+            UserId = takeo.Id,
+            User = takeo,
+            Name = "takeoFirstCharacter",
+            Rating = new CharacterRating { CompetitiveValue = 5000, Deviation = 100, Value = 3000, Volatility = 5 },
+        };
+
+        var character2 = new Character
+        {
+            UserId = takeo.Id,
+            User = takeo,
+            Name = "takeoSecondCharacter",
+            Rating = new CharacterRating { CompetitiveValue = 5000, Deviation = 100, Value = 3000, Volatility = 5 },
+        };
+        ArrangeDb.Users.Add(orle);
+        ArrangeDb.Users.Add(takeo);
+        ArrangeDb.Characters.Add(character1);
+        ArrangeDb.Characters.Add(character2);
+        await ArrangeDb.SaveChangesAsync();
+
+        var result = await new RestrictCommand.Handler(ActDb, Mapper, Constants).Handle(new RestrictCommand
+        {
+            RestrictedUserId = takeo.Id,
+            Duration = TimeSpan.FromDays(0),
+            Reason = "toto",
+            RestrictedByUserId = orle.Id,
+            Type = RestrictionType.RatingReset,
+        }, CancellationToken.None);
+
+        GetUserCharacterRatingQuery.Handler handler = new(ActDb, Mapper);
+        var character1Rating = await handler.Handle(new GetUserCharacterRatingQuery
+        {
+            CharacterId = character1.Id,
+            UserId = 2,
+        }, CancellationToken.None);
+        var character2Rating = await handler.Handle(new GetUserCharacterRatingQuery
+        {
+            CharacterId = character2.Id,
+            UserId = 2,
+        }, CancellationToken.None);
+
+        Assert.That(character1Rating.Data!.CompetitiveValue, Is.EqualTo(0));
+        Assert.That(character2Rating.Data!.CompetitiveValue, Is.EqualTo(0));
+    }
+
+    [Test]
     public void EmptyRestrictionReasonReturnError()
     {
         var res = new RestrictCommand.Validator().Validate(new RestrictCommand
@@ -92,4 +165,4 @@ public class RestrictCommandTest : TestBase
 
         Assert.That(res.Errors.Count, Is.EqualTo(1));
     }
-}
+    }

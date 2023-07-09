@@ -1,8 +1,11 @@
+using System.Reflection.Metadata;
 using AutoMapper;
+using Crpg.Application.Common;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Restrictions.Models;
+using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Restrictions;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
@@ -35,11 +38,13 @@ public record RestrictCommand : IMediatorRequest<RestrictionViewModel>
 
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
+        private readonly Constants _constants;
 
-        public Handler(ICrpgDbContext db, IMapper mapper)
+        public Handler(ICrpgDbContext db, IMapper mapper, Constants constants)
         {
             _db = db;
             _mapper = mapper;
+            _constants = constants;
         }
 
         public async Task<Result<RestrictionViewModel>> Handle(RestrictCommand req, CancellationToken cancellationToken)
@@ -64,6 +69,18 @@ public record RestrictCommand : IMediatorRequest<RestrictionViewModel>
                 Type = req.Type,
                 Reason = req.Reason,
             };
+
+            if (req.Type == RestrictionType.RatingReset)
+            {
+                var restrictedUserCharacters = await _db.Characters.Where(c => c.UserId == req.RestrictedUserId).ToArrayAsync();
+                foreach (Character character in restrictedUserCharacters)
+                {
+                    character.Rating.Value = _constants.DefaultRating;
+                    character.Rating.Deviation = _constants.DefaultRatingDeviation;
+                    character.Rating.Volatility = _constants.DefaultRatingVolatility;
+                    character.Rating.CompetitiveValue = 0;
+                }
+            }
 
             restrictedUser.Restrictions.Add(restriction);
             await _db.SaveChangesAsync(cancellationToken);

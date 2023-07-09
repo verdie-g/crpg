@@ -10,4 +10,7 @@ public enum RestrictionType
 
     /// <summary>Can't write in chat.</summary>
     Chat,
+
+    /// <summary>Can't write in chat.</summary>
+    RatingReset,
 }
