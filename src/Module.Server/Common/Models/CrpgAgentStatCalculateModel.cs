@@ -231,10 +231,10 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         const float maxHarnessArmor = 60f;
         float armoredPercentage = harnessArmor / maxHarnessArmor;
         float armorImpactOnSpeed = 1f / (1f + 0.3333f * armoredPercentage); // speed reduced by 25% for full armor
-        float ridingImpactOnSpeed = (float)(0.55f
-            + ridingSkill * 0.0008f
+        float ridingImpactOnSpeed = (float)(0.7f
+            + ridingSkill * 0.001f
             + 1 / (2.2f + Math.Pow(2, -0.08f * (ridingSkill - 70f))));
-        props.MountSpeed = (mount.GetModifiedMountSpeed(in mountHarness) + 1) * 0.25f * ridingImpactOnSpeed * armorImpactOnSpeed;
+        props.MountSpeed = (mount.GetModifiedMountSpeed(in mountHarness) + 1) * 0.22f * ridingImpactOnSpeed * armorImpactOnSpeed;
         props.TopSpeedReachDuration = Game.Current.BasicModels.RidingModel.CalculateAcceleration(in mount, in mountHarness, ridingSkill);
         props.MountDashAccelerationMultiplier = 1f / (2f + 8f * armoredPercentage); // native between 1 and 0.1 . cRPG between 0.5 and 0.1
     }
