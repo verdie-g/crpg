@@ -18,6 +18,7 @@ public record ItemViewModel : IMapFrom<Item>
     public int Requirement { get; init; }
     public float Weight { get; init; }
     public ItemFlags Flags { get; init; }
+    public DateTime CreatedAt { get; init; }
 
     public ItemArmorComponentViewModel? Armor { get; init; }
     public ItemMountComponentViewModel? Mount { get; init; }
