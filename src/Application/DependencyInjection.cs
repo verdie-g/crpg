@@ -33,6 +33,7 @@ public static class DependencyInjection
             .AddSingleton<IClanService, ClanService>()
             .AddSingleton<IActivityLogService, ActivityLogService>()
             .AddSingleton<IGameServerStatsService, DatadogGameServerStatsService>()
+            .AddSingleton<IPatchNotesService, GithubPatchNotesService>()
             .AddSingleton<IGeoIpService>(CreateGeoIpService())
             .AddSingleton<IStrategusMap, StrategusMap>()
             .AddSingleton<IStrategusSpeedModel, StrategusSpeedModel>()
