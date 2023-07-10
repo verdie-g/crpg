@@ -185,6 +185,7 @@ export enum ItemFamilyType {
   Undefined = 0,
   Horse = 1,
   Camel = 2,
+  EBA = 3,
 }
 
 export type ItemRank = 0 | 1 | 2 | 3;

@@ -502,6 +502,9 @@ character:
       cantUseOnHorseback:
         notify:
           warning: A large shield cannot be used on horseback
+      EBAArmorCompatible:
+        notify:
+          warning: To equip body armor from the EBA Pack, you must first wear compatible leg armor from the EBA Pack
       upgrade:
         upgradesTitle: 'Item upgrades'
         tooltip:
@@ -944,6 +947,7 @@ item:
   familyType:
     1: 'Horse'
     2: 'Camel'
+    3: 'EBA'
 
   damageTypeFormat: '{value} {type}'
   damageType:

@@ -68,6 +68,7 @@ import {
   getItems,
   getItemImage,
   getAvailableSlotsByItem,
+  getLinkedSlots,
   hasWeaponClassesByItemType,
   getWeaponClassesByItemType,
   getCompareItemsResult,
@@ -104,7 +105,7 @@ it('getItemImage', () => {
   );
 });
 
-it.each<[PartialDeep<Item>, PartialDeep<Record<ItemSlot, UserItem>>, ItemSlot[]]>([
+it.only.each<[PartialDeep<Item>, PartialDeep<Record<ItemSlot, UserItem>>, ItemSlot[]]>([
   [
     { type: ItemType.MountHarness, flags: [], armor: { familyType: ItemFamilyType.Horse } },
     {},

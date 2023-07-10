@@ -226,7 +226,39 @@ export const getAvailableSlotsByItem = (
     return [];
   }
 
+  // family type: compatibility with EBA BodyArmor and EBA LegArmor
+  if (
+    (item.type === ItemType.BodyArmor &&
+      item.armor!.familyType === ItemFamilyType.EBA &&
+      ((ItemSlot.Leg in equippedItems &&
+        item.armor!.familyType !== equippedItems[ItemSlot.Leg].item.armor!.familyType) ||
+        !(ItemSlot.Leg in equippedItems))) ||
+    //
+    (item.type === ItemType.LegArmor &&
+      ItemSlot.Body in equippedItems &&
+      item.armor!.familyType !== equippedItems[ItemSlot.Body].item.armor!.familyType)
+  ) {
+    notify(
+      t('character.inventory.item.EBAArmorCompatible.notify.warning'),
+      NotificationType.Warning
+    );
+    return [];
+  }
+
   return itemSlotsByType[item.type]!;
+};
+
+export const getLinkedSlots = (slot: ItemSlot, equippedItems: EquippedItemsBySlot): ItemSlot[] => {
+  // family type: compatibility with EBA BodyArmor and EBA LegArmor
+  if (
+    slot === ItemSlot.Leg &&
+    ItemSlot.Body in equippedItems &&
+    equippedItems[ItemSlot.Body].item.armor!.familyType === ItemFamilyType.EBA
+  ) {
+    return [ItemSlot.Body];
+  }
+
+  return [];
 };
 
 export const isLargeShield = (item: Item) =>
@@ -370,6 +402,7 @@ export const itemFamilyTypeToIcon: Record<ItemFamilyType, string | null> = {
   [ItemFamilyType.Undefined]: null,
   [ItemFamilyType.Horse]: 'mount-type-horse',
   [ItemFamilyType.Camel]: 'mount-type-camel',
+  [ItemFamilyType.EBA]: null,
 };
 
 export const damageTypeToIcon: Record<DamageType, string | null> = {
