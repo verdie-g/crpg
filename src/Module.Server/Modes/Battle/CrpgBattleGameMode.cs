@@ -135,7 +135,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new WelcomeMessageBehavior(warmupComponent),
 #if CRPG_SERVER
                     roundController,
-                    new CrpgBattleServer(battleClient, _isSkirmish, rewardServer),
+                    new CrpgBattleServer(_isSkirmish, rewardServer),
                     rewardServer,
                     // SpawnFrameBehaviour: where to spawn, SpawningBehaviour: when to spawn
                     new SpawnComponent(new BattleSpawnFrameBehavior(),
