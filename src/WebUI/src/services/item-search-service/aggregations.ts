@@ -111,6 +111,7 @@ export const aggregationsConfig: AggregationConfig = {
   armorFamilyType: {
     size,
     view: AggregationView.Checkbox,
+    format: ItemFieldFormat.List,
     sort: 'term',
     conjunction: false,
     chosen_filters_on_top: false,

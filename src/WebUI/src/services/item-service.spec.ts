@@ -271,13 +271,14 @@ it.each<[ItemType, WeaponClass[]]>([
 
 describe('humanizeBucket', () => {
   it.each<[keyof ItemFlat, any, HumanBucket]>([
-    ['type', null, { icon: null, label: '' }],
+    ['type', null, { icon: null, label: '', description: null }],
     [
       'type',
       ItemType.OneHandedWeapon,
       {
         icon: { name: 'item-type-one-handed-weapon', type: IconBucketType.Svg },
         label: 'item.type.OneHandedWeapon',
+        description: null,
       },
     ],
     [
@@ -286,6 +287,7 @@ describe('humanizeBucket', () => {
       {
         icon: { name: 'weapon-class-one-handed-polearm', type: IconBucketType.Svg },
         label: 'item.weaponClass.OneHandedPolearm',
+        description: null,
       },
     ],
     [
@@ -294,6 +296,7 @@ describe('humanizeBucket', () => {
       {
         icon: { name: 'damage-type-cut', type: IconBucketType.Svg },
         label: 'item.damageType.Cut.long',
+        description: null,
       },
     ],
     [
@@ -302,6 +305,7 @@ describe('humanizeBucket', () => {
       {
         icon: { name: 'culture-vlandia', type: IconBucketType.Asset },
         label: 'item.culture.Vlandia',
+        description: null,
       },
     ],
     [
@@ -309,7 +313,8 @@ describe('humanizeBucket', () => {
       ItemFamilyType.Horse,
       {
         icon: { name: 'mount-type-horse', type: IconBucketType.Svg },
-        label: 'item.familyType.1',
+        label: 'item.familyType.1.title',
+        description: 'item.familyType.1.description',
       },
     ],
     [
@@ -317,7 +322,17 @@ describe('humanizeBucket', () => {
       ItemFamilyType.Camel,
       {
         icon: { name: 'mount-type-camel', type: IconBucketType.Svg },
-        label: 'item.familyType.2',
+        label: 'item.familyType.2.title',
+        description: 'item.familyType.2.description',
+      },
+    ],
+    [
+      'armorFamilyType',
+      ItemFamilyType.EBA,
+      {
+        icon: null,
+        label: 'item.familyType.3.title',
+        description: 'item.familyType.3.description',
       },
     ],
     [
@@ -326,6 +341,7 @@ describe('humanizeBucket', () => {
       {
         icon: { name: 'item-flag-drop-on-change', type: IconBucketType.Svg },
         label: 'item.flags.DropOnWeaponChange',
+        description: null,
       },
     ],
     [
@@ -334,6 +350,7 @@ describe('humanizeBucket', () => {
       {
         icon: { name: 'item-flag-can-dismount', type: IconBucketType.Svg },
         label: 'item.weaponFlags.CanDismount',
+        description: null,
       },
     ],
     [
@@ -342,6 +359,7 @@ describe('humanizeBucket', () => {
       {
         icon: { name: 'item-flag-brace', type: IconBucketType.Svg },
         label: 'item.usage.polearm_bracing',
+        description: null,
       },
     ],
     [
@@ -350,6 +368,7 @@ describe('humanizeBucket', () => {
       {
         icon: null,
         label: 'item.requirementFormat',
+        description: null,
       },
     ],
     [
@@ -358,6 +377,7 @@ describe('humanizeBucket', () => {
       {
         icon: null,
         label: '1234',
+        description: null,
       },
     ],
     [
@@ -366,6 +386,7 @@ describe('humanizeBucket', () => {
       {
         icon: null,
         label: '12',
+        description: null,
       },
     ],
   ])('aggKey: %s, bucket: %s ', (aggKey, bucket, expectation) => {
@@ -380,6 +401,7 @@ describe('humanizeBucket', () => {
     expect(humanizeBucket('swingDamage', 10, item as ItemFlat)).toEqual({
       icon: null,
       label: 'item.damageTypeFormat',
+      description: null,
     });
   });
 
@@ -389,6 +411,7 @@ describe('humanizeBucket', () => {
     expect(humanizeBucket('thrustDamage', 0, item as ItemFlat)).toEqual({
       icon: null,
       label: '0',
+      description: null,
     });
   });
 });

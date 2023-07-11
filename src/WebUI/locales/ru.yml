@@ -941,8 +941,15 @@ item:
     Vlandia: Вландия
 
   familyType:
-    1: 'Лошадь'
-    2: 'Верблюд'
+    1:
+      title: 'Лошадь'
+      description: ''
+    2:
+      title: 'Верблюд'
+      description: ''
+    3:
+      title: 'EBA'
+      description: 'Чтобы экипировать доспех из набора EBA, необходимо сначала надеть совместимую защиту ног из набора EBA'
 
   damageTypeFormat: '{value} {type}'
   damageType:

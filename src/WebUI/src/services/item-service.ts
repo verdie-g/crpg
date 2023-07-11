@@ -438,6 +438,7 @@ export interface IconedBucket {
 export interface HumanBucket {
   icon: IconedBucket | null;
   label: string;
+  description: string | null;
 }
 
 const damageTypeFieldByDamageField: Record<
@@ -449,8 +450,13 @@ const damageTypeFieldByDamageField: Record<
   swingDamage: 'swingDamageType',
 };
 
-const createHumanBucket = (label: string, icon: IconedBucket | null): HumanBucket => ({
+const createHumanBucket = (
+  label: string,
+  description: string | null,
+  icon: IconedBucket | null
+): HumanBucket => ({
   label,
+  description,
   icon,
 });
 
@@ -468,7 +474,7 @@ export const humanizeBucket = (
   item?: ItemFlat
 ): HumanBucket => {
   if (bucket === null || bucket === undefined) {
-    return createHumanBucket('', null);
+    return createHumanBucket('', null, null);
   }
 
   const format = aggregationsConfig[aggregationKey]?.format;
@@ -476,6 +482,7 @@ export const humanizeBucket = (
   if (aggregationKey === 'type') {
     return createHumanBucket(
       t(`item.type.${bucket as ItemType}`),
+      null,
       createIcon(IconBucketType.Svg, itemTypeToIcon[bucket as ItemType])
     );
   }
@@ -483,6 +490,7 @@ export const humanizeBucket = (
   if (aggregationKey === 'weaponClass') {
     return createHumanBucket(
       t(`item.weaponClass.${bucket as WeaponClass}`),
+      null,
       createIcon(IconBucketType.Svg, weaponClassToIcon[bucket as WeaponClass])
     );
   }
@@ -490,6 +498,7 @@ export const humanizeBucket = (
   if (aggregationKey === 'damageType') {
     return createHumanBucket(
       t(`item.damageType.${bucket}.long`),
+      null,
       createIcon(IconBucketType.Svg, damageTypeToIcon[bucket as DamageType])
     );
   }
@@ -497,13 +506,15 @@ export const humanizeBucket = (
   if (aggregationKey === 'culture') {
     return createHumanBucket(
       t(`item.culture.${bucket as Culture}`),
+      null,
       createIcon(IconBucketType.Asset, itemCultureToIcon[bucket as Culture])
     );
   }
 
   if (['mountArmorFamilyType', 'mountFamilyType', 'armorFamilyType'].includes(aggregationKey)) {
     return createHumanBucket(
-      t(`item.familyType.${bucket as ItemFamilyType}`),
+      t(`item.familyType.${bucket as ItemFamilyType}.title`),
+      t(`item.familyType.${bucket as ItemFamilyType}.description`),
       createIcon(IconBucketType.Svg, itemFamilyTypeToIcon[bucket as ItemFamilyType])
     );
   }
@@ -512,6 +523,7 @@ export const humanizeBucket = (
     if (Object.values(ItemFlags).includes(bucket as ItemFlags)) {
       return createHumanBucket(
         t(`item.flags.${bucket as ItemFlags}`),
+        null,
         createIcon(IconBucketType.Svg, itemFlagsToIcon[bucket as ItemFlags])
       );
     }
@@ -519,6 +531,7 @@ export const humanizeBucket = (
     if (Object.values(WeaponFlags).includes(bucket as WeaponFlags)) {
       return createHumanBucket(
         t(`item.weaponFlags.${bucket as WeaponFlags}`),
+        null,
         createIcon(IconBucketType.Svg, weaponFlagsToIcon[bucket as WeaponFlags])
       );
     }
@@ -526,6 +539,7 @@ export const humanizeBucket = (
     if (Object.values(ItemUsage).includes(bucket as ItemUsage)) {
       return createHumanBucket(
         t(`item.usage.${bucket as ItemUsage}`),
+        null,
         createIcon(IconBucketType.Svg, itemUsageToIcon[bucket as ItemUsage])
       );
     }
@@ -540,13 +554,14 @@ export const humanizeBucket = (
     const damageType = item[damageTypeField];
 
     if (damageType === null || damageType === undefined)
-      return createHumanBucket(String(bucket), null);
+      return createHumanBucket(String(bucket), null, null);
 
     return createHumanBucket(
       t('item.damageTypeFormat', {
         value: bucket,
         type: t(`item.damageType.${damageType as DamageType}.short`),
       }),
+      null,
       null
     );
   }
@@ -556,15 +571,16 @@ export const humanizeBucket = (
       t('item.requirementFormat', {
         value: bucket,
       }),
+      null,
       null
     );
   }
 
   if (format === ItemFieldFormat.Number) {
-    return createHumanBucket(n(bucket as number), null);
+    return createHumanBucket(n(bucket as number), null, null);
   }
 
-  return createHumanBucket(String(bucket), null);
+  return createHumanBucket(String(bucket), null, null);
 };
 
 export const getCompareItemsResult = (items: ItemFlat[], aggregationsConfig: AggregationConfig) => {

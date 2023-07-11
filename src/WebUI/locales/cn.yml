@@ -937,8 +937,15 @@ item:
     Vlandia: 瓦兰迪亚
 
   familyType:
-    1: '马'
-    2: '骆驼'
+    1:
+      title: '马'
+      description: ''
+    2:
+      title: '骆驼'
+      description: ''
+    3:
+      title: 'EBA'
+      description: '要装备EBA包中的防弹衣，您必须首先穿戴EBA包中的兼容腿部防弹衣。'
 
   damageTypeFormat: '{value} {type}'
   damageType:
