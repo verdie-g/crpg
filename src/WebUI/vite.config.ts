@@ -70,7 +70,12 @@ export default defineConfig({
       getRouteName: getPascalCaseRouteName,
     }),
 
-    Vue({ reactivityTransform: true }),
+    Vue({
+      reactivityTransform: true,
+      script: {
+        defineModel: true,
+      },
+    }),
 
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
