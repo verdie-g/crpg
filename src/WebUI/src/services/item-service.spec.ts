@@ -271,7 +271,7 @@ it.each<[ItemType, WeaponClass[]]>([
 
 describe('humanizeBucket', () => {
   it.each<[keyof ItemFlat, any, HumanBucket]>([
-    ['type', null, { icon: null, label: 'type - invalid bucket' }],
+    ['type', null, { icon: null, label: '' }],
     [
       'type',
       ItemType.OneHandedWeapon,

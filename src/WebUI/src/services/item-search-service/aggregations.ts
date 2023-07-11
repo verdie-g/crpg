@@ -108,6 +108,13 @@ export const aggregationsConfig: AggregationConfig = {
     format: ItemFieldFormat.Number,
     compareRule: ItemFieldCompareRule.Bigger,
   },
+  armorFamilyType: {
+    size,
+    view: AggregationView.Checkbox,
+    sort: 'term',
+    conjunction: false,
+    chosen_filters_on_top: false,
+  },
 
   // Mount
   bodyLength: {
@@ -319,6 +326,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
     'price',
   ],
   [ItemType.BodyArmor]: [
+    'armorFamilyType',
     'culture',
     'flags',
     'weight',
@@ -329,6 +337,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
     'price',
   ],
   [ItemType.LegArmor]: [
+    'armorFamilyType',
     'culture',
     'weight',
     'legArmor',

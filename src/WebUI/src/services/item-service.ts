@@ -468,7 +468,7 @@ export const humanizeBucket = (
   item?: ItemFlat
 ): HumanBucket => {
   if (bucket === null || bucket === undefined) {
-    return createHumanBucket(`${aggregationKey} - invalid bucket`, null);
+    return createHumanBucket('', null);
   }
 
   const format = aggregationsConfig[aggregationKey]?.format;
@@ -501,7 +501,7 @@ export const humanizeBucket = (
     );
   }
 
-  if (['mountArmorFamilyType', 'mountFamilyType'].includes(aggregationKey)) {
+  if (['mountArmorFamilyType', 'mountFamilyType', 'armorFamilyType'].includes(aggregationKey)) {
     return createHumanBucket(
       t(`item.familyType.${bucket as ItemFamilyType}`),
       createIcon(IconBucketType.Svg, itemFamilyTypeToIcon[bucket as ItemFamilyType])

@@ -14,7 +14,7 @@ export interface ItemArmorComponent {
   armArmor: number;
   legArmor: number;
   materialType: ArmorMaterialType;
-  familyType: number;
+  familyType: ItemFamilyType;
 }
 
 export interface ItemMountComponent {
@@ -23,7 +23,7 @@ export interface ItemMountComponent {
   maneuver: number;
   speed: number;
   hitPoints: number;
-  familyType: number;
+  familyType: ItemFamilyType;
 }
 
 export enum WeaponClass {
@@ -231,6 +231,7 @@ export interface ItemFlat {
   bodyArmor: number | null;
   armArmor: number | null;
   legArmor: number | null;
+  armorFamilyType: ItemFamilyType | null | undefined;
   materialType: ArmorMaterialType | null;
   // weapons
   weaponClass: WeaponClass | null;
@@ -261,10 +262,10 @@ export interface ItemFlat {
   maneuver: number | null;
   speed: number | null;
   hitPoints: number | null;
-  mountFamilyType: number | null;
+  mountFamilyType: ItemFamilyType | null;
   // MountHarness
   mountArmor: number | null;
-  mountArmorFamilyType: number | null;
+  mountArmorFamilyType: ItemFamilyType | null;
   // Bow/XBow
   reloadSpeed: number | null;
   aimSpeed: number | null;

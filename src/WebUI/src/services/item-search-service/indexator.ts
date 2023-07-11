@@ -9,6 +9,7 @@ import {
   type Item,
   WeaponUsage,
   ItemUsage,
+  ItemFamilyType,
 } from '@/models/item';
 import {
   itemTypeByWeaponClass,
@@ -126,6 +127,7 @@ const mapArmorProps = (item: Item) => {
       armArmor: null,
       legArmor: null,
       materialType: null,
+      armorFamilyType: null,
       mountArmor: null,
       mountArmorFamilyType: null,
     };
@@ -134,6 +136,7 @@ const mapArmorProps = (item: Item) => {
   if (item.type === ItemType.MountHarness) {
     return {
       ...item.armor,
+      armorFamilyType: null,
       mountArmor: item.armor.bodyArmor,
       mountArmorFamilyType: item.armor.familyType,
     };
@@ -141,6 +144,8 @@ const mapArmorProps = (item: Item) => {
 
   return {
     ...item.armor,
+    armorFamilyType:
+      item.armor.familyType !== ItemFamilyType.Undefined ? item.armor.familyType : undefined,
     mountArmor: null,
     mountArmorFamilyType: null,
   };

@@ -1000,7 +1000,9 @@ item:
     legArmor:
       title: 'Leg armor'
       description: ''
-
+    armorFamilyType:
+      title: 'Armor family type'
+      description: 'TODO:'
     bodyLength:
       title: 'Body length'
       description: ''
