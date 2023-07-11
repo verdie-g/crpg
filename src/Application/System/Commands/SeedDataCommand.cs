@@ -1408,6 +1408,8 @@ public record SeedDataCommand : IMediatorRequest
             };
             Party baronCyborgParty = new()
             {
+                User = baronCyborg,
+                Troops = 9,
                 Position = new Point(120, -88),
                 Status = PartyStatus.MovingToSettlement,
                 TargetedSettlement = mecalovea,
