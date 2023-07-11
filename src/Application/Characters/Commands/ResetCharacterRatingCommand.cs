@@ -36,8 +36,6 @@ public record ResetCharacterRatingCommand : IMediatorRequest<CharacterViewModel>
         public async Task<Result<CharacterViewModel>> Handle(ResetCharacterRatingCommand req, CancellationToken cancellationToken)
         {
             var character = await _db.Characters
-                .Include(c => c.User)
-                .Include(c => c.EquippedItems)
                 .FirstOrDefaultAsync(c => c.Id == req.CharacterId && c.UserId == req.UserId, cancellationToken);
             if (character == null)
             {
