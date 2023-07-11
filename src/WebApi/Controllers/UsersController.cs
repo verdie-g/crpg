@@ -357,6 +357,19 @@ public class UsersController : BaseController
     }
 
     /// <summary>
+    /// Resets a character rating.
+    /// </summary>
+    /// <param name="userId">User id of the character owner.</param>
+    /// <param name="id">Character id.</param>
+    /// <response code="200">Character rating reset.</response>
+    /// <response code="400">Bad Request.</response>
+    /// <response code="404">Character not found.</response>
+    [Authorize(AdminPolicy)]
+    [HttpPut("{userId}/characters/{id}/retire")]
+    public Task<ActionResult<Result<CharacterViewModel>>> ResetCharacterRating([FromRoute] int userId, [FromRoute] int id) =>
+        ResultToActionAsync(Mediator.Send(new ResetCharacterRatingCommand { CharacterId = id, UserId = userId }));
+
+    /// <summary>
     /// Retires character.
     /// </summary>
     /// <param name="id">Character id.</param>

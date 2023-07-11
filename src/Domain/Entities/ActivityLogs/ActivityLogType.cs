@@ -14,6 +14,7 @@ public enum ActivityLogType
     ItemUpgraded,
     CharacterCreated,
     CharacterDeleted,
+    CharacterRatingReset,
     CharacterRespecialized,
     CharacterRetired,
     CharacterRewarded,
