@@ -4,6 +4,7 @@ using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Users.Models;
+using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Users;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
@@ -59,6 +60,7 @@ public record UpsertUserCommand : IMediatorRequest<UserViewModel>
                 {
                     Platform = request.Platform,
                     PlatformUserId = request.PlatformUserId,
+                    Region = Region.Eu, // Hardcode region. It will be overriden by the real region when the user requests a token.
                 };
                 _userService.SetDefaultValuesForUser(user);
                 _db.Users.Add(user);

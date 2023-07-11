@@ -55,7 +55,7 @@ public record CreatePartyCommand : IMediatorRequest<PartyViewModel>
             {
                 Gold = 0,
                 Troops = _constants.StrategusMinPartyTroops,
-                Position = _strategusMap.GetSpawnPosition(user.Region!.Value),
+                Position = _strategusMap.GetSpawnPosition(user.Region),
                 Status = PartyStatus.Idle,
                 Waypoints = MultiPoint.Empty,
                 TargetedPartyId = null,

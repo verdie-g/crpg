@@ -23,7 +23,7 @@ public class User : AuditableEntity
     /// <summary>Experience multiplier given my retiring.</summary>
     public float ExperienceMultiplier { get; set; }
     public Role Role { get; set; }
-    public Region? Region { get; set; }
+    public Region Region { get; set; }
 
     /// <summary>
     /// True if the user is donating on https://www.patreon.com/crpg.

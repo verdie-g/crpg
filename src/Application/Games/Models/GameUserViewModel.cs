@@ -18,7 +18,7 @@ public record GameUserViewModel : IMapFrom<User>
     public int HeirloomPoints { get; set; }
     public float ExperienceMultiplier { get; init; }
     public Role Role { get; set; }
-    public Region? Region { get; set; }
+    public Region Region { get; set; }
     public DateTime CreatedAt { get; set; }
     public GameCharacterViewModel Character { get; init; } = default!;
     public IList<RestrictionViewModel> Restrictions { get; set; } = Array.Empty<RestrictionViewModel>();

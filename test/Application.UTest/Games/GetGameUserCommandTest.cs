@@ -2,6 +2,7 @@
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Games.Commands;
+using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Restrictions;
@@ -44,12 +45,14 @@ public class GetGameUserCommandTest : TestBase
         {
             Platform = Platform.EpicGames,
             PlatformUserId = "1",
+            Region = Region.Na,
         }, CancellationToken.None);
 
         var gameUser = result.Data!;
         Assert.That(gameUser.Id, Is.Not.Zero);
         Assert.That(gameUser.Platform, Is.EqualTo(Platform.EpicGames));
         Assert.That(gameUser.PlatformUserId, Is.EqualTo("1"));
+        Assert.That(gameUser.Region, Is.EqualTo(Region.Na));
         Assert.That(gameUser.Character.Name, Is.EqualTo("Peasant"));
         Assert.That(gameUser.Character.Class, Is.EqualTo(CharacterClass.Peasant));
         Assert.That(gameUser.Character.EquippedItems, Is.Not.Empty);
@@ -81,6 +84,7 @@ public class GetGameUserCommandTest : TestBase
             Platform = Platform.Steam,
             PlatformUserId = "1",
             Gold = 1000,
+            Region = Region.Eu,
             Characters =
             {
                 new Character { CreatedAt = DateTime.UtcNow.AddHours(-2) },
@@ -96,6 +100,7 @@ public class GetGameUserCommandTest : TestBase
         {
             Platform = user.Platform,
             PlatformUserId = user.PlatformUserId,
+            Region = Region.Na,
         }, CancellationToken.None);
 
         var gameUser = result.Data!;
@@ -103,6 +108,7 @@ public class GetGameUserCommandTest : TestBase
         Assert.That(gameUser.Id, Is.EqualTo(user.Id));
         Assert.That(gameUser.Platform, Is.EqualTo(user.Platform));
         Assert.That(gameUser.PlatformUserId, Is.EqualTo(user.PlatformUserId));
+        Assert.That(gameUser.Region, Is.EqualTo(Region.Eu));
         Assert.That(gameUser.Character.Name, Is.EqualTo("Peasant"));
         Assert.That(gameUser.Character.Class, Is.EqualTo(CharacterClass.Peasant));
         Assert.That(gameUser.Character.EquippedItems, Is.Not.Empty);
@@ -134,6 +140,7 @@ public class GetGameUserCommandTest : TestBase
             Platform = Platform.Steam,
             PlatformUserId = "1",
             Gold = 1000,
+            Region = Region.Eu,
             Characters =
             {
                 new Character
@@ -153,6 +160,7 @@ public class GetGameUserCommandTest : TestBase
         {
             Platform = user.Platform,
             PlatformUserId = user.PlatformUserId,
+            Region = Region.Eu,
         }, CancellationToken.None);
 
         Assert.That(res.Errors, Is.Not.Null);
@@ -170,6 +178,7 @@ public class GetGameUserCommandTest : TestBase
         {
             Platform = Platform.Steam,
             PlatformUserId = "1",
+            Region = Region.Eu,
             Items =
             {
                 // Already owned item
@@ -191,6 +200,7 @@ public class GetGameUserCommandTest : TestBase
         {
             Platform = user.Platform,
             PlatformUserId = user.PlatformUserId,
+            Region = Region.Eu,
         }, CancellationToken.None);
 
         var userItems = await AssertDb.UserItems.Where(oi => oi.UserId == user.Id).ToArrayAsync();
@@ -209,6 +219,7 @@ public class GetGameUserCommandTest : TestBase
         {
             Platform = Platform.Steam,
             PlatformUserId = "1",
+            Region = Region.Eu,
             ActiveCharacter = user0Character,
             Characters = { user0Character },
         };
@@ -218,6 +229,7 @@ public class GetGameUserCommandTest : TestBase
         {
             Platform = Platform.EpicGames,
             PlatformUserId = user0.PlatformUserId, // Same platform user id but different platform
+            Region = Region.Eu,
             ActiveCharacter = user1Character,
             Characters = { user1Character },
         };
@@ -232,6 +244,7 @@ public class GetGameUserCommandTest : TestBase
         {
             Platform = user0.Platform,
             PlatformUserId = user0.PlatformUserId,
+            Region = Region.Eu,
         }, CancellationToken.None);
 
         var gameUser = result.Data!;
@@ -252,6 +265,7 @@ public class GetGameUserCommandTest : TestBase
         {
             Platform = Platform.Steam,
             PlatformUserId = "1",
+            Region = Region.Eu,
             ActiveCharacter = character,
             Characters = new List<Character>
             {
@@ -270,6 +284,7 @@ public class GetGameUserCommandTest : TestBase
         {
             Platform = user.Platform,
             PlatformUserId = user.PlatformUserId,
+            Region = Region.Eu,
         }, CancellationToken.None);
 
         var gameUser = result.Data!;
@@ -287,6 +302,7 @@ public class GetGameUserCommandTest : TestBase
         {
             Platform = Platform.Steam,
             PlatformUserId = "1",
+            Region = Region.Eu,
             Restrictions = new List<Restriction>
             {
                 new()
@@ -330,6 +346,7 @@ public class GetGameUserCommandTest : TestBase
         {
             Platform = user.Platform,
             PlatformUserId = user.PlatformUserId,
+            Region = Region.Eu,
         }, CancellationToken.None);
 
         var gamerUser = result.Data!;
@@ -389,6 +406,7 @@ public class GetGameUserCommandTest : TestBase
         {
             Platform = user.Platform,
             PlatformUserId = user.PlatformUserId,
+            Region = Region.Eu,
         }, CancellationToken.None);
 
         var gameUser = result.Data!;

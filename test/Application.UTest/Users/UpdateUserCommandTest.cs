@@ -23,7 +23,7 @@ public class UpdateUserCommandTest : TestBase
     [Test]
     public async Task ShouldUpdateUser()
     {
-        User user = new() { Region = null };
+        User user = new();
         ArrangeDb.Users.Add(user);
         await ArrangeDb.SaveChangesAsync();
 
@@ -33,6 +33,5 @@ public class UpdateUserCommandTest : TestBase
         }, CancellationToken.None);
 
         Assert.That(res.Errors, Is.Null);
-        // Assert.That(Region.Na, Is.EqualTo(res.Data!.Region));
     }
 }

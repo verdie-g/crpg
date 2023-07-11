@@ -10,14 +10,9 @@ internal static class CrpgRatingHelper
     /// is terrible, their level is too and it skews the balancing results. So we apply a penalty to players not playing
     /// locally here.
     /// </summary>
-    public static float ComputeRegionRatingPenalty(CrpgRegion? userRegion)
+    public static float ComputeRegionRatingPenalty(CrpgRegion userRegion)
     {
         CrpgRegion serverRegion = CrpgServerConfiguration.Region;
-
-        if (userRegion == null)
-        {
-            return 1.0f;
-        }
 
         if (userRegion == serverRegion)
         {

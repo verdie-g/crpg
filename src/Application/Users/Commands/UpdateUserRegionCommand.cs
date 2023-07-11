@@ -46,7 +46,7 @@ public record UpdateUserRegionCommand : IMediatorRequest<UserViewModel>
             if (region != null && region != user.Region)
             {
                 Logger.LogInformation("User '{0}' changed region from '{1}' to '{2}'", user.Id, user.Region, region);
-                user.Region = region;
+                user.Region = region.Value;
                 await _db.SaveChangesAsync(cancellationToken);
             }
 

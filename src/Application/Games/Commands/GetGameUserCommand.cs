@@ -4,11 +4,13 @@ using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Games.Models;
+using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Limitations;
 using Crpg.Domain.Entities.Users;
 using Crpg.Sdk.Abstractions;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using LoggerFactory = Crpg.Logging.LoggerFactory;
@@ -22,6 +24,16 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
 {
     public Platform Platform { get; init; }
     public string PlatformUserId { get; init; } = default!;
+    public Region Region { get; init; }
+
+    public class Validator : AbstractValidator<GetGameUserCommand>
+    {
+        public Validator()
+        {
+            RuleFor(c => c.Platform).IsInEnum();
+            RuleFor(c => c.Region).IsInEnum();
+        }
+    }
 
     internal class Handler : IMediatorRequestHandler<GetGameUserCommand, GameUserViewModel>
     {
@@ -124,7 +136,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
 
             if (user == null)
             {
-                user = CreateUser(req.Platform, req.PlatformUserId);
+                user = CreateUser(req.Platform, req.PlatformUserId, req.Region);
                 _db.Users.Add(user);
 
                 await _db.SaveChangesAsync(cancellationToken);
@@ -183,12 +195,13 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
             return new(gameUser);
         }
 
-        private User CreateUser(Platform platform, string platformUserId)
+        private User CreateUser(Platform platform, string platformUserId, Region region)
         {
             User user = new()
             {
                 Platform = platform,
                 PlatformUserId = platformUserId,
+                Region = region,
             };
 
             _userService.SetDefaultValuesForUser(user);

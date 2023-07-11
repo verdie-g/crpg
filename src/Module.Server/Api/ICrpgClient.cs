@@ -8,7 +8,7 @@ namespace Crpg.Module.Api;
 
 internal interface ICrpgClient : IDisposable
 {
-    Task<CrpgResult<CrpgUser>> GetUserAsync(Platform platform, string platformUserId,
+    Task<CrpgResult<CrpgUser>> GetUserAsync(Platform platform, string platformUserId, CrpgRegion region,
         CancellationToken cancellationToken = default);
 
     Task<CrpgResult<CrpgUser>> GetTournamentUserAsync(Platform platform, string platformUserId,

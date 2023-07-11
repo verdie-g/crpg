@@ -14,7 +14,7 @@ public record UserPublicViewModel : IMapFrom<User>
     public string PlatformUserId { get; init; } = string.Empty;
     public string Name { get; init; } = string.Empty;
     public Uri? Avatar { get; init; }
-    public Region? Region { get; init; }
+    public Region Region { get; init; }
     public ClanPublicViewModel? Clan { get; init; }
 
     public void Mapping(Profile profile)

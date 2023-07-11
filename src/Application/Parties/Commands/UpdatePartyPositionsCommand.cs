@@ -144,7 +144,7 @@ public record UpdatePartyPositionsCommand : IMediatorRequest
                 Battle battle = new()
                 {
                     Phase = BattlePhase.Preparation,
-                    Region = party.TargetedParty.User!.Region!.Value, // Region of the defender.
+                    Region = party.TargetedParty.User!.Region, // Region of the defender.
                     Position = GetMidPoint(party.Position, party.TargetedParty.Position),
                     Fighters =
                     {

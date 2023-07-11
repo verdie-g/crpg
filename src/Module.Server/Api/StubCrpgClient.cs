@@ -14,7 +14,8 @@ internal class StubCrpgClient : ICrpgClient
 {
     private static readonly Random Random = new();
 
-    public Task<CrpgResult<CrpgUser>> GetUserAsync(Platform platform, string platformUserId, CancellationToken cancellationToken = default)
+    public Task<CrpgResult<CrpgUser>> GetUserAsync(Platform platform, string platformUserId, CrpgRegion region,
+        CancellationToken cancellationToken = default)
     {
         CrpgUser user = new()
         {
@@ -89,7 +90,7 @@ internal class StubCrpgClient : ICrpgClient
 
     public Task<CrpgResult<CrpgUser>> GetTournamentUserAsync(Platform platform, string platformUserId, CancellationToken cancellationToken = default)
     {
-        return GetUserAsync(platform, platformUserId, cancellationToken);
+        return GetUserAsync(platform, platformUserId, CrpgRegion.Eu, cancellationToken);
     }
 
     public Task CreateActivityLogsAsync(IList<CrpgActivityLog> activityLogs, CancellationToken cancellationToken = default)
