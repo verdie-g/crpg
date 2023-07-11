@@ -250,7 +250,7 @@ public class UpdatePartyPositionsCommandTest : TestBase
         {
             Status = PartyStatus.Idle,
             Position = destination,
-            User = new User(),
+            User = new User { Region = Region.Eu },
         };
         Party party = new()
         {
@@ -425,7 +425,6 @@ public class UpdatePartyPositionsCommandTest : TestBase
         };
         Party party = new()
         {
-            Region = Region.Eu,
             Status = PartyStatus.MovingToAttackSettlement,
             Position = position,
             TargetedSettlement = settlement,

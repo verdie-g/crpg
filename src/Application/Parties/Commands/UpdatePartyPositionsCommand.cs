@@ -51,11 +51,11 @@ public record UpdatePartyPositionsCommand : IMediatorRequest
         {
             var parties = await _db.Parties
                 .AsSplitQuery()
-                .Where(h => MovementStatuses.Contains(h.Status))
-                .Include(h => h.TargetedParty)
-                .Include(h => h.TargetedSettlement)
+                .Where(p => MovementStatuses.Contains(p.Status))
+                .Include(p => p.TargetedParty).ThenInclude(p => p!.User)
+                .Include(p => p.TargetedSettlement)
                 // Load mounts items to compute movement speed.
-                .Include(h => h.Items.Where(oi => oi.Item!.Type == ItemType.Mount)).ThenInclude(oi => oi.Item)
+                .Include(p => p.Items.Where(oi => oi.Item!.Type == ItemType.Mount)).ThenInclude(oi => oi.Item)
                 .ToArrayAsync(cancellationToken);
 
             foreach (var party in parties)
@@ -144,7 +144,7 @@ public record UpdatePartyPositionsCommand : IMediatorRequest
                 Battle battle = new()
                 {
                     Phase = BattlePhase.Preparation,
-                    Region = party.TargetedParty.Region, // Region of the defender.
+                    Region = party.TargetedParty.User!.Region!.Value, // Region of the defender.
                     Position = GetMidPoint(party.Position, party.TargetedParty.Position),
                     Fighters =
                     {

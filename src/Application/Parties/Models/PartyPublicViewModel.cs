@@ -27,6 +27,7 @@ public record PartyPublicViewModel : IMapFrom<Party>
             .ForMember(u => u.Platform, opt => opt.MapFrom(u => u.User!.Platform))
             .ForMember(u => u.PlatformUserId, opt => opt.MapFrom(u => u.User!.PlatformUserId))
             .ForMember(u => u.Name, opt => opt.MapFrom(u => u.User!.Name))
+            .ForMember(u => u.Region, opt => opt.MapFrom(u => u.User!.Region))
             .ForMember(u => u.Clan, opt => opt.MapFrom(u => u.User!.ClanMembership!.Clan));
     }
 }

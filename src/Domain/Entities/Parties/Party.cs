@@ -16,11 +16,6 @@ public class Party : AuditableEntity
     public int Id { get; set; }
 
     /// <summary>
-    /// The <see cref="Region"/> in which the user is playing.
-    /// </summary>
-    public Region Region { get; set; }
-
-    /// <summary>
     /// Money of the user on Strategus. Different from <see cref="Users.User.Gold"/>.
     /// </summary>
     public int Gold { get; set; }

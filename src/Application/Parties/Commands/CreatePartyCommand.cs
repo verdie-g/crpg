@@ -18,15 +18,6 @@ namespace Crpg.Application.Parties.Commands;
 public record CreatePartyCommand : IMediatorRequest<PartyViewModel>
 {
     public int UserId { get; set; }
-    public Region Region { get; init; }
-
-    public class Validator : AbstractValidator<CreatePartyCommand>
-    {
-        public Validator()
-        {
-            RuleFor(su => su.Region).IsInEnum();
-        }
-    }
 
     internal class Handler : IMediatorRequestHandler<CreatePartyCommand, PartyViewModel>
     {
@@ -62,10 +53,9 @@ public record CreatePartyCommand : IMediatorRequest<PartyViewModel>
 
             user.Party = new Party
             {
-                Region = req.Region,
                 Gold = 0,
                 Troops = _constants.StrategusMinPartyTroops,
-                Position = _strategusMap.GetSpawnPosition(req.Region),
+                Position = _strategusMap.GetSpawnPosition(user.Region!.Value),
                 Status = PartyStatus.Idle,
                 Waypoints = MultiPoint.Empty,
                 TargetedPartyId = null,

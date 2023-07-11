@@ -25,7 +25,6 @@ public class CreatePartyCommandTest : TestBase
         var res = await handler.Handle(new CreatePartyCommand
         {
             UserId = 1,
-            Region = Region.Na,
         }, CancellationToken.None);
 
         Assert.That(res.Errors, Is.Not.Null);
@@ -46,7 +45,6 @@ public class CreatePartyCommandTest : TestBase
         var res = await handler.Handle(new CreatePartyCommand
         {
             UserId = user.Id,
-            Region = Region.Na,
         }, CancellationToken.None);
 
         Assert.That(res.Errors, Is.Not.Null);
@@ -56,7 +54,7 @@ public class CreatePartyCommandTest : TestBase
     [Test]
     public async Task ShouldRegisterToStrategus()
     {
-        User user = new();
+        User user = new() { Region = Region.Na };
         ArrangeDb.Users.Add(user);
         await ArrangeDb.SaveChangesAsync();
 
@@ -66,13 +64,11 @@ public class CreatePartyCommandTest : TestBase
         var res = await handler.Handle(new CreatePartyCommand
         {
             UserId = user.Id,
-            Region = Region.Na,
         }, CancellationToken.None);
 
         var party = res.Data!;
         Assert.That(party, Is.Not.Null);
         Assert.That(party.Id, Is.EqualTo(user.Id));
-        Assert.That(party.Region, Is.EqualTo(Region.Na));
         Assert.That(party.Gold, Is.EqualTo(0));
         Assert.That(party.Troops, Is.EqualTo(1));
         Assert.That(party.Position, Is.EqualTo(new Point(150.0, 50.0)));
