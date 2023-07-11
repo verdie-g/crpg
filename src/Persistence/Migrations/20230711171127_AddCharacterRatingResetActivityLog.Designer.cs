@@ -32,7 +32,7 @@ partial class AddCharacterRatingResetActivityLog
             .HasAnnotation("ProductVersion", "7.0.0")
             .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-        NpgsqlModelBuilderExtensions.HasPostgresEnum(modelBuilder, "activity_log_type", new[] { "user_created", "user_deleted", "user_renamed", "user_rewarded", "item_bought", "item_sold", "item_broke", "item_reforged", "item_repaired", "item_upgraded", "character_created", "character_deleted", "character_rating_reseted", "character_respecialized", "character_retired", "character_rewarded", "server_joined", "chat_message_sent", "team_hit" });
+        NpgsqlModelBuilderExtensions.HasPostgresEnum(modelBuilder, "activity_log_type", new[] { "user_created", "user_deleted", "user_renamed", "user_rewarded", "item_bought", "item_sold", "item_broke", "item_reforged", "item_repaired", "item_upgraded", "character_created", "character_deleted", "character_rating_reset", "character_respecialized", "character_retired", "character_rewarded", "server_joined", "chat_message_sent", "team_hit" });
         NpgsqlModelBuilderExtensions.HasPostgresEnum(modelBuilder, "battle_fighter_application_status", new[] { "pending", "declined", "accepted" });
         NpgsqlModelBuilderExtensions.HasPostgresEnum(modelBuilder, "battle_mercenary_application_status", new[] { "pending", "declined", "accepted" });
         NpgsqlModelBuilderExtensions.HasPostgresEnum(modelBuilder, "battle_phase", new[] { "preparation", "hiring", "scheduled", "live", "end" });

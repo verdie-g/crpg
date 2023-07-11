@@ -16,7 +16,7 @@ internal interface IActivityLogService
     ActivityLog CreateItemUpgradedLog(int userId, string itemId, int heirloomPoints);
     ActivityLog CreateCharacterCreatedLog(int userId, int characterId);
     ActivityLog CreateCharacterDeletedLog(int userId, int characterId, int generation, int level);
-    ActivityLog CreateCharacterRatingResetedLog(int userId, int characterId);
+    ActivityLog CreateCharacterRatingResetLog(int userId, int characterId);
     ActivityLog CreateCharacterRespecializedLog(int userId, int characterId, int price);
     ActivityLog CreateCharacterRetiredLog(int userId, int characterId, int level);
     ActivityLog CreateCharacterRewardedLog(int userId, int characterId, int experience);
@@ -124,9 +124,9 @@ internal class ActivityLogService : IActivityLogService
         });
     }
 
-    public ActivityLog CreateCharacterRatingResetedLog(int userId, int characterId)
+    public ActivityLog CreateCharacterRatingResetLog(int userId, int characterId)
     {
-        return CreateLog(ActivityLogType.CharacterRatingReseted, userId, new ActivityLogMetadata[]
+        return CreateLog(ActivityLogType.CharacterRatingReset, userId, new ActivityLogMetadata[]
         {
             new("characterId", characterId.ToString()),
         });

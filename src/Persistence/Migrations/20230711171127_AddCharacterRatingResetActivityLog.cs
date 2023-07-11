@@ -9,7 +9,7 @@ public partial class AddCharacterRatingResetActivityLog : Migration
     protected override void Up(MigrationBuilder migrationBuilder)
     {
         migrationBuilder.AlterDatabase()
-            .Annotation("Npgsql:Enum:activity_log_type", "user_created,user_deleted,user_renamed,user_rewarded,item_bought,item_sold,item_broke,item_reforged,item_repaired,item_upgraded,character_created,character_deleted,character_rating_reseted,character_respecialized,character_retired,character_rewarded,server_joined,chat_message_sent,team_hit")
+            .Annotation("Npgsql:Enum:activity_log_type", "user_created,user_deleted,user_renamed,user_rewarded,item_bought,item_sold,item_broke,item_reforged,item_repaired,item_upgraded,character_created,character_deleted,character_rating_reset,character_respecialized,character_retired,character_rewarded,server_joined,chat_message_sent,team_hit")
             .OldAnnotation("Npgsql:Enum:activity_log_type", "user_created,user_deleted,user_renamed,user_rewarded,item_bought,item_sold,item_broke,item_reforged,item_repaired,item_upgraded,character_created,character_deleted,character_respecialized,character_retired,character_rewarded,server_joined,chat_message_sent,team_hit");
     }
 
@@ -18,6 +18,6 @@ public partial class AddCharacterRatingResetActivityLog : Migration
     {
         migrationBuilder.AlterDatabase()
             .Annotation("Npgsql:Enum:activity_log_type", "user_created,user_deleted,user_renamed,user_rewarded,item_bought,item_sold,item_broke,item_reforged,item_repaired,item_upgraded,character_created,character_deleted,character_respecialized,character_retired,character_rewarded,server_joined,chat_message_sent,team_hit")
-            .OldAnnotation("Npgsql:Enum:activity_log_type", "user_created,user_deleted,user_renamed,user_rewarded,item_bought,item_sold,item_broke,item_reforged,item_repaired,item_upgraded,character_created,character_deleted,character_rating_reseted,character_respecialized,character_retired,character_rewarded,server_joined,chat_message_sent,team_hit");
+            .OldAnnotation("Npgsql:Enum:activity_log_type", "user_created,user_deleted,user_renamed,user_rewarded,item_bought,item_sold,item_broke,item_reforged,item_repaired,item_upgraded,character_created,character_deleted,character_rating_reset,character_respecialized,character_retired,character_rewarded,server_joined,chat_message_sent,team_hit");
     }
 }

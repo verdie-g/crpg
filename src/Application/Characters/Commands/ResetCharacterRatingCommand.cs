@@ -46,11 +46,11 @@ public record ResetCharacterRatingCommand : IMediatorRequest<CharacterViewModel>
 
             _characterService.ResetRating(character);
 
-            _db.ActivityLogs.Add(_activityLogService.CreateCharacterRatingResetedLog(character.UserId, character.Id));
+            _db.ActivityLogs.Add(_activityLogService.CreateCharacterRatingResetLog(character.UserId, character.Id));
 
             await _db.SaveChangesAsync(cancellationToken);
 
-            Logger.LogInformation("User '{0}' had his  character '{1} rating reseted'", req.UserId, req.CharacterId);
+            Logger.LogInformation("User '{0}' had his  character '{1} rating reset'", req.UserId, req.CharacterId);
             return new(_mapper.Map<CharacterViewModel>(character));
         }
     }
