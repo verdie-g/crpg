@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
+using Crpg.Module.Api.Exceptions;
 using Crpg.Module.Api.Models;
 using Crpg.Module.Api.Models.ActivityLogs;
 using Crpg.Module.Api.Models.Clans;
@@ -163,7 +164,17 @@ internal class HttpCrpgClient : ICrpgClient
 
             if (!res.IsSuccessStatusCode)
             {
-                throw new Exception($"{res.StatusCode}: {json}");
+                CrpgResult crpgRes;
+                try
+                {
+                    crpgRes = JsonConvert.DeserializeObject<CrpgResult>(json, _serializerSettings)!;
+                }
+                catch
+                {
+                    throw new Exception($"{res.StatusCode}: {json}");
+                }
+
+                throw new CrpgClientException(crpgRes);
             }
 
             return JsonConvert.DeserializeObject<CrpgResult<TResponse>>(json, _serializerSettings)!;

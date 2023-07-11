@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using System.Text;
 using Crpg.Module.Api;
+using Crpg.Module.Api.Exceptions;
 using Crpg.Module.Api.Models;
 using Crpg.Module.Api.Models.Clans;
 using Crpg.Module.Api.Models.Restrictions;
@@ -193,7 +194,10 @@ internal class CrpgUserManagerServer : MissionNetwork
         catch (Exception e)
         {
             Debug.Print($"Couldn't get user {userName} ({platform}#{platformUserId}): {e}");
-            KickHelper.Kick(networkPeer, DisconnectType.ServerNotResponding, "unreachable_server");
+            string messageId = e is CrpgClientException ce && ce.ErrorCode == "CharacterRecentlyCreated"
+                ? "character_recently_created"
+                : "unreachable_server";
+            KickHelper.Kick(networkPeer, DisconnectType.ServerNotResponding, messageId);
             crpgPeer.UserLoading = false;
             return;
         }

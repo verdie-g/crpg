@@ -1,8 +1,12 @@
 ﻿namespace Crpg.Module.Api.Models;
 
-internal class CrpgResult<TData> where TData : class
+internal class CrpgResult
 {
     public IList<Error>? Errors { get; set; }
+}
+
+internal class CrpgResult<TData> : CrpgResult where TData : class
+{
     public TData? Data { get; set; }
 }
 
