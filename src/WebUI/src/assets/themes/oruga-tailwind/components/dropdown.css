@@ -10,11 +10,7 @@
 }
 
 .v-popper--theme-dropdown .v-popper__inner {
-  @apply rounded-lg border-none bg-base-200 py-1.5 shadow-none;
-}
-
-.v-popper--theme-dropdown .v-popper__inner {
-  @apply rounded-lg border-none bg-base-200 py-1.5 shadow-none;
+  @apply rounded-lg border-none bg-base-200 py-1.5 drop-shadow-md;
 }
 
 .v-popper--theme-dropdown.v-popper--theme-dropdown-light .v-popper__arrow-inner,
@@ -28,7 +24,7 @@
 
 /*  */
 .v-popper--theme-tooltip .v-popper__inner {
-  @apply max-w-xs rounded-lg bg-base-200 px-4 py-3.5 text-content-100;
+  @apply max-w-xs rounded-lg bg-base-200 px-4 py-3.5 text-content-100 drop-shadow-md;
 }
 
 .v-popper--theme-tooltip .v-popper__arrow-inner,
