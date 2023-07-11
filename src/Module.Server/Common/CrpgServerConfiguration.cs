@@ -1,5 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 using Crpg.Module.Api.Models;
+using Crpg.Module.HarmonyPatches;
 using JetBrains.Annotations;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -103,5 +104,12 @@ internal static class CrpgServerConfiguration
         var timeZone = TimeZoneInfo.FindSystemTimeZoneById(match.Groups[3].Value);
         HappyHours = Tuple.Create(startTime, endTime, timeZone);
         Debug.Print($"Set happy hours from {startTime} to {endTime} in time zone {timeZone.Id}");
+    }
+
+    [UsedImplicitly]
+    [ConsoleCommandMethod("crpg_apply_harmony_patches", "Apply Harmony patches")]
+    private static void ApplyHarmonyPatches()
+    {
+        BannerlordPatches.Apply();
     }
 }
