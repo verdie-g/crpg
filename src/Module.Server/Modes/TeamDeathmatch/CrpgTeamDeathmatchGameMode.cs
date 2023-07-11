@@ -119,7 +119,7 @@ internal class CrpgTeamDeathmatchGameMode : MissionBasedMultiplayerGameMode
                 new MapPoolComponent(),
                 new ChatCommandsComponent(chatBox, crpgClient),
                 new CrpgActivityLogsBehavior(warmupComponent, chatBox, crpgClient),
-                new PlayerStatsComponent(),
+                new ServerMetricsBehavior(),
                 new NotAllPlayersReadyComponent(),
                 new DrowningBehavior(),
 #else

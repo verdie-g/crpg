@@ -6,10 +6,10 @@ using TaleWorlds.MountAndBlade;
 namespace Crpg.Module.Common;
 
 /// <summary>
-/// Emit a metric with the number of playing users. Since it's the only metric emitted, to avoid a dependency to an
-/// external library, the Datadog datagram is crafted and sent to the DogStatsD port.
+/// Emit server metrics. Since it's only a few metrics emitted, to avoid a dependency to an external library, the
+/// Datadog datagrams are crafted and sent to the DogStatsD port.
 /// </summary>
-internal class PlayerStatsComponent : MissionBehavior
+internal class ServerMetricsBehavior : MissionBehavior
 {
     private static readonly EndPoint DogStatsDEndpoint = new DnsEndPoint("localhost", 8125);
 
@@ -23,6 +23,12 @@ internal class PlayerStatsComponent : MissionBehavior
         _updateTimer = new MissionTimer(60);
         _socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
         _socket.Connect(DogStatsDEndpoint);
+
+        // https://docs.datadoghq.com/developers/dogstatsd/datagram_shell/?tab=events
+        string title = "Mission started";
+        string content = $"Mission started on scene {Mission.SceneName}";
+        string datagramStr = $"_e{{{title.Length},{content.Length}}}:{title}|{content}|#{BuildTags()}";
+        SendDatagram(datagramStr);
     }
 
     public override void OnRemoveBehavior()
@@ -38,12 +44,22 @@ internal class PlayerStatsComponent : MissionBehavior
         }
 
         int players = GameNetwork.NetworkPeers.Count(x => x.IsSynchronized);
+
+        // https://docs.datadoghq.com/developers/dogstatsd/datagram_shell?tab=metrics
+        string datagramStr = $"crpg.users.playing.count:{players}|g|#{BuildTags()}";
+        SendDatagram(datagramStr);
+    }
+
+    private string BuildTags()
+    {
         string region = CrpgServerConfiguration.Region.ToString().ToLowerInvariant();
         string service = CrpgServerConfiguration.Service;
         string instance = CrpgServerConfiguration.Instance;
+        return $"region:{region},service:{service},instance:{instance}";
+    }
 
-        // https://docs.datadoghq.com/developers/dogstatsd/datagram_shell?tab=metrics
-        string datagramStr = $"crpg.users.playing.count:{players}|g|#region:{region},service:{service},instance:{instance}";
+    private void SendDatagram(string datagramStr)
+    {
         byte[] datagram = Encoding.ASCII.GetBytes(datagramStr);
         _socket!.Send(datagram);
     }
