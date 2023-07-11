@@ -17,7 +17,6 @@ export const useInventoryDnD = (equippedItemsBySlot: Ref<EquippedItemsBySlot>) =
   const onDragStart = (item: UserItem | null = null, slot: ItemSlot | null = null) => {
     if (!item) return;
 
-    // TODO: to service
     if (item.isBroken) {
       notify(t('character.inventory.item.broken.notify.warning'), NotificationType.Warning);
       return;
