@@ -7,86 +7,57 @@ import {
   getStepRange,
   getBucketValues,
 } from '@/services/item-search-service';
-import { humanizeBucket } from '@/services/item-service';
+
+const modelValue = defineModel<string[] | number[]>();
 
 const props = defineProps<{
   aggregation: itemsjs.SearchAggregation<ItemFlat, keyof ItemFlat>;
   scopeAggregation: itemsjs.SearchAggregation<ItemFlat, keyof ItemFlat>;
   aggregationConfig: Aggregation;
-  modelValue: string[] | number[];
 }>();
-
-const emit = defineEmits<{
-  (e: 'update:modelValue', modelValue: string[] | number[]): void;
-}>();
-
-const innerModel = computed({
-  get() {
-    return props.modelValue;
-  },
-
-  set(val) {
-    emit('update:modelValue', val);
-  },
-});
 </script>
 
 <template>
   <div class="relative flex items-center gap-1">
     <OIcon
-      v-if="innerModel?.length"
+      v-if="modelValue?.length"
       class="absolute -left-5 top-1/2 -translate-y-1/2 transform cursor-pointer hover:text-status-danger"
       v-tooltip.bottom="$t('action.reset')"
       icon="close"
       size="xs"
-      @click="innerModel = []"
+      @click="modelValue = []"
     />
 
     <VDropdown :triggers="['click']">
-      <VTooltip :delay="{ show: 600 }">
+      <Tooltip
+        :title="$t(`item.aggregations.${aggregation.name}.title`)"
+        :description="$t(`item.aggregations.${aggregation.name}.description`)"
+        :delay="{ show: 300 }"
+      >
         <div
           class="max-w-[90px] cursor-pointer overflow-x-hidden text-ellipsis whitespace-nowrap border-b-2 border-dashed border-border-300 pb-0.5 text-2xs hover:text-content-100 2xl:max-w-[120px]"
         >
           {{ $t(`item.aggregations.${aggregation.name}.title`) }}
         </div>
-
-        <template #popper>
-          <div class="prose prose-invert">
-            <h5 class="text-content-100">
-              {{ $t(`item.aggregations.${aggregation.name}.title`) }}
-            </h5>
-            <p v-if="$t(`item.aggregations.${aggregation.name}.description`)">
-              {{ $t(`item.aggregations.${aggregation.name}.description`) }}
-            </p>
-          </div>
-        </template>
-      </VTooltip>
+      </Tooltip>
 
       <template #popper>
         <div class="max-w-md">
           <template v-if="aggregationConfig.view === AggregationView.Checkbox">
             <DropdownItem v-for="bucket in aggregation.buckets">
-              <OCheckbox v-model="innerModel" :nativeValue="bucket.key" class="items-center">
-                <div class="flex items-center gap-2">
-                  <ItemFieldIcon
-                    v-if="humanizeBucket(aggregation.name, bucket.key)?.icon"
-                    :icon="humanizeBucket(aggregation.name, bucket.key).icon!"
-                    :label="humanizeBucket(aggregation.name, bucket.key)!.label"
-                    :showTooltip="false"
-                  />
-                  <div>
-                    {{ humanizeBucket(aggregation.name, bucket.key).label }}
-                    <span class="inline text-content-400">({{ bucket.doc_count }})</span>
-                  </div>
-                </div>
-              </OCheckbox>
+              <ShopGridFilterCheckboxItem
+                v-model="modelValue"
+                :aggregation="aggregation.name"
+                :bucketValue="bucket.key"
+                :docCount="bucket.doc_count"
+              />
             </DropdownItem>
           </template>
 
           <template v-else-if="aggregationConfig.view === AggregationView.Range">
             <div class="px-8 py-3">
               <SliderInput
-                v-model="innerModel"
+                v-model="(modelValue as number[])"
                 :min="getMinRange(getBucketValues(scopeAggregation.buckets))"
                 :max="getMaxRange(getBucketValues(scopeAggregation.buckets))"
                 :step="getStepRange(getBucketValues(scopeAggregation.buckets))"
