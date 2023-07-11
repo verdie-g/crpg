@@ -230,9 +230,9 @@ export const getAvailableSlotsByItem = (
   if (
     (item.type === ItemType.BodyArmor &&
       item.armor!.familyType === ItemFamilyType.EBA &&
-      ((ItemSlot.Leg in equippedItems &&
-        item.armor!.familyType !== equippedItems[ItemSlot.Leg].item.armor!.familyType) ||
-        !(ItemSlot.Leg in equippedItems))) ||
+      (!(ItemSlot.Leg in equippedItems) ||
+        (ItemSlot.Leg in equippedItems &&
+          item.armor!.familyType !== equippedItems[ItemSlot.Leg].item.armor!.familyType))) ||
     //
     (item.type === ItemType.LegArmor &&
       ItemSlot.Body in equippedItems &&

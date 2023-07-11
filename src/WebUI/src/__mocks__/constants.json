@@ -13,7 +13,7 @@
   "multipliedExperienceGainPerSecond": 13.9,
   "baseGoldGainPerSecond": 0.66,
   "multipliedGoldGainPerSecond": 0.66,
-  "itemRepairCostPerSecond": 0.00006656,
+  "itemRepairCostPerSecond": 0.000064,
   "itemBreakChance": 0.5,
   "brokenItemRepairPenaltySeconds": 300,
   "itemSellCostPenalty": 0.5,

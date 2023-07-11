@@ -15,6 +15,7 @@ import {
   ItemFamilyType,
   DamageType,
 } from '@/models/item';
+import { type EquippedItemsBySlot } from '@/models/character';
 import { type AggregationConfig, AggregationView } from '@/models/item-search';
 import { UserItem } from '@/models/user';
 import { Culture } from '@/models/culture';
@@ -105,7 +106,7 @@ it('getItemImage', () => {
   );
 });
 
-it.only.each<[PartialDeep<Item>, PartialDeep<Record<ItemSlot, UserItem>>, ItemSlot[]]>([
+it.each<[PartialDeep<Item>, PartialDeep<EquippedItemsBySlot>, ItemSlot[]]>([
   [
     { type: ItemType.MountHarness, flags: [], armor: { familyType: ItemFamilyType.Horse } },
     {},
@@ -173,10 +174,73 @@ it.only.each<[PartialDeep<Item>, PartialDeep<Record<ItemSlot, UserItem>>, ItemSl
     },
     [ItemSlot.Mount],
   ],
+
+  // EBA
+  [{ type: ItemType.BodyArmor, armor: { familyType: ItemFamilyType.EBA }, flags: [] }, {}, []],
+  [
+    { type: ItemType.BodyArmor, armor: { familyType: ItemFamilyType.EBA }, flags: [] },
+    {
+      [ItemSlot.Leg]: {
+        item: { type: ItemType.LegArmor, armor: { familyType: ItemFamilyType.Undefined } },
+      },
+    },
+    [],
+  ],
+  [
+    { type: ItemType.BodyArmor, armor: { familyType: ItemFamilyType.EBA }, flags: [] },
+    {
+      [ItemSlot.Leg]: {
+        item: { type: ItemType.LegArmor, armor: { familyType: ItemFamilyType.EBA } },
+      },
+    },
+    [ItemSlot.Body],
+  ],
+  [
+    { type: ItemType.LegArmor, armor: { familyType: ItemFamilyType.Undefined }, flags: [] },
+    {
+      [ItemSlot.Body]: {
+        item: { type: ItemType.BodyArmor, armor: { familyType: ItemFamilyType.EBA } },
+      },
+    },
+    [],
+  ],
+  [
+    { type: ItemType.LegArmor, armor: { familyType: ItemFamilyType.EBA }, flags: [] },
+    {
+      [ItemSlot.Body]: {
+        item: { type: ItemType.BodyArmor, armor: { familyType: ItemFamilyType.EBA } },
+      },
+    },
+    [ItemSlot.Leg],
+  ],
 ])('getAvailableSlotsByItem - item: %j, equipedItems: %j', (item, equipedItems, expectation) => {
-  expect(getAvailableSlotsByItem(item as Item, equipedItems as Record<ItemSlot, UserItem>)).toEqual(
+  expect(getAvailableSlotsByItem(item as Item, equipedItems as EquippedItemsBySlot)).toEqual(
     expectation
   );
+});
+
+it.each<[ItemSlot, PartialDeep<EquippedItemsBySlot>, ItemSlot[]]>([
+  // EBA
+  [
+    ItemSlot.Leg,
+    {
+      [ItemSlot.Body]: {
+        item: { type: ItemType.BodyArmor, armor: { familyType: ItemFamilyType.EBA } },
+      },
+    },
+    [ItemSlot.Body],
+  ],
+  [
+    ItemSlot.Leg,
+    {
+      [ItemSlot.Body]: {
+        item: { type: ItemType.BodyArmor, armor: { familyType: ItemFamilyType.Undefined } },
+      },
+    },
+    [],
+  ],
+])('getLinkedSlots - slot: %s', (slot, equipedItems, expectation) => {
+  expect(getLinkedSlots(slot, equipedItems as EquippedItemsBySlot)).toEqual(expectation);
 });
 
 it.each([
