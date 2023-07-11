@@ -1,5 +1,5 @@
 .o-notification {
-  @apply relative rounded-full bg-base-600 px-4 py-3 text-content-600 mb-3 select-none;
+  @apply relative rounded-full bg-base-600 px-6 py-3 text-content-600 mb-3 select-none;
 }
 
 .o-notification.o-notification--danger {
@@ -31,7 +31,7 @@
 }
 
 .o-notices {
-  @apply pointer-events-none fixed inset-0 z-100 flex overflow-hidden p-6;
+  @apply pointer-events-none fixed inset-0 z-[1001] flex overflow-hidden p-6;
 }
 
 .o-notices .o-notification {

@@ -495,6 +495,9 @@ character:
       cantUseOnHorseback:
         notify:
           warning: 大盾牌不能在马背上使用
+      EBAArmorCompatible:
+        notify:
+          warning: '要装备EBA包中的防弹衣，您必须首先穿戴EBA包中的兼容腿部防弹衣。'
       upgrade:
         upgradesTitle: 物品升级
         tooltip:
@@ -988,7 +991,9 @@ item:
     legArmor:
       title: '腿部护甲'
       description: ''
-
+    armorFamilyType:
+      title: '盔甲套装'
+      description: '某些装甲元素仅与同一组装甲元素兼容'
     bodyLength:
       title: '身长'
       description: ''

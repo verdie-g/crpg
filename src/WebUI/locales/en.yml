@@ -1001,8 +1001,8 @@ item:
       title: 'Leg armor'
       description: ''
     armorFamilyType:
-      title: 'Armor family type'
-      description: 'TODO:'
+      title: 'Armor set'
+      description: 'Some armor elements are compatible only with armor elements from the same set'
     bodyLength:
       title: 'Body length'
       description: ''
