@@ -357,9 +357,9 @@ public class UsersController : BaseController
     }
 
     /// <summary>
-    /// Resets a character Rating.
+    /// Resets a character rating.
     /// </summary>
-    /// <param name="userId">Owner of Character userId.</param>
+    /// <param name="userId">User id of the character owner.</param>
     /// <param name="id">Character id.</param>
     /// <response code="200">Character rating reset.</response>
     /// <response code="400">Bad Request.</response>
