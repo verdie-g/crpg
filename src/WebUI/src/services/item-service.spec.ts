@@ -196,6 +196,15 @@ it.each<[PartialDeep<Item>, PartialDeep<EquippedItemsBySlot>, ItemSlot[]]>([
     [ItemSlot.Body],
   ],
   [
+    { type: ItemType.BodyArmor, armor: { familyType: ItemFamilyType.EBA }, flags: [] },
+    {
+      [ItemSlot.Leg]: {
+        item: { type: ItemType.LegArmor, armor: { familyType: ItemFamilyType.Undefined } },
+      },
+    },
+    [],
+  ],
+  [
     { type: ItemType.LegArmor, armor: { familyType: ItemFamilyType.Undefined }, flags: [] },
     {
       [ItemSlot.Body]: {

@@ -29,7 +29,7 @@ import { get } from '@/services/crpg-client';
 import { aggregationsConfig } from '@/services/item-search-service/aggregations';
 import { n, t } from '@/services/translate-service';
 import { notify, NotificationType } from '@/services/notification-service';
-import { applyPolynomialFunction, roundFLoat } from '@/utils/math';
+import { roundFLoat } from '@/utils/math';
 
 // TODO: delete mocks
 // import {
@@ -236,6 +236,7 @@ export const getAvailableSlotsByItem = (
     //
     (item.type === ItemType.LegArmor &&
       ItemSlot.Body in equippedItems &&
+      equippedItems[ItemSlot.Body].item.armor!.familyType === ItemFamilyType.EBA &&
       item.armor!.familyType !== equippedItems[ItemSlot.Body].item.armor!.familyType)
   ) {
     notify(
