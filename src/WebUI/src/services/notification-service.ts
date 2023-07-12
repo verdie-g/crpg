@@ -11,7 +11,7 @@ export const notify = (message: string, type: NotificationType = NotificationTyp
     message,
     position: 'top',
     variant: type,
-    duration: 3000,
+    duration: 5000,
     queue: false,
   });
 };

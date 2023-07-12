@@ -496,6 +496,9 @@ character:
       cantUseOnHorseback:
         notify:
           warning: Большой щит нельзя использовать верхом
+      EBAArmorCompatible:
+        notify:
+          warning: 'Чтобы экипировать доспех из набора EBA, необходимо сначала надеть совместимую защиту ног из набора EBA'
       upgrade:
         upgradesTitle: "Улучшения предмета"
         tooltip:
@@ -938,8 +941,15 @@ item:
     Vlandia: Вландия
 
   familyType:
-    1: 'Лошадь'
-    2: 'Верблюд'
+    1:
+      title: 'Лошадь'
+      description: ''
+    2:
+      title: 'Верблюд'
+      description: ''
+    3:
+      title: 'EBA'
+      description: 'Чтобы экипировать доспех из набора EBA, необходимо сначала надеть совместимую защиту ног из набора EBA'
 
   damageTypeFormat: '{value} {type}'
   damageType:
@@ -992,7 +1002,9 @@ item:
     legArmor:
       title: 'Защита ног'
       description: ''
-
+    armorFamilyType:
+      title: 'Комплект'
+      description: 'Некоторые элементы доспехов совместимы только элементами доспехов из этого же набора'
     bodyLength:
       title: 'Длина'
       description: ''

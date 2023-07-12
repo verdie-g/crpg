@@ -502,6 +502,9 @@ character:
       cantUseOnHorseback:
         notify:
           warning: A large shield cannot be used on horseback
+      EBAArmorCompatible:
+        notify:
+          warning: To equip body armor from the EBA Pack, you must first wear compatible leg armor from the EBA Pack
       upgrade:
         upgradesTitle: 'Item upgrades'
         tooltip:
@@ -942,8 +945,15 @@ item:
     Vlandia: Vlandia
 
   familyType:
-    1: 'Horse'
-    2: 'Camel'
+    1:
+      title: 'Horse'
+      description: ''
+    2:
+      title: 'Camel'
+      description: ''
+    3:
+      title: 'EBA'
+      description: 'To equip body armor from the EBA Pack, you must first wear compatible leg armor from the EBA Pack'
 
   damageTypeFormat: '{value} {type}'
   damageType:
@@ -996,7 +1006,9 @@ item:
     legArmor:
       title: 'Leg armor'
       description: ''
-
+    armorFamilyType:
+      title: 'Armor set'
+      description: 'Some armor elements are compatible only with armor elements from the same set'
     bodyLength:
       title: 'Body length'
       description: ''

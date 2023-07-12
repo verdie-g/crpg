@@ -106,7 +106,7 @@ public record SeedDataCommand : IMediatorRequest
                 Platform = Platform.Steam,
                 Name = "orle",
                 Role = Role.Moderator,
-                Gold = 100000,
+                Gold = 1000000,
                 HeirloomPoints = 12,
                 ExperienceMultiplier = 1.09f,
                 Avatar = new Uri("https://avatars.akamai.steamstatic.com/d51d5155b1a564421c0b3fd5fb7eed7c4474e73d_full.jpg"),

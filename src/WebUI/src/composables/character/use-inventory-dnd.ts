@@ -1,7 +1,7 @@
 import type { EquippedItemsBySlot, EquippedItemId } from '@/models/character';
 import { ItemSlot } from '@/models/item';
 import { type UserItem } from '@/models/user';
-import { getAvailableSlotsByItem } from '@/services/item-service';
+import { getAvailableSlotsByItem, getLinkedSlots } from '@/services/item-service';
 import { notify, NotificationType } from '@/services/notification-service';
 import { t } from '@/services/translate-service';
 
@@ -17,7 +17,6 @@ export const useInventoryDnD = (equippedItemsBySlot: Ref<EquippedItemsBySlot>) =
   const onDragStart = (item: UserItem | null = null, slot: ItemSlot | null = null) => {
     if (!item) return;
 
-    // TODO: to service
     if (item.isBroken) {
       notify(t('character.inventory.item.broken.notify.warning'), NotificationType.Warning);
       return;
@@ -41,7 +40,15 @@ export const useInventoryDnD = (equippedItemsBySlot: Ref<EquippedItemsBySlot>) =
 
   const onDragEnd = (_e: DragEvent | null = null, slot: ItemSlot | null = null) => {
     if (slot && !toSlot.value) {
-      emit('change', [{ userItemId: null, slot }]); // drop outside
+      const items: EquippedItemId[] = [
+        { userItemId: null, slot },
+        ...getLinkedSlots(slot, equippedItemsBySlot.value).map(ls => ({
+          userItemId: null,
+          slot: ls,
+        })),
+      ];
+
+      emit('change', items); // drop outside
     }
 
     focusedItemId.value = null;

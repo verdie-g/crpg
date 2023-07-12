@@ -99,15 +99,28 @@ const fieldStyle = computed(() => {
           size="2xl"
         />
 
-        <Tag
-          v-else-if="aggregationsConfig[field]?.format === ItemFieldFormat.List"
-          :label="formattedValue.label"
-          size="sm"
-        />
+        <Tooltip
+          v-else
+          v-bind="{
+            disabled: formattedValue.description === null,
+            placement: 'top',
+            title: formattedValue.label,
+            ...(formattedValue.description !== null && { description: formattedValue.description }),
+          }"
+        >
+          <Tag
+            v-if="
+              aggregationsConfig[field]?.format === ItemFieldFormat.List &&
+              formattedValue.label !== ''
+            "
+            :label="formattedValue.label"
+            size="sm"
+          />
 
-        <div v-else class="text-xs font-bold">
-          {{ formattedValue.label }}
-        </div>
+          <div v-else class="text-xs font-bold">
+            {{ formattedValue.label }}
+          </div>
+        </Tooltip>
       </template>
 
       <div v-if="diffStr !== null" class="text-2xs font-bold">
