@@ -76,9 +76,9 @@ public class GetBattleFightersQueryTest : TestBase
         var fighters = res.Data!;
         Assert.That(fighters.Count, Is.EqualTo(3));
         Assert.That(fighters[0].Settlement!.Name, Is.EqualTo("a"));
-        Assert.That(fighters[1].Party!.Name, Is.EqualTo("b"));
+        Assert.That(fighters[1].Party!.User.Name, Is.EqualTo("b"));
         Assert.That(fighters[1].Commander, Is.EqualTo(true));
-        Assert.That(fighters[2].Party!.Name, Is.EqualTo("c"));
+        Assert.That(fighters[2].Party!.User.Name, Is.EqualTo("c"));
         Assert.That(fighters[2].Commander, Is.EqualTo(false));
     }
 }

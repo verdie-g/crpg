@@ -80,15 +80,14 @@ public record ApplyAsFighterToBattleCommand : IMediatorRequest<BattleFighterAppl
 
             var existingPendingApplication = await _db.BattleFighterApplications
                 .Include(a => a.Party)
-                .Where(a => a.PartyId == req.PartyId && a.BattleId == req.BattleId
-                                                   && a.Side == req.Side
-                                                   && (a.Status == BattleFighterApplicationStatus.Pending
-                                                       || a.Status == BattleFighterApplicationStatus.Accepted))
-                .ProjectTo<BattleFighterApplicationViewModel>(_mapper.ConfigurationProvider)
+                .Where(a => a.PartyId == req.PartyId
+                            && a.BattleId == req.BattleId
+                            && a.Side == req.Side
+                            && (a.Status == BattleFighterApplicationStatus.Pending || a.Status == BattleFighterApplicationStatus.Accepted))
                 .FirstOrDefaultAsync(cancellationToken);
             if (existingPendingApplication != null)
             {
-                return new(existingPendingApplication);
+                return new(_mapper.Map<BattleFighterApplicationViewModel>(existingPendingApplication));
             }
 
             BattleFighterApplication application = new()
