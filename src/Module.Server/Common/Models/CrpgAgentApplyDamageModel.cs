@@ -195,7 +195,14 @@ internal class CrpgAgentApplyDamageModel : MultiplayerAgentApplyDamageModel
         defenderStunMultiplier = 1f;
     }
 
-    public override bool DecideCrushedThrough(Agent attackerAgent, Agent defenderAgent, float totalAttackEnergy, Agent.UsageDirection attackDirection, StrikeType strikeType, WeaponComponentData defendItem, bool isPassiveUsage)
+    public override bool DecideCrushedThrough(
+        Agent attackerAgent,
+        Agent defenderAgent,
+        float totalAttackEnergy,
+        Agent.UsageDirection attackDirection,
+        StrikeType strikeType,
+        WeaponComponentData defendItem,
+        bool isPassiveUsage)
     {
         EquipmentIndex wieldedItemIndex = attackerAgent.GetWieldedItemIndex(Agent.HandIndex.OffHand);
         if (wieldedItemIndex == EquipmentIndex.None)
