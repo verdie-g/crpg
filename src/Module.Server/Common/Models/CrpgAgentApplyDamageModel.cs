@@ -195,6 +195,7 @@ internal class CrpgAgentApplyDamageModel : MultiplayerAgentApplyDamageModel
         defenderStunMultiplier = 1f;
     }
 
+    // This method should be adjuste once totalenergy uses our strike model to adjust the result when the strike is very bad.
     public override bool DecideCrushedThrough(
         Agent attackerAgent,
         Agent defenderAgent,
