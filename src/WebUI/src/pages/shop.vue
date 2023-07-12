@@ -145,6 +145,17 @@ const isUpgradableCategory = computed(() => canUpgrade(itemTypeModel.value));
               </template>
             </VTooltip>
           </DropdownItem>
+
+          <DropdownItem>
+            <OCheckbox
+              :nativeValue="1"
+              :modelValue="filterModel['new']"
+              @update:modelValue="(val: number) => updateFilter('new', val)"
+            >
+              <!-- TODO: -->
+              TODO: New
+            </OCheckbox>
+          </DropdownItem>
         </template>
       </VDropdown>
 

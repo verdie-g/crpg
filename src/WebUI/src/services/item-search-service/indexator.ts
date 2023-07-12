@@ -185,6 +185,10 @@ const mapMountProps = (item: Item) => {
   };
 };
 
+const isNewItemDays = 30;
+// TODO: const name
+const prior = new Date().setDate(new Date().getDate() - isNewItemDays);
+
 const itemToFlat = (item: Item): ItemFlat => {
   const weaponProps = mapWeaponProps(item);
 
@@ -201,6 +205,7 @@ const itemToFlat = (item: Item): ItemFlat => {
 
   return {
     id: item.id,
+    new: new Date(item.createdAt).getTime() > prior ? 1 : 0,
     baseId: item.baseId,
     rank: item.rank,
     modId: generateModId(item, weaponProps?.weaponClass ?? undefined),
