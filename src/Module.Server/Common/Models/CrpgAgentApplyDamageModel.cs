@@ -221,8 +221,10 @@ internal class CrpgAgentApplyDamageModel : MultiplayerAgentApplyDamageModel
             return false;
         }
 
-        int defenderStrengthSkill = GetSkillValue(attackerAgent.Origin, CrpgSkills.Strength);
+        
         int attackerPowerStrikeSkill = GetSkillValue(attackerAgent.Origin, CrpgSkills.PowerStrike);
+
+        int defenderStrengthSkill = GetSkillValue(defenderAgent.Origin, CrpgSkills.Strength);
         int defenderShieldSkill = GetSkillValue(defenderAgent.Origin, CrpgSkills.Shield);
         float defenderDefendPower = Math.Max(defenderShieldSkill * 6 + 3, defenderStrengthSkill);
         int randomNumber = MBRandom.RandomInt(0, 1001);
