@@ -598,6 +598,8 @@ shop:
         <p>Данная опция покажет такое оружие в списке магазина</p>
   hideOwnedItems:
     title: Скрыть ваши предметы
+  new:
+    title: Только новые предметы
 
 clan:
   action:
@@ -1099,6 +1101,10 @@ item:
 
     rank:
       title: 'Ранг'
+      description: ''
+
+    new:
+      title: 'Только новые предметы'
       description: ''
 
   format:

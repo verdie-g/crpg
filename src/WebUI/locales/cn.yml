@@ -1092,6 +1092,9 @@ item:
     rank:
       title: '阶级'
       description: ''
+    new:
+      title: 'New items only'
+      description: ''
 
   format:
     upkeep: '{upkeep} / @:dateTime.hours.short'

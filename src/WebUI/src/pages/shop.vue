@@ -102,13 +102,14 @@ const isUpgradableCategory = computed(() => canUpgrade(itemTypeModel.value));
 
     <div class="mb-2 flex items-center gap-6 overflow-x-auto pb-2">
       <VDropdown :triggers="['click']" placement="bottom-end">
-        <OButton variant="secondary" outlined size="xl" rounded>
+        <OButton variant="primary" outlined size="xl" rounded>
           <FontAwesomeLayers full-width class="fa-2x">
             <FontAwesomeIcon :icon="['crpg', 'dots']" />
             <FontAwesomeLayersText
               v-if="
                 hideOwnedItemsModel ||
-                ('weaponUsage' in filterModel && filterModel['weaponUsage']!.length > 1)
+                ('weaponUsage' in filterModel && filterModel['weaponUsage']!.length > 1) ||
+                ('new' in filterModel && filterModel['new']!.length)
               "
               counter
               value="●"
@@ -119,6 +120,16 @@ const isUpgradableCategory = computed(() => canUpgrade(itemTypeModel.value));
         </OButton>
 
         <template #popper>
+          <DropdownItem>
+            <OCheckbox
+              :nativeValue="1"
+              :modelValue="filterModel['new']"
+              @update:modelValue="(val: number) => updateFilter('new', val)"
+            >
+              {{ $t('item.aggregations.new.title') }}
+            </OCheckbox>
+          </DropdownItem>
+
           <DropdownItem>
             <OCheckbox v-model="hideOwnedItemsModel">
               {{ $t('shop.hideOwnedItems.title') }}
@@ -145,26 +156,19 @@ const isUpgradableCategory = computed(() => canUpgrade(itemTypeModel.value));
               </template>
             </VTooltip>
           </DropdownItem>
-
-          <DropdownItem>
-            <OCheckbox
-              :nativeValue="1"
-              :modelValue="filterModel['new']"
-              @update:modelValue="(val: number) => updateFilter('new', val)"
-            >
-              <!-- TODO: -->
-              TODO: New
-            </OCheckbox>
-          </DropdownItem>
         </template>
       </VDropdown>
 
-      <ShopItemTypeSelect
-        v-model:itemType="itemTypeModel"
-        v-model:weaponClass="weaponClassModel"
-        :itemTypeBuckets="aggregationByType.data.buckets"
-        :weaponClassBuckets="aggregationByClass.data.buckets"
-      />
+      <div class="h-8 w-px select-none bg-border-200" />
+
+      <div class="">
+        <ShopItemTypeSelect
+          v-model:itemType="itemTypeModel"
+          v-model:weaponClass="weaponClassModel"
+          :itemTypeBuckets="aggregationByType.data.buckets"
+          :weaponClassBuckets="aggregationByClass.data.buckets"
+        />
+      </div>
     </div>
 
     <OTable
