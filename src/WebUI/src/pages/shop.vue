@@ -1,6 +1,11 @@
 <script setup lang="ts">
-import { WeaponUsage, type ItemFlat, ItemCompareMode } from '@/models/item';
-import { getItems, getCompareItemsResult, canUpgrade } from '@/services/item-service';
+import { WeaponUsage, type ItemFlat } from '@/models/item';
+import {
+  getItems,
+  getCompareItemsResult,
+  canUpgrade,
+  itemIsNewDays,
+} from '@/services/item-service';
 import { getSearchResult } from '@/services/item-search-service';
 import { notify } from '@/services/notification-service';
 import { t } from '@/services/translate-service';
@@ -119,16 +124,17 @@ const isUpgradableCategory = computed(() => canUpgrade(itemTypeModel.value));
           </FontAwesomeLayers>
         </OButton>
 
-        <template #popper>
+        <template #popper="{ hide }">
           <DropdownItem>
             <Tooltip
               :title="$t('item.aggregations.new.title')"
-              :description="$t('item.aggregations.new.description', { newItemDateThreshold: 30 })"
+              :description="$t('item.aggregations.new.description', { days: itemIsNewDays })"
             >
               <OCheckbox
                 :nativeValue="1"
                 :modelValue="filterModel['new']"
                 @update:modelValue="(val: number) => updateFilter('new', val)"
+                @change="hide"
               >
                 {{ $t('item.aggregations.new.title') }}
               </OCheckbox>
@@ -136,7 +142,7 @@ const isUpgradableCategory = computed(() => canUpgrade(itemTypeModel.value));
           </DropdownItem>
 
           <DropdownItem>
-            <OCheckbox v-model="hideOwnedItemsModel">
+            <OCheckbox v-model="hideOwnedItemsModel" @change="hide">
               {{ $t('shop.hideOwnedItems.title') }}
             </OCheckbox>
           </DropdownItem>
@@ -150,6 +156,7 @@ const isUpgradableCategory = computed(() => canUpgrade(itemTypeModel.value));
                 :nativeValue="WeaponUsage.Secondary"
                 :modelValue="filterModel['weaponUsage']"
                 @update:modelValue="(val: string) => updateFilter('weaponUsage', val)"
+                @change="hide"
               >
                 {{ $t('shop.nonPrimaryWeaponMode.title') }}
               </OCheckbox>

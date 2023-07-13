@@ -1094,7 +1094,7 @@ item:
       description: ''
     new:
       title: '仅限新产品'
-      description: '显示{newItemDateThreshold}天内添加的项目'
+      description: '显示{days}天内添加的项目'
 
   format:
     upkeep: '{upkeep} / @:dateTime.hours.short'

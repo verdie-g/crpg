@@ -19,6 +19,7 @@ import {
   visibleItemUsage,
   isLargeShield,
   computeAverageRepairCostPerHour,
+  itemIsNewDays,
 } from '@/services/item-service';
 import { roundFLoat } from '@/utils/math';
 
@@ -185,9 +186,7 @@ const mapMountProps = (item: Item) => {
   };
 };
 
-const isNewItemDays = 30;
-// TODO: const name
-const prior = new Date().setDate(new Date().getDate() - isNewItemDays);
+const newItemDateThreshold = new Date().setDate(new Date().getDate() - itemIsNewDays);
 
 const itemToFlat = (item: Item): ItemFlat => {
   const weaponProps = mapWeaponProps(item);
@@ -205,7 +204,7 @@ const itemToFlat = (item: Item): ItemFlat => {
 
   return {
     id: item.id,
-    new: new Date(item.createdAt).getTime() > prior ? 1 : 0,
+    new: new Date(item.createdAt).getTime() > newItemDateThreshold ? 1 : 0,
     baseId: item.baseId,
     rank: item.rank,
     modId: generateModId(item, weaponProps?.weaponClass ?? undefined),
