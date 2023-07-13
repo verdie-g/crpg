@@ -114,20 +114,25 @@ const isUpgradableCategory = computed(() => canUpgrade(itemTypeModel.value));
               counter
               value="●"
               position="top-right"
-              :style="{ '--fa-counter-background-color': '#53825A' }"
+              :style="{ '--fa-counter-background-color': 'rgba(83, 188, 150, 1)' }"
             />
           </FontAwesomeLayers>
         </OButton>
 
         <template #popper>
           <DropdownItem>
-            <OCheckbox
-              :nativeValue="1"
-              :modelValue="filterModel['new']"
-              @update:modelValue="(val: number) => updateFilter('new', val)"
+            <Tooltip
+              :title="$t('item.aggregations.new.title')"
+              :description="$t('item.aggregations.new.description', { newItemDateThreshold: 30 })"
             >
-              {{ $t('item.aggregations.new.title') }}
-            </OCheckbox>
+              <OCheckbox
+                :nativeValue="1"
+                :modelValue="filterModel['new']"
+                @update:modelValue="(val: number) => updateFilter('new', val)"
+              >
+                {{ $t('item.aggregations.new.title') }}
+              </OCheckbox>
+            </Tooltip>
           </DropdownItem>
 
           <DropdownItem>
@@ -137,7 +142,10 @@ const isUpgradableCategory = computed(() => canUpgrade(itemTypeModel.value));
           </DropdownItem>
 
           <DropdownItem v-if="'weaponUsage' in filterModel">
-            <VTooltip>
+            <Tooltip
+              :title="$t('shop.nonPrimaryWeaponMode.tooltip.title')"
+              :description="$t('shop.nonPrimaryWeaponMode.tooltip.desc')"
+            >
               <OCheckbox
                 :nativeValue="WeaponUsage.Secondary"
                 :modelValue="filterModel['weaponUsage']"
@@ -145,16 +153,7 @@ const isUpgradableCategory = computed(() => canUpgrade(itemTypeModel.value));
               >
                 {{ $t('shop.nonPrimaryWeaponMode.title') }}
               </OCheckbox>
-
-              <template #popper>
-                <div class="prose prose-invert">
-                  <h5 class="text-content-100">
-                    {{ $t('shop.nonPrimaryWeaponMode.tooltip.title') }}
-                  </h5>
-                  <div v-html="$t('shop.nonPrimaryWeaponMode.tooltip.desc')" />
-                </div>
-              </template>
-            </VTooltip>
+            </Tooltip>
           </DropdownItem>
         </template>
       </VDropdown>
