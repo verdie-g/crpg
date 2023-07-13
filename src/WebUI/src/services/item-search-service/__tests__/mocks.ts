@@ -1,5 +1,7 @@
 export const Longsword = {
   id: 'crpg_sentinel_2hsword_abearirl',
+  baseId: 'crpg_sentinel_2hsword_abearirl',
+  createdAt: '2023-07-13T21:43:44.0741909Z',
   name: 'Longsword',
   culture: 'Neutral',
   type: 'TwoHandedWeapon',
@@ -70,6 +72,8 @@ export const Longsword = {
 
 export const WoodenSword = {
   id: 'crpg_wooden_sword_t1',
+  baseId: 'crpg_wooden_sword_t1',
+  createdAt: '2023-07-13T21:43:44.0741909Z',
   name: 'Wooden Sword',
   culture: 'Neutral',
   type: 'OneHandedWeapon',
@@ -104,6 +108,8 @@ export const WoodenSword = {
 
 export const NobleCavalryLance = {
   id: 'crpg_khuzait_lance_3_t5',
+  baseId: 'crpg_khuzait_lance_3_t5',
+  createdAt: '2023-07-13T21:43:44.0741909Z',
   name: 'Noble Cavalry Lance',
   culture: 'Khuzait',
   type: 'Polearm',
@@ -174,6 +180,8 @@ export const NobleCavalryLance = {
 
 export const BecDeCorbin = {
   id: 'crpg_bec_de_corbin',
+  baseId: 'crpg_bec_de_corbin',
+  createdAt: '2023-07-13T21:43:44.0741909Z',
   name: 'Bec De Corbin',
   culture: 'Neutral',
   type: 'Polearm',
@@ -208,6 +216,8 @@ export const BecDeCorbin = {
 
 export const SimpleShortSpear = {
   id: 'crpg_western_spear_2_t2',
+  baseId: 'crpg_western_spear_2_t2',
+  createdAt: '2023-07-13T21:43:44.0741909Z',
   name: 'Simple Short Spear',
   culture: 'Vlandia',
   type: 'Polearm',
@@ -278,6 +288,8 @@ export const SimpleShortSpear = {
 
 export const Pike = {
   id: 'crpg_vlandia_pike_1_t5',
+  baseId: 'crpg_vlandia_pike_1_t5',
+  createdAt: '2023-07-13T21:43:44.0741909Z',
   name: 'Pike',
   culture: 'Vlandia',
   type: 'Polearm',
@@ -330,6 +342,8 @@ export const Pike = {
 
 export const Hoe = {
   id: 'crpg_peasant_2haxe_1_t1',
+  baseId: 'crpg_peasant_2haxe_1_t1',
+  createdAt: '2023-07-13T21:43:44.0741909Z',
   name: 'Hoe',
   culture: 'Neutral',
   type: 'TwoHandedWeapon',
@@ -400,6 +414,8 @@ export const Hoe = {
 
 export const Shield = {
   id: 'crpg_oval_shield',
+  baseId: 'crpg_oval_shield',
+  createdAt: '2023-07-13T21:43:44.0741909Z',
   name: 'Wooden Oval Shield',
   culture: 'Aserai',
   type: 'Shield',
@@ -434,6 +450,8 @@ export const Shield = {
 
 export const Bow = {
   id: 'crpg_noble_bow',
+  baseId: 'crpg_noble_bow',
+  createdAt: '2023-07-13T21:43:44.0741909Z',
   name: 'Noble Bow',
   culture: 'Neutral',
   type: 'Bow',
@@ -476,6 +494,8 @@ export const Bow = {
 
 export const Bolts = {
   id: 'crpg_bolt_f',
+  baseId: 'crpg_bolt_f',
+  createdAt: '2023-07-13T21:43:44.0741909Z',
   name: 'Heavy Piercing Bolts',
   culture: 'Empire',
   type: 'Bolts',
@@ -510,6 +530,8 @@ export const Bolts = {
 
 export const ThrowingAxe = {
   id: 'crpg_western_throwing_axe_1_t1',
+  baseId: 'crpg_western_throwing_axe_1_t1',
+  createdAt: '2023-07-13T21:43:44.0741909Z',
   name: 'Francesca',
   culture: 'Vlandia',
   type: 'Thrown',
@@ -569,6 +591,8 @@ export const ThrowingAxe = {
 
 export const MountHarness = {
   id: 'crpg_light_harness',
+  baseId: 'crpg_light_harness',
+  createdAt: '2023-07-13T21:43:44.0741909Z',
   name: 'Light Harness',
   culture: 'Neutral',
   type: 'MountHarness',
@@ -591,6 +615,8 @@ export const MountHarness = {
 
 export const Mount = {
   id: 'crpg_mount_balanced_5',
+  baseId: 'crpg_mount_balanced_5',
+  createdAt: '2023-07-13T21:43:44.0741909Z',
   name: 'Murgese Rouncey',
   culture: 'Khuzait',
   type: 'Mount',
@@ -613,6 +639,8 @@ export const Mount = {
 
 export const Helmet = {
   id: 'crpg_sa_1ChurburghHelm',
+  baseId: 'crpg_sa_1ChurburghHelm',
+  createdAt: '2023-07-13T21:43:44.0741909Z',
   name: 'Hounskull Bascinet',
   culture: 'Vlandia',
   type: 'HeadArmor',

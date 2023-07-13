@@ -1,15 +1,42 @@
-import itemsjs from 'itemsjs';
-
+import type itemsjs from 'itemsjs';
 import { type ItemFlat, ItemType, WeaponClass } from '@/models/item';
 import { type AggregationConfig, AggregationView } from '@/models/item-search';
 
-const mockItemsJSAggregation = vi.fn();
-const mockItemsJSSearch = vi.fn();
+const { mockedItemsJSAggregation, mockedItemsJSSearch, mockedAggregationsConfig } = vi.hoisted(
+  () => ({
+    mockedItemsJSAggregation: vi.fn(),
+    mockedItemsJSSearch: vi.fn(),
+    mockedAggregationsConfig: {
+      type: {
+        title: 'Type',
+        view: 'Checkbox',
+        hidden: true,
+      },
+      price: {
+        title: 'Price',
+        view: 'Range',
+      },
+      thrustDamage: {
+        title: 'Thrust damage',
+        view: 'Range',
+      },
+      weaponClass: {
+        title: 'Weapon class',
+        view: 'Checkbox',
+      },
+      tier: {
+        title: 'Tier',
+        view: 'Range',
+        hidden: true,
+      },
+    } as AggregationConfig,
+  })
+);
 
 vi.mock('itemsjs', () => ({
   default: vi.fn().mockImplementation(() => ({
-    aggregation: mockItemsJSAggregation,
-    search: mockItemsJSSearch,
+    aggregation: mockedItemsJSAggregation,
+    search: mockedItemsJSSearch,
   })),
 }));
 
@@ -18,33 +45,8 @@ vi.mock('@/services/item-search-service/helpers.ts', () => ({
   applyRangeFilters: vi.fn(),
 }));
 
-const mockAggregationsConfig = {
-  type: {
-    title: 'Type',
-    view: AggregationView.Checkbox,
-    hidden: true,
-  },
-  price: {
-    title: 'Price',
-    view: AggregationView.Range,
-  },
-  thrustDamage: {
-    title: 'Thrust damage',
-    view: AggregationView.Range,
-  },
-  weaponClass: {
-    title: 'Weapon class',
-    view: AggregationView.Checkbox,
-  },
-  tier: {
-    title: 'Tier',
-    view: AggregationView.Range,
-    hidden: true,
-  },
-} as AggregationConfig;
-
 vi.mock('@/services/item-search-service/aggregations.ts', () => ({
-  aggregationsConfig: mockAggregationsConfig,
+  aggregationsConfig: mockedAggregationsConfig,
   aggregationsKeysByItemType: {
     [ItemType.OneHandedWeapon]: ['thrustDamage'],
     [ItemType.Banner]: ['price'],
@@ -75,7 +77,9 @@ it.each([
   [[{ key: '1' }], [1]],
   [[{ key: 'null' }, { key: '123' }], [123]],
 ])('getBucketValues - buckets: %j', (buckets, expectation) => {
-  expect(getBucketValues(buckets as itemsjs.Buckets<{}>)).toEqual(expectation);
+  expect(getBucketValues(buckets as itemsjs.Buckets<ItemFlat[keyof ItemFlat]>)).toEqual(
+    expectation
+  );
 });
 
 it.each([
@@ -116,9 +120,9 @@ it('generateFiltersModel', () => {
 });
 
 it.each<[ItemType, WeaponClass | null, string[]]>([
-  [ItemType.Banner, null, ['modId', 'price']],
-  [ItemType.OneHandedWeapon, WeaponClass.OneHandedSword, ['modId', 'price']],
-  [ItemType.OneHandedWeapon, WeaponClass.OneHandedAxe, ['modId', 'thrustDamage']],
+  [ItemType.Banner, null, ['modId', 'new', 'price']],
+  [ItemType.OneHandedWeapon, WeaponClass.OneHandedSword, ['modId', 'new', 'price']],
+  [ItemType.OneHandedWeapon, WeaponClass.OneHandedAxe, ['modId', 'new', 'thrustDamage']],
 ])(
   'getAggregationsConfig - itemType: %s, weaponClass: %s',
   (itemType, weaponClass, expectation) => {
@@ -127,7 +131,7 @@ it.each<[ItemType, WeaponClass | null, string[]]>([
 );
 
 it('getVisibleAggregationsConfig', () => {
-  expect(getVisibleAggregationsConfig(mockAggregationsConfig)).not.toContain(['tier', 'type']);
+  expect(getVisibleAggregationsConfig(mockedAggregationsConfig)).not.toContain(['tier', 'type']);
 });
 
 it('getSortingConfig', () => {
@@ -252,7 +256,7 @@ describe('filterItemsByWeaponClass ', () => {
 
 describe('getAggregationBy ', () => {
   it('item type - the buckets must be sorted', () => {
-    mockItemsJSAggregation.mockReturnValue({
+    mockedItemsJSAggregation.mockReturnValue({
       data: {
         buckets: [
           {
@@ -280,7 +284,7 @@ describe('getAggregationBy ', () => {
   });
 
   it('weapon class - the buckets must be sorted', () => {
-    mockItemsJSAggregation.mockReturnValue({
+    mockedItemsJSAggregation.mockReturnValue({
       data: {
         buckets: [
           {
@@ -308,7 +312,7 @@ describe('getAggregationBy ', () => {
   });
 
   it('handling - no custom buckets sorting', () => {
-    mockItemsJSAggregation.mockReturnValue({
+    mockedItemsJSAggregation.mockReturnValue({
       data: {
         buckets: [
           {
@@ -337,7 +341,7 @@ describe('getAggregationBy ', () => {
 });
 
 it('getScopeAggregations', () => {
-  mockItemsJSSearch.mockReturnValue({
+  mockedItemsJSSearch.mockReturnValue({
     data: {
       aggregations: {
         handling: {},
@@ -348,7 +352,7 @@ it('getScopeAggregations', () => {
 
   const result = getScopeAggregations([], {});
 
-  expect(mockItemsJSSearch).toHaveBeenCalledWith({
+  expect(mockedItemsJSSearch).toHaveBeenCalledWith({
     per_page: 1,
   });
 
@@ -359,7 +363,7 @@ it('getScopeAggregations', () => {
 });
 
 it('getSearchResult', () => {
-  mockItemsJSSearch.mockReturnValue({
+  mockedItemsJSSearch.mockReturnValue({
     data: {
       aggregations: {
         handling: {},
@@ -380,7 +384,7 @@ it('getSearchResult', () => {
     filter: {},
   });
 
-  expect(mockItemsJSSearch).toHaveBeenCalledWith({
+  expect(mockedItemsJSSearch).toHaveBeenCalledWith({
     page: 3,
     per_page: 15,
     query: '123',
