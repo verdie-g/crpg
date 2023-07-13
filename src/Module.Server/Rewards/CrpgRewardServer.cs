@@ -124,7 +124,7 @@ internal class CrpgRewardServer : MissionLogic
     /// <param name="attackerMultiplierGain">Multiplier to add to the attackers. Can be negative.</param>
     /// <param name="valourTeamSide">Team to give valour to.</param>
     /// <param name="constantMultiplier">Multiplier that should be given to everyone disregarding any other parameters.</param>
-    /// <param name="updateUserStats">True if stats (e.g. KDA) should be saved.</param>
+    /// <param name="updateUserStats">True if score and rating should be saved.</param>
     public async Task UpdateCrpgUsersAsync(
         float durationRewarded,
         int defenderMultiplierGain = 0,
@@ -188,7 +188,7 @@ internal class CrpgRewardServer : MissionLogic
                 continue;
             }
 
-            if (_isRatingEnabled)
+            if (_isRatingEnabled && updateUserStats)
             {
                 userUpdate.Rating = GetNewRating(crpgPeer);
             }
