@@ -214,10 +214,10 @@ internal class CrpgAgentApplyDamageModel : MultiplayerAgentApplyDamageModel
         var weaponComponentData = wieldedItemIndex != EquipmentIndex.None
             ? attackerAgent.Equipment[wieldedItemIndex].CurrentUsageItem
             : null;
-        if (weaponComponentData == null ||
-            isPassiveUsage ||
-            !weaponComponentData.WeaponFlags.HasAnyFlag(WeaponFlags.CanCrushThrough) ||
-            strikeType != StrikeType.Swing
+        if (weaponComponentData == null
+            || isPassiveUsage
+            || !weaponComponentData.WeaponFlags.HasAnyFlag(WeaponFlags.CanCrushThrough)
+            || strikeType != StrikeType.Swing
             || attackDirection != Agent.UsageDirection.AttackUp)
         {
             return false;
