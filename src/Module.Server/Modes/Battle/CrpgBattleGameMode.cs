@@ -98,7 +98,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                 ? new CrpgSkirmishSpawningBehavior(_constants, roundController)
                 : new CrpgBattleSpawningBehavior(_constants, roundController)));
         CrpgTeamSelectComponent teamSelectComponent = new(warmupComponent, roundController);
-        CrpgRewardServer rewardServer = new(crpgClient, _constants, warmupComponent, enableTeamHitCompensations: true);
+        CrpgRewardServer rewardServer = new(crpgClient, _constants, warmupComponent, enableTeamHitCompensations: true, enableRating: true);
 #else
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent, null);
         CrpgTeamSelectComponent teamSelectComponent = new();

@@ -31,6 +31,7 @@ internal class CrpgRewardServer : MissionLogic
     private readonly PeriodStatsHelper _periodStatsHelper;
     private readonly Dictionary<int, AgentHitRegistry> _agentsThatGotTeamHitThisRoundByCrpgUserId;
     private readonly bool _isTeamHitCompensationsEnabled;
+    private readonly bool _isRatingEnabled;
 
     private bool _lastRewardDuringHappyHours;
 
@@ -38,7 +39,8 @@ internal class CrpgRewardServer : MissionLogic
         ICrpgClient crpgClient,
         CrpgConstants constants,
         CrpgWarmupComponent? warmupComponent,
-        bool enableTeamHitCompensations)
+        bool enableTeamHitCompensations,
+        bool enableRating)
     {
         _crpgClient = crpgClient;
         _constants = constants;
@@ -50,6 +52,7 @@ internal class CrpgRewardServer : MissionLogic
         _lastRewardDuringHappyHours = false;
         _agentsThatGotTeamHitThisRoundByCrpgUserId = new();
         _isTeamHitCompensationsEnabled = enableTeamHitCompensations;
+        _isRatingEnabled = enableRating;
     }
 
     public override MissionBehaviorType BehaviorType => MissionBehaviorType.Other;
@@ -102,7 +105,8 @@ internal class CrpgRewardServer : MissionLogic
             return;
         }
 
-        if (!TryGetRating(affectedAgent, out var affectedRating)
+        if (!_isRatingEnabled
+            || !TryGetRating(affectedAgent, out var affectedRating)
             || !TryGetRating(affectorAgent, out var affectorRating))
         {
             return;
@@ -184,7 +188,7 @@ internal class CrpgRewardServer : MissionLogic
                 continue;
             }
 
-            if (updateUserStats)
+            if (_isRatingEnabled && updateUserStats)
             {
                 userUpdate.Rating = GetNewRating(crpgPeer);
             }
