@@ -211,7 +211,9 @@ internal class CrpgAgentApplyDamageModel : MultiplayerAgentApplyDamageModel
             wieldedItemIndex = attackerAgent.GetWieldedItemIndex(Agent.HandIndex.MainHand);
         }
 
-        WeaponComponentData? weaponComponentData = (wieldedItemIndex != EquipmentIndex.None) ? attackerAgent.Equipment[wieldedItemIndex].CurrentUsageItem : null;
+        var weaponComponentData = wieldedItemIndex != EquipmentIndex.None
+            ? attackerAgent.Equipment[wieldedItemIndex].CurrentUsageItem
+            : null;
         if (weaponComponentData == null ||
             isPassiveUsage ||
             !weaponComponentData.WeaponFlags.HasAnyFlag(WeaponFlags.CanCrushThrough) ||
