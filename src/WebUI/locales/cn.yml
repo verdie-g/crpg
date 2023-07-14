@@ -1033,7 +1033,7 @@ item:
       description: ''
     handling:
       title: '操控性'
-      description: 'TODO: Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos! Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos! Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos!'
+      description: '在您释放挥杆动作之前加快准备动画的处理速度'
     thrustSpeed:
       title: '刺击速度'
       description: ''

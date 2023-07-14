@@ -1041,7 +1041,7 @@ item:
       description: ''
     handling:
       title: 'Handling'
-      description: 'TODO: Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos! Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos! Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos!'
+      description: 'Handling speeds up the ready animation before you can release a swing'
     thrustSpeed:
       title: 'Thrust speed'
       description: ''
