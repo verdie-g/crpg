@@ -1,4 +1,3 @@
-// TODO: update SPEC!!!
 import {
   DamageType,
   ItemFlat,
@@ -198,7 +197,7 @@ const itemToFlat = (item: Item): ItemFlat => {
   ];
 
   // Banning the use of large shields on horseback
-  if (isLargeShield(item)) {
+  if (item.type === ItemType.Shield && isLargeShield(item)) {
     flags.push(WeaponFlags.CantUseOnHorseback);
   }
 
