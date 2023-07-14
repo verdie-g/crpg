@@ -1,5 +1,4 @@
 using Crpg.Module.Common;
-using Crpg.Module.Common.HotConstants;
 using Crpg.Module.Modes.Warmup;
 using Crpg.Module.Rewards;
 using TaleWorlds.Core;
@@ -10,6 +9,7 @@ using TaleWorlds.MountAndBlade.Source.Missions;
 using Crpg.Module.Api;
 using Crpg.Module.Common.ChatCommands;
 #else
+using Crpg.Module.Common.HotConstants;
 using Crpg.Module.GUI;
 using Crpg.Module.GUI.HudExtension;
 using TaleWorlds.MountAndBlade.View;
@@ -84,7 +84,7 @@ internal class CrpgDtvGameMode : MissionBasedMultiplayerGameMode
             (new FlagDominationSpawnFrameBehavior(),
             new CrpgDtvSpawningBehavior(_constants, roundController)));
         CrpgTeamSelectComponent teamSelectComponent = new(warmupComponent, roundController);
-        CrpgRewardServer rewardServer = new(crpgClient, _constants, warmupComponent, enableTeamHitCompensations: true);
+        CrpgRewardServer rewardServer = new(crpgClient, _constants, warmupComponent, enableTeamHitCompensations: true, enableRating: false);
         CrpgDtvSpawningBehavior spawnBehaviour = new(_constants, roundController);
 #else
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent, null);
@@ -94,55 +94,54 @@ internal class CrpgDtvGameMode : MissionBasedMultiplayerGameMode
         MissionState.OpenNew(
             Name,
             new MissionInitializerRecord(scene),
-            _ =>
-                new MissionBehavior[]
-                {
-                    MissionLobbyComponent.CreateBehavior(),
+            _ => new MissionBehavior[]
+            {
+                MissionLobbyComponent.CreateBehavior(),
 #if CRPG_CLIENT
-                    new CrpgUserManagerClient(), // Needs to be loaded before the Client mission part.
+                new CrpgUserManagerClient(), // Needs to be loaded before the Client mission part.
 #endif
-                    dtvClient,
-                    new MultiplayerTimerComponent(), // round timer
-                    new MultiplayerMissionAgentVisualSpawnComponent(), // expose method to spawn an agent
-                    new MissionLobbyEquipmentNetworkComponent(), // logic to change troop or perks
-                    teamSelectComponent,
-                    new MissionHardBorderPlacer(),
-                    new MissionBoundaryPlacer(), // set walkable boundaries
-                    new AgentVictoryLogic(), // AI cheering when winning round
-                    new MissionBoundaryCrossingHandler(), // kills agent out of mission boundaries
-                    new MultiplayerPollComponent(), // poll logic to kick player, ban player, change game
-                    new MissionOptionsComponent(),
-                    new CrpgScoreboardComponent(new BattleScoreboardData()),
-                    new MissionAgentPanicHandler(),
-                    new EquipmentControllerLeaveLogic(),
-                    new MultiplayerPreloadHelper(),
-                    warmupComponent,
-                    notificationsComponent,
-                    new WelcomeMessageBehavior(warmupComponent),
+                dtvClient,
+                new MultiplayerTimerComponent(), // round timer
+                new MultiplayerMissionAgentVisualSpawnComponent(), // expose method to spawn an agent
+                new MissionLobbyEquipmentNetworkComponent(), // logic to change troop or perks
+                teamSelectComponent,
+                new MissionHardBorderPlacer(),
+                new MissionBoundaryPlacer(), // set walkable boundaries
+                new AgentVictoryLogic(), // AI cheering when winning round
+                new MissionBoundaryCrossingHandler(), // kills agent out of mission boundaries
+                new MultiplayerPollComponent(), // poll logic to kick player, ban player, change game
+                new MissionOptionsComponent(),
+                new CrpgScoreboardComponent(new BattleScoreboardData()),
+                new MissionAgentPanicHandler(),
+                new EquipmentControllerLeaveLogic(),
+                new MultiplayerPreloadHelper(),
+                warmupComponent,
+                notificationsComponent,
+                new WelcomeMessageBehavior(warmupComponent),
 #if CRPG_SERVER
-                    roundController,
-                    new CrpgDtvServer(dtvClient, rewardServer),
-                    rewardServer,
-                    // SpawnFrameBehaviour: where to spawn, SpawningBehaviour: when to spawn
-                    new SpawnComponent(new BattleSpawnFrameBehavior(), spawnBehaviour),
-                    new AgentHumanAILogic(), // bot intelligence
-                    new MultiplayerAdminComponent(), // admin UI to kick player or restart game
-                    new CrpgUserManagerServer(crpgClient, _constants),
-                    new KickInactiveBehavior(inactiveTimeLimit: 60, warmupComponent),
-                    new MapPoolComponent(),
-                    new ChatCommandsComponent(chatBox, crpgClient),
-                    new CrpgActivityLogsBehavior(warmupComponent, chatBox, crpgClient),
-                    new PlayerStatsComponent(),
-                    new NotAllPlayersReadyComponent(),
-                    new DrowningBehavior(),
+                roundController,
+                new CrpgDtvServer(rewardServer),
+                rewardServer,
+                // SpawnFrameBehaviour: where to spawn, SpawningBehaviour: when to spawn
+                new SpawnComponent(new BattleSpawnFrameBehavior(), spawnBehaviour),
+                new AgentHumanAILogic(), // bot intelligence
+                new MultiplayerAdminComponent(), // admin UI to kick player or restart game
+                new CrpgUserManagerServer(crpgClient, _constants),
+                new KickInactiveBehavior(inactiveTimeLimit: 120, warmupComponent),
+                new MapPoolComponent(),
+                new ChatCommandsComponent(chatBox, crpgClient),
+                new CrpgActivityLogsBehavior(warmupComponent, chatBox, crpgClient),
+                new ServerMetricsBehavior(),
+                new NotAllPlayersReadyComponent(),
+                new DrowningBehavior(),
 #else
-                    new MultiplayerRoundComponent(),
-                    new MultiplayerAchievementComponent(),
-                    new MissionMatchHistoryComponent(),
-                    new MissionRecentPlayersComponent(),
-                    new CrpgRewardClient(),
-                    new HotConstantsClient(),
+                new MultiplayerRoundComponent(),
+                new MultiplayerAchievementComponent(),
+                new MissionMatchHistoryComponent(),
+                new MissionRecentPlayersComponent(),
+                new CrpgRewardClient(),
+                new HotConstantsClient(),
 #endif
-                });
+            });
     }
 }

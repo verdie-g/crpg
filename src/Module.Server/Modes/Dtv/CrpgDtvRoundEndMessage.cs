@@ -6,21 +6,17 @@ namespace Crpg.Module.Modes.Dtv;
 [DefineGameNetworkMessageTypeForMod(GameNetworkMessageSendType.FromServer)]
 internal sealed class CrpgDtvRoundEndMessage : GameNetworkMessage
 {
-    private static readonly CompressionInfo.Integer Int32CompressionInfo = new(int.MinValue, int.MaxValue, true);
-
-    public CrpgDtvRoundData RoundData { get; set; } = default!;
+    public int Round { get; set; }
 
     protected override void OnWrite()
     {
-        WriteIntToPacket(RoundData.Round, Int32CompressionInfo);
+        WriteIntToPacket(Round, CompressionBasic.DebugIntNonCompressionInfo);
     }
 
     protected override bool OnRead()
     {
         bool bufferReadValid = true;
-        int round = ReadIntFromPacket(Int32CompressionInfo, ref bufferReadValid);
-        RoundData = new CrpgDtvRoundData { Round = round };
-
+        Round = ReadIntFromPacket(CompressionBasic.DebugIntNonCompressionInfo, ref bufferReadValid);
         return bufferReadValid;
     }
 

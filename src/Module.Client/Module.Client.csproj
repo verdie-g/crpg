@@ -25,7 +25,6 @@
     <ContentWithTargetPath Include="..\Module.Server\SubModule.xml" Link="SubModule.xml" TargetPath="..\..\SubModule.xml" CopyToOutputDirectory="PreserveNewest" />
     <ContentWithTargetPath Include="..\Module.Server\ModuleData\**\*" TargetPath="..\..\ModuleData\%(RecursiveDir)\%(FileName)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <ContentWithTargetPath Include="ModuleData\**\*;GUI\**\*.xml" TargetPath="..\..\%(Identity)" CopyToOutputDirectory="PreserveNewest" />
-    <ContentWithTargetPath Include="..\Module.Server\ModuleData\dtv_data.xml" TargetPath="..\..\ModuleData\dtv_data.xml" CopyToOutputDirectory="PreserveNewest" />
     <Compile Include="..\Module.Server\**\*$(DefaultLanguageSourceExtension)" />
     <Compile Remove="..\Module.Server\$(BaseIntermediateOutputPath)\**;..\Module.Server\$(BaseOutputPath)\**" />
     <Compile Remove="..\Module.Server\Rating\**" />
@@ -35,8 +34,8 @@
     <Compile Remove="..\Module.Server\Modes\Duel\CrpgDuelServer.cs" />
     <Compile Remove="..\Module.Server\Modes\Duel\CrpgDuelSpawningBehavior.cs" />
     <Compile Remove="..\Module.Server\Modes\Siege\CrpgSiegeServer.cs" />
-    <Compile Remove="..\Module.Server\Modes\DTV\CrpgDTVServer.cs" />
-    <Compile Remove="..\Module.Server\Modes\DTV\CrpgDTVSpawningBehavior.cs" />
+    <Compile Remove="..\Module.Server\Modes\DTV\CrpgDtvServer.cs" />
+    <Compile Remove="..\Module.Server\Modes\DTV\CrpgDtvSpawningBehavior.cs" />
     <Compile Remove="..\Module.Server\Modes\TeamDeathmatch\CrpgTeamDeathmatchServer.cs" />
     <Compile Remove="..\Module.Server\Balancing\**\*" />
     <Compile Remove="..\Module.Server\Common\CrpgActivityLogsBehavior.cs" />

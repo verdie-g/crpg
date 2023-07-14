@@ -6,21 +6,17 @@ namespace Crpg.Module.Modes.Dtv;
 [DefineGameNetworkMessageTypeForMod(GameNetworkMessageSendType.FromServer)]
 internal sealed class CrpgDtvWaveEndMessage : GameNetworkMessage
 {
-    private static readonly CompressionInfo.Integer Int32CompressionInfo = new(int.MinValue, int.MaxValue, true);
-
-    public CrpgDtvRoundData RoundData { get; set; } = default!;
+    public int Wave { get; set; } = default!;
 
     protected override void OnWrite()
     {
-        WriteIntToPacket(RoundData.Wave, Int32CompressionInfo);
+        WriteIntToPacket(Wave, CompressionBasic.DebugIntNonCompressionInfo);
     }
 
     protected override bool OnRead()
     {
         bool bufferReadValid = true;
-        int wave = ReadIntFromPacket(Int32CompressionInfo, ref bufferReadValid);
-        RoundData = new CrpgDtvRoundData { Wave = wave };
-
+        Wave = ReadIntFromPacket(CompressionBasic.DebugIntNonCompressionInfo, ref bufferReadValid);
         return bufferReadValid;
     }
 

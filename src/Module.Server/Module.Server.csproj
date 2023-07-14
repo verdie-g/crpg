@@ -19,7 +19,6 @@
   <ItemGroup>
     <ContentWithTargetPath Include="..\..\data\constants.json" Link="ModuleData\constants.json" TargetPath="..\..\ModuleData\constants.json" CopyToOutputDirectory="PreserveNewest" />
     <ContentWithTargetPath Include="SubModule.xml;ds_config_crpg_*.txt;ModuleData\**\*;GUI\**\*.xml" TargetPath="..\..\%(Identity)" CopyToOutputDirectory="PreserveNewest" />
-    <ContentWithTargetPath Include="ModuleData\dtv_data.xml" TargetPath="..\..\ModuleData\dtv_data.xml" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,12 +1,8 @@
-﻿using System.Xml.Linq;
-using Crpg.Module.Common;
+﻿using Crpg.Module.Common;
 using Crpg.Module.Common.Network;
 using TaleWorlds.Core;
-using TaleWorlds.Engine;
 using TaleWorlds.Library;
-using TaleWorlds.ModuleManager;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.ObjectSystem;
 using TaleWorlds.PlayerServices;
 
 namespace Crpg.Module.Modes.Dtv;
@@ -73,26 +69,15 @@ internal class CrpgDtvSpawningBehavior : CrpgSpawningBehaviorBase
 
     public void SpawnAttackingBots(CrpgDtvWave wave)
     {
-        foreach (CrpgDtvGroup group in wave.Groups ?? Enumerable.Empty<CrpgDtvGroup>())
+        foreach (CrpgDtvGroup group in wave.Groups)
         {
-            if (group.ClassDivisionId != null)
-            {
-                int playerCount = GetCurrentPlayerCount();
-                double botCount;
-                if (group.ClassDivisionId.Contains("boss"))
-                {
-                    botCount = group.Count;
-                }
-                else
-                {
-                    botCount = Math.Round(playerCount * group.Count);
-                }
+            int playerCount = GetCurrentPlayerCount();
+            int botCount = group.ClassDivisionId.Contains("boss") ? group.Count : playerCount * group.Count;
 
-                Debug.Print($"Spawning {botCount} {group.ClassDivisionId}(s)");
-                for (int i = 0; i < group.Count; i++)
-                {
-                    SpawnBotAgent(group.ClassDivisionId, Mission.AttackerTeam);
-                }
+            Debug.Print($"Spawning {botCount} {group.ClassDivisionId}(s)");
+            for (int i = 0; i < group.Count; i++)
+            {
+                SpawnBotAgent(group.ClassDivisionId, Mission.AttackerTeam);
             }
         }
     }
@@ -113,7 +98,7 @@ internal class CrpgDtvSpawningBehavior : CrpgSpawningBehaviorBase
             return false;
         }
 
-        var characterEquipment = CreateCharacterEquipment(crpgPeer.User.Character.EquippedItems);
+        var characterEquipment = CrpgCharacterBuilder.CreateCharacterEquipment(crpgPeer.User.Character.EquippedItems);
         if (!DoesEquipmentContainWeapon(characterEquipment)) // Disallow spawning without weapons.
         {
             if (_notifiedPlayersAboutSpawnRestriction.Add(networkPeer.VirtualPlayer.Id))
