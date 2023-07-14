@@ -1041,7 +1041,7 @@ item:
       description: ''
     handling:
       title: 'Владение'
-      description: 'TODO: Lorem ipsum dolor sit amet consectetur adipisicing elit'
+      description: 'Владение (Handling) ускоряет анимацию готовности удара перед выполнением замаха'
     thrustSpeed:
       title: 'Скорость колющего удара'
       description: ''
