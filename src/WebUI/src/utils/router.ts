@@ -45,6 +45,7 @@ export const stringifyQuery = (query: Record<string, any>) =>
     strictNullHandling: true,
     arrayFormat: 'brackets',
     skipNulls: true,
+    encode: false,
   });
 
 export const scrollBehavior: RouterScrollBehavior = (to, _from, savedPosition) => {
