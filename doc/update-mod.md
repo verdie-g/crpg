@@ -1,9 +1,9 @@
-﻿# Update Client Mod
+﻿# Update Mod
 
 ## Generate Asset Package
 
 `cRPG/AssetPackages/pack0.tpac` contains the cRPG sprite sheets (map images and stuff).
-Here is the step to step guid how to update that file:
+Here is the step to step guide to update that file:
 
 1. Build the client to generate some needed files
 2. Put all asset sources in `%MB_CLIENT_PATH%/Modules/cRPG/AssetSources`
@@ -23,18 +23,20 @@ Here is the step to step guid how to update that file:
 16. Click `Publish` and select a random location such as `Desktop`
 17. In the generated files, you'll get the `AssetPackages/pack0.tpac`. All the rest can be trashed
 
-## Update client/server mod
+## Update Client/Server Mod
 
-1. Bump the mod version in `Submodule.xml` and `Directory.Build.props`
+1. Bump the mod version in `Submodule.xml` and `Directory.Build.props` ([example](https://github.com/verdie-g/crpg/commit/bf4a09944b650292d5fbb2bf9ef782109c55d8b7))
 2. Run `git commit -m 'mod: bump version to W.X.Y.Z' && git push && git tag vZ && git push --tags`
    where `W.X.Y` is the Bannerlord version and `Z` is the cRPG version
 3. Rebuild Module.Client and Module.Server in release mode
 4. Make sure that in the client folder you have the `pack0.tpac` generated with the
    above instructions and the `pack1.tpac` containing the cRPG items. Only Meow knows how
    to generate the latter
-5. Make sure that in both the client and server folders you have the SceneObj folder containing
+5. In the client folder, copy `bin/Win64_Shipping_Client` to `bin/Gaming.Desktop.x64_Shipping_Client`
+   for Xbox players
+7. Make sure that in both the client and server folders you have the SceneObj folder containing
    all maps
-6. Create a file `WorkshopUpdate.xml` anywhere on your disk (e.g. Desktop) with the content
+8. Create a file `WorkshopUpdate.xml` anywhere on your disk (e.g. Desktop) with the content
 ```xml
 <Tasks>
     <GetItem>
@@ -50,11 +52,13 @@ Here is the step to step guid how to update that file:
     </UpdateItem>
 </Tasks>
 ```
-7. Replace the ModuleFolder path with `%MB_CLIENT_PATH%/Modules/cRPG`
-8. Update Bannerlorcd configuration files on the cRPG servers if needed
-9. Replace manually the server module on all cRPG servers with `%MB_SERVER_PATH%/Modules/cRPG` and restart them
-10. While it uploads you can write the patch note on Discord
-11. Run `"%MB_CLIENT_PATH%/bin/Win64_Shipping_Client/TaleWorlds.MountAndBlade.SteamWorkshop.exe" %MB_CLIENT_PATH%/Modules/cRPG`
+8. Replace the ModuleFolder path with `%MB_CLIENT_PATH%/Modules/cRPG`
+9. Update Bannerlord configuration files on the cRPG servers if needed
+10. Update Bannerlord server using steamcmd if needed `steamcmd +force_install_dir bannerlord +login anonymous +app_update 1863440 +exit`
+11. Replace manually the server module on all cRPG servers with `%MB_SERVER_PATH%/Modules/cRPG` and restart them
+12. While it uploads you can write the patch notes by [drafting a new release](https://github.com/verdie-g/crpg/releases/new)
+    and choosing the git tag that you have pushed earlier (`vZ`)
+13. Run `"%MB_CLIENT_PATH%/bin/Win64_Shipping_Client/TaleWorlds.MountAndBlade.SteamWorkshop.exe" %MB_CLIENT_PATH%/Modules/cRPG`
 
 ## Update WebApi/WebUI
 
