@@ -167,14 +167,12 @@ const isUpgradableCategory = computed(() => canUpgrade(itemTypeModel.value));
 
       <div class="h-8 w-px select-none bg-border-200" />
 
-      <div class="">
-        <ShopItemTypeSelect
-          v-model:itemType="itemTypeModel"
-          v-model:weaponClass="weaponClassModel"
-          :itemTypeBuckets="aggregationByType.data.buckets"
-          :weaponClassBuckets="aggregationByClass.data.buckets"
-        />
-      </div>
+      <ShopItemTypeSelect
+        v-model:itemType="itemTypeModel"
+        v-model:weaponClass="weaponClassModel"
+        :itemTypeBuckets="aggregationByType.data.buckets"
+        :weaponClassBuckets="aggregationByClass.data.buckets"
+      />
     </div>
 
     <OTable
