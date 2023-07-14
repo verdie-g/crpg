@@ -20,7 +20,7 @@ const {
 </script>
 
 <template>
-  <div class="flex items-center gap-1">
+  <div class="flex items-center gap-1.5">
     <img
       :src="user.avatar"
       alt=""
@@ -44,10 +44,7 @@ const {
       </RouterLink>
     </template>
 
-    <div
-      class="max-w-full overflow-x-hidden overflow-ellipsis whitespace-nowrap"
-      :title="user.name"
-    >
+    <div class="max-w-full overflow-hidden overflow-ellipsis whitespace-nowrap" :title="user.name">
       {{ user.name }}
       <template v-if="isSelf">({{ $t('you') }})</template>
     </div>
