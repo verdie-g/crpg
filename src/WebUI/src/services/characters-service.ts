@@ -17,7 +17,6 @@ import {
   minimumLevel,
   maximumLevel,
   minimumRetirementLevel,
-  tournamentLevel,
   experienceMultiplierByGeneration,
   maxExperienceMultiplierForGeneration,
   respecializePriceForLevel30,
@@ -65,8 +64,13 @@ export const activateCharacter = (characterId: number, active: boolean) =>
 export const respecializeCharacter = (characterId: number) =>
   put<Character>(`/users/self/characters/${characterId}/respecialize`);
 
+const tournamentLevelThreshold = 25;
 export const canSetCharacterForTournamentValidate = (character: Character) =>
-  !(character.forTournament || character.generation > 0 || character.level > tournamentLevel);
+  !(
+    character.forTournament ||
+    character.generation > 0 ||
+    character.level >= tournamentLevelThreshold
+  );
 
 export const setCharacterForTournament = (characterId: number) =>
   put<Character>(`/users/self/characters/${characterId}/tournament`);
