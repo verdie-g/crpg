@@ -1671,17 +1671,17 @@
       <skill id="Agility" value="18" />
       <skill id="IronFlesh" value="5" />
       <skill id="PowerStrike" value="5" />
-      <skill id="PowerDraw" value="0" />
-      <skill id="PowerThrow" value="5" />
+      <skill id="PowerDraw" value="5" />
+      <skill id="PowerThrow" value="0" />
       <skill id="Athletics" value="156" />
       <skill id="Riding" value="0" />
       <skill id="WeaponMaster" value="6" />
       <skill id="MountedArchery" value="0" />
       <skill id="Shield" value="0" />
       <skill id="OneHanded" value="0" />
-      <skill id="TwoHanded" value="130" />
+      <skill id="TwoHanded" value="100" />
       <skill id="Polearm" value="0" />
-      <skill id="Bow" value="100" />
+      <skill id="Bow" value="130" />
       <skill id="Crossbow" value="0" />
       <skill id="Throwing" value="0" />
     </skills>
