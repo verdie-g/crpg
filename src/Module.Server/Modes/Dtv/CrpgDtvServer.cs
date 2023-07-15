@@ -13,6 +13,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
     private readonly CrpgRewardServer _rewardServer;
     private readonly CrpgDtvData _dtvData;
 
+    private int _currentGame;
     private int _currentRound;
     private int _currentWave;
     private bool _gameStarted;
@@ -24,7 +25,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
     {
         _rewardServer = rewardServer;
         _dtvData = ReadDtvData();
-        _currentRound = -1;
+        _currentGame = 0;
     }
 
     public override bool IsGameModeHidingAllAgentVisuals => true;
@@ -49,6 +50,13 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         AddTeams();
     }
 
+    public override void OnClearScene()
+    {
+        _gameStarted = false;
+        _currentRound = -1;
+        Mission.GetMissionBehavior<MissionScoreboardComponent>().ResetBotScores();
+    }
+
     public override bool CheckForWarmupEnd()
     {
         return true;
@@ -67,7 +75,16 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         {
             if (_endGameTimer.Check())
             {
-                MissionLobbyComponent.SetStateEndingAsServer();
+                _currentGame += 1;
+                if (_currentGame == 10)
+                {
+                    MissionLobbyComponent.SetStateEndingAsServer();
+                }
+                else
+                {
+                    _endGameTimer = null;
+                    Mission.ResetMission();
+                }
             }
 
             return;
@@ -152,7 +169,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
 
     private void EndGame()
     {
-        _endGameTimer = new MissionTimer(10f);
+        _endGameTimer = new MissionTimer(5f);
     }
 
     private void RefillDefendersHealthPointsAndAmmo()
