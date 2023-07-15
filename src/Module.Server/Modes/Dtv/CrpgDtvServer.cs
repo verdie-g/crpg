@@ -76,7 +76,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
             if (_endGameTimer.Check())
             {
                 _currentGame += 1;
-                if (_currentGame == 10)
+                if (_currentGame == 5)
                 {
                     MissionLobbyComponent.SetStateEndingAsServer();
                 }
