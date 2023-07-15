@@ -138,6 +138,8 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         if (viscountDead || defendersDepleted)
         {
             SendDataToPeers(new CrpgDtvGameEnd { ViscountDead = viscountDead });
+            // TODO: reward a little?
+            _ = _rewardServer.UpdateCrpgUsersAsync(durationRewarded: 0, updateUserStats: false);
             // TODO: scoreboard lost
             EndGame();
             return;
