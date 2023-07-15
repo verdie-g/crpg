@@ -61,5 +61,8 @@
     <XmlNode>
       <XmlName id="MPClassDivisions" path="class_divisions"/>
     </XmlNode>
+    <XmlNode>
+      <XmlName id="DtvData" path="dtv_data"/>
+    </XmlNode>
   </Xmls>
 </Module>
