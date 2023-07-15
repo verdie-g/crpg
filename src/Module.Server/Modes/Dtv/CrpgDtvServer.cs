@@ -141,8 +141,9 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         if (viscountDead || defendersDepleted)
         {
             SendDataToPeers(new CrpgDtvGameEnd { ViscountDead = viscountDead });
-            // TODO: reward a little?
-            _ = _rewardServer.UpdateCrpgUsersAsync(durationRewarded: 0, updateUserStats: false);
+            _ = _rewardServer.UpdateCrpgUsersAsync(
+                durationRewarded: ComputeRoundReward(CurrentRoundData, wavesWon: _currentWave),
+                updateUserStats: false);
             // TODO: scoreboard lost
             EndGame();
             return;
@@ -160,7 +161,9 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
             return;
         }
 
-        _ = _rewardServer.UpdateCrpgUsersAsync(CurrentRoundData.Reward, updateUserStats: false);
+        _ = _rewardServer.UpdateCrpgUsersAsync(
+            durationRewarded: ComputeRoundReward(CurrentRoundData, wavesWon: _currentWave + 1),
+            updateUserStats: false);
 
         if (_currentRound < RoundsCount - 1)
         {
@@ -223,6 +226,13 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         }
 
         return defendersCount;
+    }
+
+    private float ComputeRoundReward(CrpgDtvRound data, int wavesWon)
+    {
+        float defendersScale = 1 + (_currentRoundDefendersCount - 1) * 0.05f;
+        float lostRoundPenalty = (float)wavesWon / data.Waves.Count;
+        return data.Reward * defendersScale * lostRoundPenalty;
     }
 
     private void SendDataToPeers(GameNetworkMessage message)

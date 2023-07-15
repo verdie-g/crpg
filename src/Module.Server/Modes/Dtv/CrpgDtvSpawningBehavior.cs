@@ -53,6 +53,23 @@ internal class CrpgDtvSpawningBehavior : CrpgSpawningBehaviorBase
         SpawnAttackers(wave, defendersCount);
     }
 
+    public override void RequestStartSpawnSession()
+    {
+        base.RequestStartSpawnSession();
+
+        // CrpgSpawningBehaviorBase resets LastSpawnTeam before each spawning session so it needs to be manually set
+        // for players that didn't die and don't have to respawn otherwise they would be consider as spectator and
+        // won't receive any rewards.
+        foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
+        {
+            var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
+            if (crpgPeer != null && networkPeer.ControlledAgent != null)
+            {
+                crpgPeer.LastSpawnTeam = Mission.DefenderTeam;
+            }
+        }
+    }
+
     protected override bool IsRoundInProgress()
     {
         return Mission.CurrentState == Mission.State.Continuing;
