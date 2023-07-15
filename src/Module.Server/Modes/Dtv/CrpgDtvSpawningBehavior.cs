@@ -9,82 +9,53 @@ namespace Crpg.Module.Modes.Dtv;
 
 internal class CrpgDtvSpawningBehavior : CrpgSpawningBehaviorBase
 {
-    private const float TotalSpawnDuration = 15f;
-    private readonly MultiplayerRoundController _roundController;
+    private const float DefendersSpawnWindowDuration = 15f;
     private readonly HashSet<PlayerId> _notifiedPlayersAboutSpawnRestriction;
 
-    private MissionTimer? _spawnTimer;
-    private bool _viscountSpawned;
+    private MissionTimer? _defendersSpawnWindowTimer;
 
-    public CrpgDtvSpawningBehavior(CrpgConstants constants, MultiplayerRoundController roundController)
+    public CrpgDtvSpawningBehavior(CrpgConstants constants)
         : base(constants)
     {
-        _roundController = roundController;
         _notifiedPlayersAboutSpawnRestriction = new HashSet<PlayerId>();
-    }
-
-    public override void Initialize(SpawnComponent spawnComponent)
-    {
-        base.Initialize(spawnComponent);
-        _roundController.OnPreparationEnded += RequestStartSpawnSession;
-        _roundController.OnRoundEnding += RequestStopSpawnSession;
-    }
-
-    public override void Clear()
-    {
-        base.Clear();
-        _roundController.OnPreparationEnded -= RequestStartSpawnSession;
-        _roundController.OnRoundEnding -= RequestStopSpawnSession;
     }
 
     public override void OnTick(float dt)
     {
-        if (!_viscountSpawned)
+        if (!IsSpawningEnabled || !IsRoundInProgress())
         {
-            SpawnBotAgent("crpg_dtv_viscount", Mission.DefenderTeam, true);
-            _viscountSpawned = true;
+            return;
         }
 
-        if (_spawnTimer != null && !_spawnTimer.Check())
+        if (_defendersSpawnWindowTimer != null && _defendersSpawnWindowTimer.Check())
         {
-            SpawnAgents();
+            _defendersSpawnWindowTimer = null;
+            RequestStopSpawnSession();
         }
+
+        SpawnAgents();
     }
 
-    public override void RequestStartSpawnSession()
+    public void RequestSpawnSessionForRoundStart(bool firstRound)
     {
-        base.RequestStartSpawnSession();
-        _viscountSpawned = false;
-        _spawnTimer = new MissionTimer(TotalSpawnDuration); // Limit spawning within timer
+        RequestStartSpawnSession();
         _notifiedPlayersAboutSpawnRestriction.Clear();
-    }
+        _defendersSpawnWindowTimer = new MissionTimer(DefendersSpawnWindowDuration);
 
-    public void RequestNewWaveSpawnSession()
-    {
-        Debug.Print($"Requesting spawn session for new wave");
-        base.RequestStartSpawnSession();
-        _spawnTimer = new MissionTimer(TotalSpawnDuration); // Limit spawning within timer
-        _notifiedPlayersAboutSpawnRestriction.Clear();
-    }
-
-    public void SpawnAttackingBots(CrpgDtvWave wave)
-    {
-        foreach (CrpgDtvGroup group in wave.Groups)
+        if (firstRound)
         {
-            int playerCount = GetCurrentPlayerCount();
-            int botCount = group.ClassDivisionId.Contains("boss") ? group.Count : playerCount * group.Count;
-
-            Debug.Print($"Spawning {botCount} {group.ClassDivisionId}(s)");
-            for (int i = 0; i < group.Count; i++)
-            {
-                SpawnBotAgent(group.ClassDivisionId, Mission.AttackerTeam);
-            }
+            SpawnViscount();
         }
+    }
+
+    public void RequestSpawnSessionForWaveStart(CrpgDtvWave wave)
+    {
+        SpawnAttackers(wave);
     }
 
     protected override bool IsRoundInProgress()
     {
-        return _roundController.IsRoundInProgress;
+        return Mission.CurrentState == Mission.State.Continuing;
     }
 
     protected override bool IsPlayerAllowedToSpawn(NetworkCommunicator networkPeer)
@@ -124,6 +95,34 @@ internal class CrpgDtvSpawningBehavior : CrpgSpawningBehaviorBase
     {
         base.OnPeerSpawned(missionPeer);
         missionPeer.SpawnCountThisRound += 1;
+    }
+
+    private void SpawnViscount()
+    {
+        var viscountAgent = SpawnBotAgent("crpg_dtv_viscount", Mission.DefenderTeam);
+        var viscountSpawn = Mission.Scene.FindEntityWithTag("viscount");
+        if (viscountSpawn != null)
+        {
+            viscountAgent.TeleportToPosition(viscountSpawn.GetGlobalFrame().origin);
+        }
+
+        // Prevent the viscount from moving.
+        viscountAgent.SetTargetPosition(viscountAgent.Position.AsVec2);
+    }
+
+    private void SpawnAttackers(CrpgDtvWave wave)
+    {
+        foreach (CrpgDtvGroup group in wave.Groups)
+        {
+            int playerCount = GetCurrentPlayerCount();
+            int botCount = group.ClassDivisionId.Contains("boss") ? group.Count : playerCount * group.Count;
+
+            Debug.Print($"Spawning {botCount} {group.ClassDivisionId}(s)");
+            for (int i = 0; i < group.Count; i++)
+            {
+                SpawnBotAgent(group.ClassDivisionId, Mission.AttackerTeam);
+            }
+        }
     }
 
     private int GetCurrentPlayerCount()

@@ -1,7 +1,6 @@
 ﻿using System.Xml.Serialization;
 using Crpg.Module.Rewards;
 using TaleWorlds.Core;
-using TaleWorlds.Library;
 using TaleWorlds.ModuleManager;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Network.Messages;
@@ -11,41 +10,33 @@ namespace Crpg.Module.Modes.Dtv;
 
 internal class CrpgDtvServer : MissionMultiplayerGameModeBase
 {
-    private const int NewWaveBotRespawnTime = 1;
-    private const int NewRoundBotRespawnTime = 5;
-    private const int GameStartTime = 5;
-
     private readonly CrpgRewardServer _rewardServer;
     private readonly CrpgDtvData _dtvData;
-    private readonly int _totalRounds;
 
-    private int _totalWaves;
-    private int _currentRoundCount;
-    private CrpgDtvRound _currentRound;
-    private int _currentWaveCount;
-    private CrpgDtvWave _currentWave;
-    private bool _waitingForGameStart;
-    private bool _waitingForBotSpawn;
-    private MissionTimer? _gameStartTimer;
-    private MissionTimer? _botRespawnTimer;
-
-    public override bool IsGameModeHidingAllAgentVisuals => true;
-    public override bool IsGameModeUsingOpposingTeams => true;
-    public override bool AllowCustomPlayerBanners() => false;
-    public override bool UseRoundController() => true;
+    private int _currentRound;
+    private int _currentWave;
+    private bool _gameStarted;
+    private bool _waveStarted;
+    private MissionTimer? _waveStartTimer;
+    private MissionTimer? _endGameTimer;
 
     public CrpgDtvServer(CrpgRewardServer rewardServer)
     {
         _rewardServer = rewardServer;
         _dtvData = ReadDtvData();
-        _totalRounds = _dtvData.Rounds.Count;
-        _currentRoundCount = 1;
-        _currentRound = GetCurrentRound();
-        _currentWaveCount = 1;
-        _currentWave = GetCurrentWave();
-        _waitingForGameStart = true;
-        _waitingForBotSpawn = true;
+        _currentRound = -1;
     }
+
+    public override bool IsGameModeHidingAllAgentVisuals => true;
+    public override bool IsGameModeUsingOpposingTeams => true;
+    public override bool AllowCustomPlayerBanners() => false;
+    public override bool UseRoundController() => false;
+
+    private CrpgDtvSpawningBehavior SpawningBehavior => (CrpgDtvSpawningBehavior)SpawnComponent.SpawningBehavior;
+    private int RoundsCount => _dtvData.Rounds.Count;
+    private CrpgDtvRound CurrentRoundData => _dtvData.Rounds[_currentRound];
+    private CrpgDtvWave CurrentWaveData => _dtvData.Rounds[_currentRound].Waves[_currentWave];
+    private int WavesCountForCurrentRound => CurrentRoundData.Waves.Count;
 
     public override MissionLobbyComponent.MultiplayerGameType GetMissionType()
     {
@@ -55,68 +46,47 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
     public override void AfterStart()
     {
         base.AfterStart();
-        RoundController.OnPreRoundEnding += OnPreRoundEnding;
         AddTeams();
-    }
-
-    public override void OnRemoveBehavior()
-    {
-        RoundController.OnPreRoundEnding -= OnPreRoundEnding;
-        base.OnRemoveBehavior();
     }
 
     public override bool CheckForWarmupEnd()
     {
-        return false;
+        return true;
     }
 
     public override void OnMissionTick(float dt)
     {
         base.OnMissionTick(dt);
         if (MissionLobbyComponent.CurrentMultiplayerState != MissionLobbyComponent.MultiplayerGameState.Playing
-            || !RoundController.IsRoundInProgress
             || !CanGameModeSystemsTickThisFrame)
         {
             return;
         }
 
-        if (_waitingForGameStart)
+        if (_endGameTimer != null)
         {
-            _gameStartTimer ??= new MissionTimer(GameStartTime);
-            if (_gameStartTimer.Check())
+            if (_endGameTimer.Check())
             {
-                SpawnWave(_currentWave);
-                _waitingForGameStart = false;
+                MissionLobbyComponent.SetStateEndingAsServer();
             }
+
+            return;
         }
-        else
+
+        if (!_gameStarted)
+        {
+            _gameStarted = true;
+            StartNextRound();
+        }
+        else if (_waveStarted)
         {
             CheckForWaveEnd();
-
-            if (BotRespawnDelayEnded())
-            {
-                SpawnWave(_currentWave);
-            }
         }
-    }
-
-    public override bool CheckForRoundEnd()
-    {
-        if (!CanGameModeSystemsTickThisFrame)
+        else if (_waveStartTimer != null && _waveStartTimer.Check())
         {
-            return false;
+            _waveStartTimer = null;
+            StartNextWave();
         }
-
-        bool viscountDead = !Mission.DefenderTeam.HasBots;
-        if (viscountDead)
-        {
-            SendDataToPeers(new CrpgDtvViscountDeathMessage());
-            return true;
-        }
-
-        bool missionComplete = _currentRoundCount > _totalRounds;
-        bool defenderTeamDepleted = Mission.DefenderTeam.ActiveAgents.Count == 0;
-        return defenderTeamDepleted || missionComplete;
     }
 
     protected override void HandleNewClientAfterLoadingFinished(NetworkCommunicator networkPeer)
@@ -125,125 +95,77 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         missionPeer.Team = Mission.DefenderTeam;
     }
 
-    private void AddTeams()
+    private void StartNextRound()
     {
-        BasicCultureObject attackerTeamCulture = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam1.GetStrValue());
-        Banner bannerTeam1 = new(attackerTeamCulture.BannerKey, attackerTeamCulture.BackgroundColor1, attackerTeamCulture.ForegroundColor1);
-        Mission.Teams.Add(BattleSideEnum.Attacker, attackerTeamCulture.BackgroundColor1, attackerTeamCulture.ForegroundColor1, bannerTeam1, false, true);
-        BasicCultureObject defenderTeamCulture = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam2.GetStrValue());
-        Banner bannerTeam2 = new(defenderTeamCulture.BannerKey, defenderTeamCulture.BackgroundColor2, defenderTeamCulture.ForegroundColor2);
-        Mission.Teams.Add(BattleSideEnum.Defender, defenderTeamCulture.BackgroundColor2, defenderTeamCulture.ForegroundColor2, bannerTeam2, false, true);
+        _currentRound += 1;
+        _currentWave = -1;
+        SpawningBehavior.RequestSpawnSessionForRoundStart(firstRound: _currentRound == 0);
+        SendDataToPeers(new CrpgDtvRoundStartMessage { Round = _currentRound });
+        _waveStartTimer = new MissionTimer(10f);
+        _waveStarted = false;
     }
 
-    private void OnPreRoundEnding()
+    private void StartNextWave()
     {
-        bool timedOut = RoundController.RemainingRoundTime <= 0.0;
-        bool attackerTeamAlive = Mission.AttackerTeam.ActiveAgents.Count > 0;
-        bool viscountDead = !Mission.DefenderTeam.HasBots;
-        bool missionComplete = _currentRoundCount > _totalRounds;
-        if (timedOut)
-        {
-            RoundController.RoundWinner = BattleSideEnum.Defender;
-            RoundController.RoundEndReason = RoundEndReason.RoundTimeEnded;
-        }
-        else if (viscountDead)
-        {
-            Debug.Print("The Viscount has died");
-            RoundController.RoundWinner = BattleSideEnum.Attacker;
-            RoundController.RoundEndReason = RoundEndReason.GameModeSpecificEnded;
-        }
-        else if (missionComplete)
-        {
-            RoundController.RoundWinner = BattleSideEnum.Defender;
-            RoundController.RoundEndReason = RoundEndReason.SideDepleted;
-        }
-        else if (attackerTeamAlive)
-        {
-            RoundController.RoundWinner = BattleSideEnum.Attacker;
-            RoundController.RoundEndReason = RoundEndReason.SideDepleted;
-        }
-        else
-        {
-            RoundController.RoundWinner = BattleSideEnum.None;
-            RoundController.RoundEndReason = RoundEndReason.SideDepleted;
-        }
-
-        Debug.Print($"Team {RoundController.RoundWinner} won on map {Mission.SceneName} with {GameNetwork.NetworkPeers.Count()} players");
-        CheerForRoundEnd(RoundController.RoundWinner);
-    }
-
-    private void CheerForRoundEnd(BattleSideEnum roundWinner)
-    {
-        AgentVictoryLogic missionBehavior = Mission.GetMissionBehavior<AgentVictoryLogic>();
-        if (roundWinner != BattleSideEnum.None)
-        {
-            missionBehavior.SetTimersOfVictoryReactionsOnBattleEnd(roundWinner);
-        }
+        _currentWave += 1;
+        RefillDefendersHealthPointsAndAmmo();
+        SpawningBehavior.RequestSpawnSessionForWaveStart(CurrentWaveData);
+        SendDataToPeers(new CrpgDtvWaveStartMessage { Wave = _currentWave });
+        _waveStarted = true;
     }
 
     private void CheckForWaveEnd()
     {
+        bool viscountDead = !Mission.DefenderTeam.HasBots;
+        bool defendersDepleted = Mission.DefenderTeam.ActiveAgents.Count == (viscountDead ? 0 : 1);
+        if (viscountDead || defendersDepleted)
+        {
+            SendDataToPeers(new CrpgDtvGameEnd { ViscountDead = viscountDead });
+            // TODO: scoreboard lost
+            EndGame();
+            return;
+        }
+
         bool attackersDepleted = !Mission.AttackerTeam.HasBots;
-        if (!attackersDepleted || _waitingForBotSpawn)
+        if (!attackersDepleted)
         {
             return;
         }
 
-        Debug.Print("Attackers depleted");
-        _currentWaveCount += 1;
-        if (_currentWaveCount >= _totalWaves + 1)
+        if (_currentWave < WavesCountForCurrentRound - 1)
         {
-            OnRoundEnd();
+            StartNextWave();
+            return;
+        }
+
+        // TODO: reward players.
+        if (_currentRound < RoundsCount - 1)
+        {
+            StartNextRound();
         }
         else
         {
-            OnWaveEnd();
+            // TODO: scoreboard win
+            EndGame();
         }
     }
 
-    private void SpawnWave(CrpgDtvWave wave)
+    private void EndGame()
     {
-        Debug.Print($"Spawning wave for round: {_currentRound.Id} wave: {_currentWave.Id}!");
-        ((CrpgDtvSpawningBehavior)SpawnComponent.SpawningBehavior).SpawnAttackingBots(wave);
-        _waitingForBotSpawn = false;
+        _endGameTimer = new MissionTimer(10f);
     }
 
-    private void OnWaveEnd()
+    private void RefillDefendersHealthPointsAndAmmo()
     {
-        SendDataToPeers(new CrpgDtvWaveEndMessage { Wave = _currentWaveCount });
-        Debug.Print("Advancing to next wave");
-        _currentWave = GetCurrentWave();
-        _botRespawnTimer = new MissionTimer(NewWaveBotRespawnTime); // Spawn bots after timer
-        _waitingForBotSpawn = true;
-    }
-
-    private void OnRoundEnd()
-    {
-        // TODO: award players
-        SendDataToPeers(new CrpgDtvRoundEndMessage { Round = _currentRoundCount });
-        _currentRoundCount += 1; // next round
-        _currentWaveCount = 1;
-        if (_currentRoundCount > _totalRounds)
-        {
-            return;
-        }
-
-        Debug.Print("Advancing to next round");
-        _currentRound = GetCurrentRound();
-        _currentWave = GetCurrentWave();
-        _botRespawnTimer = new MissionTimer(NewRoundBotRespawnTime); // Spawn bots after timer
-        _waitingForBotSpawn = true;
-
-        ((CrpgDtvSpawningBehavior)SpawnComponent.SpawningBehavior).RequestNewWaveSpawnSession(); // allow players to respawn
-
-        foreach (Agent agent in Mission.DefenderTeam.ActiveAgents) // fill HP & ammo
+        foreach (Agent agent in Mission.DefenderTeam.ActiveAgents)
         {
             agent.Health = agent.HealthLimit;
-            for (EquipmentIndex equipmentIndex = EquipmentIndex.WeaponItemBeginSlot; equipmentIndex < EquipmentIndex.NumAllWeaponSlots; equipmentIndex++)
+            for (EquipmentIndex equipmentIndex = EquipmentIndex.WeaponItemBeginSlot; equipmentIndex < EquipmentIndex.NumAllWeaponSlots; equipmentIndex += 1)
             {
                 if (!agent.Equipment[equipmentIndex].IsEmpty
                     && (agent.Equipment[equipmentIndex].CurrentUsageItem.WeaponClass == WeaponClass.Arrow
                         || agent.Equipment[equipmentIndex].CurrentUsageItem.WeaponClass == WeaponClass.Bolt
+                        || agent.Equipment[equipmentIndex].CurrentUsageItem.WeaponClass == WeaponClass.Stone
                         || agent.Equipment[equipmentIndex].CurrentUsageItem.WeaponClass == WeaponClass.Javelin
                         || agent.Equipment[equipmentIndex].CurrentUsageItem.WeaponClass == WeaponClass.ThrowingAxe
                         || agent.Equipment[equipmentIndex].CurrentUsageItem.WeaponClass == WeaponClass.ThrowingKnife)
@@ -255,11 +177,6 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         }
     }
 
-    private bool BotRespawnDelayEnded()
-    {
-        return _botRespawnTimer != null && _botRespawnTimer.Check() && _waitingForBotSpawn;
-    }
-
     private void SendDataToPeers(GameNetworkMessage message)
     {
         GameNetwork.BeginBroadcastModuleEvent();
@@ -267,19 +184,14 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
     }
 
-    private CrpgDtvRound GetCurrentRound()
+    private void AddTeams()
     {
-        Debug.Print("Now on round: " + _currentRoundCount);
-        CrpgDtvRound currentRound = _dtvData.Rounds[_currentRoundCount - 1];
-        _totalWaves = currentRound.Waves.Count;
-
-        return currentRound;
-    }
-
-    private CrpgDtvWave GetCurrentWave()
-    {
-        Debug.Print("Now on wave: " + _currentWaveCount);
-        return _currentRound.Waves[_currentWaveCount - 1];
+        BasicCultureObject attackerTeamCulture = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam1.GetStrValue());
+        Banner bannerTeam1 = new(attackerTeamCulture.BannerKey, attackerTeamCulture.BackgroundColor1, attackerTeamCulture.ForegroundColor1);
+        Mission.Teams.Add(BattleSideEnum.Attacker, attackerTeamCulture.BackgroundColor1, attackerTeamCulture.ForegroundColor1, bannerTeam1, false, true);
+        BasicCultureObject defenderTeamCulture = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam2.GetStrValue());
+        Banner bannerTeam2 = new(defenderTeamCulture.BannerKey, defenderTeamCulture.BackgroundColor2, defenderTeamCulture.ForegroundColor2);
+        Mission.Teams.Add(BattleSideEnum.Defender, defenderTeamCulture.BackgroundColor2, defenderTeamCulture.ForegroundColor2, bannerTeam2, false, true);
     }
 
     private CrpgDtvData ReadDtvData()

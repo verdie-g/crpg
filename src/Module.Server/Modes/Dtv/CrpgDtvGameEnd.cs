@@ -4,15 +4,20 @@ using TaleWorlds.MountAndBlade.Network.Messages;
 namespace Crpg.Module.Modes.Dtv;
 
 [DefineGameNetworkMessageTypeForMod(GameNetworkMessageSendType.FromServer)]
-internal sealed class CrpgDtvViscountDeathMessage : GameNetworkMessage
+internal sealed class CrpgDtvGameEnd : GameNetworkMessage
 {
+    public bool ViscountDead { get; set; }
+
     protected override void OnWrite()
     {
+        WriteBoolToPacket(ViscountDead);
     }
 
     protected override bool OnRead()
     {
-        return true;
+        bool bufferReadValid = true;
+        ViscountDead = ReadBoolFromPacket(ref bufferReadValid);
+        return bufferReadValid;
     }
 
     protected override MultiplayerMessageFilter OnGetLogFilter()

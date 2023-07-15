@@ -4,7 +4,7 @@ using TaleWorlds.MountAndBlade.Network.Messages;
 namespace Crpg.Module.Modes.Dtv;
 
 [DefineGameNetworkMessageTypeForMod(GameNetworkMessageSendType.FromServer)]
-internal sealed class CrpgDtvRoundEndMessage : GameNetworkMessage
+internal sealed class CrpgDtvRoundStartMessage : GameNetworkMessage
 {
     public int Round { get; set; }
 
@@ -27,6 +27,6 @@ internal sealed class CrpgDtvRoundEndMessage : GameNetworkMessage
 
     protected override string OnGetLogFormat()
     {
-        return "cRPG DTV Wave Data";
+        return "cRPG DTV Round Start";
     }
 }

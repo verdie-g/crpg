@@ -8,7 +8,7 @@ internal class CrpgDtvClient : MissionMultiplayerGameModeBaseClient
 {
     public override bool IsGameModeUsingGold => false;
     public override bool IsGameModeTactical => false;
-    public override bool IsGameModeUsingRoundCountdown => true;
+    public override bool IsGameModeUsingRoundCountdown => false;
     public override MissionLobbyComponent.MultiplayerGameType GameType =>
         MissionLobbyComponent.MultiplayerGameType.Battle;
     public override bool IsGameModeUsingCasualGold => false;
@@ -30,32 +30,38 @@ internal class CrpgDtvClient : MissionMultiplayerGameModeBaseClient
     protected override void AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegistererContainer registerer)
     {
         base.AddRemoveMessageHandlers(registerer);
-        registerer.Register<CrpgDtvWaveEndMessage>(HandleWaveEnd);
-        registerer.Register<CrpgDtvRoundEndMessage>(HandleRoundEnd);
-        registerer.Register<CrpgDtvViscountDeathMessage>(HandleViscountDeath);
+        registerer.Register<CrpgDtvRoundStartMessage>(HandleRoundStart);
+        registerer.Register<CrpgDtvWaveStartMessage>(HandleWaveStart);
+        registerer.Register<CrpgDtvGameEnd>(HandleViscountDeath);
     }
 
-    private void HandleWaveEnd(CrpgDtvWaveEndMessage message)
-    {
-        InformationManager.DisplayMessage(new InformationMessage($"Wave {message.Wave - 1} cleared!",
-               new Color(218, 112, 214)));
-    }
-
-    private void HandleRoundEnd(CrpgDtvRoundEndMessage message)
+    private void HandleRoundStart(CrpgDtvRoundStartMessage message)
     {
         InformationManager.DisplayMessage(new InformationMessage
         {
-            Information = $"Round {message.Round} cleared!",
+            Information = $"Round {message.Round + 1} starting...",
             Color = new Color(0.48f, 0f, 1f),
-            SoundEventPath = "event:/ui/notification/quest_finished",
+            SoundEventPath = message.Round == 0 ? null : "event:/ui/notification/quest_finished",
         });
     }
 
-    private void HandleViscountDeath(CrpgDtvViscountDeathMessage message)
+    private void HandleWaveStart(CrpgDtvWaveStartMessage message)
     {
         InformationManager.DisplayMessage(new InformationMessage
         {
-            Information = $"The Viscount has been slaughtered!",
+            Information = $"Wave {message.Wave + 1} started!",
+            Color = new Color(218, 112, 214),
+            SoundEventPath = message.Wave == 0 ? null : "event:/ui/notification/quest_update",
+        });
+    }
+
+    private void HandleViscountDeath(CrpgDtvGameEnd message)
+    {
+        InformationManager.DisplayMessage(new InformationMessage
+        {
+            Information = message.ViscountDead
+                ? "The Viscount has been slaughtered!"
+                : "The defenders have been slaughtered!",
             Color = new Color(0.90f, 0.25f, 0.25f),
             SoundEventPath = "event:/ui/notification/death",
         });

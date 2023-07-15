@@ -109,10 +109,56 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
         }
     }
 
+    protected Agent SpawnBotAgent(string classDivisionId, Team team)
+    {
+        var teamCulture = team.Side == BattleSideEnum.Attacker
+            ? MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam1.GetStrValue())
+            : MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam2.GetStrValue());
+
+        MultiplayerClassDivisions.MPHeroClass botClass = MultiplayerClassDivisions
+            .GetMPHeroClasses()
+        .First(h => h.StringId == classDivisionId);
+        BasicCharacterObject character = botClass.HeroCharacter;
+
+        bool hasMount = character.Equipment[EquipmentIndex.Horse].Item != null;
+        MatrixFrame spawnFrame = SpawnComponent.GetSpawnFrame(team, hasMount, true);
+        Vec2 initialDirection = spawnFrame.rotation.f.AsVec2.Normalized();
+
+        AgentBuildData agentBuildData = new AgentBuildData(character)
+            .Equipment(character.Equipment)
+            .TroopOrigin(new BasicBattleAgentOrigin(character))
+            .EquipmentSeed(MissionLobbyComponent.GetRandomFaceSeedForCharacter(character))
+            .Team(team)
+            .VisualsIndex(0)
+            .InitialPosition(in spawnFrame.origin)
+            .InitialDirection(in initialDirection)
+            .IsFemale(character.IsFemale)
+            .ClothingColor1(
+                team.Side == BattleSideEnum.Attacker ? teamCulture.Color : teamCulture.ClothAlternativeColor)
+            .ClothingColor2(team.Side == BattleSideEnum.Attacker
+                ? teamCulture.Color2
+                : teamCulture.ClothAlternativeColor2);
+
+        var bodyProperties = BodyProperties.GetRandomBodyProperties(
+            character.Race,
+            character.IsFemale,
+            character.GetBodyPropertiesMin(),
+            character.GetBodyPropertiesMax(),
+            (int)agentBuildData.AgentOverridenSpawnEquipment.HairCoverType,
+            agentBuildData.AgentEquipmentSeed,
+            character.HairTags,
+            character.BeardTags,
+            character.TattooTags);
+        agentBuildData.BodyProperties(bodyProperties);
+
+        Agent agent = Mission.SpawnAgent(agentBuildData);
+        agent.SetWatchState(Agent.WatchState.Alarmed);
+        agent.WieldInitialWeapons();
+        return agent;
+    }
+
     protected void SpawnBotAgents()
     {
-        BasicCultureObject cultureTeam1 = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam1.GetStrValue());
-        BasicCultureObject cultureTeam2 = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam2.GetStrValue());
         int botsTeam1 = MultiplayerOptions.OptionType.NumberOfBotsTeam1.GetIntValue();
         int botsTeam2 = MultiplayerOptions.OptionType.NumberOfBotsTeam2.GetIntValue();
 
@@ -129,19 +175,9 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
                 continue;
             }
 
-            BasicCultureObject teamCulture;
-            int numberOfBots;
-            if (team.Side == BattleSideEnum.Attacker)
-            {
-                teamCulture = cultureTeam1;
-                numberOfBots = MultiplayerOptions.OptionType.NumberOfBotsTeam1.GetIntValue();
-            }
-            else
-            {
-                teamCulture = cultureTeam2;
-                numberOfBots = MultiplayerOptions.OptionType.NumberOfBotsTeam2.GetIntValue();
-            }
-
+            int numberOfBots = team.Side == BattleSideEnum.Attacker
+                ? botsTeam1
+                : botsTeam2;
             int numberOfPlayers = GameNetwork.NetworkPeers.Count(p => p.IsSynchronized && p.GetComponent<MissionPeer>()?.Team == team);
             int botsAlive = team.ActiveAgents.Count(a => a.IsAIControlled && a.IsHuman);
 
@@ -150,110 +186,10 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
                 MultiplayerClassDivisions.MPHeroClass botClass = MultiplayerClassDivisions
                     .GetMPHeroClasses()
                     .GetRandomElementWithPredicate<MultiplayerClassDivisions.MPHeroClass>(x => x.StringId.StartsWith("crpg_bot_"));
-                BasicCharacterObject character = botClass.HeroCharacter;
-
-                bool hasMount = character.Equipment[EquipmentIndex.Horse].Item != null;
-                MatrixFrame spawnFrame = SpawnComponent.GetSpawnFrame(team, hasMount, true);
-                Vec2 initialDirection = spawnFrame.rotation.f.AsVec2.Normalized();
-
-                AgentBuildData agentBuildData = new AgentBuildData(character)
-                    .Equipment(character.Equipment)
-                    .TroopOrigin(new BasicBattleAgentOrigin(character))
-                    .EquipmentSeed(MissionLobbyComponent.GetRandomFaceSeedForCharacter(character))
-                    .Team(team)
-                    .VisualsIndex(0)
-                    .InitialPosition(in spawnFrame.origin)
-                    .InitialDirection(in initialDirection)
-                    .IsFemale(character.IsFemale)
-                    .ClothingColor1(team.Side == BattleSideEnum.Attacker ? teamCulture.Color : teamCulture.ClothAlternativeColor)
-                    .ClothingColor2(team.Side == BattleSideEnum.Attacker ? teamCulture.Color2 : teamCulture.ClothAlternativeColor2);
-
-                var bodyProperties = BodyProperties.GetRandomBodyProperties(
-                    character.Race,
-                    character.IsFemale,
-                    character.GetBodyPropertiesMin(),
-                    character.GetBodyPropertiesMax(),
-                    (int)agentBuildData.AgentOverridenSpawnEquipment.HairCoverType,
-                    agentBuildData.AgentEquipmentSeed,
-                    character.HairTags,
-                    character.BeardTags,
-                    character.TattooTags);
-                agentBuildData.BodyProperties(bodyProperties);
-
-                Agent agent = Mission.SpawnAgent(agentBuildData);
-                agent.SetWatchState(Agent.WatchState.Alarmed);
-                agent.WieldInitialWeapons();
+                SpawnBotAgent(botClass.StringId, team);
             }
         }
     }
-
-    protected void SpawnBotAgent(string classDivisionId, Team team, bool isViscount = false)
-    {
-        BasicCultureObject cultureTeam1 = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam1.GetStrValue());
-        BasicCultureObject cultureTeam2 = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam2.GetStrValue());
-
-        BasicCultureObject teamCulture;
-        if (team.Side == BattleSideEnum.Attacker)
-        {
-            teamCulture = cultureTeam1;
-        }
-        else
-        {
-            teamCulture = cultureTeam2;
-        }
-
-        MultiplayerClassDivisions.MPHeroClass botClass = MultiplayerClassDivisions
-            .GetMPHeroClasses()
-            .GetRandomElementWithPredicate<MultiplayerClassDivisions.MPHeroClass>(x => x.StringId.StartsWith(classDivisionId));
-        BasicCharacterObject character = botClass.HeroCharacter;
-
-        bool hasMount = character.Equipment[EquipmentIndex.Horse].Item != null;
-        MatrixFrame spawnFrame;
-        Vec2 initialDirection;
-        if (isViscount && Mission.Current.Scene.FindEntitiesWithTag("viscount").Count() > 0)
-        {
-            spawnFrame = Mission.Current.Scene.FindEntitiesWithTag("viscount").GetRandomElementInefficiently().GetGlobalFrame();
-        }
-        else
-        {
-            spawnFrame = SpawnComponent.GetSpawnFrame(team, hasMount, true);
-        }
-
-        initialDirection = spawnFrame.rotation.f.AsVec2.Normalized();
-        AgentBuildData agentBuildData = new AgentBuildData(character)
-            .Equipment(character.Equipment)
-            .TroopOrigin(new BasicBattleAgentOrigin(character))
-            .EquipmentSeed(MissionLobbyComponent.GetRandomFaceSeedForCharacter(character))
-            .Team(team)
-            .VisualsIndex(0)
-            .InitialPosition(in spawnFrame.origin)
-            .InitialDirection(in initialDirection)
-            .IsFemale(character.IsFemale)
-            .ClothingColor1(team.Side == BattleSideEnum.Attacker ? teamCulture.Color : teamCulture.ClothAlternativeColor)
-            .ClothingColor2(team.Side == BattleSideEnum.Attacker ? teamCulture.Color2 : teamCulture.ClothAlternativeColor2);
-
-        var bodyProperties = BodyProperties.GetRandomBodyProperties(
-            character.Race,
-            character.IsFemale,
-            character.GetBodyPropertiesMin(),
-            character.GetBodyPropertiesMax(),
-            (int)agentBuildData.AgentOverridenSpawnEquipment.HairCoverType,
-            agentBuildData.AgentEquipmentSeed,
-            character.HairTags,
-            character.BeardTags,
-            character.TattooTags);
-        agentBuildData.BodyProperties(bodyProperties);
-
-        Agent agent = Mission.SpawnAgent(agentBuildData);
-        agent.SetWatchState(Agent.WatchState.Alarmed);
-
-        if (isViscount) // Prevent the viscount from moving
-        {
-            agent.SetTargetPosition(new Vec2(spawnFrame.origin.x, spawnFrame.origin.y));
-        }
-
-        agent.WieldInitialWeapons();
-        }
 
     protected virtual void OnPeerSpawned(MissionPeer missionPeer)
     {
