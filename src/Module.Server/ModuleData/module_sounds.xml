@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="module_sound">
+  <module_sounds>
+    <module_sound name="crpg/dtv/lines/xp_is_free" sound_category="mission_voice" path="dtv_lines_xp_is_free.ogg" />
+  </module_sounds>
+</base>
