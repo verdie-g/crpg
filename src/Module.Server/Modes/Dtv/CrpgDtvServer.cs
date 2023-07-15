@@ -178,7 +178,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
     private void EndGame(Team winnerTeam)
     {
         Mission.GetMissionBehavior<MissionScoreboardComponent>().ChangeTeamScore(winnerTeam, 1);
-        _endGameTimer = new MissionTimer(5f);
+        _endGameTimer = new MissionTimer(8f);
     }
 
     private void RefillDefendersHealthPointsAndAmmo(bool refillAmmo)
