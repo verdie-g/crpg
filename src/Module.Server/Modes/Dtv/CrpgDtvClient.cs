@@ -8,7 +8,7 @@ internal class CrpgDtvClient : MissionMultiplayerGameModeBaseClient
 {
     public override bool IsGameModeUsingGold => false;
     public override bool IsGameModeTactical => false;
-    public override bool IsGameModeUsingRoundCountdown => false;
+    public override bool IsGameModeUsingRoundCountdown => true;
     public override MissionLobbyComponent.MultiplayerGameType GameType =>
         MissionLobbyComponent.MultiplayerGameType.Battle;
     public override bool IsGameModeUsingCasualGold => false;

@@ -709,6 +709,8 @@ internal class CrpgHudExtensionVm : ViewModel
             CommanderInfo?.OnTeamChanged();
         }
 
+        UpdateTeamBanners();
+
         if (CommanderInfo == null)
         {
             return;
@@ -742,8 +744,6 @@ internal class CrpgHudExtensionVm : ViewModel
             AllyTeamColor2 = attackerColor2;
             CommanderInfo.RefreshColors(AllyTeamColor, AllyTeamColor2, EnemyTeamColor!, EnemyTeamColor2!);
         }
-
-        UpdateTeamBanners();
     }
 
     private void GetTeamColors(Team team, out string color1, out string color2)

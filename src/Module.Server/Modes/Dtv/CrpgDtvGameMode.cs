@@ -55,6 +55,7 @@ internal class CrpgDtvGameMode : MissionBasedMultiplayerGameMode
             new MissionItemContourControllerView(), // Draw contour of item on the ground when pressing ALT.
             new MissionAgentContourControllerView(),
             ViewCreator.CreateMissionKillNotificationUIHandler(),
+            new CrpgHudExtensionHandler(),
             ViewCreator.CreateMultiplayerMissionDeathCardUIHandler(),
             ViewCreator.CreateOptionsUIHandler(),
             ViewCreator.CreateMissionMainAgentEquipDropView(mission),
