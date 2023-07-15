@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <strings>
   <!-- Battle -->
-  <string id="str_multiplayer_official_game_type_name.cRPGBattle" text="{=*}cRPG Battle" />
+  <string id="str_multiplayer_official_game_type_name.cRPGBattle" text="{=*}Battle" />
   <string id="str_multiplayer_official_game_type_explainer.cRPGBattle" text="{=*}·   Kill the entire enemy team to win{newline}·   Gain experience and gold every minute{newline}·   Upgrade your character on c-rpg.eu" />
   <string id="str_multiplayer_game_type.cRPGBattle" text="{=*}cRPG Battle" />
 
   <!-- Skirmish -->
-  <string id="str_multiplayer_official_game_type_name.cRPGSkirmish" text="{=*}cRPG Skirmish" />
+  <string id="str_multiplayer_official_game_type_name.cRPGSkirmish" text="{=*}Skirmish" />
   <string id="str_multiplayer_official_game_type_explainer.cRPGSkirmish" text="{=*}·   Hold control points on the map to deplete enemy morale{newline}·   Kill the entire enemy team or exhaust their morale to win·   Gain experience and gold while playing" />
   <string id="str_multiplayer_game_type.cRPGSkirmish" text="{=*}cRPG Skirmish" />
 
   <!-- Conquest -->
-  <string id="str_multiplayer_official_game_type_name.cRPGConquest" text="{=*}cRPG Conquest" />
+  <string id="str_multiplayer_official_game_type_name.cRPGConquest" text="{=*}Conquest" />
   <string id="str_multiplayer_official_game_type_explainer.cRPGConquest" text="{=*}·   Capture all flags of a stage to advance to the next one{newline}·   Defenders' reward multipler increases over time and is reset on a new stage{newline}·   Attackers' reward multiplier decreases over time and is set to max on a new stage" />
   <string id="str_multiplayer_game_type.cRPGConquest" text="{=*}cRPG Conquest" />
 
   <!-- Siege -->
-  <string id="str_multiplayer_official_game_type_name.cRPGSiege" text="{=*}cRPG Siege" />
+  <string id="str_multiplayer_official_game_type_name.cRPGSiege" text="{=*}Siege" />
   <string id="str_multiplayer_official_game_type_explainer.cRPGSiege" text="{=*}·   Use various siege engines to attack or defend control points{newline}·   Spawn points advance as control points are captured{newline}·   Successfully assault and hold the keep flag or repel the enemy to win" />
   <string id="str_multiplayer_game_type.cRPGSiege" text="{=*}cRPG Siege" />
 
   <!-- TeamDeathmatch -->
-  <string id="str_multiplayer_official_game_type_name.cRPGTeamDeathmatch" text="{=*}cRPG Team Deathmatch" />
+  <string id="str_multiplayer_official_game_type_name.cRPGTeamDeathmatch" text="{=*}Team Deathmatch" />
   <string id="str_multiplayer_official_game_type_explainer.cRPGTeamDeathmatch" text="{=*}·   Outkill the enemy team to win the game" />
   <string id="str_multiplayer_game_type.cRPGTeamDeathmatch" text="{=*}cRPG Team Deathmatch" />
 
   <!-- Duel -->
-  <string id="str_multiplayer_official_game_type_name.cRPGDuel" text="{=*}cRPG Duel" />
+  <string id="str_multiplayer_official_game_type_name.cRPGDuel" text="{=*}Duel" />
   <string id="str_multiplayer_official_game_type_explainer.cRPGDuel" text="{=*}·   Fight an opponent in single combat{newline}·   Defeat your opponent multiple times to win the duel and claim their bounty{newline}·   There is no upkeep nor gold gain." />
   <string id="str_multiplayer_game_type.cRPGDuel" text="{=*}cRPG Duel" />
 
