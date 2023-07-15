@@ -112,9 +112,9 @@ internal class CrpgDtvSpawningBehavior : CrpgSpawningBehaviorBase
 
     private void SpawnAttackers(CrpgDtvWave wave)
     {
+        int playerCount = GetCurrentPlayerCount();
         foreach (CrpgDtvGroup group in wave.Groups)
         {
-            int playerCount = GetCurrentPlayerCount();
             int botCount = group.ClassDivisionId.Contains("boss") ? group.Count : playerCount * group.Count;
 
             Debug.Print($"Spawning {botCount} {group.ClassDivisionId}(s)");

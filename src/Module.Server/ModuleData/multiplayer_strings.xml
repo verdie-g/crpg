@@ -31,8 +31,8 @@
   <string id="str_multiplayer_game_type.cRPGDuel" text="{=*}cRPG Duel" />
 
   <!-- DTV -->
-  <string id="str_multiplayer_official_game_type_name.cRPGDTV" text="{=*}cRPG DTV" />
-  <string id="str_multiplayer_official_game_type_explainer.cRPGDTV" text="{=*}·   Defend the Viscount from enemies!{newline}·   Earn rewards for protection!{newline}·   Upgrade your character on c-rpg.eu" />
+  <string id="str_multiplayer_official_game_type_name.cRPGDTV" text="{=*}Defend The Viscount" />
+  <string id="str_multiplayer_official_game_type_explainer.cRPGDTV" text="{=*}·   Defend the Viscount from waves of enemies!{newline}·   Earn rewards for protection!{newline}·   Upgrade your character on c-rpg.eu" />
   <string id="str_multiplayer_game_type.cRPGDTV" text="{=*}cRPG DTV" />
 
   <!-- Scoreboard -->
@@ -48,10 +48,6 @@
   <string id="str_kick_reason.unreachable_server" text="{=*}The cRPG main server is unreachable. Try again later." />
   <string id="str_kick_reason.unsupported_platform" text="{=*}cRPG servers only support Steam, Epic Games and Xbox." />
 
-  <!-- DTV Maps -->
-  <string id="str_multiplayer_scene_name.crpg_dtv_test" text="{=*}DTV Test Map" />
-  <string id="str_multiplayer_scene_name.crpg_dtv_weepinghill" text="{=*}Weeping Hill" />
-  
   <!-- Battle Maps -->
   <string id="str_multiplayer_scene_name.crpg_battle_abandoned" text="{=*}Abandoned" />
   <string id="str_multiplayer_scene_name.crpg_battle_acaciacitadel" text="{=*}Acacia Citadel" />
@@ -119,4 +115,7 @@
   <string id="str_multiplayer_scene_name.crpg_conquest_orlghelovar" text="{=*}Orlghelovar" />
   <string id="str_multiplayer_scene_name.crpg_conquest_silverskalitz" text="{=*}Silver Skalitz" />
   <string id="str_multiplayer_scene_name.crpg_conquest_skalalanding" text="{=*}Skala Landing" />
+
+  <!-- DTV Maps -->
+  <string id="str_multiplayer_scene_name.crpg_dtv_weepinghill" text="{=*}Weeping Hill" />
 </strings>

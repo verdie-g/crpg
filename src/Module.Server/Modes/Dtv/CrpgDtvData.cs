@@ -12,6 +12,9 @@ public class CrpgDtvData
 
 public class CrpgDtvRound
 {
+    [XmlAttribute(AttributeName = "reward")]
+    public int Reward { get; set; }
+
     [XmlElement(ElementName = "Wave")]
     public List<CrpgDtvWave> Waves { get; set; } = new();
 }

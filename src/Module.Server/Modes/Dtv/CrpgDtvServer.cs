@@ -54,7 +54,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
     {
         _gameStarted = false;
         _currentRound = -1;
-        Mission.GetMissionBehavior<MissionScoreboardComponent>().ResetBotScores();
+        ClearPeerCounts();
     }
 
     public override bool CheckForWarmupEnd()
@@ -155,7 +155,8 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
             return;
         }
 
-        // TODO: reward players.
+        _ = _rewardServer.UpdateCrpgUsersAsync(CurrentRoundData.Reward, updateUserStats: false);
+
         if (_currentRound < RoundsCount - 1)
         {
             StartNextRound();
