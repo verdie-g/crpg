@@ -145,8 +145,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
             _ = _rewardServer.UpdateCrpgUsersAsync(
                 durationRewarded: ComputeRoundReward(CurrentRoundData, wavesWon: _currentWave),
                 updateUserStats: false);
-            // TODO: scoreboard lost
-            EndGame();
+            EndGame(Mission.AttackerTeam);
             return;
         }
 
@@ -172,13 +171,13 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         }
         else
         {
-            // TODO: scoreboard win
-            EndGame();
+            EndGame(Mission.DefenderTeam);
         }
     }
 
-    private void EndGame()
+    private void EndGame(Team winnerTeam)
     {
+        Mission.GetMissionBehavior<MissionScoreboardComponent>().ChangeTeamScore(winnerTeam, 1);
         _endGameTimer = new MissionTimer(5f);
     }
 
