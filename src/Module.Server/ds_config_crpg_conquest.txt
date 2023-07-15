@@ -1,4 +1,4 @@
-ServerName cRPG Conquest Test
+ServerName cRPG - Test Conquest - c-rpg.eu
 GameType cRPGConquest
 GamePassword yoyo
 add_map_to_automated_battle_pool crpg_conquest_acre

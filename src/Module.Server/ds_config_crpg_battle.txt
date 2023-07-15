@@ -1,4 +1,4 @@
-ServerName cRPG Test
+ServerName cRPG - Test Battle - c-rpg.eu
 GameType cRPGBattle
 GamePassword yoyo
 WelcomeMessage yoyoyooooo
