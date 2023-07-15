@@ -15,6 +15,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
 
     private int _currentGame;
     private int _currentRound;
+    private int _currentRoundDefendersCount;
     private int _currentWave;
     private bool _gameStarted;
     private bool _waveStarted;
@@ -125,8 +126,10 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
     private void StartNextWave()
     {
         _currentWave += 1;
-        RefillDefendersHealthPointsAndAmmo(refillAmmo: _currentWave == 0);
-        SpawningBehavior.RequestSpawnSessionForWaveStart(CurrentWaveData);
+        bool firstWave = _currentWave == 0;
+        RefillDefendersHealthPointsAndAmmo(refillAmmo: firstWave);
+        _currentRoundDefendersCount = firstWave ? GetDefendersCount() : _currentRoundDefendersCount;
+        SpawningBehavior.RequestSpawnSessionForWaveStart(CurrentWaveData, _currentRoundDefendersCount);
         SendDataToPeers(new CrpgDtvWaveStartMessage { Wave = _currentWave });
         _waveStarted = true;
     }
@@ -200,6 +203,26 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
                 }
             }
         }
+    }
+
+    private int GetDefendersCount()
+    {
+        int defendersCount = 0;
+        foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
+        {
+            var missionPeer = networkPeer.GetComponent<MissionPeer>();
+            if (!networkPeer.IsSynchronized
+                || missionPeer == null
+                || missionPeer.Team == null
+                || missionPeer.Team.Side == BattleSideEnum.None)
+            {
+                continue;
+            }
+
+            defendersCount += 1;
+        }
+
+        return defendersCount;
     }
 
     private void SendDataToPeers(GameNetworkMessage message)

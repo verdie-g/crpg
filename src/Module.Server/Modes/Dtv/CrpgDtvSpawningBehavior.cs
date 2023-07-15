@@ -48,9 +48,9 @@ internal class CrpgDtvSpawningBehavior : CrpgSpawningBehaviorBase
         }
     }
 
-    public void RequestSpawnSessionForWaveStart(CrpgDtvWave wave)
+    public void RequestSpawnSessionForWaveStart(CrpgDtvWave wave, int defendersCount)
     {
-        SpawnAttackers(wave);
+        SpawnAttackers(wave, defendersCount);
     }
 
     protected override bool IsRoundInProgress()
@@ -110,37 +110,16 @@ internal class CrpgDtvSpawningBehavior : CrpgSpawningBehaviorBase
         viscountAgent.SetTargetPosition(viscountAgent.Position.AsVec2);
     }
 
-    private void SpawnAttackers(CrpgDtvWave wave)
+    private void SpawnAttackers(CrpgDtvWave wave, int defendersCount)
     {
-        int playerCount = GetCurrentPlayerCount();
         foreach (CrpgDtvGroup group in wave.Groups)
         {
-            int botCount = group.ClassDivisionId.Contains("boss") ? group.Count : playerCount * group.Count;
+            int botCount = group.ClassDivisionId.Contains("boss") ? group.Count : defendersCount * group.Count;
             Debug.Print($"Spawning {botCount} {group.ClassDivisionId}(s)");
             for (int i = 0; i < botCount; i++)
             {
                 SpawnBotAgent(group.ClassDivisionId, Mission.AttackerTeam);
             }
         }
-    }
-
-    private int GetCurrentPlayerCount()
-    {
-        int counter = 0;
-        foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
-        {
-            var missionPeer = networkPeer.GetComponent<MissionPeer>();
-            if (!networkPeer.IsSynchronized
-                || missionPeer == null
-                || missionPeer.Team == null
-                || missionPeer.Team.Side == BattleSideEnum.None)
-            {
-                continue;
-            }
-
-            counter++;
-        }
-
-        return counter;
     }
 }
