@@ -125,7 +125,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
     private void StartNextWave()
     {
         _currentWave += 1;
-        RefillDefendersHealthPointsAndAmmo();
+        RefillDefendersHealthPointsAndAmmo(refillAmmo: _currentWave == 0);
         SpawningBehavior.RequestSpawnSessionForWaveStart(CurrentWaveData);
         SendDataToPeers(new CrpgDtvWaveStartMessage { Wave = _currentWave });
         _waveStarted = true;
@@ -173,23 +173,28 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         _endGameTimer = new MissionTimer(5f);
     }
 
-    private void RefillDefendersHealthPointsAndAmmo()
+    private void RefillDefendersHealthPointsAndAmmo(bool refillAmmo)
     {
         foreach (Agent agent in Mission.DefenderTeam.ActiveAgents)
         {
             agent.Health = agent.HealthLimit;
-            for (EquipmentIndex equipmentIndex = EquipmentIndex.WeaponItemBeginSlot; equipmentIndex < EquipmentIndex.NumAllWeaponSlots; equipmentIndex += 1)
+            if (!refillAmmo)
             {
-                if (!agent.Equipment[equipmentIndex].IsEmpty
-                    && (agent.Equipment[equipmentIndex].CurrentUsageItem.WeaponClass == WeaponClass.Arrow
-                        || agent.Equipment[equipmentIndex].CurrentUsageItem.WeaponClass == WeaponClass.Bolt
-                        || agent.Equipment[equipmentIndex].CurrentUsageItem.WeaponClass == WeaponClass.Stone
-                        || agent.Equipment[equipmentIndex].CurrentUsageItem.WeaponClass == WeaponClass.Javelin
-                        || agent.Equipment[equipmentIndex].CurrentUsageItem.WeaponClass == WeaponClass.ThrowingAxe
-                        || agent.Equipment[equipmentIndex].CurrentUsageItem.WeaponClass == WeaponClass.ThrowingKnife)
-                    && agent.Equipment[equipmentIndex].Amount < agent.Equipment[equipmentIndex].ModifiedMaxAmount)
+                continue;
+            }
+
+            for (EquipmentIndex i = EquipmentIndex.WeaponItemBeginSlot; i < EquipmentIndex.NumAllWeaponSlots; i += 1)
+            {
+                if (!agent.Equipment[i].IsEmpty
+                    && (agent.Equipment[i].CurrentUsageItem.WeaponClass == WeaponClass.Arrow
+                        || agent.Equipment[i].CurrentUsageItem.WeaponClass == WeaponClass.Bolt
+                        || agent.Equipment[i].CurrentUsageItem.WeaponClass == WeaponClass.Stone
+                        || agent.Equipment[i].CurrentUsageItem.WeaponClass == WeaponClass.Javelin
+                        || agent.Equipment[i].CurrentUsageItem.WeaponClass == WeaponClass.ThrowingAxe
+                        || agent.Equipment[i].CurrentUsageItem.WeaponClass == WeaponClass.ThrowingKnife)
+                    && agent.Equipment[i].Amount < agent.Equipment[i].ModifiedMaxAmount)
                 {
-                    agent.SetWeaponAmountInSlot(equipmentIndex, agent.Equipment[equipmentIndex].ModifiedMaxAmount, true);
+                    agent.SetWeaponAmountInSlot(i, agent.Equipment[i].ModifiedMaxAmount, true);
                 }
             }
         }
