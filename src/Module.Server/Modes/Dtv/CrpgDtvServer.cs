@@ -56,6 +56,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         _gameStarted = false;
         _currentRound = -1;
         ClearPeerCounts();
+        Mission.GetMissionBehavior<MissionScoreboardComponent>().ResetBotScores();
     }
 
     public override bool CheckForWarmupEnd()
