@@ -22,7 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="..\..\src\Module.Server\ModuleData\characters.xml" Link="ModuleData\characters.xml" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\src\Module.Server\ModuleData\characters.xml" Link="ModuleData\characters.xml" Visible="false" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\src\Module.Server\ModuleData\class_divisions.xml" Link="ModuleData\class_divisions.xml" Visible="false" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\src\Module.Server\ModuleData\dtv_data.xml" Link="ModuleData\dtv_data.xml" Visible="false" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>
