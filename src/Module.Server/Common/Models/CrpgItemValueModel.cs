@@ -154,7 +154,7 @@ internal class CrpgItemValueModel : ItemValueModel
                 WeaponClass.OneHandedSword => 20.9f,
                 WeaponClass.OneHandedAxe => 25.3f,
                 WeaponClass.Mace => 25.3f,
-                WeaponClass.Dagger => 27f,
+                WeaponClass.Dagger => 20.9f,
                 WeaponClass.TwoHandedSword => 27.5f,
                 WeaponClass.TwoHandedMace => 28.5f,
                 WeaponClass.TwoHandedAxe => 36f,
@@ -167,7 +167,7 @@ internal class CrpgItemValueModel : ItemValueModel
                 WeaponClass.OneHandedSword => 30.8f,
                 WeaponClass.OneHandedAxe => 30.8f,
                 WeaponClass.Mace => 30.8f,
-                WeaponClass.Dagger => 34f,
+                WeaponClass.Dagger => 30.8f,
                 WeaponClass.TwoHandedSword => 30f,
                 WeaponClass.TwoHandedMace => 30f,
                 WeaponClass.TwoHandedAxe => 30f,
@@ -226,14 +226,15 @@ internal class CrpgItemValueModel : ItemValueModel
             }
 
             if (!weapon.ItemUsage.Contains("block")
-                && !weapon.ItemUsage.Contains("pike")
+                && (weapon.ItemUsage.Contains("onehanded") || weapon.ItemUsage.Contains("twohanded") || weapon.ItemUsage.Contains("polearm"))
                 && !weapon.ItemUsage.Contains("axe")
+                && !weapon.ItemUsage.Contains("pike")
                 && !weapon.ItemUsage.Contains("couch")
                 && !weapon.ItemUsage.Contains("bracing")
                 && !weapon.ItemUsage.Contains("throwing"))
             {
-                swingTier *= 0.7f;
-                thrustTier *= 0.7f;
+                swingTier *= 0.9f;
+                thrustTier *= 0.9f;
             }
 
             float swingLengthTier;
@@ -368,7 +369,7 @@ internal class CrpgItemValueModel : ItemValueModel
     private float CalculateRangedWeaponTier(WeaponComponent weaponComponent)
     {
         WeaponComponentData weapon = weaponComponent.Weapons[0];
-        float scaler = 1.560284f;
+        float scaler = 1.47682557092106f;
         float heirloomLevel = ItemToHeirloomLevel(weaponComponent.Item);
         if (weaponComponent.Item is { ItemType: ItemObject.ItemTypeEnum.Crossbow })
         {
