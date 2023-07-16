@@ -5,6 +5,7 @@ import {
   type CharacterCompetitive,
   type CharacterCompetitiveNumbered,
 } from '@/models/competitive';
+import { CharacterClass } from '@/models/character';
 import { Region } from '@/models/region';
 import { type ClanEdition } from '@/models/clan';
 import { type UserPublic } from '@/models/user';
@@ -21,10 +22,16 @@ interface CharacterCompetitiveRaw extends Omit<CharacterCompetitive, 'user'> {
   user: UserPublicRaw;
 }
 
-export const getLeaderBoard = async (region?: Region): Promise<CharacterCompetitiveNumbered[]> => {
+export const getLeaderBoard = async ({
+  region,
+  characterClass,
+}: {
+  region?: Region;
+  characterClass?: CharacterClass;
+}): Promise<CharacterCompetitiveNumbered[]> => {
   // TODO: realize GET params in crpg-client
   const params = qs.stringify(
-    { region },
+    { region, characterClass },
     {
       strictNullHandling: true,
       arrayFormat: 'brackets',

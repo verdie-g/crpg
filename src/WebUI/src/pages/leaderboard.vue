@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { type CharacterCompetitiveNumbered } from '@/models/competitive';
+import { CharacterClass } from '@/models/character';
+
 import { getLeaderBoard, createRankTable } from '@/services/leaderboard-service';
 import { characterClassToIcon } from '@/services/characters-service';
 import { useUserStore } from '@/stores/user';
@@ -13,19 +15,46 @@ definePage({
   },
 });
 
+const route = useRoute();
+const router = useRouter();
+
 const userStore = useUserStore();
 
 const { regionModel, regions } = useRegion();
+
+const characterClassModel = computed({
+  get() {
+    return (route.query?.class as CharacterClass) || undefined;
+  },
+
+  set(characterClass: CharacterClass | undefined) {
+    router.replace({
+      query: {
+        ...route.query,
+        class: characterClass,
+      },
+    });
+  },
+});
+
+const characterClasses = Object.values(CharacterClass);
 
 const {
   state: leaderboard,
   execute: loadLeaderBoard,
   isLoading: leaderBoardLoading,
-} = useAsyncState(() => getLeaderBoard(regionModel.value), [], {});
+} = useAsyncState(
+  () => getLeaderBoard({ region: regionModel.value, characterClass: characterClassModel.value }),
+  [],
+  {}
+);
 
-watch(regionModel, () => {
-  loadLeaderBoard();
-});
+watch(
+  () => route.query,
+  async () => {
+    await loadLeaderBoard();
+  }
+);
 
 const rankTable = computed(() => createRankTable());
 
@@ -105,17 +134,52 @@ const rowClass = (row: CharacterCompetitiveNumbered) =>
           <UserMedia :user="row.user" :clan="row.user.clan" hiddenPlatform class="max-w-[20rem]" />
         </OTableColumn>
 
-        <OTableColumn
-          #default="{ row }: { row: CharacterCompetitiveNumbered }"
-          field="class"
-          :label="$t('leaderboard.table.cols.class')"
-          sortable
-        >
-          <OIcon
-            :icon="characterClassToIcon[row.class]"
-            size="lg"
-            v-tooltip="$t(`character.class.${row.class}`)"
-          />
+        <OTableColumn field="class" :width="80">
+          <template #header>
+            <div class="relative flex items-center gap-1">
+              <OIcon
+                v-if="characterClassModel"
+                class="absolute -left-5 top-1/2 -translate-y-1/2 transform cursor-pointer hover:text-status-danger"
+                v-tooltip.bottom="$t('action.reset')"
+                icon="close"
+                size="xs"
+                @click="characterClassModel = undefined"
+              />
+              <VDropdown :triggers="['click']">
+                <div
+                  class="max-w-[90px] cursor-pointer overflow-x-hidden text-ellipsis whitespace-nowrap border-b-2 border-dashed border-border-300 pb-0.5 text-2xs hover:text-content-100 2xl:max-w-[120px]"
+                >
+                  {{ $t('leaderboard.table.cols.class') }}
+                </div>
+
+                <template #popper="{ hide }">
+                  <div class="max-w-md">
+                    <DropdownItem
+                      v-for="characterClass in characterClasses"
+                      :checked="characterClass === characterClassModel"
+                      @click="
+                        () => {
+                          characterClassModel = characterClass;
+                          hide();
+                        }
+                      "
+                    >
+                      <OIcon :icon="characterClassToIcon[characterClass]" size="lg" />
+                      {{ $t(`character.class.${characterClass}`) }}
+                    </DropdownItem>
+                  </div>
+                </template>
+              </VDropdown>
+            </div>
+          </template>
+
+          <template #default="{ row }: { row: CharacterCompetitiveNumbered }">
+            <OIcon
+              :icon="characterClassToIcon[row.class]"
+              size="lg"
+              v-tooltip="$t(`character.class.${row.class}`)"
+            />
+          </template>
         </OTableColumn>
 
         <OTableColumn
@@ -123,6 +187,7 @@ const rowClass = (row: CharacterCompetitiveNumbered) =>
           field="level"
           :label="$t('leaderboard.table.cols.level')"
           sortable
+          :width="80"
         >
           {{ row.level }}
         </OTableColumn>

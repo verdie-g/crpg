@@ -100,7 +100,7 @@ describe.only('getLeaderBoard', () => {
   });
 
   it('set position', async () => {
-    const res = await getLeaderBoard(Region.Eu);
+    const res = await getLeaderBoard({ region: Region.Eu });
 
     expect(mock).toHaveFetchedWithQuery('region=Eu');
 
@@ -109,7 +109,7 @@ describe.only('getLeaderBoard', () => {
   });
 
   it('normalize clan color', async () => {
-    await getLeaderBoard(Region.Eu);
+    await getLeaderBoard({ region: Region.Eu });
 
     expect(mockedMapClanResponse).toBeCalledTimes(1);
     expect(mockedMapClanResponse).toBeCalledWith({
