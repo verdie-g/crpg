@@ -193,16 +193,10 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
 
             for (EquipmentIndex i = EquipmentIndex.WeaponItemBeginSlot; i < EquipmentIndex.NumAllWeaponSlots; i += 1)
             {
-                if (!agent.Equipment[i].IsEmpty
-                    && (agent.Equipment[i].CurrentUsageItem.WeaponClass == WeaponClass.Arrow
-                        || agent.Equipment[i].CurrentUsageItem.WeaponClass == WeaponClass.Bolt
-                        || agent.Equipment[i].CurrentUsageItem.WeaponClass == WeaponClass.Stone
-                        || agent.Equipment[i].CurrentUsageItem.WeaponClass == WeaponClass.Javelin
-                        || agent.Equipment[i].CurrentUsageItem.WeaponClass == WeaponClass.ThrowingAxe
-                        || agent.Equipment[i].CurrentUsageItem.WeaponClass == WeaponClass.ThrowingKnife)
-                    && agent.Equipment[i].Amount < agent.Equipment[i].ModifiedMaxAmount)
+                var weapon = agent.Equipment[i];
+                if (!weapon.IsEmpty && (weapon.IsAnyAmmo() || weapon.CurrentUsageItem.IsShield))
                 {
-                    agent.SetWeaponAmountInSlot(i, agent.Equipment[i].ModifiedMaxAmount, true);
+                    agent.SetWeaponAmountInSlot(i, agent.Equipment[i].ModifiedMaxAmount, false);
                 }
             }
         }
