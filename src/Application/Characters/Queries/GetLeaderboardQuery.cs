@@ -5,6 +5,7 @@ using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Domain.Entities;
+using Crpg.Domain.Entities.Characters;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Queries;
@@ -12,6 +13,8 @@ namespace Crpg.Application.Characters.Queries;
 public record GetLeaderboardQuery : IMediatorRequest<IList<CharacterPublicViewModel>>
 {
     public Region? Region { get; set; }
+
+    public CharacterClass? CharacterClass { get; set; }
 
     internal class Handler : IMediatorRequestHandler<GetLeaderboardQuery, IList<CharacterPublicViewModel>>
     {
@@ -29,6 +32,7 @@ public record GetLeaderboardQuery : IMediatorRequest<IList<CharacterPublicViewMo
             var topRatedCharactersByRegion = await _db.Characters
                 .OrderByDescending(c => c.Rating.CompetitiveValue)
                 .Where(c => req.Region == null || req.Region == c.User!.Region)
+                .Where(c => req.CharacterClass == null || req.CharacterClass == c.Class)
                 .Take(50)
                 .ProjectTo<CharacterPublicViewModel>(_mapper.ConfigurationProvider)
                 .AsSplitQuery()
