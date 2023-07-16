@@ -6,5 +6,6 @@
     <native_parameter id="quadrupedal_delta_rotation_threshold_for_keeping_local_velocity" value="1"/> <!-- this removes slidiness -->
     <native_parameter id="minimum_anim_strength_for_chamber_block" value="0.01"/>
     <native_parameter id="maximum_anim_strength_for_chamber_block" value="0.99"/>
+    <native_parameter id="lower_arc_when_defending_with_shield_horseback" value="-0.2" />
   </native_parameters>
 </base>
