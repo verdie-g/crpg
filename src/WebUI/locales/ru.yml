@@ -1103,7 +1103,7 @@ item:
 
     new:
       title: 'Только новые предметы'
-      description: 'Показывать предметы добавленные не позднее {days} дней'
+      description: 'Показывать предметы добавленные или обновленные не позднее {days} дней'
 
   format:
     upkeep: '{upkeep} / @:dateTime.hours.short'

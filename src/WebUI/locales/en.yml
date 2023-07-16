@@ -1103,7 +1103,7 @@ item:
 
     new:
       title: 'New items only'
-      description: 'Show items added within {days} days'
+      description: 'Show items added or reworked within the last {days} days'
 
   format:
     upkeep: '{upkeep} / @:dateTime.hours.short'
