@@ -5,7 +5,6 @@ import {
   experienceMultiplierByGeneration,
   maxExperienceMultiplierForGeneration,
   minimumRetirementLevel,
-  tournamentLevel,
   maximumLevel,
   freeRespecializeIntervalDays,
 } from '@root/data/constants.json';
@@ -24,6 +23,7 @@ import {
   canRetireValidate,
   retireCharacter,
   canSetCharacterForTournamentValidate,
+  tournamentLevelThreshold,
   setCharacterForTournament,
   getHeirloomPointByLevel,
   type HeirloomPointByLevelAggregation,
@@ -579,7 +579,7 @@ await fetchPageData(character.value.id);
                   >
                     <template #tournamentLevel>
                       <span class="text-sm font-bold text-content-100">
-                        {{ tournamentLevel }}
+                        {{ tournamentLevelThreshold }}
                       </span>
                     </template>
                   </i18n-t>
@@ -592,7 +592,7 @@ await fetchPageData(character.value.id);
                     tag="p"
                   >
                     <template #requiredLevel>
-                      <span class="text-xs font-bold">{{ `<${tournamentLevel}` }}</span>
+                      <span class="text-xs font-bold">{{ `<${tournamentLevelThreshold}` }}</span>
                     </template>
                   </i18n-t>
                 </div>
