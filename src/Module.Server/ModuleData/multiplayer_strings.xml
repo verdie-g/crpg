@@ -105,9 +105,11 @@
   <string id="str_multiplayer_scene_name.crpg_battle_weirwater" text="{=*}Weirwater" />
   <string id="str_multiplayer_scene_name.crpg_battle_whitebridge" text="{=*}White Bridge" />
   <string id="str_multiplayer_scene_name.crpg_battle_zemouri" text="{=*}Zemouri" />
+  <string id="str_multiplayer_scene_name.crpg_battle_monastery" text="{=*}Monastery" />
 
   <!-- Conquest Maps -->
   <string id="str_multiplayer_scene_name.crpg_conquest_acre" text="{=*}Acre" />
+  <string id="str_multiplayer_scene_name.crpg_conquest_ardumu" text="{=*}Ardumu" />
   <string id="str_multiplayer_scene_name.crpg_conquest_frederiksborg" text="{=*}Frederiksborg" />
   <string id="str_multiplayer_scene_name.crpg_conquest_hades" text="{=*}Hades" />
   <string id="str_multiplayer_scene_name.crpg_conquest_ironhale" text="{=*}Ironhale" />
@@ -117,5 +119,6 @@
   <string id="str_multiplayer_scene_name.crpg_conquest_skalalanding" text="{=*}Skala Landing" />
 
   <!-- DTV Maps -->
+  <string id="str_multiplayer_scene_name.crpg_dtv_qalat" text="{=*}Qalat" />
   <string id="str_multiplayer_scene_name.crpg_dtv_weepinghill" text="{=*}Weeping Hill" />
 </strings>

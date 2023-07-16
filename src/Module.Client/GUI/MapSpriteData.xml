@@ -17,7 +17,7 @@
   <SpriteCategories>
     <SpriteCategory>
       <Name>ui_mploading</Name>
-      <SpriteSheetCount>115</SpriteSheetCount>
+      <SpriteSheetCount>119</SpriteSheetCount>
       <SpriteSheetSize ID="1" Width="3840" Height="1935" />
       <SpriteSheetSize ID="2" Width="3840" Height="1935" />
       <SpriteSheetSize ID="3" Width="3383" Height="1902" />
@@ -121,6 +121,10 @@
       <SpriteSheetSize ID="113" Width="1920" Height="1080" />
       <SpriteSheetSize ID="114" Width="1920" Height="1080" />
       <SpriteSheetSize ID="115" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="116" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="117" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="118" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="119" Width="1920" Height="1080" />
       <AlwaysLoad />
     </SpriteCategory>
   </SpriteCategories>
@@ -1043,6 +1047,42 @@
       <SheetY>0</SheetY>
       <CategoryName>ui_mploading</CategoryName>
     </SpritePart>
+    <SpritePart>
+      <SheetID>116</SheetID>
+      <Name>crpg_battle_monastery</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>117</SheetID>
+      <Name>crpg_conquest_ardumu</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>118</SheetID>
+      <Name>crpg_dtv_qalat</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>119</SheetID>
+      <Name>crpg_dtv_weepinghill</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
   </SpriteParts>
   <Sprites>
     <GenericSprite>
@@ -1452,6 +1492,22 @@
     <GenericSprite>
       <Name>crpg_battle_skalhills</Name>
       <SpritePartName>crpg_battle_skalhills</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_monastery</Name>
+      <SpritePartName>crpg_battle_monastery</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_conquest_ardumu</Name>
+      <SpritePartName>crpg_conquest_ardumu</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_dtv_qalat</Name>
+      <SpritePartName>crpg_dtv_qalat</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_dtv_weepinghill</Name>
+      <SpritePartName>crpg_dtv_weepinghill</SpritePartName>
     </GenericSprite>
   </Sprites>
 </SpriteData>
