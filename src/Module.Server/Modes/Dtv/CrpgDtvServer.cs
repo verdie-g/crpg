@@ -120,7 +120,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         _currentWave = -1;
         SpawningBehavior.RequestSpawnSessionForRoundStart(firstRound: _currentRound == 0);
         SendDataToPeers(new CrpgDtvRoundStartMessage { Round = _currentRound });
-        _waveStartTimer = new MissionTimer(10f);
+        _waveStartTimer = new MissionTimer(15f);
         _waveStarted = false;
     }
 
