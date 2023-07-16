@@ -85,11 +85,11 @@ it('respecializeCharacter', async () => {
 it.todo('TODO: getCharacterLimitations', () => {});
 
 it.each<[Partial<Character>, boolean]>([
-  [{ forTournament: false, generation: 0, level: 29 }, true],
-  [{ forTournament: false, generation: 1, level: 29 }, false],
+  [{ forTournament: false, generation: 0, level: 19 }, true],
+  [{ forTournament: false, generation: 1, level: 19 }, false],
   [{ forTournament: false, generation: 0, level: 31 }, false],
-  [{ forTournament: true, generation: 0, level: 29 }, false],
-  [{ forTournament: false, generation: 0, level: 30 }, true],
+  [{ forTournament: true, generation: 0, level: 19 }, false],
+  [{ forTournament: false, generation: 0, level: 20 }, false],
   [{ forTournament: false, generation: 0, level: 1 }, true],
   [{ forTournament: true, generation: 1, level: 31 }, false],
 ])('canSetCharacterForTournamentValidate - character: %j', (character, expectation) => {
@@ -263,7 +263,7 @@ it('createCharacteristics', () => {
 
 it.each([
   [0, 3, 63],
-  [1, 3, 66],
+  [1, 3, 67],
 ])('computeHealthPoints - wm: %s', (ironFlesh, strength, expectation) => {
   expect(computeHealthPoints(ironFlesh, strength)).toEqual(expectation);
 });

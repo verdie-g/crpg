@@ -64,7 +64,8 @@ export const activateCharacter = (characterId: number, active: boolean) =>
 export const respecializeCharacter = (characterId: number) =>
   put<Character>(`/users/self/characters/${characterId}/respecialize`);
 
-const tournamentLevelThreshold = 25;
+export const tournamentLevelThreshold = 20;
+
 export const canSetCharacterForTournamentValidate = (character: Character) =>
   !(
     character.forTournament ||
@@ -355,9 +356,8 @@ export const computeLongestWeaponLength = (items: Item[]) => {
 export const computeOverallAverageRepairCostByHour = (items: Item[]) =>
   Math.floor(items.reduce((total, item) => total + computeAverageRepairCostPerHour(item.price), 0));
 
-export const getHeirloomPointByLevel = (level: number) => {
-  return Math.pow(2, level - minimumRetirementLevel);
-};
+export const getHeirloomPointByLevel = (level: number) =>
+  level < minimumRetirementLevel ? 0 : Math.pow(2, level - minimumRetirementLevel);
 
 export type HeirloomPointByLevelAggregation = { level: number[]; points: number };
 
