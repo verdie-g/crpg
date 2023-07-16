@@ -20,8 +20,7 @@ public class LeaderboardController : BaseController
     [ResponseCache(Duration = 1 * 60 * 1)] // 1 minutes
     public Task<ActionResult<Result<IList<CharacterPublicViewModel>>>> GetLeaderboard(
         [FromQuery] Region? region,
-        [FromQuery] CharacterClass? characterClass
-    )
+        [FromQuery] CharacterClass? characterClass)
     {
         return ResultToActionAsync(Mediator.Send(new GetLeaderboardQuery
         {
