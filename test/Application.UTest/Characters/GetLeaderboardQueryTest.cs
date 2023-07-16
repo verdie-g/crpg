@@ -320,7 +320,7 @@ public class GetLeaderboardQueryTest : TestBase
         GetLeaderboardQuery.Handler handler = new(ActDb, Mapper);
         var result = await handler.Handle(new GetLeaderboardQuery
         {
-            CharacterClass = Domain.Entities.CharacterClass.ShockInfantry,
+            CharacterClass = Domain.Entities.Characters.CharacterClass.ShockInfantry,
         }, CancellationToken.None);
 
         Assert.That(result.Errors, Is.Null);
