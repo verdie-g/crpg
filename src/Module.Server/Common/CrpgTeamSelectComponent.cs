@@ -37,6 +37,8 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
     /// </summary>
     private readonly HashSet<PlayerId> _playersWaitingForTeam;
 
+    private readonly Dictionary<PlayerId, Team> _playerTeamsBeforeJoiningSpectator;
+
     public CrpgTeamSelectComponent(MultiplayerWarmupComponent warmupComponent, MultiplayerRoundController? roundController)
     {
         _warmupComponent = warmupComponent;
@@ -44,6 +46,7 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
         _balancer = new MatchBalancer();
         _periodStatsHelper = new PeriodStatsHelper();
         _playersWaitingForTeam = new HashSet<PlayerId>();
+        _playerTeamsBeforeJoiningSpectator = new Dictionary<PlayerId, Team>();
     }
 #endif
 
@@ -92,6 +95,13 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
         {
             if (message.Team == Mission.SpectatorTeam && !message.AutoAssign)
             {
+                var missionPeer = peer.GetComponent<MissionPeer>();
+                if (missionPeer.Team != null && missionPeer.Team.Side != BattleSideEnum.None)
+                {
+                    // Save the team before joining spectator to re-assign that same team later.
+                    _playerTeamsBeforeJoiningSpectator[peer.VirtualPlayer.Id] = missionPeer.Team;
+                }
+
                 ChangeTeamServer(peer, message.Team);
             }
             else if (_warmupComponent.IsInWarmup)
@@ -106,6 +116,11 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
                     // If the player just connected to the server, auto-assign their team so they have a chance
                     // to play the round.
                     AutoAssignTeam(peer);
+                }
+                else if (_playerTeamsBeforeJoiningSpectator.TryGetValue(peer.VirtualPlayer.Id, out var teamBeforeSpectator))
+                {
+                    ChangeTeamServer(peer, teamBeforeSpectator);
+                    _playerTeamsBeforeJoiningSpectator.Remove(peer.VirtualPlayer.Id);
                 }
                 else
                 {
