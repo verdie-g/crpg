@@ -1101,6 +1101,10 @@ item:
       title: 'Ранг'
       description: ''
 
+    new:
+      title: 'Только новые предметы'
+      description: 'Показывать предметы добавленные или обновленные не позднее {days} дней'
+
   format:
     upkeep: '{upkeep} / @:dateTime.hours.short'
     rank: 'Ранг предмета {rank}'

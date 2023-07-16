@@ -1101,6 +1101,10 @@ item:
       title: 'Rank'
       description: ''
 
+    new:
+      title: 'New items only'
+      description: 'Show items added or reworked within the last {days} days'
+
   format:
     upkeep: '{upkeep} / @:dateTime.hours.short'
     rank: 'Item rank {rank}'

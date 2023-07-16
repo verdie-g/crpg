@@ -1,6 +1,11 @@
 <script setup lang="ts">
-import { WeaponUsage, type ItemFlat, ItemCompareMode } from '@/models/item';
-import { getItems, getCompareItemsResult, canUpgrade } from '@/services/item-service';
+import { WeaponUsage, type ItemFlat } from '@/models/item';
+import {
+  getItems,
+  getCompareItemsResult,
+  canUpgrade,
+  itemIsNewDays,
+} from '@/services/item-service';
 import { getSearchResult } from '@/services/item-search-service';
 import { notify } from '@/services/notification-service';
 import { t } from '@/services/translate-service';
@@ -102,51 +107,65 @@ const isUpgradableCategory = computed(() => canUpgrade(itemTypeModel.value));
 
     <div class="mb-2 flex items-center gap-6 overflow-x-auto pb-2">
       <VDropdown :triggers="['click']" placement="bottom-end">
-        <OButton variant="secondary" outlined size="xl" rounded>
+        <OButton variant="primary" outlined size="xl" rounded>
           <FontAwesomeLayers full-width class="fa-2x">
             <FontAwesomeIcon :icon="['crpg', 'dots']" />
             <FontAwesomeLayersText
               v-if="
                 hideOwnedItemsModel ||
-                ('weaponUsage' in filterModel && filterModel['weaponUsage']!.length > 1)
+                ('weaponUsage' in filterModel && filterModel['weaponUsage']!.length > 1) ||
+                ('new' in filterModel && filterModel['new']!.length)
               "
               counter
               value="●"
               position="top-right"
-              :style="{ '--fa-counter-background-color': '#53825A' }"
+              :style="{ '--fa-counter-background-color': 'rgba(83, 188, 150, 1)' }"
             />
           </FontAwesomeLayers>
         </OButton>
 
-        <template #popper>
+        <template #popper="{ hide }">
           <DropdownItem>
-            <OCheckbox v-model="hideOwnedItemsModel">
+            <Tooltip
+              :title="$t('item.aggregations.new.title')"
+              :description="$t('item.aggregations.new.description', { days: itemIsNewDays })"
+            >
+              <OCheckbox
+                :nativeValue="1"
+                :modelValue="filterModel['new']"
+                @update:modelValue="(val: number) => updateFilter('new', val)"
+                @change="hide"
+              >
+                {{ $t('item.aggregations.new.title') }}
+              </OCheckbox>
+            </Tooltip>
+          </DropdownItem>
+
+          <DropdownItem>
+            <OCheckbox v-model="hideOwnedItemsModel" @change="hide">
               {{ $t('shop.hideOwnedItems.title') }}
             </OCheckbox>
           </DropdownItem>
 
           <DropdownItem v-if="'weaponUsage' in filterModel">
-            <VTooltip>
+            <Tooltip
+              :title="$t('shop.nonPrimaryWeaponMode.tooltip.title')"
+              :description="$t('shop.nonPrimaryWeaponMode.tooltip.desc')"
+            >
               <OCheckbox
                 :nativeValue="WeaponUsage.Secondary"
                 :modelValue="filterModel['weaponUsage']"
                 @update:modelValue="(val: string) => updateFilter('weaponUsage', val)"
+                @change="hide"
               >
                 {{ $t('shop.nonPrimaryWeaponMode.title') }}
               </OCheckbox>
-
-              <template #popper>
-                <div class="prose prose-invert">
-                  <h5 class="text-content-100">
-                    {{ $t('shop.nonPrimaryWeaponMode.tooltip.title') }}
-                  </h5>
-                  <div v-html="$t('shop.nonPrimaryWeaponMode.tooltip.desc')" />
-                </div>
-              </template>
-            </VTooltip>
+            </Tooltip>
           </DropdownItem>
         </template>
       </VDropdown>
+
+      <div class="h-8 w-px select-none bg-border-200" />
 
       <ShopItemTypeSelect
         v-model:itemType="itemTypeModel"

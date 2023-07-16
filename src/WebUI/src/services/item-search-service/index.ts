@@ -35,6 +35,7 @@ export const getAggregationsConfig = (
   const output: AggregationConfig = {
     // common aggregations
     modId: aggregationsConfig['modId'],
+    new: aggregationsConfig['new'],
   };
 
   if (weaponClass !== null && weaponClass in aggregationsKeysByWeaponClass) {

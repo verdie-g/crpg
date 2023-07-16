@@ -26,6 +26,14 @@ export const aggregationsConfig: AggregationConfig = {
     chosen_filters_on_top: false,
     hidden: true,
   },
+  new: {
+    size,
+    sort: 'term',
+    conjunction: false,
+    view: AggregationView.Checkbox,
+    chosen_filters_on_top: false,
+    hidden: true,
+  },
   type: {
     sort: 'term',
     size,

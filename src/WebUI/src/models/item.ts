@@ -193,6 +193,7 @@ export type ItemRank = 0 | 1 | 2 | 3;
 export interface Item {
   baseId: string;
   id: string;
+  createdAt: string;
   rank: ItemRank;
   name: string;
   price: number;
@@ -215,6 +216,7 @@ export enum WeaponUsage {
 export interface ItemFlat {
   id: string;
   baseId: string;
+  new: number;
   rank: ItemRank;
   modId: string;
   name: string;
