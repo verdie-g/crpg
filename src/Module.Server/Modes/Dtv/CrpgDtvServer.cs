@@ -13,7 +13,6 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
     private readonly CrpgRewardServer _rewardServer;
     private readonly CrpgDtvData _dtvData;
 
-    private int _currentGame;
     private int _currentRound;
     private int _currentRoundDefendersCount;
     private int _currentWave;
@@ -26,7 +25,8 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
     {
         _rewardServer = rewardServer;
         _dtvData = ReadDtvData();
-        _currentGame = 0;
+        _gameStarted = false;
+        _currentRound = -1;
     }
 
     public override bool IsGameModeHidingAllAgentVisuals => true;
@@ -49,14 +49,6 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
     {
         base.AfterStart();
         AddTeams();
-    }
-
-    public override void OnClearScene()
-    {
-        _gameStarted = false;
-        _currentRound = -1;
-        ClearPeerCounts();
-        Mission.GetMissionBehavior<MissionScoreboardComponent>().ResetBotScores();
     }
 
     public override bool CheckForWarmupEnd()
@@ -88,24 +80,19 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         {
             if (_endGameTimer.Check())
             {
-                _currentGame += 1;
-                if (_currentGame == 5)
-                {
-                    MissionLobbyComponent.SetStateEndingAsServer();
-                }
-                else
-                {
-                    _endGameTimer = null;
-                    Mission.ResetMission();
-                }
+                _endGameTimer = null;
+                MissionLobbyComponent.SetStateEndingAsServer();
             }
 
+            // If the game is ending don't process the tick any further.
             return;
         }
 
         if (!_gameStarted)
         {
             _gameStarted = true;
+            ClearPeerCounts();
+            Mission.GetMissionBehavior<MissionScoreboardComponent>().ResetBotScores();
             StartNextRound();
         }
         else if (_waveStarted)
