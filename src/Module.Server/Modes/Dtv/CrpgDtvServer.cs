@@ -10,6 +10,8 @@ namespace Crpg.Module.Modes.Dtv;
 
 internal class CrpgDtvServer : MissionMultiplayerGameModeBase
 {
+    private const int RewardMultiplier = 2;
+
     private readonly CrpgRewardServer _rewardServer;
     private readonly CrpgDtvData _dtvData;
 
@@ -135,7 +137,8 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
             SendDataToPeers(new CrpgDtvGameEnd { ViscountDead = viscountDead });
             _ = _rewardServer.UpdateCrpgUsersAsync(
                 durationRewarded: ComputeRoundReward(CurrentRoundData, wavesWon: _currentWave),
-                updateUserStats: false);
+                updateUserStats: false,
+                constantMultiplier: RewardMultiplier);
             EndGame(Mission.AttackerTeam);
             return;
         }
@@ -154,7 +157,8 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
 
         _ = _rewardServer.UpdateCrpgUsersAsync(
             durationRewarded: ComputeRoundReward(CurrentRoundData, wavesWon: _currentWave + 1),
-            updateUserStats: false);
+            updateUserStats: false,
+            constantMultiplier: RewardMultiplier);
 
         if (_currentRound < RoundsCount - 1)
         {
