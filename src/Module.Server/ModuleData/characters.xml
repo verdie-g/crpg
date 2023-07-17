@@ -1064,7 +1064,7 @@
       <EquipmentRoster>
         <equipment slot="Head" id="Item.crpg_vlandia_crown_v1_h0" />
         <equipment slot="Cape" id="Item.crpg_pauldron_cape_a_v1_h0" />
-        <equipment slot="Body" id="Item.crpg_pauldron_cape_a_v1_h0" />
+        <equipment slot="Body" id="Item.crpg_heraldic_mail_with_tabbard_v1_h0" />
         <equipment slot="Gloves" id="Item.crpg_reinforced_mail_mitten_v1_h0" />
         <equipment slot="Leg" id="Item.crpg_fine_town_boots_v1_h0" />
         <equipment slot="Item0" id="Item.crpg_calradic_mace_h0" />
