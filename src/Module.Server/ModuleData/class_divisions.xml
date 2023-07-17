@@ -792,6 +792,30 @@
     </Perks>
   </MPClassDivision>
 
+  <MPClassDivision id="crpg_dtv_recruit_cavalry"
+             hero="crpg_dtv_recruit_cavalry"
+             troop="crpg_dtv_recruit_cavalry"
+             hero_mount_idle_anim="act_vlandia_mp_vanguard_mount_idle"
+             troop_mount_idle_anim="act_horse_idle_1"
+             multiplier="0"
+             cost="0"
+             icon="Cavalry_Light"
+             melee_ai="40"
+             ranged_ai="0"
+             armor="0"
+             movement_speed="0"
+             combat_movement_speed="0"
+             acceleration="0">
+    <Perks>
+      <Perk game_mode="all"
+            name="{=}None"
+            description="{=}None."
+            icon="PerkToughness"
+            perk_list="1">
+      </Perk>
+    </Perks>
+  </MPClassDivision>
+
   <MPClassDivision id="crpg_dtv_recruit_boss"
                hero="crpg_dtv_recruit_boss"
                troop="crpg_dtv_recruit_boss"
@@ -926,6 +950,30 @@
                  movement_speed="0"
                  combat_movement_speed="0"
                  acceleration="0">
+    <Perks>
+      <Perk game_mode="all"
+            name="{=}None"
+            description="{=}None."
+            icon="PerkToughness"
+            perk_list="1">
+      </Perk>
+    </Perks>
+  </MPClassDivision>
+
+  <MPClassDivision id="crpg_dtv_fancy_cavalry"
+         hero="crpg_dtv_fancy_cavalry"
+         troop="crpg_dtv_fancy_cavalry"
+         hero_mount_idle_anim="act_vlandia_mp_vanguard_mount_idle"
+         troop_mount_idle_anim="act_horse_idle_1"
+         multiplier="0"
+         cost="0"
+         icon="Cavalry_Light"
+         melee_ai="40"
+         ranged_ai="0"
+         armor="0"
+         movement_speed="0"
+         combat_movement_speed="0"
+         acceleration="0">
     <Perks>
       <Perk game_mode="all"
             name="{=}None"
@@ -1142,6 +1190,30 @@
                  movement_speed="0"
                  combat_movement_speed="0"
                  acceleration="0">
+    <Perks>
+      <Perk game_mode="all"
+            name="{=}None"
+            description="{=}None."
+            icon="PerkToughness"
+            perk_list="1">
+      </Perk>
+    </Perks>
+  </MPClassDivision>
+
+  <MPClassDivision id="crpg_dtv_legion_cavalry"
+           hero="crpg_dtv_legion_cavalry"
+           troop="crpg_dtv_legion_cavalry"
+           hero_mount_idle_anim="act_vlandia_mp_vanguard_mount_idle"
+           troop_mount_idle_anim="act_horse_idle_1"
+           multiplier="0"
+           cost="0"
+           icon="Cavalry_Light"
+           melee_ai="40"
+           ranged_ai="0"
+           armor="0"
+           movement_speed="0"
+           combat_movement_speed="0"
+           acceleration="0">
     <Perks>
       <Perk game_mode="all"
             name="{=}None"
