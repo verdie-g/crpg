@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useGameServerStats } from '@/composables/use-game-server-stats';
+import { useReleaseNotes } from '@/composables/use-release-notes';
 
 definePage({
   meta: {
@@ -7,9 +8,10 @@ definePage({
   },
 });
 
+const { releaseNotes, loadReleaseNotes } = useReleaseNotes();
 const { gameServerStats, loadGameServerStats } = useGameServerStats();
 
-await loadGameServerStats();
+Promise.all([loadReleaseNotes(), loadGameServerStats()]);
 </script>
 
 <template>
@@ -17,6 +19,28 @@ await loadGameServerStats();
     <Bg bg="background-1.webp" />
 
     <div class="relative flex h-full items-center border border-border-300 text-content-200">
+      <div v-if="releaseNotes?.length" class="absolute left-6 top-6 gap-6 space-y-2">
+        <a
+          :href="releaseNotes[0].url"
+          class="group flex items-center gap-2 rounded-full bg-base-300 bg-opacity-50 p-4 shadow-xl hover:shadow-none"
+        >
+          <OIcon icon="trumpet" size="xl" class="text-primary" />
+          <div class="font-bold text-content-100 group-hover:text-content-200">
+            {{ releaseNotes[0].title }}
+          </div>
+          <Tag variant="primary" :label="'Latest'" />
+        </a>
+
+        <div class="pl-5">
+          <a
+            href="https://github.com/verdie-g/crpg/releases"
+            class="text-[0.85rem] underline hover:no-underline"
+          >
+            + 3 releases
+          </a>
+        </div>
+      </div>
+
       <div class="absolute right-6 top-6 flex items-center gap-6">
         <OnlinePlayers :gameServerStats="gameServerStats" showLabel />
 
