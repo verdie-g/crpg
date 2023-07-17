@@ -119,9 +119,8 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
     private void StartNextWave()
     {
         _currentWave += 1;
-        bool firstWave = _currentWave == 0;
-        RefillDefendersHealthPointsAndAmmo(refillAmmo: firstWave);
-        _currentRoundDefendersCount = firstWave ? GetDefendersCount() : _currentRoundDefendersCount;
+        RefillDefendersHealthPointsAndAmmo();
+        _currentRoundDefendersCount = _currentWave == 0 ? GetDefendersCount() : _currentRoundDefendersCount;
         SpawningBehavior.RequestSpawnSessionForWaveStart(CurrentWaveData, _currentRoundDefendersCount);
         SendDataToPeers(new CrpgDtvWaveStartMessage { Wave = _currentWave });
         _waveStarted = true;
@@ -173,7 +172,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         _endGameTimer = new MissionTimer(8f);
     }
 
-    private void RefillDefendersHealthPointsAndAmmo(bool refillAmmo)
+    private void RefillDefendersHealthPointsAndAmmo()
     {
         foreach (Agent agent in Mission.DefenderTeam.ActiveAgents)
         {
@@ -181,11 +180,6 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
             if (agent.HasMount)
             {
                 agent.MountAgent.Health = agent.MountAgent.HealthLimit;
-            }
-
-            if (!refillAmmo)
-            {
-                continue;
             }
 
             for (EquipmentIndex i = EquipmentIndex.WeaponItemBeginSlot; i < EquipmentIndex.NumAllWeaponSlots; i += 1)
