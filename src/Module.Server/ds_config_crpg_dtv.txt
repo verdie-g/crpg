@@ -9,7 +9,7 @@ disable_culture_voting
 CultureTeam1 vlandia
 CultureTeam2 battania
 RoundPreparationTimeLimit 2
-MapTimeLimit 60
+MapTimeLimit 150
 MaxNumberOfPlayers 32
 AutoTeamBalanceThreshold 5
 FriendlyFireDamageMeleeFriendPercent 50
