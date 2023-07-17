@@ -27,7 +27,7 @@ internal class ServerMetricsBehavior : MissionBehavior
         // https://docs.datadoghq.com/developers/dogstatsd/datagram_shell/?tab=events
         string title = "Mission started";
         string content = $"Mission started on scene {Mission.SceneName}";
-        string datagramStr = $"_e{{{title.Length},{content.Length}}}:{title}|{content}|#{BuildTags()}";
+        string datagramStr = $"_e{{{title.Length},{content.Length}}}:{title}|{content}|k:mission-started|s:csharp|#{BuildTags()}";
         SendDatagram(datagramStr);
     }
 
