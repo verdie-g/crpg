@@ -178,6 +178,11 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         foreach (Agent agent in Mission.DefenderTeam.ActiveAgents)
         {
             agent.Health = agent.HealthLimit;
+            if (agent.HasMount)
+            {
+                agent.MountAgent.Health = agent.MountAgent.HealthLimit;
+            }
+
             if (!refillAmmo)
             {
                 continue;
