@@ -64,6 +64,17 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         return true;
     }
 
+    public override void OnPeerChangedTeam(NetworkCommunicator networkPeer, Team oldTeam, Team newTeam)
+    {
+        var missionPeer = networkPeer.GetComponent<MissionPeer>();
+        if (missionPeer == null)
+        {
+            return;
+        }
+
+        missionPeer.Team = Mission.DefenderTeam;
+    }
+
     public override void OnMissionTick(float dt)
     {
         base.OnMissionTick(dt);
@@ -106,12 +117,6 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
             _waveStartTimer = null;
             StartNextWave();
         }
-    }
-
-    protected override void HandleNewClientAfterLoadingFinished(NetworkCommunicator networkPeer)
-    {
-        var missionPeer = networkPeer.GetComponent<MissionPeer>();
-        missionPeer.Team = Mission.DefenderTeam;
     }
 
     private void StartNextRound()

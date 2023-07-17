@@ -49,6 +49,7 @@ internal class CrpgDtvGameMode : MissionBasedMultiplayerGameMode
             ViewCreator.CreateMissionMainAgentCheerBarkControllerView(mission),
             crpgEscapeMenu,
             ViewCreator.CreateMissionAgentLabelUIHandler(mission),
+            ViewCreator.CreateMultiplayerTeamSelectUIHandler(),
             ViewCreator.CreateMissionScoreBoardUIHandler(mission, false),
             ViewCreator.CreateMultiplayerEndOfBattleUIHandler(),
             ViewCreator.CreatePollProgressUIHandler(),
