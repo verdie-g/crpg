@@ -92,6 +92,10 @@ const buyItem = async (item: ItemFlat) => {
 };
 
 const isUpgradableCategory = computed(() => canUpgrade(itemTypeModel.value));
+
+const newItemCount = computed(
+  () => searchResult.value.data.aggregations.new.buckets.find(b => b.key === '1')?.doc_count ?? 0
+);
 </script>
 
 <template>
@@ -133,10 +137,12 @@ const isUpgradableCategory = computed(() => canUpgrade(itemTypeModel.value));
               <OCheckbox
                 :nativeValue="1"
                 :modelValue="filterModel['new']"
+                :disabled="newItemCount === 0"
                 @update:modelValue="(val: number) => updateFilter('new', val)"
                 @change="hide"
               >
                 {{ $t('item.aggregations.new.title') }}
+                ({{ newItemCount }})
               </OCheckbox>
             </Tooltip>
           </DropdownItem>

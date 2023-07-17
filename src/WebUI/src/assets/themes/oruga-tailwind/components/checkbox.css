@@ -25,3 +25,7 @@
 .o-chk--checked .o-chk__label {
   @apply text-content-100 hover:text-content-300;
 }
+
+.o-chk--disabled {
+  @apply pointer-events-none opacity-50;
+}
