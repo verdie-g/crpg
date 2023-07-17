@@ -191,9 +191,9 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
             for (EquipmentIndex i = EquipmentIndex.WeaponItemBeginSlot; i < EquipmentIndex.NumAllWeaponSlots; i += 1)
             {
                 var weapon = agent.Equipment[i];
-                if (!weapon.IsEmpty && (weapon.IsAnyAmmo() || weapon.CurrentUsageItem.IsShield))
+                if (!weapon.IsEmpty && (weapon.IsAnyConsumable() || weapon.CurrentUsageItem.IsShield))
                 {
-                    agent.SetWeaponAmountInSlot(i, agent.Equipment[i].ModifiedMaxAmount, false);
+                    agent.SetWeaponAmountInSlot(i, weapon.ModifiedMaxAmount, false);
                 }
             }
         }
