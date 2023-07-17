@@ -73,10 +73,12 @@
   <string id="str_multiplayer_scene_name.crpg_battle_kalmara" text="{=*}Kalmara" />
   <string id="str_multiplayer_scene_name.crpg_battle_ketilsfarm" text="{=*}Ketil's Farm" />
   <string id="str_multiplayer_scene_name.crpg_battle_ketilsfarm" text="{=*}Ketilsfarm" />
+  <string id="str_multiplayer_scene_name.crpg_battle_khamsin" text="{=*}Khamsin" />
   <string id="str_multiplayer_scene_name.crpg_battle_killington" text="{=*}Killington" />
   <string id="str_multiplayer_scene_name.crpg_battle_killington" text="{=*}Killington" />
   <string id="str_multiplayer_scene_name.crpg_battle_kingsroad" text="{=*}King's Road" />
   <string id="str_multiplayer_scene_name.crpg_battle_lostcathedral" text="{=*}Lost Cathedral" />
+  <string id="str_multiplayer_scene_name.crpg_battle_monastery" text="{=*}Monastery" />
   <string id="str_multiplayer_scene_name.crpg_battle_moonlittownship" text="{=*}Moonlit Township" />
   <string id="str_multiplayer_scene_name.crpg_battle_motte" text="{=*}Motte" />
   <string id="str_multiplayer_scene_name.crpg_battle_onomasticon" text="{=*}Onomasticon" />
@@ -86,6 +88,7 @@
   <string id="str_multiplayer_scene_name.crpg_battle_pompeii" text="{=*}Pompeii" />
   <string id="str_multiplayer_scene_name.crpg_battle_quarry" text="{=*}Quarry" />
   <string id="str_multiplayer_scene_name.crpg_battle_redwoodforest" text="{=*}Red Wood Forest" />
+  <string id="str_multiplayer_scene_name.crpg_battle_remnantruins" text="{=*}Remnant Ruins" />
   <string id="str_multiplayer_scene_name.crpg_battle_ruinedbattlement" text="{=*}Ruined Battlement" />
   <string id="str_multiplayer_scene_name.crpg_battle_sallyout" text="{=*}Sallyout" />
   <string id="str_multiplayer_scene_name.crpg_battle_sanctuary" text="{=*}Sanctuary" />
@@ -105,7 +108,6 @@
   <string id="str_multiplayer_scene_name.crpg_battle_weirwater" text="{=*}Weirwater" />
   <string id="str_multiplayer_scene_name.crpg_battle_whitebridge" text="{=*}White Bridge" />
   <string id="str_multiplayer_scene_name.crpg_battle_zemouri" text="{=*}Zemouri" />
-  <string id="str_multiplayer_scene_name.crpg_battle_monastery" text="{=*}Monastery" />
 
   <!-- Conquest Maps -->
   <string id="str_multiplayer_scene_name.crpg_conquest_acre" text="{=*}Acre" />

@@ -17,7 +17,7 @@
   <SpriteCategories>
     <SpriteCategory>
       <Name>ui_mploading</Name>
-      <SpriteSheetCount>119</SpriteSheetCount>
+      <SpriteSheetCount>121</SpriteSheetCount>
       <SpriteSheetSize ID="1" Width="3840" Height="1935" />
       <SpriteSheetSize ID="2" Width="3840" Height="1935" />
       <SpriteSheetSize ID="3" Width="3383" Height="1902" />
@@ -125,6 +125,8 @@
       <SpriteSheetSize ID="117" Width="1920" Height="1080" />
       <SpriteSheetSize ID="118" Width="1920" Height="1080" />
       <SpriteSheetSize ID="119" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="120" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="121" Width="1920" Height="1080" />
       <AlwaysLoad />
     </SpriteCategory>
   </SpriteCategories>
@@ -1077,6 +1079,24 @@
     <SpritePart>
       <SheetID>119</SheetID>
       <Name>crpg_dtv_weepinghill</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>120</SheetID>
+      <Name>crpg_battle_remnantruins</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>121</SheetID>
+      <Name>crpg_battle_khamsin</Name>
       <Width>1920</Width>
       <Height>1080</Height>
       <SheetX>0</SheetX>
