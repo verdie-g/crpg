@@ -31,8 +31,7 @@ public record GetLeaderboardQuery : IMediatorRequest<IList<CharacterPublicViewMo
         {
             var topRatedCharactersByRegion = await _db.Characters
                 .OrderByDescending(c => c.Rating.CompetitiveValue)
-                .Where(c => req.Region == null || req.Region == c.User!.Region)
-                .Where(c => req.CharacterClass == null || req.CharacterClass == c.Class)
+                .Where(c => (req.Region == null || req.Region == c.User!.Region) && (req.CharacterClass == null || req.CharacterClass == c.Class))
                 .Take(50)
                 .ProjectTo<CharacterPublicViewModel>(_mapper.ConfigurationProvider)
                 .AsSplitQuery()
