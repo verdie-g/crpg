@@ -1042,18 +1042,18 @@
                       key="0000C005400010CB817A88E912EA949576961CB996E8976B5A8B778977BAAAAB066776670679B58A000000000000000000000000000000000000000024CC80C4"  />
     </face>
     <skills>
-      <skill id="Strength" value="15" />
-      <skill id="Agility" value="21" />
-      <skill id="IronFlesh" value="25" />
-      <skill id="PowerStrike" value="5" />
+      <skill id="Strength" value="30" />
+      <skill id="Agility" value="30" />
+      <skill id="IronFlesh" value="30" />
+      <skill id="PowerStrike" value="15" />
       <skill id="PowerDraw" value="0" />
       <skill id="PowerThrow" value="0" />
-      <skill id="Athletics" value="162" />
+      <skill id="Athletics" value="0" />
       <skill id="Riding" value="0" />
-      <skill id="WeaponMaster" value="7" />
+      <skill id="WeaponMaster" value="10" />
       <skill id="MountedArchery" value="0" />
       <skill id="Shield" value="0" />
-      <skill id="OneHanded" value="177" />
+      <skill id="OneHanded" value="219" />
       <skill id="TwoHanded" value="0" />
       <skill id="Polearm" value="0" />
       <skill id="Bow" value="0" />

@@ -656,7 +656,7 @@
                    multiplier="0"
                    cost="0"
                    icon="Special_Swordsman"
-                   melee_ai="60"
+                   melee_ai="100"
                    ranged_ai="0"
                    armor="0"
                    movement_speed="0"
