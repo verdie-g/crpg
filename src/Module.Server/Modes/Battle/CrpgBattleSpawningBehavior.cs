@@ -81,7 +81,7 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
         var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
         var missionPeer = networkPeer.GetComponent<MissionPeer>();
         if (crpgPeer?.User == null
-            || crpgPeer.LastSpawnTeam != null
+            || crpgPeer.LastSpawnInfo != null
             || missionPeer == null
             || missionPeer.HasSpawnedAgentVisuals)
         {
@@ -129,10 +129,10 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
         return true;
     }
 
-    protected override void OnPeerSpawned(MissionPeer missionPeer)
+    protected override void OnPeerSpawned(Agent agent)
     {
-        base.OnPeerSpawned(missionPeer);
-        missionPeer.SpawnCountThisRound += 1;
+        base.OnPeerSpawned(agent);
+        agent.MissionPeer.SpawnCountThisRound += 1;
     }
 
     /// <summary>

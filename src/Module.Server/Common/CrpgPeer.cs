@@ -13,8 +13,7 @@ internal class CrpgPeer : PeerComponent
 
     public CrpgClan? Clan { get; set; }
 
-    /// <summary>The team the user has spawn in. Used to give the correct reward multiplier even after changing team.</summary>
-    public Team? LastSpawnTeam { get; set; }
+    public SpawnInfo? LastSpawnInfo { get; set; }
 
     public CrpgUser? User
     {

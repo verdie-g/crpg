@@ -44,20 +44,21 @@ internal class CrpgDuelSpawningBehavior : CrpgSpawningBehaviorBase
         return Mission.CurrentState == Mission.State.Continuing;
     }
 
-    protected override void OnPeerSpawned(MissionPeer missionPeer)
+    protected override void OnPeerSpawned(Agent agent)
     {
-        base.OnPeerSpawned(missionPeer);
-        _ = missionPeer.Representative; // Get initializes the representative
+        base.OnPeerSpawned(agent);
+        _ = agent.MissionPeer.Representative; // Get initializes the representative
 
-        if (missionPeer.GetNetworkPeer() == null || !UpdatedPlayerPreferredArenaOnce.Add(missionPeer.GetNetworkPeer().VirtualPlayer.Id))
+        var networkPeer = agent.MissionPeer?.GetNetworkPeer();
+        if (networkPeer == null || !UpdatedPlayerPreferredArenaOnce.Add(networkPeer.VirtualPlayer.Id))
         {
             return;
         }
 
-        bool hasMount = missionPeer.ControlledAgent.SpawnEquipment[EquipmentIndex.Horse].Item != null;
-        bool isRanged = missionPeer.ControlledAgent.SpawnEquipment.HasWeaponOfClass(WeaponClass.Bolt) || missionPeer.ControlledAgent.SpawnEquipment.HasWeaponOfClass(WeaponClass.Arrow);
+        bool hasMount = agent.SpawnEquipment[EquipmentIndex.Horse].Item != null;
+        bool isRanged = agent.SpawnEquipment.HasWeaponOfClass(WeaponClass.Bolt) || agent.SpawnEquipment.HasWeaponOfClass(WeaponClass.Arrow);
         TroopType troopType = hasMount ? TroopType.Cavalry : (isRanged ? TroopType.Ranged : TroopType.Infantry);
-        GameNetwork.BeginModuleEventAsServer(missionPeer.GetNetworkPeer());
+        GameNetwork.BeginModuleEventAsServer(networkPeer);
         GameNetwork.WriteMessage(new CrpgUpdateDuelArenaType { PlayerTroopType = troopType });
         GameNetwork.EndModuleEventAsServer();
 
@@ -65,9 +66,9 @@ internal class CrpgDuelSpawningBehavior : CrpgSpawningBehaviorBase
         List<KeyValuePair<MissionPeer, TroopType>> peersAndSelections = (List<KeyValuePair<MissionPeer, TroopType>>)ReflectionHelper.GetField(_duelServer, "_peersAndSelections")!;
         for (int i = 0; i < peersAndSelections.Count; i++)
         {
-            if (peersAndSelections[i].Key == missionPeer)
+            if (peersAndSelections[i].Key == agent.MissionPeer)
             {
-                peersAndSelections[i] = new KeyValuePair<MissionPeer, TroopType>(missionPeer, troopType);
+                peersAndSelections[i] = new KeyValuePair<MissionPeer, TroopType>(agent.MissionPeer, troopType);
                 return;
             }
         }

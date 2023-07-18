@@ -93,10 +93,10 @@ internal class CrpgSkirmishSpawningBehavior : CrpgSpawningBehaviorBase
         return true;
     }
 
-    protected override void OnPeerSpawned(MissionPeer missionPeer)
+    protected override void OnPeerSpawned(Agent agent)
     {
-        base.OnPeerSpawned(missionPeer);
-        UpdateSpawnCount(missionPeer, missionPeer.SpawnCountThisRound + 1);
+        base.OnPeerSpawned(agent);
+        UpdateSpawnCount(agent.MissionPeer, agent.MissionPeer.SpawnCountThisRound + 1);
     }
 
     private void ResetSpawnTeams()

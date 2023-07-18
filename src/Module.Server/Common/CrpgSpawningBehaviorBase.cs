@@ -102,7 +102,7 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
             }
 
             Agent agent = Mission.SpawnAgent(agentBuildData);
-            OnPeerSpawned(missionPeer);
+            OnPeerSpawned(agent);
             agent.WieldInitialWeapons();
             missionPeer.HasSpawnedAgentVisuals = true;
             AgentVisualSpawnComponent.RemoveAgentVisuals(missionPeer, sync: true);
@@ -191,10 +191,10 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
         }
     }
 
-    protected virtual void OnPeerSpawned(MissionPeer missionPeer)
+    protected virtual void OnPeerSpawned(Agent agent)
     {
-        var crpgPeer = missionPeer.GetComponent<CrpgPeer>();
-        crpgPeer.LastSpawnTeam = missionPeer.Team;
+        var crpgPeer = agent.MissionPeer.GetComponent<CrpgPeer>();
+        crpgPeer.LastSpawnInfo = new SpawnInfo(agent.MissionPeer.Team, crpgPeer.User!.Character.EquippedItems);
     }
 
     protected bool DoesEquipmentContainWeapon(Equipment equipment)
@@ -215,9 +215,9 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
         foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
         {
             var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
-            if (crpgPeer != null)
+            if (crpgPeer != null && networkPeer.ControlledAgent == null)
             {
-                crpgPeer.LastSpawnTeam = null;
+                crpgPeer.LastSpawnInfo = null;
             }
         }
     }

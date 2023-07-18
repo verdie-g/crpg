@@ -193,7 +193,7 @@ internal class CrpgRewardServer : MissionLogic
                 userUpdate.Rating = GetNewRating(crpgPeer);
             }
 
-            if (crpgPeer.LastSpawnTeam != null)
+            if (crpgPeer.LastSpawnInfo != null)
             {
                 bool isValorousPlayer = valorousPlayerIds.Contains(playerId);
                 int compensationForCrpgUser = compensationByCrpgUserId.TryGetValue(crpgUserId, out int compensation) ? compensation : 0;
@@ -251,7 +251,7 @@ internal class CrpgRewardServer : MissionLogic
                 continue;
             }
 
-            if (crpgPeer.LastSpawnTeam != null)
+            if (crpgPeer.LastSpawnInfo != null)
             {
                 int crpgUserId = crpgPeer.User.Id;
                 var crpgUserDamagedItems = BreakItems(crpgPeer, durationRewarded);
@@ -397,14 +397,14 @@ internal class CrpgRewardServer : MissionLogic
         {
             crpgPeer.RewardMultiplier = constantMultiplier.Value;
         }
-        else if (crpgPeer.LastSpawnTeam != null)
+        else if (crpgPeer.LastSpawnInfo != null)
         {
             int rewardMultiplier = crpgPeer.RewardMultiplier;
-            if (crpgPeer.LastSpawnTeam.Side == BattleSideEnum.Defender)
+            if (crpgPeer.LastSpawnInfo.Team.Side == BattleSideEnum.Defender)
             {
                 rewardMultiplier += isValorousPlayer ? Math.Max(defenderMultiplierGain, 1) : defenderMultiplierGain;
             }
-            else if (crpgPeer.LastSpawnTeam.Side == BattleSideEnum.Attacker)
+            else if (crpgPeer.LastSpawnInfo.Team.Side == BattleSideEnum.Attacker)
             {
                 rewardMultiplier += isValorousPlayer ? Math.Max(attackerMultiplierGain, 1) : attackerMultiplierGain;
             }
@@ -468,7 +468,7 @@ internal class CrpgRewardServer : MissionLogic
                 continue;
             }
 
-            if (crpgPeer.LastSpawnTeam?.Side == valourTeamSide)
+            if (crpgPeer.LastSpawnInfo?.Team.Side == valourTeamSide)
             {
                 var playerId = networkPeer.VirtualPlayer.Id;
                 int roundScore = allPeriodStats.TryGetValue(playerId, out var s) ? s.Score : 0;
@@ -506,7 +506,7 @@ internal class CrpgRewardServer : MissionLogic
     private IList<CrpgUserDamagedItem> BreakItems(CrpgPeer crpgPeer, float roundDuration)
     {
         List<CrpgUserDamagedItem> brokenItems = new();
-        foreach (var equippedItem in crpgPeer.User!.Character.EquippedItems)
+        foreach (var equippedItem in crpgPeer.LastSpawnInfo!.EquippedItems)
         {
             var mbItem = Game.Current.ObjectManager.GetObject<ItemObject>(equippedItem.UserItem.ItemId);
             if (_random.NextDouble() >= _constants.ItemBreakChance)
