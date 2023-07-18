@@ -1150,3 +1150,7 @@ leaderboard:
 
 rankTable:
   title: Rank table
+
+releaseNotes:
+  latest: Latest
+  showAllRelease: '+ {count} releases'

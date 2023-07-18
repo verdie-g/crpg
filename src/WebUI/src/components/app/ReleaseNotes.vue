@@ -17,14 +17,14 @@ const latestRelease = computed(() => releaseNotes[0]);
       <div class="font-bold text-content-100 group-hover:text-content-200">
         {{ latestRelease.title }}
       </div>
-      <Tag variant="primary" :label="'Latest'" />
+      <Tag variant="primary" :label="$t('releaseNotes.latest')" />
     </a>
     <div v-if="releaseNotes.length > 1" class="pl-5">
       <a
         href="https://github.com/verdie-g/crpg/releases"
         class="text-[0.85rem] text-content-300 underline hover:no-underline"
       >
-        + {{ releaseNotes.length - 1 }} releases
+        {{ $t('releaseNotes.showAllRelease', { count: releaseNotes.length - 1 }) }}
       </a>
     </div>
   </div>

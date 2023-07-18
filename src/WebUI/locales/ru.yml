@@ -1122,3 +1122,7 @@ leaderboard:
 
 rankTable:
   title: Ранги
+
+releaseNotes:
+  latest: Последний
+  showAllRelease: '+ {count} релизов | + {count} релиз | + {count} релиза | + {count} релизов'
