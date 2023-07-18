@@ -127,11 +127,11 @@
     <Wave>
       <Group classDivisionId="crpg_dtv_highland_ranger" count="1" />
       <Group classDivisionId="crpg_dtv_highland_warrior" count="0.5" />
-      <Group classDivisionId="crpg_dtv_highland_soldier" count="0.8" />
+      <Group classDivisionId="crpg_dtv_highland_soldier" count="1" />
     </Wave>
     <Wave>
       <Group classDivisionId="crpg_dtv_highland_ranger" count="1" />
-      <Group classDivisionId="crpg_dtv_highland_warrior" count="0.5" />
+      <Group classDivisionId="crpg_dtv_highland_warrior" count="0.8" />
       <Group classDivisionId="crpg_dtv_highland_soldier" count="1" />
       <Group classDivisionId="crpg_dtv_highland_boss" count="1" />
     </Wave>
