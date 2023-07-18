@@ -31,5 +31,5 @@ public class CrpgDtvGroup
     public string ClassDivisionId { get; set; } = string.Empty;
 
     [XmlAttribute(AttributeName = "count")]
-    public int Count { get; set; }
+    public float Count { get; set; }
 }
