@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Http.Headers;
 using Gameloop.Vdf;
 using Gameloop.Vdf.Linq;
+using LibGit2Sharp;
 using Microsoft.Win32;
 
 string? bannerlordPath = ResolveBannerlordPath();
@@ -32,7 +33,7 @@ Process.Start(new ProcessStartInfo
 {
     WorkingDirectory = Path.GetDirectoryName(bannerlordExePath),
     FileName = "Bannerlord.exe",
-    Arguments = "_MODULES_*Native*cRPG*_MODULES_ /multiplayer",
+    Arguments = "_MODULES_*Native*cRPG_Exporter*_MODULES_ /singleplayer",
     UseShellExecute = true,
 });
 
@@ -150,12 +151,13 @@ static string? AskForBannerlordPath()
 
 static async Task UpdateCrpgAsync(string bannerlordPath)
 {
-    string crpgPath = Path.Combine(bannerlordPath, "Modules/cRPG");
+    string crpgPath = Path.Combine(bannerlordPath, "Modules/cRPG_Exporter");
+    string moduleDataPath = Path.Combine(crpgPath, "ModuleData");
     string tagPath = Path.Combine(crpgPath, "Tag.txt");
     string? tag = File.Exists(tagPath) ? File.ReadAllText(tagPath) : null;
 
     using HttpClient httpClient = new();
-    HttpRequestMessage req = new(HttpMethod.Get, "https://c-rpg.eu/cRPG.zip");
+    HttpRequestMessage req = new(HttpMethod.Get, "https://namidaka.fr/cRPG_Exporter.zip");
     if (tag != null)
     {
         req.Headers.IfNoneMatch.Add(new EntityTagHeaderValue(tag));
@@ -175,38 +177,149 @@ static async Task UpdateCrpgAsync(string bannerlordPath)
 
     using (ZipArchive archive = new(ms))
     {
-        if (Directory.Exists(crpgPath))
+        if (!Directory.Exists(crpgPath))
         {
-            Directory.Delete(crpgPath, true);
+            Directory.CreateDirectory(crpgPath);
         }
 
-        Directory.CreateDirectory(crpgPath);
-        archive.ExtractToDirectory(crpgPath); // No async overload :(
+        var existingDirectories = Directory.EnumerateDirectories(crpgPath)
+                                           .Where(d => !d.Contains("ModuleData"))
+                                           .ToList();
+        List<string> existingFiles = new();
+
+        foreach (var directory in existingDirectories)
+        {
+            existingFiles.AddRange(Directory.EnumerateFiles(directory));
+        }
+
+        foreach (var file in existingFiles)
+        {
+            File.Delete(file);
+        }
+
+        foreach (var directory in existingDirectories)
+        {
+            Directory.Delete(directory, true);
+        }
+
+        bool moduleDataAlreadyExists = Directory.Exists(moduleDataPath);
+        foreach (ZipArchiveEntry entry in archive.Entries)
+        {
+            string completeFileName = Path.Combine(crpgPath, entry.FullName);
+            if (completeFileName.Contains("ModuleData") && moduleDataAlreadyExists)
+            {
+                continue;
+            }
+
+            if (File.Exists(completeFileName))
+            {
+                File.Delete(completeFileName);
+            }
+
+            if (entry.Name == "")
+            {
+                // Creating an empty DirectoryInfo just for Directory.CreateDirectory
+                Directory.CreateDirectory(completeFileName);
+                continue;
+            }
+
+            entry.ExtractToFile(completeFileName);
+        }
+
     }
 
     tag = res.Headers.ETag?.Tag;
-    if (tag != null)
+        if (tag != null)
     {
         File.WriteAllText(tagPath, tag);
+    }
+
+    if (Directory.Exists(moduleDataPath))
+    {
+        await UpdateGitRepositoryAsync(moduleDataPath);
+    }
+}
+
+
+static async Task UpdateGitRepositoryAsync(string repositoryPath)
+{
+    using var repo = new LibGit2Sharp.Repository(repositoryPath);
+
+    // Preserve the current branch
+    var currentBranch = repo.Head;
+    Console.WriteLine($"Current branch is {currentBranch.UpstreamBranchCanonicalName})");
+
+    // Check for unstaged changes
+    var unstagedChanges = repo.RetrieveStatus(new LibGit2Sharp.StatusOptions { IncludeUntracked = true }).IsDirty;
+    Stash? stash = null;
+    if (unstagedChanges)
+    {
+        Console.WriteLine($"Stashing Changes for {currentBranch.UpstreamBranchCanonicalName}");
+        // Stash the unstaged changes
+        var stasher = new LibGit2Sharp.Signature("Updater", "updater@crpg.com", DateTimeOffset.Now);
+        stash = repo.Stashes.Add(stasher, "Temp stash before update", StashModifiers.Default);
+    }
+
+    // Get the remote repository
+    var remote = repo.Network.Remotes["origin"];
+
+    // Get or create the local main branch
+    var mainBranch = repo.Branches["main"];
+    if (mainBranch == null)
+    {
+        mainBranch = repo.CreateBranch("main");
+        Console.WriteLine($"Creating {mainBranch.UpstreamBranchCanonicalName} Branch");
+    }
+
+    // Checkout to main branch
+    Console.WriteLine($"Checking out {mainBranch.UpstreamBranchCanonicalName} Branch");
+    Commands.Checkout(repo, mainBranch);
+
+    // Fetch all branches from remote
+    Console.WriteLine($"Fetching all Branches)");
+    foreach (var refSpec in remote.FetchRefSpecs)
+    {
+        Commands.Fetch(repo, remote.Name, new string[] { refSpec.Specification }, null, "");
+    }
+
+    // Merge main branch with its remote counterpart
+    var remoteMainBranch = repo.Branches["origin/main"];
+    Console.WriteLine($"Merging {remoteMainBranch.UpstreamBranchCanonicalName} into {mainBranch.UpstreamBranchCanonicalName}");
+    repo.Merge(remoteMainBranch, new LibGit2Sharp.Signature("Updater", "updater@crpg.com", DateTimeOffset.Now));
+
+    // Checkout back to original branch
+    Console.WriteLine($"Checking out {currentBranch.UpstreamBranchCanonicalName} Branch");
+    Commands.Checkout(repo, currentBranch);
+
+    if (unstagedChanges)
+    {
+        Console.WriteLine($"Reapplying stashed changes for  {currentBranch.UpstreamBranchCanonicalName} Branch");
+        // Create the options for applying the stash
+        var stashApplyOptions = new StashApplyOptions { ApplyModifiers = StashApplyModifiers.Default };
+
+        // Apply the stash to restore unstaged changes
+        repo.Stashes.Apply(0, stashApplyOptions);
+        repo.Stashes.Remove(0);
     }
 }
 
 static async Task<MemoryStream> DownloadWithProgressBarAsync(Stream stream, long length)
-{
-    MemoryStream ms = new();
-    byte[] buffer = new byte[100 * 1000];
-    int totalBytesRead = 0;
-    int bytesRead;
-    while ((bytesRead = await stream.ReadAsync(buffer)) != 0)
     {
-        ms.Write(buffer, 0, bytesRead);
+        MemoryStream ms = new();
+        byte[] buffer = new byte[100 * 1000];
+        int totalBytesRead = 0;
+        int bytesRead;
+        while ((bytesRead = await stream.ReadAsync(buffer)) != 0)
+        {
+            ms.Write(buffer, 0, bytesRead);
 
-        totalBytesRead += bytesRead;
-        float progression = (float)Math.Round(100 * (float)totalBytesRead / length, 2);
-        string lengthStr = length.ToString();
-        string totalBytesReadStr = totalBytesRead.ToString().PadLeft(lengthStr.Length);
-        Console.WriteLine($"Downloading {totalBytesReadStr} / {lengthStr} ({progression}%)");
+            totalBytesRead += bytesRead;
+            float progression = (float)Math.Round(100 * (float)totalBytesRead / length, 2);
+            string lengthStr = length.ToString();
+            string totalBytesReadStr = totalBytesRead.ToString().PadLeft(lengthStr.Length);
+            Console.WriteLine($"Downloading {totalBytesReadStr} / {lengthStr} ({progression}%)");
+        }
+
+        return ms;
     }
 
-    return ms;
-}

@@ -24,12 +24,12 @@ internal class CrpgItemRequirementModel
 
     private static int ComputeCrossbowRequirement(ItemObject item)
     {
-        int strengthRequirementForTierTenCrossbow = 18; // Tiers are calulated in CrpgValueModel. 0<Tier=<10 . By design the best armor is always at Ten.
+        int strengthRequirementForTierTenCrossbow = 21; // Tiers are calulated in CrpgValueModel. 0<Tier=<10 . By design the best is always at Ten.
         if (item.ItemType != ItemObject.ItemTypeEnum.Crossbow)
         {
             throw new ArgumentException(item.Name.ToString() + " is not a crossbow");
         }
 
-        return (int)(item.Tierf * (strengthRequirementForTierTenCrossbow / 10f));
+        return ((int)(item.Tierf * (strengthRequirementForTierTenCrossbow / 10f)) / 3) * 3;
     }
 }

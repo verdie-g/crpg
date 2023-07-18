@@ -11,6 +11,7 @@ public record ItemCreation
     public ItemType Type { get; init; }
     public int Price { get; init; }
     public float Weight { get; init; }
+    public int HeirloomLevel { get; init; }
     public float Tier { get; init; }
     public int Requirement { get; init; }
     public int Rank { get; init; }

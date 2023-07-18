@@ -4,11 +4,13 @@
 internal class CrpgItem
 {
     public string Id { get; set; } = string.Empty;
+    public string BaseId { get; set; } = string.Empty;
     public string Name { get; set; } = string.Empty;
     public CrpgCulture Culture { get; set; }
     public CrpgItemType Type { get; set; }
     public int Price { get; set; }
     public float Weight { get; set; }
+    public int Rank { get; set; }
     public float Tier { get; set; }
     public int Requirement { get; set; }
     public CrpgItemFlags Flags { get; set; }

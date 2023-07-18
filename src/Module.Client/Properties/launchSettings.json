@@ -4,7 +4,7 @@
     "Module.Client": {
       "commandName": "Executable",
         "executablePath": "%MB_CLIENT_PATH%\\bin\\Win64_Shipping_Client\\Bannerlord.exe",
-        "commandLineArgs": "_MODULES_*Native*cRPG*_MODULES_ /multiplayer",
+        "commandLineArgs": "_MODULES_*Native*cRPG_Exporter*_MODULES_ /singleplayer",
         "workingDirectory": "%MB_CLIENT_PATH%\\bin\\Win64_Shipping_Client"
     }
   }
