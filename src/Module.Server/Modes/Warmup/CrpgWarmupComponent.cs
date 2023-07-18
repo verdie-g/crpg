@@ -17,8 +17,6 @@ internal class CrpgWarmupComponent : MultiplayerWarmupComponent
         .GetField("_timerComponent", BindingFlags.NonPublic | BindingFlags.Instance)!;
     private static readonly FieldInfo GameModeField = typeof(MultiplayerWarmupComponent)
         .GetField("_gameMode", BindingFlags.NonPublic | BindingFlags.Instance)!;
-    private static readonly FieldInfo LobbyComponentField = typeof(MultiplayerWarmupComponent)
-        .GetField("_lobbyComponent", BindingFlags.NonPublic | BindingFlags.Instance)!;
 
     private readonly CrpgConstants _constants;
     private readonly MultiplayerGameNotificationsComponent _notificationsComponent;
@@ -41,7 +39,6 @@ internal class CrpgWarmupComponent : MultiplayerWarmupComponent
 
     private MultiplayerTimerComponent TimerComponentReflection => (MultiplayerTimerComponent)TimerComponentField.GetValue(this)!;
     private MissionMultiplayerGameModeBase GameModeReflection => (MissionMultiplayerGameModeBase)GameModeField.GetValue(this)!;
-    private MissionLobbyComponent LobbyComponentReflection => (MissionLobbyComponent)LobbyComponentField.GetValue(this)!;
 
     public override void OnPreDisplayMissionTick(float dt)
     {
@@ -64,7 +61,8 @@ internal class CrpgWarmupComponent : MultiplayerWarmupComponent
 
                 break;
             case WarmupStates.Ending:
-                if (TimerComponentReflection.CheckIfTimerPassed())
+                if (TimerComponentReflection.CheckIfTimerPassed()
+                    && GameNetwork.NetworkPeers.Count() >= MultiplayerOptions.OptionType.MinNumberOfPlayersForMatchStart.GetIntValue())
                 {
                     EndWarmup();
                 }
@@ -110,12 +108,6 @@ internal class CrpgWarmupComponent : MultiplayerWarmupComponent
         WarmupStateReflection = WarmupStates.Ended;
         TimerComponentReflection.StartTimerAsServer(3f);
         ReflectionHelper.RaiseEvent(this, nameof(OnWarmupEnded), Array.Empty<object>());
-
-        if (GameNetwork.NetworkPeers.Count() < MultiplayerOptions.OptionType.MinNumberOfPlayersForMatchStart.GetIntValue())
-        {
-            LobbyComponentReflection.SetStateEndingAsServer();
-            return;
-        }
 
         if (!GameNetwork.IsDedicatedServer)
         {
