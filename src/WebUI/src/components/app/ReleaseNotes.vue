@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import { useTimeAgo } from '@vueuse/core';
 import { type ReleaseNote } from '@/models/release-note';
+import { useLocaleTimeAgo } from '@/composables/use-locale-time-ago';
 
 const { releaseNotes = [] } = defineProps<{ releaseNotes: ReleaseNote[] }>();
 
-const latestRelease = computed(() => releaseNotes[1]);
+const latestRelease = computed(() => releaseNotes[0]);
 
-// TODO: i18n? https://github.com/vueuse/vueuse/issues/1592
-const timeAgo = useTimeAgo(new Date(latestRelease.value.createdAt));
+const timeAgo = useLocaleTimeAgo(new Date(latestRelease.value.createdAt));
 </script>
 
 <template>

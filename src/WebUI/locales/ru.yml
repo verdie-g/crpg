@@ -37,6 +37,26 @@ dateTime:
     short: мин
     long: минута | минуты | минут
 
+timeAgo:
+  just-now: "прямо сейчас"
+  ago: "{0} назад"
+  in: "через {0}"
+  last-month: "в прошлом месяце"
+  next-month: "в следующем месяце"
+  month: "месяцев | месяц | месяца | месяцев"
+  last-year: "в прошлом году"
+  next-year: "в следующем году"
+  year: "лет | год | года | лет"
+  yesterday: "вчера"
+  tomorrow: "завтра"
+  day: "дней | день | дня | дней"
+  last-week: "на прошлой неделе"
+  next-week: "на следующей неделе"
+  week: "недель | неделя | недели | недель"
+  hour: "часов | час | часа | часов"
+  minute: "минут | минуты | минуты | минут"
+  second: "секунд | секунда | секунды | секунд"
+
 dateTimeFormat:
   countdown: '{hours}:{minutes}:{seconds}'
   'mm': '{minutes} @:dateTime.minutes.short'
