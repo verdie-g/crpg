@@ -1688,7 +1688,7 @@
         <equipment slot="Leg" id="Item.crpg_sturgia_boots_b_v1_h0" />
         <equipment slot="Item0" id="Item.crpg_steel_footman_axe_h0" />
         <equipment slot="Item1" id="Item.crpg_viking_round_shield_v2_h0" />
-        <equipment slot="Item2" id="Item.crpg_hooked_javelin_v1_h0" />
+        <equipment slot="Item2" id="Item.crpg_raider_throwing_axe_v1_h0" />
       </EquipmentRoster>
     </Equipments>
   </NPCCharacter>
@@ -2346,6 +2346,48 @@
         <equipment slot="Gloves" id="Item.crpg_sa_1ChurburghGauntlet_v1_h0" />
         <equipment slot="Leg" id="Item.crpg_sa_1ChurburghBoots_v1_h0" />
         <equipment slot="Item0" id="Item.crpg_long_maul_h0" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+
+  <NPCCharacter id="crpg_dtv_tincan_archer"
+              name="{=}Tincan">
+    <face>
+      <BodyProperties version="4"
+                      age="23"
+                      weight="0.5"
+                      build="0.5"
+                      key="0015DC008070040F7995296A66AC7A488E743843A9A6871A5ADDC44BC559596701B776130BBD58E300000000000000000000000002FC800400000000317C3144"  />
+    </face>
+    <skills>
+      <skill id="Strength" value="30" />
+      <skill id="Agility" value="18" />
+      <skill id="IronFlesh" value="7" />
+      <skill id="PowerStrike" value="0" />
+      <skill id="PowerDraw" value="10" />
+      <skill id="PowerThrow" value="0" />
+      <skill id="Athletics" value="156" />
+      <skill id="Riding" value="0" />
+      <skill id="WeaponMaster" value="6" />
+      <skill id="MountedArchery" value="0" />
+      <skill id="Shield" value="0" />
+      <skill id="OneHanded" value="100" />
+      <skill id="TwoHanded" value="0" />
+      <skill id="Polearm" value="0" />
+      <skill id="Bow" value="130" />
+      <skill id="Crossbow" value="0" />
+      <skill id="Throwing" value="0" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Head" id="Item.crpg_pothelm_v1_h0" />
+        <equipment slot="Cape" id="Item.crpg_swadian_shoulders_v1_h0" />
+        <equipment slot="Body" id="Item.crpg_sa_1ChurburghTorso_v1_h0" />
+        <equipment slot="Gloves" id="Item.crpg_sa_1ChurburghGauntlet_v1_h0" />
+        <equipment slot="Leg" id="Item.crpg_sa_1ChurburghBoots_v1_h0" />
+        <equipment slot="Item0" id="Item.crpg_noble_long_bow_h0" />
+        <equipment slot="Item1" id="Item.crpg_warhammer_h0" />
+        <equipment slot="Item2" id="Item.crpg_piercing_arrows_v1_h0" />
       </EquipmentRoster>
     </Equipments>
   </NPCCharacter>

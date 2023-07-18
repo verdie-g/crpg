@@ -54,16 +54,16 @@
   <Round reward="220">
     <Wave>
       <Group classDivisionId="crpg_dtv_fancy_lad" count="1" />
-      <Group classDivisionId="crpg_dtv_fancy_noble" count="1" />
+      <Group classDivisionId="crpg_dtv_fancy_noble" count="0.7" />
     </Wave>
     <Wave>
       <Group classDivisionId="crpg_dtv_fancy_lad" count="1" />
-      <Group classDivisionId="crpg_dtv_fancy_noble" count="0.9" />
+      <Group classDivisionId="crpg_dtv_fancy_noble" count="0.8" />
       <Group classDivisionId="crpg_dtv_fancy_cavalry" count="0.2" />
     </Wave>
     <Wave>
       <Group classDivisionId="crpg_dtv_fancy_lad" count="1" />
-      <Group classDivisionId="crpg_dtv_fancy_noble" count="1" />
+      <Group classDivisionId="crpg_dtv_fancy_noble" count="0.7" />
       <Group classDivisionId="crpg_dtv_fancy_cavalry" count="0.3" />
       <Group classDivisionId="crpg_dtv_fancy_boss" count="1" />
     </Wave>
@@ -87,11 +87,11 @@
 
   <Round reward="320">
     <Wave>
-      <Group classDivisionId="crpg_dtv_samurai_warrior" count="0.8" />
+      <Group classDivisionId="crpg_dtv_samurai_warrior" count="1" />
       <Group classDivisionId="crpg_dtv_samurai_ashigaru" count="1" />
     </Wave>
     <Wave>
-      <Group classDivisionId="crpg_dtv_samurai_warrior" count="0.9" />
+      <Group classDivisionId="crpg_dtv_samurai_warrior" count="1" />
       <Group classDivisionId="crpg_dtv_samurai_ashigaru" count="1" />
     </Wave>
     <Wave>
@@ -155,13 +155,15 @@
 
   <Round reward="520">
     <Wave>
+      <Group classDivisionId="crpg_dtv_tincan_soldier" count="1.5" />
+    </Wave>
+    <Wave>
+      <Group classDivisionId="crpg_dtv_tincan_soldier" count="1.5" />
+      <Group classDivisionId="crpg_dtv_tincan_archer" count="1" />
+    </Wave>
+    <Wave>
       <Group classDivisionId="crpg_dtv_tincan_soldier" count="2" />
-    </Wave>
-    <Wave>
-      <Group classDivisionId="crpg_dtv_tincan_soldier" count="2.5" />
-    </Wave>
-    <Wave>
-      <Group classDivisionId="crpg_dtv_tincan_soldier" count="3" />
+      <Group classDivisionId="crpg_dtv_tincan_archer" count="1" />
       <Group classDivisionId="crpg_dtv_tincan_boss" count="1" />
     </Wave>
   </Round>
