@@ -43,13 +43,22 @@ PRs or PRs with no context might get ignored.
 - Download [.NET 7 SDK](https://dotnet.microsoft.com/download)
 - Download your favorite IDE: [Visual Studio](https://visualstudio.microsoft.com/vs), [Visual Studio Code](https://code.visualstudio.com), [Rider](https://www.jetbrains.com/rider)...
 - Open the solution file Crpg.sln
-- Run `dotnet user-secrets set "Steam:ApiKey" "MY_API_KEY"` where `MY_API_KEY` is a Steam
-  API key acquired by [filling out this form](https://steamcommunity.com/dev/apikey)
 - Run `dotnet dev-certs https --trust` to be able to launch the API with HTTPS. The authentication creates a cookie
   with `SameSite=None` and recent version of Chrome requires HTTPS to do so
 - Build and run (can be done without IDE using [dotnet cli](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-run))
 
 By default, the Web API uses an in-memory database so no DBMS need to be downloaded.
+
+Some features are disabled by default and require a secret key. To set a secret you can run
+`dotnet user-secrets set "MY_SECRET_KEY" "MY_SECRET_VALUE"`. Here is the list of the features
+that can be enabled:
+- Steam authentication: `Steam:ApiKey` (acquired by [filling out this form](https://steamcommunity.com/dev/apikey))
+- Epic Games authentication: `EpicGames:ClientId` + `EpicGames:ClientSecret`
+- Xbox authentication: `Microsoft:ClientId` + `Microsoft:ClientSecret`
+- Game server statistics: `Datadog:ApiKey` + `Datadog:ApplicationKey`
+- Patch notes: `Github:AccessToken`
+- Patreon donor synchronization: `Patreon:AccessToken`
+- Afdian donor synchronization: `Afdian:AccessToken`
 
 #### Web UI (src/WebUI)
 
