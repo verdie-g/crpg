@@ -4,6 +4,7 @@ namespace Crpg.Application.Games.Models;
 
 public record GameUserUpdate
 {
+    public int UserId { get; init; }
     public int CharacterId { get; init; }
     public GameUserReward Reward { get; init; } = new();
     public CharacterStatisticsViewModel Statistics { get; init; } = new();

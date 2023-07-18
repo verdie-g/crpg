@@ -175,6 +175,7 @@ internal class CrpgRewardServer : MissionLogic
 
             CrpgUserUpdate userUpdate = new()
             {
+                UserId = crpgPeer.User.Id,
                 CharacterId = crpgPeer.User.Character.Id,
                 Reward = new CrpgUserReward { Experience = 0, Gold = 0 },
                 Statistics = new CrpgCharacterStatistics { Kills = 0, Deaths = 0, Assists = 0, PlayTime = TimeSpan.Zero },
@@ -214,7 +215,6 @@ internal class CrpgRewardServer : MissionLogic
             }
 
             userUpdates.Add(userUpdate);
-            crpgPeer.UserLoading = true;
         }
 
         _ratingResults.Clear();
@@ -229,6 +229,7 @@ internal class CrpgRewardServer : MissionLogic
         // TODO: add retry mechanism (the endpoint need to be idempotent though).
         try
         {
+            SetUserAsLoading(userUpdates.Select(u => u.UserId), crpgPeerByCrpgUserId, loading: true);
             var res = (await _crpgClient.UpdateUsersAsync(new CrpgGameUsersUpdateRequest { Updates = userUpdates })).Data!;
             SendRewardToPeers(res.UpdateResults, crpgPeerByCrpgUserId, valorousPlayerIds, compensationByCrpgUserId, lowPopulationServer);
         }
@@ -236,6 +237,10 @@ internal class CrpgRewardServer : MissionLogic
         {
             Debug.Print("Couldn't update users: " + e);
             SendErrorToPeers(crpgPeerByCrpgUserId);
+        }
+        finally
+        {
+            SetUserAsLoading(userUpdates.Select(u => u.UserId), crpgPeerByCrpgUserId, loading: false);
         }
     }
 
@@ -540,6 +545,17 @@ internal class CrpgRewardServer : MissionLogic
         }
     }
 
+    private void SetUserAsLoading(IEnumerable<int> userIds, Dictionary<int, CrpgPeer> crpgPeerByCrpgUserId, bool loading)
+    {
+        foreach (int userId in userIds)
+        {
+            if (crpgPeerByCrpgUserId.TryGetValue(userId, out var crpgPeer))
+            {
+                crpgPeer.UserLoading = loading;
+            }
+        }
+    }
+
     private void SendRewardToPeers(IList<UpdateCrpgUserResult> updateResults,
         Dictionary<int, CrpgPeer> crpgPeerByCrpgUserId, HashSet<PlayerId> valorousPlayerIds, Dictionary<int, int> compensationByCrpgUserId, bool lowPopulation)
     {
@@ -550,8 +566,6 @@ internal class CrpgRewardServer : MissionLogic
                 Debug.Print($"Unknown user with id '{updateResult.User.Id}'");
                 continue;
             }
-
-            crpgPeer.UserLoading = false;
 
             var networkPeer = crpgPeer.GetNetworkPeer();
             if (!networkPeer.IsConnectionActive)
