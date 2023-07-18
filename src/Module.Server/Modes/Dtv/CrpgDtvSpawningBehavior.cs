@@ -106,14 +106,37 @@ internal class CrpgDtvSpawningBehavior : CrpgSpawningBehaviorBase
 
     private void SpawnAttackers(CrpgDtvWave wave, int defendersCount)
     {
+        float expectedWaveBotsCount = wave.Groups.Sum(g => ComputeScaledGroupCount(g, defendersCount));
+        // Round up number if it's like 3.999
+        expectedWaveBotsCount = expectedWaveBotsCount - Math.Truncate(expectedWaveBotsCount) > 0.99
+            ? (float)Math.Truncate(expectedWaveBotsCount) + 1f
+            : expectedWaveBotsCount;
+
+        int actualWaveBotCount = 0;
         foreach (CrpgDtvGroup group in wave.Groups)
         {
-            float botCount = group.Count == 0f ? 1f : defendersCount * group.Count;
-            Debug.Print($"Spawning {botCount} {group.ClassDivisionId}(s)");
-            for (int i = 0; i < botCount; i++)
+            int groupBotCount = (int)ComputeScaledGroupCount(group, defendersCount);
+            actualWaveBotCount += groupBotCount;
+            Debug.Print($"Spawning {groupBotCount} {group.ClassDivisionId}(s)");
+            for (int i = 0; i < groupBotCount; i++)
             {
                 SpawnBotAgent(group.ClassDivisionId, Mission.AttackerTeam);
             }
         }
+
+        // In case the wave is 0.5*A + 0.5*B, no bots will spawn if there is only one player. To cope with that,
+        // extra bots are spawned.
+        int extraBotsToSpawn = (int)expectedWaveBotsCount - actualWaveBotCount;
+        var groupsWithoutBoss = wave.Groups.Where(g => g.Count != 0f).ToArray();
+        for (int i = 0; i < extraBotsToSpawn; i += 1)
+        {
+            var group = groupsWithoutBoss[i % groupsWithoutBoss.Length];
+            SpawnBotAgent(group.ClassDivisionId, Mission.AttackerTeam);
+        }
+    }
+
+    private float ComputeScaledGroupCount(CrpgDtvGroup group, int defendersCount)
+    {
+        return group.Count == 0f ? 1f : defendersCount * group.Count;
     }
 }
