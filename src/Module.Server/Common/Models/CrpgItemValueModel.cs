@@ -126,6 +126,11 @@ internal class CrpgItemValueModel : ItemValueModel
     private float CalculateWeaponTier(WeaponComponent weaponComponent)
     {
         bool isAThrowingWeapon = weaponComponent.Weapons.Max(a => a.MaxDataValue) >= 1;
+        if (weaponComponent.PrimaryWeapon.CanHitMultipleTargets)
+        {
+            Debug.Print($"{weaponComponent.StringId} can hit multiple targets");
+        }
+
         if (weaponComponent.Item?.WeaponDesign == null)
         {
             return CalculateTierNonCraftedWeapon(weaponComponent);
@@ -375,7 +380,7 @@ internal class CrpgItemValueModel : ItemValueModel
         {
             float crossbowscaler = 1.5f;
             float crossbowTier = weapon.ThrustDamage / 100f * weapon.ThrustDamage / 100f
-g                * weapon.SwingSpeed / 100f
+                * weapon.SwingSpeed / 100f
                 * weapon.MissileSpeed / 10f
                 * weapon.Accuracy / 10f
                 * (float)Math.Pow(weapon.ThrustSpeed, 0.5f) / 10f
