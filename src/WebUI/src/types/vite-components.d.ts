@@ -45,6 +45,7 @@ declare module 'vue' {
     Modal: typeof import('./../components/ui/Modal.vue')['default']
     NumericInput: typeof import('./../components/ui/NumericInput.vue')['default']
     OnlinePlayers: typeof import('./../components/app/OnlinePlayers.vue')['default']
+    PatchNotes: typeof import('./../components/app/PatchNotes.vue')['default']
     Rank: typeof import('./../components/competitive/Rank.vue')['default']
     RankTable: typeof import('./../components/competitive/RankTable.vue')['default']
     RestrictionsTable: typeof import('./../components/moderator/RestrictionsTable.vue')['default']
