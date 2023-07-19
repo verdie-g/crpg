@@ -1,126 +1,125 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <strings>
   <!-- Battle -->
-  <string id="str_multiplayer_official_game_type_name.cRPGBattle" text="{=*}Battle" />
-  <string id="str_multiplayer_official_game_type_explainer.cRPGBattle" text="{=*}·   Kill the entire enemy team to win{newline}·   Gain experience and gold every minute{newline}·   Upgrade your character on c-rpg.eu" />
-  <string id="str_multiplayer_game_type.cRPGBattle" text="{=*}cRPG Battle" />
+  <string id="str_multiplayer_official_game_type_name.cRPGBattle" text="{=haGoKI0Q}Battle" />
+  <string id="str_multiplayer_official_game_type_explainer.cRPGBattle" text="{=HN4gzXhG}·   Kill the entire enemy team to win{newline}·   Gain experience and gold every minute{newline}·   Upgrade your character on c-rpg.eu" />
+  <string id="str_multiplayer_game_type.cRPGBattle" text="{=uSmyz6m1}Battle" />
 
   <!-- Skirmish -->
-  <string id="str_multiplayer_official_game_type_name.cRPGSkirmish" text="{=*}Skirmish" />
-  <string id="str_multiplayer_official_game_type_explainer.cRPGSkirmish" text="{=*}·   Hold control points on the map to deplete enemy morale{newline}·   Kill the entire enemy team or exhaust their morale to win·   Gain experience and gold while playing" />
-  <string id="str_multiplayer_game_type.cRPGSkirmish" text="{=*}cRPG Skirmish" />
+  <string id="str_multiplayer_official_game_type_name.cRPGSkirmish" text="{=XDxF8ujQ}Skirmish" />
+  <string id="str_multiplayer_official_game_type_explainer.cRPGSkirmish" text="{=a4VXBtjm}·   Hold control points on the map to deplete enemy morale{newline}·   Kill the entire enemy team or exhaust their morale to win·   Gain experience and gold while playing" />
+  <string id="str_multiplayer_game_type.cRPGSkirmish" text="{=WXPRjnqH}Skirmish" />
 
   <!-- Conquest -->
-  <string id="str_multiplayer_official_game_type_name.cRPGConquest" text="{=*}Conquest" />
-  <string id="str_multiplayer_official_game_type_explainer.cRPGConquest" text="{=*}·   Capture all flags of a stage to advance to the next one{newline}·   Defenders' reward multipler increases over time and is reset on a new stage{newline}·   Attackers' reward multiplier decreases over time and is set to max on a new stage" />
-  <string id="str_multiplayer_game_type.cRPGConquest" text="{=*}cRPG Conquest" />
+  <string id="str_multiplayer_official_game_type_name.cRPGConquest" text="{=l5KJxufk}Conquest" />
+  <string id="str_multiplayer_official_game_type_explainer.cRPGConquest" text="{=JLGDB5T7}·   Capture all flags of a stage to advance to the next one{newline}·   Defenders' reward multipler increases over time and is reset on a new stage{newline}·   Attackers' reward multiplier decreases over time and is set to max on a new stage" />
+  <string id="str_multiplayer_game_type.cRPGConquest" text="{=PhKxWoxz}Conquest" />
 
   <!-- Siege -->
-  <string id="str_multiplayer_official_game_type_name.cRPGSiege" text="{=*}Siege" />
-  <string id="str_multiplayer_official_game_type_explainer.cRPGSiege" text="{=*}·   Use various siege engines to attack or defend control points{newline}·   Spawn points advance as control points are captured{newline}·   Successfully assault and hold the keep flag or repel the enemy to win" />
-  <string id="str_multiplayer_game_type.cRPGSiege" text="{=*}cRPG Siege" />
+  <string id="str_multiplayer_official_game_type_name.cRPGSiege" text="{=uMbyjZKn}Siege" />
+  <string id="str_multiplayer_official_game_type_explainer.cRPGSiege" text="{=NyzhLxjg}·   Use various siege engines to attack or defend control points{newline}·   Spawn points advance as control points are captured{newline}·   Successfully assault and hold the keep flag or repel the enemy to win" />
+  <string id="str_multiplayer_game_type.cRPGSiege" text="{=6NrVsGO5}Siege" />
 
-  <!-- TeamDeathmatch -->
-  <string id="str_multiplayer_official_game_type_name.cRPGTeamDeathmatch" text="{=*}Team Deathmatch" />
-  <string id="str_multiplayer_official_game_type_explainer.cRPGTeamDeathmatch" text="{=*}·   Outkill the enemy team to win the game" />
-  <string id="str_multiplayer_game_type.cRPGTeamDeathmatch" text="{=*}cRPG Team Deathmatch" />
+  <!-- Team Deathmatch -->
+  <string id="str_multiplayer_official_game_type_name.cRPGTeamDeathmatch" text="{=JWb4DWDq}Team Deathmatch" />
+  <string id="str_multiplayer_official_game_type_explainer.cRPGTeamDeathmatch" text="{=xuFzKbVx}·   Outkill the enemy team to win the game" />
+  <string id="str_multiplayer_game_type.cRPGTeamDeathmatch" text="{=EHC0hWNZ}Team Deathmatch" />
 
   <!-- Duel -->
-  <string id="str_multiplayer_official_game_type_name.cRPGDuel" text="{=*}Duel" />
-  <string id="str_multiplayer_official_game_type_explainer.cRPGDuel" text="{=*}·   Fight an opponent in single combat{newline}·   Defeat your opponent multiple times to win the duel and claim their bounty{newline}·   There is no upkeep nor gold gain." />
-  <string id="str_multiplayer_game_type.cRPGDuel" text="{=*}cRPG Duel" />
+  <string id="str_multiplayer_official_game_type_name.cRPGDuel" text="{=GTScbIip}Duel" />
+  <string id="str_multiplayer_official_game_type_explainer.cRPGDuel" text="{=yVQj1ZzR}·   Fight an opponent in single combat{newline}·   Defeat your opponent multiple times to win the duel and claim their bounty{newline}·   There is no upkeep nor gold gain." />
+  <string id="str_multiplayer_game_type.cRPGDuel" text="{=lYn1SmzA}Duel" />
 
   <!-- DTV -->
-  <string id="str_multiplayer_official_game_type_name.cRPGDTV" text="{=*}Defend The Viscount" />
-  <string id="str_multiplayer_official_game_type_explainer.cRPGDTV" text="{=*}·   Defend the Viscount from waves of enemies!{newline}·   Earn rewards for protection!{newline}·   Upgrade your character on c-rpg.eu" />
-  <string id="str_multiplayer_game_type.cRPGDTV" text="{=*}cRPG DTV" />
+  <string id="str_multiplayer_official_game_type_name.cRPGDTV" text="{=OUnhyvby}Defend The Viscount" />
+  <string id="str_multiplayer_official_game_type_explainer.cRPGDTV" text="{=bp8JJZpG}·   Defend the Viscount from waves of enemies!{newline}·   Earn rewards for protection!{newline}·   Upgrade your character on c-rpg.eu" />
+  <string id="str_multiplayer_game_type.cRPGDTV" text="{=3uoZAXxh}Defend The Viscount" />
 
   <!-- Scoreboard -->
-  <string id="str_scoreboard_header.life" text="{=*}Life" />
+  <string id="str_scoreboard_header.life" text="{=fBDiQBrC}Life" />
 
   <!-- Kick reasons -->
-  <string id="str_kick_reason.bad_player_height" text="{=*}Your character has a weird height. Fix it in the Bannerlord Armory to join a cRPG server." />
-  <string id="str_kick_reason.banned" text="{=*}You were banned from cRPG servers." />
-  <string id="str_kick_reason.character_recently_created" text="{=*}You've reached the limit of characters created. Enable an existing character on the website or wait 1 hour." />
-  <string id="str_kick_reason.empty_name" text="{=*}Empty names are not allowed on cRPG servers." />
-  <string id="str_kick_reason.no_weapon" text="{=*}You should have at least one weapon equipped to spawn!" />
-  <string id="str_kick_reason.tournament_only" text="{=*}Only tournament characters can join this server." />
-  <string id="str_kick_reason.unreachable_server" text="{=*}The cRPG main server is unreachable. Try again later." />
-  <string id="str_kick_reason.unsupported_platform" text="{=*}cRPG servers only support Steam, Epic Games and Xbox." />
+  <string id="str_kick_reason.bad_player_height" text="{=gaC79g3U}Your character has a weird height. Fix it in the Bannerlord Armory to join a cRPG server." />
+  <string id="str_kick_reason.banned" text="{=qoYQE5yX}You were banned from cRPG servers." />
+  <string id="str_kick_reason.character_recently_created" text="{=SppKtXbt}You've reached the limit of characters created. Enable an existing character on the website or wait 1 hour." />
+  <string id="str_kick_reason.empty_name" text="{=nNXfXYHE}Empty names are not allowed on cRPG servers." />
+  <string id="str_kick_reason.no_weapon" text="{=mWWXmIE5}You should have at least one weapon equipped to spawn!" />
+  <string id="str_kick_reason.tournament_only" text="{=rOhUOWX6}Only tournament characters can join this server." />
+  <string id="str_kick_reason.unreachable_server" text="{=OsPW0okL}The cRPG main server is unreachable. Try again later." />
+  <string id="str_kick_reason.unsupported_platform" text="{=hU3flm9q}cRPG servers only support Steam, Epic Games and Xbox." />
 
   <!-- Battle Maps -->
-  <string id="str_multiplayer_scene_name.crpg_battle_abandoned" text="{=*}Abandoned" />
-  <string id="str_multiplayer_scene_name.crpg_battle_acaciacitadel" text="{=*}Acacia Citadel" />
-  <string id="str_multiplayer_scene_name.crpg_battle_ancientworld" text="{=*}Ancient World" />
-  <string id="str_multiplayer_scene_name.crpg_battle_auglirefortress" text="{=*}Auglire Fortress" />
-  <string id="str_multiplayer_scene_name.crpg_battle_azteca" text="{=*}Azteca" />
-  <string id="str_multiplayer_scene_name.crpg_battle_banditvalley" text="{=*}Bandit Valley" />
-  <string id="str_multiplayer_scene_name.crpg_battle_bazaar" text="{=*}Bazaar" />
-  <string id="str_multiplayer_scene_name.crpg_battle_cabbagepatch" text="{=*}Cabbage Patch" />
-  <string id="str_multiplayer_scene_name.crpg_battle_canals" text="{=*}Canals" />
-  <string id="str_multiplayer_scene_name.crpg_battle_canyon" text="{=*}Canyon" />
-  <string id="str_multiplayer_scene_name.crpg_battle_dragonsroost" text="{=*}Dragon's Roost" />
-  <string id="str_multiplayer_scene_name.crpg_battle_drakenburg" text="{=*}Drakenburg" />
-  <string id="str_multiplayer_scene_name.crpg_battle_fallenaqueduct" text="{=*}Fallen Aqueduct" />
-  <string id="str_multiplayer_scene_name.crpg_battle_fieldbytheriver" text="{=*}Field by the River" />
-  <string id="str_multiplayer_scene_name.crpg_battle_ghosttown" text="{=*}Ghost Town" />
-  <string id="str_multiplayer_scene_name.crpg_battle_hadiiqa" text="{=*}Hadiiqa" />
-  <string id="str_multiplayer_scene_name.crpg_battle_helmspoint" text="{=*}Helm's Point" />
-  <string id="str_multiplayer_scene_name.crpg_battle_hexenbrennen" text="{=*}Hexenbrennen" />
-  <string id="str_multiplayer_scene_name.crpg_battle_howlingmeadow" text="{=*}Howling Meadow" />
-  <string id="str_multiplayer_scene_name.crpg_battle_icelake" text="{=*}Icelake" />
-  <string id="str_multiplayer_scene_name.crpg_battle_islandvillage" text="{=*}Islandvillage" />
-  <string id="str_multiplayer_scene_name.crpg_battle_kalmara" text="{=*}Kalmara" />
-  <string id="str_multiplayer_scene_name.crpg_battle_ketilsfarm" text="{=*}Ketil's Farm" />
-  <string id="str_multiplayer_scene_name.crpg_battle_ketilsfarm" text="{=*}Ketilsfarm" />
-  <string id="str_multiplayer_scene_name.crpg_battle_khamsin" text="{=*}Khamsin" />
-  <string id="str_multiplayer_scene_name.crpg_battle_killington" text="{=*}Killington" />
-  <string id="str_multiplayer_scene_name.crpg_battle_killington" text="{=*}Killington" />
-  <string id="str_multiplayer_scene_name.crpg_battle_kingsroad" text="{=*}King's Road" />
-  <string id="str_multiplayer_scene_name.crpg_battle_lostcathedral" text="{=*}Lost Cathedral" />
-  <string id="str_multiplayer_scene_name.crpg_battle_monastery" text="{=*}Monastery" />
-  <string id="str_multiplayer_scene_name.crpg_battle_moonlittownship" text="{=*}Moonlit Township" />
-  <string id="str_multiplayer_scene_name.crpg_battle_motte" text="{=*}Motte" />
-  <string id="str_multiplayer_scene_name.crpg_battle_onomasticon" text="{=*}Onomasticon" />
-  <string id="str_multiplayer_scene_name.crpg_battle_orionarena" text="{=*}Orion Arena" />
-  <string id="str_multiplayer_scene_name.crpg_battle_persia" text="{=*}Persia" />
-  <string id="str_multiplayer_scene_name.crpg_battle_pompeii" text="{=*}Pompeii" />
-  <string id="str_multiplayer_scene_name.crpg_battle_pompeii" text="{=*}Pompeii" />
-  <string id="str_multiplayer_scene_name.crpg_battle_quarry" text="{=*}Quarry" />
-  <string id="str_multiplayer_scene_name.crpg_battle_redwoodforest" text="{=*}Red Wood Forest" />
-  <string id="str_multiplayer_scene_name.crpg_battle_remnantruins" text="{=*}Remnant Ruins" />
-  <string id="str_multiplayer_scene_name.crpg_battle_ruinedbattlement" text="{=*}Ruined Battlement" />
-  <string id="str_multiplayer_scene_name.crpg_battle_sallyout" text="{=*}Sallyout" />
-  <string id="str_multiplayer_scene_name.crpg_battle_sanctuary" text="{=*}Sanctuary" />
-  <string id="str_multiplayer_scene_name.crpg_battle_sandiboush" text="{=*}Sandiboush" />
-  <string id="str_multiplayer_scene_name.crpg_battle_sandpit" text="{=*}Sandpit" />
-  <string id="str_multiplayer_scene_name.crpg_battle_skalhills" text="{=*}Skalhills" />
-  <string id="str_multiplayer_scene_name.crpg_battle_skolderby" text="{=*}Skolderby" />
-  <string id="str_multiplayer_scene_name.crpg_battle_skyfall" text="{=*}Skyfall" />
-  <string id="str_multiplayer_scene_name.crpg_battle_stonehenge" text="{=*}Stonehenge" />
-  <string id="str_multiplayer_scene_name.crpg_battle_talmberg" text="{=*}Talmberg" />
-  <string id="str_multiplayer_scene_name.crpg_battle_tavernbrawl" text="{=*}Tavernbrawl" />
-  <string id="str_multiplayer_scene_name.crpg_battle_tolstabeach" text="{=*}Tolsta Beach" />
-  <string id="str_multiplayer_scene_name.crpg_battle_ugor" text="{=*}Ugor" />
-  <string id="str_multiplayer_scene_name.crpg_battle_vatnborg" text="{=*}Vatnborg" />
-  <string id="str_multiplayer_scene_name.crpg_battle_verloren" text="{=*}Verloren" />
-  <string id="str_multiplayer_scene_name.crpg_battle_waterwaytojelkala" text="{=*}Waterway To Jelkala" />
-  <string id="str_multiplayer_scene_name.crpg_battle_weirwater" text="{=*}Weirwater" />
-  <string id="str_multiplayer_scene_name.crpg_battle_whitebridge" text="{=*}White Bridge" />
-  <string id="str_multiplayer_scene_name.crpg_battle_zemouri" text="{=*}Zemouri" />
+  <string id="str_multiplayer_scene_name.crpg_battle_abandoned" text="{=PKVPlAeE}Abandoned" />
+  <string id="str_multiplayer_scene_name.crpg_battle_acaciacitadel" text="{=tZJ32ZRQ}Acacia Citadel" />
+  <string id="str_multiplayer_scene_name.crpg_battle_ancientworld" text="{=xEi9C8Kl}Ancient World" />
+  <string id="str_multiplayer_scene_name.crpg_battle_auglirefortress" text="{=yqsEIOOo}Auglire Fortress" />
+  <string id="str_multiplayer_scene_name.crpg_battle_azteca" text="{=Lpot2Wv3}Azteca" />
+  <string id="str_multiplayer_scene_name.crpg_battle_banditvalley" text="{=T8joIHW2}Bandit Valley" />
+  <string id="str_multiplayer_scene_name.crpg_battle_bazaar" text="{=SlStm5J1}Bazaar" />
+  <string id="str_multiplayer_scene_name.crpg_battle_cabbagepatch" text="{=Z7uLkNkf}Cabbage Patch" />
+  <string id="str_multiplayer_scene_name.crpg_battle_canals" text="{=UKP9189B}Canals" />
+  <string id="str_multiplayer_scene_name.crpg_battle_canyon" text="{=2lXUaV2n}Canyon" />
+  <string id="str_multiplayer_scene_name.crpg_battle_dragonsroost" text="{=XFT15E1r}Dragon's Roost" />
+  <string id="str_multiplayer_scene_name.crpg_battle_drakenburg" text="{=SJdRxQxP}Drakenburg" />
+  <string id="str_multiplayer_scene_name.crpg_battle_fallenaqueduct" text="{=J6uThElE}Fallen Aqueduct" />
+  <string id="str_multiplayer_scene_name.crpg_battle_fieldbytheriver" text="{=x0lLZY8X}Field by the River" />
+  <string id="str_multiplayer_scene_name.crpg_battle_ghosttown" text="{=KjhUHwcH}Ghost Town" />
+  <string id="str_multiplayer_scene_name.crpg_battle_hadiiqa" text="{=6WS5c1KC}Hadiiqa" />
+  <string id="str_multiplayer_scene_name.crpg_battle_helmspoint" text="{=3dSVHpQm}Helm's Point" />
+  <string id="str_multiplayer_scene_name.crpg_battle_hexenbrennen" text="{=x7uMhmOV}Hexenbrennen" />
+  <string id="str_multiplayer_scene_name.crpg_battle_howlingmeadow" text="{=vwrgBIYu}Howling Meadow" />
+  <string id="str_multiplayer_scene_name.crpg_battle_icelake" text="{=3i45RSr9}Icelake" />
+  <string id="str_multiplayer_scene_name.crpg_battle_islandvillage" text="{=4U9HDtrc}Islandvillage" />
+  <string id="str_multiplayer_scene_name.crpg_battle_kalmara" text="{=ac2GFU7o}Kalmara" />
+  <string id="str_multiplayer_scene_name.crpg_battle_ketilsfarm" text="{=Pn73lEKV}Ketil's Farm" />
+  <string id="str_multiplayer_scene_name.crpg_battle_ketilsfarm" text="{=qrCXeSTp}Ketilsfarm" />
+  <string id="str_multiplayer_scene_name.crpg_battle_khamsin" text="{=rJYcMceC}Khamsin" />
+  <string id="str_multiplayer_scene_name.crpg_battle_killington" text="{=5TDQiTgq}Killington" />
+  <string id="str_multiplayer_scene_name.crpg_battle_killington" text="{=UHdsPL0z}Killington" />
+  <string id="str_multiplayer_scene_name.crpg_battle_kingsroad" text="{=Wtx9OuIV}King's Road" />
+  <string id="str_multiplayer_scene_name.crpg_battle_lostcathedral" text="{=jJeeiHbN}Lost Cathedral" />
+  <string id="str_multiplayer_scene_name.crpg_battle_monastery" text="{=3DMBLrhB}Monastery" />
+  <string id="str_multiplayer_scene_name.crpg_battle_moonlittownship" text="{=gGMp0ZlB}Moonlit Township" />
+  <string id="str_multiplayer_scene_name.crpg_battle_motte" text="{=dnrGa5y0}Motte" />
+  <string id="str_multiplayer_scene_name.crpg_battle_onomasticon" text="{=1AjGiJGE}Onomasticon" />
+  <string id="str_multiplayer_scene_name.crpg_battle_orionarena" text="{=wPk8Ym0n}Orion Arena" />
+  <string id="str_multiplayer_scene_name.crpg_battle_persia" text="{=JNZ5JHGR}Persia" />
+  <string id="str_multiplayer_scene_name.crpg_battle_pompeii" text="{=89xDzRhK}Pompeii" />
+  <string id="str_multiplayer_scene_name.crpg_battle_quarry" text="{=TmXJl70C}Quarry" />
+  <string id="str_multiplayer_scene_name.crpg_battle_redwoodforest" text="{=o0dhGKfm}Red Wood Forest" />
+  <string id="str_multiplayer_scene_name.crpg_battle_remnantruins" text="{=OAwtwDhr}Remnant Ruins" />
+  <string id="str_multiplayer_scene_name.crpg_battle_ruinedbattlement" text="{=htSIJxlO}Ruined Battlement" />
+  <string id="str_multiplayer_scene_name.crpg_battle_sallyout" text="{=FFO55udm}Sallyout" />
+  <string id="str_multiplayer_scene_name.crpg_battle_sanctuary" text="{=UDZzbM3m}Sanctuary" />
+  <string id="str_multiplayer_scene_name.crpg_battle_sandiboush" text="{=zXbY49aQ}Sandiboush" />
+  <string id="str_multiplayer_scene_name.crpg_battle_sandpit" text="{=rV1aoC4M}Sandpit" />
+  <string id="str_multiplayer_scene_name.crpg_battle_skalhills" text="{=sC8pWd6a}Skalhills" />
+  <string id="str_multiplayer_scene_name.crpg_battle_skolderby" text="{=zyesadwK}Skolderby" />
+  <string id="str_multiplayer_scene_name.crpg_battle_skyfall" text="{=uSGA1apA}Skyfall" />
+  <string id="str_multiplayer_scene_name.crpg_battle_stonehenge" text="{=DttAl3V1}Stonehenge" />
+  <string id="str_multiplayer_scene_name.crpg_battle_talmberg" text="{=103M2Shv}Talmberg" />
+  <string id="str_multiplayer_scene_name.crpg_battle_tavernbrawl" text="{=34t1I2tA}Tavernbrawl" />
+  <string id="str_multiplayer_scene_name.crpg_battle_tolstabeach" text="{=JLuIItVZ}Tolsta Beach" />
+  <string id="str_multiplayer_scene_name.crpg_battle_ugor" text="{=hID2b1Xk}Ugor" />
+  <string id="str_multiplayer_scene_name.crpg_battle_vatnborg" text="{=VQdi4BHE}Vatnborg" />
+  <string id="str_multiplayer_scene_name.crpg_battle_verloren" text="{=10WTDZWH}Verloren" />
+  <string id="str_multiplayer_scene_name.crpg_battle_waterwaytojelkala" text="{=szPNlyzS}Waterway To Jelkala" />
+  <string id="str_multiplayer_scene_name.crpg_battle_weirwater" text="{=NuReq6rk}Weirwater" />
+  <string id="str_multiplayer_scene_name.crpg_battle_whitebridge" text="{=jP0ySZzV}White Bridge" />
+  <string id="str_multiplayer_scene_name.crpg_battle_zemouri" text="{=LLWi2bYx}Zemouri" />
 
   <!-- Conquest Maps -->
-  <string id="str_multiplayer_scene_name.crpg_conquest_acre" text="{=*}Acre" />
-  <string id="str_multiplayer_scene_name.crpg_conquest_ardumu" text="{=*}Ardumu" />
-  <string id="str_multiplayer_scene_name.crpg_conquest_frederiksborg" text="{=*}Frederiksborg" />
-  <string id="str_multiplayer_scene_name.crpg_conquest_hades" text="{=*}Hades" />
-  <string id="str_multiplayer_scene_name.crpg_conquest_ironhale" text="{=*}Ironhale" />
-  <string id="str_multiplayer_scene_name.crpg_conquest_neuenburg" text="{=*}Neuenburg" />
-  <string id="str_multiplayer_scene_name.crpg_conquest_orlghelovar" text="{=*}Orlghelovar" />
-  <string id="str_multiplayer_scene_name.crpg_conquest_silverskalitz" text="{=*}Silver Skalitz" />
-  <string id="str_multiplayer_scene_name.crpg_conquest_skalalanding" text="{=*}Skala Landing" />
+  <string id="str_multiplayer_scene_name.crpg_conquest_acre" text="{=9Mpawm9h}Acre" />
+  <string id="str_multiplayer_scene_name.crpg_conquest_ardumu" text="{=6KypSnaa}Ardumu" />
+  <string id="str_multiplayer_scene_name.crpg_conquest_frederiksborg" text="{=caA2XOEy}Frederiksborg" />
+  <string id="str_multiplayer_scene_name.crpg_conquest_hades" text="{=POatExkU}Hades" />
+  <string id="str_multiplayer_scene_name.crpg_conquest_ironhale" text="{=butUY7Y4}Ironhale" />
+  <string id="str_multiplayer_scene_name.crpg_conquest_neuenburg" text="{=TKzD7aEp}Neuenburg" />
+  <string id="str_multiplayer_scene_name.crpg_conquest_orlghelovar" text="{=ofvazCUE}Orlghelovar" />
+  <string id="str_multiplayer_scene_name.crpg_conquest_silverskalitz" text="{=jyeZFBYc}Silver Skalitz" />
+  <string id="str_multiplayer_scene_name.crpg_conquest_skalalanding" text="{=tyxhM0QA}Skala Landing" />
 
   <!-- DTV Maps -->
-  <string id="str_multiplayer_scene_name.crpg_dtv_qalat" text="{=*}Qalat" />
-  <string id="str_multiplayer_scene_name.crpg_dtv_weepinghill" text="{=*}Weeping Hill" />
+  <string id="str_multiplayer_scene_name.crpg_dtv_qalat" text="{=V5jaECxf}Qalat" />
+  <string id="str_multiplayer_scene_name.crpg_dtv_weepinghill" text="{=jKsuXc4Z}Weeping Hill" />
 </strings>

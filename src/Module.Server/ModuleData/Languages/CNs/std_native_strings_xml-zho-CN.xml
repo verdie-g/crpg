@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<base type="string">
+  <tags>
+    <tag language="简体中文"/>
+  </tags>
+  <strings>
+    <string id="haGoKI0Q" text="战斗" />
+    <string id="HN4gzXhG" text="·   击败整个敌方团队获胜{newline}·   每分钟获得经验和金币{newline}·   在 c-rpg.eu 上升级你的角色" />
+    <string id="uSmyz6m1" text="战斗" />
+    <string id="XDxF8ujQ" text="小规模战斗" />
+    <string id="a4VXBtjm" text="·   占领地图上的控制点以耗尽敌方士气{newline}·   击败整个敌方团队或消耗他们的士气以获胜{newline}·   玩游戏时获得经验和金币" />
+    <string id="WXPRjnqH" text="小规模战斗" />
+    <string id="l5KJxufk" text="征服" />
+    <string id="JLGDB5T7" text="·   占领一个阶段的所有旗帜以进入下一个阶段{newline}·   防守者的奖励倍增器会随时间增加，并在新阶段重置{newline}·   进攻者的奖励倍增器会随时间减少，并在新阶段设为最大" />
+    <string id="PhKxWoxz" text="征服" />
+    <string id="uMbyjZKn" text="攻城战" />
+    <string id="NyzhLxjg" text="·   使用各种攻城器械攻击或防守控制点{newline}·   随着控制点的被占领，出生点也会前进{newline}·   成功突袭并守住主堡旗帜或击退敌人以获胜" />
+    <string id="6NrVsGO5" text="攻城战" />
+    <string id="JWb4DWDq" text="团队死斗" />
+    <string id="xuFzKbVx" text="·   击败敌方团队以获胜游戏" />
+    <string id="EHC0hWNZ" text="团队死斗" />
+    <string id="GTScbIip" text="决斗" />
+    <string id="yVQj1ZzR" text="·   与一个对手进行单挑{newline}·   多次击败对手以赢得决斗并获得赏金{newline}·   无需维护费用和金币收益。" />
+    <string id="lYn1SmzA" text="决斗" />
+    <string id="OUnhyvby" text="保卫子爵" />
+    <string id="bp8JJZpG" text="·   保卫子爵免受敌人的攻击！{newline}·   保护子爵会获得奖励！{newline}·   在 c-rpg.eu 上升级你的角色。" />
+    <string id="3uoZAXxh" text="保卫子爵" />
+    <string id="fBDiQBrC" text="生活" />
+    <string id="gaC79g3U" text="你的角色身高有点奇怪。在 Bannerlord Armory 中修复它以加入 cRPG 服务器。" />
+    <string id="qoYQE5yX" text="你已被 cRPG 服务器封禁。" />
+    <string id="SppKtXbt" text="你已达到创建角色的限制。在网站上启用现有角色或等待 1 小时。" />
+    <string id="nNXfXYHE" text="cRPG 服务器不允许空名字。" />
+    <string id="mWWXmIE5" text="你应该至少装备一把武器才能重生！" />
+    <string id="rOhUOWX6" text="只有锦标赛角色可以加入此服务器。" />
+    <string id="OsPW0okL" text="无法访问 cRPG 主服务器。请稍后重试。" />
+    <string id="hU3flm9q" text="cRPG 服务器仅支持 Steam、Epic Games 和 Xbox。" />
+    <string id="PKVPlAeE" text="已弃置" />
+    <string id="tZJ32ZRQ" text="Acacia 堡垒" />
+    <string id="xEi9C8Kl" text="古代世界" />
+    <string id="yqsEIOOo" text="奥格利堡垒" />
+    <string id="Lpot2Wv3" text="阿兹特克" />
+    <string id="T8joIHW2" text="强盗谷" />
+    <string id="SlStm5J1" text="市集" />
+    <string id="Z7uLkNkf" text="卷心菜地" />
+    <string id="UKP9189B" text="运河" />
+    <string id="2lXUaV2n" text="峡谷" />
+    <string id="XFT15E1r" text="龙巢" />
+    <string id="SJdRxQxP" text="德拉肯堡" />
+    <string id="J6uThElE" text="倒塌的导水渠" />
+    <string id="x0lLZY8X" text="河边地" />
+    <string id="KjhUHwcH" text="鬼镇" />
+    <string id="6WS5c1KC" text="Hadiiqa" />
+    <string id="3dSVHpQm" text="海盗湾" />
+    <string id="x7uMhmOV" text="巫婆燃烧" />
+    <string id="vwrgBIYu" text="嚎叫草地" />
+    <string id="3i45RSr9" text="冰湖" />
+    <string id="4U9HDtrc" text="岛村" />
+    <string id="ac2GFU7o" text="卡尔马拉" />
+    <string id="Pn73lEKV" text="凯蒂尔农场" />
+    <string id="qrCXeSTp" text="凯蒂尔农场" />
+    <string id="rJYcMceC" text="哈姆辛" />
+    <string id="5TDQiTgq" text="基林顿" />
+    <string id="UHdsPL0z" text="基林顿" />
+    <string id="Wtx9OuIV" text="国王之路" />
+    <string id="jJeeiHbN" text="失落的大教堂" />
+    <string id="3DMBLrhB" text="修道院" />
+    <string id="gGMp0ZlB" text="月光小镇" />
+    <string id="dnrGa5y0" text="营寨" />
+    <string id="1AjGiJGE" text="名字之书" />
+    <string id="wPk8Ym0n" text="猎户座竞技场" />
+    <string id="JNZ5JHGR" text="波斯" />
+    <string id="89xDzRhK" text="庞贝" />
+    <string id="TmXJl70C" text="采石场" />
+    <string id="o0dhGKfm" text="红木森林" />
+    <string id="OAwtwDhr" text="遗迹废墟" />
+    <string id="htSIJxlO" text="废墟城墙" />
+    <string id="FFO55udm" text="突围" />
+    <string id="UDZzbM3m" text="圣地" />
+    <string id="zXbY49aQ" text="桑迪布什" />
+    <string id="rV1aoC4M" text="沙坑" />
+    <string id="sC8pWd6a" text="斯卡尔山" />
+    <string id="zyesadwK" text="斯科尔德比" />
+    <string id="uSGA1apA" text="坠落之地" />
+    <string id="DttAl3V1" text="巨石阵" />
+    <string id="103M2Shv" text="塔尔姆贝格" />
+    <string id="34t1I2tA" text="酒馆乱斗" />
+    <string id="JLuIItVZ" text="托尔斯塔海滩" />
+    <string id="hID2b1Xk" text="乌戈尔" />
+    <string id="VQdi4BHE" text="瓦特堡" />
+    <string id="10WTDZWH" text="弗洛伦" />
+    <string id="szPNlyzS" text="通往杰尔卡拉的水路" />
+    <string id="NuReq6rk" text="湍流水道" />
+    <string id="jP0ySZzV" text="白桥" />
+    <string id="LLWi2bYx" text="泽穆里" />
+    <string id="9Mpawm9h" text="亚克尔" />
+    <string id="6KypSnaa" text="阿尔杜穆" />
+    <string id="caA2XOEy" text="弗雷德里克堡" />
+    <string id="POatExkU" text="哈迪斯" />
+    <string id="butUY7Y4" text="铁雾山" />
+    <string id="TKzD7aEp" text="诺因堡" />
+    <string id="ofvazCUE" text="奥尔格洛瓦" />
+    <string id="jyeZFBYc" text="银斯卡利茨" />
+    <string id="tyxhM0QA" text="斯卡拉登陆点" />
+    <string id="V5jaECxf" text="卡拉特" />
+    <string id="jKsuXc4Z" text="哭泣山" />
+  </strings>
+</base>
