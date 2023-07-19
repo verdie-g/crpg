@@ -27,41 +27,39 @@ const { item, showTier = false } = defineProps<{
           :rank="item.rank"
         />
 
-        <template v-if="item.weaponUsage.includes(WeaponUsage.Secondary)">
-          <VTooltip placement="auto">
-            <Tag variant="warning" rounded icon="alert" size="sm" />
+        <VTooltip v-if="item.weaponUsage.includes(WeaponUsage.Secondary)" placement="auto">
+          <Tag variant="warning" rounded icon="alert" size="sm" />
 
-            <template #popper>
-              <div class="prose prose-invert">
-                <h5 class="text-status-warning">
-                  {{ $t(`shop.item.weaponUsage.title`) }}
-                </h5>
+          <template #popper>
+            <div class="prose prose-invert">
+              <h5 class="text-status-warning">
+                {{ $t(`shop.item.weaponUsage.title`) }}
+              </h5>
 
-                <p>
-                  {{ $t(`shop.item.weaponUsage.desc`) }}
-                </p>
+              <p>
+                {{ $t(`shop.item.weaponUsage.desc`) }}
+              </p>
 
-                <i18n-t scope="global" keypath="shop.item.weaponUsage.secondary" tag="p">
-                  <template #weaponClass>
-                    <div class="flex items-center gap-1 font-bold text-content-100">
-                      <OIcon size="lg" :icon="weaponClassToIcon[item.weaponClass!]" />
-                      <span>{{ $t(`item.weaponClass.${item.weaponClass}`) }}</span>
-                    </div>
-                  </template>
-                </i18n-t>
+              <i18n-t scope="global" keypath="shop.item.weaponUsage.secondary" tag="p">
+                <template #weaponClass>
+                  <div class="flex items-center gap-1 font-bold text-content-100">
+                    <OIcon size="lg" :icon="weaponClassToIcon[item.weaponClass!]" />
+                    <span>{{ $t(`item.weaponClass.${item.weaponClass}`) }}</span>
+                  </div>
+                </template>
+              </i18n-t>
 
-                <i18n-t scope="global" keypath="shop.item.weaponUsage.primary" tag="p">
-                  <template #weaponClass>
-                    <div class="flex items-center gap-1 font-bold text-content-100">
-                      <OIcon size="lg" :icon="weaponClassToIcon[item.weaponPrimaryClass!]" />
-                      <span>{{ $t(`item.weaponClass.${item.weaponPrimaryClass}`) }}</span>
-                    </div>
-                  </template>
-                </i18n-t>
-              </div>
-            </template>
-          </VTooltip>
-        </template>
+              <i18n-t scope="global" keypath="shop.item.weaponUsage.primary" tag="p">
+                <template #weaponClass>
+                  <div class="flex items-center gap-1 font-bold text-content-100">
+                    <OIcon size="lg" :icon="weaponClassToIcon[item.weaponPrimaryClass!]" />
+                    <span>{{ $t(`item.weaponClass.${item.weaponPrimaryClass}`) }}</span>
+                  </div>
+                </template>
+              </i18n-t>
+            </div>
+          </template>
+        </VTooltip>
 
         <slot name="top-left" />
       </div>
@@ -82,6 +80,13 @@ const { item, showTier = false } = defineProps<{
         </VTooltip>
 
         <slot name="bottom-right" />
+      </div>
+
+      <!-- top-right -->
+      <div class="absolute right-0 top-0 flex items-center gap-1.5">
+        <Tag v-if="item.new === 1" variant="success" label="new" />
+
+        <slot name="top-right" />
       </div>
     </div>
 
