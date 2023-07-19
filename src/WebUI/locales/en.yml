@@ -80,6 +80,7 @@ action:
   upgrade: Upgrade
   reforge: Reforge
   enter: Enter
+  copied: Copied
 
 login:
   label: Login with

@@ -80,6 +80,7 @@ action:
   upgrade: 升级
   reforge: 重铸
   enter: 进入
+  copied: 复制的
 
 login:
   label: 登录
