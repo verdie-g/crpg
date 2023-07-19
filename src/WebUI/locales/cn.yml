@@ -1136,5 +1136,5 @@ rankTable:
   title: 段位表
 
 releaseNotes:
-  latest: 局部
-  showAllRelease: '+ {count} 释放'
+  latest: 最新版
+  showAllRelease: '+ {count} 版本'
