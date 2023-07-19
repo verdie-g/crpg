@@ -48,6 +48,10 @@
   <string id="str_kick_reason.unreachable_server" text="{=OsPW0okL}The cRPG main server is unreachable. Try again later." />
   <string id="str_kick_reason.unsupported_platform" text="{=hU3flm9q}cRPG servers only support Steam, Epic Games and Xbox." />
 
+  <!-- Notifications -->
+  <string id="str_notification.inactivity_warning" text="{=pCIKeing}You will be removed for inactivity after {SECONDS} seconds!" />
+  <string id="str_notification.cavalry_spawn_delay" text="{=v1S1BAF4}Cavalry will spawn in {SECONDS} seconds!" />
+
   <!-- Battle Maps -->
   <string id="str_multiplayer_scene_name.crpg_battle_abandoned" text="{=PKVPlAeE}Abandoned" />
   <string id="str_multiplayer_scene_name.crpg_battle_acaciacitadel" text="{=tZJ32ZRQ}Acacia Citadel" />

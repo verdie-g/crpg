@@ -2,7 +2,7 @@
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Network.Messages;
 
-namespace Crpg.Module.Common.Network;
+namespace Crpg.Module.Rewards;
 
 [DefineGameNetworkMessageTypeForMod(GameNetworkMessageSendType.FromServer)]
 internal sealed class CrpgRewardUser : GameNetworkMessage

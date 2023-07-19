@@ -1,5 +1,4 @@
-﻿using Crpg.Module.Common.Network;
-using TaleWorlds.Core;
+﻿using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
@@ -39,6 +38,7 @@ internal class CrpgRewardClient : MissionNetwork
     {
         registerer.Register<CrpgRewardUser>(HandleRewardUser);
         registerer.Register<CrpgRewardError>(HandleRewardError);
+        registerer.Register<CrpgRewardHappyHour>(HandleRewardHappyHour);
     }
 
     private void HandleRewardUser(CrpgRewardUser message)
@@ -123,5 +123,13 @@ internal class CrpgRewardClient : MissionNetwork
         InformationManager.DisplayMessage(
             new InformationMessage(new TextObject("{=8eHDaW4v}Could not join cRPG main server. Your reward was lost.").ToString(),
                 new Color(0.75f, 0.01f, 0.01f)));
+    }
+
+    private void HandleRewardHappyHour(CrpgRewardHappyHour message)
+    {
+        var textObject = message.Started
+            ? new TextObject("{=TWpiAeFe}It's happy hours time! Experience gain is increased by 50%.")
+            : new TextObject("{=KoqNpPLa}Happy hours ended!");
+        InformationManager.AddSystemNotification(textObject.ToString());
     }
 }

@@ -1,6 +1,5 @@
-﻿using Crpg.Module.Common.Network;
+﻿using Crpg.Module.Notifications;
 using TaleWorlds.Library;
-using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Diamond;
 using TaleWorlds.PlayerServices;
@@ -92,17 +91,17 @@ internal class KickInactiveBehavior : MissionBehavior
                 return;
             }
 
-            const float warningTime = 15;
+            const int warningTime = 15;
             if (MissionTime.Now - lastActiveStatus.LastActive > _inactiveTimeLimit - MissionTime.Seconds(warningTime) && !lastActiveStatus.Warned)
             {
-                TextObject textObject = new("{=pCIKeing}You will be removed for inactivity after {SECONDS} seconds!",
-                    new Dictionary<string, object> { ["SECONDS"] = warningTime });
                 GameNetwork.BeginModuleEventAsServer(networkPeer);
-                GameNetwork.WriteMessage(new CrpgNotification
+                GameNetwork.WriteMessage(new CrpgNotificationId
                 {
                     Type = CrpgNotificationType.Notification,
-                    Message = textObject.ToString(),
+                    TextId = "str_notification",
+                    TextVariation = "inactivity_warning",
                     SoundEvent = string.Empty,
+                    Variables = { ["SECONDS"] = warningTime.ToString() },
                 });
                 GameNetwork.EndModuleEventAsServer();
 

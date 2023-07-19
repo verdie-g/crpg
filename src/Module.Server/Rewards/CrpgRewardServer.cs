@@ -433,11 +433,8 @@ internal class CrpgRewardServer : MissionLogic
             if (_lastRewardDuringHappyHours)
             {
                 GameNetwork.BeginBroadcastModuleEvent();
-                GameNetwork.WriteMessage(new CrpgNotification
-                {
-                    Type = CrpgNotificationType.Announcement,
-                    Message = new TextObject("{=KoqNpPLa}Happy hours ended!").ToString(),
-                });
+                GameNetwork.BeginBroadcastModuleEvent();
+                GameNetwork.WriteMessage(new CrpgRewardHappyHour { Started = false });
                 GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
             }
 
@@ -448,11 +445,7 @@ internal class CrpgRewardServer : MissionLogic
         if (!_lastRewardDuringHappyHours)
         {
             GameNetwork.BeginBroadcastModuleEvent();
-            GameNetwork.WriteMessage(new CrpgNotification
-            {
-                Type = CrpgNotificationType.Announcement,
-                Message = new TextObject("{=TWpiAeFe}It's happy hours time! Experience gain is increased by 50%.").ToString(),
-            });
+            GameNetwork.WriteMessage(new CrpgRewardHappyHour { Started = true });
             GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
         }
 

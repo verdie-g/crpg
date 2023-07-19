@@ -1,5 +1,6 @@
 ﻿using Crpg.Module.Common;
 using Crpg.Module.Common.Network;
+using Crpg.Module.Notifications;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;

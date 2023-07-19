@@ -5,7 +5,7 @@ using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 
-namespace Crpg.Module.Common;
+namespace Crpg.Module.Notifications;
 
 /// <summary>
 /// Used for notifications which a shared between gamemodes (!a command etc.).
@@ -32,6 +32,13 @@ internal class CrpgNotificationComponent : MultiplayerGameNotificationsComponent
 
     private void HandleNotificationId(CrpgNotificationId notification)
     {
+        foreach (var v in notification.Variables)
+        {
+            // It's so fucking weird but the variable are set on a static context. I guess it works because everything
+            // text related is done only on the game loop thread.
+            GameTexts.SetVariable(v.Key, v.Value);
+        }
+
         string message = GameTexts.FindText(notification.TextId, notification.TextVariation).ToString();
         PrintNotification(message, notification.Type, notification.SoundEvent);
     }

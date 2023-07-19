@@ -1,6 +1,8 @@
 ﻿using Crpg.Module.Common;
+using Crpg.Module.Common.TeamSelect;
 using Crpg.Module.Modes.Siege;
 using Crpg.Module.Modes.Warmup;
+using Crpg.Module.Notifications;
 using Crpg.Module.Rewards;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
@@ -78,11 +80,11 @@ internal class CrpgConquestGameMode : MissionBasedMultiplayerGameMode
         ChatBox chatBox = Game.Current.GetGameHandler<ChatBox>();
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent,
             () => (new SiegeSpawnFrameBehavior(), new CrpgSiegeSpawningBehavior(_constants)));
-        CrpgTeamSelectComponent teamSelectComponent = new(warmupComponent, null);
+        CrpgTeamSelectServerComponent teamSelectComponent = new(warmupComponent, null);
         CrpgRewardServer rewardServer = new(crpgClient, _constants, warmupComponent, enableTeamHitCompensations: false, enableRating: false);
 #else
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent, null);
-        CrpgTeamSelectComponent teamSelectComponent = new();
+        CrpgTeamSelectClientComponent teamSelectComponent = new();
 #endif
 
         MissionState.OpenNew(GameName,

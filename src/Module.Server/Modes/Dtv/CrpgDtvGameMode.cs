@@ -1,5 +1,7 @@
 using Crpg.Module.Common;
+using Crpg.Module.Common.TeamSelect;
 using Crpg.Module.Modes.Warmup;
+using Crpg.Module.Notifications;
 using Crpg.Module.Rewards;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
@@ -83,12 +85,12 @@ internal class CrpgDtvGameMode : MissionBasedMultiplayerGameMode
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent, () =>
             (new FlagDominationSpawnFrameBehavior(),
             new CrpgDtvSpawningBehavior(_constants)));
-        CrpgTeamSelectComponent teamSelectComponent = new(warmupComponent, null);
+        CrpgTeamSelectServerComponent teamSelectComponent = new(warmupComponent, null);
         CrpgRewardServer rewardServer = new(crpgClient, _constants, warmupComponent, enableTeamHitCompensations: true, enableRating: false);
         CrpgDtvSpawningBehavior spawnBehaviour = new(_constants);
 #else
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent, null);
-        CrpgTeamSelectComponent teamSelectComponent = new();
+        CrpgTeamSelectClientComponent teamSelectComponent = new();
 #endif
         CrpgDtvClient dtvClient = new();
         MissionState.OpenNew(

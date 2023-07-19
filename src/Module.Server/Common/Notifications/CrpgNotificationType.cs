@@ -1,4 +1,4 @@
-﻿namespace Crpg.Module.Common.Network;
+﻿namespace Crpg.Module.Notifications;
 
 internal enum CrpgNotificationType
 {

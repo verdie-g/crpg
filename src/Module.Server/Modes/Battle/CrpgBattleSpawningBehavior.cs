@@ -1,7 +1,6 @@
 ﻿using Crpg.Module.Common;
-using Crpg.Module.Common.Network;
+using Crpg.Module.Notifications;
 using TaleWorlds.Core;
-using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.PlayerServices;
 
@@ -110,18 +109,18 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
 
         bool hasMount = characterEquipment[EquipmentIndex.Horse].Item != null;
         // Disallow spawning cavalry before the cav spawn delay ended.
-        if (hasMount && (!_cavalrySpawnDelayTimer?.Check() ?? false))
+        if (hasMount && _cavalrySpawnDelayTimer != null && !_cavalrySpawnDelayTimer.Check())
         {
             if (_notifiedPlayersAboutSpawnRestriction.Add(networkPeer.VirtualPlayer.Id))
             {
-                TextObject cavalryTextObject = new("{=v1S1BAF4}Cavalry will spawn in {SECONDS} seconds!",
-                    new Dictionary<string, object?> { ["SECONDS"] = _cavalrySpawnDelayTimer?.GetTimerDuration() });
                 GameNetwork.BeginModuleEventAsServer(networkPeer);
-                GameNetwork.WriteMessage(new CrpgNotification
+                GameNetwork.WriteMessage(new CrpgNotificationId
                 {
                     Type = CrpgNotificationType.Notification,
-                    Message = cavalryTextObject.ToString(),
+                    TextId = "str_notification",
+                    TextVariation = "cavalry_spawn_delay",
                     SoundEvent = string.Empty,
+                    Variables = { ["SECONDS"] = ((int)_cavalrySpawnDelayTimer.GetTimerDuration()).ToString() },
                 });
                 GameNetwork.EndModuleEventAsServer();
             }

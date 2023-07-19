@@ -1,4 +1,4 @@
-﻿using Crpg.Module.Common.Network;
+﻿using Crpg.Module.Notifications;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Diamond;
 

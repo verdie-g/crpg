@@ -1,33 +1,27 @@
 ﻿using System.IO.Compression;
-using Newtonsoft.Json.Converters;
-using TaleWorlds.MountAndBlade;
-
-#if CRPG_SERVER
 using System.Text;
 using Crpg.Module.Api.Models.Characters;
 using Crpg.Module.Api.Models.Items;
 using Crpg.Module.Api.Models.Users;
 using Crpg.Module.Balancing;
-using Crpg.Module.Common.Network;
 using Crpg.Module.Rating;
 using NetworkMessages.FromClient;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
-using TaleWorlds.Localization;
+using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
 using TaleWorlds.PlayerServices;
-#endif
 
-namespace Crpg.Module.Common;
+namespace Crpg.Module.Common.TeamSelect;
 
 /// <summary>
 /// Disables team selection and randomly assign teams if the native balancer is enabled. Else use the cRPG balancer
 /// to balance teams after each round.
 /// </summary>
-internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
+internal class CrpgTeamSelectServerComponent : MultiplayerTeamSelectComponent
 {
-#if CRPG_SERVER
     private readonly MultiplayerWarmupComponent _warmupComponent;
     private readonly MultiplayerRoundController? _roundController;
     private readonly MatchBalancer _balancer;
@@ -40,7 +34,7 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
 
     private readonly Dictionary<PlayerId, Team> _playerTeamsBeforeJoiningSpectator;
 
-    public CrpgTeamSelectComponent(MultiplayerWarmupComponent warmupComponent, MultiplayerRoundController? roundController)
+    public CrpgTeamSelectServerComponent(MultiplayerWarmupComponent warmupComponent, MultiplayerRoundController? roundController)
     {
         _warmupComponent = warmupComponent;
         _roundController = roundController;
@@ -49,13 +43,11 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
         _playersWaitingForTeam = new HashSet<PlayerId>();
         _playerTeamsBeforeJoiningSpectator = new Dictionary<PlayerId, Team>();
     }
-#endif
 
     public override void OnBehaviorInitialize()
     {
         base.OnBehaviorInitialize();
 
-#if CRPG_SERVER
         _warmupComponent.OnWarmupEnded += OnWarmupEnded;
         if (_roundController != null)
         {
@@ -310,64 +302,13 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
             }
         }
 
-        StringBuilder notifBuilder = new();
-        TextObject textObject;
-        if (defendersMovedToAttackers != 0)
-        {
-            textObject = new("{=xAnUFQt2}{COUNT} {?IS_PLURAL}players were{?}player was{\\?} moved to the attackers team{newline}",
-                new Dictionary<string, object>
-                {
-                    ["COUNT"] = defendersMovedToAttackers,
-                    ["IS_PLURAL"] = defendersMovedToAttackers > 1,
-                });
-            notifBuilder.Append(textObject);
-        }
-
-        if (attackersMovedToDefenders != 0)
-        {
-            textObject = new("{=YTubwz4z}{COUNT} {?IS_PLURAL}players were{?}player was{\\?} moved to the defenders team{newline}",
-                new Dictionary<string, object>
-                {
-                    ["COUNT"] = attackersMovedToDefenders,
-                    ["IS_PLURAL"] = attackersMovedToDefenders > 1,
-                });
-            notifBuilder.Append(textObject);
-        }
-
-        if (defendersJoined != 0)
-        {
-            textObject = new("{=ymrAOIug}{COUNT} new {?IS_PLURAL}players{?}player{\\?} joined the defenders team{newline}",
-                new Dictionary<string, object>
-                {
-                    ["COUNT"] = defendersJoined,
-                    ["IS_PLURAL"] = defendersJoined > 1,
-                });
-            notifBuilder.Append(textObject);
-        }
-
-        if (attackersJoined != 0)
-        {
-            textObject = new("{=YFfWaWqk}{COUNT} new {?IS_PLURAL}players{?}player{\\?} joined the attackers team{newline}",
-                new Dictionary<string, object>
-                {
-                    ["COUNT"] = attackersJoined,
-                    ["IS_PLURAL"] = attackersJoined > 1,
-                });
-            notifBuilder.Append(textObject);
-        }
-
-        if (notifBuilder.Length == 0)
-        {
-            return;
-        }
-
-        notifBuilder.Length -= "{newline}".Length;
-
         GameNetwork.BeginBroadcastModuleEvent();
-        GameNetwork.WriteMessage(new CrpgNotification
+        GameNetwork.WriteMessage(new TeamBalancedMessage
         {
-            Type = CrpgNotificationType.Notification,
-            Message = notifBuilder.ToString(),
+            DefendersMovedToAttackers = defendersMovedToAttackers,
+            AttackersMovedToDefenders = attackersMovedToDefenders,
+            DefendersJoined = defendersJoined,
+            AttackersJoined = attackersJoined,
         });
         GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
     }
@@ -545,7 +486,4 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
         public float EquipmentWeight { get; set; }
         public string? ClanTag { get; set; }
     }
-#else
-    }
-#endif
 }

@@ -1,7 +1,9 @@
 using Crpg.Module.Common;
 using Crpg.Module.Common.HotConstants;
+using Crpg.Module.Common.TeamSelect;
 using Crpg.Module.Modes.Skirmish;
 using Crpg.Module.Modes.Warmup;
+using Crpg.Module.Notifications;
 using Crpg.Module.Rewards;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
@@ -97,11 +99,11 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
             (new FlagDominationSpawnFrameBehavior(), _isSkirmish
                 ? new CrpgSkirmishSpawningBehavior(_constants, roundController)
                 : new CrpgBattleSpawningBehavior(_constants, roundController)));
-        CrpgTeamSelectComponent teamSelectComponent = new(warmupComponent, roundController);
+        CrpgTeamSelectServerComponent teamSelectComponent = new(warmupComponent, roundController);
         CrpgRewardServer rewardServer = new(crpgClient, _constants, warmupComponent, enableTeamHitCompensations: true, enableRating: true);
 #else
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent, null);
-        CrpgTeamSelectComponent teamSelectComponent = new();
+        CrpgTeamSelectClientComponent teamSelectComponent = new();
 #endif
         CrpgBattleClient battleClient = new(_isSkirmish);
 
