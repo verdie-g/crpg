@@ -51,7 +51,7 @@ internal class CrpgDtvClient : MissionMultiplayerGameModeBaseClient
     private void HandleWaveStart(CrpgDtvWaveStartMessage message)
     {
         TextObject textObject = new("{=1y04FNHB}Wave {WAVE} started!",
-            new Dictionary<string, object> { ["ROUND"] = message.Wave + 1 });
+            new Dictionary<string, object> { ["WAVE"] = message.Wave + 1 });
         InformationManager.DisplayMessage(new InformationMessage
         {
             Information = textObject.ToString(),
