@@ -474,7 +474,7 @@ export const getCharacterSLotsSchema = (): {
     },
     {
       key: ItemSlot.WeaponExtra,
-      placeholderIcon: 'item-type-banner',
+      placeholderIcon: 'item-flag-drop-on-change',
     },
   ],
 ];

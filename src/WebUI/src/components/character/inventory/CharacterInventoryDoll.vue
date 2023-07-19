@@ -46,7 +46,6 @@ const { openItemDetail, getElementBounds } = useItemDetail();
 <template>
   <div class="relative grid grid-cols-3 gap-4">
     <div class="absolute inset-0 -z-10 flex items-end justify-center">
-      <!-- TODO: new img -->
       <SvgSpriteImg name="body-silhouette" viewBox="0 0 970 2200" class="w-52 2xl:w-64" />
     </div>
     <div
@@ -76,15 +75,15 @@ const { openItemDetail, getElementBounds } = useItemDetail();
           )
         "
         :remove="fromSlot === slot.key && !toSlot"
-        :draggable="true"
-        @dragend="(_e:DragEvent) => onDragEnd(_e, slot.key)"
+        draggable
+        @dragend="(_e: DragEvent) => onDragEnd(_e, slot.key)"
         @drop="onDrop(slot.key)"
         @dragover.prevent="onDragEnter(slot.key)"
         @dragleave.prevent="onDragLeave"
         @dragenter.prevent
         @dragstart="onDragStart(equippedItemsBySlot[slot.key], slot.key)"
         @unEquip="onUnEquipItem(slot.key)"
-        @click="e=>
+        @click="(e: MouseEvent)=>
             equippedItemsBySlot[slot.key] !== undefined &&
               openItemDetail({
                 id: equippedItemsBySlot[slot.key].item.id,
