@@ -5,30 +5,27 @@ import { ItemSlot } from '@/models/item';
 import { type UserItem } from '@/models/user';
 import { getItemImage } from '@/services/item-service';
 
-const props = withDefaults(
-  defineProps<{
-    slot: ItemSlot;
-    placeholder: string;
-    userItem?: UserItem;
-    armorOverall?: CharacterArmorOverall;
-    notMeetRequirement: boolean;
-    // slot state
-    available?: boolean;
-    focused?: boolean;
-    invalid?: boolean;
-    remove?: boolean;
-  }>(),
-  {
-    notMeetRequirement: false,
-    available: false,
-    focused: false,
-    invalid: false,
-    remove: false,
-  }
-);
-
-const emit = defineEmits<{
-  (e: 'unEquip'): void;
+const {
+  slot,
+  placeholder,
+  userItem,
+  armorOverall,
+  notMeetRequirement = false,
+  available = false,
+  focused = false,
+  invalid = false,
+  remove = false,
+} = defineProps<{
+  slot: ItemSlot;
+  placeholder: string;
+  userItem?: UserItem;
+  armorOverall?: CharacterArmorOverall;
+  notMeetRequirement: boolean;
+  // slot state
+  available?: boolean;
+  focused?: boolean;
+  invalid?: boolean;
+  remove?: boolean;
 }>();
 </script>
 
@@ -38,9 +35,9 @@ const emit = defineEmits<{
     :class="[
       [available ? 'ring-border-300' : 'ring-transparent hover:ring-border-200'],
       {
-        '!ring-status-success': props.focused,
-        '!ring-status-warning': props.invalid,
-        '!ring-status-danger': props.remove,
+        '!ring-status-success': focused,
+        '!ring-status-warning': invalid,
+        '!ring-status-danger': remove,
       },
     ]"
   >
@@ -71,14 +68,23 @@ const emit = defineEmits<{
       </div>
     </template>
 
-    <OIcon
+    <Tooltip
       v-else
-      class="select-none"
-      :icon="props.placeholder"
-      size="5x"
-      v-tooltip.bottom="$t(`character.doll.slot.${props.slot}`)"
-      data-aq-character-slot-item-placeholder
-    />
+      placement="bottom"
+      :title="$t(`character.doll.slot.${slot}.title`)"
+      :description="
+        $t(`character.doll.slot.${slot}.description`) !== ''
+          ? $t(`character.doll.slot.${slot}.description`)
+          : undefined
+      "
+    >
+      <OIcon
+        class="select-none"
+        :icon="placeholder"
+        size="5x"
+        data-aq-character-slot-item-placeholder
+      />
+    </Tooltip>
 
     <div
       v-if="armorOverall !== undefined"

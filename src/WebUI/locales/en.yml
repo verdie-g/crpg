@@ -535,18 +535,42 @@ character:
 
   doll:
     slot:
-      Head: Head armor
-      Shoulder: Shoulder armor
-      Body: Body armor
-      Hand: Hand armor
-      Leg: Leg armor
-      MountHarness: Mount harness
-      Mount: Mount
-      Weapon0: Weapon
-      Weapon1: Weapon
-      Weapon2: Weapon
-      Weapon3: Weapon
-      WeaponExtra: Banner
+      Head:
+        title: Head armor
+        description: ''
+      Shoulder:
+        title: Shoulder armor
+        description: ''
+      Body:
+        title: Body armor
+        description: ''
+      Hand:
+        title: Hand armor
+        description: ''
+      Leg:
+        title: Leg armor
+        description: ''
+      MountHarness:
+        title: Mount harness
+        description: ''
+      Mount:
+        title: Mount
+        description: ''
+      Weapon0:
+        title: Weapon
+        description: ''
+      Weapon1:
+        title: Weapon
+        description: ''
+      Weapon2:
+        title: Weapon
+        description: ''
+      Weapon3:
+        title: Weapon
+        description: ''
+      WeaponExtra:
+        title: Extra weapon
+        description: 'Slot for items that are unsheathable such as banners or pikes'
     armorOverall:
       ArmArmor: Arm armor
       BodyArmor: Body armor

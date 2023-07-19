@@ -528,18 +528,42 @@ character:
 
   doll:
     slot:
-      Head: 头部护甲
-      Shoulder: 肩部护甲
-      Body: 身体护甲
-      Hand: 手部护甲
-      Leg: 腿部护甲
-      MountHarness: 坐骑护具
-      Mount: 坐骑
-      Weapon0: 武器
-      Weapon1: 武器
-      Weapon2: 武器
-      Weapon3: 武器
-      WeaponExtra: 旗帜
+      Head:
+        title: 头部护甲
+        description: ''
+      Shoulder:
+        title: 肩部护甲
+        description: ''
+      Body:
+        title: 身体护甲
+        description: ''
+      Hand:
+        title: 手部护甲
+        description: ''
+      Leg:
+        title: 腿部护甲
+        description: ''
+      MountHarness:
+        title: 坐骑护具
+        description: ''
+      Mount:
+        title: 坐骑
+        description: ''
+      Weapon0:
+        title: 武器
+        description: ''
+      Weapon1:
+        title: 武器
+        description: ''
+      Weapon2:
+        title: 武器
+        description: ''
+      Weapon3:
+        title: 武器
+        description: ''
+      WeaponExtra:
+        title: 额外武器
+        description: '用于放置旗帜或长矛等无法出鞘的物品的插槽'
     armorOverall:
       ArmArmor: 手臂护甲
       BodyArmor: 身体护甲

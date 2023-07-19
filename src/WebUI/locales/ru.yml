@@ -529,18 +529,42 @@ character:
 
   doll:
     slot:
-      Head: Голова
-      Shoulder: Шея/плечи
-      Body: Торс
-      Hand: Руки
-      Leg: Ноги
-      MountHarness: Защита ездового животного
-      Mount: Ездовое животное
-      Weapon0: Оружие
-      Weapon1: Оружие
-      Weapon2: Оружие
-      Weapon3: Оружие
-      WeaponExtra: Знамя
+      Head:
+        title: Голова
+        description: ''
+      Shoulder:
+        title: Шея/плечи
+        description: ''
+      Body:
+        title: Торс
+        description: ''
+      Hand:
+        title: Руки
+        description: ''
+      Leg:
+        title: Ноги
+        description: ''
+      MountHarness:
+        title: Защита ездового животного
+        description: ''
+      Mount:
+        title: Ездовое животное
+        description: ''
+      Weapon0:
+        title: Оружие
+        description: ''
+      Weapon1:
+        title: Оружие
+        description: ''
+      Weapon2:
+        title: Оружие
+        description: ''
+      Weapon3:
+        title: Оружие
+        description: ''
+      WeaponExtra:
+        title: Экстра оружие
+        description: 'Слот для предметов, не имеющих ножен, таких как знамена или пики'
 
     armorOverall:
       ArmArmor: Защита рук
