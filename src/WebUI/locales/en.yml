@@ -568,7 +568,7 @@ character:
         title: Weapon
         description: ''
       WeaponExtra:
-        title: Weapon extra
+        title: Extra weapon
         description: 'Slot for items with "DropOnChange" flag, such as Banner or Pike'
     armorOverall:
       ArmArmor: Arm armor
