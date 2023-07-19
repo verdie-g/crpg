@@ -95,6 +95,7 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
     {
         if (_currentStage >= _flagStages.Length)
         {
+            // Attackers captured all the flags.
             return true;
         }
 
@@ -105,15 +106,11 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
 
         foreach (var flag in _flagStages[_currentStage])
         {
-            if (GetFlagOwnerTeam(flag)?.Side != BattleSideEnum.Defender)
-            {
-                continue;
-            }
-
             foreach (var agent in EnumerateAgentsAroundFlag(flag))
             {
                 if (!agent.IsMount && agent.IsActive() && agent.Team?.Side == BattleSideEnum.Attacker)
                 {
+                    // Attacker still on a flag of the current the stage.
                     return false;
                 }
             }
