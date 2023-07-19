@@ -1145,4 +1145,4 @@ rankTable:
 
 releaseNotes:
   latest: Последний
-  showAllRelease: '+ {count} релизов | + {count} релиз | + {count} релиза | + {count} релизов'
+  showAllRelease: '+ {count} патчей | + {count} патч | + {count} патча | + {count} патчей'

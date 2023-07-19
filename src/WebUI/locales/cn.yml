@@ -1137,4 +1137,4 @@ rankTable:
 
 releaseNotes:
   latest: 最新版
-  showAllRelease: '+ {count} 版本'
+  showAllRelease: '+ {count} 补丁'

@@ -1173,4 +1173,4 @@ rankTable:
 
 releaseNotes:
   latest: Latest
-  showAllRelease: '+ {count} release | + {count} releases'
+  showAllRelease: '+ {count} patch | + {count} patches'
