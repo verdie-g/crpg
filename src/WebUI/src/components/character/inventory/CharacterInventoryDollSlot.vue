@@ -68,14 +68,23 @@ const {
       </div>
     </template>
 
-    <OIcon
+    <Tooltip
       v-else
-      class="select-none"
-      :icon="placeholder"
-      size="5x"
-      v-tooltip.bottom="$t(`character.doll.slot.${slot}`)"
-      data-aq-character-slot-item-placeholder
-    />
+      placement="bottom"
+      :title="$t(`character.doll.slot.${slot}.title`)"
+      :description="
+        $t(`character.doll.slot.${slot}.description`) !== ''
+          ? $t(`character.doll.slot.${slot}.description`)
+          : undefined
+      "
+    >
+      <OIcon
+        class="select-none"
+        :icon="placeholder"
+        size="5x"
+        data-aq-character-slot-item-placeholder
+      />
+    </Tooltip>
 
     <div
       v-if="armorOverall !== undefined"
