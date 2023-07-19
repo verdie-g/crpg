@@ -51,6 +51,7 @@
   <!-- Notifications -->
   <string id="str_notification.inactivity_warning" text="{=pCIKeing}You will be removed for inactivity after {SECONDS} seconds!" />
   <string id="str_notification.cavalry_spawn_delay" text="{=v1S1BAF4}Cavalry will spawn in {SECONDS} seconds!" />
+  <string id="str_notification.conquest_overtime" text="{=joWaOGco}The time limit was reached but some attackers are still around the flags. Defenders will need to wipe them to win the game." />
 
   <!-- Battle Maps -->
   <string id="str_multiplayer_scene_name.crpg_battle_abandoned" text="{=PKVPlAeE}Abandoned" />

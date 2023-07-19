@@ -1,4 +1,5 @@
 ﻿using Crpg.Module.Common;
+using Crpg.Module.Notifications;
 using Crpg.Module.Rewards;
 using NetworkMessages.FromServer;
 using TaleWorlds.Core;
@@ -27,6 +28,7 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
     private MissionTimer _flagTickTimer = default!;
     private MissionTimer _currentStageTimer = default!;
     private MissionTimer? _rewardTickTimer;
+    private bool _wasCurrentStageNotifiedAboutOvertime;
     private bool _isOddRewardTick;
 
     public CrpgConquestServer(
@@ -108,11 +110,26 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
         {
             foreach (var agent in EnumerateAgentsAroundFlag(flag))
             {
-                if (!agent.IsMount && agent.IsActive() && agent.Team?.Side == BattleSideEnum.Attacker)
+                if (agent.IsMount || !agent.IsActive() || agent.Team?.Side != BattleSideEnum.Attacker)
                 {
-                    // Attacker still on a flag of the current the stage.
-                    return false;
+                    continue;
                 }
+
+                if (!_wasCurrentStageNotifiedAboutOvertime)
+                {
+                    _wasCurrentStageNotifiedAboutOvertime = true;
+                    GameNetwork.BeginBroadcastModuleEvent();
+                    GameNetwork.WriteMessage(new CrpgNotificationId
+                    {
+                        Type = CrpgNotificationType.Notification,
+                        TextId = "str_notification",
+                        TextVariation = "conquest_overtime",
+                    });
+                    GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
+                }
+
+                // Attacker still on a flag of the current stage.
+                return false;
             }
         }
 
@@ -280,6 +297,7 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
         GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
 
         _rewardTickTimer = new MissionTimer(duration: CrpgServerConfiguration.RewardTick);
+        _wasCurrentStageNotifiedAboutOvertime = false;
     }
 
     private void TickFlags()

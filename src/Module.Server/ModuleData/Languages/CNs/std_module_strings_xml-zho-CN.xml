@@ -48,7 +48,8 @@
     <string id="YFfWaWqk" text="{COUNT} 位新玩家加入了攻击方{newline}" />
     <string id="TWpiAeFe" text="现在是欢乐时光！经验获取增加了50%。" />
     <string id="KoqNpPLa" text="欢乐时光结束！" />
-    <string id="v1S1BAF4" text="骑兵将在 {SECONDS} 秒后出现！" />
     <string id="pCIKeing" text="你将在 {SECONDS} 秒后因长时间不活动而被移除！" />
+    <string id="v1S1BAF4" text="骑兵将在 {SECONDS} 秒后出现！" />
+    <string id="joWaOGco" text="到达时间限制，但仍有一些进攻者在旗帜周围。防守者需要消灭他们才能赢得游戏。" />
   </strings>
 </base>
