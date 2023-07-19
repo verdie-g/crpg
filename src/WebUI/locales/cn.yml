@@ -562,7 +562,7 @@ character:
         description: ''
       WeaponExtra:
         title: 额外武器
-        description: '用于标有 "dropOnChange" 标志的物品（如旗帜或梭子鱼）的插槽'
+        description: '用于放置旗帜或长矛等无法出鞘的物品的插槽'
     armorOverall:
       ArmArmor: 手臂护甲
       BodyArmor: 身体护甲

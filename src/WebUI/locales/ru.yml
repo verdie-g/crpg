@@ -563,7 +563,7 @@ character:
         description: ''
       WeaponExtra:
         title: Экстра оружие
-        description: 'Слот для предметов имеющих флаг "Выбросить при смене", например Знамя или Пика'
+        description: 'Слот для предметов, не имеющих ножен, таких как знамена или пики'
 
     armorOverall:
       ArmArmor: Защита рук

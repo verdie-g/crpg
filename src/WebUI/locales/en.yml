@@ -569,7 +569,7 @@ character:
         description: ''
       WeaponExtra:
         title: Extra weapon
-        description: 'Slot for items with "DropOnChange" flag, such as Banner or Pike'
+        description: 'Slot for items that are unsheathable such as banners or pikes'
     armorOverall:
       ArmArmor: Arm armor
       BodyArmor: Body armor
