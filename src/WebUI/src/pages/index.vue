@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useGameServerStats } from '@/composables/use-game-server-stats';
-import { useReleaseNotes } from '@/composables/use-release-notes';
+import { usePatchNotes } from '@/composables/use-patch-notes';
 
 definePage({
   meta: {
@@ -8,10 +8,10 @@ definePage({
   },
 });
 
-const { releaseNotes, loadReleaseNotes } = useReleaseNotes();
+const { patchNotes, loadPatchNotes } = usePatchNotes();
 const { gameServerStats, loadGameServerStats } = useGameServerStats();
 
-Promise.all([loadReleaseNotes(), loadGameServerStats()]);
+Promise.all([loadPatchNotes(), loadGameServerStats()]);
 </script>
 
 <template>
@@ -19,7 +19,7 @@ Promise.all([loadReleaseNotes(), loadGameServerStats()]);
     <Bg bg="background-1.webp" />
 
     <div class="relative flex h-full items-center border border-border-300 text-content-200">
-      <ReleaseNotes v-if="releaseNotes.length !== 0" :releaseNotes="releaseNotes" />
+      <PatchNotes v-if="patchNotes.length !== 0" :patchNotes="patchNotes" />
 
       <div class="absolute right-6 top-6 flex items-center gap-6">
         <OnlinePlayers :gameServerStats="gameServerStats" showLabel />
@@ -70,7 +70,7 @@ Promise.all([loadReleaseNotes(), loadGameServerStats()]);
           </p>
 
           <iframe
-            class="mx-auto block aspect-video w-full w-full rounded-lg lg:w-3/4 xl:w-2/3"
+            class="mx-auto block aspect-video w-full rounded-lg lg:w-3/4 xl:w-2/3"
             src="https://www.youtube-nocookie.com/embed/MZx56LD0o4c"
             title="YouTube video player"
             frameborder="0"

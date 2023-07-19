@@ -1135,6 +1135,6 @@ leaderboard:
 rankTable:
   title: 段位表
 
-releaseNotes:
+patchNotes:
   latest: 最新版
-  showAllRelease: '+ {count} 补丁'
+  showAllPatches: '+ {count} 补丁'

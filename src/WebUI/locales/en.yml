@@ -1171,6 +1171,6 @@ leaderboard:
 rankTable:
   title: Rank table
 
-releaseNotes:
+patchNotes:
   latest: Latest
-  showAllRelease: '+ {count} patch | + {count} patches'
+  showAllPatches: '+ {count} patch | + {count} patches'

@@ -1143,6 +1143,6 @@ leaderboard:
 rankTable:
   title: Ранги
 
-releaseNotes:
+patchNotes:
   latest: Последний
-  showAllRelease: '+ {count} патчей | + {count} патч | + {count} патча | + {count} патчей'
+  showAllPatches: '+ {count} патчей | + {count} патч | + {count} патча | + {count} патчей'
