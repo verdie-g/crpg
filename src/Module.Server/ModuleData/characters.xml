@@ -1259,7 +1259,7 @@
         <equipment slot="Leg" id="Item.crpg_leather_shoes_v1_h0" />
         <equipment slot="Item0" id="Item.crpg_training_bow_h0" />
         <equipment slot="Item1" id="Item.crpg_wooden_sword_v1_h0" />
-        <equipment slot="Item2" id="crpg_crpg_arrows_h0" />
+        <equipment slot="Item2" id="Item.crpg_arrows_h0" />
       </EquipmentRoster>
     </Equipments>
   </NPCCharacter>
