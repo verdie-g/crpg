@@ -84,7 +84,7 @@ const { item, showTier = false } = defineProps<{
 
       <!-- top-right -->
       <div class="absolute right-0 top-0 flex items-center gap-1.5">
-        <Tag v-if="item.new === 1" variant="success" label="new" />
+        <Tag v-if="item.new === 1 && item.rank === 0" variant="success" label="new" />
 
         <slot name="top-right" />
       </div>
