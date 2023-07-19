@@ -28,7 +28,7 @@ internal class CrpgEscapeMenu : MissionGauntletMultiplayerEscapeMenu
     protected override List<EscapeMenuItemVM> GetEscapeMenuItems()
     {
         List<EscapeMenuItemVM> items = base.GetEscapeMenuItems();
-        EscapeMenuItemVM crpgWebsiteButton = new(new TextObject("Character & Shop"),
+        EscapeMenuItemVM crpgWebsiteButton = new(new TextObject("{=FAkcpZdy}Character & Shop"),
             __ => _ = PlatformServices.Instance.ShowOverlayForWebPage(CrpgWebsite),
             null, () => Tuple.Create(false, TextObject.Empty));
 

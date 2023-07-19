@@ -1,5 +1,6 @@
 ﻿using TaleWorlds.Core;
 using TaleWorlds.Library;
+using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Modes.Dtv;
@@ -37,9 +38,11 @@ internal class CrpgDtvClient : MissionMultiplayerGameModeBaseClient
 
     private void HandleRoundStart(CrpgDtvRoundStartMessage message)
     {
+        TextObject textObject = new("{=bbg3UpPX}Round {ROUND} starting...",
+            new Dictionary<string, object> { ["ROUND"] = message.Round + 1 });
         InformationManager.DisplayMessage(new InformationMessage
         {
-            Information = $"Round {message.Round + 1} starting...",
+            Information = textObject.ToString(),
             Color = new Color(0.48f, 0f, 1f),
             SoundEventPath = message.Round == 0 ? null : "event:/ui/notification/quest_finished",
         });
@@ -47,9 +50,11 @@ internal class CrpgDtvClient : MissionMultiplayerGameModeBaseClient
 
     private void HandleWaveStart(CrpgDtvWaveStartMessage message)
     {
+        TextObject textObject = new("{=1y04FNHB}Wave {WAVE} started!",
+            new Dictionary<string, object> { ["ROUND"] = message.Wave + 1 });
         InformationManager.DisplayMessage(new InformationMessage
         {
-            Information = $"Wave {message.Wave + 1} started!",
+            Information = textObject.ToString(),
             Color = new Color(218, 112, 214),
             SoundEventPath = message.Wave == 0 ? null : "event:/ui/notification/quest_update",
         });
@@ -60,8 +65,8 @@ internal class CrpgDtvClient : MissionMultiplayerGameModeBaseClient
         InformationManager.DisplayMessage(new InformationMessage
         {
             Information = message.ViscountDead
-                ? "The Viscount has been slaughtered!"
-                : "The defenders have been slaughtered!",
+                ? new TextObject("{=4HrC30kl}The Viscount has been slaughtered!").ToString()
+                : new TextObject("{=tdfOMWmf}The defenders have been slaughtered!").ToString(),
             Color = new Color(0.90f, 0.25f, 0.25f),
             SoundEventPath = "event:/ui/notification/death",
         });

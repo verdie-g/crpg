@@ -1,6 +1,7 @@
 ﻿using Crpg.Module.Common;
 using Crpg.Module.Common.Network;
 using TaleWorlds.Core;
+using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.PlayerServices;
 
@@ -113,11 +114,13 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
         {
             if (_notifiedPlayersAboutSpawnRestriction.Add(networkPeer.VirtualPlayer.Id))
             {
+                TextObject cavalryTextObject = new("{=v1S1BAF4}Cavalry will spawn in {SECONDS} seconds!",
+                    new Dictionary<string, object?> { ["SECONDS"] = _cavalrySpawnDelayTimer?.GetTimerDuration() });
                 GameNetwork.BeginModuleEventAsServer(networkPeer);
                 GameNetwork.WriteMessage(new CrpgNotification
                 {
                     Type = CrpgNotificationType.Notification,
-                    Message = $"Cavalry will spawn in {_cavalrySpawnDelayTimer?.GetTimerDuration()} seconds!",
+                    Message = cavalryTextObject.ToString(),
                     SoundEvent = string.Empty,
                 });
                 GameNetwork.EndModuleEventAsServer();

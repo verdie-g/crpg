@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using Crpg.Module.Common.Network;
 using TaleWorlds.Library;
+using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common;
@@ -75,15 +76,17 @@ internal class WelcomeMessageBehavior : MissionNetwork
             return;
         }
 
-        StringBuilder sb = new("Welcome to ");
+        StringBuilder names = new();
         foreach (var peer in message.Peers)
         {
-            sb.Append(peer.VirtualPlayer.UserName);
-            sb.Append(", ");
+            names.Append(peer.VirtualPlayer.UserName);
+            names.Append(", ");
         }
 
-        sb.Length -= ", ".Length;
-        sb.Append(" that just joined cRPG!");
-        InformationManager.DisplayMessage(new InformationMessage(sb.ToString()));
+        names.Length -= ", ".Length;
+
+        TextObject textObject = new("{=ck7dhCeM}Welcome to {NAMES} who just joined cRPG!",
+            new Dictionary<string, object> { ["NAMES"] = names });
+        InformationManager.DisplayMessage(new InformationMessage(textObject.ToString()));
     }
 }

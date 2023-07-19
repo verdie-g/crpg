@@ -14,6 +14,7 @@ using NetworkMessages.FromClient;
 using Newtonsoft.Json;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
+using TaleWorlds.Localization;
 using TaleWorlds.ObjectSystem;
 using TaleWorlds.PlayerServices;
 #endif
@@ -310,24 +311,49 @@ internal class CrpgTeamSelectComponent : MultiplayerTeamSelectComponent
         }
 
         StringBuilder notifBuilder = new();
+        TextObject textObject;
         if (defendersMovedToAttackers != 0)
         {
-            notifBuilder.Append($"{defendersMovedToAttackers} player{(defendersMovedToAttackers > 1 ? "s were" : " was")} moved to the attackers team{{newline}}");
+            textObject = new("{=xAnUFQt2}{COUNT} {?IS_PLURAL}players were{?}player was{\\?} moved to the attackers team{newline}",
+                new Dictionary<string, object>
+                {
+                    ["COUNT"] = defendersMovedToAttackers,
+                    ["IS_PLURAL"] = defendersMovedToAttackers > 1,
+                });
+            notifBuilder.Append(textObject);
         }
 
         if (attackersMovedToDefenders != 0)
         {
-            notifBuilder.Append($"{attackersMovedToDefenders} player{(attackersMovedToDefenders > 1 ? "s were" : " was")} moved to the defenders team{{newline}}");
+            textObject = new("{=YTubwz4z}{COUNT} {?IS_PLURAL}players were{?}player was{\\?} moved to the defenders team{newline}",
+                new Dictionary<string, object>
+                {
+                    ["COUNT"] = attackersMovedToDefenders,
+                    ["IS_PLURAL"] = attackersMovedToDefenders > 1,
+                });
+            notifBuilder.Append(textObject);
         }
 
         if (defendersJoined != 0)
         {
-            notifBuilder.Append($"{defendersJoined} new player{(defendersJoined > 1 ? "s" : string.Empty)} joined the defenders team{{newline}}");
+            textObject = new("{=ymrAOIug}{COUNT} new {?IS_PLURAL}players{?}player{\\?} joined the defenders team{newline}",
+                new Dictionary<string, object>
+                {
+                    ["COUNT"] = defendersJoined,
+                    ["IS_PLURAL"] = defendersJoined > 1,
+                });
+            notifBuilder.Append(textObject);
         }
 
         if (attackersJoined != 0)
         {
-            notifBuilder.Append($"{attackersJoined} new player{(attackersJoined > 1 ? "s" : string.Empty)} joined the attackers team{{newline}}");
+            textObject = new("{=YFfWaWqk}{COUNT} new {?IS_PLURAL}players{?}player{\\?} joined the attackers team{newline}",
+                new Dictionary<string, object>
+                {
+                    ["COUNT"] = attackersJoined,
+                    ["IS_PLURAL"] = attackersJoined > 1,
+                });
+            notifBuilder.Append(textObject);
         }
 
         if (notifBuilder.Length == 0)

@@ -160,14 +160,20 @@ internal class CrpgConquestClient : MissionMultiplayerGameModeBaseClient, IComma
         }
 
         TimerComponent.StartTimerAsClient(message.StageStartTime, message.StageDuration);
-        MBInformationManager.AddQuickInformation(new TextObject($"Stage {message.StageIndex + 1} started"), soundEventPath: soundEventPath);
+        TextObject textObject = new("{=8ExjCVV8}Stage {INDEX} started!",
+            new Dictionary<string, object> { ["INDEX"] = message.StageIndex + 1 });
+        MBInformationManager.AddQuickInformation(textObject, soundEventPath: soundEventPath);
     }
 
     private void HandleOpenGateMessage(CrpgConquestOpenGateMessage message)
     {
         if (message.Peer != null)
         {
-            InformationManager.DisplayMessage(new InformationMessage($"Defender {message.Peer.UserName} has opened the gate.", new Color(0.74f, 0.28f, 0.01f)));
+            TextObject textObject = new("{=nbOZ9BNX}Defender {NAME} has opened the gate.",
+                new Dictionary<string, object> { ["NAME"] = message.Peer.UserName });
+            InformationManager.DisplayMessage(new InformationMessage(
+                textObject.ToString(),
+                new Color(0.74f, 0.28f, 0.01f)));
         }
     }
 }

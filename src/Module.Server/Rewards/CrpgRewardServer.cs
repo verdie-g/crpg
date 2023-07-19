@@ -7,6 +7,7 @@ using Crpg.Module.Modes.Warmup;
 using Crpg.Module.Rating;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
+using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Diamond;
 using TaleWorlds.PlayerServices;
@@ -435,7 +436,7 @@ internal class CrpgRewardServer : MissionLogic
                 GameNetwork.WriteMessage(new CrpgNotification
                 {
                     Type = CrpgNotificationType.Announcement,
-                    Message = "Happy hours ended!",
+                    Message = new TextObject("{=KoqNpPLa}Happy hours ended!").ToString(),
                 });
                 GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
             }
@@ -450,7 +451,7 @@ internal class CrpgRewardServer : MissionLogic
             GameNetwork.WriteMessage(new CrpgNotification
             {
                 Type = CrpgNotificationType.Announcement,
-                Message = "It's happy hours time! Experience gain is increased by 50%.",
+                Message = new TextObject("{=TWpiAeFe}It's happy hours time! Experience gain is increased by 50%.").ToString(),
             });
             GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
         }

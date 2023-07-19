@@ -1,5 +1,6 @@
 ﻿using Crpg.Module.Common.Network;
 using TaleWorlds.Library;
+using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Diamond;
 using TaleWorlds.PlayerServices;
@@ -94,11 +95,13 @@ internal class KickInactiveBehavior : MissionBehavior
             const float warningTime = 15;
             if (MissionTime.Now - lastActiveStatus.LastActive > _inactiveTimeLimit - MissionTime.Seconds(warningTime) && !lastActiveStatus.Warned)
             {
+                TextObject textObject = new("{=pCIKeing}You will be removed for inactivity after {SECONDS} seconds!",
+                    new Dictionary<string, object> { ["SECONDS"] = warningTime });
                 GameNetwork.BeginModuleEventAsServer(networkPeer);
                 GameNetwork.WriteMessage(new CrpgNotification
                 {
                     Type = CrpgNotificationType.Notification,
-                    Message = $"You will be removed for inactivity after {warningTime} seconds!",
+                    Message = textObject.ToString(),
                     SoundEvent = string.Empty,
                 });
                 GameNetwork.EndModuleEventAsServer();
