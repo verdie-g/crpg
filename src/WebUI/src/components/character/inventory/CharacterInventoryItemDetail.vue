@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useClipboard } from '@vueuse/core';
 import { itemSellCostPenalty } from '@root/data/constants.json';
 import { ItemCompareMode, type CompareItemsResult, type ItemFlat } from '@/models/item';
 import { type UserItem } from '@/models/user';
@@ -12,23 +13,25 @@ import {
   computeBrokenItemRepairCost,
   canUpgrade,
 } from '@/services/item-service';
+import { notify } from '@/services/notification-service';
+import { t } from '@/services/translate-service';
 import { parseTimestamp } from '@/utils/date';
 import { omitPredicate } from '@/utils/object';
 
-const props = withDefaults(
-  defineProps<{
-    item: ItemFlat;
-    userItem: UserItem;
-    compareResult: CompareItemsResult | undefined;
-    equipped?: boolean;
-  }>(),
-  {
-    equipped: false,
-  }
-);
+const {
+  item,
+  userItem,
+  compareResult,
+  equipped = false,
+} = defineProps<{
+  item: ItemFlat;
+  userItem: UserItem;
+  compareResult: CompareItemsResult | undefined;
+  equipped?: boolean;
+}>();
 
 const userItemToReplaceSalePrice = computed(() => {
-  const { price, graceTimeEnd } = computeSalePrice(props.userItem);
+  const { price, graceTimeEnd } = computeSalePrice(userItem);
 
   return {
     price,
@@ -37,7 +40,7 @@ const userItemToReplaceSalePrice = computed(() => {
   };
 });
 
-const repairCost = computed(() => computeBrokenItemRepairCost(props.item.price));
+const repairCost = computed(() => computeBrokenItemRepairCost(item.price));
 
 const emit = defineEmits<{
   sell: [];
@@ -47,11 +50,11 @@ const emit = defineEmits<{
 }>();
 
 const omitEmptyParam = (field: keyof ItemFlat) => {
-  if (Array.isArray(props.item[field]) && (props.item[field] as string[]).length === 0) {
+  if (Array.isArray(item[field]) && (item[field] as string[]).length === 0) {
     return false;
   }
 
-  if (props.item[field] === 0) {
+  if (item[field] === 0) {
     return false;
   }
 
@@ -60,21 +63,28 @@ const omitEmptyParam = (field: keyof ItemFlat) => {
 
 const aggregationsConfig = computed(() =>
   omitPredicate(
-    getVisibleAggregationsConfig(getAggregationsConfig(props.item.type, props.item.weaponClass)),
+    getVisibleAggregationsConfig(getAggregationsConfig(item.type, item.weaponClass)),
     (key: keyof ItemFlat) => omitEmptyParam(key)
   )
 );
 
-const isUpgradable = computed(() => canUpgrade(props.item.type));
+const isUpgradable = computed(() => canUpgrade(item.type));
+
+const { copy } = useClipboard();
+
+const onNameCopy = () => {
+  copy(item.name);
+  notify(t('action.copied'));
+};
 </script>
 
 <template>
   <article>
     <div class="relative mb-3">
       <img
-        :src="getItemImage(props.item.id)"
-        :alt="props.item.name"
-        :title="props.item.name"
+        :src="getItemImage(item.id)"
+        :alt="item.name"
+        :title="item.name"
         class="pointer-events-none w-full select-none object-contain"
       />
 
@@ -104,8 +114,9 @@ const isUpgradable = computed(() => canUpgrade(props.item.type));
       />
     </div>
 
-    <h3 class="mb-6 font-semibold text-content-100">
-      {{ props.item.name }}
+    <h3 class="z-10 mb-6 font-semibold text-content-100">
+      {{ item.name }}
+      <Tag icon="popup" variant="primary" rounded size="sm" @click="onNameCopy" />
     </h3>
 
     <div class="grid grid-cols-2 gap-4">

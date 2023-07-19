@@ -78,6 +78,7 @@ action:
   upgrade: Улучшить
   reforge: Расплавить
   enter: Войти
+  copied: Скопировано
 
 login:
   label: Вход
