@@ -37,26 +37,25 @@ dateTime:
     short: 分
     long: 分钟 | 分钟
 
-# TODO:
 timeAgo:
-  just-now: "just now"
-  ago: "{0} ago"
-  in: "in {0}"
-  last-month: "last month"
-  next-month: "next month"
-  month: "month | months"
-  last-year: "last year"
-  next-year: "next year"
-  year: "year | years"
-  yesterday: "yesterday"
-  tomorrow: "tomorrow"
-  day: "day | days"
-  last-week: "last week"
-  next-week: "next week"
-  week: "week | weeks"
-  hour: "hour | hours"
-  minute: "minute | minutes"
-  second: "second | seconds"
+  just-now: "刚刚"
+  ago: "{0} 前"
+  in: "在 {0}"
+  last-month: "上个月"
+  next-month: "下个月"
+  month: "个月 | 个月"
+  last-year: "去年"
+  next-year: "明年"
+  year: "年 | 年"
+  yesterday: "昨天"
+  tomorrow: "明天"
+  day: "天 | 天"
+  last-week: "上周"
+  next-week: "下周"
+  week: "周 | 周"
+  hour: "小时 | 小时"
+  minute: "分钟 | 分钟"
+  second: "秒 | 秒"
 
 
 dateTimeFormat:
