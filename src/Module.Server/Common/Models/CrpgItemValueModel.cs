@@ -20,7 +20,7 @@ internal class CrpgItemValueModel : ItemValueModel
     private static readonly Dictionary<ItemObject.ItemTypeEnum, (int desiredMaxPrice, float[] priceCoeffs)> PricesAndCoeffs = new()
     {
         [ItemObject.ItemTypeEnum.HeadArmor] = (8700, ArmorPriceCoeffs),
-        [ItemObject.ItemTypeEnum.Cape] = (10750, ArmorPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Cape] = (6450, ArmorPriceCoeffs),
         [ItemObject.ItemTypeEnum.BodyArmor] = (20000, ArmorPriceCoeffs),
         [ItemObject.ItemTypeEnum.HandArmor] = (4050, ArmorPriceCoeffs),
         [ItemObject.ItemTypeEnum.LegArmor] = (3090, ArmorPriceCoeffs),
