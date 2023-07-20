@@ -86,7 +86,7 @@ internal class CrpgDtvGameMode : MissionBasedMultiplayerGameMode
             (new FlagDominationSpawnFrameBehavior(),
             new CrpgDtvSpawningBehavior(_constants)));
         CrpgTeamSelectServerComponent teamSelectComponent = new(warmupComponent, null);
-        CrpgRewardServer rewardServer = new(crpgClient, _constants, warmupComponent, enableTeamHitCompensations: true, enableRating: false);
+        CrpgRewardServer rewardServer = new(crpgClient, _constants, warmupComponent, enableTeamHitCompensations: false, enableRating: false);
         CrpgDtvSpawningBehavior spawnBehaviour = new(_constants);
 #else
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent, null);
