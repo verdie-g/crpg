@@ -20,6 +20,7 @@ import {
   type CompareItemsResult,
   ItemFamilyType,
   type ItemRank,
+  ArmorMaterialType,
 } from '@/models/item';
 import { type UserItem } from '@/models/user';
 import { type AggregationConfig } from '@/models/item-search';
@@ -516,6 +517,14 @@ export const humanizeBucket = (
       t(`item.familyType.${bucket as ItemFamilyType}.title`),
       t(`item.familyType.${bucket as ItemFamilyType}.description`),
       createIcon(IconBucketType.Svg, itemFamilyTypeToIcon[bucket as ItemFamilyType])
+    );
+  }
+
+  if (['armorMaterialType'].includes(aggregationKey)) {
+    return createHumanBucket(
+      t(`item.armorMaterialType.${bucket as ArmorMaterialType}.title`),
+      t(`item.armorMaterialType.${bucket as ArmorMaterialType}.description`),
+      null
     );
   }
 

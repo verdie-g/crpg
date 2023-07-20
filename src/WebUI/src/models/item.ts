@@ -234,7 +234,7 @@ export interface ItemFlat {
   armArmor: number | null;
   legArmor: number | null;
   armorFamilyType: ItemFamilyType | null | undefined;
-  materialType: ArmorMaterialType | null;
+  armorMaterialType: ArmorMaterialType | null;
   // weapons
   weaponClass: WeaponClass | null;
   itemUsage: ItemUsage[];

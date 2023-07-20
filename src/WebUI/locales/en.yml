@@ -1000,6 +1000,20 @@ item:
       title: 'EBA'
       description: 'To equip body armor from the EBA Pack, you must first wear compatible leg armor from the EBA Pack'
 
+  armorMaterialType:
+    Cloth:
+      title: 'Cloth'
+      description: ''
+    Leather:
+      title: 'Leather'
+      description: ''
+    Chainmail:
+      title: 'Chainmail'
+      description: ''
+    Plate:
+      title: 'Plate'
+      description: ''
+
   damageTypeFormat: '{value} {type}'
   damageType:
     Cut:
@@ -1039,6 +1053,9 @@ item:
       title: 'Weight'
       description: ''
 
+    armorMaterialType:
+      title: 'Material'
+      description: ''
     headArmor:
       title: 'Head armor'
       description: ''
