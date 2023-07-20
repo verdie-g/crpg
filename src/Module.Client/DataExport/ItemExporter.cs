@@ -910,9 +910,9 @@ internal class ItemExporter : IDataExporter
         XmlNode armorNode = nonHeirloomNode.SelectNodes("ItemComponent/Armor")!.Cast<XmlNode>().First();
         float armorPower =
             1.0f * (armorNode.Attributes["head_armor"] == null ? 0f : float.Parse(armorNode.Attributes["head_armor"].Value))
-          + 1.0f * (armorNode.Attributes["body_armor"] == null ? 0f : float.Parse(armorNode.Attributes["body_armor"].Value))
-          + 1.3f * (armorNode.Attributes["arm_armor"] == null ? 0f : float.Parse(armorNode.Attributes["arm_armor"].Value))
-          + 1.1f * (armorNode.Attributes["leg_armor"] == null ? 0f : float.Parse(armorNode.Attributes["leg_armor"].Value));
+          + 1.15f * (armorNode.Attributes["body_armor"] == null ? 0f : float.Parse(armorNode.Attributes["body_armor"].Value))
+          + 1.0f * (armorNode.Attributes["arm_armor"] == null ? 0f : float.Parse(armorNode.Attributes["arm_armor"].Value))
+          + 0.8f * (armorNode.Attributes["leg_armor"] == null ? 0f : float.Parse(armorNode.Attributes["leg_armor"].Value));
         float bestArmorPower = type switch
         {
             ItemObject.ItemTypeEnum.HeadArmor => 661f,
