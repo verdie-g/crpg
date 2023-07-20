@@ -86,7 +86,11 @@ internal class WelcomeMessageBehavior : MissionNetwork
         names.Length -= ", ".Length;
 
         TextObject textObject = new("{=ck7dhCeM}Welcome to {NAMES} who just joined cRPG!",
-            new Dictionary<string, object> { ["NAMES"] = names });
+            new Dictionary<string, object>
+            {
+                ["NAMES"] = names,
+                ["IS_PLURAL"] = message.Peers.Length > 1,
+            });
         InformationManager.DisplayMessage(new InformationMessage(textObject.ToString()));
     }
 }
