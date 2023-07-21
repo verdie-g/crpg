@@ -1,4 +1,5 @@
-﻿using Crpg.Application.Common.Files;
+﻿using System.Linq;
+using Crpg.Application.Common.Files;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Games.Commands;
@@ -417,22 +418,25 @@ public class GetGameUserCommandTest : TestBase
     public async Task CheckDefaultItemsExistAndAreNotTooExpensive()
     {
         var items = (await new FileItemsSource().LoadItems()).ToDictionary(i => i.Id);
-        foreach (var set in GetGameUserCommand.Handler.DefaultItemSets)
+        Assert.Multiple(() =>
         {
-            int price = 0;
-            foreach ((string mbId, ItemSlot slot) in set)
+            foreach (var set in GetGameUserCommand.Handler.DefaultItemSets)
             {
-                if (!items.TryGetValue(mbId, out var item))
+                int price = 0;
+                foreach ((string mbId, ItemSlot slot) in set)
                 {
-                    string closestMbId = TestHelper.FindClosestString(mbId, items.Keys);
-                    Assert.That(items, Does.ContainKey(mbId), $"Item '{mbId}' doesn't exist. Did you mean {closestMbId}?");
-                    continue;
+                    if (!items.TryGetValue(mbId, out var item))
+                    {
+                        string closestMbId = TestHelper.FindClosestString(mbId, items.Keys);
+                        Assert.Fail($"Item '{mbId}' doesn't exist. Did you mean {closestMbId}?");
+                        continue;
+                    }
+
+                    price += item.Price;
                 }
 
-                price += item.Price;
+                Assert.That(price, Is.LessThan(3521));
             }
-
-            Assert.That(price, Is.LessThan(3521));
-        }
+        });
     }
 }
