@@ -996,6 +996,20 @@ item:
       title: 'EBA'
       description: 'Чтобы экипировать доспех из набора EBA, необходимо сначала надеть совместимую защиту ног из набора EBA'
 
+  armorMaterialType:
+    Cloth:
+      title: 'Ткань'
+      description: ''
+    Leather:
+      title: 'Кожа'
+      description: ''
+    Chainmail:
+      title: 'Кольчуга'
+      description: ''
+    Plate:
+      title: 'Латы'
+      description: ''
+
   damageTypeFormat: '{value} {type}'
   damageType:
     Cut:
@@ -1035,6 +1049,9 @@ item:
       title: 'Вес'
       description: ''
 
+    armorMaterialType:
+      title: 'Материал'
+      description: ''
     headArmor:
       title: 'Защита головы'
       description: ''

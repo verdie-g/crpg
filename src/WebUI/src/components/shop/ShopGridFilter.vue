@@ -35,7 +35,7 @@ const props = defineProps<{
         :delay="{ show: 300 }"
       >
         <div
-          class="max-w-[90px] cursor-pointer overflow-x-hidden text-ellipsis whitespace-nowrap border-b-2 border-dashed border-border-300 pb-0.5 text-2xs hover:text-content-100 2xl:max-w-[120px]"
+          class="max-w-[90px] cursor-pointer overflow-x-hidden text-ellipsis whitespace-nowrap border-b-2 border-dashed border-border-300 pb-0.5 text-2xs hover:text-content-100 2xl:max-w-[110px]"
         >
           {{ $t(`item.aggregations.${aggregation.name}.title`) }}
         </div>
@@ -57,7 +57,7 @@ const props = defineProps<{
           <template v-else-if="aggregationConfig.view === AggregationView.Range">
             <div class="px-8 py-3">
               <SliderInput
-                v-model="(modelValue as number[])"
+                v-model="modelValue as number[]"
                 :min="getMinRange(getBucketValues(scopeAggregation.buckets))"
                 :max="getMaxRange(getBucketValues(scopeAggregation.buckets))"
                 :step="getStepRange(getBucketValues(scopeAggregation.buckets))"

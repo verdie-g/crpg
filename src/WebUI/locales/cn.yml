@@ -993,6 +993,20 @@ item:
       title: 'EBA'
       description: '要装备EBA包中的防弹衣，您必须首先穿戴EBA包中的兼容腿部防弹衣。'
 
+  armorMaterialType:
+    Cloth:
+      title: '布料'
+      description: ''
+    Leather:
+      title: '皮革'
+      description: ''
+    Chainmail:
+      title: '锁子甲'
+      description: ''
+    Plate:
+      title: '板材'
+      description: ''
+
   damageTypeFormat: '{value} {type}'
   damageType:
     Cut:
@@ -1032,6 +1046,9 @@ item:
       title: '重量'
       description: ''
 
+    armorMaterialType:
+      title: '材料'
+      description: ''
     headArmor:
       title: '头部护甲'
       description: ''

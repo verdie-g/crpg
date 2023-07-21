@@ -124,6 +124,14 @@ export const aggregationsConfig: AggregationConfig = {
     conjunction: false,
     chosen_filters_on_top: false,
   },
+  armorMaterialType: {
+    size,
+    view: AggregationView.Checkbox,
+    format: ItemFieldFormat.List,
+    sort: 'term',
+    conjunction: false,
+    chosen_filters_on_top: false,
+  },
 
   // Mount
   bodyLength: {
@@ -329,6 +337,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
   [ItemType.HeadArmor]: [
     'culture',
     'flags',
+    'armorMaterialType',
     'weight',
     'headArmor',
     'upkeep',
@@ -338,6 +347,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
     'armorFamilyType',
     'culture',
     'flags',
+    'armorMaterialType',
     'weight',
     'bodyArmor',
     'armArmor',
@@ -348,6 +358,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
   [ItemType.LegArmor]: [
     'armorFamilyType',
     'culture',
+    'armorMaterialType',
     'weight',
     'legArmor',
     'upkeep',
@@ -356,6 +367,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
   [ItemType.HandArmor]: [
     'culture',
     'flags',
+    'armorMaterialType',
     'weight',
     'armArmor',
     'upkeep',
@@ -364,6 +376,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
   [ItemType.ShoulderArmor]: [
     'culture',
     'flags',
+    'armorMaterialType',
     'weight',
     'headArmor',
     'bodyArmor',
@@ -386,6 +399,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
   [ItemType.MountHarness]: [
     'culture',
     'mountArmorFamilyType',
+    'armorMaterialType',
     'weight',
     'mountArmor',
     'upkeep',

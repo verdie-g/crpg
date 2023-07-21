@@ -126,7 +126,7 @@ const mapArmorProps = (item: Item) => {
       bodyArmor: null,
       armArmor: null,
       legArmor: null,
-      materialType: null,
+      armorMaterialType: null,
       armorFamilyType: null,
       mountArmor: null,
       mountArmorFamilyType: null,
@@ -136,6 +136,7 @@ const mapArmorProps = (item: Item) => {
   if (item.type === ItemType.MountHarness) {
     return {
       ...item.armor,
+      armorMaterialType: item.armor.materialType,
       armorFamilyType: null,
       mountArmor: item.armor.bodyArmor,
       mountArmorFamilyType: item.armor.familyType,
@@ -144,6 +145,7 @@ const mapArmorProps = (item: Item) => {
 
   return {
     ...item.armor,
+    armorMaterialType: item.armor.materialType,
     armorFamilyType:
       item.armor.familyType !== ItemFamilyType.Undefined ? item.armor.familyType : undefined,
     mountArmor: null,
