@@ -90,7 +90,7 @@ internal class CrpgItemValueModel : ItemValueModel
             ItemObject.ItemTypeEnum.Cape => 10.586133f,
             ItemObject.ItemTypeEnum.BodyArmor => 19.7f,
             ItemObject.ItemTypeEnum.HandArmor => 9.50441f,
-            ItemObject.ItemTypeEnum.LegArmor => 6.467233f,
+            ItemObject.ItemTypeEnum.LegArmor => 5.523018f,
             ItemObject.ItemTypeEnum.HorseHarness => 45f * 1.1f,
             _ => throw new ArgumentOutOfRangeException(),
         };
