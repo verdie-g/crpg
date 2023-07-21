@@ -365,6 +365,7 @@ export const aggregationsKeysByItemType: Partial<Record<ItemType, Array<keyof It
     'culture',
     'flags',
     'weight',
+    'headArmor',
     'bodyArmor',
     'armArmor',
     'upkeep',
