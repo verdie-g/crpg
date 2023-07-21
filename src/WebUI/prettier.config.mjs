@@ -1,6 +1,6 @@
 // @ts-check
 /** @type {import('prettier').Options} */
-module.exports = {
+export default {
   semi: true,
   singleQuote: true,
   bracketSpacing: true,
@@ -9,5 +9,5 @@ module.exports = {
   htmlWhitespaceSensitivity: 'ignore',
   arrowParens: 'avoid',
   trailingComma: 'es5',
-  plugins: [require('prettier-plugin-tailwindcss')],
+  plugins: ['prettier-plugin-tailwindcss'],
 };
