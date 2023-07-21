@@ -93,6 +93,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         if (!_gameStarted)
         {
             _gameStarted = true;
+            SetTimeLimit();
             ClearPeerCounts();
             Mission.GetMissionBehavior<MissionScoreboardComponent>().ResetBotScores();
             StartNextRound();
@@ -106,6 +107,18 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
             _waveStartTimer = null;
             StartNextWave();
         }
+    }
+
+    /// <summary>Work around the 60 minutes limit of MapTimeLimit.</summary>
+    private void SetTimeLimit()
+    {
+        const int duration = 60 * 90;
+        TimerComponent.StartTimerAsServer(duration);
+        SendDataToPeers(new CrpgDtvSetTimerMessage
+        {
+            StartTime = (int)TimerComponent.GetCurrentTimerStartTime().ToSeconds,
+            Duration = duration,
+        });
     }
 
     private void StartNextRound()

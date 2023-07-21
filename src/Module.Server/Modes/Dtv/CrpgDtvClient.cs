@@ -31,9 +31,15 @@ internal class CrpgDtvClient : MissionMultiplayerGameModeBaseClient
     protected override void AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegistererContainer registerer)
     {
         base.AddRemoveMessageHandlers(registerer);
+        registerer.Register<CrpgDtvSetTimerMessage>(HandleSetTimer);
         registerer.Register<CrpgDtvRoundStartMessage>(HandleRoundStart);
         registerer.Register<CrpgDtvWaveStartMessage>(HandleWaveStart);
         registerer.Register<CrpgDtvGameEnd>(HandleViscountDeath);
+    }
+
+    private void HandleSetTimer(CrpgDtvSetTimerMessage message)
+    {
+        TimerComponent.StartTimerAsClient(message.StartTime, message.Duration);
     }
 
     private void HandleRoundStart(CrpgDtvRoundStartMessage message)
