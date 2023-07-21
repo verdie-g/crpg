@@ -1648,6 +1648,38 @@
       <UsablePiece piece_id="crpg_wooden_sword_pommel_h1" />
       <UsablePiece piece_id="crpg_wooden_sword_pommel_h2" />
       <UsablePiece piece_id="crpg_wooden_sword_pommel_h3" />
+      <UsablePiece piece_id="crpg_cutlass_blade_h0" />
+      <UsablePiece piece_id="crpg_cutlass_blade_h1" />
+      <UsablePiece piece_id="crpg_cutlass_blade_h2" />
+      <UsablePiece piece_id="crpg_cutlass_blade_h3" />
+      <UsablePiece piece_id="crpg_cutlass_guard_h0" />
+      <UsablePiece piece_id="crpg_cutlass_guard_h1" />
+      <UsablePiece piece_id="crpg_cutlass_guard_h2" />
+      <UsablePiece piece_id="crpg_cutlass_guard_h3" />
+      <UsablePiece piece_id="crpg_cutlass_handle_h0" />
+      <UsablePiece piece_id="crpg_cutlass_handle_h1" />
+      <UsablePiece piece_id="crpg_cutlass_handle_h2" />
+      <UsablePiece piece_id="crpg_cutlass_handle_h3" />
+      <UsablePiece piece_id="crpg_cutlass_pommel_h0" />
+      <UsablePiece piece_id="crpg_cutlass_pommel_h1" />
+      <UsablePiece piece_id="crpg_cutlass_pommel_h2" />
+      <UsablePiece piece_id="crpg_cutlass_pommel_h3" />
+      <UsablePiece piece_id="crpg_broadshortsword_blade_h0" />
+      <UsablePiece piece_id="crpg_broadshortsword_blade_h1" />
+      <UsablePiece piece_id="crpg_broadshortsword_blade_h2" />
+      <UsablePiece piece_id="crpg_broadshortsword_blade_h3" />
+      <UsablePiece piece_id="crpg_broadshortsword_guard_h0" />
+      <UsablePiece piece_id="crpg_broadshortsword_guard_h1" />
+      <UsablePiece piece_id="crpg_broadshortsword_guard_h2" />
+      <UsablePiece piece_id="crpg_broadshortsword_guard_h3" />
+      <UsablePiece piece_id="crpg_broadshortsword_handle_h0" />
+      <UsablePiece piece_id="crpg_broadshortsword_handle_h1" />
+      <UsablePiece piece_id="crpg_broadshortsword_handle_h2" />
+      <UsablePiece piece_id="crpg_broadshortsword_handle_h3" />
+      <UsablePiece piece_id="crpg_broadshortsword_pommel_h0" />
+      <UsablePiece piece_id="crpg_broadshortsword_pommel_h1" />
+      <UsablePiece piece_id="crpg_broadshortsword_pommel_h2" />
+      <UsablePiece piece_id="crpg_broadshortsword_pommel_h3" />
     </UsablePieces>
   </CraftingTemplate>
   <CraftingTemplate id="crpg_TwoHandedSword" item_type="TwoHandedWeapon" modifier_group="sword" item_holsters="sword_back:sword_back_2:sword_back_3:sword_back_4" piece_type_to_scale_holster_with="Blade" hidden_piece_types_on_holster="Blade" default_item_holster_position_offset="0,0,-0.1">
@@ -3016,6 +3048,38 @@
       <UsablePiece piece_id="crpg_black_katana_pommel_h1" />
       <UsablePiece piece_id="crpg_black_katana_pommel_h2" />
       <UsablePiece piece_id="crpg_black_katana_pommel_h3" />
+      <UsablePiece piece_id="crpg_langes_messer_blade_h0" />
+      <UsablePiece piece_id="crpg_langes_messer_blade_h1" />
+      <UsablePiece piece_id="crpg_langes_messer_blade_h2" />
+      <UsablePiece piece_id="crpg_langes_messer_blade_h3" />
+      <UsablePiece piece_id="crpg_langes_messer_guard_h0" />
+      <UsablePiece piece_id="crpg_langes_messer_guard_h1" />
+      <UsablePiece piece_id="crpg_langes_messer_guard_h2" />
+      <UsablePiece piece_id="crpg_langes_messer_guard_h3" />
+      <UsablePiece piece_id="crpg_langes_messer_handle_h0" />
+      <UsablePiece piece_id="crpg_langes_messer_handle_h1" />
+      <UsablePiece piece_id="crpg_langes_messer_handle_h2" />
+      <UsablePiece piece_id="crpg_langes_messer_handle_h3" />
+      <UsablePiece piece_id="crpg_langes_messer_pommel_h0" />
+      <UsablePiece piece_id="crpg_langes_messer_pommel_h1" />
+      <UsablePiece piece_id="crpg_langes_messer_pommel_h2" />
+      <UsablePiece piece_id="crpg_langes_messer_pommel_h3" />
+      <UsablePiece piece_id="crpg_ancientlongsword_blade_h0" />
+      <UsablePiece piece_id="crpg_ancientlongsword_blade_h1" />
+      <UsablePiece piece_id="crpg_ancientlongsword_blade_h2" />
+      <UsablePiece piece_id="crpg_ancientlongsword_blade_h3" />
+      <UsablePiece piece_id="crpg_ancientlongsword_guard_h0" />
+      <UsablePiece piece_id="crpg_ancientlongsword_guard_h1" />
+      <UsablePiece piece_id="crpg_ancientlongsword_guard_h2" />
+      <UsablePiece piece_id="crpg_ancientlongsword_guard_h3" />
+      <UsablePiece piece_id="crpg_ancientlongsword_handle_h0" />
+      <UsablePiece piece_id="crpg_ancientlongsword_handle_h1" />
+      <UsablePiece piece_id="crpg_ancientlongsword_handle_h2" />
+      <UsablePiece piece_id="crpg_ancientlongsword_handle_h3" />
+      <UsablePiece piece_id="crpg_ancientlongsword_pommel_h0" />
+      <UsablePiece piece_id="crpg_ancientlongsword_pommel_h1" />
+      <UsablePiece piece_id="crpg_ancientlongsword_pommel_h2" />
+      <UsablePiece piece_id="crpg_ancientlongsword_pommel_h3" />
     </UsablePieces>
   </CraftingTemplate>
   <CraftingTemplate id="crpg_Dagger" item_type="OneHandedWeapon" modifier_group="sword" item_holsters="sword_left_hip_3:sword_left_hip_2:sword_left_hip:sword_back" default_item_holster_position_offset="0,0,-0.1" use_weapon_as_holster_mesh="true">
@@ -3658,6 +3722,22 @@
       <UsablePiece piece_id="crpg_wooden_sword_pommel_h1" />
       <UsablePiece piece_id="crpg_wooden_sword_pommel_h2" />
       <UsablePiece piece_id="crpg_wooden_sword_pommel_h3" />
+      <UsablePiece piece_id="crpg_rondel_blade_h0" />
+      <UsablePiece piece_id="crpg_rondel_blade_h1" />
+      <UsablePiece piece_id="crpg_rondel_blade_h2" />
+      <UsablePiece piece_id="crpg_rondel_blade_h3" />
+      <UsablePiece piece_id="crpg_rondel_guard_h0" />
+      <UsablePiece piece_id="crpg_rondel_guard_h1" />
+      <UsablePiece piece_id="crpg_rondel_guard_h2" />
+      <UsablePiece piece_id="crpg_rondel_guard_h3" />
+      <UsablePiece piece_id="crpg_rondel_handle_h0" />
+      <UsablePiece piece_id="crpg_rondel_handle_h1" />
+      <UsablePiece piece_id="crpg_rondel_handle_h2" />
+      <UsablePiece piece_id="crpg_rondel_handle_h3" />
+      <UsablePiece piece_id="crpg_rondel_pommel_h0" />
+      <UsablePiece piece_id="crpg_rondel_pommel_h1" />
+      <UsablePiece piece_id="crpg_rondel_pommel_h2" />
+      <UsablePiece piece_id="crpg_rondel_pommel_h3" />
     </UsablePieces>
   </CraftingTemplate>
   <CraftingTemplate id="crpg_ThrowingKnife" item_type="Thrown" modifier_group="knife_throwing" item_holsters="throwing_knife_2:throwing_knife:throwing_stone:throwing_stone_2" piece_type_to_scale_holster_with="Blade" default_item_holster_position_offset="0,0,-0.1" always_show_holster_with_weapon="true">
@@ -4106,6 +4186,38 @@
       <UsablePiece piece_id="crpg_wooden_sword_handle_h1" />
       <UsablePiece piece_id="crpg_wooden_sword_handle_h2" />
       <UsablePiece piece_id="crpg_wooden_sword_handle_h3" />
+      <UsablePiece piece_id="crpg_tri_shuriken_handle_h0" />
+      <UsablePiece piece_id="crpg_tri_shuriken_handle_h1" />
+      <UsablePiece piece_id="crpg_tri_shuriken_handle_h2" />
+      <UsablePiece piece_id="crpg_tri_shuriken_handle_h3" />
+      <UsablePiece piece_id="crpg_square_shuriken_handle_h0" />
+      <UsablePiece piece_id="crpg_square_shuriken_handle_h1" />
+      <UsablePiece piece_id="crpg_square_shuriken_handle_h2" />
+      <UsablePiece piece_id="crpg_square_shuriken_handle_h3" />
+      <UsablePiece piece_id="crpg_spiral_shuriken_handle_h0" />
+      <UsablePiece piece_id="crpg_spiral_shuriken_handle_h1" />
+      <UsablePiece piece_id="crpg_spiral_shuriken_handle_h2" />
+      <UsablePiece piece_id="crpg_spiral_shuriken_handle_h3" />
+      <UsablePiece piece_id="crpg_throwing_spike_handle_h0" />
+      <UsablePiece piece_id="crpg_throwing_spike_handle_h1" />
+      <UsablePiece piece_id="crpg_throwing_spike_handle_h2" />
+      <UsablePiece piece_id="crpg_throwing_spike_handle_h3" />
+      <UsablePiece piece_id="crpg_tri_shuriken_blade_h0" />
+      <UsablePiece piece_id="crpg_tri_shuriken_blade_h1" />
+      <UsablePiece piece_id="crpg_tri_shuriken_blade_h2" />
+      <UsablePiece piece_id="crpg_tri_shuriken_blade_h3" />
+      <UsablePiece piece_id="crpg_throwing_spike_blade_h0" />
+      <UsablePiece piece_id="crpg_throwing_spike_blade_h1" />
+      <UsablePiece piece_id="crpg_throwing_spike_blade_h2" />
+      <UsablePiece piece_id="crpg_throwing_spike_blade_h3" />
+      <UsablePiece piece_id="crpg_square_shuriken_blade_h0" />
+      <UsablePiece piece_id="crpg_square_shuriken_blade_h1" />
+      <UsablePiece piece_id="crpg_square_shuriken_blade_h2" />
+      <UsablePiece piece_id="crpg_square_shuriken_blade_h3" />
+      <UsablePiece piece_id="crpg_spiral_shuriken_blade_h0" />
+      <UsablePiece piece_id="crpg_spiral_shuriken_blade_h1" />
+      <UsablePiece piece_id="crpg_spiral_shuriken_blade_h2" />
+      <UsablePiece piece_id="crpg_spiral_shuriken_blade_h3" />
     </UsablePieces>
   </CraftingTemplate>
   <CraftingTemplate id="crpg_OneHandedAxe" item_type="OneHandedWeapon" modifier_group="axe" item_holsters="axe_right_hip:axe_right_hip_2:mace_right_hip:axe_back" default_item_holster_position_offset="0,0,-0.45" use_weapon_as_holster_mesh="true">
@@ -4839,6 +4951,14 @@
       <UsablePiece piece_id="crpg_saxon_hooked_axe_handle_h1" />
       <UsablePiece piece_id="crpg_saxon_hooked_axe_handle_h2" />
       <UsablePiece piece_id="crpg_saxon_hooked_axe_handle_h3" />
+      <UsablePiece piece_id="crpg_steel_pick_handle_h0" />
+      <UsablePiece piece_id="crpg_steel_pick_handle_h1" />
+      <UsablePiece piece_id="crpg_steel_pick_handle_h2" />
+      <UsablePiece piece_id="crpg_steel_pick_handle_h3" />
+      <UsablePiece piece_id="crpg_steel_pick_blade_h0" />
+      <UsablePiece piece_id="crpg_steel_pick_blade_h1" />
+      <UsablePiece piece_id="crpg_steel_pick_blade_h2" />
+      <UsablePiece piece_id="crpg_steel_pick_blade_h3" />
     </UsablePieces>
   </CraftingTemplate>
   <CraftingTemplate id="crpg_TwoHandedAxe" item_type="TwoHandedWeapon" modifier_group="axe" item_holsters="axe_back:axe_back_2:axe_back_3:axe_back_4" default_item_holster_position_offset="0,0,-0.65" use_weapon_as_holster_mesh="true">
@@ -5556,6 +5676,30 @@
       <UsablePiece piece_id="crpg_francesca_handle_h1" />
       <UsablePiece piece_id="crpg_francesca_handle_h2" />
       <UsablePiece piece_id="crpg_francesca_handle_h3" />
+      <UsablePiece piece_id="crpg_helpinghand_head_h0" />
+      <UsablePiece piece_id="crpg_helpinghand_head_h1" />
+      <UsablePiece piece_id="crpg_helpinghand_head_h2" />
+      <UsablePiece piece_id="crpg_helpinghand_head_h3" />
+      <UsablePiece piece_id="crpg_helpinghand_handle_h0" />
+      <UsablePiece piece_id="crpg_helpinghand_handle_h1" />
+      <UsablePiece piece_id="crpg_helpinghand_handle_h2" />
+      <UsablePiece piece_id="crpg_helpinghand_handle_h3" />
+      <UsablePiece piece_id="crpg_throwingmace_head_h0" />
+      <UsablePiece piece_id="crpg_throwingmace_head_h1" />
+      <UsablePiece piece_id="crpg_throwingmace_head_h2" />
+      <UsablePiece piece_id="crpg_throwingmace_head_h3" />
+      <UsablePiece piece_id="crpg_throwingmace_handle_h0" />
+      <UsablePiece piece_id="crpg_throwingmace_handle_h1" />
+      <UsablePiece piece_id="crpg_throwingmace_handle_h2" />
+      <UsablePiece piece_id="crpg_throwingmace_handle_h3" />
+      <UsablePiece piece_id="crpg_throwingclub_head_h0" />
+      <UsablePiece piece_id="crpg_throwingclub_head_h1" />
+      <UsablePiece piece_id="crpg_throwingclub_head_h2" />
+      <UsablePiece piece_id="crpg_throwingclub_head_h3" />
+      <UsablePiece piece_id="crpg_throwingclub_handle_h0" />
+      <UsablePiece piece_id="crpg_throwingclub_handle_h1" />
+      <UsablePiece piece_id="crpg_throwingclub_handle_h2" />
+      <UsablePiece piece_id="crpg_throwingclub_handle_h3" />
     </UsablePieces>
   </CraftingTemplate>
   <CraftingTemplate id="crpg_TwoHandedPolearm" item_type="Polearm" modifier_group="polearm" item_holsters="polearm_back:polearm_back_2:polearm_back_3:polearm_back_4" default_item_holster_position_offset="0,0,-0.30" use_weapon_as_holster_mesh="true">
@@ -8514,22 +8658,22 @@
       <UsablePiece piece_id="crpg_mallet_handle_h1" />
       <UsablePiece piece_id="crpg_mallet_handle_h2" />
       <UsablePiece piece_id="crpg_mallet_handle_h3" />
-      <UsablePiece piece_id="crpg_shieldsplitter_blade_h0" />
-      <UsablePiece piece_id="crpg_shieldsplitter_blade_h1" />
-      <UsablePiece piece_id="crpg_shieldsplitter_blade_h2" />
-      <UsablePiece piece_id="crpg_shieldsplitter_blade_h3" />
-      <UsablePiece piece_id="crpg_shieldsplitter_blade_h0" />
-      <UsablePiece piece_id="crpg_shieldsplitter_blade_h1" />
-      <UsablePiece piece_id="crpg_shieldsplitter_blade_h2" />
-      <UsablePiece piece_id="crpg_shieldsplitter_blade_h3" />
-      <UsablePiece piece_id="crpg_shieldsplitter_handle_h0" />
-      <UsablePiece piece_id="crpg_shieldsplitter_handle_h1" />
-      <UsablePiece piece_id="crpg_shieldsplitter_handle_h2" />
-      <UsablePiece piece_id="crpg_shieldsplitter_handle_h3" />
-      <UsablePiece piece_id="crpg_shieldsplitter_handle_h0" />
-      <UsablePiece piece_id="crpg_shieldsplitter_handle_h1" />
-      <UsablePiece piece_id="crpg_shieldsplitter_handle_h2" />
-      <UsablePiece piece_id="crpg_shieldsplitter_handle_h3" />
+      <UsablePiece piece_id="crpg_bone_breaker_blade_h0" />
+      <UsablePiece piece_id="crpg_bone_breaker_blade_h1" />
+      <UsablePiece piece_id="crpg_bone_breaker_blade_h2" />
+      <UsablePiece piece_id="crpg_bone_breaker_blade_h3" />
+      <UsablePiece piece_id="crpg_bone_breaker_blade_h0" />
+      <UsablePiece piece_id="crpg_bone_breaker_blade_h1" />
+      <UsablePiece piece_id="crpg_bone_breaker_blade_h2" />
+      <UsablePiece piece_id="crpg_bone_breaker_blade_h3" />
+      <UsablePiece piece_id="crpg_bone_breaker_handle_h0" />
+      <UsablePiece piece_id="crpg_bone_breaker_handle_h1" />
+      <UsablePiece piece_id="crpg_bone_breaker_handle_h2" />
+      <UsablePiece piece_id="crpg_bone_breaker_handle_h3" />
+      <UsablePiece piece_id="crpg_bone_breaker_handle_h0" />
+      <UsablePiece piece_id="crpg_bone_breaker_handle_h1" />
+      <UsablePiece piece_id="crpg_bone_breaker_handle_h2" />
+      <UsablePiece piece_id="crpg_bone_breaker_handle_h3" />
       <UsablePiece piece_id="crpg_great_maul_blade_h0" />
       <UsablePiece piece_id="crpg_great_maul_blade_h1" />
       <UsablePiece piece_id="crpg_great_maul_blade_h2" />
@@ -9106,6 +9250,14 @@
       <UsablePiece piece_id="crpg_wooden_sword_pommel_h1" />
       <UsablePiece piece_id="crpg_wooden_sword_pommel_h2" />
       <UsablePiece piece_id="crpg_wooden_sword_pommel_h3" />
+      <UsablePiece piece_id="crpg_meowhammer_head_h0" />
+      <UsablePiece piece_id="crpg_meowhammer_head_h1" />
+      <UsablePiece piece_id="crpg_meowhammer_head_h2" />
+      <UsablePiece piece_id="crpg_meowhammer_head_h3" />
+      <UsablePiece piece_id="crpg_meowhammer_handle_h0" />
+      <UsablePiece piece_id="crpg_meowhammer_handle_h1" />
+      <UsablePiece piece_id="crpg_meowhammer_handle_h2" />
+      <UsablePiece piece_id="crpg_meowhammer_handle_h3" />
     </UsablePieces>
   </CraftingTemplate>
 </CraftingTemplates>

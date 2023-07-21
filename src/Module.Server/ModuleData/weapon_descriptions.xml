@@ -1473,6 +1473,38 @@
       <AvailablePiece id="crpg_longsword_pommel_h1" />
       <AvailablePiece id="crpg_longsword_pommel_h2" />
       <AvailablePiece id="crpg_longsword_pommel_h3" />
+      <AvailablePiece id="crpg_cutlass_blade_h0" />
+      <AvailablePiece id="crpg_cutlass_blade_h1" />
+      <AvailablePiece id="crpg_cutlass_blade_h2" />
+      <AvailablePiece id="crpg_cutlass_blade_h3" />
+      <AvailablePiece id="crpg_cutlass_guard_h0" />
+      <AvailablePiece id="crpg_cutlass_guard_h1" />
+      <AvailablePiece id="crpg_cutlass_guard_h2" />
+      <AvailablePiece id="crpg_cutlass_guard_h3" />
+      <AvailablePiece id="crpg_cutlass_handle_h0" />
+      <AvailablePiece id="crpg_cutlass_handle_h1" />
+      <AvailablePiece id="crpg_cutlass_handle_h2" />
+      <AvailablePiece id="crpg_cutlass_handle_h3" />
+      <AvailablePiece id="crpg_cutlass_pommel_h0" />
+      <AvailablePiece id="crpg_cutlass_pommel_h1" />
+      <AvailablePiece id="crpg_cutlass_pommel_h2" />
+      <AvailablePiece id="crpg_cutlass_pommel_h3" />
+      <AvailablePiece id="crpg_broadshortsword_blade_h0" />
+      <AvailablePiece id="crpg_broadshortsword_blade_h1" />
+      <AvailablePiece id="crpg_broadshortsword_blade_h2" />
+      <AvailablePiece id="crpg_broadshortsword_blade_h3" />
+      <AvailablePiece id="crpg_broadshortsword_guard_h0" />
+      <AvailablePiece id="crpg_broadshortsword_guard_h1" />
+      <AvailablePiece id="crpg_broadshortsword_guard_h2" />
+      <AvailablePiece id="crpg_broadshortsword_guard_h3" />
+      <AvailablePiece id="crpg_broadshortsword_handle_h0" />
+      <AvailablePiece id="crpg_broadshortsword_handle_h1" />
+      <AvailablePiece id="crpg_broadshortsword_handle_h2" />
+      <AvailablePiece id="crpg_broadshortsword_handle_h3" />
+      <AvailablePiece id="crpg_broadshortsword_pommel_h0" />
+      <AvailablePiece id="crpg_broadshortsword_pommel_h1" />
+      <AvailablePiece id="crpg_broadshortsword_pommel_h2" />
+      <AvailablePiece id="crpg_broadshortsword_pommel_h3" />
     </AvailablePieces>
   </WeaponDescription>
   <WeaponDescription id="crpg_OneHandedBastardSword" weapon_class="OneHandedSword" item_usage_features="onehanded:block:rshield:swing:thrust">
@@ -2408,6 +2440,38 @@
       <AvailablePiece id="crpg_northlander_wide_fullered_greatsword_pommel_h1" />
       <AvailablePiece id="crpg_northlander_wide_fullered_greatsword_pommel_h2" />
       <AvailablePiece id="crpg_northlander_wide_fullered_greatsword_pommel_h3" />
+      <AvailablePiece id="crpg_langes_messer_blade_h0" />
+      <AvailablePiece id="crpg_langes_messer_blade_h1" />
+      <AvailablePiece id="crpg_langes_messer_blade_h2" />
+      <AvailablePiece id="crpg_langes_messer_blade_h3" />
+      <AvailablePiece id="crpg_langes_messer_guard_h0" />
+      <AvailablePiece id="crpg_langes_messer_guard_h1" />
+      <AvailablePiece id="crpg_langes_messer_guard_h2" />
+      <AvailablePiece id="crpg_langes_messer_guard_h3" />
+      <AvailablePiece id="crpg_langes_messer_handle_h0" />
+      <AvailablePiece id="crpg_langes_messer_handle_h1" />
+      <AvailablePiece id="crpg_langes_messer_handle_h2" />
+      <AvailablePiece id="crpg_langes_messer_handle_h3" />
+      <AvailablePiece id="crpg_langes_messer_pommel_h0" />
+      <AvailablePiece id="crpg_langes_messer_pommel_h1" />
+      <AvailablePiece id="crpg_langes_messer_pommel_h2" />
+      <AvailablePiece id="crpg_langes_messer_pommel_h3" />
+      <AvailablePiece id="crpg_ancientlongsword_blade_h0" />
+      <AvailablePiece id="crpg_ancientlongsword_blade_h1" />
+      <AvailablePiece id="crpg_ancientlongsword_blade_h2" />
+      <AvailablePiece id="crpg_ancientlongsword_blade_h3" />
+      <AvailablePiece id="crpg_ancientlongsword_guard_h0" />
+      <AvailablePiece id="crpg_ancientlongsword_guard_h1" />
+      <AvailablePiece id="crpg_ancientlongsword_guard_h2" />
+      <AvailablePiece id="crpg_ancientlongsword_guard_h3" />
+      <AvailablePiece id="crpg_ancientlongsword_handle_h0" />
+      <AvailablePiece id="crpg_ancientlongsword_handle_h1" />
+      <AvailablePiece id="crpg_ancientlongsword_handle_h2" />
+      <AvailablePiece id="crpg_ancientlongsword_handle_h3" />
+      <AvailablePiece id="crpg_ancientlongsword_pommel_h0" />
+      <AvailablePiece id="crpg_ancientlongsword_pommel_h1" />
+      <AvailablePiece id="crpg_ancientlongsword_pommel_h2" />
+      <AvailablePiece id="crpg_ancientlongsword_pommel_h3" />
     </AvailablePieces>
   </WeaponDescription>
   <WeaponDescription id="crpg_OneHandedBastardSwordAlternative" weapon_class="OneHandedSword" item_usage_features="onehanded:block:swing:thrust">
@@ -3311,6 +3375,38 @@
       <AvailablePiece id="crpg_longsword_pommel_h1" />
       <AvailablePiece id="crpg_longsword_pommel_h2" />
       <AvailablePiece id="crpg_longsword_pommel_h3" />
+      <AvailablePiece id="crpg_langes_messer_blade_h0" />
+      <AvailablePiece id="crpg_langes_messer_blade_h1" />
+      <AvailablePiece id="crpg_langes_messer_blade_h2" />
+      <AvailablePiece id="crpg_langes_messer_blade_h3" />
+      <AvailablePiece id="crpg_langes_messer_guard_h0" />
+      <AvailablePiece id="crpg_langes_messer_guard_h1" />
+      <AvailablePiece id="crpg_langes_messer_guard_h2" />
+      <AvailablePiece id="crpg_langes_messer_guard_h3" />
+      <AvailablePiece id="crpg_langes_messer_handle_h0" />
+      <AvailablePiece id="crpg_langes_messer_handle_h1" />
+      <AvailablePiece id="crpg_langes_messer_handle_h2" />
+      <AvailablePiece id="crpg_langes_messer_handle_h3" />
+      <AvailablePiece id="crpg_langes_messer_pommel_h0" />
+      <AvailablePiece id="crpg_langes_messer_pommel_h1" />
+      <AvailablePiece id="crpg_langes_messer_pommel_h2" />
+      <AvailablePiece id="crpg_langes_messer_pommel_h3" />
+      <AvailablePiece id="crpg_ancientlongsword_blade_h0" />
+      <AvailablePiece id="crpg_ancientlongsword_blade_h1" />
+      <AvailablePiece id="crpg_ancientlongsword_blade_h2" />
+      <AvailablePiece id="crpg_ancientlongsword_blade_h3" />
+      <AvailablePiece id="crpg_ancientlongsword_guard_h0" />
+      <AvailablePiece id="crpg_ancientlongsword_guard_h1" />
+      <AvailablePiece id="crpg_ancientlongsword_guard_h2" />
+      <AvailablePiece id="crpg_ancientlongsword_guard_h3" />
+      <AvailablePiece id="crpg_ancientlongsword_handle_h0" />
+      <AvailablePiece id="crpg_ancientlongsword_handle_h1" />
+      <AvailablePiece id="crpg_ancientlongsword_handle_h2" />
+      <AvailablePiece id="crpg_ancientlongsword_handle_h3" />
+      <AvailablePiece id="crpg_ancientlongsword_pommel_h0" />
+      <AvailablePiece id="crpg_ancientlongsword_pommel_h1" />
+      <AvailablePiece id="crpg_ancientlongsword_pommel_h2" />
+      <AvailablePiece id="crpg_ancientlongsword_pommel_h3" />
     </AvailablePieces>
   </WeaponDescription>
   <WeaponDescription id="crpg_TwoHandedSword" weapon_class="TwoHandedSword" item_usage_features="twohanded:block:swing:thrust">
@@ -4639,9 +4735,41 @@
       <AvailablePiece id="crpg_northlander_wide_fullered_greatsword_pommel_h1" />
       <AvailablePiece id="crpg_northlander_wide_fullered_greatsword_pommel_h2" />
       <AvailablePiece id="crpg_northlander_wide_fullered_greatsword_pommel_h3" />
+      <AvailablePiece id="crpg_langes_messer_blade_h0" />
+      <AvailablePiece id="crpg_langes_messer_blade_h1" />
+      <AvailablePiece id="crpg_langes_messer_blade_h2" />
+      <AvailablePiece id="crpg_langes_messer_blade_h3" />
+      <AvailablePiece id="crpg_langes_messer_guard_h0" />
+      <AvailablePiece id="crpg_langes_messer_guard_h1" />
+      <AvailablePiece id="crpg_langes_messer_guard_h2" />
+      <AvailablePiece id="crpg_langes_messer_guard_h3" />
+      <AvailablePiece id="crpg_langes_messer_handle_h0" />
+      <AvailablePiece id="crpg_langes_messer_handle_h1" />
+      <AvailablePiece id="crpg_langes_messer_handle_h2" />
+      <AvailablePiece id="crpg_langes_messer_handle_h3" />
+      <AvailablePiece id="crpg_langes_messer_pommel_h0" />
+      <AvailablePiece id="crpg_langes_messer_pommel_h1" />
+      <AvailablePiece id="crpg_langes_messer_pommel_h2" />
+      <AvailablePiece id="crpg_langes_messer_pommel_h3" />
+      <AvailablePiece id="crpg_ancientlongsword_blade_h0" />
+      <AvailablePiece id="crpg_ancientlongsword_blade_h1" />
+      <AvailablePiece id="crpg_ancientlongsword_blade_h2" />
+      <AvailablePiece id="crpg_ancientlongsword_blade_h3" />
+      <AvailablePiece id="crpg_ancientlongsword_guard_h0" />
+      <AvailablePiece id="crpg_ancientlongsword_guard_h1" />
+      <AvailablePiece id="crpg_ancientlongsword_guard_h2" />
+      <AvailablePiece id="crpg_ancientlongsword_guard_h3" />
+      <AvailablePiece id="crpg_ancientlongsword_handle_h0" />
+      <AvailablePiece id="crpg_ancientlongsword_handle_h1" />
+      <AvailablePiece id="crpg_ancientlongsword_handle_h2" />
+      <AvailablePiece id="crpg_ancientlongsword_handle_h3" />
+      <AvailablePiece id="crpg_ancientlongsword_pommel_h0" />
+      <AvailablePiece id="crpg_ancientlongsword_pommel_h1" />
+      <AvailablePiece id="crpg_ancientlongsword_pommel_h2" />
+      <AvailablePiece id="crpg_ancientlongsword_pommel_h3" />
     </AvailablePieces>
   </WeaponDescription>
-  <WeaponDescription id="crpg_Dagger" weapon_class="Dagger" item_usage_features="onehanded:block:shield:swing:thrust">
+  <WeaponDescription id="crpg_Dagger" weapon_class="Dagger" item_usage_features="onehanded:shield:swing:thrust">
     <WeaponFlags>
       <WeaponFlag value="MeleeWeapon" />
     </WeaponFlags>
@@ -5226,6 +5354,22 @@
       <AvailablePiece id="crpg_broad_bladed_throwing_knives_guard_h1" />
       <AvailablePiece id="crpg_broad_bladed_throwing_knives_guard_h2" />
       <AvailablePiece id="crpg_broad_bladed_throwing_knives_guard_h3" />
+      <AvailablePiece id="crpg_rondel_blade_h0" />
+      <AvailablePiece id="crpg_rondel_blade_h1" />
+      <AvailablePiece id="crpg_rondel_blade_h2" />
+      <AvailablePiece id="crpg_rondel_blade_h3" />
+      <AvailablePiece id="crpg_rondel_guard_h0" />
+      <AvailablePiece id="crpg_rondel_guard_h1" />
+      <AvailablePiece id="crpg_rondel_guard_h2" />
+      <AvailablePiece id="crpg_rondel_guard_h3" />
+      <AvailablePiece id="crpg_rondel_handle_h0" />
+      <AvailablePiece id="crpg_rondel_handle_h1" />
+      <AvailablePiece id="crpg_rondel_handle_h2" />
+      <AvailablePiece id="crpg_rondel_handle_h3" />
+      <AvailablePiece id="crpg_rondel_pommel_h0" />
+      <AvailablePiece id="crpg_rondel_pommel_h1" />
+      <AvailablePiece id="crpg_rondel_pommel_h2" />
+      <AvailablePiece id="crpg_rondel_pommel_h3" />
     </AvailablePieces>
   </WeaponDescription>
   <WeaponDescription id="crpg_ThrowingKnife" weapon_class="ThrowingKnife" item_usage_features="throwing:knife">
@@ -5662,6 +5806,38 @@
       <AvailablePiece id="crpg_wooden_sword_handle_h1" />
       <AvailablePiece id="crpg_wooden_sword_handle_h2" />
       <AvailablePiece id="crpg_wooden_sword_handle_h3" />
+      <AvailablePiece id="crpg_tri_shuriken_handle_h0" />
+      <AvailablePiece id="crpg_tri_shuriken_handle_h1" />
+      <AvailablePiece id="crpg_tri_shuriken_handle_h2" />
+      <AvailablePiece id="crpg_tri_shuriken_handle_h3" />
+      <AvailablePiece id="crpg_square_shuriken_handle_h0" />
+      <AvailablePiece id="crpg_square_shuriken_handle_h1" />
+      <AvailablePiece id="crpg_square_shuriken_handle_h2" />
+      <AvailablePiece id="crpg_square_shuriken_handle_h3" />
+      <AvailablePiece id="crpg_spiral_shuriken_handle_h0" />
+      <AvailablePiece id="crpg_spiral_shuriken_handle_h1" />
+      <AvailablePiece id="crpg_spiral_shuriken_handle_h2" />
+      <AvailablePiece id="crpg_spiral_shuriken_handle_h3" />
+      <AvailablePiece id="crpg_throwing_spike_handle_h0" />
+      <AvailablePiece id="crpg_throwing_spike_handle_h1" />
+      <AvailablePiece id="crpg_throwing_spike_handle_h2" />
+      <AvailablePiece id="crpg_throwing_spike_handle_h3" />
+      <AvailablePiece id="crpg_throwing_spike_blade_h0" />
+      <AvailablePiece id="crpg_throwing_spike_blade_h1" />
+      <AvailablePiece id="crpg_throwing_spike_blade_h2" />
+      <AvailablePiece id="crpg_throwing_spike_blade_h3" />
+      <AvailablePiece id="crpg_tri_shuriken_blade_h0" />
+      <AvailablePiece id="crpg_tri_shuriken_blade_h1" />
+      <AvailablePiece id="crpg_tri_shuriken_blade_h2" />
+      <AvailablePiece id="crpg_tri_shuriken_blade_h3" />
+      <AvailablePiece id="crpg_square_shuriken_blade_h0" />
+      <AvailablePiece id="crpg_square_shuriken_blade_h1" />
+      <AvailablePiece id="crpg_square_shuriken_blade_h2" />
+      <AvailablePiece id="crpg_square_shuriken_blade_h3" />
+      <AvailablePiece id="crpg_spiral_shuriken_blade_h0" />
+      <AvailablePiece id="crpg_spiral_shuriken_blade_h1" />
+      <AvailablePiece id="crpg_spiral_shuriken_blade_h2" />
+      <AvailablePiece id="crpg_spiral_shuriken_blade_h3" />
     </AvailablePieces>
   </WeaponDescription>
   <WeaponDescription id="crpg_OneHandedAxe" weapon_class="OneHandedAxe" item_usage_features="onehanded:shield:axe">
@@ -6362,6 +6538,14 @@
       <AvailablePiece id="crpg_shepherds_axe_handle_h1" />
       <AvailablePiece id="crpg_shepherds_axe_handle_h2" />
       <AvailablePiece id="crpg_shepherds_axe_handle_h3" />
+      <AvailablePiece id="crpg_steel_pick_blade_h0" />
+      <AvailablePiece id="crpg_steel_pick_blade_h1" />
+      <AvailablePiece id="crpg_steel_pick_blade_h2" />
+      <AvailablePiece id="crpg_steel_pick_blade_h3" />
+      <AvailablePiece id="crpg_steel_pick_handle_h0" />
+      <AvailablePiece id="crpg_steel_pick_handle_h1" />
+      <AvailablePiece id="crpg_steel_pick_handle_h2" />
+      <AvailablePiece id="crpg_steel_pick_handle_h3" />
     </AvailablePieces>
   </WeaponDescription>
   <WeaponDescription id="crpg_OneHandedBastardAxe" weapon_class="OneHandedAxe" item_usage_features="onehanded:rshield:axe">
@@ -7191,6 +7375,30 @@
       <AvailablePiece id="crpg_throwing_hammers_blade_h1" />
       <AvailablePiece id="crpg_throwing_hammers_blade_h2" />
       <AvailablePiece id="crpg_throwing_hammers_blade_h3" />
+      <AvailablePiece id="crpg_helpinghand_head_h0" />
+      <AvailablePiece id="crpg_helpinghand_head_h1" />
+      <AvailablePiece id="crpg_helpinghand_head_h2" />
+      <AvailablePiece id="crpg_helpinghand_head_h3" />
+      <AvailablePiece id="crpg_helpinghand_handle_h0" />
+      <AvailablePiece id="crpg_helpinghand_handle_h1" />
+      <AvailablePiece id="crpg_helpinghand_handle_h2" />
+      <AvailablePiece id="crpg_helpinghand_handle_h3" />
+      <AvailablePiece id="crpg_throwingmace_head_h0" />
+      <AvailablePiece id="crpg_throwingmace_head_h1" />
+      <AvailablePiece id="crpg_throwingmace_head_h2" />
+      <AvailablePiece id="crpg_throwingmace_head_h3" />
+      <AvailablePiece id="crpg_throwingmace_handle_h0" />
+      <AvailablePiece id="crpg_throwingmace_handle_h1" />
+      <AvailablePiece id="crpg_throwingmace_handle_h2" />
+      <AvailablePiece id="crpg_throwingmace_handle_h3" />
+      <AvailablePiece id="crpg_throwingclub_head_h0" />
+      <AvailablePiece id="crpg_throwingclub_head_h1" />
+      <AvailablePiece id="crpg_throwingclub_head_h2" />
+      <AvailablePiece id="crpg_throwingclub_head_h3" />
+      <AvailablePiece id="crpg_throwingclub_handle_h0" />
+      <AvailablePiece id="crpg_throwingclub_handle_h1" />
+      <AvailablePiece id="crpg_throwingclub_handle_h2" />
+      <AvailablePiece id="crpg_throwingclub_handle_h3" />
     </AvailablePieces>
   </WeaponDescription>
   <WeaponDescription id="crpg_OneHandedPolearm" weapon_class="OneHandedPolearm" item_usage_features="onehanded_polearm:block:long:rshield:thrust">
@@ -11678,6 +11886,30 @@
       <WeaponFlag value="MeleeWeapon" />
     </WeaponFlags>
     <AvailablePieces>
+      <AvailablePiece id="crpg_throwingclub_head_h0" />
+      <AvailablePiece id="crpg_throwingclub_handle_h0" />
+      <AvailablePiece id="crpg_throwingclub_head_h1" />
+      <AvailablePiece id="crpg_throwingclub_handle_h1" />
+      <AvailablePiece id="crpg_throwingclub_head_h2" />
+      <AvailablePiece id="crpg_throwingclub_handle_h2" />
+      <AvailablePiece id="crpg_throwingclub_head_h3" />
+      <AvailablePiece id="crpg_throwingclub_handle_h3" />
+      <AvailablePiece id="crpg_throwingmace_head_h0" />
+      <AvailablePiece id="crpg_throwingmace_handle_h0" />
+      <AvailablePiece id="crpg_throwingmace_head_h1" />
+      <AvailablePiece id="crpg_throwingmace_handle_h1" />
+      <AvailablePiece id="crpg_throwingmace_head_h2" />
+      <AvailablePiece id="crpg_throwingmace_handle_h2" />
+      <AvailablePiece id="crpg_throwingmace_head_h3" />
+      <AvailablePiece id="crpg_throwingmace_handle_h3" />
+      <AvailablePiece id="crpg_helpinghand_head_h0" />
+      <AvailablePiece id="crpg_helpinghand_handle_h0" />
+      <AvailablePiece id="crpg_helpinghand_head_h1" />
+      <AvailablePiece id="crpg_helpinghand_handle_h1" />
+      <AvailablePiece id="crpg_helpinghand_head_h2" />
+      <AvailablePiece id="crpg_helpinghand_handle_h2" />
+      <AvailablePiece id="crpg_helpinghand_head_h3" />
+      <AvailablePiece id="crpg_helpinghand_handle_h3" />
       <AvailablePiece id="crpg_throwing_hammers_handle_h0" />
       <AvailablePiece id="crpg_throwing_hammers_handle_h1" />
       <AvailablePiece id="crpg_throwing_hammers_handle_h2" />
@@ -12603,22 +12835,22 @@
       <AvailablePiece id="crpg_mallet_handle_h1" />
       <AvailablePiece id="crpg_mallet_handle_h2" />
       <AvailablePiece id="crpg_mallet_handle_h3" />
-      <AvailablePiece id="crpg_shieldsplitter_blade_h0" />
-      <AvailablePiece id="crpg_shieldsplitter_blade_h1" />
-      <AvailablePiece id="crpg_shieldsplitter_blade_h2" />
-      <AvailablePiece id="crpg_shieldsplitter_blade_h3" />
-      <AvailablePiece id="crpg_shieldsplitter_blade_h0" />
-      <AvailablePiece id="crpg_shieldsplitter_blade_h1" />
-      <AvailablePiece id="crpg_shieldsplitter_blade_h2" />
-      <AvailablePiece id="crpg_shieldsplitter_blade_h3" />
-      <AvailablePiece id="crpg_shieldsplitter_handle_h0" />
-      <AvailablePiece id="crpg_shieldsplitter_handle_h1" />
-      <AvailablePiece id="crpg_shieldsplitter_handle_h2" />
-      <AvailablePiece id="crpg_shieldsplitter_handle_h3" />
-      <AvailablePiece id="crpg_shieldsplitter_handle_h0" />
-      <AvailablePiece id="crpg_shieldsplitter_handle_h1" />
-      <AvailablePiece id="crpg_shieldsplitter_handle_h2" />
-      <AvailablePiece id="crpg_shieldsplitter_handle_h3" />
+      <AvailablePiece id="crpg_bone_breaker_blade_h0" />
+      <AvailablePiece id="crpg_bone_breaker_blade_h1" />
+      <AvailablePiece id="crpg_bone_breaker_blade_h2" />
+      <AvailablePiece id="crpg_bone_breaker_blade_h3" />
+      <AvailablePiece id="crpg_bone_breaker_blade_h0" />
+      <AvailablePiece id="crpg_bone_breaker_blade_h1" />
+      <AvailablePiece id="crpg_bone_breaker_blade_h2" />
+      <AvailablePiece id="crpg_bone_breaker_blade_h3" />
+      <AvailablePiece id="crpg_bone_breaker_handle_h0" />
+      <AvailablePiece id="crpg_bone_breaker_handle_h1" />
+      <AvailablePiece id="crpg_bone_breaker_handle_h2" />
+      <AvailablePiece id="crpg_bone_breaker_handle_h3" />
+      <AvailablePiece id="crpg_bone_breaker_handle_h0" />
+      <AvailablePiece id="crpg_bone_breaker_handle_h1" />
+      <AvailablePiece id="crpg_bone_breaker_handle_h2" />
+      <AvailablePiece id="crpg_bone_breaker_handle_h3" />
       <AvailablePiece id="crpg_great_maul_blade_h0" />
       <AvailablePiece id="crpg_great_maul_blade_h1" />
       <AvailablePiece id="crpg_great_maul_blade_h2" />
@@ -13171,6 +13403,14 @@
       <AvailablePiece id="crpg_wooden_twohander_pommel_h1" />
       <AvailablePiece id="crpg_wooden_twohander_pommel_h2" />
       <AvailablePiece id="crpg_wooden_twohander_pommel_h3" />
+      <AvailablePiece id="crpg_meowhammer_head_h0" />
+      <AvailablePiece id="crpg_meowhammer_head_h1" />
+      <AvailablePiece id="crpg_meowhammer_head_h2" />
+      <AvailablePiece id="crpg_meowhammer_head_h3" />
+      <AvailablePiece id="crpg_meowhammer_handle_h0" />
+      <AvailablePiece id="crpg_meowhammer_handle_h1" />
+      <AvailablePiece id="crpg_meowhammer_handle_h2" />
+      <AvailablePiece id="crpg_meowhammer_handle_h3" />
     </AvailablePieces>
   </WeaponDescription>
 </WeaponDescriptions>

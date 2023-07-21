@@ -19,23 +19,23 @@ internal class CrpgItemValueModel : ItemValueModel
     private static readonly float[] ArmorPriceCoeffs = new float[] { 1f, 4f, 0f, 0f, 0f };
     private static readonly Dictionary<ItemObject.ItemTypeEnum, (int desiredMaxPrice, float[] priceCoeffs)> PricesAndCoeffs = new()
     {
-        [ItemObject.ItemTypeEnum.HeadArmor] = (14500, ArmorPriceCoeffs),
-        [ItemObject.ItemTypeEnum.Cape] = (10750, ArmorPriceCoeffs),
-        [ItemObject.ItemTypeEnum.BodyArmor] = (34000, ArmorPriceCoeffs),
-        [ItemObject.ItemTypeEnum.HandArmor] = (6750, ArmorPriceCoeffs),
-        [ItemObject.ItemTypeEnum.LegArmor] = (5150, ArmorPriceCoeffs),
-        [ItemObject.ItemTypeEnum.HorseHarness] = (15000, ItemPriceCoeffs),
-        [ItemObject.ItemTypeEnum.Horse] = (15000, ItemPriceCoeffs),
-        [ItemObject.ItemTypeEnum.Shield] = (9235, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.HeadArmor] = (8700, ArmorPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Cape] = (6450, ArmorPriceCoeffs),
+        [ItemObject.ItemTypeEnum.BodyArmor] = (20000, ArmorPriceCoeffs),
+        [ItemObject.ItemTypeEnum.HandArmor] = (4050, ArmorPriceCoeffs),
+        [ItemObject.ItemTypeEnum.LegArmor] = (3090, ArmorPriceCoeffs),
+        [ItemObject.ItemTypeEnum.HorseHarness] = (9000, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Horse] = (9000, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Shield] = (7000, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Bow] = (14000, ItemPriceCoeffs),
-        [ItemObject.ItemTypeEnum.Crossbow] = (18000, ItemPriceCoeffs),
-        [ItemObject.ItemTypeEnum.OneHandedWeapon] = (7500, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Crossbow] = (14000, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.OneHandedWeapon] = (7000, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.TwoHandedWeapon] = (14000, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Polearm] = (14000, ItemPriceCoeffs),
-        [ItemObject.ItemTypeEnum.Thrown] = (7385, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Thrown] = (6000, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Arrows] = (4500, ItemPriceCoeffs),
-        [ItemObject.ItemTypeEnum.Bolts] = (8200, ItemPriceCoeffs),
-        [ItemObject.ItemTypeEnum.Banner] = (3000, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Bolts] = (4500, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Banner] = (500, ItemPriceCoeffs),
     };
 
     public override float CalculateTier(ItemObject item)
@@ -80,9 +80,9 @@ internal class CrpgItemValueModel : ItemValueModel
         float heirloomLevel = ItemToHeirloomLevel(armorComponent.Item);
         float armorPower =
               1.2f * armorComponent.HeadArmor
-            + 1.1f * armorComponent.BodyArmor
-            + 1.15f * armorComponent.ArmArmor
-            + 0.75f * armorComponent.LegArmor;
+            + 1.15f * armorComponent.BodyArmor
+            + 1.05f * armorComponent.ArmArmor
+            + 0.6f * armorComponent.LegArmor;
 
         float bestArmorPower = armorComponent.Item.ItemType switch
         {
@@ -90,7 +90,7 @@ internal class CrpgItemValueModel : ItemValueModel
             ItemObject.ItemTypeEnum.Cape => 10.586133f,
             ItemObject.ItemTypeEnum.BodyArmor => 19.7f,
             ItemObject.ItemTypeEnum.HandArmor => 9.50441f,
-            ItemObject.ItemTypeEnum.LegArmor => 6.467233f,
+            ItemObject.ItemTypeEnum.LegArmor => 5.523018f,
             ItemObject.ItemTypeEnum.HorseHarness => 45f * 1.1f,
             _ => throw new ArgumentOutOfRangeException(),
         };
@@ -126,6 +126,11 @@ internal class CrpgItemValueModel : ItemValueModel
     private float CalculateWeaponTier(WeaponComponent weaponComponent)
     {
         bool isAThrowingWeapon = weaponComponent.Weapons.Max(a => a.MaxDataValue) >= 1;
+        if (weaponComponent.PrimaryWeapon.CanHitMultipleTargets)
+        {
+            Debug.Print($"{weaponComponent.StringId} can hit multiple targets");
+        }
+
         if (weaponComponent.Item?.WeaponDesign == null)
         {
             return CalculateTierNonCraftedWeapon(weaponComponent);
