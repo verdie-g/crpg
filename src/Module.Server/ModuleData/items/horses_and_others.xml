@@ -400,24 +400,24 @@
       <Armor body_armor="60" mane_cover_type="all" family_type="1" reins_mesh="horse_harness_imperial_b_rein" material_type="Chainmail" />
     </ItemComponent>
   </Item>
-  <Item multiplayer_item="false" id="crpg_half_scale_barding_h0" name="{=i2QlHUVW}Cataphract Half Scale Barding" mesh="horse_harness_imperial_c_clotest" culture="Culture.empire" subtype="body_armor" weight="80" difficulty="0" appearance="0.5" Type="HorseHarness">
+  <Item multiplayer_item="false" id="crpg_half_scale_barding_v2_h0" name="{=i2QlHUVW}Cataphract Half Scale Barding" mesh="horse_harness_imperial_c_clotest" culture="Culture.empire" subtype="body_armor" weight="80" difficulty="0" appearance="0.5" Type="HorseHarness">
     <ItemComponent>
-      <Armor body_armor="36" mane_cover_type="all" family_type="1" reins_mesh="horse_harness_imperial_c_rein" material_type="Chainmail" />
+      <Armor body_armor="42" mane_cover_type="all" family_type="1" reins_mesh="horse_harness_imperial_c_rein" material_type="Chainmail" />
     </ItemComponent>
   </Item>
-  <Item multiplayer_item="false" id="crpg_half_scale_barding_h1" name="{=i2QlHUVW}Cataphract Half Scale Barding +1" mesh="horse_harness_imperial_c_clotest" culture="Culture.empire" subtype="body_armor" weight="80" difficulty="0" appearance="0.5" Type="HorseHarness">
+  <Item multiplayer_item="false" id="crpg_half_scale_barding_v2_h1" name="{=i2QlHUVW}Cataphract Half Scale Barding +1" mesh="horse_harness_imperial_c_clotest" culture="Culture.empire" subtype="body_armor" weight="80" difficulty="0" appearance="0.5" Type="HorseHarness">
     <ItemComponent>
-      <Armor body_armor="41" mane_cover_type="all" family_type="1" reins_mesh="horse_harness_imperial_c_rein" material_type="Chainmail" />
+      <Armor body_armor="47" mane_cover_type="all" family_type="1" reins_mesh="horse_harness_imperial_c_rein" material_type="Chainmail" />
     </ItemComponent>
   </Item>
-  <Item multiplayer_item="false" id="crpg_half_scale_barding_h2" name="{=i2QlHUVW}Cataphract Half Scale Barding +2" mesh="horse_harness_imperial_c_clotest" culture="Culture.empire" subtype="body_armor" weight="80" difficulty="0" appearance="0.5" Type="HorseHarness">
+  <Item multiplayer_item="false" id="crpg_half_scale_barding_v2_h2" name="{=i2QlHUVW}Cataphract Half Scale Barding +2" mesh="horse_harness_imperial_c_clotest" culture="Culture.empire" subtype="body_armor" weight="80" difficulty="0" appearance="0.5" Type="HorseHarness">
     <ItemComponent>
-      <Armor body_armor="46" mane_cover_type="all" family_type="1" reins_mesh="horse_harness_imperial_c_rein" material_type="Chainmail" />
+      <Armor body_armor="52" mane_cover_type="all" family_type="1" reins_mesh="horse_harness_imperial_c_rein" material_type="Chainmail" />
     </ItemComponent>
   </Item>
-  <Item multiplayer_item="false" id="crpg_half_scale_barding_h3" name="{=i2QlHUVW}Cataphract Half Scale Barding +3" mesh="horse_harness_imperial_c_clotest" culture="Culture.empire" subtype="body_armor" weight="80" difficulty="0" appearance="0.5" Type="HorseHarness">
+  <Item multiplayer_item="false" id="crpg_half_scale_barding_v2_h3" name="{=i2QlHUVW}Cataphract Half Scale Barding +3" mesh="horse_harness_imperial_c_clotest" culture="Culture.empire" subtype="body_armor" weight="80" difficulty="0" appearance="0.5" Type="HorseHarness">
     <ItemComponent>
-      <Armor body_armor="51" mane_cover_type="all" family_type="1" reins_mesh="horse_harness_imperial_c_rein" material_type="Chainmail" />
+      <Armor body_armor="57" mane_cover_type="all" family_type="1" reins_mesh="horse_harness_imperial_c_rein" material_type="Chainmail" />
     </ItemComponent>
   </Item>
   <Item id="crpg_imperial_riding_harness_h0" name="{=NUmDuEqI}Imperial Riding Harness" mesh="horse_harness_a_new" culture="Culture.empire" weight="22" appearance="1" Type="HorseHarness">
@@ -4218,7 +4218,7 @@
   </Item>
   <Item id="crpg_mount1_saddlehorse_14_h0" name="Shadowfax" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="69" speed="68" charge_damage="2" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-50" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="70" speed="69" charge_damage="2" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-44" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4234,7 +4234,7 @@
   </Item>
   <Item id="crpg_mount1_saddlehorse_14_h1" name="Shadowfax +1" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="69" speed="69" charge_damage="2" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-40" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="70" speed="70" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-34" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4250,7 +4250,7 @@
   </Item>
   <Item id="crpg_mount1_saddlehorse_14_h2" name="Shadowfax +2" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="70" speed="69" charge_damage="2" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-30" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="71" speed="70" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-23" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -4266,7 +4266,7 @@
   </Item>
   <Item id="crpg_mount1_saddlehorse_14_h3" name="Shadowfax +3" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="71" speed="69" charge_damage="2" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-20" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="72" speed="70" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-13" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -5923,5 +5923,221 @@
         </Materials>
       </Horse>
     </ItemComponent>
+  </Item>
+  <Item id="crpg_caparison_template_jerusalem_h0" name="Caparison, Jerusalem (White)" mesh="caparison_template_jerusalem" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="39" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_jerusalem_h1" name="Caparison, Jerusalem (White) +1" mesh="caparison_template_jerusalem" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="44" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_jerusalem_h2" name="Caparison, Jerusalem (White) +2" mesh="caparison_template_jerusalem" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="49" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_jerusalem_h3" name="Caparison, Jerusalem (White) +3" mesh="caparison_template_jerusalem" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="54" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_jerusalem_teal_h0" name="Caparison, Jerusalem (Teal)" mesh="caparison_template_jerusalem_teal" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="39" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_jerusalem_teal_h1" name="Caparison, Jerusalem (Teal) +1" mesh="caparison_template_jerusalem_teal" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="44" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_jerusalem_teal_h2" name="Caparison, Jerusalem (Teal) +2" mesh="caparison_template_jerusalem_teal" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="49" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_jerusalem_teal_h3" name="Caparison, Jerusalem (Teal) +3" mesh="caparison_template_jerusalem_teal" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="54" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_brabant_h0" name="Caparison, Brabant" mesh="caparison_template_brabant" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="39" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_brabant_h1" name="Caparison, Brabant +1" mesh="caparison_template_brabant" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="44" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_brabant_h2" name="Caparison, Brabant +2" mesh="caparison_template_brabant" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="49" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_brabant_h3" name="Caparison, Brabant +3" mesh="caparison_template_brabant" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="54" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_teutonic_h0" name="Caparison, Teutonic" mesh="caparison_template_teutonic" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="39" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_teutonic_h1" name="Caparison, Teutonic +1" mesh="caparison_template_teutonic" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="44" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_teutonic_h2" name="Caparison, Teutonic +2" mesh="caparison_template_teutonic" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="49" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_teutonic_h3" name="Caparison, Teutonic +3" mesh="caparison_template_teutonic" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="54" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_teutonic2_h0" name="Caparison, Teutonic" mesh="caparison_template_teutonic2" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="39" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_teutonic2_h1" name="Caparison, Teutonic +1" mesh="caparison_template_teutonic2" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="44" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_teutonic2_h2" name="Caparison, Teutonic +2" mesh="caparison_template_teutonic2" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="49" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_teutonic2_h3" name="Caparison, Teutonic +3" mesh="caparison_template_teutonic2" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="54" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_bavaria_h0" name="Caparison, Bavaria" mesh="caparison_template_bavaria" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="39" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_bavaria_h1" name="Caparison, Bavaria +1" mesh="caparison_template_bavaria" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="44" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_bavaria_h2" name="Caparison, Bavaria +2" mesh="caparison_template_bavaria" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="49" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_bavaria_h3" name="Caparison, Bavaria +3" mesh="caparison_template_bavaria" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="54" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_brienne_h0" name="Caparison, Brienne" mesh="caparison_template_brienne" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="39" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_brienne_h1" name="Caparison, Brienne +1" mesh="caparison_template_brienne" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="44" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_brienne_h2" name="Caparison, Brienne +2" mesh="caparison_template_brienne" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="49" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_brienne_h3" name="Caparison, Brienne +3" mesh="caparison_template_brienne" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="54" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_champagne_h0" name="Caparison, Champagne" mesh="caparison_template_champagne" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="39" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_champagne_h1" name="Caparison, Champagne +1" mesh="caparison_template_champagne" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="44" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_champagne_h2" name="Caparison, Champagne +2" mesh="caparison_template_champagne" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="49" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_template_champagne_h3" name="Caparison, Champagne +3" mesh="caparison_template_champagne" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="54" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_1_h0" name="Armoured Caparison, Checkered (Teamcolor)" mesh="caparison_1" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="39" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_1_h1" name="Armoured Caparison, Checkered (Teamcolor) +1" mesh="caparison_1" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="44" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_1_h2" name="Armoured Caparison, Checkered (Teamcolor) +2" mesh="caparison_1" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="49" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
+  </Item>
+  <Item id="crpg_caparison_1_h3" name="Armoured Caparison, Checkered (Teamcolor) +3" mesh="caparison_1" weight="16" appearance="10" Type="HorseHarness">
+    <ItemComponent>
+      <Armor body_armor="54" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" Civilian="true" />
   </Item>
 </Items>
