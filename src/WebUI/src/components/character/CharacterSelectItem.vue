@@ -2,24 +2,11 @@
 import { type Character } from '@/models/character';
 import { characterClassToIcon } from '@/services/characters-service';
 
-const props = defineProps<{
+const { character } = defineProps<{
   character: Character;
-  isCharacterActive: boolean;
 }>();
 
-const activeCharacterModel = computed({
-  get() {
-    return props.isCharacterActive;
-  },
-
-  set(_val: boolean) {
-    emit('activate');
-  },
-});
-
-const emit = defineEmits<{
-  (e: 'activate'): void;
-}>();
+const modelValue = defineModel<boolean>();
 </script>
 
 <template>
@@ -42,7 +29,7 @@ const emit = defineEmits<{
       />
 
       <VTooltip v-else placement="auto">
-        <OSwitch v-model="activeCharacterModel" @click.stop />
+        <OSwitch v-model="modelValue" @click.stop />
 
         <template #popper>
           <div class="prose prose-invert">
