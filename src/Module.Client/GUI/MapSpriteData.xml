@@ -1539,5 +1539,9 @@
       <Name>crpg_dtv_weepinghill</Name>
       <SpritePartName>crpg_dtv_weepinghill</SpritePartName>
     </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_riverbank</Name>
+      <SpritePartName>crpg_battle_riverbank</SpritePartName>
+    </GenericSprite>
   </Sprites>
 </SpriteData>
