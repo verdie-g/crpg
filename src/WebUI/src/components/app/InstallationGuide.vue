@@ -51,7 +51,7 @@ watch(
                     <template #steamWorkshopsLink>
                       <a
                         target="_blank"
-                        href="https://steamcommunity.com/sharedfiles/filedetails/?id=2878356589"
+                        href="steam://openurl/https://steamcommunity.com/sharedfiles/filedetails/?id=2878356589"
                       >
                         Steam Workshops
                       </a>
