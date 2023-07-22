@@ -1019,12 +1019,19 @@ item:
     Cut:
       long: 'Cut'
       short: 'c'
+      title: 'Cut damage'
+      description: 'Cut damage description'
     Pierce:
       long: 'Pierce'
       short: 'p'
+      title: 'Pierce damage'
+      description: 'Pierce damage description'
     Blunt:
       long: 'Blunt'
       short: 'b'
+      title: 'Blunt damage'
+      description: 'Blunt damage description'
+
   requirementFormat: '{value} str'
 
   aggregations:

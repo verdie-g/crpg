@@ -92,26 +92,31 @@ const fieldStyle = computed(() => {
       <slot v-if="$slots.default" v-bind="{ rawBuckets, formattedValue, diffStr }" />
 
       <template v-else>
-        <ItemFieldIcon
-          v-if="formattedValue.icon !== null"
-          :icon="formattedValue.icon"
-          :label="(formattedValue.label as string)"
-          size="2xl"
-        />
-
         <Tooltip
-          v-else
           v-bind="{
-            disabled: formattedValue.description === null,
+            disabled: formattedValue.tooltip === null,
             placement: 'top',
-            title: formattedValue.label,
-            ...(formattedValue.description !== null && { description: formattedValue.description }),
+            ...(formattedValue.tooltip !== null &&
+              formattedValue.tooltip?.title !== null && {
+                title: formattedValue!.tooltip!.title,
+              }),
+            ...(formattedValue.tooltip !== null &&
+              formattedValue.tooltip.description !== null && {
+                description: formattedValue!.tooltip!.description,
+              }),
           }"
         >
+          <ItemFieldIcon
+            v-if="formattedValue.icon !== null"
+            :icon="formattedValue.icon"
+            size="2xl"
+          />
+
           <Tag
-            v-if="
-              aggregationsConfig[field]?.format === ItemFieldFormat.List &&
-              formattedValue.label !== ''
+            v-else-if="
+              [ItemFieldFormat.List, ItemFieldFormat.Damage].includes(
+                aggregationsConfig[field]!.format!
+              ) && formattedValue.label !== ''
             "
             :label="formattedValue.label"
             size="sm"

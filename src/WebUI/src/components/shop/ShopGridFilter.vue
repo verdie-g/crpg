@@ -41,7 +41,7 @@ const props = defineProps<{
         </div>
       </Tooltip>
 
-      <template #popper>
+      <template #popper="{ hide }">
         <div class="max-w-md">
           <template v-if="aggregationConfig.view === AggregationView.Checkbox">
             <DropdownItem v-for="bucket in aggregation.buckets">
@@ -50,6 +50,7 @@ const props = defineProps<{
                 :aggregation="aggregation.name"
                 :bucketValue="bucket.key"
                 :docCount="bucket.doc_count"
+                @update:modelValue="hide"
               />
             </DropdownItem>
           </template>
