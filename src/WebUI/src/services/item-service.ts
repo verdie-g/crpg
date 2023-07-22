@@ -510,7 +510,10 @@ export const humanizeBucket = (
     return createHumanBucket(
       t(`item.damageType.${bucket}.long`),
       createIcon(IconBucketType.Svg, damageTypeToIcon[bucket as DamageType]),
-      null
+      {
+        title: t(`item.damageType.${bucket}.title`),
+        description: t(`item.damageType.${bucket}.description`),
+      }
     );
   }
 
