@@ -99,7 +99,7 @@ internal class CrpgRewardClient : MissionNetwork
                 + " which resulted in {?IS_PLURAL}them{?}it{\\?} breaking and becoming unequipped. You will need to visit"
                 + " the Web UI and equip a less expensive item.", new Dictionary<string, object>
                 {
-                    ["IS_PLURAL"] = message.BrokeItemIds.Count > 1,
+                    ["IS_PLURAL"] = message.BrokeItemIds.Count > 1 ? 1 : 0,
                     ["ITEMS"] = string.Join(", ", brokeItemNames),
                 });
             InformationManager.DisplayMessage(

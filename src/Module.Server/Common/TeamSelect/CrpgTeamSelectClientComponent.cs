@@ -23,7 +23,7 @@ internal class CrpgTeamSelectClientComponent : MultiplayerTeamSelectComponent
                 new Dictionary<string, object>
                 {
                     ["COUNT"] = message.DefendersMovedToAttackers,
-                    ["IS_PLURAL"] = message.DefendersMovedToAttackers > 1,
+                    ["IS_PLURAL"] = message.DefendersMovedToAttackers > 1 ? 1 : 0,
                 });
             notifBuilder.Append(textObject);
         }
@@ -34,7 +34,7 @@ internal class CrpgTeamSelectClientComponent : MultiplayerTeamSelectComponent
                 new Dictionary<string, object>
                 {
                     ["COUNT"] = message.AttackersMovedToDefenders,
-                    ["IS_PLURAL"] = message.AttackersMovedToDefenders > 1,
+                    ["IS_PLURAL"] = message.AttackersMovedToDefenders > 1 ? 1 : 0,
                 });
             notifBuilder.Append(textObject);
         }
@@ -45,7 +45,7 @@ internal class CrpgTeamSelectClientComponent : MultiplayerTeamSelectComponent
                 new Dictionary<string, object>
                 {
                     ["COUNT"] = message.DefendersJoined,
-                    ["IS_PLURAL"] = message.DefendersJoined > 1,
+                    ["IS_PLURAL"] = message.DefendersJoined > 1 ? 1 : 0,
                 });
             notifBuilder.Append(textObject);
         }
@@ -56,7 +56,7 @@ internal class CrpgTeamSelectClientComponent : MultiplayerTeamSelectComponent
                 new Dictionary<string, object>
                 {
                     ["COUNT"] = message.AttackersJoined,
-                    ["IS_PLURAL"] = message.AttackersJoined > 1,
+                    ["IS_PLURAL"] = message.AttackersJoined > 1 ? 1 : 0,
                 });
             notifBuilder.Append(textObject);
         }

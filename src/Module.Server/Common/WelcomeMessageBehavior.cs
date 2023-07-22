@@ -89,7 +89,7 @@ internal class WelcomeMessageBehavior : MissionNetwork
             new Dictionary<string, object>
             {
                 ["NAMES"] = names.ToString(),
-                ["IS_PLURAL"] = message.Peers.Length > 1,
+                ["IS_PLURAL"] = message.Peers.Length > 1 ? 1 : 0,
             });
         InformationManager.DisplayMessage(new InformationMessage(textObject.ToString()));
     }
