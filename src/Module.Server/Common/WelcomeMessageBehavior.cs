@@ -88,7 +88,7 @@ internal class WelcomeMessageBehavior : MissionNetwork
         TextObject textObject = new("{=ck7dhCeM}Welcome to {NAMES} who just joined cRPG!",
             new Dictionary<string, object>
             {
-                ["NAMES"] = names,
+                ["NAMES"] = names.ToString(),
                 ["IS_PLURAL"] = message.Peers.Length > 1,
             });
         InformationManager.DisplayMessage(new InformationMessage(textObject.ToString()));
