@@ -89,29 +89,25 @@ const fieldStyle = computed(() => {
   <!-- TODO: badge for array without icon, custom style for price-->
   <div :style="fieldStyle" class="flex flex-wrap items-center gap-1">
     <template v-for="formattedValue in formattedBuckets">
-      <slot v-if="$slots.default" v-bind="{ rawBuckets, formattedValue, diffStr }" />
-
-      <template v-else>
-        <ItemFieldIcon
-          v-if="formattedValue.icon !== null"
-          :icon="formattedValue.icon"
-          :label="(formattedValue.label as string)"
-          size="2xl"
-        />
-
+      <slot v-bind="{ rawBuckets, formattedValue, diffStr }">
         <Tooltip
-          v-else
           v-bind="{
-            disabled: formattedValue.description === null,
             placement: 'top',
-            title: formattedValue.label,
-            ...(formattedValue.description !== null && { description: formattedValue.description }),
+            title: formattedValue.tooltip?.title,
+            description: formattedValue.tooltip?.description,
           }"
         >
+          <ItemFieldIcon
+            v-if="formattedValue.icon !== null"
+            :icon="formattedValue.icon"
+            size="2xl"
+          />
+
           <Tag
-            v-if="
-              aggregationsConfig[field]?.format === ItemFieldFormat.List &&
-              formattedValue.label !== ''
+            v-else-if="
+              [ItemFieldFormat.List, ItemFieldFormat.Damage].includes(
+                aggregationsConfig[field]!.format!
+              ) && formattedValue.label !== ''
             "
             :label="formattedValue.label"
             size="sm"
@@ -121,7 +117,7 @@ const fieldStyle = computed(() => {
             {{ formattedValue.label }}
           </div>
         </Tooltip>
-      </template>
+      </slot>
 
       <div v-if="diffStr !== null" class="text-2xs font-bold">
         {{ diffStr }}
