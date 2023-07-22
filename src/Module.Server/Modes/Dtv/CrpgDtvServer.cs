@@ -11,6 +11,7 @@ namespace Crpg.Module.Modes.Dtv;
 internal class CrpgDtvServer : MissionMultiplayerGameModeBase
 {
     private const int RewardMultiplier = 2;
+    private const int MapDuration = 60 * 90;
 
     private readonly CrpgRewardServer _rewardServer;
     private readonly CrpgDtvData _dtvData;
@@ -109,15 +110,25 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         }
     }
 
+    protected override void HandleNewClientAfterSynchronized(NetworkCommunicator networkPeer)
+    {
+        GameNetwork.BeginModuleEventAsServer(networkPeer);
+        GameNetwork.WriteMessage(new CrpgDtvSetTimerMessage
+        {
+            StartTime = (int)TimerComponent.GetCurrentTimerStartTime().ToSeconds,
+            Duration = MapDuration,
+        });
+        GameNetwork.EndModuleEventAsServer();
+    }
+
     /// <summary>Work around the 60 minutes limit of MapTimeLimit.</summary>
     private void SetTimeLimit()
     {
-        const int duration = 60 * 90;
-        TimerComponent.StartTimerAsServer(duration);
+        TimerComponent.StartTimerAsServer(MapDuration);
         SendDataToPeers(new CrpgDtvSetTimerMessage
         {
             StartTime = (int)TimerComponent.GetCurrentTimerStartTime().ToSeconds,
-            Duration = duration,
+            Duration = MapDuration,
         });
     }
 
