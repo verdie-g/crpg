@@ -89,21 +89,12 @@ const fieldStyle = computed(() => {
   <!-- TODO: badge for array without icon, custom style for price-->
   <div :style="fieldStyle" class="flex flex-wrap items-center gap-1">
     <template v-for="formattedValue in formattedBuckets">
-      <slot v-if="$slots.default" v-bind="{ rawBuckets, formattedValue, diffStr }" />
-
-      <template v-else>
+      <slot v-bind="{ rawBuckets, formattedValue, diffStr }">
         <Tooltip
           v-bind="{
-            disabled: formattedValue.tooltip === null,
             placement: 'top',
-            ...(formattedValue.tooltip !== null &&
-              formattedValue.tooltip?.title !== null && {
-                title: formattedValue!.tooltip!.title,
-              }),
-            ...(formattedValue.tooltip !== null &&
-              formattedValue.tooltip.description !== null && {
-                description: formattedValue!.tooltip!.description,
-              }),
+            title: formattedValue.tooltip?.title,
+            description: formattedValue.tooltip?.description,
           }"
         >
           <ItemFieldIcon
@@ -126,7 +117,7 @@ const fieldStyle = computed(() => {
             {{ formattedValue.label }}
           </div>
         </Tooltip>
-      </template>
+      </slot>
 
       <div v-if="diffStr !== null" class="text-2xs font-bold">
         {{ diffStr }}

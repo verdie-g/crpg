@@ -16,17 +16,10 @@ const bucket = computed(() => humanizeBucket(aggregation, bucketValue));
 <template>
   <Tooltip
     v-bind="{
-      disabled: bucket.tooltip === null,
       placement: 'top',
-      title: bucket.label,
-      ...(bucket.tooltip !== null &&
-        bucket.tooltip?.title !== null && {
-          title: bucket!.tooltip!.title,
-        }),
-      ...(bucket.tooltip !== null &&
-        bucket.tooltip.description !== null && {
-          description: bucket!.tooltip!.description,
-        }),
+      disabled: bucket.tooltip?.description === null,
+      title: bucket.tooltip?.title,
+      description: bucket.tooltip?.description,
     }"
   >
     <OCheckbox v-model="modelValue" :nativeValue="bucketValue" class="items-center">
