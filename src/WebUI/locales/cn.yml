@@ -1012,25 +1012,25 @@ item:
     Cut:
       long: '砍伤'
       short: '砍'
-      title: 'Cut damage'
+      title: '砍伤'
       description: "
-        <p>Cut damage represents attacks that slice or cleave, often inflicted by sharp-edged weapons like swords or axes.</p>
-        <p>These attacks excel against opponents with low or no armour, effectively exploiting their vulnerability. The thinner the armour, the more devastating the cut damage becomes, reflecting the ability of a sharp weapon to slice through less protected areas of an enemy's body.</p>"
+        <p>砍伤代表使用剑或斧等锋利武器施加的劈砍攻击。</p>
+        <p>这些攻击在面对低或无装甲的敌人时表现出色，有效地利用其脆弱性。装甲越薄，砍伤就越具毁灭性，反映了锋利武器在敌人身体较少受保护的部位切割的能力。</p>"
     Pierce:
       long: '刺伤'
       short: '刺'
-      title: 'Pierce damage'
+      title: '刺伤'
       description: "
-        <p>Pierce damage signifies the damage dealt by weapons designed to puncture or penetrate, such as arrows, spears, or daggers.</p>
-        <p>The key strength of pierce damage lies in its efficiency against armoured opponents. Pierce damage offers a headshot multiplier increase greater than usual, if a melee (pierce) attack lands on an enemy's head, the damage increases by 1.3 times, while for ranged attacks, the increment is 1.6 times.</p>
-        <p>This makes pierce damage the strongest potential damage type given its benefit from headshots.</p>"
+        <p>刺伤代表由箭矢、长矛或匕首等用于穿透和刺入的武器造成的伤害。</p>
+        <p>刺伤的主要优势在于对抗着甲敌人的效率。刺伤的头部命中伤害加成增加得比通常更多，如果近战（刺击）攻击命中敌人的头部，伤害加成为1.3倍，而对于远程攻击，增加倍数为1.6倍。</p>
+        <p>这使得刺伤成为潜在的最强伤害类型，因为它受益于头部命中。</p>"
     Blunt:
       long: '钝伤'
       short: '钝'
-      title: 'Blunt damage'
+      title: '钝伤'
       description: "
-        <p>Blunt damage refers to the trauma caused by impact weapons like hammers, maces, or clubs.</p>
-        <p>This type of damage is akin to pierce damage in terms of its effectiveness against armoured foes. However, unlike pierce damage, blunt damage does not have an increased headshot multiplier. This makes blunt better for general use comparatively to that of pierce.</p>"
+        <p>钝伤指的是由锤子、钉头锤或木棍等冲击武器造成的伤害。</p>
+        <p>在对抗穿着厚重盔甲的敌人这一方面，钝伤与刺伤类似有效。然而，与刺伤不同的是，钝伤没有针对头部伤害的加成。相比之下，钝伤更适合在综合情况下使用。</p>"
 
   requirementFormat: '{value} 力'
 
@@ -1170,8 +1170,8 @@ item:
       title: '阶级'
       description: ''
     new:
-      title: '仅限新产品'
-      description: '显示最近{days}天内添加或修改的项目'
+      title: '仅限新物品'
+      description: '显示最近{days}天内添加或修改的物品'
 
   format:
     upkeep: '{upkeep} / @:dateTime.hours.short'
