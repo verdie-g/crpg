@@ -1020,17 +1020,24 @@ item:
       long: 'Cut'
       short: 'c'
       title: 'Cut damage'
-      description: 'Cut damage description'
+      description: "
+        <p>Cut damage represents attacks that slice or cleave, often inflicted by sharp-edged weapons like swords or axes.</p>
+        <p>These attacks excel against opponents with low or no armour, effectively exploiting their vulnerability. The thinner the armour, the more devastating the cut damage becomes, reflecting the ability of a sharp weapon to slice through less protected areas of an enemy's body.</p>"
     Pierce:
       long: 'Pierce'
       short: 'p'
       title: 'Pierce damage'
-      description: 'Pierce damage description'
+      description: "
+        <p>Pierce damage signifies the damage dealt by weapons designed to puncture or penetrate, such as arrows, spears, or daggers.</p>
+        <p>The key strength of pierce damage lies in its efficiency against armoured opponents. Pierce damage offers a headshot multiplier increase greater than usual, if a melee (pierce) attack lands on an enemy's head, the damage increases by 1.3 times, while for ranged attacks, the increment is 1.6 times.</p>
+        <p>This makes pierce damage the strongest potential damage type given its benefit from headshots.</p>"
     Blunt:
       long: 'Blunt'
       short: 'b'
       title: 'Blunt damage'
-      description: 'Blunt damage description'
+      description: "
+        <p>Blunt damage refers to the trauma caused by impact weapons like hammers, maces, or clubs.</p>
+        <p>This type of damage is akin to pierce damage in terms of its effectiveness against armoured foes. However, unlike pierce damage, blunt damage does not have an increased headshot multiplier. This makes blunt better for general use comparatively to that of pierce.</p>"
 
   requirementFormat: '{value} str'
 
