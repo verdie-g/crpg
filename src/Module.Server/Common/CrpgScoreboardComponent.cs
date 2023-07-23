@@ -36,10 +36,15 @@ internal class CrpgScoreboardComponent : MissionScoreboardComponent
         }
 
         affectorAgent = affectorAgent.IsMount ? affectorAgent.RiderAgent : affectorAgent;
-        affectedAgent = affectedAgent.IsMount ? affectedAgent.RiderAgent : affectedAgent;
+        bool affectedAgentIsMount = affectedAgent.IsMount;
+        affectedAgent = affectedAgentIsMount ? affectedAgent.RiderAgent : affectedAgent;
+        if (affectedAgent == null)
+        {
+            return;
+        }
 
         float ratingFactor;
-        var affectedCrpgUser = affectedAgent?.MissionPeer?.GetComponent<CrpgPeer>()?.User;
+        var affectedCrpgUser = affectedAgent.MissionPeer?.GetComponent<CrpgPeer>()?.User;
         if (affectedCrpgUser == null)
         {
             // The affected agent is probably a bot.
@@ -62,7 +67,7 @@ internal class CrpgScoreboardComponent : MissionScoreboardComponent
 
             score = collisionData.InflictedDamage * 0.3f;
         }
-        else if (affectedAgent!.IsMount)
+        else if (affectedAgentIsMount)
         {
             score = damagedHp * 0.45f;
         }
