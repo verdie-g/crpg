@@ -11,7 +11,7 @@ internal static class DamageHelper
         Blow blow = new()
         {
             WeaponRecord = new BlowWeaponRecord { AffectorWeaponSlotOrMissileIndex = -1 },
-            Position = agent.Position,
+            GlobalPosition = agent.Position,
             Direction = Vec3.Zero,
             SwingDirection = Vec3.Zero,
             InflictedDamage = damage,
@@ -66,7 +66,7 @@ internal static class DamageHelper
             FallSpeed: 0f,
             WeaponRotUp: Vec3.Zero,
             _weaponBlowDir: Vec3.Zero,
-            CollisionGlobalPosition: blow.Position,
+            CollisionGlobalPosition: blow.GlobalPosition,
             MissileVelocity: Vec3.Zero,
             MissileStartingPosition: Vec3.Zero,
             VictimAgentCurVelocity: Vec3.Zero,
