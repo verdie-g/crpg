@@ -1,4 +1,5 @@
-﻿using Crpg.Module.Api.Models.Clans;
+﻿using Crpg.Module.Api.Models.Characters;
+using Crpg.Module.Api.Models.Clans;
 using Crpg.Module.Api.Models.Users;
 using Crpg.Module.Common.Network;
 using TaleWorlds.Core;
@@ -9,6 +10,8 @@ namespace Crpg.Module.Common;
 internal class CrpgPeer : PeerComponent
 {
     private CrpgUser? _user;
+    public CrpgCharacterSkills? Skills { get; set; }
+
     private int _rewardMultiplier;
 
     public CrpgClan? Clan { get; set; }

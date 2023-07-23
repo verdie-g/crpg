@@ -62,7 +62,11 @@ internal class CrpgUserManagerClient : MissionNetwork
         {
             crpgPeer.Clan = new CrpgClan { Id = crpgPeer.User.ClanMembership.ClanId };
         }
+
+        // Updating skills of the crpgPeer
+        crpgPeer.Skills = message.User.Character.Characteristics.Skills;
     }
+
 
     private void OnMyClientSynchronized()
     {
