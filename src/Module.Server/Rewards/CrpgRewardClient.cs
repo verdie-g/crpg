@@ -63,13 +63,23 @@ internal class CrpgRewardClient : MissionNetwork
                 ? new TextObject("{=5Uvrn21t}free, low population server").ToString()
                 : message.RepairCost.ToString();
 
-            (Color color, TextObject goldTextObject) = gain > 0
-                ? (new Color(65, 105, 225), new TextObject("{=5HdPy5hH}Gained {GAIN} gold (reward: {REWARD}, upkeep: {UPKEEP_MESSAGE})."))
-                : (new Color(0.74f, 0.28f, 0.01f), new TextObject("{=FQr3PBEQ}Lost {GAIN} gold (reward: {REWARD}, upkeep: {UPKEEP_MESSAGE})."));
+            (Color color, TextObject goldTextObject, string eventId) = gain > 0
+                ? (new Color(65, 105, 225),
+                    new TextObject("{=5HdPy5hH}Gained {GAIN} gold (reward: {REWARD}, upkeep: {UPKEEP_MESSAGE})."),
+                    "event:/ui/notification/coins_positive")
+                : (new Color(0.74f, 0.28f, 0.01f),
+                    new TextObject("{=FQr3PBEQ}Lost {GAIN} gold (reward: {REWARD}, upkeep: {UPKEEP_MESSAGE})."),
+                    "event:/ui/notification/coins_negative");
             goldTextObject.SetTextVariable("GAIN", Math.Abs(gain));
             goldTextObject.SetTextVariable("REWARD", reward.Gold);
             goldTextObject.SetTextVariable("UPKEEP_MESSAGE", upkeepMessage);
-            InformationManager.DisplayMessage(new InformationMessage(goldTextObject.ToString(), color));
+
+            InformationManager.DisplayMessage(new InformationMessage
+            {
+                Information = goldTextObject.ToString(),
+                Color = color,
+                SoundEventPath = eventId,
+            });
         }
 
         if (message.Compensation != 0)
