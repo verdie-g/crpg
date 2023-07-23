@@ -5,6 +5,7 @@ using Crpg.Module.Notifications;
 using Crpg.Module.Rewards;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.Multiplayer;
 using TaleWorlds.MountAndBlade.Source.Missions;
 
 #if CRPG_SERVER
@@ -45,21 +46,14 @@ internal class CrpgDtvGameMode : MissionBasedMultiplayerGameMode
 
         return new[]
         {
-            ViewCreator.CreateMultiplayerFactionBanVoteUIHandler(),
             ViewCreator.CreateMissionAgentStatusUIHandler(mission),
             ViewCreator.CreateMissionMainAgentEquipmentController(mission), // Pick/drop items.
             ViewCreator.CreateMissionMainAgentCheerBarkControllerView(mission),
             crpgEscapeMenu,
             ViewCreator.CreateMissionAgentLabelUIHandler(mission),
-            ViewCreator.CreateMultiplayerTeamSelectUIHandler(),
-            ViewCreator.CreateMissionScoreBoardUIHandler(mission, false),
-            ViewCreator.CreateMultiplayerEndOfBattleUIHandler(),
-            ViewCreator.CreatePollProgressUIHandler(),
             new MissionItemContourControllerView(), // Draw contour of item on the ground when pressing ALT.
             new MissionAgentContourControllerView(),
-            ViewCreator.CreateMissionKillNotificationUIHandler(),
             new CrpgHudExtensionHandler(),
-            ViewCreator.CreateMultiplayerMissionDeathCardUIHandler(),
             ViewCreator.CreateOptionsUIHandler(),
             ViewCreator.CreateMissionMainAgentEquipDropView(mission),
             ViewCreator.CreateMissionBoundaryCrossingView(),
@@ -137,7 +131,7 @@ internal class CrpgDtvGameMode : MissionBasedMultiplayerGameMode
                 new DrowningBehavior(),
 #else
                 new MultiplayerAchievementComponent(),
-                new MissionMatchHistoryComponent(),
+                MissionMatchHistoryComponent.CreateIfConditionsAreMet(),
                 new MissionRecentPlayersComponent(),
                 new CrpgRewardClient(),
                 new HotConstantsClient(),

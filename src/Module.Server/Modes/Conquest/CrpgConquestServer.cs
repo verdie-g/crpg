@@ -43,8 +43,8 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
 
     public override bool IsGameModeUsingOpposingTeams => true;
 
-    public override MissionLobbyComponent.MultiplayerGameType GetMissionType()
-        => MissionLobbyComponent.MultiplayerGameType.FreeForAll; // Helps to avoid a few crashes.
+    public override MultiplayerGameType GetMissionType()
+        => MultiplayerGameType.FreeForAll; // Helps to avoid a few crashes.
 
     public override bool UseRoundController() => false;
 

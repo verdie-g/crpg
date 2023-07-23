@@ -6,8 +6,8 @@ using Crpg.Module.Notifications;
 using Crpg.Module.Rewards;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.Multiplayer;
 using TaleWorlds.MountAndBlade.Source.Missions;
-
 #if CRPG_SERVER
 using Crpg.Module.Api;
 using Crpg.Module.Common.ChatCommands;
@@ -42,22 +42,14 @@ internal class CrpgConquestGameMode : MissionBasedMultiplayerGameMode
 
         return new[]
         {
-            ViewCreator.CreateMissionServerStatusUIHandler(),
-            ViewCreator.CreateMultiplayerFactionBanVoteUIHandler(),
             ViewCreator.CreateMissionAgentStatusUIHandler(mission),
             ViewCreator.CreateMissionMainAgentEquipmentController(mission), // Pick/drop items.
             ViewCreator.CreateMissionMainAgentCheerBarkControllerView(mission),
             ViewCreatorManager.CreateMissionView<CrpgMissionMultiplayerEscapeMenu>(isNetwork: false, null, "cRPGConquest", gameModeClient),
             ViewCreator.CreateMissionAgentLabelUIHandler(mission),
-            ViewCreator.CreateMultiplayerTeamSelectUIHandler(),
-            ViewCreator.CreateMissionScoreBoardUIHandler(mission, false),
-            ViewCreator.CreateMultiplayerEndOfBattleUIHandler(),
-            ViewCreator.CreatePollProgressUIHandler(),
             new MissionItemContourControllerView(), // Draw contour of item on the ground when pressing ALT.
             new MissionAgentContourControllerView(),
-            ViewCreator.CreateMissionKillNotificationUIHandler(),
             new CrpgHudExtensionHandler(),
-            ViewCreator.CreateMultiplayerMissionDeathCardUIHandler(),
             ViewCreator.CreateOptionsUIHandler(),
             ViewCreator.CreateMissionMainAgentEquipDropView(mission),
             ViewCreator.CreateMissionBoundaryCrossingView(),
@@ -131,7 +123,7 @@ internal class CrpgConquestGameMode : MissionBasedMultiplayerGameMode
                 new DrowningBehavior(),
 #else
                 new MultiplayerAchievementComponent(),
-                new MissionMatchHistoryComponent(),
+                MissionMatchHistoryComponent.CreateIfConditionsAreMet(),
                 new MissionRecentPlayersComponent(),
                 new CrpgRewardClient(),
 #endif

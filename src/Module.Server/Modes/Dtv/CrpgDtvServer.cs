@@ -43,9 +43,9 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
     private CrpgDtvWave CurrentWaveData => _dtvData.Rounds[_currentRound].Waves[_currentWave];
     private int WavesCountForCurrentRound => CurrentRoundData.Waves.Count;
 
-    public override MissionLobbyComponent.MultiplayerGameType GetMissionType()
+    public override MultiplayerGameType GetMissionType()
     {
-        return MissionLobbyComponent.MultiplayerGameType.Battle;
+        return MultiplayerGameType.Battle;
     }
 
     public override void AfterStart()

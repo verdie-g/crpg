@@ -25,9 +25,9 @@ internal class CrpgTeamDeathmatchServer : MissionMultiplayerGameModeBase
         _rewardServer = rewardServer;
     }
 
-    public override MissionLobbyComponent.MultiplayerGameType GetMissionType()
+    public override MultiplayerGameType GetMissionType()
     {
-        return MissionLobbyComponent.MultiplayerGameType.Battle; // Avoids a crash on mission end.
+        return MultiplayerGameType.Battle; // Avoids a crash on mission end.
     }
 
     public override void AfterStart()

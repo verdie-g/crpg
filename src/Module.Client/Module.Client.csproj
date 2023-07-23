@@ -60,6 +60,10 @@
       <Private>False</Private>
     </Reference>
 
+    <Reference Include="$(MB_CLIENT_PATH)\Modules\Multiplayer\bin\Win64_Shipping_Client\TaleWorlds.*.dll">
+      <Private>False</Private>
+    </Reference>
+
     <Reference Include="$(MB_CLIENT_PATH)\bin\Win64_Shipping_Client\Newtonsoft.Json.dll">
       <Private>False</Private>
     </Reference>

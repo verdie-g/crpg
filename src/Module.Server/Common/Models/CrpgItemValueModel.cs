@@ -1,7 +1,6 @@
 ﻿using Crpg.Module.Helpers;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
-using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common.Models;
 

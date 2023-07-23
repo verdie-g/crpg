@@ -6,8 +6,8 @@ using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.MountAndBlade.ViewModelCollection.Multiplayer;
-using TaleWorlds.MountAndBlade.ViewModelCollection.Multiplayer.HUDExtensions;
+using TaleWorlds.MountAndBlade.Multiplayer.ViewModelCollection;
+using TaleWorlds.MountAndBlade.Multiplayer.ViewModelCollection.HUDExtensions;
 
 namespace Crpg.Module.GUI.HudExtension;
 
@@ -69,8 +69,8 @@ internal class CrpgHudExtensionVm : ViewModel
         NetworkCommunicator.OnPeerComponentAdded += OnPeerComponentAdded;
         _mission.OnMissionReset += OnMissionReset;
         MissionLobbyComponent missionBehavior = mission.GetMissionBehavior<MissionLobbyComponent>();
-        bool isTeamsEnabled = missionBehavior.MissionType != MissionLobbyComponent.MultiplayerGameType.FreeForAll
-                              && missionBehavior.MissionType != MissionLobbyComponent.MultiplayerGameType.Duel;
+        bool isTeamsEnabled = missionBehavior.MissionType != MultiplayerGameType.FreeForAll
+                              && missionBehavior.MissionType != MultiplayerGameType.Duel;
         IsRoundCountdownAvailable = _gameMode.IsGameModeUsingRoundCountdown;
         IsRoundCountdownSuspended = false;
         _isTeamScoresEnabled = isTeamsEnabled;
@@ -640,7 +640,7 @@ internal class CrpgHudExtensionVm : ViewModel
         _isTeammateAndEnemiesRelevant =
             _mission.GetMissionBehavior<MissionMultiplayerGameModeBaseClient>().IsGameModeTactical
             && !_mission.HasMissionBehavior<CrpgSiegeClient>()
-            && _gameMode.GameType != MissionLobbyComponent.MultiplayerGameType.Battle;
+            && _gameMode.GameType != MultiplayerGameType.Battle;
         CommanderInfo = new CrpgCommanderInfoVm();
         ShowCommanderInfo = !_mission.HasMissionBehavior<CrpgConquestClient>();
         if (_isTeammateAndEnemiesRelevant)
@@ -649,7 +649,7 @@ internal class CrpgHudExtensionVm : ViewModel
             OnRefreshEnemyMembers();
         }
 
-        ShowPowerLevels = _gameMode.GameType == MissionLobbyComponent.MultiplayerGameType.Battle;
+        ShowPowerLevels = _gameMode.GameType == MultiplayerGameType.Battle;
     }
 
     private void CheckTimers(bool forceUpdate = false)
@@ -700,7 +700,7 @@ internal class CrpgHudExtensionVm : ViewModel
     {
         if (peer.IsMine)
         {
-            if (_isTeamScoresEnabled || _gameMode.GameType == MissionLobbyComponent.MultiplayerGameType.Battle)
+            if (_isTeamScoresEnabled || _gameMode.GameType == MultiplayerGameType.Battle)
             {
                 _isAttackerTeamAlly = newTeam.Side == BattleSideEnum.Attacker;
                 UpdateTeamScores();
@@ -718,7 +718,7 @@ internal class CrpgHudExtensionVm : ViewModel
 
         Teammates.FirstOrDefault(x => x.Peer.GetNetworkPeer() == peer)?.RefreshTeam();
         GetTeamColors(_mission.AttackerTeam, out string attackerColor1, out string attackerColor2);
-        if (_isTeamScoresEnabled || _gameMode.GameType == MissionLobbyComponent.MultiplayerGameType.Battle)
+        if (_isTeamScoresEnabled || _gameMode.GameType == MultiplayerGameType.Battle)
         {
             GetTeamColors(_mission.DefenderTeam, out string defenderColor1, out string defenderColor2);
             if (_isAttackerTeamAlly)
@@ -839,7 +839,7 @@ internal class CrpgHudExtensionVm : ViewModel
     {
         ShowTeamScores = !_gameMode.IsInWarmup
                          && ShowCommanderInfo
-                         && _gameMode.GameType != MissionLobbyComponent.MultiplayerGameType.Siege;
+                         && _gameMode.GameType != MultiplayerGameType.Siege;
     }
 
     private Team? PlayerTeam

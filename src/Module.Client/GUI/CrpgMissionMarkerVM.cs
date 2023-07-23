@@ -6,8 +6,8 @@ using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.Multiplayer.ViewModelCollection.FlagMarker.Targets;
 using TaleWorlds.MountAndBlade.Objects;
-using TaleWorlds.MountAndBlade.ViewModelCollection.Multiplayer.FlagMarker.Targets;
 using TaleWorlds.PlatformService;
 using TaleWorlds.PlayerServices;
 

@@ -21,7 +21,6 @@ internal class CrpgConquestClient : MissionMultiplayerGameModeBaseClient, IComma
     public override bool IsGameModeUsingGold => false;
     public override bool IsGameModeTactical => false;
     public override bool IsGameModeUsingRoundCountdown => true;
-    public override MissionLobbyComponent.MultiplayerGameType GameType => MissionLobbyComponent.MultiplayerGameType.Siege;
     public bool AreMoralesIndependent => false;
 
 #pragma warning disable CS0067 // False positive
@@ -31,6 +30,8 @@ internal class CrpgConquestClient : MissionMultiplayerGameModeBaseClient, IComma
     public event Action<FlagCapturePoint, Team>? OnCapturePointOwnerChangedEvent;
 
     public IEnumerable<FlagCapturePoint> AllCapturePoints => _flags;
+
+    public override MultiplayerGameType GameType => MultiplayerGameType.Siege;
 
     public override void OnBehaviorInitialize()
     {
@@ -143,7 +144,7 @@ internal class CrpgConquestClient : MissionMultiplayerGameModeBaseClient, IComma
         {
             if (flag.FlagIndex == message.FlagIndex)
             {
-                OnCapturePointOwnerChanged(flag, message.OwnerTeam);
+                OnCapturePointOwnerChanged(flag, message.OwnerTeamIndex);
                 break;
             }
         }

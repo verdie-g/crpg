@@ -67,7 +67,6 @@ internal class CrpgUserManagerClient : MissionNetwork
         crpgPeer.Skills = message.User.Character.Characteristics.Skills;
     }
 
-
     private void OnMyClientSynchronized()
     {
         _crpgPeer = GameNetwork.MyPeer.GetComponent<CrpgPeer>();

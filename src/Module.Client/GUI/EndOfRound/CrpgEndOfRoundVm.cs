@@ -4,8 +4,8 @@ using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.MountAndBlade.ViewModelCollection.Multiplayer;
-using TaleWorlds.MountAndBlade.ViewModelCollection.Multiplayer.EndOfRound;
+using TaleWorlds.MountAndBlade.Multiplayer.ViewModelCollection;
+using TaleWorlds.MountAndBlade.Multiplayer.ViewModelCollection.EndOfRound;
 using TaleWorlds.ObjectSystem;
 
 namespace Crpg.Module.GUI.EndOfRound;
@@ -53,9 +53,9 @@ public class CrpgEndOfRoundVm : ViewModel
             new TextObject("{=Dc3fFblo}Enemy team had the upper hand at timeout");
         _roundEndReasonRoundTimeEndedWithDrawTextObject =
             new TextObject("{=i3dJSlD0}No team had the upper hand at timeout");
-        if (missionLobbyComponent.MissionType == MissionLobbyComponent.MultiplayerGameType.Battle ||
-            missionLobbyComponent.MissionType == MissionLobbyComponent.MultiplayerGameType.Captain ||
-            missionLobbyComponent.MissionType == MissionLobbyComponent.MultiplayerGameType.Skirmish)
+        if (missionLobbyComponent.MissionType == MultiplayerGameType.Battle ||
+            missionLobbyComponent.MissionType == MultiplayerGameType.Captain ||
+            missionLobbyComponent.MissionType == MultiplayerGameType.Skirmish)
         {
             _roundEndReasonAllyTeamGameModeSpecificEndedTextObject =
                 new TextObject("{=xxuzZJ3G}Your team ran out of morale");

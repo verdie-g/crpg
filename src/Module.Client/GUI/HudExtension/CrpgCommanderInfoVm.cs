@@ -5,8 +5,8 @@ using TaleWorlds.Core;
 using TaleWorlds.Core.ViewModelCollection;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.Multiplayer.ViewModelCollection.HUDExtensions;
 using TaleWorlds.MountAndBlade.Objects;
-using TaleWorlds.MountAndBlade.ViewModelCollection.Multiplayer.HUDExtensions;
 
 namespace Crpg.Module.GUI.HudExtension;
 
@@ -51,7 +51,7 @@ public class CrpgCommanderInfoVm : ViewModel
         _commanderInfo = Mission.Current.GetMissionBehavior<ICommanderInfo>();
         ShowTacticalInfo = true;
         UpdateWarmupDependentFlags(_gameMode.IsInWarmup);
-        UsePowerComparer = _gameMode.GameType == MissionLobbyComponent.MultiplayerGameType.Battle && _gameMode.ScoreboardComponent != null;
+        UsePowerComparer = _gameMode.GameType == MultiplayerGameType.Battle && _gameMode.ScoreboardComponent != null;
         if (UsePowerComparer)
         {
             PowerLevelComparer = new PowerLevelComparer(1.0, 1.0);

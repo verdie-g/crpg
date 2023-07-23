@@ -2,6 +2,7 @@
 using Crpg.Module.Notifications;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.Multiplayer;
 using TaleWorlds.MountAndBlade.Source.Missions;
 
 #if CRPG_SERVER
@@ -41,25 +42,16 @@ internal class CrpgDuelGameMode : MissionBasedMultiplayerGameMode
 
         return new[]
         {
-            ViewCreator.CreateMissionServerStatusUIHandler(),
-            ViewCreator.CreateMissionMultiplayerPreloadView(mission),
-            ViewCreator.CreateMissionKillNotificationUIHandler(),
             ViewCreator.CreateMissionAgentStatusUIHandler(mission),
             ViewCreator.CreateMissionMainAgentEquipmentController(mission),
             ViewCreator.CreateMissionMainAgentCheerBarkControllerView(mission),
             crpgEscapeMenu,
-            ViewCreator.CreateMultiplayerEndOfBattleUIHandler(),
-            ViewCreator.CreateMissionScoreBoardUIHandler(mission, true),
-            ViewCreator.CreateLobbyEquipmentUIHandler(),
-            ViewCreator.CreateMissionMultiplayerDuelUI(),
-            ViewCreator.CreatePollProgressUIHandler(),
             ViewCreator.CreateOptionsUIHandler(),
             ViewCreator.CreateMissionMainAgentEquipDropView(mission),
             ViewCreator.CreateMissionBoundaryCrossingView(),
             new MissionBoundaryWallView(),
             new MissionItemContourControllerView(),
             new MissionAgentContourControllerView(),
-            ViewCreator.CreateMissionFlagMarkerUIHandler(), // Draw flags but also player names when pressing ALT.
             new CrpgAgentHud(experienceTable),
             // Draw flags but also player names when pressing ALT. (Native: CreateMissionFlagMarkerUIHandler)
             ViewCreatorManager.CreateMissionView<CrpgMarkerUiHandler>(isNetwork: false, null, gameModeClient),
@@ -115,7 +107,7 @@ internal class CrpgDuelGameMode : MissionBasedMultiplayerGameMode
                     new NotAllPlayersReadyComponent(),
 #else
                     new MultiplayerAchievementComponent(),
-                    new MissionMatchHistoryComponent(),
+                    MissionMatchHistoryComponent.CreateIfConditionsAreMet(),
                     new MissionRecentPlayersComponent(),
 #endif
                 });

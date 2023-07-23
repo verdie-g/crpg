@@ -18,7 +18,7 @@ internal class CrpgTeamDeathmatchClient : MissionMultiplayerGameModeBaseClient
     public override bool IsGameModeUsingGold => false;
     public override bool IsGameModeTactical => false;
     public override bool IsGameModeUsingRoundCountdown => true;
-    public override MissionLobbyComponent.MultiplayerGameType GameType => MissionLobbyComponent.MultiplayerGameType.TeamDeathmatch;
+    public override MultiplayerGameType GameType => MultiplayerGameType.TeamDeathmatch;
 
     public override void OnBehaviorInitialize()
     {

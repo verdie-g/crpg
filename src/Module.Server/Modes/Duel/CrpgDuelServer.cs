@@ -22,7 +22,7 @@ internal class CrpgDuelServer : MissionMultiplayerDuel
 
     // If the GameType is duel is crashes after each duel. I was not able to debug it.
     // Around line 432 in MissionCustomGameServerComponent - OnDuelEnded null exception for GetCurrentBattleResult or something like that
-    public override MissionLobbyComponent.MultiplayerGameType GetMissionType() => MissionLobbyComponent.MultiplayerGameType.FreeForAll;
+    public override MultiplayerGameType GetMissionType() => MultiplayerGameType.FreeForAll;
 
     public override void OnAgentRemoved(Agent? affectedAgent, Agent? affectorAgent, AgentState agentState, KillingBlow blow)
     {

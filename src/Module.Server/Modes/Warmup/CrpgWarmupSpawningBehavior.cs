@@ -1,5 +1,4 @@
 ﻿using Crpg.Module.Common;
-using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Modes.Warmup;
 

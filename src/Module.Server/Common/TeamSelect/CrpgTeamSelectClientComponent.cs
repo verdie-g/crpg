@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using Crpg.Module.Common.Network;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
