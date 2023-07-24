@@ -15,6 +15,7 @@ using Crpg.Module.Common.ChatCommands;
 using Crpg.Module.GUI;
 using Crpg.Module.GUI.Conquest;
 using Crpg.Module.GUI.Spectator;
+using Crpg.Module.GUI.Warmup;
 using TaleWorlds.MountAndBlade.View;
 using TaleWorlds.MountAndBlade.View.MissionViews;
 #endif
@@ -58,6 +59,7 @@ internal class CrpgConquestGameMode : MissionBasedMultiplayerGameMode
             new MissionAgentContourControllerView(),
             ViewCreator.CreateMissionKillNotificationUIHandler(),
             new SpectatorHudUiHandler(),
+            new WarmupHudUiHandler(),
             new ConquestHudUiHandler(),
             ViewCreator.CreateMultiplayerMissionDeathCardUIHandler(),
             ViewCreator.CreateOptionsUIHandler(),

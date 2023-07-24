@@ -1,0 +1,25 @@
+﻿<Prefab>
+  <Constants>
+  </Constants>
+  <Window>
+    <Widget IsVisible="@IsInWarmup"
+            DoNotAcceptEvents="true"
+            DoNotPassEventsToChildren="true"
+            WidthSizePolicy="Fixed"
+            HeightSizePolicy="Fixed"
+            SuggestedWidth="423"
+            SuggestedHeight="75"
+            HorizontalAlignment="Center"
+            MarginTop="70"
+            Sprite="MPHud\warmup_text_background"
+            Color="#000000FF"
+            AlphaFactor="0.5">
+      <Children>
+        <TextWidget WidthSizePolicy="StretchToParent"
+                    HeightSizePolicy="StretchToParent"
+                    Brush="MPHUD.WarmupInfoText"
+                    Text="@WarmupInfoText" />
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>
