@@ -7,7 +7,7 @@ import {
 import { setupLayouts } from 'virtual:generated-layouts';
 import { type BootModule } from '@/types/boot-module';
 import { RouteMiddleware } from '@/types/vue-router';
-import { authRouterMiddleware, signInCallback, signInSilentCallback } from '@/middlewares/auth';
+import { authRouterMiddleware, signInCallback } from '@/middlewares/auth';
 import {
   clanIdParamValidate,
   clanExistValidate,
@@ -20,7 +20,6 @@ import { parseQuery, stringifyQuery, scrollBehavior } from '@/utils/router';
 const getRouteMiddleware = (name: RouteMiddleware) => {
   const middlewareMap: Record<RouteMiddleware, NavigationGuard> = {
     signInCallback: signInCallback,
-    signInSilentCallback: signInSilentCallback,
 
     characterValidate: characterValidate,
     activeCharacterRedirect: activeCharacterRedirect,

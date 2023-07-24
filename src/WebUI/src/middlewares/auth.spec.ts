@@ -3,21 +3,22 @@ import { ErrorResponse } from 'oidc-client-ts';
 import Role from '@/models/role';
 import { getRoute, next } from '@/__mocks__/router';
 
-const mockedSignInSilent = vi.fn();
-const mockedSignInCallback = vi.fn();
-const mockedSignInSilentCallback = vi.fn();
+const { mockedSignInCallback, mockedGetUser } = vi.hoisted(() => ({
+  mockedSignInCallback: vi.fn(),
+  mockedGetUser: vi.fn(),
+}));
+
 vi.mock('@/services/auth-service', () => {
   return {
-    signInSilent: mockedSignInSilent,
     userManager: {
       signinCallback: mockedSignInCallback,
-      signinSilentCallback: mockedSignInSilentCallback,
     },
+    getUser: mockedGetUser,
   };
 });
 
 import { useUserStore } from '@/stores/user';
-import { authRouterMiddleware, signInCallback, signInSilentCallback } from './auth';
+import { authRouterMiddleware, signInCallback } from './auth';
 
 const userStore = useUserStore(createTestingPinia());
 
@@ -27,7 +28,7 @@ beforeEach(() => {
 
 const from = getRoute();
 
-it('skip any route validation', async () => {
+it('skip route validation', async () => {
   const to = getRoute({
     name: 'skip-auth-route',
     path: '/skip-auth-route',
@@ -40,7 +41,6 @@ it('skip any route validation', async () => {
   expect(await authRouterMiddleware(to, from, next)).toEqual(true);
 
   expect(userStore.fetchUser).not.toBeCalled();
-  expect(mockedSignInSilent).not.toBeCalled();
 });
 
 describe('route not requires any role', () => {
@@ -49,20 +49,22 @@ describe('route not requires any role', () => {
     path: '/user',
   });
 
-  it('!user - no token -> try to signInSilent and fetch user', async () => {
+  it('!userStore && !isSignIn', async () => {
+    mockedGetUser.mockResolvedValueOnce(null);
+
     expect(await authRouterMiddleware(to, from, next)).toEqual(true);
 
-    expect(mockedSignInSilent).toBeCalled();
     expect(userStore.fetchUser).not.toBeCalled();
+    expect(mockedGetUser).toBeCalled();
   });
 
-  it('!user - has token -> try to signInSilent and fetch user', async () => {
-    mockedSignInSilent.mockResolvedValueOnce('test_token');
+  it('!userStore && isSignIn', async () => {
+    mockedGetUser.mockResolvedValueOnce({});
 
     expect(await authRouterMiddleware(to, from, next)).toEqual(true);
 
-    expect(mockedSignInSilent).toBeCalled();
     expect(userStore.fetchUser).toBeCalled();
+    expect(mockedGetUser).toBeCalled();
   });
 });
 
@@ -75,17 +77,18 @@ describe('route requires role', () => {
     },
   });
 
-  it('!user + no token -> go to index page', async () => {
+  it('!user + !isSignIn -> go to index page', async () => {
     expect(await authRouterMiddleware(to, from, next)).toEqual({ name: 'Root' });
+    expect(userStore.fetchUser).toBeCalled();
+    expect(mockedGetUser).toBeCalled();
   });
 
   it('user with role:User -> validation passed', async () => {
-    // userStore.user = getUser({ role: Role.User });
     userStore.$patch({ user: { role: Role.User } });
 
     expect(await authRouterMiddleware(to, from, next)).toEqual(true);
-    expect(mockedSignInSilent).not.toBeCalled();
     expect(userStore.fetchUser).not.toBeCalled();
+    expect(mockedGetUser).not.toBeCalled();
   });
 });
 
@@ -137,28 +140,5 @@ describe('signInCallback', () => {
     mockedSignInCallback.mockRejectedValue({ error: 'some error' });
 
     expect(await signInCallback(getRoute(), getRoute(), next)).toEqual({ name: 'Root' });
-  });
-});
-
-describe('signInCallback', () => {
-  it('ok', async () => {
-    expect(await signInSilentCallback(getRoute(), getRoute(), next)).toStrictEqual(true);
-    expect(mockedSignInSilentCallback).toHaveBeenCalled();
-  });
-
-  it('error - invalid grant', async () => {
-    mockedSignInSilentCallback.mockRejectedValue(
-      new ErrorResponse({
-        error: 'access_denied',
-      })
-    );
-
-    expect(await signInSilentCallback(getRoute(), getRoute(), next)).toEqual({ name: 'Banned' });
-  });
-
-  it('error - invalid grant', async () => {
-    mockedSignInSilentCallback.mockRejectedValue({ error: 'some error' });
-
-    expect(await signInSilentCallback(getRoute(), getRoute(), next)).toEqual({ name: 'Root' });
   });
 });

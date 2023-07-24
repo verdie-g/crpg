@@ -2,10 +2,9 @@ import type { RouteLocationNormalized, NavigationGuard } from 'vue-router/auto';
 import { ErrorResponse } from 'oidc-client-ts';
 
 import { useUserStore } from '@/stores/user';
-import { userManager, signInSilent } from '@/services/auth-service';
+import { userManager, getUser } from '@/services/auth-service';
 
 import type Role from '@/models/role';
-import { Platform } from '@/models/platform';
 
 const routeHasAnyRoles = (route: RouteLocationNormalized<any>): boolean =>
   Boolean(route.meta?.roles?.length);
@@ -15,8 +14,8 @@ const userAllowedAccess = (route: RouteLocationNormalized<any>, role: Role): boo
 
 export const authRouterMiddleware: NavigationGuard = async to => {
   /*
-    (1) service route, for example - oidc callback pages: /signin-callback, /signin-silent-callback
-    (2) user is not logged in, try signInSilent then fetch user data ()
+    (1) service/public route, for example - oidc callback pages: /signin-callback
+    (2) user data is not loaded but user is logged in - get user data
     (3) to-route has a role requirement
     (3) user has access
   */
@@ -29,10 +28,8 @@ export const authRouterMiddleware: NavigationGuard = async to => {
   const userStore = useUserStore();
 
   // (2)
-  if (!userStore.user) {
-    if ((await signInSilent(Platform.Steam)) !== null) {
-      await userStore.fetchUser();
-    }
+  if (!userStore.user && (await getUser()) !== null) {
+    await userStore.fetchUser();
   }
 
   // (3)
@@ -58,15 +55,6 @@ export const signInCallback: NavigationGuard = async () => {
   try {
     await userManager.signinCallback();
     return { name: 'Characters' } as RouteLocationNormalized<'Characters'>;
-  } catch (error: unknown) {
-    return errorHandler(error);
-  }
-};
-
-export const signInSilentCallback: NavigationGuard = async () => {
-  try {
-    await userManager.signinSilentCallback();
-    return true;
   } catch (error: unknown) {
     return errorHandler(error);
   }

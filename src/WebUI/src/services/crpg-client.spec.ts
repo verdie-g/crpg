@@ -1,24 +1,31 @@
-const mockGetToken = vi.fn();
-const mockLogin = vi.fn();
+import { mockGet, mockPost, mockPut, mockDelete } from 'vi-fetch';
+import { get, post, put, del } from './crpg-client';
+import { ErrorType, type Result } from '@/models/crpg-client-result';
+import { sleep } from '@/utils/promise';
 
-vi.mock('@/services/auth-service', () => ({
-  getToken: mockGetToken,
-  login: mockLogin,
+const { mockedGetToken, mockedLogin, mockedNotify, mockedSleep } = vi.hoisted(() => ({
+  mockedGetToken: vi.fn(),
+  mockedLogin: vi.fn(),
+  mockedNotify: vi.fn(),
+  mockedSleep: vi.fn().mockResolvedValue(null),
 }));
 
-const mockNotify = vi.fn();
+vi.mock('@/services/auth-service', () => ({
+  getToken: mockedGetToken,
+  login: mockedLogin,
+}));
+vi.mock('@/utils/promise', () => ({
+  sleep: mockedSleep,
+}));
+
 vi.mock('@/services/notification-service', async () => {
   return {
     ...(await vi.importActual<typeof import('@/services/notification-service')>(
       '@/services/notification-service'
     )),
-    notify: mockNotify,
+    notify: mockedNotify,
   };
 });
-
-import { mockGet, mockPost, mockPut, mockDelete } from 'vi-fetch';
-import { get, post, put, del } from './crpg-client';
-import { ErrorType, type Result } from '@/models/crpg-client-result';
 
 describe('get', () => {
   const path = '/test-get';
@@ -59,7 +66,7 @@ describe('get', () => {
     // ref https://vitest.dev/api/#rejects
     await expect(get(path)).rejects.toThrow('Server error');
 
-    expect(mockNotify).toBeCalledWith('some error', 'danger');
+    expect(mockedNotify).toBeCalledWith('some error', 'danger');
   });
 
   it('with error - other', async () => {
@@ -81,17 +88,17 @@ describe('get', () => {
 
     await expect(get(path)).rejects.toThrow('Bad request');
 
-    expect(mockNotify).toBeCalledWith('some warning', 'warning');
+    expect(mockedNotify).toBeCalledWith('some warning', 'warning');
   });
 
   it('Unauthorized', async () => {
     mockGet(path).willFail({}, 401);
 
     const result = await get(path);
-
     expect(result).toEqual(null);
 
-    expect(mockNotify).toBeCalledWith('Session expired', 'warning');
+    expect(mockedNotify).toBeCalledWith('Session expired', 'warning');
+    expect(mockedSleep).toBeCalled();
   });
 });
 

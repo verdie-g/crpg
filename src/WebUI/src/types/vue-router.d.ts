@@ -4,7 +4,6 @@ import Role from '@/models/role';
 // see getRouteMiddleware in src/boot/router.ts
 export enum RouteMiddleware {
   'signInCallback' = 'signInCallback',
-  'signInSilentCallback' = 'signInSilentCallback',
 
   'characterValidate' = 'characterValidate',
   'activeCharacterRedirect' = 'activeCharacterRedirect',
