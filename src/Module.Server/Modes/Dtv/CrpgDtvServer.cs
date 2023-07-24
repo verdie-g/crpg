@@ -112,6 +112,11 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
 
     protected override void HandleNewClientAfterSynchronized(NetworkCommunicator networkPeer)
     {
+        if (!_gameStarted)
+        {
+            return;
+        }
+
         GameNetwork.BeginModuleEventAsServer(networkPeer);
         GameNetwork.WriteMessage(new CrpgDtvSetTimerMessage
         {
