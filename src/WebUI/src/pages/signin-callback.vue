@@ -6,6 +6,8 @@ definePage({
     middleware: 'signInCallback',
   },
 });
+
+console.log('signin-callback');
 </script>
 
 <template></template>

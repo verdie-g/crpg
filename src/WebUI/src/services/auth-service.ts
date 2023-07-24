@@ -36,31 +36,12 @@ export const userManager = new UserManager({
 
 export const getUser = () => userManager.getUser();
 
-export const signInSilent = async (platform: Platform) => {
-  try {
-    const user = await userManager.signinSilent({
-      extraQueryParams: {
-        identity_provider: platform,
-      },
-    });
-    return extractToken(user);
-  } catch (error) {
-    // hide the oidc-client warning - login_require
-    return null;
-  }
-};
-
-export const login = async (platform: Platform) => {
-  const token = await signInSilent(platform);
-
-  if (token === null) {
-    await userManager.signinRedirect({
-      extraQueryParams: {
-        identity_provider: platform,
-      },
-    });
-  }
-};
+export const login = (platform: Platform) =>
+  userManager.signinRedirect({
+    extraQueryParams: {
+      identity_provider: platform,
+    },
+  });
 
 export const logout = () => userManager.signoutRedirect();
 

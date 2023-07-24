@@ -1,14 +1,12 @@
 const mockSigninRedirect = vi.fn();
 const mockGetUser = vi.fn();
 const mockSignoutRedirect = vi.fn();
-const mockSigninSilent = vi.fn();
 
 import {
   extractToken,
   parseJwt,
   getUser,
   login,
-  signInSilent,
   logout,
   getToken,
   getDecodedToken,
@@ -38,7 +36,6 @@ vi.mock('oidc-client-ts', () => ({
     signinRedirect: mockSigninRedirect,
     getUser: mockGetUser,
     signoutRedirect: mockSignoutRedirect,
-    signinSilent: mockSigninSilent,
   })),
   WebStorageStateStore: vi.fn(),
 }));
@@ -63,41 +60,14 @@ it('getUser', async () => {
   expect(mockGetUser).toHaveBeenCalled();
 });
 
-it('login - signInSilent', async () => {
-  mockSigninSilent.mockResolvedValue({ access_token: 'access_token' });
+it('login - TODO:', async () => {
   await login();
-  expect(mockSigninSilent).toHaveBeenCalled();
-  expect(mockSigninRedirect).not.toHaveBeenCalled();
-});
-
-it('login - signinRedirect', async () => {
-  mockSigninSilent.mockResolvedValue(null);
-  await login();
-  expect(mockSigninSilent).toHaveBeenCalled();
   expect(mockSigninRedirect).toHaveBeenCalled();
 });
 
 it('logout', async () => {
   await logout();
   expect(mockSignoutRedirect).toHaveBeenCalled();
-});
-
-describe('signInSilent', () => {
-  it('signInSilent - user logged in', async () => {
-    mockSigninSilent.mockResolvedValue({ access_token: 'access_token' });
-    const token = await signInSilent();
-
-    expect(token).toEqual('access_token');
-    expect(mockSigninSilent).toHaveBeenCalled();
-  });
-
-  it('signInSilent - user not logged in', async () => {
-    mockSigninSilent.mockRejectedValue(false);
-    const token = await signInSilent();
-
-    expect(token).toEqual(null);
-    expect(mockSigninSilent).toHaveBeenCalled();
-  });
 });
 
 it('getToken', async () => {

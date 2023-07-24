@@ -65,7 +65,6 @@ declare module 'vue-router/auto/routes' {
     'Settings': RouteRecordInfo<'Settings', '/settings', Record<never, never>, Record<never, never>>,
     'Shop': RouteRecordInfo<'Shop', '/shop', Record<never, never>, Record<never, never>>,
     'SigninCallback': RouteRecordInfo<'SigninCallback', '/signin-callback', Record<never, never>, Record<never, never>>,
-    'SigninSilentCallback': RouteRecordInfo<'SigninSilentCallback', '/signin-silent-callback', Record<never, never>, Record<never, never>>,
   }
 }
 
