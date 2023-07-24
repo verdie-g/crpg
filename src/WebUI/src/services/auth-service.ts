@@ -4,18 +4,10 @@ import {
   type User,
   // Log,
 } from 'oidc-client-ts';
-import Role from '@/models/role';
 import { Platform } from '@/models/platform';
 
 // Log.setLogger(console);
 // Log.setLevel(Log.DEBUG);
-
-interface TokenPayload {
-  userId: number;
-  userRole: Role;
-  expiration: Date;
-  issuedAt: Date;
-}
 
 export const extractToken = (user: User | null): string | null =>
   user !== null ? user.access_token : null;
