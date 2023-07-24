@@ -121,7 +121,6 @@ const WeaponClassByItemType: Partial<Record<ItemType, WeaponClass[]>> = {
     WeaponClass.ThrowingKnife,
     WeaponClass.Stone,
   ],
-  [ItemType.Shield]: [WeaponClass.SmallShield, WeaponClass.LargeShield],
 };
 
 export const hasWeaponClassesByItemType = (type: ItemType) =>
@@ -590,6 +589,37 @@ export const humanizeBucket = (
   }
 
   return createHumanBucket(String(bucket), null, null);
+};
+
+interface GroupedItems {
+  type: ItemType;
+  weaponClass: WeaponClass | null;
+  items: ItemFlat[];
+}
+
+export const groupItemsByTypeAndWeaponClass = (items: ItemFlat[]) => {
+  return items.reduce((out, item) => {
+    const currentEl = out.find(el => {
+      // merge Shield classes
+      if (item.type === ItemType.Shield) {
+        return el.type === item.type;
+      }
+
+      return el.type === item.type && el.weaponClass === item.weaponClass;
+    });
+
+    if (currentEl !== undefined) {
+      currentEl.items.push(item);
+    } else {
+      out.push({
+        type: item.type,
+        weaponClass: item.weaponClass,
+        items: [item],
+      });
+    }
+
+    return out;
+  }, [] as GroupedItems[]);
 };
 
 export const getCompareItemsResult = (items: ItemFlat[], aggregationsConfig: AggregationConfig) => {

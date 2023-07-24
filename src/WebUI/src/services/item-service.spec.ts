@@ -72,6 +72,7 @@ import {
   getLinkedSlots,
   hasWeaponClassesByItemType,
   getWeaponClassesByItemType,
+  groupItemsByTypeAndWeaponClass,
   getCompareItemsResult,
   getRelativeEntries,
   humanizeBucket,
@@ -455,6 +456,83 @@ it('compareItemsResult', () => {
     handling: 86,
     weight: 2.07,
   });
+});
+
+it('groupItemsByTypeAndWeaponClass', () => {
+  const items = [
+    {
+      id: 'item1',
+      type: ItemType.OneHandedWeapon,
+      weaponClass: WeaponClass.OneHandedSword,
+    },
+    {
+      id: 'item2',
+      type: ItemType.OneHandedWeapon,
+      weaponClass: WeaponClass.OneHandedSword,
+    },
+    {
+      id: 'item3',
+      type: ItemType.OneHandedWeapon,
+      weaponClass: WeaponClass.OneHandedAxe,
+    },
+    // Shield Case
+    {
+      id: 'item4',
+      type: ItemType.Shield,
+      weaponClass: WeaponClass.SmallShield,
+    },
+    {
+      id: 'item5',
+      type: ItemType.Shield,
+      weaponClass: WeaponClass.LargeShield,
+    },
+  ] as ItemFlat[];
+
+  expect(groupItemsByTypeAndWeaponClass(items)).toEqual([
+    {
+      type: 'OneHandedWeapon',
+      weaponClass: 'OneHandedSword',
+      items: [
+        {
+          id: 'item1',
+          type: 'OneHandedWeapon',
+          weaponClass: 'OneHandedSword',
+        },
+        {
+          id: 'item2',
+          type: 'OneHandedWeapon',
+          weaponClass: 'OneHandedSword',
+        },
+      ],
+    },
+    {
+      type: 'OneHandedWeapon',
+      weaponClass: 'OneHandedAxe',
+      items: [
+        {
+          id: 'item3',
+          type: 'OneHandedWeapon',
+          weaponClass: 'OneHandedAxe',
+        },
+      ],
+    },
+    {
+      type: 'Shield',
+      weaponClass: 'SmallShield',
+      items: [
+        {
+          id: 'item4',
+          type: 'Shield',
+          weaponClass: 'SmallShield',
+        },
+        {
+          id: 'item5',
+          type: 'Shield',
+          weaponClass: 'LargeShield',
+        },
+      ],
+    },
+  ]);
 });
 
 it('getRelativeEntries', () => {

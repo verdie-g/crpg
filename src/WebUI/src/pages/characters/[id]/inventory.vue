@@ -3,7 +3,7 @@ import { UseDraggable as Draggable } from '@vueuse/components';
 import { useStorage } from '@vueuse/core';
 import { type UserItemsBySlot } from '@/models/user';
 import type { EquippedItemId } from '@/models/character';
-import { type ItemFlat, ItemType, WeaponClass } from '@/models/item';
+import { ItemType } from '@/models/item';
 import { AggregationConfig, AggregationView, SortingConfig } from '@/models/item-search';
 import { extractItemFromUserItem } from '@/services/users-service';
 import { updateCharacterItems, checkUpkeepIsHigh } from '@/services/characters-service';
@@ -14,7 +14,7 @@ import {
   upgradeUserItem,
   reforgeUserItem,
 } from '@/services/users-service';
-import { getCompareItemsResult } from '@/services/item-service';
+import { groupItemsByTypeAndWeaponClass, getCompareItemsResult } from '@/services/item-service';
 import { createItemIndex } from '@/services/item-search-service/indexator';
 import { getSearchResult, getAggregationsConfig } from '@/services/item-search-service';
 import { notify } from '@/services/notification-service';
@@ -175,48 +175,21 @@ const equippedItemsBySlot = computed(() =>
 
 provide(equippedItemsBySlotKey, equippedItemsBySlot);
 
-interface CompareGroup {
-  type: ItemType;
-  weaponClass: WeaponClass | null;
-  items: ItemFlat[];
-}
-
 const { openedItems, closeItemDetail, closeAll } = useItemDetail();
 
-// // TODO: FIXME: to service
 const compareItemsResult = computed(() => {
-  const groupedItems = flatItems.value
-    .filter(item => openedItems.value.some(oi => oi.id === item.id))
-    .reduce((out, item) => {
-      const currentEl = out.find(
-        el => el.type === item.type && el.weaponClass === item.weaponClass
-      );
-
-      if (currentEl) {
-        currentEl.items.push(item);
-      } else {
-        out.push({
-          type: item.type,
-          weaponClass: item.weaponClass,
-          items: [item],
-        });
-      }
-
-      return out;
-    }, [] as CompareGroup[]);
-
-  return groupedItems
-    .filter(group => group.items.length >= 2) // there is no point in comparing 1 item
-    .map(group => {
-      return {
-        type: group.type,
-        weaponClass: group.weaponClass,
-        compareResult: getCompareItemsResult(
-          group.items,
-          getAggregationsConfig(group.type, group.weaponClass)
-        ),
-      };
-    });
+  return groupItemsByTypeAndWeaponClass(
+    flatItems.value.filter(item => openedItems.value.some(oi => oi.id === item.id))
+  )
+    .filter(group => group.items.length >= 2) // there is no point in comparing 1 item;
+    .map(group => ({
+      type: group.type,
+      weaponClass: group.weaponClass,
+      compareResult: getCompareItemsResult(
+        group.items,
+        getAggregationsConfig(group.type, group.weaponClass)
+      ),
+    }));
 });
 
 const aside = ref<HTMLDivElement | null>(null);
@@ -424,7 +397,10 @@ await userStore.fetchUserItems();
 
         <CharacterInventoryItemDetail
           class="w-72"
-          :compareResult="compareItemsResult.find(cr => cr.type === flatItems.find(fi => fi.id === oi.id)!.type)?.compareResult"
+          :compareResult="
+            compareItemsResult.find(cr => cr.type === flatItems.find(fi => fi.id === oi.id)!.type)
+              ?.compareResult
+          "
           :item="flatItems.find(fi => fi.id === oi.id)!"
           :userItem="userStore.userItems.find(ui => ui.id === oi.userId)!"
           :equipped="equippedItemsIds.includes(oi.userId)"
