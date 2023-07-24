@@ -11,6 +11,7 @@ namespace Crpg.Module.Modes.Dtv;
 internal class CrpgDtvServer : MissionMultiplayerGameModeBase
 {
     private const int RewardMultiplier = 2;
+    private const int MapDuration = 60 * 90;
 
     private readonly CrpgRewardServer _rewardServer;
     private readonly CrpgDtvData _dtvData;
@@ -69,6 +70,13 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         missionPeer.Team = Mission.DefenderTeam;
     }
 
+    public override void OnAgentBuild(Agent agent, Banner banner)
+    {
+        base.OnAgentBuild(agent, banner);
+        // Synchronize health with all clients to make the spectator health bar work.
+        agent.UpdateSyncHealthToAllClients(true);
+    }
+
     public override void OnMissionTick(float dt)
     {
         base.OnMissionTick(dt);
@@ -93,6 +101,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         if (!_gameStarted)
         {
             _gameStarted = true;
+            SetTimeLimit();
             ClearPeerCounts();
             Mission.GetMissionBehavior<MissionScoreboardComponent>().ResetBotScores();
             StartNextRound();
@@ -106,6 +115,33 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
             _waveStartTimer = null;
             StartNextWave();
         }
+    }
+
+    protected override void HandleNewClientAfterSynchronized(NetworkCommunicator networkPeer)
+    {
+        if (!_gameStarted)
+        {
+            return;
+        }
+
+        GameNetwork.BeginModuleEventAsServer(networkPeer);
+        GameNetwork.WriteMessage(new CrpgDtvSetTimerMessage
+        {
+            StartTime = (int)TimerComponent.GetCurrentTimerStartTime().ToSeconds,
+            Duration = MapDuration,
+        });
+        GameNetwork.EndModuleEventAsServer();
+    }
+
+    /// <summary>Work around the 60 minutes limit of MapTimeLimit.</summary>
+    private void SetTimeLimit()
+    {
+        TimerComponent.StartTimerAsServer(MapDuration);
+        SendDataToPeers(new CrpgDtvSetTimerMessage
+        {
+            StartTime = (int)TimerComponent.GetCurrentTimerStartTime().ToSeconds,
+            Duration = MapDuration,
+        });
     }
 
     private void StartNextRound()

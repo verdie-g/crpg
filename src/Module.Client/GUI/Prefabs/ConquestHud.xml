@@ -1,0 +1,45 @@
+﻿<Prefab>
+  <Constants>
+  </Constants>
+  <Window>
+    <HUDExtensionBrushWidget WidthSizePolicy="StretchToParent"
+                             HeightSizePolicy="StretchToParent"
+                             OrderEnabledAlpha="0.2">
+      <Children>
+        <ListPanel WidthSizePolicy="CoverChildren"
+                   HeightSizePolicy="CoverChildren"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   MarginTop="5">
+          <Children>
+
+            <BannerHud WidthSizePolicy="Fixed"
+                       HeightSizePolicy="Fixed"
+                       SuggestedWidth="50"
+                       SuggestedHeight="50"
+                       DataSource="{AllyBanner}" />
+
+            <TimerHud DataSource="{Timer}"
+                      WidthSizePolicy="Fixed"
+                      HeightSizePolicy="Fixed"
+                      SuggestedWidth="90"
+                      SuggestedHeight="26"
+                      VerticalAlignment="Center" />
+
+            <BannerHud
+              WidthSizePolicy="Fixed"
+              HeightSizePolicy="Fixed"
+              SuggestedWidth="50"
+              SuggestedHeight="50"
+              DataSource="{EnemyBanner}" />
+
+          </Children>
+        </ListPanel>
+
+        <FlagsHud DataSource="{Flags}"
+                  HorizontalAlignment="Center"
+                  MarginTop="5" />
+      </Children>
+    </HUDExtensionBrushWidget>
+  </Window>
+</Prefab>

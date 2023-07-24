@@ -1,0 +1,35 @@
+﻿<Prefab>
+  <Constants>
+  </Constants>
+  <Window>
+    <ListPanel WidthSizePolicy="CoverChildren"
+               HeightSizePolicy="CoverChildren"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Top"
+               MarginTop="5">
+      <Children>
+
+        <BannerHud WidthSizePolicy="Fixed"
+                   HeightSizePolicy="Fixed"
+                   SuggestedWidth="50"
+                   SuggestedHeight="50"
+                   DataSource="{AllyBanner}" />
+
+        <TimerHud DataSource="{Timer}"
+                  WidthSizePolicy="Fixed"
+                  HeightSizePolicy="Fixed"
+                  SuggestedWidth="90"
+                  SuggestedHeight="26"
+                  VerticalAlignment="Center" />
+
+        <BannerHud
+          WidthSizePolicy="Fixed"
+          HeightSizePolicy="Fixed"
+          SuggestedWidth="50"
+          SuggestedHeight="50"
+          DataSource="{EnemyBanner}" />
+
+      </Children>
+    </ListPanel>
+  </Window>
+</Prefab>

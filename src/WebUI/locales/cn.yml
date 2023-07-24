@@ -993,17 +993,45 @@ item:
       title: 'EBA'
       description: '要装备EBA包中的防弹衣，您必须首先穿戴EBA包中的兼容腿部防弹衣。'
 
+  armorMaterialType:
+    Cloth:
+      title: '布料'
+      description: ''
+    Leather:
+      title: '皮革'
+      description: ''
+    Chainmail:
+      title: '锁子甲'
+      description: ''
+    Plate:
+      title: '板材'
+      description: ''
+
   damageTypeFormat: '{value} {type}'
   damageType:
     Cut:
       long: '砍伤'
       short: '砍'
+      title: '砍伤'
+      description: "
+        <p>砍伤代表使用剑或斧等锋利武器施加的劈砍攻击。</p>
+        <p>这些攻击在面对低或无装甲的敌人时表现出色，有效地利用其脆弱性。装甲越薄，砍伤就越具毁灭性，反映了锋利武器在敌人身体较少受保护的部位切割的能力。</p>"
     Pierce:
       long: '刺伤'
       short: '刺'
+      title: '刺伤'
+      description: "
+        <p>刺伤代表由箭矢、长矛或匕首等用于穿透和刺入的武器造成的伤害。</p>
+        <p>刺伤的主要优势在于对抗着甲敌人的效率。刺伤的头部命中伤害加成增加得比通常更多，如果近战（刺击）攻击命中敌人的头部，伤害加成为1.3倍，而对于远程攻击，增加倍数为1.6倍。</p>
+        <p>这使得刺伤成为潜在的最强伤害类型，因为它受益于头部命中。</p>"
     Blunt:
       long: '钝伤'
       short: '钝'
+      title: '钝伤'
+      description: "
+        <p>钝伤指的是由锤子、钉头锤或木棍等冲击武器造成的伤害。</p>
+        <p>在对抗穿着厚重盔甲的敌人这一方面，钝伤与刺伤类似有效。然而，与刺伤不同的是，钝伤没有针对头部伤害的加成。相比之下，钝伤更适合在综合情况下使用。</p>"
+
   requirementFormat: '{value} 力'
 
   aggregations:
@@ -1032,6 +1060,9 @@ item:
       title: '重量'
       description: ''
 
+    armorMaterialType:
+      title: '材料'
+      description: ''
     headArmor:
       title: '头部护甲'
       description: ''
@@ -1139,8 +1170,8 @@ item:
       title: '阶级'
       description: ''
     new:
-      title: '仅限新产品'
-      description: '显示最近{days}天内添加或修改的项目'
+      title: '仅限新物品'
+      description: '显示最近{days}天内添加或修改的物品'
 
   format:
     upkeep: '{upkeep} / @:dateTime.hours.short'

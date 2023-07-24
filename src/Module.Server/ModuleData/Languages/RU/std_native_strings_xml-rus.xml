@@ -4,36 +4,55 @@
     <tag language="Русский" />
   </tags>
   <strings>
+    <!-- Battle -->
     <string id="haGoKI0Q" text="Битва" />
     <string id="HN4gzXhG" text="·   Убейте всю вражескую команду, чтобы победить{newline}·   Получайте опыт и золото каждую минуту{newline}·   Улучшайте своего персонажа на c-rpg.eu" />
     <string id="uSmyz6m1" text="Битва" />
+
+    <!-- Skirmish -->
     <string id="XDxF8ujQ" text="Схватка" />
     <string id="a4VXBtjm" text="·   Удерживайте контрольные точки на карте, чтобы истощить мораль противника{newline}·   Убейте всю вражескую команду или истощите их мораль, чтобы победить{newline}·   Получайте опыт и золото во время игры" />
     <string id="WXPRjnqH" text="Схватка" />
+
+    <!-- Conquest -->
     <string id="l5KJxufk" text="Завоевание" />
-    <string id="JLGDB5T7" text="·   Захватите все флаги на этапе, чтобы перейти на следующий{newline}·   Награда защитников увеличивается со временем и сбрасывается на новом этапе{newline}·   Награда захватчиков уменьшается со временем и устанавливается на максимум на новом этапе" />
+    <string id="JLGDB5T7" text="·   Захватите все флаги на текущем этапе, чтобы перейти на следующий{newline}·   Награда защитников увеличивается со временем и сбрасывается с новым этапом{newline}·   Награда захватчиков уменьшается со временем и устанавливается на максимум с новым этапом" />
     <string id="PhKxWoxz" text="Завоевание" />
     <string id="uMbyjZKn" text="Осада" />
+
+    <!-- Siege -->
     <string id="NyzhLxjg" text="·   Используйте различные осадные машины, чтобы атаковать или защищать контрольные точки{newline}·   Точки возрождения продвигаются по мере захвата контрольных точек{newline}·   Успешно атакуйте и удерживайте флаг крепости или отразите врага, чтобы победить" />
     <string id="6NrVsGO5" text="Осада" />
-    <string id="JWb4DWDq" text="Командный бой на выживание" />
+
+    <!-- Team Deathmatch -->
+    <string id="JWb4DWDq" text="Командный бой" />
     <string id="xuFzKbVx" text="·   Убейте больше противников, чем вражеская команда, чтобы победить в игре" />
-    <string id="EHC0hWNZ" text="Командный бой на выживание" />
+    <string id="EHC0hWNZ" text="Командный бой" />
+
+    <!-- Duel -->
     <string id="GTScbIip" text="Дуэль" />
-    <string id="yVQj1ZzR" text="·   Сражайтесь с противником в одиночном бою{newline}·   Победите противника несколько раз, чтобы выиграть дуэль и получить награду{newline}·   Здесь нет поддержки и награды за золото." />
+    <string id="yVQj1ZzR" text="·   Сражайтесь с противником в одиночном бою{newline}·   Победите противника несколько раз, чтобы выиграть дуэль и получить награду{newline}·   Здесь нет ремонта предметов и награды." />
     <string id="lYn1SmzA" text="Дуэль" />
-    <string id="OUnhyvby" text="Защита виконта" />
-    <string id="bp8JJZpG" text="·   Защищайте виконта от волн врагов!{newline}·   Получайте награды за защиту!{newline}·   Улучшайте своего персонажа на c-rpg.eu" />
-    <string id="3uoZAXxh" text="Защита виконта" />
+
+    <!-- DTV -->
+    <string id="OUnhyvby" text="Защита графа" />
+    <string id="bp8JJZpG" text="·   Защищайте графа от волн врагов!{newline}·   Получайте награды за защиту!{newline}·   Улучшайте своего персонажа на c-rpg.eu" />
+    <string id="3uoZAXxh" text="Защита графа" />
+
+    <!-- Scoreboard -->
     <string id="fBDiQBrC" text="Жизнь" />
-    <string id="gaC79g3U" text="У вашего персонажа странная высота. Исправьте это в «Баннерлорд Армори», чтобы присоединиться к серверу cRPG." />
+
+    <!-- Kick reasons -->
+    <string id="gaC79g3U" text="Ваш персонаж имеет недопустимый рост. Исправьте это в оружейной Баннерлорд, чтобы присоединиться к серверу cRPG." />
     <string id="qoYQE5yX" text="Вы были забанены на серверах cRPG." />
     <string id="SppKtXbt" text="Вы достигли лимита созданных персонажей. Активируйте существующего персонажа на веб-сайте или подождите 1 час." />
     <string id="nNXfXYHE" text="Пустые имена не разрешены на серверах cRPG." />
-    <string id="mWWXmIE5" text="У вас должно быть хотя бы одно оружие экипировано, чтобы возродиться!" />
-    <string id="rOhUOWX6" text="На этот сервер могут присоединиться только персонажи для турниров." />
-    <string id="OsPW0okL" text="Основной сервер cRPG недоступен. Попробуйте снова позже." />
+    <string id="mWWXmIE5" text="У вас должно быть экипировано хотя бы одно оружие чтобы возродиться!" />
+    <string id="rOhUOWX6" text="На этот сервер могут присоединиться только турнирые персонажи." />
+    <string id="OsPW0okL" text="Основной сервер cRPG недоступен. Попробуйте позже." />
     <string id="hU3flm9q" text="Серверы cRPG поддерживают только Steam, Epic Games и Xbox." />
+
+     <!-- Battle Maps -->
     <string id="PKVPlAeE" text="Заброшено" />
     <string id="tZJ32ZRQ" text="Акациевая крепость" />
     <string id="xEi9C8Kl" text="Древний мир" />
@@ -41,7 +60,7 @@
     <string id="Lpot2Wv3" text="Ацтека" />
     <string id="T8joIHW2" text="Долина бандитов" />
     <string id="SlStm5J1" text="Базар" />
-    <string id="Z7uLkNkf" text="Полянка с капустой" />
+    <string id="Z7uLkNkf" text="Капустная грядка" />
     <string id="UKP9189B" text="Каналы" />
     <string id="2lXUaV2n" text="Каньон" />
     <string id="XFT15E1r" text="Драконье гнездо" />
@@ -55,7 +74,7 @@
     <string id="vwrgBIYu" text="Воющая поляна" />
     <string id="3i45RSr9" text="Ледяное озеро" />
     <string id="4U9HDtrc" text="Островная деревня" />
-    <string id="ac2GFU7o" text="Калмара" />
+    <string id="ac2GFU7o" text="Кальмара" />
     <string id="Pn73lEKV" text="Ферма Кетиля" />
     <string id="qrCXeSTp" text="Ферма Кетиля" />
     <string id="rJYcMceC" text="Хамсин" />
@@ -64,7 +83,7 @@
     <string id="Wtx9OuIV" text="Королевская дорога" />
     <string id="jJeeiHbN" text="Потерянный собор" />
     <string id="3DMBLrhB" text="Монастырь" />
-    <string id="gGMp0ZlB" text="Поселок при лунном свете" />
+    <string id="gGMp0ZlB" text="Лунный городок" />
     <string id="dnrGa5y0" text="Мотта" />
     <string id="1AjGiJGE" text="Ономастикон" />
     <string id="wPk8Ym0n" text="Арена Ориона" />
@@ -73,18 +92,18 @@
     <string id="89xDzRhK" text="Помпеи" />
     <string id="TmXJl70C" text="Карьер" />
     <string id="o0dhGKfm" text="Лес красных деревьев" />
-    <string id="OAwtwDhr" text="Руины остатка" />
-    <string id="htSIJxlO" text="Разрушенное барбаканное здание" />
-    <string id="FFO55udm" text="Вывоз" />
+    <string id="OAwtwDhr" text="Остатки руин" />
+    <string id="htSIJxlO" text="Разрушенный Баттлмент" />
+    <string id="FFO55udm" text="Вылазка" />
     <string id="UDZzbM3m" text="Святилище" />
     <string id="zXbY49aQ" text="Сандибуш" />
     <string id="rV1aoC4M" text="Песочница" />
     <string id="sC8pWd6a" text="Скальные холмы" />
     <string id="zyesadwK" text="Сколдерби" />
-    <string id="uSGA1apA" text="Небесный пад" />
-    <string id="DttAl3V1" text="Стонхендж" />
+    <string id="uSGA1apA" text="Скайфолл" />
+    <string id="DttAl3V1" text="Стоунхендж" />
     <string id="103M2Shv" text="Тальмберг" />
-    <string id="34t1I2tA" text="Запуск в таверне" />
+    <string id="34t1I2tA" text="Таверна" />
     <string id="JLuIItVZ" text="Пляж Толста" />
     <string id="hID2b1Xk" text="Угор" />
     <string id="VQdi4BHE" text="Ватнборг" />
@@ -93,15 +112,19 @@
     <string id="NuReq6rk" text="Вейрвотер" />
     <string id="jP0ySZzV" text="Белый мост" />
     <string id="LLWi2bYx" text="Земури" />
+    <string id="qD8fDelD" text="Речной берег" />
+
     <string id="9Mpawm9h" text="Акра" />
     <string id="6KypSnaa" text="Ардуму" />
     <string id="caA2XOEy" text="Фредериксборг" />
-    <string id="POatExkU" text="Аид" />
+    <string id="POatExkU" text="Аида" />
     <string id="butUY7Y4" text="Железная гора" />
     <string id="TKzD7aEp" text="Нойенбург" />
     <string id="ofvazCUE" text="Орлхеловар" />
     <string id="jyeZFBYc" text="Серебряная Скалица" />
-    <string id="tyxhM0QA" text="Приземление в Скале" />
+    <string id="tyxhM0QA" text="Скала Лендинг" />
+
+    <!-- DTV Maps -->
     <string id="V5jaECxf" text="Калат" />
     <string id="jKsuXc4Z" text="Плачущий Холм" />
   </strings>

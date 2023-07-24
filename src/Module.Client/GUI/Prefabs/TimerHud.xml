@@ -1,0 +1,23 @@
+﻿<Prefab>
+  <Constants>
+  </Constants>
+  <Window>
+    <BoolStateChangerWidget DoNotAcceptEvents="true"
+                            DoNotPassEventsToChildren="true"
+                            WidthSizePolicy="StretchToParent"
+                            HeightSizePolicy="StretchToParent"
+                            BooleanCheck="@WarnRemainingTime"
+                            FalseState="Default"
+                            TargetWidget="CountdownText"
+                            TrueState="Warning">
+      <Children>
+        <TextWidget Id="CountdownText"
+                    WidthSizePolicy="StretchToParent"
+                    HeightSizePolicy="CoverChildren"
+                    Brush="MPHUD.CountdownText"
+                    Text="@RemainingRoundTime"
+                    ClipContents="false" />
+      </Children>
+    </BoolStateChangerWidget>
+  </Window>
+</Prefab>

@@ -8,7 +8,7 @@ Here is the step to step guide to update that file:
 1. Build the client to generate some needed files
 2. Put all asset sources in `%MB_CLIENT_PATH%/Modules/cRPG/AssetSources`
 3. Create an empty folder `%MB_CLIENT_PATH%/Modules/cRPG/Assets`
-4. Copy `%MB_CLIENT_PATH%/Modules/cRPG/Win64_Shipping_Client` to `%MB_CLIENT_PATH%/Modules/cRPG/Win64_Shipping_wEditor`
+4. Copy `%MB_CLIENT_PATH%/Modules/cRPG/bin/Win64_Shipping_Client` to `%MB_CLIENT_PATH%/Modules/cRPG/bin/Win64_Shipping_wEditor`
 5. In `%MB_CLIENT_PATH%/Modules/cRPG/SubModule.xml` replace `<ModuleCategory value="Multiplayer"/>` by `<ModuleCategory value="SinglePlayer"/>`
 6. Remove `%MB_CLIENT_PATH%/Modules/cRPG/GUI/*SpriteData.xml`
 7. Launch `Mount & Blade II: Bannerlord - Modding Kit` and make sure to tick `cRPG` in the Singleplayer mods

@@ -14,6 +14,8 @@ using TaleWorlds.MountAndBlade;
 
 #if CRPG_SERVER
 using Crpg.Module.HarmonyPatches;
+#else
+using TaleWorlds.Engine.GauntletUI;
 #endif
 
 #if CRPG_EXPORT
@@ -59,7 +61,9 @@ internal class CrpgSubModule : MBSubModuleBase
 #endif
 
         // Uncomment to start watching UI changes.
+        #if CRPG_CLIENT
         // UIResourceManager.UIResourceDepot.StartWatchingChangesInDepot();
+        #endif
     }
 
     protected override void InitializeGameStarter(Game game, IGameStarter starterObject)
@@ -78,7 +82,9 @@ internal class CrpgSubModule : MBSubModuleBase
     {
         base.OnApplicationTick(delta);
         // Uncomment to hot reload UI after changes.
+        #if CRPG_CLIENT
         // UIResourceManager.UIResourceDepot.CheckForChanges();
+        #endif
     }
 
     private CrpgConstants LoadCrpgConstants()

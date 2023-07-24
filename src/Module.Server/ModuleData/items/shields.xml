@@ -512,33 +512,33 @@
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandPrimaryItemBone="true" />
   </Item>
-  <Item id="crpg_northern_round_shield_v2_h0" name="{=uEcbnd5D}Round Shield" body_name="bo_cap_shield_sturgia_infantary_a" shield_body_name="bo_cap_shield_sturgia_infantary_b" recalculate_body="false" mesh="shield_sturgia_infantary_b" using_tableau="true" weight="2.837564" difficulty="0" appearance="1" Type="Shield" item_holsters="shield_round:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0,0.01" culture="Culture.sturgia">
+  <Item id="crpg_northern_round_shield_v3_h0" name="{=uEcbnd5D}Round Shield" body_name="bo_cap_shield_sturgia_infantary_a" shield_body_name="bo_cap_shield_sturgia_infantary_b" recalculate_body="false" mesh="shield_sturgia_infantary_b" using_tableau="true" weight="6.720545" difficulty="0" appearance="1" Type="Shield" item_holsters="shield_round:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0,0.01" culture="Culture.sturgia">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="87" physics_material="wood_shield" item_usage="hand_shield" position="-0.02, 0.0, 0.0" rotation="-195.0,-90.0,-10.0" weapon_length="74" center_of_mass="0.0,0.065,0.05" hit_points="228" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="87" physics_material="wood_shield" item_usage="hand_shield" position="-0.02, 0.0, 0.0" rotation="-195.0,-90.0,-10.0" weapon_length="74" center_of_mass="0.0,0.065,0.05" hit_points="540" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandPrimaryItemBone="true" />
   </Item>
-  <Item id="crpg_northern_round_shield_v2_h1" name="{=uEcbnd5D}Round Shield +1" body_name="bo_cap_shield_sturgia_infantary_a" shield_body_name="bo_cap_shield_sturgia_infantary_b" recalculate_body="false" mesh="shield_sturgia_infantary_b" using_tableau="true" weight="2.837564" difficulty="0" appearance="1" Type="Shield" item_holsters="shield_round:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0,0.01" culture="Culture.sturgia">
+  <Item id="crpg_northern_round_shield_v3_h1" name="{=uEcbnd5D}Round Shield +1" body_name="bo_cap_shield_sturgia_infantary_a" shield_body_name="bo_cap_shield_sturgia_infantary_b" recalculate_body="false" mesh="shield_sturgia_infantary_b" using_tableau="true" weight="6.720545" difficulty="0" appearance="1" Type="Shield" item_holsters="shield_round:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0,0.01" culture="Culture.sturgia">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="2" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="87" physics_material="wood_shield" item_usage="hand_shield" position="-0.02, 0.0, 0.0" rotation="-195.0,-90.0,-10.0" weapon_length="74" center_of_mass="0.0,0.065,0.05" hit_points="247" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="2" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="87" physics_material="wood_shield" item_usage="hand_shield" position="-0.02, 0.0, 0.0" rotation="-195.0,-90.0,-10.0" weapon_length="74" center_of_mass="0.0,0.065,0.05" hit_points="584" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandPrimaryItemBone="true" />
   </Item>
-  <Item id="crpg_northern_round_shield_v2_h2" name="{=uEcbnd5D}Round Shield +2" body_name="bo_cap_shield_sturgia_infantary_a" shield_body_name="bo_cap_shield_sturgia_infantary_b" recalculate_body="false" mesh="shield_sturgia_infantary_b" using_tableau="true" weight="2.837564" difficulty="0" appearance="1" Type="Shield" item_holsters="shield_round:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0,0.01" culture="Culture.sturgia">
+  <Item id="crpg_northern_round_shield_v3_h2" name="{=uEcbnd5D}Round Shield +2" body_name="bo_cap_shield_sturgia_infantary_a" shield_body_name="bo_cap_shield_sturgia_infantary_b" recalculate_body="false" mesh="shield_sturgia_infantary_b" using_tableau="true" weight="6.720545" difficulty="0" appearance="1" Type="Shield" item_holsters="shield_round:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0,0.01" culture="Culture.sturgia">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="2" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="87" physics_material="wood_shield" item_usage="hand_shield" position="-0.02, 0.0, 0.0" rotation="-195.0,-90.0,-10.0" weapon_length="74" center_of_mass="0.0,0.065,0.05" hit_points="265" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="2" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="87" physics_material="wood_shield" item_usage="hand_shield" position="-0.02, 0.0, 0.0" rotation="-195.0,-90.0,-10.0" weapon_length="74" center_of_mass="0.0,0.065,0.05" hit_points="627" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandPrimaryItemBone="true" />
   </Item>
-  <Item id="crpg_northern_round_shield_v2_h3" name="{=uEcbnd5D}Round Shield +3" body_name="bo_cap_shield_sturgia_infantary_a" shield_body_name="bo_cap_shield_sturgia_infantary_b" recalculate_body="false" mesh="shield_sturgia_infantary_b" using_tableau="true" weight="2.837564" difficulty="0" appearance="1" Type="Shield" item_holsters="shield_round:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0,0.01" culture="Culture.sturgia">
+  <Item id="crpg_northern_round_shield_v3_h3" name="{=uEcbnd5D}Round Shield +3" body_name="bo_cap_shield_sturgia_infantary_a" shield_body_name="bo_cap_shield_sturgia_infantary_b" recalculate_body="false" mesh="shield_sturgia_infantary_b" using_tableau="true" weight="6.720545" difficulty="0" appearance="1" Type="Shield" item_holsters="shield_round:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0,0.01" culture="Culture.sturgia">
     <ItemComponent>
-      <Weapon weapon_class="LargeShield" body_armor="2" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="87" physics_material="wood_shield" item_usage="hand_shield" position="-0.02, 0.0, 0.0" rotation="-195.0,-90.0,-10.0" weapon_length="74" center_of_mass="0.0,0.065,0.05" hit_points="283" modifier_group="shield">
+      <Weapon weapon_class="LargeShield" body_armor="2" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="87" physics_material="wood_shield" item_usage="hand_shield" position="-0.02, 0.0, 0.0" rotation="-195.0,-90.0,-10.0" weapon_length="74" center_of_mass="0.0,0.065,0.05" hit_points="670" modifier_group="shield">
         <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
       </Weapon>
     </ItemComponent>
@@ -2047,5 +2047,165 @@
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="false" HeldInOffHand="true" ForceAttachOffHandPrimaryItemBone="true" />
+  </Item>
+  <Item id="crpg_hand_pavise_h0" name="{=}Hand Pavise" body_name="bo_cap_hand_pavise" shield_body_name="bo_hand_pavise" recalculate_body="false" mesh="handpavise" culture="Culture.battania" using_tableau="false" weight="6.125" appearance="1.1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0.1,0">
+    <ItemComponent>
+      <Weapon weapon_class="LargeShield" body_armor="4" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.05, -0.06, -0.02" rotation="10.0,20.0,90.0" weapon_length="70" center_of_mass="0.0,0.065,0.05" hit_points="550" modifier_group="shield">
+        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags WoodenParry="true" ForceAttachOffHandSecondaryItemBone="true" HeldInOffHand="true" />
+  </Item>
+  <Item id="crpg_hand_pavise_h1" name="{=}Hand Pavise +1" body_name="bo_cap_hand_pavise" shield_body_name="bo_hand_pavise" recalculate_body="false" mesh="handpavise" culture="Culture.battania" using_tableau="false" weight="6.125" appearance="1.1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0.1,0">
+    <ItemComponent>
+      <Weapon weapon_class="LargeShield" body_armor="5" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.05, -0.06, -0.02" rotation="10.0,20.0,90.0" weapon_length="70" center_of_mass="0.0,0.065,0.05" hit_points="594" modifier_group="shield">
+        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags WoodenParry="true" ForceAttachOffHandSecondaryItemBone="true" HeldInOffHand="true" />
+  </Item>
+  <Item id="crpg_hand_pavise_h2" name="{=}Hand Pavise +2" body_name="bo_cap_hand_pavise" shield_body_name="bo_hand_pavise" recalculate_body="false" mesh="handpavise" culture="Culture.battania" using_tableau="false" weight="6.125" appearance="1.1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0.1,0">
+    <ItemComponent>
+      <Weapon weapon_class="LargeShield" body_armor="5" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.05, -0.06, -0.02" rotation="10.0,20.0,90.0" weapon_length="70" center_of_mass="0.0,0.065,0.05" hit_points="638" modifier_group="shield">
+        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags WoodenParry="true" ForceAttachOffHandSecondaryItemBone="true" HeldInOffHand="true" />
+  </Item>
+  <Item id="crpg_hand_pavise_h3" name="{=}Hand Pavise +3" body_name="bo_cap_hand_pavise" shield_body_name="bo_hand_pavise" recalculate_body="false" mesh="handpavise" culture="Culture.battania" using_tableau="false" weight="6.125" appearance="1.1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0.1,0">
+    <ItemComponent>
+      <Weapon weapon_class="LargeShield" body_armor="5" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.05, -0.06, -0.02" rotation="10.0,20.0,90.0" weapon_length="70" center_of_mass="0.0,0.065,0.05" hit_points="682" modifier_group="shield">
+        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags WoodenParry="true" ForceAttachOffHandSecondaryItemBone="true" HeldInOffHand="true" />
+  </Item>
+  <Item id="crpg_hand_pavise_red_h0" name="{=}Decorated Hand Pavise" body_name="bo_cap_hand_pavise" shield_body_name="bo_hand_pavise" recalculate_body="false" mesh="handpavise_red" culture="Culture.battania" using_tableau="false" weight="6.125" appearance="1.1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0.1,0">
+    <ItemComponent>
+      <Weapon weapon_class="LargeShield" body_armor="4" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.05, -0.06, -0.02" rotation="10.0,20.0,90.0" weapon_length="70" center_of_mass="0.0,0.065,0.05" hit_points="550" modifier_group="shield">
+        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags WoodenParry="true" ForceAttachOffHandSecondaryItemBone="true" HeldInOffHand="true" />
+  </Item>
+  <Item id="crpg_hand_pavise_red_h1" name="{=}Decorated Hand Pavise +1" body_name="bo_cap_hand_pavise" shield_body_name="bo_hand_pavise" recalculate_body="false" mesh="handpavise_red" culture="Culture.battania" using_tableau="false" weight="6.125" appearance="1.1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0.1,0">
+    <ItemComponent>
+      <Weapon weapon_class="LargeShield" body_armor="5" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.05, -0.06, -0.02" rotation="10.0,20.0,90.0" weapon_length="70" center_of_mass="0.0,0.065,0.05" hit_points="594" modifier_group="shield">
+        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags WoodenParry="true" ForceAttachOffHandSecondaryItemBone="true" HeldInOffHand="true" />
+  </Item>
+  <Item id="crpg_hand_pavise_red_h2" name="{=}Decorated Hand Pavise +2" body_name="bo_cap_hand_pavise" shield_body_name="bo_hand_pavise" recalculate_body="false" mesh="handpavise_red" culture="Culture.battania" using_tableau="false" weight="6.125" appearance="1.1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0.1,0">
+    <ItemComponent>
+      <Weapon weapon_class="LargeShield" body_armor="5" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.05, -0.06, -0.02" rotation="10.0,20.0,90.0" weapon_length="70" center_of_mass="0.0,0.065,0.05" hit_points="638" modifier_group="shield">
+        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags WoodenParry="true" ForceAttachOffHandSecondaryItemBone="true" HeldInOffHand="true" />
+  </Item>
+  <Item id="crpg_hand_pavise_red_h3" name="{=}Decorated Hand Pavise +3" body_name="bo_cap_hand_pavise" shield_body_name="bo_hand_pavise" recalculate_body="false" mesh="handpavise_red" culture="Culture.battania" using_tableau="false" weight="6.125" appearance="1.1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0.1,0">
+    <ItemComponent>
+      <Weapon weapon_class="LargeShield" body_armor="5" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.05, -0.06, -0.02" rotation="10.0,20.0,90.0" weapon_length="70" center_of_mass="0.0,0.065,0.05" hit_points="682" modifier_group="shield">
+        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags WoodenParry="true" ForceAttachOffHandSecondaryItemBone="true" HeldInOffHand="true" />
+  </Item>
+  <Item id="crpg_hand_pavise_pattern1_h0" name="{=}Striped Hand Pavise" body_name="bo_cap_hand_pavise" shield_body_name="bo_hand_pavise" recalculate_body="false" mesh="handpavise_pattern1" culture="Culture.battania" using_tableau="true" weight="6.125" appearance="1.1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0.1,0">
+    <ItemComponent>
+      <Weapon weapon_class="LargeShield" body_armor="4" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.05, -0.06, -0.02" rotation="10.0,20.0,90.0" weapon_length="70" center_of_mass="0.0,0.065,0.05" hit_points="550" modifier_group="shield">
+        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags WoodenParry="true" ForceAttachOffHandSecondaryItemBone="true" HeldInOffHand="true" />
+  </Item>
+  <Item id="crpg_hand_pavise_pattern1_h1" name="{=}Striped Hand Pavise +1" body_name="bo_cap_hand_pavise" shield_body_name="bo_hand_pavise" recalculate_body="false" mesh="handpavise_pattern1" culture="Culture.battania" using_tableau="true" weight="6.125" appearance="1.1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0.1,0">
+    <ItemComponent>
+      <Weapon weapon_class="LargeShield" body_armor="5" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.05, -0.06, -0.02" rotation="10.0,20.0,90.0" weapon_length="70" center_of_mass="0.0,0.065,0.05" hit_points="594" modifier_group="shield">
+        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags WoodenParry="true" ForceAttachOffHandSecondaryItemBone="true" HeldInOffHand="true" />
+  </Item>
+  <Item id="crpg_hand_pavise_pattern1_h2" name="{=}Striped Hand Pavise +2" body_name="bo_cap_hand_pavise" shield_body_name="bo_hand_pavise" recalculate_body="false" mesh="handpavise_pattern1" culture="Culture.battania" using_tableau="true" weight="6.125" appearance="1.1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0.1,0">
+    <ItemComponent>
+      <Weapon weapon_class="LargeShield" body_armor="5" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.05, -0.06, -0.02" rotation="10.0,20.0,90.0" weapon_length="70" center_of_mass="0.0,0.065,0.05" hit_points="638" modifier_group="shield">
+        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags WoodenParry="true" ForceAttachOffHandSecondaryItemBone="true" HeldInOffHand="true" />
+  </Item>
+  <Item id="crpg_hand_pavise_pattern1_h3" name="{=}Striped Hand Pavise +3" body_name="bo_cap_hand_pavise" shield_body_name="bo_hand_pavise" recalculate_body="false" mesh="handpavise_pattern1" culture="Culture.battania" using_tableau="true" weight="6.125" appearance="1.1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0.1,0">
+    <ItemComponent>
+      <Weapon weapon_class="LargeShield" body_armor="5" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.05, -0.06, -0.02" rotation="10.0,20.0,90.0" weapon_length="70" center_of_mass="0.0,0.065,0.05" hit_points="682" modifier_group="shield">
+        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags WoodenParry="true" ForceAttachOffHandSecondaryItemBone="true" HeldInOffHand="true" />
+  </Item>
+  <Item id="crpg_hand_pavise_pattern2_h0" name="{=}Stripe Decorated Hand Pavise" body_name="bo_cap_hand_pavise" shield_body_name="bo_hand_pavise" recalculate_body="false" mesh="handpavise_pattern2" culture="Culture.battania" using_tableau="true" weight="6.125" appearance="1.1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0.1,0">
+    <ItemComponent>
+      <Weapon weapon_class="LargeShield" body_armor="4" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.05, -0.06, -0.02" rotation="10.0,20.0,90.0" weapon_length="70" center_of_mass="0.0,0.065,0.05" hit_points="550" modifier_group="shield">
+        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags WoodenParry="true" ForceAttachOffHandSecondaryItemBone="true" HeldInOffHand="true" />
+  </Item>
+  <Item id="crpg_hand_pavise_pattern2_h1" name="{=}Stripe Decorated Hand Pavise +1" body_name="bo_cap_hand_pavise" shield_body_name="bo_hand_pavise" recalculate_body="false" mesh="handpavise_pattern2" culture="Culture.battania" using_tableau="true" weight="6.125" appearance="1.1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0.1,0">
+    <ItemComponent>
+      <Weapon weapon_class="LargeShield" body_armor="5" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.05, -0.06, -0.02" rotation="10.0,20.0,90.0" weapon_length="70" center_of_mass="0.0,0.065,0.05" hit_points="594" modifier_group="shield">
+        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags WoodenParry="true" ForceAttachOffHandSecondaryItemBone="true" HeldInOffHand="true" />
+  </Item>
+  <Item id="crpg_hand_pavise_pattern2_h2" name="{=}Stripe Decorated Hand Pavise +2" body_name="bo_cap_hand_pavise" shield_body_name="bo_hand_pavise" recalculate_body="false" mesh="handpavise_pattern2" culture="Culture.battania" using_tableau="true" weight="6.125" appearance="1.1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0.1,0">
+    <ItemComponent>
+      <Weapon weapon_class="LargeShield" body_armor="5" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.05, -0.06, -0.02" rotation="10.0,20.0,90.0" weapon_length="70" center_of_mass="0.0,0.065,0.05" hit_points="638" modifier_group="shield">
+        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags WoodenParry="true" ForceAttachOffHandSecondaryItemBone="true" HeldInOffHand="true" />
+  </Item>
+  <Item id="crpg_hand_pavise_pattern2_h3" name="{=}Stripe Decorated Hand Pavise +3" body_name="bo_cap_hand_pavise" shield_body_name="bo_hand_pavise" recalculate_body="false" mesh="handpavise_pattern2" culture="Culture.battania" using_tableau="true" weight="6.125" appearance="1.1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="0.0,0.1,0">
+    <ItemComponent>
+      <Weapon weapon_class="LargeShield" body_armor="5" thrust_speed="82" thrust_damage="5" thrust_damage_type="Blunt" speed_rating="82" physics_material="wood_shield" item_usage="shield" position="0.05, -0.06, -0.02" rotation="10.0,20.0,90.0" weapon_length="70" center_of_mass="0.0,0.065,0.05" hit_points="682" modifier_group="shield">
+        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags WoodenParry="true" ForceAttachOffHandSecondaryItemBone="true" HeldInOffHand="true" />
+  </Item>
+  <Item id="crpg_pavise_h0" name="{=}Pavise" body_name="bo_cap_pavise_shield" shield_body_name="bo_pavise_shield" recalculate_body="false" mesh="pavise" culture="Culture.vlandia" using_tableau="true" weight="4.113909" appearance="0.7" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,-0.025">
+    <ItemComponent>
+      <Weapon weapon_class="LargeShield" body_armor="1" thrust_speed="80" thrust_damage_type="Blunt" speed_rating="80" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="118" center_of_mass="0.0,0.1,0.1" hit_points="130" modifier_group="shield">
+        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
+  </Item>
+  <Item id="crpg_pavise_h1" name="{=}Pavise +1" body_name="bo_cap_pavise_shield" shield_body_name="bo_pavise_shield" recalculate_body="false" mesh="pavise" culture="Culture.vlandia" using_tableau="true" weight="4.113909" appearance="0.7" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,-0.025">
+    <ItemComponent>
+      <Weapon weapon_class="LargeShield" body_armor="2" thrust_speed="80" thrust_damage_type="Blunt" speed_rating="80" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="118" center_of_mass="0.0,0.1,0.1" hit_points="141" modifier_group="shield">
+        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
+  </Item>
+  <Item id="crpg_pavise_h2" name="{=}Pavise +2" body_name="bo_cap_pavise_shield" shield_body_name="bo_pavise_shield" recalculate_body="false" mesh="pavise" culture="Culture.vlandia" using_tableau="true" weight="4.113909" appearance="0.7" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,-0.025">
+    <ItemComponent>
+      <Weapon weapon_class="LargeShield" body_armor="2" thrust_speed="80" thrust_damage_type="Blunt" speed_rating="80" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="118" center_of_mass="0.0,0.1,0.1" hit_points="151" modifier_group="shield">
+        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
+  </Item>
+  <Item id="crpg_pavise_h3" name="{=}Pavise +3" body_name="bo_cap_pavise_shield" shield_body_name="bo_pavise_shield" recalculate_body="false" mesh="pavise" culture="Culture.vlandia" using_tableau="true" weight="4.113909" appearance="0.7" Type="Shield" item_holsters="shield:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,-0.025">
+    <ItemComponent>
+      <Weapon weapon_class="LargeShield" body_armor="2" thrust_speed="80" thrust_damage_type="Blunt" speed_rating="80" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="118" center_of_mass="0.0,0.1,0.1" hit_points="162" modifier_group="shield">
+        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
 </Items>

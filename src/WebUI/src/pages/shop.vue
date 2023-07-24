@@ -193,6 +193,7 @@ const newItemCount = computed(
       sticky-header
       :detailed="isUpgradableCategory"
       detailKey="id"
+      customRowKey="id"
     >
       <OTableColumn field="compare" :width="36">
         <template #header>
@@ -252,7 +253,7 @@ const newItemCount = computed(
       </OTableColumn>
 
       <OTableColumn
-        v-for="field in (Object.keys(aggregationsConfigVisible) as Array<keyof ItemFlat>)"
+        v-for="field in Object.keys(aggregationsConfigVisible) as Array<keyof ItemFlat>"
         :field="field"
         :width="aggregationsConfigVisible[field]?.width ?? 140"
         :thAttrs="
@@ -289,7 +290,7 @@ const newItemCount = computed(
           >
             <template v-if="field === 'price'" #default="{ rawBuckets }">
               <ShopGridItemBuyBtn
-                :price="(rawBuckets as number)"
+                :price="rawBuckets as number"
                 :upkeep="item.upkeep"
                 :inInventory="userItemsIds.includes(item.id)"
                 :notEnoughGold="userStore.user!.gold < item.price"

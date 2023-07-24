@@ -68,8 +68,8 @@ const onDeleteCharacter = async () => {
   userStore.fetchCharacters();
 };
 
-const onActivateCharacter = async (id: number) => {
-  await activateCharacter(id, true);
+const onActivateCharacter = async (id: number, status: boolean) => {
+  await activateCharacter(id, status);
   await userStore.fetchUser();
 
   notify(t('character.settings.update.notify.success'));
@@ -157,8 +157,8 @@ if (userStore.characters.length === 0) {
             >
               <CharacterSelectItem
                 :character="char"
-                :isCharacterActive="user!.activeCharacterId === char.id"
-                @activate="onActivateCharacter(char.id)"
+                :modelValue="user!.activeCharacterId === char.id"
+                @update:modelValue="(val: boolean) => onActivateCharacter(char.id, val)"
               />
             </DropdownItem>
 

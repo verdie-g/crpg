@@ -36,18 +36,26 @@ internal class CrpgScoreboardComponent : MissionScoreboardComponent
         }
 
         affectorAgent = affectorAgent.IsMount ? affectorAgent.RiderAgent : affectorAgent;
-        affectedAgent = affectedAgent.IsMount ? affectedAgent.RiderAgent : affectedAgent;
-
-        var affectorCrpgUser = affectorAgent?.MissionPeer?.GetComponent<CrpgPeer>()?.User;
-        var affectedCrpgUser = affectedAgent?.MissionPeer?.GetComponent<CrpgPeer>()?.User;
-        if (affectorCrpgUser == null || affectedCrpgUser == null)
+        bool affectedAgentIsMount = affectedAgent.IsMount;
+        affectedAgent = affectedAgentIsMount ? affectedAgent.RiderAgent : affectedAgent;
+        if (affectedAgent == null)
         {
             return;
         }
 
-        const float ratingToScoreScaler = 0.001f;
-        float rating = affectedCrpgUser.Character.Rating.Value - 2 * affectedCrpgUser.Character.Rating.Deviation;
-        float ratingFactor = rating * ratingToScoreScaler * CrpgRatingHelper.ComputeRegionRatingPenalty(affectedCrpgUser.Region);
+        float ratingFactor;
+        var affectedCrpgUser = affectedAgent.MissionPeer?.GetComponent<CrpgPeer>()?.User;
+        if (affectedCrpgUser == null)
+        {
+            // The affected agent is probably a bot.
+            ratingFactor = 0.8f;
+        }
+        else
+        {
+            const float ratingToScoreScaler = 0.001f;
+            float rating = affectedCrpgUser.Character.Rating.Value - 2 * affectedCrpgUser.Character.Rating.Deviation;
+            ratingFactor = rating * ratingToScoreScaler * CrpgRatingHelper.ComputeRegionRatingPenalty(affectedCrpgUser.Region);
+        }
 
         float score = damagedHp * ratingFactor;
         if (isBlocked)
@@ -59,7 +67,7 @@ internal class CrpgScoreboardComponent : MissionScoreboardComponent
 
             score = collisionData.InflictedDamage * 0.3f;
         }
-        else if (affectedAgent!.IsMount)
+        else if (affectedAgentIsMount)
         {
             score = damagedHp * 0.45f;
         }
@@ -69,14 +77,21 @@ internal class CrpgScoreboardComponent : MissionScoreboardComponent
             return;
         }
 
-        var affectorMissionPeer = affectorAgent!.MissionPeer!;
-        score = affectorAgent.IsFriendOf(affectedAgent) ? score * -1.5f : score;
-        ReflectionHelper.SetProperty(affectorMissionPeer, nameof(affectorMissionPeer.Score), (int)(affectorMissionPeer.Score + score));
+        var affectorMissionPeer = affectorAgent?.MissionPeer;
+        if (affectorMissionPeer != null)
+        {
+            score = affectorAgent!.IsFriendOf(affectedAgent) ? score * -1.5f : score;
+            ReflectionHelper.SetProperty(
+                affectorMissionPeer,
+                nameof(affectorMissionPeer.Score),
+                (int)(affectorMissionPeer.Score + score));
 
-        GameNetwork.BeginBroadcastModuleEvent();
-        GameNetwork.WriteMessage(new KillDeathCountChange(affectorMissionPeer.GetNetworkPeer(),
-            null, affectorMissionPeer.KillCount, affectorMissionPeer.AssistCount, affectorMissionPeer.DeathCount, affectorMissionPeer.Score));
-        GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
+            GameNetwork.BeginBroadcastModuleEvent();
+            GameNetwork.WriteMessage(new KillDeathCountChange(affectorMissionPeer.GetNetworkPeer(),
+                null, affectorMissionPeer.KillCount, affectorMissionPeer.AssistCount, affectorMissionPeer.DeathCount,
+                affectorMissionPeer.Score));
+            GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
+        }
 #endif
     }
 

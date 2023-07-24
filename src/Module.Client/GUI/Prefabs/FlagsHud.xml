@@ -1,0 +1,48 @@
+﻿<Prefab>
+  <Constants>
+  </Constants>
+  <Window>
+    <ListPanel WidthSizePolicy="CoverChildren"
+               HeightSizePolicy="CoverChildren">
+      <Children>
+
+        <Widget WidthSizePolicy="Fixed"
+                HeightSizePolicy="CoverChildren"
+                SuggestedWidth="150"
+                MarginRight="25">
+          <Children>
+            <ListPanel DataSource="{AllyControlPoints}"
+                       WidthSizePolicy="CoverChildren"
+                       HeightSizePolicy="CoverChildren"
+                       HorizontalAlignment="Right">
+              <ItemTemplate>
+                <HUDExtensionFlag />
+              </ItemTemplate>
+            </ListPanel>
+          </Children>
+        </Widget>
+
+        <ListPanel DataSource="{NeutralControlPoints}"
+                   WidthSizePolicy="Fixed"
+                   HeightSizePolicy="CoverChildren"
+                   SuggestedWidth="150"
+                   StackLayout.LayoutMethod="HorizontalCentered">
+          <ItemTemplate>
+            <HUDExtensionFlag />
+          </ItemTemplate>
+        </ListPanel>
+
+        <ListPanel DataSource="{EnemyControlPoints}"
+                   WidthSizePolicy="Fixed"
+                   HeightSizePolicy="CoverChildren"
+                   SuggestedWidth="150"
+                   MarginLeft="25">
+          <ItemTemplate>
+            <HUDExtensionFlag />
+          </ItemTemplate>
+        </ListPanel>
+
+      </Children>
+    </ListPanel>
+  </Window>
+</Prefab>

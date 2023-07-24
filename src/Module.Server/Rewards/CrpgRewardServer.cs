@@ -433,7 +433,6 @@ internal class CrpgRewardServer : MissionLogic
             if (_lastRewardDuringHappyHours)
             {
                 GameNetwork.BeginBroadcastModuleEvent();
-                GameNetwork.BeginBroadcastModuleEvent();
                 GameNetwork.WriteMessage(new CrpgRewardHappyHour { Started = false });
                 GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
             }

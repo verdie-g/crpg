@@ -271,122 +271,146 @@ it.each<[ItemType, WeaponClass[]]>([
 
 describe('humanizeBucket', () => {
   it.each<[keyof ItemFlat, any, HumanBucket]>([
-    ['type', null, { icon: null, label: '', description: null }],
+    ['type', null, { label: '', icon: null, tooltip: null }],
     [
       'type',
       ItemType.OneHandedWeapon,
       {
-        icon: { name: 'item-type-one-handed-weapon', type: IconBucketType.Svg },
         label: 'item.type.OneHandedWeapon',
-        description: null,
+        icon: { name: 'item-type-one-handed-weapon', type: IconBucketType.Svg },
+        tooltip: null,
       },
     ],
     [
       'weaponClass',
       WeaponClass.OneHandedPolearm,
       {
-        icon: { name: 'weapon-class-one-handed-polearm', type: IconBucketType.Svg },
         label: 'item.weaponClass.OneHandedPolearm',
-        description: null,
+        icon: { name: 'weapon-class-one-handed-polearm', type: IconBucketType.Svg },
+        tooltip: null,
       },
     ],
     [
       'damageType',
       DamageType.Cut,
       {
-        icon: { name: 'damage-type-cut', type: IconBucketType.Svg },
         label: 'item.damageType.Cut.long',
-        description: null,
+        icon: { name: 'damage-type-cut', type: IconBucketType.Svg },
+        tooltip: {
+          title: 'item.damageType.Cut.title',
+          description: 'item.damageType.Cut.description',
+        },
       },
     ],
     [
       'culture',
       Culture.Vlandia,
       {
-        icon: { name: 'culture-vlandia', type: IconBucketType.Asset },
         label: 'item.culture.Vlandia',
-        description: null,
+        icon: { name: 'culture-vlandia', type: IconBucketType.Asset },
+        tooltip: {
+          title: 'item.culture.Vlandia',
+          description: null,
+        },
       },
     ],
     [
       'mountArmorFamilyType',
       ItemFamilyType.Horse,
       {
-        icon: { name: 'mount-type-horse', type: IconBucketType.Svg },
         label: 'item.familyType.1.title',
-        description: 'item.familyType.1.description',
+        icon: { name: 'mount-type-horse', type: IconBucketType.Svg },
+        tooltip: {
+          title: 'item.familyType.1.title',
+          description: 'item.familyType.1.description',
+        },
       },
     ],
     [
       'mountFamilyType',
       ItemFamilyType.Camel,
       {
-        icon: { name: 'mount-type-camel', type: IconBucketType.Svg },
         label: 'item.familyType.2.title',
-        description: 'item.familyType.2.description',
+        icon: { name: 'mount-type-camel', type: IconBucketType.Svg },
+        tooltip: {
+          title: 'item.familyType.2.title',
+          description: 'item.familyType.2.description',
+        },
       },
     ],
     [
       'armorFamilyType',
       ItemFamilyType.EBA,
       {
-        icon: null,
         label: 'item.familyType.3.title',
-        description: 'item.familyType.3.description',
+        icon: null,
+        tooltip: {
+          title: 'item.familyType.3.title',
+          description: 'item.familyType.3.description',
+        },
       },
     ],
     [
       'flags',
       ItemFlags.DropOnWeaponChange,
       {
-        icon: { name: 'item-flag-drop-on-change', type: IconBucketType.Svg },
         label: 'item.flags.DropOnWeaponChange',
-        description: null,
+        icon: { name: 'item-flag-drop-on-change', type: IconBucketType.Svg },
+        tooltip: {
+          title: 'item.flags.DropOnWeaponChange',
+          description: null,
+        },
       },
     ],
     [
       'flags',
       WeaponFlags.CanDismount,
       {
-        icon: { name: 'item-flag-can-dismount', type: IconBucketType.Svg },
         label: 'item.weaponFlags.CanDismount',
-        description: null,
+        icon: { name: 'item-flag-can-dismount', type: IconBucketType.Svg },
+        tooltip: {
+          title: 'item.weaponFlags.CanDismount',
+          description: null,
+        },
       },
     ],
     [
       'flags',
       ItemUsage.PolearmBracing,
       {
-        icon: { name: 'item-flag-brace', type: IconBucketType.Svg },
         label: 'item.usage.polearm_bracing',
-        description: null,
+        icon: { name: 'item-flag-brace', type: IconBucketType.Svg },
+        tooltip: {
+          title: 'item.usage.polearm_bracing',
+          description: null,
+        },
       },
     ],
     [
       'requirement',
       18,
       {
-        icon: null,
         label: 'item.requirementFormat',
-        description: null,
+        icon: null,
+        tooltip: null,
       },
     ],
     [
       'price',
       1234,
       {
-        icon: null,
         label: '1234',
-        description: null,
+        icon: null,
+        tooltip: null,
       },
     ],
     [
       'handling',
       12,
       {
-        icon: null,
         label: '12',
-        description: null,
+        icon: null,
+        tooltip: null,
       },
     ],
   ])('aggKey: %s, bucket: %s ', (aggKey, bucket, expectation) => {
@@ -399,9 +423,12 @@ describe('humanizeBucket', () => {
     };
 
     expect(humanizeBucket('swingDamage', 10, item as ItemFlat)).toEqual({
-      icon: null,
       label: 'item.damageTypeFormat',
-      description: null,
+      icon: null,
+      tooltip: {
+        title: 'item.damageType.Cut.title',
+        description: 'item.damageType.Cut.description',
+      },
     });
   });
 
@@ -409,9 +436,9 @@ describe('humanizeBucket', () => {
     const item: Partial<ItemFlat> = {};
 
     expect(humanizeBucket('thrustDamage', 0, item as ItemFlat)).toEqual({
-      icon: null,
       label: '0',
-      description: null,
+      icon: null,
+      tooltip: null,
     });
   });
 });
