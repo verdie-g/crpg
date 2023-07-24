@@ -49,20 +49,3 @@ export const getToken = async () => {
   const user = await userManager.getUser();
   return extractToken(user);
 };
-
-export const getDecodedToken = async (): Promise<TokenPayload | null> => {
-  const token = await getToken();
-
-  if (token === null) {
-    return null;
-  }
-
-  const payload = parseJwt(token);
-
-  return {
-    userId: parseInt(payload.sub, 10),
-    userRole: payload.role,
-    expiration: new Date(payload.exp * 1000),
-    issuedAt: new Date(payload.iat * 1000),
-  };
-};
