@@ -2610,10 +2610,10 @@
     <Equipments>
       <EquipmentRoster>
         <equipment slot="Head" id="Item.crpg_sallet_base_v2_h0" />
-        <equipment slot="Cape" id="Item.crpg_swadian_shoulders_v1_h0" />
-        <equipment slot="Body" id="Item.crpg_sa_1ChurburghTorso_v1_h0" />
-        <equipment slot="Gloves" id="Item.crpg_sa_1ChurburghGauntlet_v1_h0" />
-        <equipment slot="Leg" id="Item.crpg_sa_1ChurburghBoots_v1_h0" />
+        <equipment slot="Cape" id="Item.crpg_swadian_shoulders_v2_h0" />
+        <equipment slot="Body" id="Item.crpg_sa_1ChurburghTorso_v2_h0" />
+        <equipment slot="Gloves" id="Item.crpg_sa_1ChurburghGauntlet_v2_h0" />
+        <equipment slot="Leg" id="Item.crpg_sa_1ChurburghBoots_v2_h0" />
         <equipment slot="Horse" id="Item.crpg_mount_greathorse_15_h0" />
         <equipment slot="HorseHarness" id="Item.crpg_imperial_scale_barding_h0" />
         <equipment slot="Item0" id="Item.crpg_decorated_demilance_h0" />
