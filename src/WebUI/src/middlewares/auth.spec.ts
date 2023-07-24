@@ -3,12 +3,17 @@ import { ErrorResponse } from 'oidc-client-ts';
 import Role from '@/models/role';
 import { getRoute, next } from '@/__mocks__/router';
 
-const mockedSignInCallback = vi.fn();
+const { mockedSignInCallback, mockedGetUser } = vi.hoisted(() => ({
+  mockedSignInCallback: vi.fn(),
+  mockedGetUser: vi.fn(),
+}));
+
 vi.mock('@/services/auth-service', () => {
   return {
     userManager: {
       signinCallback: mockedSignInCallback,
     },
+    getUser: mockedGetUser,
   };
 });
 
@@ -23,7 +28,7 @@ beforeEach(() => {
 
 const from = getRoute();
 
-it('skip any route validation', async () => {
+it('skip route validation', async () => {
   const to = getRoute({
     name: 'skip-auth-route',
     path: '/skip-auth-route',
@@ -44,16 +49,22 @@ describe('route not requires any role', () => {
     path: '/user',
   });
 
-  it('!user - no token -> TODO:', async () => {
+  it('!userStore && !isSignIn', async () => {
+    mockedGetUser.mockResolvedValueOnce(null);
+
     expect(await authRouterMiddleware(to, from, next)).toEqual(true);
 
     expect(userStore.fetchUser).not.toBeCalled();
+    expect(mockedGetUser).toBeCalled();
   });
 
-  it('!user - has token -> TODO:', async () => {
+  it('!userStore && isSignIn', async () => {
+    mockedGetUser.mockResolvedValueOnce({});
+
     expect(await authRouterMiddleware(to, from, next)).toEqual(true);
 
     expect(userStore.fetchUser).toBeCalled();
+    expect(mockedGetUser).toBeCalled();
   });
 });
 
@@ -66,16 +77,18 @@ describe('route requires role', () => {
     },
   });
 
-  it('!user + no token -> go to index page', async () => {
+  it('!user + !isSignIn -> go to index page', async () => {
     expect(await authRouterMiddleware(to, from, next)).toEqual({ name: 'Root' });
+    expect(userStore.fetchUser).toBeCalled();
+    expect(mockedGetUser).toBeCalled();
   });
 
   it('user with role:User -> validation passed', async () => {
-    // userStore.user = getUser({ role: Role.User });
     userStore.$patch({ user: { role: Role.User } });
 
     expect(await authRouterMiddleware(to, from, next)).toEqual(true);
     expect(userStore.fetchUser).not.toBeCalled();
+    expect(mockedGetUser).not.toBeCalled();
   });
 });
 
