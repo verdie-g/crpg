@@ -1856,6 +1856,177 @@
     </Equipments>
   </NPCCharacter>
 
+  <NPCCharacter id="crpg_dtv_aserai_warrior"
+              name="{=}Aserai Warrior">
+    <face>
+      <BodyProperties version="4"
+                      age="22.09"
+                      weight="0.4838"
+                      build="0.5235"
+                      key="0039A40D9AFC34459764A699BA9A5686EFEE8CAA785539E878597B887BAFFDAE0098760309D886830000000000000000000000000000000000000000393C9042"  />
+    </face>
+    <skills>
+      <skill id="Strength" value="15" />
+      <skill id="Agility" value=" 18" />
+      <skill id="IronFlesh" value="5" />
+      <skill id="PowerStrike" value="5" />
+      <skill id="PowerDraw" value="0" />
+      <skill id="PowerThrow" value="0" />
+      <skill id="Athletics" value="156" />
+      <skill id="Riding" value="0" />
+      <skill id="WeaponMaster" value="6" />
+      <skill id="MountedArchery" value="0" />
+      <skill id="Shield" value="3" />
+      <skill id="OneHanded" value="163" />
+      <skill id="TwoHanded" value="0" />
+      <skill id="Polearm" value="0" />
+      <skill id="Bow" value="0" />
+      <skill id="Crossbow" value="0" />
+      <skill id="Throwing" value="0" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Head" id="Item.crpg_closed_desert_helmet_v1_h0" />
+        <equipment slot="Cape" id="Item.crpg_leopard_pelt_v1_h0" />
+        <equipment slot="Body" id="Item.crpg_layered_robe_v1_h0" />
+        <equipment slot="Gloves" id="Item.crpg_guarded_padded_vambrace_v1_h0" />
+        <equipment slot="Leg" id="Item.crpg_leather_cavalier_boots_v1_h0" />
+        <equipment slot="Item0" id="Item.crpg_heavy_horsemans_mace_h0" />
+        <equipment slot="Item1" id="Item.crpg_large_adarga_v2_h0" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+
+  <NPCCharacter id="crpg_dtv_aserai_archer"
+              name="{=}Aserai Archer">
+    <face>
+      <BodyProperties version="4"
+                      age="22.09"
+                      weight="0.2981"
+                      build="0.2759"
+                      key="0029680D80E411859864823D7585A656EFEE596B4C55366E78597B887BAFFDAE0094460309D886830000000000000000000000000000000000000000393C2042"  />
+    </face>
+    <skills>
+      <skill id="Strength" value="15" />
+      <skill id="Agility" value="18" />
+      <skill id="IronFlesh" value="5" />
+      <skill id="PowerStrike" value="4" />
+      <skill id="PowerDraw" value="5" />
+      <skill id="PowerThrow" value="0" />
+      <skill id="Athletics" value="156" />
+      <skill id="Riding" value="0" />
+      <skill id="WeaponMaster" value="6" />
+      <skill id="MountedArchery" value="0" />
+      <skill id="Shield" value="0" />
+      <skill id="OneHanded" value="69" />
+      <skill id="TwoHanded" value="0" />
+      <skill id="Polearm" value="0" />
+      <skill id="Bow" value="146" />
+      <skill id="Crossbow" value="0" />
+      <skill id="Throwing" value="0" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Head" id="Item.crpg_open_head_scarf_v1_h0" />
+        <equipment slot="Cape" id="Item.crpg_leopard_pelt_v1_h0" />
+        <equipment slot="Body" id="Item.ccrpg_eastern_silk_clothing_v1_h0" />
+        <equipment slot="Gloves" id="Item.crpg_guarded_padded_vambrace_v1_h0" />
+        <equipment slot="Leg" id="Item.crpg_leather_cavalier_boots_v1_h0" />
+        <equipment slot="Item0" id="Item.rpg_steppe_bow_h0" />
+        <equipment slot="Item1" id="Item.crpg_fine_steel_scimitar_h0" />
+        <equipment slot="Item2" id="Item.crpg_light_broad_arrows_h0" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+
+  <NPCCharacter id="crpg_dtv_aserai_camelry"
+              name="{=}Aserai Camelry">
+    <face>
+      <BodyProperties version="4"
+                      age="22.09"
+                      weight="0.2981"
+                      build="0.2759"
+                      key="0029680D80E411859864823D7585A656EFEE596B4C55366E78597B887BAFFDAE0094460309D886830000000000000000000000000000000000000000393C2042"  />
+    </face>
+    <skills>
+      <skill id="Strength" value="15" />
+      <skill id="Agility" value="18" />
+      <skill id="IronFlesh" value="5" />
+      <skill id="PowerStrike" value="5" />
+      <skill id="PowerDraw" value="0" />
+      <skill id="PowerThrow" value="0" />
+      <skill id="Athletics" value="116" />
+      <skill id="Riding" value="120" />
+      <skill id="WeaponMaster" value="6" />
+      <skill id="MountedArchery" value="0" />
+      <skill id="Shield" value="3" />
+      <skill id="OneHanded" value="112" />
+      <skill id="TwoHanded" value="0" />
+      <skill id="Polearm" value="122" />
+      <skill id="Bow" value="0" />
+      <skill id="Crossbow" value="0" />
+      <skill id="Throwing" value="0" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Head" id="Item.crpg_closed_head_scarf_v1_h0" />
+        <equipment slot="Cape" id="Item.crpg_leopard_pelt_v1_h0" />
+        <equipment slot="Body" id="Item.ccrpg_eastern_silk_clothing_v1_h0" />
+        <equipment slot="Gloves" id="Item.crpg_guarded_padded_vambrace_v1_h0" />
+        <equipment slot="Leg" id="Item.crpg_leather_cavalier_boots_v1_h0" />
+        <equipment slot="Horse" id="Item.crpg_mount1_camel_9_h0" />
+        <equipment slot="HorseHarness" id="Item.crpg_camel_saddle_h0" />
+        <equipment slot="Item0" id="Item.crpg_sasanian_light_lance_h0" />
+        <equipment slot="Item1" id="Item.crpg_large_adarga_v2_h0" />
+        <equipment slot="Item2" id="Item.crpg_iron_cavalry_scimitar_h0" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+
+  <NPCCharacter id="crpg_dtv_aserai_boss"
+              name="{=}SalArnDin">
+    <face>
+      <BodyProperties version="4"
+                      age="25"
+                      weight="0.5"
+                      build="0.5"
+                      key="0010940A4E441513FFFEFE0F2FFCED2C3010FF1FF00FF1EED133F6E0EFEFFFFF01B776130B0FBBEF0000000000000000000000000000000000000000217C20C2"  />
+    </face>
+    <skills>
+      <skill id="Strength" value="18" />
+      <skill id="Agility" value="21" />
+      <skill id="IronFlesh" value="6" />
+      <skill id="PowerStrike" value="6" />
+      <skill id="PowerDraw" value="0" />
+      <skill id="PowerThrow" value="0" />
+      <skill id="Athletics" value="156" />
+      <skill id="Riding" value="140" />
+      <skill id="WeaponMaster" value="7" />
+      <skill id="MountedArchery" value="0" />
+      <skill id="Shield" value="3" />
+      <skill id="OneHanded" value="101" />
+      <skill id="TwoHanded" value="0" />
+      <skill id="Polearm" value="153" />
+      <skill id="Bow" value="0" />
+      <skill id="Crossbow" value="0" />
+      <skill id="Throwing" value="0" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Head" id="Item.crpg_emirs_helmet_v1_h0.png" />
+        <equipment slot="Cape" id="Item.crpg_leopard_pelt_v1_h0" />
+        <equipment slot="Body" id="Item.crpg_aserai_robe_c_chain_v1_h0" />
+        <equipment slot="Gloves" id="Item.crpg_decorated_imperial_gauntlets_v1_h0" />
+        <equipment slot="Leg" id="Item.crpg_decorated_imperial_boots_v1_h0" />
+        <equipment slot="Horse" id="Item.crpg_mount1_camel_17_h0" />
+        <equipment slot="HorseHarness" id="Item.crpg_camel_saddle_h0" />
+        <equipment slot="Item0" id="Item.crpg_fine_steel_menavlion_v1_h0" />
+        <equipment slot="Item1" id="Item.crpg_noyans_shield_v2_h0" />
+        <equipment slot="Item2" id="Item.crpg_heavy_horsemans_mace_h0" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+
   <NPCCharacter id="crpg_dtv_legion_soldier"
               name="{=}Legionary">
     <face>
@@ -2388,6 +2559,48 @@
         <equipment slot="Item0" id="Item.crpg_noble_long_bow_h0" />
         <equipment slot="Item1" id="Item.crpg_warhammer_h0" />
         <equipment slot="Item2" id="Item.crpg_piercing_arrows_v1_h0" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+
+  <NPCCharacter id="crpg_dtv_tincan_cavalry"
+            name="{=}Heavy Cavalry">
+    <face>
+      <BodyProperties version="4"
+                      age="23"
+                      weight="0.5"
+                      build="0.5"
+                      key="0015DC008070040F7995296A66AC7A488E743843A9A6871A5ADDC44BC559596701B776130BBD58E300000000000000000000000002FC800400000000317C3144"  />
+    </face>
+    <skills>
+      <skill id="Strength" value="24" />
+      <skill id="Agility" value="18" />
+      <skill id="IronFlesh" value="8" />
+      <skill id="PowerStrike" value="8" />
+      <skill id="PowerDraw" value="0" />
+      <skill id="PowerThrow" value="0" />
+      <skill id="Athletics" value="156" />
+      <skill id="Riding" value="120" />
+      <skill id="WeaponMaster" value="6" />
+      <skill id="MountedArchery" value="0" />
+      <skill id="Shield" value="3" />
+      <skill id="OneHanded" value="100" />
+      <skill id="TwoHanded" value="0" />
+      <skill id="Polearm" value="130" />
+      <skill id="Bow" value="0" />
+      <skill id="Crossbow" value="0" />
+      <skill id="Throwing" value="0" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Head" id="Item.crpg_sallet_base_v2_h0" />
+        <equipment slot="Cape" id="Item.crpg_swadian_shoulders_v1_h0" />
+        <equipment slot="Body" id="Item.crpg_sa_1ChurburghTorso_v1_h0" />
+        <equipment slot="Gloves" id="Item.crpg_sa_1ChurburghGauntlet_v1_h0" />
+        <equipment slot="Leg" id="Item.crpg_sa_1ChurburghBoots_v1_h0" />
+        <equipment slot="Item0" id="Item.crpg_decorated_demilance_h0" />
+        <equipment slot="Item1" id="Item.crpg_fortified_kite_shield_v2_h0" />
+        <equipment slot="Item2" id="Item.crpg_knightly_cavalry_sword_h0" />
       </EquipmentRoster>
     </Equipments>
   </NPCCharacter>
