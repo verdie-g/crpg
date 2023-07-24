@@ -128,7 +128,9 @@ public class TimerHudVm : ViewModel
             return;
         }
 
-        RemainingRoundTime = TimeSpan.FromSeconds(remainingTime).ToString("mm':'ss");
+        int seconds = remainingTime % 60;
+        int minutes = remainingTime / 60;
+        RemainingRoundTime = $"{minutes:D2}:{seconds:D2}";
         WarnRemainingTime = remainingTime <= RemainingTimeWarningThreshold;
         if (GeneralWarningCountdown == remainingWarningTime)
         {

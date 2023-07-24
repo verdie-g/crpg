@@ -13,7 +13,9 @@ using Crpg.Module.Common.ChatCommands;
 #else
 using Crpg.Module.Common.HotConstants;
 using Crpg.Module.GUI;
-using Crpg.Module.GUI.HudExtension;
+using Crpg.Module.GUI.Dtv;
+using Crpg.Module.GUI.Spectator;
+using Crpg.Module.GUI.Warmup;
 using TaleWorlds.MountAndBlade.View;
 using TaleWorlds.MountAndBlade.View.MissionViews;
 #endif
@@ -58,7 +60,9 @@ internal class CrpgDtvGameMode : MissionBasedMultiplayerGameMode
             new MissionItemContourControllerView(), // Draw contour of item on the ground when pressing ALT.
             new MissionAgentContourControllerView(),
             ViewCreator.CreateMissionKillNotificationUIHandler(),
-            new CrpgHudExtensionHandler(),
+            new SpectatorHudUiHandler(),
+            new WarmupHudUiHandler(),
+            new DtvHudUiHandler(),
             ViewCreator.CreateMultiplayerMissionDeathCardUIHandler(),
             ViewCreator.CreateOptionsUIHandler(),
             ViewCreator.CreateMissionMainAgentEquipDropView(mission),
