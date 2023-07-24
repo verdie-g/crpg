@@ -1304,7 +1304,7 @@
       </EquipmentRoster>
     </Equipments>
   </NPCCharacter>
-  
+
   <NPCCharacter id="crpg_dtv_recruit_boss"
             name="{=}Bernard">
     <face>
@@ -1943,7 +1943,7 @@
         <equipment slot="Body" id="Item.crpg_eastern_silk_clothing_v2_h0" />
         <equipment slot="Gloves" id="Item.crpg_guarded_padded_vambrace_v2_h0" />
         <equipment slot="Leg" id="Item.crpg_leather_cavalier_boots_v2_h0" />
-        <equipment slot="Item0" id="Item.rpg_steppe_bow_h0" />
+        <equipment slot="Item0" id="Item.crpg_steppe_bow_h0" />
         <equipment slot="Item1" id="Item.crpg_fine_steel_scimitar_h0" />
         <equipment slot="Item2" id="Item.crpg_light_broad_arrows_h0" />
       </EquipmentRoster>
@@ -2024,7 +2024,7 @@
     </skills>
     <Equipments>
       <EquipmentRoster>
-        <equipment slot="Head" id="Item.crpg_emirs_helmet_v2_h0.png" />
+        <equipment slot="Head" id="Item.crpg_emirs_helmet_v2_h0" />
         <equipment slot="Cape" id="Item.crpg_leopard_pelt_v2_h0" />
         <equipment slot="Body" id="Item.crpg_aserai_robe_c_chain_v2_h0" />
         <equipment slot="Gloves" id="Item.crpg_decorated_imperial_gauntlets_v2_h0" />
@@ -2655,7 +2655,7 @@
       <EquipmentRoster>
         <equipment slot="Head" id="Item.crpg_bl_winged_helmet1_v1_h0" />
         <equipment slot="Cape" id="Item.crpg_noble_pauldron_with_cape_v2_h0" />
-        <equipment slot="Body" id="crpg_15th_heavypalte_1_v1_h0" />
+        <equipment slot="Body" id="Item.crpg_15th_heavypalte_1_v1_h0" />
         <equipment slot="Gloves" id="Item.crpg_sa_1ChurburghGauntlet_v2_h0" />
         <equipment slot="Leg" id="Item.crpg_14_decor_paltedboots_noble1_v1_h0" />
         <equipment slot="Item0" id="Item.crpg_le_bonke_h0" />
