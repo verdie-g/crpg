@@ -2182,8 +2182,8 @@
       <skill id="PowerDraw" value="0" />
       <skill id="PowerThrow" value="0" />
       <skill id="Athletics" value="179" />
-      <skill id="Riding" value="3" />
-      <skill id="WeaponMaster" value="5" />
+      <skill id="Riding" value="160" />
+      <skill id="WeaponMaster" value="8" />
       <skill id="MountedArchery" value="0" />
       <skill id="Shield" value="3" />
       <skill id="OneHanded" value="130" />
