@@ -182,7 +182,9 @@ internal class CrpgBattleServer : MissionMultiplayerGameModeBase
 
     public override void OnAgentBuild(Agent agent, Banner banner)
     {
-        agent.UpdateSyncHealthToAllClients(true); // Why is that needed
+        base.OnAgentBuild(agent, banner);
+        // Synchronize health with all clients to make the spectator health bar work.
+        agent.UpdateSyncHealthToAllClients(true);
     }
 
     public override bool CheckIfOvertime()

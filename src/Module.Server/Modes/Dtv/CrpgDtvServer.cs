@@ -70,6 +70,13 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         missionPeer.Team = Mission.DefenderTeam;
     }
 
+    public override void OnAgentBuild(Agent agent, Banner banner)
+    {
+        base.OnAgentBuild(agent, banner);
+        // Synchronize health with all clients to make the spectator health bar work.
+        agent.UpdateSyncHealthToAllClients(true);
+    }
+
     public override void OnMissionTick(float dt)
     {
         base.OnMissionTick(dt);
