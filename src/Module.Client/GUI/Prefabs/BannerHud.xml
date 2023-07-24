@@ -1,0 +1,22 @@
+﻿<Prefab>
+  <Constants>
+  </Constants>
+  <Window>
+    <Widget Sprite="BlankWhiteCircle">
+      <Children>
+        <MaskedTextureWidget DataSource="{Banner}"
+                             WidthSizePolicy="Fixed"
+                             HeightSizePolicy="Fixed"
+                             SuggestedWidth="48"
+                             SuggestedHeight="48"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             Brush="MPHUD.Extension.Banner.Circle"
+                             AdditionalArgs="@AdditionalArgs"
+                             ImageId="@Id"
+                             ImageTypeCode="@ImageTypeCode"
+                             IsDisabled="true" />
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>
