@@ -1310,10 +1310,10 @@
             name="{=}Bernard">
     <face>
       <BodyProperties version="4"
-                      age="23"
-                      weight="0.3333"
-                      build="0"
-                      key="00086C0080143006653955B64DAA2966751694753A65788B748A8C5645834B750177761307C65A8700000000000000000000000000000000000000003EE40002" />
+                      age="48.92"
+                      weight="0.5"
+                      build="0.5"
+                      key="00053006C0CC0680D8BBAD3D59388C8C967674A397AA85B79CDB78A7B69548660487764608A976D400000000000000000000000000000000000000003AFC5104"  />
     </face>
     <skills>
       <skill id="Strength" value="21" />
@@ -1345,13 +1345,13 @@
   </NPCCharacter>
 
   <NPCCharacter id="crpg_dtv_looter_marksman"
-              name="{=}Looter">
+              name="{=}Merry Man">
     <face>
       <BodyProperties version="4"
                       age="23"
                       weight="0.3333"
                       build="0"
-                      key="0013A00D8058194498E5C68B7736E78264A38BDB9677785457AA4D638181AA5904B776460B83556C000000000000000000000000000000000000000025644002" />
+                      key="0002740340E400866B8A8198A9A566D9198BC9A7B8457AA7A676862696B5767301777613072E24AA00000000000000000000000000000000000000003EEC00C4" />
     </face>
     <skills>
       <skill id="Strength" value="9" />
@@ -1375,8 +1375,8 @@
     <Equipments>
       <EquipmentRoster>
         <equipment slot="Head" id="Item.crpg_aserai_civil_f_cape_v1_h0" />
-        <equipment slot="Body" id="Item.crpg_battania_woodland_outfit_v1_h0" />
-        <equipment slot="Leg" id="Item.crpg_leather_shoes_v1_h0" />
+        <equipment slot="Body" id="Item.crpg_northern_leather_vest_v2_h0" />
+        <equipment slot="Leg" id="Item.crpg_hosen_2_v1_h0" />
         <equipment slot="Item0" id="Item.crpg_iron_hand_axe_h0" />
         <equipment slot="Item1" id="Item.crpg_light_hunting_bow_h0" />
         <equipment slot="Item2" id="Item.crpg_light_broad_arrows_h0" />
@@ -1385,13 +1385,13 @@
   </NPCCharacter>
 
   <NPCCharacter id="crpg_dtv_looter_shield"
-            name="{=}Looter">
+            name="{=}Merry Man">
     <face>
       <BodyProperties version="4"
                       age="23"
                       weight="0.3333"
                       build="0"
-                      key="0013A00D8058194498E5C68B7736E78264A38BDB9677785457AA4D638181AA5904B776460B83556C000000000000000000000000000000000000000025644002" />
+                      key="00206C0E4058185497A2997842947E8559875AA9EBA79A66975C3249B64B77C60197761309AC552700000000000000000000000000000000000000001D2440C4" />
     </face>
     <skills>
       <skill id="Strength" value="9" />
@@ -1415,8 +1415,8 @@
     <Equipments>
       <EquipmentRoster>
         <equipment slot="Head" id="Item.crpg_cervelliere_over_padded_cap_v1_h0" />
-        <equipment slot="Body" id="Item.crpg_battania_woodland_outfit_v1_h0" />
-        <equipment slot="Leg" id="Item.crpg_leather_shoes_v1_h0" />
+        <equipment slot="Body" id="Item.crpg_northern_leather_vest_v2_h0" />
+        <equipment slot="Leg" id="Item.crpg_hosen_2_v1_h0" />
         <equipment slot="Item0" id="Item.crpg_iron_hand_axe_h0" />
         <equipment slot="Item1" id="Item.crpg_jousting_shield_v2_h0" />
       </EquipmentRoster>
@@ -1430,7 +1430,7 @@
                       age="23"
                       weight="0.3333"
                       build="0"
-                      key="0013A00D8058194498E5C68B7736E78264A38BDB9677785457AA4D638181AA5904B776460B83556C000000000000000000000000000000000000000025644002" />
+                      key="001320098058008385694978776876A6EA4B9A586889B6678B28489BC876868901877613089571B60000000000000000000000000000000000000000690C8144" />
     </face>
     <skills>
       <skill id="Strength" value="24" />
@@ -1456,7 +1456,7 @@
         <equipment slot="Head" id="Item.crpg_levy_hood_1_v1_h0" />
         <equipment slot="Body" id="Item.crpg_unigambeson_sleeves_1_v1_h0" />
         <equipment slot="Gloves" id="Item.crpg_eastern_plated_leather_vambraces_v2_h0" />
-        <equipment slot="Leg" id="Item.crpg_eastern_plated_leather_vambraces_v2_h0" />
+        <equipment slot="Leg" id="Item.crpg_hosen_2_v1_h0" />
         <equipment slot="Item0" id="Item.crpg_noble_ranger_bow_h0" />
         <equipment slot="Item1" id="Item.crpg_thamaskene_steel_kaskara_h0" />
         <equipment slot="Item2" id="Item.crpg_piercing_arrows_v1_h0" />
@@ -1611,7 +1611,9 @@
     <Equipments>
       <EquipmentRoster>
         <equipment slot="Head" id="Item.crpg_landsknechthat_1_v1_h0" />
+        <equipment slot="Cape" id="Item.crpg_noble_pauldron_with_cape_v2_h0" />
         <equipment slot="Body" id="Item.crpg_breastplate_shash1_v1_h0" />
+        <equipment slot="Gloves" id="Item.crpg_sa_1ChurburghGauntlet_v2_h0" />
         <equipment slot="Leg" id="Item.crpg_eba_14_midsplinted_greaves_v1_h0" />
         <equipment slot="Item0" id="Item.crpg_longsword_h0" />
       </EquipmentRoster>
