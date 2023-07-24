@@ -167,7 +167,7 @@
     <Wave>
       <Group classDivisionId="crpg_dtv_dwarven_engineer" count="1.5" />
       <Group classDivisionId="crpg_dtv_dwarven_axelord" count="1.5" />
-      <Group classDivisionId="crpg_dtv_dwarven_boss" count="1.0" />
+      <Group classDivisionId="crpg_dtv_dwarven_boss" />
     </Wave>
   </Round>
 
