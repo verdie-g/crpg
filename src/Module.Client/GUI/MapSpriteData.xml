@@ -1540,6 +1540,14 @@
       <SpritePartName>crpg_dtv_weepinghill</SpritePartName>
     </GenericSprite>
     <GenericSprite>
+      <Name>crpg_battle_remnantruins</Name>
+      <SpritePartName>crpg_battle_remnantruins</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_khamsin</Name>
+      <SpritePartName>crpg_battle_khamsin</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
       <Name>crpg_battle_riverbank</Name>
       <SpritePartName>crpg_battle_riverbank</SpritePartName>
     </GenericSprite>
