@@ -75,7 +75,7 @@ const { openItemDetail, getElementBounds } = useItemDetail();
           )
         "
         :remove="fromSlot === slot.key && !toSlot"
-        draggable
+        draggable="true"
         @dragend="(_e: DragEvent) => onDragEnd(_e, slot.key)"
         @drop="onDrop(slot.key)"
         @dragover.prevent="onDragEnter(slot.key)"
@@ -83,14 +83,15 @@ const { openItemDetail, getElementBounds } = useItemDetail();
         @dragenter.prevent
         @dragstart="onDragStart(equippedItemsBySlot[slot.key], slot.key)"
         @unEquip="onUnEquipItem(slot.key)"
-        @click="(e: MouseEvent)=>
+        @click="
+          (e: MouseEvent) =>
             equippedItemsBySlot[slot.key] !== undefined &&
-              openItemDetail({
-                id: equippedItemsBySlot[slot.key].item.id,
-                userId: equippedItemsBySlot[slot.key].id,
-                bound: getElementBounds(e.target as HTMLElement),
-              })
-          "
+            openItemDetail({
+              id: equippedItemsBySlot[slot.key].item.id,
+              userId: equippedItemsBySlot[slot.key].id,
+              bound: getElementBounds(e.target as HTMLElement),
+            })
+        "
       />
     </div>
   </div>
