@@ -121,24 +121,6 @@
 
   <Round reward="420">
     <Wave>
-      <Group classDivisionId="crpg_dtv_legion_soldier" count="1.5" />
-      <Group classDivisionId="crpg_dtv_legion_centurion" count="1.0" />
-    </Wave>
-    <Wave>
-      <Group classDivisionId="crpg_dtv_legion_soldier" count="1.5" />
-      <Group classDivisionId="crpg_dtv_legion_centurion" count="1.0" />
-      <Group classDivisionId="crpg_dtv_legion_cavalry" count="0.35" />
-    </Wave>
-    <Wave>
-      <Group classDivisionId="crpg_dtv_legion_soldier" count="2.0" />
-      <Group classDivisionId="crpg_dtv_legion_centurion" count="1.0" />
-      <Group classDivisionId="crpg_dtv_legion_cavalry" count="0.5" />
-      <Group classDivisionId="crpg_dtv_legion_boss" />
-    </Wave>
-  </Round>
-
-  <Round reward="470">
-    <Wave>
       <Group classDivisionId="crpg_dtv_highland_ranger" count="1.0" />
       <Group classDivisionId="crpg_dtv_highland_soldier" count="1.0" />
     </Wave>
@@ -155,6 +137,28 @@
     </Wave>
   </Round>
 
+  <Round reward="470">
+    <Wave>
+      <Group classDivisionId="crpg_dtv_legion_soldier" count="1.0" />
+      <Group classDivisionId="crpg_dtv_legion_archer" count="1.0" />
+      <Group classDivisionId="crpg_dtv_legion_centurion" count="0.3" />
+    </Wave>
+    <Wave>
+      <Group classDivisionId="crpg_dtv_legion_soldier" count="1.0" />
+      <Group classDivisionId="crpg_dtv_legion_centurion" count="0.3" />
+      <Group classDivisionId="crpg_dtv_legion_archer" count="1.0" />
+      <Group classDivisionId="crpg_dtv_legion_veles" count="0.5" />
+    </Wave>
+    <Wave>
+      <Group classDivisionId="crpg_dtv_legion_soldier" count="1.0" />
+      <Group classDivisionId="crpg_dtv_legion_centurion" count="0.3" />
+      <Group classDivisionId="crpg_dtv_legion_archer" count="1.0" />
+      <Group classDivisionId="crpg_dtv_legion_veles" count="0.8" />
+      <Group classDivisionId="crpg_dtv_legion_cavalry" count="0.5" />
+      <Group classDivisionId="crpg_dtv_legion_boss" />
+    </Wave>
+  </Round>
+  
   <Round reward="520">
     <Wave>
       <Group classDivisionId="crpg_dtv_dwarven_engineer" count="1.0" />
