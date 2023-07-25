@@ -17,7 +17,7 @@
   <SpriteCategories>
     <SpriteCategory>
       <Name>ui_mploading</Name>
-      <SpriteSheetCount>122</SpriteSheetCount>
+      <SpriteSheetCount>123</SpriteSheetCount>
       <SpriteSheetSize ID="1" Width="3840" Height="1935" />
       <SpriteSheetSize ID="2" Width="3840" Height="1935" />
       <SpriteSheetSize ID="3" Width="3383" Height="1902" />
@@ -128,6 +128,7 @@
       <SpriteSheetSize ID="120" Width="1920" Height="1080" />
       <SpriteSheetSize ID="121" Width="1920" Height="1080" />
       <SpriteSheetSize ID="122" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="123" Width="1920" Height="1080" />
       <AlwaysLoad />
     </SpriteCategory>
   </SpriteCategories>
@@ -1113,6 +1114,15 @@
       <SheetY>0</SheetY>
       <CategoryName>ui_mploading</CategoryName>
     </SpritePart>
+    <SpritePart>
+      <SheetID>123</SheetID>
+      <Name>crpg_dtv_encampment</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
   </SpriteParts>
   <Sprites>
     <GenericSprite>
@@ -1550,6 +1560,10 @@
     <GenericSprite>
       <Name>crpg_battle_riverbank</Name>
       <SpritePartName>crpg_battle_riverbank</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_dtv_encampment</Name>
+      <SpritePartName>crpg_dtv_encampment</SpritePartName>
     </GenericSprite>
   </Sprites>
 </SpriteData>

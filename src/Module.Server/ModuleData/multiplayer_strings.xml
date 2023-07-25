@@ -126,6 +126,7 @@
   <string id="str_multiplayer_scene_name.crpg_conquest_skalalanding" text="{=tyxhM0QA}Skala Landing" />
 
   <!-- DTV Maps -->
+  <string id="str_multiplayer_scene_name.crpg_dtv_encampment" text="{=ArnxGr8j1j}Encampment" />
   <string id="str_multiplayer_scene_name.crpg_dtv_qalat" text="{=V5jaECxf}Qalat" />
   <string id="str_multiplayer_scene_name.crpg_dtv_weepinghill" text="{=jKsuXc4Z}Weeping Hill" />
 </strings>
