@@ -161,10 +161,8 @@ const filteredUserItems = computed(() => {
     .filter(item => foundedItemIds.includes(item.item.id))
     .sort((a, b) => {
       if (sortingModel.value === 'type_asc') {
-        return (
-          Object.values(ItemType).indexOf(a.item.type) -
-          Object.values(ItemType).indexOf(b.item.type)
-        );
+        const itemTypes = Object.values(ItemType);
+        return itemTypes.indexOf(a.item.type) - itemTypes.indexOf(b.item.type);
       }
       return foundedItemIds.indexOf(a.item.id) - foundedItemIds.indexOf(b.item.id);
     });
