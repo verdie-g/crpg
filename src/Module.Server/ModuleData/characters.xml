@@ -2064,7 +2064,7 @@
       <skill id="Polearm" value="0" />
       <skill id="Bow" value="0" />
       <skill id="Crossbow" value="0" />
-      <skill id="Throwing" value="130" />
+      <skill id="Throwing" value="140" />
     </skills>
     <Equipments>
       <EquipmentRoster>
