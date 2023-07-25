@@ -23,7 +23,7 @@ internal class ClanGroup
 
     public float Weight(float p = MatchBalancer.PowerParameter)
     {
-        const float clanGroupSizePenalty = 0.048f;
+        const float clanGroupSizePenalty = 0f;
         return MathHelper.PowerSumBy(Members, u => u.Weight, p) * (1 + Size * clanGroupSizePenalty);
     }
 
