@@ -159,7 +159,15 @@ const filteredUserItems = computed(() => {
   const foundedItemIds = searchResult.value.data.items.map(item => item.id);
   return userStore.userItems
     .filter(item => foundedItemIds.includes(item.item.id))
-    .sort((a, b) => foundedItemIds.indexOf(a.item.id) - foundedItemIds.indexOf(b.item.id));
+    .sort((a, b) => {
+      if (sortingModel.value === 'type_asc') {
+        return (
+          Object.values(ItemType).indexOf(a.item.type) -
+          Object.values(ItemType).indexOf(b.item.type)
+        );
+      }
+      return foundedItemIds.indexOf(a.item.id) - foundedItemIds.indexOf(b.item.id);
+    });
 });
 
 const totalItemsCost = computed(() =>
