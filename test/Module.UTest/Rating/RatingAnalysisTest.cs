@@ -14,22 +14,40 @@ namespace Crpg.Module.UTest.Rating;
 
 public class RatingAnalysisTest
 {
-
+    private static readonly float CurrentRatingPower = 3.98f;
     [Test]
-    public void TestDifferentRating()
+    public void TestDifferentRatingPenaltyFactor()
     {
 
-        var ratingAnalysis = new CrpgRatingAnalysis(@"A:\maxilog.txt");
-        Debug.Print("penaltyfactor,prediction");
-        for (int i = 1; i < 1000; i++)
-        {
+        var ratingAnalysis = new CrpgRatingAnalysis(@"a:\Users\namidaka\Desktop\roundlog.txt");
+        Debug.Print("Team Penalty,Prediction");
+      for (int i = 1; i < 1000; i++)
+      {
             BattleSideEnum ClangroupPenalizedTeamRaterPrediction(RoundResultData result)
             {
-                return TeamRaterPrediction(result, players => FullRater(players, ratingPower: i / 100f));
+                return TeamRaterPrediction(result, players => FullRater(players, penaltyFactor: 0.5f + i / 1000f));
             }
 
             float successPercentage = ratingAnalysis.AccuratePredictionPercentage(ClangroupPenalizedTeamRaterPrediction);
-            Debug.Print($"{i / 100f},{successPercentage * 100}");
+            Debug.Print($"{0.5f + i / 1000f},{successPercentage * 100}");
+      }
+    }
+
+    [Test]
+    public void TestDifferentRatingPower()
+    {
+
+        var ratingAnalysis = new CrpgRatingAnalysis(@"a:\Users\namidaka\Desktop\roundlog.txt");
+        Debug.Print("RatingPower,Prediction");
+        for (int i = 1; i < 10000; i++)
+        {
+            BattleSideEnum RatingPowerTeamRaterPrediction(RoundResultData result)
+            {
+                return TeamRaterPrediction(result, players => FullRater(players, ratingPower: i / 1000f));
+            }
+
+            float successPercentage = ratingAnalysis.AccuratePredictionPercentage(RatingPowerTeamRaterPrediction);
+            Debug.Print($"{i / 1000f},{successPercentage * 100}");
         }
     }
 
@@ -37,7 +55,7 @@ public class RatingAnalysisTest
     public void HowOftenDoAttackerWin()
     {
 
-        var ratingAnalysis = new CrpgRatingAnalysis(@"A:\maxilogtxt");
+        var ratingAnalysis = new CrpgRatingAnalysis(@"a:\Users\namidaka\Desktop\roundlog.txt");
         Debug.Print("penaltyfactor,prediction");
         for (int i = 0; i < 1000; i++)
         {
@@ -56,19 +74,7 @@ public class RatingAnalysisTest
         return BattleSideEnum.Attacker;
     }
 
-    private float ClanGroupPenalizedTeamRater(List<RoundPlayerData> playerList, float penaltyFactor = 0.05f)
-    {
-
-        float rating = 0;
-        var clanGroups = SplitUsersIntoClanGroups(playerList);
-        foreach (var clanGroup in clanGroups)
-        {
-            rating += clanGroup.Sum(p => p.Weight) * (1 + penaltyFactor * clanGroup.Count) / (1 + 0.028f * clanGroup.Count);
-        }
-
-        return rating;
-    }
-    private float FullRater(List<RoundPlayerData> playerList, float penaltyFactor = 0.048f, float priceDivider = 500000f, float maxPrice = 56000f, float ratingPower = 3f)
+    private float FullRater(List<RoundPlayerData> playerList, float penaltyFactor = 0.048f, float priceDivider = 500000f, float maxPrice = 56000f, float ratingPower = 3.98f)
     {
         float ComputeWeight(RoundPlayerData user)
         {
@@ -81,9 +87,16 @@ public class RatingAnalysisTest
 
         float ComputeRatingWeight(RoundPlayerData user)
         {
-            var rating = user.Rating;
+            var rating = Math.Pow(user.RatingWeight / 6E-8f, 1 / CurrentRatingPower );
             // https://www.desmos.com/calculator/snynzhhoay
-            return 6E-8f * (float)Math.Pow(rating - 2 * 50, ratingPower);
+            float newRating = 0.03f * (float)Math.Pow(0.01f * rating, ratingPower);
+            /*
+            if (newRating < -1000 || newRating > 3000)
+            {
+                Debug.Print($"Rating problem {newRating}");
+            }
+            */
+            return newRating;
         }
 
         float ComputeEquippedItemsWeight(float equipmentcost)
@@ -104,7 +117,7 @@ public class RatingAnalysisTest
         var clanGroups = SplitUsersIntoClanGroups(playerList);
         foreach (var clanGroup in clanGroups)
         {
-            weight += clanGroup.Sum(p => ComputeWeight(p)) * (1 + penaltyFactor * clanGroup.Count) / (1 + 0.028f * clanGroup.Count);
+            weight += clanGroup.Sum(p => ComputeWeight(p)) * (1 + penaltyFactor * clanGroup.Count);
         }
 
         return weight;

@@ -49,7 +49,7 @@ internal class CrpgRatingAnalysis
 
                 if (roundResult != null)
                 {
-                    if (roundResult.Attackers.Count + roundResult.Defenders.Count > 25)
+                    if (roundResult.Attackers.Count + roundResult.Defenders.Count > 10 && roundResult.Attackers.Count + roundResult.Defenders.Count < 25)
                     results.Add(roundResult);
                     }
                 }
