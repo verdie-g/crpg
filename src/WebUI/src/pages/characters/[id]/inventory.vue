@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { UseDraggable as Draggable } from '@vueuse/components';
-import { useStorage } from '@vueuse/core';
+import { useStorage, useMagicKeys, whenever } from '@vueuse/core';
 import { type UserItemsBySlot } from '@/models/user';
 import type { EquippedItemId } from '@/models/character';
 import { ItemType } from '@/models/item';
@@ -232,6 +232,13 @@ onBeforeRouteLeave(() => {
 });
 
 await userStore.fetchUserItems();
+
+const { escape } = useMagicKeys();
+
+whenever(escape, () => {
+  openedItems.value.length !== 0 &&
+    closeItemDetail(openedItems.value[openedItems.value.length - 1].id);
+});
 </script>
 
 <template>
@@ -400,7 +407,7 @@ await userStore.fetchUserItems();
           x: oi.bound.x + oi.bound.width + 8,
           y: computeDetailCardYPosition(oi.bound.y),
         }"
-        class="fixed z-50 cursor-move select-none rounded-lg bg-base-300 p-4 shadow-lg"
+        class="fixed z-50 cursor-move select-none rounded-lg bg-base-300 p-4 shadow-lg active:ring-1"
       >
         <OButton
           class="!absolute right-2 top-2 z-10 cursor-pointer"
