@@ -14,7 +14,11 @@ import {
   upgradeUserItem,
   reforgeUserItem,
 } from '@/services/users-service';
-import { groupItemsByTypeAndWeaponClass, getCompareItemsResult } from '@/services/item-service';
+import {
+  groupItemsByTypeAndWeaponClass,
+  getCompareItemsResult,
+  getLinkedSlots,
+} from '@/services/item-service';
 import { createItemIndex } from '@/services/item-search-service/indexator';
 import { getSearchResult, getAggregationsConfig } from '@/services/item-search-service';
 import { notify } from '@/services/notification-service';
@@ -61,11 +65,23 @@ const changeEquippedItems = async (items: EquippedItemId[]) => {
 };
 
 const onSellUserItem = async (itemId: number) => {
+  // unEquip linked slots
+  const characterItem = characterItems.value.find(ci => ci.userItem.id === itemId);
+  if (characterItem !== undefined) {
+    await updateCharacterItems(character.value.id, [
+      ...getLinkedSlots(characterItem.slot, equippedItemsBySlot.value).map(ls => ({
+        userItemId: null,
+        slot: ls,
+      })),
+    ]);
+  }
+
   // if the item sold is the last item in the active category,
   // you must reset the filter because that category is no longer in inventory
   if (filteredUserItems.value.length === 1) {
     filterByTypeModel.value = [];
   }
+
   await sellUserItem(itemId);
   await Promise.all([
     userStore.fetchUser(),
