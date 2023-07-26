@@ -1574,6 +1574,7 @@
         <equipment slot="Body" id="Item.crpg_sturgia_light_tunic_v2_h0" />
         <equipment slot="Leg" id="Item.crpg_steppe_leather_boots_v2_h0" />
         <equipment slot="Horse" id="Item.crpg_mount1_saddlehorse_9_h0" />
+        <equipment slot="HorseHarness" id="Item.crpg_steppe_fur_harness_h0" />
         <equipment slot="Item0" id="Item.crpg_knights_fall_h0" />
       </EquipmentRoster>
     </Equipments>
