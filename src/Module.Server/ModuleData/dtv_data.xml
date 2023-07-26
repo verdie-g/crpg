@@ -103,6 +103,22 @@
 
   <Round reward="370">
     <Wave>
+      <Group classDivisionId="crpg_dtv_amazon_archer" count="1.0" />
+      <Group classDivisionId="crpg_dtv_amazon_warrior" count="1.0" />
+    </Wave>
+    <Wave>
+      <Group classDivisionId="crpg_dtv_amazon_archer" count="1.0" />
+      <Group classDivisionId="crpg_dtv_amazon_warrior" count="1.0" />
+    </Wave>
+    <Wave>
+      <Group classDivisionId="crpg_dtv_amazon_archer" count="1.0" />
+      <Group classDivisionId="crpg_dtv_amazon_warrior" count="1.0" />
+      <Group classDivisionId="crpg_dtv_amazon_boss" />
+    </Wave>
+  </Round>
+
+  <Round reward="420">
+    <Wave>
       <Group classDivisionId="crpg_dtv_aserai_warrior" count="1.0" />
       <Group classDivisionId="crpg_dtv_aserai_archer" count="0.8" />
     </Wave>
@@ -119,7 +135,7 @@
     </Wave>
   </Round>
 
-  <Round reward="420">
+  <Round reward="470">
     <Wave>
       <Group classDivisionId="crpg_dtv_highland_ranger" count="1.0" />
       <Group classDivisionId="crpg_dtv_highland_soldier" count="1.0" />
@@ -131,13 +147,13 @@
     </Wave>
     <Wave>
       <Group classDivisionId="crpg_dtv_highland_ranger" count="1.0" />
-      <Group classDivisionId="crpg_dtv_highland_warrior" count="0.8" />
+      <Group classDivisionId="crpg_dtv_highland_warrior" count="1.0" />
       <Group classDivisionId="crpg_dtv_highland_soldier" count="1.0" />
       <Group classDivisionId="crpg_dtv_highland_boss" />
     </Wave>
   </Round>
 
-  <Round reward="470">
+  <Round reward="520">
     <Wave>
       <Group classDivisionId="crpg_dtv_legion_soldier" count="1.0" />
       <Group classDivisionId="crpg_dtv_legion_archer" count="1.0" />
@@ -159,7 +175,7 @@
     </Wave>
   </Round>
   
-  <Round reward="520">
+  <Round reward="570">
     <Wave>
       <Group classDivisionId="crpg_dtv_dwarven_engineer" count="1.0" />
       <Group classDivisionId="crpg_dtv_dwarven_axelord" count="1.0" />
@@ -175,7 +191,7 @@
     </Wave>
   </Round>
 
-  <Round reward="570">
+  <Round reward="620">
     <Wave>
       <Group classDivisionId="crpg_dtv_tincan_soldier" count="1.5" />
       <Group classDivisionId="crpg_dtv_tincan_archer" count="1.0" />
