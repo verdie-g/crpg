@@ -1300,6 +1300,7 @@
         <equipment slot="Gloves" id="Item.crpg_padded_mitten_v2_h0" />
         <equipment slot="Leg" id="Item.crpg_leather_shoes_v2_h0" />
         <equipment slot="Horse" id="Item.crpg_mount1_maneuverable_9_h0" />
+        <equipment slot="HorseHarness" id="Item.crpg_light_harness_h0" />
         <equipment slot="Item0" id="Item.crpg_iron_cavalry_sword_h0" />
       </EquipmentRoster>
     </Equipments>
