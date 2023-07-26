@@ -1112,7 +1112,7 @@
   </NPCCharacter>
 
   <NPCCharacter id="crpg_dtv_peasant_pitchfork"
-              name="{=}Angry Peasant">
+                name="{=}Angry Peasant">
     <face>
       <BodyProperties version="4"
                       age="23"
@@ -1149,7 +1149,7 @@
   </NPCCharacter>
 
   <NPCCharacter id="crpg_dtv_peasant_boss"
-                 name="{=}Furious Peasant">
+                name="{=}Furious Peasant">
     <face>
       <BodyProperties version="4"
                       age="23"
@@ -1226,7 +1226,7 @@
   </NPCCharacter>
 
   <NPCCharacter id="crpg_dtv_recruit_archer"
-              name="{=}Recruit">
+                name="{=}Recruit">
     <face>
       <BodyProperties version="4"
                       age="23"
@@ -1267,7 +1267,7 @@
   </NPCCharacter>
 
   <NPCCharacter id="crpg_dtv_recruit_cavalry"
-              name="{=}Pompous Nobleman">
+                name="{=}Pompous Nobleman">
     <face>
       <BodyProperties version="4"
                       age="23"
@@ -1306,7 +1306,7 @@
   </NPCCharacter>
 
   <NPCCharacter id="crpg_dtv_recruit_boss"
-            name="{=}Bernard">
+                name="{=}Bernard">
     <face>
       <BodyProperties version="4"
                       age="48.92"
@@ -1344,7 +1344,7 @@
   </NPCCharacter>
 
   <NPCCharacter id="crpg_dtv_looter_marksman"
-              name="{=}Merry Man">
+                name="{=}Merry Man">
     <face>
       <BodyProperties version="4"
                       age="23"
@@ -1384,7 +1384,7 @@
   </NPCCharacter>
 
   <NPCCharacter id="crpg_dtv_looter_shield"
-            name="{=}Merry Man">
+                name="{=}Merry Man">
     <face>
       <BodyProperties version="4"
                       age="23"
@@ -1423,7 +1423,7 @@
   </NPCCharacter>
 
   <NPCCharacter id="crpg_dtv_looter_boss"
-          name="{=}Robin Hood">
+                name="{=}Robin Hood">
     <face>
       <BodyProperties version="4"
                       age="23"
@@ -1464,7 +1464,7 @@
   </NPCCharacter>
 
   <NPCCharacter id="crpg_dtv_fancy_lad"
-            name="{=}Fancy Lad">
+                name="{=}Fancy Lad">
     <face>
       <BodyProperties version="4"
                       age="23"
@@ -1503,7 +1503,7 @@
   </NPCCharacter>
 
   <NPCCharacter id="crpg_dtv_fancy_noble"
-          name="{=}Fancy Courtier">
+                name="{=}Fancy Courtier">
     <face>
       <BodyProperties version="4"
                       age="23"
@@ -1541,7 +1541,7 @@
   </NPCCharacter>
 
   <NPCCharacter id="crpg_dtv_fancy_cavalry"
-          name="{=}Fancy Jockey">
+                name="{=}Fancy Jockey">
     <face>
       <BodyProperties version="4"
                       age="23"
@@ -1580,7 +1580,7 @@
   </NPCCharacter>
 
   <NPCCharacter id="crpg_dtv_fancy_boss"
-          name="{=}Droobert Humperdink">
+                name="{=}Droobert Humperdink">
     <face>
       <BodyProperties version="4"
                       age="23"
@@ -1620,7 +1620,7 @@
   </NPCCharacter>
 
   <NPCCharacter id="crpg_dtv_viking_huscarl"
-              name="{=}Huscarl">
+                name="{=}Huscarl">
     <face>
       <BodyProperties version="4"
                       age="23"
@@ -1661,7 +1661,7 @@
   </NPCCharacter>
 
   <NPCCharacter id="crpg_dtv_viking_raider"
-            name="{=}Raider">
+                name="{=}Raider">
     <face>
       <BodyProperties version="4"
                       age="23"
@@ -1703,7 +1703,7 @@
   </NPCCharacter>
 
   <NPCCharacter id="crpg_dtv_viking_boss"
-            name="{=}Jarl Ulfric">
+                name="{=}Jarl Ulfric">
     <face>
       <BodyProperties version="4"
                       age="23"
@@ -1745,7 +1745,7 @@
 
 
   <NPCCharacter id="crpg_dtv_samurai_warrior"
-              name="{=}Samurai">
+                name="{=}Samurai">
     <face>
       <BodyProperties version="4"
                       age="23"
@@ -1787,7 +1787,7 @@
   </NPCCharacter>
 
   <NPCCharacter id="crpg_dtv_samurai_ashigaru"
-            name="{=}Ashigaru">
+                name="{=}Ashigaru">
     <face>
       <BodyProperties version="4"
                       age="23"
@@ -1828,7 +1828,7 @@
   </NPCCharacter>
 
   <NPCCharacter id="crpg_dtv_samurai_boss"
-             name="{=}Sensei">
+                name="{=}Sensei">
     <face>
       <BodyProperties version="4"
                       age="23"
@@ -1867,6 +1867,136 @@
     </Equipments>
   </NPCCharacter>
 
+  <NPCCharacter id="crpg_dtv_amazon_warrior"
+                name="{=}Amazonian Warrior"
+                is_female="true">
+    <face>
+      <BodyProperties version="4"
+                      age="23"
+                      weight="0.6"
+                      build="0.75"
+                      key="00239C0340E40004AA7542946A3C6A8BB44866BB647997B98C78588A79545957018776130895D3490000000000000000000000000000000000000000231C2103" />
+    </face>
+    <skills>
+      <skill id="Strength" value="21" />
+      <skill id="Agility" value="15" />
+      <skill id="IronFlesh" value="7" />
+      <skill id="PowerStrike" value="7" />
+      <skill id="PowerDraw" value="0" />
+      <skill id="PowerThrow" value="0" />
+      <skill id="Athletics" value="130" />
+      <skill id="Riding" value="0" />
+      <skill id="WeaponMaster" value="5" />
+      <skill id="MountedArchery" value="0" />
+      <skill id="Shield" value="2" />
+      <skill id="OneHanded" value="90" />
+      <skill id="TwoHanded" value="0" />
+      <skill id="Polearm" value="125" />
+      <skill id="Bow" value="0" />
+      <skill id="Crossbow" value="0" />
+      <skill id="Throwing" value="0" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Head" id="Item.crpg_battania_earmuff_helmet_d_brnz_v2_h0" />
+        <equipment slot="Cape" id="Item.crpg_wrapped_scarf_v2_h0" />
+        <equipment slot="Body" id="Item.crpg_battania_brass_plate_armor_v1_h0" />
+        <equipment slot="Gloves" id="Item.crpg_northern_brass_bracers_v2_h0" />
+        <equipment slot="Leg" id="Item.crpg_steppe_leather_boots_v2_h0" />
+        <equipment slot="Item0" id="Item.crpg_hoplite_spear_v2_h0" />
+        <equipment slot="Item1" id="Item.crpg_iron_spatha_h0" />
+        <equipment slot="Item2" id="Item.crpg_steel_round_shield_v2_h0" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+
+  <NPCCharacter id="crpg_dtv_amazon_archer"
+                name="{=}Amazonian Huntress"
+                is_female="true">
+    <face>
+      <BodyProperties version="4"
+                      age="23"
+                      weight="0.6"
+                      build="0.75"
+                      key="0029B001402C0009BCB34CB656A4658AC3587866AE8E9688B655365469B7B02A01577613055C56A6000000000000000000000000000000000000000068AC1103" />
+    </face>
+    <skills>
+      <skill id="Strength" value="15" />
+      <skill id="Agility" value="21" />
+      <skill id="IronFlesh" value="5" />
+      <skill id="PowerStrike" value="5" />
+      <skill id="PowerDraw" value="5" />
+      <skill id="PowerThrow" value="0" />
+      <skill id="Athletics" value="156" />
+      <skill id="Riding" value="0" />
+      <skill id="WeaponMaster" value="7" />
+      <skill id="MountedArchery" value="0" />
+      <skill id="Shield" value="0" />
+      <skill id="OneHanded" value="90" />
+      <skill id="TwoHanded" value="0" />
+      <skill id="Polearm" value="0" />
+      <skill id="Bow" value="140" />
+      <skill id="Crossbow" value="0" />
+      <skill id="Throwing" value="0" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Head" id="Item.crpg_battania_earmuff_helmet_d_brnz_v2_h0" />
+        <equipment slot="Cape" id="Item.crpg_wrapped_scarf_v2_h0" />
+        <equipment slot="Body" id="Item.crpg_battania_brass_plate_armor_v1_h0" />
+        <equipment slot="Gloves" id="Item.crpg_northern_brass_bracers_v2_h0" />
+        <equipment slot="Leg" id="Item.crpg_steppe_leather_boots_v2_h0" />
+        <equipment slot="Item0" id="Item.crpg_light_recurve_bow_h0" />
+        <equipment slot="Item1" id="Item.crpg_iron_spatha_h0" />
+        <equipment slot="Item2" id="Item.crpg_piercing_arrows_v1_h0" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+
+  <NPCCharacter id="crpg_dtv_amazon_boss"
+                name="{=}Penthesilea"
+                is_female="true">
+    <face>
+      <BodyProperties version="4"
+                      age="23"
+                      weight="0.6"
+                      build="0.75"
+                      key="0020540F00CC2001B9888AA27A9C8444876A76496A77A9DBC793A53A3CA3474601B776130B5A2477000000000000000000000000000000000000000043640043" />
+    </face>
+    <skills>
+      <skill id="Strength" value="21" />
+      <skill id="Agility" value="36" />
+      <skill id="IronFlesh" value="7" />
+      <skill id="PowerStrike" value="7" />
+      <skill id="PowerDraw" value="7" />
+      <skill id="PowerThrow" value="0" />
+      <skill id="Athletics" value="312" />
+      <skill id="Riding" value="0" />
+      <skill id="WeaponMaster" value="12" />
+      <skill id="MountedArchery" value="0" />
+      <skill id="Shield" value="6" />
+      <skill id="OneHanded" value="140" />
+      <skill id="TwoHanded" value="0" />
+      <skill id="Polearm" value="0" />
+      <skill id="Bow" value="175" />
+      <skill id="Crossbow" value="0" />
+      <skill id="Throwing" value="0" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Head" id="Item.crpg_empire_battle_crown_west_v2_h0" />
+        <equipment slot="Cape" id="Item.crpg_a_battania_cloak_a_v2_h0" />
+        <equipment slot="Body" id="Item.crpg_battania_brass_plate_armor_v1_h0" />
+        <equipment slot="Gloves" id="Item.crpg_northern_brass_bracers_v2_h0" />
+        <equipment slot="Leg" id="Item.crpg_steppe_leather_boots_v2_h0" />
+        <equipment slot="Item0" id="Item.crpg_steppe_war_bow_h0" />
+        <equipment slot="Item1" id="Item.crpg_long_tzikourion_axe_h0" />
+        <equipment slot="Item2" id="Item.crpg_bodkin_arrows_h0" />
+        <equipment slot="Item3" id="Item.crpg_steel_round_shield_v2_h0" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  
   <NPCCharacter id="crpg_dtv_aserai_warrior"
               name="{=}Aserai Warrior">
     <face>
