@@ -933,7 +933,7 @@ internal class ItemExporter : IDataExporter
             float.Parse(armorNode.Attributes!["hit_points"].Value)
           * float.Parse(armorNode.Attributes!["weapon_length"].Value)
           * float.Parse(armorNode.Attributes!["weapon_length"].Value);
-        return shieldWeightPoints / 440000f;
+        return shieldWeightPoints / 800000f;
     }
 
     private static void ModifyChildHeirloomNodesAttribute(

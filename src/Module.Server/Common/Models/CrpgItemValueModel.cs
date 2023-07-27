@@ -321,9 +321,9 @@ internal class CrpgItemValueModel : ItemValueModel
     {
         return damageType switch
         {
-            DamageTypes.Blunt => 3.5f,
-            DamageTypes.Pierce => 1.75f,
-            _ => 1.175f,
+            DamageTypes.Blunt => 1.685f,
+            DamageTypes.Pierce => 1.262f,
+            _ => 1.0695f,
         };
     }
 
@@ -353,20 +353,23 @@ internal class CrpgItemValueModel : ItemValueModel
     private float CalculateThrownWeaponTier(WeaponComponent weaponComponent)
     {
         WeaponComponentData weapon = weaponComponent.Weapons.MaxBy(a => a.MaxDataValue);
+        float heirloomLevel = ItemToHeirloomLevel(weaponComponent.Item);
+        float damageTypeFactor = CalculateDamageTypeFactorForThrown(weapon.ThrustDamageType == DamageTypes.Invalid ? weapon.SwingDamageType : weapon.ThrustDamageType);
+        float damageFactor = (float)Math.Pow(damageTypeFactor * weapon.ThrustDamage, 2.4f);
+        float weightFactor = damageFactor / 6900f / weaponComponent.Item.Weight / (float)Math.Pow(1 + heirloomLevel / 10f, 1f);
         float scaler = 4f * 1600000f;
         float bonusVsShield = weapon.WeaponFlags.HasFlag(WeaponFlags.BonusAgainstShield) ? 1.10f : 1f;
         float canDismount = weapon.WeaponFlags.HasFlag(WeaponFlags.CanDismount) ? 1.10f : 1f;
         float tier =
-              (float)Math.Pow(weapon.ThrustDamage, 2.4f)
+              damageFactor
             * weapon.MissileSpeed
             * weapon.Accuracy
             * weapon.MaxDataValue
-            * CalculateDamageTypeFactorForThrown(weapon.ThrustDamageType == DamageTypes.Invalid ? weapon.SwingDamageType : weapon.ThrustDamageType)
             * bonusVsShield
             * canDismount
+            * (float) Math.Pow(weightFactor, 0.5f)
             / scaler;
 
-        float heirloomLevel = ItemToHeirloomLevel(weaponComponent.Item);
         tier /= (float)Math.Pow(1 + heirloomLevel / 10f, 1f);
         return tier * tier / 10f;
     }
