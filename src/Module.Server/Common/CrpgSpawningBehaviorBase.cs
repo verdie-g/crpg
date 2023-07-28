@@ -9,12 +9,10 @@ namespace Crpg.Module.Common;
 internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
 {
     private readonly CrpgConstants _constants;
-    private readonly Random _random;
 
     public CrpgSpawningBehaviorBase(CrpgConstants constants)
     {
         _constants = constants;
-        _random = new Random();
     }
 
     public override bool AllowEarlyAgentVisualsDespawning(MissionPeer missionPeer)
@@ -127,7 +125,7 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
         Vec2 initialDirection = spawnFrame.rotation.f.AsVec2.Normalized();
 
         AgentBuildData agentBuildData = new AgentBuildData(character)
-            .Equipment(character.AllEquipments[_random.Next(character.AllEquipments.Count)])
+            .Equipment(character.AllEquipments[MBRandom.RandomInt(character.AllEquipments.Count)])
             .TroopOrigin(new BasicBattleAgentOrigin(character))
             .EquipmentSeed(MissionLobbyComponent.GetRandomFaceSeedForCharacter(character))
             .Team(team)
