@@ -111,7 +111,7 @@
   <Round reward="420">
     <Wave>
       <Group classDivisionId="crpg_dtv_english_billman" count="0.6" />
-      <Group classDivisionId="crpg_dtv_english_menatarms" count="0.4" />
+      <Group classDivisionId="crpg_dtv_english_manatarms" count="0.4" />
       <Group classDivisionId="crpg_dtv_english_archer" count="0.8" />
     </Wave>
     <Wave>
