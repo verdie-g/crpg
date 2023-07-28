@@ -2642,12 +2642,12 @@
       <skill id="WeaponMaster" value="6" />
       <skill id="MountedArchery" value="0" />
       <skill id="Shield" value="2" />
-      <skill id="OneHanded" value="100" />
+      <skill id="OneHanded" value="120" />
       <skill id="TwoHanded" value="0" />
       <skill id="Polearm" value="0" />
       <skill id="Bow" value="0" />
       <skill id="Crossbow" value="0" />
-      <skill id="Throwing" value="100" />
+      <skill id="Throwing" value="150" />
     </skills>
     <Equipments>
       <EquipmentRoster>
