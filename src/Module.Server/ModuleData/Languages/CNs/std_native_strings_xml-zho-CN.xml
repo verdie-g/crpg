@@ -7,20 +7,20 @@
     <string id="haGoKI0Q" text="战斗" />
     <string id="HN4gzXhG" text="·   击败整个敌方团队获胜{newline}·   每分钟获得经验和金币{newline}·   在 c-rpg.eu 上升级你的角色" />
     <string id="uSmyz6m1" text="战斗" />
-    <string id="XDxF8ujQ" text="小规模战斗" />
-    <string id="a4VXBtjm" text="·   占领地图上的控制点以耗尽敌方士气{newline}·   击败整个敌方团队或消耗他们的士气以获胜{newline}·   玩游戏时获得经验和金币" />
-    <string id="WXPRjnqH" text="小规模战斗" />
+    <string id="XDxF8ujQ" text="遭遇战" />
+    <string id="a4VXBtjm" text="·   占领地图上的控制点以耗尽敌方士气{newline}·   击败整个敌方团队或消耗他们的士气以获胜{newline}·   游玩中获得经验和金币" />
+    <string id="WXPRjnqH" text="遭遇战" />
     <string id="l5KJxufk" text="征服" />
-    <string id="JLGDB5T7" text="·   占领一个阶段的所有旗帜以进入下一个阶段{newline}·   防守者的奖励倍增器会随时间增加，并在新阶段重置{newline}·   进攻者的奖励倍增器会随时间减少，并在新阶段设为最大" />
+    <string id="JLGDB5T7" text="·   占领一个阶段的所有旗帜以进入下一个阶段{newline}·   防守者的奖励倍率会随时间增加，并在新阶段重置{newline}·   进攻者的奖励倍率会随时间减少，并在新阶段设为最大" />
     <string id="PhKxWoxz" text="征服" />
     <string id="uMbyjZKn" text="攻城战" />
-    <string id="NyzhLxjg" text="·   使用各种攻城器械攻击或防守控制点{newline}·   随着控制点的被占领，出生点也会前进{newline}·   成功突袭并守住主堡旗帜或击退敌人以获胜" />
+    <string id="NyzhLxjg" text="·   使用各种攻城器械攻击或防守控制点{newline}·   随着控制点的被占领，重生点也会前进{newline}·   成功突袭并守住主堡旗帜或击退敌人以获胜" />
     <string id="6NrVsGO5" text="攻城战" />
     <string id="JWb4DWDq" text="团队死斗" />
     <string id="xuFzKbVx" text="·   击败敌方团队以获胜游戏" />
     <string id="EHC0hWNZ" text="团队死斗" />
     <string id="GTScbIip" text="决斗" />
-    <string id="yVQj1ZzR" text="·   与一个对手进行单挑{newline}·   多次击败对手以赢得决斗并获得赏金{newline}·   无需维护费用和金币收益。" />
+    <string id="yVQj1ZzR" text="·   与一个对手进行单挑{newline}·   多次击败对手以赢得决斗并获得赏金{newline}·   无维护费和金币收益。" />
     <string id="lYn1SmzA" text="决斗" />
     <string id="OUnhyvby" text="保卫子爵" />
     <string id="bp8JJZpG" text="·   保卫子爵免受敌人的攻击！{newline}·   保护子爵会获得奖励！{newline}·   在 c-rpg.eu 上升级你的角色。" />
@@ -82,7 +82,7 @@
     <string id="zyesadwK" text="斯科尔德比" />
     <string id="uSGA1apA" text="坠落之地" />
     <string id="DttAl3V1" text="巨石阵" />
-    <string id="103M2Shv" text="塔尔姆贝格" />
+    <string id="103M2Shv" text="塔尔木堡" />
     <string id="34t1I2tA" text="酒馆乱斗" />
     <string id="JLuIItVZ" text="托尔斯塔海滩" />
     <string id="hID2b1Xk" text="乌戈尔" />
@@ -94,13 +94,13 @@
     <string id="LLWi2bYx" text="泽穆里" />
     <string id="9Mpawm9h" text="亚克尔" />
     <string id="6KypSnaa" text="阿尔杜穆" />
-    <string id="caA2XOEy" text="弗雷德里克堡" />
+    <string id="caA2XOEy" text="腓特烈堡" />
     <string id="POatExkU" text="哈迪斯" />
     <string id="butUY7Y4" text="铁雾山" />
     <string id="TKzD7aEp" text="诺因堡" />
     <string id="ofvazCUE" text="奥尔格洛瓦" />
-    <string id="jyeZFBYc" text="银斯卡利茨" />
-    <string id="tyxhM0QA" text="斯卡拉登陆点" />
+    <string id="jyeZFBYc" text="银之斯卡利茨" />
+    <string id="tyxhM0QA" text="岩临城" />
     <string id="ArnxGr8j1j" text="营地" />
     <string id="V5jaECxf" text="卡拉特" />
     <string id="jKsuXc4Z" text="哭泣山" />
