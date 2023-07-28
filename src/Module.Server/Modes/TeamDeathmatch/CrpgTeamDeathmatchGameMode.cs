@@ -72,6 +72,7 @@ internal class CrpgTeamDeathmatchGameMode : MissionBasedMultiplayerGameMode
     {
         CrpgNotificationComponent notificationsComponent = new();
         CrpgScoreboardComponent scoreboardComponent = new(new TDMScoreboardData());
+        var lobbyComponent = MissionLobbyComponent.CreateBehavior();
 
 #if CRPG_SERVER
         ICrpgClient crpgClient = CrpgClient.Create();
@@ -87,7 +88,7 @@ internal class CrpgTeamDeathmatchGameMode : MissionBasedMultiplayerGameMode
             new MissionInitializerRecord(scene) { SceneUpgradeLevel = 3, SceneLevels = string.Empty },
             _ => new MissionBehavior[]
             {
-                MissionLobbyComponent.CreateBehavior(),
+                lobbyComponent,
 #if CRPG_CLIENT
                 new CrpgUserManagerClient(), // Needs to be loaded before the Client mission part.
 #endif
@@ -123,6 +124,7 @@ internal class CrpgTeamDeathmatchGameMode : MissionBasedMultiplayerGameMode
                 new ServerMetricsBehavior(),
                 new NotAllPlayersReadyComponent(),
                 new DrowningBehavior(),
+                new PopulationBasedEntityVisibilityBehavior(lobbyComponent),
 #else
                 new MultiplayerAchievementComponent(),
                 new MissionMatchHistoryComponent(),

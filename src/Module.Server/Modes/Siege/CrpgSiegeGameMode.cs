@@ -73,6 +73,7 @@ internal class CrpgSiegeGameMode : MissionBasedMultiplayerGameMode
         CrpgNotificationComponent notificationsComponent = new();
         CrpgSiegeClient siegeClient = new();
         CrpgScoreboardComponent scoreboardComponent = new(new SiegeScoreboardData());
+        var lobbyComponent = MissionLobbyComponent.CreateBehavior();
 
 #if CRPG_SERVER
         ICrpgClient crpgClient = CrpgClient.Create();
@@ -88,7 +89,7 @@ internal class CrpgSiegeGameMode : MissionBasedMultiplayerGameMode
             new MissionInitializerRecord(scene) { SceneUpgradeLevel = 3, SceneLevels = string.Empty },
             _ => new MissionBehavior[]
             {
-                MissionLobbyComponent.CreateBehavior(),
+                lobbyComponent,
 #if CRPG_CLIENT
                 new CrpgUserManagerClient(), // Needs to be loaded before the Client mission part.
 #endif
@@ -125,6 +126,7 @@ internal class CrpgSiegeGameMode : MissionBasedMultiplayerGameMode
                 new ServerMetricsBehavior(),
                 new NotAllPlayersReadyComponent(),
                 new DrowningBehavior(),
+                new PopulationBasedEntityVisibilityBehavior(lobbyComponent),
 #else
                 new MultiplayerAchievementComponent(),
                 new MissionMatchHistoryComponent(),

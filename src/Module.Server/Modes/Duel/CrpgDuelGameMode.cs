@@ -69,6 +69,8 @@ internal class CrpgDuelGameMode : MissionBasedMultiplayerGameMode
 
     public override void StartMultiplayerGame(string scene)
     {
+        var lobbyComponent = MissionLobbyComponent.CreateBehavior();
+
 #if CRPG_SERVER
         ICrpgClient crpgClient = CrpgClient.Create();
         ChatBox chatBox = Game.Current.GetGameHandler<ChatBox>();
@@ -82,7 +84,7 @@ internal class CrpgDuelGameMode : MissionBasedMultiplayerGameMode
             _ =>
                 new MissionBehavior[]
                 {
-                    MissionLobbyComponent.CreateBehavior(),
+                    lobbyComponent,
 #if CRPG_CLIENT
                     new CrpgUserManagerClient(), // Needs to be loaded before the Client mission part.
 #endif
@@ -113,6 +115,7 @@ internal class CrpgDuelGameMode : MissionBasedMultiplayerGameMode
                     new CrpgActivityLogsBehavior(null, chatBox, crpgClient),
                     new ServerMetricsBehavior(),
                     new NotAllPlayersReadyComponent(),
+                    new PopulationBasedEntityVisibilityBehavior(lobbyComponent),
 #else
                     new MultiplayerAchievementComponent(),
                     new MissionMatchHistoryComponent(),

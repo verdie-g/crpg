@@ -81,6 +81,7 @@ internal class CrpgDtvGameMode : MissionBasedMultiplayerGameMode
         // Inherits the MultiplayerGameNotificationsComponent component.
         // used to send notifications (e.g. flag captured, round won) to peer
         CrpgNotificationComponent notificationsComponent = new();
+        var lobbyComponent = MissionLobbyComponent.CreateBehavior();
 
 #if CRPG_SERVER
         ICrpgClient crpgClient = CrpgClient.Create();
@@ -102,7 +103,7 @@ internal class CrpgDtvGameMode : MissionBasedMultiplayerGameMode
             new MissionInitializerRecord(scene),
             _ => new MissionBehavior[]
             {
-                MissionLobbyComponent.CreateBehavior(),
+                lobbyComponent,
 #if CRPG_CLIENT
                 new CrpgUserManagerClient(), // Needs to be loaded before the Client mission part.
 #endif
@@ -139,6 +140,7 @@ internal class CrpgDtvGameMode : MissionBasedMultiplayerGameMode
                 new ServerMetricsBehavior(),
                 new NotAllPlayersReadyComponent(),
                 new DrowningBehavior(),
+                new PopulationBasedEntityVisibilityBehavior(lobbyComponent),
 #else
                 new MultiplayerAchievementComponent(),
                 new MissionMatchHistoryComponent(),
