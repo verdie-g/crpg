@@ -125,7 +125,7 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
         Vec2 initialDirection = spawnFrame.rotation.f.AsVec2.Normalized();
 
         AgentBuildData agentBuildData = new AgentBuildData(character)
-            .Equipment(character.Equipment)
+            .Equipment(character.AllEquipments[MBRandom.RandomInt(character.AllEquipments.Count)])
             .TroopOrigin(new BasicBattleAgentOrigin(character))
             .EquipmentSeed(MissionLobbyComponent.GetRandomFaceSeedForCharacter(character))
             .Team(team)
