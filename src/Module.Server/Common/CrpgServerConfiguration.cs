@@ -25,7 +25,7 @@ internal static class CrpgServerConfiguration
     public static CrpgRegion Region { get; }
     public static string Service { get; }
     public static string Instance { get; }
-    public static float ClanGroupSizePenalty { get; private set; } = 1.0f;
+    public static float ClanGroupSizePenalty { get; private set; } = 0f;
     public static float ServerExperienceMultiplier { get; private set; } = 1.0f;
     public static int RewardTick { get; private set; } = 60;
     public static bool TeamBalanceOnce { get; private set; }
