@@ -416,6 +416,7 @@ internal class CrpgTeamSelectServerComponent : MultiplayerTeamSelectComponent
                 Deaths = 0,
                 Assists = 0,
                 Rating = character.Rating.Value,
+                Deviation = character.Rating.Deviation,
                 RatingWeight = ComputeRatingWeight(crpgPeer.User),
                 EquipmentCost = ComputeEquippedItemsPrice(character.EquippedItems),
                 EquipmentWeight = ComputeEquippedItemsWeight(character.EquippedItems),
@@ -481,6 +482,7 @@ internal class CrpgTeamSelectServerComponent : MultiplayerTeamSelectComponent
         public int Deaths { get; set; }
         public int Assists { get; set; }
         public float Rating { get; set; }
+        public float Deviation { get; set; }
         public float RatingWeight { get; set; }
         public int EquipmentCost { get; set; }
         public float EquipmentWeight { get; set; }
