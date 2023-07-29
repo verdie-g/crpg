@@ -70,14 +70,30 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
     {
         float inaccuracy = 0.0f;
         float skillComponentMultiplier = 1f;
+        float damageTypeFactorForThrustThrowing = weapon.ThrustDamageType switch
+        {
+            DamageTypes.Blunt => 1.3f,
+            DamageTypes.Pierce => 1.2f,
+            DamageTypes.Cut => 1f,
+            DamageTypes.Invalid => 1.3f,
+        };
+
+        float damageTypeFactorForSwingThrowing = weapon.SwingDamageType switch
+        {
+            DamageTypes.Blunt => 1.3f,
+            DamageTypes.Pierce => 1.2f,
+            DamageTypes.Cut => 1f,
+            DamageTypes.Invalid => 1.3f,
+        };
+
         float weaponClassMultiplier = weapon.WeaponClass switch
         {
             WeaponClass.Bow => 1.25f,
             WeaponClass.Crossbow => 0.5f,
-            WeaponClass.Stone => (float)Math.Pow(weapon.ThrustDamage / 20f, 2f) * 1f,
-            WeaponClass.ThrowingAxe => (float)Math.Pow(weapon.ThrustDamage / 30f, 2f) * 1.65f,
-            WeaponClass.ThrowingKnife => (float)Math.Pow(weapon.ThrustDamage / 30f, 2f) * 1.65f,
-            WeaponClass.Javelin => (float)Math.Pow(weapon.ThrustDamage / 30f, 2f) * 1.65f,
+            WeaponClass.Stone => (float)Math.Pow(weapon.ThrustDamage * damageTypeFactorForThrustThrowing / 30f, 2f) * 1f,
+            WeaponClass.ThrowingAxe => (float)Math.Pow(weapon.ThrustDamage * damageTypeFactorForSwingThrowing / 30f, 2f) * 1.65f,
+            WeaponClass.ThrowingKnife => (float)Math.Pow(weapon.ThrustDamage * damageTypeFactorForThrustThrowing / 30f, 2f) * 1.65f,
+            WeaponClass.Javelin => (float)Math.Pow(weapon.ThrustDamage * damageTypeFactorForThrustThrowing / 30f, 2f) * 1.65f,
             _ => 1f,
         };
 
