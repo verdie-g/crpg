@@ -35,16 +35,15 @@ internal class CrpgScoreboardComponent : MissionScoreboardComponent
             return;
         }
 
-        affectorAgent = affectorAgent.IsMount ? affectorAgent.RiderAgent : affectorAgent;
-        bool affectedAgentIsMount = affectedAgent.IsMount;
-        affectedAgent = affectedAgentIsMount ? affectedAgent.RiderAgent : affectedAgent;
-        if (affectedAgent == null)
+        Agent affectorCharacterAgent = affectorAgent.IsMount ? affectorAgent.RiderAgent : affectorAgent;
+        Agent affectedCharacterAgent = affectedAgent.IsMount ? affectedAgent.RiderAgent : affectedAgent;
+        if (affectedCharacterAgent == null)
         {
             return;
         }
 
         float ratingFactor;
-        var affectedCrpgUser = affectedAgent.MissionPeer?.GetComponent<CrpgPeer>()?.User;
+        var affectedCrpgUser = affectedCharacterAgent.MissionPeer?.GetComponent<CrpgPeer>()?.User;
         if (affectedCrpgUser == null)
         {
             // The affected agent is probably a bot.
@@ -52,12 +51,15 @@ internal class CrpgScoreboardComponent : MissionScoreboardComponent
         }
         else
         {
-            const float ratingToScoreScaler = 0.001f;
-            float rating = affectedCrpgUser.Character.Rating.Value - 2 * affectedCrpgUser.Character.Rating.Deviation;
-            ratingFactor = rating * ratingToScoreScaler * CrpgRatingHelper.ComputeRegionRatingPenalty(affectedCrpgUser.Region);
+            double ratingWithUncertainty = 0.01 * (affectedCrpgUser.Character.Rating.Value - 2 * affectedCrpgUser.Character.Rating.Deviation);
+            float competitiveRating = (float)(ratingWithUncertainty < 0
+                ? 0.03f * -Math.Pow(-ratingWithUncertainty, 3.98)
+                : 0.03f * Math.Pow(ratingWithUncertainty, 3.98));
+            const float ratingToScoreScaler = 1 / 1250f;
+            ratingFactor = competitiveRating * ratingToScoreScaler * CrpgRatingHelper.ComputeRegionRatingPenalty(affectedCrpgUser.Region);
         }
 
-        float score = damagedHp * ratingFactor;
+        float score = damagedHp / affectedCharacterAgent.BaseHealthLimit * 100f * ratingFactor;
         if (isBlocked)
         {
             if (!collisionData.AttackBlockedWithShield)
@@ -65,22 +67,22 @@ internal class CrpgScoreboardComponent : MissionScoreboardComponent
                 return;
             }
 
-            score = collisionData.InflictedDamage * 0.3f;
+            score = (collisionData.InflictedDamage + collisionData.AbsorbedByArmor) / 12.5f;
         }
-        else if (affectedAgentIsMount)
+        else if (affectedAgent.IsMount && affectedCharacterAgent != null)
         {
-            score = damagedHp * 0.45f;
+            score = damagedHp / affectedAgent.BaseHealthLimit * 70f * ratingFactor;
         }
 
-        if (affectorAgent == affectedAgent)
+        if (affectorCharacterAgent == affectedCharacterAgent)
         {
             return;
         }
 
-        var affectorMissionPeer = affectorAgent?.MissionPeer;
+        var affectorMissionPeer = affectorCharacterAgent?.MissionPeer;
         if (affectorMissionPeer != null)
         {
-            score = affectorAgent!.IsFriendOf(affectedAgent) ? score * -1.5f : score;
+            score = affectorCharacterAgent!.IsFriendOf(affectedCharacterAgent) ? score * -1f : score;
             ReflectionHelper.SetProperty(
                 affectorMissionPeer,
                 nameof(affectorMissionPeer.Score),
