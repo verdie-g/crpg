@@ -106,31 +106,44 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
             return false;
         }
 
+        FlagCapturePoint? uncappedFlag = null;
         foreach (var flag in _flagStages[_currentStage])
         {
-            foreach (var agent in EnumerateAgentsAroundFlag(flag))
+            if (GetFlagOwnerTeam(flag) != Mission.DefenderTeam)
             {
-                if (agent.IsMount || !agent.IsActive() || agent.Team?.Side != BattleSideEnum.Attacker)
-                {
-                    continue;
-                }
-
-                if (!_wasCurrentStageNotifiedAboutOvertime)
-                {
-                    _wasCurrentStageNotifiedAboutOvertime = true;
-                    GameNetwork.BeginBroadcastModuleEvent();
-                    GameNetwork.WriteMessage(new CrpgNotificationId
-                    {
-                        Type = CrpgNotificationType.Notification,
-                        TextId = "str_notification",
-                        TextVariation = "conquest_overtime",
-                    });
-                    GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
-                }
-
-                // Attacker still on a flag of the current stage.
-                return false;
+                continue;
             }
+
+            if (uncappedFlag != null) // More than one flag are uncapped -> no overtime.
+            {
+                return true;
+            }
+
+            uncappedFlag = flag;
+        }
+
+        foreach (var agent in EnumerateAgentsAroundFlag(uncappedFlag!))
+        {
+            if (agent.IsMount || !agent.IsActive() || agent.Team?.Side != BattleSideEnum.Attacker)
+            {
+                continue;
+            }
+
+            if (!_wasCurrentStageNotifiedAboutOvertime)
+            {
+                _wasCurrentStageNotifiedAboutOvertime = true;
+                GameNetwork.BeginBroadcastModuleEvent();
+                GameNetwork.WriteMessage(new CrpgNotificationId
+                {
+                    Type = CrpgNotificationType.Notification,
+                    TextId = "str_notification",
+                    TextVariation = "conquest_overtime",
+                });
+                GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
+            }
+
+            // Attacker still on the last flag of the current stage.
+            return false;
         }
 
         return true;
