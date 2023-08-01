@@ -214,6 +214,7 @@ internal class CrpgSiegeServer : MissionMultiplayerGameModeBase, IAnalyticsFlagI
         {
             _ = _rewardServer.UpdateCrpgUsersAsync(
                 durationRewarded: _rewardTickTimer.GetTimerDuration(),
+                durationUpkeep: _rewardTickTimer.GetTimerDuration(),
                 constantMultiplier: 2);
         }
     }

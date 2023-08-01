@@ -406,6 +406,7 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
 
         _ = _rewardServer.UpdateCrpgUsersAsync(
             durationRewarded: _rewardTickTimer!.GetRemainingTimeInSeconds(),
+            durationUpkeep: _rewardTickTimer!.GetRemainingTimeInSeconds(),
             defenderMultiplierGain: -CrpgRewardServer.ExperienceMultiplierMax,
             attackerMultiplierGain: CrpgRewardServer.ExperienceMultiplierMax);
         _isOddRewardTick = true;
