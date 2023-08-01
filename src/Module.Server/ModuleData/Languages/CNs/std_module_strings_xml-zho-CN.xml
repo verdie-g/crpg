@@ -52,6 +52,6 @@
     <string id="v1S1BAF4" text="骑兵将在 {SECONDS} 秒后出现！" />
     <string id="joWaOGco" text="到达时间限制，但仍有一些进攻者在旗帜周围。防守者需要消灭他们才能赢得游戏。" />
     <string id="I5MWE5AR" text="根据人口规模，已从地图中移除{ENTITY_COUNT}个实体。" />
-    <string id="mfD3LkeQ" text="The Viscount is being attacked by {AGENT}!" />
+    <string id="mfD3LkeQ" text="子爵正遭到 {AGENT} 的攻击！" />
   </strings>
 </base>
