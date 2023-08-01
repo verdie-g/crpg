@@ -118,20 +118,20 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
     }
 
     public override void OnScoreHit(
-    Agent affectedAgent,
-    Agent affectorAgent,
-    WeaponComponentData attackerWeapon,
-    bool isBlocked,
-    bool isSiegeEngineHit,
-    in Blow blow,
-    in AttackCollisionData collisionData,
-    float damagedHp,
-    float hitDistance,
-    float shotDifficulty)
+        Agent affectedAgent,
+        Agent affectorAgent,
+        WeaponComponentData attackerWeapon,
+        bool isBlocked,
+        bool isSiegeEngineHit,
+        in Blow blow,
+        in AttackCollisionData collisionData,
+        float damagedHp,
+        float hitDistance,
+        float shotDifficulty)
     {
-        if (affectedAgent.IsAIControlled && affectedAgent.Name == "The Viscount") // Viscount under attack
+        if (affectedAgent.IsAIControlled && affectedAgent.Team == Mission.DefenderTeam) // Viscount under attack
         {
-            SendDataToPeers(new CrpgDtvViscountUnderAttackMessage {Attacker = affectorAgent});
+            SendDataToPeers(new CrpgDtvViscountUnderAttackMessage { Attacker = affectorAgent });
             return;
         }
     }

@@ -7,7 +7,7 @@ namespace Crpg.Module.Modes.Dtv;
 [DefineGameNetworkMessageTypeForMod(GameNetworkMessageSendType.FromServer)]
 internal sealed class CrpgDtvViscountUnderAttackMessage : GameNetworkMessage
 {
-    public Agent Attacker { get; set; } = default!;
+    public Agent? Attacker { get; set; }
     protected override void OnWrite()
     {
         WriteAgentReferenceToPacket(Attacker);

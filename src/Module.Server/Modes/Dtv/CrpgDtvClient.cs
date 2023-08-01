@@ -81,8 +81,17 @@ internal class CrpgDtvClient : MissionMultiplayerGameModeBaseClient
 
     private void HandleViscountUnderAttack(CrpgDtvViscountUnderAttackMessage message)
     {
-        TextObject textObject = new("{=mfD3LkeQ}The Viscount is being attacked by {AGENT}!",
-        new Dictionary<string, object> { ["AGENT"] = message.Attacker.Name });
+        TextObject textObject;
+        if (message.Attacker != null)
+        {
+            textObject = new("{=mfD3LkeQ}The Viscount is being attacked by {AGENT}!",
+            new Dictionary<string, object> { ["AGENT"] = message.Attacker.Name });
+        }
+        else
+        {
+            textObject = new("{=}The Viscount is under attack!");
+        }
+
         InformationManager.DisplayMessage(new InformationMessage
         {
             Information = textObject.ToString(),
