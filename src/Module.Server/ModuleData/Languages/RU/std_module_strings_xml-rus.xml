@@ -48,6 +48,7 @@
     <string id="YFfWaWqk" text="{COUNT} новых игроков присоединились к команде атакующих{newline}" />
     <string id="TWpiAeFe" text="Наступило счастливые часы! Опыт увеличен на 50%." />
     <string id="KoqNpPLa" text="Счастливые часы окончены!" />
+    <string id="mfD3LkeQ" text="The Viscount is being attacked by {AGENT}!" />
 
     <!-- Notifications -->
     <string id="pCIKeing" text="Вы будете удалены за бездействие через {SECONDS} секунд!" />

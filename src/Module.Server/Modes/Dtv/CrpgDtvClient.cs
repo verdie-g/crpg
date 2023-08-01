@@ -34,6 +34,7 @@ internal class CrpgDtvClient : MissionMultiplayerGameModeBaseClient
         registerer.Register<CrpgDtvSetTimerMessage>(HandleSetTimer);
         registerer.Register<CrpgDtvRoundStartMessage>(HandleRoundStart);
         registerer.Register<CrpgDtvWaveStartMessage>(HandleWaveStart);
+        registerer.Register<CrpgDtvViscountUnderAttackMessage>(HandleViscountUnderAttack);
         registerer.Register<CrpgDtvGameEnd>(HandleViscountDeath);
     }
 
@@ -75,6 +76,18 @@ internal class CrpgDtvClient : MissionMultiplayerGameModeBaseClient
                 : new TextObject("{=tdfOMWmf}The defenders have been slaughtered!").ToString(),
             Color = new Color(0.90f, 0.25f, 0.25f),
             SoundEventPath = "event:/ui/notification/death",
+        });
+    }
+
+    private void HandleViscountUnderAttack(CrpgDtvViscountUnderAttackMessage message)
+    {
+        TextObject textObject = new("{=mfD3LkeQ}The Viscount is being attacked by {AGENT}!",
+        new Dictionary<string, object> { ["AGENT"] = message.Attacker.Name });
+        InformationManager.DisplayMessage(new InformationMessage
+        {
+            Information = textObject.ToString(),
+            Color = new Color(0.90f, 0.25f, 0.25f),
+            SoundEventPath = "event:/ui/notification/alert",
         });
     }
 }

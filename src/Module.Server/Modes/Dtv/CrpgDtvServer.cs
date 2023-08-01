@@ -117,6 +117,25 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         }
     }
 
+    public override void OnScoreHit(
+    Agent affectedAgent,
+    Agent affectorAgent,
+    WeaponComponentData attackerWeapon,
+    bool isBlocked,
+    bool isSiegeEngineHit,
+    in Blow blow,
+    in AttackCollisionData collisionData,
+    float damagedHp,
+    float hitDistance,
+    float shotDifficulty)
+    {
+        if (affectedAgent.IsAIControlled && affectedAgent.Name == "The Viscount") // Viscount under attack
+        {
+            SendDataToPeers(new CrpgDtvViscountUnderAttackMessage {Attacker = affectorAgent});
+            return;
+        }
+    }
+
     protected override void HandleNewClientAfterSynchronized(NetworkCommunicator networkPeer)
     {
         if (!_gameStarted)
