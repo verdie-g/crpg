@@ -19,6 +19,7 @@ declare module 'vue' {
     CharacterInventoryItemDetail: typeof import('./../components/character/inventory/CharacterInventoryItemDetail.vue')['default']
     CharacterInventoryItemList: typeof import('./../components/character/inventory/CharacterInventoryItemList.vue')['default']
     CharacterInventoryItemUpgrades: typeof import('./../components/character/inventory/CharacterInventoryItemUpgrades.vue')['default']
+    CharacterMedia: typeof import('./../components/character/CharacterMedia.vue')['default']
     CharacterSelectItem: typeof import('./../components/character/CharacterSelectItem.vue')['default']
     CharacterStats: typeof import('./../components/character/CharacterStats.vue')['default']
     ClanForm: typeof import('./../components/clan/ClanForm.vue')['default']
