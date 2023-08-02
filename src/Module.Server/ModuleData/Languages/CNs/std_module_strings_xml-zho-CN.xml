@@ -40,6 +40,7 @@
     <string id="1y04FNHB" text="第 {WAVE} 波开始！" />
     <string id="4HrC30kl" text="子爵已被屠杀！" />
     <string id="tdfOMWmf" text="防守者已被屠杀！" />
+    <string id="mfD3LkeQ" text="子爵正遭到 {AGENT} 的攻击！" />
     <string id="ck7dhCeM" text="欢迎 {NAMES} 加入 cRPG！" />
     <string id="FAkcpZdy" text="角色和商店" />
     <string id="xAnUFQt2" text="{COUNT} 位玩家转移到攻击方{newline}" />
