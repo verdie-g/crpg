@@ -129,10 +129,14 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         float hitDistance,
         float shotDifficulty)
     {
+        if (!_gameStarted)
+        {
+            return;
+        }
+
         if (affectedAgent.IsAIControlled && affectedAgent.Team == Mission.DefenderTeam) // Viscount under attack
         {
             SendDataToPeers(new CrpgDtvViscountUnderAttackMessage { Attacker = affectorAgent });
-            return;
         }
     }
 
