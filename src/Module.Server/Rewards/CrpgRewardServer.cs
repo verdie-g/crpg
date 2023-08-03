@@ -377,7 +377,7 @@ internal class CrpgRewardServer : MissionLogic
 
     private void OnWarmupEnded()
     {
-        _ = UpdateCrpgUsersAsync(durationRewarded: 0, durationUpkeep: 0, updateUserStats: false);
+        _ = UpdateCrpgUsersAsync(durationRewarded: 0, updateUserStats: false);
     }
 
     private void SetRewardForConnectedPlayer(
