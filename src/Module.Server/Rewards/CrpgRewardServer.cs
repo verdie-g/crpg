@@ -129,7 +129,7 @@ internal class CrpgRewardServer : MissionLogic
     /// <param name="updateUserStats">True if score and rating should be saved.</param>
     public async Task UpdateCrpgUsersAsync(
         float durationRewarded,
-        float durationUpkeep,
+        float? durationUpkeep = null,
         int defenderMultiplierGain = 0,
         int attackerMultiplierGain = 0,
         BattleSideEnum? valourTeamSide = null,
@@ -159,7 +159,7 @@ internal class CrpgRewardServer : MissionLogic
 
         Dictionary<int, CrpgPeer> crpgPeerByCrpgUserId = new();
         List<CrpgUserUpdate> userUpdates = new();
-        Dictionary<int, IList<CrpgUserDamagedItem>> brokenItems = lowPopulationServer ? new() : GetBrokenItemsByCrpgUserId(networkPeers, durationUpkeep);
+        Dictionary<int, IList<CrpgUserDamagedItem>> brokenItems = lowPopulationServer ? new() : GetBrokenItemsByCrpgUserId(networkPeers, durationUpkeep ?? durationRewarded);
 
         var compensationByCrpgUserId = _isTeamHitCompensationsEnabled ? CalculateCompensationByCrpgUserId(brokenItems) : new();
         foreach (NetworkCommunicator networkPeer in networkPeers)

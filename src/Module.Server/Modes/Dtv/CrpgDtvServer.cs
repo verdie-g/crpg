@@ -23,7 +23,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
     private bool _waveStarted;
     private MissionTimer? _waveStartTimer;
     private MissionTimer? _endGameTimer;
-    private MissionTimer? _roundTimer;
+    private MissionTime _currentRoundStartTime;
 
     public CrpgDtvServer(CrpgRewardServer rewardServer)
     {
@@ -151,7 +151,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         _currentWave = -1;
         SpawningBehavior.RequestSpawnSessionForRoundStart(firstRound: _currentRound == 0);
         SendDataToPeers(new CrpgDtvRoundStartMessage { Round = _currentRound });
-        _roundTimer = new MissionTimer(TimerComponent.GetRemainingTime(true));
+        _currentRoundStartTime = MissionTime.Now;
         _waveStartTimer = new MissionTimer(15f);
         _waveStarted = false;
     }
@@ -170,7 +170,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
     {
         bool viscountDead = !Mission.DefenderTeam.HasBots;
         bool defendersDepleted = Mission.DefenderTeam.ActiveAgents.Count == (viscountDead ? 0 : 1);
-        float roundDuration = _roundTimer != null ? _roundTimer.GetTimerDuration() - TimerComponent.GetRemainingTime(true) : 0;
+        float roundDuration = _currentRoundStartTime != null ? _currentRoundStartTime.ElapsedSeconds : 0;
         if (viscountDead || defendersDepleted)
         {
             SendDataToPeers(new CrpgDtvGameEnd { ViscountDead = viscountDead });
