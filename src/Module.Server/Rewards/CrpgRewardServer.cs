@@ -247,7 +247,7 @@ internal class CrpgRewardServer : MissionLogic
         }
     }
 
-    private Dictionary<int, IList<CrpgUserDamagedItem>> GetBrokenItemsByCrpgUserId(NetworkCommunicator[] networkPeers, float durationUpkeep)
+    private Dictionary<int, IList<CrpgUserDamagedItem>> GetBrokenItemsByCrpgUserId(NetworkCommunicator[] networkPeers, float duration)
     {
         Dictionary<int, IList<CrpgUserDamagedItem>> brokenItems = new();
         foreach (NetworkCommunicator networkPeer in networkPeers)
@@ -262,7 +262,7 @@ internal class CrpgRewardServer : MissionLogic
             if (crpgPeer.LastSpawnInfo != null)
             {
                 int crpgUserId = crpgPeer.User.Id;
-                var crpgUserDamagedItems = BreakItems(crpgPeer, durationUpkeep);
+                var crpgUserDamagedItems = BreakItems(crpgPeer, duration);
                 brokenItems[crpgUserId] = crpgUserDamagedItems;
             }
         }
