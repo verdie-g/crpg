@@ -100,40 +100,10 @@ if (userStore.characters.length === 0) {
       <div class="order-1 flex items-center gap-4">
         <VDropdown :triggers="['click']" placement="bottom-end">
           <template #default="{ shown }">
-            <OButton
-              variant="primary"
-              outlined
-              :label="`${currentCharacter.name} (${currentCharacter.level})`"
-              size="lg"
-            >
-              <OIcon
-                :icon="characterClassToIcon[currentCharacter.class]"
-                size="lg"
-                v-tooltip="$t(`character.class.${currentCharacter.class}`)"
-              />
-
-              <div class="flex items-center gap-1">
-                <div class="max-w-[150px] overflow-x-hidden text-ellipsis whitespace-nowrap">
-                  {{ currentCharacter.name }}
-                </div>
-
-                <div>({{ currentCharacter.level }})</div>
-              </div>
-
-              <Tag
-                v-if="currentCharacter.id === user?.activeCharacterId"
-                :label="$t('character.status.active.short')"
-                v-tooltip="$t('character.status.active.title')"
-                variant="success"
-                size="sm"
-              />
-
-              <Tag
-                v-if="currentCharacter.forTournament"
-                :label="$t('character.status.forTournament.short')"
-                v-tooltip="$t('character.status.forTournament.title')"
-                variant="warning"
-                size="sm"
+            <OButton variant="primary" outlined size="lg">
+              <CharacterMedia
+                :character="currentCharacter"
+                :isActive="currentCharacter.id === user?.activeCharacterId"
               />
 
               <div class="h-4 w-px select-none bg-border-300"></div>
@@ -148,32 +118,35 @@ if (userStore.characters.length === 0) {
           </template>
 
           <template #popper="{ hide }">
-            <DropdownItem
-              v-for="char in characters"
-              :checked="char.id === currentCharacterId"
-              tag="RouterLink"
-              :to="{ name: route.name, params: { id: char.id } }"
-              @click="hide"
-            >
-              <CharacterSelectItem
-                :character="char"
-                :modelValue="user!.activeCharacterId === char.id"
-                @update:modelValue="(val: boolean) => onActivateCharacter(char.id, val)"
-              />
-            </DropdownItem>
+            <div class="min-w-[24rem]">
+              <DropdownItem
+                v-for="char in characters"
+                :checked="char.id === currentCharacterId"
+                tag="RouterLink"
+                :to="{ name: route.name, params: { id: char.id } }"
+                class="justify-between"
+                @click="hide"
+              >
+                <CharacterSelectItem
+                  :character="char"
+                  :modelValue="user!.activeCharacterId === char.id"
+                  @update:modelValue="(val: boolean) => onActivateCharacter(char.id, val)"
+                />
+              </DropdownItem>
 
-            <DropdownItem
-              class="text-primary hover:text-primary-hover"
-              @click="
-                () => {
-                  onCreateNewCharacter();
-                  hide();
-                }
-              "
-            >
-              <OIcon icon="add" size="lg" />
-              {{ $t('character.create.title') }}
-            </DropdownItem>
+              <DropdownItem
+                class="text-primary hover:text-primary-hover"
+                @click="
+                  () => {
+                    onCreateNewCharacter();
+                    hide();
+                  }
+                "
+              >
+                <OIcon icon="add" size="lg" />
+                {{ $t('character.create.title') }}
+              </DropdownItem>
+            </div>
           </template>
         </VDropdown>
 

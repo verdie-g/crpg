@@ -3,15 +3,15 @@ import { useVuelidate } from '@vuelidate/core';
 import { sameAs } from '@/services/validators-service';
 
 const props = defineProps<{
-  title: string;
+  title?: string;
   description?: string;
   name: string;
   confirmLabel: string;
 }>();
 
 const emit = defineEmits<{
-  (e: 'cancel'): void;
-  (e: 'confirm'): void;
+  cancel: [];
+  confirm: [];
 }>();
 
 const confirmNameModel = ref<string>('');
@@ -39,11 +39,14 @@ const onConfirm = async () => {
 
 <template>
   <div class="max-w-lg space-y-6 px-12 py-11 text-center">
-    <h4 class="text-xl">{{ title }}</h4>
+    <slot name="title">
+      <h4 class="text-xl">{{ title }}</h4>
+    </slot>
 
     <div class="space-y-4">
-      <slot v-if="$slots.description" name="description"></slot>
-      <p v-else-if="description !== undefined">{{ description }}</p>
+      <slot name="description">
+        <p>{{ description }}</p>
+      </slot>
 
       <i18n-t scope="global" keypath="confirm.name" tag="p">
         <template #name>

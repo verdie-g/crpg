@@ -40,6 +40,7 @@
     <string id="1y04FNHB" text="Началась волна {WAVE}!" />
     <string id="4HrC30kl" text="Граф был убит!" />
     <string id="tdfOMWmf" text="Защитники были убиты!" />
+    <string id="mfD3LkeQ" text="{AGENT} атаковал графа!" />
     <string id="ck7dhCeM" text="Добро пожаловать, {NAMES}, кто только что {?IS_PLURAL}присоединился{?}присоединились{\?} к cRPG!" />
     <string id="FAkcpZdy" text="Персонаж и магазин" />
     <string id="xAnUFQt2" text="{COUNT} игроков перешело в команду атакующих{newline}" />

@@ -85,6 +85,7 @@ const onRetireCharacter = async () => {
   ]);
   notify(t('character.settings.retire.notify.success'));
 };
+const shownRetireConfirmTooltip = ref<boolean>(false);
 
 const canSetCharacterForTournament = computed(() =>
   canSetCharacterForTournamentValidate(character.value)
@@ -205,7 +206,11 @@ await fetchPageData(character.value.id);
 
           <SimpleTableRow
             :label="$t('character.statistics.expMultiplier.title')"
-            :value="$t('character.format.expMultiplier', { multiplier: $n(userStore.user!.experienceMultiplier) })"
+            :value="
+              $t('character.format.expMultiplier', {
+                multiplier: $n(userStore.user!.experienceMultiplier),
+              })
+            "
             :tooltip="{
               title: $t('character.statistics.expMultiplier.tooltip.title', {
                 maxExpMulti: $t('character.format.expMultiplier', {
@@ -236,12 +241,14 @@ await fetchPageData(character.value.id);
 
           <SimpleTableRow
             :label="$t('character.statistics.kda.title')"
-            :value="$t('character.format.kda', {
+            :value="
+              $t('character.format.kda', {
                 kills: characterStatistics!.kills,
                 deaths: characterStatistics!.deaths,
                 assists: characterStatistics!.assists,
                 ratio: kdaRatio,
-              })"
+              })
+            "
             :tooltip="{
               title: $t('character.statistics.kda.tooltip.title'),
             }"
@@ -407,7 +414,13 @@ await fetchPageData(character.value.id);
 
         <template v-if="!character.forTournament">
           <!--  -->
-          <Modal>
+          <Modal
+            @applyHide="
+              () => {
+                shownRetireConfirmTooltip = false;
+              }
+            "
+          >
             <VTooltip placement="auto">
               <div>
                 <OButton
@@ -512,17 +525,25 @@ await fetchPageData(character.value.id);
 
             <template #popper="{ hide }">
               <ConfirmActionForm
-                :title="$t('character.settings.retire.dialog.title')"
-                :name="character.name"
+                :name="`${character.name} - ${character.level}`"
                 :confirmLabel="$t('action.apply')"
                 @cancel="hide"
                 @confirm="
                   () => {
-                    onRetireCharacter();
-                    hide();
+                    shownRetireConfirmTooltip = true;
                   }
                 "
               >
+                <template #title>
+                  <div class="flex flex-col items-center gap-2">
+                    <h4 class="text-xl">{{ $t('character.settings.retire.dialog.title') }}</h4>
+                    <CharacterMedia
+                      class="rounded-full border-border-300 bg-base-500/20 px-3 py-2.5 text-primary"
+                      :character="character"
+                      :isActive="character.id === userStore.user?.activeCharacterId"
+                    />
+                  </div>
+                </template>
                 <template #description>
                   <p>
                     {{ $t('character.settings.retire.dialog.desc') }}
@@ -549,6 +570,16 @@ await fetchPageData(character.value.id);
                   </i18n-t>
                 </template>
               </ConfirmActionForm>
+
+              <ConfirmActionTooltip
+                :shown="shownRetireConfirmTooltip"
+                @confirm="
+                  () => {
+                    onRetireCharacter();
+                    hide();
+                  }
+                "
+              />
             </template>
           </Modal>
 
