@@ -94,7 +94,7 @@ internal class MatchBalancer
             // This are failcases in case bannerbalance was not enough
             Debug.Print("ratio difference is above 10%");
             // to rewrite to work with all penalty values
-            if (CrpgServerConfiguration.ClanGroupSizePenalty == 0f)
+            if (CrpgServerConfiguration.TeamBalancerClanGroupSizePenalty == 0f)
             {
                 balancedBannerGameMatch = BalanceTeamOfSimilarSizes(balancedBannerGameMatch, bannerBalance: false, 0.10f);
             }
