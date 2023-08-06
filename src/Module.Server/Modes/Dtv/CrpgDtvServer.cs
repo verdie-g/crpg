@@ -193,7 +193,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
     {
         bool viscountDead = !Mission.DefenderTeam.HasBots;
         bool defendersDepleted = Mission.DefenderTeam.ActiveAgents.Count == (viscountDead ? 0 : 1);
-        float roundDuration = _currentRoundStartTime != null ? _currentRoundStartTime.ElapsedSeconds : 0;
+        float roundDuration = _currentRoundStartTime.ElapsedSeconds;
         if (viscountDead || defendersDepleted)
         {
             SendDataToPeers(new CrpgDtvGameEnd { ViscountDead = viscountDead });
