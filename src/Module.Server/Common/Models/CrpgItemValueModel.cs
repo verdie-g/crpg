@@ -37,6 +37,18 @@ internal class CrpgItemValueModel : ItemValueModel
         [ItemObject.ItemTypeEnum.Bolts] = (4500, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Banner] = (500, ItemPriceCoeffs),
     };
+    public static float ComputeBowTier(int damage, int reloadSpeed, int missileSpeed, int aimSpeed, int accuracy, bool isLongBow, float heirloomLevel)
+    {
+        float scaler = 1.47682557092106f;
+        return (float)(Math.Pow(damage, 2.5) / 1335f
+            * Math.Pow(reloadSpeed, 0.5) / 10f
+            * Math.Pow(missileSpeed, 0.5f) / 10f
+            * Math.Pow(accuracy, 1.5f) / 100f
+            * Math.Pow(aimSpeed / 10f, 1.5f) / 10f
+            * (isLongBow ? 0.668f : 0.84f)
+            / scaler)
+            / (1 + heirloomLevel / 10f);
+    }
 
     public override float CalculateTier(ItemObject item)
     {
@@ -377,7 +389,6 @@ internal class CrpgItemValueModel : ItemValueModel
     private float CalculateRangedWeaponTier(WeaponComponent weaponComponent)
     {
         WeaponComponentData weapon = weaponComponent.Weapons[0];
-        float scaler = 1.47682557092106f;
         float heirloomLevel = ItemToHeirloomLevel(weaponComponent.Item);
         if (weaponComponent.Item is { ItemType: ItemObject.ItemTypeEnum.Crossbow })
         {
@@ -395,15 +406,7 @@ internal class CrpgItemValueModel : ItemValueModel
             return crossbowTier * crossbowTier / 10f;
         }
 
-        float bowTier = (float)(Math.Pow(weapon.ThrustDamage, 2.5) / 1335f
-            * Math.Pow(weapon.SwingSpeed, 0.5) / 10f
-            * Math.Pow(weapon.MissileSpeed, 0.5f) / 10f
-            * Math.Pow(weapon.Accuracy, 1.5f) / 100f
-            * Math.Pow(weapon.ThrustSpeed / 10f, 1.5f) / 10f
-            * (weapon.ItemUsage == "long_bow" ? 0.668f : 0.84f)
-            / scaler);
-
-        bowTier /= (float)Math.Pow(1 + heirloomLevel / 10f, 1f);
+        float bowTier = ComputeBowTier(weapon.ThrustDamage, weapon.SwingSpeed,weapon.MissileSpeed, weapon.ThrustSpeed, weapon.Accuracy, weapon.ItemUsage == "long_bow", heirloomLevel);
         return bowTier * bowTier / 10f;
     }
 

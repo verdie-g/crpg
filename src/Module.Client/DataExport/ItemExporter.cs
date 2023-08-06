@@ -13,6 +13,7 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 using TaleWorlds.CampaignSystem.Extensions;
 using TaleWorlds.Core;
+using TaleWorlds.Core.ViewModelCollection;
 using TaleWorlds.InputSystem;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -899,6 +900,11 @@ internal class ItemExporter : IDataExporter
                     ModifyNodeAttribute(node1, "weight",
                         _ => ModifyShieldWeight(nonHeirloomNode, node1, type).ToString(CultureInfo.InvariantCulture));
                 }
+                if (type is ItemObject.ItemTypeEnum.Bow)
+                {
+                    ModifyNodeAttribute(node1, "weight",
+                        _ => ModifyBowWeight(nonHeirloomNode, node1, type, heirloomLevel).ToString(CultureInfo.InvariantCulture));
+                }
             }
         }
 
@@ -928,12 +934,25 @@ internal class ItemExporter : IDataExporter
 
     private static float ModifyShieldWeight(XmlNode nonHeirloomNode, XmlNode node, ItemObject.ItemTypeEnum type)
     {
-        XmlNode armorNode = nonHeirloomNode.SelectNodes("ItemComponent/Weapon")!.Cast<XmlNode>().First();
+        XmlNode shieldNode = nonHeirloomNode.SelectNodes("ItemComponent/Weapon")!.Cast<XmlNode>().First();
         float shieldWeightPoints =
-            float.Parse(armorNode.Attributes!["hit_points"].Value)
-          * float.Parse(armorNode.Attributes!["weapon_length"].Value)
-          * float.Parse(armorNode.Attributes!["weapon_length"].Value);
+            float.Parse(shieldNode.Attributes!["hit_points"].Value)
+          * float.Parse(shieldNode.Attributes!["weapon_length"].Value)
+          * float.Parse(shieldNode.Attributes!["weapon_length"].Value);
         return shieldWeightPoints / 800000f;
+    }
+
+    private static float ModifyBowWeight(XmlNode nonHeirloomNode, XmlNode node, ItemObject.ItemTypeEnum type, int heirloomLevel)
+    {
+        XmlNode weaponNode = nonHeirloomNode.SelectNodes("ItemComponent/Weapon")!.Cast<XmlNode>().First();
+        float tier = CrpgItemValueModel.ComputeBowTier(int.Parse(weaponNode.Attributes!["thrust_damage"].Value),
+            int.Parse(weaponNode.Attributes!["speed_rating"].Value),
+            int.Parse(weaponNode.Attributes!["missile_speed"].Value),
+            int.Parse(weaponNode.Attributes!["thrust_speed"].Value),
+            int.Parse(weaponNode.Attributes!["accuracy"].Value),
+            weaponNode.Attributes!["item_usage"].Value == "long_bow",
+            heirloomLevel);
+        return tier * int.Parse(weaponNode.Attributes!["thrust_damage"].Value) / 100f;
     }
 
     private static void ModifyChildHeirloomNodesAttribute(
