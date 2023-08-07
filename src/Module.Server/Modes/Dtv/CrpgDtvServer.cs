@@ -23,6 +23,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
     private bool _waveStarted;
     private MissionTimer? _waveStartTimer;
     private MissionTimer? _endGameTimer;
+    private MissionTime _currentRoundStartTime;
 
     public CrpgDtvServer(CrpgRewardServer rewardServer)
     {
@@ -173,6 +174,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
         _currentWave = -1;
         SpawningBehavior.RequestSpawnSessionForRoundStart(firstRound: _currentRound == 0);
         SendDataToPeers(new CrpgDtvRoundStartMessage { Round = _currentRound });
+        _currentRoundStartTime = MissionTime.Now;
         _waveStartTimer = new MissionTimer(15f);
         _waveStarted = false;
     }
@@ -191,11 +193,13 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
     {
         bool viscountDead = !Mission.DefenderTeam.HasBots;
         bool defendersDepleted = Mission.DefenderTeam.ActiveAgents.Count == (viscountDead ? 0 : 1);
+        float roundDuration = _currentRoundStartTime.ElapsedSeconds;
         if (viscountDead || defendersDepleted)
         {
             SendDataToPeers(new CrpgDtvGameEnd { ViscountDead = viscountDead });
             _ = _rewardServer.UpdateCrpgUsersAsync(
                 durationRewarded: ComputeRoundReward(CurrentRoundData, wavesWon: _currentWave),
+                durationUpkeep: roundDuration,
                 updateUserStats: false,
                 constantMultiplier: RewardMultiplier);
             EndGame(Mission.AttackerTeam);
@@ -216,6 +220,7 @@ internal class CrpgDtvServer : MissionMultiplayerGameModeBase
 
         _ = _rewardServer.UpdateCrpgUsersAsync(
             durationRewarded: ComputeRoundReward(CurrentRoundData, wavesWon: _currentWave + 1),
+            durationUpkeep: roundDuration,
             updateUserStats: false,
             constantMultiplier: RewardMultiplier);
 
