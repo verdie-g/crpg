@@ -80,9 +80,9 @@ internal class ItemExporter : IDataExporter
     };
     private static readonly Dictionary<int, int> HorseArmorHeirloomBonus = new()
     {
-        { 1, 5 },
-        { 2, 10 },
-        { 3, 15 },
+        { 1, 3 },
+        { 2, 6 },
+        { 3, 9 },
     };
     private static readonly Dictionary<int, (int damageBonus, int amountBonusPercentage)> CutArrowHeirloomBonus = new()
     {
@@ -233,6 +233,17 @@ internal class ItemExporter : IDataExporter
         itemsDoc3.Save(Path.Combine("../../Modules/cRPG_Exporter/ModuleData/items", Path.GetFileName("../../Modules/cRPG_Exporter/ModuleData/items/weapons.xml")));
         var itemsDoc4 = XmlRefundCraftingTemplate("../../Modules/cRPG_Exporter/ModuleData/items/weapons.xml", "crpg_Javelin");
         itemsDoc4.Save(Path.Combine("../../Modules/cRPG_Exporter/ModuleData/items", Path.GetFileName("../../Modules/cRPG_Exporter/ModuleData/items/weapons.xml")));
+    }
+
+    public async Task RefundCav(string gitRepoPath)
+    {
+        List<ItemObject.ItemTypeEnum> typesToRefund = new()
+        {
+            ItemObject.ItemTypeEnum.Horse,
+            ItemObject.ItemTypeEnum.HorseHarness,
+        };
+        var itemsDoc = XmlRefundItemType("../../Modules/cRPG_Exporter/ModuleData/items/horses_and_others.xml", typesToRefund);
+        itemsDoc.Save(Path.Combine("../../Modules/cRPG_Exporter/ModuleData/items", Path.GetFileName("../../Modules/cRPG_Exporter/ModuleData/items/horses_and_others.xml")));
     }
 
     public async Task Scale(string gitRepoPath)
@@ -889,7 +900,8 @@ internal class ItemExporter : IDataExporter
                          or ItemObject.ItemTypeEnum.Cape
                          or ItemObject.ItemTypeEnum.BodyArmor
                          or ItemObject.ItemTypeEnum.HandArmor
-                         or ItemObject.ItemTypeEnum.LegArmor)
+                         or ItemObject.ItemTypeEnum.LegArmor
+                         or ItemObject.ItemTypeEnum.HorseHarness)
                 {
                     ModifyNodeAttribute(node1, "weight",
                         _ => ModifyArmorWeight(nonHeirloomNode, node1, type).ToString(CultureInfo.InvariantCulture));
@@ -929,6 +941,11 @@ internal class ItemExporter : IDataExporter
             ItemObject.ItemTypeEnum.HorseHarness => 100f,
             _ => throw new ArgumentOutOfRangeException(),
         };
+        if (type is ItemObject.ItemTypeEnum.HorseHarness)
+        {
+            return armorNode.Attributes["body_armor"] == null ? 0f : float.Parse(armorNode.Attributes["body_armor"].Value);
+        }
+
         return 12.2f * (float)Math.Pow(armorPower, 1.4f) / bestArmorPower;
     }
 

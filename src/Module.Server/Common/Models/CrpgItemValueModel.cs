@@ -110,7 +110,7 @@ internal class CrpgItemValueModel : ItemValueModel
         return armorComponent.Item.ItemType switch
         {
 
-            ItemObject.ItemTypeEnum.HorseHarness => 10 * armorPower / bestArmorPower / (float)Math.Pow(1 + heirloomLevel / 10f, 1f),
+            ItemObject.ItemTypeEnum.HorseHarness => 10 * armorPower / bestArmorPower / (float)Math.Pow(1 + heirloomLevel / 16f, 1f),
             _ => (10 * armorPower) / (bestArmorPower * (float)Math.Pow(armorComponent.Item.Weight + 8, 0.5f)) / (float)Math.Pow(1 + heirloomLevel / 20f, 1f),
         };
     }

@@ -125,6 +125,12 @@ internal class SettlementExporter : IDataExporter
     {
         return Task.CompletedTask;
     }
+
+    public Task RefundCav(string gitRepoPath)
+    {
+        return Task.CompletedTask;
+    }
+
     public Task RefundShield(string gitRepoPath)
     {
         return Task.CompletedTask;
