@@ -246,7 +246,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
         const float maxHarnessWeight = 45f;
         float harnessWeightPercentage = harnessWeight / maxHarnessWeight;
-        float weightImpactOnSpeed = 1f / (1f + 0.3333f * harnessWeightPercentage); // speed reduced by 25% for full armor
+        float weightImpactOnSpeed = 1f / (1f + 0.3333f * harnessWeightPercentage); // speed reduced by 25% for max weight
         float ridingImpactOnSpeed = (float)(0.7f
             + ridingSkill * 0.001f
             + 1 / (2.2f + Math.Pow(2, -0.08f * (ridingSkill - 70f))));
