@@ -25,10 +25,27 @@ internal static class CrpgServerConfiguration
     public static CrpgRegion Region { get; }
     public static string Service { get; }
     public static string Instance { get; }
+    public static float TeamBalancerClanGroupSizePenalty { get; private set; } = 0f;
     public static float ServerExperienceMultiplier { get; private set; } = 1.0f;
     public static int RewardTick { get; private set; } = 60;
     public static bool TeamBalanceOnce { get; private set; }
     public static Tuple<TimeSpan, TimeSpan, TimeZoneInfo>? HappyHours { get; private set; }
+
+    [UsedImplicitly]
+    [ConsoleCommandMethod("crpg_team_balancer_clan_group_size_penalty", "Apply a rating increase to members of the same clan that are playing in the same team")]
+    private static void SetClanGroupSizePenalty(string? sizePenaltyStr)
+    {
+        if (sizePenaltyStr == null
+            || !float.TryParse(sizePenaltyStr, out float sizePenalty)
+            || sizePenalty > 1.5f)
+        {
+            Debug.Print($"Invalid team balancer clangroup size penalty: {sizePenaltyStr}");
+            return;
+        }
+
+        TeamBalancerClanGroupSizePenalty = sizePenalty;
+        Debug.Print($"Set ClanGroup Size Penalty to {sizePenalty}");
+    }
 
     [UsedImplicitly]
     [ConsoleCommandMethod("crpg_experience_multiplier", "Sets a reward multiplier for the server.")]

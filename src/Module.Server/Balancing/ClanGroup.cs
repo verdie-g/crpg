@@ -1,4 +1,5 @@
-﻿using Crpg.Module.Helpers;
+﻿using Crpg.Module.Common;
+using Crpg.Module.Helpers;
 
 namespace Crpg.Module.Balancing;
 
@@ -23,7 +24,7 @@ internal class ClanGroup
 
     public float Weight(float p = MatchBalancer.PowerParameter)
     {
-        const float clanGroupSizePenalty = 0.048f;
+        float clanGroupSizePenalty = CrpgServerConfiguration.TeamBalancerClanGroupSizePenalty;
         return MathHelper.PowerSumBy(Members, u => u.Weight, p) * (1 + Size * clanGroupSizePenalty);
     }
 
