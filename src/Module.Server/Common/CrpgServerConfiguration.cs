@@ -39,7 +39,7 @@ internal static class CrpgServerConfiguration
             || !float.TryParse(sizePenaltyStr, out float sizePenalty)
             || sizePenalty > 1.5f)
         {
-            Debug.Print($"Invalid server multiplier: {sizePenaltyStr}");
+            Debug.Print($"Invalid team balancer clangroup size penalty: {sizePenaltyStr}");
             return;
         }
 
