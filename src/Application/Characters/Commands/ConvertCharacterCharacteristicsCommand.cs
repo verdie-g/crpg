@@ -5,6 +5,8 @@ using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Characters.Commands;
 
@@ -24,6 +26,8 @@ public record ConvertCharacterCharacteristicsCommand : IMediatorRequest<Characte
 
     internal class Handler : IMediatorRequestHandler<ConvertCharacterCharacteristicsCommand, CharacterCharacteristicsViewModel>
     {
+        private static readonly ILogger Logger = LoggerFactory.CreateLogger<RetireCharacterCommand>();
+
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
 
@@ -65,6 +69,13 @@ public record ConvertCharacterCharacteristicsCommand : IMediatorRequest<Characte
             }
 
             await _db.SaveChangesAsync(cancellationToken);
+
+            (string from, string to) = req.Conversion == CharacterCharacteristicConversion.AttributesToSkills
+                ? ("attributes", "skills")
+                : ("skills", "attributes");
+            Logger.LogInformation("User '{0}' converted characteristic points of character '{1}' from {2} to {3}",
+                req.UserId, req.CharacterId, from, to);
+
             return new(_mapper.Map<CharacterCharacteristicsViewModel>(character.Characteristics));
         }
     }

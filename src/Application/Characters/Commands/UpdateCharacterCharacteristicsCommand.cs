@@ -8,6 +8,8 @@ using Crpg.Application.Common.Services;
 using Crpg.Common.Helpers;
 using Crpg.Domain.Entities.Characters;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Characters.Commands;
 
@@ -19,6 +21,8 @@ public record UpdateCharacterCharacteristicsCommand : IMediatorRequest<Character
 
     internal class Handler : IMediatorRequestHandler<UpdateCharacterCharacteristicsCommand, CharacterCharacteristicsViewModel>
     {
+        private static readonly ILogger Logger = LoggerFactory.CreateLogger<RetireCharacterCommand>();
+
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
         private readonly ICharacterClassResolver _characterClassResolver;
@@ -61,6 +65,9 @@ public record UpdateCharacterCharacteristicsCommand : IMediatorRequest<Character
             character.Class = _characterClassResolver.ResolveCharacterClass(character.Characteristics);
 
             await _db.SaveChangesAsync(cancellationToken);
+
+            Logger.LogInformation("User '{0}' update characteristics of character '{1}'", req.UserId, req.CharacterId);
+
             return new(_mapper.Map<CharacterCharacteristicsViewModel>(character.Characteristics));
         }
 
