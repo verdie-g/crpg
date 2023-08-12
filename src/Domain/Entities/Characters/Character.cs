@@ -28,6 +28,9 @@ public class Character : AuditableEntity
     /// </summary>
     public DateTime? DeletedAt { get; set; }
 
+    /// <summary>Used of optimistic concurrency.</summary>
+    public uint Version { get; set; }
+
     public CharacterCharacteristics Characteristics { get; set; } = new();
     public IList<EquippedItem> EquippedItems { get; set; } = new List<EquippedItem>();
     public CharacterStatistics Statistics { get; set; } = new();

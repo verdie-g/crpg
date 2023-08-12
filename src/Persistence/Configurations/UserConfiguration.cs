@@ -16,5 +16,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             .HasForeignKey<User>(u => u.ActiveCharacterId);
 
         builder.HasQueryFilter(u => u.DeletedAt == null);
+
+        builder.Property(u => u.Version).IsRowVersion();
     }
 }

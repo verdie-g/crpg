@@ -42,6 +42,9 @@ public class User : AuditableEntity
     /// </summary>
     public DateTime? DeletedAt { get; set; }
 
+    /// <summary>Used of optimistic concurrency.</summary>
+    public uint Version { get; set; }
+
     public IList<UserItem> Items { get; set; } = new List<UserItem>();
     public IList<Character> Characters { get; set; } = new List<Character>();
     public Character? ActiveCharacter { get; set; }

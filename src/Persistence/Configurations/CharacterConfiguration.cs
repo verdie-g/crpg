@@ -9,6 +9,7 @@ public class CharacterConfiguration : IEntityTypeConfiguration<Character>
     public void Configure(EntityTypeBuilder<Character> builder)
     {
         builder.HasQueryFilter(c => c.DeletedAt == null);
+        builder.Property(c => c.Version).IsRowVersion();
         builder.OwnsOne(c => c.Characteristics, ConfigureCharacterCharacteristics);
         builder.OwnsOne(c => c.Statistics, ConfigureCharacterStatistics);
         builder.OwnsOne(c => c.Rating, ConfigureCharacterRating);
