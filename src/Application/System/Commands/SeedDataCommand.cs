@@ -110,7 +110,6 @@ public record SeedDataCommand : IMediatorRequest
                 HeirloomPoints = 12,
                 ExperienceMultiplier = 1.09f,
                 Avatar = new Uri("https://avatars.akamai.steamstatic.com/d51d5155b1a564421c0b3fd5fb7eed7c4474e73d_full.jpg"),
-                ActiveCharacterId = 5,
             };
             User kadse = new()
             {
@@ -123,7 +122,6 @@ public record SeedDataCommand : IMediatorRequest
                 HeirloomPoints = 2,
                 ExperienceMultiplier = 1.09f,
                 Avatar = new Uri("https://avatars.akamai.steamstatic.com/8762690248c6809b0303cc803a1b2dacf3a12cd5_full.jpg"),
-                ActiveCharacterId = 12,
             };
             User laHire = new()
             {
@@ -512,6 +510,7 @@ public record SeedDataCommand : IMediatorRequest
                     _db.Entry(existingUser).State = EntityState.Detached;
 
                     newUser.Id = existingUser.Id;
+                    newUser.Version = existingUser.Version;
                     _db.Users.Update(newUser);
                 }
                 else
@@ -522,205 +521,186 @@ public record SeedDataCommand : IMediatorRequest
 
             ActivityLog activityLogUserCreated1 = new()
             {
-                Id = 1,
                 Type = ActivityLogType.UserCreated,
-                UserId = 2,
+                User = namidaka,
                 Metadata = { },
             };
             ActivityLog activityLogUserDeleted1 = new()
             {
-                Id = 2,
                 Type = ActivityLogType.UserDeleted,
-                UserId = 2,
+                User = namidaka,
                 Metadata = { },
             };
             ActivityLog activityLogUserRenamed1 = new()
             {
-                Id = 3,
                 Type = ActivityLogType.UserRenamed,
-                UserId = 2,
-                Metadata = new ActivityLogMetadata[]
+                User = namidaka,
+                Metadata =
                 {
                     new("newName", "Salt"),
                     new("oldName", "Duke Salt of Savoy"),
-                }.ToList(),
+                },
             };
             ActivityLog activityLogUserReward1 = new()
             {
-                Id = 4,
                 Type = ActivityLogType.UserRewarded,
-                UserId = 2,
-                Metadata = new ActivityLogMetadata[]
+                User = namidaka,
+                Metadata =
                 {
                     new("gold", "120000"),
                     new("heirloomPoints", "3"),
-                }.ToList(),
+                },
             };
             ActivityLog activityLogItemBought1 = new()
             {
-                Id = 5,
                 Type = ActivityLogType.ItemBought,
-                UserId = 2,
-                Metadata = new ActivityLogMetadata[]
+                User = namidaka,
+                Metadata =
                 {
                     new("itemId", "crpg_northern_round_shield"),
                     new("price", "12000"),
-                }.ToList(),
+                },
             };
             ActivityLog activityLogItemSold1 = new()
             {
-                Id = 6,
                 Type = ActivityLogType.ItemSold,
-                UserId = 2,
-                Metadata = new ActivityLogMetadata[]
+                User = namidaka,
+                Metadata =
                 {
                     new("itemId", "crpg_northern_round_shield"),
                     new("price", "12000"),
-                }.ToList(),
+                },
             };
             ActivityLog activityLogItemBroke1 = new()
             {
-                Id = 7,
                 Type = ActivityLogType.ItemBroke,
-                UserId = 2,
-                Metadata = new ActivityLogMetadata[]
+                User = namidaka,
+                Metadata =
                 {
                     new("itemId", "crpg_northern_round_shield"),
-                }.ToList(),
+                },
             };
             ActivityLog activityLogItemUpgraded1 = new()
             {
-                Id = 8,
                 Type = ActivityLogType.ItemUpgraded,
-                UserId = 2,
-                Metadata = new ActivityLogMetadata[]
+                User = namidaka,
+                Metadata =
                 {
                     new("itemId", "crpg_northern_round_shield"),
                     new("price", "1000"),
                     new("heirloomPoints", "1"),
-                }.ToList(),
+                },
             };
             ActivityLog activityLogCharacterCreated1 = new()
             {
-                Id = 9,
                 Type = ActivityLogType.CharacterCreated,
-                UserId = 2,
-                Metadata = new ActivityLogMetadata[]
+                User = namidaka,
+                Metadata =
                 {
                     new("characterId", "123"),
-                }.ToList(),
+                },
             };
             ActivityLog activityLogCharacterDeleted1 = new()
             {
-                Id = 10,
                 Type = ActivityLogType.CharacterDeleted,
-                UserId = 2,
-                Metadata = new ActivityLogMetadata[]
+                User = namidaka,
+                Metadata =
                 {
                     new("characterId", "123"),
                     new("generation", "13"),
                     new("level", "36"),
-                }.ToList(),
+                },
             };
             ActivityLog activityLogCharacterRespecialized1 = new()
             {
-                Id = 11,
                 Type = ActivityLogType.CharacterRespecialized,
-                UserId = 2,
-                Metadata = new ActivityLogMetadata[]
+                User = namidaka,
+                Metadata =
                 {
                     new("characterId", "123"),
                     new("price", "120000"),
-                }.ToList(),
+                },
             };
             ActivityLog activityLogCharacterRetired1 = new()
             {
-                Id = 12,
                 Type = ActivityLogType.CharacterRetired,
-                UserId = 2,
-                Metadata = new ActivityLogMetadata[]
+                User = namidaka,
+                Metadata =
                 {
                     new("characterId", "123"),
                     new("level", "34"),
-                }.ToList(),
+                },
             };
             ActivityLog activityLogCharacterRewarded1 = new()
             {
-                Id = 13,
                 Type = ActivityLogType.CharacterRewarded,
-                UserId = 2,
-                Metadata = new ActivityLogMetadata[]
+                User = namidaka,
+                Metadata =
                 {
                     new("characterId", "123"),
                     new("experience", "1000000"),
-                }.ToList(),
+                },
             };
             ActivityLog activityLogServerJoined1 = new()
             {
-                Id = 14,
                 Type = ActivityLogType.ServerJoined,
-                UserId = 2,
+                User = namidaka,
                 Metadata = { },
             };
             ActivityLog activityLogChatMessageSent1 = new()
             {
-                Id = 15,
                 Type = ActivityLogType.ChatMessageSent,
-                UserId = 2,
-                Metadata = new ActivityLogMetadata[]
+                User = namidaka,
+                Metadata =
                 {
                     new("message", "Fluttershy is best"),
                     new("instance", "crpg01a"),
-                }.ToList(),
+                },
             };
             ActivityLog activityLogChatMessageSent2 = new()
             {
-                Id = 16,
                 Type = ActivityLogType.ChatMessageSent,
-                UserId = 1,
-                Metadata = new ActivityLogMetadata[]
+                User = takeo,
+                Metadata =
                 {
                     new("message", "No, Rarity the best"),
                     new("instance", "crpg01a"),
-                }.ToList(),
+                },
             };
             ActivityLog activityLogChatMessageSent3 = new()
             {
-                Id = 17,
                 Type = ActivityLogType.ChatMessageSent,
-                UserId = 1,
+                User = takeo,
                 CreatedAt = DateTime.UtcNow.AddMinutes(-3),
-                Metadata = new ActivityLogMetadata[]
+                Metadata =
                 {
                     new("message", "Do you get it?"),
                     new("instance", "crpg01a"),
-                }.ToList(),
+                },
             };
             ActivityLog activityLogTeamHit1 = new()
             {
-                Id = 18,
                 Type = ActivityLogType.TeamHit,
-                UserId = 2,
+                User = namidaka,
                 CreatedAt = DateTime.UtcNow.AddMinutes(+3),
-                Metadata = new ActivityLogMetadata[]
+                Metadata =
                 {
                     new("targetUserId", "1"),
                     new("damage", "123"),
                     new("instance", "crpg01a"),
-                }.ToList(),
+                },
             };
             ActivityLog activityLogTeamHit2 = new()
             {
-                Id = 19,
                 Type = ActivityLogType.TeamHit,
-                UserId = 1,
+                User = takeo,
                 CreatedAt = DateTime.UtcNow.AddMinutes(-1),
-                Metadata = new ActivityLogMetadata[]
+                Metadata =
                 {
                     new("targetUserId", "2"),
                     new("damage", "18"),
                     new("instance", "crpg01a"),
-                }.ToList(),
+                },
             };
 
             ActivityLog[] newActivityLogs =
@@ -811,10 +791,6 @@ public record SeedDataCommand : IMediatorRequest
                     Deaths = 6,
                     PlayTime = new TimeSpan(0, 10, 50, 20),
                 },
-                Limitations = new CharacterLimitations
-                {
-                    LastRespecializeAt = DateTime.UtcNow.AddDays(-1).AddMinutes(21),
-                },
             };
             Character takeoCharacter1 = new()
             {
@@ -829,10 +805,6 @@ public record SeedDataCommand : IMediatorRequest
                     Assists = 3,
                     Deaths = 6,
                     PlayTime = new TimeSpan(365, 0, 0, 20),
-                },
-                Limitations = new CharacterLimitations
-                {
-                    LastRespecializeAt = DateTime.UtcNow.AddDays(-2),
                 },
             };
             Character takeoCharacter2 = new()
@@ -849,10 +821,6 @@ public record SeedDataCommand : IMediatorRequest
                     Deaths = 6,
                     PlayTime = new TimeSpan(3, 7, 0, 29),
                 },
-                Limitations = new CharacterLimitations
-                {
-                    LastRespecializeAt = DateTime.UtcNow.AddDays(-8),
-                },
             };
             Character namidakaCharacter0 = new()
             {
@@ -860,7 +828,6 @@ public record SeedDataCommand : IMediatorRequest
                 Name = "namichar",
                 Level = 10,
                 Experience = 146457,
-                Limitations = new CharacterLimitations(),
             };
             Character orleCharacter0 = new()
             {
@@ -880,10 +847,6 @@ public record SeedDataCommand : IMediatorRequest
                 {
                     Attributes = new CharacterAttributes { Points = 100 },
                     Skills = new CharacterSkills { Points = 100 },
-                },
-                Limitations = new CharacterLimitations
-                {
-                    LastRespecializeAt = DateTime.UtcNow.AddDays(-8),
                 },
                 Rating = new()
                 {
@@ -906,10 +869,6 @@ public record SeedDataCommand : IMediatorRequest
                 Name = "Orle Farmer",
                 Level = 25,
                 Experience = _experienceTable.GetExperienceForLevel(25) + (_experienceTable.GetExperienceForLevel(26) - _experienceTable.GetExperienceForLevel(25)) / 2,
-                Limitations = new CharacterLimitations
-                {
-                    LastRespecializeAt = DateTime.UtcNow.AddDays(-1).AddMinutes(-30),
-                },
             };
             Character kadseCharacter0 = new()
             {
@@ -930,34 +889,26 @@ public record SeedDataCommand : IMediatorRequest
                     Attributes = new CharacterAttributes { Points = 100 },
                     Skills = new CharacterSkills { Points = 100 },
                 },
-                Limitations = new CharacterLimitations
-                {
-                    LastRespecializeAt = DateTime.UtcNow.AddDays(-8),
-                },
             };
             Character falcomCharacter0 = new()
             {
                 User = falcom,
                 Name = falcom.Name,
-                Limitations = new CharacterLimitations(),
             };
             Character victorhh888Character0 = new()
             {
                 User = victorhh888,
                 Name = victorhh888.Name,
-                Limitations = new CharacterLimitations(),
             };
             Character sellkaCharacter0 = new()
             {
                 User = sellka,
                 Name = sellka.Name,
-                Limitations = new CharacterLimitations(),
             };
             Character krogCharacter0 = new()
             {
                 User = krog,
                 Name = krog.Name,
-                Limitations = new CharacterLimitations(),
             };
             Character noobAmphetamine0 = new()
             {
@@ -985,11 +936,63 @@ public record SeedDataCommand : IMediatorRequest
                     _db.Entry(existingCharacter).State = EntityState.Detached;
 
                     newCharacter.Id = existingCharacter.Id;
+                    newCharacter.Version = existingCharacter.Version;
                     _db.Characters.Update(newCharacter);
                 }
                 else
                 {
                     _db.Characters.Add(newCharacter);
+                }
+            }
+
+            CharacterLimitations takeoCharacter0Limitations = new()
+            {
+                Character = takeoCharacter0,
+                LastRespecializeAt = DateTime.UtcNow.AddDays(-1).AddMinutes(21),
+            };
+            CharacterLimitations takeoCharacter1Limitations = new()
+            {
+                Character = takeoCharacter1,
+                LastRespecializeAt = DateTime.UtcNow.AddDays(-2),
+            };
+            CharacterLimitations takeoCharacter2Limitations = new()
+            {
+                Character = takeoCharacter2,
+                LastRespecializeAt = DateTime.UtcNow.AddDays(-8),
+            };
+            CharacterLimitations orleCharacter0Limitations = new()
+            {
+                Character = orleCharacter0,
+                LastRespecializeAt = DateTime.UtcNow.AddDays(-8),
+            };
+            CharacterLimitations orleCharacter2Limitations = new()
+            {
+                Character = orleCharacter2,
+                LastRespecializeAt = DateTime.UtcNow.AddDays(-1).AddMinutes(-30),
+            };
+            CharacterLimitations kadseCharacter0Limitations = new()
+            {
+                Character = kadseCharacter0,
+                LastRespecializeAt = DateTime.UtcNow.AddDays(-8),
+            };
+            CharacterLimitations[] newCharactersLimitations =
+            {
+                takeoCharacter0Limitations, takeoCharacter1Limitations, takeoCharacter2Limitations,
+                orleCharacter2Limitations, kadseCharacter0Limitations,
+            };
+
+            var existingCharactersLimitations = await _db.CharacterLimitations.ToDictionaryAsync(l => l.CharacterId);
+            foreach (var newCharacterLimitations in newCharactersLimitations)
+            {
+                if (existingCharactersLimitations.TryGetValue(newCharacterLimitations.Character!.Id, out var existingCharacterLimitations))
+                {
+                    _db.Entry(existingCharacterLimitations).State = EntityState.Detached;
+                    newCharacterLimitations.CharacterId = existingCharacterLimitations.CharacterId;
+                    _db.CharacterLimitations.Update(newCharacterLimitations);
+                }
+                else
+                {
+                    _db.CharacterLimitations.Add(newCharacterLimitations);
                 }
             }
 
