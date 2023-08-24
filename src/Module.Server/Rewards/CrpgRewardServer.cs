@@ -201,16 +201,11 @@ internal class CrpgRewardServer : MissionLogic
             {
                 bool isValorousPlayer = valorousPlayerIds.Contains(playerId);
                 int compensationForCrpgUser = compensationByCrpgUserId.TryGetValue(crpgUserId, out int compensation) ? compensation : 0;
-                if (missionPeer.Team?.Side != BattleSideEnum.None)
-                {
-                    SetRewardForConnectedPlayer(userUpdate, crpgPeer, durationRewarded, compensationForCrpgUser, isValorousPlayer,
-                        defenderMultiplierGain, attackerMultiplierGain, constantMultiplier);
-                }
-                else
-                {
-                    SetRewardForConnectedPlayer(userUpdate, crpgPeer, 0f, compensationForCrpgUser, isValorousPlayer,
-                        defenderMultiplierGain, attackerMultiplierGain, constantMultiplier);
-                }
+                float durationRewardedForPlayer = missionPeer.Team?.Side != BattleSideEnum.None
+                    ? durationRewarded
+                    : 0f;
+                SetRewardForConnectedPlayer(userUpdate, crpgPeer, durationRewardedForPlayer, compensationForCrpgUser, isValorousPlayer,
+                    defenderMultiplierGain, attackerMultiplierGain, constantMultiplier);
 
                 if (updateUserStats)
                 {
