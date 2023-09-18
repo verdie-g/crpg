@@ -313,7 +313,7 @@ character:
           loomsPoints: 积分
       dialog:
         title: 退役角色
-        desc: 你确定要退役你的角色吗？此操作无法撤销
+        desc: 请在继续之前检查您的角色名称 - 你确定要退役你的角色吗？此操作无法撤销
         reward: '你获得三个奖励：{heirloom}个转生点，{multiplierBonus} 经验倍数。角色等级将变为：{resetLevel}'
       notify:
         success: 角色已退役
