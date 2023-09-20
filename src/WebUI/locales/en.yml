@@ -312,7 +312,7 @@ character:
           loomsPoints: Points
       dialog:
         title: Retire character
-        desc: Are you sure you want to retire your character? This action cannot be undone
+        desc: CHECK YOUR CHARACTER NAME BEFORE PROCEEDING - Are you sure you want to retire your character? This action is IRREVERSIBLE and CANNOT BE UNDONE
         reward: 'You will get: {heirloom} heirloom, {multiplierBonus} exp. multiplier. The char will be reset to level {resetLevel}'
       notify:
         success: Character retired
