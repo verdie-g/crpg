@@ -197,24 +197,25 @@ internal static class MatchBalancingHelpers
         };
     }
 
-    public static List<WeightedCrpgUser> FindWeightedCrpgUsersToSwap(float targetWeight, List<WeightedCrpgUser> teamToSelectFrom, float desiredSize, float sizeScaler)
+    public static List<WeightedCrpgUser> FindWeightedCrpgUsersToSwap(float targetWeight, List<WeightedCrpgUser> teamToSelectFrom, List<WeightedCrpgUser> teamToSwapInto, float desiredSize, float sizeScaler)
     {
-        List<WeightedCrpgUser> team = teamToSelectFrom.ToList();
+        List<WeightedCrpgUser> teamToSelectFromCopy = teamToSelectFrom.ToList();
+        List<WeightedCrpgUser> teamToSwapIntoCopy = teamToSwapInto.ToList();
         List<WeightedCrpgUser> usersToSwap = new();
         Vector2 usersToSwapVector = new(0, 0);
         for (int i = 0; i < teamToSelectFrom.Count; i++)
         {
-            WeightedCrpgUser bestUserToAdd = team.First();
-            Vector2 bestUserToAddVector = new(sizeScaler, bestUserToAdd.Weight);
+            WeightedCrpgUser bestUserToAdd = teamToSelectFromCopy.First();
+            Vector2 bestUserToAddVector = new(sizeScaler, ComputeMoveWeightHalfDifference(teamToSelectFromCopy, teamToSwapIntoCopy, bestUserToAdd));
             Vector2 objectiveVector = new(sizeScaler * desiredSize, targetWeight);
             if (objectiveVector.Length() == 0f)
             {
                 break;
             }
 
-            foreach (WeightedCrpgUser user in team)
+            foreach (WeightedCrpgUser user in teamToSelectFromCopy)
             {
-                Vector2 userVector = new(sizeScaler, user.Weight);
+                Vector2 userVector = new(sizeScaler, ComputeMoveWeightHalfDifference(teamToSelectFromCopy, teamToSwapIntoCopy, user));
 
                 if ((usersToSwapVector + userVector - objectiveVector).Length() < (usersToSwapVector + bestUserToAddVector - objectiveVector).Length())
                 {
@@ -225,13 +226,13 @@ internal static class MatchBalancingHelpers
 
             if ((usersToSwapVector + bestUserToAddVector - objectiveVector).Length() < (usersToSwapVector - objectiveVector).Length())
             {
-                team.Remove(bestUserToAdd);
+                teamToSelectFromCopy.Remove(bestUserToAdd);
                 usersToSwap.Add(bestUserToAdd);
                 usersToSwapVector = new(usersToSwap.Count * sizeScaler, usersToSwap.Sum(u => u.Weight));
             }
             else
             {
-                team.Remove(bestUserToAdd);
+                teamToSelectFromCopy.Remove(bestUserToAdd);
             }
         }
 
@@ -300,6 +301,41 @@ internal static class MatchBalancingHelpers
         }
 
         return clanGroupsToSwap;
+    }
+
+    /// <summary>
+    /// Compute the user theoritical wait when you move him out of his clanGroup into the other team. The other team may have a users of the same clan
+    /// </summary>
+    public static float ComputeMoveWeightHalfDifference(List<WeightedCrpgUser> teamToSwapFrom, List<WeightedCrpgUser> teamToSwapInto, WeightedCrpgUser? userToMove)
+    {
+        // Can be optimized as we don't need to recompute the clangroups that did not change. Would make the method a bit more complex though
+        // Usually if i remove X from team A to give X to team B , 2X should be equal to the diff in order to bridge the gap.
+        // Here even though i remove X from Team A , i'm not giving X to team B because of clangroup penalty i'm giving Y. This Method computes (X + Y) /2
+        if (userToMove == null)
+        {
+            return 0;
+        }
+
+        List<ClanGroup> teamAClanGroups = SplitUsersIntoClanGroups(teamToSwapFrom);
+        List<ClanGroup> teamBClanGroups = SplitUsersIntoClanGroups(teamToSwapInto);
+        List<WeightedCrpgUser> newTeamA = teamToSwapFrom.ToList(); // ToList To do a deep copy of the list and not Impact the original one
+        List<WeightedCrpgUser> newTeamB = teamToSwapInto.ToList();
+        newTeamA.Remove(userToMove);
+        newTeamB.Add(userToMove);
+        List<ClanGroup> newteamToSwapFromClanGroups = SplitUsersIntoClanGroups(newTeamA);
+        List<ClanGroup> newteamToSwapIntoClanGroups = SplitUsersIntoClanGroups(newTeamB);
+        return (teamAClanGroups.Sum(c => c.Weight()) - newteamToSwapFromClanGroups.Sum(c => c.Weight()) + newteamToSwapIntoClanGroups.Sum(c => c.Weight()) - teamBClanGroups.Sum(c => c.Weight())) / 2f;
+    }
+
+    public static float ComputeTeamDiffAfterSwap(List<WeightedCrpgUser> teamToSwapFrom, List<WeightedCrpgUser> teamToSwapInto, List<WeightedCrpgUser> usersToMoveFromTeam1, List<WeightedCrpgUser> usersToMoveFromTeam2)
+    {
+        teamToSwapFrom = teamToSwapFrom.Except(usersToMoveFromTeam1).ToList();
+        teamToSwapInto = teamToSwapInto.Except(usersToMoveFromTeam2).ToList();
+        teamToSwapFrom.AddRange(usersToMoveFromTeam2);
+        teamToSwapInto.AddRange(usersToMoveFromTeam1);
+        List<ClanGroup> newteamToSwapFromClanGroups = SplitUsersIntoClanGroups(teamToSwapFrom);
+        List<ClanGroup> newteamToSwapIntoClanGroups = SplitUsersIntoClanGroups(teamToSwapInto);
+        return newteamToSwapFromClanGroups.Sum(c => c.Weight()) - newteamToSwapIntoClanGroups.Sum(c => c.Weight());
     }
 
     /// <summary>

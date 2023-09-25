@@ -19,7 +19,7 @@ public class MatchBalancerTest
 
     private static readonly WeightedCrpgUser Aragorn = CreateWeightedUser(0, nameof(Aragorn), -1000, 1);
     private static readonly WeightedCrpgUser Arwen = CreateWeightedUser(1, nameof(Arwen), -2000, 1);
-    private static readonly WeightedCrpgUser Frodon = CreateWeightedUser(2, nameof(Frodon), 1600, 1);
+    private static readonly WeightedCrpgUser Frodon = CreateWeightedUser(2, nameof(Frodon), 16000, 1);
     private static readonly WeightedCrpgUser Sam = CreateWeightedUser(3, nameof(Sam), 15000, 1);
     private static readonly WeightedCrpgUser Sangoku = CreateWeightedUser(4, nameof(Sangoku), 2000, 2);
     private static readonly WeightedCrpgUser Krilin = CreateWeightedUser(5, nameof(Krilin), 1000, 2);
