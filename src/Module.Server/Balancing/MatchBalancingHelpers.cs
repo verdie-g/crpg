@@ -304,13 +304,13 @@ internal static class MatchBalancingHelpers
     }
 
     /// <summary>
-    /// Compute the user theoritical wait when you move him out of his clanGroup into the other team. The other team may have a users of the same clan
+    /// Compute the user theoritical weight when you move him out of his clanGroup into the other team. The other team may have a users of the same clan
     /// </summary>
     public static float ComputeMoveWeightHalfDifference(List<WeightedCrpgUser> teamToSwapFrom, List<WeightedCrpgUser> teamToSwapInto, WeightedCrpgUser? userToMove)
     {
         // Can be optimized as we don't need to recompute the clangroups that did not change. Would make the method a bit more complex though
-        // Usually if i remove X from team A to give X to team B , 2X should be equal to the diff in order to bridge the gap.
-        // Here even though i remove X from Team A , i'm not giving X to team B because of clangroup penalty i'm giving Y. This Method computes (X + Y) /2
+        // Usually if i remove X from team A to give X to team B , The difference change by 2X
+        // Here even though i remove X from Team A , i'm not giving X to team B because of clangroup penalty i'm giving Y. This Method computes (X + Y) /2 which would be the equivalent weight of X
         if (userToMove == null)
         {
             return 0;
