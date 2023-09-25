@@ -8,4 +8,5 @@
   <file id="crpg_combat_system" name="ModuleData/native_parameters.xml" type="native_parameters" />
   <file id="soln_item_usage_sets" name="ModuleData/item_usage_sets.xml" type="item_usage_set" />
   <file id="soln_module_sound" name="ModuleData/module_sounds.xml" type="module_sound" />
+  <file id="soln_item_holsters" name="ModuleData/item_holsters.xml" type="item_holster" />
 </base>
