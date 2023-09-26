@@ -17,10 +17,10 @@ public class MatchBalancerTest
                 ClanMembership = clanId == null ? null : new CrpgClanMember { ClanId = clanId.Value },
             }, weight);
 
-    private static readonly WeightedCrpgUser Aragorn = CreateWeightedUser(0, nameof(Aragorn), -1000, 1);
-    private static readonly WeightedCrpgUser Arwen = CreateWeightedUser(1, nameof(Arwen), -2000, 1);
-    private static readonly WeightedCrpgUser Frodon = CreateWeightedUser(2, nameof(Frodon), 1600, 1);
-    private static readonly WeightedCrpgUser Sam = CreateWeightedUser(3, nameof(Sam), 15000, 1);
+    private static readonly WeightedCrpgUser Aragorn = CreateWeightedUser(0, nameof(Aragorn), -1456, 1);
+    private static readonly WeightedCrpgUser Arwen = CreateWeightedUser(1, nameof(Arwen), -2783, 1);
+    private static readonly WeightedCrpgUser Frodon = CreateWeightedUser(2, nameof(Frodon), 16235, 1);
+    private static readonly WeightedCrpgUser Sam = CreateWeightedUser(3, nameof(Sam), 15545, 1);
     private static readonly WeightedCrpgUser Sangoku = CreateWeightedUser(4, nameof(Sangoku), 2000, 2);
     private static readonly WeightedCrpgUser Krilin = CreateWeightedUser(5, nameof(Krilin), 1000, 2);
     private static readonly WeightedCrpgUser RolandDeschain = CreateWeightedUser(6, nameof(RolandDeschain), 2800, 3);
@@ -482,6 +482,8 @@ public class MatchBalancerTest
     private static readonly WeightedCrpgUser BudgereePerianth = CreateWeightedUser(1396, nameof(BudgereePerianth), 2764);
     private static readonly WeightedCrpgUser PsycheStaminate = CreateWeightedUser(1397, nameof(PsycheStaminate), 1035);
     private static readonly WeightedCrpgUser HoneyedSugar = CreateWeightedUser(1399, nameof(HoneyedSugar), 2216);
+    private static readonly WeightedCrpgUser Gandalf = CreateWeightedUser(0, nameof(Gandalf), 3565, 1);
+    private static readonly WeightedCrpgUser Saroumane = CreateWeightedUser(1, nameof(Saroumane), 4752, 1);
 
     private static readonly GameMatch Game1 = new()
     {
@@ -1094,6 +1096,18 @@ public class MatchBalancerTest
         Waiting = new List<WeightedCrpgUser>(),
     };
 
+    private static readonly GameMatch GameWithWithOneGroup = new()
+    {
+        TeamA = new List<WeightedCrpgUser>(),
+        TeamB = new List<WeightedCrpgUser>(),
+        Waiting = new List<WeightedCrpgUser>
+        {
+            Saroumane,
+            Arwen,
+            Aragorn,
+            Gandalf,
+        },
+    };
     [Test]
     public void KkMakeTeamOfSimilarSizesShouldNotBeThatBad()
     {
@@ -1192,7 +1206,24 @@ public class MatchBalancerTest
         MatchBalancingHelpers.DumpTeams(balancedGame);
         Assert.That(ratingRatio, Is.EqualTo(1).Within(0.2));
     }
-
+    [Test]
+    public void BannerBalancingWithEdgeCaseShouldWorkWithOneClanGroup()
+    {
+        var matchBalancer = new MatchBalancer();
+        MatchBalancingHelpers.DumpTeams(GameWithWithOneGroup);
+        float unbalancedTeamAMeanRating = WeightHelpers.ComputeTeamWeight(GameWithWithOneGroup.TeamA, 1);
+        float unbalancedTeamBMeanRating = WeightHelpers.ComputeTeamWeight(GameWithWithOneGroup.TeamB, 1);
+        float unbalancedMeanRatingRatio = unbalancedTeamAMeanRating / unbalancedTeamBMeanRating;
+        GameMatch balancedGame = matchBalancer.BannerBalancingWithEdgeCases(GameWithWithOneGroup);
+        float teamASize = balancedGame.TeamA.Count;
+        float teamBSize = balancedGame.TeamB.Count;
+        float sizeRatio = teamASize / teamBSize;
+        float teamARating = WeightHelpers.ComputeTeamWeight(balancedGame.TeamA, 1);
+        float teamBRating = WeightHelpers.ComputeTeamWeight(balancedGame.TeamB, 1);
+        float ratingRatio = teamARating / teamBRating;
+        MatchBalancingHelpers.DumpTeams(balancedGame);
+        Assert.That(ratingRatio, Is.EqualTo(1).Within(0.2));
+    }
     [Test]
     public void BannerBalancingWithEdgeCaseShouldNotLoseOrAddCharacters()
     {
