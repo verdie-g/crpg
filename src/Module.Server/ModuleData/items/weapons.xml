@@ -1672,7 +1672,7 @@
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_throwing_heavy_stone_v2_h0" name="{=1CPdu9K0}Heavy Stones" is_merchandise="false" body_name="bo_throwing_stone" holster_body_name="bo_axe_short" holster_mesh="stone_holster" holster_mesh_with_weapon="stone_holster" mesh="throwing_stone" weight="0.1" appearance="0.1" Type="Thrown" item_holsters="throwing_stone:throwing_stone_2">
+  <Item id="crpg_throwing_heavy_stone_v2_h0" name="{=1CPdu9K0}Heavy Stones" is_merchandise="false" body_name="bo_throwing_stone" holster_body_name="bo_axe_short" holster_mesh="stone_holster" holster_mesh_with_weapon="stone_holster" mesh="throwing_stone" weight="0.125" appearance="0.1" Type="Thrown" item_holsters="throwing_stone:throwing_stone_2">
     <ItemComponent>
       <Weapon weapon_class="Stone" ammo_class="Stone" stack_amount="6" physics_material="missile" accuracy="100" thrust_speed="102" speed_rating="102" missile_speed="40" weapon_length="10" thrust_damage="12" item_usage="stone" rotation="100,30,20" passby_sound_code="" rotation_speed="0, -3.0, 0">
         <WeaponFlags RangedWeapon="true" Consumable="true" AutoReload="true" UnloadWhenSheathed="true" UseHandAsThrowBase="true" />
@@ -1680,7 +1680,7 @@
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_throwing_heavy_stone_v2_h1" name="{=1CPdu9K0}Heavy Stones +1" is_merchandise="false" body_name="bo_throwing_stone" holster_body_name="bo_axe_short" holster_mesh="stone_holster" holster_mesh_with_weapon="stone_holster" mesh="throwing_stone" weight="0.1" appearance="0.1" Type="Thrown" item_holsters="throwing_stone:throwing_stone_2">
+  <Item id="crpg_throwing_heavy_stone_v2_h1" name="{=1CPdu9K0}Heavy Stones +1" is_merchandise="false" body_name="bo_throwing_stone" holster_body_name="bo_axe_short" holster_mesh="stone_holster" holster_mesh_with_weapon="stone_holster" mesh="throwing_stone" weight="0.15" appearance="0.1" Type="Thrown" item_holsters="throwing_stone:throwing_stone_2">
     <ItemComponent>
       <Weapon weapon_class="Stone" ammo_class="Stone" stack_amount="6" physics_material="missile" accuracy="100" thrust_speed="102" speed_rating="102" missile_speed="40" weapon_length="10" thrust_damage="13" item_usage="stone" rotation="100,30,20" passby_sound_code="" rotation_speed="0, -3.0, 0">
         <WeaponFlags RangedWeapon="true" Consumable="true" AutoReload="true" UnloadWhenSheathed="true" UseHandAsThrowBase="true" />
@@ -1688,7 +1688,7 @@
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_throwing_heavy_stone_v2_h2" name="{=1CPdu9K0}Heavy Stones +2" is_merchandise="false" body_name="bo_throwing_stone" holster_body_name="bo_axe_short" holster_mesh="stone_holster" holster_mesh_with_weapon="stone_holster" mesh="throwing_stone" weight="0.1" appearance="0.1" Type="Thrown" item_holsters="throwing_stone:throwing_stone_2">
+  <Item id="crpg_throwing_heavy_stone_v2_h2" name="{=1CPdu9K0}Heavy Stones +2" is_merchandise="false" body_name="bo_throwing_stone" holster_body_name="bo_axe_short" holster_mesh="stone_holster" holster_mesh_with_weapon="stone_holster" mesh="throwing_stone" weight="0.175" appearance="0.1" Type="Thrown" item_holsters="throwing_stone:throwing_stone_2">
     <ItemComponent>
       <Weapon weapon_class="Stone" ammo_class="Stone" stack_amount="6" physics_material="missile" accuracy="100" thrust_speed="102" speed_rating="102" missile_speed="40" weapon_length="10" thrust_damage="14" item_usage="stone" rotation="100,30,20" passby_sound_code="" rotation_speed="0, -3.0, 0">
         <WeaponFlags RangedWeapon="true" Consumable="true" AutoReload="true" UnloadWhenSheathed="true" UseHandAsThrowBase="true" />
@@ -1696,7 +1696,7 @@
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_throwing_heavy_stone_v2_h3" name="{=1CPdu9K0}Heavy Stones +3" is_merchandise="false" body_name="bo_throwing_stone" holster_body_name="bo_axe_short" holster_mesh="stone_holster" holster_mesh_with_weapon="stone_holster" mesh="throwing_stone" weight="0.1" appearance="0.1" Type="Thrown" item_holsters="throwing_stone:throwing_stone_2">
+  <Item id="crpg_throwing_heavy_stone_v2_h3" name="{=1CPdu9K0}Heavy Stones +3" is_merchandise="false" body_name="bo_throwing_stone" holster_body_name="bo_axe_short" holster_mesh="stone_holster" holster_mesh_with_weapon="stone_holster" mesh="throwing_stone" weight="0.275" appearance="0.1" Type="Thrown" item_holsters="throwing_stone:throwing_stone_2">
     <ItemComponent>
       <Weapon weapon_class="Stone" ammo_class="Stone" stack_amount="6" physics_material="missile" accuracy="100" thrust_speed="102" speed_rating="102" missile_speed="40" weapon_length="10" thrust_damage="16" item_usage="stone" rotation="100,30,20" passby_sound_code="" rotation_speed="0, -3.0, 0">
         <WeaponFlags RangedWeapon="true" Consumable="true" AutoReload="true" UnloadWhenSheathed="true" UseHandAsThrowBase="true" />
