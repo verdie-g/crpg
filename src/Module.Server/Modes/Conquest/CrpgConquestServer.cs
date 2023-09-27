@@ -485,8 +485,8 @@ internal class CrpgConquestServer : MissionMultiplayerGameModeBase, IAnalyticsFl
 
             _ = _rewardServer.UpdateCrpgUsersAsync(
                 durationRewarded: _rewardTickTimer.GetTimerDuration(),
-                defenderMultiplierGain,
-                attackerMultiplierGain);
+                defenderMultiplierGain: defenderMultiplierGain,
+                attackerMultiplierGain: attackerMultiplierGain);
         }
     }
 
