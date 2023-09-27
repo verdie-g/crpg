@@ -77,6 +77,7 @@
   <string id="str_multiplayer_scene_name.crpg_battle_icelake" text="{=3i45RSr9}Icelake" />
   <string id="str_multiplayer_scene_name.crpg_battle_islandvillage" text="{=4U9HDtrc}Islandvillage" />
   <string id="str_multiplayer_scene_name.crpg_battle_kalmara" text="{=ac2GFU7o}Kalmara" />
+  <string id="str_multiplayer_scene_name.crpg_battle_krakatoa" text="{=ac2DfD7o}Krakatoa" />
   <string id="str_multiplayer_scene_name.crpg_battle_ketilsfarm" text="{=Pn73lEKV}Ketil's Farm" />
   <string id="str_multiplayer_scene_name.crpg_battle_ketilsfarm" text="{=qrCXeSTp}Ketilsfarm" />
   <string id="str_multiplayer_scene_name.crpg_battle_khamsin" text="{=rJYcMceC}Khamsin" />
@@ -106,6 +107,7 @@
   <string id="str_multiplayer_scene_name.crpg_battle_stonehenge" text="{=DttAl3V1}Stonehenge" />
   <string id="str_multiplayer_scene_name.crpg_battle_talmberg" text="{=103M2Shv}Talmberg" />
   <string id="str_multiplayer_scene_name.crpg_battle_tavernbrawl" text="{=34t1I2tA}Tavernbrawl" />
+  <string id="str_multiplayer_scene_name.crpg_battle_thearena" text="{=34t5sd2tA}The Arena" />
   <string id="str_multiplayer_scene_name.crpg_battle_tolstabeach" text="{=JLuIItVZ}Tolsta Beach" />
   <string id="str_multiplayer_scene_name.crpg_battle_ugor" text="{=hID2b1Xk}Ugor" />
   <string id="str_multiplayer_scene_name.crpg_battle_vatnborg" text="{=VQdi4BHE}Vatnborg" />
@@ -128,6 +130,7 @@
 
   <!-- DTV Maps -->
   <string id="str_multiplayer_scene_name.crpg_dtv_encampment" text="{=ArnxGr8j1j}Encampment" />
+  <string id="str_multiplayer_scene_name.crpg_dtv_frozenshore" text="{=AkdJDF58}Frozen Shore" />
   <string id="str_multiplayer_scene_name.crpg_dtv_qalat" text="{=V5jaECxf}Qalat" />
   <string id="str_multiplayer_scene_name.crpg_dtv_weepinghill" text="{=jKsuXc4Z}Weeping Hill" />
 </strings>

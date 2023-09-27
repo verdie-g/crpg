@@ -113,6 +113,8 @@
     <string id="jP0ySZzV" text="Белый мост" />
     <string id="LLWi2bYx" text="Земури" />
     <string id="qD8fDelD" text="Речной берег" />
+    <string id="34t5sd2tA" text= "арена" />
+    <string id="ac2DfD7o" text= "Кракатау" />
 
     <string id="9Mpawm9h" text="Акра" />
     <string id="6KypSnaa" text="Ардуму" />
@@ -128,5 +130,6 @@
     <string id="ArnxGr8j1j" text="Лагерь" />
     <string id="V5jaECxf" text="Калат" />
     <string id="jKsuXc4Z" text="Плачущий Холм" />
+    <string id="AkdJDF58" text= "Замерзший берег" />
   </strings>
 </base>
