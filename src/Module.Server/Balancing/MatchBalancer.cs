@@ -39,8 +39,16 @@ internal class MatchBalancer
     {
         MatchBalancingHelpers.DumpTeamsStatus(gameMatch);
         Debug.Print(nameof(BannerBalancingWithEdgeCases));
-
         GameMatch balancedBannerGameMatch;
+
+        if (gameMatch.TotalCount <= 2)
+        {
+            Debug.Print("Game has 2 or less players");
+            balancedBannerGameMatch = RandomlyAssignWaitingPlayersTeam(gameMatch);
+            MatchBalancingHelpers.DumpTeamsStatus(balancedBannerGameMatch);
+            return balancedBannerGameMatch;
+        }
+
         // This is the path we take when team were randomly assigned.
         // we do not care of completely scrambling the teams since no round was played yet
         if (firstBalance)
