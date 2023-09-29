@@ -7,5 +7,6 @@ public enum Role
 {
     User,
     Moderator,
+    GameAdmin,
     Admin,
 }
