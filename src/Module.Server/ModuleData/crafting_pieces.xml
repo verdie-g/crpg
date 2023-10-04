@@ -29096,4 +29096,2796 @@
       <Material id="Iron4" count="3" />
     </Materials>
   </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_pompeian_blade_h0" name="{=}Pompeian Gladius Blade" tier="4" piece_type="Blade" mesh="gladius_pompeian_blade" culture="Culture.empire" length="46.5" weight="1.5">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="3.4" />
+      <Swing damage_type="Cut" damage_factor="2.7" />
+    </BladeData>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_pompeian_blade_h1" name="{=}Pompeian Gladius Blade" tier="4" piece_type="Blade" mesh="gladius_pompeian_blade" culture="Culture.battania" length="46.5" weight="1.5">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="3.5" />
+      <Swing damage_type="Cut" damage_factor="2.7" />
+    </BladeData>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_pompeian_blade_h2" name="{=}Pompeian Gladius Blade" tier="4" piece_type="Blade" mesh="gladius_pompeian_blade" culture="Culture.battania" length="46.5" weight="1.5">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="3.6" />
+      <Swing damage_type="Cut" damage_factor="2.8" />
+    </BladeData>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_pompeian_blade_h3" name="{=}Pompeian Gladius Blade" tier="4" piece_type="Blade" mesh="gladius_pompeian_blade" culture="Culture.battania" length="46.5" weight="1.5">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="3.7" />
+      <Swing damage_type="Cut" damage_factor="2.9" />
+    </BladeData>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_pompeian_pommel_h0" name="{=}Pompeian Gladius Pommel" tier="4" piece_type="Pommel" mesh="gladius_pompeian_pommel" culture="Culture.battania" length="8.45" weight="0.01">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_pompeian_pommel_h1" name="{=}Pompeian Gladius Pommel" tier="4" piece_type="Pommel" mesh="gladius_pompeian_pommel" culture="Culture.battania" length="8.45" weight="0.01">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_pompeian_pommel_h2" name="{=}Pompeian Gladius Pommel" tier="4" piece_type="Pommel" mesh="gladius_pompeian_pommel" culture="Culture.battania" length="8.45" weight="0.01">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_pompeian_pommel_h3" name="{=}Pompeian Gladius Pommel" tier="4" piece_type="Pommel" mesh="gladius_pompeian_pommel" culture="Culture.battania" length="8.45" weight="0.01">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_pompeian_guard_h0" name="{=}Pompeian Gladius Guard" tier="5" piece_type="Guard" mesh="gladius_pompeian_guard" culture="Culture.battania" length="5.79" weight="0.01">
+    <BuildData next_piece_offset="5" />
+    <StatContributions armor_bonus="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_pompeian_guard_h1" name="{=}Pompeian Gladius Guard" tier="5" piece_type="Guard" mesh="gladius_pompeian_guard" culture="Culture.battania" length="5.79" weight="0.01">
+    <BuildData next_piece_offset="5" />
+    <StatContributions armor_bonus="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_pompeian_guard_h2" name="{=}Pompeian Gladius Guard" tier="5" piece_type="Guard" mesh="gladius_pompeian_guard" culture="Culture.battania" length="5.79" weight="0.01">
+    <BuildData next_piece_offset="5" />
+    <StatContributions armor_bonus="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_pompeian_guard_h3" name="{=}Pompeian Gladius Guard" tier="5" piece_type="Guard" mesh="gladius_pompeian_guard" culture="Culture.battania" length="5.79" weight="0.01">
+    <BuildData next_piece_offset="5" />
+    <StatContributions armor_bonus="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_pompeian_handle_h0" name="{=}Pompeian Gladius Handle" tier="3" piece_type="Handle" mesh="gladius_pompeian_handle" culture="Culture.khuzait" length="12.5" weight="0.01">
+    <BuildData piece_offset="0" previous_piece_offset="1" next_piece_offset="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_pompeian_handle_h1" name="{=}Pompeian Gladius Handle" tier="3" piece_type="Handle" mesh="gladius_pompeian_handle" culture="Culture.khuzait" length="12.5" weight="0.01">
+    <BuildData piece_offset="0" previous_piece_offset="1" next_piece_offset="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_pompeian_handle_h2" name="{=}Pompeian Gladius Handle" tier="3" piece_type="Handle" mesh="gladius_pompeian_handle" culture="Culture.khuzait" length="12.5" weight="0.01">
+    <BuildData piece_offset="0" previous_piece_offset="1" next_piece_offset="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_pompeian_handle_h3" name="{=}Pompeian Gladius Handle" tier="3" piece_type="Handle" mesh="gladius_pompeian_handle" culture="Culture.khuzait" length="12.5" weight="0.01">
+    <BuildData piece_offset="0" previous_piece_offset="1" next_piece_offset="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_mainz_blade_h0" name="{=}Mainz Gladius Blade" tier="4" piece_type="Blade" mesh="gladius_mainz_blade" culture="Culture.empire" length="59.8" weight="1.55">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="3.2" />
+      <Swing damage_type="Cut" damage_factor="2.9" />
+    </BladeData>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_mainz_blade_h1" name="{=}Mainz Gladius Blade" tier="4" piece_type="Blade" mesh="gladius_mainz_blade" culture="Culture.battania" length="59.8" weight="1.55">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="3.3" />
+      <Swing damage_type="Cut" damage_factor="2.9" />
+    </BladeData>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_mainz_blade_h2" name="{=}Mainz Gladius Blade" tier="4" piece_type="Blade" mesh="gladius_mainz_blade" culture="Culture.battania" length="59.8" weight="1.55">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="3.3" />
+      <Swing damage_type="Cut" damage_factor="3.0" />
+    </BladeData>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_mainz_blade_h3" name="{=}Mainz Gladius Blade" tier="4" piece_type="Blade" mesh="gladius_mainz_blade" culture="Culture.battania" length="59.8" weight="1.55">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="3.5" />
+      <Swing damage_type="Cut" damage_factor="3.1" />
+    </BladeData>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_mainz_pommel_h0" name="{=}Mainz Gladius Pommel" tier="4" piece_type="Pommel" mesh="gladius_mainz_pommel" culture="Culture.battania" length="6.34" weight="0.01">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_mainz_pommel_h1" name="{=}Mainz Gladius Pommel" tier="4" piece_type="Pommel" mesh="gladius_mainz_pommel" culture="Culture.battania" length="6.34" weight="0.01">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_mainz_pommel_h2" name="{=}Mainz Gladius Pommel" tier="4" piece_type="Pommel" mesh="gladius_mainz_pommel" culture="Culture.battania" length="6.34" weight="0.01">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_mainz_pommel_h3" name="{=}Mainz Gladius Pommel" tier="4" piece_type="Pommel" mesh="gladius_mainz_pommel" culture="Culture.battania" length="6.34" weight="0.01">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_mainz_guard_h0" name="{=}Mainz Gladius Guard" tier="5" piece_type="Guard" mesh="gladius_mainz_guard" culture="Culture.battania" length="6.2" weight="0.01">
+    <BuildData next_piece_offset="7" />
+    <StatContributions armor_bonus="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_mainz_guard_h1" name="{=}Mainz Gladius Guard" tier="5" piece_type="Guard" mesh="gladius_mainz_guard" culture="Culture.battania" length="6.2" weight="0.01">
+    <BuildData next_piece_offset="7" />
+    <StatContributions armor_bonus="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_mainz_guard_h2" name="{=}Mainz Gladius Guard" tier="5" piece_type="Guard" mesh="gladius_mainz_guard" culture="Culture.battania" length="6.2" weight="0.01">
+    <BuildData next_piece_offset="7" />
+    <StatContributions armor_bonus="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_mainz_guard_h3" name="{=}Mainz Gladius Guard" tier="5" piece_type="Guard" mesh="gladius_mainz_guard" culture="Culture.battania" length="6.2" weight="0.01">
+    <BuildData next_piece_offset="7" />
+    <StatContributions armor_bonus="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_mainz_handle_h0" name="{=}Mainz Gladius Handle" tier="3" piece_type="Handle" mesh="gladius_mainz_handle" culture="Culture.khuzait" length="11.3" weight="0.01">
+    <BuildData piece_offset="0" previous_piece_offset="1" next_piece_offset="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_mainz_handle_h1" name="{=}Mainz Gladius Handle" tier="3" piece_type="Handle" mesh="gladius_mainz_handle" culture="Culture.khuzait" length="11.3" weight="0.01">
+    <BuildData piece_offset="0" previous_piece_offset="1" next_piece_offset="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_mainz_handle_h2" name="{=}Mainz Gladius Handle" tier="3" piece_type="Handle" mesh="gladius_mainz_handle" culture="Culture.khuzait" length="11.3" weight="0.01">
+    <BuildData piece_offset="0" previous_piece_offset="1" next_piece_offset="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_mainz_handle_h3" name="{=}Mainz Gladius Handle" tier="3" piece_type="Handle" mesh="gladius_mainz_handle" culture="Culture.khuzait" length="11.3" weight="0.01">
+    <BuildData piece_offset="0" previous_piece_offset="1" next_piece_offset="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_republican_blade_h0" name="{=}Republican Gladius Blade" tier="4" piece_type="Blade" mesh="gladius_republican_blade" culture="Culture.battania" length="65" weight="1.5">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="3.0" />
+      <Swing damage_type="Cut" damage_factor="2.7" />
+    </BladeData>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_republican_blade_h1" name="{=}Republican Gladius Blade" tier="4" piece_type="Blade" mesh="gladius_republican_blade" culture="Culture.battania" length="65" weight="1.5">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="3.1" />
+      <Swing damage_type="Cut" damage_factor="2.7" />
+    </BladeData>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_republican_blade_h2" name="{=}Republican Gladius Blade" tier="4" piece_type="Blade" mesh="gladius_republican_blade" culture="Culture.battania" length="65" weight="1.5">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="3.2" />
+      <Swing damage_type="Cut" damage_factor="2.8" />
+    </BladeData>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_republican_blade_h3" name="{=}Republican Gladius Blade" tier="4" piece_type="Blade" mesh="gladius_republican_blade" culture="Culture.battania" length="65" weight="1.5">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="3.4" />
+      <Swing damage_type="Cut" damage_factor="2.9" />
+    </BladeData>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_republican_pommel_h0" name="{=}Republican Gladius Pommel" tier="4" piece_type="Pommel" mesh="gladius_republican_pommel" culture="Culture.battania" length="7.04" weight="0.02">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_republican_pommel_h1" name="{=}Republican Gladius Pommel" tier="4" piece_type="Pommel" mesh="gladius_republican_pommel" culture="Culture.battania" length="7.04" weight="0.02">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_republican_pommel_h2" name="{=}Republican Gladius Pommel" tier="4" piece_type="Pommel" mesh="gladius_republican_pommel" culture="Culture.battania" length="7.04" weight="0.02">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_republican_pommel_h3" name="{=}Republican Gladius Pommel" tier="4" piece_type="Pommel" mesh="gladius_republican_pommel" culture="Culture.battania" length="7.04" weight="0.02">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_republican_guard_h0" name="{=}Republican Gladius Guard" tier="5" piece_type="Guard" mesh="gladius_republican_guard" culture="Culture.battania" length="5.74" weight="0.03">
+    <BuildData next_piece_offset="1" />
+    <StatContributions armor_bonus="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_republican_guard_h1" name="{=}Republican Gladius Guard" tier="5" piece_type="Guard" mesh="gladius_republican_guard" culture="Culture.battania" length="5.74" weight="0.03">
+    <BuildData next_piece_offset="1" />
+    <StatContributions armor_bonus="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_republican_guard_h2" name="{=}Republican Gladius Guard" tier="5" piece_type="Guard" mesh="gladius_republican_guard" culture="Culture.battania" length="5.74" weight="0.03">
+    <BuildData next_piece_offset="1" />
+    <StatContributions armor_bonus="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_republican_guard_h3" name="{=}Republican Gladius Guard" tier="5" piece_type="Guard" mesh="gladius_republican_guard" culture="Culture.battania" length="5.74" weight="0.03">
+    <BuildData next_piece_offset="1" />
+    <StatContributions armor_bonus="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_republican_handle_h0" name="{=}Republican Gladius Handle" tier="3" piece_type="Handle" mesh="gladius_republican_handle" culture="Culture.khuzait" length="15.7" weight="0.02">
+    <BuildData piece_offset="0" previous_piece_offset="1" next_piece_offset="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_republican_handle_h1" name="{=}Republican Gladius Handle" tier="3" piece_type="Handle" mesh="gladius_republican_handle" culture="Culture.khuzait" length="15.7" weight="0.02">
+    <BuildData piece_offset="0" previous_piece_offset="1" next_piece_offset="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_republican_handle_h2" name="{=}Republican Gladius Handle" tier="3" piece_type="Handle" mesh="gladius_republican_handle" culture="Culture.khuzait" length="15.7" weight="0.02">
+    <BuildData piece_offset="0" previous_piece_offset="1" next_piece_offset="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_gladius_republican_handle_h3" name="{=}Republican Gladius Handle" tier="3" piece_type="Handle" mesh="gladius_republican_handle" culture="Culture.khuzait" length="15.7" weight="0.02">
+    <BuildData piece_offset="0" previous_piece_offset="1" next_piece_offset="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_nodachi_blade_h0" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_nodachi_blade_h1" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_nodachi_blade_h2" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_nodachi_blade_h3" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_nodachi_guard_h0" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_nodachi_guard_h1" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_nodachi_guard_h2" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_nodachi_guard_h3" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_nodachi_handle_h0" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_nodachi_handle_h1" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_nodachi_handle_h2" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_nodachi_handle_h3" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_nodachi_pommel_h0" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_nodachi_pommel_h1" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_nodachi_pommel_h2" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_nodachi_pommel_h3" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_nodachi_blade_h0" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_nodachi_blade_h1" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_nodachi_blade_h2" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_nodachi_blade_h3" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_nodachi_guard_h0" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_nodachi_guard_h1" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_nodachi_guard_h2" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_nodachi_guard_h3" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_nodachi_handle_h0" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_nodachi_handle_h1" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_nodachi_handle_h2" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_nodachi_handle_h3" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_nodachi_pommel_h0" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_nodachi_pommel_h1" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_nodachi_pommel_h2" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_nodachi_pommel_h3" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_nodachi_blade_h0" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_nodachi_blade_h1" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_nodachi_blade_h2" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_nodachi_blade_h3" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_nodachi_guard_h0" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_nodachi_guard_h1" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_nodachi_guard_h2" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_nodachi_guard_h3" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_nodachi_handle_h0" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_nodachi_handle_h1" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_nodachi_handle_h2" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_nodachi_handle_h3" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_nodachi_pommel_h0" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_nodachi_pommel_h1" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_nodachi_pommel_h2" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_nodachi_pommel_h3" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_nodachi_blade_h0" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_nodachi_blade_h1" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_nodachi_blade_h2" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_nodachi_blade_h3" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_nodachi_guard_h0" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_nodachi_guard_h1" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_nodachi_guard_h2" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_nodachi_guard_h3" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_nodachi_handle_h0" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_nodachi_handle_h1" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_nodachi_handle_h2" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_nodachi_handle_h3" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_nodachi_pommel_h0" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_nodachi_pommel_h1" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_nodachi_pommel_h2" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_nodachi_pommel_h3" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_nodachi_blade_h0" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_nodachi_blade_h1" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_nodachi_blade_h2" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_nodachi_blade_h3" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_nodachi_guard_h0" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_nodachi_guard_h1" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_nodachi_guard_h2" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_nodachi_guard_h3" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_nodachi_handle_h0" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_nodachi_handle_h1" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_nodachi_handle_h2" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_nodachi_handle_h3" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_nodachi_pommel_h0" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_nodachi_pommel_h1" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_nodachi_pommel_h2" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_nodachi_pommel_h3" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_wakizashi_blade_h0" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_wakizashi_blade_h1" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_wakizashi_blade_h2" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_wakizashi_blade_h3" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_wakizashi_guard_h0" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_wakizashi_guard_h1" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_wakizashi_guard_h2" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_wakizashi_guard_h3" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_wakizashi_handle_h0" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_wakizashi_handle_h1" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_wakizashi_handle_h2" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_wakizashi_handle_h3" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_wakizashi_pommel_h0" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_wakizashi_pommel_h1" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_wakizashi_pommel_h2" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_red_wakizashi_pommel_h3" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_wakizashi_blade_h0" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_wakizashi_blade_h1" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_wakizashi_blade_h2" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_wakizashi_blade_h3" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_wakizashi_guard_h0" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_wakizashi_guard_h1" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_wakizashi_guard_h2" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_wakizashi_guard_h3" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_wakizashi_handle_h0" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_wakizashi_handle_h1" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_wakizashi_handle_h2" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_wakizashi_handle_h3" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_wakizashi_pommel_h0" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_wakizashi_pommel_h1" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_wakizashi_pommel_h2" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_blue_wakizashi_pommel_h3" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_wakizashi_blade_h0" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_wakizashi_blade_h1" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_wakizashi_blade_h2" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_wakizashi_blade_h3" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_wakizashi_guard_h0" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_wakizashi_guard_h1" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_wakizashi_guard_h2" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_wakizashi_guard_h3" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_wakizashi_handle_h0" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_wakizashi_handle_h1" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_wakizashi_handle_h2" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_wakizashi_handle_h3" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_wakizashi_pommel_h0" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_wakizashi_pommel_h1" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_wakizashi_pommel_h2" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_green_wakizashi_pommel_h3" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_wakizashi_blade_h0" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_wakizashi_blade_h1" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_wakizashi_blade_h2" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_wakizashi_blade_h3" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_wakizashi_guard_h0" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_wakizashi_guard_h1" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_wakizashi_guard_h2" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_wakizashi_guard_h3" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_wakizashi_handle_h0" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_wakizashi_handle_h1" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_wakizashi_handle_h2" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_wakizashi_handle_h3" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_wakizashi_pommel_h0" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_wakizashi_pommel_h1" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_wakizashi_pommel_h2" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_yellow_wakizashi_pommel_h3" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_wakizashi_blade_h0" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_wakizashi_blade_h1" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_wakizashi_blade_h2" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_wakizashi_blade_h3" name="{=}Katana Blade" tier="2" piece_type="Blade" mesh="katana_blade" culture="Culture.aserai" length="93.7" weight="0.35">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="katana_sheath_red">
+      <Thrust damage_type="Pierce" damage_factor="1.5" />
+      <Swing damage_type="Cut" damage_factor="3.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_wakizashi_guard_h0" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_wakizashi_guard_h1" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_wakizashi_guard_h2" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_wakizashi_guard_h3" name="{=}Katana Guard" tier="4" piece_type="Guard" mesh="katana_guard" culture="Culture.khuzait" length="3.73" weight="0.01">
+    <BuildData next_piece_offset="0.2" />
+    <StatContributions armor_bonus="4" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_wakizashi_handle_h0" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_wakizashi_handle_h1" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_wakizashi_handle_h2" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_wakizashi_handle_h3" name="{=}Red Katana Handle" tier="4" piece_type="Handle" mesh="katana_handle_red" culture="Culture.khuzait" length="29.1" weight="2">
+    <BuildData piece_offset="-9.5" previous_piece_offset="0.35" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_wakizashi_pommel_h0" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_wakizashi_pommel_h1" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_wakizashi_pommel_h2" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_black_wakizashi_pommel_h3" name="{=}Katana Pommel" tier="3" piece_type="Pommel" mesh="katana_pommel" culture="Culture.khuzait" length="2.97" weight="0.6">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kriegsmesser_blade_h0" name="{=}Kriegsmesser Blade" tier="4" piece_type="Blade" mesh="kriegsmesser_blade" culture="Culture.battania" length="99.7" weight="1.0">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="1.015" />
+      <Swing damage_type="Cut" damage_factor="1.33" />
+    </BladeData>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kriegsmesser_blade_h1" name="{=}Kriegsmesser Blade" tier="4" piece_type="Blade" mesh="kriegsmesser_blade" culture="Culture.battania" length="99.7" weight="1.0">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="1.015" />
+      <Swing damage_type="Cut" damage_factor="1.33" />
+    </BladeData>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kriegsmesser_blade_h2" name="{=}Kriegsmesser Blade" tier="4" piece_type="Blade" mesh="kriegsmesser_blade" culture="Culture.battania" length="99.7" weight="1.0">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="1.015" />
+      <Swing damage_type="Cut" damage_factor="1.33" />
+    </BladeData>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kriegsmesser_blade_h3" name="{=}Kriegsmesser Blade" tier="4" piece_type="Blade" mesh="kriegsmesser_blade" culture="Culture.battania" length="99.7" weight="1.0">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="1.015" />
+      <Swing damage_type="Cut" damage_factor="1.33" />
+    </BladeData>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kriegsmesser_pommel_h0" name="{=}Kriegsmesser Pommel" tier="4" piece_type="Pommel" mesh="kriegsmesser_pommel" culture="Culture.battania" length="6.31" weight="0.12">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kriegsmesser_pommel_h1" name="{=}Kriegsmesser Pommel" tier="4" piece_type="Pommel" mesh="kriegsmesser_pommel" culture="Culture.battania" length="6.31" weight="0.12">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kriegsmesser_pommel_h2" name="{=}Kriegsmesser Pommel" tier="4" piece_type="Pommel" mesh="kriegsmesser_pommel" culture="Culture.battania" length="6.31" weight="0.12">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kriegsmesser_pommel_h3" name="{=}Kriegsmesser Pommel" tier="4" piece_type="Pommel" mesh="kriegsmesser_pommel" culture="Culture.battania" length="6.31" weight="0.12">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kriegsmesser_guard_h0" name="{=}Kriegsmesser Guard" tier="5" piece_type="Guard" mesh="kriegsmesser_guard" culture="Culture.battania" length="3.91" weight="0.097">
+    <BuildData next_piece_offset="1" />
+    <StatContributions armor_bonus="3" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kriegsmesser_guard_h1" name="{=}Kriegsmesser Guard" tier="5" piece_type="Guard" mesh="kriegsmesser_guard" culture="Culture.battania" length="3.91" weight="0.097">
+    <BuildData next_piece_offset="1" />
+    <StatContributions armor_bonus="3" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kriegsmesser_guard_h2" name="{=}Kriegsmesser Guard" tier="5" piece_type="Guard" mesh="kriegsmesser_guard" culture="Culture.battania" length="3.91" weight="0.097">
+    <BuildData next_piece_offset="1" />
+    <StatContributions armor_bonus="3" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kriegsmesser_guard_h3" name="{=}Kriegsmesser Guard" tier="5" piece_type="Guard" mesh="kriegsmesser_guard" culture="Culture.battania" length="3.91" weight="0.097">
+    <BuildData next_piece_offset="1" />
+    <StatContributions armor_bonus="3" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kriegsmesser_handle_h0" name="{=}Kriegsmesser Handle" tier="3" piece_type="Handle" mesh="kriegsmesser_handle" culture="Culture.khuzait" length="26.3" weight="0.1">
+    <BuildData piece_offset="-6.5" previous_piece_offset="0.1" next_piece_offset="1" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kriegsmesser_handle_h1" name="{=}Kriegsmesser Handle" tier="3" piece_type="Handle" mesh="kriegsmesser_handle" culture="Culture.khuzait" length="26.3" weight="0.1">
+    <BuildData piece_offset="-6.5" previous_piece_offset="0.1" next_piece_offset="1" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kriegsmesser_handle_h2" name="{=}Kriegsmesser Handle" tier="3" piece_type="Handle" mesh="kriegsmesser_handle" culture="Culture.khuzait" length="26.3" weight="0.1">
+    <BuildData piece_offset="-6.5" previous_piece_offset="0.1" next_piece_offset="1" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kriegsmesser_handle_h3" name="{=}Kriegsmesser Handle" tier="3" piece_type="Handle" mesh="kriegsmesser_handle" culture="Culture.khuzait" length="26.3" weight="0.1">
+    <BuildData piece_offset="-6.5" previous_piece_offset="0.1" next_piece_offset="1" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_zweihander_blade_h0" name="{=}Zweihander Blade" tier="4" piece_type="Blade" mesh="zweihander_blade" culture="Culture.battania" length="100" weight="1.0">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="1.015" />
+      <Swing damage_type="Cut" damage_factor="1.33" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron5" count="4" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_zweihander_blade_h1" name="{=}Zweihander Blade" tier="4" piece_type="Blade" mesh="zweihander_blade" culture="Culture.battania" length="100" weight="1.0">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="1.015" />
+      <Swing damage_type="Cut" damage_factor="1.33" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron5" count="4" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_zweihander_blade_h2" name="{=}Zweihander Blade" tier="4" piece_type="Blade" mesh="zweihander_blade" culture="Culture.battania" length="100" weight="1.0">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="1.015" />
+      <Swing damage_type="Cut" damage_factor="1.33" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron5" count="4" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_zweihander_blade_h3" name="{=}Zweihander Blade" tier="4" piece_type="Blade" mesh="zweihander_blade" culture="Culture.battania" length="100" weight="1.0">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="1.015" />
+      <Swing damage_type="Cut" damage_factor="1.33" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron5" count="4" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_zweihander_pommel_h0" name="{=}Zweihander Pommel" tier="4" piece_type="Pommel" mesh="zweihander_pommel" culture="Culture.battania" length="8.56" weight="0.12">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_zweihander_pommel_h1" name="{=}Zweihander Pommel" tier="4" piece_type="Pommel" mesh="zweihander_pommel" culture="Culture.battania" length="8.56" weight="0.12">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_zweihander_pommel_h2" name="{=}Zweihander Pommel" tier="4" piece_type="Pommel" mesh="zweihander_pommel" culture="Culture.battania" length="8.56" weight="0.12">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_zweihander_pommel_h3" name="{=}Zweihander Pommel" tier="4" piece_type="Pommel" mesh="zweihander_pommel" culture="Culture.battania" length="8.56" weight="0.12">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_zweihander_guard_h0" name="{=}Zweihander Guard" tier="5" piece_type="Guard" mesh="zweihander_guard" culture="Culture.battania" length="4.8" weight="0.097">
+    <BuildData next_piece_offset="-15" />
+    <StatContributions armor_bonus="3" />
+    <Materials>
+      <Material id="Iron5" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_zweihander_guard_h1" name="{=}Zweihander Guard" tier="5" piece_type="Guard" mesh="zweihander_guard" culture="Culture.battania" length="4.8" weight="0.097">
+    <BuildData next_piece_offset="-15" />
+    <StatContributions armor_bonus="3" />
+    <Materials>
+      <Material id="Iron5" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_zweihander_guard_h2" name="{=}Zweihander Guard" tier="5" piece_type="Guard" mesh="zweihander_guard" culture="Culture.battania" length="4.8" weight="0.097">
+    <BuildData next_piece_offset="-15" />
+    <StatContributions armor_bonus="3" />
+    <Materials>
+      <Material id="Iron5" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_zweihander_guard_h3" name="{=}Zweihander Guard" tier="5" piece_type="Guard" mesh="zweihander_guard" culture="Culture.battania" length="4.8" weight="0.097">
+    <BuildData next_piece_offset="-15" />
+    <StatContributions armor_bonus="3" />
+    <Materials>
+      <Material id="Iron5" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_zweihander_handle_h0" name="{=}Zweihander Handle" tier="3" piece_type="Handle" mesh="zweihander_handle" culture="Culture.khuzait" length="36" weight="0.1">
+    <BuildData piece_offset="-8" previous_piece_offset="-9.0" next_piece_offset="-8.0" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_zweihander_handle_h1" name="{=}Zweihander Handle" tier="3" piece_type="Handle" mesh="zweihander_handle" culture="Culture.khuzait" length="36" weight="0.1">
+    <BuildData piece_offset="-8" previous_piece_offset="-9.0" next_piece_offset="-8.0" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_zweihander_handle_h2" name="{=}Zweihander Handle" tier="3" piece_type="Handle" mesh="zweihander_handle" culture="Culture.khuzait" length="36" weight="0.1">
+    <BuildData piece_offset="-8" previous_piece_offset="-9.0" next_piece_offset="-8.0" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_zweihander_handle_h3" name="{=}Zweihander Handle" tier="3" piece_type="Handle" mesh="zweihander_handle" culture="Culture.khuzait" length="36" weight="0.1">
+    <BuildData piece_offset="-8" previous_piece_offset="-9.0" next_piece_offset="-8.0" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_executionerssword_blade_h0" name="{=}Executioners Blade" tier="4" piece_type="Blade" mesh="executionerssword_blade" culture="Culture.battania" length="95.5" weight="1.0">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="1.015" />
+      <Swing damage_type="Cut" damage_factor="1.33" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron5" count="4" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_executionerssword_blade_h1" name="{=}Executioners Blade" tier="4" piece_type="Blade" mesh="executionerssword_blade" culture="Culture.battania" length="95.5" weight="1.0">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="1.015" />
+      <Swing damage_type="Cut" damage_factor="1.33" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron5" count="4" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_executionerssword_blade_h2" name="{=}Executioners Blade" tier="4" piece_type="Blade" mesh="executionerssword_blade" culture="Culture.battania" length="95.5" weight="1.0">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="1.015" />
+      <Swing damage_type="Cut" damage_factor="1.33" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron5" count="4" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_executionerssword_blade_h3" name="{=}Executioners Blade" tier="4" piece_type="Blade" mesh="executionerssword_blade" culture="Culture.battania" length="95.5" weight="1.0">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="1.015" />
+      <Swing damage_type="Cut" damage_factor="1.33" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron5" count="4" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_executionerssword_pommel_h0" name="{=}Executioners Pommel" tier="4" piece_type="Pommel" mesh="executionerssword_pommel" culture="Culture.battania" length="7.03" weight="0.12">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_executionerssword_pommel_h1" name="{=}Executioners Pommel" tier="4" piece_type="Pommel" mesh="executionerssword_pommel" culture="Culture.battania" length="7.03" weight="0.12">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_executionerssword_pommel_h2" name="{=}Executioners Pommel" tier="4" piece_type="Pommel" mesh="executionerssword_pommel" culture="Culture.battania" length="7.03" weight="0.12">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_executionerssword_pommel_h3" name="{=}Executioners Pommel" tier="4" piece_type="Pommel" mesh="executionerssword_pommel" culture="Culture.battania" length="7.03" weight="0.12">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_executionerssword_guard_h0" name="{=}Executioners Guard" tier="5" piece_type="Guard" mesh="executionerssword_guard" culture="Culture.battania" length="2.54" weight="0.097">
+    <BuildData next_piece_offset="1.5" />
+    <StatContributions armor_bonus="3" />
+    <Materials>
+      <Material id="Iron5" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_executionerssword_guard_h1" name="{=}Executioners Guard" tier="5" piece_type="Guard" mesh="executionerssword_guard" culture="Culture.battania" length="2.54" weight="0.097">
+    <BuildData next_piece_offset="1.5" />
+    <StatContributions armor_bonus="3" />
+    <Materials>
+      <Material id="Iron5" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_executionerssword_guard_h2" name="{=}Executioners Guard" tier="5" piece_type="Guard" mesh="executionerssword_guard" culture="Culture.battania" length="2.54" weight="0.097">
+    <BuildData next_piece_offset="1.5" />
+    <StatContributions armor_bonus="3" />
+    <Materials>
+      <Material id="Iron5" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_executionerssword_guard_h3" name="{=}Executioners Guard" tier="5" piece_type="Guard" mesh="executionerssword_guard" culture="Culture.battania" length="2.54" weight="0.097">
+    <BuildData next_piece_offset="1.5" />
+    <StatContributions armor_bonus="3" />
+    <Materials>
+      <Material id="Iron5" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_executionerssword_handle_h0" name="{=}Executioners Handle" tier="3" piece_type="Handle" mesh="executionerssword_handle" culture="Culture.khuzait" length="19.5" weight="0.1">
+    <BuildData piece_offset="-5" previous_piece_offset="0.0" next_piece_offset="1" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_executionerssword_handle_h1" name="{=}Executioners Handle" tier="3" piece_type="Handle" mesh="executionerssword_handle" culture="Culture.khuzait" length="19.5" weight="0.1">
+    <BuildData piece_offset="-5" previous_piece_offset="0.0" next_piece_offset="1" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_executionerssword_handle_h2" name="{=}Executioners Handle" tier="3" piece_type="Handle" mesh="executionerssword_handle" culture="Culture.khuzait" length="19.5" weight="0.1">
+    <BuildData piece_offset="-5" previous_piece_offset="0.0" next_piece_offset="1" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_executionerssword_handle_h3" name="{=}Executioners Handle" tier="3" piece_type="Handle" mesh="executionerssword_handle" culture="Culture.khuzait" length="19.5" weight="0.1">
+    <BuildData piece_offset="-5" previous_piece_offset="0.0" next_piece_offset="1" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_tetsubo_head_h0" name="{=}Tetsubo Head" tier="1" piece_type="Blade" mesh="tetsubo_head" length="93.4" weight="0.67" full_scale="true">
+    <BuildData piece_offset="-29.5" next_piece_offset="0" />
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_mace_a">
+      <Swing damage_type="Blunt" damage_factor="0.42525" />
+    </BladeData>
+    <Flags>
+      <Flag name="Civilian" type="ItemFlags" />
+    </Flags>
+    <Materials>
+      <Material id="Iron2" count="2" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_tetsubo_head_h1" name="{=}Tetsubo Head" tier="1" piece_type="Blade" mesh="tetsubo_head" length="93.4" weight="0.67" full_scale="true">
+    <BuildData piece_offset="-29.5" next_piece_offset="0" />
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_mace_a">
+      <Swing damage_type="Blunt" damage_factor="0.42525" />
+    </BladeData>
+    <Flags>
+      <Flag name="Civilian" type="ItemFlags" />
+    </Flags>
+    <Materials>
+      <Material id="Iron2" count="2" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_tetsubo_head_h2" name="{=}Tetsubo Head" tier="1" piece_type="Blade" mesh="tetsubo_head" length="93.4" weight="0.67" full_scale="true">
+    <BuildData piece_offset="-29.5" next_piece_offset="0" />
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_mace_a">
+      <Swing damage_type="Blunt" damage_factor="0.42525" />
+    </BladeData>
+    <Flags>
+      <Flag name="Civilian" type="ItemFlags" />
+    </Flags>
+    <Materials>
+      <Material id="Iron2" count="2" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_tetsubo_head_h3" name="{=}Tetsubo Head" tier="1" piece_type="Blade" mesh="tetsubo_head" length="93.4" weight="0.67" full_scale="true">
+    <BuildData piece_offset="-29.5" next_piece_offset="0" />
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_mace_a">
+      <Swing damage_type="Blunt" damage_factor="0.42525" />
+    </BladeData>
+    <Flags>
+      <Flag name="Civilian" type="ItemFlags" />
+    </Flags>
+    <Materials>
+      <Material id="Iron2" count="2" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_tetsubo_handle_h0" name="{=}Tetsubo Handle" tier="1" piece_type="Handle" mesh="tetsubo_handle" length="46" full_scale="false" weight="0.3" item_holster_pos_shift="0,0,0.1" CraftingCost="75" is_default="true">
+    <BuildData piece_offset="-5" next_piece_offset="-25.4" />
+    <Materials>
+      <Material id="Wood" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_tetsubo_handle_h1" name="{=}Tetsubo Handle" tier="1" piece_type="Handle" mesh="tetsubo_handle" length="46" full_scale="false" weight="0.3" item_holster_pos_shift="0,0,0.1" CraftingCost="75" is_default="true">
+    <BuildData piece_offset="-5" next_piece_offset="-25.4" />
+    <Materials>
+      <Material id="Wood" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_tetsubo_handle_h2" name="{=}Tetsubo Handle" tier="1" piece_type="Handle" mesh="tetsubo_handle" length="46" full_scale="false" weight="0.3" item_holster_pos_shift="0,0,0.1" CraftingCost="75" is_default="true">
+    <BuildData piece_offset="-5" next_piece_offset="-25.4" />
+    <Materials>
+      <Material id="Wood" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_tetsubo_handle_h3" name="{=}Tetsubo Handle" tier="1" piece_type="Handle" mesh="tetsubo_handle" length="46" full_scale="false" weight="0.3" item_holster_pos_shift="0,0,0.1" CraftingCost="75" is_default="true">
+    <BuildData piece_offset="-5" next_piece_offset="-25.4" />
+    <Materials>
+      <Material id="Wood" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_horsemanspick_head_h0" name="{=}Horseman's Pick Head" tier="4" piece_type="Blade" mesh="horsemanspick_head" distance_to_next_piece="0.0" distance_to_previous_piece="0.0" length="46.2" weight="0.37" full_scale="true">
+    <BuildData piece_offset="0.0" />
+    <BladeData stack_amount="1" physics_material="metal_weapon" body_name="bo_mace_a">
+      <Thrust damage_type="Pierce" damage_factor="1.9" />
+      <Swing damage_type="Pierce" damage_factor="2.3" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="2" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_horsemanspick_head_h1" name="{=}Horseman's Pick Head" tier="4" piece_type="Blade" mesh="horsemanspick_head" distance_to_next_piece="0.0" distance_to_previous_piece="0.0" length="46.2" weight="0.37" full_scale="true">
+    <BuildData piece_offset="0.0" />
+    <BladeData stack_amount="1" physics_material="metal_weapon" body_name="bo_mace_a">
+      <Thrust damage_type="Pierce" damage_factor="1.9" />
+      <Swing damage_type="Pierce" damage_factor="2.3" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="2" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_horsemanspick_head_h2" name="{=}Horseman's Pick Head" tier="4" piece_type="Blade" mesh="horsemanspick_head" distance_to_next_piece="0.0" distance_to_previous_piece="0.0" length="46.2" weight="0.37" full_scale="true">
+    <BuildData piece_offset="0.0" />
+    <BladeData stack_amount="1" physics_material="metal_weapon" body_name="bo_mace_a">
+      <Thrust damage_type="Pierce" damage_factor="1.9" />
+      <Swing damage_type="Pierce" damage_factor="2.3" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="2" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_horsemanspick_head_h3" name="{=}Horseman's Pick Head" tier="4" piece_type="Blade" mesh="horsemanspick_head" distance_to_next_piece="0.0" distance_to_previous_piece="0.0" length="46.2" weight="0.37" full_scale="true">
+    <BuildData piece_offset="0.0" />
+    <BladeData stack_amount="1" physics_material="metal_weapon" body_name="bo_mace_a">
+      <Thrust damage_type="Pierce" damage_factor="1.9" />
+      <Swing damage_type="Pierce" damage_factor="2.3" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron3" count="2" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_horsemanspick_handle_h0" name="{=}Horseman's Pick Handle" tier="4" piece_type="Handle" mesh="horsemanspick_handle" length="77.2" weight="0.323" item_holster_pos_shift="0,0,-0.1" CraftingCost="90">
+    <BuildData piece_offset="20.0" next_piece_offset="21.0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_horsemanspick_handle_h1" name="{=}Horseman's Pick Handle" tier="4" piece_type="Handle" mesh="horsemanspick_handle" length="77.2" weight="0.323" item_holster_pos_shift="0,0,-0.1" CraftingCost="90">
+    <BuildData piece_offset="20.0" next_piece_offset="21.0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_horsemanspick_handle_h2" name="{=}Horseman's Pick Handle" tier="4" piece_type="Handle" mesh="horsemanspick_handle" length="77.2" weight="0.323" item_holster_pos_shift="0,0,-0.1" CraftingCost="90">
+    <BuildData piece_offset="20.0" next_piece_offset="21.0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_horsemanspick_handle_h3" name="{=}Horseman's Pick Handle" tier="4" piece_type="Handle" mesh="horsemanspick_handle" length="77.2" weight="0.323" item_holster_pos_shift="0,0,-0.1" CraftingCost="90">
+    <BuildData piece_offset="20.0" next_piece_offset="21.0" />
+    <Materials>
+      <Material id="Iron4" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_pudao_pommel_h0" name="{=}Pudao Pommel" tier="4" piece_type="Pommel" mesh="pudao_pommel" culture="Culture.empire" length="12.8" weight="0">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_pudao_pommel_h1" name="{=}Pudao Pommel" tier="4" piece_type="Pommel" mesh="pudao_pommel" culture="Culture.empire" length="12.8" weight="0">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_pudao_pommel_h2" name="{=}Pudao Pommel" tier="4" piece_type="Pommel" mesh="pudao_pommel" culture="Culture.empire" length="12.8" weight="0">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_pudao_pommel_h3" name="{=}Pudao Pommel" tier="4" piece_type="Pommel" mesh="pudao_pommel" culture="Culture.empire" length="12.8" weight="0">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_pudao_guard_h0" name="{=}Pudao Guard" tier="5" piece_type="Guard" mesh="pudao_guard" culture="Culture.empire" length="0.66" weight="0">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron5" count="1" />
+    </Materials>
+    <Flags>
+    </Flags>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_pudao_guard_h1" name="{=}Pudao Guard" tier="5" piece_type="Guard" mesh="pudao_guard" culture="Culture.empire" length="0.66" weight="0">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron5" count="1" />
+    </Materials>
+    <Flags>
+    </Flags>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_pudao_guard_h2" name="{=}Pudao Guard" tier="5" piece_type="Guard" mesh="pudao_guard" culture="Culture.empire" length="0.66" weight="0">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron5" count="1" />
+    </Materials>
+    <Flags>
+    </Flags>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_pudao_guard_h3" name="{=}Pudao Guard" tier="5" piece_type="Guard" mesh="pudao_guard" culture="Culture.empire" length="0.66" weight="0">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron5" count="1" />
+    </Materials>
+    <Flags>
+    </Flags>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_pudao_blade_h0" name="{=}Pudao Blade" tier="2" piece_type="Blade" mesh="pudao_blade" length="71.1" weight="0.3384">
+    <BladeData stack_amount="5" physics_material="wood_weapon" body_name="bo_spear_b">
+      <Thrust damage_type="Pierce" damage_factor="2.2" />
+      <Swing damage_type="Cut" damage_factor="3.3" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron2" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_pudao_blade_h1" name="{=}Pudao Blade" tier="2" piece_type="Blade" mesh="pudao_blade" length="71.1" weight="0.3384">
+    <BladeData stack_amount="5" physics_material="wood_weapon" body_name="bo_spear_b">
+      <Thrust damage_type="Pierce" damage_factor="2.2" />
+      <Swing damage_type="Cut" damage_factor="3.3" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron2" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_pudao_blade_h2" name="{=}Pudao Blade" tier="2" piece_type="Blade" mesh="pudao_blade" length="71.1" weight="0.3384">
+    <BladeData stack_amount="5" physics_material="wood_weapon" body_name="bo_spear_b">
+      <Thrust damage_type="Pierce" damage_factor="2.2" />
+      <Swing damage_type="Cut" damage_factor="3.3" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron2" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_pudao_blade_h3" name="{=}Pudao Blade" tier="2" piece_type="Blade" mesh="pudao_blade" length="71.1" weight="0.3384">
+    <BladeData stack_amount="5" physics_material="wood_weapon" body_name="bo_spear_b">
+      <Thrust damage_type="Pierce" damage_factor="2.2" />
+      <Swing damage_type="Cut" damage_factor="3.3" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron2" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_pudao_handle_h0" name="{=}Pudao Handle" tier="3" piece_type="Handle" mesh="pudao_handle" length="73.2" weight="1.6">
+    <BuildData piece_offset="12" previous_piece_offset="1" next_piece_offset="1" />
+    <Materials>
+      <Material id="Wood" count="4" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_pudao_handle_h1" name="{=}Pudao Handle" tier="3" piece_type="Handle" mesh="pudao_handle" length="73.2" weight="1.6">
+    <BuildData piece_offset="12" previous_piece_offset="1" next_piece_offset="1" />
+    <Materials>
+      <Material id="Wood" count="4" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_pudao_handle_h2" name="{=}Pudao Handle" tier="3" piece_type="Handle" mesh="pudao_handle" length="73.2" weight="1.6">
+    <BuildData piece_offset="12" previous_piece_offset="1" next_piece_offset="1" />
+    <Materials>
+      <Material id="Wood" count="4" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_pudao_handle_h3" name="{=}Pudao Handle" tier="3" piece_type="Handle" mesh="pudao_handle" length="73.2" weight="1.6">
+    <BuildData piece_offset="12" previous_piece_offset="1" next_piece_offset="1" />
+    <Materials>
+      <Material id="Wood" count="4" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_rondel_reverse_guard_h0" name="{=}Reverse Rondel Guard" tier="1" piece_type="Guard" mesh="rondel_guard_reverse" culture="Culture.battania" full_scale="true" length="1.1" weight="0.2">
+    <BuildData next_piece_offset="30.0" />
+    <StatContributions armor_bonus="0" />
+    <Materials>
+      <Material id="Iron2" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_rondel_reverse_guard_h1" name="{=}Reverse Rondel Guard" tier="1" piece_type="Guard" mesh="rondel_guard_reverse" culture="Culture.battania" full_scale="true" length="1.1" weight="0.2">
+    <BuildData next_piece_offset="30.0" />
+    <StatContributions armor_bonus="0" />
+    <Materials>
+      <Material id="Iron2" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_rondel_reverse_guard_h2" name="{=}Reverse Rondel Guard" tier="1" piece_type="Guard" mesh="rondel_guard_reverse" culture="Culture.battania" full_scale="true" length="1.1" weight="0.2">
+    <BuildData next_piece_offset="30.0" />
+    <StatContributions armor_bonus="0" />
+    <Materials>
+      <Material id="Iron2" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_rondel_reverse_guard_h3" name="{=}Reverse Rondel Guard" tier="1" piece_type="Guard" mesh="rondel_guard_reverse" culture="Culture.battania" full_scale="true" length="1.1" weight="0.2">
+    <BuildData next_piece_offset="30.0" />
+    <StatContributions armor_bonus="0" />
+    <Materials>
+      <Material id="Iron2" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_rondel_reverse_blade_h0" name="{=}Reverse Rondel Blade" tier="2" piece_type="Blade" mesh="rondel_blade_reverse"  length="31.4" weight="0.3">
+    <BladeData stack_amount="9" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="throwing_dagger_quiver_2" holster_mesh_length="35.8">
+      <Thrust damage_type="Pierce" damage_factor="3.8" />
+      <Swing damage_type="Pierce" damage_factor="3.8" />
+    </BladeData>
+    <Flags>
+      <Flag name="Civilian" type="ItemFlags" />
+    </Flags>
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_rondel_reverse_blade_h1" name="{=}Reverse Rondel Blade" tier="2" piece_type="Blade" mesh="rondel_blade_reverse"  length="31.4" weight="0.3">
+    <BladeData stack_amount="9" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="throwing_dagger_quiver_2" holster_mesh_length="35.8">
+      <Thrust damage_type="Pierce" damage_factor="3.8" />
+      <Swing damage_type="Pierce" damage_factor="3.8" />
+    </BladeData>
+    <Flags>
+      <Flag name="Civilian" type="ItemFlags" />
+    </Flags>
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_rondel_reverse_blade_h2" name="{=}Reverse Rondel Blade" tier="2" piece_type="Blade" mesh="rondel_blade_reverse" length="31.4" weight="0.3">
+    <BladeData stack_amount="9" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="throwing_dagger_quiver_2" holster_mesh_length="35.8">
+      <Thrust damage_type="Pierce" damage_factor="3.8" />
+      <Swing damage_type="Pierce" damage_factor="3.8" />
+    </BladeData>
+    <Flags>
+      <Flag name="Civilian" type="ItemFlags" />
+    </Flags>
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_rondel_reverse_blade_h3" name="{=}Reverse Rondel Blade" tier="2" piece_type="Blade" mesh="rondel_blade_reverse"  length="31.4" weight="0.3">
+    <BladeData stack_amount="9" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="throwing_dagger_quiver_2" holster_mesh_length="35.8">
+      <Thrust damage_type="Pierce" damage_factor="3.8" />
+      <Swing damage_type="Pierce" damage_factor="3.8" />
+    </BladeData>
+    <Flags>
+      <Flag name="Civilian" type="ItemFlags" />
+    </Flags>
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_rondel_reverse_pommel_h0" name="{=}Reverse Rondel Pommel" tier="4" piece_type="Pommel" mesh="rondel_pommel_reverse" culture="Culture.battania" full_scale="true" length="1.02" weight="0.2">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_rondel_reverse_pommel_h1" name="{=}Reverse Rondel Pommel" tier="4" piece_type="Pommel" mesh="rondel_pommel_reverse" culture="Culture.battania" full_scale="true" length="1.02" weight="0.2">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_rondel_reverse_pommel_h2" name="{=}Reverse Rondel Pommel" tier="4" piece_type="Pommel" mesh="rondel_pommel_reverse" culture="Culture.battania" full_scale="true" length="1.02" weight="0.2">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_rondel_reverse_pommel_h3" name="{=}Reverse Rondel Pommel" tier="4" piece_type="Pommel" mesh="rondel_pommel_reverse" culture="Culture.battania" full_scale="true" length="1.02" weight="0.2">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_rondel_reverse_handle_h0" name="{=}Reverse Rondel Grip" tier="2" piece_type="Handle" mesh="rondel_handle_reverse" culture="Culture.sturgia" full_scale="true" length="13.0" weight="0.2">
+    <BuildData piece_offset="0" previous_piece_offset="14" next_piece_offset="14" />
+    <Materials>
+      <Material id="Iron2" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_rondel_reverse_handle_h1" name="{=}Reverse Rondel Grip" tier="2" piece_type="Handle" mesh="rondel_handle_reverse" culture="Culture.sturgia" full_scale="true" length="13.0" weight="0.2">
+    <BuildData piece_offset="0" previous_piece_offset="14" next_piece_offset="14" />
+    <Materials>
+      <Material id="Iron2" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_rondel_reverse_handle_h2" name="{=}Reverse Rondel Grip" tier="2" piece_type="Handle" mesh="rondel_handle_reverse" culture="Culture.sturgia" full_scale="true" length="13.0" weight="0.2">
+    <BuildData piece_offset="0" previous_piece_offset="14" next_piece_offset="14" />
+    <Materials>
+      <Material id="Iron2" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_rondel_reverse_handle_h3" name="{=}Reverse Rondel Grip" tier="2" piece_type="Handle" mesh="rondel_handle_reverse" culture="Culture.sturgia" full_scale="true" length="13.0" weight="0.2">
+    <BuildData piece_offset="0" previous_piece_offset="14" next_piece_offset="14" />
+    <Materials>
+      <Material id="Iron2" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_shep_damast_handle_h0" name="{=}Elegant Shepherd Axe Handle" tier="2" piece_type="Handle" mesh="sherpas_damasc_handle" length="91.4" weight="0.346">
+    <BuildData piece_offset="30" next_piece_offset="0" />
+    <Materials>
+      <Material id="Wood" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_shep_damast_handle_h1" name="{=}Elegant Shepherd Axe Handle" tier="2" piece_type="Handle" mesh="sherpas_damasc_handle" length="91.4" weight="0.346">
+    <BuildData piece_offset="30" next_piece_offset="0" />
+    <Materials>
+      <Material id="Wood" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_shep_damast_handle_h2" name="{=}Elegant Shepherd Axe Handle" tier="2" piece_type="Handle" mesh="sherpas_damasc_handle" length="91.4" weight="0.346">
+    <BuildData piece_offset="30" next_piece_offset="0" />
+    <Materials>
+      <Material id="Wood" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_shep_damast_handle_h3" name="{=}Elegant Shepherd Axe Handle" tier="2" piece_type="Handle" mesh="sherpas_damasc_handle" length="91.4" weight="0.346">
+    <BuildData piece_offset="30" next_piece_offset="0" />
+    <Materials>
+      <Material id="Wood" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_shep_damast_blade_h0" name="{=}Elegant Shepherd Axe Blade" tier="2" piece_type="Blade" mesh="sherpas_damasc_blade" length="9.41" weight="0.45">
+    <BuildData piece_offset="-3.0" />
+    <BladeData stack_amount="2" blade_length="6.6" blade_width="24.7" physics_material="metal_weapon" body_name="bo_axe_longer_b">
+      <Swing damage_type="Cut" damage_factor="2.5" />
+    </BladeData>
+    <Flags>
+      <Flag name="CanBePickedUpFromCorpse" type="ItemFlags" />
+    </Flags>
+    <Materials>
+      <Material id="Iron2" count="4" />
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_shep_damast_blade_h1" name="{=}Elegant Shepherd Axe Blade" tier="2" piece_type="Blade" mesh="sherpas_damasc_blade" length="9.41" weight="0.45">
+    <BuildData piece_offset="-3.0" />
+    <BladeData stack_amount="2" blade_length="6.6" blade_width="24.7" physics_material="metal_weapon" body_name="bo_axe_longer_b">
+      <Swing damage_type="Cut" damage_factor="2.5" />
+    </BladeData>
+    <Flags>
+      <Flag name="CanBePickedUpFromCorpse" type="ItemFlags" />
+    </Flags>
+    <Materials>
+      <Material id="Iron2" count="4" />
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_shep_damast_blade_h2" name="{=}Elegant Shepherd Axe Blade" tier="2" piece_type="Blade" mesh="sherpas_damasc_blade" length="9.41" weight="0.45">
+    <BuildData piece_offset="-3.0" />
+    <BladeData stack_amount="2" blade_length="6.6" blade_width="24.7" physics_material="metal_weapon" body_name="bo_axe_longer_b">
+      <Swing damage_type="Cut" damage_factor="2.5" />
+    </BladeData>
+    <Flags>
+      <Flag name="CanBePickedUpFromCorpse" type="ItemFlags" />
+    </Flags>
+    <Materials>
+      <Material id="Iron2" count="4" />
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_shep_damast_blade_h3" name="{=}Elegant Shepherd Axe Blade" tier="2" piece_type="Blade" mesh="sherpas_damasc_blade" length="9.41" weight="0.45">
+    <BuildData piece_offset="-3.0" />
+    <BladeData stack_amount="2" blade_length="6.6" blade_width="24.7" physics_material="metal_weapon" body_name="bo_axe_longer_b">
+      <Swing damage_type="Cut" damage_factor="2.5" />
+    </BladeData>
+    <Flags>
+      <Flag name="CanBePickedUpFromCorpse" type="ItemFlags" />
+    </Flags>
+    <Materials>
+      <Material id="Iron2" count="4" />
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_shep_damast_pommel_h0" name="{=}Elegant Shepherd Axe Pommel" tier="4" piece_type="Pommel" mesh="sherpas_damasc_pommel" culture="Culture.battania" length="7.96" weight="0.12">
+    <BuildData next_piece_offset="4" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_shep_damast_pommel_h1" name="{=}Elegant Shepherd Axe Pommel" tier="4" piece_type="Pommel" mesh="sherpas_damasc_pommel" culture="Culture.battania" length="7.96" weight="0.12">
+    <BuildData next_piece_offset="4" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_shep_damast_pommel_h2" name="{=}Elegant Shepherd Axe Pommel" tier="4" piece_type="Pommel" mesh="sherpas_damasc_pommel" culture="Culture.battania" length="7.96" weight="0.12">
+    <BuildData next_piece_offset="4" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_shep_damast_pommel_h3" name="{=}Elegant Shepherd Axe Pommel" tier="4" piece_type="Pommel" mesh="sherpas_damasc_pommel" culture="Culture.battania" length="7.96" weight="0.12">
+    <BuildData next_piece_offset="4" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_meowaxe_handle_h0" name="{=l}Meowaxe Handle" tier="4" piece_type="Handle" mesh="meowaxe_handle" length="136" weight="1.825">
+    <BuildData piece_offset="28.87" next_piece_offset="2.5" />
+    <Materials>
+      <Material id="Wood" count="1" />
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_meowaxe_handle_h1" name="{=l}Meowaxe Handle" tier="4" piece_type="Handle" mesh="meowaxe_handle" length="136" weight="1.825">
+    <BuildData piece_offset="28.87" next_piece_offset="2.5" />
+    <Materials>
+      <Material id="Wood" count="1" />
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_meowaxe_handle_h2" name="{=l}Meowaxe Handle" tier="4" piece_type="Handle" mesh="meowaxe_handle" length="136" weight="1.825">
+    <BuildData piece_offset="28.87" next_piece_offset="2.5" />
+    <Materials>
+      <Material id="Wood" count="1" />
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_meowaxe_handle_h3" name="{=l}Meowaxe Handle" tier="4" piece_type="Handle" mesh="meowaxe_handle" length="136" weight="1.825">
+    <BuildData piece_offset="28.87" next_piece_offset="2.5" />
+    <Materials>
+      <Material id="Wood" count="1" />
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_meowaxe_blade_h0" name="{=}Meowaxe Blade" tier="5" piece_type="Blade" mesh="meowaxe_blade" length="27.4" weight="0.01">
+    <BuildData piece_offset="-12" />
+    <BladeData stack_amount="2" blade_length="57.435" blade_width="23.337" physics_material="metal_weapon" body_name="bo_axe_longer_b">
+      <Swing damage_type="Cut" damage_factor="4.7" />
+    </BladeData>
+    <Flags>
+      <Flag name="CanBePickedUpFromCorpse" type="ItemFlags" />
+    </Flags>
+    <Materials>
+      <Material id="Iron5" count="3" />
+      <Material id="Iron4" count="2" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_meowaxe_blade_h1" name="{=}Meowaxe Blade" tier="5" piece_type="Blade" mesh="meowaxe_blade" length="27.4" weight="0.01">
+    <BuildData piece_offset="-12" />
+    <BladeData stack_amount="2" blade_length="57.435" blade_width="23.337" physics_material="metal_weapon" body_name="bo_axe_longer_b">
+      <Swing damage_type="Cut" damage_factor="4.7" />
+    </BladeData>
+    <Flags>
+      <Flag name="CanBePickedUpFromCorpse" type="ItemFlags" />
+    </Flags>
+    <Materials>
+      <Material id="Iron5" count="3" />
+      <Material id="Iron4" count="2" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_meowaxe_blade_h2" name="{=}Meowaxe Blade" tier="5" piece_type="Blade" mesh="meowaxe_blade" length="27.4" weight="0.01">
+    <BuildData piece_offset="-12" />
+    <BladeData stack_amount="2" blade_length="57.435" blade_width="23.337" physics_material="metal_weapon" body_name="bo_axe_longer_b">
+      <Swing damage_type="Cut" damage_factor="4.7" />
+    </BladeData>
+    <Flags>
+      <Flag name="CanBePickedUpFromCorpse" type="ItemFlags" />
+    </Flags>
+    <Materials>
+      <Material id="Iron5" count="3" />
+      <Material id="Iron4" count="2" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_meowaxe_blade_h3" name="{=}Meowaxe Blade" tier="5" piece_type="Blade" mesh="meowaxe_blade" length="27.4" weight="0.01">
+    <BuildData piece_offset="-12" />
+    <BladeData stack_amount="2" blade_length="57.435" blade_width="23.337" physics_material="metal_weapon" body_name="bo_axe_longer_b">
+      <Swing damage_type="Cut" damage_factor="4.7" />
+    </BladeData>
+    <Flags>
+      <Flag name="CanBePickedUpFromCorpse" type="ItemFlags" />
+    </Flags>
+    <Materials>
+      <Material id="Iron5" count="3" />
+      <Material id="Iron4" count="2" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_meowdao_blade_h0" name="{=}Meowdao Blade" tier="4" piece_type="Blade" mesh="meowdao_blade" culture="Culture.battania" length="118" weight="1.0">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="1.015" />
+      <Swing damage_type="Cut" damage_factor="1.33" />
+    </BladeData>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_meowdao_blade_h1" name="{=}Meowdao Blade" tier="4" piece_type="Blade" mesh="meowdao_blade" culture="Culture.battania" length="118" weight="1.0">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="1.015" />
+      <Swing damage_type="Cut" damage_factor="1.33" />
+    </BladeData>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_meowdao_blade_h2" name="{=}Meowdao Blade" tier="4" piece_type="Blade" mesh="meowdao_blade" culture="Culture.battania" length="118" weight="1.0">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="1.015" />
+      <Swing damage_type="Cut" damage_factor="1.33" />
+    </BladeData>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_meowdao_blade_h3" name="{=}Meowdao Blade" tier="4" piece_type="Blade" mesh="meowdao_blade" culture="Culture.battania" length="118" weight="1.0">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="1.015" />
+      <Swing damage_type="Cut" damage_factor="1.33" />
+    </BladeData>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_meowdao_pommel_h0" name="{=}Meowdao Pommel" tier="4" piece_type="Pommel" mesh="meowdao_pommel" culture="Culture.battania" length="2.5" weight="0.12">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_meowdao_pommel_h1" name="{=}Meowdao Pommel" tier="4" piece_type="Pommel" mesh="meowdao_pommel" culture="Culture.battania" length="2.5" weight="0.12">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_meowdao_pommel_h2" name="{=}Meowdao Pommel" tier="4" piece_type="Pommel" mesh="meowdao_pommel" culture="Culture.battania" length="2.5" weight="0.12">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_meowdao_pommel_h3" name="{=}Meowdao Pommel" tier="4" piece_type="Pommel" mesh="meowdao_pommel" culture="Culture.battania" length="2.5" weight="0.12">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_meowdao_guard_h0" name="{=}Meowdao Guard" tier="5" piece_type="Guard" mesh="meowdao_guard" culture="Culture.battania" length="1.37" weight="0.097">
+    <BuildData next_piece_offset="1" />
+    <StatContributions armor_bonus="3" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_meowdao_guard_h1" name="{=}Meowdao Guard" tier="5" piece_type="Guard" mesh="meowdao_guard" culture="Culture.battania" length="1.37" weight="0.097">
+    <BuildData next_piece_offset="1" />
+    <StatContributions armor_bonus="3" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_meowdao_guard_h2" name="{=}Meowdao Guard" tier="5" piece_type="Guard" mesh="meowdao_guard" culture="Culture.battania" length="1.37" weight="0.097">
+    <BuildData next_piece_offset="1" />
+    <StatContributions armor_bonus="3" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_meowdao_guard_h3" name="{=}Meowdao Guard" tier="5" piece_type="Guard" mesh="meowdao_guard" culture="Culture.battania" length="1.37" weight="0.097">
+    <BuildData next_piece_offset="1" />
+    <StatContributions armor_bonus="3" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_meowdao_handle_h0" name="{=}Meowdao Handle" tier="3" piece_type="Handle" mesh="meowdao_handle" culture="Culture.khuzait" length="44.5" weight="0.1">
+    <BuildData piece_offset="-6.5" previous_piece_offset="0.1" next_piece_offset="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_meowdao_handle_h1" name="{=}Meowdao Handle" tier="3" piece_type="Handle" mesh="meowdao_handle" culture="Culture.khuzait" length="44.5" weight="0.1">
+    <BuildData piece_offset="-6.5" previous_piece_offset="0.1" next_piece_offset="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_meowdao_handle_h2" name="{=}Meowdao Handle" tier="3" piece_type="Handle" mesh="meowdao_handle" culture="Culture.khuzait" length="44.5" weight="0.1">
+    <BuildData piece_offset="-6.5" previous_piece_offset="0.1" next_piece_offset="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_meowdao_handle_h3" name="{=}Meowdao Handle" tier="3" piece_type="Handle" mesh="meowdao_handle" culture="Culture.khuzait" length="44.5" weight="0.1">
+    <BuildData piece_offset="-6.5" previous_piece_offset="0.1" next_piece_offset="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_fangtian_ji_pommel_h0" name="{=}Fangtian Ji Pommel" tier="4" piece_type="Pommel" mesh="qinglong_pommel" culture="Culture.empire" length="7.17" weight="0" full_scale="true">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_fangtian_ji_pommel_h1" name="{=}Fangtian Ji Pommel" tier="4" piece_type="Pommel" mesh="qinglong_pommel" culture="Culture.empire" length="7.17" weight="0" full_scale="true">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_fangtian_ji_pommel_h2" name="{=}Fangtian Ji Pommel" tier="4" piece_type="Pommel" mesh="qinglong_pommel" culture="Culture.empire" length="7.17" weight="0" full_scale="true">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_fangtian_ji_pommel_h3" name="{=}Fangtian Ji Pommel" tier="4" piece_type="Pommel" mesh="qinglong_pommel" culture="Culture.empire" length="7.17" weight="0" full_scale="true">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_fangtian_ji_blade_h0" name="{=}Fangtian Ji Blade" tier="2" piece_type="Blade" mesh="qinglong_double_blade" length="45.8" weight="0.3384" full_scale="true">
+    <BladeData stack_amount="5" physics_material="wood_weapon" body_name="bo_spear_b">
+      <Thrust damage_type="Pierce" damage_factor="2.2" />
+      <Swing damage_type="Cut" damage_factor="3.3" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron2" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_fangtian_ji_blade_h1" name="{=}Fangtian Ji Blade" tier="2" piece_type="Blade" mesh="qinglong_double_blade" length="45.8" weight="0.3384" full_scale="true">
+    <BladeData stack_amount="5" physics_material="wood_weapon" body_name="bo_spear_b">
+      <Thrust damage_type="Pierce" damage_factor="2.2" />
+      <Swing damage_type="Cut" damage_factor="3.3" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron2" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_fangtian_ji_blade_h2" name="{=}Fangtian Ji Blade" tier="2" piece_type="Blade" mesh="qinglong_double_blade" length="45.8" weight="0.3384" full_scale="true">
+    <BladeData stack_amount="5" physics_material="wood_weapon" body_name="bo_spear_b">
+      <Thrust damage_type="Pierce" damage_factor="2.2" />
+      <Swing damage_type="Cut" damage_factor="3.3" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron2" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_fangtian_ji_blade_h3" name="{=}Fangtian Ji Blade" tier="2" piece_type="Blade" mesh="qinglong_double_blade" length="45.8" weight="0.3384" full_scale="true">
+    <BladeData stack_amount="5" physics_material="wood_weapon" body_name="bo_spear_b">
+      <Thrust damage_type="Pierce" damage_factor="2.2" />
+      <Swing damage_type="Cut" damage_factor="3.3" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron2" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_fangtian_ji_handle_h0" name="{=}Fangtian Ji Handle" tier="3" piece_type="Handle" mesh="qinglong_handle" length="160" weight="1.6" full_scale="true">
+    <BuildData piece_offset="30" previous_piece_offset="1" next_piece_offset="2" />
+    <Materials>
+      <Material id="Wood" count="4" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_fangtian_ji_handle_h1" name="{=}Fangtian Ji Handle" tier="3" piece_type="Handle" mesh="qinglong_handle" length="160" weight="1.6" full_scale="true">
+    <BuildData piece_offset="30" previous_piece_offset="1" next_piece_offset="2" />
+    <Materials>
+      <Material id="Wood" count="4" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_fangtian_ji_handle_h2" name="{=}Fangtian Ji Handle" tier="3" piece_type="Handle" mesh="qinglong_handle" length="160" weight="1.6" full_scale="true">
+    <BuildData piece_offset="30" previous_piece_offset="1" next_piece_offset="2" />
+    <Materials>
+      <Material id="Wood" count="4" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_fangtian_ji_handle_h3" name="{=}Fangtian Ji Handle" tier="3" piece_type="Handle" mesh="qinglong_handle" length="160" weight="1.6" full_scale="true">
+    <BuildData piece_offset="30" previous_piece_offset="1" next_piece_offset="2" />
+    <Materials>
+      <Material id="Wood" count="4" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kopesh_blade_h0" name="{=}Kopesh Blade" tier="5" piece_type="Blade" mesh="kopesh_blade" culture="Culture.vlandia" length="65.5" weight="0.82">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="2.2" />
+      <Swing damage_type="Cut" damage_factor="3.3" />
+    </BladeData>
+    <Flags>
+      <Flag name="Civilian" type="ItemFlags" />
+    </Flags>
+    <Materials>
+      <Material id="Iron6" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kopesh_blade_h1" name="{=}Kopesh Blade" tier="5" piece_type="Blade" mesh="kopesh_blade" culture="Culture.vlandia" length="65.5" weight="0.82">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="2.2" />
+      <Swing damage_type="Cut" damage_factor="3.3" />
+    </BladeData>
+    <Flags>
+      <Flag name="Civilian" type="ItemFlags" />
+    </Flags>
+    <Materials>
+      <Material id="Iron6" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kopesh_blade_h2" name="{=}Kopesh Blade" tier="5" piece_type="Blade" mesh="kopesh_blade" culture="Culture.vlandia" length="65.5" weight="0.82">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="2.2" />
+      <Swing damage_type="Cut" damage_factor="3.3" />
+    </BladeData>
+    <Flags>
+      <Flag name="Civilian" type="ItemFlags" />
+    </Flags>
+    <Materials>
+      <Material id="Iron6" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kopesh_blade_h3" name="{=}Kopesh Blade" tier="5" piece_type="Blade" mesh="kopesh_blade" culture="Culture.vlandia" length="65.5" weight="0.82">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="2.2" />
+      <Swing damage_type="Cut" damage_factor="3.3" />
+    </BladeData>
+    <Flags>
+      <Flag name="Civilian" type="ItemFlags" />
+    </Flags>
+    <Materials>
+      <Material id="Iron6" count="3" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kopesh_guard_h0" name="{=}Kopesh Guard" tier="5" piece_type="Guard" mesh="kopesh_guard" culture="Culture.vlandia" length="2.7" weight="0.2">
+    <BuildData next_piece_offset="0.0" previous_piece_offset="0" />
+    <StatContributions armor_bonus="5" />
+    <Materials>
+      <Material id="Iron5" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kopesh_guard_h1" name="{=}Kopesh Guard" tier="5" piece_type="Guard" mesh="kopesh_guard" culture="Culture.vlandia" length="2.7" weight="0.2">
+    <BuildData next_piece_offset="0.0" previous_piece_offset="0" />
+    <StatContributions armor_bonus="5" />
+    <Materials>
+      <Material id="Iron5" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kopesh_guard_h2" name="{=}Kopesh Guard" tier="5" piece_type="Guard" mesh="kopesh_guard" culture="Culture.vlandia" length="2.7" weight="0.2">
+    <BuildData next_piece_offset="0.0" previous_piece_offset="0" />
+    <StatContributions armor_bonus="5" />
+    <Materials>
+      <Material id="Iron5" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kopesh_guard_h3" name="{=}Kopesh Guard" tier="5" piece_type="Guard" mesh="kopesh_guard" culture="Culture.vlandia" length="2.7" weight="0.2">
+    <BuildData next_piece_offset="0.0" previous_piece_offset="0" />
+    <StatContributions armor_bonus="5" />
+    <Materials>
+      <Material id="Iron5" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kopesh_handle_h0" name="{=}Kopesh Grip" tier="5" piece_type="Handle" mesh="kopesh_handle" culture="Culture.sturgia" length="17.9" weight="0.32">
+    <BuildData piece_offset="0" previous_piece_offset="0.1" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron5" count="2" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kopesh_handle_h1" name="{=}Kopesh Grip" tier="5" piece_type="Handle" mesh="kopesh_handle" culture="Culture.sturgia" length="17.9" weight="0.32">
+    <BuildData piece_offset="0" previous_piece_offset="0.1" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron5" count="2" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kopesh_handle_h2" name="{=}Kopesh Grip" tier="5" piece_type="Handle" mesh="kopesh_handle" culture="Culture.sturgia" length="17.9" weight="0.32">
+    <BuildData piece_offset="0" previous_piece_offset="0.1" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron5" count="2" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kopesh_handle_h3" name="{=}Kopesh Grip" tier="5" piece_type="Handle" mesh="kopesh_handle" culture="Culture.sturgia" length="17.9" weight="0.32">
+    <BuildData piece_offset="0" previous_piece_offset="0.1" next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron5" count="2" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kopesh_pommel_h0" name="{=}Kopesh Pommel" tier="4" piece_type="Pommel" mesh="kopesh_pommel" culture="Culture.vlandia" length="6.42" weight="0.64">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kopesh_pommel_h1" name="{=}Kopesh Pommel" tier="4" piece_type="Pommel" mesh="kopesh_pommel" culture="Culture.vlandia" length="6.42" weight="0.64">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kopesh_pommel_h2" name="{=}Kopesh Pommel" tier="4" piece_type="Pommel" mesh="kopesh_pommel" culture="Culture.vlandia" length="6.42" weight="0.64">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_kopesh_pommel_h3" name="{=}Kopesh Pommel" tier="4" piece_type="Pommel" mesh="kopesh_pommel" culture="Culture.vlandia" length="6.42" weight="0.64">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_tanto_blade_h0" name="{=}Tanto Blade" tier="2" piece_type="Blade" mesh="tanto_blade" full_scale="true" length="40.4" weight="0.3">
+    <BladeData stack_amount="9" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="tanto_scabbard" holster_mesh_length="42">
+      <Thrust damage_type="Pierce" damage_factor="3.8" />
+      <Swing damage_type="Blunt" damage_factor="0.5" />
+    </BladeData>
+    <Flags>
+      <Flag name="Civilian" type="ItemFlags" />
+    </Flags>
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_tanto_blade_h1" name="{=}Tanto Blade" tier="2" piece_type="Blade" mesh="tanto_blade" full_scale="true" length="40.4" weight="0.3">
+    <BladeData stack_amount="9" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="tanto_scabbard" holster_mesh_length="42">
+      <Thrust damage_type="Pierce" damage_factor="3.8" />
+      <Swing damage_type="Blunt" damage_factor="0.5" />
+    </BladeData>
+    <Flags>
+      <Flag name="Civilian" type="ItemFlags" />
+    </Flags>
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_tanto_blade_h2" name="{=}Tanto Blade" tier="2" piece_type="Blade" mesh="tanto_blade" full_scale="true" length="40.4" weight="0.3">
+    <BladeData stack_amount="9" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="tanto_scabbard" holster_mesh_length="42">
+      <Thrust damage_type="Pierce" damage_factor="3.8" />
+      <Swing damage_type="Blunt" damage_factor="0.5" />
+    </BladeData>
+    <Flags>
+      <Flag name="Civilian" type="ItemFlags" />
+    </Flags>
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_tanto_blade_h3" name="{=}Tanto Blade" tier="2" piece_type="Blade" mesh="tanto_blade" full_scale="true" length="40.4" weight="0.3">
+    <BladeData stack_amount="9" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="tanto_scabbard" holster_mesh_length="42">
+      <Thrust damage_type="Pierce" damage_factor="3.8" />
+      <Swing damage_type="Blunt" damage_factor="0.5" />
+    </BladeData>
+    <Flags>
+      <Flag name="Civilian" type="ItemFlags" />
+    </Flags>
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_tanto_handle_h0" name="{=}Tanto Grip" tier="2" piece_type="Handle" mesh="tanto_handle" culture="Culture.sturgia" full_scale="true" length="19.3" weight="0.2">
+    <BuildData piece_offset="0" previous_piece_offset="0.0" next_piece_offset="0.0" />
+    <Materials>
+      <Material id="Iron2" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_tanto_handle_h1" name="{=}Tanto Grip" tier="2" piece_type="Handle" mesh="tanto_handle" culture="Culture.sturgia" full_scale="true" length="19.3" weight="0.2">
+    <BuildData piece_offset="0" previous_piece_offset="0.0" next_piece_offset="0.0" />
+    <Materials>
+      <Material id="Iron2" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_tanto_handle_h2" name="{=}Tanto Grip" tier="2" piece_type="Handle" mesh="tanto_handle" culture="Culture.sturgia" full_scale="true" length="19.3" weight="0.2">
+    <BuildData piece_offset="0" previous_piece_offset="0.0" next_piece_offset="0.0" />
+    <Materials>
+      <Material id="Iron2" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_tanto_handle_h3" name="{=}Tanto Grip" tier="2" piece_type="Handle" mesh="tanto_handle" culture="Culture.sturgia" full_scale="true" length="19.3" weight="0.2">
+    <BuildData piece_offset="0" previous_piece_offset="0.0" next_piece_offset="0.0" />
+    <Materials>
+      <Material id="Iron2" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_small_gada_handle_h0" name="{=}Onehanded Gada Handle" tier="1" piece_type="Handle" mesh="gada_handle" length="112" weight="1.0" excluded_item_usage_features="long" CraftingCost="100" is_default="true">
+    <BuildData piece_offset="32.0" previous_piece_offset="0.0" next_piece_offset="6" />
+    <Materials>
+      <Material id="Wood" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_small_gada_handle_h1" name="{=}Onehanded Gada Handle" tier="1" piece_type="Handle" mesh="gada_handle" length="112" weight="1.0" excluded_item_usage_features="long" CraftingCost="100" is_default="true">
+    <BuildData piece_offset="32.0" previous_piece_offset="0.0" next_piece_offset="6" />
+    <Materials>
+      <Material id="Wood" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_small_gada_handle_h2" name="{=}Onehanded Gada Handle" tier="1" piece_type="Handle" mesh="gada_handle" length="112" weight="1.0" excluded_item_usage_features="long" CraftingCost="100" is_default="true">
+    <BuildData piece_offset="32.0" previous_piece_offset="0.0" next_piece_offset="6" />
+    <Materials>
+      <Material id="Wood" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_small_gada_handle_h3" name="{=}Onehanded Gada Handle" tier="1" piece_type="Handle" mesh="gada_handle" length="112" weight="1.0" excluded_item_usage_features="long" CraftingCost="100" is_default="true">
+    <BuildData piece_offset="32.0" previous_piece_offset="0.0" next_piece_offset="6" />
+    <Materials>
+      <Material id="Wood" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_small_gada_blade_h0" name="{=}Onehanded Gada Head" tier="2" piece_type="Blade" mesh="gada_blade" length="27.9" weight="1.42" full_scale="true" excluded_item_usage_features="shield:thrust">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_mace_a">
+      <Swing damage_type="Blunt" damage_factor="2.9" />
+    </BladeData>
+    <Flags>
+      <Flag name="CanKnockDown" />
+    </Flags>
+    <Materials>
+      <Material id="Wood" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_small_gada_blade_h1" name="{=}Onehanded Gada Head" tier="2" piece_type="Blade" mesh="gada_blade" length="27.9" weight="1.42" full_scale="true" excluded_item_usage_features="shield:thrust">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_mace_a">
+      <Swing damage_type="Blunt" damage_factor="2.9" />
+    </BladeData>
+    <Flags>
+      <Flag name="CanKnockDown" />
+    </Flags>
+    <Materials>
+      <Material id="Wood" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_small_gada_blade_h2" name="{=}Onehanded Gada Head" tier="2" piece_type="Blade" mesh="gada_blade" length="27.9" weight="1.42" full_scale="true" excluded_item_usage_features="shield:thrust">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_mace_a">
+      <Swing damage_type="Blunt" damage_factor="2.9" />
+    </BladeData>
+    <Flags>
+      <Flag name="CanKnockDown" />
+    </Flags>
+    <Materials>
+      <Material id="Wood" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_small_gada_blade_h3" name="{=}Onehanded Gada Head" tier="2" piece_type="Blade" mesh="gada_blade" length="27.9" weight="1.42" full_scale="true" excluded_item_usage_features="shield:thrust">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_mace_a">
+      <Swing damage_type="Blunt" damage_factor="2.9" />
+    </BladeData>
+    <Flags>
+      <Flag name="CanKnockDown" />
+    </Flags>
+    <Materials>
+      <Material id="Wood" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_small_barmace_blade_h0" name="{=}Onehanded Barmace Blade" tier="4" piece_type="Blade" mesh="barmace_blade" culture="Culture.battania" length="68.5" weight="1.25">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Swing damage_type="Blunt" damage_factor="2.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron5" count="4" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_small_barmace_blade_h1" name="{=}Onehanded Barmace Blade" tier="4" piece_type="Blade" mesh="barmace_blade" culture="Culture.battania" length="68.5" weight="1.25">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Swing damage_type="Blunt" damage_factor="2.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron5" count="4" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_small_barmace_blade_h2" name="{=}Onehanded Barmace Blade" tier="4" piece_type="Blade" mesh="barmace_blade" culture="Culture.battania" length="68.5" weight="1.25">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Swing damage_type="Blunt" damage_factor="2.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron5" count="4" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_small_barmace_blade_h3" name="{=}Onehanded Barmace Blade" tier="4" piece_type="Blade" mesh="barmace_blade" culture="Culture.battania" length="68.5" weight="1.25">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Swing damage_type="Blunt" damage_factor="2.7" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron5" count="4" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_small_barmace_handle_h0" name="{=}Onehanded Barmace Handle" tier="3" piece_type="Handle" mesh="barmace_handle" culture="Culture.khuzait" length="24.7" weight=".001">
+    <BuildData piece_offset="-5" previous_piece_offset="0.0" next_piece_offset="18" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_small_barmace_handle_h1" name="{=}Onehanded Barmace Handle" tier="3" piece_type="Handle" mesh="barmace_handle" culture="Culture.khuzait" length="24.7" weight=".001">
+    <BuildData piece_offset="-5" previous_piece_offset="0.0" next_piece_offset="18" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_small_barmace_handle_h2" name="{=}Onehanded Barmace Handle" tier="3" piece_type="Handle" mesh="barmace_handle" culture="Culture.khuzait" length="24.7" weight=".001">
+    <BuildData piece_offset="-5" previous_piece_offset="0.0" next_piece_offset="18" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_small_barmace_handle_h3" name="{=}Onehanded Barmace Handle" tier="3" piece_type="Handle" mesh="barmace_handle" culture="Culture.khuzait" length="24.7" weight=".001">
+    <BuildData piece_offset="-5" previous_piece_offset="0.0" next_piece_offset="18" />
+    <Materials>
+      <Material id="Iron3" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_ironrod_guard_h0" name="{=}None" tier="1" piece_type="Guard" mesh="" culture="Culture.empire" length="0" weight="0" is_default="true">
+  </CraftingPiece>
+  <CraftingPiece id="crpg_ironrod_guard_h1" name="{=}None" tier="1" piece_type="Guard" mesh="" culture="Culture.empire" length="0" weight="0" is_default="true">
+  </CraftingPiece>
+  <CraftingPiece id="crpg_ironrod_guard_h2" name="{=}None" tier="1" piece_type="Guard" mesh="" culture="Culture.empire" length="0" weight="0" is_default="true">
+  </CraftingPiece>
+  <CraftingPiece id="crpg_ironrod_guard_h3" name="{=}None" tier="1" piece_type="Guard" mesh="" culture="Culture.empire" length="0" weight="0" is_default="true">
+  </CraftingPiece>
+  <CraftingPiece id="crpg_ironrod_pommel_h0" name="{=}None" tier="1" piece_type="Pommel" mesh="" culture="Culture.empire" length="0" weight="0" is_default="true">
+  </CraftingPiece>
+  <CraftingPiece id="crpg_ironrod_pommel_h1" name="{=}None" tier="1" piece_type="Pommel" mesh="" culture="Culture.empire" length="0" weight="0" is_default="true">
+  </CraftingPiece>
+  <CraftingPiece id="crpg_ironrod_pommel_h2" name="{=}None" tier="1" piece_type="Pommel" mesh="" culture="Culture.empire" length="0" weight="0" is_default="true">
+  </CraftingPiece>
+  <CraftingPiece id="crpg_ironrod_pommel_h3" name="{=}None" tier="1" piece_type="Pommel" mesh="" culture="Culture.empire" length="0" weight="0" is_default="true">
+  </CraftingPiece>
+  <CraftingPiece id="crpg_ironrod_blade_h0" name="{=}Blunt Practice Tip" tier="1" piece_type="Blade" mesh="spear_blade_34" length="18.3" weight="0.1">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_spear_b">
+      <Thrust damage_type="Blunt" damage_factor="2.0" />
+      <Swing damage_type="Blunt" damage_factor="2.4" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron2" count="2" />
+    </Materials>
+    <Flags>
+      <Flag name="NoBlood" />
+    </Flags>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_ironrod_blade_h1" name="{=}Blunt Practice Tip" tier="1" piece_type="Blade" mesh="spear_blade_34" length="18.3" weight="0.1">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_spear_b">
+      <Thrust damage_type="Blunt" damage_factor="2.2" />
+      <Swing damage_type="Blunt" damage_factor="2.5" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron2" count="2" />
+    </Materials>
+    <Flags>
+      <Flag name="NoBlood" />
+    </Flags>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_ironrod_blade_h2" name="{=}Blunt Practice Tip" tier="1" piece_type="Blade" mesh="spear_blade_34" length="18.3" weight="0.1">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_spear_b">
+      <Thrust damage_type="Blunt" damage_factor="2.2" />
+      <Swing damage_type="Blunt" damage_factor="2.5" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron2" count="2" />
+    </Materials>
+    <Flags>
+      <Flag name="NoBlood" />
+    </Flags>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_ironrod_blade_h3" name="{=}Blunt Practice Tip" tier="1" piece_type="Blade" mesh="spear_blade_34" length="18.3" weight="0.1">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_spear_b">
+      <Thrust damage_type="Blunt" damage_factor="2.4" />
+      <Swing damage_type="Blunt" damage_factor="2.6" />
+    </BladeData>
+    <Materials>
+      <Material id="Iron2" count="2" />
+    </Materials>
+    <Flags>
+      <Flag name="NoBlood" />
+    </Flags>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_ironrod_handle_h0" name="{=Uhc0KIdz}Pine Spear Staff" tier="1" piece_type="Handle" mesh="ironrod_handle" length="204" weight="2.3" excluded_item_usage_features="long" is_default="true">
+    <BuildData piece_offset="14.9" />
+    <Materials>
+      <Material id="Metal" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_ironrod_handle_h1" name="{=Uhc0KIdz}Pine Spear Staff" tier="1" piece_type="Handle" mesh="ironrod_handle" length="204" weight="2.3" excluded_item_usage_features="long" is_default="true">
+    <BuildData piece_offset="14.9" />
+    <Materials>
+      <Material id="Metal" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_ironrod_handle_h2" name="{=Uhc0KIdz}Pine Spear Staff" tier="1" piece_type="Handle" mesh="ironrod_handle" length="204" weight="2.2" excluded_item_usage_features="long" is_default="true">
+    <BuildData piece_offset="14.9" />
+    <Materials>
+      <Material id="Metal" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_ironrod_handle_h3" name="{=Uhc0KIdz}Pine Spear Staff" tier="1" piece_type="Handle" mesh="ironrod_handle" length="204" weight="2.2" excluded_item_usage_features="long" is_default="true">
+    <BuildData piece_offset="14.9" />
+    <Materials>
+      <Material id="Metal" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_jian_blade_h0" name="{=}Jian Blade" tier="4" piece_type="Blade" mesh="jian_blade" culture="Culture.battania" length="107" weight="1.0">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="1.015" />
+      <Swing damage_type="Cut" damage_factor="1.33" />
+    </BladeData>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_jian_blade_h1" name="{=}Jian Blade" tier="4" piece_type="Blade" mesh="jian_blade" culture="Culture.battania" length="107" weight="1.0">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="1.015" />
+      <Swing damage_type="Cut" damage_factor="1.33" />
+    </BladeData>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_jian_blade_h2" name="{=}Jian Blade" tier="4" piece_type="Blade" mesh="jian_blade" culture="Culture.battania" length="107" weight="1.0">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="1.015" />
+      <Swing damage_type="Cut" damage_factor="1.33" />
+    </BladeData>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_jian_blade_h3" name="{=}Jian Blade" tier="4" piece_type="Blade" mesh="jian_blade" culture="Culture.battania" length="107" weight="1.0">
+    <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
+      <Thrust damage_type="Pierce" damage_factor="1.015" />
+      <Swing damage_type="Cut" damage_factor="1.33" />
+    </BladeData>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_jian_pommel_h0" name="{=}Jian Pommel" tier="4" piece_type="Pommel" mesh="jian_pommel" culture="Culture.battania" length="1.6" weight="0.12">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_jian_pommel_h1" name="{=}Jian Pommel" tier="4" piece_type="Pommel" mesh="jian_pommel" culture="Culture.battania" length="1.6" weight="0.12">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_jian_pommel_h2" name="{=}Jian Pommel" tier="4" piece_type="Pommel" mesh="jian_pommel" culture="Culture.battania" length="1.6" weight="0.12">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_jian_pommel_h3" name="{=}Jian Pommel" tier="4" piece_type="Pommel" mesh="jian_pommel" culture="Culture.battania" length="1.6" weight="0.12">
+    <BuildData next_piece_offset="0" />
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_jian_guard_h0" name="{=}Jian Guard" tier="5" piece_type="Guard" mesh="jian_guard" culture="Culture.battania" length="6.71" weight="0.097">
+    <BuildData next_piece_offset="0" />
+    <StatContributions armor_bonus="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_jian_guard_h1" name="{=}Jian Guard" tier="5" piece_type="Guard" mesh="jian_guard" culture="Culture.battania" length="6.71" weight="0.097">
+    <BuildData next_piece_offset="0" />
+    <StatContributions armor_bonus="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_jian_guard_h2" name="{=}Jian Guard" tier="5" piece_type="Guard" mesh="jian_guard" culture="Culture.battania" length="6.71" weight="0.097">
+    <BuildData next_piece_offset="0" />
+    <StatContributions armor_bonus="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_jian_guard_h3" name="{=}Jian Guard" tier="5" piece_type="Guard" mesh="jian_guard" culture="Culture.battania" length="6.71" weight="0.097">
+    <BuildData next_piece_offset="0" />
+    <StatContributions armor_bonus="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_jian_handle_h0" name="{=}Jian Handle" tier="3" piece_type="Handle" mesh="jian_handle" culture="Culture.khuzait" length="27.3" weight="0.1">
+    <BuildData piece_offset="1" previous_piece_offset="0.0" next_piece_offset="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_jian_handle_h1" name="{=}Jian Handle" tier="3" piece_type="Handle" mesh="jian_handle" culture="Culture.khuzait" length="27.3" weight="0.1">
+    <BuildData piece_offset="1" previous_piece_offset="0.0" next_piece_offset="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_jian_handle_h2" name="{=}Jian Handle" tier="3" piece_type="Handle" mesh="jian_handle" culture="Culture.khuzait" length="27.3" weight="0.1">
+    <BuildData piece_offset="1" previous_piece_offset="0.0" next_piece_offset="0" />
+  </CraftingPiece>
+  <CraftingPiece id="crpg_jian_handle_h3" name="{=}Jian Handle" tier="3" piece_type="Handle" mesh="jian_handle" culture="Culture.khuzait" length="27.3" weight="0.1">
+    <BuildData piece_offset="1" previous_piece_offset="0.0" next_piece_offset="0" />
+  </CraftingPiece>
 </CraftingPieces>
