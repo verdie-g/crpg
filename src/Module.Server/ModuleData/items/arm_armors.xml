@@ -888,4 +888,124 @@
     </ItemComponent>
     <Flags />
   </Item>
+  <Item id="crpg_ba_plategauntlet_h0" name="Bahamut Plate Gauntlets" mesh="ba_plategauntlet" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="3.566725" difficulty="0" appearance="1" Type="HandArmor">
+    <ItemComponent>
+      <Armor body_armor="0" leg_armor="0" arm_armor="30" covers_hands="true" modifier_group="Plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_ba_plategauntlet_h1" name="Bahamut Plate Gauntlets +1" mesh="ba_plategauntlet" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="3.566725" difficulty="0" appearance="1" Type="HandArmor">
+    <ItemComponent>
+      <Armor body_armor="0" leg_armor="0" arm_armor="31" covers_hands="true" modifier_group="Plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_ba_plategauntlet_h2" name="Bahamut Plate Gauntlets +2" mesh="ba_plategauntlet" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="3.566725" difficulty="0" appearance="1" Type="HandArmor">
+    <ItemComponent>
+      <Armor body_armor="0" leg_armor="0" arm_armor="32" covers_hands="true" modifier_group="Plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_ba_plategauntlet_h3" name="Bahamut Plate Gauntlets +3" mesh="ba_plategauntlet" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="3.566725" difficulty="0" appearance="1" Type="HandArmor">
+    <ItemComponent>
+      <Armor body_armor="0" leg_armor="0" arm_armor="34" covers_hands="true" modifier_group="Plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_ba_plategauntletgold_h0" name="Bahamut Gold Plate Gauntlets" mesh="ba_plategauntletgold" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="3.566725" difficulty="0" appearance="1" Type="HandArmor">
+    <ItemComponent>
+      <Armor body_armor="0" leg_armor="0" arm_armor="30" covers_hands="true" modifier_group="Plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_ba_plategauntletgold_h1" name="Bahamut Gold Plate Gauntlets +1" mesh="ba_plategauntletgold" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="3.566725" difficulty="0" appearance="1" Type="HandArmor">
+    <ItemComponent>
+      <Armor body_armor="0" leg_armor="0" arm_armor="31" covers_hands="true" modifier_group="Plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_ba_plategauntletgold_h2" name="Bahamut Gold Plate Gauntlets +2" mesh="ba_plategauntletgold" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="3.566725" difficulty="0" appearance="1" Type="HandArmor">
+    <ItemComponent>
+      <Armor body_armor="0" leg_armor="0" arm_armor="32" covers_hands="true" modifier_group="Plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_ba_plategauntletgold_h3" name="Bahamut Gold Plate Gauntlets +3" mesh="ba_plategauntletgold" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="3.566725" difficulty="0" appearance="1" Type="HandArmor">
+    <ItemComponent>
+      <Armor body_armor="0" leg_armor="0" arm_armor="34" covers_hands="true" modifier_group="Plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_ba_plategauntletworn_h0" name="Bahamut Battered Plate Gauntlets" mesh="ba_plategauntletworn" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="3.401395" difficulty="0" appearance="1" Type="HandArmor">
+    <ItemComponent>
+      <Armor body_armor="0" leg_armor="0" arm_armor="29" covers_hands="true" modifier_group="Plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_ba_plategauntletworn_h1" name="Bahamut Battered Plate Gauntlets +1" mesh="ba_plategauntletworn" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="3.401395" difficulty="0" appearance="1" Type="HandArmor">
+    <ItemComponent>
+      <Armor body_armor="0" leg_armor="0" arm_armor="30" covers_hands="true" modifier_group="Plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_ba_plategauntletworn_h2" name="Bahamut Battered Plate Gauntlets +2" mesh="ba_plategauntletworn" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="3.401395" difficulty="0" appearance="1" Type="HandArmor">
+    <ItemComponent>
+      <Armor body_armor="0" leg_armor="0" arm_armor="31" covers_hands="true" modifier_group="Plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_ba_plategauntletworn_h3" name="Bahamut Battered Plate Gauntlets +3" mesh="ba_plategauntletworn" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="3.401395" difficulty="0" appearance="1" Type="HandArmor">
+    <ItemComponent>
+      <Armor body_armor="0" leg_armor="0" arm_armor="33" covers_hands="true" modifier_group="Plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_sa_2ChurburghGauntlet_h0" name="Blackend Plate Mittens" mesh="sa_2churburghgauntlet" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="3.566725" difficulty="0" appearance="1" Type="HandArmor">
+    <ItemComponent>
+      <Armor body_armor="0" leg_armor="0" arm_armor="30" covers_hands="true" modifier_group="Plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_sa_2ChurburghGauntlet_h1" name="Blackend Plate Mittens +1" mesh="sa_2churburghgauntlet" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="3.566725" difficulty="0" appearance="1" Type="HandArmor">
+    <ItemComponent>
+      <Armor body_armor="0" leg_armor="0" arm_armor="31" covers_hands="true" modifier_group="Plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_sa_2ChurburghGauntlet_h2" name="Blackend Plate Mittens +2" mesh="sa_2churburghgauntlet" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="3.566725" difficulty="0" appearance="1" Type="HandArmor">
+    <ItemComponent>
+      <Armor body_armor="0" leg_armor="0" arm_armor="32" covers_hands="true" modifier_group="Plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_sa_2ChurburghGauntlet_h3" name="Blackend Plate Mittens +3" mesh="sa_2churburghgauntlet" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="3.566725" difficulty="0" appearance="1" Type="HandArmor">
+    <ItemComponent>
+      <Armor body_armor="0" leg_armor="0" arm_armor="34" covers_hands="true" modifier_group="Plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_sa_ChurburghGauntlet_h0" name="Trimmed Plate Mittens" mesh="sa_churburghgauntlet" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="3.566725" difficulty="0" appearance="1" Type="HandArmor">
+    <ItemComponent>
+      <Armor body_armor="0" leg_armor="0" arm_armor="30" covers_hands="true" modifier_group="Plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_sa_ChurburghGauntlet_h1" name="Trimmed Plate Mittens +1" mesh="sa_churburghgauntlet" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="3.566725" difficulty="0" appearance="1" Type="HandArmor">
+    <ItemComponent>
+      <Armor body_armor="0" leg_armor="0" arm_armor="31" covers_hands="true" modifier_group="Plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_sa_ChurburghGauntlet_h2" name="Trimmed Plate Mittens +2" mesh="sa_churburghgauntlet" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="3.566725" difficulty="0" appearance="1" Type="HandArmor">
+    <ItemComponent>
+      <Armor body_armor="0" leg_armor="0" arm_armor="32" covers_hands="true" modifier_group="Plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_sa_ChurburghGauntlet_h3" name="Trimmed Plate Mittens +3" mesh="sa_churburghgauntlet" is_merchandise="true" subtype="body_armor" culture="Culture.vlandia" weight="3.566725" difficulty="0" appearance="1" Type="HandArmor">
+    <ItemComponent>
+      <Armor body_armor="0" leg_armor="0" arm_armor="34" covers_hands="true" modifier_group="Plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
 </Items>

@@ -1152,4 +1152,172 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
+  <Item id="crpg_ba_plategreaves_h0" name="Bahamut Plate Boots" mesh="ba_plategreaves" culture="Culture.vlandia" weight="2.60973" difficulty="0" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="30" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_ba_plategreaves_h1" name="Bahamut Plate Boots +1" mesh="ba_plategreaves" culture="Culture.vlandia" weight="2.60973" difficulty="0" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="31" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_ba_plategreaves_h2" name="Bahamut Plate Boots +2" mesh="ba_plategreaves" culture="Culture.vlandia" weight="2.60973" difficulty="0" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="33" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_ba_plategreaves_h3" name="Bahamut Plate Boots +3" mesh="ba_plategreaves" culture="Culture.vlandia" weight="2.60973" difficulty="0" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="35" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_ba_plategreavesgold_h0" name="Bahamut Gold Plate Boots" mesh="ba_plategreavesgold" culture="Culture.vlandia" weight="2.60973" difficulty="0" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="30" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_ba_plategreavesgold_h1" name="Bahamut Gold Plate Boots +1" mesh="ba_plategreavesgold" culture="Culture.vlandia" weight="2.60973" difficulty="0" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="31" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_ba_plategreavesgold_h2" name="Bahamut Gold Plate Boots +2" mesh="ba_plategreavesgold" culture="Culture.vlandia" weight="2.60973" difficulty="0" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="33" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_ba_plategreavesgold_h3" name="Bahamut Gold Plate Boots +3" mesh="ba_plategreavesgold" culture="Culture.vlandia" weight="2.60973" difficulty="0" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="35" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_ba_plategreavesworn_h0" name="Bahamut BatteredPlate Boots" mesh="ba_plategreavesworn" culture="Culture.vlandia" weight="2.251827" difficulty="0" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="27" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_ba_plategreavesworn_h1" name="Bahamut BatteredPlate Boots +1" mesh="ba_plategreavesworn" culture="Culture.vlandia" weight="2.251827" difficulty="0" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="28" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_ba_plategreavesworn_h2" name="Bahamut BatteredPlate Boots +2" mesh="ba_plategreavesworn" culture="Culture.vlandia" weight="2.251827" difficulty="0" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="30" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_ba_plategreavesworn_h3" name="Bahamut BatteredPlate Boots +3" mesh="ba_plategreavesworn" culture="Culture.vlandia" weight="2.251827" difficulty="0" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="32" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_plate_boots_h0" name="Plate Boots" mesh="plateboot" culture="Culture.vlandia" weight="2.369447" difficulty="0" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="28" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_plate_boots_h1" name="Plate Boots +1" mesh="plateboot" culture="Culture.vlandia" weight="2.369447" difficulty="0" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="29" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_plate_boots_h2" name="Plate Boots +2" mesh="plateboot" culture="Culture.vlandia" weight="2.369447" difficulty="0" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="31" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_plate_boots_h3" name="Plate Boots +3" mesh="plateboot" culture="Culture.vlandia" weight="2.369447" difficulty="0" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="33" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_plate_boots2_h0" name="Brass Plate Boots" mesh="plateboot2" culture="Culture.vlandia" weight="2.369447" difficulty="0" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="28" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_plate_boots2_h1" name="Brass Plate Boots +1" mesh="plateboot2" culture="Culture.vlandia" weight="2.369447" difficulty="0" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="29" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_plate_boots2_h2" name="Brass Plate Boots +2" mesh="plateboot2" culture="Culture.vlandia" weight="2.369447" difficulty="0" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="31" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_plate_boots2_h3" name="Brass Plate Boots +3" mesh="plateboot2" culture="Culture.vlandia" weight="2.369447" difficulty="0" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="33" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_sa_2ChurburghBoots_h0" name="Blackend Plate Boots" mesh="sa_2churburghboots" culture="Culture.vlandia" weight="2.60973" difficulty="0" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="30" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_sa_2ChurburghBoots_h1" name="Blackend Plate Boots +1" mesh="sa_2churburghboots" culture="Culture.vlandia" weight="2.60973" difficulty="0" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="31" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_sa_2ChurburghBoots_h2" name="Blackend Plate Boots +2" mesh="sa_2churburghboots" culture="Culture.vlandia" weight="2.60973" difficulty="0" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="33" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_sa_2ChurburghBoots_h3" name="Blackend Plate Boots +3" mesh="sa_2churburghboots" culture="Culture.vlandia" weight="2.60973" difficulty="0" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="35" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_sa_ChurburghBoots_h0" name="Trimmed Plate Boots" mesh="sa_churburghboots" culture="Culture.vlandia" weight="2.60973" difficulty="0" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="30" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_sa_ChurburghBoots_h1" name="Trimmed Plate Boots +1" mesh="sa_churburghboots" culture="Culture.vlandia" weight="2.60973" difficulty="0" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="31" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_sa_ChurburghBoots_h2" name="Trimmed Plate Boots +2" mesh="sa_churburghboots" culture="Culture.vlandia" weight="2.60973" difficulty="0" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="33" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_sa_ChurburghBoots_h3" name="Trimmed Plate Boots +3" mesh="sa_churburghboots" culture="Culture.vlandia" weight="2.60973" difficulty="0" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="35" covers_legs="true" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
 </Items>
