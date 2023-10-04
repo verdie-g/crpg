@@ -202,6 +202,45 @@ internal class CrpgAgentApplyDamageModel : MultiplayerAgentApplyDamageModel
         defenderStunMultiplier = 1f;
     }
 
+    // TODO : Consider reworking once https://forums.taleworlds.com/index.php?threads/missioncombatmechanicshelper-getdefendcollisionresults-bypass-strikemagnitudecalculationmodel.459379 is fixed
+    public override bool DecideCrushedThrough(
+        Agent attackerAgent,
+        Agent defenderAgent,
+        float totalAttackEnergy,
+        Agent.UsageDirection attackDirection,
+        StrikeType strikeType,
+        WeaponComponentData defendItem,
+        bool isPassiveUsage)
+    {
+        EquipmentIndex wieldedItemIndex = attackerAgent.GetWieldedItemIndex(Agent.HandIndex.OffHand);
+        if (wieldedItemIndex == EquipmentIndex.None)
+        {
+            wieldedItemIndex = attackerAgent.GetWieldedItemIndex(Agent.HandIndex.MainHand);
+        }
+
+        var weaponComponentData = wieldedItemIndex != EquipmentIndex.None
+            ? attackerAgent.Equipment[wieldedItemIndex].CurrentUsageItem
+            : null;
+        if (weaponComponentData == null
+            || isPassiveUsage
+            || !weaponComponentData.WeaponFlags.HasAnyFlag(WeaponFlags.CanCrushThrough)
+            || strikeType != StrikeType.Swing
+            || attackDirection != Agent.UsageDirection.AttackUp)
+        {
+            return false;
+        }
+
+        float attackerPower = 3f * GetSkillValue(attackerAgent.Origin, CrpgSkills.PowerStrike);
+
+        float defenderStrengthSkill = GetSkillValue(defenderAgent.Origin, CrpgSkills.Strength);
+        float defenderShieldSkill = GetSkillValue(defenderAgent.Origin, CrpgSkills.Shield);
+        float defenderDefendPower = defendItem != null && defendItem.IsShield
+            ? Math.Max(defenderShieldSkill * 6 + 3, defenderStrengthSkill)
+            : defenderStrengthSkill;
+        int randomNumber = MBRandom.RandomInt(0, 1000);
+        return randomNumber / 10f < Math.Pow(attackerPower / defenderDefendPower / 2.5f, 1.8f) * 100f;
+    }
+
     private int GetSkillValue(IAgentOriginBase agentOrigin, SkillObject skill)
     {
         if (agentOrigin is CrpgBattleAgentOrigin crpgOrigin)
