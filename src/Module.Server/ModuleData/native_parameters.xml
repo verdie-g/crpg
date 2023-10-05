@@ -7,5 +7,12 @@
     <native_parameter id="minimum_anim_strength_for_chamber_block" value="0.01"/>
     <native_parameter id="maximum_anim_strength_for_chamber_block" value="0.99"/>
     <native_parameter id="lower_arc_when_defending_with_shield_horseback" value="-0.2" />
+    <native_parameter id="defend_speed_multiplier" value="20.2"/> <!-- Native = 3.2 -->
+    <native_parameter id="quick_release_skipped_progress" value="0"/>  <!-- Native = 3.2 -->
+    <native_parameter id="release_skipped_progress_for_quick_ready" value="0"/> <!-- Native = 0.3 -->
+    <native_parameter id="ready_speed_multiplier" value="0.88"/>  <!-- Native = 2.2 -->
+    <native_parameter id="running_backward_speed_multiplier" value="0.7" />  <!-- Native = 0.5 -->
+    <native_parameter id="running_sides_speed_multiplier" value="0.8" />   <!-- Native = 0.65-->
+    <native_parameter id="ladder_climb_up_speed_multiplier"  value="0.88" /> <!-- Native = 0.68-->
   </native_parameters>
 </base>
