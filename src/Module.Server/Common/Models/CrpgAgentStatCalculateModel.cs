@@ -294,7 +294,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         float totalEncumbrance = props.ArmorEncumbrance + props.WeaponsEncumbrance;
         float freeWeight = 2.5f * (1 + (strengthSkill - 3f) / 30f);
         float perceivedWeight = Math.Max(totalEncumbrance - freeWeight, 0f) * weightReductionFactor;
-        props.TopSpeedReachDuration = 1.5f * (1f + perceivedWeight / 15f) * (20f / (20f + (float)Math.Pow(athleticsSkill / 120f, 2f))) + ImpactofStrAndWeaponLengthOnTimeToMaxSpeed(equippedItem != null ? equippedItem.WeaponLength : 75, strengthSkill);
+        props.TopSpeedReachDuration = 0.8f * (1f + perceivedWeight / 15f) * (20f / (20f + (float)Math.Pow(athleticsSkill / 120f, 2f))) + ImpactofStrAndWeaponLengthOnTimeToMaxSpeed(equippedItem != null ? equippedItem.WeaponLength : 75, strengthSkill);
         float speed = 0.66675f + 0.00105f * athleticsSkill;
         props.MaxSpeedMultiplier = MBMath.ClampFloat(
             speed * (float)Math.Pow(361f / (361f + (float)Math.Pow(perceivedWeight, 5f)), 0.055f),
@@ -312,7 +312,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         int itemSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, equippedItem?.RelevantSkill ?? DefaultSkills.Athletics);
         // Use weapon master here instead of wpf so the archer with no melee wpf can still fight.
         int weaponMaster = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.WeaponMaster);
-        props.SwingSpeedMultiplier = 0.85f + 0.00237f * (float)Math.Pow(itemSkill, 0.9f);
+        props.SwingSpeedMultiplier = 0.925f + 0.00237f * (float)Math.Pow(itemSkill, 0.9f);
         props.ThrustOrRangedReadySpeedMultiplier = props.SwingSpeedMultiplier;
         props.HandlingMultiplier = 1.05f * _constants.HandlingFactorForWeaponMaster[Math.Min(weaponMaster, _constants.HandlingFactorForWeaponMaster.Length - 1)];
         props.ShieldBashStunDurationMultiplier = 1f;
@@ -395,6 +395,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                     props.WeaponUnsteadyEndTime = 10f + props.WeaponUnsteadyBeginTime;
                     props.WeaponRotationalAccuracyPenaltyInRadians = 0.025f;
                     props.ThrustOrRangedReadySpeedMultiplier = MBMath.Lerp(0.2f, 0.3f, (float)Math.Pow(itemSkill / 160f, 3f) * 40f / equippedItem.ThrustDamage);
+                    props.CombatMaxSpeedMultiplier *= 0.725f;
                     props.ReloadSpeed *= MBMath.Lerp(0.6f, 1.4f, itemSkill / 200f);
                 }
 

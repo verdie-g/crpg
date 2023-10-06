@@ -28,6 +28,22 @@
       left_rider_rot_limit  here governs 1h left  lower thrust max angle while mounted.  native is 120
       right_rider_rot_limit here governs 1h right lower thrust max angle while mounted.  native is 90
     -->
+    <combat_parameter
+			id="onehanded_thrust"
+			collision_check_starting_percent="0.0"
+			collision_damage_starting_percent="0.25"
+			collision_check_ending_percent="1"
+			vertical_rot_limit_multiplier_up="thrust_vertical_rot_limit"
+			vertical_rot_limit_multiplier_down="thrust_vertical_rot_limit"
+			left_rider_rot_limit="thrust_rider_rot_limit_left"
+			left_rider_min_rot_limit="down_and_upperstab_min_rider_rot_limit_left"
+			right_rider_rot_limit="thrust_rider_rot_limit_right"
+			right_rider_min_rot_limit="down_and_upperstab_min_rider_rot_limit_right"
+			rider_look_down_limit="thrust_rider_look_down_limit"
+			left_ladder_rot_limit="thrust_ladder_rot_limit_left"
+			right_ladder_rot_limit="thrust_ladder_rot_limit_right"
+			hit_bone_index="27"
+			shoulder_hit_bone_index="21" />
     <combat_parameter id="onehanded_lance_thrust"
                   collision_check_starting_percent="0.15"
                   collision_damage_starting_percent="0.25"

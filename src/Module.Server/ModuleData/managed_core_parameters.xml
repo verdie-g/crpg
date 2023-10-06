@@ -58,7 +58,7 @@
     <managed_core_parameter id="OverSwingCombatSpeedGraphOneProgressValue" value="0.945"/>
 
     <managed_core_parameter id="ThrustCombatSpeedGraphZeroProgressValue" value="0.0"/>
-    <managed_core_parameter id="ThrustCombatSpeedGraphFirstMaximumPoint" value="0.275"/>
+    <managed_core_parameter id="ThrustCombatSpeedGraphFirstMaximumPoint" value="0.225"/>
     <managed_core_parameter id="ThrustCombatSpeedGraphSecondMaximumPoint" value="0.8"/>
     <managed_core_parameter id="ThrustCombatSpeedGraphOneProgressValue" value="0.94"/>
 

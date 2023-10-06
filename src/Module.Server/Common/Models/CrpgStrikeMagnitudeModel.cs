@@ -101,7 +101,7 @@ internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
                     * (float)(Math.Pow(thrustSpeedPercentage, 2f) + magnitudeBonusFromExtraSpeed);
             default:
                  return BladeDamageFactorToDamageRatio *
-                    (float)(Math.Pow(thrustSpeedPercentage, 6f) + magnitudeBonusFromExtraSpeed);
+                    (float)(Math.Pow(thrustSpeedPercentage, 2f) + magnitudeBonusFromExtraSpeed);
         }
     }
 
