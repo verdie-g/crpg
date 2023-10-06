@@ -152,7 +152,12 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
         agentBuildData.BodyProperties(bodyProperties);
 
         Agent agent = Mission.SpawnAgent(agentBuildData);
-        agent.SetWatchState(Agent.WatchState.Alarmed);
+#if CRPG_SERVER
+        if (!CrpgServerConfiguration.FrozenBots)
+        {
+            agent.SetWatchState(Agent.WatchState.Alarmed);
+        }
+#endif
         agent.WieldInitialWeapons();
         return agent;
     }

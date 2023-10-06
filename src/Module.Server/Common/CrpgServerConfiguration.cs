@@ -29,6 +29,7 @@ internal static class CrpgServerConfiguration
     public static float ServerExperienceMultiplier { get; private set; } = 1.0f;
     public static int RewardTick { get; private set; } = 60;
     public static bool TeamBalanceOnce { get; private set; }
+    public static bool FrozenBots { get; private set; } = false;
     public static Tuple<TimeSpan, TimeSpan, TimeZoneInfo>? HappyHours { get; private set; }
 
     [UsedImplicitly]
@@ -94,7 +95,20 @@ internal static class CrpgServerConfiguration
         TeamBalanceOnce = teamBalanceOnce;
         Debug.Print($"Set team balance once to {teamBalanceOnce}");
     }
+    [UsedImplicitly]
+    [ConsoleCommandMethod("crpg_frozen_bots", "Sets the Alarmed status of bots to off.")]
+    private static void SetFrozenBots(string? frozenBotsStr)
+    {
+        if (frozenBotsStr == null
+            || !bool.TryParse(frozenBotsStr, out bool frozenBots))
+        {
+            Debug.Print($"Invalid Frozen Bots: {frozenBotsStr}");
+            return;
+        }
 
+        FrozenBots = frozenBots;
+        Debug.Print($"Set team balance once to {frozenBots}");
+    }
     [UsedImplicitly]
     [ConsoleCommandMethod("crpg_happy_hours", "Sets the happy hours. Format: HH:MM-HH:MM,TZ")]
     private static void SetHappyHours(string? happHoursStr)
