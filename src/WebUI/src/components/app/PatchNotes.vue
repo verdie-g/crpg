@@ -29,7 +29,7 @@ const timeAgo = useLocaleTimeAgo(new Date(latestPatch.value.createdAt));
     </a>
     <div v-if="patchNotes.length > 1" class="pl-5">
       <a
-        href="https://github.com/verdie-g/crpg/releases"
+        href="https://github.com/namidaka/crpg/releases"
         class="text-[0.85rem] text-content-300 underline hover:no-underline"
       >
         {{ $t('patchNotes.showAllPatches', { count: patchNotes.length - 1 }) }}
