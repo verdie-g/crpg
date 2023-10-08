@@ -37,6 +37,18 @@ internal class CrpgItemValueModel : ItemValueModel
         [ItemObject.ItemTypeEnum.Bolts] = (4500, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Banner] = (500, ItemPriceCoeffs),
     };
+    public static float ComputeBowTier(int damage, int reloadSpeed, int missileSpeed, int aimSpeed, int accuracy, bool isLongBow, float heirloomLevel)
+    {
+        float scaler = 1.47682557092106f;
+        return (float)(Math.Pow(damage, 2.5) / 1335f
+            * Math.Pow(reloadSpeed, 0.5) / 10f
+            * Math.Pow(missileSpeed, 0.5f) / 10f
+            * Math.Pow(accuracy, 1.5f) / 100f
+            * Math.Pow(aimSpeed / 10f, 1.5f) / 10f
+            * (isLongBow ? 0.668f : 0.84f)
+            / scaler)
+            / (1 + heirloomLevel / 10f);
+    }
 
     public override float CalculateTier(ItemObject item)
     {
@@ -98,7 +110,7 @@ internal class CrpgItemValueModel : ItemValueModel
         return armorComponent.Item.ItemType switch
         {
 
-            ItemObject.ItemTypeEnum.HorseHarness => 10 * armorPower / bestArmorPower / (float)Math.Pow(1 + heirloomLevel / 10f, 1f),
+            ItemObject.ItemTypeEnum.HorseHarness => 10 * armorPower / bestArmorPower / (float)Math.Pow(1 + heirloomLevel / 16f, 1f),
             _ => (10 * armorPower) / (bestArmorPower * (float)Math.Pow(armorComponent.Item.Weight + 8, 0.5f)) / (float)Math.Pow(1 + heirloomLevel / 20f, 1f),
         };
     }
@@ -321,9 +333,9 @@ internal class CrpgItemValueModel : ItemValueModel
     {
         return damageType switch
         {
-            DamageTypes.Blunt => 3.5f,
-            DamageTypes.Pierce => 1.75f,
-            _ => 1.175f,
+            DamageTypes.Blunt => 1.685f,
+            DamageTypes.Pierce => 1.262f,
+            _ => 1.0695f,
         };
     }
 
@@ -353,20 +365,23 @@ internal class CrpgItemValueModel : ItemValueModel
     private float CalculateThrownWeaponTier(WeaponComponent weaponComponent)
     {
         WeaponComponentData weapon = weaponComponent.Weapons.MaxBy(a => a.MaxDataValue);
+        float heirloomLevel = ItemToHeirloomLevel(weaponComponent.Item);
+        float damageTypeFactor = CalculateDamageTypeFactorForThrown(weapon.ThrustDamageType == DamageTypes.Invalid ? weapon.SwingDamageType : weapon.ThrustDamageType);
+        float damageFactor = (float)Math.Pow(damageTypeFactor * weapon.ThrustDamage, 2.4f);
+        float weightFactor = damageFactor / 6900f / weaponComponent.Item.Weight / (float)Math.Pow(1 + heirloomLevel / 10f, 1f);
         float scaler = 4f * 1600000f;
         float bonusVsShield = weapon.WeaponFlags.HasFlag(WeaponFlags.BonusAgainstShield) ? 1.10f : 1f;
         float canDismount = weapon.WeaponFlags.HasFlag(WeaponFlags.CanDismount) ? 1.10f : 1f;
         float tier =
-              (float)Math.Pow(weapon.ThrustDamage, 2.4f)
+              damageFactor
             * weapon.MissileSpeed
             * weapon.Accuracy
             * weapon.MaxDataValue
-            * CalculateDamageTypeFactorForThrown(weapon.ThrustDamageType == DamageTypes.Invalid ? weapon.SwingDamageType : weapon.ThrustDamageType)
             * bonusVsShield
             * canDismount
+            * (float)Math.Pow(weightFactor, 0.5f)
             / scaler;
 
-        float heirloomLevel = ItemToHeirloomLevel(weaponComponent.Item);
         tier /= (float)Math.Pow(1 + heirloomLevel / 10f, 1f);
         return tier * tier / 10f;
     }
@@ -374,7 +389,6 @@ internal class CrpgItemValueModel : ItemValueModel
     private float CalculateRangedWeaponTier(WeaponComponent weaponComponent)
     {
         WeaponComponentData weapon = weaponComponent.Weapons[0];
-        float scaler = 1.47682557092106f;
         float heirloomLevel = ItemToHeirloomLevel(weaponComponent.Item);
         if (weaponComponent.Item is { ItemType: ItemObject.ItemTypeEnum.Crossbow })
         {
@@ -392,15 +406,7 @@ internal class CrpgItemValueModel : ItemValueModel
             return crossbowTier * crossbowTier / 10f;
         }
 
-        float bowTier = (float)(Math.Pow(weapon.ThrustDamage, 2.5) / 1335f
-            * Math.Pow(weapon.SwingSpeed, 0.5) / 10f
-            * Math.Pow(weapon.MissileSpeed, 0.5f) / 10f
-            * Math.Pow(weapon.Accuracy, 1.5f) / 100f
-            * Math.Pow(weapon.ThrustSpeed / 10f, 1.5f) / 10f
-            * (weapon.ItemUsage == "long_bow" ? 0.668f : 0.84f)
-            / scaler);
-
-        bowTier /= (float)Math.Pow(1 + heirloomLevel / 10f, 1f);
+        float bowTier = ComputeBowTier(weapon.ThrustDamage, weapon.SwingSpeed, weapon.MissileSpeed, weapon.ThrustSpeed, weapon.Accuracy, weapon.ItemUsage == "long_bow", heirloomLevel);
         return bowTier * bowTier / 10f;
     }
 
