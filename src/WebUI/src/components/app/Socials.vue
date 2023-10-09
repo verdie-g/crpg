@@ -46,7 +46,7 @@ const socialsLinks: SocialLink[] = [
     id: 'github',
     title: 'Github',
     icon: 'github',
-    href: 'https://github.com/verdie-g/crpg',
+    href: 'https://github.com/namidaka/crpg',
   },
 ];
 
