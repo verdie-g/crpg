@@ -1,40 +1,20 @@
 ---
 
-- name: create user
-  user:
-   name: "{{ crpg_game_server_user }}"
-   comment: Owner of the cRPG Game Server
-
-- name: add non-free apt repository
-  apt_repository:
-    repo: deb http://deb.debian.org/debian bullseye main contrib non-free
-    state: present
-
-- name: allow installation of i386 libraries
-  command: dpkg --add-architecture i386
-
-- name: accept Steam license agreement
-  debconf:
-    name: steam
-    question: steam/question
-    value: I AGREE
-    vtype: select
-
-- name: install steamcmd
-  apt:
-    name:
-      - lib32gcc-s1
-      - steamcmd
-    update_cache: yes
-
 - name: get Bannerlord installation path
   set_fact:
     crpg_game_server_local_path: "{{ lookup('env', 'MB_SERVER_PATH') }}"
 
+- name: assert Bannerlord installation path is defined
+  assert:
+    that: crpg_game_server_local_path | length > 0
+
 - name: check game server files
   stat:
-    path: "{{ crpg_game_server_local_path }}/Modules/cRPG/{{ item }}"
-  loop: ["SceneObj", "bin/Linux64_Shipping_Server/Crpg.Module.dll"]
+    path: "{{ crpg_game_server_local_path  }}/Modules/cRPG/{{ item }}"
+  loop:
+    - "DsAssetPackages"
+    - "SceneObj"
+    - "bin/Win64_Shipping_Server/Crpg.Module.dll"
   register: file_stats
   delegate_to: localhost
   become: false
@@ -49,102 +29,27 @@
 
 - name: compress locally game server
   archive:
-    path: "{{ crpg_game_server_local_path }}/Modules/cRPG"
-    dest: "/tmp/crpg.tgz"
+    path: "{{ crpg_game_server_local_path }}/Modules/cRPG/*"
+    dest: /tmp/crpg-server.zip
+    format: zip
   delegate_to: localhost
   become: false
 
-- name: copy to host and decompress game server
-  unarchive:
-    src: /tmp/crpg.tgz
-    dest: /tmp
-    mode: -x
-    owner: "{{ crpg_game_server_user }}"
-    group: "{{ crpg_game_server_user }}"
+- name: copy SubModule.xml server to host
+  copy:
+    src: "{{ crpg_game_server_local_path  }}/Modules/cRPG/SubModule.xml"
+    dest: "{{ crpg_ui_path }}/SubModule.xml"
+    owner: nginx
+    group: nginx
 
-- name: create game server service
-  template:
-    src: "{{ crpg_game_server_service_name }}@.service.j2"
-    dest: "/lib/systemd/system/{{ crpg_game_server_service_name }}@.service"
-    mode: 0644
+- name: copy game server to host
+  copy:
+    src: /tmp/crpg-server.zip
+    dest: "{{ crpg_ui_path }}/cRPGServer.zip"
+    owner: nginx
+    group: nginx
 
-- name: reload systemd
-  command: systemctl daemon-reload
-
-- name: stop game server
-  service:
-    name: "{{ crpg_game_server_service_name }}@{{ item.name }}"
-    state: stopped
-  loop: "{{ crpg_game_server_instances }}"
-
-- name: install bannerlord dependencies
-  apt:
-    name:
-      - clang
-      - ufw
-    update_cache: yes
-
-- name: install/update Bannerlord
-  command:  "/usr/games/steamcmd +force_install_dir {{ bannerlord_server_path }} +login anonymous +app_update 1863440 +exit"
-  become_user: "{{ crpg_game_server_user }}"
-
-- name: download .NET runtime
-  unarchive:
-    src: "https://dotnetcli.azureedge.net/dotnet/aspnetcore/Runtime/3.1.31/aspnetcore-runtime-3.1.31-linux-x64.tar.gz"
-    dest: "{{ bannerlord_server_bin_path | dirname }}"
-    remote_src: True
-
-- name: clean old module
+- name: remove temporary archive
   file:
-    path: "{{ crpg_module_path }}"
+    path: /tmp/crpg-server.zip
     state: absent
-
-- name: move new module version
-  command: "mv /tmp/cRPG {{ crpg_module_path }}"
-
-# Setting permissions need to be done in two steps (https://stackoverflow.com/a/60240956/5407910)
-- name: fix permissions on module
-  file:
-    path: "{{ crpg_module_path }}"
-    mode: u=rwX,g=rX,o=rX
-    recurse: true
-
-- name: generate game server configurations
-  template:
-    src: "config-{{ item.game_type }}.txt.j2"
-    dest: "{{ crpg_module_path }}/config-{{ item.name }}.txt"
-    mode: 0644
-    owner: "{{ crpg_game_server_user }}"
-    group: "{{ crpg_game_server_user }}"
-  loop: "{{ crpg_game_server_instances }}"
-
-- name: generate game server start script
-  template:
-    src: crpg-game-server.sh.j2
-    dest: "{{ crpg_module_path }}/crpg-game-server.sh"
-    mode: 0755
-    owner: "{{ crpg_game_server_user }}"
-    group: "{{ crpg_game_server_user }}"
-
-- name: open ssh port
-  ufw:
-    rule: allow
-    name: OpenSSH
-
-- name: open bannerlord port
-  ufw:
-    rule: allow
-    port: "{{ item.port }}"
-    proto: udp
-  loop: "{{ crpg_game_server_instances }}"
-
-- name: enable firewall
-  ufw:
-    state: enabled
-
-- name: start game server
-  service:
-    name: "{{ crpg_game_server_service_name }}@{{ item }}"
-    state: started
-    enabled: yes
-  loop: "{{ crpg_game_server_instances | map(attribute='name') }}"
