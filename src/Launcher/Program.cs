@@ -7,8 +7,32 @@ using System.Web;
 using Gameloop.Vdf;
 using Gameloop.Vdf.Linq;
 using Microsoft.Win32;
+using static System.Net.WebRequestMethods;
+using File = System.IO.File;
 
 Console.WriteLine("Make sure Steam/Epic Games/Xbox is running and that Bannerlord is up-to-date");
+(bool isServer,bool isBeta, string path) = IsServerLauncher(args);
+if (isServer)
+{
+    if (path == null)
+    {
+        Console.WriteLine("invalid path");
+        return;
+    }
+
+    try
+    {
+        await UpdateCrpgAsync(path, isBeta, isServer);
+        return;
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine("Could not update cRPG Server.");
+        Console.WriteLine(e);
+        Console.Read();
+        return;
+    }
+}
 
 var bannerlordInstallation = ResolveBannerlordInstallation();
 if (bannerlordInstallation == null)
@@ -38,6 +62,7 @@ Process.Start(new ProcessStartInfo
     Arguments = bannerlordInstallation.ProgramArguments ?? string.Empty,
     UseShellExecute = true,
 });
+Console.WriteLine("Make sure Steam/Epic Games/Xbox is running and that Bannerlord is up-to-date");
 
 static GameInstallationInfo? ResolveBannerlordInstallation()
 {
@@ -162,17 +187,30 @@ static GameInstallationInfo? ResolveBannerlordXboxInstallation()
     return null;
 }
 
-static async Task UpdateCrpgAsync(string bannerlordPath)
+static async Task UpdateCrpgAsync(string bannerlordPath, bool isBeta = false,bool isServer = false)
 {
     string crpgPath = Path.Combine(bannerlordPath, "Modules/cRPG");
     string tagPath = Path.Combine(crpgPath, "Tag.txt");
     string? tag = File.Exists(tagPath) ? File.ReadAllText(tagPath) : null;
+    string websiteUrl = "https://c-rpg.eu/";
+    string fileName = "crpg.zip";
+    if (isBeta)
+    {
+        websiteUrl = "https://namidaka.fr/";
+        crpgPath = Path.Combine(bannerlordPath, "Modules/cRPG_Beta");
+    }
 
+    if (isServer)
+    {
+        fileName = "cRPGServer.zip";
+    }
+
+    string crpgUrl = websiteUrl + fileName;
     using HttpClient httpClient = new(new SocketsHttpHandler
     {
         AllowAutoRedirect = true,
     });
-    HttpRequestMessage req = new(HttpMethod.Get, "https://c-rpg.eu/cRPG.zip");
+    HttpRequestMessage req = new(HttpMethod.Get, crpgUrl);
     if (tag != null)
     {
         req.Headers.IfNoneMatch.Add(new EntityTagHeaderValue(tag));
@@ -236,6 +274,41 @@ static async Task CopyToWithProgressBarAsync(
     }
 
     Console.WriteLine();
+}
+
+static (bool isServer,bool isBeta, string path) IsServerLauncher(string[] args)
+{
+    bool isServer = false;
+    string path = string.Empty;
+    bool isBeta = false;
+    for (int i = 0; i < args.Length; i++)
+    {
+        switch (args[i].ToLower()) // Using ToLower for case-insensitive comparison
+        {
+            case "-server":
+                isServer = true;
+                break;
+            case "-path":
+                if (i + 1 < args.Length) // Ensure there's another argument after -path
+                {
+                    path = args[++i].Trim('"');
+                }
+                else
+                {
+                    Console.WriteLine("Error: Expected a path after -path argument.");
+                }
+
+                break;
+            case "-beta":
+                isBeta = true;
+                break;
+            default:
+                Console.WriteLine($"Warning: Unknown argument {args[i]}");
+                break;
+        }
+    }
+
+    return (isServer, isBeta, path);
 }
 
 record GameInstallationInfo(string InstallationPath, string Program, string? ProgramArguments, string? ProgramWorkingDirectory);
