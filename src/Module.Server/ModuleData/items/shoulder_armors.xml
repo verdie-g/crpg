@@ -2304,267 +2304,267 @@
     </ItemComponent>
     <Flags Civilian="true" UseTeamColor="true" />
   </Item>
-  <Item id="crpg_ba_gorget_h0" name="Bahamut Plate Gorget" mesh="ba_gorget" is_merchandise="true" culture="Culture.vlandia" weight="2.458775" appearance="1" Type="Cape">
+  <Item id="crpg_ba_gorget_h0" name="Bahamut Plate Gorget" mesh="ba_gorget" is_merchandise="true" culture="Culture.vlandia" weight="3.450758" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="20" arm_armor="0" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="22" arm_armor="0" head_armor="4" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_gorget_h1" name="Bahamut Plate Gorget +1" mesh="ba_gorget" is_merchandise="true" culture="Culture.vlandia" weight="2.458775" appearance="1" Type="Cape">
+  <Item id="crpg_ba_gorget_h1" name="Bahamut Plate Gorget +1" mesh="ba_gorget" is_merchandise="true" culture="Culture.vlandia" weight="3.450758" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="22" arm_armor="0" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="24" arm_armor="0" head_armor="4" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_gorget_h2" name="Bahamut Plate Gorget +2" mesh="ba_gorget" is_merchandise="true" culture="Culture.vlandia" weight="2.458775" appearance="1" Type="Cape">
+  <Item id="crpg_ba_gorget_h2" name="Bahamut Plate Gorget +2" mesh="ba_gorget" is_merchandise="true" culture="Culture.vlandia" weight="3.450758" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="23" arm_armor="0" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="25" arm_armor="0" head_armor="4" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_gorget_h3" name="Bahamut Plate Gorget +3" mesh="ba_gorget" is_merchandise="true" culture="Culture.vlandia" weight="2.458775" appearance="1" Type="Cape">
+  <Item id="crpg_ba_gorget_h3" name="Bahamut Plate Gorget +3" mesh="ba_gorget" is_merchandise="true" culture="Culture.vlandia" weight="3.450758" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="24" arm_armor="1" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="26" arm_armor="0" head_armor="5" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_gorgetgold_h0" name="Bahamut Gold Plate Gorget" mesh="ba_gorgetgold" is_merchandise="true" culture="Culture.vlandia" weight="2.458775" appearance="1" Type="Cape">
+  <Item id="crpg_ba_gorgetgold_h0" name="Bahamut Gold Plate Gorget" mesh="ba_gorgetgold" is_merchandise="true" culture="Culture.vlandia" weight="3.450758" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="20" arm_armor="0" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="22" arm_armor="0" head_armor="4" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_gorgetgold_h1" name="Bahamut Gold Plate Gorget +1" mesh="ba_gorgetgold" is_merchandise="true" culture="Culture.vlandia" weight="2.458775" appearance="1" Type="Cape">
+  <Item id="crpg_ba_gorgetgold_h1" name="Bahamut Gold Plate Gorget +1" mesh="ba_gorgetgold" is_merchandise="true" culture="Culture.vlandia" weight="3.450758" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="22" arm_armor="0" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="24" arm_armor="0" head_armor="4" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_gorgetgold_h2" name="Bahamut Gold Plate Gorget +2" mesh="ba_gorgetgold" is_merchandise="true" culture="Culture.vlandia" weight="2.458775" appearance="1" Type="Cape">
+  <Item id="crpg_ba_gorgetgold_h2" name="Bahamut Gold Plate Gorget +2" mesh="ba_gorgetgold" is_merchandise="true" culture="Culture.vlandia" weight="3.450758" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="23" arm_armor="0" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="25" arm_armor="0" head_armor="4" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_gorgetgold_h3" name="Bahamut Gold Plate Gorget +3" mesh="ba_gorgetgold" is_merchandise="true" culture="Culture.vlandia" weight="2.458775" appearance="1" Type="Cape">
+  <Item id="crpg_ba_gorgetgold_h3" name="Bahamut Gold Plate Gorget +3" mesh="ba_gorgetgold" is_merchandise="true" culture="Culture.vlandia" weight="3.450758" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="24" arm_armor="1" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="26" arm_armor="0" head_armor="5" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_largepauldron_h0" name="Bahamut Large Pauldrons" mesh="ba_largepauldron" is_merchandise="true" culture="Culture.vlandia" weight="4.075861" appearance="1" Type="Cape">
+  <Item id="crpg_ba_largepauldron_h0" name="Bahamut Large Pauldrons" mesh="ba_largepauldron" is_merchandise="true" culture="Culture.vlandia" weight="4.55025" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="20" arm_armor="10" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="18" arm_armor="15" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_largepauldron_h1" name="Bahamut Large Pauldrons +1" mesh="ba_largepauldron" is_merchandise="true" culture="Culture.vlandia" weight="4.075861" appearance="1" Type="Cape">
+  <Item id="crpg_ba_largepauldron_h1" name="Bahamut Large Pauldrons +1" mesh="ba_largepauldron" is_merchandise="true" culture="Culture.vlandia" weight="4.55025" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="22" arm_armor="10" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="20" arm_armor="15" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_largepauldron_h2" name="Bahamut Large Pauldrons +2" mesh="ba_largepauldron" is_merchandise="true" culture="Culture.vlandia" weight="4.075861" appearance="1" Type="Cape">
+  <Item id="crpg_ba_largepauldron_h2" name="Bahamut Large Pauldrons +2" mesh="ba_largepauldron" is_merchandise="true" culture="Culture.vlandia" weight="4.55025" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="23" arm_armor="10" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="21" arm_armor="15" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_largepauldron_h3" name="Bahamut Large Pauldrons +3" mesh="ba_largepauldron" is_merchandise="true" culture="Culture.vlandia" weight="4.075861" appearance="1" Type="Cape">
+  <Item id="crpg_ba_largepauldron_h3" name="Bahamut Large Pauldrons +3" mesh="ba_largepauldron" is_merchandise="true" culture="Culture.vlandia" weight="4.55025" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="24" arm_armor="11" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="22" arm_armor="16" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_largepauldronclean_h0" name="Bahamut Large Plate Pauldrons" mesh="ba_largepauldronclean" is_merchandise="true" culture="Culture.vlandia" weight="4.27609" appearance="1" Type="Cape">
+  <Item id="crpg_ba_largepauldronclean_h0" name="Bahamut Large Plate Pauldrons" mesh="ba_largepauldronclean" is_merchandise="true" culture="Culture.vlandia" weight="4.55025" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="21" arm_armor="10" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="18" arm_armor="15" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_largepauldronclean_h1" name="Bahamut Large Plate Pauldrons +1" mesh="ba_largepauldronclean" is_merchandise="true" culture="Culture.vlandia" weight="4.27609" appearance="1" Type="Cape">
+  <Item id="crpg_ba_largepauldronclean_h1" name="Bahamut Large Plate Pauldrons +1" mesh="ba_largepauldronclean" is_merchandise="true" culture="Culture.vlandia" weight="4.55025" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="23" arm_armor="10" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="20" arm_armor="15" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_largepauldronclean_h2" name="Bahamut Large Plate Pauldrons +2" mesh="ba_largepauldronclean" is_merchandise="true" culture="Culture.vlandia" weight="4.27609" appearance="1" Type="Cape">
+  <Item id="crpg_ba_largepauldronclean_h2" name="Bahamut Large Plate Pauldrons +2" mesh="ba_largepauldronclean" is_merchandise="true" culture="Culture.vlandia" weight="4.55025" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="24" arm_armor="10" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="21" arm_armor="15" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_largepauldronclean_h3" name="Bahamut Large Plate Pauldrons +3" mesh="ba_largepauldronclean" is_merchandise="true" culture="Culture.vlandia" weight="4.27609" appearance="1" Type="Cape">
+  <Item id="crpg_ba_largepauldronclean_h3" name="Bahamut Large Plate Pauldrons +3" mesh="ba_largepauldronclean" is_merchandise="true" culture="Culture.vlandia" weight="4.55025" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="25" arm_armor="11" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="22" arm_armor="16" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_knightpad2_h0" name="Bahamut Plate Pauldrons" mesh="ba_knightpad2" is_merchandise="true" culture="Culture.vlandia" weight="2.872144" appearance="1" Type="Cape">
+  <Item id="crpg_ba_knightpad2_h0" name="Bahamut Plate Pauldrons" mesh="ba_knightpad2" is_merchandise="true" culture="Culture.vlandia" weight="4.049947" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="18" arm_armor="5" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="19" arm_armor="11" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_knightpad2_h1" name="Bahamut Plate Pauldrons +1" mesh="ba_knightpad2" is_merchandise="true" culture="Culture.vlandia" weight="2.872144" appearance="1" Type="Cape">
+  <Item id="crpg_ba_knightpad2_h1" name="Bahamut Plate Pauldrons +1" mesh="ba_knightpad2" is_merchandise="true" culture="Culture.vlandia" weight="4.049947" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="20" arm_armor="5" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="21" arm_armor="11" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_knightpad2_h2" name="Bahamut Plate Pauldrons +2" mesh="ba_knightpad2" is_merchandise="true" culture="Culture.vlandia" weight="2.872144" appearance="1" Type="Cape">
+  <Item id="crpg_ba_knightpad2_h2" name="Bahamut Plate Pauldrons +2" mesh="ba_knightpad2" is_merchandise="true" culture="Culture.vlandia" weight="4.049947" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="21" arm_armor="5" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="22" arm_armor="11" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_knightpad2_h3" name="Bahamut Plate Pauldrons +3" mesh="ba_knightpad2" is_merchandise="true" culture="Culture.vlandia" weight="2.872144" appearance="1" Type="Cape">
+  <Item id="crpg_ba_knightpad2_h3" name="Bahamut Plate Pauldrons +3" mesh="ba_knightpad2" is_merchandise="true" culture="Culture.vlandia" weight="4.049947" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="22" arm_armor="6" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="23" arm_armor="12" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_knightpad_gold1_h0" name="Bahamut Gold Plate Pauldrons" mesh="ba_knightpad_gold1" is_merchandise="true" culture="Culture.vlandia" weight="2.872144" appearance="1" Type="Cape">
+  <Item id="crpg_ba_knightpad_gold1_h0" name="Bahamut Gold Plate Pauldrons" mesh="ba_knightpad_gold1" is_merchandise="true" culture="Culture.vlandia" weight="4.049947" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="18" arm_armor="5" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="19" arm_armor="11" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_knightpad_gold1_h1" name="Bahamut Gold Plate Pauldrons +1" mesh="ba_knightpad_gold1" is_merchandise="true" culture="Culture.vlandia" weight="2.872144" appearance="1" Type="Cape">
+  <Item id="crpg_ba_knightpad_gold1_h1" name="Bahamut Gold Plate Pauldrons +1" mesh="ba_knightpad_gold1" is_merchandise="true" culture="Culture.vlandia" weight="4.049947" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="20" arm_armor="5" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="21" arm_armor="11" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_knightpad_gold1_h2" name="Bahamut Gold Plate Pauldrons +2" mesh="ba_knightpad_gold1" is_merchandise="true" culture="Culture.vlandia" weight="2.872144" appearance="1" Type="Cape">
+  <Item id="crpg_ba_knightpad_gold1_h2" name="Bahamut Gold Plate Pauldrons +2" mesh="ba_knightpad_gold1" is_merchandise="true" culture="Culture.vlandia" weight="4.049947" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="21" arm_armor="5" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="22" arm_armor="11" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_knightpad_gold1_h3" name="Bahamut Gold Plate Pauldrons +3" mesh="ba_knightpad_gold1" is_merchandise="true" culture="Culture.vlandia" weight="2.872144" appearance="1" Type="Cape">
+  <Item id="crpg_ba_knightpad_gold1_h3" name="Bahamut Gold Plate Pauldrons +3" mesh="ba_knightpad_gold1" is_merchandise="true" culture="Culture.vlandia" weight="4.049947" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="22" arm_armor="6" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="23" arm_armor="12" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_knightpadgorget1_h0" name="Bahamut Plate Pauldrons with Gorget" mesh="ba_knightpadgorget1" is_merchandise="true" culture="Culture.vlandia" weight="4.355182" appearance="1" Type="Cape">
+  <Item id="crpg_ba_knightpadgorget1_h0" name="Bahamut Plate Pauldrons with Gorget" mesh="ba_knightpadgorget1" is_merchandise="true" culture="Culture.vlandia" weight="4.302408" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="24" arm_armor="7" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="22" arm_armor="7" head_armor="2" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_knightpadgorget1_h1" name="Bahamut Plate Pauldrons with Gorget +1" mesh="ba_knightpadgorget1" is_merchandise="true" culture="Culture.vlandia" weight="4.355182" appearance="1" Type="Cape">
+  <Item id="crpg_ba_knightpadgorget1_h1" name="Bahamut Plate Pauldrons with Gorget +1" mesh="ba_knightpadgorget1" is_merchandise="true" culture="Culture.vlandia" weight="4.302408" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="26" arm_armor="7" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="24" arm_armor="7" head_armor="2" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_knightpadgorget1_h2" name="Bahamut Plate Pauldrons with Gorget +2" mesh="ba_knightpadgorget1" is_merchandise="true" culture="Culture.vlandia" weight="4.355182" appearance="1" Type="Cape">
+  <Item id="crpg_ba_knightpadgorget1_h2" name="Bahamut Plate Pauldrons with Gorget +2" mesh="ba_knightpadgorget1" is_merchandise="true" culture="Culture.vlandia" weight="4.302408" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="27" arm_armor="7" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="25" arm_armor="7" head_armor="2" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_knightpadgorget1_h3" name="Bahamut Plate Pauldrons with Gorget +3" mesh="ba_knightpadgorget1" is_merchandise="true" culture="Culture.vlandia" weight="4.355182" appearance="1" Type="Cape">
+  <Item id="crpg_ba_knightpadgorget1_h3" name="Bahamut Plate Pauldrons with Gorget +3" mesh="ba_knightpadgorget1" is_merchandise="true" culture="Culture.vlandia" weight="4.302408" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="28" arm_armor="8" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="26" arm_armor="8" head_armor="2" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_knightpadgorget_gold1_h0" name="Bahamut Gold Plate Pauldrons with Gorget" mesh="ba_knightpadgorget_gold1" is_merchandise="true" culture="Culture.vlandia" weight="4.355182" appearance="1" Type="Cape">
+  <Item id="crpg_ba_knightpadgorget_gold1_h0" name="Bahamut Gold Plate Pauldrons with Gorget" mesh="ba_knightpadgorget_gold1" is_merchandise="true" culture="Culture.vlandia" weight="4.302408" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="24" arm_armor="7" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="22" arm_armor="7" head_armor="2" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_knightpadgorget_gold1_h1" name="Bahamut Gold Plate Pauldrons with Gorget +1" mesh="ba_knightpadgorget_gold1" is_merchandise="true" culture="Culture.vlandia" weight="4.355182" appearance="1" Type="Cape">
+  <Item id="crpg_ba_knightpadgorget_gold1_h1" name="Bahamut Gold Plate Pauldrons with Gorget +1" mesh="ba_knightpadgorget_gold1" is_merchandise="true" culture="Culture.vlandia" weight="4.302408" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="26" arm_armor="7" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="24" arm_armor="7" head_armor="2" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_knightpadgorget_gold1_h2" name="Bahamut Gold Plate Pauldrons with Gorget +2" mesh="ba_knightpadgorget_gold1" is_merchandise="true" culture="Culture.vlandia" weight="4.355182" appearance="1" Type="Cape">
+  <Item id="crpg_ba_knightpadgorget_gold1_h2" name="Bahamut Gold Plate Pauldrons with Gorget +2" mesh="ba_knightpadgorget_gold1" is_merchandise="true" culture="Culture.vlandia" weight="4.302408" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="27" arm_armor="7" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="25" arm_armor="7" head_armor="2" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_knightpadgorget_gold1_h3" name="Bahamut Gold Plate Pauldrons with Gorget +3" mesh="ba_knightpadgorget_gold1" is_merchandise="true" culture="Culture.vlandia" weight="4.355182" appearance="1" Type="Cape">
+  <Item id="crpg_ba_knightpadgorget_gold1_h3" name="Bahamut Gold Plate Pauldrons with Gorget +3" mesh="ba_knightpadgorget_gold1" is_merchandise="true" culture="Culture.vlandia" weight="4.302408" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="28" arm_armor="8" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="26" arm_armor="8" head_armor="2" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_ba_knightpadcape3_h0" name="Bahamut Plate Pauldrons with Cape" mesh="ba_knightpadcape3" is_merchandise="true" culture="Culture.vlandia" weight="4.355182" appearance="1" Type="Cape">
+  <Item id="crpg_ba_knightpadcape3_h0" name="Bahamut Plate Pauldrons with Cape" mesh="ba_knightpadcape3" is_merchandise="true" culture="Culture.vlandia" weight="4.049947" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="24" arm_armor="7" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="19" arm_armor="11" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_ba_knightpadcape3_h1" name="Bahamut Plate Pauldrons with Cape +1" mesh="ba_knightpadcape3" is_merchandise="true" culture="Culture.vlandia" weight="4.355182" appearance="1" Type="Cape">
+  <Item id="crpg_ba_knightpadcape3_h1" name="Bahamut Plate Pauldrons with Cape +1" mesh="ba_knightpadcape3" is_merchandise="true" culture="Culture.vlandia" weight="4.049947" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="26" arm_armor="7" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="21" arm_armor="11" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_ba_knightpadcape3_h2" name="Bahamut Plate Pauldrons with Cape +2" mesh="ba_knightpadcape3" is_merchandise="true" culture="Culture.vlandia" weight="4.355182" appearance="1" Type="Cape">
+  <Item id="crpg_ba_knightpadcape3_h2" name="Bahamut Plate Pauldrons with Cape +2" mesh="ba_knightpadcape3" is_merchandise="true" culture="Culture.vlandia" weight="4.049947" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="27" arm_armor="7" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="22" arm_armor="11" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_ba_knightpadcape3_h3" name="Bahamut Plate Pauldrons with Cape +3" mesh="ba_knightpadcape3" is_merchandise="true" culture="Culture.vlandia" weight="4.355182" appearance="1" Type="Cape">
+  <Item id="crpg_ba_knightpadcape3_h3" name="Bahamut Plate Pauldrons with Cape +3" mesh="ba_knightpadcape3" is_merchandise="true" culture="Culture.vlandia" weight="4.049947" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="28" arm_armor="8" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="23" arm_armor="12" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_ba_knightpadcapegold_h0" name="Bahamut Gold Plate Pauldrons with Cape" mesh="ba_knightpadcapegold" is_merchandise="true" culture="Culture.vlandia" weight="4.559175" appearance="1" Type="Cape">
+  <Item id="crpg_ba_knightpadcapegold_h0" name="Bahamut Gold Plate Pauldrons with Cape" mesh="ba_knightpadcapegold" is_merchandise="true" culture="Culture.vlandia" weight="4.049947" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="25" arm_armor="7" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="19" arm_armor="11" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_ba_knightpadcapegold_h1" name="Bahamut Gold Plate Pauldrons with Cape +1" mesh="ba_knightpadcapegold" is_merchandise="true" culture="Culture.vlandia" weight="4.559175" appearance="1" Type="Cape">
+  <Item id="crpg_ba_knightpadcapegold_h1" name="Bahamut Gold Plate Pauldrons with Cape +1" mesh="ba_knightpadcapegold" is_merchandise="true" culture="Culture.vlandia" weight="4.049947" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="27" arm_armor="7" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="21" arm_armor="11" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_ba_knightpadcapegold_h2" name="Bahamut Gold Plate Pauldrons with Cape +2" mesh="ba_knightpadcapegold" is_merchandise="true" culture="Culture.vlandia" weight="4.559175" appearance="1" Type="Cape">
+  <Item id="crpg_ba_knightpadcapegold_h2" name="Bahamut Gold Plate Pauldrons with Cape +2" mesh="ba_knightpadcapegold" is_merchandise="true" culture="Culture.vlandia" weight="4.049947" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="28" arm_armor="7" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="22" arm_armor="11" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_ba_knightpadcapegold_h3" name="Bahamut Gold Plate Pauldrons with Cape +3" mesh="ba_knightpadcapegold" is_merchandise="true" culture="Culture.vlandia" weight="4.559175" appearance="1" Type="Cape">
+  <Item id="crpg_ba_knightpadcapegold_h3" name="Bahamut Gold Plate Pauldrons with Cape +3" mesh="ba_knightpadcapegold" is_merchandise="true" culture="Culture.vlandia" weight="4.049947" appearance="1" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="29" arm_armor="8" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="23" arm_armor="12" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_engraved_swadian_shoulders_h0" name="Western Ornate Shoulder Plates" mesh="engraved_swadian_shoulders" is_merchandise="true" culture="Culture.vlandia" weight="4.075861" appearance="2" Type="Cape">
+  <Item id="crpg_engraved_swadian_shoulders_h0" name="Western Ornate Shoulder Plates" mesh="engraved_swadian_shoulders" is_merchandise="true" culture="Culture.vlandia" weight="4.920209" appearance="2" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="20" arm_armor="10" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="25" arm_armor="9" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_engraved_swadian_shoulders_h1" name="Western Ornate Shoulder Plates +1" mesh="engraved_swadian_shoulders" is_merchandise="true" culture="Culture.vlandia" weight="4.075861" appearance="2" Type="Cape">
+  <Item id="crpg_engraved_swadian_shoulders_h1" name="Western Ornate Shoulder Plates +1" mesh="engraved_swadian_shoulders" is_merchandise="true" culture="Culture.vlandia" weight="4.920209" appearance="2" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="22" arm_armor="10" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="27" arm_armor="9" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_engraved_swadian_shoulders_h2" name="Western Ornate Shoulder Plates +2" mesh="engraved_swadian_shoulders" is_merchandise="true" culture="Culture.vlandia" weight="4.075861" appearance="2" Type="Cape">
+  <Item id="crpg_engraved_swadian_shoulders_h2" name="Western Ornate Shoulder Plates +2" mesh="engraved_swadian_shoulders" is_merchandise="true" culture="Culture.vlandia" weight="4.920209" appearance="2" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="23" arm_armor="10" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="28" arm_armor="9" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_engraved_swadian_shoulders_h3" name="Western Ornate Shoulder Plates +3" mesh="engraved_swadian_shoulders" is_merchandise="true" culture="Culture.vlandia" weight="4.075861" appearance="2" Type="Cape">
+  <Item id="crpg_engraved_swadian_shoulders_h3" name="Western Ornate Shoulder Plates +3" mesh="engraved_swadian_shoulders" is_merchandise="true" culture="Culture.vlandia" weight="4.920209" appearance="2" Type="Cape">
     <ItemComponent>
-      <Armor body_armor="24" arm_armor="11" modifier_group="plate" material_type="Plate" />
+      <Armor body_armor="29" arm_armor="10" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>

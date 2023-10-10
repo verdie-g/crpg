@@ -20608,10 +20608,10 @@
       <Material id="Iron4" count="2" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_narrow_sword_blade_h0" name="{=ZJrqEfBF}Tapered Kaskara Blade" tier="3" piece_type="Blade" mesh="vlandian_blade_8" culture="Culture.aserai" length="80.3" weight="1.2">
+  <CraftingPiece id="crpg_narrow_sword_blade_h0" name="{=ZJrqEfBF}Tapered Kaskara Blade" tier="3" piece_type="Blade" mesh="vlandian_blade_8" culture="Culture.aserai" length="80.3" weight="1.35">
     <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="vlandian_blade_8_scabbard_8">
-      <Thrust damage_type="Pierce" damage_factor="0.945" />
-      <Swing damage_type="Cut" damage_factor="1.26" />
+      <Thrust damage_type="Pierce" damage_factor="2.0" />
+      <Swing damage_type="Cut" damage_factor="3.3" />
     </BladeData>
     <Flags>
       <Flag name="Civilian" type="ItemFlags" />
@@ -20620,10 +20620,10 @@
       <Material id="Iron4" count="2" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_narrow_sword_blade_h1" name="{=ZJrqEfBF}Tapered Kaskara Blade" tier="3" piece_type="Blade" mesh="vlandian_blade_8" culture="Culture.aserai" length="80.3" weight="1.2">
+  <CraftingPiece id="crpg_narrow_sword_blade_h1" name="{=ZJrqEfBF}Tapered Kaskara Blade" tier="3" piece_type="Blade" mesh="vlandian_blade_8" culture="Culture.aserai" length="80.3" weight="1.3">
     <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="vlandian_blade_8_scabbard_8">
-      <Thrust damage_type="Pierce" damage_factor="0.945" />
-      <Swing damage_type="Cut" damage_factor="1.26" />
+      <Thrust damage_type="Pierce" damage_factor="2.0" />
+      <Swing damage_type="Cut" damage_factor="3.4" />
     </BladeData>
     <Flags>
       <Flag name="Civilian" type="ItemFlags" />
@@ -20632,10 +20632,10 @@
       <Material id="Iron4" count="2" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_narrow_sword_blade_h2" name="{=ZJrqEfBF}Tapered Kaskara Blade" tier="3" piece_type="Blade" mesh="vlandian_blade_8" culture="Culture.aserai" length="80.3" weight="1.2">
+  <CraftingPiece id="crpg_narrow_sword_blade_h2" name="{=ZJrqEfBF}Tapered Kaskara Blade" tier="3" piece_type="Blade" mesh="vlandian_blade_8" culture="Culture.aserai" length="80.3" weight="1.25">
     <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="vlandian_blade_8_scabbard_8">
-      <Thrust damage_type="Pierce" damage_factor="0.945" />
-      <Swing damage_type="Cut" damage_factor="1.26" />
+      <Thrust damage_type="Pierce" damage_factor="2.3" />
+      <Swing damage_type="Cut" damage_factor="3.4" />
     </BladeData>
     <Flags>
       <Flag name="Civilian" type="ItemFlags" />
@@ -20644,10 +20644,10 @@
       <Material id="Iron4" count="2" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_narrow_sword_blade_h3" name="{=ZJrqEfBF}Tapered Kaskara Blade" tier="3" piece_type="Blade" mesh="vlandian_blade_8" culture="Culture.aserai" length="80.3" weight="1.2">
+  <CraftingPiece id="crpg_narrow_sword_blade_h3" name="{=ZJrqEfBF}Tapered Kaskara Blade" tier="3" piece_type="Blade" mesh="vlandian_blade_8" culture="Culture.aserai" length="80.3" weight="1.25">
     <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="vlandian_blade_8_scabbard_8">
-      <Thrust damage_type="Pierce" damage_factor="0.945" />
-      <Swing damage_type="Cut" damage_factor="1.26" />
+      <Thrust damage_type="Pierce" damage_factor="2.5" />
+      <Swing damage_type="Cut" damage_factor="3.5" />
     </BladeData>
     <Flags>
       <Flag name="Civilian" type="ItemFlags" />
@@ -31180,52 +31180,60 @@
       <Material id="Iron4" count="1" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_meowaxe_blade_h0" name="{=}Meowaxe Blade" tier="5" piece_type="Blade" mesh="meowaxe_blade" length="27.4" weight="0.75">
+  <CraftingPiece id="crpg_meowaxe_blade_h0" name="{=}Meowaxe Blade" tier="5" piece_type="Blade" mesh="meowaxe_blade" length="27.4" weight="0.82">
     <BuildData piece_offset="-12" />
     <BladeData stack_amount="2" blade_length="57.435" blade_width="23.337" physics_material="metal_weapon" body_name="bo_axe_longer_b">
+      <Thrust damage_type="Blunt" damage_factor="2.0"/>
+      <Swing damage_type="Cut" damage_factor="4.3" />
+    </BladeData>
+    <Flags>
+      <Flag name="CanBePickedUpFromCorpse" type="ItemFlags" />
+      <Flag name="BonusAgainstShield" />
+    </Flags>
+    <Materials>
+      <Material id="Iron5" count="3" />
+      <Material id="Iron4" count="2" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_meowaxe_blade_h1" name="{=}Meowaxe Blade" tier="5" piece_type="Blade" mesh="meowaxe_blade" length="27.4" weight="0.78">
+    <BuildData piece_offset="-12" />
+    <BladeData stack_amount="2" blade_length="57.435" blade_width="23.337" physics_material="metal_weapon" body_name="bo_axe_longer_b">
+      <Thrust damage_type="Blunt" damage_factor="2.0"/>
       <Swing damage_type="Cut" damage_factor="4.4" />
     </BladeData>
     <Flags>
       <Flag name="CanBePickedUpFromCorpse" type="ItemFlags" />
+      <Flag name="BonusAgainstShield" />
     </Flags>
     <Materials>
       <Material id="Iron5" count="3" />
       <Material id="Iron4" count="2" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_meowaxe_blade_h1" name="{=}Meowaxe Blade" tier="5" piece_type="Blade" mesh="meowaxe_blade" length="27.4" weight="0.72">
+  <CraftingPiece id="crpg_meowaxe_blade_h2" name="{=}Meowaxe Blade" tier="5" piece_type="Blade" mesh="meowaxe_blade" length="27.4" weight="0.75">
     <BuildData piece_offset="-12" />
     <BladeData stack_amount="2" blade_length="57.435" blade_width="23.337" physics_material="metal_weapon" body_name="bo_axe_longer_b">
+      <Thrust damage_type="Blunt" damage_factor="2.2"/>
       <Swing damage_type="Cut" damage_factor="4.5" />
     </BladeData>
     <Flags>
       <Flag name="CanBePickedUpFromCorpse" type="ItemFlags" />
+      <Flag name="BonusAgainstShield" />
     </Flags>
     <Materials>
       <Material id="Iron5" count="3" />
       <Material id="Iron4" count="2" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_meowaxe_blade_h2" name="{=}Meowaxe Blade" tier="5" piece_type="Blade" mesh="meowaxe_blade" length="27.4" weight="0.72">
+  <CraftingPiece id="crpg_meowaxe_blade_h3" name="{=}Meowaxe Blade" tier="5" piece_type="Blade" mesh="meowaxe_blade" length="27.4" weight="0.75">
     <BuildData piece_offset="-12" />
     <BladeData stack_amount="2" blade_length="57.435" blade_width="23.337" physics_material="metal_weapon" body_name="bo_axe_longer_b">
+      <Thrust damage_type="Blunt" damage_factor="2.2"/>
       <Swing damage_type="Cut" damage_factor="4.7" />
     </BladeData>
     <Flags>
       <Flag name="CanBePickedUpFromCorpse" type="ItemFlags" />
-    </Flags>
-    <Materials>
-      <Material id="Iron5" count="3" />
-      <Material id="Iron4" count="2" />
-    </Materials>
-  </CraftingPiece>
-  <CraftingPiece id="crpg_meowaxe_blade_h3" name="{=}Meowaxe Blade" tier="5" piece_type="Blade" mesh="meowaxe_blade" length="27.4" weight="0.72">
-    <BuildData piece_offset="-12" />
-    <BladeData stack_amount="2" blade_length="57.435" blade_width="23.337" physics_material="metal_weapon" body_name="bo_axe_longer_b">
-      <Swing damage_type="Cut" damage_factor="4.9" />
-    </BladeData>
-    <Flags>
-      <Flag name="CanBePickedUpFromCorpse" type="ItemFlags" />
+      <Flag name="BonusAgainstShield" />
     </Flags>
     <Materials>
       <Material id="Iron5" count="3" />
@@ -31388,9 +31396,9 @@
       <Material id="Wood" count="4" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_kopesh_blade_h0" name="{=}Kopesh Blade" tier="5" piece_type="Blade" mesh="kopesh_blade" culture="Culture.vlandia" length="65.5" weight="0.82">
+  <CraftingPiece id="crpg_kopesh_blade_h0" name="{=}Kopesh Blade" tier="5" piece_type="Blade" mesh="kopesh_blade" culture="Culture.vlandia" length="65.5" weight="0.96">
     <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
-      <Thrust damage_type="Pierce" damage_factor="2.2" />
+      <Thrust damage_type="Pierce" damage_factor="2.0" />
       <Swing damage_type="Cut" damage_factor="3.3" />
     </BladeData>
     <Flags>
@@ -31400,10 +31408,10 @@
       <Material id="Iron6" count="3" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_kopesh_blade_h1" name="{=}Kopesh Blade" tier="5" piece_type="Blade" mesh="kopesh_blade" culture="Culture.vlandia" length="65.5" weight="0.82">
+  <CraftingPiece id="crpg_kopesh_blade_h1" name="{=}Kopesh Blade" tier="5" piece_type="Blade" mesh="kopesh_blade" culture="Culture.vlandia" length="65.5" weight="0.96">
     <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
       <Thrust damage_type="Pierce" damage_factor="2.2" />
-      <Swing damage_type="Cut" damage_factor="3.3" />
+      <Swing damage_type="Cut" damage_factor="3.4" />
     </BladeData>
     <Flags>
       <Flag name="Civilian" type="ItemFlags" />
@@ -31412,10 +31420,10 @@
       <Material id="Iron6" count="3" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_kopesh_blade_h2" name="{=}Kopesh Blade" tier="5" piece_type="Blade" mesh="kopesh_blade" culture="Culture.vlandia" length="65.5" weight="0.82">
+  <CraftingPiece id="crpg_kopesh_blade_h2" name="{=}Kopesh Blade" tier="5" piece_type="Blade" mesh="kopesh_blade" culture="Culture.vlandia" length="65.5" weight="0.9">
     <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
       <Thrust damage_type="Pierce" damage_factor="2.2" />
-      <Swing damage_type="Cut" damage_factor="3.3" />
+      <Swing damage_type="Cut" damage_factor="3.5" />
     </BladeData>
     <Flags>
       <Flag name="Civilian" type="ItemFlags" />
@@ -31424,10 +31432,10 @@
       <Material id="Iron6" count="3" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_kopesh_blade_h3" name="{=}Kopesh Blade" tier="5" piece_type="Blade" mesh="kopesh_blade" culture="Culture.vlandia" length="65.5" weight="0.82">
+  <CraftingPiece id="crpg_kopesh_blade_h3" name="{=}Kopesh Blade" tier="5" piece_type="Blade" mesh="kopesh_blade" culture="Culture.vlandia" length="65.5" weight="0.84">
     <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed">
-      <Thrust damage_type="Pierce" damage_factor="2.2" />
-      <Swing damage_type="Cut" damage_factor="3.3" />
+      <Thrust damage_type="Pierce" damage_factor="2.4" />
+      <Swing damage_type="Cut" damage_factor="3.5" />
     </BladeData>
     <Flags>
       <Flag name="Civilian" type="ItemFlags" />

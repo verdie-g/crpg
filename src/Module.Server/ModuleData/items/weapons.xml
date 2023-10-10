@@ -6944,7 +6944,7 @@
       <Piece id="crpg_iron_cleaver_pommel_h3" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_narrow_sword_h0" name="{=3YhwjpQ0}Narrow Sword" crafting_template="crpg_OneHandedSword" modifier_group="sword">
+  <CraftedItem id="crpg_narrow_sword_h0" name="{=kaikaikai}Narrow Sword" crafting_template="crpg_OneHandedSword" modifier_group="sword">
     <Pieces>
       <Piece id="crpg_narrow_sword_blade_h0" Type="Blade" scale_factor="100" />
       <Piece id="crpg_narrow_sword_guard_h0" Type="Guard" scale_factor="100" />
@@ -6952,7 +6952,7 @@
       <Piece id="crpg_narrow_sword_pommel_h0" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_narrow_sword_h1" name="{=3YhwjpQ0}Narrow Sword +1" crafting_template="crpg_OneHandedSword" modifier_group="sword">
+  <CraftedItem id="crpg_narrow_sword_h1" name="{=kaikaikai}Narrow Sword +1" crafting_template="crpg_OneHandedSword" modifier_group="sword">
     <Pieces>
       <Piece id="crpg_narrow_sword_blade_h1" Type="Blade" scale_factor="100" />
       <Piece id="crpg_narrow_sword_guard_h1" Type="Guard" scale_factor="100" />
@@ -6960,7 +6960,7 @@
       <Piece id="crpg_narrow_sword_pommel_h1" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_narrow_sword_h2" name="{=3YhwjpQ0}Narrow Sword +2" crafting_template="crpg_OneHandedSword" modifier_group="sword">
+  <CraftedItem id="crpg_narrow_sword_h2" name="{=kaikaikai}Narrow Sword +2" crafting_template="crpg_OneHandedSword" modifier_group="sword">
     <Pieces>
       <Piece id="crpg_narrow_sword_blade_h2" Type="Blade" scale_factor="100" />
       <Piece id="crpg_narrow_sword_guard_h2" Type="Guard" scale_factor="100" />
@@ -6968,7 +6968,7 @@
       <Piece id="crpg_narrow_sword_pommel_h2" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_narrow_sword_h3" name="{=3YhwjpQ0}Narrow Sword +3" crafting_template="crpg_OneHandedSword" modifier_group="sword">
+  <CraftedItem id="crpg_narrow_sword_h3" name="{=kaikaikai}Narrow Sword +3" crafting_template="crpg_OneHandedSword" modifier_group="sword">
     <Pieces>
       <Piece id="crpg_narrow_sword_blade_h3" Type="Blade" scale_factor="100" />
       <Piece id="crpg_narrow_sword_guard_h3" Type="Guard" scale_factor="100" />
@@ -12604,7 +12604,7 @@
       <Piece id="crpg_executionerssword_pommel_h3" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_kopesh_h0" name="{=}Kopesh" crafting_template="crpg_OneHandedSword" is_merchandise="false" culture="Culture.vlandia" modifier_group="sword">
+  <CraftedItem id="crpg_kopesh_h0" name="{=kaikaikai}Kopesh" crafting_template="crpg_OneHandedSword" is_merchandise="false" culture="Culture.vlandia" modifier_group="sword">
     <Pieces>
       <Piece id="crpg_kopesh_blade_h0" Type="Blade" scale_factor="100" />
       <Piece id="crpg_kopesh_guard_h0" Type="Guard" scale_factor="100" />
@@ -12612,7 +12612,7 @@
       <Piece id="crpg_kopesh_pommel_h0" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_kopesh_h1" name="{=}Kopesh" crafting_template="crpg_OneHandedSword" is_merchandise="false" culture="Culture.vlandia" modifier_group="sword">
+  <CraftedItem id="crpg_kopesh_h1" name="{=kaikaikai}Kopesh +1" crafting_template="crpg_OneHandedSword" is_merchandise="false" culture="Culture.vlandia" modifier_group="sword">
     <Pieces>
       <Piece id="crpg_kopesh_blade_h1" Type="Blade" scale_factor="100" />
       <Piece id="crpg_kopesh_guard_h1" Type="Guard" scale_factor="100" />
@@ -12620,7 +12620,7 @@
       <Piece id="crpg_kopesh_pommel_h1" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_kopesh_h2" name="{=}Kopesh" crafting_template="crpg_OneHandedSword" is_merchandise="false" culture="Culture.vlandia" modifier_group="sword">
+  <CraftedItem id="crpg_kopesh_h2" name="{=kaikaikai}Kopesh +2" crafting_template="crpg_OneHandedSword" is_merchandise="false" culture="Culture.vlandia" modifier_group="sword">
     <Pieces>
       <Piece id="crpg_kopesh_blade_h2" Type="Blade" scale_factor="100" />
       <Piece id="crpg_kopesh_guard_h2" Type="Guard" scale_factor="100" />
@@ -12628,7 +12628,7 @@
       <Piece id="crpg_kopesh_pommel_h2" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_kopesh_h3" name="{=}Kopesh" crafting_template="crpg_OneHandedSword" is_merchandise="false" culture="Culture.vlandia" modifier_group="sword">
+  <CraftedItem id="crpg_kopesh_h3" name="{=kaikaikai}Kopesh +3" crafting_template="crpg_OneHandedSword" is_merchandise="false" culture="Culture.vlandia" modifier_group="sword">
     <Pieces>
       <Piece id="crpg_kopesh_blade_h3" Type="Blade" scale_factor="100" />
       <Piece id="crpg_kopesh_guard_h3" Type="Guard" scale_factor="100" />
