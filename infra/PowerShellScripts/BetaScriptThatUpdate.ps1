@@ -1,6 +1,8 @@
 ﻿$instanceLetter = "a"
 $instance = "crpg01_beta$instanceLetter"
 $port = 7228
+$env:crpg_api_base_url = "https://api.namidaka.fr/"
+$env:crpg_api_key = "PUT API KEY HERE"
 
 $Host.UI.RawUI.WindowTitle = "$instance"
 
