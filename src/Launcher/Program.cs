@@ -193,7 +193,7 @@ static async Task UpdateCrpgAsync(string bannerlordPath, bool isBeta = false,boo
     string tagPath = Path.Combine(crpgPath, "Tag.txt");
     string? tag = File.Exists(tagPath) ? File.ReadAllText(tagPath) : null;
     string websiteUrl = "https://c-rpg.eu/";
-    string fileName = "crpg.zip";
+    string fileName = "cRPG.zip";
     if (isBeta)
     {
         websiteUrl = "https://namidaka.fr/";
