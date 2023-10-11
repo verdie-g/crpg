@@ -1,6 +1,6 @@
-﻿$instanceLetter = "a"
+﻿$instanceLetter = "b"
 $instance = "crpg01$instanceLetter"
-$port = 7210
+$port = 7211
 
 $Host.UI.RawUI.WindowTitle = "$instance"
 
@@ -60,10 +60,17 @@ while ($true)
             break
         }
     } while (!$Process.HasExited)
-
-    & ".\Crpg.Launcher.exe" -beta -server -path "$env:mb_server_path"
-
-    Start-Sleep -Seconds 3
+    do {
+        Start-Sleep -Seconds 30
+        [xml]$currentSubmodule = Get-Content "$env:mb_server_path\Modules\cRPG\SubModule.xml"
+        $needToUpdate = IsLatest
+        if (($needToUpdate -eq "no")) {
+            $Process.Kill()
+            Write-Host "Update is probably finished"
+            break
+        }
+        Write-Host "Update is still ongoing"
+    } while (!$Process.HasExited)
     Write-Host "$(Get-Date): process stopped with exit code $($Process.ExitCode)"
 
     $LogFolder = "C:\ProgramData\Mount and Blade II Bannerlord\logs"
@@ -72,3 +79,4 @@ while ($true)
     Copy-Item -Path "$LogFolder\rgl_log_errors_$($Process.Id).txt" -Destination "$LogFolder\$($FileName)-errors.txt"
     Start-Sleep -Seconds 5
 }
+
