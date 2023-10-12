@@ -155,7 +155,7 @@
 		foot_num_bones_for_ik="3">
     <Capsules>
       <body_capsule
-				radius="0.25"
+				radius="0.27"
 				pos1="0.0, 0.0, 1.55"
 				pos2="0.0, 0, 0.8" />
       <crouched_body_capsule
