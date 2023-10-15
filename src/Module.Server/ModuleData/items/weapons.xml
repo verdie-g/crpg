@@ -12034,31 +12034,31 @@
   </CraftedItem>
   <CraftedItem id="crpg_black_wakizashi_h0" name="{=}Black Wakizashi" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_black_wakizashi_blade_h0" Type="Blade" scale_factor="57" />
+      <Piece id="crpg_black_wakizashi_blade_h0" Type="Blade" scale_factor="63" />
       <Piece id="crpg_black_wakizashi_guard_h0" Type="Guard" scale_factor="80" />
       <Piece id="crpg_black_wakizashi_handle_h0" Type="Handle" scale_factor="70" />
       <Piece id="crpg_black_wakizashi_pommel_h0" Type="Pommel" scale_factor="70" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_black_wakizashi_h1" name="{=}Black Wakizashi" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
+  <CraftedItem id="crpg_black_wakizashi_h1" name="{=}Black Wakizashi +1" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_black_wakizashi_blade_h1" Type="Blade" scale_factor="57" />
+      <Piece id="crpg_black_wakizashi_blade_h1" Type="Blade" scale_factor="63" />
       <Piece id="crpg_black_wakizashi_guard_h1" Type="Guard" scale_factor="80" />
       <Piece id="crpg_black_wakizashi_handle_h1" Type="Handle" scale_factor="70" />
       <Piece id="crpg_black_wakizashi_pommel_h1" Type="Pommel" scale_factor="70" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_black_wakizashi_h2" name="{=}Black Wakizashi" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
+  <CraftedItem id="crpg_black_wakizashi_h2" name="{=}Black Wakizashi +2" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_black_wakizashi_blade_h2" Type="Blade" scale_factor="57" />
+      <Piece id="crpg_black_wakizashi_blade_h2" Type="Blade" scale_factor="63" />
       <Piece id="crpg_black_wakizashi_guard_h2" Type="Guard" scale_factor="80" />
       <Piece id="crpg_black_wakizashi_handle_h2" Type="Handle" scale_factor="70" />
       <Piece id="crpg_black_wakizashi_pommel_h2" Type="Pommel" scale_factor="70" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_black_wakizashi_h3" name="{=}Black Wakizashi" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
+  <CraftedItem id="crpg_black_wakizashi_h3" name="{=}Black Wakizashi +3" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_black_wakizashi_blade_h3" Type="Blade" scale_factor="57" />
+      <Piece id="crpg_black_wakizashi_blade_h3" Type="Blade" scale_factor="63" />
       <Piece id="crpg_black_wakizashi_guard_h3" Type="Guard" scale_factor="80" />
       <Piece id="crpg_black_wakizashi_handle_h3" Type="Handle" scale_factor="70" />
       <Piece id="crpg_black_wakizashi_pommel_h3" Type="Pommel" scale_factor="70" />
@@ -12098,31 +12098,31 @@
   </CraftedItem>
   <CraftedItem id="crpg_red_wakizashi_h0" name="{=}Red Wakizashi" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_red_wakizashi_blade_h0" Type="Blade" scale_factor="57" />
+      <Piece id="crpg_red_wakizashi_blade_h0" Type="Blade" scale_factor="63" />
       <Piece id="crpg_red_wakizashi_guard_h0" Type="Guard" scale_factor="80" />
       <Piece id="crpg_red_wakizashi_handle_h0" Type="Handle" scale_factor="70" />
       <Piece id="crpg_red_wakizashi_pommel_h0" Type="Pommel" scale_factor="70" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_red_wakizashi_h1" name="{=}Red Wakizashi" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
+  <CraftedItem id="crpg_red_wakizashi_h1" name="{=}Red Wakizashi +1" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_red_wakizashi_blade_h1" Type="Blade" scale_factor="57" />
+      <Piece id="crpg_red_wakizashi_blade_h1" Type="Blade" scale_factor="63" />
       <Piece id="crpg_red_wakizashi_guard_h1" Type="Guard" scale_factor="80" />
       <Piece id="crpg_red_wakizashi_handle_h1" Type="Handle" scale_factor="70" />
       <Piece id="crpg_red_wakizashi_pommel_h1" Type="Pommel" scale_factor="70" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_red_wakizashi_h2" name="{=}Red Wakizashi" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
+  <CraftedItem id="crpg_red_wakizashi_h2" name="{=}Red Wakizashi +2" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_red_wakizashi_blade_h2" Type="Blade" scale_factor="57" />
+      <Piece id="crpg_red_wakizashi_blade_h2" Type="Blade" scale_factor="63" />
       <Piece id="crpg_red_wakizashi_guard_h2" Type="Guard" scale_factor="80" />
       <Piece id="crpg_red_wakizashi_handle_h2" Type="Handle" scale_factor="70" />
       <Piece id="crpg_red_wakizashi_pommel_h2" Type="Pommel" scale_factor="70" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_red_wakizashi_h3" name="{=}Red Wakizashi" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
+  <CraftedItem id="crpg_red_wakizashi_h3" name="{=}Red Wakizashi +3" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_red_wakizashi_blade_h3" Type="Blade" scale_factor="57" />
+      <Piece id="crpg_red_wakizashi_blade_h3" Type="Blade" scale_factor="63" />
       <Piece id="crpg_red_wakizashi_guard_h3" Type="Guard" scale_factor="80" />
       <Piece id="crpg_red_wakizashi_handle_h3" Type="Handle" scale_factor="70" />
       <Piece id="crpg_red_wakizashi_pommel_h3" Type="Pommel" scale_factor="70" />
@@ -12162,31 +12162,31 @@
   </CraftedItem>
   <CraftedItem id="crpg_yellow_wakizashi_h0" name="{=}Yellow Wakizashi" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_yellow_wakizashi_blade_h0" Type="Blade" scale_factor="57" />
+      <Piece id="crpg_yellow_wakizashi_blade_h0" Type="Blade" scale_factor="63" />
       <Piece id="crpg_yellow_wakizashi_guard_h0" Type="Guard" scale_factor="80" />
       <Piece id="crpg_yellow_wakizashi_handle_h0" Type="Handle" scale_factor="70" />
       <Piece id="crpg_yellow_wakizashi_pommel_h0" Type="Pommel" scale_factor="70" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_yellow_wakizashi_h1" name="{=}Yellow Wakizashi" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
+  <CraftedItem id="crpg_yellow_wakizashi_h1" name="{=}Yellow Wakizashi +1" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_yellow_wakizashi_blade_h1" Type="Blade" scale_factor="57" />
+      <Piece id="crpg_yellow_wakizashi_blade_h1" Type="Blade" scale_factor="63" />
       <Piece id="crpg_yellow_wakizashi_guard_h1" Type="Guard" scale_factor="80" />
       <Piece id="crpg_yellow_wakizashi_handle_h1" Type="Handle" scale_factor="70" />
       <Piece id="crpg_yellow_wakizashi_pommel_h1" Type="Pommel" scale_factor="70" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_yellow_wakizashi_h2" name="{=}Yellow Wakizashi" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
+  <CraftedItem id="crpg_yellow_wakizashi_h2" name="{=}Yellow Wakizashi +2" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_yellow_wakizashi_blade_h2" Type="Blade" scale_factor="57" />
+      <Piece id="crpg_yellow_wakizashi_blade_h2" Type="Blade" scale_factor="63" />
       <Piece id="crpg_yellow_wakizashi_guard_h2" Type="Guard" scale_factor="80" />
       <Piece id="crpg_yellow_wakizashi_handle_h2" Type="Handle" scale_factor="70" />
       <Piece id="crpg_yellow_wakizashi_pommel_h2" Type="Pommel" scale_factor="70" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_yellow_wakizashi_h3" name="{=}Yellow Wakizashi" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
+  <CraftedItem id="crpg_yellow_wakizashi_h3" name="{=}Yellow Wakizashi +3" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_yellow_wakizashi_blade_h3" Type="Blade" scale_factor="57" />
+      <Piece id="crpg_yellow_wakizashi_blade_h3" Type="Blade" scale_factor="63" />
       <Piece id="crpg_yellow_wakizashi_guard_h3" Type="Guard" scale_factor="80" />
       <Piece id="crpg_yellow_wakizashi_handle_h3" Type="Handle" scale_factor="70" />
       <Piece id="crpg_yellow_wakizashi_pommel_h3" Type="Pommel" scale_factor="70" />
@@ -12226,31 +12226,31 @@
   </CraftedItem>
   <CraftedItem id="crpg_green_wakizashi_h0" name="{=}Green Wakizashi" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_green_wakizashi_blade_h0" Type="Blade" scale_factor="57" />
+      <Piece id="crpg_green_wakizashi_blade_h0" Type="Blade" scale_factor="63" />
       <Piece id="crpg_green_wakizashi_guard_h0" Type="Guard" scale_factor="80" />
       <Piece id="crpg_green_wakizashi_handle_h0" Type="Handle" scale_factor="70" />
       <Piece id="crpg_green_wakizashi_pommel_h0" Type="Pommel" scale_factor="70" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_green_wakizashi_h1" name="{=}Green Wakizashi" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
+  <CraftedItem id="crpg_green_wakizashi_h1" name="{=}Green Wakizashi +1" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_green_wakizashi_blade_h1" Type="Blade" scale_factor="57" />
+      <Piece id="crpg_green_wakizashi_blade_h1" Type="Blade" scale_factor="63" />
       <Piece id="crpg_green_wakizashi_guard_h1" Type="Guard" scale_factor="80" />
       <Piece id="crpg_green_wakizashi_handle_h1" Type="Handle" scale_factor="70" />
       <Piece id="crpg_green_wakizashi_pommel_h1" Type="Pommel" scale_factor="70" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_green_wakizashi_h2" name="{=}Green Wakizashi" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
+  <CraftedItem id="crpg_green_wakizashi_h2" name="{=}Green Wakizashi +2" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_green_wakizashi_blade_h2" Type="Blade" scale_factor="57" />
+      <Piece id="crpg_green_wakizashi_blade_h2" Type="Blade" scale_factor="63" />
       <Piece id="crpg_green_wakizashi_guard_h2" Type="Guard" scale_factor="80" />
       <Piece id="crpg_green_wakizashi_handle_h2" Type="Handle" scale_factor="70" />
       <Piece id="crpg_green_wakizashi_pommel_h2" Type="Pommel" scale_factor="70" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_green_wakizashi_h3" name="{=}Green Wakizashi" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
+  <CraftedItem id="crpg_green_wakizashi_h3" name="{=}Green Wakizashi +3" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_green_wakizashi_blade_h3" Type="Blade" scale_factor="57" />
+      <Piece id="crpg_green_wakizashi_blade_h3" Type="Blade" scale_factor="63" />
       <Piece id="crpg_green_wakizashi_guard_h3" Type="Guard" scale_factor="80" />
       <Piece id="crpg_green_wakizashi_handle_h3" Type="Handle" scale_factor="70" />
       <Piece id="crpg_green_wakizashi_pommel_h3" Type="Pommel" scale_factor="70" />
@@ -12290,31 +12290,31 @@
   </CraftedItem>
   <CraftedItem id="crpg_blue_wakizashi_h0" name="{=}Blue Wakizashi" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_blue_wakizashi_blade_h0" Type="Blade" scale_factor="57" />
+      <Piece id="crpg_blue_wakizashi_blade_h0" Type="Blade" scale_factor="63" />
       <Piece id="crpg_blue_wakizashi_guard_h0" Type="Guard" scale_factor="80" />
       <Piece id="crpg_blue_wakizashi_handle_h0" Type="Handle" scale_factor="70" />
       <Piece id="crpg_blue_wakizashi_pommel_h0" Type="Pommel" scale_factor="70" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_blue_wakizashi_h1" name="{=}Blue Wakizashi" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
+  <CraftedItem id="crpg_blue_wakizashi_h1" name="{=}Blue Wakizashi +1" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_blue_wakizashi_blade_h1" Type="Blade" scale_factor="57" />
+      <Piece id="crpg_blue_wakizashi_blade_h1" Type="Blade" scale_factor="63" />
       <Piece id="crpg_blue_wakizashi_guard_h1" Type="Guard" scale_factor="80" />
       <Piece id="crpg_blue_wakizashi_handle_h1" Type="Handle" scale_factor="70" />
       <Piece id="crpg_blue_wakizashi_pommel_h1" Type="Pommel" scale_factor="70" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_blue_wakizashi_h2" name="{=}Blue Wakizashi" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
+  <CraftedItem id="crpg_blue_wakizashi_h2" name="{=}Blue Wakizashi +2" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_blue_wakizashi_blade_h2" Type="Blade" scale_factor="57" />
+      <Piece id="crpg_blue_wakizashi_blade_h2" Type="Blade" scale_factor="63" />
       <Piece id="crpg_blue_wakizashi_guard_h2" Type="Guard" scale_factor="80" />
       <Piece id="crpg_blue_wakizashi_handle_h2" Type="Handle" scale_factor="70" />
       <Piece id="crpg_blue_wakizashi_pommel_h2" Type="Pommel" scale_factor="70" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_blue_wakizashi_h3" name="{=}Blue Wakizashi" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
+  <CraftedItem id="crpg_blue_wakizashi_h3" name="{=}Blue Wakizashi +3" crafting_template="crpg_Wakizashi" culture="Culture.aserai" modifier_group="sword">
     <Pieces>
-      <Piece id="crpg_blue_wakizashi_blade_h3" Type="Blade" scale_factor="57" />
+      <Piece id="crpg_blue_wakizashi_blade_h3" Type="Blade" scale_factor="63" />
       <Piece id="crpg_blue_wakizashi_guard_h3" Type="Guard" scale_factor="80" />
       <Piece id="crpg_blue_wakizashi_handle_h3" Type="Handle" scale_factor="70" />
       <Piece id="crpg_blue_wakizashi_pommel_h3" Type="Pommel" scale_factor="70" />
@@ -12492,49 +12492,49 @@
       <Piece id="crpg_zweihander_pommel_h3" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_onehanded_gada_h0" name="{=}Steel Ball Mace" crafting_template="crpg_Mace" is_merchandise="false" culture="Culture.vlandia"  modifier_group="mace">
+  <CraftedItem id="crpg_onehanded_gada_h0" name="{=}Steel Ball Mace" crafting_template="crpg_Mace" is_merchandise="false" culture="Culture.vlandia" modifier_group="mace">
     <Pieces>
       <Piece id="crpg_onehanded_gada_blade_h0" Type="Blade" scale_factor="60" />
       <Piece id="crpg_onehanded_gada_handle_h0" Type="Handle" scale_factor="60" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_onehanded_gada_h1" name="{=}Steel Ball Mace +1" crafting_template="crpg_Mace" is_merchandise="false" culture="Culture.vlandia"  modifier_group="mace">
+  <CraftedItem id="crpg_onehanded_gada_h1" name="{=}Steel Ball Mace +1" crafting_template="crpg_Mace" is_merchandise="false" culture="Culture.vlandia" modifier_group="mace">
     <Pieces>
       <Piece id="crpg_onehanded_gada_blade_h1" Type="Blade" scale_factor="60" />
       <Piece id="crpg_onehanded_gada_handle_h1" Type="Handle" scale_factor="60" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_onehanded_gada_h2" name="{=}Steel Ball Mace +2" crafting_template="crpg_Mace" is_merchandise="false" culture="Culture.vlandia"  modifier_group="mace">
+  <CraftedItem id="crpg_onehanded_gada_h2" name="{=}Steel Ball Mace +2" crafting_template="crpg_Mace" is_merchandise="false" culture="Culture.vlandia" modifier_group="mace">
     <Pieces>
       <Piece id="crpg_onehanded_gada_blade_h2" Type="Blade" scale_factor="60" />
       <Piece id="crpg_onehanded_gada_handle_h2" Type="Handle" scale_factor="60" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_onehanded_gada_h3" name="{=}Steel Ball Mace +3" crafting_template="crpg_Mace" is_merchandise="false" culture="Culture.vlandia"  modifier_group="mace">
+  <CraftedItem id="crpg_onehanded_gada_h3" name="{=}Steel Ball Mace +3" crafting_template="crpg_Mace" is_merchandise="false" culture="Culture.vlandia" modifier_group="mace">
     <Pieces>
       <Piece id="crpg_onehanded_gada_blade_h3" Type="Blade" scale_factor="60" />
       <Piece id="crpg_onehanded_gada_handle_h3" Type="Handle" scale_factor="60" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_onehanded_barmace_h0" name="{=}One-Handed Barmace" crafting_template="crpg_Mace" is_merchandise="false" culture="Culture.vlandia"  modifier_group="mace">
+  <CraftedItem id="crpg_onehanded_barmace_h0" name="{=}One-Handed Barmace" crafting_template="crpg_Mace" is_merchandise="false" culture="Culture.vlandia" modifier_group="mace">
     <Pieces>
       <Piece id="crpg_onehanded_barmace_blade_h0" Type="Blade" scale_factor="95" />
       <Piece id="crpg_onehanded_barmace_handle_h0" Type="Handle" scale_factor="95" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_onehanded_barmace_h1" name="{=}One-Handed Barmace +1" crafting_template="crpg_Mace" is_merchandise="false" culture="Culture.vlandia"  modifier_group="mace">
+  <CraftedItem id="crpg_onehanded_barmace_h1" name="{=}One-Handed Barmace +1" crafting_template="crpg_Mace" is_merchandise="false" culture="Culture.vlandia" modifier_group="mace">
     <Pieces>
       <Piece id="crpg_onehanded_barmace_blade_h1" Type="Blade" scale_factor="95" />
       <Piece id="crpg_onehanded_barmace_handle_h1" Type="Handle" scale_factor="95" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_onehanded_barmace_h2" name="{=}One-Handed Barmace +2" crafting_template="crpg_Mace" is_merchandise="false" culture="Culture.vlandia"  modifier_group="mace">
+  <CraftedItem id="crpg_onehanded_barmace_h2" name="{=}One-Handed Barmace +2" crafting_template="crpg_Mace" is_merchandise="false" culture="Culture.vlandia" modifier_group="mace">
     <Pieces>
       <Piece id="crpg_onehanded_barmace_blade_h2" Type="Blade" scale_factor="95" />
       <Piece id="crpg_onehanded_barmace_handle_h2" Type="Handle" scale_factor="95" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_onehanded_barmace_h3" name="{=}One-Handed Barmace +3" crafting_template="crpg_Mace" is_merchandise="false" culture="Culture.vlandia"  modifier_group="mace">
+  <CraftedItem id="crpg_onehanded_barmace_h3" name="{=}One-Handed Barmace +3" crafting_template="crpg_Mace" is_merchandise="false" culture="Culture.vlandia" modifier_group="mace">
     <Pieces>
       <Piece id="crpg_onehanded_barmace_blade_h3" Type="Blade" scale_factor="95" />
       <Piece id="crpg_onehanded_barmace_handle_h3" Type="Handle" scale_factor="95" />
@@ -12636,25 +12636,25 @@
       <Piece id="crpg_kopesh_pommel_h3" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_tanto_h0" name="{=}Tanto" crafting_template="crpg_Dagger_Scabbard" culture="Culture.empire" modifier_group="sword">
+  <CraftedItem id="crpg_tanto_h0" name="{=Yeldur}Tanto" crafting_template="crpg_Dagger_Scabbard" culture="Culture.empire" modifier_group="sword">
     <Pieces>
       <Piece id="crpg_tanto_blade_h0" Type="Blade" scale_factor="100" />
       <Piece id="crpg_tanto_handle_h0" Type="Handle" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_tanto_h1" name="{=}Tanto" crafting_template="crpg_Dagger_Scabbard" culture="Culture.empire" modifier_group="sword">
+  <CraftedItem id="crpg_tanto_h1" name="{=Yeldur}Tanto +1" crafting_template="crpg_Dagger_Scabbard" culture="Culture.empire" modifier_group="sword">
     <Pieces>
       <Piece id="crpg_tanto_blade_h1" Type="Blade" scale_factor="100" />
       <Piece id="crpg_tanto_handle_h1" Type="Handle" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_tanto_h2" name="{=}Tanto" crafting_template="crpg_Dagger_Scabbard" culture="Culture.empire" modifier_group="sword">
+  <CraftedItem id="crpg_tanto_h2" name="{=Yeldur}Tanto +2" crafting_template="crpg_Dagger_Scabbard" culture="Culture.empire" modifier_group="sword">
     <Pieces>
       <Piece id="crpg_tanto_blade_h2" Type="Blade" scale_factor="100" />
       <Piece id="crpg_tanto_handle_h2" Type="Handle" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_tanto_h3" name="{=}Tanto" crafting_template="crpg_Dagger_Scabbard" culture="Culture.empire" modifier_group="sword">
+  <CraftedItem id="crpg_tanto_h3" name="{=Yeldur}Tanto +3" crafting_template="crpg_Dagger_Scabbard" culture="Culture.empire" modifier_group="sword">
     <Pieces>
       <Piece id="crpg_tanto_blade_h3" Type="Blade" scale_factor="100" />
       <Piece id="crpg_tanto_handle_h3" Type="Handle" scale_factor="100" />

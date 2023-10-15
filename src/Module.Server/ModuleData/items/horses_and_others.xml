@@ -6204,27 +6204,27 @@
     </ItemComponent>
     <Flags UseTeamColor="true" Civilian="true" />
   </Item>
-  <Item id="crpg_whussar_horsearmor_h0" name="Horse Armor, Decorated" mesh="whussar_horsearmor_1" weight="80" appearance="0.6" Type="HorseHarness">
+  <Item id="crpg_whussar_horsearmor_h0" name="Decorated Plate Barding" mesh="whussar_horsearmor_1" weight="36" appearance="0.6" Type="HorseHarness">
     <ItemComponent>
-      <Armor body_armor="80" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+      <Armor body_armor="36" mane_cover_type="none" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Plate" />
     </ItemComponent>
     <Flags UseTeamColor="true" Civilian="true" />
   </Item>
-  <Item id="crpg_whussar_horsearmor_h1" name="Horse Armor, Decorated +1" mesh="whussar_horsearmor_1" weight="80" appearance="0.6" Type="HorseHarness">
+  <Item id="crpg_whussar_horsearmor_h1" name="Decorated Plate Barding +1" mesh="whussar_horsearmor_1" weight="36" appearance="0.6" Type="HorseHarness">
     <ItemComponent>
-      <Armor body_armor="83" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+      <Armor body_armor="39" mane_cover_type="none" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Plate" />
     </ItemComponent>
     <Flags UseTeamColor="true" Civilian="true" />
   </Item>
-  <Item id="crpg_whussar_horsearmor_h2" name="Horse Armor, Decorated +2" mesh="whussar_horsearmor_1" weight="80" appearance="0.6" Type="HorseHarness">
+  <Item id="crpg_whussar_horsearmor_h2" name="Decorated Plate Barding +2" mesh="whussar_horsearmor_1" weight="36" appearance="0.6" Type="HorseHarness">
     <ItemComponent>
-      <Armor body_armor="86" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+      <Armor body_armor="42" mane_cover_type="none" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Plate" />
     </ItemComponent>
     <Flags UseTeamColor="true" Civilian="true" />
   </Item>
-  <Item id="crpg_whussar_horsearmor_h3" name="Horse Armor, Decorated +3" mesh="whussar_horsearmor_1" weight="80" appearance="0.6" Type="HorseHarness">
+  <Item id="crpg_whussar_horsearmor_h3" name="Decorated Plate Barding +3" mesh="whussar_horsearmor_1" weight="36" appearance="0.6" Type="HorseHarness">
     <ItemComponent>
-      <Armor body_armor="89" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Chainmail" />
+      <Armor body_armor="45" mane_cover_type="none" family_type="1" modifier_group="chain" reins_mesh="horse_harness_e_rein" material_type="Plate" />
     </ItemComponent>
     <Flags UseTeamColor="true" Civilian="true" />
   </Item>
