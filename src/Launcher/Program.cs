@@ -259,7 +259,7 @@ static async Task CopyToWithProgressBarAsync(
     Stream outputStream)
 {
     byte[] buffer = new byte[100 * 1000];
-    int totalBytesRead = 0;
+    long totalBytesRead = 0;
     int bytesRead;
 
     while ((bytesRead = await inputStream.ReadAsync(buffer)) != 0)
