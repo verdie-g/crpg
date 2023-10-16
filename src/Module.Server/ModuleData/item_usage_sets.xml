@@ -1,5 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
 <item_usage_sets>
+<item_usage_set
+		id="onehanded_thrust"
+		switch_to_alternate_action="act_switch_back_alternate_knife"
+		switch_to_alternate_action_left_stance="act_switch_back_alternate_knife_left_stance"
+		equip_sound="event:/mission/combat/equip/sword_equip"
+		unequip_sound="event:/mission/combat/equip/sword_unequip">
+		<flags>
+			<flag
+				name="requires_no_shield" />
+		</flags>
+		<idles>
+			<idle
+				action="act_idle_1h_without_shield_1"
+				require_free_left_hand="False" />
+			<idle
+				action="act_idle_1h_without_shield_1_left_stance"
+				is_left_stance="True"
+				require_free_left_hand="False" />
+		</idles>
+		<movement_sets>
+			<movement_set
+				id="onehanded_swing_cantblock" />
+		</movement_sets>
+		<usages>
+			<usage style="attack_down"
+                     ready_action="act_ready_thrust_1h"
+                     quick_release_action="act_quick_release_thrust_1h"
+                     release_action="act_release_thrust_1h"
+                     quick_blocked_action="act_quick_blocked_thrust_1h"
+                     blocked_action="act_blocked_thrust_1h"
+                     quick_stuck_action="act_stuck_quick_thrust_1h"
+                     stuck_action="act_stuck_thrust_1h"
+                     is_mounted="False"
+                     require_free_left_hand="False"
+                     strike_type="thrust"
+                     begin_hand_position="0,-0.4,-0.1"
+                     begin_hand_rotation="0,-90"
+                     begin_arm_rotation="0,0"
+                     begin_arm_length="0"
+                     end_hand_position="0,1,-0.1"
+                     end_hand_rotation="0,-90"
+                     end_arm_rotation="0,0"
+                     end_arm_length="0" />
+              <usage style="attack_down"
+                     ready_action="act_ready_thrust_1h_horseback"
+                     quick_release_action="act_quick_release_thrust_1h_horseback"
+                     release_action="act_release_thrust_1h_horseback"
+                     quick_blocked_action="act_quick_blocked_thrust_1h_horseback"
+                     blocked_action="act_blocked_thrust_1h_horseback"
+                     quick_stuck_action="act_stuck_quick_thrust_1h_horseback"
+                     stuck_action="act_stuck_thrust_1h_horseback"
+                     is_mounted="True"
+                     require_free_left_hand="False"
+                     strike_type="thrust"
+                     begin_hand_position="0,-0.4,-0.1"
+                     begin_hand_rotation="0,-90"
+                     begin_arm_rotation="0,0"
+                     begin_arm_length="0"
+                     end_hand_position="0,1,-0.1"
+                     end_hand_rotation="0,-90"
+                     end_arm_rotation="0,0"
+                     end_arm_length="0" />
+              <usage style="attack_down"
+                     ready_action="act_ready_thrust_1h_left_stance"
+                     quick_release_action="act_quick_release_thrust_1h_left_stance"
+                     release_action="act_release_thrust_1h_left_stance"
+                     quick_blocked_action="act_quick_blocked_thrust_1h_left_stance"
+                     blocked_action="act_blocked_thrust_1h_left_stance"
+                     quick_stuck_action="act_stuck_quick_thrust_1h_left_stance"
+                     stuck_action="act_stuck_thrust_1h_left_stance"
+                     is_mounted="False"
+                     require_free_left_hand="False"
+                     is_left_stance="True"
+                     strike_type="thrust"
+                     begin_hand_position="0,-0.4,-0.1"
+                     begin_hand_rotation="0,-90"
+                     begin_arm_rotation="0,0"
+                     begin_arm_length="0"
+                     end_hand_position="0,1,-0.1"
+                     end_hand_rotation="0,-90"
+                     end_arm_rotation="0,0"
+                     end_arm_length="0" />
+		</usages>
+		<guards>
+			<guard
+				style="up"
+				action="act_guard_up_1h"
+				hand_position="0,0.1,0.2"
+				hand_rotation="0,0"
+				arm_rotation="0,0"
+				arm_length="0" />
+			<guard
+				style="up"
+				is_left_stance="True"
+				action="act_guard_up_1h_left_stance"
+				hand_position="0,0.1,0.2"
+				hand_rotation="0,0"
+				arm_rotation="0,0"
+				arm_length="0" />
+			<guard
+				style="down"
+				action="act_guard_bottom_1h"
+				hand_position="0,0.1,-0.3"
+				hand_rotation="0,-72"
+				arm_rotation="0,0"
+				arm_length="0" />
+			<guard
+				style="down"
+				is_left_stance="True"
+				action="act_guard_bottom_1h_left_stance"
+				hand_position="0,0.1,-0.3"
+				hand_rotation="0,-72"
+				arm_rotation="0,0"
+				arm_length="0" />
+			<guard
+				style="left"
+				action="act_guard_left_1h"
+				hand_position="-0.2,0.1,-0.2"
+				hand_rotation="-36,0"
+				arm_rotation="0,0"
+				arm_length="0" />
+			<guard
+				style="left"
+				is_left_stance="True"
+				action="act_guard_left_1h_left_stance"
+				hand_position="-0.2,0.1,-0.2"
+				hand_rotation="-36,0"
+				arm_rotation="0,0"
+				arm_length="0" />
+			<guard
+				style="right"
+				action="act_guard_right_1h"
+				hand_position="0.2,0.1,-0.2"
+				hand_rotation="36,0"
+				arm_rotation="0,0"
+				arm_length="0" />
+			<guard
+				style="right"
+				is_left_stance="True"
+				action="act_guard_right_1h_left_stance"
+				hand_position="0.2,0.1,-0.2"
+				hand_rotation="36,0"
+				arm_rotation="0,0"
+				arm_length="0" />
+			<guard
+				style="none"
+				hand_position="0,0,-0.5"
+				hand_rotation="0,-90"
+				arm_rotation="0,0"
+				arm_length="0" />
+			<guard
+				style="none"
+				is_left_stance="True"
+				hand_position="0,0,-0.5"
+				hand_rotation="0,-90"
+				arm_rotation="0,0"
+				arm_length="0" />
+		</guards>
+		<kick_usages>
+			<kick_usage
+				release_action="act_1h_bash"
+				hit_action="act_hit_1h_bash"
+				is_left_stance="False"
+				left_hand_empty="True" />
+			<kick_usage
+				release_action="act_1h_bash_left_stance"
+				hit_action="act_hit_1h_bash_left_stance"
+				left_hand_empty="True"
+				is_left_stance="True" />
+		</kick_usages>
+	</item_usage_set>
   <item_usage_set id="onehanded_shield_thrust"
                   switch_to_alternate_action="act_switch_back_alternate_knife"
                   switch_to_alternate_action_left_stance="act_switch_back_alternate_knife_left_stance"
