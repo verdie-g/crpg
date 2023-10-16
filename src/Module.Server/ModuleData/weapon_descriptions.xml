@@ -5077,7 +5077,7 @@
       <AvailablePiece id="crpg_ancientlongsword_pommel_h3" />
     </AvailablePieces>
   </WeaponDescription>
-  <WeaponDescription id="crpg_Dagger" weapon_class="Dagger" item_usage_features="onehanded:shield:swing:thrust">
+  <WeaponDescription id="crpg_Dagger" weapon_class="Dagger" item_usage_features="onehanded:swing:thrust">
     <WeaponFlags>
       <WeaponFlag value="MeleeWeapon" />
     </WeaponFlags>

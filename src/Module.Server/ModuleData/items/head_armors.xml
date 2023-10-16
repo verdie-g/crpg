@@ -48,51 +48,51 @@
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_armet_h0" name="Featherd Armet" mesh="armet" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="62" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_armet_h1" name="Featherd Armet +1" mesh="armet" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_armet_h0" name="Featherd Armet" mesh="armet" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_armet_h2" name="Featherd Armet +2" mesh="armet" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_armet_h1" name="Featherd Armet +1" mesh="armet" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_armet_h3" name="Featherd Armet +3" mesh="armet" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_armet_h2" name="Featherd Armet +2" mesh="armet" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="68" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_armet1_h0" name="Armet" mesh="armet2" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_armet_h3" name="Featherd Armet +3" mesh="armet" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="62" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="70" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
-    <Flags UseTeamColor="false" />
+    <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_armet1_h1" name="Armet +1" mesh="armet2" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_armet1_h0" name="Armet" mesh="armet2" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_armet1_h2" name="Armet +2" mesh="armet2" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_armet1_h1" name="Armet +1" mesh="armet2" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_armet1_h3" name="Armet +3" mesh="armet2" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_armet1_h2" name="Armet +2" mesh="armet2" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="68" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_armet1_h3" name="Armet +3" mesh="armet2" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="70" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
@@ -408,387 +408,387 @@
     </ItemComponent>
     <Flags UseTeamColor="true" Civilian="true" />
   </Item>
-  <Item id="crpg_ba_bolzanogreathelmet_h0" name="Bahamut Great Helmet" mesh="ba_bolzanogreathelmet" culture="Culture.vlandia" weight="5.17156" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="56" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_bolzanogreathelmet_h1" name="Bahamut Great Helmet +1" mesh="ba_bolzanogreathelmet" culture="Culture.vlandia" weight="5.17156" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="58" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_bolzanogreathelmet_h2" name="Bahamut Great Helmet +2" mesh="ba_bolzanogreathelmet" culture="Culture.vlandia" weight="5.17156" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="60" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_bolzanogreathelmet_h3" name="Bahamut Great Helmet +3" mesh="ba_bolzanogreathelmet" culture="Culture.vlandia" weight="5.17156" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="62" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_closedsallet_h0" name="Bahamut Worn Closed Sallet" mesh="ba_closedsallet" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="55" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_closedsallet_h1" name="Bahamut Worn Closed Sallet +1" mesh="ba_closedsallet" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="57" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_closedsallet_h2" name="Bahamut Worn Closed Sallet +2" mesh="ba_closedsallet" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="59" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_closedsallet_h3" name="Bahamut Worn Closed Sallet +3" mesh="ba_closedsallet" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="61" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_closedsalletclean_h0" name="Bahamut Plate Closed Sallet" mesh="ba_closedsalletclean" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="55" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_closedsalletclean_h1" name="Bahamut Plate Closed Sallet +1" mesh="ba_closedsalletclean" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="57" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_closedsalletclean_h2" name="Bahamut Plate Closed Sallet +2" mesh="ba_closedsalletclean" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="59" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_closedsalletclean_h3" name="Bahamut Plate Closed Sallet +3" mesh="ba_closedsalletclean" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="61" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_closedsalletpainted_h0" name="Bahamut Painted Closed Sallet" mesh="ba_closedsalletpainted" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="55" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_closedsalletpainted_h1" name="Bahamut Painted Closed Sallet +1" mesh="ba_closedsalletpainted" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="57" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_closedsalletpainted_h2" name="Bahamut Painted Closed Sallet +2" mesh="ba_closedsalletpainted" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="59" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_closedsalletpainted_h3" name="Bahamut Painted Closed Sallet +3" mesh="ba_closedsalletpainted" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="61" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_closehelm_h0" name="Bahamut Plate Close Helmet" mesh="ba_closehelm" culture="Culture.vlandia" weight="5.431972" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="58" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_closehelm_h1" name="Bahamut Plate Close Helmet +1" mesh="ba_closehelm" culture="Culture.vlandia" weight="5.431972" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="60" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_closehelm_h2" name="Bahamut Plate Close Helmet +2" mesh="ba_closehelm" culture="Culture.vlandia" weight="5.431972" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="62" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_closehelm_h3" name="Bahamut Plate Close Helmet +3" mesh="ba_closehelm" culture="Culture.vlandia" weight="5.431972" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_ba_bolzanogreathelmet_h0" name="Bahamut Great Helmet" mesh="ba_bolzanogreathelmet" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_ba_closehelmgold_h0" name="Bahamut Gold Plate Close Helmet" mesh="ba_closehelmgold" culture="Culture.vlandia" weight="5.431972" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_ba_bolzanogreathelmet_h1" name="Bahamut Great Helmet +1" mesh="ba_bolzanogreathelmet" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="58" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_ba_closehelmgold_h1" name="Bahamut Gold Plate Close Helmet +1" mesh="ba_closehelmgold" culture="Culture.vlandia" weight="5.431972" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_ba_bolzanogreathelmet_h2" name="Bahamut Great Helmet +2" mesh="ba_bolzanogreathelmet" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="60" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="68" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_ba_closehelmgold_h2" name="Bahamut Gold Plate Close Helmet +2" mesh="ba_closehelmgold" culture="Culture.vlandia" weight="5.431972" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_ba_bolzanogreathelmet_h3" name="Bahamut Great Helmet +3" mesh="ba_bolzanogreathelmet" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="62" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="70" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_ba_closehelmgold_h3" name="Bahamut Gold Plate Close Helmet +3" mesh="ba_closehelmgold" culture="Culture.vlandia" weight="5.431972" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_ba_closedsallet_h0" name="Bahamut Worn Closed Sallet" mesh="ba_closedsallet" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_ba_closehelmworn_h0" name="Bahamut Battered Close Helmet" mesh="ba_closehelmworn" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_ba_closedsallet_h1" name="Bahamut Worn Closed Sallet +1" mesh="ba_closedsallet" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="55" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_ba_closehelmworn_h1" name="Bahamut Battered Close Helmet +1" mesh="ba_closehelmworn" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_ba_closedsallet_h2" name="Bahamut Worn Closed Sallet +2" mesh="ba_closedsallet" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="57" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="68" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_ba_closehelmworn_h2" name="Bahamut Battered Close Helmet +2" mesh="ba_closehelmworn" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_ba_closedsallet_h3" name="Bahamut Worn Closed Sallet +3" mesh="ba_closedsallet" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="59" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="70" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_ba_closehelmworn_h3" name="Bahamut Battered Close Helmet +3" mesh="ba_closehelmworn" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_ba_closedsalletclean_h0" name="Bahamut Plate Closed Sallet" mesh="ba_closedsalletclean" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="61" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_ba_openhelm2_h0" name="Bahamut Battered Open Sallet" mesh="ba_openhelm2" culture="Culture.vlandia" weight="3.342379" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_ba_closedsalletclean_h1" name="Bahamut Plate Closed Sallet +1" mesh="ba_closedsalletclean" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="41" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="type3" />
+      <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_ba_openhelm2_h1" name="Bahamut Battered Open Sallet +1" mesh="ba_openhelm2" culture="Culture.vlandia" weight="3.342379" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_ba_closedsalletclean_h2" name="Bahamut Plate Closed Sallet +2" mesh="ba_closedsalletclean" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="68" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_closedsalletclean_h3" name="Bahamut Plate Closed Sallet +3" mesh="ba_closedsalletclean" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="70" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_closedsalletpainted_h0" name="Bahamut Painted Closed Sallet" mesh="ba_closedsalletpainted" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_closedsalletpainted_h1" name="Bahamut Painted Closed Sallet +1" mesh="ba_closedsalletpainted" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_closedsalletpainted_h2" name="Bahamut Painted Closed Sallet +2" mesh="ba_closedsalletpainted" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="68" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_closedsalletpainted_h3" name="Bahamut Painted Closed Sallet +3" mesh="ba_closedsalletpainted" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="70" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_closehelm_h0" name="Bahamut Plate Close Helmet" mesh="ba_closehelm" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="62" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_closehelm_h1" name="Bahamut Plate Close Helmet +1" mesh="ba_closehelm" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_closehelm_h2" name="Bahamut Plate Close Helmet +2" mesh="ba_closehelm" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_closehelm_h3" name="Bahamut Plate Close Helmet +3" mesh="ba_closehelm" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="68" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_closehelmgold_h0" name="Bahamut Gold Plate Close Helmet" mesh="ba_closehelmgold" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="62" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_closehelmgold_h1" name="Bahamut Gold Plate Close Helmet +1" mesh="ba_closehelmgold" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_closehelmgold_h2" name="Bahamut Gold Plate Close Helmet +2" mesh="ba_closehelmgold" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_closehelmgold_h3" name="Bahamut Gold Plate Close Helmet +3" mesh="ba_closehelmgold" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="68" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_closehelmworn_h0" name="Bahamut Battered Close Helmet" mesh="ba_closehelmworn" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="62" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_closehelmworn_h1" name="Bahamut Battered Close Helmet +1" mesh="ba_closehelmworn" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_closehelmworn_h2" name="Bahamut Battered Close Helmet +2" mesh="ba_closehelmworn" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_closehelmworn_h3" name="Bahamut Battered Close Helmet +3" mesh="ba_closehelmworn" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="68" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_openhelm2_h0" name="Bahamut Battered Open Sallet" mesh="ba_openhelm2" culture="Culture.vlandia" weight="3.572845" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="43" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="type3" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_ba_openhelm2_h2" name="Bahamut Battered Open Sallet +2" mesh="ba_openhelm2" culture="Culture.vlandia" weight="3.342379" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_ba_openhelm2_h1" name="Bahamut Battered Open Sallet +1" mesh="ba_openhelm2" culture="Culture.vlandia" weight="3.572845" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="45" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="type3" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_ba_openhelm2_h3" name="Bahamut Battered Open Sallet +3" mesh="ba_openhelm2" culture="Culture.vlandia" weight="3.342379" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_ba_openhelm2_h2" name="Bahamut Battered Open Sallet +2" mesh="ba_openhelm2" culture="Culture.vlandia" weight="3.572845" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="47" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="type3" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_ba_opensallet_h0" name="Bahamut Worn Open Sallet" mesh="ba_opensallet" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_ba_openhelm2_h3" name="Bahamut Battered Open Sallet +3" mesh="ba_openhelm2" culture="Culture.vlandia" weight="3.572845" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="49" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="type3" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_opensallet_h0" name="Bahamut Worn Open Sallet" mesh="ba_opensallet" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="55" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_opensallet_h1" name="Bahamut Worn Open Sallet +1" mesh="ba_opensallet" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="57" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_opensallet_h2" name="Bahamut Worn Open Sallet +2" mesh="ba_opensallet" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="59" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_opensallet_h3" name="Bahamut Worn Open Sallet +3" mesh="ba_opensallet" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="61" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_opensalletclean_h0" name="Bahamut Plate Open Sallet" mesh="ba_opensalletclean" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="55" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_opensalletclean_h1" name="Bahamut Plate Open Sallet +1" mesh="ba_opensalletclean" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="57" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_opensalletclean_h2" name="Bahamut Plate Open Sallet +2" mesh="ba_opensalletclean" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="59" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_opensalletclean_h3" name="Bahamut Plate Open Sallet +3" mesh="ba_opensalletclean" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="61" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_sallet_h0" name="Bahamut Worn Sallet" mesh="ba_sallet" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="60" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_sallet_h1" name="Bahamut Worn Sallet +1" mesh="ba_sallet" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="62" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_sallet_h2" name="Bahamut Worn Sallet +2" mesh="ba_sallet" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_sallet_h3" name="Bahamut Worn Sallet +3" mesh="ba_sallet" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_salletclean_h0" name="Bahamut Sallet" mesh="ba_salletclean" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="60" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_salletclean_h1" name="Bahamut Sallet +1" mesh="ba_salletclean" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="62" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_salletclean_h2" name="Bahamut Sallet +2" mesh="ba_salletclean" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_salletclean_h3" name="Bahamut Sallet +3" mesh="ba_salletclean" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_salletpainted_h0" name="Bahamut Painted Sallet" mesh="ba_salletpainted" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="60" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_salletpainted_h1" name="Bahamut Painted Sallet +1" mesh="ba_salletpainted" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="62" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_salletpainted_h2" name="Bahamut Painted Sallet +2" mesh="ba_salletpainted" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_salletpainted_h3" name="Bahamut Painted Sallet +3" mesh="ba_salletpainted" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_ba_sipahihelmet_h0" name="Bahamut Chichak Helmet" mesh="ba_sipahihelmet" culture="Culture.aserai" weight="3.926624" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="46" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_ba_sipahihelmet_h1" name="Bahamut Chichak Helmet +1" mesh="ba_sipahihelmet" culture="Culture.aserai" weight="3.926624" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="48" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_ba_sipahihelmet_h2" name="Bahamut Chichak Helmet +2" mesh="ba_sipahihelmet" culture="Culture.aserai" weight="3.926624" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="50" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
     </ItemComponent>
-    <Flags UseTeamColor="true" />
+    <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_ba_opensallet_h1" name="Bahamut Worn Open Sallet +1" mesh="ba_opensallet" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_ba_sipahihelmet_h3" name="Bahamut Chichak Helmet +3" mesh="ba_sipahihelmet" culture="Culture.aserai" weight="3.926624" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="52" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_opensallet_h2" name="Bahamut Worn Open Sallet +2" mesh="ba_opensallet" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="54" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_opensallet_h3" name="Bahamut Worn Open Sallet +3" mesh="ba_opensallet" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="56" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_opensalletclean_h0" name="Bahamut Plate Open Sallet" mesh="ba_opensalletclean" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="50" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_opensalletclean_h1" name="Bahamut Plate Open Sallet +1" mesh="ba_opensalletclean" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="52" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_opensalletclean_h2" name="Bahamut Plate Open Sallet +2" mesh="ba_opensalletclean" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="54" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_opensalletclean_h3" name="Bahamut Plate Open Sallet +3" mesh="ba_opensalletclean" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="56" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_sallet_h0" name="Bahamut Worn Sallet" mesh="ba_sallet" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="52" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_sallet_h1" name="Bahamut Worn Sallet +1" mesh="ba_sallet" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="54" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_sallet_h2" name="Bahamut Worn Sallet +2" mesh="ba_sallet" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="56" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_sallet_h3" name="Bahamut Worn Sallet +3" mesh="ba_sallet" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="58" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_salletclean_h0" name="Bahamut Sallet" mesh="ba_salletclean" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="52" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_salletclean_h1" name="Bahamut Sallet +1" mesh="ba_salletclean" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="54" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_salletclean_h2" name="Bahamut Sallet +2" mesh="ba_salletclean" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="56" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_salletclean_h3" name="Bahamut Sallet +3" mesh="ba_salletclean" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="58" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_salletpainted_h0" name="Bahamut Painted Sallet" mesh="ba_salletpainted" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="52" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_salletpainted_h1" name="Bahamut Painted Sallet +1" mesh="ba_salletpainted" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="54" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_salletpainted_h2" name="Bahamut Painted Sallet +2" mesh="ba_salletpainted" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="56" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_salletpainted_h3" name="Bahamut Painted Sallet +3" mesh="ba_salletpainted" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="58" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_ba_sipahihelmet_h0" name="Bahamut Chichak Helmet" mesh="ba_sipahihelmet" culture="Culture.aserai" weight="3.572845" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="43" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_ba_sipahihelmet_h1" name="Bahamut Chichak Helmet +1" mesh="ba_sipahihelmet" culture="Culture.aserai" weight="3.572845" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_ba_turban_helmet_1_h0" name="Bahamut Gold Turban Helmet" mesh="ba_turban_helmet_1" culture="Culture.aserai" weight="3.572845" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="45" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
+      <Armor head_armor="43" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_ba_sipahihelmet_h2" name="Bahamut Chichak Helmet +2" mesh="ba_sipahihelmet" culture="Culture.aserai" weight="3.572845" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_ba_turban_helmet_1_h1" name="Bahamut Gold Turban Helmet +1" mesh="ba_turban_helmet_1" culture="Culture.aserai" weight="3.572845" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="47" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
+      <Armor head_armor="45" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_ba_sipahihelmet_h3" name="Bahamut Chichak Helmet +3" mesh="ba_sipahihelmet" culture="Culture.aserai" weight="3.572845" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="49" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="none" />
-    </ItemComponent>
-    <Flags UseTeamColor="false" />
-  </Item>
-  <Item id="crpg_ba_turban_helmet_1_h0" name="Bahamut Gold Turban Helmet" mesh="ba_turban_helmet_1" culture="Culture.aserai" weight="4.046647" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_ba_turban_helmet_1_h2" name="Bahamut Gold Turban Helmet +2" mesh="ba_turban_helmet_1" culture="Culture.aserai" weight="3.572845" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="47" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_ba_turban_helmet_1_h1" name="Bahamut Gold Turban Helmet +1" mesh="ba_turban_helmet_1" culture="Culture.aserai" weight="4.046647" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_ba_turban_helmet_1_h3" name="Bahamut Gold Turban Helmet +3" mesh="ba_turban_helmet_1" culture="Culture.aserai" weight="3.572845" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="49" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_ba_turban_helmet_1_h2" name="Bahamut Gold Turban Helmet +2" mesh="ba_turban_helmet_1" culture="Culture.aserai" weight="4.046647" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_ba_turban_helmet_1clean_h0" name="Bahamut Turban Helmet" mesh="ba_turban_helmet_1clean" culture="Culture.aserai" weight="3.572845" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="51" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="43" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_ba_turban_helmet_1_h3" name="Bahamut Gold Turban Helmet +3" mesh="ba_turban_helmet_1" culture="Culture.aserai" weight="4.046647" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_ba_turban_helmet_1clean_h1" name="Bahamut Turban Helmet +1" mesh="ba_turban_helmet_1clean" culture="Culture.aserai" weight="3.572845" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="53" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="45" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_ba_turban_helmet_1clean_h0" name="Bahamut Turban Helmet" mesh="ba_turban_helmet_1clean" culture="Culture.aserai" weight="3.926624" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_ba_turban_helmet_1clean_h2" name="Bahamut Turban Helmet +2" mesh="ba_turban_helmet_1clean" culture="Culture.aserai" weight="3.572845" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="46" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="47" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_ba_turban_helmet_1clean_h1" name="Bahamut Turban Helmet +1" mesh="ba_turban_helmet_1clean" culture="Culture.aserai" weight="3.926624" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_ba_turban_helmet_1clean_h3" name="Bahamut Turban Helmet +3" mesh="ba_turban_helmet_1clean" culture="Culture.aserai" weight="3.572845" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="48" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="false" />
-  </Item>
-  <Item id="crpg_ba_turban_helmet_1clean_h2" name="Bahamut Turban Helmet +2" mesh="ba_turban_helmet_1clean" culture="Culture.aserai" weight="3.926624" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="50" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="false" />
-  </Item>
-  <Item id="crpg_ba_turban_helmet_1clean_h3" name="Bahamut Turban Helmet +3" mesh="ba_turban_helmet_1clean" culture="Culture.aserai" weight="3.926624" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="52" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="49" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
@@ -1656,99 +1656,99 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_crowned_helm_with_brass_faceplate_h0" name="Crowned Helm With Brass Faceplate" mesh="crowned_helm_with_brass_faceplate" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_crowned_helm_with_brass_faceplate_h0" name="Crowned Helm With Brass Faceplate" mesh="crowned_helm_with_brass_faceplate" culture="Culture.vlandia" weight="4.167696" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="48" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_crowned_helm_with_brass_faceplate_h1" name="Crowned Helm With Brass Faceplate +1" mesh="crowned_helm_with_brass_faceplate" culture="Culture.vlandia" weight="4.167696" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="50" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_crowned_helm_with_brass_faceplate_h1" name="Crowned Helm With Brass Faceplate +1" mesh="crowned_helm_with_brass_faceplate" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_crowned_helm_with_brass_faceplate_h2" name="Crowned Helm With Brass Faceplate +2" mesh="crowned_helm_with_brass_faceplate" culture="Culture.vlandia" weight="4.167696" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="52" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_crowned_helm_with_brass_faceplate_h2" name="Crowned Helm With Brass Faceplate +2" mesh="crowned_helm_with_brass_faceplate" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_crowned_helm_with_brass_faceplate_h3" name="Crowned Helm With Brass Faceplate +3" mesh="crowned_helm_with_brass_faceplate" culture="Culture.vlandia" weight="4.167696" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="54" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_crowned_helm_with_brass_faceplate_h3" name="Crowned Helm With Brass Faceplate +3" mesh="crowned_helm_with_brass_faceplate" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_crowned_helm_with_faceplate_h0" name="Crowned Helm With Faceplate" mesh="crowned_helm_with_faceplate" culture="Culture.vlandia" weight="4.167696" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="56" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="48" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_crowned_helm_with_faceplate_h0" name="Crowned Helm With Faceplate" mesh="crowned_helm_with_faceplate" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_crowned_helm_with_faceplate_h1" name="Crowned Helm With Faceplate +1" mesh="crowned_helm_with_faceplate" culture="Culture.vlandia" weight="4.167696" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="50" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_crowned_helm_with_faceplate_h1" name="Crowned Helm With Faceplate +1" mesh="crowned_helm_with_faceplate" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_crowned_helm_with_faceplate_h2" name="Crowned Helm With Faceplate +2" mesh="crowned_helm_with_faceplate" culture="Culture.vlandia" weight="4.167696" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="52" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_crowned_helm_with_faceplate_h2" name="Crowned Helm With Faceplate +2" mesh="crowned_helm_with_faceplate" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_crowned_helm_with_faceplate_h3" name="Crowned Helm With Faceplate +3" mesh="crowned_helm_with_faceplate" culture="Culture.vlandia" weight="4.167696" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="54" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_crowned_helm_with_faceplate_h3" name="Crowned Helm With Faceplate +3" mesh="crowned_helm_with_faceplate" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="56" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_crowned_royal_vlandian_helm_with_visor_h0" name="Ornate Western Helmet With Visor" mesh="crowned_royal_vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.431972" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="58" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_crowned_royal_vlandian_helm_with_visor_h1" name="Ornate Western Helmet With Visor +1" mesh="crowned_royal_vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.431972" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="60" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_crowned_royal_vlandian_helm_with_visor_h2" name="Ornate Western Helmet With Visor +2" mesh="crowned_royal_vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.431972" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_crowned_royal_vlandian_helm_with_visor_h0" name="Ornate Western Helmet With Visor" mesh="crowned_royal_vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="62" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_crowned_royal_vlandian_helm_with_visor_h3" name="Ornate Western Helmet With Visor +3" mesh="crowned_royal_vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.431972" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_crowned_royal_vlandian_helm_with_visor_h1" name="Ornate Western Helmet With Visor +1" mesh="crowned_royal_vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_crowned_vlandian_helm_with_visor_h0" name="Crowned Western Helmet With Visor" mesh="crowned_vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.431972" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_crowned_royal_vlandian_helm_with_visor_h2" name="Ornate Western Helmet With Visor +2" mesh="crowned_royal_vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="58" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_crowned_vlandian_helm_with_visor_h1" name="Crowned Western Helmet With Visor +1" mesh="crowned_vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.431972" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_crowned_royal_vlandian_helm_with_visor_h3" name="Ornate Western Helmet With Visor +3" mesh="crowned_royal_vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="60" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="68" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_crowned_vlandian_helm_with_visor_h2" name="Crowned Western Helmet With Visor +2" mesh="crowned_vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.431972" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_crowned_vlandian_helm_with_visor_h0" name="Crowned Western Helmet With Visor" mesh="crowned_vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="62" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_crowned_vlandian_helm_with_visor_h3" name="Crowned Western Helmet With Visor +3" mesh="crowned_vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.431972" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_crowned_vlandian_helm_with_visor_h1" name="Crowned Western Helmet With Visor +1" mesh="crowned_vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_crowned_vlandian_helm_with_visor_h2" name="Crowned Western Helmet With Visor +2" mesh="crowned_vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_crowned_vlandian_helm_with_visor_h3" name="Crowned Western Helmet With Visor +3" mesh="crowned_vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="68" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
@@ -2280,27 +2280,27 @@
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_engraved_vlandian_helm_with_visor_h0" name="Ornate Western Helmet With Visor" mesh="engraved_vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_engraved_vlandian_helm_with_visor_h0" name="Ornate Western Helmet With Visor" mesh="engraved_vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="55" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="62" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_engraved_vlandian_helm_with_visor_h1" name="Ornate Western Helmet With Visor +1" mesh="engraved_vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_engraved_vlandian_helm_with_visor_h1" name="Ornate Western Helmet With Visor +1" mesh="engraved_vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="57" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_engraved_vlandian_helm_with_visor_h2" name="Ornate Western Helmet With Visor +2" mesh="engraved_vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_engraved_vlandian_helm_with_visor_h2" name="Ornate Western Helmet With Visor +2" mesh="engraved_vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="59" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_engraved_vlandian_helm_with_visor_h3" name="Ornate Western Helmet With Visor +3" mesh="engraved_vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_engraved_vlandian_helm_with_visor_h3" name="Ornate Western Helmet With Visor +3" mesh="engraved_vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="61" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="68" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
@@ -2376,27 +2376,27 @@
     </ItemComponent>
     <Flags UseTeamColor="true" Civilian="true" />
   </Item>
-  <Item id="crpg_fluted_helm_with_brass_faceplate_h0" name="Fluted Helm With Brass Faceplate" mesh="fluted_helm_with_brass_faceplate" culture="Culture.vlandia" weight="3.80764" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_fluted_helm_with_brass_faceplate_h0" name="Fluted Helm With Brass Faceplate" mesh="fluted_helm_with_brass_faceplate" culture="Culture.vlandia" weight="4.167696" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="45" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="48" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_fluted_helm_with_brass_faceplate_h1" name="Fluted Helm With Brass Faceplate +1" mesh="fluted_helm_with_brass_faceplate" culture="Culture.vlandia" weight="3.80764" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_fluted_helm_with_brass_faceplate_h1" name="Fluted Helm With Brass Faceplate +1" mesh="fluted_helm_with_brass_faceplate" culture="Culture.vlandia" weight="4.167696" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="47" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="50" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_fluted_helm_with_brass_faceplate_h2" name="Fluted Helm With Brass Faceplate +2" mesh="fluted_helm_with_brass_faceplate" culture="Culture.vlandia" weight="3.80764" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_fluted_helm_with_brass_faceplate_h2" name="Fluted Helm With Brass Faceplate +2" mesh="fluted_helm_with_brass_faceplate" culture="Culture.vlandia" weight="4.167696" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="49" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="52" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_fluted_helm_with_brass_faceplate_h3" name="Fluted Helm With Brass Faceplate +3" mesh="fluted_helm_with_brass_faceplate" culture="Culture.vlandia" weight="3.80764" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_fluted_helm_with_brass_faceplate_h3" name="Fluted Helm With Brass Faceplate +3" mesh="fluted_helm_with_brass_faceplate" culture="Culture.vlandia" weight="4.167696" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="51" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="54" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
@@ -2808,75 +2808,75 @@
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_great_prankh_helm_crest_h0" name="Round Top Great Helmet with crest" mesh="great_prankh_helm_crest" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="60" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_great_prankh_helm_crest_h1" name="Round Top Great Helmet with crest +1" mesh="great_prankh_helm_crest" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="62" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_great_prankh_helm_crest_h2" name="Round Top Great Helmet with crest +2" mesh="great_prankh_helm_crest" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_great_prankh_helm_crest_h0" name="Round Top Great Helmet with crest" mesh="great_prankh_helm_crest" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_great_prankh_helm_crest_h3" name="Round Top Great Helmet with crest +3" mesh="great_prankh_helm_crest" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_great_prankh_helm_crest_h1" name="Round Top Great Helmet with crest +1" mesh="great_prankh_helm_crest" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_great_prankh_helm_horns_h0" name="Round Top Great Helmet with horns" mesh="great_prankh_helm_horns" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_great_prankh_helm_crest_h2" name="Round Top Great Helmet with crest +2" mesh="great_prankh_helm_crest" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="60" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="68" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
-    <Flags UseTeamColor="false" />
+    <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_great_prankh_helm_horns_h1" name="Round Top Great Helmet with horns +1" mesh="great_prankh_helm_horns" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_great_prankh_helm_crest_h3" name="Round Top Great Helmet with crest +3" mesh="great_prankh_helm_crest" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="62" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="70" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
-    <Flags UseTeamColor="false" />
+    <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_great_prankh_helm_horns_h2" name="Round Top Great Helmet with horns +2" mesh="great_prankh_helm_horns" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_great_prankh_helm_horns_h0" name="Round Top Great Helmet with horns" mesh="great_prankh_helm_horns" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_great_prankh_helm_horns_h3" name="Round Top Great Helmet with horns +3" mesh="great_prankh_helm_horns" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_great_prankh_helm_horns_h1" name="Round Top Great Helmet with horns +1" mesh="great_prankh_helm_horns" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_great_prankh_helm_royal_h0" name="Royal Round Top Great Helmet" mesh="great_prankh_helm_royal" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_great_prankh_helm_horns_h2" name="Round Top Great Helmet with horns +2" mesh="great_prankh_helm_horns" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="60" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="68" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_great_prankh_helm_royal_h1" name="Royal Round Top Great Helmet +1" mesh="great_prankh_helm_royal" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_great_prankh_helm_horns_h3" name="Round Top Great Helmet with horns +3" mesh="great_prankh_helm_horns" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="62" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="70" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_great_prankh_helm_royal_h2" name="Royal Round Top Great Helmet +2" mesh="great_prankh_helm_royal" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_great_prankh_helm_royal_h0" name="Royal Round Top Great Helmet" mesh="great_prankh_helm_royal" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_great_prankh_helm_royal_h3" name="Royal Round Top Great Helmet +3" mesh="great_prankh_helm_royal" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_great_prankh_helm_royal_h1" name="Royal Round Top Great Helmet +1" mesh="great_prankh_helm_royal" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_great_prankh_helm_royal_h2" name="Royal Round Top Great Helmet +2" mesh="great_prankh_helm_royal" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="68" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_great_prankh_helm_royal_h3" name="Royal Round Top Great Helmet +3" mesh="great_prankh_helm_royal" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="70" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
@@ -2904,27 +2904,27 @@
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_great_prankh_helm_winged_h0" name="Round Top Great Helmet with wings" mesh="great_prankh_helm_winged" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="60" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_great_prankh_helm_winged_h1" name="Round Top Great Helmet with wings +1" mesh="great_prankh_helm_winged" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="62" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_great_prankh_helm_winged_h2" name="Round Top Great Helmet with wings +2" mesh="great_prankh_helm_winged" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_great_prankh_helm_winged_h0" name="Round Top Great Helmet with wings" mesh="great_prankh_helm_winged" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_great_prankh_helm_winged_h3" name="Round Top Great Helmet with wings +3" mesh="great_prankh_helm_winged" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_great_prankh_helm_winged_h1" name="Round Top Great Helmet with wings +1" mesh="great_prankh_helm_winged" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_great_prankh_helm_winged_h2" name="Round Top Great Helmet with wings +2" mesh="great_prankh_helm_winged" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="68" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_great_prankh_helm_winged_h3" name="Round Top Great Helmet with wings +3" mesh="great_prankh_helm_winged" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="70" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
@@ -3696,51 +3696,51 @@
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_italio_norman_helm_bronze_h0" name="Western Helm With brass Faceplate" mesh="italio_norman_helm_bronze" culture="Culture.vlandia" weight="3.80764" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_italio_norman_helm_bronze_h0" name="Western Helm With brass Faceplate" mesh="italio_norman_helm_bronze" culture="Culture.vlandia" weight="3.926624" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="45" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="46" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_italio_norman_helm_bronze_h1" name="Western Helm With brass Faceplate +1" mesh="italio_norman_helm_bronze" culture="Culture.vlandia" weight="3.80764" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_italio_norman_helm_bronze_h1" name="Western Helm With brass Faceplate +1" mesh="italio_norman_helm_bronze" culture="Culture.vlandia" weight="3.926624" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="47" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="48" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_italio_norman_helm_bronze_h2" name="Western Helm With brass Faceplate +2" mesh="italio_norman_helm_bronze" culture="Culture.vlandia" weight="3.80764" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="49" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_italio_norman_helm_bronze_h3" name="Western Helm With brass Faceplate +3" mesh="italio_norman_helm_bronze" culture="Culture.vlandia" weight="3.80764" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="51" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
-  <Item id="crpg_italio_norman_helm_crown_h0" name="Western Crowned Helmet with Faceplate" mesh="italio_norman_helm_crown" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_italio_norman_helm_bronze_h2" name="Western Helm With brass Faceplate +2" mesh="italio_norman_helm_bronze" culture="Culture.vlandia" weight="3.926624" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="50" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_italio_norman_helm_crown_h1" name="Western Crowned Helmet with Faceplate +1" mesh="italio_norman_helm_crown" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_italio_norman_helm_bronze_h3" name="Western Helm With brass Faceplate +3" mesh="italio_norman_helm_bronze" culture="Culture.vlandia" weight="3.926624" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="52" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_italio_norman_helm_crown_h2" name="Western Crowned Helmet with Faceplate +2" mesh="italio_norman_helm_crown" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_italio_norman_helm_crown_h0" name="Western Crowned Helmet with Faceplate" mesh="italio_norman_helm_crown" culture="Culture.vlandia" weight="3.926624" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="54" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="46" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_italio_norman_helm_crown_h3" name="Western Crowned Helmet with Faceplate +3" mesh="italio_norman_helm_crown" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_italio_norman_helm_crown_h1" name="Western Crowned Helmet with Faceplate +1" mesh="italio_norman_helm_crown" culture="Culture.vlandia" weight="3.926624" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="56" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="48" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_italio_norman_helm_crown_h2" name="Western Crowned Helmet with Faceplate +2" mesh="italio_norman_helm_crown" culture="Culture.vlandia" weight="3.926624" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="50" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="crpg_italio_norman_helm_crown_h3" name="Western Crowned Helmet with Faceplate +3" mesh="italio_norman_helm_crown" culture="Culture.vlandia" weight="3.926624" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="52" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
@@ -5544,51 +5544,51 @@
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_pigface_bascinet_feather_h0" name="Western Bascinet with Plumes" mesh="pigface_bascinet_feather" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="57" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_pigface_bascinet_feather_h1" name="Western Bascinet with Plumes +1" mesh="pigface_bascinet_feather" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="59" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_pigface_bascinet_feather_h2" name="Western Bascinet with Plumes +2" mesh="pigface_bascinet_feather" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_pigface_bascinet_feather_h0" name="Western Bascinet with Plumes" mesh="pigface_bascinet_feather" culture="Culture.vlandia" weight="5.82935" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="61" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_pigface_bascinet_feather_h3" name="Western Bascinet with Plumes +3" mesh="pigface_bascinet_feather" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_pigface_bascinet_feather_h1" name="Western Bascinet with Plumes +1" mesh="pigface_bascinet_feather" culture="Culture.vlandia" weight="5.82935" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="63" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_pigface_bascinet_tail_h0" name="Western Bascinet with mane" mesh="pigface_bascinet_tail" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_pigface_bascinet_feather_h2" name="Western Bascinet with Plumes +2" mesh="pigface_bascinet_feather" culture="Culture.vlandia" weight="5.82935" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="57" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="65" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_pigface_bascinet_tail_h1" name="Western Bascinet with mane +1" mesh="pigface_bascinet_tail" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_pigface_bascinet_feather_h3" name="Western Bascinet with Plumes +3" mesh="pigface_bascinet_feather" culture="Culture.vlandia" weight="5.82935" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="59" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="67" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_pigface_bascinet_tail_h2" name="Western Bascinet with mane +2" mesh="pigface_bascinet_tail" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_pigface_bascinet_tail_h0" name="Western Bascinet with mane" mesh="pigface_bascinet_tail" culture="Culture.vlandia" weight="5.82935" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="61" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_pigface_bascinet_tail_h3" name="Western Bascinet with mane +3" mesh="pigface_bascinet_tail" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_pigface_bascinet_tail_h1" name="Western Bascinet with mane +1" mesh="pigface_bascinet_tail" culture="Culture.vlandia" weight="5.82935" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="63" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_pigface_bascinet_tail_h2" name="Western Bascinet with mane +2" mesh="pigface_bascinet_tail" culture="Culture.vlandia" weight="5.82935" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="65" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_pigface_bascinet_tail_h3" name="Western Bascinet with mane +3" mesh="pigface_bascinet_tail" culture="Culture.vlandia" weight="5.82935" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="67" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
@@ -5880,27 +5880,27 @@
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_Pothelm2_h0" name="Painted Roundtop Full Helm" mesh="pothelm2" culture="Culture.vlandia" weight="4.167696" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_Pothelm2_h0" name="Painted Roundtop Full Helm" mesh="pothelm2" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="48" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_Pothelm2_h1" name="Painted Roundtop Full Helm +1" mesh="pothelm2" culture="Culture.vlandia" weight="4.167696" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_Pothelm2_h1" name="Painted Roundtop Full Helm +1" mesh="pothelm2" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="50" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_Pothelm2_h2" name="Painted Roundtop Full Helm +2" mesh="pothelm2" culture="Culture.vlandia" weight="4.167696" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_Pothelm2_h2" name="Painted Roundtop Full Helm +2" mesh="pothelm2" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="52" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="68" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_Pothelm2_h3" name="Painted Roundtop Full Helm +3" mesh="pothelm2" culture="Culture.vlandia" weight="4.167696" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_Pothelm2_h3" name="Painted Roundtop Full Helm +3" mesh="pothelm2" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="54" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="70" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
@@ -6120,75 +6120,75 @@
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_royal_great_helm_brass_h0" name="Ornate Brass Great Helmet" mesh="royal_great_helm_brass" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="55" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="false" />
-  </Item>
-  <Item id="crpg_royal_great_helm_brass_h1" name="Ornate Brass Great Helmet +1" mesh="royal_great_helm_brass" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_royal_great_helm_brass_h0" name="Ornate Brass Great Helmet" mesh="royal_great_helm_brass" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="57" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_royal_great_helm_brass_h2" name="Ornate Brass Great Helmet +2" mesh="royal_great_helm_brass" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_royal_great_helm_brass_h1" name="Ornate Brass Great Helmet +1" mesh="royal_great_helm_brass" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="59" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_royal_great_helm_brass_h3" name="Ornate Brass Great Helmet +3" mesh="royal_great_helm_brass" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_royal_great_helm_brass_h2" name="Ornate Brass Great Helmet +2" mesh="royal_great_helm_brass" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="61" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_royal_great_helm_h0" name="Ornate Great Helmet" mesh="royal_great_helm" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_royal_great_helm_brass_h3" name="Ornate Brass Great Helmet +3" mesh="royal_great_helm_brass" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="55" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="63" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_royal_great_helm_h1" name="Ornate Great Helmet +1" mesh="royal_great_helm" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_royal_great_helm_h0" name="Ornate Great Helmet" mesh="royal_great_helm" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="57" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_royal_great_helm_h2" name="Ornate Great Helmet +2" mesh="royal_great_helm" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_royal_great_helm_h1" name="Ornate Great Helmet +1" mesh="royal_great_helm" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="59" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_royal_great_helm_h3" name="Ornate Great Helmet +3" mesh="royal_great_helm" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_royal_great_helm_h2" name="Ornate Great Helmet +2" mesh="royal_great_helm" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="61" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_rus_helm_noble_icon_h0" name="Vaegir Decorated Noble Helmet" mesh="rus_helm_noble_icon" culture="Culture.sturgia" weight="20.73605" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_royal_great_helm_h3" name="Ornate Great Helmet +3" mesh="royal_great_helm" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="151" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="63" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_rus_helm_noble_icon_h1" name="Vaegir Decorated Noble Helmet +1" mesh="rus_helm_noble_icon" culture="Culture.sturgia" weight="20.73605" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_rus_helm_noble_icon_h0" name="Vaegir Decorated Noble Helmet" mesh="rus_helm_noble_icon" culture="Culture.sturgia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="153" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="52" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_rus_helm_noble_icon_h2" name="Vaegir Decorated Noble Helmet +2" mesh="rus_helm_noble_icon" culture="Culture.sturgia" weight="20.73605" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_rus_helm_noble_icon_h1" name="Vaegir Decorated Noble Helmet +1" mesh="rus_helm_noble_icon" culture="Culture.sturgia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="155" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="54" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_rus_helm_noble_icon_h3" name="Vaegir Decorated Noble Helmet +3" mesh="rus_helm_noble_icon" culture="Culture.sturgia" weight="20.73605" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_rus_helm_noble_icon_h2" name="Vaegir Decorated Noble Helmet +2" mesh="rus_helm_noble_icon" culture="Culture.sturgia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="157" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="56" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_rus_helm_noble_icon_h3" name="Vaegir Decorated Noble Helmet +3" mesh="rus_helm_noble_icon" culture="Culture.sturgia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="58" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
@@ -6312,51 +6312,51 @@
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_sa_2ChurburghHelm_h0" name="Blackend Hounskull Bascinet" mesh="sa_2churburghhelm" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_2ChurburghHelm_h0" name="Blackend Hounskull Bascinet" mesh="sa_2churburghhelm" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="57" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_sa_2ChurburghHelm_h1" name="Blackend Hounskull Bascinet +1" mesh="sa_2churburghhelm" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_2ChurburghHelm_h1" name="Blackend Hounskull Bascinet +1" mesh="sa_2churburghhelm" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_sa_2ChurburghHelm_h2" name="Blackend Hounskull Bascinet +2" mesh="sa_2churburghhelm" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="68" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_sa_2ChurburghHelm_h3" name="Blackend Hounskull Bascinet +3" mesh="sa_2churburghhelm" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="70" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_sa_bacinet_with_facemask_h0" name="bacinet with facemask" mesh="sa_bacinet_with_facemask" culture="Culture.vlandia" weight="5.56354" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="59" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_sa_2ChurburghHelm_h2" name="Blackend Hounskull Bascinet +2" mesh="sa_2churburghhelm" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_bacinet_with_facemask_h1" name="bacinet with facemask +1" mesh="sa_bacinet_with_facemask" culture="Culture.vlandia" weight="5.56354" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="61" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_sa_2ChurburghHelm_h3" name="Blackend Hounskull Bascinet +3" mesh="sa_2churburghhelm" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_bacinet_with_facemask_h2" name="bacinet with facemask +2" mesh="sa_bacinet_with_facemask" culture="Culture.vlandia" weight="5.56354" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="63" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_sa_bacinet_with_facemask_h0" name="bacinet with facemask" mesh="sa_bacinet_with_facemask" culture="Culture.vlandia" weight="4.914843" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_bacinet_with_facemask_h3" name="bacinet with facemask +3" mesh="sa_bacinet_with_facemask" culture="Culture.vlandia" weight="5.56354" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="54" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="false" />
-  </Item>
-  <Item id="crpg_sa_bacinet_with_facemask_h1" name="bacinet with facemask +1" mesh="sa_bacinet_with_facemask" culture="Culture.vlandia" weight="4.914843" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="56" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="false" />
-  </Item>
-  <Item id="crpg_sa_bacinet_with_facemask_h2" name="bacinet with facemask +2" mesh="sa_bacinet_with_facemask" culture="Culture.vlandia" weight="4.914843" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="58" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="false" />
-  </Item>
-  <Item id="crpg_sa_bacinet_with_facemask_h3" name="bacinet with facemask +3" mesh="sa_bacinet_with_facemask" culture="Culture.vlandia" weight="4.914843" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="60" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="65" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
@@ -6384,171 +6384,171 @@
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_sa_barbute2_h0" name="Western painted Barbute" mesh="sa_barbute2" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_barbute2_h0" name="Western painted Barbute" mesh="sa_barbute2" culture="Culture.vlandia" weight="4.289758" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="50" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="49" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_sa_barbute2_h1" name="Western painted Barbute +1" mesh="sa_barbute2" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_barbute2_h1" name="Western painted Barbute +1" mesh="sa_barbute2" culture="Culture.vlandia" weight="4.289758" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="52" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="51" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_sa_barbute2_h2" name="Western painted Barbute +2" mesh="sa_barbute2" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_barbute2_h2" name="Western painted Barbute +2" mesh="sa_barbute2" culture="Culture.vlandia" weight="4.289758" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="54" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="53" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_sa_barbute2_h3" name="Western painted Barbute +3" mesh="sa_barbute2" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_barbute2_h3" name="Western painted Barbute +3" mesh="sa_barbute2" culture="Culture.vlandia" weight="4.289758" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="56" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="55" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_sa_barbute3_h0" name="Western Barbute with Plume" mesh="sa_barbute3" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_barbute3_h0" name="Western Barbute with Plume" mesh="sa_barbute3" culture="Culture.vlandia" weight="4.289758" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="50" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="49" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_sa_barbute3_h1" name="Western Barbute with Plume +1" mesh="sa_barbute3" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_barbute3_h1" name="Western Barbute with Plume +1" mesh="sa_barbute3" culture="Culture.vlandia" weight="4.289758" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="52" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="51" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_sa_barbute3_h2" name="Western Barbute with Plume +2" mesh="sa_barbute3" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_barbute3_h2" name="Western Barbute with Plume +2" mesh="sa_barbute3" culture="Culture.vlandia" weight="4.289758" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="54" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="53" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_sa_barbute3_h3" name="Western Barbute with Plume +3" mesh="sa_barbute3" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_barbute3_h3" name="Western Barbute with Plume +3" mesh="sa_barbute3" culture="Culture.vlandia" weight="4.289758" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="56" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="55" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_sa_barbute4_h0" name="Western painted Barbute with Plume" mesh="sa_barbute4" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_barbute4_h0" name="Western painted Barbute with Plume" mesh="sa_barbute4" culture="Culture.vlandia" weight="4.289758" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="50" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="49" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_sa_barbute4_h1" name="Western painted Barbute with Plume +1" mesh="sa_barbute4" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_barbute4_h1" name="Western painted Barbute with Plume +1" mesh="sa_barbute4" culture="Culture.vlandia" weight="4.289758" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="52" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="51" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_sa_barbute4_h2" name="Western painted Barbute with Plume +2" mesh="sa_barbute4" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_barbute4_h2" name="Western painted Barbute with Plume +2" mesh="sa_barbute4" culture="Culture.vlandia" weight="4.289758" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="54" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="53" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_sa_barbute4_h3" name="Western painted Barbute with Plume +3" mesh="sa_barbute4" culture="Culture.vlandia" weight="4.412821" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_barbute4_h3" name="Western painted Barbute with Plume +3" mesh="sa_barbute4" culture="Culture.vlandia" weight="4.289758" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="56" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="55" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_sa_churburghHelm_black_trimmed_feather_h0" name="Trimmed Hounskull Bascinet With plume" mesh="sa_churburghHelm_black_trimmed_feather" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_churburghHelm_black_trimmed_feather_h0" name="Trimmed Hounskull Bascinet With plume" mesh="sa_churburghHelm_black_trimmed_feather" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="57" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_sa_churburghHelm_black_trimmed_feather_h1" name="Trimmed Hounskull Bascinet With plume +1" mesh="sa_churburghHelm_black_trimmed_feather" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_churburghHelm_black_trimmed_feather_h1" name="Trimmed Hounskull Bascinet With plume +1" mesh="sa_churburghHelm_black_trimmed_feather" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="59" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_sa_churburghHelm_black_trimmed_feather_h2" name="Trimmed Hounskull Bascinet With plume +2" mesh="sa_churburghHelm_black_trimmed_feather" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_churburghHelm_black_trimmed_feather_h2" name="Trimmed Hounskull Bascinet With plume +2" mesh="sa_churburghHelm_black_trimmed_feather" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="61" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="68" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_sa_churburghHelm_black_trimmed_feather_h3" name="Trimmed Hounskull Bascinet With plume +3" mesh="sa_churburghHelm_black_trimmed_feather" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_churburghHelm_black_trimmed_feather_h3" name="Trimmed Hounskull Bascinet With plume +3" mesh="sa_churburghHelm_black_trimmed_feather" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="63" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="70" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_sa_churburghHelm_feather_h0" name="Hounskull Bascinet With plume" mesh="sa_churburghHelm_feather" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_churburghHelm_feather_h0" name="Hounskull Bascinet With plume" mesh="sa_churburghHelm_feather" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="57" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_sa_churburghHelm_feather_h1" name="Hounskull Bascinet With plume +1" mesh="sa_churburghHelm_feather" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_churburghHelm_feather_h1" name="Hounskull Bascinet With plume +1" mesh="sa_churburghHelm_feather" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="59" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_sa_churburghHelm_feather_h2" name="Hounskull Bascinet With plume +2" mesh="sa_churburghHelm_feather" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_churburghHelm_feather_h2" name="Hounskull Bascinet With plume +2" mesh="sa_churburghHelm_feather" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="61" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="68" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_sa_churburghHelm_feather_h3" name="Hounskull Bascinet With plume +3" mesh="sa_churburghHelm_feather" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_churburghHelm_feather_h3" name="Hounskull Bascinet With plume +3" mesh="sa_churburghHelm_feather" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="63" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="70" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_sa_ChurburghHelm_h0" name="Trimmed Hounskull Bascinet" mesh="sa_churburghhelm" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_ChurburghHelm_h0" name="Trimmed Hounskull Bascinet" mesh="sa_churburghhelm" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="57" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_sa_ChurburghHelm_h1" name="Trimmed Hounskull Bascinet +1" mesh="sa_churburghhelm" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_ChurburghHelm_h1" name="Trimmed Hounskull Bascinet +1" mesh="sa_churburghhelm" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="59" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_sa_ChurburghHelm_h2" name="Trimmed Hounskull Bascinet +2" mesh="sa_churburghhelm" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_ChurburghHelm_h2" name="Trimmed Hounskull Bascinet +2" mesh="sa_churburghhelm" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="61" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="68" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_sa_ChurburghHelm_h3" name="Trimmed Hounskull Bascinet +3" mesh="sa_churburghhelm" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_ChurburghHelm_h3" name="Trimmed Hounskull Bascinet +3" mesh="sa_churburghhelm" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="63" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="70" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_sa_churburghHelm_trimmed_feather_h0" name="Hounskull Bascinet With plume" mesh="sa_churburghHelm_trimmed_feather" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_churburghHelm_trimmed_feather_h0" name="Hounskull Bascinet With plume" mesh="sa_churburghHelm_trimmed_feather" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="57" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_sa_churburghHelm_trimmed_feather_h1" name="Hounskull Bascinet With plume +1" mesh="sa_churburghHelm_trimmed_feather" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_churburghHelm_trimmed_feather_h1" name="Hounskull Bascinet With plume +1" mesh="sa_churburghHelm_trimmed_feather" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="59" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_sa_churburghHelm_trimmed_feather_h2" name="Hounskull Bascinet With plume +2" mesh="sa_churburghHelm_trimmed_feather" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_churburghHelm_trimmed_feather_h2" name="Hounskull Bascinet With plume +2" mesh="sa_churburghHelm_trimmed_feather" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="61" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="68" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_sa_churburghHelm_trimmed_feather_h3" name="Hounskull Bascinet With plume +3" mesh="sa_churburghHelm_trimmed_feather" culture="Culture.vlandia" weight="5.301309" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_churburghHelm_trimmed_feather_h3" name="Hounskull Bascinet With plume +3" mesh="sa_churburghHelm_trimmed_feather" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="63" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="70" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
@@ -6576,27 +6576,27 @@
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_sa_visoredkettlehelmet1_h0" name="Painted Visored Kettle Helmet" mesh="sa_visoredkettlehelmet1" culture="Culture.vlandia" weight="3.228808" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_visoredkettlehelmet1_h0" name="Painted Visored Kettle Helmet" mesh="sa_visoredkettlehelmet1" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="40" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="55" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_sa_visoredkettlehelmet1_h1" name="Painted Visored Kettle Helmet +1" mesh="sa_visoredkettlehelmet1" culture="Culture.vlandia" weight="3.228808" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_visoredkettlehelmet1_h1" name="Painted Visored Kettle Helmet +1" mesh="sa_visoredkettlehelmet1" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="42" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="57" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_sa_visoredkettlehelmet1_h2" name="Painted Visored Kettle Helmet +2" mesh="sa_visoredkettlehelmet1" culture="Culture.vlandia" weight="3.228808" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_visoredkettlehelmet1_h2" name="Painted Visored Kettle Helmet +2" mesh="sa_visoredkettlehelmet1" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="44" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="59" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_sa_visoredkettlehelmet1_h3" name="Painted Visored Kettle Helmet +3" mesh="sa_visoredkettlehelmet1" culture="Culture.vlandia" weight="3.228808" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sa_visoredkettlehelmet1_h3" name="Painted Visored Kettle Helmet +3" mesh="sa_visoredkettlehelmet1" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="46" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="61" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
@@ -6648,27 +6648,27 @@
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_sallet_crowned_h0" name="Western Crowned Sallet" mesh="sallet_crowned" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="60" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="false" />
-  </Item>
-  <Item id="crpg_sallet_crowned_h1" name="Western Crowned Sallet +1" mesh="sallet_crowned" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="62" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="false" />
-  </Item>
-  <Item id="crpg_sallet_crowned_h2" name="Western Crowned Sallet +2" mesh="sallet_crowned" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sallet_crowned_h0" name="Western Crowned Sallet" mesh="sallet_crowned" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_sallet_crowned_h3" name="Western Crowned Sallet +3" mesh="sallet_crowned" culture="Culture.vlandia" weight="5.696001" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sallet_crowned_h1" name="Western Crowned Sallet +1" mesh="sallet_crowned" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_sallet_crowned_h2" name="Western Crowned Sallet +2" mesh="sallet_crowned" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="68" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="false" />
+  </Item>
+  <Item id="crpg_sallet_crowned_h3" name="Western Crowned Sallet +3" mesh="sallet_crowned" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="70" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
@@ -6720,27 +6720,27 @@
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_sallet_wings_h0" name="Western Winged Sallet" mesh="sallet_winged" culture="Culture.vlandia" weight="5.17156" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sallet_wings_h0" name="Western Winged Sallet" mesh="sallet_winged" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="56" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_sallet_wings_h1" name="Western Winged Sallet +1" mesh="sallet_winged" culture="Culture.vlandia" weight="5.17156" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sallet_wings_h1" name="Western Winged Sallet +1" mesh="sallet_winged" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="58" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_sallet_wings_h2" name="Western Winged Sallet +2" mesh="sallet_winged" culture="Culture.vlandia" weight="5.17156" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sallet_wings_h2" name="Western Winged Sallet +2" mesh="sallet_winged" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="60" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="68" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_sallet_wings_h3" name="Western Winged Sallet +3" mesh="sallet_winged" culture="Culture.vlandia" weight="5.17156" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_sallet_wings_h3" name="Western Winged Sallet +3" mesh="sallet_winged" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="62" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="70" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
@@ -7872,27 +7872,27 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_va_norselord_h0" name="Northren lord helmet" mesh="va_norselord" culture="Culture.sturgia" weight="20.73605" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_va_norselord_h0" name="Northren lord helmet" mesh="va_norselord" culture="Culture.sturgia" weight="4.914843" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="151" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="54" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_va_norselord_h1" name="Northren lord helmet +1" mesh="va_norselord" culture="Culture.sturgia" weight="20.73605" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_va_norselord_h1" name="Northren lord helmet +1" mesh="va_norselord" culture="Culture.sturgia" weight="4.914843" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="153" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="56" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_va_norselord_h2" name="Northren lord helmet +2" mesh="va_norselord" culture="Culture.sturgia" weight="20.73605" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_va_norselord_h2" name="Northren lord helmet +2" mesh="va_norselord" culture="Culture.sturgia" weight="4.914843" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="155" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="58" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_va_norselord_h3" name="Northren lord helmet +3" mesh="va_norselord" culture="Culture.sturgia" weight="20.73605" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_va_norselord_h3" name="Northren lord helmet +3" mesh="va_norselord" culture="Culture.sturgia" weight="4.914843" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="157" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="60" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
@@ -8208,123 +8208,123 @@
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_vlandian_helm_with_faceplate_blackend_brass_h0" name="Western Ornate Full Plate Helmet" mesh="vlandian_helm_with_faceplate_black" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="52" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="false" />
-  </Item>
-  <Item id="crpg_vlandian_helm_with_faceplate_blackend_brass_h1" name="Western Ornate Full Plate Helmet +1" mesh="vlandian_helm_with_faceplate_black" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
-    <ItemComponent>
-      <Armor head_armor="54" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
-    </ItemComponent>
-    <Flags UseTeamColor="false" />
-  </Item>
-  <Item id="crpg_vlandian_helm_with_faceplate_blackend_brass_h2" name="Western Ornate Full Plate Helmet +2" mesh="vlandian_helm_with_faceplate_black" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_vlandian_helm_with_faceplate_blackend_brass_h0" name="Western Ornate Full Plate Helmet" mesh="vlandian_helm_with_faceplate_black" culture="Culture.vlandia" weight="5.17156" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="56" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_vlandian_helm_with_faceplate_blackend_brass_h3" name="Western Ornate Full Plate Helmet +3" mesh="vlandian_helm_with_faceplate_black" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_vlandian_helm_with_faceplate_blackend_brass_h1" name="Western Ornate Full Plate Helmet +1" mesh="vlandian_helm_with_faceplate_black" culture="Culture.vlandia" weight="5.17156" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="58" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_vlandian_helm_with_faceplate_brass_h0" name="Western Ornate Full Plate Helmet" mesh="vlandian_helm_with_faceplate_brass" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_vlandian_helm_with_faceplate_blackend_brass_h2" name="Western Ornate Full Plate Helmet +2" mesh="vlandian_helm_with_faceplate_black" culture="Culture.vlandia" weight="5.17156" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="52" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="60" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_vlandian_helm_with_faceplate_brass_h1" name="Western Ornate Full Plate Helmet +1" mesh="vlandian_helm_with_faceplate_brass" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_vlandian_helm_with_faceplate_blackend_brass_h3" name="Western Ornate Full Plate Helmet +3" mesh="vlandian_helm_with_faceplate_black" culture="Culture.vlandia" weight="5.17156" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="54" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="62" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_vlandian_helm_with_faceplate_brass_h2" name="Western Ornate Full Plate Helmet +2" mesh="vlandian_helm_with_faceplate_brass" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_vlandian_helm_with_faceplate_brass_h0" name="Western Ornate Full Plate Helmet" mesh="vlandian_helm_with_faceplate_brass" culture="Culture.vlandia" weight="5.17156" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="56" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_vlandian_helm_with_faceplate_brass_h3" name="Western Ornate Full Plate Helmet +3" mesh="vlandian_helm_with_faceplate_brass" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_vlandian_helm_with_faceplate_brass_h1" name="Western Ornate Full Plate Helmet +1" mesh="vlandian_helm_with_faceplate_brass" culture="Culture.vlandia" weight="5.17156" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="58" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_vlandian_helm_with_faceplate_h0" name="Western Full Plate Helmet" mesh="vlandian_helm_with_faceplate" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_vlandian_helm_with_faceplate_brass_h2" name="Western Ornate Full Plate Helmet +2" mesh="vlandian_helm_with_faceplate_brass" culture="Culture.vlandia" weight="5.17156" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="52" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="60" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_vlandian_helm_with_faceplate_h1" name="Western Full Plate Helmet +1" mesh="vlandian_helm_with_faceplate" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_vlandian_helm_with_faceplate_brass_h3" name="Western Ornate Full Plate Helmet +3" mesh="vlandian_helm_with_faceplate_brass" culture="Culture.vlandia" weight="5.17156" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="54" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="62" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_vlandian_helm_with_faceplate_h2" name="Western Full Plate Helmet +2" mesh="vlandian_helm_with_faceplate" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_vlandian_helm_with_faceplate_h0" name="Western Full Plate Helmet" mesh="vlandian_helm_with_faceplate" culture="Culture.vlandia" weight="5.17156" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="56" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_vlandian_helm_with_faceplate_h3" name="Western Full Plate Helmet +3" mesh="vlandian_helm_with_faceplate" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_vlandian_helm_with_faceplate_h1" name="Western Full Plate Helmet +1" mesh="vlandian_helm_with_faceplate" culture="Culture.vlandia" weight="5.17156" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="58" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_vlandian_helm_with_faceplate_painted_h0" name="Western Painted Full Plate Helmet" mesh="vlandian_helm_with_faceplate_paint" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_vlandian_helm_with_faceplate_h2" name="Western Full Plate Helmet +2" mesh="vlandian_helm_with_faceplate" culture="Culture.vlandia" weight="5.17156" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="52" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="60" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
-    <Flags UseTeamColor="true" />
+    <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_vlandian_helm_with_faceplate_painted_h1" name="Western Painted Full Plate Helmet +1" mesh="vlandian_helm_with_faceplate_paint" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_vlandian_helm_with_faceplate_h3" name="Western Full Plate Helmet +3" mesh="vlandian_helm_with_faceplate" culture="Culture.vlandia" weight="5.17156" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="54" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="62" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
-    <Flags UseTeamColor="true" />
+    <Flags UseTeamColor="false" />
   </Item>
-  <Item id="crpg_vlandian_helm_with_faceplate_painted_h2" name="Western Painted Full Plate Helmet +2" mesh="vlandian_helm_with_faceplate_paint" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_vlandian_helm_with_faceplate_painted_h0" name="Western Painted Full Plate Helmet" mesh="vlandian_helm_with_faceplate_paint" culture="Culture.vlandia" weight="5.17156" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="56" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_vlandian_helm_with_faceplate_painted_h3" name="Western Painted Full Plate Helmet +3" mesh="vlandian_helm_with_faceplate_paint" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_vlandian_helm_with_faceplate_painted_h1" name="Western Painted Full Plate Helmet +1" mesh="vlandian_helm_with_faceplate_paint" culture="Culture.vlandia" weight="5.17156" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
       <Armor head_armor="58" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_vlandian_helm_with_visor_h0" name="Western Helmet With Visor" mesh="vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_vlandian_helm_with_faceplate_painted_h2" name="Western Painted Full Plate Helmet +2" mesh="vlandian_helm_with_faceplate_paint" culture="Culture.vlandia" weight="5.17156" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="55" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="60" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_vlandian_helm_with_faceplate_painted_h3" name="Western Painted Full Plate Helmet +3" mesh="vlandian_helm_with_faceplate_paint" culture="Culture.vlandia" weight="5.17156" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="62" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_vlandian_helm_with_visor_h0" name="Western Helmet With Visor" mesh="vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+    <ItemComponent>
+      <Armor head_armor="62" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_vlandian_helm_with_visor_h1" name="Western Helmet With Visor +1" mesh="vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_vlandian_helm_with_visor_h1" name="Western Helmet With Visor +1" mesh="vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="57" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_vlandian_helm_with_visor_h2" name="Western Helmet With Visor +2" mesh="vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_vlandian_helm_with_visor_h2" name="Western Helmet With Visor +2" mesh="vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="59" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_vlandian_helm_with_visor_h3" name="Western Helmet With Visor +3" mesh="vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.042735" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_vlandian_helm_with_visor_h3" name="Western Helmet With Visor +3" mesh="vlandian_helm_with_visor" culture="Culture.vlandia" weight="5.963575" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="61" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="68" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
@@ -8400,75 +8400,75 @@
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_winged_great_helm_base_h0" name="Winged Great Helmet" mesh="winged_great_helm_base" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_winged_great_helm_base_h0" name="Winged Great Helmet" mesh="winged_great_helm_base" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="52" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_winged_great_helm_base_h1" name="Winged Great Helmet +1" mesh="winged_great_helm_base" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_winged_great_helm_base_h1" name="Winged Great Helmet +1" mesh="winged_great_helm_base" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="54" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_winged_great_helm_base_h2" name="Winged Great Helmet +2" mesh="winged_great_helm_base" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_winged_great_helm_base_h2" name="Winged Great Helmet +2" mesh="winged_great_helm_base" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="56" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="68" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_winged_great_helm_base_h3" name="Winged Great Helmet +3" mesh="winged_great_helm_base" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_winged_great_helm_base_h3" name="Winged Great Helmet +3" mesh="winged_great_helm_base" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="58" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="70" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_winged_great_helm_brass_h0" name="Winged Great Helmet" mesh="winged_great_helm_brass" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_winged_great_helm_brass_h0" name="Winged Great Helmet" mesh="winged_great_helm_brass" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="52" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_winged_great_helm_brass_h1" name="Winged Great Helmet +1" mesh="winged_great_helm_brass" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_winged_great_helm_brass_h1" name="Winged Great Helmet +1" mesh="winged_great_helm_brass" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="54" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_winged_great_helm_brass_h2" name="Winged Great Helmet +2" mesh="winged_great_helm_brass" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_winged_great_helm_brass_h2" name="Winged Great Helmet +2" mesh="winged_great_helm_brass" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="56" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="68" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_winged_great_helm_brass_h3" name="Winged Great Helmet +3" mesh="winged_great_helm_brass" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_winged_great_helm_brass_h3" name="Winged Great Helmet +3" mesh="winged_great_helm_brass" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="58" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="70" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_winged_great_helm_dark_h0" name="Winged Blackened Great Helmet" mesh="winged_great_helm_dark" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_winged_great_helm_dark_h0" name="Winged Blackened Great Helmet" mesh="winged_great_helm_dark" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="52" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="64" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_winged_great_helm_dark_h1" name="Winged Blackened Great Helmet +1" mesh="winged_great_helm_dark" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_winged_great_helm_dark_h1" name="Winged Blackened Great Helmet +1" mesh="winged_great_helm_dark" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="54" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="66" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_winged_great_helm_dark_h2" name="Winged Blackened Great Helmet +2" mesh="winged_great_helm_dark" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_winged_great_helm_dark_h2" name="Winged Blackened Great Helmet +2" mesh="winged_great_helm_dark" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="56" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="68" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
-  <Item id="crpg_winged_great_helm_dark_h3" name="Winged Blackened Great Helmet +3" mesh="winged_great_helm_dark" culture="Culture.vlandia" weight="4.661901" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
+  <Item id="crpg_winged_great_helm_dark_h3" name="Winged Blackened Great Helmet +3" mesh="winged_great_helm_dark" culture="Culture.vlandia" weight="6.234625" appearance="1" Type="HeadArmor" subtype="head_armor" difficulty="0">
     <ItemComponent>
-      <Armor head_armor="58" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
+      <Armor head_armor="70" has_gender_variations="false" hair_cover_type="all" modifier_group="plate" material_type="Plate" beard_cover_type="all" />
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>

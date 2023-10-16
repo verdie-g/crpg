@@ -73,7 +73,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
                 ("crpg_light_tunic_v2_h0", ItemSlot.Body),
                 ("crpg_leather_shoes_v2_h0", ItemSlot.Leg),
                 ("crpg_hoe_v1_h0", ItemSlot.Weapon0),
-                ("crpg_bound_adarga_v2_h0", ItemSlot.Weapon1),
+                ("crpg_bound_adarga_v3_h0", ItemSlot.Weapon1),
             },
             // khuzait
             new[]
@@ -100,7 +100,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
                 ("crpg_vlandia_bandit_c_v2_h0", ItemSlot.Body),
                 ("crpg_rough_tied_boots_v2_h0", ItemSlot.Leg),
                 ("crpg_spiked_club_h0", ItemSlot.Weapon0),
-                ("crpg_bound_adarga_v2_h0", ItemSlot.Weapon1),
+                ("crpg_bound_adarga_v3_h0", ItemSlot.Weapon1),
             },
         };
         private static readonly ILogger Logger = LoggerFactory.CreateLogger<GetGameUserCommand>();

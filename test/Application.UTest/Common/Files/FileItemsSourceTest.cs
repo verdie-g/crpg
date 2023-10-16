@@ -38,7 +38,6 @@ public class FileItemsSourceTest
     }
 
     [Test]
-    [Ignore(" The item Update is partial for the moment")]
     public async Task CheckNoTestItems()
     {
         var items = await new FileItemsSource().LoadItems();
@@ -56,7 +55,6 @@ public class FileItemsSourceTest
     }
 
     [Test]
-    [Ignore(" The item Update is partial for the moment")]
     public async Task CheckItemTier()
     {
         var items = await new FileItemsSource().LoadItems();
@@ -74,7 +72,6 @@ public class FileItemsSourceTest
     }
 
     [Test]
-    [Ignore(" The item Update is partial for the moment")]
     public async Task CheckPriceRange()
     {
         var items = await new FileItemsSource().LoadItems();
