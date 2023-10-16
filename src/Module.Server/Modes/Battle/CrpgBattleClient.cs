@@ -2,6 +2,7 @@
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
+using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.MissionRepresentatives;
 using TaleWorlds.MountAndBlade.Objects;
@@ -11,7 +12,7 @@ namespace Crpg.Module.Modes.Battle;
 
 internal class CrpgBattleClient : MissionMultiplayerGameModeBaseClient, ICommanderInfo
 {
-    private const int BattleFlagsRemovalTime = 120;
+    private const int BattleFlagSpawnTime = 150;
     private const int SkirmishFlagsRemovalTime = 120;
 
     private readonly bool _isSkirmish;
@@ -41,7 +42,7 @@ internal class CrpgBattleClient : MissionMultiplayerGameModeBaseClient, ICommand
     public override bool IsGameModeUsingCasualGold => false;
     public IEnumerable<FlagCapturePoint> AllCapturePoints => _flags;
     public bool AreMoralesIndependent => false;
-    public float FlagsRemovalTime => _isSkirmish ? SkirmishFlagsRemovalTime : BattleFlagsRemovalTime;
+    public float FlagManipulationTime => _isSkirmish ? SkirmishFlagsRemovalTime : BattleFlagSpawnTime;
 
     public override void OnBehaviorInitialize()
     {
@@ -201,7 +202,14 @@ internal class CrpgBattleClient : MissionMultiplayerGameModeBaseClient, ICommand
         {
             registerer.Register<FlagDominationMoraleChangeMessage>(OnMoraleChange);
             registerer.Register<FlagDominationCapturePointMessage>(OnCapturePoint);
-            registerer.Register<FlagDominationFlagsRemovedMessage>(OnFlagsRemoved);
+            if (_isSkirmish)
+            {
+                registerer.Register<FlagDominationFlagsRemovedMessage>(OnFlagsRemovedSkirmish);
+            }
+            else
+            {
+                registerer.Register<CrpgBattleSpawnFlagMessage>(OnFlagsSpawnedBattle);
+            }
         }
     }
 
@@ -212,7 +220,7 @@ internal class CrpgBattleClient : MissionMultiplayerGameModeBaseClient, ICommand
             return 0;
         }
 
-        float timerStart = MultiplayerOptions.OptionType.RoundTimeLimit.GetIntValue() - FlagsRemovalTime;
+        float timerStart = MultiplayerOptions.OptionType.RoundTimeLimit.GetIntValue() - FlagManipulationTime;
         float timerEnd = timerStart + 30f;
         if (RoundComponent.RemainingRoundTime < timerStart
             || RoundComponent.RemainingRoundTime > timerEnd)
@@ -224,10 +232,25 @@ internal class CrpgBattleClient : MissionMultiplayerGameModeBaseClient, ICommand
         if (!_notifiedForFlagRemoval)
         {
             _notifiedForFlagRemoval = true;
-            NotificationsComponent.FlagsWillBeRemovedInXSeconds(30);
+            NotifyForFlagManipulation();
         }
 
         return warningTimer;
+    }
+
+    private void NotifyForFlagManipulation()
+    {
+        if (!_isSkirmish)
+        {
+            TextObject textObject = new("{=nbOZ9BNX}A flag will spawn in {TIMER} seconds.",
+            new Dictionary<string, object> { ["TIMER"] = 30 });
+            string soundEventPath = "event:/ui/mission/multiplayer/pointwarning";
+            MBInformationManager.AddQuickInformation(textObject, 0, null, soundEventPath);
+        }
+        else
+        {
+            NotificationsComponent.FlagsWillBeRemovedInXSeconds(30);
+        }
     }
 
     private void OnPreparationEnded()
@@ -267,8 +290,18 @@ internal class CrpgBattleClient : MissionMultiplayerGameModeBaseClient, ICommand
         CaptureFlag(capturedFlag, message.OwnerTeam);
     }
 
-    private void OnFlagsRemoved(FlagDominationFlagsRemovedMessage message)
+    private void OnFlagsRemovedSkirmish(FlagDominationFlagsRemovedMessage message)
     {
+        ChangeNumberOfFlags();
+    }
+
+    private void OnFlagsSpawnedBattle(CrpgBattleSpawnFlagMessage message)
+    {
+        TextObject textObject = new("{=nbOZ9BNX}Flag {NAME} has spawned.",
+                new Dictionary<string, object> { ["NAME"] = char.ConvertFromUtf32(message.FlagChar) });
+        string soundEventPath = "event:/ui/mission/multiplayer/pointsremoved";
+        MBInformationManager.AddQuickInformation(textObject, 0, null, soundEventPath);
+
         ChangeNumberOfFlags();
     }
 
