@@ -11,7 +11,7 @@
         <InvariantGlobalization>true</InvariantGlobalization>
 
         <!-- Use Bannerlord version + cRPG version for the revision number -->
-        <Version>1.1.6.80</Version>
+        <Version>1.1.6.81</Version>
         <!-- Flag to enable to add revision id to the assembly version -->
         <SourceControlInformationFeatureSupported>true</SourceControlInformationFeatureSupported>
         <IncludeSourceRevisionInInformationalVersion>true</IncludeSourceRevisionInInformationalVersion>
